@@ -1,0 +1,21 @@
+
+bundle knowledge cf3_glossary
+
+{
+topics:
+
+"cf3-glossary";
+Special_Topics_Guide::
+    "CFEngine-Best-Practices"  association => a("discussed in","CFEngine-Best-Practices","discusses");
+
+
+occurrences:
+
+manuals::
+ "/docs/cf3-glossary.html"
+  represents => { "CFEngine Glossary" };
+CFEngine_Best_Practices::
+ "/docs/cf3-glossary.html#Top"
+  represents => { "Text section" };
+}
+

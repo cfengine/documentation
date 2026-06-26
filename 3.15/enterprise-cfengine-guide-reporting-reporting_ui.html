@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.15  Documentation - Reporting UI</title>
+        <link rel="icon" type="image/svg+xml" href="./media/images/favicon.svg">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/enterprise-cfengine-guide-reporting-reporting_ui.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+        <link href='assets/global-d4bd60bd0125f13532b30d7a739a8f45.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Reporting UI";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/">Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/" selected>Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="012826289311752768906:zdz4ud6t2xf" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html"  class="navselected" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="enterprise-cfengine-guide-install-get-started.html">Install and Get Started</a></li><li><a href="enterprise-cfengine-guide-user-interface.html">User Interface</a></li><li><a href="enterprise-cfengine-guide-settings.html">Settings</a></li><li><a href="enterprise-cfengine-guide-hosts-health.html">Hosts and Health</a></li><li><a href="enterprise-cfengine-guide-alerts-notifications.html">Alerts and Notifications</a></li><li><a href="enterprise-cfengine-guide-alerts-custom-actions.html">Custom actions for Alerts</a></li><li><a href="enterprise-cfengine-guide-reporting.html">Enterprise Reporting</a><ul class="level2"><li><a href="enterprise-cfengine-guide-reporting-reporting-architecture.html">Reporting Architecture</a></li><li><a href="enterprise-cfengine-guide-reporting-sql-queries-enterprise-api.html">SQL Queries Using the Enterprise API</a></li><li><a class="active" href="enterprise-cfengine-guide-reporting-reporting_ui.html">Reporting UI</a></li><li><a href="enterprise-cfengine-guide-reporting-client-initiated-reporting.html">Client Initiated Reporting / Call collect</a></li></ul></li><li><a href="enterprise-cfengine-guide-federated-reporting.html">Federated Reporting</a></li><li><a href="enterprise-cfengine-guide-measurements.html">Measurements app</a></li><li><a href="enterprise-cfengine-guide-enterprise-api.html">Enterprise API</a></li><li><a href="enterprise-cfengine-guide-best-practices.html">Best Practices</a></li><li><a href="enterprise-cfengine-guide-high-availability.html">High Availability</a></li><li><a href="enterprise-cfengine-guide-hub_administration.html">Hub Administration</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="enterprise-cfengine-guide.html">CFEngine Enterprise</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="enterprise-cfengine-guide-reporting.html">Enterprise Reporting</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Reporting UI
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>CFEngine collects a large amount of data. To inspect it, you can run and schedule pre-defined reports or use the <a href="enterprise-cfengine-guide-reporting-reporting_ui.html#query-builder" title="Reporting UI - Query Builder ">query builder</a> for your own custom reports. You can save these queries for later use, and schedule reports for specified times.</p>
+
+<p>If you are familiar with SQL syntax, you can input your query into the interface directly. Make sure to take a look at the database schema. Please note: manual entries in the query field at the bottom of the <a href="enterprise-cfengine-guide-reporting-reporting_ui.html#query-builder" title="Reporting UI - Query Builder ">query builder</a> will invalidate all field selections and filters above, and vice-versa.</p>
+
+<p>You can share the report with other users - either by using &quot;Save&quot; button, or by base64-encoding the report query into a URL. You can also provide an optional title by adding <code>title</code> parameter to the URL, like this:</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">  HUB_URL=&quot;https://hub&quot;</span>
+<span class="go">  API=&quot;/index.php/advancedreports/#/report/run?sql=&quot;</span>
+<span class="go">  SQL_QUERY=&quot;SELECT Hosts.HostName AS &#39;Host Name&#39; FROM Hosts&quot;</span>
+<span class="go">  REPORT_TITLE=&quot;Example Report&quot;</span>
+<span class="go">  LINK=&quot;${HUB_URL}${API}$(echo ${SQL_QUERY} | base64)&amp;title=$(/usr/bin/urlencode ${REPORT_TITLE})&quot;</span>
+<span class="go">  echo &quot;${LINK}&quot;</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text"><span></span>https://hub/index.php/advancedreports/#/report/run?sql=U0VMRUNUIEhvc3RzLkhvc3ROYW1lIEFTICdIb3N0IE5hbWUnIEZST00gSG9zdHMK&amp;title=Example%20Report
+</code></pre>
+</div>
+
+<p>You can query fewer hosts with the help of filters above the displayed table. These filters are based on the same categorization you can find in the other apps.</p>
+
+<p>You can also filter on the type of promise: user defined, system defined, or all.</p>
+
+<p>See also:</p>
+
+<ul>
+<li><a href="enterprise-cfengine-guide-reporting-reporting-architecture.html" title="Reporting Architecture">Reporting Architecture</a></li>
+<li><a href="enterprise-cfengine-guide-reporting-sql-queries-enterprise-api.html" title="SQL Queries Using the Enterprise API">SQL Queries Using the Enterprise API</a></li>
+</ul>
+<h2 id="query-builder">Query Builder</h2>
+<p>Users not familiar with SQL syntax can easily create their own custom reports in this interface. Please note that query builder can be <a href="enterprise-cfengine-guide-hub_administration-extending-query-builder.html#how-to-add-new-table-to-query-builder" title="Extending Query Builder in Mission Portal - How to add new table to Query Builder">extended with your custom data</a>.</p>
+
+<ul>
+<li>Tables - Select the data tables you want include in your report first.
+
+<ul>
+<li>When more than one table is selected the Query builder opens modal window to select the (<a href="https://www.postgresql.org/docs/current/tutorial-join.html">join strategy  between tables</a>):
+
+<ul>
+<li>Main table - the main data source, other tables will be connected to it.</li>
+<li>Extend main table (left join) - returns all records from the main table, and the matched records from the joined table.</li>
+<li>Include only common rows (inner join) - returns records from the main table that intersect the joined table. 
+Useful for filtering, in the case where you have custom views that have pre-filtered hosts. For example, web_servers - a custom view that contains hostkeys of hosts that are web servers.</li>
+</ul></li>
+</ul></li>
+<li>Fields - Define your table columns based on your selection above.</li>
+<li>Filters - Filter your results.  Remember that unless you filter, you may be querying large data sets, so think about what you absolutely need in your report.</li>
+<li>Group - Group your results.  May be expensive with large data sets.</li>
+<li>Sort - Sort your results.  May be expensive with large data sets.</li>
+<li>Limit - Limit the number of entries in your report. This is a recommended practice for testing your query, and even in production it may be helpful if you don&#39;t need to see every entry.</li>
+<li>Show me the query - View and edit the SQL query directly. Please note, that editing the query directly here will invalidate your choices in the query builder interface, and changing your selections there will override your SQL query.</li>
+</ul>
+<h3 id="ensure-the-report-collection-is-working">Ensure the report collection is working</h3>
+<ul>
+<li><p>The reporting bundle must be called from <a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a>. For example,
+the following defines the attribute <a href="guide-special-topics-itil.html#role" title="ITIL - Role"><code>Role</code></a> which is set to
+<a href="reference-promise-types-databases.html#database_server" title="databases - database_server"><code>database_server</code></a>. You need to add it to the top-level
+<a href="reference-components.html#bundlesequence" title="Components - bundlesequence"><code>bundlesequence</code></a> in <a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a> or in a bundle that it calls.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">myreport</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">myrole</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;database_server&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">meta</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;inventory&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;attribute_name=Role&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div></li>
+<li><p>note the <a href="reference-promise-types.html#meta" title="Promise Types - meta"><code>meta</code></a> tag <code>inventory</code></p></li>
+<li><p>The hub must be able to collect the reports from the client. TCP
+port 5308 must be open and, because 3.6 uses TLS, should not be
+proxied or otherwise intercepted. Note that bootstrapping and other
+standalone client operations go from the client to the server, so the
+ability to bootstrap and copy policies from the server doesn&#39;t
+necessarily mean the reverse connection will work.</p></li>
+<li><p>Ensure that variables and classes tagged as <code>inventory</code> or <code>report</code>
+are not filtered by <a href="reference-masterfiles-policy-framework-controls-cf_serverd.html" title="controls/cf_serverd.cf"><code>controls/cf_serverd.cf</code></a> in your infrastructure.
+The standard configuration from the stock CFEngine packages allows
+them and should work.</p></li>
+</ul>
+
+<p><strong>Note:</strong> The CFEngine report collection model accounts for long periods of
+time when the hub is unable to collect data from remote agents. This model
+preserves data recorded until it can be collected. Data (promise outcomes, etc
+...) recorded by the agent during normal agent runs is stored locally until it
+is collected from by the cf-hub process. At the time of collection the local
+data stored on the client is cleaned up and only the last hours worth of data
+remains client. It is important to understand that the time between hub
+collection and number of clients that are unable to be collected from grows the
+amount of data to transfer and store in the central database also grows. A
+large number of clinets that have not been collected from that become available
+at once can cause increased load on the hub collector and affect its
+performance until it has been able to collect from all hosts.</p>
+<h2 id="define-a-new-single-table-report">Define a New Single Table Report</h2>
+<ol>
+<li>In <em>Mission Portal</em> select the <em>Report</em> application icon on the left hand side of the screen.</li>
+<li>This will bring you to the <em>Report builder</em> screen.</li>
+<li>The default for what hosts to report on is <em>All hosts</em>. The hosts can be filtered under the <em>Filters</em> section at the top of the page.</li>
+<li>For this tutorial leave it as <em>All hosts</em>.</li>
+<li>Set which tables&#39; data we want reports for.</li>
+<li>For this tutorial select <em>Hosts</em>.</li>
+<li>Select the columns from the <em>Hosts</em> table for the report.</li>
+<li>For this tutorial click the <em>Select all</em> link below the column lables.</li>
+<li>Leave <em>Filters</em>, <em>Sort</em>, and <em>Limit</em> at the default settings.</li>
+<li>Click the orange <em>Run</em> button in the bottom right hand corner.</li>
+</ol>
+<h2 id="check-report-results">Check Report Results</h2>
+<ol>
+<li>The report generated will show each of the selected columns across the report table&#39;s header row.</li>
+<li>In this tutorial the columns being reported back should be: <em>Host key</em>, <em>Last report time</em>, <em>Host name</em>, <em>IP address</em>, <em>First report-time</em>.</li>
+<li>Each row will contain the information for an individual data record, in this case one row for each host.</li>
+<li>Some of the cells in the report may provide links to drill down into more detailed information (e.g. <em>Host name</em> will provide a link to a <em>Host information</em> page).</li>
+<li>It is possible to also export the report to a file.</li>
+<li>Click the orange <em>Export</em> button.</li>
+<li>You will then see a <em>Report Download</em> dialog.</li>
+<li><em>Report type</em> can be either <em>csv</em> or <em>pdf format</em>.</li>
+<li>Leave other fields at the default values.</li>
+<li>If the server&#39;s mail configuration is working properly, it is possible to email the report by checking the <em>Send in email</em> box.</li>
+<li>Click <em>OK</em> to download or email the <em>csv</em> or <em>pdf</em> version of the report.</li>
+<li>Once the report is generated it will be available for download or will be emailed.</li>
+</ol>
+<h2 id="inventory-management">Inventory Management</h2>
+<p>Inventory allows you to define the set of hosts to report on.</p>
+
+<p>The main Inventory screen shows the current set of hosts, together with relevant information such as operating system type, kernel and memory size.</p>
+
+<p><img src="Reports-Inventory-1.png" alt="Inventory Management"></p>
+
+<p>To begin filtering, one would first select the <em>Filters</em> drop down, and then select an attribute to filter on (e.g. OS type = linux)</p>
+
+<p><img src="Reports-Inventory-2.png" alt="Inventory Management"></p>
+
+<p>After applying the filter, it may be convenient to add the attribute as one of the table columns.</p>
+
+<p><img src="Reports-Inventory-4.png" alt="Inventory Management"></p>
+
+<p>Changing the filter, or adding additional attributes for filtering, is just as easy.</p>
+
+<p><img src="Reports-Inventory-5.png" alt="Inventory Management"></p>
+
+<p>We can see here that there are no Windows machines bootstrapped to this hub.</p>
+
+<p><img src="Reports-Inventory-6.png" alt="Inventory Management"></p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-cfengine-enterprise.html">cfengine enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-user-interface.html">user interface</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-mission-portal.html">mission portal</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 02 December 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.15/enterprise-cfengine-guide/reporting/reporting_ui.markdown/generator/pages/enterprise-cfengine-guide/reporting/reporting_ui.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-42a0b4e53c8c8a1d3df73e4c74e62399.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

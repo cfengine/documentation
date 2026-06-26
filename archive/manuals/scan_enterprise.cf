@@ -1,0 +1,630 @@
+
+bundle knowledge cf2_enterprise
+
+{
+topics:
+
+"cf2-enterprise";
+ITIL_glossary::
+    "Warning" ;
+ITIL_glossary::
+    "Service Management" ;
+ITIL_glossary::
+    "Service Level Agreement" ;
+ITIL_glossary::
+    "Service desk" ;
+ITIL_glossary::
+    "Role" ;
+ITIL_glossary::
+    "Restoration" ;
+ITIL_glossary::
+    "Resilience" ;
+Request_for_Change::
+    "Abandon Autonomy?" ;
+ITIL_glossary::
+    "Request for Change" ;
+ITIL_glossary::
+    "Release, Request for Change, Repair, Summary" ;
+ITIL_glossary::
+    "Repair" ;
+ITIL_glossary::
+    "Remediation" ;
+ITIL_glossary::
+    "Recovery" ;
+ITIL_glossary::
+    "Record" ;
+ITIL_glossary::
+    "Reactive Monitoring" ;
+ITIL_glossary::
+    "Promise, Reactive Monitoring, Problem, Summary" ;
+ITIL_glossary::
+    "Problem" ;
+ITIL_glossary::
+    "Proactive Monitoring, Problem, Policy, Summary" ;
+ITIL_glossary::
+    "Policy" ;
+ITIL_glossary::
+    "Passive Monitoring" ;
+ITIL_glossary::
+    "Monitoring" ;
+ITIL_glossary::
+    "Incident" ;
+ITIL_glossary::
+    "Failure" ;
+ITIL_glossary::
+    "Exception, Failure, Event, Summary" ;
+ITIL_glossary::
+    "Event" ;
+ITIL_glossary::
+    "Error" ;
+ITIL_glossary::
+    "Emergency Change" ;
+ITIL_glossary::
+    "Document" ;
+ITIL_glossary::
+    "Configuration Management Database (CMDB)" ;
+ITIL_glossary::
+    "Configuration Item (CI)" ;
+ITIL_glossary::
+    "Configuration" ;
+ITIL_glossary::
+    "Chronological Analysis" ;
+ITIL_glossary::
+    "Change record" ;
+ITIL_glossary::
+    "Capability" ;
+ITIL_glossary::
+    "Benchmark" ;
+ITIL_glossary::
+    "Baseline" ;
+ITIL_glossary::
+    "Audit" ;
+ITIL_glossary::
+    "Alert" ;
+ITIL_glossary::
+    "Availability" ;
+ITIL_glossary::
+    "Active Monitoring" ;
+ITIL_glossary::
+    "ITIL glossary" ;
+Summary::
+    "Road-map for adoption" ;
+How_we_wrote_this_document__Promise_concepts_voluntary_cooperation__Summary__Summary::
+    "Promising voluntary cooperation, Road-map for adoption, Summary, Summary" ;
+How_we_wrote_this_document__Promise_concepts_voluntary_cooperation__Summary__Summary::
+    "ITIL concepts for authoring, Promise concepts voluntary cooperation, Summary, Summary" ;
+Summary::
+    "How we wrote this document, Promise concepts voluntary cooperation, Summary, Summary" ;
+Summary::
+    "Summary" ;
+Using_cfengine_to_implement_ITIL_objectives::
+    "Availability and Capacity Management" ;
+Version_control_and_rollback::
+    "Delegating responsibility" ;
+Using_cfengine_to_implement_ITIL_objectives::
+    "Version control and rollback" ;
+Using_cfengine_to_implement_ITIL_objectives::
+    "Release Management in ITIL" ;
+Change_Management_in_ITIL::
+    "Neighbourhood watch and tampering" ;
+Change_Management_in_ITIL::
+    "Computing hashes or digests" ;
+Change_Management_in_ITIL::
+    "Hashes and Message Digests" ;
+Change_Management_in_ITIL::
+    "Monitoring file changes" ;
+Change_Management_in_ITIL::
+    "Rollback or remediation" ;
+Change_Management_in_ITIL::
+    "Software packaging in ITIL" ;
+Using_cfengine_to_implement_ITIL_objectives::
+    "Change Management in ITIL" ;
+Rollout_and_installation::
+    "Direct customization by cfengine" ;
+Rollout_and_installation::
+    "Overlay an expandable template with cfengine" ;
+Rollout_and_installation::
+    "Customize by constant/fixed gold overlay" ;
+Using_cfengine_to_implement_ITIL_objectives::
+    "Rollout and installation" ;
+Using_cfengine_to_implement_ITIL_objectives::
+    "Incident Management vs Maintenance" ;
+Using_cfengine_to_implement_ITIL_objectives::
+    "What is maintenance?" ;
+How_can_cfengine_or_promises_help_an_enterprise::
+    "Uniformity" ;
+How_can_cfengine_or_promises_help_an_enterprise::
+    "Modelling policy" ;
+How_can_cfengine_or_promises_help_an_enterprise::
+    "Traditional IT Management" ;
+Using_cfengine_to_implement_ITIL_objectives::
+    "How can cfengine or promises help an enterprise" ;
+Using_cfengine_to_implement_ITIL_objectives::
+    "Infrastructure or management?" ;
+Using_cfengine_to_implement_ITIL_objectives::
+    "Using cfengine to implement ITIL objectives" ;
+ITIL_and_cfengine_comparison::
+    "ITIL terminology" ;
+Which_ITIL_processes_apply_to_cfengine_::
+    "Service Level Management (SLM)" ;
+Which_ITIL_processes_apply_to_cfengine_::
+    "Incident and problem management" ;
+Which_ITIL_processes_apply_to_cfengine_::
+    "Release management" ;
+Which_ITIL_processes_apply_to_cfengine_::
+    "Change management vs convergence" ;
+Which_ITIL_processes_apply_to_cfengine_::
+    "Change management in the enterprise" ;
+Which_ITIL_processes_apply_to_cfengine_::
+    "CMDB Asset Management" ;
+Which_ITIL_processes_apply_to_cfengine_::
+    "ITIL Configuration Management (CM)" ;
+ITIL_and_cfengine_comparison::
+    "Which ITIL processes apply to cfengine?" ;
+ITIL_and_cfengine_comparison::
+    "ITIL and cfengine comparison" ;
+ITIL_past_and_present::
+    "Tool Support" ;
+Service_orientation_and_ITIL::
+    "Continual Service Improvement" ;
+Service_orientation_and_ITIL::
+    "Service Operation" ;
+Service_orientation_and_ITIL::
+    "Service Design" ;
+Service_orientation_and_ITIL::
+    "Service Strategy" ;
+Service_orientation_and_ITIL::
+    "ITIL processes" ;
+Service_orientation_and_ITIL::
+    "Cfengine in ITIL clothes?" ;
+ITIL_past_and_present::
+    "Service orientation and ITIL" ;
+ITIL_and_its_versions::
+    "ITILv3 Management from the Service Life Cycle Perspective" ;
+ITIL_and_its_versions::
+    "ITILv2 Service Support and Service Delivery" ;
+ITIL_and_its_versions::
+    "ITIL: Important Foundations" ;
+ITIL_past_and_present::
+    "ITIL and its versions" ;
+ITIL_past_and_present::
+    "ITIL past and present" ;
+Cfengine_past_and_present::
+    "Cfengine Components" ;
+Fundamental_Cfengine_Concepts::
+    "Scalability" ;
+Fundamental_Cfengine_Concepts::
+    "Voluntary Cooperation" ;
+Fundamental_Cfengine_Concepts::
+    "One or Many Hosts" ;
+Fundamental_Cfengine_Concepts::
+    "Convergence" ;
+Fundamental_Cfengine_Concepts::
+    "Promises, Actions and Operations" ;
+Cfengine_past_and_present::
+    "Fundamental Cfengine Concepts" ;
+Cfengine_past_and_present::
+    "Cfengine past and present" ;
+Enterprise_Integration::
+    "Is automation worthwhile?" ;
+About_Promises::
+    "Basic promise definitions" ;
+About_Promises::
+    "A theory for ITIL" ;
+Enterprise_Integration::
+    "About Promises" ;
+Business_processes_and_goals::
+    "Teams and collaboration" ;
+Enterprise_Integration::
+    "Business processes and goals" ;
+Enterprise_Integration::
+    "ITIL introduced" ;
+Enterprise_Integration::
+    "Business alignment" ;
+Enterprise_Integration::
+    "Enterprise Integration" ;
+
+
+occurrences:
+
+Enterprise_Integration::
+ "/inside/manuals/cf2-enterprise#Enterprise-integration"
+  represents => { "chapter" };
+Business_alignment::
+ "/inside/manuals/cf2-enterprise#Business-alignment"
+  represents => { "Business alignment" };
+ITIL_introduced::
+ "/inside/manuals/cf2-enterprise#ITIL-introduced"
+  represents => { "ITIL introduced" };
+Business_processes_and_goals::
+ "/inside/manuals/cf2-enterprise#Business-processes-and-goals"
+  represents => { "Business processes and goals" };
+Teams_and_collaboration::
+ "/inside/manuals/cf2-enterprise#Teams-control-structures-and-collaboration"
+  represents => { "subsection" };
+About_Promises::
+ "/inside/manuals/cf2-enterprise#About-Promises"
+  represents => { "About Promises" };
+A_theory_for_ITIL::
+ "/inside/manuals/cf2-enterprise#A-theory"
+  represents => { "subsection" };
+Basic_promise_definitions::
+ "/inside/manuals/cf2-enterprise#Basic-definitions"
+  represents => { "subsection" };
+Is_automation_worthwhile_::
+ "/inside/manuals/cf2-enterprise#Is-automation-worthwhile_003f"
+  represents => { "Is automation worthwhile?" };
+Cfengine_past_and_present::
+ "/inside/manuals/cf2-enterprise#Cfengine-past-and-present"
+  represents => { "chapter" };
+Cfengine_past_and_present::
+ "/inside/manuals/cf2-enterprise#Cfengine-past-and-present"
+  represents => { "example" };
+Fundamental_Cfengine_Concepts::
+ "/inside/manuals/cf2-enterprise#Fundamental-Concepts"
+  represents => { "Fundamental Cfengine Concepts" };
+Promises__Actions_and_Operations::
+ "/inside/manuals/cf2-enterprise#Promises-actions-operations"
+  represents => { "subsection" };
+Promises__Actions_and_Operations::
+ "/inside/manuals/cf2-enterprise#Promises-actions-operations"
+  represents => { "example" };
+Convergence::
+ "/inside/manuals/cf2-enterprise#Convergence"
+  represents => { "subsection" };
+Convergence::
+ "/inside/manuals/cf2-enterprise#Convergence"
+  represents => { "example" };
+One_or_Many_Hosts::
+ "/inside/manuals/cf2-enterprise#Classes-and-Declarations-From-One-to-Many-Hosts"
+  represents => { "subsection" };
+Voluntary_Cooperation::
+ "/inside/manuals/cf2-enterprise#Voluntary-Cooperation"
+  represents => { "subsection" };
+Scalability::
+ "/inside/manuals/cf2-enterprise#Scalability"
+  represents => { "subsection" };
+Cfengine_Components::
+ "/inside/manuals/cf2-enterprise#Cfengine-Components"
+  represents => { "Cfengine Components" };
+ITIL_past_and_present::
+ "/inside/manuals/cf2-enterprise#ITIL-past-and-present"
+  represents => { "chapter" };
+ITIL_and_its_versions::
+ "/inside/manuals/cf2-enterprise#ITIL-and-its-versions"
+  represents => { "ITIL and its versions" };
+ITIL__Important_Foundations::
+ "/inside/manuals/cf2-enterprise#ITIL-Important-Foundations"
+  represents => { "subsection" };
+ITILv2_Service_Support_and_Service_Delivery::
+ "/inside/manuals/cf2-enterprise#ITILv2-Service-Support-and-Service-Delivery"
+  represents => { "subsection" };
+ITILv3_Management_from_the_Service_Life_Cycle_Perspective::
+ "/inside/manuals/cf2-enterprise#ITILv3-Management-from-the-Service-Life-Cycle-Perspective"
+  represents => { "subsection" };
+Service_orientation_and_ITIL::
+ "/inside/manuals/cf2-enterprise#Foundations"
+  represents => { "Service orientation and ITIL" };
+Cfengine_in_ITIL_clothes_::
+ "/inside/manuals/cf2-enterprise#Cfengine-in-ITIL-clothes_003f"
+  represents => { "subsection" };
+ITIL_processes::
+ "/inside/manuals/cf2-enterprise#ITIL-processes"
+  represents => { "subsection" };
+Service_Strategy::
+ "/inside/manuals/cf2-enterprise#Service-Strategy"
+  represents => { "subsection" };
+Service_Design::
+ "/inside/manuals/cf2-enterprise#Service-Design"
+  represents => { "subsection" };
+Service_Operation::
+ "/inside/manuals/cf2-enterprise#Service-Operation"
+  represents => { "subsection" };
+Continual_Service_Improvement::
+ "/inside/manuals/cf2-enterprise#Continual-Service-Improvement"
+  represents => { "subsection" };
+Tool_Support::
+ "/inside/manuals/cf2-enterprise#Tool-Support"
+  represents => { "Tool Support" };
+ITIL_and_cfengine_comparison::
+ "/inside/manuals/cf2-enterprise#A-meeting-of-mind_002dsets"
+  represents => { "chapter" };
+Which_ITIL_processes_apply_to_cfengine_::
+ "/inside/manuals/cf2-enterprise#Which-ITIL-processes-apply-to-cfengine_003f"
+  represents => { "Which ITIL processes apply to cfengine?" };
+ITIL_Configuration_Management__CM_::
+ "/inside/manuals/cf2-enterprise#Configuration-Management-CM"
+  represents => { "subsection" };
+CMDB_Asset_Management::
+ "/inside/manuals/cf2-enterprise#Asset-Management-what-is-it-used-for_003f"
+  represents => { "subsection" };
+Change_management_in_the_enterprise::
+ "/inside/manuals/cf2-enterprise#Change-management"
+  represents => { "subsection" };
+Change_management_vs_convergence::
+ "/inside/manuals/cf2-enterprise#Change-management-vs-convergence"
+  represents => { "subsection" };
+Release_management::
+ "/inside/manuals/cf2-enterprise#Release-management"
+  represents => { "subsection" };
+Incident_and_problem_management::
+ "/inside/manuals/cf2-enterprise#Incident-and-problem-management"
+  represents => { "subsection" };
+Service_Level_Management__SLM_::
+ "/inside/manuals/cf2-enterprise#Service-Level-Management-SLM"
+  represents => { "subsection" };
+ITIL_terminology::
+ "/inside/manuals/cf2-enterprise#ITIL-terminology"
+  represents => { "ITIL terminology" };
+Using_cfengine_to_implement_ITIL_objectives::
+ "/inside/manuals/cf2-enterprise#Using-cfengine-to-implement-ITIL-objectives"
+  represents => { "chapter" };
+Infrastructure_or_management_::
+ "/inside/manuals/cf2-enterprise#Infrastructure-or-management_003f"
+  represents => { "Infrastructure or management?" };
+How_can_cfengine_or_promises_help_an_enterprise::
+ "/inside/manuals/cf2-enterprise#How-can-cfengine-or-promises-help_003f"
+  represents => { "How can cfengine or promises help an enterprise" };
+Traditional_IT_Management::
+ "/inside/manuals/cf2-enterprise#Traditions"
+  represents => { "subsection" };
+Modelling_policy::
+ "/inside/manuals/cf2-enterprise#Modelling-of-policy"
+  represents => { "subsection" };
+Uniformity::
+ "/inside/manuals/cf2-enterprise#Uniformity"
+  represents => { "subsection" };
+What_is_maintenance_::
+ "/inside/manuals/cf2-enterprise#What-is-maintenance_003f"
+  represents => { "What is maintenance?" };
+Incident_Management_vs_Maintenance::
+ "/inside/manuals/cf2-enterprise#Incident-Management-vs-Maintenance"
+  represents => { "Incident Management vs Maintenance" };
+Incident_Management_vs_Maintenance::
+ "/inside/manuals/cf2-enterprise#Incident-Management-vs-Maintenance"
+  represents => { "example" };
+Rollout_and_installation::
+ "/inside/manuals/cf2-enterprise#Rollout-and-installation"
+  represents => { "Rollout and installation" };
+Customize_by_constant_fixed_gold_overlay::
+ "/inside/manuals/cf2-enterprise#Customize-by-constant-fixed-overlay"
+  represents => { "subsection" };
+Customize_by_constant_fixed_gold_overlay::
+ "/inside/manuals/cf2-enterprise#Customize-by-constant-fixed-overlay"
+  represents => { "example" };
+Overlay_an_expandable_template_with_cfengine::
+ "/inside/manuals/cf2-enterprise#Overlay-an-expandable-template"
+  represents => { "subsection" };
+Overlay_an_expandable_template_with_cfengine::
+ "/inside/manuals/cf2-enterprise#Overlay-an-expandable-template"
+  represents => { "example" };
+Direct_customization_by_cfengine::
+ "/inside/manuals/cf2-enterprise#Direct-customization"
+  represents => { "subsection" };
+Direct_customization_by_cfengine::
+ "/inside/manuals/cf2-enterprise#Direct-customization"
+  represents => { "example" };
+Change_Management_in_ITIL::
+ "/inside/manuals/cf2-enterprise#Change-Management-in-ITIL"
+  represents => { "Change Management in ITIL" };
+Software_packaging_in_ITIL::
+ "/inside/manuals/cf2-enterprise#Software-packaging"
+  represents => { "subsection" };
+Software_packaging_in_ITIL::
+ "/inside/manuals/cf2-enterprise#Software-packaging"
+  represents => { "example" };
+Software_packaging_in_ITIL::
+ "/inside/manuals/cf2-enterprise#Software-packaging"
+  represents => { "example" };
+Software_packaging_in_ITIL::
+ "/inside/manuals/cf2-enterprise#Software-packaging"
+  represents => { "example" };
+Software_packaging_in_ITIL::
+ "/inside/manuals/cf2-enterprise#Software-packaging"
+  represents => { "example" };
+Rollback_or_remediation::
+ "/inside/manuals/cf2-enterprise#Rollback-or-remediation"
+  represents => { "subsection" };
+Monitoring_file_changes::
+ "/inside/manuals/cf2-enterprise#Monitoring-file-changes"
+  represents => { "subsection" };
+Monitoring_file_changes::
+ "/inside/manuals/cf2-enterprise#Monitoring-file-changes"
+  represents => { "example" };
+Hashes_and_Message_Digests::
+ "/inside/manuals/cf2-enterprise#Hashes-and-Message-Digests"
+  represents => { "subsection" };
+Hashes_and_Message_Digests::
+ "/inside/manuals/cf2-enterprise#Hashes-and-Message-Digests"
+  represents => { "example" };
+Computing_hashes_or_digests::
+ "/inside/manuals/cf2-enterprise#Computing-hashes"
+  represents => { "subsection" };
+Computing_hashes_or_digests::
+ "/inside/manuals/cf2-enterprise#Computing-hashes"
+  represents => { "example" };
+Computing_hashes_or_digests::
+ "/inside/manuals/cf2-enterprise#Computing-hashes"
+  represents => { "example" };
+Computing_hashes_or_digests::
+ "/inside/manuals/cf2-enterprise#Computing-hashes"
+  represents => { "example" };
+Computing_hashes_or_digests::
+ "/inside/manuals/cf2-enterprise#Computing-hashes"
+  represents => { "example" };
+Computing_hashes_or_digests::
+ "/inside/manuals/cf2-enterprise#Computing-hashes"
+  represents => { "example" };
+Neighbourhood_watch_and_tampering::
+ "/inside/manuals/cf2-enterprise#Neighbourhood-watch-and-tampering"
+  represents => { "subsection" };
+Neighbourhood_watch_and_tampering::
+ "/inside/manuals/cf2-enterprise#Neighbourhood-watch-and-tampering"
+  represents => { "example" };
+Neighbourhood_watch_and_tampering::
+ "/inside/manuals/cf2-enterprise#Neighbourhood-watch-and-tampering"
+  represents => { "example" };
+Neighbourhood_watch_and_tampering::
+ "/inside/manuals/cf2-enterprise#Neighbourhood-watch-and-tampering"
+  represents => { "example" };
+Release_Management_in_ITIL::
+ "/inside/manuals/cf2-enterprise#Release-Management-in-ITIL"
+  represents => { "Release Management in ITIL" };
+Version_control_and_rollback::
+ "/inside/manuals/cf2-enterprise#Configuration-version-control-and-rollback"
+  represents => { "Version control and rollback" };
+Version_control_and_rollback::
+ "/inside/manuals/cf2-enterprise#Configuration-version-control-and-rollback"
+  represents => { "example" };
+Version_control_and_rollback::
+ "/inside/manuals/cf2-enterprise#Configuration-version-control-and-rollback"
+  represents => { "example" };
+Delegating_responsibility::
+ "/inside/manuals/cf2-enterprise#Delegating-responsibility-to-multiple-groups"
+  represents => { "subsection" };
+Availability_and_Capacity_Management::
+ "/inside/manuals/cf2-enterprise#Availability-and-Capacity-Management"
+  represents => { "Availability and Capacity Management" };
+Summary::
+ "/inside/manuals/cf2-enterprise#Summary"
+  represents => { "chapter" };
+How_we_wrote_this_document__Promise_concepts_voluntary_cooperation__Summary__Summary::
+ "/inside/manuals/cf2-enterprise#How-we-wrote-this-document"
+  represents => { "How we wrote this document, Promise concepts voluntary cooperation, Summary, Summary" };
+ITIL_concepts_for_authoring__Promise_concepts_voluntary_cooperation__Summary__Summary::
+ "/inside/manuals/cf2-enterprise#ITIL-concepts-for-authoring"
+  represents => { "subsection" };
+Promising_voluntary_cooperation__Road_map_for_adoption__Summary__Summary::
+ "/inside/manuals/cf2-enterprise#Promise-concepts-voluntary-cooperation"
+  represents => { "subsection" };
+Road_map_for_adoption::
+ "/inside/manuals/cf2-enterprise#Road_002dmap-for-adoption"
+  represents => { "Road-map for adoption" };
+ITIL_glossary::
+ "/inside/manuals/cf2-enterprise#ITIL-glossary"
+  represents => { "chapter" };
+Active_Monitoring::
+ "/inside/manuals/cf2-enterprise#Active-Monitoring"
+  represents => { "Active Monitoring" };
+Availability::
+ "/inside/manuals/cf2-enterprise#Availability"
+  represents => { "Availability" };
+Alert::
+ "/inside/manuals/cf2-enterprise#Alert"
+  represents => { "Alert" };
+Audit::
+ "/inside/manuals/cf2-enterprise#Audit"
+  represents => { "Audit" };
+Baseline::
+ "/inside/manuals/cf2-enterprise#Baseline"
+  represents => { "Baseline" };
+Benchmark::
+ "/inside/manuals/cf2-enterprise#Benchmark"
+  represents => { "Benchmark" };
+Capability::
+ "/inside/manuals/cf2-enterprise#Capability"
+  represents => { "Capability" };
+Change_record::
+ "/inside/manuals/cf2-enterprise#Change-record"
+  represents => { "Change record" };
+Change_record::
+ "/inside/manuals/cf2-enterprise#Change-record"
+  represents => { "example" };
+Chronological_Analysis::
+ "/inside/manuals/cf2-enterprise#Chronological-Analysis"
+  represents => { "Chronological Analysis" };
+Configuration::
+ "/inside/manuals/cf2-enterprise#Configuration"
+  represents => { "Configuration" };
+Configuration_Item__CI_::
+ "/inside/manuals/cf2-enterprise#Configuration-Item-_0028CI_0029"
+  represents => { "Configuration Item (CI)" };
+Configuration_Management_Database__CMDB_::
+ "/inside/manuals/cf2-enterprise#Configuration-Management-Database-CMDB"
+  represents => { "Configuration Management Database (CMDB)" };
+Document::
+ "/inside/manuals/cf2-enterprise#Document"
+  represents => { "Document" };
+Emergency_Change::
+ "/inside/manuals/cf2-enterprise#Emergency-Change"
+  represents => { "Emergency Change" };
+Error::
+ "/inside/manuals/cf2-enterprise#Error"
+  represents => { "Error" };
+Event::
+ "/inside/manuals/cf2-enterprise#Event"
+  represents => { "Event" };
+Exception__Failure__Event__Summary::
+ "/inside/manuals/cf2-enterprise#Exception"
+  represents => { "Exception, Failure, Event, Summary" };
+Failure::
+ "/inside/manuals/cf2-enterprise#Failure"
+  represents => { "Failure" };
+Incident::
+ "/inside/manuals/cf2-enterprise#Incident"
+  represents => { "Incident" };
+Monitoring::
+ "/inside/manuals/cf2-enterprise#Monitoring"
+  represents => { "Monitoring" };
+Passive_Monitoring::
+ "/inside/manuals/cf2-enterprise#Passive-Monitoring"
+  represents => { "Passive Monitoring" };
+Policy::
+ "/inside/manuals/cf2-enterprise#Policy"
+  represents => { "Policy" };
+Proactive_Monitoring__Problem__Policy__Summary::
+ "/inside/manuals/cf2-enterprise#Proactive-Monitoring"
+  represents => { "Proactive Monitoring, Problem, Policy, Summary" };
+Problem::
+ "/inside/manuals/cf2-enterprise#Problem"
+  represents => { "Problem" };
+Promise__Reactive_Monitoring__Problem__Summary::
+ "/inside/manuals/cf2-enterprise#Promise"
+  represents => { "Promise, Reactive Monitoring, Problem, Summary" };
+Reactive_Monitoring::
+ "/inside/manuals/cf2-enterprise#Reactive-Monitoring"
+  represents => { "Reactive Monitoring" };
+Record::
+ "/inside/manuals/cf2-enterprise#Record"
+  represents => { "Record" };
+Recovery::
+ "/inside/manuals/cf2-enterprise#Recovery"
+  represents => { "Recovery" };
+Remediation::
+ "/inside/manuals/cf2-enterprise#Remediation"
+  represents => { "Remediation" };
+Repair::
+ "/inside/manuals/cf2-enterprise#Repair"
+  represents => { "Repair" };
+Release__Request_for_Change__Repair__Summary::
+ "/inside/manuals/cf2-enterprise#Release"
+  represents => { "Release, Request for Change, Repair, Summary" };
+Request_for_Change::
+ "/inside/manuals/cf2-enterprise#Request-for-Change"
+  represents => { "Request for Change" };
+Abandon_Autonomy_::
+ "/inside/manuals/cf2-enterprise#Abandon-Autonomy_003f"
+  represents => { "subsection" };
+Resilience::
+ "/inside/manuals/cf2-enterprise#Resilience"
+  represents => { "Resilience" };
+Restoration::
+ "/inside/manuals/cf2-enterprise#Restoration"
+  represents => { "Restoration" };
+Role::
+ "/inside/manuals/cf2-enterprise#Role"
+  represents => { "Role" };
+Service_desk::
+ "/inside/manuals/cf2-enterprise#Service-desk"
+  represents => { "Service desk" };
+Service_Level_Agreement::
+ "/inside/manuals/cf2-enterprise#Service-Level-Agreement"
+  represents => { "Service Level Agreement" };
+Service_Management::
+ "/inside/manuals/cf2-enterprise#Service-Management"
+  represents => { "Service Management" };
+Warning::
+ "/inside/manuals/cf2-enterprise#Warning"
+  represents => { "Warning" };
+}
+

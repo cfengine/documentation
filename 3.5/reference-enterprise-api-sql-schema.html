@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - SQL Schema</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html"  class="navselected" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-enterprise-api.html">Enterprise  API Reference</a></li><li><a href="reference-syntax.html">Syntax, identifiers and names</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li class="selected"><span>SQL Schema</span></li><li><a href="reference-enterprise-api-uri-resources.html">URI Resources</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference-enterprise-api.html">Enterprise  API Reference</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>SQL Schema</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/reference.html">reference</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/enterprise.html">enterprise</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/rest.html">rest</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/api.html">api</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/reporting.html">reporting</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/sql.html">sql</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/schema.html">schema</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>SQL Schema</h1>
+                    <p>CFEngine allows all standardized SQL <code>SELECT</code> constructs to query, with the 
+following additions:</p>
+
+<ul>
+<li><code>TIMESTAMP_UNIX()</code> - seconds elapsed since 1970</li>
+<li><code>TIMESTAMP_UNIX_DAYS()</code> - days elapsed since 1970</li>
+</ul>
+
+<p>These are added to avoid use of non-portable SQL date/time functions.</p>
+<h2 id="examples">Examples</h2>
+<ul>
+<li>Group LAST status of promises in bundle &quot;ntp&quot; in hosts matching class 
+&quot;ntp_server&quot;.</li>
+</ul>
+
+<p>The result should include a list of the promises in the bundle, together with 
+counts of the four statuses (kept, repaired, not kept, unknown).</p>
+<div class="highlight"><pre><code class="text">    SELECT Status, Count(*)
+      FROM PromiseStatusLast
+     WHERE Bundle=ntp_server AND Context=ntp_server
+     GROUP BY Status
+</code></pre>
+</div>
+
+<ul>
+<li>Group all file changes by file name occurred on context &quot;ubuntu&quot;. There are counters on how many distinct host occurrences and total occurrences found.</li>
+</ul>
+<div class="highlight"><pre><code class="text">    SELECT
+         FileChanges.FileName,
+         Count(Distinct(FileChanges.HostKey)) AS DistinctHostCount,
+         COUNT(1) AS ChangeCount
+      FROM
+         FileChanges JOIN Contexts
+      WHERE 
+         Contexts.ContextName=&#39;ubuntu&#39;
+      GROUP BY
+         FileChanges.FileName
+      ORDER BY
+         ChangeCount DESC
+</code></pre>
+</div>
+
+<p><img src="reference-sql-filechanges-example-output.png" alt="File changes example output"></p>
+
+<ul>
+<li>List all software names and versions installed, with the host and host OS.</li>
+</ul>
+<div class="highlight"><pre><code class="text">    SELECT 
+          Hosts.Hostname,
+          Variables.VariableValue,
+          Software.SoftwareName, 
+          Software.SoftwareVersion
+     FROM 
+          Hosts,
+          Variables,
+          Software 
+     WHERE
+          Variables.VariableName=&#39;flavor&#39;
+          AND Hosts.HostKey=Variables.HostKey
+          AND Variables.HostKey=Software.HostKey
+     ORDER BY 
+          Software.SoftwareName
+</code></pre>
+</div>
+
+<p><img src="reference-sql-software-example-output.png" alt="Software example output"></p>
+<h2 id="inventory">Inventory</h2><h3 id="hosts">Hosts</h3><div class="tableOverflow"><table><thead><tr>
+<th>HostKey</th>
+<th>HostName</th>
+<th>IPAddress</th>
+<th>ReportTimeStamp</th>
+<th>FirstReportTimeStamp</th>
+</tr>
+</thead><tbody><tr>
+<td>12377</td>
+<td>stage.cfengine.com</td>
+<td>10.0.0.19</td>
+<td>123213</td>
+<td>123</td>
+</tr>
+<tr>
+<td>18843</td>
+<td>dev.test.cfengine.com</td>
+<td>10.0.0.29</td>
+<td>2131212</td>
+<td>123</td>
+</tr>
+</tbody></table></div><h3 id="contexts">Contexts</h3><div class="tableOverflow"><table><thead><tr>
+<th>HostKey</th>
+<th>ContextName</th>
+<th>DefineTimeStamp</th>
+</tr>
+</thead><tbody><tr>
+<td>12321</td>
+<td>ubuntu</td>
+<td>123214</td>
+</tr>
+<tr>
+<td>42142</td>
+<td>am_policy_hub</td>
+<td>123123</td>
+</tr>
+<tr>
+<td>43432</td>
+<td>suse</td>
+<td>123123</td>
+</tr>
+<tr>
+<td>42343</td>
+<td>cfengine_3</td>
+<td>2133123</td>
+</tr>
+</tbody></table></div><h3 id="variables">Variables</h3>
+<p><strong>Note</strong>: Lists are split into multiple rows.</p>
+<div class="tableOverflow"><table><thead><tr>
+<th>HostKey</th>
+<th>NameSpace</th>
+<th>Bundle</th>
+<th>VariableName</th>
+<th>VariableValue</th>
+<th>VariableType</th>
+</tr>
+</thead><tbody><tr>
+<td>12332</td>
+<td></td>
+<td>sys</td>
+<td>hostname</td>
+<td>host1</td>
+<td>string</td>
+</tr>
+<tr>
+<td>34234</td>
+<td>cfe_system</td>
+<td>def</td>
+<td>acl</td>
+<td>192.168.122.1/16</td>
+<td>string list</td>
+</tr>
+<tr>
+<td>43242</td>
+<td>cfe_system</td>
+<td>def</td>
+<td>acl</td>
+<td>192.168.121.1/32</td>
+<td>string list</td>
+</tr>
+<tr>
+<td>42423</td>
+<td></td>
+<td>sys</td>
+<td>os</td>
+<td>ubuntu_10</td>
+<td>string</td>
+</tr>
+</tbody></table></div>
+<p>Possible types: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a>, <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a>, <a href="reference-promise-types-vars.html#real" title="vars - real"><code>real</code></a>, <code>menu</code>, <code>string list</code>, <code>int list</code>, 
+<code>real list</code>, <code>menu list</code>.</p>
+<h2 id="file-changes">File Changes</h2><h3 id="filechanges">FileChanges</h3><div class="tableOverflow"><table><thead><tr>
+<th>HostKey</th>
+<th>PromiseHandle</th>
+<th>FileName</th>
+<th>ChangeTimeStamp</th>
+<th>ChangeType</th>
+<th>LineNumber</th>
+<th>ChangeDetails</th>
+</tr>
+</thead><tbody><tr>
+<td>12332</td>
+<td>promise_handle1</td>
+<td>/etc/passwd</td>
+<td>12345</td>
+<td>add</td>
+<td>10</td>
+<td>user1:x:2000:2000:User1 Name:/home/user1:/bin/bash</td>
+</tr>
+<tr>
+<td>12332</td>
+<td>promise_handle2</td>
+<td>/etc/passwd</td>
+<td>12345</td>
+<td>remove</td>
+<td>19</td>
+<td>user2:x:2000:2000:User2 Name:/home/user2:/bin/bash</td>
+</tr>
+</tbody></table></div><h2 id="promise-information">Promise information</h2><h3 id="promisestatuslast">PromiseStatusLast</h3>
+<p><strong>Note</strong>: Only the <em>last</em> promise status (not log).</p>
+
+<p>Join from <code>PromiseDefinitons</code> to query by other promise attributes.</p>
+<div class="tableOverflow"><table><thead><tr>
+<th>HostKey</th>
+<th>PromiseHandle</th>
+<th>PromiseStatus</th>
+<th>CheckTimeStamp</th>
+</tr>
+</thead><tbody><tr>
+<td>123123</td>
+<td>ntp_pkg_install</td>
+<td>kept</td>
+<td>1234</td>
+</tr>
+<tr>
+<td>123123</td>
+<td>copy_file</td>
+<td>not_kept</td>
+<td>1235</td>
+</tr>
+</tbody></table></div><h3 id="promisedefinitions">PromiseDefinitions</h3>
+<p><strong>Note</strong>: This uses expanded promise definitions.</p>
+
+<p>Promisees is a list, split into multiple rows. This means that promise handles 
+might appear multiple times, if they have multiple promisees, depending on the 
+exact query. Use an embedded query with <code>DISTINCT()</code> to avoid this.</p>
+
+<p><strong>example</strong>:</p>
+<div class="highlight"><pre><code class="text">SELECT
+       Hosts.Name, BundleNTP.PromiseHandle
+  FROM 
+       Hosts,
+       (SELECT
+               DISTINCT(PromiseHandle)
+          FROM
+               PromiseDefinitions
+          WHERE
+               Bundle=&#39;ntp&#39;
+       )
+    AS
+       BundleNTP, PromiseStatusLast
+ WHERE
+       Hosts.HostKey=PromiseStatusLast.HostKey
+       AND BundleNTP.PromiseHandle=PromiseStatusLast.PromiseHandle
+       AND PromiseStatusLast.PromiseStatus=&#39;notkept&#39;
+</code></pre>
+</div>
+<div class="tableOverflow"><table><thead><tr>
+<th>NameSpace</th>
+<th>PromiseHandle</th>
+<th>Promiser</th>
+<th>Bundle</th>
+<th>Promisee</th>
+</tr>
+</thead><tbody><tr>
+<td>ntp</td>
+<td>ntp_pkg_install</td>
+<td>ntp-2.0.0-x86</td>
+<td>service_ntp</td>
+<td>time team</td>
+</tr>
+<tr>
+<td>ntp</td>
+<td>ntp_pkg_install</td>
+<td>ntp-2.0.0-x86</td>
+<td>service_ntp</td>
+<td>epoch</td>
+</tr>
+<tr>
+<td></td>
+<td>copy_file</td>
+<td>/etc/syslog.conf</td>
+<td>service_syslog</td>
+<td>timer</td>
+</tr>
+<tr>
+<td></td>
+<td>ntp_pkg_install</td>
+<td>cfe_internal_ntp-2.0.0-x86</td>
+<td>service_ntp</td>
+<td>time team</td>
+</tr>
+<tr>
+<td>cfe_system</td>
+<td>ntp_pkg_install</td>
+<td>ntp-2.0.0-x86</td>
+<td>service_ntp</td>
+<td>epoch</td>
+</tr>
+</tbody></table></div><h3 id="promiselogs">PromiseLogs</h3><div class="tableOverflow"><table><thead><tr>
+<th>HostKey</th>
+<th>PromiseHandle</th>
+<th>PromiseStatus</th>
+<th>PromiseLogReport</th>
+<th>TimeStamp</th>
+</tr>
+</thead><tbody><tr>
+<td>12332</td>
+<td>promise_handle1</td>
+<td>repaired</td>
+<td>promise repaired message</td>
+<td>12345</td>
+</tr>
+<tr>
+<td>12332</td>
+<td>promise_handle2</td>
+<td>notkept</td>
+<td>promise not kept message</td>
+<td>12345</td>
+</tr>
+</tbody></table></div>
+<p>Until CFEngine Enterprise v3.0 Promise logs were separated into: Promise 
+Repaired log and Promise NotKept log. The SQL Reporting Engine merges these 
+reports into one with the introduction of a new field(column): PromiseStatus</p>
+<h3 id="bundlestatus">BundleStatus</h3><div class="tableOverflow"><table><thead><tr>
+<th>HostKey</th>
+<th>Bundle</th>
+<th>PercentageCompliance</th>
+<th>CheckTimeStamp</th>
+</tr>
+</thead><tbody><tr>
+<td>12332</td>
+<td>bundle1</td>
+<td>100.0</td>
+<td>12345</td>
+</tr>
+<tr>
+<td>12332</td>
+<td>bundle2</td>
+<td>80.0</td>
+<td>12345</td>
+</tr>
+</tbody></table></div><h3 id="benchmarks">Benchmarks</h3><div class="tableOverflow"><table><thead><tr>
+<th>HostKey</th>
+<th>EventName</th>
+<th>TimeTaken</th>
+<th>CheckTimeStamp</th>
+</tr>
+</thead><tbody><tr>
+<td>12332</td>
+<td>action1</td>
+<td>0.1</td>
+<td>12345</td>
+</tr>
+<tr>
+<td>12332</td>
+<td>action2</td>
+<td>12</td>
+<td>12345</td>
+</tr>
+</tbody></table></div><h3 id="policystatus">PolicyStatus</h3><div class="tableOverflow"><table><thead><tr>
+<th>HostKey</th>
+<th>PolicyName</th>
+<th>TotalKept</th>
+<th>TotalRepaired</th>
+<th>TotalNotKept</th>
+<th>CheckTimeStamp</th>
+</tr>
+</thead><tbody><tr>
+<td>12332</td>
+<td>promises.cf ...</td>
+<td>80</td>
+<td>10</td>
+<td>1</td>
+<td>12345</td>
+</tr>
+<tr>
+<td>12332</td>
+<td>promises.cf v...</td>
+<td>90</td>
+<td>10</td>
+<td>12</td>
+<td>12345</td>
+</tr>
+</tbody></table></div><h2 id="software">Software</h2><h3 id="software">Software</h3><div class="tableOverflow"><table><thead><tr>
+<th>HostKey</th>
+<th>SoftwareName</th>
+<th>SoftwareVersion</th>
+<th>SoftwareArchitecture</th>
+</tr>
+</thead><tbody><tr>
+<td>123123</td>
+<td>apache</td>
+<td>2.2</td>
+<td>i686</td>
+</tr>
+<tr>
+<td>123123</td>
+<td>xterm</td>
+<td>1.2</td>
+<td>default</td>
+</tr>
+<tr>
+<td>123123</td>
+<td>sshd</td>
+<td>1.1</td>
+<td>x86_64</td>
+</tr>
+</tbody></table></div><h3 id="softwareupdates">SoftwareUpdates</h3><div class="tableOverflow"><table><thead><tr>
+<th>HostKey</th>
+<th>PatchReportType</th>
+<th>PatchName</th>
+<th>PatchVersion</th>
+<th>PatchArchitecture</th>
+</tr>
+</thead><tbody><tr>
+<td>12332</td>
+<td>Installed</td>
+<td>SuSEfirewall2</td>
+<td>4330</td>
+<td>default</td>
+</tr>
+<tr>
+<td>12332</td>
+<td>Available</td>
+<td>MozillaFirefox</td>
+<td>4195</td>
+<td>default</td>
+</tr>
+</tbody></table></div><h2 id="database-diagnostics">Database Diagnostics</h2>
+<p>Diagnostics of the MongoDB database. For detailed documentation, see the
+<a href="http://docs.mongodb.org/manual/reference/server-status">MongoDB documentation</a>.</p>
+<h3 id="lastseenhosts">LastSeenHosts</h3><div class="tableOverflow"><table><thead><tr>
+<th>HostKey</th>
+<th>LastSeenDirection</th>
+<th>RemoteHostKey</th>
+<th>LastseenAt</th>
+<th>LastseenInterval</th>
+</tr>
+</thead><tbody><tr>
+<td>12332</td>
+<td>Out</td>
+<td>12331</td>
+<td>12345</td>
+<td>120</td>
+</tr>
+<tr>
+<td>12332</td>
+<td>In</td>
+<td>12331</td>
+<td>12345</td>
+<td>50</td>
+</tr>
+</tbody></table></div><h3 id="databaseserverstatus">DatabaseServerStatus</h3><div class="tableOverflow"><table><thead><tr>
+<th>ReportRoundTimeStamp</th>
+<th>Host</th>
+<th>Version</th>
+<th>Uptime</th>
+<th>GlobalLockTotalTime</th>
+<th>GlobalLockTime</th>
+<th>GlobalLockQueueTotal</th>
+<th>GlobalLockQueueReaders</th>
+<th>GlobalLockQueueWriters</th>
+<th>MemoryResident</th>
+<th>MemoryVirtual</th>
+<th>MemoryMapped</th>
+<th>BackgroundFlushCount</th>
+<th>BackgroundFlushTotalTime</th>
+<th>BackgroundFlushAverageTime</th>
+<th>BackgroundFlushLastTime</th>
+</tr>
+</thead><tbody><tr>
+<td>1359378564</td>
+<td>ubuntu</td>
+<td>2.2.2</td>
+<td>1590.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>84</td>
+<td>358</td>
+<td>240</td>
+<td>26</td>
+<td>1287</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1359378624</td>
+<td>ubuntu</td>
+<td>2.2.2</td>
+<td>1650.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>86</td>
+<td>358</td>
+<td>240</td>
+<td>27</td>
+<td>1333</td>
+<td>0</td>
+<td>46</td>
+</tr>
+</tbody></table></div>
+<p>Data can be correlated with hub diagnostics by ReportTimeStamp.</p>
+<h3 id="databasestatus">DatabaseStatus</h3><div class="tableOverflow"><table><thead><tr>
+<th>ReportRoundTimeStamp</th>
+<th>Database</th>
+<th>AverageObjectSize</th>
+<th>DataSize</th>
+<th>StorageSize</th>
+<th>FileSize</th>
+</tr>
+</thead><tbody><tr>
+<td>1359378564</td>
+<td>cfreport</td>
+<td>1244.066641</td>
+<td>3208</td>
+<td>12296</td>
+<td>196608</td>
+</tr>
+<tr>
+<td>1359378624</td>
+<td>cfreport</td>
+<td>1283.96972</td>
+<td>3312</td>
+<td>12296</td>
+<td>196608</td>
+</tr>
+</tbody></table></div>
+<p>Data can be correlated with hub diagnostics by ReportTimeStamp. </p>
+<h3 id="databasecollectionstatus">DatabaseCollectionStatus</h3><div class="tableOverflow"><table><thead><tr>
+<th>ReportRoundTimeStamp</th>
+<th>Database</th>
+<th>Collection</th>
+<th>ObjectCount</th>
+<th>DataSize</th>
+<th>AverageObjectSize</th>
+<th>StorageSize</th>
+<th>IndexCount</th>
+<th>TotalIndexSize</th>
+<th>PaddingFactor</th>
+</tr>
+</thead><tbody><tr>
+<td>1359378564</td>
+<td>cfreport</td>
+<td>archive</td>
+<td>1</td>
+<td>0</td>
+<td>0.0</td>
+<td>8</td>
+<td>4</td>
+<td>31</td>
+<td>1.009</td>
+</tr>
+<tr>
+<td>1359378564</td>
+<td>cfreport</td>
+<td>hosts</td>
+<td>1</td>
+<td>142</td>
+<td>142.0</td>
+<td>2220</td>
+<td>4</td>
+<td>31</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>1359378564</td>
+<td>cfreport</td>
+<td>monitoring_mg</td>
+<td>23</td>
+<td>1836</td>
+<td>79.826087</td>
+<td>6388</td>
+<td>2</td>
+<td>15</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>1359378564</td>
+<td>cfreport</td>
+<td>monitoring_wk</td>
+<td>23</td>
+<td>146</td>
+<td>6.347826</td>
+<td>528</td>
+<td>2</td>
+<td>15</td>
+<td>1.003</td>
+</tr>
+<tr>
+<td>1359378564</td>
+<td>cfreport</td>
+<td>monitoring_yr</td>
+<td>17</td>
+<td>100</td>
+<td>5.882353</td>
+<td>488</td>
+<td>2</td>
+<td>15</td>
+<td>1.002</td>
+</tr>
+</tbody></table></div>
+<p>Data can be correlated with hub diagnostics by ReportTimeStamp. </p>
+<h2 id="hub-diagnostics">Hub Diagnostics</h2>
+<p>Data can be correlated with MongoDB diagnostics by ReportTimeStamp.</p>
+
+<p>Performance is measured in time the operation took, in millisecond. Data sizes are measured in kilobytes.</p>
+<h3 id="hubreportingperformance">HubReportingPerformance</h3><div class="tableOverflow"><table><thead><tr>
+<th>ReportRoundTimeStamp</th>
+<th>ReportsCollected</th>
+<th>TotalCollectionPerformance</th>
+<th>AverageCollectionPerformanceByHost</th>
+<th>LowestCollectionPerformanceByHost</th>
+<th>LowestCollectionPerformanceHostKey</th>
+<th>AverageDataSizeByHost</th>
+<th>LargestDataSizeByHost</th>
+<th>LargestDataSizeHostKey</th>
+<th>SampleAnalyzePerformance</th>
+<th>ReportType</th>
+</tr>
+</thead><tbody><tr>
+<td>1361959894</td>
+<td>1</td>
+<td>3685</td>
+<td>456</td>
+<td>456</td>
+<td>12377</td>
+<td>359</td>
+<td>359</td>
+<td>12377</td>
+<td>1</td>
+<td>delta</td>
+</tr>
+<tr>
+<td>1361959894</td>
+<td>0</td>
+<td>2085</td>
+<td>0</td>
+<td>0</td>
+<td>none</td>
+<td>0</td>
+<td>0</td>
+<td>none</td>
+<td>1</td>
+<td>full</td>
+</tr>
+</tbody></table></div><h3 id="hubconnectionerrors">HubConnectionErrors</h3><div class="tableOverflow"><table><thead><tr>
+<th>ReportRoundTimeStamp</th>
+<th>HostKey</th>
+<th>Status</th>
+<th>ReportType</th>
+</tr>
+</thead><tbody><tr>
+<td>1361969437</td>
+<td>12377</td>
+<td>ServerNoReply</td>
+<td>delta</td>
+</tr>
+<tr>
+<td>1361969737</td>
+<td>12377</td>
+<td>ServerAuthenticationError</td>
+<td>full</td>
+</tr>
+<tr>
+<td>1361969137</td>
+<td>12377</td>
+<td>InvalidData</td>
+<td>delta</td>
+</tr>
+<tr>
+<td>1361959894</td>
+<td>12377</td>
+<td>Unknown</td>
+<td>delta</td>
+</tr>
+</tbody></table></div><h3 id="hubmaintenanceperformance">HubMaintenancePerformance</h3><div class="tableOverflow"><table><thead><tr>
+<th>MaintenanceTimeStamp</th>
+<th>TotalPerformance</th>
+<th>EnsureIndicesPerformance</th>
+<th>PurgeHostReportsPerformance</th>
+<th>HostCount</th>
+<th>PurgeDiagnosticsPerformance</th>
+</tr>
+</thead><tbody><tr>
+<td>1361969437</td>
+<td>1068</td>
+<td>752</td>
+<td>310</td>
+<td>10</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1361969433</td>
+<td>1068</td>
+<td>752</td>
+<td>310</td>
+<td>10</td>
+<td>1</td>
+</tr>
+</tbody></table></div><h3 id="hubmaintenanceerrors">HubMaintenanceErrors</h3><div class="tableOverflow"><table><thead><tr>
+<th>MaintenanceTimeStamp</th>
+<th>HostKey</th>
+<th>Message</th>
+</tr>
+</thead><tbody><tr>
+<td>1361969437</td>
+<td>12377</td>
+<td>Operation: PurgeTimestampedReports (12377) exited with message: ...</td>
+</tr>
+<tr>
+<td>1361969737</td>
+<td>none</td>
+<td>Operation: Remove old entries in hub maintenance performance diagnostics () exited with message: &quot;...&quot;</td>
+</tr>
+</tbody></table></div>
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/reference/enterprise-api/sql-schema.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

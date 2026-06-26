@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.17  Documentation - lib/testing.cf</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-masterfiles-policy-framework-lib-testing.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='/docs/3.17/assets/global-4de74225093262155923559d57c53b5c.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "lib/testing.cf";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/" selected>Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value=" 61c5dfe74ae502b02" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a><ul class="level2"><li><a href="reference-masterfiles-policy-framework-promises.html">promises.cf</a></li><li><a href="reference-masterfiles-policy-framework-update.html">update.cf</a></li><li><a href="reference-masterfiles-policy-framework-standalone_self_upgrade.html">standalone_self_upgrade.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal.html">cfe_internal/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-cfe_cfengine.html">cfe_internal/CFE_cfengine.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-core.html">cfe_internal/core/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-core-watchdog.html">cfe_internal/core/watchdog</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-core-watchdog-watchdog.html">cfe_internal/core/watchdog/watchdog.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise.html">cfe_internal/enterprise/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation.html">cfe_internal/enterprise/federation/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation-federation.html">cfe_internal/enterprise/federation/federation.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-recommendations.html">cfe_internal/recommendations.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update.html">cfe_internal/update/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_dc_workflow.html">cfe_internal/update/cfe_internal_dc_workflow.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_update_from_repository.html">cfe_internal/update/cfe_internal_update_from_repository.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-lib.html">cfe_internal/update/lib.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-systemd_units.html">cfe_internal/update/systemd_units.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_bins.html">cfe_internal/update/update_bins.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_policy.html">cfe_internal/update/update_policy.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_processes.html">cfe_internal/update/update_processes.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls.html">controls/</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_agent.html">controls/cf_agent.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_execd.html">controls/cf_execd.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf-hub.html">controls/cf_hub.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_monitord.html">controls/cf_monitord.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_runagent.html">controls/cf_runagent.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_serverd.html">controls/cf_serverd.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-def.html">controls/def.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-def_inputs.html">controls/def_inputs.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-reports.html">controls/reports.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-update_def.html">controls/update_def.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-update_def_inputs.html">controls/update_def_inputs.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory.html">inventory/</a></li><li><a href="reference-masterfiles-policy-framework-inventory-any.html">inventory/any.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-debian.html">inventory/debian.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-freebsd.html">inventory/freebsd.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-generic.html">inventory/generic.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-linux.html">inventory/linux.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-lsb.html">inventory/lsb.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-macos.html">inventory/macos.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-os.html">inventory/os.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-redhat.html">inventory/redhat.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-suse.html">inventory/suse.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-windows.html">inventory/windows.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib.html">lib/</a></li><li><a href="reference-masterfiles-policy-framework-lib-autorun.html">lib/autorun.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-bundles.html">lib/bundles.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfe_internal.html">lib/cfe_internal.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfe_internal_hub.html">lib/cfe_internal_hub.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfengine_enterprise_hub_ha.html">lib/cfengine_enterprise_hub_ha.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-commands.html">lib/commands.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-common.html">lib/common.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-databases.html">lib/databases.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-edit_xml.html">lib/edit_xml.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-event.html">lib/event.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-examples.html">lib/examples.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-feature.html">lib/feature.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-files.html">lib/files.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-guest_environments.html">lib/guest_environments.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-monitor.html">lib/monitor.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-packages.html">lib/packages.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-paths.html">lib/paths.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-processes.html">lib/processes.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-reports.html">lib/reports.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-services.html">lib/services.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-stdlib.html">lib/stdlib.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-storage.html">lib/storage.cf</a></li><li><a class="active" href="reference-masterfiles-policy-framework-lib-testing.html">lib/testing.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-users.html">lib/users.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-vcs.html">lib/vcs.cf</a></li><li><a href="reference-masterfiles-policy-framework-services.html">services/</a></li><li><a href="reference-masterfiles-policy-framework-services-autorun.html">services/autorun/</a></li><li><a href="reference-masterfiles-policy-framework-services-main.html">services/main.cf</a></li></ul></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    lib/testing.cf
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>The <code>testing.cf</code> library provides bundles for working testing frameworks like
+TAP and jUnit.</p>
+
+<p>These bodies are included in the stdlib by default.</p>
+<h3 id="agent-bundles"><a href="reference-components-cf-agent.html" title="cf-agent">agent</a> bundles</h3><h4 id="testing_ok_if">testing_ok_if</h4>
+<p><strong>Prototype:</strong> <code>testing_ok_if(classname, message, error, trace, format)</code></p>
+
+<p><strong>Description:</strong> Report outcome for test on <code>classname</code> in format <a href="reference-promise-types-users.html#format" title="users - format"><code>format</code></a> with optional <code>error</code> and <code>trace</code></p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>classname</code>: The class name</li>
+<li><code>message</code>: The test message</li>
+<li><code>error</code>: The error to report, if the class is not defined</li>
+<li><code>trace</code>: The error trace detail to report, if the class is not defined</li>
+<li><code>format</code>: TAP (immediate output) or jUnit or anything else for delayed TAP</li>
+</ul>
+
+<p><strong>See also:</strong> <code>testing_junit_report</code>, <code>testing_tap_report</code>, <code>testing_ok</code>, <code>testing_todo</code>, and <code>testing_skip</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">testing_ok_if</span><span class="p">(</span><span class="nv">classname</span><span class="p">,</span> <span class="nv">message</span><span class="p">,</span> <span class="nv">error</span><span class="p">,</span> <span class="nv">trace</span><span class="p">,</span> <span class="nv">format</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">next_testing_$(classname)</span><span class="p">&quot;</span> <span class="kt">int</span> <span class="o">=&gt;</span> <span class="nf">length</span><span class="p">(</span><span class="nf">classesmatching</span><span class="p">(</span><span class="s">&quot;testing_.*&quot;</span><span class="p">,</span> <span class="s">&quot;testing_(passed|failed|skipped|todo)&quot;</span><span class="p">));</span>
+      <span class="p">&quot;</span><span class="nv">next_testing_$(classname)_failed</span><span class="p">&quot;</span> <span class="kt">int</span> <span class="o">=&gt;</span> <span class="nf">length</span><span class="p">(</span><span class="nf">classesmatching</span><span class="p">(</span><span class="s">&quot;testing_.*&quot;</span><span class="p">,</span> <span class="s">&quot;testing_(passed|failed|skipped|todo)&quot;</span><span class="p">));</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;tap&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="err">&#39;</span><span class="nf">tap</span><span class="err">&#39;</span><span class="p">,</span> <span class="nf">string_downcase</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">format</span><span class="p">)));</span>
+      <span class="s">&quot;testing_</span><span class="si">$(classname)</span><span class="s">&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="p">(</span><span class="nf">classname</span><span class="p">),</span> <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">,</span> <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;testing_passed&quot;</span><span class="p">,</span> <span class="s">&quot;error=</span><span class="si">$(error)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;trace=</span><span class="si">$(trace)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;message=</span><span class="si">$(message)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="s">&quot;testing_</span><span class="si">$(classname)</span><span class="s">_failed&quot;</span> <span class="kr">not</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="p">(</span><span class="nf">classname</span><span class="p">),</span> <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">,</span> <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;testing_failed&quot;</span><span class="p">,</span> <span class="s">&quot;error=</span><span class="si">$(error)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;trace=</span><span class="si">$(trace)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;message=</span><span class="si">$(message)</span><span class="s">&quot;</span> <span class="p">};</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">inform_mode</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: adding testing report for class </span><span class="si">$(classname)</span><span class="s"> at position </span><span class="si">$(next_testing_$(classname))</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="s">&quot;tap.testing_</span><span class="si">$(classname)</span><span class="s">&quot;</span><span class="err">::</span>
+      <span class="s">&quot;</span><span class="si">$(const.n)</span><span class="s">ok </span><span class="si">$(message)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;tap.testing_</span><span class="si">$(classname)</span><span class="s">_failed&quot;</span><span class="err">::</span>
+      <span class="s">&quot;</span><span class="si">$(const.n)</span><span class="s">not ok </span><span class="si">$(message)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="testing_ok">testing_ok</h4>
+<p><strong>Prototype:</strong> <code>testing_ok(classname, message, format)</code></p>
+
+<p><strong>Description:</strong> Report expected success in format <a href="reference-promise-types-users.html#format" title="users - format"><code>format</code></a> for <code>classname</code> and its test</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>classname</code>: The class name</li>
+<li><code>message</code>: The test message</li>
+<li><code>format</code>: TAP (immediate output) or jUnit or anything else for delayed TAP</li>
+</ul>
+
+<p>This bundle calls <code>testing_ok_if</code> expecting <code>classname</code> to be defined and thus the
+test to be a success; the error and trace reflect that.</p>
+
+<p><strong>See also:</strong> <code>testing_junit_report</code>, <code>testing_tap_report</code>, <code>testing_ok_if</code>, <code>testing_todo</code>, and <code>testing_skip</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">testing_ok</span><span class="p">(</span><span class="nv">classname</span><span class="p">,</span> <span class="nv">message</span><span class="p">,</span> <span class="nv">format</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="s">&quot;&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">testing_ok_if</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">classname</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">message</span><span class="p">),</span> <span class="s">&quot;unexpected error for </span><span class="si">$(classname)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;no error trace available&quot;</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="nf">format</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="testing_skip">testing_skip</h4>
+<p><strong>Prototype:</strong> <code>testing_skip(classname, message, format)</code></p>
+
+<p><strong>Description:</strong> Report skipped <code>classname</code> in format <a href="reference-promise-types-users.html#format" title="users - format"><code>format</code></a></p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>classname</code>: The class name</li>
+<li><code>message</code>: The test message</li>
+<li><code>format</code>: TAP (immediate output) or jUnit or anything else for delayed TAP</li>
+</ul>
+
+<p>This bundle reports that <code>classname</code> was skipped regardless of whether it&#39;s
+defined.</p>
+
+<p><strong>See also:</strong> <code>testing_junit_report</code>, <code>testing_tap_report</code>, <code>testing_ok_if</code>, <code>testing_todo</code>, and <code>testing_ok</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">testing_skip</span><span class="p">(</span><span class="nv">classname</span><span class="p">,</span> <span class="nv">message</span><span class="p">,</span> <span class="nv">format</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">next_testing_$(classname)</span><span class="p">&quot;</span> <span class="kt">int</span> <span class="o">=&gt;</span> <span class="nf">length</span><span class="p">(</span><span class="nf">classesmatching</span><span class="p">(</span><span class="s">&quot;testing_.*&quot;</span><span class="p">,</span> <span class="s">&quot;testing_(passed|failed|skipped|todo)&quot;</span><span class="p">));</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;tap&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="err">&#39;</span><span class="nf">tap</span><span class="err">&#39;</span><span class="p">,</span> <span class="nf">string_downcase</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">format</span><span class="p">)));</span>
+      <span class="s">&quot;testing_</span><span class="si">$(classname)</span><span class="s">&quot;</span> <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">,</span> <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;testing_skipped&quot;</span><span class="p">,</span> <span class="s">&quot;message=</span><span class="si">$(message)</span><span class="s">&quot;</span> <span class="p">};</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">inform_mode</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: adding testing skip report for class </span><span class="si">$(classname)</span><span class="s"> at position </span><span class="si">$(next_testing_$(classname))</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="nc">tap</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(const.n)</span><span class="s">ok # SKIP </span><span class="si">$(message)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="testing_todo">testing_todo</h4>
+<p><strong>Prototype:</strong> <code>testing_todo(classname, message, format)</code></p>
+
+<p><strong>Description:</strong> Report TODO <code>classname</code> in format <a href="reference-promise-types-users.html#format" title="users - format"><code>format</code></a></p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>classname</code>: The class name</li>
+<li><code>message</code>: The test message</li>
+<li><code>format</code>: TAP (immediate output) or jUnit or anything else for delayed TAP</li>
+</ul>
+
+<p>This bundle reports that <code>classname</code> was skipped regardless of whether it&#39;s
+defined.</p>
+
+<p><strong>See also:</strong> <code>testing_junit_report</code>, <code>testing_tap_report</code>, <code>testing_ok_if</code>, <code>testing_skip</code>, and <code>testing_ok</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">testing_todo</span><span class="p">(</span><span class="nv">classname</span><span class="p">,</span> <span class="nv">message</span><span class="p">,</span> <span class="nv">format</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">next_testing_$(classname)</span><span class="p">&quot;</span> <span class="kt">int</span> <span class="o">=&gt;</span> <span class="nf">length</span><span class="p">(</span><span class="nf">classesmatching</span><span class="p">(</span><span class="s">&quot;testing_.*&quot;</span><span class="p">,</span> <span class="s">&quot;testing_(passed|failed|skipped|todo)&quot;</span><span class="p">));</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;tap&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="err">&#39;</span><span class="nf">tap</span><span class="err">&#39;</span><span class="p">,</span> <span class="nf">string_downcase</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">format</span><span class="p">)));</span>
+      <span class="s">&quot;testing_</span><span class="si">$(classname)</span><span class="s">&quot;</span> <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">,</span> <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;testing_todo&quot;</span><span class="p">,</span> <span class="s">&quot;message=</span><span class="si">$(message)</span><span class="s">&quot;</span> <span class="p">};</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">inform_mode</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: adding testing TODO report for class </span><span class="si">$(classname)</span><span class="s"> at position </span><span class="si">$(next_testing_$(classname))</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="nc">tap</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(const.n)</span><span class="s">ok # TODO </span><span class="si">$(message)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="testing_tap_report">testing_tap_report</h4>
+<p><strong>Prototype:</strong> <code>testing_tap_report(outfile)</code></p>
+
+<p><strong>Description:</strong> Report all test messages in TAP format to <code>outfile</code></p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>outfile</code>: A text file with the final TAP report or empty `` for STDOUT report</li>
+</ul>
+
+<p>Note that the TAP format ignores error messages, trace messages, and class names.</p>
+
+<p><strong>See also:</strong> <code>testing_junit_report</code>, <code>testing_tap_report</code>, <code>testing_ok_if</code>, <code>testing_todo</code>, <code>testing_skip</code>, <code>testing_tap_bailout</code>, and <code>testing_ok</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">testing_tap_report</span><span class="p">(</span><span class="nv">outfile</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="s">&quot;&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">testing_generic_report</span><span class="p">(</span><span class="err">&#39;</span><span class="nf">TAP</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="nf">outfile</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="testing_junit_report">testing_junit_report</h4>
+<p><strong>Prototype:</strong> <code>testing_junit_report(outfile)</code></p>
+
+<p><strong>Description:</strong> Report all test knowledge in jUnit format to <code>outfile</code></p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>outfile</code>: A XML file with the final jUnit report or empty `` for STDOUT report</li>
+</ul>
+
+<p><strong>See also:</strong> <code>testing_tap_report</code>, <code>testing_ok_if</code>, <code>testing_todo</code>, <code>testing_skip</code>, and <code>testing_ok</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">testing_junit_report</span><span class="p">(</span><span class="nv">outfile</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="s">&quot;&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">testing_generic_report</span><span class="p">(</span><span class="err">&#39;</span><span class="nf">jUnit</span><span class="err">&#39;</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="nf">outfile</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="testing_generic_report">testing_generic_report</h4>
+<p><strong>Prototype:</strong> <code>testing_generic_report(format, outfile)</code></p>
+
+<p><strong>Description:</strong> Report all test knowledge in jUnit format to <code>outfile</code></p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>format</code>: The output format, either <code>jUnit</code> or <code>TAP</code> (case is ignored)</li>
+<li><code>outfile</code>: A file with the final report or empty for STDOUT</li>
+</ul>
+
+<p>Note that jUnit output to STDOUT will most likely be truncated due to the 4K
+limitation on string lengths.</p>
+
+<p><strong>See also:</strong> <code>testing_tap_report</code>, <code>testing_ok_if</code>, <code>testing_todo</code>, <code>testing_skip</code>, and <code>testing_ok</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">testing_generic_report</span><span class="p">(</span><span class="nv">format</span><span class="p">,</span> <span class="nv">outfile</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;junit&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="err">&#39;</span><span class="nf">junit</span><span class="err">&#39;</span><span class="p">,</span> <span class="nf">string_downcase</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">format</span><span class="p">)));</span>
+      <span class="s">&quot;tap&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="err">&#39;</span><span class="nf">tap</span><span class="err">&#39;</span><span class="p">,</span> <span class="nf">string_downcase</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">format</span><span class="p">)));</span>
+      <span class="s">&quot;stdout&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="err">&#39;&#39;</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="nf">outfile</span><span class="p">));</span>
+      <span class="s">&quot;tofile&quot;</span> <span class="kr">not</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="err">&#39;&#39;</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="nf">outfile</span><span class="p">));</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">failed</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">classesmatching</span><span class="p">(</span><span class="s">&quot;testing_.*&quot;</span><span class="p">,</span> <span class="nf">testing_failed</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">passed</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">classesmatching</span><span class="p">(</span><span class="s">&quot;testing_.*&quot;</span><span class="p">,</span> <span class="nf">testing_passed</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">skipped</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">classesmatching</span><span class="p">(</span><span class="s">&quot;testing_.*&quot;</span><span class="p">,</span> <span class="nf">testing_skipped</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">todo</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">classesmatching</span><span class="p">(</span><span class="s">&quot;testing_.*&quot;</span><span class="p">,</span> <span class="nf">testing_todo</span><span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">count_passed</span><span class="p">&quot;</span> <span class="kt">int</span> <span class="o">=&gt;</span> <span class="nf">length</span><span class="p">(</span><span class="nf">passed</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">count_skipped</span><span class="p">&quot;</span> <span class="kt">int</span> <span class="o">=&gt;</span> <span class="nf">length</span><span class="p">(</span><span class="nf">skipped</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">count_todo</span><span class="p">&quot;</span> <span class="kt">int</span> <span class="o">=&gt;</span> <span class="nf">length</span><span class="p">(</span><span class="nf">todo</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">count_failed</span><span class="p">&quot;</span> <span class="kt">int</span> <span class="o">=&gt;</span> <span class="nf">length</span><span class="p">(</span><span class="nf">failed</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">count_total</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">format</span><span class="p">(</span><span class="s">&quot;%d&quot;</span><span class="p">,</span> <span class="nf">sum</span><span class="p">(</span><span class="err">&#39;[$</span><span class="p">(</span><span class="nf">count_failed</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">count_passed</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">count_skipped</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">count_todo</span><span class="p">)</span><span class="err">]&#39;</span><span class="p">));</span>
+
+      <span class="p">&quot;</span><span class="nv">timestamp</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">strftime</span><span class="p">(</span><span class="s">&quot;localtime&quot;</span><span class="p">,</span> <span class="s">&quot;%FT%T&quot;</span><span class="p">,</span> <span class="nf">now</span><span class="p">());</span>
+
+      <span class="s">&quot;tests_passed&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="err">&#39;[]&#39;</span><span class="p">;</span>
+      <span class="s">&quot;tests_passed&quot;</span>
+        <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span><span class="nf">tests_passed</span><span class="p">,</span>
+                         <span class="nf">format</span><span class="p">(</span><span class="err">&#39;[</span><span class="p">{</span> <span class="s">&quot;testcase&quot;</span><span class="err">:</span> <span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="s">&quot;test_offset&quot;</span><span class="err">:</span> <span class="err">%</span><span class="nf">d</span><span class="p">,</span> <span class="s">&quot;test_message&quot;</span><span class="err">:</span> <span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="s">&quot;tap_message&quot;</span><span class="err">:</span> <span class="s">&quot;ok %s&quot;</span> <span class="p">}</span><span class="err">]&#39;</span><span class="p">,</span>
+                                <span class="nf">regex_replace</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">passed</span><span class="p">),</span> <span class="s">&quot;^testing_&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">),</span>
+                                <span class="s">&quot;</span><span class="si">$(testing_ok_if.next_$(passed))</span><span class="s">&quot;</span><span class="p">,</span>
+                                <span class="nf">regex_replace</span><span class="p">(</span><span class="nf">join</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="nf">grep</span><span class="p">(</span><span class="s">&quot;^message=.*&quot;</span><span class="p">,</span> <span class="nf">getclassmetatags</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">passed</span><span class="p">)))),</span> <span class="s">&quot;^message=&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">),</span>
+                                <span class="nf">regex_replace</span><span class="p">(</span><span class="nf">join</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="nf">grep</span><span class="p">(</span><span class="s">&quot;^message=.*&quot;</span><span class="p">,</span> <span class="nf">getclassmetatags</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">passed</span><span class="p">)))),</span> <span class="s">&quot;^message=&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">)));</span>
+
+      <span class="s">&quot;tests_failed&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="err">&#39;[]&#39;</span><span class="p">;</span>
+      <span class="s">&quot;tests_failed&quot;</span>
+        <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span><span class="nf">tests_failed</span><span class="p">,</span>
+                         <span class="nf">format</span><span class="p">(</span><span class="err">&#39;[</span><span class="p">{</span> <span class="s">&quot;testcase&quot;</span><span class="err">:</span> <span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="s">&quot;fail_message&quot;</span><span class="err">:</span> <span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="s">&quot;trace_message&quot;</span><span class="err">:</span> <span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="s">&quot;test_offset&quot;</span><span class="err">:</span> <span class="err">%</span><span class="nf">d</span><span class="p">,</span> <span class="s">&quot;test_message&quot;</span><span class="err">:</span> <span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="s">&quot;tap_message&quot;</span><span class="err">:</span> <span class="s">&quot;not ok %s&quot;</span> <span class="p">}</span><span class="err">]&#39;</span><span class="p">,</span>
+                                <span class="nf">regex_replace</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">failed</span><span class="p">),</span> <span class="s">&quot;^testing_&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">),</span>
+                                <span class="nf">regex_replace</span><span class="p">(</span><span class="nf">join</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="nf">grep</span><span class="p">(</span><span class="s">&quot;^error=.*&quot;</span><span class="p">,</span> <span class="nf">getclassmetatags</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">failed</span><span class="p">)))),</span> <span class="s">&quot;^error=&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">),</span>
+                                <span class="nf">regex_replace</span><span class="p">(</span><span class="nf">join</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="nf">grep</span><span class="p">(</span><span class="s">&quot;^trace=.*&quot;</span><span class="p">,</span> <span class="nf">getclassmetatags</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">failed</span><span class="p">)))),</span> <span class="s">&quot;^trace=&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">),</span>
+                                <span class="s">&quot;</span><span class="si">$(testing_ok_if.next_$(failed))</span><span class="s">&quot;</span><span class="p">,</span>
+                                <span class="nf">regex_replace</span><span class="p">(</span><span class="nf">join</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="nf">grep</span><span class="p">(</span><span class="s">&quot;^message=.*&quot;</span><span class="p">,</span> <span class="nf">getclassmetatags</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">failed</span><span class="p">)))),</span> <span class="s">&quot;^message=&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">),</span>
+                                <span class="nf">regex_replace</span><span class="p">(</span><span class="nf">join</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="nf">grep</span><span class="p">(</span><span class="s">&quot;^message=.*&quot;</span><span class="p">,</span> <span class="nf">getclassmetatags</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">failed</span><span class="p">)))),</span> <span class="s">&quot;^message=&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">)));</span>
+
+      <span class="s">&quot;tests_skipped&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="err">&#39;[]&#39;</span><span class="p">;</span>
+      <span class="s">&quot;tests_skipped&quot;</span>
+        <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span><span class="nf">tests_skipped</span><span class="p">,</span>
+                         <span class="nf">format</span><span class="p">(</span><span class="err">&#39;[</span><span class="p">{</span> <span class="s">&quot;testcase&quot;</span><span class="err">:</span> <span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="s">&quot;test_offset&quot;</span><span class="err">:</span> <span class="err">%</span><span class="nf">d</span><span class="p">,</span> <span class="s">&quot;test_message&quot;</span><span class="err">:</span> <span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="s">&quot;tap_message&quot;</span><span class="err">:</span> <span class="s">&quot;ok # SKIP %s&quot;</span> <span class="p">}</span><span class="err">]&#39;</span><span class="p">,</span>
+                                <span class="nf">regex_replace</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">skipped</span><span class="p">),</span> <span class="s">&quot;^testing_&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">),</span>
+                                <span class="s">&quot;</span><span class="si">$(testing_skip.next_$(skipped))</span><span class="s">&quot;</span><span class="p">,</span>
+                                <span class="nf">regex_replace</span><span class="p">(</span><span class="nf">join</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="nf">grep</span><span class="p">(</span><span class="s">&quot;^message=.*&quot;</span><span class="p">,</span> <span class="nf">getclassmetatags</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">skipped</span><span class="p">)))),</span> <span class="s">&quot;^message=&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">),</span>
+                                <span class="nf">regex_replace</span><span class="p">(</span><span class="nf">join</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="nf">grep</span><span class="p">(</span><span class="s">&quot;^message=.*&quot;</span><span class="p">,</span> <span class="nf">getclassmetatags</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">skipped</span><span class="p">)))),</span> <span class="s">&quot;^message=&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">)));</span>
+
+      <span class="s">&quot;tests_todo&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="err">&#39;[]&#39;</span><span class="p">;</span>
+      <span class="s">&quot;tests_todo&quot;</span>
+        <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span><span class="nf">tests_todo</span><span class="p">,</span>
+                         <span class="nf">format</span><span class="p">(</span><span class="err">&#39;[</span><span class="p">{</span> <span class="s">&quot;testcase&quot;</span><span class="err">:</span> <span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="s">&quot;test_offset&quot;</span><span class="err">:</span> <span class="err">%</span><span class="nf">d</span><span class="p">,</span> <span class="s">&quot;test_message&quot;</span><span class="err">:</span> <span class="s">&quot;%s&quot;</span><span class="p">,</span> <span class="s">&quot;tap_message&quot;</span><span class="err">:</span> <span class="s">&quot;ok # TODO %s&quot;</span> <span class="p">}</span><span class="err">]&#39;</span><span class="p">,</span>
+                                <span class="nf">regex_replace</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">todo</span><span class="p">),</span> <span class="s">&quot;^testing_&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">),</span>
+                                <span class="s">&quot;</span><span class="si">$(testing_todo.next_$(todo))</span><span class="s">&quot;</span><span class="p">,</span>
+                                <span class="nf">regex_replace</span><span class="p">(</span><span class="nf">join</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="nf">grep</span><span class="p">(</span><span class="s">&quot;^message=.*&quot;</span><span class="p">,</span> <span class="nf">getclassmetatags</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">todo</span><span class="p">)))),</span> <span class="s">&quot;^message=&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">),</span>
+                                <span class="nf">regex_replace</span><span class="p">(</span><span class="nf">join</span><span class="p">(</span><span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="nf">grep</span><span class="p">(</span><span class="s">&quot;^message=.*&quot;</span><span class="p">,</span> <span class="nf">getclassmetatags</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">todo</span><span class="p">)))),</span> <span class="s">&quot;^message=&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;T&quot;</span><span class="p">)));</span>
+
+    <span class="nc">inform_mode</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">out</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">format</span><span class="p">(</span><span class="s">&quot;counts = %d/%d/%d/%d/%d failed = %S, passed = %S, skipped = %S, todo = %S, failed = %S; tests = %S+%S+%S+%S&quot;</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="nf">count_total</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">count_passed</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">count_skipped</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">count_todo</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">count_failed</span><span class="p">),</span> <span class="nf">failed</span><span class="p">,</span> <span class="nf">passed</span><span class="p">,</span> <span class="nf">skipped</span><span class="p">,</span> <span class="nf">todo</span><span class="p">,</span> <span class="nf">failed</span><span class="p">,</span> <span class="nf">tests_passed</span><span class="p">,</span> <span class="nf">tests_skipped</span><span class="p">,</span> <span class="nf">tests_todo</span><span class="p">,</span> <span class="nf">tests_failed</span><span class="p">);</span>
+
+    <span class="nc">junit.stdout</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">junit_out</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">string_mustache</span><span class="p">(</span><span class="nf">readfile</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(this.promise_dirname)</span><span class="s">/templates/junit.mustache&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="nf">k</span><span class="p">),</span> <span class="nf">bundlestate</span><span class="p">(</span><span class="s">&quot;testing_generic_report&quot;</span><span class="p">));</span>
+
+    <span class="nc">tap</span><span class="p">::</span>
+      <span class="s">&quot;tap_tests&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span><span class="nf">tests_passed</span><span class="p">,</span> <span class="nf">tests_failed</span><span class="p">,</span> <span class="nf">tests_skipped</span><span class="p">,</span> <span class="nf">tests_todo</span><span class="p">);</span>
+
+      <span class="s">&quot;tap_results&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">mapdata</span><span class="p">(</span><span class="s">&quot;json_pipe&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(def.jq)</span><span class="s"> &#39;sort_by(.test_offset) | .[] | [(.test_offset|tostring), .tap_message ] | join(</span><span class="se">\&quot;</span><span class="s"> </span><span class="se">\&quot;</span><span class="s">) &#39;&quot;</span><span class="p">,</span> <span class="nf">tap_tests</span><span class="p">);</span>
+
+    <span class="nc">tap.inform_mode</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">tap_tests_info</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">format</span><span class="p">(</span><span class="s">&quot;%S&quot;</span><span class="p">,</span> <span class="nf">tap_tests</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">tap_results_info</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">format</span><span class="p">(</span><span class="s">&quot;%S&quot;</span><span class="p">,</span> <span class="nf">tap_results</span><span class="p">);</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="nc">junit.tofile</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(outfile)</span><span class="s">&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">template_data</span> <span class="o">=&gt;</span> <span class="nf">bundlestate</span><span class="p">(</span><span class="s">&quot;testing_generic_report&quot;</span><span class="p">),</span>
+        <span class="kr">template_method</span> <span class="o">=&gt;</span> <span class="s">&quot;mustache&quot;</span><span class="p">,</span>
+        <span class="kr">edit_template</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(this.promise_dirname)</span><span class="s">/templates/junit.mustache&quot;</span><span class="p">;</span>
+
+    <span class="nc">tap.tofile</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(outfile)</span><span class="s">&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">template_data</span> <span class="o">=&gt;</span> <span class="nf">bundlestate</span><span class="p">(</span><span class="s">&quot;testing_generic_report&quot;</span><span class="p">),</span>
+        <span class="kr">template_method</span> <span class="o">=&gt;</span> <span class="s">&quot;mustache&quot;</span><span class="p">,</span>
+        <span class="kr">edit_template</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(this.promise_dirname)</span><span class="s">/templates/tap.mustache&quot;</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">junit.stdout</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(const.n)$(junit_out)</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="nc">tap.stdout</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(const.n)</span><span class="s">1..</span><span class="si">$(count_total)</span><span class="s">&quot;</span> <span class="p">;</span>
+
+    <span class="nc">inform_mode</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: report summary: </span><span class="si">$(out)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="nc">tap.inform_mode</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: TAP report summary: </span><span class="si">$(tap_tests_info)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: TAP report results summary: </span><span class="si">$(tap_results_info)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="testing_tap_bailout">testing_tap_bailout</h4>
+<p><strong>Prototype:</strong> <code>testing_tap_bailout(reason)</code></p>
+
+<p><strong>Description:</strong> Bail out in TAP format <strong>immediately</strong></p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>reason</code>: the bailout reason</li>
+</ul>
+
+<p><strong>See also:</strong> <code>testing_tap_report</code>, <code>testing_ok_if</code>, <code>testing_todo</code>, <code>testing_skip</code>, and <code>testing_ok</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">testing_tap_bailout</span><span class="p">(</span><span class="nv">reason</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(const.n)</span><span class="s">Bail out! </span><span class="si">$(reason)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="testing_usage_example">testing_usage_example</h4>
+<p><strong>Prototype:</strong> <code>testing_usage_example</code></p>
+
+<p><strong>Description:</strong> Simple demo of testing_junit_report and testing_tap_report testing.cf usage</p>
+
+<p>You can run it like this: <code>cf-agent -K ./testing.cf -b testing_usage_example</code>
+Or for extra debugging, you can run it like this: <code>cf-agent -KI ./testing.cf -b testing_usage_example</code></p>
+
+<p>You can either use <code>tap</code> as the <a href="reference-promise-types-users.html#format" title="users - format"><code>format</code></a> parameter for any testing bundle, in
+which case you get immediate TAP output, OR you can use anything else, in
+which case you can still get TAP output but at the end.</p>
+
+<p>So your use cases are:</p>
+
+<ul>
+<li>format=jUnit, then testing_junit_report(&#39;&#39;): all jUnit to STDOUT, output at end</li>
+<li>format=TAP, then testing_tap_report(&#39;&#39;): all TAP to STDOUT, immediate output</li>
+<li>format=delayed_TAP, then testing_tap_report(MYFILE): all TAP to MYFILE, output at end</li>
+<li>format=jUnit, then testing_jUnit_report(MYFILE): all jUnit to MYFILE, output at end</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">testing_usage_example</span>
+<span class="p">{</span>
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;reported_class&quot;</span> <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">;</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="s">&quot;&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">testing_ok</span><span class="p">(</span><span class="s">&quot;reported_class&quot;</span><span class="p">,</span> <span class="s">&quot;ok message&quot;</span><span class="p">,</span> <span class="s">&quot;TAP&quot;</span><span class="p">);</span>
+      <span class="s">&quot;&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">testing_ok_if</span><span class="p">(</span><span class="s">&quot;missing_class&quot;</span><span class="p">,</span> <span class="s">&quot;missing message&quot;</span><span class="p">,</span> <span class="s">&quot;error1&quot;</span><span class="p">,</span> <span class="s">&quot;error trace 1&quot;</span><span class="p">,</span> <span class="s">&quot;TAP&quot;</span><span class="p">);</span>
+      <span class="s">&quot;&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">testing_ok_if</span><span class="p">(</span><span class="s">&quot;missing_class2&quot;</span><span class="p">,</span> <span class="s">&quot;missing message2&quot;</span><span class="p">,</span> <span class="s">&quot;error2&quot;</span><span class="p">,</span> <span class="s">&quot;error trace 2&quot;</span><span class="p">,</span> <span class="s">&quot;TAP&quot;</span><span class="p">);</span>
+      <span class="s">&quot;&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">testing_skip</span><span class="p">(</span><span class="s">&quot;skipped_class&quot;</span><span class="p">,</span> <span class="s">&quot;we skipped this&quot;</span><span class="p">,</span> <span class="s">&quot;TAP&quot;</span><span class="p">);</span>
+      <span class="s">&quot;&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">testing_todo</span><span class="p">(</span><span class="s">&quot;todo_class&quot;</span><span class="p">,</span> <span class="s">&quot;we need to do this&quot;</span><span class="p">,</span> <span class="s">&quot;TAP&quot;</span><span class="p">);</span>
+
+      <span class="c"># output the reports to some files</span>
+      <span class="c"># &quot;&quot; usebundle =&gt; testing_junit_report(&quot;/var/cfengine/outputs/junit.xml&quot;);</span>
+      <span class="c"># &quot;&quot; usebundle =&gt; testing_tap_report(&quot;/var/cfengine/outputs/tap.txt&quot;);</span>
+
+      <span class="c"># output the reports to STDOUT</span>
+      <span class="s">&quot;&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">testing_junit_report</span><span class="p">(</span><span class="err">&#39;&#39;</span><span class="p">);</span>
+      <span class="s">&quot;&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">testing_tap_report</span><span class="p">(</span><span class="err">&#39;&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-standard-library.html">standard library</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-testing.html">testing</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-mpf.html">mpf</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 09 July 2021
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/masterfiles-policy-framework/lib-testing.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/c2073cd2eb5c0d138609876a2101e6614e8752c0" target="_blank">c2073cd2eb5c0d138609876a2101e6614e8752c0</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.17/assets/footer-c635771088a429be0f794a44abddc48f.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

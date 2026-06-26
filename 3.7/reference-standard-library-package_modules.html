@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.7  Documentation - Package Modules</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.7/assets/global-fd19e55abf031add992b4d4a2d9bb344.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Package Modules";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.13/">Version 3.13 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/" selected>Version 3.7 (EOL)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:skcdq5u4lcc" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-standard-library.html">Standard Library</a><ul class="level2"><li><a href="reference-standard-library-common.html">Common Bodies and Bundles</a></li><li><a href="reference-standard-library-commands.html">Commands Bundles and Bodies</a></li><li><a href="reference-standard-library-databases.html">Databases Bundles and Bodies</a></li><li><a href="reference-standard-library-files.html">Files Bundles and Bodies</a></li><li><a href="reference-standard-library-monitor.html">Monitor Bundles and Bodies</a></li><li><a class="active" href="reference-standard-library-package_modules.html">Package Modules</a></li><li><a href="reference-standard-library-packages.html">Packages Bundles and Bodies</a></li><li><a href="reference-standard-library-processes.html">Processes Bundles and Bodies</a></li><li><a href="reference-standard-library-users.html">Users Bundles and Bodies</a></li><li><a href="reference-standard-library-services.html">Services Bundles and Bodies</a></li><li><a href="reference-standard-library-storage.html">Storage Bundles and Bodies</a></li><li><a href="reference-standard-library-vcs.html">Version Control Bodies and Bundles</a></li></ul></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-standard-library.html">Standard Library</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Package Modules
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>See the <a href="reference-promise-types-packages.html" title="packages"><code>packages</code> promises</a> documentation for a
+comprehensive reference on the body types and attributes used here.</p>
+<h2 id="package-module-api">Package Module API</h2>
+<p>This section describes how to create a package module for the CFEngine package
+promise. Package modules are backends that enable the package promise to work
+with different types of platform package managers.</p>
+<h3 id="the-cfengine-side">The CFEngine side</h3>
+<p>CFEngine never calls any package manager commands, it only ever calls the
+package module. The information that CFEngine deals in is:</p>
+
+<ul>
+<li>Which packages are currently installed:
+
+<ul>
+<li>Name</li>
+<li>Version</li>
+<li>Architecture</li>
+</ul></li>
+<li>Which of the installed packages have updates available:
+
+<ul>
+<li>Name</li>
+<li>Version</li>
+<li>Architecture</li>
+</ul></li>
+</ul>
+
+<p>These two lists are everything that CFEngine needs to know to decide whether its
+package promises are fulfilled or not. In addition to this it will carry out
+package operations by asking the package module to do certain tasks, but in the
+end, the result of the operation is always determined by comparing the promise
+against those two lists. Therefore it is very important that the package module
+has a robust and deterministic way of returning these lists.</p>
+
+<p>To take one example: When a package is installed, CFEngine does not really care
+what the return code of the operation is, the reason being that not all package
+managers can be trusted to return the correct return code (yum has a tendency to
+always report success, for instance). Instead, it ignores the return code, and
+instead asks for the list of currently installed packages after the
+installation, and if the package we tried to install has not appeared, it knows
+that the promise failed.</p>
+
+<p>In the same fashion, if we try to install an update, that update is expected to
+disappear from the list of available updates after the operation.</p>
+<h3 id="the-package-module">The package module</h3>
+<p>The package module itself is simply an executable, and can be in any executable
+format, whether than is Python, Perl, Shell script or native binary.</p>
+
+<p>The package module resides in the /var/cfengine/modules/packages both on the hub
+and the clients, and out of the box CFEngine is set up to synchronize this
+directory among its clients. For this reason it is advised to avoid native
+binary formats for package modules, to reduce the burden of distribution to
+different platforms, but the API does not forbid it, and it may be useful in
+some circumstances.</p>
+<h3 id="the-api">The API</h3>
+<p>The API consists of commands which are passed in the module arguments, combined
+with a simple text protocol that will be fed on the module&#39;s standard input, and
+replies are expected on its standard output.</p>
+
+<p>In the examples below we use simple &quot;Here Documents&quot; to show how standard input
+can be passed to a package module in order to produce the intented output or
+effect. If you don&#39;t know about Here Documents, the man page for bash is a good
+place to read about them. During actual execution, the input will come from
+CFEngine itself.</p>
+
+<p>The API commands are listed roughly in the order that they should be
+implemented, in order to facilitate a nice debugging cycle during development.</p>
+<h4 id="options-attribute">options attribute</h4>
+<p>All the API commands listed below, except <a href="reference-standard-library-package_modules.html#supports-api-version" title="Package Modules - supports-api-version"><code>supports-api-version</code></a>, support the
+<a href="reference-promise-types-packages.html#options" title="packages - options"><code>options</code></a> attribute. This attribute will contain the contents from the <a href="reference-promise-types-packages.html#options" title="packages - options"><code>options</code></a>
+attribute in the promise, or the <a href="reference-promise-types-packages.html#default_options" title="packages - default_options"><code>default_options</code></a> in the package module body,
+if the former is unspecified. It may appear more than once if the <a href="reference-promise-types-packages.html#options" title="packages - options"><code>options</code></a> list
+has more than one element.</p>
+
+<p>This attribute has no inherent meaning to CFEngine, and will be passed
+verbatim. It is meant as a mechanism to communicate special attributes to the
+package module that are not covered by the main API. For example, for certain
+package modules it may be used to pass a repository URL.</p>
+
+<p>The <a href="reference-promise-types-packages.html#options" title="packages - options"><code>options</code></a> attribute will not be explicitly listed in the examples below, but
+it is valid in all of them except <a href="reference-standard-library-package_modules.html#supports-api-version" title="Package Modules - supports-api-version"><code>supports-api-version</code></a>, even when the
+description reads &quot;no input&quot;.</p>
+<h4 id="supports-api-version">supports-api-version</h4>
+<p>The very first command that any package module must implement is
+<code>supports-api-version</code>. This command takes no input, and is expected to print
+a single digit followed by a newline. This is simply a way for CFEngine and the
+package module to agree on which version of the protocol to use. For now there
+is only one such version, and the expected output is simply &quot;1&quot;.</p>
+
+<p>This is the only command which does not support the <a href="reference-promise-types-packages.html#options" title="packages - options"><code>options</code></a> attribute.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ ./package-module supports-api-version &lt; /dev/null
+1
+$
+</code></pre>
+</div>
+<h4 id="get-package-data">get-package-data</h4>
+<p>CFEngine uses this command to determine what kind of promise has been
+made. Currently two types are supported: &quot;file&quot; and &quot;repo&quot;.</p>
+
+<p>The input is expected to be a triplet of <code>File/Version/Architecture</code>, where
+<code>File</code> is the promiser string from the promise, and <code>Version</code> and <code>Architecture</code>
+contain the strings from the corresponding promise attributes, if they were
+specified. This implies that either one of <code>Version</code> and <code>Architecture</code> may not
+be included, so some entries may only contain <code>File</code> or <code>File</code> with one more
+attribute.</p>
+
+<p>What the module should do is figure out whether the string passed in <code>File</code> is
+referring to a file based or a repository based package. Exactly what identifies
+each one is up to the package module, but generally it means that file based
+packages should refer to actual files on the file system, whereas repository
+based packages should refer to package names that a &quot;smart&quot; package manager can
+resolve, such as for instance &quot;apt&quot;. There are exceptions to this rule however,
+for example if a string is a URL referring to a downloadable package file, the
+type of package would still be file based, since it refers to a single package
+file which is not part of a repository.</p>
+
+<p>The module should start by returning one attribute <code>PackageType</code>, which should
+be either <code>file</code> or <code>repo</code>. Next, it should return the proper name of the
+package in a <code>Name</code> attribute. Proper name means the name that will be displayed
+in package listings, so for example, <code>/home/johndoe/zip-3.0-4.el5.x86_64.rpm</code>
+would resolve to simply <code>zip</code>. For repository based package name, in most cases
+the returned <code>Name</code> will be the same as what what passed in, but this may not be
+the case for all package managers.</p>
+
+<p>Next, for file based package name it should return <code>Version</code> and <code>Architecture</code>
+if it is able to determine these, but it is allowed to omit them if the module
+doesn&#39;t know (if the resource is remote, for instance).</p>
+
+<p>For repository based package names the module should <em>not</em> return <code>Version</code> and
+<code>Architecture</code>, since they are often ambiguous in repository situations, and any
+discrepancies will be handled at the install stage instead.</p>
+
+<p>Example 1:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ ./package-module get-package-data &lt;&lt;EOF
+File=zip
+Version=3.0-4
+Architecture=amd64
+EOF
+PackageType=repo
+Name=zip
+$
+</code></pre>
+</div>
+
+<p>Example 2:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ ./package-module get-package-data &lt;&lt;EOF
+File=zip
+EOF
+PackageType=repo
+Name=zip
+$
+</code></pre>
+</div>
+
+<p>Example 3:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ ./package-module get-package-data &lt;&lt;EOF
+File=/home/johndoe/zip-3.0-4.el5.x86_64.rpm
+Version=3.0-4
+Architecture=amd64
+EOF
+PackageType=file
+Name=zip
+Version=3.0-4
+Architecture=amd64
+$
+</code></pre>
+</div>
+
+<p>Example 4:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ ./package-module get-package-data &lt;&lt;EOF
+File=/home/johndoe/zip-3.0-4.el5.x86_64.rpm
+EOF
+PackageType=file
+Name=zip
+Version=3.0-4
+Architecture=amd64
+$
+</code></pre>
+</div>
+<h4 id="list-installed">list-installed</h4>
+<p>This command is expected to return a list of all currently installed packages on
+the system. It takes no input, and the output is expected to be a list of
+triplets of <code>Name/Version/Architecture</code>.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ ./package-module list-installed &lt; /dev/null
+Name=zip
+Version=3.0-4
+Architecture=amd64
+Name=libc6
+Version=2.15
+Architecture=amd64
+Name=libc6
+Version=2.15
+Architecture=i386
+...
+$
+</code></pre>
+</div>
+<h4 id="list-updates">list-updates</h4>
+<p>This command is expected to return a list of all the available updates for
+currently installed updates. The command takes no input, and the output is
+expected to be a list of triplets of <code>Name/Version/Architecture</code>.</p>
+
+<p>It is not an error to include updates to packages that are not installed, but
+this information will not be used, and it is therefore recommended to omit it
+for performance purposes.</p>
+
+<p>If the available updates come from an external source, such as an online
+repository service or a remote file server, this command is expected to fetch
+the information from there. CFEngine will make sure that this command is not
+called too often, so there is no need to try to limit the online resource usage
+in this command. See more about caching and <a href="reference-standard-library-package_modules.html#list-updates-local" title="Package Modules - list-updates-local"><code>list-updates-local</code></a> below.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ ./package-module list-updates &lt; /dev/null
+Name=zip
+Version=3.0-4
+Architecture=amd64
+Name=libc6
+Version=2.15
+Architecture=amd64
+Name=libc6
+Version=2.15
+Architecture=i386
+...
+$
+</code></pre>
+</div>
+<h4 id="list-updates-local">list-updates-local</h4>
+<p>This command is expected to return a list of all the available updates for
+currently installed updates. The command takes no input, and the output is
+expected to be a list of triplets of <code>Name/Version/Architecture</code>.</p>
+
+<p>It is not an error to include updates to packages that are not installed, but
+this information will not be used, and it is therefore recommended to omit it
+for performance purposes.</p>
+
+<p>Unlike <a href="reference-standard-library-package_modules.html#list-updates" title="Package Modules - list-updates"><code>list-updates</code></a>, this command is <em>not</em> expected to use the network to
+fetch information from external sources, but should fetch all the information
+from local storage. This command exists precisely to limit such expensive
+operations.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ ./package-module list-updates-local &lt; /dev/null
+Name=zip
+Version=3.0-4
+Architecture=amd64
+Name=libc6
+Version=2.15
+Architecture=amd64
+Name=libc6
+Version=2.15
+Architecture=i386
+...
+$
+</code></pre>
+</div>
+<h4 id="repo-install">repo-install</h4>
+<p>This command is used by CFEngine to ask the package module to install packages
+from the package repository. Note that CFEngine itself has no notion of <em>which</em>
+package repository it should come from. This is up to the package module, and
+may either be a platform configured default, such as is the case for for example
+yum, or a specific repository which is passed in via the <a href="reference-promise-types-packages.html#options" title="packages - options"><code>options</code></a>
+attribute. The command will be called for promises where <a href="reference-standard-library-package_modules.html#get-package-data" title="Package Modules - get-package-data"><code>get-package-data</code></a>
+returned <code>PackageType=repo</code>.</p>
+
+<p>The command takes a list of triplets, <code>Name</code>, <code>Version</code> and <code>Architecture</code>,
+where the last two may be omitted. In this case the module is expected to
+provide some default, which is usually the latest version and the native
+platform architecture.</p>
+
+<p>No output is expected.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ ./package-module repo-install &lt;&lt;EOF
+Name=zip
+Name=libc6
+Version=2.15
+Architecture=amd64
+Name=libc6
+Version=2.15
+Architecture=i386
+EOF
+$
+</code></pre>
+</div>
+<h4 id="file-install">file-install</h4>
+<p>This command is used by CFEngine to ask the package module to install a specific
+package file. The command will be called for promises where <a href="reference-standard-library-package_modules.html#get-package-data" title="Package Modules - get-package-data"><code>get-package-data</code></a>
+returned <code>PackageType=file</code>.</p>
+
+<p>The command takes a list of triplets, <code>File</code>, <code>Version</code> and <code>Architecture</code>,
+where the last two may be omitted. For package files that can contain more than
+one package, the last two attributes may be used to select the correct one. The
+command should never be called with attributes that are not present in the
+package, since this will already have been detected after querying
+<a href="reference-standard-library-package_modules.html#get-package-data" title="Package Modules - get-package-data"><code>get-package-data</code></a>.</p>
+
+<p>No output is expected.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ ./package-module file-install &lt;&lt;EOF
+File=/mnt/storage/zip-3.0-4.el5.x86_64.rpm
+File=/mnt/storage/libc6-2.15.el5.i386.rpm
+Version=2.15
+Architecture=i386
+EOF
+$
+</code></pre>
+</div>
+<h4 id="remove">remove</h4>
+<p>To remove packages, CFEngine will call the package module with the <code>remove</code>
+command.</p>
+
+<p>The command takes a list of triplets, <code>Name</code>, <code>Version</code> and <code>Architecture</code>,
+where the last two may be omitted. If so, the module is expected to remove all
+packages matching the other attribute(s). Note that <code>Name</code> is the basename of
+the package, the same format that <a href="reference-standard-library-package_modules.html#get-package-data" title="Package Modules - get-package-data"><code>get-package-data</code></a> returns in <code>Name</code>.</p>
+
+<p>No output is expected.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ ./package-module remove &lt;&lt;EOF
+Name=zip
+Name=libc6
+Version=2.15
+Architecture=amd64
+Name=libc6
+Version=2.15
+Architecture=i386
+EOF
+$
+</code></pre>
+</div>
+<h3 id="error-messages">Error messages</h3>
+<p>All of the package module commands except <a href="reference-standard-library-package_modules.html#supports-api-version" title="Package Modules - supports-api-version"><code>supports-api-version</code></a> have the option
+of returning error messages. The error messages are simply an attribute
+<code>ErrorMessage</code> with a string, which may optionally be preceded by whatever
+<code>Name</code> or <code>File</code> triplet was given to the command initially, in order to tie it
+to a specific promise.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ ./package-module file-install &lt;&lt;EOF
+File=/mnt/storage/zip-3.0-4.el5.x86_64.rpm
+File=/mnt/storage/libc6-2.15.el5.i386.rpm
+Version=2.15
+Architecture=i386
+EOF
+File=/mnt/storage/zip-3.0-4.el5.x86_64.rpm
+ErrorMessage=File not found
+File=/mnt/storage/libc6-2.15.el5.i386.rpm
+Version=2.15
+Architecture=x86_64
+ErrorMessage=Doesn&#39;t contain architecture &#39;x86_64&#39;
+$
+</code></pre>
+</div>
+<h3 id="other-output">Other output</h3>
+<p>CFEngine does not expect any other output on the package module&#39;s standard
+output, so the module should make sure it silences the output from its sub
+commands. Alternatively, it may redirect their output to standard error instead,
+but this will not be formatted using CFEngine&#39;s normal log formatting and is not
+recommended.</p>
+<h3 id="caching">Caching</h3>
+<p>For performance reasons, CFEngine will cache the list of packages returned from
+<code>list-packages</code> and the list of updates from either of <a href="reference-standard-library-package_modules.html#list-updates" title="Package Modules - list-updates"><code>list-updates</code></a> or
+<a href="reference-standard-library-package_modules.html#list-updates-local" title="Package Modules - list-updates-local"><code>list-updates-local</code></a>. The exact circumstances where each is called is:</p>
+
+<ul>
+<li><p><code>list-packages</code>: When either the system is changed, or
+<a href="reference-promise-types-packages.html#query_installed_ifelapsed" title="packages - query_installed_ifelapsed"><code>query_installed_ifelapsed</code></a> in the policy has expired.</p></li>
+<li><p><a href="reference-standard-library-package_modules.html#list-updates" title="Package Modules - list-updates"><code>list-updates</code></a>: Only when <a href="reference-promise-types-packages.html#query_updates_ifelapsed" title="packages - query_updates_ifelapsed"><code>query_updates_ifelapsed</code></a> in the policy has expired.</p></li>
+<li><p><a href="reference-standard-library-package_modules.html#list-updates-local" title="Package Modules - list-updates-local"><code>list-updates-local</code></a>: Only when the system is changed.</p></li>
+</ul>
+
+<p>Whenever one is called its result is cached by CFEngine and will be used
+internally. It is a good idea to set the two policy attributes,
+<a href="reference-promise-types-packages.html#query_installed_ifelapsed" title="packages - query_installed_ifelapsed"><code>query_installed_ifelapsed</code></a> and <a href="reference-promise-types-packages.html#query_updates_ifelapsed" title="packages - query_updates_ifelapsed"><code>query_updates_ifelapsed</code></a> to zero during module
+development to avoid any issues with caching during debugging, but they should
+be set back when deploying in production.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-standard-library.html">standard library</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 12 April 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/standard-library/package_modules.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/34a63926eaa48e77d433eef63e7fec91c25bf534" target="_blank">34a63926eaa48e77d433eef63e7fec91c25bf534</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.7/assets/footer-a434e55eb3b9456e270479ce96049098.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

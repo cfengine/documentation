@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.13  Documentation - Glossary</title>
+        <link rel="icon" type="image/png" href="favicon.png">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.13/assets/global-f8d3d88f1cc74c2ac5c8e408cd101409.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Glossary";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.13/" selected>Version 3.13 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                    <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:bphk6hztv2i" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Glossary
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h4 id="agent">Agent</h4>
+<p>A program that runs independently and automatically to carry out a task (think software robot). In CFEngine, the agent is called cf-agent and is responsible for making changes to computers.</p>
+
+<p>(Originally, the word <em>robot</em>, meaning &quot;servile worker,&quot; was coined
+for the influential Czech writer Karel Čapek&#39;s play R.U.R by his
+brother. The characters in that play are capable of fairly independent
+thought, so the original sense of the word is apt to describe
+CFEngine&#39;s agents as well.)</p>
+<h4 id="authentication">Authentication</h4><h4 id="body">Body</h4>
+<p>A promise body is the description of exactly what is promised (as opposed to what/who is making the promise). The term `body&#39; is used in the CFEngine syntax to mean a small template that can be used to contribute as part of a larger promise body.</p>
+<h4 id="bootstrap">Bootstrap</h4><h4 id="bundles-for-knowledge">Bundles for Knowledge</h4><h4 id="bundle">Bundle</h4>
+<p>In CFEngine, a bundle refers to a collection of promises that has a name.</p>
+<h4 id="call-collect">Call Collect</h4><h4 id="classes">Classes</h4><h4 id="cmdb">CMDB</h4>
+<p>A Configuration Management Database. A term coined as part of the IT Infrastructure Library (ITIL) as an outgrowth of an inventory database.</p>
+<h4 id="commands">Commands</h4><h4 id="common-control">Common Control</h4><h4 id="components">Components</h4>
+<p>Standalone applications include cf-agent, cf-promises, cf-runagent, cf-know, cf-report, cf-hub</p>
+
+<p>Daemons include cf-execd, cf-monitord, and cf-serverd</p>
+<h4 id="datatypes">Datatypes</h4>
+<p>CFEngine&#39;s data types describe what a variable can contain.  A variable can&#39;t be assigned a different type once it&#39;s been set.  The commonly used data types are <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a>, <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a>, <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a>, <a href="reference-promise-types-vars.html#real" title="vars - real"><code>real</code></a>, and <a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a>.</p>
+<h4 id="directories">Directories</h4><h4 id="distribution">Distribution</h4><h4 id="enterprise-api">Enterprise API</h4><h4 id="enterprise-reporting">Enterprise Reporting</h4><h4 id="file-structure">File Structure</h4><h4 id="frequency">Frequency</h4><h4 id="functions">Functions</h4><h4 id="host">Host</h4>
+<p>UNIX terminology for a computer the runs &quot;guest programs.&quot; In practice, &quot;host&quot; is a synonym for &quot;computer.&quot;</p>
+<h4 id="hub">Hub</h4>
+<p>A software component in CFEngine Enterprise that acts as a single point of management in a local &quot;star-network.&quot; The term &quot;hub&quot; is sometimes used to mean policy distribution server, but more commonly a running cf-hub process that does report collection from all CFEngine managed hosts. The term hub means the centre of a wheel, from which multiple spokes emerge.</p>
+<h4 id="logs">Logs</h4><h4 id="loops">Loops</h4><h4 id="menus">Menus</h4><h4 id="mission-portal">Mission Portal</h4><h4 id="monitoring">Monitoring</h4><h4 id="namespaces">Namespaces</h4><h4 id="networking">Networking</h4><h4 id="normal-ordering">Normal Ordering</h4><h4 id="operators">Operators</h4><h4 id="pattern-matching">Pattern Matching</h4><h4 id="pci-compliance">PCI compliance</h4>
+<p>Payment Card Industry Data Security Standard (PCI DSS) is a set of requirements designed to ensure that ALL companies that process, store or transmit credit card information maintain a secure environment.</p>
+<h4 id="policy-levels">Policy Levels</h4><h4 id="policy-server">Policy Server</h4>
+<p>The special server that others consult for the latest policies is called the <em>Policy Server</em>.</p>
+
+<p>Typically the policy server is set by the bootstrapping process.</p>
+<h4 id="policy-writing">Policy Writing</h4><h4 id="policy">Policy</h4>
+<p>A policy is a set of intentions about the system, coded as a list of promises. A policy is not a standard, but the result of specific organizational management decisions.</p>
+<h4 id="precedence">Precedence</h4><h4 id="promise-attributes">Promise Attributes</h4><h4 id="promise-types">Promise Types</h4><h4 id="promise">Promise</h4>
+<p>The CFEngine software manages every intended system outcome as &quot;promises&quot; to be kept. A CFEngine Promise corresponds roughly to a rule in other software products, but importantly promises are always things that can be kept and repaired continuously, on a real time basis, not just once at install-time.</p>
+
+<p>Promises are idempotent, meaning they can be executed many times with the same outcome.</p>
+
+<p>They are also convergent, meaning they can only nudge the system closer to a steady state, never destabilize it.  While there are ways a user could override this, it&#39;s almost never a good idea to do so.</p>
+<h4 id="referencing">Referencing</h4><h4 id="report-collector">Report Collector</h4><h4 id="reporting">Reporting</h4><h4 id="reports">Reports</h4><h4 id="role-based-access-control-rbac">Role-Based Access Control (RBAC)</h4><h4 id="scope">Scope</h4><h4 id="server">Server</h4>
+<p>For historical reasons, certain computers are referred to as servers, especially when kept in datacentres because such computers often run services.</p>
+
+<p>In CFEngine, cf-serverd is a software component that serves files from one computer to another. All computers are recommended to run cf-serverd, making all computers CFEngine servers, whether they are laptops, phones or datacentre computers.</p>
+
+<p>The special server that others consult for the latest policies is called the Policy Server.</p>
+<h4 id="special-variables">Special Variables</h4><h4 id="standard-library">Standard Library</h4>
+<p>The standard library lives in a <code>masterfiles/lib</code> subdirectory.  It&#39;s a collection of useful bundles and bodies you can use.</p>
+<h4 id="syntax">Syntax</h4><h4 id="variables">Variables</h4><h4 id="version-control">Version Control</h4>
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-guide.html">guide</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-glossary.html">glossary</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 11 January 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/b04b1f6f002a2f00c34834c7f4e2a3b4111fd67d" target="_blank">b04b1f6f002a2f00c34834c7f4e2a3b4111fd67d</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.13/assets/footer-dfbb901e0ce1de822a7bc04bca20268e.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

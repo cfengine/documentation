@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.12  Documentation - now</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-functions-now.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='/docs/3.12/assets/global-2ea8d2fcc0dbfebdbe7d10e6eca6a3b3.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "now";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/" selected>Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a><ul class="level2"><li><a href="reference-functions-accessedbefore.html">accessedbefore</a></li><li><a href="reference-functions-accumulated.html">accumulated</a></li><li><a href="reference-functions-ago.html">ago</a></li><li><a href="reference-functions-and.html">and</a></li><li><a href="reference-functions-bundlesmatching.html">bundlesmatching</a></li><li><a href="reference-functions-bundlestate.html">bundlestate</a></li><li><a href="reference-functions-callstack_callers.html">callstack_callers</a></li><li><a href="reference-functions-callstack_promisers.html">callstack_promisers</a></li><li><a href="reference-functions-canonify.html">canonify</a></li><li><a href="reference-functions-canonifyuniquely.html">canonifyuniquely</a></li><li><a href="reference-functions-changedbefore.html">changedbefore</a></li><li><a href="reference-functions-classesmatching.html">classesmatching</a></li><li><a href="reference-functions-classify.html">classify</a></li><li><a href="reference-functions-classmatch.html">classmatch</a></li><li><a href="reference-functions-concat.html">concat</a></li><li><a href="reference-functions-countclassesmatching.html">countclassesmatching</a></li><li><a href="reference-functions-countlinesmatching.html">countlinesmatching</a></li><li><a href="reference-functions-data_expand.html">data_expand</a></li><li><a href="reference-functions-data_readstringarray.html">data_readstringarray</a></li><li><a href="reference-functions-data_readstringarrayidx.html">data_readstringarrayidx</a></li><li><a href="reference-functions-data_regextract.html">data_regextract</a></li><li><a href="reference-functions-data_sysctlvalues.html">data_sysctlvalues</a></li><li><a href="reference-functions-datastate.html">datastate</a></li><li><a href="reference-functions-difference.html">difference</a></li><li><a href="reference-functions-dirname.html">dirname</a></li><li><a href="reference-functions-diskfree.html">diskfree</a></li><li><a href="reference-functions-escape.html">escape</a></li><li><a href="reference-functions-eval.html">eval</a></li><li><a href="reference-functions-every.html">every</a></li><li><a href="reference-functions-execresult.html">execresult</a></li><li><a href="reference-functions-expandrange.html">expandrange</a></li><li><a href="reference-functions-file_hash.html">file_hash</a></li><li><a href="reference-functions-fileexists.html">fileexists</a></li><li><a href="reference-functions-filesexist.html">filesexist</a></li><li><a href="reference-functions-filesize.html">filesize</a></li><li><a href="reference-functions-filestat.html">filestat</a></li><li><a href="reference-functions-filter.html">filter</a></li><li><a href="reference-functions-findfiles.html">findfiles</a></li><li><a href="reference-functions-findprocesses.html">findprocesses</a></li><li><a href="reference-functions-format.html">format</a></li><li><a href="reference-functions-getclassmetatags.html">getclassmetatags</a></li><li><a href="reference-functions-getenv.html">getenv</a></li><li><a href="reference-functions-getfields.html">getfields</a></li><li><a href="reference-functions-getgid.html">getgid</a></li><li><a href="reference-functions-getindices.html">getindices</a></li><li><a href="reference-functions-getuid.html">getuid</a></li><li><a href="reference-functions-getuserinfo.html">getuserinfo</a></li><li><a href="reference-functions-getusers.html">getusers</a></li><li><a href="reference-functions-getvalues.html">getvalues</a></li><li><a href="reference-functions-getvariablemetatags.html">getvariablemetatags</a></li><li><a href="reference-functions-grep.html">grep</a></li><li><a href="reference-functions-groupexists.html">groupexists</a></li><li><a href="reference-functions-hash.html">hash</a></li><li><a href="reference-functions-hash_to_int.html">hash_to_int</a></li><li><a href="reference-functions-hashmatch.html">hashmatch</a></li><li><a href="reference-functions-host2ip.html">host2ip</a></li><li><a href="reference-functions-hostinnetgroup.html">hostinnetgroup</a></li><li><a href="reference-functions-hostrange.html">hostrange</a></li><li><a href="reference-functions-hostsseen.html">hostsseen</a></li><li><a href="reference-functions-hostswithclass.html">hostswithclass</a></li><li><a href="reference-functions-hubknowledge.html">hubknowledge</a></li><li><a href="reference-functions-ifelse.html">ifelse</a></li><li><a href="reference-functions-intersection.html">intersection</a></li><li><a href="reference-functions-ip2host.html">ip2host</a></li><li><a href="reference-functions-iprange.html">iprange</a></li><li><a href="reference-functions-irange.html">irange</a></li><li><a href="reference-functions-isdir.html">isdir</a></li><li><a href="reference-functions-isexecutable.html">isexecutable</a></li><li><a href="reference-functions-isgreaterthan.html">isgreaterthan</a></li><li><a href="reference-functions-isipinsubnet.html">isipinsubnet</a></li><li><a href="reference-functions-islessthan.html">islessthan</a></li><li><a href="reference-functions-islink.html">islink</a></li><li><a href="reference-functions-isnewerthan.html">isnewerthan</a></li><li><a href="reference-functions-isplain.html">isplain</a></li><li><a href="reference-functions-isvariable.html">isvariable</a></li><li><a href="reference-functions-join.html">join</a></li><li><a href="reference-functions-lastnode.html">lastnode</a></li><li><a href="reference-functions-laterthan.html">laterthan</a></li><li><a href="reference-functions-ldaparray.html">ldaparray</a></li><li><a href="reference-functions-ldaplist.html">ldaplist</a></li><li><a href="reference-functions-ldapvalue.html">ldapvalue</a></li><li><a href="reference-functions-length.html">length</a></li><li><a href="reference-functions-lsdir.html">lsdir</a></li><li><a href="reference-functions-makerule.html">makerule</a></li><li><a href="reference-functions-maparray.html">maparray</a></li><li><a href="reference-functions-mapdata.html">mapdata</a></li><li><a href="reference-functions-maplist.html">maplist</a></li><li><a href="reference-functions-max.html">max</a></li><li><a href="reference-functions-mean.html">mean</a></li><li><a href="reference-functions-mergedata.html">mergedata</a></li><li><a href="reference-functions-min.html">min</a></li><li><a href="reference-functions-network_connections.html">network_connections</a></li><li><a href="reference-functions-none.html">none</a></li><li><a href="reference-functions-not.html">not</a></li><li><a class="active" href="reference-functions-now.html">now</a></li><li><a href="reference-functions-nth.html">nth</a></li><li><a href="reference-functions-on.html">on</a></li><li><a href="reference-functions-or.html">or</a></li><li><a href="reference-functions-packagesmatching.html">packagesmatching</a></li><li><a href="reference-functions-packageupdatesmatching.html">packageupdatesmatching</a></li><li><a href="reference-functions-parseintarray.html">parseintarray</a></li><li><a href="reference-functions-parsejson.html">parsejson</a></li><li><a href="reference-functions-parserealarray.html">parserealarray</a></li><li><a href="reference-functions-parsestringarray.html">parsestringarray</a></li><li><a href="reference-functions-parsestringarrayidx.html">parsestringarrayidx</a></li><li><a href="reference-functions-parseyaml.html">parseyaml</a></li><li><a href="reference-functions-peerleader.html">peerleader</a></li><li><a href="reference-functions-peerleaders.html">peerleaders</a></li><li><a href="reference-functions-peers.html">peers</a></li><li><a href="reference-functions-processexists.html">processexists</a></li><li><a href="reference-functions-product.html">product</a></li><li><a href="reference-functions-randomint.html">randomint</a></li><li><a href="reference-functions-readcsv.html">readcsv</a></li><li><a href="reference-functions-readdata.html">readdata</a></li><li><a href="reference-functions-readenvfile.html">readenvfile</a></li><li><a href="reference-functions-readfile.html">readfile</a></li><li><a href="reference-functions-readintarray.html">readintarray</a></li><li><a href="reference-functions-readintlist.html">readintlist</a></li><li><a href="reference-functions-readjson.html">readjson</a></li><li><a href="reference-functions-readrealarray.html">readrealarray</a></li><li><a href="reference-functions-readreallist.html">readreallist</a></li><li><a href="reference-functions-readstringarray.html">readstringarray</a></li><li><a href="reference-functions-readstringarrayidx.html">readstringarrayidx</a></li><li><a href="reference-functions-readstringlist.html">readstringlist</a></li><li><a href="reference-functions-readtcp.html">readtcp</a></li><li><a href="reference-functions-readyaml.html">readyaml</a></li><li><a href="reference-functions-regarray.html">regarray</a></li><li><a href="reference-functions-regcmp.html">regcmp</a></li><li><a href="reference-functions-regex_replace.html">regex_replace</a></li><li><a href="reference-functions-regextract.html">regextract</a></li><li><a href="reference-functions-registryvalue.html">registryvalue</a></li><li><a href="reference-functions-regldap.html">regldap</a></li><li><a href="reference-functions-regline.html">regline</a></li><li><a href="reference-functions-reglist.html">reglist</a></li><li><a href="reference-functions-remoteclassesmatching.html">remoteclassesmatching</a></li><li><a href="reference-functions-remotescalar.html">remotescalar</a></li><li><a href="reference-functions-returnszero.html">returnszero</a></li><li><a href="reference-functions-reverse.html">reverse</a></li><li><a href="reference-functions-rrange.html">rrange</a></li><li><a href="reference-functions-selectservers.html">selectservers</a></li><li><a href="reference-functions-shuffle.html">shuffle</a></li><li><a href="reference-functions-some.html">some</a></li><li><a href="reference-functions-sort.html">sort</a></li><li><a href="reference-functions-splayclass.html">splayclass</a></li><li><a href="reference-functions-splitstring.html">splitstring</a></li><li><a href="reference-functions-storejson.html">storejson</a></li><li><a href="reference-functions-strcmp.html">strcmp</a></li><li><a href="reference-functions-strftime.html">strftime</a></li><li><a href="reference-functions-string_downcase.html">string_downcase</a></li><li><a href="reference-functions-string_head.html">string_head</a></li><li><a href="reference-functions-string_length.html">string_length</a></li><li><a href="reference-functions-string_mustache.html">string_mustache</a></li><li><a href="reference-functions-string_reverse.html">string_reverse</a></li><li><a href="reference-functions-string_split.html">string_split</a></li><li><a href="reference-functions-string_tail.html">string_tail</a></li><li><a href="reference-functions-string_upcase.html">string_upcase</a></li><li><a href="reference-functions-sublist.html">sublist</a></li><li><a href="reference-functions-sum.html">sum</a></li><li><a href="reference-functions-sysctlvalue.html">sysctlvalue</a></li><li><a href="reference-functions-translatepath.html">translatepath</a></li><li><a href="reference-functions-unique.html">unique</a></li><li><a href="reference-functions-url_get.html">url_get</a></li><li><a href="reference-functions-usemodule.html">usemodule</a></li><li><a href="reference-functions-userexists.html">userexists</a></li><li><a href="reference-functions-variablesmatching.html">variablesmatching</a></li><li><a href="reference-functions-variablesmatching_as_data.html">variablesmatching_as_data</a></li><li><a href="reference-functions-variance.html">variance</a></li></ul></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-functions.html">Functions</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    now
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p><strong>Prototype:</strong> <a href="reference-functions-now.html" title="now"><code>now()</code></a></p>
+
+<p><strong>Return type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Description:</strong> Return the time at which this agent run started
+in system representation.</p>
+
+<p>In order to provide an immutable environment against which to converge,
+this value does not change during the execution of an agent.</p>
+
+<p><strong>Examples:</strong></p>
+
+<p>Reporting the system time of agent start and calculating what yesterday was.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example_now</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">epoch</span><span class="p">&quot;</span> <span class="kt">int</span> <span class="o">=&gt;</span> <span class="nf">now</span><span class="p">();</span>
+
+      <span class="p">&quot;</span><span class="nv">24_hours_ago</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">format</span><span class="p">(</span> <span class="s">&quot;%d&quot;</span><span class="p">,</span>
+                          <span class="nf">eval</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(epoch)</span><span class="s">-86400&quot;</span><span class="p">,</span> <span class="nf">math</span><span class="p">,</span> <span class="nf">infix</span> <span class="p">));</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="s">&quot;Today is </span><span class="si">$(with)</span><span class="s"> or in unix format &#39;</span><span class="si">$(epoch)</span><span class="s">&#39;&quot;</span>
+        <span class="kr">with</span> <span class="o">=&gt;</span> <span class="nf">strftime</span><span class="p">(</span> <span class="nf">gmtime</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%d %T&quot;</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="nf">epoch</span><span class="p">)</span> <span class="p">);</span>
+
+      <span class="s">&quot;24 hours ago was </span><span class="si">$(with)</span><span class="s"> or in unix format &#39;</span><span class="si">$(epoch)</span><span class="s">&#39;&quot;</span>
+        <span class="kr">with</span> <span class="o">=&gt;</span> <span class="nf">strftime</span><span class="p">(</span> <span class="nf">gmtime</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%d %T&quot;</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="mi">24</span><span class="nf">_hours_ago</span><span class="p">)</span> <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">__main__</span>
+<span class="p">{</span>
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="s">&quot;example_now&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">R: Today is 2019-06-12 20:40:00 or in unix format &#39;1560372000&#39;
+R: 24 hours ago was 2019-06-11 20:40:00 or in unix format &#39;1560372000&#39;
+</code></pre>
+</div>
+
+<p><a href="reference-promise-types-files.html" title="files"><code>files</code></a> type promises using <code>file_select</code> to limit recursive file selection
+based on a time relative to the agent start can make use of this function.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">gzip_recent_pdfs</span>
+    <span class="p">{</span>
+       <span class="kd">files</span><span class="p">:</span>
+
+         <span class="c"># Ensure that any file ending in .pdf that has been</span>
+         <span class="c"># modified in the last year is compressed</span>
+
+         <span class="s">&quot;/tmp/&quot;</span>
+           <span class="kr">file_select</span> <span class="o">=&gt;</span> <span class="nf">pdf_modified_within_last_year</span><span class="p">,</span>
+           <span class="kr">transformer</span> <span class="o">=&gt;</span> <span class="err">&#39;/</span><span class="nf">bin</span><span class="err">/</span><span class="nf">gzip</span> <span class="err">$</span><span class="p">(</span><span class="nf">this</span><span class="err">.</span><span class="nf">promiser</span><span class="p">)</span><span class="err">&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">body</span> <span class="k">file_select</span> <span class="nf">pdf_modified_within_last_year</span>
+    <span class="c"># @brief Sllect files that have been modified in the last year AND end in .pdf</span>
+    <span class="p">{</span>
+      <span class="kr">mtime</span>       <span class="o">=&gt;</span> <span class="nf">irange</span><span class="p">(</span><span class="nf">ago</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="nf">now</span><span class="p">);</span>
+      <span class="kr">leaf_name</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;.*</span><span class="se">\.</span><span class="s">pdf&quot;</span> <span class="p">};</span>
+      <span class="kr">file_result</span> <span class="o">=&gt;</span> <span class="s">&quot;mtime.leaf_name&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><a href="reference-promise-types-processes.html" title="processes"><code>processes</code></a> type promises using <code>process_select</code> can use this function to
+select processes based on relative execution time.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+
+<span class="p">{</span>
+  <span class="kd">processes</span><span class="p">:</span>
+
+      <span class="s">&quot;init&quot;</span>
+        <span class="kr">process_count</span>   <span class="o">=&gt;</span> <span class="nf">any_count</span><span class="p">(</span><span class="s">&quot;booted_over_1_day_ago&quot;</span><span class="p">),</span>
+        <span class="kr">process_select</span>  <span class="o">=&gt;</span> <span class="nf">days_older_than</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+    <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Define a class indicating we found an init process running</span>
+<span class="s">                    for more than 1 day.&quot;</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+
+    <span class="nc">booted_over_1_day_ago</span><span class="p">::</span>
+
+      <span class="s">&quot;This system was booted over 1 days ago since there is an init process</span>
+<span class="s">       that is older than 1 day.&quot;</span><span class="p">;</span>
+
+    <span class="nc">!booted_over_1_day_ago</span><span class="p">::</span>
+      <span class="s">&quot;This system has been rebooted recently as the init process has been</span>
+<span class="s">       running for less than a day&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+
+<span class="k">body</span> <span class="k">process_count</span> <span class="nf">any_count</span><span class="p">(</span><span class="nv">cl</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">match_range</span> <span class="o">=&gt;</span> <span class="s">&quot;0,0&quot;</span><span class="p">;</span>
+      <span class="kr">out_of_range_define</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(cl)</span><span class="s">&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+
+<span class="k">body</span> <span class="k">process_select</span> <span class="nf">days_older_than</span><span class="p">(</span><span class="nv">d</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">stime_range</span>    <span class="o">=&gt;</span> <span class="nf">irange</span><span class="p">(</span><span class="nf">ago</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(d)</span><span class="s">&quot;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="nf">now</span><span class="p">);</span>
+      <span class="kr">process_result</span> <span class="o">=&gt;</span> <span class="s">&quot;!stime&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This policy can be found in
+<code>/var/cfengine/share/doc/examples/processes_define_class_based_on_process_runtime.cf</code>
+and downloaded directly from
+<a href="https://raw.github.com/cfengine/core/master/examples/processes_define_class_based_on_process_runtime.cf" target="_blank">github</a>.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-system-functions.html">system functions</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-functions.html">functions</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-now.html">now</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 27 October 2021
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/functions/now.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/3d161b229c7df44b99d8cd6c71640ab53c94fcbd" target="_blank">3d161b229c7df44b99d8cd6c71640ab53c94fcbd</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.12/assets/footer-135fa20640bb1a2bbe772d22c46414cb.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

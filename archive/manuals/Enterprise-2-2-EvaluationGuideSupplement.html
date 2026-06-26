@@ -1,0 +1,1198 @@
+<html lang="en">
+<head>
+<title>Supplement to CFEngine 3 Enterprise Evaluation Guide</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Supplement to CFEngine 3 Enterprise Evaluation Guide">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('☺'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background: none !important;
+    border: none !important;
+    padding: 5px; 
+
+/*    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;*/
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">Supplement to CFEngine 3 Enterprise Evaluation Guide</h1>
+Updated 31. May 2012
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Standard-reports-in-CFEngine-3-Enterprise">Standard reports in CFEngine 3 Enterprise</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">Supplement to CFEngine 3 Enterprise Evaluation Guide</h2>
+
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">Supplement to CFEngine 3 Enterprise Evaluation Guide</a>
+<li><a name="toc_Standard-reports-in-CFEngine-3-Enterprise" href="#Standard-reports-in-CFEngine-3-Enterprise">1 Standard reports in CFEngine 3 Enterprise</a>
+<ul>
+<li><a href="#Policy">1.1 Policy</a>
+<ul>
+<li><a href="#Compliance-by-bundle">1.1.1 Compliance by bundle</a>
+<li><a href="#Compliance-by-promise">1.1.2 Compliance by promise</a>
+<li><a href="#Promises-not-kept-log">1.1.3 Promises not kept log</a>
+<li><a href="#Promises-not-kept-summary">1.1.4 Promises not kept summary</a>
+<li><a href="#Promises-repaired-log">1.1.5 Promises repaired log</a>
+<li><a href="#Promises-repaired-summary">1.1.6 Promises repaired summary</a>
+</li></ul>
+<li><a href="#Accounting">1.2 Accounting</a>
+<ul>
+<li><a href="#Benchmarks">1.2.1 Benchmarks</a>
+<li><a href="#Business-value">1.2.2 Business value</a>
+<li><a href="#Compliance-summary">1.2.3 Compliance summary</a>
+</li></ul>
+<li><a href="#System">1.3 System</a>
+<ul>
+<li><a href="#Context-classes">1.3.1 Context classes</a>
+<li><a href="#Last-saw-neighbours">1.3.2 Last saw neighbours</a>
+<li><a href="#Variables">1.3.3 Variables</a>
+<li><a href="#Weakest-Hosts">1.3.4 Weakest Hosts</a>
+</li></ul>
+<li><a href="#Software">1.4 Software</a>
+<ul>
+<li><a href="#Installed">1.4.1 Installed</a>
+<li><a href="#Patches-available">1.4.2 Patches available</a>
+<li><a href="#Patches-installed">1.4.3 Patches installed</a>
+</li></ul>
+<li><a href="#File-watch">1.5 File watch</a>
+<ul>
+<li><a href="#Change-summary">1.5.1 Change summary</a>
+<li><a href="#Setuid">1.5.2 Setuid</a>
+<li><a href="#Text-changes">1.5.3 Text changes</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+<ul class="menu">
+<li><a accesskey="1" href="#Standard-reports-in-CFEngine-3-Enterprise">Standard reports in CFEngine 3 Enterprise</a>
+</ul>
+
+<!-- ***************************************************** -->
+<!-- * CHAPTER -->
+<!-- ***************************************************** -->
+<div class="node">
+<a name="Standard-reports-in-CFEngine-3-Enterprise"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Policy">Policy</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Standard reports in CFEngine 3 Enterprise</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Policy">Policy</a>
+<li><a accesskey="2" href="#Accounting">Accounting</a>
+<li><a accesskey="3" href="#System">System</a>
+<li><a accesskey="4" href="#Software">Software</a>
+<li><a accesskey="5" href="#File-watch">File watch</a>
+</ul>
+
+<p>A significant capability of CFEngine 3 Enterprise is automated system reporting: it collects history, state and change data about computers and ties them together. A report is a tabular summary of CFEngine's internal information, tailored to a particular purpose, searchable, and describes attributes and qualities of managed hosts.
+
+   <p>Standard reports in CFEngine 3 Enterprise can be accessed through the <b>Reports tab</b> in the <b>Engineering room</b>. The drop down menus list all standard report categories and each category contains information about different aspects of the Mission. When you click one of them, the Mission Portal will present a query form that is adapted to the chosen report category. CFEngine uses regular expressions in these queries, for maximum flexibility and to minimize system impact. The details of these queries and the content of the resulting reports are outlined in the following sections.
+
+   <p>Reports are updated at different intervals, the default values are every 5 minutes or every 6 hours. Below is a list of standard reports, updated every 5 minutes unless otherwise noted:
+
+     <ul>
+<li>Policy
+          <ul>
+    <li>Compliance by bundle: Status of promise bundles and when they were last verified
+    <li>Compliance by promise: Compliance of each promise individually
+    <li>Promises not kept log: Log of promises that could not or would not be kept
+    <li>Promises not kept summary: Cumulative (histogram) summary of promises not kept
+    <li>Promises repaired log: Log of actual repairs made to the system
+    <li>Promises repaired summary: Cumulative (histogram) summary of promises repaired
+</ul>
+     <li>Accounting
+          <ul>
+    <li>Benchmarks: Execution time used to verify selected promises
+    <li>Business value report: Accumulated value of promises kept (6 hrs)
+    <li>Compliance summary: Total summary of host compliance
+</ul>
+     <li>System
+          <ul>
+    <li>Context classes: User defined classes observed on the system
+    <li>Last saw neighbours: Log of when neighboring hosts were last observed online
+    <li>Variables: Table of variable values last observed (6 hrs)
+    <li>Weakest hosts: Ranking of hosts with poorest performing hosts on top
+</ul>
+     <li>Software
+          <ul>
+    <li>Installed: List of software packages claimed to be installed according to the local package manager
+    <li>Patches available: A list of patches currently claimed to be available by the local package manager
+    <li>Patch installed: A list of (un)applied patches according to the local package manager
+</ul>
+     <li>File watch
+          <ul>
+    <li>Change summary: Log of all detected changes to files from changes promises
+    <li>Setuid: Current list of observed setuid/setgid root programs (6 hrs)
+    <li>Text changes: Delta/difference comparison showing file changes
+</ul>
+     </ul>
+
+<!--  -->
+<div class="node">
+<a name="Policy"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Accounting">Accounting</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Standard-reports-in-CFEngine-3-Enterprise">Standard reports in CFEngine 3 Enterprise</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Enterprise">Standard reports in CFEngine 3 Enterprise</a>
+
+</div>
+
+<h3 class="section">1.1 Policy</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Compliance-by-bundle">Compliance by bundle</a>
+<li><a accesskey="2" href="#Compliance-by-promise">Compliance by promise</a>
+<li><a accesskey="3" href="#Promises-not-kept-log">Promises not kept log</a>
+<li><a accesskey="4" href="#Promises-not-kept-summary">Promises not kept summary</a>
+<li><a accesskey="5" href="#Promises-repaired-log">Promises repaired log</a>
+<li><a accesskey="6" href="#Promises-repaired-summary">Promises repaired summary</a>
+</ul>
+
+<div class="node">
+<a name="Compliance-by-bundle"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Compliance-by-promise">Compliance by promise</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Policy">Policy</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy">Policy</a>
+
+</div>
+
+<h4 class="subsection">1.1.1 Compliance by bundle</h4>
+
+<p>Promises are the fundamental statements in CFEngine, they make up the definition of the desired state of a system. A <i>bundle</i> is a collection of promises in a `sub-routine-like' container. The purpose of bundles is to allow greater flexibility to break down the contents of policies and give them names. Bundles also allow to re-use promise code by parameterizing it.
+
+   <p>The &lsquo;<samp><span class="samp">Compliance by bundle</span></samp>&rsquo; is useful for checking the compliance of specific bundles and when they were last verified. Put your mouse over the <b>Policy</b> drop down menu in the <b>Reports</b> tab, then select <b>Compliance by bundle</b>. The Compliance by bundle query can filter by bundle pattern (pattern in bundle name). Leaving the fields blank will result in a report listing all bundles in your policies.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-compliance-by-bundle-query-2-2.png" alt="Compliance by bundle query"></div>
+<div align="center">Figure: Compliance by bundle query</div>
+   <pre class="sp">
+
+</pre>
+
+Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview of bundles that suit the query criteria entered above. It displays the host names on which these bundles can be found (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), the name of the bundles (&lsquo;<samp><span class="samp">Bundle</span></samp>&rsquo;), the time stamp at the moment of verification (&lsquo;<samp><span class="samp">Last verified</span></samp>&rsquo;), the time passed since last verification (&lsquo;<samp><span class="samp">Last verified</span></samp>&rsquo;), the current bundle compliance (&lsquo;<samp><span class="samp">% compliance</span></samp>&rsquo;), the average bundle compliance (&lsquo;<samp><span class="samp">Avg % compliance</span></samp>&rsquo;) and the deviation of the current compliance from the average (&lsquo;<samp><span class="samp">+/- %</span></samp>&rsquo;).<!-- , measured in one standard deviation of @samp{Avg interval}). You can add your personal note in the right column, documenting any thoughts or issues that you might have about the query result. The @samp{Last verified} value is yellow if more than six hours have passed since last verification. -->
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-compliance-by-bundle-report-2-2.png" alt="Compliance by bundle"></div>
+<div align="center">Figure: Compliance by bundle</div>
+   <pre class="sp">
+
+</pre>
+
+<!-- Click a bundle name to access details of that specific bundle through the bundle viewer. -->
+<!-- @cartouche -->
+<!-- *** Explain further steps *** -->
+<!-- @end cartouche -->
+
+<!--  -->
+<div class="node">
+<a name="Compliance-by-promise"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Promises-not-kept-log">Promises not kept log</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Compliance-by-bundle">Compliance by bundle</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy">Policy</a>
+
+</div>
+
+<h4 class="subsection">1.1.2 Compliance by promise</h4>
+
+<p>Promises are the fundamental statements in CFEngine, the policy atoms. Promises can be made about all kinds of different subjects, from file attributes, to the execution of commands, access control decisions and knowledge relationships. If there is no promise, nothing happens. It is considered compliant if CFEngine is able to keep the promise, and conversely, not compliant, or not kept, in the opposite case.
+
+   <p>The &lsquo;<samp><span class="samp">Compliance by promise</span></samp>&rsquo; report is useful for checking the current status of your system in high detail. You can find out which parts of a bundle work and which do not. The report also predicts the probability of compliance based on the history of specific promises, allowing you to assess the degree to which the problem is of a more transient or permanent nature.
+
+   <p>Put your mouse over the <b>Policy</b> drop down menu in the <b>Reports</b> tab, then select <b>Compliance by promise</b>. The compliance by promise query can filter by (patterns in) promise handle and the compliance status of promises (any/compliant/repaired/non-compliant, drop-down menu).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-compliance-by-promise-query-2-2.png" alt="Compliance by promise query"></div>
+<div align="center">Figure: Compliance by promis query</div>
+   <pre class="sp">
+
+</pre>
+
+Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview of hosts that suit the query criteria entered above. The result presents the host names (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), the promise identifier &lsquo;<samp><span class="samp">Promise handle</span></samp>&rsquo;, &lsquo;<samp><span class="samp">Last known state</span></samp>&rsquo; (compliant or not compliant), likelihood of a promise being compliant (&lsquo;<samp><span class="samp">% runs kept</span></samp>&rsquo;), uncertainty of the likelihood (&lsquo;<samp><span class="samp">+/- %</span></samp>&rsquo;, measured in one standard deviation of &lsquo;<samp><span class="samp">% runs kept</span></samp>&rsquo;), and the time stamp of the last time the promise was run (&lsquo;<samp><span class="samp">Last verified</span></samp>&rsquo;).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-compliance-by-promise-report-2-2.png" alt="Compliance by promise report"></div>
+<div align="center">Figure: Compliance by promise report</div>
+   <pre class="sp">
+
+</pre>
+
+<!-- Click a promise handle to access details of that specific promise through the promise viewer. -->
+<!-- @cartouche -->
+<!-- *** Explain further steps *** -->
+<!-- @end cartouche -->
+
+<!--  -->
+<div class="node">
+<a name="Promises-not-kept-log"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Promises-not-kept-summary">Promises not kept summary</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Compliance-by-promise">Compliance by promise</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy">Policy</a>
+
+</div>
+
+<h4 class="subsection">1.1.3 Promises not kept log</h4>
+
+<p>The Business room in the Mission Portal gives an overview of the general status of your system, including six hour summaries of promises kept, repaired, and not kept from the last week. The Promises not kept log is useful to get a complete overview of the history of promises not kept, including execution order and events that are more than a week old. Put your mouse over the <b>Policy</b> drop down menu in the <b>Reports</b> tab, then select <b>Promises not kept log</b>.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-promises-not-kept-log-query-2-2.png" alt="Promises not kept log query"></div>
+<div align="center">Figure:  Promises not kept log query</div>
+   <pre class="sp">
+
+</pre>
+
+The Promises not kept log query can filter by (patterns in) promise handles, cause (i.e. what was not kept), and a desired time interval. Leaving the fields blank will result in a report listing all promises that were not kept and the time of occurrence.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview of promises that suit the query criteria entered above. The results are presented as &lsquo;<samp><span class="samp">Host</span></samp>&rsquo; (host name), &lsquo;<samp><span class="samp">Promise handle</span></samp>&rsquo; (identifier of the promise), &lsquo;<samp><span class="samp">Report</span></samp>&rsquo; (what was not kept), and &lsquo;<samp><span class="samp">Time</span></samp>&rsquo; (time stamp of the event).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-promises-not-kept-log-report-2-2.png" alt="Promises not kept log report"></div>
+<div align="center">Figure:  Promises not kept log report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Promises-not-kept-summary"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Promises-repaired-log">Promises repaired log</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Promises-not-kept-log">Promises not kept log</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy">Policy</a>
+
+</div>
+
+<h4 class="subsection">1.1.4 Promises not kept summary</h4>
+
+<p>If the Promises not kept log is too detailed for your needs, the Promises not kept summary report eliminates the time stamp of the promises repaired and presents a cumulative summary of promises repaired, i.e. the total number times a promise was not kept. Put your mouse over the <b>Policy</b> drop down menu in the <b>Reports</b> tab, then select <b>Promises not kept summary</b>.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-promises-not-kept-summary-query-2-2.png" alt="Promises not kept summary query"></div>
+<div align="center">Figure: Promises not kept summary query</div>
+   <pre class="sp">
+
+</pre>
+
+The Promise not kept summary query can filter by (patterns in) promise handles, cause (i.e. what was not kept), and a desired time interval. Leaving the fields blank will result in a report listing all promises that were not kept and their cumulative number of occurrences.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview of promises that suit the query criteria entered above. The results are presented as &lsquo;<samp><span class="samp">Promise handle</span></samp>&rsquo;, &lsquo;<samp><span class="samp">Report</span></samp>&rsquo; (what was not kept), and &lsquo;<samp><span class="samp">Occurrences</span></samp>&rsquo; (the number of times the promise was not kept).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-promises-not-kept-summary-report-2-2.png" alt="Promises not kept summary report"></div>
+<div align="center">Figure: Promises not kept summary report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Promises-repaired-log"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Promises-repaired-summary">Promises repaired summary</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Promises-not-kept-summary">Promises not kept summary</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy">Policy</a>
+
+</div>
+
+<h4 class="subsection">1.1.5 Promises repaired log</h4>
+
+<p>The Business room in the Mission Portal gives an overview of the general status of your system, including six hour summaries of promises kept, repaired, and not kept from the last week. The Promises repaired log is useful to get a complete overview of the history of promises repaired, including execution order and events that are more than a week old. Put your mouse over the <b>Policy</b> drop down menu in the <b>Reports</b> tab, then select <b>Promises repaired log</b>.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-promises-repaired-log-query-2-2.png" alt="Promises repaired log query"></div>
+<div align="center">Figure:  Promises repaired log query</div>
+   <pre class="sp">
+
+</pre>
+
+The Promise repaired log query can filter by (patterns in) promise handles, cause (i.e. what was not kept), and a desired time interval. Leaving the fields blank will result in a report listing all promises that were repaired and the time of occurrence.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview of promises that suit the query criteria entered above. The results are presented as &lsquo;<samp><span class="samp">Host</span></samp>&rsquo; (host name), &lsquo;<samp><span class="samp">Promise handle</span></samp>&rsquo; (identifier of the promise), &lsquo;<samp><span class="samp">Report</span></samp>&rsquo; (what was repaired), and &lsquo;<samp><span class="samp">Time</span></samp>&rsquo; (time stamp of the repair action).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-promises-repaired-log-report-2-2.png" alt="Promises repaired log report"></div>
+<div align="center">Figure: Promises repaired log report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Promises-repaired-summary"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Promises-repaired-log">Promises repaired log</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Policy">Policy</a>
+
+</div>
+
+<h4 class="subsection">1.1.6 Promises repaired summary</h4>
+
+<p>If the Promises repaired log is too detailed for your needs, the Promises repaired summary report eliminates the time stamp of the promises repaired and presents a cumulative summary of promises repaired, i.e. the total number times a promise has been repaired. Put your mouse over the <b>Policy</b> drop down menu in the <b>Reports</b> tab, then select <b>Promises repaired summary</b>.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-promises-repaired-summary-query-2-2.png" alt="Promises repaired summary query"></div>
+<div align="center">Figure:  Promises repaired summary query</div>
+   <pre class="sp">
+
+</pre>
+
+The Promise repaired summary query can filter by (patterns in) promise handles, cause (i.e. what was repaired), and a desired time interval. Leaving the fields blank will result in a report listing all promises that were repaired and their cumulative number of occurrences.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview of promises that suit the query criteria entered above. The results are presented as &lsquo;<samp><span class="samp">Promise handle</span></samp>&rsquo; (identifier of the promise), &lsquo;<samp><span class="samp">Report</span></samp>&rsquo; (what was repaired), and &lsquo;<samp><span class="samp">Occurrences</span></samp>&rsquo; (number of occurrences of repair).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-promises-repaired-summary-report-2-2.png" alt="Promises repaired summary report"></div>
+<div align="center">Figure: Promises repaired summary report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Accounting"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#System">System</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Policy">Policy</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Enterprise">Standard reports in CFEngine 3 Enterprise</a>
+
+</div>
+
+<h3 class="section">1.2 Accounting</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Benchmarks">Benchmarks</a>
+<li><a accesskey="2" href="#Business-value">Business value</a>
+<li><a accesskey="3" href="#Compliance-summary">Compliance summary</a>
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="Benchmarks"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Business-value">Business value</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Accounting">Accounting</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Accounting">Accounting</a>
+
+</div>
+
+<h4 class="subsection">1.2.1 Benchmarks</h4>
+
+<p>CFEngine 3 Enterprise uses several monitoring probes to reflect on general system performance<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>. One probe looks at the time it takes to execute selected promises; results are summarized in the &lsquo;<samp><span class="samp">Benchmark</span></samp>&rsquo; report. The user can thus evaluate which parts of a policy put charge on the system in terms of time spent completing a task. Longer tasks, such as command execution and file copying, are measured by default, but other tasks have to be measured explicitly by stating so in a policy. Note however that most promises made in CFEngine are executed so fast we are not able to measure the time it takes to complete them.
+
+   <p>Put your mouse over the <b>Accounting</b> drop down menu in the <b>Reports</b> tab, then select <b>Benchmarks</b>.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-benchmarks-query-2-2.png" alt="Benchmarks query"></div>
+<div align="center">Figure: Benchmarks query</div>
+   <pre class="sp">
+
+</pre>
+
+The Benchmark query can filter by (patterns in) job name. Leaving the field blank will result in a report listing the performance of all monitored jobs. 
+<!-- @footnote{Job names are given in the definition of the promise, we will get back to this in the policy editing example.} -->
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview of events that suit the query criteria entered above. &lsquo;<samp><span class="samp">Host</span></samp>&rsquo; (host name), &lsquo;<samp><span class="samp">Event</span></samp>&rsquo; (job name), &lsquo;<samp><span class="samp">Last completion time</span></samp>&rsquo; (most recent performance value, i.e. the time it took to complete the job), &lsquo;<samp><span class="samp">Avg completion time</span></samp>&rsquo; (average of all Last completion time), &lsquo;<samp><span class="samp">+/- seconds</span></samp>&rsquo; (difference expressed as one standard deviation of &lsquo;<samp><span class="samp">Avg completion time</span></samp>&rsquo;), and &lsquo;<samp><span class="samp">Last performed</span></samp>&rsquo; (time stamp of last execution).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-benchmarks-report-2-2.png" alt="Benchmarks report"></div>
+<div align="center">Figure: Benchmarks report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Business-value"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Compliance-summary">Compliance summary</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Benchmarks">Benchmarks</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Accounting">Accounting</a>
+
+</div>
+
+<h4 class="subsection">1.2.2 Business value</h4>
+
+<p>One of the capabilities of CFEngine 3 Enterprise is to add business or organizational value to the configuration
+model. The notion of business value is not necessarily a clear concept, but a simple approach is to attach a monetary value to the outcome of promises.
+
+   <p>CFEngine's default values for promises kept, promises repaired and promises not kept are 1, 0.5, and -1, respectively. The values are summed and recorded at a set time interval, and the results are summarized for every host and day.
+
+   <p>Put your mouse over the <b>Accounting</b> drop down menu in the <b>Reports</b> tab, then select <b>Business value</b>.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-business-value-query-2-2.png" alt="Business value query"></div>
+<div align="center">Figure: Business value query</div>
+   <pre class="sp">
+
+</pre>
+
+The Business value query can filter by date. Leaving the field blank will result in a report listing the business value of all promises that have had value attached to them over selected hosts and days.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview of hosts that suit the query criteria entered above. The result presents each host name (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), date (&lsquo;<samp><span class="samp">Summary of Day</span></samp>&rsquo;), and the sum of the value of the promises kept (&lsquo;<samp><span class="samp">Value of promises kept</span></samp>&rsquo;), repaired (&lsquo;<samp><span class="samp">Value of repairs</span></samp>&rsquo;), and not kept (&lsquo;<samp><span class="samp">Loss for promises not kept</span></samp>&rsquo;).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-business-value-report-2-2.png" alt="Business value report"></div>
+<div align="center">Figure: Business value report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Compliance-summary"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Business-value">Business value</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Accounting">Accounting</a>
+
+</div>
+
+<h4 class="subsection">1.2.3 Compliance summary</h4>
+
+<p>CFEngine policies are collections of promises contained in a text file, they are the CFEngine scripts that define what state you want your system to be in. The compliance summary report gives an overview of policy status. It shows the current status of your system in a coarse manner, allowing you to quickly identify which areas need follow-up. Put your mouse over the <b>Accounting</b> drop down menu in the <b>Reports</b> tab, then select <b>Compliance summary</b>.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-compliance-summary-query-2-2.png" alt="Compliance summary query"></div>
+<div align="center">Figure: Compliance summary query</div>
+   <pre class="sp">
+
+</pre>
+
+The compliance summary query can filter by version of your policy files (version number is maintained manually in policy). Leaving the field blank will result in a report listing all hosts and and policies.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview of hosts that suit the query criteria entered above. The result presents the host names (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), policy version (&lsquo;<samp><span class="samp">Policy version</span></samp>&rsquo;), percentage of promises kept within the listed policies (&lsquo;<samp><span class="samp">% kept</span></samp>&rsquo;), percentage of promises repaired within the listed policies (&lsquo;<samp><span class="samp">% repaired</span></samp>&rsquo;), percentage of promises not kept within the listed policies (&lsquo;<samp><span class="samp">% not kept</span></samp>&rsquo;), and the time stamp of the last status check (&lsquo;<samp><span class="samp">Last verified</span></samp>&rsquo;).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-compliance-summary-report-2-2.png" alt="Compliance summary report"></div>
+<div align="center">Figure: Compliance summary report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="System"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Software">Software</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Accounting">Accounting</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Enterprise">Standard reports in CFEngine 3 Enterprise</a>
+
+</div>
+
+<h3 class="section">1.3 System</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Context-classes">Context classes</a>
+<li><a accesskey="2" href="#Last-saw-neighbours">Last saw neighbours</a>
+<li><a accesskey="3" href="#Variables">Variables</a>
+<li><a accesskey="4" href="#Weakest-Hosts">Weakest Hosts</a>
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="Context-classes"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Last-saw-neighbours">Last saw neighbours</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#System">System</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#System">System</a>
+
+</div>
+
+<h4 class="subsection">1.3.1 Context classes</h4>
+
+<p>CFEngine classes are certain true/false (Boolean) propositions that determine in what context, or setting, a promise is made. Each time CFEngine runs (by default every five minutes), it discovers and classifies properties of the environment in which it runs. These discovered properties are called 'hard classes' and cannot be changed by users. CFEngine also operates with soft classes, i.e. user-defined types.
+
+   <p>The Context classes report is useful for looking at hosts in specific contexts, for instance to find out which machines run on windows. Put your mouse over the <b>System</b> drop down menu in the <b>Reports</b> tab, then select <b>Context classes</b>.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-context-classes-query-2-2.png" alt="Context classes query"></div>
+<div align="center">Figure: Context classes query</div>
+   <pre class="sp">
+
+</pre>
+
+The context classes query can filter by (pattern in) class name. Leaving the field blank will result in a report listing all hosts and classes.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview of hosts that suit the query criteria entered above. The result presents the host names (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), &lsquo;<samp><span class="samp">Class or context</span></samp>&rsquo;, probability of occurrence (&lsquo;<samp><span class="samp">In % runs</span></samp>&rsquo;), uncertainty on the probability &lsquo;<samp><span class="samp">+/- %</span></samp>&rsquo; (standard deviation of &lsquo;<samp><span class="samp">In % runs</span></samp>&rsquo;), and the last time the class was observed (&lsquo;<samp><span class="samp">Last occurred</span></samp>&rsquo;).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-context-classes-report-2-2.png" alt="Context classes report"></div>
+<div align="center">Figure: Context classes report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Last-saw-neighbours"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Variables">Variables</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Context-classes">Context classes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#System">System</a>
+
+</div>
+
+<h4 class="subsection">1.3.2 Last saw neighbours</h4>
+
+<p>Sometimes it is not possible to connect to a machine under CFEngine's management, either due to network errors or temporary lack of network entirely (for instance on ships at sea or submarines). CFEngine 3 Enterprise's Mission Portal monitors all connections, incoming and outgoing, between all managed hosts, and creates a log of when neighboring hosts were last observed online. This information is used to set the host availability status and, through analysis of the connection history, give an idea of the regularity of connections between hosts.
+
+   <p>The Last saw neighbours report is useful for checking the communication pattern between managed hosts and when they last were in touch with each other. Put your mouse over the <b>System</b> drop down menu in the <b>Reports</b> tab, then select <b>Last saw neighbours</b>.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-last-saw-neighbours-query-2-2.png" alt="Last saw neightbours query"></div>
+<div align="center">Figure: Last saw neighbours query</div>
+   <pre class="sp">
+
+</pre>
+
+The Last saw neighbours query can filter by (patterns in) remote host name, remote host IP address, remote host key, and minimum hours ago (since the last connection was made). Leaving the fields blank will result in a report listing all connections made to and from the managed machines (including the hub).
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview of all communication that suits the query criteria entered above. Every connection is logged on the concerned nodes as incoming (Initiated by them) or outgoing (Initiated by us), the same connection will therefore appear twice in the report (once for each node). The results are presented in the following column format: &lsquo;<samp><span class="samp">Host</span></samp>&rsquo; (host name), &lsquo;<samp><span class="samp">Comms initiated</span></samp>&rsquo; (identifies whether the connection is incoming (<code>by them (-)</code>) or outgoing (<code>by us (+)</code>), &lsquo;<samp><span class="samp">Remote host name</span></samp>&rsquo;, &lsquo;<samp><span class="samp">Remote IP address</span></samp>&rsquo;, &lsquo;<samp><span class="samp">Was last seen at</span></samp>&rsquo; (time stamp of the connection), &lsquo;<samp><span class="samp">Hrs ago</span></samp>&rsquo; (interval between current time and Last seen), &lsquo;<samp><span class="samp">Avg comms interval</span></samp>&rsquo; (average time between each connection), Uncertainty &lsquo;<samp><span class="samp">+/- hrs</span></samp>&rsquo; (standard deviation of Average interval), and &lsquo;<samp><span class="samp">Remote host's key</span></samp>&rsquo; (identifying key of the remote host).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-last-saw-neighbours-report-2-2.png" alt="Last saw neighbours report"></div>
+<div align="center">Figure: Last saw neighbours report</div>
+   <pre class="sp">
+
+</pre>
+
+<!-- @cartouche -->
+<!-- *** Use case: check if anyone else except policy hub has tried to get in touch with a client. -->
+<!-- Filter on remote host name (DNS name, not class): @code{(?:(?!policyhub).)*} -->
+<!-- sort by host -->
+<!-- Use case: Which machines connect at regular intervals, which are "unstable". *** -->
+<!-- @end cartouche -->
+
+<!-- 7 machines, 26 entries in last seen because all incoming and outgoing requests are recorded: -->
+<!-- 2 the policy hub contacts itself and is contacted by itself -->
+<!-- 6 x 2: 6 hosts. For each hub-client contact, both the hub and the client report incoming and outgoing connection (2 connections) -->
+<!-- 6 x 2: 6 hosts. For each client-hub contact, both the client and the hub report incoming and outgoing connection (2 connections) -->
+<!--  -->
+<div class="node">
+<a name="Variables"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Weakest-Hosts">Weakest Hosts</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Last-saw-neighbours">Last saw neighbours</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#System">System</a>
+
+</div>
+
+<h4 class="subsection">1.3.3 Variables</h4>
+
+<!-- Scalar variables are written @samp{$(name)} in CFEngine, and they represent a single value at a time. When they are written without a context, e.g. @samp{$(myvar)}, they are local to the current bundle (i.e. their scope is the current bundle). They are globally available everywhere provided one uses the context to verify them; e.g. @samp{$(context.myvar)} may be used to access the variable `myvar' in bundle `context'. -->
+<p>The &lsquo;<samp><span class="samp">Variables report</span></samp>&rsquo; is useful for tracking your variables and checking their values, for instance to see if they behave in the expected manner. Put your mouse over the <b>System</b> drop down menu in the <b>Reports</b> tab, then select <b>Variables</b>.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-variables-query-2-2.png" alt="Variables query"></div>
+<div align="center">Figure: Variables query</div>
+   <pre class="sp">
+
+</pre>
+
+The Variables query can filter by (patterns in) scope (bundle where the variable is used), Lvalue (name of variable), Rvalue (content of variable), and type (string, integer, etc.). Leaving the fields blank will result in a report listing all variables that were last observed on the system.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview of variables that suit the query criteria entered above. The results are presented in table form/blocks of scope (i.e. in which bundle the variables appear) with the following column format: &lsquo;<samp><span class="samp">Host</span></samp>&rsquo; (name of host where the variable is defined), &lsquo;<samp><span class="samp">Type</span></samp>&rsquo; (type of the variable, &lsquo;<samp><span class="samp">Name</span></samp>&rsquo;, &lsquo;<samp><span class="samp">Value</span></samp>&rsquo; and &lsquo;<samp><span class="samp">Last seen</span></samp>&rsquo;.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-variables-report-2-2.png" alt="Variables report"></div>
+<div align="center">Figure: Variables report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Weakest-Hosts"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Variables">Variables</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#System">System</a>
+
+</div>
+
+<h4 class="subsection">1.3.4 Weakest Hosts</h4>
+
+<pre class="sp">
+
+</pre>
+<div align="center"><img src="img-weakest-hosts-report-2-2.png" alt="Weakest hosts report"></div>
+<div align="center">Figure: Weakest hosts report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Software"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#File-watch">File watch</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#System">System</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Enterprise">Standard reports in CFEngine 3 Enterprise</a>
+
+</div>
+
+<h3 class="section">1.4 Software</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Installed">Installed</a>
+<li><a accesskey="2" href="#Patches-available">Patches available</a>
+<li><a accesskey="3" href="#Patches-installed">Patches installed</a>
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="Installed"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Patches-available">Patches available</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Software">Software</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Software">Software</a>
+
+</div>
+
+<h4 class="subsection">1.4.1 Installed</h4>
+
+<p>The &lsquo;<samp><span class="samp">Installed report</span></samp>&rsquo; will list the software packages claimed to be installed according to the local package manager. Put your mouse over the <b>Software</b> drop down menu in the <b>Reports</b> tab, then select <b>Installed</b>.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-installed-query-2-2.png" alt="Software installed query"></div>
+<div align="center">Figure: Software installed query</div>
+   <pre class="sp">
+
+</pre>
+
+The Software installed query can filter by (patterns in) software name, version, and architecture. Leaving the fields blank will result in a report listing all hosts and software installed on the system.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview that suits the query criteria entered above. The results are presented as &lsquo;<samp><span class="samp">Host</span></samp>&rsquo; (host name), &lsquo;<samp><span class="samp">Package name</span></samp>&rsquo; (of software package), &lsquo;<samp><span class="samp">Version</span></samp>&rsquo; (of software package), &lsquo;<samp><span class="samp">Architecture</span></samp>&rsquo; (of machine on which software runs) and &lsquo;<samp><span class="samp">Last seen</span></samp>&rsquo;.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-installed-report-2-2.png" alt="Software installed report"></div>
+<div align="center">Figure: Software installed report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Patches-available"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Patches-installed">Patches installed</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Installed">Installed</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Software">Software</a>
+
+</div>
+
+<h4 class="subsection">1.4.2 Patches available</h4>
+
+<p>Software packaging is a core paradigm in operating system release management today, and CFEngine supports a generic approach to integration with native operating support for packaging. Package promises allow CFEngine to make promises the state of software packages conditionally, given the assumption that a native package manager will perform the actual manipulations. Since no agent can make unconditional promises about another, this is the best that can be achieved.
+
+   <p>Some package systems also support the idea of patches. These might be formally different objects to packages; a patch might contain material for several packages and be numbered differently. When you select patching-policy, the package name can be a regular expression that will match possible patch names, otherwise identifying specific patches can be cumbersome.
+
+   <p>The patches available report is useful to get an overview of patches claimed to be available by the local package manager. Put your mouse over the <b>Software</b> drop down menu in the <b>Reports</b> tab, then select <b>Patches available</b>.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-patches-available-query-2-2.png" alt="Patches available query"></div>
+<div align="center">Figure: Patches available query</div>
+   <pre class="sp">
+
+</pre>
+
+The Patches available query can filter by (patterns in) package name, package version, and package architecture. Leaving the fields blank will result in a report listing all patches that can be installed on the system.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview of patches that suit the query criteria entered above. The report presents the following columns: &lsquo;<samp><span class="samp">Host</span></samp>&rsquo; (host name), &lsquo;<samp><span class="samp">Package name</span></samp>&rsquo;, &lsquo;<samp><span class="samp">Version</span></samp>&rsquo; (patch version), and &lsquo;<samp><span class="samp">Architecture</span></samp>&rsquo;.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-patches-available-report-2-2.png" alt="Patches available report"></div>
+<div align="center">Figure: Patches available report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Patches-installed"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Patches-available">Patches available</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Software">Software</a>
+
+</div>
+
+<h4 class="subsection">1.4.3 Patches installed</h4>
+
+<p>Patch management can be a delicate business: sometimes a patch can cause new problems, or perhaps even more problems than it fixes. IT managers therefore often like to be in control of what patches are applied to a system. The Patch status report gives system administrators a complete overview of applied patches according to the local package manager, and, in conjunction with the patches available report, allows them to consciously decide which patches to apply or not.
+
+   <p>Put your mouse over the <b>Software</b> drop down menu in the <b>Reports</b> tab, then select <b>Patches installed</b>.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-patches-installed-query-2-2.png" alt="Patches installed query"></div>
+<div align="center">Figure: Patches installed query</div>
+   <pre class="sp">
+
+</pre>
+
+The Patches installed query can filter by (patterns in) package name, package version, and package architecture. Leaving the fields blank will result in a report listing all patches applied to the system.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview of patches that suit the query criteria entered above. The report presents results in the same format as the Patches available report: &lsquo;<samp><span class="samp">Host</span></samp>&rsquo; (host name), &lsquo;<samp><span class="samp">Package name</span></samp>&rsquo;, &lsquo;<samp><span class="samp">Version</span></samp>&rsquo; (patch version), and &lsquo;<samp><span class="samp">Architecture</span></samp>&rsquo;.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-patches-installed-report-2-2.png" alt="Patch status report"></div>
+<div align="center">Figure: Patch status report</div>
+   <pre class="sp">
+
+</pre>
+
+<!-- Patching is a subtle business with CFEngine, there is no simple way using the patch settings to install `all new system patches'. Here's why: -->
+
+<!-- If we specify the name of a patch, then CFEngine will try to see if it exists and/or is installed. If it exists in the pending list, it will be installed.  If it exists in the installed list it will not be installed. Now consider the pattern @samp{.*}. This will match any installed package, so CFEngine will assume the relevant patch has been installed already.  On the other hand, the pattern @samp{no match} will not match an installed patch, but it will not match a named patch either, so nothing is installed. -->
+<!-- Some systems provide a command to do this, which can be specified without specific patch arguments. If so, that command can be called periodically under @code{commands}. The main purposes of patching body items are: -->
+<!-- @itemize -->
+<!-- @item To install specific named patches in a controlled manner. -->
+<!-- @item To generate reports of available and installed patches during system reporting. -->
+<!-- @end itemize -->
+<!--  -->
+<div class="node">
+<a name="File-watch"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Software">Software</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Standard-reports-in-CFEngine-3-Enterprise">Standard reports in CFEngine 3 Enterprise</a>
+
+</div>
+
+<h3 class="section">1.5 File watch</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Change-summary">Change summary</a>
+<li><a accesskey="2" href="#Setuid">Setuid</a>
+<li><a accesskey="3" href="#Text-changes">Text changes</a>
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="Change-summary"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Setuid">Setuid</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#File-watch">File watch</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#File-watch">File watch</a>
+
+</div>
+
+<h4 class="subsection">1.5.1 Change summary</h4>
+
+<p>File change monitoring is about detecting when file information on a computer system changes. Awareness of changes is often considered a major part of management, especially if they are unexpected or inadvertent (expected changes are usually not a problem). With CFEngine you can either set a general tripwire to detect all changes, or, in the case of the &lsquo;<samp><span class="samp">Change summary</span></samp>&rsquo;, monitor specific files with changes promises. The report gives you relative detail of change as it presents the name of files that have been changed, when they were changed and on what host they were changed.
+
+   <p>Put your mouse over the <b>File watch</b> drop down menu in the <b>Reports</b> tab, then select <b>Change summary</b>.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-change-summary-query-2-2.png" alt="File change summary query"></div>
+<div align="center">Figure: File change summary query</div>
+   <pre class="sp">
+
+</pre>
+
+The file change log query can filter by (patterns in) file name and time interval for when the change took place. Leaving the fields blank will result in a report listing changes detected on all monitored hosts and and policies.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview of hosts that suit the query criteria entered above. The result presents the host names (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), name of the file where a change was detected (&lsquo;<samp><span class="samp">File</span></samp>&rsquo;), and time stamp of change detection (&lsquo;<samp><span class="samp">Change detected at</span></samp>&rsquo;). You can add your personal note in the right column, documenting any thoughts or issues that you might have about the query result.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-filechangelogreport.png" alt="File change log report"></div>
+<div align="center">Figure: File change log report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Setuid"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Text-changes">Text changes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Change-summary">Change summary</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#File-watch">File watch</a>
+
+</div>
+
+<h4 class="subsection">1.5.2 Setuid</h4>
+
+<!-- from wikipedia -->
+<p><code>setuid</code> and <code>setgid</code> (short for "set user ID upon execution" and "set group ID upon execution", respectively) are Unix access right flags that allow users to run an executable with the permissions of the executable's owner or group. They are often used to allow users on a computer system to run programs with temporarily elevated privileges in order to perform a specific task. The &lsquo;<samp><span class="samp">Setuid report</span></samp>&rsquo; is useful to get an overview of what processes have been elevated to root privileges and potentially uncover security issues.
+
+   <p>Put your mouse over the <b>File watch</b> drop down menu in the <b>Reports</b> tab, then select <b>Setuid</b>.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-setuid-query-2-2.png" alt="Setuid query"></div>
+<div align="center">Figure: Setuidquery</div>
+   <pre class="sp">
+
+</pre>
+
+The Setuid/gid root programs query can filter by (patterns in) file name. Leaving the fields blank will result in a report listing all hosts and files that have their permissions elevated to root.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview of promises that suit the query criteria entered above. The results are presented as host name and files that have their permissions elevated to root.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-setuid-report-2-2.png" alt="Setuid report"></div>
+<div align="center">Figure: Setuid report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Text-changes"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Setuid">Setuid</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#File-watch">File watch</a>
+
+</div>
+
+<h4 class="subsection">1.5.3 Text changes</h4>
+
+<p>A diff is a file comparison utility that outputs the differences between two files. It is typically used to show the changes between one version of a file and a former version of the same file. Diff displays the changes made per line for text files. Once a file change has been identified, for instance as seen in the file change log, you can browse the details of that change in a file change diff report.
+
+   <p>Put your mouse over the <b>File watch</b> drop down menu in the <b>Reports</b> tab, then select <b>Text changes</b>.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-text-changes-query-2-2.png" alt="Text changes query"></div>
+<div align="center">Figure: Text changes query</div>
+   <pre class="sp">
+
+</pre>
+
+The Text changes query can filter by (pattern in) file name, (pattern in) content, and time interval for when the change took place.. Leaving the fields blank will result in a report listing changes detected on all monitored hosts and and policies.
+
+   <p>Once you have clicked <b>Generate report</b>, CFEngine 3 Enterprise will list an overview of hosts that suit the query criteria entered above. The result presents the host names (&lsquo;<samp><span class="samp">Host</span></samp>&rsquo;), name of the file where a change was detected (&lsquo;<samp><span class="samp">File</span></samp>&rsquo;), the time stamp of change detection (&lsquo;<samp><span class="samp">Change detected at</span></samp>&rsquo;), and the actual diff (whether a line was added or deleted, the line number, and the content of the change; &lsquo;<samp><span class="samp">Change added (+), deleted (-); Line no; Content </span></samp>&rsquo;).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-filechangediffsreport.png" alt="File change diffs report"></div>
+<div align="center">Figure: File change diffs report</div>
+   <pre class="sp">
+
+</pre>
+
+<!--  -->
+<!-- @node -->
+<!-- @section Example: Performance report -->
+<!-- Example: how to explicitly monitor performance (execution time) of a promise. -->
+<!-- @verbatim -->
+<!-- body common control -->
+<!-- { -->
+<!-- bundlesequence => {  "test" }; -->
+<!-- } -->
+<!-- bundle agent test -->
+<!-- { -->
+<!-- command: -->
+<!-- "/bin/sleep 10" -->
+<!-- action  => background; -->
+<!-- action  => performance_measure; -->
+<!-- } -->
+<!-- body action performance_measure -->
+<!-- { -->
+<!-- measurement_class => "$(this.promiser) job scan of file sleep command"; -->
+<!-- } -->
+<!-- @end verbatim -->
+<!-- ========================================================================= -->
+<!-- @node Index,  , CFEngine Methods, Top -->
+<!-- @unnumbered Concept Index -->
+<!-- @printindex cp -->
+<!-- ========================================================================= -->
+<!-- The file is structured like a programming language. Each chapter -->
+<!-- starts with a chapter comment. -->
+<!-- Menus list the subsections so that an online info-reader can parse -->
+<!-- the file hierarchically. -->
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+   <div class="footnote">
+<hr>
+<a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> See also section on Vital signs in the CFEngine 3 Enterprise Owner's Manual.</p>
+
+   <hr></div>
+
+</body></html>
+

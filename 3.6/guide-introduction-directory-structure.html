@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.6  Documentation - CFEngine Directory Structure</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.6/assets/global-ac3885a0674bd3c9117d62800be1608f.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "CFEngine Directory Structure";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                 <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html" selected>Version 3.6 (EOL)</option>
+			                 <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:bm0uhfq8ykk" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a><ul class="level2"><li><a href="guide-introduction-architecture-design.html">CFEngine Architecture and Design</a></li><li><a class="active" href="guide-introduction-directory-structure.html">CFEngine Directory Structure</a></li><li><a href="guide-introduction-networking.html">Networking</a></li></ul></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-language-concepts.html">Language Concepts</a></li><li><a href="guide-design-center.html">Design Center Overview</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-introduction.html">Introduction and System Overview</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    CFEngine Directory Structure
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>The CFEngine application is fully contained within the /var/cfengine directory tree. Here is a quick breakdown of the directory structure and some of the files and functions associated with each subdirectory.</p>
+
+<ul>
+<li><a href="guide-introduction-directory-structure.html#var-cfengine-bin" title="CFEngine Directory Structure - /var/cfengine/bin ">/var/cfengine/bin</a></li>
+<li><a href="guide-introduction-directory-structure.html#directories-for-policy-files" title="CFEngine Directory Structure - Directories for Policy Files ">Directories for Policy Files</a></li>
+<li><a href="guide-introduction-directory-structure.html#output-directories" title="CFEngine Directory Structure - Output Directories ">Output Directories</a></li>
+<li><a href="guide-introduction-directory-structure.html#log-files-in-var-cfengine" title="CFEngine Directory Structure - Log Files in /var/cfengine ">Log Files in /var/cfengine</a></li>
+<li><a href="guide-introduction-directory-structure.html#database-files-in-var-cfengine" title="CFEngine Directory Structure - Database Files in /var/cfengine ">Database Files in /var/cfengine</a></li>
+<li><a href="guide-introduction-directory-structure.html#process-aka-pid-files-in-var-cfengine" title="CFEngine Directory Structure - Process (AKA PID) Files in /var/cfengine ">Process (AKA PID) Files in /var/cfengine</a></li>
+<li><a href="guide-introduction-directory-structure.html#sockets-in-var-cfengine" title="CFEngine Directory Structure - Sockets in /var/cfengine ">Sockets in /var/cfengine</a></li>
+<li><a href="guide-introduction-directory-structure.html#datafiles-in-var-cfengine" title="CFEngine Directory Structure - Datafiles in /var/cfengine ">Datafiles in /var/cfengine</a></li>
+<li><a href="guide-introduction-directory-structure.html#binary-files-in-var-cfengine" title="CFEngine Directory Structure - Binary Files in /var/cfengine ">Binary Files in /var/cfengine</a></li>
+<li><a href="guide-introduction-directory-structure.html#git-in-var-cfengine-bin" title="CFEngine Directory Structure - git in /var/cfengine/bin ">git in /var/cfengine/bin</a></li>
+<li><a href="guide-introduction-directory-structure.html#misc-in-var-cfengine-bin" title="CFEngine Directory Structure - Misc. in /var/cfengine/bin ">Misc. in /var/cfengine/bin</a></li>
+<li><a href="guide-introduction-directory-structure.html#postgres-in-var-cfengine-bin" title="CFEngine Directory Structure - Postgres in /var/cfengine/bin ">Postgres in /var/cfengine/bin</a></li>
+<li><a href="guide-introduction-directory-structure.html#redis-in-var-cfengine-bin" title="CFEngine Directory Structure - Redis in /var/cfengine/bin ">Redis in /var/cfengine/bin</a></li>
+</ul>
+<h2 id="var-cfengine-bin">/var/cfengine/bin</h2><h3 id="agents">Agents</h3>
+<ul>
+<li><a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>: Executes the promises.cf file; ensures that all promises are being kept</li>
+<li><code>cf-consumer</code></li>
+<li><a href="reference-components-cf-hub.html" title="cf-hub"><code>cf-hub</code></a></li>
+<li><a href="reference-components-cf-key.html" title="cf-key"><code>cf-key</code></a></li>
+<li><a href="reference-components-cf-promises.html" title="cf-promises"><code>cf-promises</code></a>: Verifies CFEngine&#39;s configuration syntax</li>
+<li><a href="reference-components-cf-runagent.html" title="cf-runagent"><code>cf-runagent</code></a>: Contacts a remote system to run cf-agent</li>
+<li><code>cf-twin</code></li>
+</ul>
+<h3 id="daemons">Daemons</h3>
+<ul>
+<li><a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a>: Starts the cf-agent process at a specified time interval.</li>
+<li><a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a>: Collects system statistics</li>
+<li><a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a>: Provides network services; used to distribute policy and data files</li>
+</ul>
+
+<p>See Also: <a href="guide-introduction.html#cfengine-component-applications-and-daemons" title="Introduction and System Overview - CFEngine Component Applications and Daemons ">CFEngine Component Applications and Daemons</a></p>
+<h2 id="directories-for-policy-files">Directories for Policy Files</h2><h3 id="var-cfengine-modules">/var/cfengine/modules</h3>
+<p>Location of scripts used in <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a> promises.</p>
+<h3 id="var-cfengine-inputs">/var/cfengine/inputs</h3>
+<p>Cached policy repository on each CFEngine client. When <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> is
+invoked by <a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a>, it reads only from this directory.</p>
+<h3 id="var-cfengine-masterfiles">/var/cfengine/masterfiles</h3>
+<p>Policy repository which grants access to local or bootstrapped CFEngine
+clients when they need to update their policies. Policies obtained from
+<code>/var/cfengine/masterfiles</code> are then cached in <code>/var/cfengine/inputs</code> for
+local policy execution. The <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> executable does not execute policies
+directly from this repository.</p>
+<h2 id="output-directories">Output Directories</h2><h3 id="var-cfengine-outputs">/var/cfengine/outputs</h3>
+<p>Directory where <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> creates its output files. The outputs directory is
+a record of spooled run-reports. These are often mailed to the administrator
+by <a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a>, or can be copied to another central location and viewed in an
+alternative browser. However, not all hosts have an email capability or are
+online, so the reports are kept here.</p>
+<h3 id="var-cfengine-reports">/var/cfengine/reports</h3>
+<p>Directory used to store reports. Reports are not tidied automatically, so you
+should delete these files after a time to avoid a build up.</p>
+<h3 id="var-cfengine-state">/var/cfengine/state</h3>
+<p>State data such as current process identifiers of running processes,
+persistent classes and other cached data.</p>
+<h3 id="var-cfengine-lastseen">/var/cfengine/lastseen</h3>
+<p>Log data for incoming and outgoing connections.</p>
+<h3 id="var-cfengine-cfapache">/var/cfengine/cfapache</h3><h3 id="var-cfengine-config">/var/cfengine/config</h3><h3 id="var-cfengine-design-center">/var/cfengine/design-center</h3><h3 id="var-cfengine-httpd">/var/cfengine/httpd</h3><h3 id="var-cfengine-lib">/var/cfengine/lib</h3>
+<p>Directory to store shared objects and dependencies that are in the bundled packages.</p>
+<h3 id="var-cfengine-lib-twin">/var/cfengine/lib-twin</h3><h3 id="var-cfengine-master_software_updates">/var/cfengine/master_software_updates</h3><h3 id="var-cfengine-plugins">/var/cfengine/plugins</h3><h3 id="var-cfengine-ppkeys">/var/cfengine/ppkeys</h3>
+<p>Directory used to store encrypted public/private keys for CFEngine
+client/server network communications.</p>
+<h3 id="var-cfengine-share">/var/cfengine/share</h3><h3 id="var-cfengine-software_updates">/var/cfengine/software_updates</h3><h3 id="var-cfengine-ssl">/var/cfengine/ssl</h3><h2 id="log-files-in-var-cfengine">Log Files in /var/cfengine</h2>
+<p>On hosts, CFEngine writes numerous logs and records to its private workspace.</p>
+
+<p><a href="enterprise-cfengine-guide.html" title="CFEngine Enterprise">CFEngine Enterprise</a> provides solutions
+for centralization and network-wide reporting at an arbitrary scale.</p>
+
+<ul>
+<li><code>cf3.[hostname].runlog</code></li>
+</ul>
+
+<p>A time-stamped log of when each lock was released. This shows the last
+time each individual promise was verified.</p>
+
+<ul>
+<li><code>cfagent.[hostname].log</code></li>
+</ul>
+
+<p>Although ambiguously named (for historical reasons) this log contains
+the current list of setuid/setgid programs observed on the system.
+CFEngine warns about new additions to this list. This log has been
+deprecated.</p>
+
+<ul>
+<li><code>cf_notkept.log</code></li>
+</ul>
+
+<p>In CFEngine Enterprise, a list of promises, with handles and comments, that
+were not kept.</p>
+
+<ul>
+<li><code>cf_repair.log</code></li>
+</ul>
+
+<p>In CFEngine Enterprise, a list of promises, with handles and comments, that were repaired.</p>
+
+<ul>
+<li><code>promise_summary.log</code></li>
+</ul>
+
+<p>A time-stamped log of the percentage fraction of promises kept after
+each run.</p>
+<h2 id="database-files-in-var-cfengine">Database Files in /var/cfengine</h2>
+<ul>
+<li>bundles.lmdb</li>
+<li><code>cf_classes.lmdb</code></li>
+</ul>
+
+<p>A database of classes that have been defined on the current host,
+including their relative frequencies, scaled like a probability.</p>
+
+<ul>
+<li><code>cf_lastseen.lmdb</code></li>
+</ul>
+
+<p>A database of hosts that last contacted this host, or were contacted by
+this host, and includes the times at which they were last observed.</p>
+
+<ul>
+<li><code>checksum_digests.lmdb</code></li>
+</ul>
+
+<p>The database of hash values used in CFEngine&#39;s change management
+functions.</p>
+
+<ul>
+<li><code>nova_agent_execution.lmdb</code></li>
+<li><code>nova_track.lmdb</code></li>
+<li><code>performance.lmdb</code></li>
+</ul>
+
+<p>A database of last, average and deviation times of jobs recorded by
+<a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>. Most promises take an immeasurably short time to check, but
+longer tasks such as command execution and file copying are measured by
+default. Other checks can be instrumented by setting a
+<a href="reference-promise-types.html#measurement_class" title="Promise Types and Attributes - measurement_class"><code>measurement_class</code></a> in the <a href="reference-promise-types.html#action" title="Promise Types and Attributes - action"><code>action</code></a> body of a promise.</p>
+<h2 id="process-aka-pid-files-in-var-cfengine">Process (AKA PID) Files in /var/cfengine</h2>
+<p>The CFEngine components keep their current process identifier number in
+`pid files&#39; in the work directory.</p>
+
+<ul>
+<li><code>cf-consumer.pid</code></li>
+<li><code>cf-execd.pid</code></li>
+<li><code>cf-hub.pid</code></li>
+<li><code>cf-monitord.pid</code></li>
+<li><code>cf-serverd.pid</code></li>
+</ul>
+<h2 id="sockets-in-var-cfengine">Sockets in /var/cfengine</h2>
+<ul>
+<li><code>cf-hub-local</code></li>
+</ul>
+<h2 id="datafiles-in-var-cfengine">Datafiles in /var/cfengine</h2>
+<ul>
+<li><code>policy_server.dat</code></li>
+</ul>
+
+<p>IP address of the policy server</p>
+<h2 id="binary-files-in-var-cfengine">Binary Files in /var/cfengine</h2>
+<ul>
+<li><code>randseed</code></li>
+</ul>
+<h2 id="git-in-var-cfengine-bin">git in /var/cfengine/bin</h2>
+<ul>
+<li><code>bin/git</code></li>
+<li><code>bin/git-cvsserver</code></li>
+<li><code>bin/gitk</code></li>
+<li><code>bin/git-receive-pack</code></li>
+<li><code>bin/git-shell</code></li>
+<li><code>bin/git-upload-archive</code></li>
+<li><code>bin/git-upload-pack</code></li>
+</ul>
+<h2 id="misc-in-var-cfengine-bin">Misc. in /var/cfengine/bin</h2>
+<ul>
+<li><code>bin/curl</code></li>
+<li><code>bin/lmdump</code></li>
+<li><code>bin/openssl</code></li>
+<li><code>bin/rpmvercmp</code></li>
+<li><code>bin/rsync</code></li>
+<li><code>bin/runalerts.sh</code></li>
+</ul>
+<h2 id="postgres-in-var-cfengine-bin">Postgres in /var/cfengine/bin</h2>
+<ul>
+<li><code>bin/clusterdb</code></li>
+<li><code>bin/createdb</code></li>
+<li><code>bin/createlang</code></li>
+<li><code>bin/createuser</code></li>
+<li><code>bin/dropdb</code></li>
+<li><code>bin/droplang</code></li>
+<li><code>bin/dropuser</code></li>
+<li><code>bin/initdb</code></li>
+<li><code>bin/pg_basebackup</code></li>
+<li><code>bin/pg_config</code></li>
+<li><code>bin/pg_controldata</code></li>
+<li><code>bin/pg_ctl</code></li>
+<li><code>bin/pg_dump</code></li>
+<li><code>bin/pg_dumpall</code></li>
+<li><code>bin/pg_isready</code></li>
+<li><code>bin/pg_receivexlog</code></li>
+<li><code>bin/pg_resetxlog</code></li>
+<li><code>bin/pg_restore</code></li>
+<li><code>bin/postgres</code></li>
+<li><code>bin/postmaster</code></li>
+<li><code>bin/psql</code></li>
+<li><code>bin/reindexdb</code></li>
+<li><code>bin/vacuumdb</code></li>
+</ul>
+<h2 id="redis-in-var-cfengine-bin">Redis in /var/cfengine/bin</h2>
+<ul>
+<li><code>bin/redis-benchmark</code></li>
+<li><code>bin/redis-check-aof</code></li>
+<li><code>bin/redis-check-dump</code></li>
+<li><code>bin/redis-cli</code></li>
+<li><code>bin/redis-server</code></li>
+</ul>
+<h2 id="not-verified">Not Verified</h2>
+<ul>
+<li><code>state/cf_lock.lmdb</code></li>
+</ul>
+
+<p>A database of active and inactive locks and their expiry times. Deleting
+this database will reset all lock protections in CFEngine.</p>
+
+<ul>
+<li><code>state/history.lmdb</code></li>
+</ul>
+
+<p>CFEngine Enterprise maintains this long-term trend database.</p>
+
+<ul>
+<li><code>state/cf_observations.lmdb</code></li>
+</ul>
+
+<p>This database contains the current state of the observational history of
+the host as recorded by <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a>.</p>
+
+<ul>
+<li><code>state/cf_state.lmdb</code></li>
+</ul>
+
+<p>A database of persistent classes active on this current host.</p>
+
+<ul>
+<li><code>state/nova_measures.lmdb</code></li>
+</ul>
+
+<p>CFEngine Enterprise database of custom measurements.</p>
+
+<ul>
+<li><code>state/nova_static.lmdb</code></li>
+</ul>
+
+<p>CFEngine Enterprise database of static system discovery data.</p>
+
+<ul>
+<li><p><code>state/cf_procs</code>
+A cache of the process table. This is useful for <code>measurement</code> promises about processes.</p></li>
+<li><p><code>state/cf_rootprocs</code>
+A cache of the process table of processes owned by the root user. This is useful for <code>measurement</code> promises about processes.</p></li>
+<li><p><code>state/cf_otherprocs</code>
+A cache of the process table for processes not owned by the root user. This is useful for <code>measurement</code> promises about processes.</p></li>
+<li><p><code>state/file_changes.log</code></p></li>
+</ul>
+
+<p>A time-stamped log of which files have experienced content changes since
+the last observation, as determined by the hashing algorithms in
+CFEngine.</p>
+
+<ul>
+<li><code>state/*_measure.log</code></li>
+</ul>
+
+<p>CFEngine Enterprise maintains user-defined logs based on specifically
+promised observations of the system.</p>
+
+<ul>
+<li><code>state/env_data</code></li>
+</ul>
+
+<p>This file contains a list of currently discovered classes and variable
+values that characterize the anomaly alert environment. They are altered
+by the monitor daemon.</p>
+
+<ul>
+<li><code>/var/logs/CFEngineHub-Install.log</code></li>
+</ul>
+
+<p>This file contains logs related to the CFEngine package installation.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-guide.html">guide</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-system.html">system</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-system-overview.html">system overview</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-directory-structure.html">directory structure</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-directories.html">directories</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-files.html">files</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/introduction/directory-structure.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/13cbf18729a5bf43d836f72e30aab3b2b0bdee7f" target="_blank">13cbf18729a5bf43d836f72e30aab3b2b0bdee7f</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.6/assets/footer-1ca6436dd462ed6a69ad3f2dba0774f0.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

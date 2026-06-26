@@ -1,0 +1,876 @@
+<html lang="en">
+<head>
+<title>Implementing Knowledge Management</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Implementing Knowledge Management">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; }
+  span.sansserif { font-family:sans-serif; font-weight:normal; }
+body {
+	font-family: Verdana, DejaVu, Vera, Geneva, sans-serif;
+	padding: 10px;
+}
+.node
+{
+	text-align: right;
+	padding: 2px;
+	font-size: smaller;
+}
+.node hr {
+	border: 0;
+	width: 100%;
+	color: #CCC;
+	background-color: #CCC;
+	height: 5px;
+}
+.section {
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+h1 {
+	font-weight: bold;
+	color: #666;
+}
+h2 {
+	font-weight: bold;
+	color: #666;
+}
+h3 {
+	margin-top: 3px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+}
+
+.menu
+{
+}
+
+.contents
+{
+	background-color: #CCC;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 10px;
+}
+
+.index-cp
+{
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 70%; }
+
+.tynn {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: smaller;
+        font-style: normal;
+        font-weight: lighter;
+        margin-bottom: 0em;
+     font-size: 11pt;
+        }
+
+.verbatim {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+
+.example {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	width: 100%;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+.smallexample {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	width: 100%;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+.cartouche {
+	background-color: #CCC;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	padding: 5px;
+	font-style: italic;
+        width: 100%;
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }--></style>
+</head>
+<body>
+<h1 class="settitle">Implementing Knowledge Management</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-is-knowledge-management_003f">What is knowledge management?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">Knowledge</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#What-is-knowledge-management_003f">What is knowledge management?</a>
+<li><a accesskey="2" href="#Risk-and-uncertainty">Risk and uncertainty</a>
+<li><a accesskey="3" href="#How-should-you-begin_003f">How should you begin?</a>
+<li><a accesskey="4" href="#The-Copernicus-Knowledge-map">The Copernicus Knowledge map</a>
+<li><a accesskey="5" href="#Pitfalls-to-avoid">Pitfalls to avoid</a>
+<li><a accesskey="6" href="#Types-of-information">Types of information</a>
+<li><a accesskey="7" href="#Example-company_005fknowledge_002ecf">Example company_knowledge.cf</a>
+<li><a accesskey="8" href="#Knowledge-transfer">Knowledge transfer</a>
+<li><a accesskey="9" href="#How-does-CFEngine-Nova-help_003f">How does CFEngine Nova help?</a>
+</ul>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<div class="node">
+<a name="What-is-knowledge-management%3f"></a>
+<a name="What-is-knowledge-management_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Risk-and-uncertainty">Risk and uncertainty</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">What is knowledge management?</h3>
+
+<pre class="sp">
+
+</pre>
+
+Everyone agrees that Knowledge Management is important, but
+few really appreciate what it means to manage knowledge, or how to
+begin.  Ironically perhaps, even learning institutions (so-called knowledge
+based industries) like schools and universities often do not do a good
+job of this.  Having a wealth of knowledge is not the same as knowing
+how to foster and protect it.  Most organizations take their
+knowledge for granted.
+
+   <p>In the worst case, poorly run organizations end up as collections of
+individuals, each of whom possesses knowledge and experience,
+but none of whom knows anything about the others' roles.  This scenario presents a
+high risk for the continuity of the organization, since taking out
+even a single player could cripple a key work process.
+
+   <p>The end result is that many organizations are caught in a poverty trap
+of knowledge: they spend their time reacting to emergencies cultivated
+by a lack of confidence and certainty, and they are too busy patching over holes that
+they never have time to learn enough to escape the pattern.
+
+<div class="node">
+<a name="Risk-and-uncertainty"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#How-should-you-begin_003f">How should you begin?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-is-knowledge-management_003f">What is knowledge management?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Risk and uncertainty</h3>
+
+<pre class="sp">
+
+</pre>
+
+Knowledge exists to reduce our uncertainty about the world. We don't
+generally learn in order to get smart, or to be experts; rather we
+learn by necessity and feel smart when there are no remaining
+surprises. Experts are people who can answer questions they already
+know the answer to; they are supposedly extra-ordinary. Innovators are
+people who can solve new problems &ndash; they are even rarer.
+
+   <p>The main aim of knowledge management is not to make everyone an
+expert, but to improve the predictability of workflow processes so
+that we can respond to unpredictable changes in the environment with
+greater confidence, without losing the feeling of control over
+the situations we find ourselves in.
+To do that, we have to make the connections between the appropriate
+parts to that we can always obtain the answers.
+
+<div class="node">
+<a name="How-should-you-begin%3f"></a>
+<a name="How-should-you-begin_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#The-Copernicus-Knowledge-map">The Copernicus Knowledge map</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Risk-and-uncertainty">Risk and uncertainty</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">How should you begin?</h3>
+
+<pre class="sp">
+
+</pre>
+The road to maturity can be seen as stepping through one or more of
+the following progressions:
+
+   <pre class="sp">
+
+</pre>
+     <ul>
+<li>Data \rightarrow Information \rightarrow Knowledge \rightarrow Wisdom    (DIKW)
+
+     <li>Objectives \rightarrow Results
+
+     <li>Intentions \rightarrow Promises \rightarrow Assessments
+</ul>
+
+   <pre class="sp">
+
+</pre>
+
+<img src="/img/outside/dikw.png" alt="DIKW">
+
+   <p>Each of these sequences represents an increasing level of commitment.
+You need to have data to interpret them as information. You need to
+have goals or objectives in order to realize them and see results. You
+need to have intentions to make promises, and so on.  Ask yourself:
+does everyone in your team know your business goals, and how to
+translate their efforts into progess?
+
+<div class="node">
+<a name="The-Copernicus-Knowledge-map"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Pitfalls-to-avoid">Pitfalls to avoid</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#How-should-you-begin_003f">How should you begin?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">The Copernicus Knowledge Map in CFEngine</h3>
+
+<p>Maps guide us to where we need to get to from where we are (even when we don't
+fully understand where we are). A map places us in the context or a larger
+picture and helps us to find our way.
+The Copernicus Knowledge Map is a part of the CFEngine Mission Portal,
+which in turn is provided with CFEngine Nova and Constellation Editions.
+Significant instrumentation of the software, user process and policy analysis
+are provided in these editions in order to make Knowledge mining as transparent
+to the user as possible.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+Our first task in Knowledge Management is to create a map of the knowledge
+landscape in which we work.
+</td></tr></table>
+
+   <p>CFEngine contains a tool <code>cf-know</code> for creating a map called a
+Topic Map, that forms to basis of our approach to documentation.
+Further, CFEngine Enterprise Editions, starting with Nova help fill in
+the landscape of this map automatically.
+
+   <p>To build a map, you will need data (hence the beginning of the DIKW chain).
+To use a map, you need an objective or an intention, hence the others.
+
+   <p>Ask yourself: what are the places in this map, and what are the paths between them?
+This is a question every organization needs to ask itself.
+
+   <pre class="sp">
+
+</pre>
+<div class="node">
+<a name="Pitfalls-to-avoid"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Types-of-information">Types of information</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#The-Copernicus-Knowledge-map">The Copernicus Knowledge map</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Pitfalls to avoid</h3>
+
+<pre class="sp">
+
+</pre>
+
+CFEngine does a lot of work for you, but you need to do something to help
+yourself too. Your organization should create documents and references
+to capture its internal knowledge. If you are doing this well, it should not be
+a major task.
+
+   <p>Knowledge gets out of control when you don't standardize ideas,
+concepts and procedures. By standardizing topics and concepts, you
+prevent an explosion of redundancy &ndash; only then can you see
+the signal in the noise. Standardization minimizes the number of things
+you have to deal with. Be careful though, if you go too far, standardization
+can become a straightjacket, preventing you from clear and free expression.
+Too much standardization and you will be stuck in a rut.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+Dedicate yourself to a culture of simplicity, but not of
+over-simplification (which often backfires). Always work to avoid
+special cases and exceptions, unless they can be rigorously justified.
+</td></tr></table>
+
+   <p>This is a question of economics: is it worth the cost of maintaining a
+special case? CFEngine's is designed to make it a lot easier and
+cheaper to manage exceptions, so you needn't worry too much. Just
+don't go mad.
+
+   <p>Simplification is the hardest thing you will ever do. Anyone can make
+something more complicated, but it takes real work to simplify
+something<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>.  Einstein's famous quote
+captures this: <i>You should always make everything as simple as
+possible, but no simpler.</i>
+
+<div class="node">
+<a name="Types-of-information"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-company_005fknowledge_002ecf">Example company_knowledge.cf</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Pitfalls-to-avoid">Pitfalls to avoid</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Types of information</h3>
+
+<pre class="sp">
+
+</pre>
+
+There are many kinds of information that contribute to a strategy for
+managing knowledge. The ability to learn from past mistakes demands
+that we look both forwards and backwards, while realizing that
+knowledge grows older and less useful the older it gets.
+For instance, what is known about the past? What
+is current? How can we track these things?  Information comes in
+logically different categories as well as different types.  Data have
+different sources, and are about different epochs.  We need to unify
+and integrate these in Knowledge Management.
+
+     <dl>
+<dt><i>Conceptual information (Always)</i><dd>
+Conceptual information is knowledge of a general nature that defines
+basic terms and concepts that describe the operational area of the
+organization. e.g. background theory, compliance requirements, frameworks, license
+expiry documents. Contracts and agreements.
+
+     <p>This information comes from the wider culture of the enterprise. It is often
+treated poorly as our modern culture has an unreasonable suspicion of anything that
+seems `academic'.
+
+     <br><dt><i>System observations (Past)</i><dd>
+Recording what has actually happened in the organization. This includes
+the IT system, but also the business services and workflows, e.g.
+changes, transactions, logs, incidents, events, performance values (Key
+Performance Indicators), audits, security scans, etc. This includes
+what it traditionally called system monitoring.
+
+     <p>This comes from probing and monitoring human-computer processes.
+
+     <br><dt><i>Enterprise process documentation (Now)</i><dd>
+These documents are about business internals, recipes, manuals and
+how-tos.  They allow individuals to work autonomously without constant
+supervision, because they all have a copy of the script. This
+information is about <i>orchestration</i> of parts. In an orchestra each
+player can manage to play his or her part with only minimal advice
+from a conductor because they each have a copy of their music. Their
+music is their process documentation.
+
+     <p>This is closely related to policy and comes from internal management bodies.
+
+     <br><dt><i>Policy (Future)</i><dd>
+Here are the promises and intentions of the IT mission.  Documents of
+all degrees of technicality form policy. They contain the decisions
+you have made for steering the mission under all possible
+contingencies.
+
+     <p>Policy is informed by all of the above, and usually changes in
+response to recurring `problems' identified in the observations. It
+originates from internal management.
+
+   </dl>
+
+   <pre class="sp">
+
+</pre>
+
+<h3 class="unnumberedsec">Creating your own map</h3>
+
+<pre class="sp">
+
+</pre>
+CFEngine provides a lot of knowledge about your system out of the box, that includes a domain
+model about the space of IT management, and an automated analysis of the deployed policy.
+Below are some notes about how this is built, and things you can do to improve the information
+by adding knowledge that cannot be discovered automatically.
+     <ol type=1 start=1>
+
+     <li>You begin by documenting your intentions by creating a cfengine automation policy, i.e. bundles of promises.
+
+     <li>You add comments, handles, promisees etc to your policy to full explain your intentions.
+
+     <li>You can assign each host in your network to a special class that represents its
+physical location, using <code>classes:</code> promises. You should then collect
+such classes into a topic context called &lsquo;<samp><span class="samp">locations::</span></samp>&rsquo; in the <samp><span class="file">company_knowledge.cf</span></samp> file.
+
+     <li>CFEngine runs <code>cf-promises -r</code> to build a decompsition of your
+current policy.
+
+     <li>CFEngine runs <code>cf-know -bf enterprise_build.cf</code> to build the knowledge map.
+
+     <li>You may create enterprise process documents and written policies for your
+organization, which you will link into the knowledge map.
+
+     <li>CFEngine Nova creates the Copernicus Knowledge Map which includes
+a conceptual framework for IT management, and which integrates with
+the cfengine software documentation. Copernicus has two parts: i) a self-organizing
+map that belongs to you, and ii) a static map of more encylop&aelig;dic information
+that is located at cfengine.com.
+
+     <li>You may now extend the basic knowledge map with more of your
+own special documentation by placing references and
+additional concepts into the file <samp><span class="file">company_knowledge.cf</span></samp>, on the policy server.
+
+        </ol>
+
+<h3 class="unnumberedsec">Documenting goals</h3>
+
+<p>Business goals are shown in the service catalogue in the Mission Portal of CFEngine Nova and Constellation
+for each hub. To document the fact that a promise or bundle contributes to a business goal,
+you must do two things:
+
+     <ol type=1 start=1>
+<li>Document the goal (see below under the example <samp><span class="file">company_knowledge.cf</span></samp> file). e.g.
+<pre class="verbatim">     topics:
+
+       goals::
+         "goal 1" comment => "Do good things";
+         "goal 2" comment => "Be first";
+         "goal 3" comment => "Be best";
+
+</pre>
+<li>Make the goal a promisee of the promise concerned.
+
+     <pre class="verbatim">     methods:
+
+        "security"  -> { goal_1, goal_2 }
+
+                        comment => "Basic change management",
+                      usebundle => change_management;
+        "maintenance"
+                        comment => "Perform log rotation",
+                      usebundle => garbage_collection;
+</pre>
+
+        </ol>
+
+<h3 class="unnumberedsec">Documenting locations</h3>
+
+<p>To document the location of a host, make sure that it is placed inside a class that represents its address:
+
+<pre class="verbatim">classes:
+
+  "london"     or => { "host1", "host2" };
+  "alexandria" or => { "host3", "host4", "host5" };
+
+</pre>
+Then designate these classes as locations in the knowledge map:
+<pre class="verbatim">topics:
+
+ locations::
+
+  "london"     comment => "29 Market Street, London XW4, third on the left";
+  "alexandria" comment => "Secret chamber, discovered by Indiana Jones";
+
+</pre>
+
+<div class="node">
+<a name="Example-company_knowledge.cf"></a>
+<a name="Example-company_005fknowledge_002ecf"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Knowledge-transfer">Knowledge transfer</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Types-of-information">Types of information</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Example <samp><span class="file">company_knowledge.cf</span></samp></h3>
+
+<pre class="verbatim">
+bundle knowledge company_knowledge
+{
+things:
+
+ regions::
+
+   "Americas" comment => "USA, Latin America and Canada";
+
+   "EMEA"     comment => "Europe, The Middle-East and Africa";
+
+   "APAC"     comment => "Asia and the Pacific countries";
+
+ countries::
+
+   "USA";
+
+   "Germany";
+
+   "UK"            synonyms => { "Great Britain" },
+              is_located_in => { "EMEA", "Europe" };
+
+   "Netherlands"   synonyms => { "Holland" },
+              is_located_in => { "EMEA", "Europe" };
+
+   "Singapore"     is_located_in => { "APAC", "Asia" };
+
+ site_locations::
+
+   # Use this for the names of
+
+   "London_1"  is_located_in => { "London", "UK" };
+   "New_Jersey"  is_located_in => { "USA" };
+
+ routers::
+
+  "oslo-hub-p6 "   comment => "Cisco xyz router, 3rd floor machine room, 6 Penny Street";
+  "oslo-hub-trunk" comment => "Cisco BGP router,  floor machine room";
+  "nyc-hub-456"    comment => "Juniper 123 router, 3rd floor machine room";
+
+ networks::
+
+  "192.23.45.0/24"
+                  comment => "Secure network, zone 0. Single octet for corporate offices",
+          is_connected_to => { "oslo-hub-123" };
+
+  "192.12.74.0/23"    comment => "Zone 1, double octet for the London office developer network",
+              is_connected_to => { "oslo-hub-123" };
+
+  "192.12.74.0/23"
+                     comment => "Secure, single octet for the NYC office",
+             is_connected_to => { "nyc-hub-456" };
+
+
+#######
+
+topics:
+
+ company::
+
+  "ED"  comment => "Exceptional Devices Ltd";
+
+ ED::
+
+  "EGC"             comment => "Enterprise grid computing",
+                association => a("develops stuff within",
+                                 "ED",
+                                 "contains its engineering unit");
+
+  "EBC"             comment => "Enterprise business computing",
+                association => a("handles business services within",
+                                 "ED",
+                                 "contains its business unit");
+
+  "ED terminology" comment => "Internal company nomenclature";
+
+ ED_terminology::
+
+  "interactive job"   comment => "Interactive software running in the grid";
+
+  "apps"              comment => "Software applications",
+                  association => a("are also referred to as",
+                                   "interactive jobs",
+                                   "are also referred to as");
+
+  "business services" comment => "Support services for sales";
+
+########################
+# GOALS as topics
+########################
+
+  goals::
+
+    "goal 1" comment => "The company mission depends on reliability to our customers";
+    "goal 2" comment => "Should be running recent versions of key software";
+    "goal 3" comment => "The company must be compliant with Sarbanes Oxley act.";
+    "goal 4" comment => "Comply with US Export restrictions for class D countries";
+
+
+#######
+# Documents below
+#######
+
+occurrences:
+
+ # Fill in company references here
+
+ work_shifts::
+
+    "http://www.example.com/shifts_and_rotas.ods"
+       represents => { "Spreadsheet" };
+
+
+ current_projects::
+
+    "http://www.example.com/scope_of_work.html"
+       represents => { "SOW" };
+
+
+ software_licenses::
+
+    "This cfengine software license expires &lt;b>$(sys.expires)&lt;/b>"
+   representation => "literal",
+       represents => { "CFEngine Nova" };
+
+}
+
+</pre>
+
+<pre class="sp">
+
+</pre>
+
+<h3 class="unnumberedsec">What other special documents should an organization have?</h3>
+
+<pre class="sp">
+
+</pre>
+CFEngine cannot produce everything you need for your library of knowledge.
+There cannot be hard and fast rules about this. Here are some suggestions:
+
+     <ul>
+<li>A policy on human roles and responsibilities, to avoid gaps in and unecessary doubling of effort.
+<li>A risk/security policy.
+<li>A standardization and procedure manual.
+<li>Incident logs of matters not detected and repaired by cfengine.
+<li>Repair logs of matters not  detected and repaired by cfengine.
+<li>Requests for change (RFC) logs.
+<li>Promises in your organization that are not just for cfengine to keep, documenting intentions.
+<li>A policy on Knowledge Retention and Business Continuity.
+</ul>
+
+   <pre class="sp">
+
+</pre>
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+Hint: a simple way to have a log is to use a tickets system like OTRS or a moderated mailing list, and to email
+new entries. Something like a Mailman archive allows then tracking and integration.
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+
+<div class="node">
+<a name="Knowledge-transfer"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#How-does-CFEngine-Nova-help_003f">How does CFEngine Nova help?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-company_005fknowledge_002ecf">Example company_knowledge.cf</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Knowledge transfer</h3>
+
+<pre class="sp">
+
+</pre>
+
+Passing on knowledge to others could be considered a `best
+practice'.  Alas, this is not as easy as it sounds.  There are plenty
+of strategies to achieve knowledge transfer:
+
+     <ul>
+<li>Reading
+<li>Taking courses
+<li>Research
+<li>Repetition
+<li>Job swapping and promotion
+</ul>
+
+<p class="noindent">These are just a few. However, this list is old news, and
+these items alone will not lead to knowledge transfer.
+
+   <p>One of the most important <i>barriers</i> to knowledge transfer is that
+individuals refuse to learn new things. A lack of dynamism in a
+company or organization establishes patterns of habit that are hard to
+break. The longer they last, the more likely they are to continue.
+
+   <p>Promise theory makes clear that, even if all staff promise
+to write excellent documentation, they do not necessarily promise
+to read each others' documents. Transfer requires a commitment both
+to send and to receive.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+     <ul>
+<li>The final step to managing knowledge is to foster a culture
+of knowledge acquisition, retention and transfer.
+
+     <li>Knowledge transfer requires a commitment by all parties
+          <ul>
+<li>to learn outside of their box.
+
+          <li>to pass on their expertise to others.
+</ul>
+     </ul>
+   </td></tr></table>
+
+   <p>Communication skills are clearly important, but this is a serious flaw
+in the idea. Written communication skills are not as common as we
+might think. This means it is hard for the writer, and also for the
+reader.
+
+   <p>The solution taken by cfengine is to reduce the problem of
+documentation to one of coding notes and relationships. This requires
+only minor writing skills. The technology can then assemble these notes
+using intelligent algorithms and present the result in an organized form
+with visual aids. You should pay special attention to the syntax items:
+
+<pre class="verbatim"> comment =>
+ handle =>
+ depends_on =>
+
+ -> { promisees }
+
+</pre>
+
+   <p>You need to foster a culture of using information, in order for it
+to become assimilated as knowledge. Unused information will perish.
+
+<div class="node">
+<a name="How-does-CFEngine-Nova-help%3f"></a>
+<a name="How-does-CFEngine-Nova-help_003f"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Knowledge-transfer">Knowledge transfer</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">How does CFEngine Nova help?</h3>
+
+     <ul>
+<li>CFEngine assists knowledge management by providing tools for integration
+of knowledge sources.
+
+     <li>A formal structure for encoding policy at relationships at a functional level
+
+     <li>Technical syntax makes annotation easy for IT workers, and cfengine can construct
+the surrounding story using intelligent algorithms.
+</ul>
+
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">Knowledge</a>
+<ul>
+<li><a href="#What-is-knowledge-management_003f">What is knowledge management?</a>
+<li><a href="#Risk-and-uncertainty">Risk and uncertainty</a>
+<li><a href="#How-should-you-begin_003f">How should you begin?</a>
+<li><a href="#The-Copernicus-Knowledge-map">The Copernicus Knowledge Map in CFEngine</a>
+<li><a href="#Pitfalls-to-avoid">Pitfalls to avoid</a>
+<li><a href="#Types-of-information">Types of information</a>
+<li><a href="#Types-of-information">Creating your own map</a>
+<li><a href="#Types-of-information">Documenting goals</a>
+<li><a href="#Types-of-information">Documenting locations</a>
+<li><a href="#Example-company_005fknowledge_002ecf">Example <samp><span class="file">company_knowledge.cf</span></samp></a>
+<li><a href="#Example-company_005fknowledge_002ecf">What other special documents should an organization have?</a>
+<li><a href="#Knowledge-transfer">Knowledge transfer</a>
+<li><a href="#How-does-CFEngine-Nova-help_003f">How does CFEngine Nova help?</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://
+ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-
+analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+   <div class="footnote">
+<hr>
+<a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> This is a general statement of the second law of
+thermodynamics &ndash; entropy tends to increase. If we want to reduce it
+locally, we have to expend a lot of effort.</p>
+
+   <hr></div>
+
+</body></html>
+

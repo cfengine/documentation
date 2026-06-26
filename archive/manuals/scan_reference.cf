@@ -1,0 +1,2942 @@
+
+bundle knowledge cf2_Reference
+
+{
+topics:
+
+"cf2-Reference";
+Example_configuration_files::
+    "cfservd.conf tutorial" ;
+Example_configuration_files::
+    "cf.freebsd / cf.netbsd" ;
+Example_configuration_files::
+    "cf.linux" ;
+Example_configuration_files::
+    "cf.solaris" ;
+Example_configuration_files::
+    "cf.users" ;
+Example_configuration_files::
+    "cf.motd" ;
+Example_configuration_files::
+    "cf.site" ;
+Example_configuration_files::
+    "cf.main" ;
+Example_configuration_files::
+    "cf.groups" ;
+Example_configuration_files::
+    "cfagent.conf" ;
+Example_configuration_files::
+    "Example configuration files" ;
+Problem_solving::
+    "cfrc resource file" ;
+Problem_solving::
+    "cf.preconf bootstrap file" ;
+Problem_solving::
+    "Problem solving" ;
+Cfexecd_reference::
+    "Cfexecd reference" ;
+Cfservd_and_cfrun_reference::
+    "Firewalls and NATs" ;
+Cfservd_and_cfrun_reference::
+    "cfrun" ;
+admit__grant_and_deny::
+    "SkipVerify" ;
+admit__grant_and_deny::
+    "encrypt=true" ;
+admit__grant_and_deny::
+    "root=" ;
+Cfservd_and_cfrun_reference::
+    "admit, grant and deny" ;
+control_cfservd::
+    "DynamicAddresses" ;
+control_cfservd::
+    "TrustKeysFrom" ;
+control_cfservd::
+    "MaxConnections" ;
+control_cfservd::
+    "LogEncryptedTransfers" ;
+control_cfservd::
+    "LogAllConnections" ;
+control_cfservd::
+    "IfElapsed in cfservd" ;
+control_cfservd::
+    "HostnameKeys in cfservd" ;
+control_cfservd::
+    "DenyConnectionsFrom" ;
+control_cfservd::
+    "DenyBadClocks" ;
+control_cfservd::
+    "cfrunCommand" ;
+control_cfservd::
+    "ChecksumDatabase in cfservd" ;
+control_cfservd::
+    "BindToInterface in cfservd" ;
+control_cfservd::
+    "AutoExecInterval" ;
+control_cfservd::
+    "AutoExecCommand" ;
+control_cfservd::
+    "AllowUsers" ;
+control_cfservd::
+    "AllowMultipleConnectionsFrom" ;
+control_cfservd::
+    "AllowConnectionsFrom" ;
+control_cfservd::
+    "IP address ranges" ;
+Cfservd_and_cfrun_reference::
+    "control cfservd" ;
+Cfservd_and_cfrun_reference::
+    "Cfservd and cfrun reference" ;
+Cfagent_reference::
+    "unmount" ;
+Cfagent_reference::
+    "tidy" ;
+Cfagent_reference::
+    "strategies" ;
+Cfagent_reference::
+    "shellcommands" ;
+Cfagent_reference::
+    "scli" ;
+Cfagent_reference::
+    "resolve" ;
+Cfagent_reference::
+    "required" ;
+Cfagent_reference::
+    "rename" ;
+Cfagent_reference::
+    "Packages" ;
+Cfagent_reference::
+    "processes" ;
+Cfagent_reference::
+    "mountables" ;
+Cfagent_reference::
+    "miscmounts" ;
+methods::
+    "Remote host examples" ;
+methods::
+    "Localhost examples" ;
+Cfagent_reference::
+    "methods" ;
+Cfagent_reference::
+    "mailserver" ;
+links::
+    "Hard Links" ;
+links::
+    "Relative and absolute links" ;
+links::
+    "Link Children" ;
+links::
+    "Multiple Links" ;
+links::
+    "Single links" ;
+Cfagent_reference::
+    "links" ;
+Cfagent_reference::
+    "interfaces" ;
+Cfagent_reference::
+    "import" ;
+Cfagent_reference::
+    "ignore" ;
+Cfagent_reference::
+    "homeservers" ;
+Cfagent_reference::
+    "groups/classes" ;
+filters::
+    "Complete filter examples" ;
+Cfagent_reference::
+    "filters" ;
+files::
+    "create" ;
+files::
+    "touch" ;
+files::
+    "Files linkchildren" ;
+files::
+    "Owner and group wildcards" ;
+files::
+    "home directive" ;
+files::
+    "Checksums and change management" ;
+files::
+    "Directory permissions" ;
+files::
+    "Recursion" ;
+files::
+    "Syntax" ;
+Cfagent_reference::
+    "files" ;
+Cfagent_reference::
+    "Editfiles on Binary Files" ;
+editfiles::
+    "WarnIfNoSuchLine" ;
+editfiles::
+    "WarnIfNoLineStarting" ;
+editfiles::
+    "WarnIfNoLineMatching" ;
+editfiles::
+    "WarnIfNoLineContaining" ;
+editfiles::
+    "WarnIfLineStarting" ;
+editfiles::
+    "WarnIfLineMatching" ;
+editfiles::
+    "WarnIfLineContaining" ;
+editfiles::
+    "WarnIfFileMissing" ;
+editfiles::
+    "UseShell" ;
+editfiles::
+    "UnsetAbort" ;
+editfiles::
+    "UnCommentToLineMatching" ;
+editfiles::
+    "UnCommentNLines" ;
+editfiles::
+    "UnCommentLinesMatching" ;
+editfiles::
+    "UnCommentLinesContaining" ;
+editfiles::
+    "Umask" ;
+editfiles::
+    "Syslog editfiles" ;
+editfiles::
+    "SplitOn" ;
+editfiles::
+    "SlashCommentLinesStarting" ;
+editfiles::
+    "SlashCommentLinesMatching" ;
+editfiles::
+    "SlashCommentLinesContaining" ;
+editfiles::
+    "SetScript" ;
+editfiles::
+    "SetLine" ;
+editfiles::
+    "SetCommentEnd" ;
+editfiles::
+    "SetCommentStart" ;
+editfiles::
+    "RunScriptIfNoLineMatching" ;
+editfiles::
+    "RunScriptIfLineMatching" ;
+editfiles::
+    "RunScript" ;
+editfiles::
+    "ResetSearch" ;
+editfiles::
+    "Repository editfiles" ;
+editfiles::
+    "ReplaceLinesMatchingField" ;
+editfiles::
+    "ReplaceFirst/With" ;
+editfiles::
+    "ReplaceAll/With" ;
+editfiles::
+    "ReplaceLineWith" ;
+editfiles::
+    "Recurse" ;
+editfiles::
+    "PrependIfNoSuchLine" ;
+editfiles::
+    "PrependIfNoLineMatching" ;
+editfiles::
+    "Prepend" ;
+editfiles::
+    "PercentCommentLinesStarting" ;
+editfiles::
+    "PercentCommentLinesMatching" ;
+editfiles::
+    "PercentCommentLinesContaining" ;
+editfiles::
+    "LocateLineMatching" ;
+editfiles::
+    "InsertLine" ;
+editfiles::
+    "InsertFile" ;
+editfiles::
+    "Inform editfiles" ;
+editfiles::
+    "IncrementPointer quoted-number" ;
+editfiles::
+    "IfElapsed" ;
+editfiles::
+    "HashCommentLinesStarting" ;
+editfiles::
+    "HashCommentLinesMatching" ;
+editfiles::
+    "HashCommentLinesContaining" ;
+editfiles::
+    "GotoLastLine" ;
+editfiles::
+    "ForEachLineIn quoted-filename" ;
+editfiles::
+    "FixEndOfLine" ;
+editfiles::
+    "Filter" ;
+editfiles::
+    "ExpireAfter editfiles" ;
+editfiles::
+    "ExpandVariables" ;
+editfiles::
+    "EndLoop" ;
+editfiles::
+    "EndGroup" ;
+editfiles::
+    "ElseDefineClasses" ;
+editfiles::
+    "EmptyEntireFilePlease" ;
+editfiles::
+    "EditSplit" ;
+editfiles::
+    "EditMode and binary editing" ;
+editfiles::
+    "DeleteToLineMatching" ;
+editfiles::
+    "DeleteNLines" ;
+editfiles::
+    "DeleteLinesNotStartingFileItems" ;
+editfiles::
+    "DeleteLinesNotMatchingFileItems" ;
+editfiles::
+    "DeleteLinesNotContainingFileItems" ;
+editfiles::
+    "DeleteLinesStarting" ;
+editfiles::
+    "DeleteLinesMatching/DeleteLinesNotMatching" ;
+editfiles::
+    "DeleteLinesContaining/DeleteLinesNotContaining" ;
+editfiles::
+    "DeleteLinesAfterThisMatching" ;
+editfiles::
+    "DefineInGroup" ;
+editfiles::
+    "DefineClasses" ;
+editfiles::
+    "CommentToLineMatching" ;
+editfiles::
+    "CommentNLines" ;
+editfiles::
+    "CommentLinesStarting" ;
+editfiles::
+    "CommentLinesMatching" ;
+editfiles::
+    "CatchAbort" ;
+editfiles::
+    "BreakIfLineMatches" ;
+editfiles::
+    "BeginGroupIfNoSuchLine" ;
+editfiles::
+    "BeginGroupIfNoMatch" ;
+editfiles::
+    "BeginGroupIfNoLineMatching" ;
+editfiles::
+    "BeginGroupIfNoLineContaining" ;
+editfiles::
+    "BeginGroupIfMatch" ;
+editfiles::
+    "BeginGroupIfLineMatching" ;
+editfiles::
+    "BeginGroupIfLineContaining" ;
+editfiles::
+    "BeginGroupIfFileIsNewer" ;
+editfiles::
+    "BeginGroupIfFileExists" ;
+editfiles::
+    "BeginGroupIfNotDefined" ;
+editfiles::
+    "BeginGroupIfDefined" ;
+editfiles::
+    "Backup in editfiles" ;
+editfiles::
+    "AutomountDirectResources" ;
+editfiles::
+    "AutoCreate" ;
+editfiles::
+    "Audit in editfiles" ;
+editfiles::
+    "AppendToLineIfNotContains" ;
+editfiles::
+    "AppendIfNoSuchLinesFromFile" ;
+editfiles::
+    "AppendIfNoSuchLine" ;
+editfiles::
+    "AppendIfNoLineMatching" ;
+editfiles::
+    "Append" ;
+editfiles::
+    "AbortAtLineMatching" ;
+Cfagent_reference::
+    "editfiles" ;
+Cfagent_reference::
+    "disable" ;
+Cfagent_reference::
+    "directories" ;
+Cfagent_reference::
+    "disks" ;
+Cfagent_reference::
+    "defaultroute" ;
+copy::
+    "Too many open files" ;
+copy::
+    "Hard links in copying" ;
+copy::
+    "copy example" ;
+Cfagent_reference::
+    "copy" ;
+Cfagent_reference::
+    "classes" ;
+control::
+    "WarnNonOwnerMail" ;
+control::
+    "WarnNonUserMail" ;
+control::
+    "WarnNonOwnerFiles" ;
+control::
+    "WarnNonUserFiles" ;
+control::
+    "Warnings" ;
+control::
+    "Verbose" ;
+control::
+    "TimeOut" ;
+control::
+    "timezone" ;
+control::
+    "SyslogFacility" ;
+control::
+    "Syslog" ;
+control::
+    "sysadm" ;
+control::
+    "suspiciousnames" ;
+control::
+    "SUNInstallCommand" ;
+control::
+    "SpoolDirectories" ;
+control::
+    "Split" ;
+control::
+    "SplayTime" ;
+control::
+    "smtpserver" ;
+control::
+    "SkipIdentify" ;
+control::
+    "site/faculty" ;
+control::
+    "SingleCopy" ;
+control::
+    "ShowActions" ;
+control::
+    "SensibleSize" ;
+control::
+    "SensibleCount" ;
+control::
+    "SecureInput" ;
+control::
+    "Schedule" ;
+control::
+    "RPMInstallCommand" ;
+control::
+    "RPMcommand" ;
+control::
+    "Repository" ;
+control::
+    "RepChar" ;
+control::
+    "PortageInstallCommand" ;
+control::
+    "nfstype" ;
+control::
+    "NonAlphaNumFiles" ;
+control::
+    "netmask" ;
+control::
+    "mountpattern" ;
+control::
+    "moduledirectory" ;
+control::
+    "LogTidyHomeFiles" ;
+control::
+    "LogDirectory" ;
+control::
+    "LinkCopies" ;
+control::
+    "LastSeenExpireAfter" ;
+control::
+    "LastSeen" ;
+control::
+    "FileExtensions" ;
+control::
+    "InterfaceName" ;
+control::
+    "Inform" ;
+control::
+    "IgnoreInterfaceRegex" ;
+control::
+    "FriendIgnoreRegex" ;
+control::
+    "IfElapsed in cfagent" ;
+control::
+    "HostnameKeys in cfagent" ;
+control::
+    "HomePattern" ;
+control::
+    "FullEncryption" ;
+control::
+    "FreeBSDRemoveCommand" ;
+control::
+    "FreeBSDInstallCommand" ;
+control::
+    "ExpireAfter" ;
+control::
+    "ExcludeLink" ;
+control::
+    "ExcludeCopy" ;
+control::
+    "Exclamation" ;
+control::
+    "EmptyResolvConf" ;
+control::
+    "editfilesize" ;
+control::
+    "editbinaryfilesize" ;
+control::
+    "DryRun" ;
+control::
+    "DPKGInstallCommand" ;
+control::
+    "domain" ;
+control::
+    "DeleteNonOwnerMail" ;
+control::
+    "DeleteNonUserMail" ;
+control::
+    "DeleteNonOwnerFiles" ;
+control::
+    "DeleteNonUserFiles" ;
+control::
+    "DefaultPkgMgr" ;
+control::
+    "DefaultCopyType" ;
+control::
+    "CopyLinks" ;
+control::
+    "ChildLibPath" ;
+control::
+    "CompressCommand" ;
+control::
+    "ChecksumUpdates" ;
+control::
+    "ChecksumPurge" ;
+control::
+    "ChecksumDatabase in cfagent" ;
+control::
+    "BindToInterface in cfagent" ;
+control::
+    "BinaryPaddingChar" ;
+control::
+    "AutoDefine" ;
+control::
+    "Auditing" ;
+control::
+    "AllowRedefinitionOf" ;
+control::
+    "AddInstallable" ;
+control::
+    "AddClasses" ;
+control::
+    "actionsequence" ;
+control::
+    "access" ;
+control::
+    "AbortClasses" ;
+Cfagent_reference::
+    "control" ;
+Cfagent_reference::
+    "broadcast" ;
+Cfagent_reference::
+    "binservers" ;
+Cfagent_reference::
+    "alerts" ;
+acl::
+    "Posix ACL Example" ;
+acl::
+    "Windows ACL Example" ;
+acl::
+    "NT ACLs" ;
+acl::
+    "DFS ACLs" ;
+acl::
+    "Solaris ACLs" ;
+acl::
+    "Access control entries" ;
+Cfagent_reference::
+    "acl" ;
+Cfengine_classes::
+    "Examples setting classes" ;
+Cfengine_classes::
+    "IsLessThan" ;
+Cfengine_classes::
+    "IsGreaterThan" ;
+Cfengine_classes::
+    "UserExists" ;
+Cfengine_classes::
+    "Strcmp" ;
+Cfengine_classes::
+    "ReturnsZeroShell" ;
+Cfengine_classes::
+    "ReturnsZero" ;
+Cfengine_classes::
+    "Regcmp" ;
+Cfengine_classes::
+    "PrepModule" ;
+Cfengine_classes::
+    "IPRange" ;
+Cfengine_classes::
+    "IsNewerThan" ;
+Cfengine_classes::
+    "IsPlain" ;
+Cfengine_classes::
+    "IsLink" ;
+Cfengine_classes::
+    "IsDir" ;
+Cfengine_classes::
+    "IsDefined" ;
+Cfengine_classes::
+    "HostRange" ;
+Cfengine_classes::
+    "GroupExists" ;
+Cfengine_classes::
+    "FileExists" ;
+Cfengine_classes::
+    "ClassMatch" ;
+Cfengine_classes::
+    "ChangedBefore" ;
+Cfengine_classes::
+    "AccessedBefore" ;
+Cfengine_classes::
+    "Setting classes with special functions" ;
+Cfagent_reference::
+    "Cfengine classes" ;
+Variable_expansion_and_contexts::
+    "Iteration over lists" ;
+Variable_expansion_and_contexts::
+    "Special variables" ;
+Variable_expansion_and_contexts::
+    "Setting variables with functions" ;
+Cfagent_reference::
+    "Variable expansion and contexts" ;
+Cfagent_reference::
+    "Cfagent runtime options" ;
+Cfagent_reference::
+    "The file cfagent.conf" ;
+Cfagent_reference::
+    "Cfagent intro" ;
+Cfagent_reference::
+    "Cfagent reference" ;
+Cfshow_reference::
+    "Cfshow reference" ;
+Cfkey_reference::
+    "Cfkey reference" ;
+Introduction_to_reference_manual::
+    "Debugging with signals" ;
+Introduction_to_reference_manual::
+    "Filenames and paths" ;
+Introduction_to_reference_manual::
+    "Cfengine hard classes" ;
+Introduction_to_reference_manual::
+    "Work directory" ;
+Introduction_to_reference_manual::
+    "Installation" ;
+Introduction_to_reference_manual::
+    "Introduction to reference manual" ;
+
+
+occurrences:
+
+Introduction_to_reference_manual::
+ "/inside/manuals/cf2-Reference#Reference-introduction"
+  represents => { "chapter" };
+Installation::
+ "/inside/manuals/cf2-Reference#Installation"
+  represents => { "Installation" };
+Installation::
+ "/inside/manuals/cf2-Reference#Installation"
+  represents => { "example" };
+Work_directory::
+ "/inside/manuals/cf2-Reference#Work-directory"
+  represents => { "Work directory" };
+Work_directory::
+ "/inside/manuals/cf2-Reference#Work-directory"
+  represents => { "example" };
+Cfengine_hard_classes::
+ "/inside/manuals/cf2-Reference#Hard-classes"
+  represents => { "Cfengine hard classes" };
+Cfengine_hard_classes::
+ "/inside/manuals/cf2-Reference#Hard-classes"
+  represents => { "example" };
+Filenames_and_paths::
+ "/inside/manuals/cf2-Reference#Filenames-and-paths"
+  represents => { "Filenames and paths" };
+Filenames_and_paths::
+ "/inside/manuals/cf2-Reference#Filenames-and-paths"
+  represents => { "example" };
+Filenames_and_paths::
+ "/inside/manuals/cf2-Reference#Filenames-and-paths"
+  represents => { "example" };
+Filenames_and_paths::
+ "/inside/manuals/cf2-Reference#Filenames-and-paths"
+  represents => { "example" };
+Filenames_and_paths::
+ "/inside/manuals/cf2-Reference#Filenames-and-paths"
+  represents => { "example" };
+Debugging_with_signals::
+ "/inside/manuals/cf2-Reference#Debugging-with-signals"
+  represents => { "Debugging with signals" };
+Cfkey_reference::
+ "/inside/manuals/cf2-Reference#Cfkey"
+  represents => { "chapter" };
+Cfkey_reference::
+ "/inside/manuals/cf2-Reference#Cfkey"
+  represents => { "example" };
+Cfshow_reference::
+ "/inside/manuals/cf2-Reference#Cfshow"
+  represents => { "chapter" };
+Cfshow_reference::
+ "/inside/manuals/cf2-Reference#Cfshow"
+  represents => { "example" };
+Cfshow_reference::
+ "/inside/manuals/cf2-Reference#Cfshow"
+  represents => { "example" };
+Cfshow_reference::
+ "/inside/manuals/cf2-Reference#Cfshow"
+  represents => { "example" };
+Cfagent_reference::
+ "/inside/manuals/cf2-Reference#Cfagent-reference"
+  represents => { "chapter" };
+Cfagent_intro::
+ "/inside/manuals/cf2-Reference#Cfagent-intro"
+  represents => { "Cfagent intro" };
+The_file_cfagent_conf::
+ "/inside/manuals/cf2-Reference#The-file-cfagent_002econf"
+  represents => { "The file cfagent.conf" };
+The_file_cfagent_conf::
+ "/inside/manuals/cf2-Reference#The-file-cfagent_002econf"
+  represents => { "example" };
+Cfagent_runtime_options::
+ "/inside/manuals/cf2-Reference#Cfagent-Runtime-Options"
+  represents => { "Cfagent runtime options" };
+Cfagent_runtime_options::
+ "/inside/manuals/cf2-Reference#index-Environment-variable-CFALLCLASSES-7"
+  represents => { "example" };
+Variable_expansion_and_contexts::
+ "/inside/manuals/cf2-Reference#Variable-expansion-and-contexts"
+  represents => { "Variable expansion and contexts" };
+Variable_expansion_and_contexts::
+ "/inside/manuals/cf2-Reference#Variable-expansion-and-contexts"
+  represents => { "example" };
+Variable_expansion_and_contexts::
+ "/inside/manuals/cf2-Reference#Variable-expansion-and-contexts"
+  represents => { "example" };
+Variable_expansion_and_contexts::
+ "/inside/manuals/cf2-Reference#Variable-expansion-and-contexts"
+  represents => { "example" };
+Variable_expansion_and_contexts::
+ "/inside/manuals/cf2-Reference#Variable-expansion-and-contexts"
+  represents => { "example" };
+Setting_variables_with_functions::
+ "/inside/manuals/cf2-Reference#Setting-variables-with-functions"
+  represents => { "subsection" };
+Setting_variables_with_functions::
+ "/inside/manuals/cf2-Reference#index-Variables_002c-setting-to-result-of-a-shell-command-11"
+  represents => { "example" };
+Setting_variables_with_functions::
+ "/inside/manuals/cf2-Reference#index-Built_002din-functions-13"
+  represents => { "example" };
+Setting_variables_with_functions::
+ "/inside/manuals/cf2-Reference#index-Built_002din-functions-13"
+  represents => { "example" };
+Setting_variables_with_functions::
+ "/inside/manuals/cf2-Reference#index-Associative-arrays_002e-16"
+  represents => { "example" };
+Setting_variables_with_functions::
+ "/inside/manuals/cf2-Reference#index-Associative-arrays_002e-17"
+  represents => { "example" };
+Setting_variables_with_functions::
+ "/inside/manuals/cf2-Reference#index-ReadTable-19"
+  represents => { "example" };
+Setting_variables_with_functions::
+ "/inside/manuals/cf2-Reference#index-Associative-arrays_002e-21"
+  represents => { "example" };
+Setting_variables_with_functions::
+ "/inside/manuals/cf2-Reference#index-Associative-arrays_002e-21"
+  represents => { "example" };
+Setting_variables_with_functions::
+ "/inside/manuals/cf2-Reference#index-Associative-arrays_002e-21"
+  represents => { "example" };
+Setting_variables_with_functions::
+ "/inside/manuals/cf2-Reference#index-SelectPartitionGroup-22"
+  represents => { "example" };
+Setting_variables_with_functions::
+ "/inside/manuals/cf2-Reference#index-SelectPartitionLeader-24"
+  represents => { "example" };
+Setting_variables_with_functions::
+ "/inside/manuals/cf2-Reference#index-SelectPartitionLeader-24"
+  represents => { "example" };
+Setting_variables_with_functions::
+ "/inside/manuals/cf2-Reference#index-SelectPartitionLeader-24"
+  represents => { "example" };
+Setting_variables_with_functions::
+ "/inside/manuals/cf2-Reference#index-SelectPartitionLeader-24"
+  represents => { "example" };
+Special_variables::
+ "/inside/manuals/cf2-Reference#Special-variables"
+  represents => { "subsection" };
+Special_variables::
+ "/inside/manuals/cf2-Reference#index-g_t_0024_0028ipaddress_0029-46"
+  represents => { "example" };
+Special_variables::
+ "/inside/manuals/cf2-Reference#index-MaxCfengines-47"
+  represents => { "example" };
+Iteration_over_lists::
+ "/inside/manuals/cf2-Reference#Iteration-over-lists"
+  represents => { "subsection" };
+Iteration_over_lists::
+ "/inside/manuals/cf2-Reference#Iteration-over-lists"
+  represents => { "example" };
+Iteration_over_lists::
+ "/inside/manuals/cf2-Reference#Iteration-over-lists"
+  represents => { "example" };
+Iteration_over_lists::
+ "/inside/manuals/cf2-Reference#Iteration-over-lists"
+  represents => { "example" };
+Iteration_over_lists::
+ "/inside/manuals/cf2-Reference#Iteration-over-lists"
+  represents => { "example" };
+Iteration_over_lists::
+ "/inside/manuals/cf2-Reference#Iteration-over-lists"
+  represents => { "example" };
+Iteration_over_lists::
+ "/inside/manuals/cf2-Reference#Iteration-over-lists"
+  represents => { "example" };
+Cfengine_classes::
+ "/inside/manuals/cf2-Reference#Cfengine-classes"
+  represents => { "Cfengine classes" };
+Cfengine_classes::
+ "/inside/manuals/cf2-Reference#index-classes-75"
+  represents => { "example" };
+Cfengine_classes::
+ "/inside/manuals/cf2-Reference#index-Compound-classes-76"
+  represents => { "example" };
+Cfengine_classes::
+ "/inside/manuals/cf2-Reference#index-Compound-classes-76"
+  represents => { "example" };
+Cfengine_classes::
+ "/inside/manuals/cf2-Reference#index-Compound-classes-76"
+  represents => { "example" };
+Cfengine_classes::
+ "/inside/manuals/cf2-Reference#index-NOT-operator-81"
+  represents => { "example" };
+Cfengine_classes::
+ "/inside/manuals/cf2-Reference#index-NOT-operator-81"
+  represents => { "example" };
+Cfengine_classes::
+ "/inside/manuals/cf2-Reference#index-NOT-operator-81"
+  represents => { "example" };
+Cfengine_classes::
+ "/inside/manuals/cf2-Reference#index-NOT-operator-81"
+  represents => { "example" };
+Cfengine_classes::
+ "/inside/manuals/cf2-Reference#index-NOT-operator-81"
+  represents => { "example" };
+Setting_classes_with_special_functions::
+ "/inside/manuals/cf2-Reference#Setting-classes-with-special-functions"
+  represents => { "subsection" };
+AccessedBefore::
+ "/inside/manuals/cf2-Reference#AccessedBefore"
+  represents => { "subsection" };
+AccessedBefore::
+ "/inside/manuals/cf2-Reference#AccessedBefore"
+  represents => { "example" };
+ChangedBefore::
+ "/inside/manuals/cf2-Reference#ChangedBefore"
+  represents => { "subsection" };
+ChangedBefore::
+ "/inside/manuals/cf2-Reference#ChangedBefore"
+  represents => { "example" };
+ClassMatch::
+ "/inside/manuals/cf2-Reference#ClassMatch"
+  represents => { "subsection" };
+ClassMatch::
+ "/inside/manuals/cf2-Reference#ClassMatch"
+  represents => { "example" };
+ClassMatch::
+ "/inside/manuals/cf2-Reference#ClassMatch"
+  represents => { "example" };
+FileExists::
+ "/inside/manuals/cf2-Reference#FileExists"
+  represents => { "subsection" };
+FileExists::
+ "/inside/manuals/cf2-Reference#FileExists"
+  represents => { "example" };
+GroupExists::
+ "/inside/manuals/cf2-Reference#GroupExists"
+  represents => { "subsection" };
+GroupExists::
+ "/inside/manuals/cf2-Reference#GroupExists"
+  represents => { "example" };
+HostRange::
+ "/inside/manuals/cf2-Reference#HostRange"
+  represents => { "subsection" };
+HostRange::
+ "/inside/manuals/cf2-Reference#HostRange"
+  represents => { "example" };
+IsDefined::
+ "/inside/manuals/cf2-Reference#IsDefined"
+  represents => { "subsection" };
+IsDefined::
+ "/inside/manuals/cf2-Reference#IsDefined"
+  represents => { "example" };
+IsDir::
+ "/inside/manuals/cf2-Reference#IsDir"
+  represents => { "subsection" };
+IsDir::
+ "/inside/manuals/cf2-Reference#IsDir"
+  represents => { "example" };
+IsLink::
+ "/inside/manuals/cf2-Reference#IsLink"
+  represents => { "subsection" };
+IsLink::
+ "/inside/manuals/cf2-Reference#IsLink"
+  represents => { "example" };
+IsPlain::
+ "/inside/manuals/cf2-Reference#IsPlain"
+  represents => { "subsection" };
+IsPlain::
+ "/inside/manuals/cf2-Reference#IsPlain"
+  represents => { "example" };
+IsNewerThan::
+ "/inside/manuals/cf2-Reference#IsNewerThan"
+  represents => { "subsection" };
+IsNewerThan::
+ "/inside/manuals/cf2-Reference#IsNewerThan"
+  represents => { "example" };
+IPRange::
+ "/inside/manuals/cf2-Reference#IPRange"
+  represents => { "subsection" };
+IPRange::
+ "/inside/manuals/cf2-Reference#IPRange"
+  represents => { "example" };
+PrepModule::
+ "/inside/manuals/cf2-Reference#PrepModule"
+  represents => { "subsection" };
+PrepModule::
+ "/inside/manuals/cf2-Reference#PrepModule"
+  represents => { "example" };
+Regcmp::
+ "/inside/manuals/cf2-Reference#Regcmp"
+  represents => { "subsection" };
+Regcmp::
+ "/inside/manuals/cf2-Reference#Regcmp"
+  represents => { "example" };
+ReturnsZero::
+ "/inside/manuals/cf2-Reference#ReturnsZero"
+  represents => { "subsection" };
+ReturnsZero::
+ "/inside/manuals/cf2-Reference#ReturnsZero"
+  represents => { "example" };
+ReturnsZeroShell::
+ "/inside/manuals/cf2-Reference#ReturnsZeroShell"
+  represents => { "subsection" };
+ReturnsZeroShell::
+ "/inside/manuals/cf2-Reference#ReturnsZeroShell"
+  represents => { "example" };
+Strcmp::
+ "/inside/manuals/cf2-Reference#Strcmp"
+  represents => { "subsection" };
+Strcmp::
+ "/inside/manuals/cf2-Reference#Strcmp"
+  represents => { "example" };
+UserExists::
+ "/inside/manuals/cf2-Reference#UserExists"
+  represents => { "subsection" };
+UserExists::
+ "/inside/manuals/cf2-Reference#UserExists"
+  represents => { "example" };
+IsGreaterThan::
+ "/inside/manuals/cf2-Reference#IsGreaterThan"
+  represents => { "subsection" };
+IsGreaterThan::
+ "/inside/manuals/cf2-Reference#IsGreaterThan"
+  represents => { "example" };
+IsLessThan::
+ "/inside/manuals/cf2-Reference#IsLessThan"
+  represents => { "subsection" };
+IsLessThan::
+ "/inside/manuals/cf2-Reference#IsLessThan"
+  represents => { "example" };
+IsLessThan::
+ "/inside/manuals/cf2-Reference#IsLessThan"
+  represents => { "example" };
+Examples_setting_classes::
+ "/inside/manuals/cf2-Reference#Examples-setting-classes"
+  represents => { "subsection" };
+Examples_setting_classes::
+ "/inside/manuals/cf2-Reference#Examples-setting-classes"
+  represents => { "example" };
+acl::
+ "/inside/manuals/cf2-Reference#acl"
+  represents => { "acl" };
+acl::
+ "/inside/manuals/cf2-Reference#index-Access-control-lists-109"
+  represents => { "example" };
+acl::
+ "/inside/manuals/cf2-Reference#index-Access-control-lists-109"
+  represents => { "example" };
+Access_control_entries::
+ "/inside/manuals/cf2-Reference#ACEs"
+  represents => { "subsection" };
+Access_control_entries::
+ "/inside/manuals/cf2-Reference#ACEs"
+  represents => { "example" };
+Access_control_entries::
+ "/inside/manuals/cf2-Reference#index-ACL-key-111"
+  represents => { "example" };
+Solaris_ACLs::
+ "/inside/manuals/cf2-Reference#Solaris-ACLs"
+  represents => { "subsection" };
+Solaris_ACLs::
+ "/inside/manuals/cf2-Reference#Solaris-ACLs"
+  represents => { "example" };
+Solaris_ACLs::
+ "/inside/manuals/cf2-Reference#Solaris-ACLs"
+  represents => { "example" };
+DFS_ACLs::
+ "/inside/manuals/cf2-Reference#DFS-ACLs"
+  represents => { "subsection" };
+DFS_ACLs::
+ "/inside/manuals/cf2-Reference#index-DCE-key-112"
+  represents => { "example" };
+DFS_ACLs::
+ "/inside/manuals/cf2-Reference#index-DCE-key-112"
+  represents => { "example" };
+NT_ACLs::
+ "/inside/manuals/cf2-Reference#NT-ACLs"
+  represents => { "subsection" };
+NT_ACLs::
+ "/inside/manuals/cf2-Reference#index-NT_002c-ACL-114"
+  represents => { "example" };
+NT_ACLs::
+ "/inside/manuals/cf2-Reference#index-NT_002c-ACL-114"
+  represents => { "example" };
+NT_ACLs::
+ "/inside/manuals/cf2-Reference#index-NT_002c-ACL-114"
+  represents => { "example" };
+NT_ACLs::
+ "/inside/manuals/cf2-Reference#index-NT_002c-ACL-114"
+  represents => { "example" };
+NT_ACLs::
+ "/inside/manuals/cf2-Reference#index-NT_002c-ACL-114"
+  represents => { "example" };
+Windows_ACL_Example::
+ "/inside/manuals/cf2-Reference#Windows-ACL-Example"
+  represents => { "subsection" };
+Windows_ACL_Example::
+ "/inside/manuals/cf2-Reference#Windows-ACL-Example"
+  represents => { "example" };
+Posix_ACL_Example::
+ "/inside/manuals/cf2-Reference#Posix-ACL-Example"
+  represents => { "subsection" };
+Posix_ACL_Example::
+ "/inside/manuals/cf2-Reference#Posix-ACL-Example"
+  represents => { "example" };
+alerts::
+ "/inside/manuals/cf2-Reference#alerts"
+  represents => { "alerts" };
+alerts::
+ "/inside/manuals/cf2-Reference#index-Alerts-115"
+  represents => { "example" };
+alerts::
+ "/inside/manuals/cf2-Reference#index-ShowState_0028_0029-117"
+  represents => { "example" };
+alerts::
+ "/inside/manuals/cf2-Reference#index-ShowState_0028_0029-117"
+  represents => { "example" };
+alerts::
+ "/inside/manuals/cf2-Reference#index-ShowState_0028_0029-117"
+  represents => { "example" };
+alerts::
+ "/inside/manuals/cf2-Reference#index-ShowState_0028_0029-117"
+  represents => { "example" };
+alerts::
+ "/inside/manuals/cf2-Reference#index-ShowState_0028_0029-117"
+  represents => { "example" };
+alerts::
+ "/inside/manuals/cf2-Reference#index-ShowState_0028_0029-117"
+  represents => { "example" };
+alerts::
+ "/inside/manuals/cf2-Reference#index-ShowState_0028_0029-117"
+  represents => { "example" };
+binservers::
+ "/inside/manuals/cf2-Reference#binservers"
+  represents => { "binservers" };
+binservers::
+ "/inside/manuals/cf2-Reference#index-Binary-servers_002c-defining-126"
+  represents => { "example" };
+broadcast::
+ "/inside/manuals/cf2-Reference#broadcast"
+  represents => { "broadcast" };
+broadcast::
+ "/inside/manuals/cf2-Reference#index-Broadcast-address-130"
+  represents => { "example" };
+control::
+ "/inside/manuals/cf2-Reference#control"
+  represents => { "control" };
+control::
+ "/inside/manuals/cf2-Reference#index-control-section-137"
+  represents => { "example" };
+control::
+ "/inside/manuals/cf2-Reference#index-control-section-137"
+  represents => { "example" };
+AbortClasses::
+ "/inside/manuals/cf2-Reference#AbortClasses"
+  represents => { "subsection" };
+AbortClasses::
+ "/inside/manuals/cf2-Reference#AbortClasses"
+  represents => { "example" };
+AbortClasses::
+ "/inside/manuals/cf2-Reference#index-Aborting-cfagent-153"
+  represents => { "example" };
+access::
+ "/inside/manuals/cf2-Reference#access"
+  represents => { "subsection" };
+access::
+ "/inside/manuals/cf2-Reference#index-Access-control-155"
+  represents => { "example" };
+access::
+ "/inside/manuals/cf2-Reference#index-Access-control-155"
+  represents => { "example" };
+actionsequence::
+ "/inside/manuals/cf2-Reference#actionsequence"
+  represents => { "subsection" };
+actionsequence::
+ "/inside/manuals/cf2-Reference#index-action-sequence-157"
+  represents => { "example" };
+actionsequence::
+ "/inside/manuals/cf2-Reference#index-Modules_002c-user-defined-180"
+  represents => { "example" };
+actionsequence::
+ "/inside/manuals/cf2-Reference#index-DHCP-181"
+  represents => { "example" };
+AddClasses::
+ "/inside/manuals/cf2-Reference#addclasses"
+  represents => { "subsection" };
+AddClasses::
+ "/inside/manuals/cf2-Reference#index-Defining-classes-183"
+  represents => { "example" };
+AddClasses::
+ "/inside/manuals/cf2-Reference#index-g_t_002dD-option-187"
+  represents => { "example" };
+AddInstallable::
+ "/inside/manuals/cf2-Reference#addinstallable"
+  represents => { "subsection" };
+AddInstallable::
+ "/inside/manuals/cf2-Reference#index-Declaring-classes-192"
+  represents => { "example" };
+AllowRedefinitionOf::
+ "/inside/manuals/cf2-Reference#AllowRedefinitionOf"
+  represents => { "subsection" };
+AllowRedefinitionOf::
+ "/inside/manuals/cf2-Reference#AllowRedefinitionOf"
+  represents => { "example" };
+Auditing::
+ "/inside/manuals/cf2-Reference#Auditing"
+  represents => { "subsection" };
+Auditing::
+ "/inside/manuals/cf2-Reference#index-Audit-log-196"
+  represents => { "example" };
+AutoDefine::
+ "/inside/manuals/cf2-Reference#AutoDefine"
+  represents => { "subsection" };
+AutoDefine::
+ "/inside/manuals/cf2-Reference#AutoDefine"
+  represents => { "example" };
+BinaryPaddingChar::
+ "/inside/manuals/cf2-Reference#BinaryPaddingChar"
+  represents => { "subsection" };
+BinaryPaddingChar::
+ "/inside/manuals/cf2-Reference#BinaryPaddingChar"
+  represents => { "example" };
+BindToInterface_in_cfagent::
+ "/inside/manuals/cf2-Reference#BindToInterface-in-cfagent"
+  represents => { "subsection" };
+ChecksumDatabase_in_cfagent::
+ "/inside/manuals/cf2-Reference#ChecksumDatabase-in-cfagent"
+  represents => { "subsection" };
+ChecksumDatabase_in_cfagent::
+ "/inside/manuals/cf2-Reference#ChecksumDatabase-in-cfagent"
+  represents => { "example" };
+ChecksumPurge::
+ "/inside/manuals/cf2-Reference#ChecksumPurge"
+  represents => { "subsection" };
+ChecksumPurge::
+ "/inside/manuals/cf2-Reference#ChecksumPurge"
+  represents => { "example" };
+ChecksumPurge::
+ "/inside/manuals/cf2-Reference#index-ChecksumPurge-206"
+  represents => { "example" };
+ChecksumUpdates::
+ "/inside/manuals/cf2-Reference#ChecksumUpdates"
+  represents => { "subsection" };
+ChecksumUpdates::
+ "/inside/manuals/cf2-Reference#ChecksumUpdates"
+  represents => { "example" };
+CompressCommand::
+ "/inside/manuals/cf2-Reference#CompressCommand"
+  represents => { "subsection" };
+CompressCommand::
+ "/inside/manuals/cf2-Reference#CompressCommand"
+  represents => { "example" };
+ChildLibPath::
+ "/inside/manuals/cf2-Reference#childlibpath"
+  represents => { "subsection" };
+CopyLinks::
+ "/inside/manuals/cf2-Reference#copylinks"
+  represents => { "subsection" };
+CopyLinks::
+ "/inside/manuals/cf2-Reference#copylinks"
+  represents => { "example" };
+CopyLinks::
+ "/inside/manuals/cf2-Reference#copylinks"
+  represents => { "example" };
+DefaultCopyType::
+ "/inside/manuals/cf2-Reference#defaultcopytype"
+  represents => { "subsection" };
+DefaultCopyType::
+ "/inside/manuals/cf2-Reference#defaultcopytype"
+  represents => { "example" };
+DefaultPkgMgr::
+ "/inside/manuals/cf2-Reference#defaultpkgmgr"
+  represents => { "subsection" };
+DefaultPkgMgr::
+ "/inside/manuals/cf2-Reference#defaultpkgmgr"
+  represents => { "example" };
+DeleteNonUserFiles::
+ "/inside/manuals/cf2-Reference#deletenonuserfiles"
+  represents => { "subsection" };
+DeleteNonUserFiles::
+ "/inside/manuals/cf2-Reference#deletenonuserfiles"
+  represents => { "example" };
+DeleteNonOwnerFiles::
+ "/inside/manuals/cf2-Reference#deletenonownerfiles"
+  represents => { "subsection" };
+DeleteNonOwnerFiles::
+ "/inside/manuals/cf2-Reference#deletenonownerfiles"
+  represents => { "example" };
+DeleteNonUserMail::
+ "/inside/manuals/cf2-Reference#deletenonusermail"
+  represents => { "subsection" };
+DeleteNonOwnerMail::
+ "/inside/manuals/cf2-Reference#deletenonownermail"
+  represents => { "subsection" };
+domain::
+ "/inside/manuals/cf2-Reference#domain"
+  represents => { "subsection" };
+DPKGInstallCommand::
+ "/inside/manuals/cf2-Reference#dpkginstallcommand"
+  represents => { "subsection" };
+DPKGInstallCommand::
+ "/inside/manuals/cf2-Reference#dpkginstallcommand"
+  represents => { "example" };
+DryRun::
+ "/inside/manuals/cf2-Reference#dryrun"
+  represents => { "subsection" };
+DryRun::
+ "/inside/manuals/cf2-Reference#index-DryRun-217"
+  represents => { "example" };
+DryRun::
+ "/inside/manuals/cf2-Reference#index-DryRun-217"
+  represents => { "example" };
+editbinaryfilesize::
+ "/inside/manuals/cf2-Reference#editbinaryfilesize"
+  represents => { "subsection" };
+editfilesize::
+ "/inside/manuals/cf2-Reference#editfilesize"
+  represents => { "subsection" };
+EmptyResolvConf::
+ "/inside/manuals/cf2-Reference#emptyresolvconf"
+  represents => { "subsection" };
+Exclamation::
+ "/inside/manuals/cf2-Reference#exclamation"
+  represents => { "subsection" };
+ExcludeCopy::
+ "/inside/manuals/cf2-Reference#excludecopy"
+  represents => { "subsection" };
+ExcludeCopy::
+ "/inside/manuals/cf2-Reference#excludecopy"
+  represents => { "example" };
+ExcludeCopy::
+ "/inside/manuals/cf2-Reference#excludecopy"
+  represents => { "example" };
+ExcludeLink::
+ "/inside/manuals/cf2-Reference#excludelinks"
+  represents => { "subsection" };
+ExcludeLink::
+ "/inside/manuals/cf2-Reference#excludelinks"
+  represents => { "example" };
+ExcludeLink::
+ "/inside/manuals/cf2-Reference#excludelinks"
+  represents => { "example" };
+ExpireAfter::
+ "/inside/manuals/cf2-Reference#ExpireAfter"
+  represents => { "subsection" };
+ExpireAfter::
+ "/inside/manuals/cf2-Reference#ExpireAfter"
+  represents => { "example" };
+ExpireAfter::
+ "/inside/manuals/cf2-Reference#ExpireAfter"
+  represents => { "example" };
+FreeBSDInstallCommand::
+ "/inside/manuals/cf2-Reference#FreeBSDInstallCommand"
+  represents => { "subsection" };
+FreeBSDInstallCommand::
+ "/inside/manuals/cf2-Reference#FreeBSDInstallCommand"
+  represents => { "example" };
+FreeBSDRemoveCommand::
+ "/inside/manuals/cf2-Reference#FreeBSDRemoveCommand"
+  represents => { "subsection" };
+FreeBSDRemoveCommand::
+ "/inside/manuals/cf2-Reference#FreeBSDRemoveCommand"
+  represents => { "example" };
+FullEncryption::
+ "/inside/manuals/cf2-Reference#FullEncryption"
+  represents => { "subsection" };
+FullEncryption::
+ "/inside/manuals/cf2-Reference#FullEncryption"
+  represents => { "example" };
+HomePattern::
+ "/inside/manuals/cf2-Reference#homepattern"
+  represents => { "subsection" };
+HomePattern::
+ "/inside/manuals/cf2-Reference#index-Wildcards-in-homepattern-231"
+  represents => { "example" };
+HomePattern::
+ "/inside/manuals/cf2-Reference#index-Wildcards-in-homepattern-231"
+  represents => { "example" };
+HomePattern::
+ "/inside/manuals/cf2-Reference#index-Wildcards-in-homepattern-231"
+  represents => { "example" };
+HostnameKeys_in_cfagent::
+ "/inside/manuals/cf2-Reference#HostnameKeys-in-cfagent"
+  represents => { "subsection" };
+HostnameKeys_in_cfagent::
+ "/inside/manuals/cf2-Reference#HostnameKeys-in-cfagent"
+  represents => { "example" };
+IfElapsed_in_cfagent::
+ "/inside/manuals/cf2-Reference#IfElapsed-in-cfagent"
+  represents => { "subsection" };
+IfElapsed_in_cfagent::
+ "/inside/manuals/cf2-Reference#IfElapsed-in-cfagent"
+  represents => { "example" };
+IfElapsed_in_cfagent::
+ "/inside/manuals/cf2-Reference#IfElapsed-in-cfagent"
+  represents => { "example" };
+FriendIgnoreRegex::
+ "/inside/manuals/cf2-Reference#IgnoreFriendRegex"
+  represents => { "subsection" };
+FriendIgnoreRegex::
+ "/inside/manuals/cf2-Reference#IgnoreFriendRegex"
+  represents => { "example" };
+IgnoreInterfaceRegex::
+ "/inside/manuals/cf2-Reference#IgnoreInterfaceRegex"
+  represents => { "subsection" };
+IgnoreInterfaceRegex::
+ "/inside/manuals/cf2-Reference#IgnoreInterfaceRegex"
+  represents => { "example" };
+Inform::
+ "/inside/manuals/cf2-Reference#Inform"
+  represents => { "subsection" };
+Inform::
+ "/inside/manuals/cf2-Reference#Inform"
+  represents => { "example" };
+Inform::
+ "/inside/manuals/cf2-Reference#Inform"
+  represents => { "example" };
+InterfaceName::
+ "/inside/manuals/cf2-Reference#interfacename"
+  represents => { "subsection" };
+InterfaceName::
+ "/inside/manuals/cf2-Reference#index-InterfaceName-236"
+  represents => { "example" };
+FileExtensions::
+ "/inside/manuals/cf2-Reference#fileextension"
+  represents => { "subsection" };
+FileExtensions::
+ "/inside/manuals/cf2-Reference#fileextension"
+  represents => { "example" };
+LastSeen::
+ "/inside/manuals/cf2-Reference#lastseen"
+  represents => { "subsection" };
+LastSeen::
+ "/inside/manuals/cf2-Reference#index-Broken-resolver-241"
+  represents => { "example" };
+LastSeenExpireAfter::
+ "/inside/manuals/cf2-Reference#lastseenexpireafter"
+  represents => { "subsection" };
+LastSeenExpireAfter::
+ "/inside/manuals/cf2-Reference#lastseenexpireafter"
+  represents => { "example" };
+LinkCopies::
+ "/inside/manuals/cf2-Reference#linkcopies"
+  represents => { "subsection" };
+LinkCopies::
+ "/inside/manuals/cf2-Reference#linkcopies"
+  represents => { "example" };
+LinkCopies::
+ "/inside/manuals/cf2-Reference#linkcopies"
+  represents => { "example" };
+LogDirectory::
+ "/inside/manuals/cf2-Reference#LogDirectory"
+  represents => { "subsection" };
+LogDirectory::
+ "/inside/manuals/cf2-Reference#LogDirectory"
+  represents => { "example" };
+LogTidyHomeFiles::
+ "/inside/manuals/cf2-Reference#LogTidyHomeFiles"
+  represents => { "subsection" };
+LogTidyHomeFiles::
+ "/inside/manuals/cf2-Reference#LogTidyHomeFiles"
+  represents => { "example" };
+moduledirectory::
+ "/inside/manuals/cf2-Reference#moduledirectory"
+  represents => { "subsection" };
+mountpattern::
+ "/inside/manuals/cf2-Reference#mountpattern"
+  represents => { "subsection" };
+mountpattern::
+ "/inside/manuals/cf2-Reference#index-Mount-paths-251"
+  represents => { "example" };
+mountpattern::
+ "/inside/manuals/cf2-Reference#index-Mount-paths-251"
+  represents => { "example" };
+netmask::
+ "/inside/manuals/cf2-Reference#netmask"
+  represents => { "subsection" };
+NonAlphaNumFiles::
+ "/inside/manuals/cf2-Reference#nonalphanumfiles"
+  represents => { "subsection" };
+NonAlphaNumFiles::
+ "/inside/manuals/cf2-Reference#nonalphanumfiles"
+  represents => { "example" };
+nfstype::
+ "/inside/manuals/cf2-Reference#nfstype"
+  represents => { "subsection" };
+PortageInstallCommand::
+ "/inside/manuals/cf2-Reference#PortageInstallCommand"
+  represents => { "subsection" };
+PortageInstallCommand::
+ "/inside/manuals/cf2-Reference#PortageInstallCommand"
+  represents => { "example" };
+RepChar::
+ "/inside/manuals/cf2-Reference#repchar"
+  represents => { "subsection" };
+Repository::
+ "/inside/manuals/cf2-Reference#repository"
+  represents => { "subsection" };
+RPMcommand::
+ "/inside/manuals/cf2-Reference#RPMcommand"
+  represents => { "subsection" };
+RPMInstallCommand::
+ "/inside/manuals/cf2-Reference#rpminstallcommand"
+  represents => { "subsection" };
+RPMInstallCommand::
+ "/inside/manuals/cf2-Reference#rpminstallcommand"
+  represents => { "example" };
+RPMInstallCommand::
+ "/inside/manuals/cf2-Reference#rpminstallcommand"
+  represents => { "example" };
+Schedule::
+ "/inside/manuals/cf2-Reference#schedule"
+  represents => { "subsection" };
+SecureInput::
+ "/inside/manuals/cf2-Reference#secureinput"
+  represents => { "subsection" };
+SensibleCount::
+ "/inside/manuals/cf2-Reference#sensiblecount"
+  represents => { "subsection" };
+SensibleSize::
+ "/inside/manuals/cf2-Reference#sensiblesize"
+  represents => { "subsection" };
+ShowActions::
+ "/inside/manuals/cf2-Reference#showactions"
+  represents => { "subsection" };
+SingleCopy::
+ "/inside/manuals/cf2-Reference#singlecopy"
+  represents => { "subsection" };
+SingleCopy::
+ "/inside/manuals/cf2-Reference#singlecopy"
+  represents => { "example" };
+SingleCopy::
+ "/inside/manuals/cf2-Reference#singlecopy"
+  represents => { "example" };
+SingleCopy::
+ "/inside/manuals/cf2-Reference#singlecopy"
+  represents => { "example" };
+site_faculty::
+ "/inside/manuals/cf2-Reference#site"
+  represents => { "subsection" };
+site_faculty::
+ "/inside/manuals/cf2-Reference#index-site-279"
+  represents => { "example" };
+SkipIdentify::
+ "/inside/manuals/cf2-Reference#SkipIdentify"
+  represents => { "subsection" };
+smtpserver::
+ "/inside/manuals/cf2-Reference#Smtpserver"
+  represents => { "subsection" };
+SplayTime::
+ "/inside/manuals/cf2-Reference#SplayTime"
+  represents => { "subsection" };
+Split::
+ "/inside/manuals/cf2-Reference#split"
+  represents => { "subsection" };
+SpoolDirectories::
+ "/inside/manuals/cf2-Reference#spooldirectories"
+  represents => { "subsection" };
+SUNInstallCommand::
+ "/inside/manuals/cf2-Reference#suninstallcommand"
+  represents => { "subsection" };
+SUNInstallCommand::
+ "/inside/manuals/cf2-Reference#suninstallcommand"
+  represents => { "example" };
+suspiciousnames::
+ "/inside/manuals/cf2-Reference#suspiciousnames"
+  represents => { "subsection" };
+sysadm::
+ "/inside/manuals/cf2-Reference#sysadm"
+  represents => { "subsection" };
+Syslog::
+ "/inside/manuals/cf2-Reference#Syslog"
+  represents => { "subsection" };
+Syslog::
+ "/inside/manuals/cf2-Reference#Syslog"
+  represents => { "example" };
+Syslog::
+ "/inside/manuals/cf2-Reference#Syslog"
+  represents => { "example" };
+SyslogFacility::
+ "/inside/manuals/cf2-Reference#SyslogFacility"
+  represents => { "subsection" };
+SyslogFacility::
+ "/inside/manuals/cf2-Reference#SyslogFacility"
+  represents => { "example" };
+SyslogFacility::
+ "/inside/manuals/cf2-Reference#SyslogFacility"
+  represents => { "example" };
+SyslogFacility::
+ "/inside/manuals/cf2-Reference#SyslogFacility"
+  represents => { "example" };
+timezone::
+ "/inside/manuals/cf2-Reference#timezone"
+  represents => { "subsection" };
+timezone::
+ "/inside/manuals/cf2-Reference#timezone"
+  represents => { "example" };
+TimeOut::
+ "/inside/manuals/cf2-Reference#TimeOut"
+  represents => { "subsection" };
+TimeOut::
+ "/inside/manuals/cf2-Reference#TimeOut"
+  represents => { "example" };
+Verbose::
+ "/inside/manuals/cf2-Reference#Verbose"
+  represents => { "subsection" };
+Verbose::
+ "/inside/manuals/cf2-Reference#Verbose"
+  represents => { "example" };
+Verbose::
+ "/inside/manuals/cf2-Reference#Verbose"
+  represents => { "example" };
+Warnings::
+ "/inside/manuals/cf2-Reference#Warnings"
+  represents => { "subsection" };
+Warnings::
+ "/inside/manuals/cf2-Reference#Warnings"
+  represents => { "example" };
+Warnings::
+ "/inside/manuals/cf2-Reference#Warnings"
+  represents => { "example" };
+WarnNonUserFiles::
+ "/inside/manuals/cf2-Reference#warnnonuserfiles"
+  represents => { "subsection" };
+WarnNonOwnerFiles::
+ "/inside/manuals/cf2-Reference#warnnonownerfiles"
+  represents => { "subsection" };
+WarnNonOwnerFiles::
+ "/inside/manuals/cf2-Reference#warnnonownerfiles"
+  represents => { "example" };
+WarnNonUserMail::
+ "/inside/manuals/cf2-Reference#warnnonusermail"
+  represents => { "subsection" };
+WarnNonOwnerMail::
+ "/inside/manuals/cf2-Reference#warnnonownermail"
+  represents => { "subsection" };
+classes::
+ "/inside/manuals/cf2-Reference#classes"
+  represents => { "classes" };
+copy::
+ "/inside/manuals/cf2-Reference#copy"
+  represents => { "copy" };
+copy::
+ "/inside/manuals/cf2-Reference#index-g_t_0040file_007b_002ecfnew_007d-files-301"
+  represents => { "example" };
+copy::
+ "/inside/manuals/cf2-Reference#dest"
+  represents => { "example" };
+copy::
+ "/inside/manuals/cf2-Reference#size"
+  represents => { "example" };
+copy::
+ "/inside/manuals/cf2-Reference#size"
+  represents => { "example" };
+copy_example::
+ "/inside/manuals/cf2-Reference#copy-example"
+  represents => { "subsection" };
+copy_example::
+ "/inside/manuals/cf2-Reference#copy-example"
+  represents => { "example" };
+copy_example::
+ "/inside/manuals/cf2-Reference#copy-example"
+  represents => { "example" };
+Hard_links_in_copying::
+ "/inside/manuals/cf2-Reference#hard-links-in-copy"
+  represents => { "subsection" };
+Too_many_open_files::
+ "/inside/manuals/cf2-Reference#Too-many-open-files"
+  represents => { "subsection" };
+Too_many_open_files::
+ "/inside/manuals/cf2-Reference#index-Too-many-open-files-error-324"
+  represents => { "example" };
+defaultroute::
+ "/inside/manuals/cf2-Reference#defaultroute"
+  represents => { "defaultroute" };
+defaultroute::
+ "/inside/manuals/cf2-Reference#defaultroute"
+  represents => { "example" };
+defaultroute::
+ "/inside/manuals/cf2-Reference#defaultroute"
+  represents => { "example" };
+disks::
+ "/inside/manuals/cf2-Reference#disks"
+  represents => { "disks" };
+disks::
+ "/inside/manuals/cf2-Reference#index-disks-actions-327"
+  represents => { "example" };
+disks::
+ "/inside/manuals/cf2-Reference#index-disks-actions-327"
+  represents => { "example" };
+disks::
+ "/inside/manuals/cf2-Reference#index-freespace_003d-328"
+  represents => { "example" };
+directories::
+ "/inside/manuals/cf2-Reference#directories"
+  represents => { "directories" };
+directories::
+ "/inside/manuals/cf2-Reference#index-Directories_002c-making-338"
+  represents => { "example" };
+directories::
+ "/inside/manuals/cf2-Reference#index-Directories_002c-making-338"
+  represents => { "example" };
+directories::
+ "/inside/manuals/cf2-Reference#index-Home-directories_002c-creating-342"
+  represents => { "example" };
+disable::
+ "/inside/manuals/cf2-Reference#disable"
+  represents => { "disable" };
+disable::
+ "/inside/manuals/cf2-Reference#index-Disabling-files-344"
+  represents => { "example" };
+disable::
+ "/inside/manuals/cf2-Reference#index-g_t_0040file_007b_002fetc_002fhosts_002eequiv_007d-347"
+  represents => { "example" };
+disable::
+ "/inside/manuals/cf2-Reference#index-g_t_0040file_007b_002fetc_002fhosts_002eequiv_007d-347"
+  represents => { "example" };
+disable::
+ "/inside/manuals/cf2-Reference#index-g_t_0040file_007b_002fetc_002fhosts_002eequiv_007d-347"
+  represents => { "example" };
+disable::
+ "/inside/manuals/cf2-Reference#index-rotate_003d-356"
+  represents => { "example" };
+disable::
+ "/inside/manuals/cf2-Reference#index-rotate_003d-356"
+  represents => { "example" };
+disable::
+ "/inside/manuals/cf2-Reference#index-WWW-server-logs-359"
+  represents => { "example" };
+disable::
+ "/inside/manuals/cf2-Reference#index-WWW-server-logs-359"
+  represents => { "example" };
+editfiles::
+ "/inside/manuals/cf2-Reference#editfiles"
+  represents => { "editfiles" };
+editfiles::
+ "/inside/manuals/cf2-Reference#index-awk_002c-editing-361"
+  represents => { "example" };
+editfiles::
+ "/inside/manuals/cf2-Reference#index-awk_002c-editing-361"
+  represents => { "example" };
+editfiles::
+ "/inside/manuals/cf2-Reference#index-Quoted-strings-363"
+  represents => { "example" };
+editfiles::
+ "/inside/manuals/cf2-Reference#index-Quoted-strings-363"
+  represents => { "example" };
+editfiles::
+ "/inside/manuals/cf2-Reference#index-Quoted-strings-363"
+  represents => { "example" };
+editfiles::
+ "/inside/manuals/cf2-Reference#index-Quoted-strings-363"
+  represents => { "example" };
+editfiles::
+ "/inside/manuals/cf2-Reference#index-Quoted-strings-363"
+  represents => { "example" };
+AbortAtLineMatching::
+ "/inside/manuals/cf2-Reference#AbortAtLineMatching"
+  represents => { "subsection" };
+AbortAtLineMatching::
+ "/inside/manuals/cf2-Reference#AbortAtLineMatching"
+  represents => { "example" };
+Append::
+ "/inside/manuals/cf2-Reference#Append"
+  represents => { "subsection" };
+Append::
+ "/inside/manuals/cf2-Reference#Append"
+  represents => { "example" };
+AppendIfNoLineMatching::
+ "/inside/manuals/cf2-Reference#AppendIfNoLineMatching"
+  represents => { "subsection" };
+AppendIfNoLineMatching::
+ "/inside/manuals/cf2-Reference#AppendIfNoLineMatching"
+  represents => { "example" };
+AppendIfNoLineMatching::
+ "/inside/manuals/cf2-Reference#AppendIfNoLineMatching"
+  represents => { "example" };
+AppendIfNoSuchLine::
+ "/inside/manuals/cf2-Reference#AppendIfNoSuchLine"
+  represents => { "subsection" };
+AppendIfNoSuchLine::
+ "/inside/manuals/cf2-Reference#AppendIfNoSuchLine"
+  represents => { "example" };
+AppendIfNoSuchLinesFromFile::
+ "/inside/manuals/cf2-Reference#AppendIfNoSuchLinesFromFile"
+  represents => { "subsection" };
+AppendIfNoSuchLinesFromFile::
+ "/inside/manuals/cf2-Reference#AppendIfNoSuchLinesFromFile"
+  represents => { "example" };
+AppendToLineIfNotContains::
+ "/inside/manuals/cf2-Reference#AppendToLineIfNotContains"
+  represents => { "subsection" };
+AppendToLineIfNotContains::
+ "/inside/manuals/cf2-Reference#AppendToLineIfNotContains"
+  represents => { "example" };
+Audit_in_editfiles::
+ "/inside/manuals/cf2-Reference#Audit"
+  represents => { "subsection" };
+Audit_in_editfiles::
+ "/inside/manuals/cf2-Reference#Audit"
+  represents => { "example" };
+AutoCreate::
+ "/inside/manuals/cf2-Reference#AutoCreate"
+  represents => { "subsection" };
+AutomountDirectResources::
+ "/inside/manuals/cf2-Reference#AutomountDirectResources"
+  represents => { "subsection" };
+AutomountDirectResources::
+ "/inside/manuals/cf2-Reference#AutomountDirectResources"
+  represents => { "example" };
+Backup_in_editfiles::
+ "/inside/manuals/cf2-Reference#Backup-in-editfiles"
+  represents => { "subsection" };
+Backup_in_editfiles::
+ "/inside/manuals/cf2-Reference#Backup-in-editfiles"
+  represents => { "example" };
+Backup_in_editfiles::
+ "/inside/manuals/cf2-Reference#Backup-in-editfiles"
+  represents => { "example" };
+BeginGroupIfDefined::
+ "/inside/manuals/cf2-Reference#BeginGroupIfDefined"
+  represents => { "subsection" };
+BeginGroupIfDefined::
+ "/inside/manuals/cf2-Reference#BeginGroupIfDefined"
+  represents => { "example" };
+BeginGroupIfNotDefined::
+ "/inside/manuals/cf2-Reference#BeginGroupIfNotDefined"
+  represents => { "subsection" };
+BeginGroupIfNotDefined::
+ "/inside/manuals/cf2-Reference#BeginGroupIfNotDefined"
+  represents => { "example" };
+BeginGroupIfFileExists::
+ "/inside/manuals/cf2-Reference#BeginGroupIfFileExists"
+  represents => { "subsection" };
+BeginGroupIfFileExists::
+ "/inside/manuals/cf2-Reference#BeginGroupIfFileExists"
+  represents => { "example" };
+BeginGroupIfFileIsNewer::
+ "/inside/manuals/cf2-Reference#BeginGroupIfFileIsNewer"
+  represents => { "subsection" };
+BeginGroupIfFileIsNewer::
+ "/inside/manuals/cf2-Reference#BeginGroupIfFileIsNewer"
+  represents => { "example" };
+BeginGroupIfLineContaining::
+ "/inside/manuals/cf2-Reference#BeginGroupIfLineContaining"
+  represents => { "subsection" };
+BeginGroupIfLineContaining::
+ "/inside/manuals/cf2-Reference#BeginGroupIfLineContaining"
+  represents => { "example" };
+BeginGroupIfLineMatching::
+ "/inside/manuals/cf2-Reference#BeginGroupIfLineMatching"
+  represents => { "subsection" };
+BeginGroupIfLineMatching::
+ "/inside/manuals/cf2-Reference#BeginGroupIfLineMatching"
+  represents => { "example" };
+BeginGroupIfMatch::
+ "/inside/manuals/cf2-Reference#BeginGroupIfMatch"
+  represents => { "subsection" };
+BeginGroupIfMatch::
+ "/inside/manuals/cf2-Reference#BeginGroupIfMatch"
+  represents => { "example" };
+BeginGroupIfNoLineContaining::
+ "/inside/manuals/cf2-Reference#BeginGroupIfNoLineContaining"
+  represents => { "subsection" };
+BeginGroupIfNoLineContaining::
+ "/inside/manuals/cf2-Reference#BeginGroupIfNoLineContaining"
+  represents => { "example" };
+BeginGroupIfNoLineMatching::
+ "/inside/manuals/cf2-Reference#BeginGroupIfNoLineMatching"
+  represents => { "subsection" };
+BeginGroupIfNoLineMatching::
+ "/inside/manuals/cf2-Reference#BeginGroupIfNoLineMatching"
+  represents => { "example" };
+BeginGroupIfNoMatch::
+ "/inside/manuals/cf2-Reference#BeginGroupIfNoMatch"
+  represents => { "subsection" };
+BeginGroupIfNoMatch::
+ "/inside/manuals/cf2-Reference#BeginGroupIfNoMatch"
+  represents => { "example" };
+BeginGroupIfNoSuchLine::
+ "/inside/manuals/cf2-Reference#BeginGroupIfNoSuchLine"
+  represents => { "subsection" };
+BeginGroupIfNoSuchLine::
+ "/inside/manuals/cf2-Reference#BeginGroupIfNoSuchLine"
+  represents => { "example" };
+BreakIfLineMatches::
+ "/inside/manuals/cf2-Reference#BreakIfLineMatches"
+  represents => { "subsection" };
+BreakIfLineMatches::
+ "/inside/manuals/cf2-Reference#BreakIfLineMatches"
+  represents => { "example" };
+CatchAbort::
+ "/inside/manuals/cf2-Reference#CatchAbort"
+  represents => { "subsection" };
+CommentLinesMatching::
+ "/inside/manuals/cf2-Reference#CommentLinesMatching"
+  represents => { "subsection" };
+CommentLinesMatching::
+ "/inside/manuals/cf2-Reference#CommentLinesMatching"
+  represents => { "example" };
+CommentLinesStarting::
+ "/inside/manuals/cf2-Reference#CommentLinesStarting"
+  represents => { "subsection" };
+CommentLinesStarting::
+ "/inside/manuals/cf2-Reference#CommentLinesStarting"
+  represents => { "example" };
+CommentNLines::
+ "/inside/manuals/cf2-Reference#CommentNLines"
+  represents => { "subsection" };
+CommentNLines::
+ "/inside/manuals/cf2-Reference#CommentNLines"
+  represents => { "example" };
+CommentToLineMatching::
+ "/inside/manuals/cf2-Reference#CommentToLineMatching"
+  represents => { "subsection" };
+CommentToLineMatching::
+ "/inside/manuals/cf2-Reference#CommentToLineMatching"
+  represents => { "example" };
+DefineClasses::
+ "/inside/manuals/cf2-Reference#DefineClasses"
+  represents => { "subsection" };
+DefineClasses::
+ "/inside/manuals/cf2-Reference#DefineClasses"
+  represents => { "example" };
+DefineInGroup::
+ "/inside/manuals/cf2-Reference#DefineInGroup"
+  represents => { "subsection" };
+DefineInGroup::
+ "/inside/manuals/cf2-Reference#DefineInGroup"
+  represents => { "example" };
+DefineInGroup::
+ "/inside/manuals/cf2-Reference#DefineInGroup"
+  represents => { "example" };
+DeleteLinesAfterThisMatching::
+ "/inside/manuals/cf2-Reference#DeleteLinesAfterThisMatching"
+  represents => { "subsection" };
+DeleteLinesAfterThisMatching::
+ "/inside/manuals/cf2-Reference#DeleteLinesAfterThisMatching"
+  represents => { "example" };
+DeleteLinesContaining_DeleteLinesNotContaining::
+ "/inside/manuals/cf2-Reference#DeleteLinesContaining"
+  represents => { "subsection" };
+DeleteLinesContaining_DeleteLinesNotContaining::
+ "/inside/manuals/cf2-Reference#DeleteLinesContaining"
+  represents => { "example" };
+DeleteLinesMatching_DeleteLinesNotMatching::
+ "/inside/manuals/cf2-Reference#DeleteLinesMatching"
+  represents => { "subsection" };
+DeleteLinesMatching_DeleteLinesNotMatching::
+ "/inside/manuals/cf2-Reference#DeleteLinesMatching"
+  represents => { "example" };
+DeleteLinesStarting::
+ "/inside/manuals/cf2-Reference#DeleteLinesStarting"
+  represents => { "subsection" };
+DeleteLinesStarting::
+ "/inside/manuals/cf2-Reference#DeleteLinesStarting"
+  represents => { "example" };
+DeleteLinesNotContainingFileItems::
+ "/inside/manuals/cf2-Reference#DeleteLinesNotContaining"
+  represents => { "subsection" };
+DeleteLinesNotContainingFileItems::
+ "/inside/manuals/cf2-Reference#DeleteLinesNotContaining"
+  represents => { "example" };
+DeleteLinesNotMatchingFileItems::
+ "/inside/manuals/cf2-Reference#DeleteLinesNotMatchingFileItems"
+  represents => { "subsection" };
+DeleteLinesNotMatchingFileItems::
+ "/inside/manuals/cf2-Reference#DeleteLinesNotMatchingFileItems"
+  represents => { "example" };
+DeleteLinesNotStartingFileItems::
+ "/inside/manuals/cf2-Reference#DeleteLinesNotStartingFileItems"
+  represents => { "subsection" };
+DeleteLinesNotStartingFileItems::
+ "/inside/manuals/cf2-Reference#DeleteLinesNotStartingFileItems"
+  represents => { "example" };
+DeleteNLines::
+ "/inside/manuals/cf2-Reference#DeleteNLines"
+  represents => { "subsection" };
+DeleteNLines::
+ "/inside/manuals/cf2-Reference#DeleteNLines"
+  represents => { "example" };
+DeleteToLineMatching::
+ "/inside/manuals/cf2-Reference#DeleteToLineMatching"
+  represents => { "subsection" };
+DeleteToLineMatching::
+ "/inside/manuals/cf2-Reference#DeleteToLineMatching"
+  represents => { "example" };
+EditMode_and_binary_editing::
+ "/inside/manuals/cf2-Reference#EditMode-_0028binary_0029"
+  represents => { "subsection" };
+EditMode_and_binary_editing::
+ "/inside/manuals/cf2-Reference#EditMode-_0028binary_0029"
+  represents => { "example" };
+EditSplit::
+ "/inside/manuals/cf2-Reference#EditSplit"
+  represents => { "subsection" };
+EditSplit::
+ "/inside/manuals/cf2-Reference#EditSplit"
+  represents => { "example" };
+EditSplit::
+ "/inside/manuals/cf2-Reference#index-EditSplit-378"
+  represents => { "example" };
+EmptyEntireFilePlease::
+ "/inside/manuals/cf2-Reference#EmptyEntireFilePlease"
+  represents => { "subsection" };
+ElseDefineClasses::
+ "/inside/manuals/cf2-Reference#ElseDefineClasses"
+  represents => { "subsection" };
+EndGroup::
+ "/inside/manuals/cf2-Reference#EndGroup"
+  represents => { "subsection" };
+EndLoop::
+ "/inside/manuals/cf2-Reference#EndLoop"
+  represents => { "subsection" };
+ExpandVariables::
+ "/inside/manuals/cf2-Reference#ExpandVariables"
+  represents => { "subsection" };
+ExpireAfter_editfiles::
+ "/inside/manuals/cf2-Reference#ExpireAfter-editfiles"
+  represents => { "subsection" };
+ExpireAfter_editfiles::
+ "/inside/manuals/cf2-Reference#ExpireAfter-editfiles"
+  represents => { "example" };
+Filter::
+ "/inside/manuals/cf2-Reference#Filter"
+  represents => { "subsection" };
+Filter::
+ "/inside/manuals/cf2-Reference#Filter"
+  represents => { "example" };
+FixEndOfLine::
+ "/inside/manuals/cf2-Reference#FixEndOfLine"
+  represents => { "subsection" };
+ForEachLineIn_quoted_filename::
+ "/inside/manuals/cf2-Reference#ForEachLineIn"
+  represents => { "subsection" };
+ForEachLineIn_quoted_filename::
+ "/inside/manuals/cf2-Reference#ForEachLineIn"
+  represents => { "example" };
+GotoLastLine::
+ "/inside/manuals/cf2-Reference#GotoLastLine"
+  represents => { "subsection" };
+HashCommentLinesContaining::
+ "/inside/manuals/cf2-Reference#HashCommentLinesContaining"
+  represents => { "subsection" };
+HashCommentLinesContaining::
+ "/inside/manuals/cf2-Reference#HashCommentLinesContaining"
+  represents => { "example" };
+HashCommentLinesMatching::
+ "/inside/manuals/cf2-Reference#HashCommentLinesMatching"
+  represents => { "subsection" };
+HashCommentLinesMatching::
+ "/inside/manuals/cf2-Reference#HashCommentLinesMatching"
+  represents => { "example" };
+HashCommentLinesStarting::
+ "/inside/manuals/cf2-Reference#HashCommentLinesStarting"
+  represents => { "subsection" };
+HashCommentLinesStarting::
+ "/inside/manuals/cf2-Reference#HashCommentLinesStarting"
+  represents => { "example" };
+IfElapsed::
+ "/inside/manuals/cf2-Reference#IfElapsed-_0028editing_0029"
+  represents => { "subsection" };
+IfElapsed::
+ "/inside/manuals/cf2-Reference#IfElapsed-_0028editing_0029"
+  represents => { "example" };
+IncrementPointer_quoted_number::
+ "/inside/manuals/cf2-Reference#IncrementPointer"
+  represents => { "subsection" };
+IncrementPointer_quoted_number::
+ "/inside/manuals/cf2-Reference#IncrementPointer"
+  represents => { "example" };
+Inform_editfiles::
+ "/inside/manuals/cf2-Reference#Inform-_0028editing_0029"
+  represents => { "subsection" };
+Inform_editfiles::
+ "/inside/manuals/cf2-Reference#Inform-_0028editing_0029"
+  represents => { "example" };
+InsertFile::
+ "/inside/manuals/cf2-Reference#InsertFile"
+  represents => { "subsection" };
+InsertFile::
+ "/inside/manuals/cf2-Reference#InsertFile"
+  represents => { "example" };
+InsertLine::
+ "/inside/manuals/cf2-Reference#InsertLine"
+  represents => { "subsection" };
+InsertLine::
+ "/inside/manuals/cf2-Reference#InsertLine"
+  represents => { "example" };
+LocateLineMatching::
+ "/inside/manuals/cf2-Reference#LocateLineMatching"
+  represents => { "subsection" };
+LocateLineMatching::
+ "/inside/manuals/cf2-Reference#LocateLineMatching"
+  represents => { "example" };
+PercentCommentLinesContaining::
+ "/inside/manuals/cf2-Reference#PercentCommentLinesContaining"
+  represents => { "subsection" };
+PercentCommentLinesContaining::
+ "/inside/manuals/cf2-Reference#PercentCommentLinesContaining"
+  represents => { "example" };
+PercentCommentLinesMatching::
+ "/inside/manuals/cf2-Reference#PercentCommentLinesMatching"
+  represents => { "subsection" };
+PercentCommentLinesMatching::
+ "/inside/manuals/cf2-Reference#PercentCommentLinesMatching"
+  represents => { "example" };
+PercentCommentLinesStarting::
+ "/inside/manuals/cf2-Reference#PercentCommentLinesStarting"
+  represents => { "subsection" };
+PercentCommentLinesStarting::
+ "/inside/manuals/cf2-Reference#PercentCommentLinesStarting"
+  represents => { "example" };
+Prepend::
+ "/inside/manuals/cf2-Reference#Prepend-_0028editing_0029"
+  represents => { "subsection" };
+Prepend::
+ "/inside/manuals/cf2-Reference#Prepend-_0028editing_0029"
+  represents => { "example" };
+PrependIfNoLineMatching::
+ "/inside/manuals/cf2-Reference#PrependIfNoLineMatching"
+  represents => { "subsection" };
+PrependIfNoLineMatching::
+ "/inside/manuals/cf2-Reference#PrependIfNoLineMatching"
+  represents => { "example" };
+PrependIfNoSuchLine::
+ "/inside/manuals/cf2-Reference#PrependIfNoSuchLine"
+  represents => { "subsection" };
+PrependIfNoSuchLine::
+ "/inside/manuals/cf2-Reference#PrependIfNoSuchLine"
+  represents => { "example" };
+Recurse::
+ "/inside/manuals/cf2-Reference#Recurse-_0028editing_0029"
+  represents => { "subsection" };
+Recurse::
+ "/inside/manuals/cf2-Reference#Recurse-_0028editing_0029"
+  represents => { "example" };
+ReplaceLineWith::
+ "/inside/manuals/cf2-Reference#ReplaceLineWith"
+  represents => { "subsection" };
+ReplaceLineWith::
+ "/inside/manuals/cf2-Reference#ReplaceLineWith"
+  represents => { "example" };
+ReplaceAll_With::
+ "/inside/manuals/cf2-Reference#ReplaceAll-With"
+  represents => { "subsection" };
+ReplaceAll_With::
+ "/inside/manuals/cf2-Reference#ReplaceAll-With"
+  represents => { "example" };
+ReplaceFirst_With::
+ "/inside/manuals/cf2-Reference#ReplaceFirst"
+  represents => { "subsection" };
+ReplaceFirst_With::
+ "/inside/manuals/cf2-Reference#ReplaceFirst"
+  represents => { "example" };
+ReplaceLinesMatchingField::
+ "/inside/manuals/cf2-Reference#ReplaceLinesMatchingField"
+  represents => { "subsection" };
+ReplaceLinesMatchingField::
+ "/inside/manuals/cf2-Reference#ReplaceLinesMatchingField"
+  represents => { "example" };
+Repository_editfiles::
+ "/inside/manuals/cf2-Reference#Repository"
+  represents => { "subsection" };
+Repository_editfiles::
+ "/inside/manuals/cf2-Reference#Repository"
+  represents => { "example" };
+ResetSearch::
+ "/inside/manuals/cf2-Reference#ResetSearch"
+  represents => { "subsection" };
+ResetSearch::
+ "/inside/manuals/cf2-Reference#ResetSearch"
+  represents => { "example" };
+RunScript::
+ "/inside/manuals/cf2-Reference#RunScript"
+  represents => { "subsection" };
+RunScript::
+ "/inside/manuals/cf2-Reference#RunScript"
+  represents => { "example" };
+RunScriptIfLineMatching::
+ "/inside/manuals/cf2-Reference#RunScriptIfLineMatching"
+  represents => { "subsection" };
+RunScriptIfLineMatching::
+ "/inside/manuals/cf2-Reference#RunScriptIfLineMatching"
+  represents => { "example" };
+RunScriptIfNoLineMatching::
+ "/inside/manuals/cf2-Reference#RunScriptIfNoLineMatching"
+  represents => { "subsection" };
+RunScriptIfNoLineMatching::
+ "/inside/manuals/cf2-Reference#RunScriptIfNoLineMatching"
+  represents => { "example" };
+SetCommentStart::
+ "/inside/manuals/cf2-Reference#SetCommentStart"
+  represents => { "subsection" };
+SetCommentStart::
+ "/inside/manuals/cf2-Reference#SetCommentStart"
+  represents => { "example" };
+SetCommentEnd::
+ "/inside/manuals/cf2-Reference#SetCommentEnd"
+  represents => { "subsection" };
+SetCommentEnd::
+ "/inside/manuals/cf2-Reference#SetCommentEnd"
+  represents => { "example" };
+SetLine::
+ "/inside/manuals/cf2-Reference#SetLine"
+  represents => { "subsection" };
+SetLine::
+ "/inside/manuals/cf2-Reference#SetLine"
+  represents => { "example" };
+SetScript::
+ "/inside/manuals/cf2-Reference#SetScript"
+  represents => { "subsection" };
+SetScript::
+ "/inside/manuals/cf2-Reference#SetScript"
+  represents => { "example" };
+SlashCommentLinesContaining::
+ "/inside/manuals/cf2-Reference#SlashCommentLinesContaining"
+  represents => { "subsection" };
+SlashCommentLinesContaining::
+ "/inside/manuals/cf2-Reference#SlashCommentLinesContaining"
+  represents => { "example" };
+SlashCommentLinesMatching::
+ "/inside/manuals/cf2-Reference#SlashCommentLinesMatching"
+  represents => { "subsection" };
+SlashCommentLinesMatching::
+ "/inside/manuals/cf2-Reference#SlashCommentLinesMatching"
+  represents => { "example" };
+SlashCommentLinesStarting::
+ "/inside/manuals/cf2-Reference#SlashCommentLinesStarting"
+  represents => { "subsection" };
+SlashCommentLinesStarting::
+ "/inside/manuals/cf2-Reference#SlashCommentLinesStarting"
+  represents => { "example" };
+SplitOn::
+ "/inside/manuals/cf2-Reference#SplitOn"
+  represents => { "subsection" };
+SplitOn::
+ "/inside/manuals/cf2-Reference#SplitOn"
+  represents => { "example" };
+Syslog_editfiles::
+ "/inside/manuals/cf2-Reference#SysLog"
+  represents => { "subsection" };
+Syslog_editfiles::
+ "/inside/manuals/cf2-Reference#SysLog"
+  represents => { "example" };
+Umask::
+ "/inside/manuals/cf2-Reference#Umask"
+  represents => { "subsection" };
+Umask::
+ "/inside/manuals/cf2-Reference#Umask"
+  represents => { "example" };
+UnCommentLinesContaining::
+ "/inside/manuals/cf2-Reference#UnCommentLinesContaining"
+  represents => { "subsection" };
+UnCommentLinesContaining::
+ "/inside/manuals/cf2-Reference#UnCommentLinesContaining"
+  represents => { "example" };
+UnCommentLinesMatching::
+ "/inside/manuals/cf2-Reference#UnCommentLinesMatching"
+  represents => { "subsection" };
+UnCommentLinesMatching::
+ "/inside/manuals/cf2-Reference#UnCommentLinesMatching"
+  represents => { "example" };
+UnCommentNLines::
+ "/inside/manuals/cf2-Reference#UnCommentsNLines"
+  represents => { "subsection" };
+UnCommentNLines::
+ "/inside/manuals/cf2-Reference#UnCommentsNLines"
+  represents => { "example" };
+UnCommentNLines::
+ "/inside/manuals/cf2-Reference#UnCommentsNLines"
+  represents => { "example" };
+UnCommentNLines::
+ "/inside/manuals/cf2-Reference#UnCommentsNLines"
+  represents => { "example" };
+UnCommentToLineMatching::
+ "/inside/manuals/cf2-Reference#UnCommentToLineMatching"
+  represents => { "subsection" };
+UnCommentToLineMatching::
+ "/inside/manuals/cf2-Reference#UnCommentToLineMatching"
+  represents => { "example" };
+UnsetAbort::
+ "/inside/manuals/cf2-Reference#UnsetAbort"
+  represents => { "subsection" };
+UnsetAbort::
+ "/inside/manuals/cf2-Reference#UnsetAbort"
+  represents => { "example" };
+UseShell::
+ "/inside/manuals/cf2-Reference#UseShell"
+  represents => { "subsection" };
+WarnIfFileMissing::
+ "/inside/manuals/cf2-Reference#WarnIfFileMissing"
+  represents => { "subsection" };
+WarnIfFileMissing::
+ "/inside/manuals/cf2-Reference#WarnIfFileMissing"
+  represents => { "example" };
+WarnIfLineContaining::
+ "/inside/manuals/cf2-Reference#WarnIfLineContaining"
+  represents => { "subsection" };
+WarnIfLineContaining::
+ "/inside/manuals/cf2-Reference#WarnIfLineContaining"
+  represents => { "example" };
+WarnIfLineMatching::
+ "/inside/manuals/cf2-Reference#WarnIfLineMatching"
+  represents => { "subsection" };
+WarnIfLineMatching::
+ "/inside/manuals/cf2-Reference#WarnIfLineMatching"
+  represents => { "example" };
+WarnIfLineStarting::
+ "/inside/manuals/cf2-Reference#WarnIfLineStarting"
+  represents => { "subsection" };
+WarnIfLineStarting::
+ "/inside/manuals/cf2-Reference#WarnIfLineStarting"
+  represents => { "example" };
+WarnIfNoLineContaining::
+ "/inside/manuals/cf2-Reference#WarnIfNoLineContaining"
+  represents => { "subsection" };
+WarnIfNoLineContaining::
+ "/inside/manuals/cf2-Reference#WarnIfNoLineContaining"
+  represents => { "example" };
+WarnIfNoLineMatching::
+ "/inside/manuals/cf2-Reference#WarnIfNoLineMatching"
+  represents => { "subsection" };
+WarnIfNoLineMatching::
+ "/inside/manuals/cf2-Reference#WarnIfNoLineMatching"
+  represents => { "example" };
+WarnIfNoLineStarting::
+ "/inside/manuals/cf2-Reference#WarnIfNoLineStarting"
+  represents => { "subsection" };
+WarnIfNoLineStarting::
+ "/inside/manuals/cf2-Reference#WarnIfNoLineStarting"
+  represents => { "example" };
+WarnIfNoSuchLine::
+ "/inside/manuals/cf2-Reference#WarnIfNoSuchLine"
+  represents => { "subsection" };
+WarnIfNoSuchLine::
+ "/inside/manuals/cf2-Reference#WarnIfNoSuchLine"
+  represents => { "example" };
+Editfiles_on_Binary_Files::
+ "/inside/manuals/cf2-Reference#Editfiles-on-Binary-Files"
+  represents => { "Editfiles on Binary Files" };
+files::
+ "/inside/manuals/cf2-Reference#files"
+  represents => { "files" };
+Syntax::
+ "/inside/manuals/cf2-Reference#Syntax"
+  represents => { "subsection" };
+Syntax::
+ "/inside/manuals/cf2-Reference#index-Files_002c-syntax-396"
+  represents => { "example" };
+Syntax::
+ "/inside/manuals/cf2-Reference#index-Files_002c-syntax-396"
+  represents => { "example" };
+Syntax::
+ "/inside/manuals/cf2-Reference#index-home-wildcard-410"
+  represents => { "example" };
+Syntax::
+ "/inside/manuals/cf2-Reference#index-home-wildcard-410"
+  represents => { "example" };
+Recursion::
+ "/inside/manuals/cf2-Reference#Recursion"
+  represents => { "subsection" };
+Directory_permissions::
+ "/inside/manuals/cf2-Reference#Directory-permissions"
+  represents => { "subsection" };
+Directory_permissions::
+ "/inside/manuals/cf2-Reference#index-Directory-permissions-431"
+  represents => { "example" };
+Checksums_and_change_management::
+ "/inside/manuals/cf2-Reference#Checksums-and-change-management"
+  represents => { "subsection" };
+Checksums_and_change_management::
+ "/inside/manuals/cf2-Reference#index-Checksums-433"
+  represents => { "example" };
+home_directive::
+ "/inside/manuals/cf2-Reference#home-directive"
+  represents => { "subsection" };
+home_directive::
+ "/inside/manuals/cf2-Reference#index-home-directive-435"
+  represents => { "example" };
+home_directive::
+ "/inside/manuals/cf2-Reference#index-home-directive-435"
+  represents => { "example" };
+home_directive::
+ "/inside/manuals/cf2-Reference#index-home-directive-435"
+  represents => { "example" };
+Owner_and_group_wildcards::
+ "/inside/manuals/cf2-Reference#Owner-and-group-wildcards"
+  represents => { "subsection" };
+Owner_and_group_wildcards::
+ "/inside/manuals/cf2-Reference#index-Ownership-of-files-437"
+  represents => { "example" };
+Files_linkchildren::
+ "/inside/manuals/cf2-Reference#Files-linkchildren"
+  represents => { "subsection" };
+Files_linkchildren::
+ "/inside/manuals/cf2-Reference#index-linkchildren-439"
+  represents => { "example" };
+touch::
+ "/inside/manuals/cf2-Reference#touch"
+  represents => { "subsection" };
+touch::
+ "/inside/manuals/cf2-Reference#index-touch-441"
+  represents => { "example" };
+create::
+ "/inside/manuals/cf2-Reference#create"
+  represents => { "subsection" };
+filters::
+ "/inside/manuals/cf2-Reference#filters"
+  represents => { "filters" };
+filters::
+ "/inside/manuals/cf2-Reference#index-filter-445"
+  represents => { "example" };
+filters::
+ "/inside/manuals/cf2-Reference#index-filter-445"
+  represents => { "example" };
+filters::
+ "/inside/manuals/cf2-Reference#index-filter-445"
+  represents => { "example" };
+filters::
+ "/inside/manuals/cf2-Reference#index-filter-445"
+  represents => { "example" };
+filters::
+ "/inside/manuals/cf2-Reference#index-filter-445"
+  represents => { "example" };
+filters::
+ "/inside/manuals/cf2-Reference#index-filter-445"
+  represents => { "example" };
+filters::
+ "/inside/manuals/cf2-Reference#index-filter-445"
+  represents => { "example" };
+filters::
+ "/inside/manuals/cf2-Reference#index-filter-445"
+  represents => { "example" };
+filters::
+ "/inside/manuals/cf2-Reference#index-filter-445"
+  represents => { "example" };
+Complete_filter_examples::
+ "/inside/manuals/cf2-Reference#Complete-filter-examples"
+  represents => { "subsection" };
+Complete_filter_examples::
+ "/inside/manuals/cf2-Reference#Complete-filter-examples"
+  represents => { "example" };
+Complete_filter_examples::
+ "/inside/manuals/cf2-Reference#Complete-filter-examples"
+  represents => { "example" };
+Complete_filter_examples::
+ "/inside/manuals/cf2-Reference#Complete-filter-examples"
+  represents => { "example" };
+groups_classes::
+ "/inside/manuals/cf2-Reference#groups"
+  represents => { "groups/classes" };
+groups_classes::
+ "/inside/manuals/cf2-Reference#index-g_t_0040code_007bgroups_007d-451"
+  represents => { "example" };
+groups_classes::
+ "/inside/manuals/cf2-Reference#index-Netgroups-455"
+  represents => { "example" };
+groups_classes::
+ "/inside/manuals/cf2-Reference#index-Removing-entries-from-netgroups-458"
+  represents => { "example" };
+groups_classes::
+ "/inside/manuals/cf2-Reference#index-Removing-entries-from-netgroups-458"
+  represents => { "example" };
+groups_classes::
+ "/inside/manuals/cf2-Reference#index-Group-dependencies-461"
+  represents => { "example" };
+groups_classes::
+ "/inside/manuals/cf2-Reference#index-Group-dependencies-461"
+  represents => { "example" };
+groups_classes::
+ "/inside/manuals/cf2-Reference#index-Group-dependencies-461"
+  represents => { "example" };
+groups_classes::
+ "/inside/manuals/cf2-Reference#index-Shell-command-to-decide-class-464"
+  represents => { "example" };
+homeservers::
+ "/inside/manuals/cf2-Reference#homeservers"
+  represents => { "homeservers" };
+homeservers::
+ "/inside/manuals/cf2-Reference#index-Home-servers_002c-defining-466"
+  represents => { "example" };
+homeservers::
+ "/inside/manuals/cf2-Reference#index-Home-servers_002c-defining-466"
+  represents => { "example" };
+ignore::
+ "/inside/manuals/cf2-Reference#ignore"
+  represents => { "ignore" };
+ignore::
+ "/inside/manuals/cf2-Reference#ignore"
+  represents => { "example" };
+ignore::
+ "/inside/manuals/cf2-Reference#index-ignore-command-471"
+  represents => { "example" };
+import::
+ "/inside/manuals/cf2-Reference#import"
+  represents => { "import" };
+import::
+ "/inside/manuals/cf2-Reference#index-Importing-files-473"
+  represents => { "example" };
+interfaces::
+ "/inside/manuals/cf2-Reference#interfaces"
+  represents => { "interfaces" };
+interfaces::
+ "/inside/manuals/cf2-Reference#index-Network-interfaces_002c-several-480"
+  represents => { "example" };
+interfaces::
+ "/inside/manuals/cf2-Reference#index-Network-interfaces_002c-several-480"
+  represents => { "example" };
+links::
+ "/inside/manuals/cf2-Reference#links"
+  represents => { "links" };
+links::
+ "/inside/manuals/cf2-Reference#index-Making-links-483"
+  represents => { "example" };
+Single_links::
+ "/inside/manuals/cf2-Reference#Single-links"
+  represents => { "subsection" };
+Single_links::
+ "/inside/manuals/cf2-Reference#index-Single-links-486"
+  represents => { "example" };
+Single_links::
+ "/inside/manuals/cf2-Reference#index-g_t_0040code_007b_002dL_007d-option-488"
+  represents => { "example" };
+Single_links::
+ "/inside/manuals/cf2-Reference#index-Binary-servers-and-links-498"
+  represents => { "example" };
+Multiple_Links::
+ "/inside/manuals/cf2-Reference#Multiple-Links"
+  represents => { "subsection" };
+Multiple_Links::
+ "/inside/manuals/cf2-Reference#index-Multiple-links-502"
+  represents => { "example" };
+Link_Children::
+ "/inside/manuals/cf2-Reference#Link-Children"
+  represents => { "subsection" };
+Link_Children::
+ "/inside/manuals/cf2-Reference#index-Binary-servers-and-links-507"
+  represents => { "example" };
+Link_Children::
+ "/inside/manuals/cf2-Reference#index-Making-use-of-local-disk-space-510"
+  represents => { "example" };
+Relative_and_absolute_links::
+ "/inside/manuals/cf2-Reference#Relative-and-absolute-links"
+  represents => { "subsection" };
+Relative_and_absolute_links::
+ "/inside/manuals/cf2-Reference#Relative-and-absolute-links"
+  represents => { "example" };
+Relative_and_absolute_links::
+ "/inside/manuals/cf2-Reference#Relative-and-absolute-links"
+  represents => { "example" };
+Hard_Links::
+ "/inside/manuals/cf2-Reference#Hard-links"
+  represents => { "subsection" };
+Hard_Links::
+ "/inside/manuals/cf2-Reference#index-Hardlinks-512"
+  represents => { "example" };
+mailserver::
+ "/inside/manuals/cf2-Reference#mailserver"
+  represents => { "mailserver" };
+mailserver::
+ "/inside/manuals/cf2-Reference#index-Mail-server_002c-defining-514"
+  represents => { "example" };
+methods::
+ "/inside/manuals/cf2-Reference#methods"
+  represents => { "methods" };
+methods::
+ "/inside/manuals/cf2-Reference#index-Warning-remote-methods-521"
+  represents => { "example" };
+methods::
+ "/inside/manuals/cf2-Reference#index-none-in-server-523"
+  represents => { "example" };
+methods::
+ "/inside/manuals/cf2-Reference#index-none-in-server-523"
+  represents => { "example" };
+Localhost_examples::
+ "/inside/manuals/cf2-Reference#localhost-examples"
+  represents => { "subsection" };
+Localhost_examples::
+ "/inside/manuals/cf2-Reference#localhost-examples"
+  represents => { "example" };
+Localhost_examples::
+ "/inside/manuals/cf2-Reference#localhost-examples"
+  represents => { "example" };
+Localhost_examples::
+ "/inside/manuals/cf2-Reference#localhost-examples"
+  represents => { "example" };
+Localhost_examples::
+ "/inside/manuals/cf2-Reference#localhost-examples"
+  represents => { "example" };
+Localhost_examples::
+ "/inside/manuals/cf2-Reference#localhost-examples"
+  represents => { "example" };
+Localhost_examples::
+ "/inside/manuals/cf2-Reference#localhost-examples"
+  represents => { "example" };
+Remote_host_examples::
+ "/inside/manuals/cf2-Reference#remotehost-examples"
+  represents => { "subsection" };
+Remote_host_examples::
+ "/inside/manuals/cf2-Reference#remotehost-examples"
+  represents => { "example" };
+Remote_host_examples::
+ "/inside/manuals/cf2-Reference#remotehost-examples"
+  represents => { "example" };
+miscmounts::
+ "/inside/manuals/cf2-Reference#miscmounts"
+  represents => { "miscmounts" };
+miscmounts::
+ "/inside/manuals/cf2-Reference#index-Mounting-filesystems_002e-525"
+  represents => { "example" };
+miscmounts::
+ "/inside/manuals/cf2-Reference#index-Mounting-filesystems_002e-525"
+  represents => { "example" };
+mountables::
+ "/inside/manuals/cf2-Reference#mountables"
+  represents => { "mountables" };
+mountables::
+ "/inside/manuals/cf2-Reference#index-Mountable-resources_002c-defining-528"
+  represents => { "example" };
+mountables::
+ "/inside/manuals/cf2-Reference#index-Mountable-resources_002c-defining-528"
+  represents => { "example" };
+processes::
+ "/inside/manuals/cf2-Reference#processes"
+  represents => { "processes" };
+processes::
+ "/inside/manuals/cf2-Reference#processes"
+  represents => { "example" };
+processes::
+ "/inside/manuals/cf2-Reference#index-umask-533"
+  represents => { "example" };
+processes::
+ "/inside/manuals/cf2-Reference#index-Setting-uid-on-restarted-processes-537"
+  represents => { "example" };
+processes::
+ "/inside/manuals/cf2-Reference#index-Processes_002c-checking-existence-of-541"
+  represents => { "example" };
+processes::
+ "/inside/manuals/cf2-Reference#index-Processes_002c-checking-existence-of-541"
+  represents => { "example" };
+processes::
+ "/inside/manuals/cf2-Reference#index-Processes_002c-checking-existence-of-541"
+  represents => { "example" };
+processes::
+ "/inside/manuals/cf2-Reference#index-Processes_002c-checking-existence-of-541"
+  represents => { "example" };
+Packages::
+ "/inside/manuals/cf2-Reference#packages"
+  represents => { "Packages" };
+Packages::
+ "/inside/manuals/cf2-Reference#index-packages-543"
+  represents => { "example" };
+Packages::
+ "/inside/manuals/cf2-Reference#index-Gentoo-Package-Database-Queries-550"
+  represents => { "example" };
+Packages::
+ "/inside/manuals/cf2-Reference#index-FreeBSD-Package-Database-Queries-553"
+  represents => { "example" };
+Packages::
+ "/inside/manuals/cf2-Reference#index-FreeBSD-Package-Database-Queries-553"
+  represents => { "example" };
+Packages::
+ "/inside/manuals/cf2-Reference#index-FreeBSD-Package-Database-Queries-553"
+  represents => { "example" };
+Packages::
+ "/inside/manuals/cf2-Reference#index-FreeBSD-Package-Database-Queries-553"
+  represents => { "example" };
+Packages::
+ "/inside/manuals/cf2-Reference#index-FreeBSD-Package-Database-Queries-553"
+  represents => { "example" };
+Packages::
+ "/inside/manuals/cf2-Reference#index-FreeBSD-Package-Database-Queries-553"
+  represents => { "example" };
+Packages::
+ "/inside/manuals/cf2-Reference#index-FreeBSD-Package-Database-Queries-553"
+  represents => { "example" };
+Packages::
+ "/inside/manuals/cf2-Reference#index-FreeBSD-Package-Database-Queries-553"
+  represents => { "example" };
+Packages::
+ "/inside/manuals/cf2-Reference#index-FreeBSD-Package-Database-Queries-553"
+  represents => { "example" };
+Packages::
+ "/inside/manuals/cf2-Reference#index-FreeBSD-Package-Database-Queries-553"
+  represents => { "example" };
+Packages::
+ "/inside/manuals/cf2-Reference#index-FreeBSD-Package-Database-Queries-553"
+  represents => { "example" };
+rename::
+ "/inside/manuals/cf2-Reference#rename"
+  represents => { "rename" };
+required::
+ "/inside/manuals/cf2-Reference#required"
+  represents => { "required" };
+resolve::
+ "/inside/manuals/cf2-Reference#resolve"
+  represents => { "resolve" };
+resolve::
+ "/inside/manuals/cf2-Reference#index-DNS-554"
+  represents => { "example" };
+resolve::
+ "/inside/manuals/cf2-Reference#index-DNS-554"
+  represents => { "example" };
+resolve::
+ "/inside/manuals/cf2-Reference#index-DNS-554"
+  represents => { "example" };
+scli::
+ "/inside/manuals/cf2-Reference#scli"
+  represents => { "scli" };
+scli::
+ "/inside/manuals/cf2-Reference#scli"
+  represents => { "example" };
+shellcommands::
+ "/inside/manuals/cf2-Reference#shellcommands"
+  represents => { "shellcommands" };
+shellcommands::
+ "/inside/manuals/cf2-Reference#shellcommands"
+  represents => { "example" };
+shellcommands::
+ "/inside/manuals/cf2-Reference#index-noabspath-567"
+  represents => { "example" };
+shellcommands::
+ "/inside/manuals/cf2-Reference#index-noabspath-567"
+  represents => { "example" };
+shellcommands::
+ "/inside/manuals/cf2-Reference#index-CFALLCLASSES-571"
+  represents => { "example" };
+strategies::
+ "/inside/manuals/cf2-Reference#strategies"
+  represents => { "strategies" };
+strategies::
+ "/inside/manuals/cf2-Reference#index-Gaming-stratgies-577"
+  represents => { "example" };
+tidy::
+ "/inside/manuals/cf2-Reference#tidy"
+  represents => { "tidy" };
+tidy::
+ "/inside/manuals/cf2-Reference#index-Tidying-files-580"
+  represents => { "example" };
+tidy::
+ "/inside/manuals/cf2-Reference#index-xdev-614"
+  represents => { "example" };
+unmount::
+ "/inside/manuals/cf2-Reference#unmount"
+  represents => { "unmount" };
+unmount::
+ "/inside/manuals/cf2-Reference#index-Unmounting-filesystems-617"
+  represents => { "example" };
+unmount::
+ "/inside/manuals/cf2-Reference#index-Unmounting-filesystems-617"
+  represents => { "example" };
+Cfservd_and_cfrun_reference::
+ "/inside/manuals/cf2-Reference#Cfservd_002econf-and-cfrun-reference"
+  represents => { "chapter" };
+Cfservd_and_cfrun_reference::
+ "/inside/manuals/cf2-Reference#index-g_t_0040file_007bcfservd_002econf_007d-file-619"
+  represents => { "example" };
+Cfservd_and_cfrun_reference::
+ "/inside/manuals/cf2-Reference#index-Iteration-in-server-rules-620"
+  represents => { "example" };
+Cfservd_and_cfrun_reference::
+ "/inside/manuals/cf2-Reference#index-Iteration-in-server-rules-620"
+  represents => { "example" };
+control_cfservd::
+ "/inside/manuals/cf2-Reference#cfservd-control"
+  represents => { "control cfservd" };
+IP_address_ranges::
+ "/inside/manuals/cf2-Reference#IP-address-ranges"
+  represents => { "subsection" };
+IP_address_ranges::
+ "/inside/manuals/cf2-Reference#IP-address-ranges"
+  represents => { "example" };
+IP_address_ranges::
+ "/inside/manuals/cf2-Reference#IP-address-ranges"
+  represents => { "example" };
+AllowConnectionsFrom::
+ "/inside/manuals/cf2-Reference#AllowConnectionsFrom"
+  represents => { "subsection" };
+AllowConnectionsFrom::
+ "/inside/manuals/cf2-Reference#AllowConnectionsFrom"
+  represents => { "example" };
+AllowMultipleConnectionsFrom::
+ "/inside/manuals/cf2-Reference#AllowMultipleConnectionsFrom"
+  represents => { "subsection" };
+AllowUsers::
+ "/inside/manuals/cf2-Reference#AllowUsers"
+  represents => { "subsection" };
+AllowUsers::
+ "/inside/manuals/cf2-Reference#index-cfrun_002c-limiting-users-on-server-625"
+  represents => { "example" };
+AutoExecCommand::
+ "/inside/manuals/cf2-Reference#AutoExecCommand"
+  represents => { "subsection" };
+AutoExecInterval::
+ "/inside/manuals/cf2-Reference#AutoExecInterval"
+  represents => { "subsection" };
+BindToInterface_in_cfservd::
+ "/inside/manuals/cf2-Reference#BindToInterface-in-cfservd"
+  represents => { "subsection" };
+ChecksumDatabase_in_cfservd::
+ "/inside/manuals/cf2-Reference#ChecksumDatabase-in-cfservd"
+  represents => { "subsection" };
+cfrunCommand::
+ "/inside/manuals/cf2-Reference#cfrunCommand"
+  represents => { "subsection" };
+DenyBadClocks::
+ "/inside/manuals/cf2-Reference#DenyBadClocks"
+  represents => { "subsection" };
+DenyConnectionsFrom::
+ "/inside/manuals/cf2-Reference#DenyConnectionsFrom"
+  represents => { "subsection" };
+DenyConnectionsFrom::
+ "/inside/manuals/cf2-Reference#DenyConnectionsFrom"
+  represents => { "example" };
+HostnameKeys_in_cfservd::
+ "/inside/manuals/cf2-Reference#cfservd-HostnameKeys"
+  represents => { "subsection" };
+HostnameKeys_in_cfservd::
+ "/inside/manuals/cf2-Reference#cfservd-HostnameKeys"
+  represents => { "example" };
+IfElapsed_in_cfservd::
+ "/inside/manuals/cf2-Reference#cfservd-IfElapsed"
+  represents => { "subsection" };
+LogAllConnections::
+ "/inside/manuals/cf2-Reference#LogAllConnections"
+  represents => { "subsection" };
+LogEncryptedTransfers::
+ "/inside/manuals/cf2-Reference#LogEncryptedTransfers"
+  represents => { "subsection" };
+MaxConnections::
+ "/inside/manuals/cf2-Reference#MaxConnections"
+  represents => { "subsection" };
+TrustKeysFrom::
+ "/inside/manuals/cf2-Reference#TrustKeysFrom"
+  represents => { "subsection" };
+TrustKeysFrom::
+ "/inside/manuals/cf2-Reference#TrustKeysFrom"
+  represents => { "example" };
+DynamicAddresses::
+ "/inside/manuals/cf2-Reference#DynamicAddresses"
+  represents => { "subsection" };
+DynamicAddresses::
+ "/inside/manuals/cf2-Reference#index-DHCP-addresses-642"
+  represents => { "example" };
+admit__grant_and_deny::
+ "/inside/manuals/cf2-Reference#admit-grant-and-deny"
+  represents => { "admit, grant and deny" };
+root_::
+ "/inside/manuals/cf2-Reference#root_003d"
+  represents => { "subsection" };
+encrypt_true::
+ "/inside/manuals/cf2-Reference#encrypt_003d"
+  represents => { "subsection" };
+SkipVerify::
+ "/inside/manuals/cf2-Reference#SkipVerify"
+  represents => { "subsection" };
+SkipVerify::
+ "/inside/manuals/cf2-Reference#SkipVerify"
+  represents => { "example" };
+cfrun::
+ "/inside/manuals/cf2-Reference#cfrun"
+  represents => { "cfrun" };
+cfrun::
+ "/inside/manuals/cf2-Reference#cfrun"
+  represents => { "example" };
+cfrun::
+ "/inside/manuals/cf2-Reference#cfrun"
+  represents => { "example" };
+cfrun::
+ "/inside/manuals/cf2-Reference#index-Broadcasts-to-the-cfengine-service_002e-661"
+  represents => { "example" };
+cfrun::
+ "/inside/manuals/cf2-Reference#index-hostnamekeys-662"
+  represents => { "example" };
+cfrun::
+ "/inside/manuals/cf2-Reference#index-Running-cfengine-from-a-single-master-host-664"
+  represents => { "example" };
+cfrun::
+ "/inside/manuals/cf2-Reference#index-Running-cfengine-from-a-single-master-host-664"
+  represents => { "example" };
+Firewalls_and_NATs::
+ "/inside/manuals/cf2-Reference#Firewalls-and-NATs"
+  represents => { "Firewalls and NATs" };
+Firewalls_and_NATs::
+ "/inside/manuals/cf2-Reference#Firewalls-and-NATs"
+  represents => { "example" };
+Cfexecd_reference::
+ "/inside/manuals/cf2-Reference#Cfexecd-reference"
+  represents => { "chapter" };
+Cfexecd_reference::
+ "/inside/manuals/cf2-Reference#Cfexecd-reference"
+  represents => { "example" };
+Cfexecd_reference::
+ "/inside/manuals/cf2-Reference#Cfexecd-reference"
+  represents => { "example" };
+Cfexecd_reference::
+ "/inside/manuals/cf2-Reference#index-g_t_002fvar_002fcfengine_002foutput-672"
+  represents => { "example" };
+Cfexecd_reference::
+ "/inside/manuals/cf2-Reference#index-Mailing-output-675"
+  represents => { "example" };
+Cfexecd_reference::
+ "/inside/manuals/cf2-Reference#index-Mailing-output-680"
+  represents => { "example" };
+Problem_solving::
+ "/inside/manuals/cf2-Reference#Problem-solving"
+  represents => { "chapter" };
+cf_preconf_bootstrap_file::
+ "/inside/manuals/cf2-Reference#cf_002epreconf-bootstrap-file"
+  represents => { "cf.preconf bootstrap file" };
+cf_preconf_bootstrap_file::
+ "/inside/manuals/cf2-Reference#index-cf_002epreconf-bootstrap-file-686"
+  represents => { "example" };
+cfrc_resource_file::
+ "/inside/manuals/cf2-Reference#cfrc-resource-file"
+  represents => { "cfrc resource file" };
+cfrc_resource_file::
+ "/inside/manuals/cf2-Reference#index-cfrc-resource-file-697"
+  represents => { "example" };
+cfrc_resource_file::
+ "/inside/manuals/cf2-Reference#index-cfrc-resource-file-697"
+  represents => { "example" };
+cfrc_resource_file::
+ "/inside/manuals/cf2-Reference#index-cfrc-resource-file-697"
+  represents => { "example" };
+cfrc_resource_file::
+ "/inside/manuals/cf2-Reference#index-cfrc-resource-file-697"
+  represents => { "example" };
+Example_configuration_files::
+ "/inside/manuals/cf2-Reference#Example-configuration-file"
+  represents => { "chapter" };
+cfagent_conf::
+ "/inside/manuals/cf2-Reference#cfagent_002econf"
+  represents => { "cfagent.conf" };
+cfagent_conf::
+ "/inside/manuals/cf2-Reference#index-g_t_0040file_007bcfagent_002econf_007d-704"
+  represents => { "example" };
+cf_groups::
+ "/inside/manuals/cf2-Reference#cf_002egroups"
+  represents => { "cf.groups" };
+cf_groups::
+ "/inside/manuals/cf2-Reference#index-g_t_0040file_007bcf_002egroups_007d-705"
+  represents => { "example" };
+cf_main::
+ "/inside/manuals/cf2-Reference#cf_002emain"
+  represents => { "cf.main" };
+cf_main::
+ "/inside/manuals/cf2-Reference#index-g_t_0040file_007bcf_002emain_007d-706"
+  represents => { "example" };
+cf_site::
+ "/inside/manuals/cf2-Reference#cf_002esite"
+  represents => { "cf.site" };
+cf_site::
+ "/inside/manuals/cf2-Reference#index-g_t_0040file_007bcf_002esite_007d-707"
+  represents => { "example" };
+cf_motd::
+ "/inside/manuals/cf2-Reference#cf_002emotd"
+  represents => { "cf.motd" };
+cf_motd::
+ "/inside/manuals/cf2-Reference#index-g_t_0040file_007bcf_002emotd_007d-708"
+  represents => { "example" };
+cf_users::
+ "/inside/manuals/cf2-Reference#cf_002eusers"
+  represents => { "cf.users" };
+cf_users::
+ "/inside/manuals/cf2-Reference#cf_002eusers"
+  represents => { "example" };
+cf_solaris::
+ "/inside/manuals/cf2-Reference#cf_002esolaris"
+  represents => { "cf.solaris" };
+cf_solaris::
+ "/inside/manuals/cf2-Reference#cf_002esolaris"
+  represents => { "example" };
+cf_linux::
+ "/inside/manuals/cf2-Reference#cf_002elinux"
+  represents => { "cf.linux" };
+cf_linux::
+ "/inside/manuals/cf2-Reference#cf_002elinux"
+  represents => { "example" };
+cf_freebsd___cf_netbsd::
+ "/inside/manuals/cf2-Reference#cf_002efreebsd"
+  represents => { "cf.freebsd / cf.netbsd" };
+cf_freebsd___cf_netbsd::
+ "/inside/manuals/cf2-Reference#cf_002efreebsd"
+  represents => { "example" };
+cfservd_conf_tutorial::
+ "/inside/manuals/cf2-Reference#cfservd_002econf"
+  represents => { "cfservd.conf tutorial" };
+cfservd_conf_tutorial::
+ "/inside/manuals/cf2-Reference#index-g_t_0040file_007bcf_002esite_007d-709"
+  represents => { "example" };
+}
+

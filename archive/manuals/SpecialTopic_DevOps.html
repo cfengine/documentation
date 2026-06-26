@@ -1,0 +1,832 @@
+<html lang="en">
+<head>
+<title>CFEngine for `DevOps'</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CFEngine for `DevOps'">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('☺'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background: none !important;
+    border: none !important;
+    padding: 5px; 
+
+/*    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;*/
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">CFEngine for `DevOps'</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-is-DevOps_003f">What is DevOps?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">Cfengine for Devops</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#What-is-DevOps_003f">What is DevOps? </a>
+<li><a accesskey="2" href="#Why-is-DevOps-happening-now_003f">Why is DevOps happening now? </a>
+<li><a accesskey="3" href="#Should-Web-and-IT-management-be-closely-related_003f">Should Web and IT management be closely related?</a>
+<li><a accesskey="4" href="#How-do-we-make-controlled-change-faster_003f">How do we make controlled change faster?</a>
+<li><a accesskey="5" href="#What-role-does-CFEngine-play-in-DevOps_003f">What role does CFEngine play in DevOps?</a>
+<li><a accesskey="6" href="#Getting-used-to-declarative-expression">Getting used to declarative expression</a>
+<li><a accesskey="7" href="#Using-CFEngine-to-integrate-software-components">Using CFEngine to integrate software components</a>
+<li><a accesskey="8" href="#Cloud-computing-is-a-rehearsal">Cloud computing is a rehearsal</a>
+</ul>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<div class="node">
+<a name="What-is-DevOps%3f"></a>
+<a name="What-is-DevOps_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Why-is-DevOps-happening-now_003f">Why is DevOps happening now?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">What is DevOps?</h3>
+
+<pre class="sp">
+
+</pre>
+DevOps is a term coined by Patrick Debois in 2009, from an
+amalgamation of Development and Operations. It expresses a
+change in the way companies are thinking about IT &ndash; a change from segregated
+IT infrastructure to highly integrated platforms. 
+Leading the way is a group of highly innovative Web-based companies
+whose businesses depend on very specific arrangements of
+infrastructure. It is about giving software developers more influence
+over the IT infrastructure their applications run on, and allowing
+change at the same speed as agile development teams.
+
+<div class="node">
+<a name="Why-is-DevOps-happening-now%3f"></a>
+<a name="Why-is-DevOps-happening-now_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Should-Web-and-IT-management-be-closely-related_003f">Should Web and IT management be closely related?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-is-DevOps_003f">What is DevOps?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Why is DevOps happening now?</h3>
+
+<pre class="sp">
+
+</pre>
+
+The proliferation of Free and Open Source
+software has put powerful software components in the hands of a
+broader range of developers than ever before &ndash; and businesses
+everywhere are exploiting this software by adapting it and combining
+it is a wealth of mutations.  This blurs the line between what used to
+be development and what used to be the system administrator's domain (operations). 
+We have entered an age analogous to that of hobby electronics for IT
+systems, where we can order off-the-shelf components and build cool
+new applications from them anywhere.
+
+   <p>After 20 years of scepticism, business and Free Open Source software have
+made friends and are working together creatively for the benefit of
+willing consumers. 
+With this basic premise of agility, companies working in this area
+naturally embrace a rapid innovation cycle, meaning a fast release
+cycle too.  Traditional IT management methods can be perceived as too
+slow in such an environment. An important part of DevOps is that it
+naturally encompasses the idea of business integration &ndash; or IT
+for a purpose.
+
+<div class="node">
+<a name="Should-Web-and-IT-management-be-closely-related%3f"></a>
+<a name="Should-Web-and-IT-management-be-closely-related_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#How-do-we-make-controlled-change-faster_003f">How do we make controlled change faster?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Why-is-DevOps-happening-now_003f">Why is DevOps happening now?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Should Web and IT management be closely related?</h3>
+
+<pre class="sp">
+
+</pre>
+
+Web frameworks have seen the rise of languages like PHP, Java, Python
+and Ruby, all of which offer frameworks for fast deployment. 
+Languages that work well for application development are not well
+suited to managing infrastructure however: they focus too much on low
+level details that one would like to suppress. The fact that
+programmers already know the languages does not change this.
+
+   <p>An important principle for robustness and stability of systems is weak
+coupling between components. This brings flexibility rather than brittle
+fragility. Giving programmers direct control over
+infrastructure from their applications risks insufficient separation
+in which infrastructure management becomes a second-class citizen run
+by amateurs who just want to get code out there and don't properly
+understand the implications. The System Administrator role exists for
+a reason.
+
+   <p>Should we use the web and HTTP for everything just because we
+know it?  We suggest not. HTTP is an inefficient protocol
+for operations. It was designed for 1:1 communication with centralized
+certificate verification, not for decentralized 1000000:1
+communication, as testified by the extensive need for load balancers
+in web farms.
+
+   <p>At CFEngine, we believe in lightweight management &ndash; made as simple
+as possible, but no simpler.
+
+<div class="node">
+<a name="How-do-we-make-controlled-change-faster%3f"></a>
+<a name="How-do-we-make-controlled-change-faster_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-role-does-CFEngine-play-in-DevOps_003f">What role does CFEngine play in DevOps?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Should-Web-and-IT-management-be-closely-related_003f">Should Web and IT management be closely related?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">How do we make controlled change faster?</h3>
+
+<pre class="sp">
+
+</pre>
+
+It is important to be able to make changes quickly. Automation can
+implement change quickly if humans can get their acts together. Human
+IT processes and best practices (e.g. ITIL, COBIT, etc) tend to over
+bureaucratize change, leading to unnecessary overhead which frustrates
+agile companies.
+
+   <p>To be confident and efficient (`less haste more speed'), there needs
+to be a model for the system that everyone agrees on. Models compress
+information and cache understanding, meaning we have less to talk
+about<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>. Finally, models allow us to make
+predictions, so they aid understanding and help us to avoid mistake.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+CFEngine's promise model offers a flexible approach to weakly-coupled
+autonomous resource configuration. It simultaneously allows efficient,
+convergent, and repeatable implementation, and a simple definition of
+<i>compliance</i> with requirements<a rel="footnote" href="#fn-2" name="fnd-2"><sup>2</sup></a>. All web-based companies using credit
+cards will know about the need for PCI-DSS compliance, for instance. 
+And US-traded companies will know about Sarbanes-Oxley (SOX). 
+</td></tr></table>
+
+<div class="node">
+<a name="What-role-does-CFEngine-play-in-DevOps%3f"></a>
+<a name="What-role-does-CFEngine-play-in-DevOps_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Getting-used-to-declarative-expression">Getting used to declarative expression</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#How-do-we-make-controlled-change-faster_003f">How do we make controlled change faster?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">What role does CFEngine play in DevOps?</h3>
+
+<pre class="sp">
+
+</pre>
+
+The challenges for IT management today are about increasing complexity (driven
+by the circuitry of online applications) and increasing scale.
+
+   <p>CFEngine is not a programming language, but a documentation language
+for system state that has the pleasant side effect of enforcing that
+state on a continuous basis. It gets away from the idea of `build
+automation' to complete lifecycle management. It's continuity is a
+natural partner for a rapid development environment, as mistakes can be
+quickly fixed on the fly with minimal impact on the system.
+
+   <p>CFEngine's wins are that it is massively scalable, very low impact and rich in functionality. 
+It will not break at a few hundred machines or choke off network communications with
+overhead. It will fix practically any well-defined problem within 5 minutes, bringing dependability and
+agility.
+
+   <p>Knowledge, business integration - metrics
+
+   <p>The advantage CFEngine brings is that users can have clear expectations about their
+systems at all times. Today's programmers are more sophisticated than script monkeys.
+
+<div class="node">
+<a name="Getting-used-to-declarative-expression"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Using-CFEngine-to-integrate-software-components">Using CFEngine to integrate software components</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-role-does-CFEngine-play-in-DevOps_003f">What role does CFEngine play in DevOps?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Getting used to declarative expression</h3>
+
+<pre class="sp">
+
+</pre>
+
+CFEngine uses a pragmatic mixture of the declarative (functional) and
+imperative to represent configurations. Programmers are taught mainly
+imperative programming today, so a declarative approach could seem like
+a barrier to adoption. The principles are very simple however, and easy for
+developers to grasp.
+
+   <p>In spite of the focus on readability for documenting <i>intent</i>,
+all the familiar structures of imperative programming are, in fact, available
+in CFEngine, just optimized for clarity.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+The main goals of CFEngine are <i>convergence to a desired state</i>, <i>repeatability</i>
+and <i>clear intentions</i>. 
+</td></tr></table>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Expressing-actions-or-tasks-in-CFEngine">Expressing actions or tasks in CFEngine</a>
+<li><a accesskey="2" href="#Expressing-conditionals-in-CFEngine">Expressing conditionals in CFEngine</a>
+<li><a accesskey="3" href="#Expressing-loops-in-CFEngine">Expressing loops in CFEngine</a>
+<li><a accesskey="4" href="#Expressing-subroutines-in-CFEngine">Expressing subroutines in CFEngine</a>
+</ul>
+
+<div class="node">
+<a name="Expressing-actions-or-tasks-in-CFEngine"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Expressing-conditionals-in-CFEngine">Expressing conditionals in CFEngine</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Getting-used-to-declarative-expression">Getting used to declarative expression</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Getting-used-to-declarative-expression">Getting used to declarative expression</a>
+
+</div>
+
+<h4 class="unnumberedsubsec">Expressing actions or tasks in CFEngine</h4>
+
+<pre class="sp">
+
+</pre>
+
+Most of the actionable items have builtin operational support,
+which is designed to be convergent and safely repeatable. 
+To keep declarations clear, CFEngine organizes similar
+operations into chapters in a simple separation of concerns.
+
+<pre class="example">     files:
+      <var>"affected object" ...details....</var>
+     
+     processes:
+      <var>"affected object" ...details....</var>
+     
+</pre>
+   <p class="noindent">In general, many such promises and types are collected into bundles, so
+that the form is
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="example">      bundle agent SomeUserDefinedName
+      {
+      type_of_promise:
+     
+        <var>"affected object/promiser"
+     
+           body of the promise/details</var>
+     
+       ...
+      }
+</pre>
+   </td></tr></table>
+   <div class="node">
+<a name="Expressing-conditionals-in-CFEngine"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Expressing-loops-in-CFEngine">Expressing loops in CFEngine</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Expressing-actions-or-tasks-in-CFEngine">Expressing actions or tasks in CFEngine</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Getting-used-to-declarative-expression">Getting used to declarative expression</a>
+
+</div>
+
+<h4 class="unnumberedsubsec">Expressing conditionals in CFEngine</h4>
+
+<pre class="sp">
+
+</pre>
+
+CFEngine uses the idea of contexts (also called classes or class-contexts<a rel="footnote" href="#fn-3" name="fnd-3"><sup>3</sup></a>) to address declarations to
+certain environments. The contexts or classes are written as a prefix, a bit like a
+target in a Makefile. They represent known properties of the environment. 
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+<pre class="example">      bundle agent SomeUserDefinedName
+      {
+      type_of_promise:
+     
+        <b>property::</b>
+     
+          <i>make one promise...</i>
+     
+        <b>!property::</b>
+     
+          <i>make a different promise...</i>
+      }
+     
+</pre>
+   </td></tr></table>
+   This is the mechanism by which all decisions are made in CFEngine. Class contexts
+are evaluated by <code>cf-agent</code> and are cached so that they can be used at any time.
+
+   <p>How do we know if the property has been evaluated or not? CFEngine evaluates certain
+hard-classes by default. In addition, you can probe as many more as you like, as
+separate promises.
+<pre class="verbatim"> classes:
+
+   "cached_result" expression => fileexists("/some/file");
+   "bigger"        and => { isgreaterthan("1","0"), "cached_result" }; 
+
+</pre>
+This is different from a programming language where you generally make these tests
+in-line when you need them. In CFEngine the chance that you need the same test multiple
+times is greater, so the determination is separated entirely from the usage.
+
+   <p>To go from <i>if-then-else</i> thinking to using classes, you just need to thihnk about
+classes as booleans:
+<pre class="example">     bundle agent Name
+     {
+     classes:
+     
+        "cached_result" expression =&gt; fileexists("/some/file");
+        "bigger"        and =&gt; { isgreaterthan("1","0"), "cached_result" };
+     
+     reports:
+     
+       <b>bigger::</b>
+         "Bigger is true....";
+     
+       <b>cached_result&amp;!bigger::</b>
+         "Mathematics seems to be awry...";
+     
+       # may also be written <b>cached_result.!bigger::</b>
+     
+     }
+</pre>
+   <p>These results can then be extended and reused efficiently. 
+The class definitions can be hidden away and suitably meaningful class names
+replace a lot of redundant syntax.
+
+   <p>All the information about class contexts is evaluated at the end-host,
+in a decentralized manner avoiding clogging of network communications
+that befuddles many centralized approaches. This keeps CFEngine execution
+very fast and with a low overhead.
+
+<div class="node">
+<a name="Expressing-loops-in-CFEngine"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Expressing-subroutines-in-CFEngine">Expressing subroutines in CFEngine</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Expressing-conditionals-in-CFEngine">Expressing conditionals in CFEngine</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Getting-used-to-declarative-expression">Getting used to declarative expression</a>
+
+</div>
+
+<h4 class="unnumberedsubsec">Expressing loops in CFEngine</h4>
+
+<pre class="sp">
+
+</pre>
+
+Lists and loops go hand in hand, and they are a very effective way of reducing
+syntax and simplifying the expression of intent. Saying `do this to all the following'
+is generally easier to comprehend than `do this to the first, do this to the next,...' and
+so on, because our brains are wired to see patterns.
+
+   <p>Thus, loops are as useful for configuration as for programming.  We
+only want to simplify the syntax once again to hide redundant words
+like `foreach'. To do this, CFEngine makes loops implicit. If you
+use a scalar variable reference &lsquo;<samp><span class="samp">$(mylist)</span></samp>&rsquo; to a list variable
+&lsquo;<samp><span class="samp">@(mylist)</span></samp>&rsquo;, CFEngine assumes you want to iterate over each
+case.
+<pre class="verbatim">vars:
+   "my_list" slist => { "one", "two", "three" };
+
+files:
+   "/tmp/file_$(my_list)"
+             create => "true";
+
+</pre>
+The above evaluates to three promises:
+<pre class="example">     files:
+     
+        "/tmp/file_one"
+                  create =&gt; "true";
+     
+        "/tmp/file_two"
+                  create =&gt; "true";
+     
+        "/tmp/file_three"
+                  create =&gt; "true";
+     
+</pre>
+   <p class="noindent">Similarly the following
+<pre class="verbatim">bundle agent x
+{
+vars:
+   "hi"   string => "Hello";
+   "list1" slist => { "a", "b", "c" };
+   "list2" slist => { "1", "2", "3", "4" };
+   "list3" slist => { "x", "y", "z" };
+
+reports:
+   !silly_non_existent_context::
+     "$(hi) $(list1) $(list2) $(list3)";
+}
+</pre>
+Results in:
+<pre class="smallexample">     R: Hello a 1 x
+     R: Hello b 1 x
+     R: Hello c 1 x
+     R: Hello a 2 x
+     R: Hello b 2 x
+     R: Hello c 2 x
+     R: Hello a 3 x
+     R: Hello b 3 x
+     R: Hello c 3 x
+     R: Hello a 4 x
+     R: Hello b 4 x
+     R: Hello c 4 x
+     R: Hello a 1 y
+     R: Hello b 1 y
+     R: Hello c 1 y
+     R: Hello a 2 y
+     R: Hello b 2 y
+     R: Hello c 2 y
+     R: Hello a 3 y
+     R: Hello b 3 y
+     R: Hello c 3 y
+     R: Hello a 4 y
+     R: Hello b 4 y
+     R: Hello c 4 y
+     R: Hello a 1 z
+     R: Hello b 1 z
+     R: Hello c 1 z
+     R: Hello a 2 z
+     R: Hello b 2 z
+     R: Hello c 2 z
+     R: Hello a 3 z
+     R: Hello b 3 z
+     R: Hello c 3 z
+     R: Hello a 4 z
+     R: Hello b 4 z
+     R: Hello c 4 z
+</pre>
+   <div class="node">
+<a name="Expressing-subroutines-in-CFEngine"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Expressing-loops-in-CFEngine">Expressing loops in CFEngine</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Getting-used-to-declarative-expression">Getting used to declarative expression</a>
+
+</div>
+
+<h4 class="unnumberedsubsec">Expressing subroutines in CFEngine</h4>
+
+<pre class="sp">
+
+</pre>
+Subroutines are used for both expressing and reusing parameterizable
+chunks of code, and for naming chunks for better management of intention. 
+In CFEngine you define these as <code>methods</code>. A method is simply a bundle
+of promises, possibly with parameters. To call a method, you make a
+method-use-bundle promise. In this example, we call a bundle called <code>subtest</code>
+which accepts a parameter from its calling bundle.
+
+<pre class="verbatim">body common control
+{
+# Master execution list
+bundlesequence  => { "testbundle"  };
+}
+
+###########################################
+
+bundle agent testbundle
+{
+vars:
+ "userlist" slist => { "one", "two", "three" };
+
+methods:
+ "any" usebundle => subtest("$(userlist)");
+}
+
+###########################################
+
+bundle agent subtest(user)
+{
+commands:
+  "/bin/echo Fix $(user)";
+}
+
+</pre>
+The use of methods brings multi-dimensional patterns
+to convergent configuration management.
+
+<div class="node">
+<a name="Using-CFEngine-to-integrate-software-components"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Cloud-computing-is-a-rehearsal">Cloud computing is a rehearsal</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Getting-used-to-declarative-expression">Getting used to declarative expression</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Using CFEngine to integrate software components</h3>
+
+<pre class="sp">
+
+</pre>
+
+Integration of software components may be addressed with a variety
+of approaches and techniques:
+
+     <ul>
+<li>Standard template methods from the COPBL community library (`out of the box'
+solutions). 
+<li>Customized, personalized configurations. 
+<li>Package management for software dependencies. 
+<li>File management - copying, editing, permissions, etc. 
+<li>Process management - starting, stopping, restarting. 
+<li>Security. 
+<li>Monitoring performance and change. 
+</ul>
+
+<p class="noindent">Needless to say, all of these are easily achievable with 5 minute repair accuracy
+using our CFEngine framework.
+
+<div class="node">
+<a name="Cloud-computing-is-a-rehearsal"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Using-CFEngine-to-integrate-software-components">Using CFEngine to integrate software components</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Cloud computing is a rehearsal</h3>
+
+<pre class="sp">
+
+</pre>
+
+We have barely made a dent in CFEngine in this Short Topics Guide. 
+Let us end by noting briefly that DevOps and Cloud Computing are
+merely rehearsals for what is to come next: molecular computing in
+which we synthesize complex clusters of components based on higher
+level rule based schemas.
+
+   <p>In this future version of IT, knowledge management will be the key
+challenge for understanding how to build systems. We fully expect the
+APIs of the future virtualized infrastructure to be promise oriented,
+and for CFEngine to remain a viable approach to configuration after
+other frameworks have become outmoded.
+
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">Cfengine for Devops</a>
+<ul>
+<li><a href="#What-is-DevOps_003f">What is DevOps?</a>
+<li><a href="#Why-is-DevOps-happening-now_003f">Why is DevOps happening now?</a>
+<li><a href="#Should-Web-and-IT-management-be-closely-related_003f">Should Web and IT management be closely related?</a>
+<li><a href="#How-do-we-make-controlled-change-faster_003f">How do we make controlled change faster?</a>
+<li><a href="#What-role-does-CFEngine-play-in-DevOps_003f">What role does CFEngine play in DevOps?</a>
+<li><a href="#Getting-used-to-declarative-expression">Getting used to declarative expression</a>
+<ul>
+<li><a href="#Expressing-actions-or-tasks-in-CFEngine">Expressing actions or tasks in CFEngine</a>
+<li><a href="#Expressing-conditionals-in-CFEngine">Expressing conditionals in CFEngine</a>
+<li><a href="#Expressing-loops-in-CFEngine">Expressing loops in CFEngine</a>
+<li><a href="#Expressing-subroutines-in-CFEngine">Expressing subroutines in CFEngine</a>
+</li></ul>
+<li><a href="#Using-CFEngine-to-integrate-software-components">Using CFEngine to integrate software components</a>
+<li><a href="#Cloud-computing-is-a-rehearsal">Cloud computing is a rehearsal</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://
+ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-
+analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+   <div class="footnote">
+<hr>
+<a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> Consider, for example, US versus Norwegian legal
+systems. In Norway more details are codified into federal law. This
+means that there is less to talk about in court and legal proceedings
+are much more quickly resolved as there is less need to reinvent
+interpretations on the fly.</p>
+
+   <p class="footnote"><small>[<a name="fn-2" href="#fnd-2">2</a>]</small> For an explanation of convergence,
+see the Special Topics Guide on Change Management and Incident Repair.</p>
+
+   <p class="footnote"><small>[<a name="fn-3" href="#fnd-3">3</a>]</small> 
+The term classes was originally used but has since been overloaded with connotations from
+Object Orientation, etc, making the term confusing.</p>
+
+   <hr></div>
+
+</body></html>
+

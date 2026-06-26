@@ -1,0 +1,722 @@
+<html lang="en">
+<head>
+<title>Rollout and Rollback</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Rollout and Rollback">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('☺'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background: none !important;
+    border: none !important;
+    padding: 5px; 
+
+/*    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;*/
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">Rollout and Rollback</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-is-rollback_003f">What is rollback?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">Rollback</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#What-is-rollback_003f">What is rollback?</a>
+<li><a accesskey="2" href="#Like-revision-control_003f">Like revision control?</a>
+<li><a accesskey="3" href="#Limitations-of-rollback-in-system-administration">Limitations of rollback in system administration</a>
+<li><a accesskey="4" href="#ITIL-release-management">ITIL release management</a>
+<li><a accesskey="5" href="#Why-is-relying-on-rollback-not-a-good-strategy_003f">Why is relying on rollback not a good strategy?</a>
+<li><a accesskey="6" href="#Don_0027t-shoot-the-messenger">Don't shoot the messenger</a>
+<li><a accesskey="7" href="#An-alternative-way-to-plan-changes">An alternative way to plan changes</a>
+<li><a accesskey="8" href="#How-does-CFEngine-convergence-help_003f">How does CFEngine convergence help?</a>
+<li><a accesskey="9" href="#g_t_0060Resetting_0027-_002d_002d-a-case-where-rollback-works_003f">`Resetting' -- a case where rollback works?</a>
+<li><a href="#Appendix-_002d-Did-you-know_003f">Appendix - Did you know?</a>
+</ul>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<div class="node">
+<a name="What-is-rollback%3f"></a>
+<a name="What-is-rollback_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Like-revision-control_003f">Like revision control?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">What is rollback?</h3>
+
+<pre class="sp">
+
+</pre>
+
+Rollback is a term that originates from the world of <i>Transaction
+Processing</i>, e.g in databases. It arises in the context of trying to
+guarantee data integrity during <i>intended changes to data</i> (e.g. during copy or
+write operations to a database or a disk).
+
+   <p>Accurate change of data can fail for a variety of unpredictable
+environmental reasons, so the idea is to preserve the integrity of
+data during change by arranging them into predictable chunks called
+<i>transactions</i>. If an error occurs during the copying of a single
+data transaction, e.g. because it was interrupted or there was a
+failure, then the change should be such that we are able to scrap
+the affected transaction and try it again until the intention
+succeeds.
+
+   <p>The idea is a simple variation of error-correction methods in signal
+transmission, where detection of an error mandates dropping a packet
+and retransmitting it. Ultimately this goes back to Shannon
+communication theory.
+
+<div class="node">
+<a name="Like-revision-control%3f"></a>
+<a name="Like-revision-control_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Limitations-of-rollback-in-system-administration">Limitations of rollback in system administration</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-is-rollback_003f">What is rollback?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Like revision control?</h3>
+
+<p>The idea has been used in other contexts too.  Revision control
+systems (CVS, Subversion, etc) use the same idea to keep a record of
+what <i>intended changes</i> have been made in source code or other
+documents. In theory, if you intentionally commit a change that you
+don't like, you can `back out' by reversing a `commit' operation and
+going back to a previous version before it becomes irreversible.
+
+   <p>This idea works well if you only ever want to undo the last atomic
+transaction in a sequence of deliberate changes, however there are
+limitations.  If two or more persons make changes to data in parallel,
+you might not know what the last transaction was, or even that another
+transaction has taken place when trying to undo a change.
+
+   <p>Similarly, you might want to undo changes that you made a few
+transactions ago, in which case you would need to undo all the changes
+from that point to the current point. At that point, it is more
+efficient to make a `new' revision that takes away the offending text,
+rather than undoing everything that happened since.
+
+   <p>Revsion control can also fail. Your last change might have already been
+changed with or without your knowledge and simply reversing what you
+changed will not be possible. 
+For example, consider the file:
+
+<pre class="smallexample">     one
+     two
+     three
+</pre>
+   <p class="noindent">User 1 commits new lines in a single transaction:
+
+<pre class="smallexample">     one
+     two
+     three
+     seven
+     eight
+</pre>
+   <p class="noindent">Then another user transforms all the lines in a single transaction:
+
+<pre class="smallexample">     #one
+     #two
+     #three
+     #seven
+     #eight
+</pre>
+   <p class="noindent">User 1 now realizes that the lines were incorrect and tries
+to undo his transaction, deleting two lines `seven' and `eight' at the
+end of the file, but now there are no such lines to be found where
+they were expected, and the rollback fails without a graceful exit. Now
+the system is in an unknown state, not merely an imperfect one.
+
+   <p>The resolution to this problem is not to try reversing changes, but to
+reanalyze the file contents and move forward. As long as changes are
+small and simple, re-analysis will be a simple matter and moving
+forward will be the simplest option with the least upheaval to the
+system.
+
+   <pre class="sp">
+
+</pre>
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+You cannot change the past, only the future. 
+</td></tr></table>
+
+<div class="node">
+<a name="Limitations-of-rollback-in-system-administration"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#ITIL-release-management">ITIL release management</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Like-revision-control_003f">Like revision control?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Limitations of rollback in system administration</h3>
+
+<p>The term roll-back has been adopted (actually misappropriated)
+in the context of IT management to mean `undo of changes during system
+upgrades'. However, system upgrade is usually a very complex sequence
+of <i>intended</i> transactions and <i>unintended</i> side effects, some of
+which are a result of planned intentions and some of which are caused by
+third parties. It is quite difficult to isolate and serialize system
+changes in live operating environments, because planned changes
+generally get interleaved with unplanned ones.
+
+   <p>The concept of rollback therefore has practical limitations: the main
+ones being that it requires <i>isolation</i> and <i>serialization</i> of all
+change processing. If people or machines are working at the same time
+on shared data, or if there is distributed work going on, this is
+likely to break the <i>single point of change</i> condition required to
+make transactions integral &ndash; i.e. to make rollback possbile.
+
+   <pre class="sp">
+
+</pre>
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+Unix's single user mode was defined for the purpose of assisting in
+transactional changes during maintenance, by locking non-root users
+out of the system, but in todays environments it is not practical to
+shut down a system for making changes. 
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+
+<div class="node">
+<a name="ITIL-release-management"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Why-is-relying-on-rollback-not-a-good-strategy_003f">Why is relying on rollback not a good strategy?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Limitations-of-rollback-in-system-administration">Limitations of rollback in system administration</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">ITIL release management</h3>
+
+<p>The idea of rollback is seductive and has also been introduced into
+human practices in the hope of making processes impervious to error. 
+The IT Infrastructure Library (ITIL) is a self-proclaimed set of best
+practices for IT management. It borrows some ideas about transaction
+integrity for human management processes.
+
+   <p>Once again, the idea is to break up changes into chunks (ITIL calls
+these chunks `releases') and verify that each release is error-free
+before fully committing to it. If something goes wrong, you `roll
+back' by throwing away the last chunk and try again. In order to
+succeed, each chunk must be a separate entity and its integrity must
+be verified before the change is accepted so that there are no
+unforeseen consequences of a potential error.
+
+<div class="node">
+<a name="Why-is-relying-on-rollback-not-a-good-strategy%3f"></a>
+<a name="Why-is-relying-on-rollback-not-a-good-strategy_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Don_0027t-shoot-the-messenger">Don't shoot the messenger</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#ITIL-release-management">ITIL release management</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Why is relying on rollback not a good strategy?</h3>
+
+<p>Gaining full control of a system requires complete mastery of every
+aspect of the environment. This is unrealistic when multiple agents
+are involved.
+
+<div class="node">
+<a name="Don't-shoot-the-messenger"></a>
+<a name="Don_0027t-shoot-the-messenger"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#An-alternative-way-to-plan-changes">An alternative way to plan changes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Why-is-relying-on-rollback-not-a-good-strategy_003f">Why is relying on rollback not a good strategy?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Don't shoot the messenger</h3>
+
+<p>When you make a mistake, either with a policy decision or its
+implementation, and a user comes pointing a finger because the system
+is broken, someone is going to ask: what was the last change that was
+made that `caused' this problem? Now roll back to that version to fix
+the problem (usually in an urgent voice)!
+
+   <p>Stop right there and think again. True, it is possible that a single
+change was the origin of a chain of events resulting in the problems
+you have, but it is not true that going back to the previous version
+of that incident will repair the problem. If you open the door to your
+submarine while deep under water, closing it alone will not help get
+rid of the unwanted water.
+
+   <p>Whenever you make a mistake, you should expect to undertake a clean-up
+operation that deals with all of the consequences of the
+error. Tracking changes can help you to map out what needs to be
+repaired, but you cannot turn back time.
+
+   <p>One approach is a destructive one: stop the system and go back to a
+checkpoint date on the filesystem. If you do that, you will lose all
+your data and changes since the checkpoint, and it might still be too
+late for your mission critical operation.
+
+   <p>A less destructive way is to contain the problem by preventing more
+damage from occurring, then create a new policy to automatically clean up. 
+That way, if the same problem should happen again, you will have
+already planned your exit strategy.
+
+<div class="node">
+<a name="An-alternative-way-to-plan-changes"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#How-does-CFEngine-convergence-help_003f">How does CFEngine convergence help?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Don_0027t-shoot-the-messenger">Don't shoot the messenger</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">An alternative way to plan changes</h3>
+
+<p class="noindent">Reliable rollback is an intractable problem in most modern
+datacentres, but many systems claim that they can do it without
+addressing the consequences of loss or downtime. In short, relying on
+the ability to roll back makes for a fragile strategy.
+
+   <p>A better approach to error correction is planned avoidance of mistakes, and
+assuming that unplanned changes will occur. You know
+that there is a risk of error, so minimize the error by planning a
+multitude of tiny changes rather than fewer big releases.
+
+   <pre class="sp">
+
+</pre>
+     <ul>
+<li>Make small incremental changes. 
+<li>Test in a test environment. 
+<li>Test in a runtime environment on the smallest possible set of machines. 
+<li>Make no other planned changes until you are sure the change resulted in the
+behaviour you expected. 
+<li>Expand the scope of the change gradually, as your confidence grows, until
+all machines are covered. 
+</ul>
+
+   <pre class="sp">
+
+</pre>
+Notice that a human must be responsible for each expansion of scope. 
+Always plan based on the desired state &ndash; i.e. not where you think you
+are starting from, but where you want to get to. That is the only
+fixed point on which to base a policy.
+
+   <p>CFEngine can deal with the error correction against unplanned changes,
+but only humans can manage <i>intentions</i>.
+
+   <pre class="sp">
+
+
+</pre>
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+WHY CAN WE DO THIS NOW? Previously the technology for making reliable
+changes was poor and was based on transaction thinking, and it was
+important to minimize the disruptive operations in a few
+`roll-outs'. This is no longer true with CFEngine.  It is both
+inexpensive and even <i>recommended</i> to make a large number of small
+impact changes to respond to your needs. In this way you should
+minimize the risk through small increments and testing. Moreover,
+because CFEngine does <i>not</i> assume or rely on transactional
+integrity, it is less prone to failures during change implementation. 
+</td></tr></table>
+
+   <pre class="sp">
+
+
+</pre>
+
+<div class="node">
+<a name="How-does-CFEngine-convergence-help%3f"></a>
+<a name="How-does-CFEngine-convergence-help_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#g_t_0060Resetting_0027-_002d_002d-a-case-where-rollback-works_003f">`Resetting' -- a case where rollback works?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#An-alternative-way-to-plan-changes">An alternative way to plan changes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">How does CFEngine <i>convergence</i> help?</h3>
+
+<p>CFEngine's change management model is not based on transactions, it is
+based on a concept of convergence to a known end-state.  In
+transaction management, you need to know where you started from and
+the complete history of the system in order to know where you will end
+up. No one has this information reliably. The alternative is
+CFEngine's convergence principle. Convergence, works like a sink,
+drawing the system down towards the desired state, no matter where you
+start from.
+
+<div align="center"><img src="convergence.png" alt="Rollback"></div>
+
+   <p>Each promise in CFEngine is engineered in this way. We promise end
+results, not changes. CFEngine calculates the
+necessary steps and implementing them (many times if necessary) to avoid
+failure.
+
+   <p>If you make small changes to policy (small modifications to promises),
+then you will not make big mistakes that need to be undone. The main
+reason for failure is that our initial assumptions about the environment
+were incorrect.
+
+   <pre class="sp">
+
+</pre>
+     <ul>
+<li>Plan for changes in a real environment. Base your projections on
+what happens in the live system, not in the lab.
+
+     <li>Test on the smallest possible set and expand from there.
+
+     <li>Watch over changes and their later impact on the network as
+they are made by CFEngine to see if any of your initial assumptions were wrong.
+
+     <li>If there was a mistake, change your policy again to correct the mistake (moving forwards).
+
+   </ul>
+
+   <pre class="sp">
+
+</pre>
+
+Using CFEngine, you should always be thinking of moving forwards, even
+if you circle back to an earlier policy. Do not try to go back and
+undo changes, think of going forwards and minimizing the repercussions
+of errors. If mistakes are made, go forward again with promises that clean
+up and repair.
+
+<div class="node">
+<a name="%60Resetting'----a-case-where-rollback-works%3f"></a>
+<a name="g_t_0060Resetting_0027-_002d_002d-a-case-where-rollback-works_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Appendix-_002d-Did-you-know_003f">Appendix - Did you know?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#How-does-CFEngine-convergence-help_003f">How does CFEngine convergence help?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">`Resetting' &ndash; a case where rollback works?</h3>
+
+<p>Some environments consider `rollback' to mean, stopping destroying and
+rebuilding systems from a frozen image. This is something different
+from an undo operation on a running system. It applies the idea of
+transactions only to the design of each `roll out' release and
+turns a blind eye to what happens once a machine is taken into service.
+
+   <p>Resetting a machine by destroying and re-building is indeed a transaction
+that will roll us back to the initial state, but it is a misleading
+form of integrity because you also undo all of the intended changes
+that happen as part of the system's function: run-time state.
+
+   <p>If you are willing to sacrifice run-time data then you can <i>reset</i>
+a system, i.e. sacrifice or destroy it and build a new one with the
+same original specification. However, you must be clear about what
+is being lost:
+
+   <pre class="sp">
+
+</pre>
+     <ul>
+<li>The system must be taken out of service.
+
+     <li>Any run-time data must either be lost, or should be considered
+`possibly contaminated' by the change that was introduced. Either way,
+you need to make a decision about how to recover them. 
+</ul>
+
+   <pre class="sp">
+
+</pre>
+
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+`Reset' is what nature does when it makes mistakes: it lets unsuccessful
+instances or copies die and falls back to a copy. 
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+
+CFEngine helps here too. If you really want this kind of radical reset
+and you don't mind losing runtime data, CFEngine will help you to
+reconstruct the system in a predictable policy-compliant way.
+
+<div class="node">
+<a name="Appendix---Did-you-know%3f"></a>
+<a name="Appendix-_002d-Did-you-know_003f"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#g_t_0060Resetting_0027-_002d_002d-a-case-where-rollback-works_003f">`Resetting' -- a case where rollback works?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Appendix - Did you know?</h3>
+
+<p>Here are some features that can help you to recover with CFEngine's
+non-destructive error correction approach:
+
+     <ul>
+<li>In <code>files</code> promises, you can use the <code>changes</code> attribute
+to detect and log unexpected change in our system. This can help you
+to correlate changes in policy with unexpected consequences so that you
+can plan your clean-up.
+
+     <li>When CFEngine changes or renames a file it keeps a backup of the file
+before the change, of the form <samp><span class="file">filename.</span><var>suffix</var></samp>, where the
+<var>suffix</var> is by default: <samp><span class="file">.cfsaved</span></samp>, <samp><span class="file">.cfdisabled</span></samp>, <samp><span class="file">.cfedited</span></samp>,
+<samp><span class="file">.cfmoved</span></samp>.
+
+     <li>Normally only one level of backup is kept, i.e. the next change
+will overwrite this file.  If you specify <code>copy_backup =&gt;
+"timestamp";</code> or <code>edit_backup =&gt; "timestamp";</code> then CFEngine will
+keep multiple versions with time-stamps to keep a complete history.
+
+     <li>If you specify a <code>repository</code> directory in a <code>files</code>
+promise, CFEngine will move all such backup files to a single
+location, rather than leaving them in the same directory, next
+to the original files.
+
+   </ul>
+
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">Rollback</a>
+<ul>
+<li><a href="#What-is-rollback_003f">What is rollback?</a>
+<li><a href="#Like-revision-control_003f">Like revision control?</a>
+<li><a href="#Limitations-of-rollback-in-system-administration">Limitations of rollback in system administration</a>
+<li><a href="#ITIL-release-management">ITIL release management</a>
+<li><a href="#Why-is-relying-on-rollback-not-a-good-strategy_003f">Why is relying on rollback not a good strategy?</a>
+<li><a href="#Don_0027t-shoot-the-messenger">Don't shoot the messenger</a>
+<li><a href="#An-alternative-way-to-plan-changes">An alternative way to plan changes</a>
+<li><a href="#How-does-CFEngine-convergence-help_003f">How does CFEngine <i>convergence</i> help?</a>
+<li><a href="#_0060Resetting_0027-_002d_002d-a-case-where-rollback-works_003f">`Resetting' &ndash; a case where rollback works?</a>
+<li><a href="#Appendix-_002d-Did-you-know_003f">Appendix - Did you know?</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://
+ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-
+analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+

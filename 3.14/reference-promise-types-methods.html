@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.14  Documentation - methods</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.14/assets/global-87598b50cf828dc4e1c1ad7f860740dc.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "methods";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.14/" selected>Version 3.14 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="012826289311752768906:kp0fmjlfqyu" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a><ul class="level2"><li><a href="reference-promise-types-access.html">access</a></li><li><a href="reference-promise-types-databases.html">databases</a></li><li><a href="reference-promise-types-guest_environments.html">guest_environments</a></li><li><a href="reference-promise-types-classes.html">classes</a></li><li><a href="reference-promise-types-commands.html">commands</a></li><li><a href="reference-promise-types-defaults.html">defaults</a></li><li><a href="reference-promise-types-files.html">files</a></li><li><a href="reference-promise-types-measurements.html">measurements</a></li><li><a href="reference-promise-types-meta.html">meta</a></li><li><a class="active" href="reference-promise-types-methods.html">methods</a></li><li><a href="reference-promise-types-packages.html">packages</a></li><li><a href="reference-promise-types-packages-deprecated.html">packages (deprecated)</a></li><li><a href="reference-promise-types-processes.html">processes</a></li><li><a href="reference-promise-types-reports.html">reports</a></li><li><a href="reference-promise-types-roles.html">roles</a></li><li><a href="reference-promise-types-services.html">services</a></li><li><a href="reference-promise-types-storage.html">storage</a></li><li><a href="reference-promise-types-users.html">users</a></li><li><a href="reference-promise-types-vars.html">vars</a></li></ul></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    methods
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Methods are compound promises that refer to whole bundles of promises.
+Methods may be parameterized.</p>
+<div class="highlight"><pre><code class="cf3"><span></span>    <span class="kd">methods</span><span class="p">:</span>
+
+      <span class="s">&quot;any&quot;</span>
+
+         <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">method_id</span><span class="p">(</span><span class="s">&quot;parameter&quot;</span><span class="p">,</span><span class="err">...</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Methods are useful for encapsulating repeatedly used configuration issues and
+iterating over parameters. They are implemented as bundles that are run
+inline. Note that if the bundle you specify requires no parameters you
+may omit the <a href="reference-promise-types-methods.html#usebundle" title="methods - usebundle"><code>usebundle</code></a> attribute and give the bundle name directly in
+the promiser string.</p>
+<div class="highlight"><pre><code class="cf3"><span></span>    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+    <span class="p">{</span>
+      <span class="kd">vars</span><span class="p">:</span>
+
+       <span class="p">&quot;</span><span class="nv">userlist</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;mark&quot;</span><span class="p">,</span> <span class="s">&quot;jeang&quot;</span><span class="p">,</span> <span class="s">&quot;jonhenrik&quot;</span><span class="p">,</span> <span class="s">&quot;thomas&quot;</span><span class="p">,</span> <span class="s">&quot;eben&quot;</span> <span class="p">};</span>
+       <span class="s">&quot;userinfo&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;</span><span class="p">{</span> <span class="s">&quot;mark&quot;</span><span class="err">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&quot;jeang&quot;</span><span class="err">:</span><span class="mi">20</span><span class="p">,</span> <span class="s">&quot;jonhenrik&quot;</span><span class="err">:</span><span class="mi">30</span><span class="p">,</span> <span class="s">&quot;thomas&quot;</span><span class="err">:</span><span class="mi">40</span><span class="p">,</span> <span class="s">&quot;eben&quot;</span><span class="err">:-</span><span class="mi">1</span> <span class="p">}</span><span class="err">&#39;</span><span class="p">);</span>
+
+      <span class="kd">methods</span><span class="p">:</span>
+       <span class="c"># Activate subtest once for each list item</span>
+       <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">subtest</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(userlist)</span><span class="s">&quot;</span><span class="p">);</span>
+
+       <span class="c"># Activate subtest once passing the entire list</span>
+       <span class="s">&quot;amy&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">subtest</span><span class="p">(</span><span class="nv">@(userlist)</span><span class="p">);</span>
+
+       <span class="c"># Pass a data type variable aka data container</span>
+       <span class="s">&quot;amp&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">subtest_c</span><span class="p">(</span><span class="nv">@(userinfo)</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">subtest</span><span class="p">(</span><span class="nv">user</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kd">commands</span><span class="p">:</span>
+
+       <span class="s">&quot;/bin/echo Fix </span><span class="si">$(user)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="kd">reports</span><span class="p">:</span>
+
+        <span class="s">&quot;Finished doing stuff for </span><span class="si">$(user)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">subtest_c</span><span class="p">(</span><span class="nv">info</span><span class="p">)</span>
+    <span class="p">{</span>
+      <span class="kd">reports</span><span class="p">:</span>
+       <span class="s">&quot;user ID of mark is </span><span class="si">$(info[mark])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Methods offer powerful ways to encapsulate multiple issues pertaining to
+a set of parameters.</p>
+
+<p>Note in the above that a list can be passed as a implicitly iterated
+scalar and as a reference, while a <a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a> variable (a data container)
+can only be passed by reference.</p>
+
+<p>As of version 3.5.0 a methods promise outcome is tied to the outcomes of its
+promises. For example if you activate a bundle and it has a promise that is
+not_kept, the bundle itself would have an outcome of not_kept. If you activate
+a bundle that has one promise that is repaired, and one promise that is kept,
+the bundle will have an outcome of repaired. A method will only have an outcome
+of kept if all promises inside that bundle are also kept.
+<a href="https://github.com/cfengine/core/blob/master/tests/acceptance/21_methods/method_outcomes.cf">This acceptance test</a>
+illustrates the behavior.</p>
+
+<p>Starting from version 3.1.0, methods may be specified using variables.
+Care should be exercised when using this approach. In order to make the
+function call uniquely classified, CFEngine requires the promiser to
+contain the variable name of the method if the variable is a list.</p>
+<div class="highlight"><pre><code class="cf3"><span></span>    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">default</span>
+    <span class="p">{</span>
+    <span class="kd">vars</span><span class="p">:</span>
+        <span class="p">&quot;</span><span class="nv">m</span><span class="p">&quot;</span> <span class="kt">slist</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;y&quot;</span> <span class="p">};</span>
+        <span class="p">&quot;</span><span class="nv">p</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;myfunction&quot;</span><span class="p">;</span>
+
+    <span class="kd">methods</span><span class="p">:</span>
+        <span class="s">&quot;set of </span><span class="si">$(m)</span><span class="s">&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="p">(</span><span class="nf">m</span><span class="p">)(</span><span class="s">&quot;one&quot;</span><span class="p">);</span>
+        <span class="s">&quot;any&quot;</span>         <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="p">(</span><span class="nf">p</span><span class="p">)(</span><span class="s">&quot;two&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Please note that method names must be either simple strings or slists.
+They can&#39;t be array references, for instance.  As a rule, they can
+only look like <code>$(name)</code> where <code>name</code> is either a string or an slist.
+They can&#39;t be <code>&quot;$(a)$(b)&quot;</code>, <code>$(a[b])</code>, and so on.</p>
+
+<p>Here&#39;s a full example of how you might encode bundle names and
+parameters in a slist, if you need to pack and unpack method calls in
+a portable (e.g. written in a file) format.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">run</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">run</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">todo</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;call_1,a,b&quot;</span><span class="p">,</span> <span class="s">&quot;call_2,x,y&quot;</span><span class="p">,</span> <span class="s">&quot;call_2,p,q&quot;</span> <span class="p">};</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="s">&quot;call&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">unpack</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">todo</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">unpack</span><span class="p">(</span><span class="nv">list</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">split</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">splitstring</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">list</span><span class="p">),</span> <span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="s">&quot;100&quot;</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">method</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">nth</span><span class="p">(</span><span class="s">&quot;split&quot;</span><span class="p">,</span> <span class="s">&quot;0&quot;</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">param1</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">nth</span><span class="p">(</span><span class="s">&quot;split&quot;</span><span class="p">,</span> <span class="s">&quot;1&quot;</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">param2</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">nth</span><span class="p">(</span><span class="s">&quot;split&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">);</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="s">&quot;relay&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="p">(</span><span class="nf">method</span><span class="p">)(</span><span class="err">$</span><span class="p">(</span><span class="nf">param1</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">param2</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">call_1</span><span class="p">(</span><span class="nv">p1</span><span class="p">,</span> <span class="nv">p2</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: called with parameters </span><span class="si">$(p1)</span><span class="s"> and </span><span class="si">$(p2)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">call_2</span><span class="p">(</span><span class="nv">p1</span><span class="p">,</span> <span class="nv">p2</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: called with parameters </span><span class="si">$(p1)</span><span class="s"> and </span><span class="si">$(p2)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>2013-12-11T13:33:31-0500   notice: /run/methods/&#39;call&#39;/unpack/methods/&#39;relay&#39;/call_1: R: call_1: called with parameters a and b
+2013-12-11T13:33:31-0500   notice: /run/methods/&#39;call&#39;/unpack/methods/&#39;relay&#39;/call_2: R: call_2: called with parameters x and y
+2013-12-11T13:33:31-0500   notice: /run/methods/&#39;call&#39;/unpack/methods/&#39;relay&#39;/call_2: R: call_2: called with parameters p and q
+</code></pre>
+</div>
+
+<hr>
+<h2 id="attributes">Attributes</h2><h3 id="common-attributes">Common Attributes</h3>
+<p>Common attributes are available to all promise types. Full details for common
+attributes can be found in the <a href="reference-promise-types.html#common-attributes" title="Promise Types and Attributes - Common Attributes">Common Attributes section</a> of
+the <a href="reference-promise-types.html" title="Promise Types and Attributes">Promise Types and Attributes</a> page. The common attributes are as follows:</p>
+<h4 id="action"><a href="reference-promise-types.html#action" title="Promise Types and Attributes - action">action</a></h4><h4 id="classes"><a href="reference-promise-types.html#classes" title="Promise Types and Attributes - classes">classes</a></h4><h4 id="comment"><a href="reference-promise-types.html#comment" title="Promise Types and Attributes - comment">comment</a></h4><h4 id="depends_on"><a href="reference-promise-types.html#depends_on" title="Promise Types and Attributes - depends_on">depends_on</a></h4><h4 id="handle"><a href="reference-promise-types.html#handle" title="Promise Types and Attributes - handle">handle</a></h4><h4 id="ifvarclass"><a href="reference-promise-types.html#ifvarclass" title="Promise Types and Attributes - ifvarclass">ifvarclass</a></h4><h4 id="meta"><a href="reference-promise-types.html#meta" title="Promise Types and Attributes - meta">meta</a></h4><h4 id="with"><a href="reference-promise-types.html#with" title="Promise Types and Attributes - with">with</a></h4>
+<hr>
+<h3 id="inherit">inherit</h3>
+<p><strong>Description:</strong> If true this causes the sub-bundle to inherit the private
+classes of its parent</p>
+
+<p>Inheriting the variables is unnecessary as the child can always access the
+parent&#39;s variables through a qualified reference using its bundle name. For
+example: <code>$(bundle.variable)</code>.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span>    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">name</span>
+    <span class="p">{</span>
+    <span class="kd">methods</span><span class="p">:</span>
+
+      <span class="s">&quot;group name&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">my_method</span><span class="p">,</span>
+                     <span class="kr">inherit</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+
+    <span class="k">body</span> <span class="k">edit_defaults</span> <span class="nf">example</span>
+    <span class="p">{</span>
+    <span class="kr">inherit</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.4.0, Enterprise 3.0.0 (2012)</p>
+<h3 id="usebundle">usebundle</h3>
+<p><strong>Type:</strong> <code>bundle agent</code></p>
+<h3 id="useresult">useresult</h3>
+<p><strong>Description:</strong> Specify the name of a local variable to contain any
+result/return value from the child</p>
+
+<p>Return values are limited to scalars.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> `[a-zA-Z0-9_$(){}[].:]+</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span>    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">test</span>
+    <span class="p">{</span>
+    <span class="kd">methods</span><span class="p">:</span>
+
+       <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">child</span><span class="p">,</span>
+             <span class="kr">useresult</span> <span class="o">=&gt;</span> <span class="s">&quot;my_return_var&quot;</span><span class="p">;</span>
+
+    <span class="kd">reports</span><span class="p">:</span>
+        <span class="s">&quot;My return was: </span><span class="se">\&quot;</span><span class="si">$(my_return_var[1])</span><span class="se">\&quot;</span><span class="s"> and </span><span class="se">\&quot;</span><span class="si">$(my_return_var[2])</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">child</span>
+    <span class="p">{</span>
+    <span class="kd">reports</span><span class="p">:</span>
+       <span class="c"># Map these indices into the useresult namespace</span>
+
+       <span class="s">&quot;this is a return value&quot;</span>
+          <span class="kr">bundle_return_value_index</span> <span class="o">=&gt;</span> <span class="s">&quot;1&quot;</span><span class="p">;</span>
+
+       <span class="s">&quot;this is another return value&quot;</span>
+          <span class="kr">bundle_return_value_index</span> <span class="o">=&gt;</span> <span class="s">&quot;2&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.4.0 (2012)</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-bundle-agent.html">bundle agent</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-methods.html">methods</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-promises.html">promises</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-promise-types.html">promise types</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 10 July 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/promise-types/methods.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/d99dd1f07cf37da07fbd675717c47f3201990891" target="_blank">d99dd1f07cf37da07fbd675717c47f3201990891</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.14/assets/footer-0ce0c884995cf0be0e878ec70c137005.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

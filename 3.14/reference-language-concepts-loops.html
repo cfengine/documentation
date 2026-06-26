@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.14  Documentation - Loops</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.14/assets/global-87598b50cf828dc4e1c1ad7f860740dc.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Loops";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.14/" selected>Version 3.14 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="012826289311752768906:kp0fmjlfqyu" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a><ul class="level2"><li><a href="reference-language-concepts-bundles.html">Bundles</a></li><li><a href="reference-language-concepts-bodies.html">Bodies</a></li><li><a href="reference-language-concepts-promises.html">Promises</a></li><li><a href="reference-language-concepts-normal-ordering.html">Normal Ordering</a></li><li><a href="reference-language-concepts-classes.html">Classes and Decisions</a></li><li><a href="reference-language-concepts-variables.html">Variables</a></li><li><a href="reference-language-concepts-augments.html">Augments</a></li><li><a class="active" href="reference-language-concepts-loops.html">Loops</a></li><li><a href="reference-language-concepts-pattern-matching-and-referencing.html">Pattern Matching and Referencing</a></li><li><a href="reference-language-concepts-namespaces.html">Namespaces</a></li></ul></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-language-concepts.html">Language Concepts</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Loops
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>There are no explicit loops in CFEngine, instead there are lists. To make a
+loop, you simply refer to a list as a scalar and CFEngine will assume a loop
+over all items in the list.</p>
+
+<p>It&#39;s as if you said &quot;I know three colors: red green blue. Let&#39;s talk
+about color.&quot;</p>
+<div class="highlight"><pre><code class="cf3"><span></span>    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+        <span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;color_example&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">color_example</span>
+    <span class="p">{</span>
+        <span class="kd">vars</span><span class="p">:</span>
+            <span class="p">&quot;</span><span class="nv">color</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="s">&quot;green&quot;</span><span class="p">,</span> <span class="s">&quot;blue&quot;</span> <span class="p">};</span>
+
+        <span class="kd">reports</span><span class="p">:</span>
+            <span class="s">&quot;Let&#39;s talk about </span><span class="si">$(color)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>CFEngine will implicitly loop over each <code>$(color)</code>:</p>
+<div class="highlight"><pre><code class="text"><span></span>% cf-agent -K -f ./test_colors.cf
+
+R: Let&#39;s talk about red
+R: Let&#39;s talk about green
+R: Let&#39;s talk about blue
+</code></pre>
+</div>
+
+<p>Here&#39;s a more complex example.</p>
+<div class="highlight"><pre><code class="cf3"><span></span>    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+        <span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;example&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+    <span class="p">{</span>
+        <span class="kd">vars</span><span class="p">:</span>
+            <span class="p">&quot;</span><span class="nv">component</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;cf-monitord&quot;</span><span class="p">,</span> <span class="s">&quot;cf-serverd&quot;</span><span class="p">,</span> <span class="s">&quot;cf-execd&quot;</span> <span class="p">};</span>
+
+            <span class="p">&quot;</span><span class="nv">array[cf-monitord]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;The monitor&quot;</span><span class="p">;</span>
+            <span class="p">&quot;</span><span class="nv">array[cf-serverd]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;The server&quot;</span><span class="p">;</span>
+            <span class="p">&quot;</span><span class="nv">array[cf-execd]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;The executor, not executionist&quot;</span><span class="p">;</span>
+
+        <span class="kd">reports</span><span class="p">:</span>
+            <span class="s">&quot;</span><span class="si">$(component)</span><span class="s"> is </span><span class="si">$(array[$(component)])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In this example, the list <code>component</code> has three elements. The list as a whole
+may be referred to as <code>@(component)</code>, in order to pass the whole list to a
+promise where a list is expected. However, if we write <code>$(component)</code>,
+i.e. the scalar variable, then CFEngine will substitute each scalar from the
+list in turn, and thus iterate over the list elements using a loop.</p>
+
+<p>The output looks something like this:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ cf-agent unit_loops.cf
+
+2013-06-12T18:56:01+0200   notice: R: cf-monitord is The monitor
+2013-06-12T18:56:01+0200   notice: R: cf-serverd is The server
+2013-06-12T18:56:01+0200   notice: R: cf-execd is The executor, not executionist
+</code></pre>
+</div>
+
+<p>You see from this that, if we refer to a list variable using the scalar
+reference operator <code>$()</code>, CFEngine interprets this to mean “please iterate
+over all values of the list”. Thus, we have effectively a `foreach&#39; loop,
+without the attendant syntax.</p>
+
+<p>If a variable is repeated, its value is tied throughout the expression; so the
+output of:</p>
+<div class="highlight"><pre><code class="cf3"><span></span>    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+        <span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;example&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+    <span class="p">{</span>
+    <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">component</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;cf-monitord&quot;</span><span class="p">,</span> <span class="s">&quot;cf-serverd&quot;</span><span class="p">,</span> <span class="s">&quot;cf-execd&quot;</span> <span class="p">};</span>
+
+      <span class="p">&quot;</span><span class="nv">array[cf-monitord]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;The monitor&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">array[cf-serverd]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;The server&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">array[cf-execd]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;The executor, not executioner&quot;</span><span class="p">;</span>
+
+    <span class="kd">commands</span><span class="p">:</span>
+       <span class="s">&quot;/bin/echo </span><span class="si">$(component)</span><span class="s"> is&quot;</span>
+                <span class="kr">args</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(array[$(component)])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>is as follows:</p>
+<div class="highlight"><pre><code class="text"><span></span>2013-06-12T18:57:34+0200   notice: Q: &quot;.../bin/echo cf-mo&quot;: cf-monitord is The monitor
+2013-06-12T18:57:34+0200   notice: Q: &quot;.../bin/echo cf-se&quot;: cf-serverd is The server
+2013-06-12T18:57:34+0200   notice: Q: &quot;.../bin/echo cf-ex&quot;: cf-execd is The executor, not executioner
+</code></pre>
+</div>
+<h3 id="iterating-across-multiple-lists">Iterating Across Multiple Lists</h3>
+<p>CFEngine can iterate across multiple lists simultaneously.</p>
+<div class="highlight"><pre><code class="cf3"><span></span>    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">iteration</span>
+    <span class="p">{</span>
+    <span class="kd">vars</span><span class="p">:</span>
+        <span class="p">&quot;</span><span class="nv">stats</span><span class="p">&quot;</span>   <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="s">&quot;av&quot;</span><span class="p">,</span> <span class="s">&quot;dev&quot;</span> <span class="p">};</span>
+
+        <span class="p">&quot;</span><span class="nv">monvars</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                           <span class="s">&quot;rootprocs&quot;</span><span class="p">,</span>
+                           <span class="s">&quot;otherprocs&quot;</span><span class="p">,</span>
+                           <span class="s">&quot;diskfree&quot;</span><span class="p">,</span>
+                           <span class="s">&quot;loadavg&quot;</span>
+                           <span class="p">};</span>
+    <span class="kd">reports</span><span class="p">:</span>
+        <span class="s">&quot;mon.</span><span class="si">$(stats)</span><span class="s">_</span><span class="si">$(monvars)</span><span class="s"> is </span><span class="si">$(mon.$(stats)_$(monvars))</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This example uses two lists, <code>stats</code> and <code>monvars</code>. We can now iterate over both lists in the same promise. The reports that we thus generate will report on <code>value_rootprocs</code>, <code>av_rootprocs</code>, and <code>dev_rootprocs</code>, followed next by <code>value_otherprocs</code>, <code>av_otherprocs</code>, etc, ending finally with <code>dev_loadavg</code>.</p>
+
+<p>The order of iteration is an implementation detail and should not be expected to be consistent.  Use the <a href="reference-functions-sort.html" title="sort"><code>sort()</code></a> function if you need to sort a list in a predictable way.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-manuals.html">manuals</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-language.html">language</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-syntax.html">syntax</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-concepts.html">concepts</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-loops.html">loops</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 10 July 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/language-concepts/loops.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/d99dd1f07cf37da07fbd675717c47f3201990891" target="_blank">d99dd1f07cf37da07fbd675717c47f3201990891</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.14/assets/footer-0ce0c884995cf0be0e878ec70c137005.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+
+bundle knowledge SpecialTopic_RBAC
+
+{
+topics:
+
+"SpecialTopic_RBAC";
+Special_Topics_Guide::
+    "Limitations"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Defining roles"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Entities filtered"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Authorization"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Authentication"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+Special_Topics_Guide::
+    "RBAC-filtered read-access in CFEngine Nova"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Granting the right to switch on special pre-defined policies"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+Special_Topics_Guide::
+    "The bowtie process"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+Special_Topics_Guide::
+    "The right to edit and publish policy"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+Special_Topics_Guide::
+    "The Policy Dispatch Point"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+Special_Topics_Guide::
+    "The risk from centralized trusted hosts"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+Special_Topics_Guide::
+    "No need for any centralization in CFEngine"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+Special_Topics_Guide::
+    "The role of centralized push and pull in RBAC"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+Special_Topics_Guide::
+    "The chain of privilege in CFEngine"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+Special_Topics_Guide::
+    "CFEngines approach to privilege"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+Special_Topics_Guide::
+    "The risks of RBAC"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+Special_Topics_Guide::
+    "What is Role Based Access Control?"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+Special_Topics_Guide::
+    "RBAC"  association => a("discusses","Role Based Access Control and CFEngine","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_RBAC.html"
+  represents => { "Official CFEngine document"},  about_topics => { "role based access control and cfengine" };
+ "/knowledge/docs/SpecialTopic_RBAC.html"
+  represents => { "Special Topics Guide"},  about_topics => { "role based access control and cfengine" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#Top"
+  represents => { "Text section" }, about_topics => { "rbac" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#What-is-Role-Based-Access-Control_003f"
+  represents => { "Text section" }, about_topics => { "what is role based access control?" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#The-risks-of-RBAC"
+  represents => { "Text section" }, about_topics => { "the risks of rbac" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#CFEngine_0027s-approach-to-privilege"
+  represents => { "Text section" }, about_topics => { "cfengines approach to privilege" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#The-chain-of-privilege-in-CFEngine"
+  represents => { "Text section" }, about_topics => { "the chain of privilege in cfengine" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#The-role-of-centralized-push-and-pull-in-RBAC"
+  represents => { "Text section" }, about_topics => { "the role of centralized push and pull in rbac" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#No-need-for-any-centralization-in-CFEngine"
+  represents => { "Text section" }, about_topics => { "no need for any centralization in cfengine" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#The-risk-from-centralized-trusted-hosts"
+  represents => { "Text section" }, about_topics => { "the risk from centralized trusted hosts" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#The-Policy-Dispatch-Point"
+  represents => { "Text section" }, about_topics => { "the policy dispatch point" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#The-right-to-edit-and-publish-policy"
+  represents => { "Text section" }, about_topics => { "the right to edit and publish policy" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#The-bowtie-process"
+  represents => { "Text section" }, about_topics => { "the bowtie process" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#Granting-the-right-to-switch-on-special-pre_002ddefined-policies"
+  represents => { "Text section" }, about_topics => { "granting the right to switch on special pre-defined policies" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#Granting-the-right-to-switch-on-special-pre_002ddefined-policies"
+  represents => { "Text section" }, about_topics => { "rbac-filtered read-access in cfengine nova" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#Granting-the-right-to-switch-on-special-pre_002ddefined-policies"
+  represents => { "Text section" }, about_topics => { "authentication" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#Granting-the-right-to-switch-on-special-pre_002ddefined-policies"
+  represents => { "Text section" }, about_topics => { "authorization" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#Granting-the-right-to-switch-on-special-pre_002ddefined-policies"
+  represents => { "Text section" }, about_topics => { "entities filtered" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#Granting-the-right-to-switch-on-special-pre_002ddefined-policies"
+  represents => { "Text section" }, about_topics => { "defining roles" };
+ "/knowledge/docs/SpecialTopic_RBAC.html#Granting-the-right-to-switch-on-special-pre_002ddefined-policies"
+  represents => { "Text section" }, about_topics => { "limitations" };
+}
+

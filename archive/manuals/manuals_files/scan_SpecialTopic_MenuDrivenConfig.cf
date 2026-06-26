@@ -1,0 +1,53 @@
+
+bundle knowledge SpecialTopic_MenuDrivenConfig
+
+{
+topics:
+
+"SpecialTopic_MenuDrivenConfig";
+Special_Topics_Guide::
+    "Should I use menu driven configuration?"  association => a("discusses","Menu Driven Configuration","is discussed in");
+Special_Topics_Guide::
+    "Can I see a score-card of compliance?"  association => a("discusses","Menu Driven Configuration","is discussed in");
+Special_Topics_Guide::
+    "How do I see what machines keep which promises?"  association => a("discusses","Menu Driven Configuration","is discussed in");
+Special_Topics_Guide::
+    "Strong and weak dependency"  association => a("discusses","Menu Driven Configuration","is discussed in");
+Special_Topics_Guide::
+    "How do I nest menus and make dependencies?"  association => a("discusses","Menu Driven Configuration","is discussed in");
+Special_Topics_Guide::
+    "How do I select from menus?"  association => a("discusses","Menu Driven Configuration","is discussed in");
+Special_Topics_Guide::
+    "How do you create menus with CFEngine?"  association => a("discusses","Menu Driven Configuration","is discussed in");
+Special_Topics_Guide::
+    "What is menu-driven configuration?"  association => a("discusses","Menu Driven Configuration","is discussed in");
+Special_Topics_Guide::
+    "Menu Driven Configuration"  association => a("discusses","Menu Driven Configuration","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_MenuDrivenConfig.html"
+  represents => { "Official CFEngine document"},  about_topics => { "menu driven configuration" };
+ "/knowledge/docs/SpecialTopic_MenuDrivenConfig.html"
+  represents => { "Special Topics Guide"},  about_topics => { "menu driven configuration" };
+ "/knowledge/docs/SpecialTopic_MenuDrivenConfig.html#Top"
+  represents => { "Text section" }, about_topics => { "menu driven configuration" };
+ "/knowledge/docs/SpecialTopic_MenuDrivenConfig.html#What-is-menu_002ddriven-configuration"
+  represents => { "Text section" }, about_topics => { "what is menu-driven configuration?" };
+ "/knowledge/docs/SpecialTopic_MenuDrivenConfig.html#How-do-you-create-menus-with-CFEngine"
+  represents => { "Text section" }, about_topics => { "how do you create menus with cfengine?" };
+ "/knowledge/docs/SpecialTopic_MenuDrivenConfig.html#How-do-I-select-from-menus"
+  represents => { "Text section" }, about_topics => { "how do i select from menus?" };
+ "/knowledge/docs/SpecialTopic_MenuDrivenConfig.html#How-do-I-nest-menus-and-make-dependencies"
+  represents => { "Text section" }, about_topics => { "how do i nest menus and make dependencies?" };
+ "/knowledge/docs/SpecialTopic_MenuDrivenConfig.html#Strong-and-weak-dependency"
+  represents => { "Text section" }, about_topics => { "strong and weak dependency" };
+ "/knowledge/docs/SpecialTopic_MenuDrivenConfig.html#How-do-I-see-what-machines-keep-which-promises"
+  represents => { "Text section" }, about_topics => { "how do i see what machines keep which promises?" };
+ "/knowledge/docs/SpecialTopic_MenuDrivenConfig.html#Can-I-see-a-score_002dcard-of-compliance"
+  represents => { "Text section" }, about_topics => { "can i see a score-card of compliance?" };
+ "/knowledge/docs/SpecialTopic_MenuDrivenConfig.html#Should-I-use-menu-driven-configuration"
+  represents => { "Text section" }, about_topics => { "should i use menu driven configuration?" };
+}
+

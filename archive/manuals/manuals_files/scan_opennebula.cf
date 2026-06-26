@@ -1,0 +1,81 @@
+
+bundle knowledge st_opennebula
+
+{
+topics:
+
+"st-opennebula";
+Open_Nebula::
+    "Open Nebula Summary" ;
+Open_Nebula::
+    "Webserver in Open Nebula" ;
+Open_Nebula::
+    "Virtual machine configuration" ;
+Open_Nebula::
+    "Open Nebula Commands" ;
+Open_Nebula::
+    "Virtual machine template configuration" ;
+Open_Nebula::
+    "Network configuration" ;
+Open_Nebula::
+    "Open Nebula environment configuration" ;
+Open_Nebula::
+    "NFS config for shared image repository" ;
+Open_Nebula::
+    "Installation and dependancy configuration" ;
+Open_Nebula::
+    "Example Setup" ;
+Open_Nebula::
+    "How can CFEngine work with Open Nebula?" ;
+Open_Nebula::
+    "What is Open Nebula?" ;
+Special_Topics_Guide::
+    "Open Nebula"  association => a("discussed in","Open Nebula","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-opennebula.html"
+  represents => { "Using CFEngine with Open Nebula" };
+Open_Nebula::
+ "/docs/st-opennebula.html#Top"
+  represents => { "Text section" };
+What_is_Open_Nebula_::
+ "/docs/st-opennebula.html#What-is-Open-Nebula"
+  represents => { "Text section" };
+How_can_CFEngine_work_with_Open_Nebula_::
+ "/docs/st-opennebula.html#How-can-CFEngine-work-with-Open-Nebula"
+  represents => { "Text section" };
+Example_Setup::
+ "/docs/st-opennebula.html#Example-Setup"
+  represents => { "Text section" };
+Installation_and_dependancy_configuration::
+ "/docs/st-opennebula.html#Installation-and-dependancy-configuration"
+  represents => { "Text section" };
+NFS_config_for_shared_image_repository::
+ "/docs/st-opennebula.html#NFS-config-for-shared-image-repository"
+  represents => { "Text section" };
+Open_Nebula_environment_configuration::
+ "/docs/st-opennebula.html#Open-Nebula-environment-configuration"
+  represents => { "Text section" };
+Network_configuration::
+ "/docs/st-opennebula.html#Network-configuration"
+  represents => { "Text section" };
+Virtual_machine_template_configuration::
+ "/docs/st-opennebula.html#Virtual-machine-template-configuration"
+  represents => { "Text section" };
+Open_Nebula_Commands::
+ "/docs/st-opennebula.html#Open-Nebula-Commands"
+  represents => { "Text section" };
+Virtual_machine_configuration::
+ "/docs/st-opennebula.html#Virtual-machine-configuration"
+  represents => { "Text section" };
+Webserver_in_Open_Nebula::
+ "/docs/st-opennebula.html#Webserver-in-Open-Nebula"
+  represents => { "Text section" };
+Open_Nebula_Summary::
+ "/docs/st-opennebula.html#Open-Nebula-Summary"
+  represents => { "Text section" };
+}
+

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.14  Documentation - Application Management</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.14/assets/global-87598b50cf828dc4e1c1ad7f860740dc.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Application Management";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.14/" selected>Version 3.14 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="012826289311752768906:kp0fmjlfqyu" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a><ul class="level2"><li><a href="guide-special-topics-adopting-cfengine.html">Adopting CFEngine</a></li><li><a href="guide-special-topics-agility.html">Agility</a></li><li><a class="active" href="guide-special-topics-application-management.html">Application Management</a></li><li><a href="guide-special-topics-build-deploy-manage-audit.html">Build Deploy Manage Audit</a></li><li><a href="guide-special-topics-change-management.html">Change Management</a></li><li><a href="guide-special-topics-cloud-computing.html">Cloud Computing</a></li><li><a href="guide-special-topics-content-driven-policy.html">Content Driven Policy</a></li><li><a href="guide-special-topics-devops.html">Devops</a></li><li><a href="guide-special-topics-distributed-scheduling.html">Distributed Scheduling</a></li><li><a href="guide-special-topics-file-content.html">File Content</a></li><li><a href="guide-special-topics-glossary.html">Glossary</a></li><li><a href="guide-special-topics-hierarchies.html">Hierarchies</a></li><li><a href="guide-special-topics-itil.html">ITIL</a></li><li><a href="guide-special-topics-iteration.html">Iteration (Loops)</a></li><li><a href="guide-special-topics-modularity.html">Modularity and Orchestrating System Policy</a></li><li><a href="guide-special-topics-orchestration.html">Orchestration</a></li><li><a href="guide-special-topics-stigs.html">STIGs</a></li><li><a href="guide-special-topics-teamwork.html">Teamwork</a></li><li><a href="guide-special-topics-open-nebula.html">Using CFEngine with Open Nebula</a></li></ul></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-special-topics.html">Special Topics</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Application Management
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h1 id="what-is-application-management">What is Application Management?</h1>
+<p>Application management concerns the deployment and updating of software, as well
+as customization of for actual use, in other words all the activities required
+to make an application ready for use. Initially, software installation packages
+must be deployed on host machines, however, we frequently encounter the need to
+update software due to security flaws, bugs or new features.</p>
+
+<p>It is generally unwise to let every application update itself automatically to
+the newest version from the internet; we want to decide which version gets
+installed and also make sure that the load on the network does not impair
+performance during mass-updates. Equally important is making sure certain
+applications are not present, especially when they are known to have security
+issues.</p>
+
+<p>Using CFEngine, you can verify that the software is in a promised state and is
+properly customized for use.</p>
+<h1 id="how-can-cfengine-help">How can CFEngine help?</h1>
+<p>CFEngine assists with application management in a number of ways. Following the
+BDMA lifecycle, we note:</p>
+
+<ul>
+<li><p>Build</p>
+
+<p>CFEngine can be used to automate the build of packaged software releases
+using standardized or custom package formats.</p></li>
+<li><p>Deploy</p>
+
+<p>CFEngine can distribute and install packaged software on any kind of
+platform.</p></li>
+<li><p>Manage</p>
+
+<p>CFEngine can start, stop, restart, monitor, and upgrade, and customize
+software applications.</p></li>
+<li><p>Audit</p>
+
+<p>CFEngine can monitor and report on packages and patches installed on systems
+and their versions and status.</p></li>
+</ul>
+<h1 id="package-management">Package management</h1>
+<p>Application management is simple today on most operating systems due to the
+introduction ofpackage systems.</p>
+
+<p>All major operating systems now have some sort of package management system,
+e.g. RPM for Linux, and MSI for Windows. However, their capabilities and methods
+vary greatly. Moreover, the packages they need to install have to be made
+available to the hosts that need them and the package manager has to be executed
+at the right time and place. This is where CFEngine assists.</p>
+
+<p>Some package managers support online automatic access of online repositories and
+can download data from the network. Others have to have packages copied to local
+storage first. CFEngine can work with both types of system to integrate software
+management.</p>
+
+<ul>
+<li><p>CFEngine communicates with the system using its own standards to utilize the
+approach suitable for that software system.</p></li>
+<li><p>Custom software repositories can be made, and CFEngine&#39;s agents can perform
+this distribution by collecting software packages to local storage and then
+installing from there.</p></li>
+</ul>
+
+<p>When software packages are available on local storage, CFEngine can check
+whether they are already installed, and if so, which version and architecture
+are installed. This, in turn, can be verified against the policy for the
+software — should it indeed be installed, updated or removed?</p>
+
+<p>Using the CFEngine standard library, agents know how to talk to the native
+package manager to query information and get the system into the desired state.</p>
+
+<p>CFEngine can edit configuration files in real time to ensure that applications
+are customized to local needs at all times.</p>
+<h1 id="enterprise-software-reporting">Enterprise Software Reporting</h1>
+<p>In commercial releases of CFEngine, the state of software installation is
+reported centrally and is easily accessible through the Knowledge Map.</p>
+
+<p>Commercial editions of CFEngine also support querying Windows machines for
+installed MSI packages and thus allows for easy software deployment in
+heterogeneous Unix and Windows environments.</p>
+<h1 id="integrated-software-installation">Integrated software installation</h1>
+<p>CFEngine gives complete freedom to users, so there are many ways to design a
+system that achieves a desired software end-state. Consider the following
+example setup which ensures that one particular application is up to date on all
+hosts. The procedure below is very similar to the way that commercial CFEngine
+editions update.</p>
+
+<p>Rather than using an OS-specific package repository, like yum, we create a
+universal approach using CFEngine&#39;s distribution and installation promises.</p>
+
+<p>We first look at the example on an RPM system, then we show the modifications
+required to handle Windows instead. The examples use body parts from the
+standard library.</p>
+
+<p><img src="./package-flow.png" alt="Package Management Flow"></p>
+<h2 id="distributing-software-packages-to-client-hosts">Distributing software packages to client hosts</h2>
+<p>To begin with, we promise that the relevant software packages will be locally
+available to the agents from software servers, i.e. we promise that a local copy
+of all deployed software packages will exist in the directory /software_repo on
+local storage. The copy will be collected and compared against a directory
+called /master_software_repo on host server.example.org in this example.</p>
+
+<p>We say that this approach is data-driven because, by placing software package
+data in the central repository, client hosts update automatically, as they
+promise to subscribe to the data.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+
+    <span class="s">&quot;/software_repo&quot;</span>
+
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Copy app1 updates from software server&quot;</span><span class="p">,</span>
+       <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">remote_cp</span><span class="p">(</span><span class="s">&quot;/master_software_repo/app1/</span><span class="si">$(sys.flavour)</span><span class="s">&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;server.example.org&quot;</span><span class="p">),</span>
+    <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">recurse</span><span class="p">(</span><span class="s">&quot;inf&quot;</span><span class="p">),</span>
+         <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;newpkg_app1&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>When the agent copies a relevant software package from the software server
+(sys.flavour is the local operating system), the class newpkg_app1 will get
+defined. This class can act as a trigger to stop the application, update it, and
+start it again.</p>
+<h2 id="stopping-and-restarting-an-application-for-update">Stopping and restarting an application for update</h2>
+<p>On some operating systems, software cannot be updated while it is running.
+CFEngine can promise to enure that a program is stopped before update:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+<span class="kd">processes</span><span class="p">:</span>
+
+ <span class="nc">newpkg_app1</span><span class="p">::</span>
+
+  <span class="s">&quot;app1&quot;</span> <span class="kr">signals</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;term&quot;</span><span class="p">,</span> <span class="s">&quot;kill&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>CFEngine normal ordering, ensures that processes promises are always run prior
+to packages promises, so the application will be stopped before updated. Next we
+promise the version of the software we want to install. In this case, any
+version greater than 1.0.0.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+<span class="kd">packages</span><span class="p">:</span>
+
+ <span class="nc">newpkg_app1</span><span class="p">::</span>
+
+  <span class="s">&quot;app1&quot;</span>
+
+    <span class="kr">package_policy</span>           <span class="o">=&gt;</span> <span class="s">&quot;update&quot;</span><span class="p">,</span>
+    <span class="kr">package_select</span>           <span class="o">=&gt;</span> <span class="s">&quot;&gt;=&quot;</span><span class="p">,</span>
+    <span class="kr">package_architectures</span>    <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;i586&quot;</span> <span class="p">},</span>
+    <span class="kr">package_version</span>          <span class="o">=&gt;</span> <span class="s">&quot;1.0.0&quot;</span><span class="p">,</span>
+    <span class="kr">package_method</span>           <span class="o">=&gt;</span> <span class="nf">rpm_version</span><span class="p">(</span><span class="s">&quot;/software_repo&quot;</span><span class="p">),</span>
+    <span class="kr">classes</span>                  <span class="o">=&gt;</span> <span class="nf">if_else</span><span class="p">(</span><span class="s">&quot;app1_update&quot;</span><span class="p">,</span> <span class="s">&quot;app1_noupdate&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>By promising carefully what package and version you want, using package_policy,
+package_select, and package_version, CFEngine can keep this promise by updating
+to the latest version of the package available in the directory repository
+/software_repo. If the available versions are all `less than&#39; than &quot;1.0.0&quot;, an
+update will not take place. The package_version specification should match the
+versioning format of the software, whatever it is, e.g. you would write
+something like &quot;1.00.00.0&quot; if two digits were used in the two middle version
+number positions.</p>
+
+<p>CFEngine automatically adapts its versioning to the conventions used by
+individual package schemas.</p>
+
+<p>To summarize, in order for CFEngine to be able to match installed packages with
+the ones in the directory repository, the same naming convention must be
+applied. That is, the package name, version and architecture must have the same
+format in the list of installed packages as the file names of available
+packages.</p>
+
+<p>From the promise above, we see that CFEngine will interpret app1 as the name,
+1.0.0 as the version and i586 as the architecture of the package. Using this
+while looking at the package_name_convention in the rpm package method, we see
+that CFEngine will look for packages named as app1-X.Y.Z-i586.rpm, with X, Y, Z
+producing the largest version available in the directory repository. If an
+available version is larger than the one installed, an update will take place —
+the update command is run.</p>
+
+<p>Finally, we set classes from the software update in case we want to act
+differently depending on the outcome.</p>
+
+<p>Replacing the policy ‘update’ with ‘add’ is all that is required to install the
+package (once) instead of updating. Using policy ‘add’ will do nothing if the
+package is already installed, but installs the largest version available if it
+is not. Use package_select =&gt; &quot;==&quot; to install the exact version instead of the
+largest.</p>
+<h2 id="adapting-to-windows">Adapting to Windows</h2>
+<p>To adapt our example to Windows, we change the path to the local software
+repository from/software_repotoc:\software_repo, to support the Windows path
+format. Other than that, all we have to change is thepackage_method, yielding
+the following.</p>
+<div class="highlight"><pre><code class="text"><span></span>    package_method           =&gt; msi_version(&quot;c:\software_repo&quot;),
+</code></pre>
+</div>
+
+<p>Refer to the msi_version body in the standard library.</p>
+<h2 id="notes-on-windows-systems">Notes on Windows systems</h2>
+<p>CFEngine implements Windows packaging using the MSI subsystem, internally
+querying the Windows Management Interface for information. However, not all
+Windows systems have the reqired information.</p>
+
+<p>CFEngine relies on the name (lower-cased with spaces replaced by hyphen) and
+version fields found inside the msi packages to look for upgrades in the package
+repository.</p>
+
+<p>Problems can arise when the format of these fields differ from their format in
+the file names. For example, a package file name may be 7zip-4.65-x86_64.msi,
+while the product name in the msi is given as 7-Zip 4.65 (x64 edition), and the
+version is 4.65.00.0.</p>
+
+<p>For the formats to match, we can change the product name to 7zip and the version
+to 4.65 in the msi-package. Free tools such as InstEd can both view and change
+the product name and version (Tables-&gt;Property-&gt;ProductName and ProductVersion).</p>
+<h1 id="customizing-applications">Customizing applications</h1>
+<p>By definition, we cannot explain how to customize software for all cases. For
+Unix-like systems however, software customization is usually a matter of editing
+a configuration text file. CFEngine can edit files, for instance, to add a
+configuration line to a file, you might so something like this:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">my_application_customize</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+
+    <span class="s">&quot;</span><span class="si">$(prefix)</span><span class="s">/config.cf&quot;</span>
+
+          <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Set the permissions and add a line...&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span>     <span class="o">=&gt;</span> <span class="nf">mo</span><span class="p">(</span><span class="s">&quot;0600&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">),</span>
+        <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;My custom setting...&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>To set a number of variables inside a file, you might do something like this:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">my_application_customize</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+
+    <span class="c"># want to set these values by the names of their array keys</span>
+
+    <span class="p">&quot;</span><span class="nv">rhs[serverhost]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;123.456.789.123&quot;</span><span class="p">;</span>
+    <span class="p">&quot;</span><span class="nv">rhs[portnumber]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;1234&quot;</span><span class="p">;</span>
+    <span class="p">&quot;</span><span class="nv">rhs[admin]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;admin@example.org&quot;</span><span class="p">;</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+
+    <span class="s">&quot;</span><span class="si">$(prefix)</span><span class="s">/config.cf&quot;</span>
+
+         <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Add new variables or set existing ones&quot;</span><span class="p">,</span>
+       <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">set_variable_values</span><span class="p">(</span><span class="s">&quot;setvars.rhs&quot;</span><span class="p">);</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>You can also create file templates with customizable variables using
+theexpand_templatemethod from the standard library.</p>
+<h1 id="starting-and-stopping-software">Starting and stopping software</h1>
+<p>CFEngine is promise or compliance oriented. You promise whether software will be
+running or not running at different times and locations by making processes or
+services promises.</p>
+
+<p>To start a service, you might do something like this:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+<span class="kd">processes</span><span class="p">:</span>
+
+   <span class="s">&quot;myprocess&quot;</span>  <span class="kr">restart_class</span> <span class="o">=&gt;</span> <span class="s">&quot;start_me&quot;</span><span class="p">;</span>
+
+<span class="kd">commands</span><span class="p">:</span>
+
+
+  <span class="nc">start_me</span><span class="p">::</span>
+
+    <span class="s">&quot;/path/to/software&quot;</span>
+
+         <span class="c"># ... many security options, etc</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>or using services</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+<span class="kd">services</span><span class="p">:</span>
+
+ <span class="nc">windows</span><span class="p">::</span>
+
+  <span class="s">&quot;Dhcp&quot;</span>
+    <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;start&quot;</span><span class="p">,</span>
+    <span class="kr">service_dependencies</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;Alerter&quot;</span><span class="p">,</span> <span class="s">&quot;W32Time&quot;</span> <span class="p">},</span>
+    <span class="kr">service_method</span> <span class="o">=&gt;</span> <span class="nf">winmethod</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>To stop a service, you take one of these approaches:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">processes</span><span class="p">:</span>
+
+   <span class="s">&quot;badprocess&quot;</span>
+      <span class="kr">signals</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;term&quot;</span><span class="p">,</span> <span class="s">&quot;kill&quot;</span> <span class="p">};</span>
+
+   <span class="s">&quot;snmp&quot;</span>
+      <span class="kr">process_stop</span> <span class="o">=&gt;</span> <span class="s">&quot;/etc/init.d/snmp stop&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h1 id="auditing-software-applications">Auditing software applications</h1>
+<p>Commercial Editions of CFEngine generate reports about installed software,
+showing package names and versions that are installed. There is a huge variety
+in the functionality offered by different package systems. The most
+sophisticated package managers are those provided by OpenSuSE Linux and RedHat.
+These know the difference between installation packages and software updates and
+can keep track of installed software transparently. Most package systems have
+fewer functions.</p>
+
+<p>CFEngine tries to make the best of each package system to collect information
+about the state of software. In commercial editions you have access to reports
+on the software installed on each system in the network, to the extent permitted
+by the software subsystems on those hosts.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-special-topics.html">special topics</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-guide.html">guide</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 10 July 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/special-topics/application-management.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/d99dd1f07cf37da07fbd675717c47f3201990891" target="_blank">d99dd1f07cf37da07fbd675717c47f3201990891</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.14/assets/footer-0ce0c884995cf0be0e878ec70c137005.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.9  Documentation - Components and Common Control</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.9/assets/global-bbcdf8cb2135dbef89c4d6d19c9604bb.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Components and Common Control";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+                       <option value="/docs/3.9/index.html" selected>Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+                       <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:eahkid3txr8" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a class="active" href="reference-components.html">Components and Common Control</a><ul class="level2"><li><a href="reference-components-cf-agent.html">cf-agent</a></li><li><a href="reference-components-cf-serverd.html">cf-serverd</a></li><li><a href="reference-components-cf-execd.html">cf-execd</a></li><li><a href="reference-components-cf-promises.html">cf-promises</a></li><li><a href="reference-components-cf-monitord.html">cf-monitord</a></li><li><a href="reference-components-cf-key.html">cf-key</a></li><li><a href="reference-components-cf-runagent.html">cf-runagent</a></li><li><a href="reference-components-cf-hub.html">cf-hub</a></li><li><a href="reference-components-file_control_promises.html">file control</a></li></ul></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-standard-library.html">Standard Library</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Components and Common Control
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>While promises to configure your system are entirely user-defined, the
+details of the operational behavior of the CFEngine software is of
+course hard-coded. You can still configure the details of this
+behavior using the <code>control</code> promise bodies. Control behavior is
+defined in bodies because the actual promises are fixed and you only
+change their details within sensible limits.</p>
+
+<p>See the
+<a href="guide-introduction.html#cfengine-component-applications-and-daemons" title="Introduction and System Overview - CFEngine Component Applications and Daemons ">introduction</a>
+for a high-level overview of the
+CFEngine components, and each component&#39;s reference documentation for the
+details about the specific control bodies.</p>
+<h2 id="common-control">Common Control</h2>
+<p>The <code>common</code> control body refers to those promises that are
+hard-coded into all the components of CFEngine, and therefore
+affect the behavior of all the components.</p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+
+     <span class="p">{</span>
+     <span class="kr">inputs</span>  <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="s">&quot;update.cf&quot;</span><span class="p">,</span>
+                <span class="s">&quot;library.cf&quot;</span>
+                <span class="p">};</span>
+
+     <span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="nf">update</span><span class="p">(</span><span class="s">&quot;policy_host.domain.tld&quot;</span><span class="p">),</span>
+                        <span class="s">&quot;main&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;cfengine2&quot;</span>
+                        <span class="p">};</span>
+
+     <span class="kr">goal_categories</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;goals&quot;</span><span class="p">,</span> <span class="s">&quot;targets&quot;</span><span class="p">,</span> <span class="s">&quot;milestones&quot;</span> <span class="p">};</span>
+     <span class="kr">goal_patterns</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;goal_.*&quot;</span><span class="p">,</span> <span class="s">&quot;target.*&quot;</span> <span class="p">};</span>
+
+     <span class="kr">output_prefix</span> <span class="o">=&gt;</span> <span class="s">&quot;cfengine&gt;&quot;</span><span class="p">;</span>
+     <span class="kr">version</span> <span class="o">=&gt;</span> <span class="s">&quot;1.2.3&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="bundlesequence">bundlesequence</h3>
+<p><strong>Description:</strong> The <code>bundlesequence</code> contains promise bundles
+to verify, in a specific order.</p>
+
+<p>The <code>bundlesequence</code> determines which of the compiled bundles will be executed
+by <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> and in what order they will be executed. The list refers to the
+names of bundles (which might be parameterized, function-like objects).</p>
+
+<p>The default value for <code>bundlesequence</code> is <code>{ &quot;main&quot; }</code>.</p>
+
+<p>A <code>bundlesequence</code> may also be specified using the <code>-b</code> or
+<code>--bundlesequence</code> command line option.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+
+    <span class="p">{</span>
+    <span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span>
+                       <span class="nf">update</span><span class="p">(</span><span class="s">&quot;policy_host.domain.tld&quot;</span><span class="p">),</span>
+                       <span class="s">&quot;main&quot;</span><span class="p">,</span>
+                       <span class="s">&quot;cfengine2&quot;</span>
+                       <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> Only <code>common</code> and <a href="reference-components-cf-agent.html" title="cf-agent"><code>agent</code></a> bundles are allowed to be listed in the
+bundlesequence.</p>
+
+<p>The order in which you execute bundles can affect the outcome of
+your promises. In general you should always define variables before
+you use them.</p>
+
+<p>The <code>bundlesequence</code> is like a genetic makeup of a machine. The
+bundles act like characteristics of the systems. If you want
+different systems to have different <code>bundlesequences</code>, distinguish
+them with classes</p>
+<div class="highlight"><pre><code class="cf3">    <span class="nc">webservers</span><span class="p">::</span>
+
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;main&quot;</span><span class="p">,</span> <span class="s">&quot;web&quot;</span> <span class="p">};</span>
+
+    <span class="nc">others</span><span class="p">::</span>
+
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;main&quot;</span><span class="p">,</span> <span class="s">&quot;otherstuff&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<p>If you want to add a basic common sequence to all sequences, then
+use global variable lists to do this:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="nc">webservers</span><span class="p">::</span>
+
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(g.bs)</span><span class="p">,</span> <span class="s">&quot;web&quot;</span> <span class="p">};</span>
+
+    <span class="nc">others</span><span class="p">::</span>
+
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(g.bs)</span><span class="p">,</span> <span class="s">&quot;otherstuff&quot;</span> <span class="p">};</span>
+
+    <span class="p">}</span>
+
+    <span class="k">bundle</span> <span class="k">common</span> <span class="nf">g</span>
+    <span class="p">{</span>
+    <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">bs</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;main&quot;</span><span class="p">,</span> <span class="s">&quot;basic_stuff&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> The default to <code>{ &quot;main&quot; }</code> was introduced in version 3.7.0, so if
+you expect your policies to be run by older version, you&#39;ll need an explicit
+<code>bundlesequence</code>.</p>
+<h3 id="bwlimit">bwlimit</h3>
+<p><strong>Description:</strong> Coarse control of bandwidth any cf-serverd or cf-agent process
+will send <em>out</em>. In Bytes/sec.</p>
+
+<p>Bandwidth limit is meant to set an upper bound of traffic coming out of CFEngine
+agents or servers, as a countermeasure against network abuse from them. The limit
+is applied to all interfaces (in total), a single process at a time. It can
+prevent network being flooded by CFEngine traffic when large files or many agents
+hit a single cf-serverd.</p>
+
+<p>For more fine-grained control, please use operating system (eg. iptables)
+facilities.</p>
+
+<p><strong>Note:</strong> Bandwidth limiting is currently not supported on Windows.</p>
+
+<p><strong>Type:</strong> [<code>float</code>][float]</p>
+
+<p><strong>Default value:</strong> none (no limit)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+
+    <span class="p">{</span>
+      <span class="kr">bwlimit</span> <span class="o">=&gt;</span> <span class="s">&quot;10M&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In this example,  bwlimit is set to 10MBytes/sec = 80Mbit/s meaning that
+CFEngine would only consume up to ~80% of any 100Mbit ethernet interface.</p>
+<h3 id="cache_system_functions">cache_system_functions</h3>
+<p><strong>Description:</strong> Controls the caching of the results of system
+functions, e.g. <a href="reference-functions-execresult.html" title="execresult"><code>execresult()</code></a> and <a href="reference-functions-returnszero.html" title="returnszero"><code>returnszero()</code></a> for shell execution and
+<a href="reference-functions-ldapvalue.html" title="ldapvalue"><code>ldapvalue()</code></a> and friends for LDAP queries.  Without this setting,
+CFEngine&#39;s evaluation model will evaluate functions multiple times,
+which is a performance concern.  See <a href="reference-functions.html" title="Functions"><code>Functions</code></a>.</p>
+
+<p>Although you can override this to <code>false</code>, in practice you should
+almost never need to do so.  The effect of having it <code>true</code> (the
+default) is that the expensive functions will be run just once and
+then their result will be cached.</p>
+
+<p>Note that caching is per-process so results will not be cached between
+runs of e.g. <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> and <a href="reference-components-cf-promises.html" title="cf-promises"><code>cf-promises</code></a>.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> true</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="kr">cache_system_functions</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in version 3.6.0.</p>
+<h3 id="domain">domain</h3>
+<p><strong>Description:</strong> The <code>domain</code> string specifies the domain name for this host.</p>
+
+<p>There is no standard, universal or reliable way of determining the
+DNS domain name of a host, so it can be set explicitly to simplify
+discovery and name-lookup.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">domain</span> <span class="o">=&gt;</span> <span class="s">&quot;example.org&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="goal_patterns">goal_patterns</h3>
+<p><strong>Description:</strong> Contains regular expressions that match promisees/topics
+considered to be organizational goals</p>
+
+<p>It is used as identifier to mark business and organizational goals in
+CFEngine Enterprise. CFEngine uses this to match promisees that represent
+business goals in promises.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">goal_patterns</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;goal_.*&quot;</span><span class="p">,</span> <span class="s">&quot;target.*&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in version 3.1.5, Nova 2.1.0 (2011)</p>
+<h3 id="ignore_missing_bundles">ignore_missing_bundles</h3>
+<p><strong>Description:</strong> Determines whether to ignore missing bundles.</p>
+
+<p>If <code>ignore_missing_bundles</code> is set to true, if any bundles in the bundle
+sequence do not exist, ignore and continue.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="kr">ignore_missing_bundles</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>This authorizes the bundlesequence to contain possibly
+&quot;nonexistent&quot; pluggable modules. It defaults to false, whereupon
+undefined bundles cause a fatal error in parsing, and a transition
+to failsafe mode.</p>
+<h3 id="ignore_missing_inputs">ignore_missing_inputs</h3>
+<p><strong>Description:</strong> If any input files do not exist, ignore and continue</p>
+
+<p>The inputs lists determines which files are parsed by CFEngine.
+Normally stringent security checks are made on input files to
+prevent abuse of the system by unauthorized users.</p>
+
+<p>Sometimes however, it is appropriate to consider the automatic plug-in of
+modules that might or might not exist. This option permits CFEngine
+to list possible files that might not exist and continue &#39;best
+effort&#39; with those that do exist. The default of all Booleans is
+false, so the normal behavior is to signal an error if an input is
+not found.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="kr">ignore_missing_inputs</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="inputs">inputs</h3>
+<p><strong>Description:</strong> The <code>inputs</code> slist contains additional filenames to parse for promises.</p>
+
+<p>The filenames specified are all assumed to be in the same directory
+as the file which references them (this is usually
+<code>$(sys.workdir)/inputs</code>, but may be overridden by the <code>-f</code> or
+<code>--file</code> command line option.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">inputs</span>  <span class="o">=&gt;</span> <span class="p">{</span>
+               <span class="s">&quot;update.cf&quot;</span><span class="p">,</span>
+               <span class="s">&quot;library.cf&quot;</span>
+               <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-components-file_control_promises.html#inputs" title="file control - inputs"><code>inputs</code></a> in <code>body file control</code></p>
+
+<p><strong>Notes:</strong></p>
+
+<p>If no filenames are specified, no other filenames will be included in the
+compilation process.</p>
+
+<p>Library contents are checked for duplication by path and by hash.  For
+example, if you put <code>library.cf</code> twice in your <code>inputs</code>, the duplicate
+<code>library.cf</code> is noticed because the same path is included twice.  A
+verbose-level message is emitted but otherwise there is no error.</p>
+
+<p>In addition, if you include a file once with path <code>/x/y/z.cf</code> and
+again with path <code>/x/./y/z.cf</code>, the duplicate file will be rejected
+regardless of any path tricks or symbolic links.  The contents are
+hashed, so the same file can&#39;t be included twice.</p>
+<h3 id="lastseenexpireafter">lastseenexpireafter</h3>
+<p><strong>Description:</strong> The value of <code>lastseenexpireafter</code> is the number of minutes
+after which last-seen entries are purged. It is an <strong>enterprise-only</strong> feature.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Default value:</strong> One week</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">lastseenexpireafter</span> <span class="o">=&gt;</span> <span class="s">&quot;72&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="output_prefix">output_prefix</h3>
+<p><strong>Description:</strong> The string prefix for standard output</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">output_prefix</span> <span class="o">=&gt;</span> <span class="s">&quot;my_cf3&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>On native Windows versions of CFEngine (Enterprise), this
+string is also prefixed messages in the event log.</p>
+<h3 id="package_inventory">package_inventory</h3>
+<p><strong>Description:</strong> List of package module bodies to query for package lists.</p>
+
+<p>Defines the list of <a href="reference-promise-types-packages.html" title="packages"><code>package module bodies</code></a> which will be queries for
+package lists, for use in <code>packagematching()</code>, <a href="reference-functions-packageupdatesmatching.html" title="packageupdatesmatching"><code>packageupdatesmatching()</code></a> and in
+Enterprise inventory reporting.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (body names)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+    <span class="kr">package_inventory</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;apt_get&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="package_module">package_module</h3>
+<p><strong>Description:</strong> The default package module body to use.</p>
+
+<p>Defines the default package module body to use for <a href="reference-promise-types-packages.html" title="packages">package promises</a>,
+if none is specified in the promise.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (body name)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+    <span class="kr">package_module</span> <span class="o">=&gt;</span> <span class="s">&quot;apt_get&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="protocol_version">protocol_version</h3>
+<p><strong>Description:</strong> Defines the protocol to use for all outgoing connections.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+
+<ul>
+<li><code>0</code></li>
+<li><code>undefined</code></li>
+<li><code>1</code></li>
+<li><code>classic</code></li>
+<li><code>2</code></li>
+<li><code>latest</code></li>
+</ul>
+
+<p><strong>Default value:</strong> 2</p>
+
+<ul>
+<li>0 -</li>
+<li>undefined -</li>
+<li>1 - Classic protocol</li>
+<li>classic - Alias to protocol 1</li>
+<li>2 - TLS</li>
+<li>latest - Alias to protocol 2</li>
+</ul>
+
+<p><strong>Note:</strong> <code>protocol_version</code> can be specified at the individual promise level
+using the <a href="reference-promise-types-files.html#protocol_version" title="files - protocol_version"><code>body copy_from protocol_version</code></a>
+attribute.</p>
+
+<p><strong>See also:</strong>  <a href="reference-promise-types-files.html#protocol_version" title="files - protocol_version"><code>body copy_from protocol_version</code></a>, <a href="reference-components-cf-serverd.html#allowlegacyconnects" title="cf-serverd - allowlegacyconnects"><code>allowlegacyconnects</code></a>, <a href="reference-components-cf-serverd.html#allowtlsversion" title="cf-serverd - allowtlsversion"><code>allowtlsversion</code></a>, <a href="reference-components-cf-serverd.html#allowciphers" title="cf-serverd - allowciphers"><code>allowciphers</code></a>, <a href="reference-components.html#tls_min_version" title="Components and Common Control - tls_min_version"><code>tls_min_version</code></a>, <a href="reference-components.html#tls_ciphers" title="Components and Common Control - tls_ciphers"><code>tls_ciphers</code></a>, <a href="reference-promise-types-files.html#encrypt" title="files - encrypt"><code>encrypt</code></a>, <a href="reference-components-cf-serverd.html#logencryptedtransfers" title="cf-serverd - logencryptedtransfers"><code>logencryptedtransfers</code></a>, <a href="reference-promise-types-access.html#ifencrypted" title="access - ifencrypted"><code>ifencrypted</code></a></p>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.6.0</p>
+<h3 id="require_comments">require_comments</h3>
+<p><strong>Description:</strong> The <code>require_comments</code> menu option policy warns about
+promises that do not have comment documentation.</p>
+
+<p>When true, <a href="reference-components-cf-promises.html" title="cf-promises"><code>cf-promises</code></a> will report loudly on promises that do not have
+comments. Variables promises are exempted from this rule, since
+they may be considered self-documenting. This may be used as a policy Quality
+Assurance measure, to remind policy makers to properly document their
+promises.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+
+    <span class="p">{</span>
+    <span class="nc">common</span><span class="p">::</span>
+
+    <span class="kr">require_comments</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="site_classes">site_classes</h3>
+<p><strong>Description:</strong> A <code>site_classes</code> contains classes that will represent
+geographical site locations for hosts. These should be defined elsewhere in
+the configuration in a classes promise.</p>
+
+<p>This list is used to match against topics when connecting
+inferences about host locations in the knowledge map. Normally any
+CFEngine classes promise whose name is defined as a thing or topic
+under class <code>locations::</code> will be assumed to be a location defining
+classifier. This list will add alternative class contexts for
+interpreting location.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_!&amp;@@$|.()\[\]{}:]+</code></p>
+
+<p>Each string is expected to be a class.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">site_classes</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;datacenters&quot;</span><span class="p">,</span><span class="s">&quot;datacentres&quot;</span>  <span class="p">};</span> <span class="c"># locations is by default</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in version 3.2.0, Nova 2.1.0 (2011)</p>
+<h3 id="syslog_host">syslog_host</h3>
+<p><strong>Description:</strong> The <code>syslog_host</code> contains the name or address of a
+host to which syslog messages should be sent directly by UDP.</p>
+
+<p>This is the hostname or IP address of a local syslog service to which all
+CFEngine&#39;s components may promise to send data.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_$(){}.:-]+</code></p>
+
+<p><strong>Default value:</strong> 514</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">syslog_host</span> <span class="o">=&gt;</span> <span class="s">&quot;syslog.example.org&quot;</span><span class="p">;</span>
+    <span class="kr">syslog_port</span> <span class="o">=&gt;</span> <span class="s">&quot;514&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="syslog_port">syslog_port</h3>
+<p><strong>Description:</strong> The value of <code>syslog_port</code> represents the port number
+of a UDP syslog service.</p>
+
+<p>It is the UDP port of a local syslog service to which all CFEngine&#39;s
+components may promise to send data.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">syslog_host</span> <span class="o">=&gt;</span> <span class="s">&quot;syslog.example.org&quot;</span><span class="p">;</span>
+    <span class="kr">syslog_port</span> <span class="o">=&gt;</span> <span class="s">&quot;514&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="tls_ciphers">tls_ciphers</h3>
+<p><strong>Description:</strong> List of ciphers allowed when making <strong>outgoing</strong> connections.</p>
+
+<p>For a list of possible ciphers, see man page for &quot;openssl ciphers&quot;.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Default value:</strong> undefined</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+    <span class="c"># Use one of these ciphers when making outbound connections</span>
+    <span class="kr">tls_ciphers</span> <span class="o">=&gt;</span> <span class="s">&quot;AES128-SHA&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-components.html#protocol_version" title="Components and Common Control - protocol_version"><code>protocol_version</code></a>, <a href="reference-components-cf-serverd.html#allowciphers" title="cf-serverd - allowciphers"><code>allowciphers</code></a>, <a href="reference-components.html#tls_min_version" title="Components and Common Control - tls_min_version"><code>tls_min_version</code></a>, <a href="reference-components-cf-serverd.html#allowtlsversion" title="cf-serverd - allowtlsversion"><code>allowtlsversion</code></a>, <a href="reference-promise-types-files.html#encrypt" title="files - encrypt"><code>encrypt</code></a>, <a href="reference-components-cf-serverd.html#logencryptedtransfers" title="cf-serverd - logencryptedtransfers"><code>logencryptedtransfers</code></a>, <a href="reference-promise-types-access.html#ifencrypted" title="access - ifencrypted"><code>ifencrypted</code></a></p>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.7.0</p>
+<h3 id="tls_min_version">tls_min_version</h3>
+<p><strong>Description:</strong> Minimum tls version to allow for <strong>outgoing</strong> connections.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Default value:</strong> 1.0</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+    <span class="c"># Allow only TLSv1.1 or higher for outgoing connections</span>
+    <span class="kr">tls_min_version</span> <span class="o">=&gt;</span> <span class="s">&quot;1.1&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-components.html#protocol_version" title="Components and Common Control - protocol_version"><code>protocol_version</code></a>, <a href="reference-components-cf-serverd.html#allowciphers" title="cf-serverd - allowciphers"><code>allowciphers</code></a>, <a href="reference-components.html#tls_ciphers" title="Components and Common Control - tls_ciphers"><code>tls_ciphers</code></a>, <a href="reference-components-cf-serverd.html#allowtlsversion" title="cf-serverd - allowtlsversion"><code>allowtlsversion</code></a>, <a href="reference-promise-types-files.html#encrypt" title="files - encrypt"><code>encrypt</code></a>, <a href="reference-promise-types-access.html#ifencrypted" title="access - ifencrypted"><code>ifencrypted</code></a>, <a href="reference-components-cf-serverd.html#logencryptedtransfers" title="cf-serverd - logencryptedtransfers"><code>logencryptedtransfers</code></a></p>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.7.0</p>
+<h3 id="version">version</h3>
+<p><strong>Description:</strong> The <code>version</code> string contains the scalar version of the
+configuration.</p>
+
+<p>It is is used in error messages and reports.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p>This string should not contain the colon &#39;:&#39; character, as this has
+a special meaning in the context of knowledge management. This
+restriction might be lifted later.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">version</span> <span class="o">=&gt;</span> <span class="s">&quot;1.2.3&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="deprecated-attributes-in-body-common-control">Deprecated attributes in body common control</h2>
+<p>The following attributes were functional in previous versions
+of CFEngine, but today they are deprecated, either because
+their functionality is being handled trasparently or because
+it doesn&#39;t apply to current CFEngine version.</p>
+
+<ul>
+<li>fips_mode</li>
+<li>host_licenses_paid</li>
+</ul>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-components.html">components</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 02 March 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/components.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/04ad849bd97ab6da773794babca26d9dd8806039" target="_blank">04ad849bd97ab6da773794babca26d9dd8806039</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.9/assets/footer-e9812654bffc243fc0dd77cc1c8e348e.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

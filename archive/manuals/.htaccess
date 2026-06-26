@@ -1,0 +1,11 @@
+RewriteEngine on
+Options -Indexes  
+RewriteRule ^cf3-installation.html$ /manuals/cf3-quickstart [R=301,L]
+RewriteRule ^(.*).html$ /manuals/$1 [R=301,L]
+RewriteRule ^(.*)\.pdf$ /manuals_files/$1.pdf [R=301,L] 
+RewriteRule ^(.*)\.cf$ /manuals_files/$1.cf [R=301,L] 
+
+#if not a folder or file - redirect to manuals
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule (.*) https://cfengine.com/manuals [R=301,L] 

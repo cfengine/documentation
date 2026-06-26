@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.18  Documentation - cf-promises</title>
+        <link rel="icon" type="image/svg+xml" href="./media/images/favicon.svg">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-components-cf-promises.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+        <link href='assets/global-337446952f2ea3d590f5c3e3687cd5f0.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "cf-promises";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.24/">Version 3.24 (LTS)</option>
+<option value="/docs/3.23/">Version 3.23 (EOL non-LTS)</option>
+<option value="/docs/3.22/">Version 3.22 (non-LTS)</option>
+<option value="/docs/3.21/">Version 3.21 (LTS)</option>
+<option value="/docs/3.20/">Version 3.20 (EOL non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/" selected>Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (EOL LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="c5f68dd2aab4228c4" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components</a><ul class="level2"><li><a href="reference-components-cf-agent.html">cf-agent</a></li><li><a href="reference-components-cf-secret.html">cf-secret</a></li><li><a href="reference-components-cf-serverd.html">cf-serverd</a></li><li><a href="reference-components-cf-execd.html">cf-execd</a></li><li><a class="active" href="reference-components-cf-promises.html">cf-promises</a></li><li><a href="reference-components-cf-monitord.html">cf-monitord</a></li><li><a href="reference-components-cf-key.html">cf-key</a></li><li><a href="reference-components-cf-runagent.html">cf-runagent</a></li><li><a href="reference-components-cf-check.html">cf-check</a></li><li><a href="reference-components-cf-hub.html">cf-hub</a></li><li><a href="reference-components-cf-net.html">cf-net</a></li><li><a href="reference-components-file_control_promises.html">file control</a></li><li><a href="reference-components-cf-reactor.html">cf-reactor</a></li></ul></li><li><a href="reference-promise-types.html">Promise Types</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-components.html">Components</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    cf-promises
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p><code>cf-promises</code> is a  tool for checking CFEngine policy code. It operates by
+first parsing policy code checking for syntax errors. Second, it validates the
+integrity of policy consisting of multiple files. Third, it checks for
+semantic errors, e.g. specific attribute set rules. Finally, <code>cf-promises</code>
+attempts to expose errors by partially evaluating the policy, resolving as
+many variable and classes promise statements as possible. At no point does
+<code>cf-promises</code> make any changes to the system.</p>
+
+<p>In 3.6.0 and later, <code>cf-promises</code> will not evaluate function calls
+either.  This may affect customers who use <code>execresult</code> for instance.
+Use the new <code>--eval-functions yes</code> command-line option (default is
+<code>no</code>) to retain the old behavior from 3.5.x and earlier.</p>
+
+<p><a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> calls <code>cf-promises</code> to validate the policy before running
+it.  In that case <code>--eval-functions</code> is not specified, so functions
+are not evaluated prematurely (as you would expect).</p>
+<h2 id="command-reference">Command reference</h2><div class="highlight"><pre><code class="text"><span></span>  --workdir     , -w value - Override the work directory for testing (same as setting CFENGINE_TEST_OVERRIDE_WORKDIR)
+  --eval-functions value - Evaluate functions during syntax checking (may catch more run-time errors). Possible values: &#39;yes&#39;, &#39;no&#39;. Default is &#39;yes&#39;
+  --show-classes value - Show discovered classes, including those defined in common bundles in policy. Optionally can take a regular expression.
+  --show-vars    value - Show discovered variables, including those defined without dependency to user-defined classes in policy. Optionally can take a regular expression.
+  --help        , -h       - Print the help message
+  --bundlesequence, -b value - Use the specified bundlesequence for verification
+  --debug       , -d       - Enable debugging output
+  --verbose     , -v       - Output verbose information about the behaviour of cf-promises
+  --log-level   , -g value - Specify how detailed logs should be. Possible values: &#39;error&#39;, &#39;warning&#39;, &#39;notice&#39;, &#39;info&#39;, &#39;verbose&#39;, &#39;debug&#39;
+  --dry-run     , -n       - All talk and no action mode - make no changes, only inform of promises not kept
+  --version     , -V       - Output the version of the software
+  --file        , -f value - Specify an alternative input file than the default. This option is overridden by FILE if supplied as argument.
+  --define      , -D value - Define a list of comma separated classes to be defined at the start of execution
+  --negate      , -N value - Define a list of comma separated classes to be undefined at the start of execution
+  --inform      , -I       - Print basic information about changes made to the system, i.e. promises repaired
+  --diagnostic  , -x       - Activate internal diagnostics (developers only)
+  --policy-output-format, -p value - Output the parsed policy. Possible values: &#39;none&#39;, &#39;cf&#39;, &#39;json&#39; (this file only), &#39;cf-full&#39;, &#39;json-full&#39; (all parsed promises). Default is &#39;none&#39;. (experimental)
+  --syntax-description, -s value - Output a document describing the available syntax elements of CFEngine. Possible values: &#39;none&#39;, &#39;json&#39;. Default is &#39;none&#39;.
+  --full-check  , -c       - Ensure full policy integrity checks
+  --warn        , -W value - Pass comma-separated &lt;warnings&gt;|all to enable non-default warnings, or error=&lt;warnings&gt;|all
+  --color       , -C value - Enable colorized output. Possible values: &#39;always&#39;, &#39;auto&#39;, &#39;never&#39;. If option is used, the default value is &#39;auto&#39;
+  --tag-release , -T value - Tag a directory with promises.cf with cf_promises_validated and cf_promises_release_id
+  --timestamp   , -l       - Log timestamps on each line of log output
+  --ignore-preferred-augments, -        - Ignore def_preferred.json file in favor of def.json
+  --log-modules , - value - Enable even more detailed debug logging for specific areas of the implementation. Use together with &#39;-d&#39;. Use --log-modules=help for a list of available modules
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-components.html">components</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-cf-promises.html">cf-promises</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 23 July 2024
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.18/generator/pages/reference/components/cf-promises.markdown/reference/components/cf-promises.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-6e603435d313e50beb7f6915d5c67a09.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

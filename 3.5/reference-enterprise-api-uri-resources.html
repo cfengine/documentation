@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - URI Resources</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html"  class="navselected" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-enterprise-api.html">Enterprise  API Reference</a></li><li><a href="reference-syntax.html">Syntax, identifiers and names</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li><a href="reference-enterprise-api-sql-schema.html">SQL Schema</a></li><li class="selected"><span>URI Resources</span></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference-enterprise-api.html">Enterprise  API Reference</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>URI Resources</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/reference.html">reference</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/enterprise.html">enterprise</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/rest.html">rest</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/api.html">api</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/reporting.html">reporting</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/sql.html">sql</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/uri.html">uri</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/ldap.html">ldap</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>URI Resources</h1>
+                    <h3 id="api">/api</h3>
+<p><strong>Supported Operations</strong>: <code>GET</code></p>
+
+<p><strong>Fields</strong>:</p>
+
+<ul>
+<li>  <code>apiName</code> <em>(string)</em> Human-friendly API name.</li>
+<li>  <code>apiVersion</code> <em>(string)</em> API version string.</li>
+<li>  <code>enterpriseVersion</code> <em>(string)</em> Version of the CFEngine Enterprise
+build.</li>
+<li>  <code>coreVersion</code> <em>(string)</em> The version of CFEngine Core (Community)
+the Enterprise version was built against.</li>
+<li>  <code>databaseHostname</code> <em>(string)</em> Hostname (or IP) of the database the
+API is connected to.</li>
+<li>  <code>databasePort</code> <em>(integer)</em> Port number of the database the API is
+connected to.</li>
+<li>  <code>authenticated</code> <em>(&quot;internal&quot;, &quot;external&quot;)</em>, Whether the request
+was authenticated using the internal users table or an external
+source.</li>
+<li>  <code>license.expires</code> <em>(integer)</em> Time when the license expires.</li>
+<li>  <code>license.installTime</code> <em>(integer)</em> Time when the license was
+installed.</li>
+<li>  <code>license.owner</code> <em>(string)</em> The name of the license owner.</li>
+<li>  <code>license.granted</code> <em>(integer)</em> Host number capacity granted by the
+license.</li>
+<li>  <code>license.licenseUsage.lastMeasured</code> <em>(integer)</em> Time when license
+usage was last updated.</li>
+<li>  <code>license.licenseUsage.samples</code> <em>(integer)</em> Number of samples
+collected for license usage.</li>
+<li>  <code>license.licenseUsage.minObservedLevel</code> <em>(integer)</em> Minimum number
+of observed host licenses in use.</li>
+<li>  <code>license.licenseUsage.minObservedLevel</code> <em>(integer)</em> Maximum number
+of observed host licenses in use.</li>
+<li>  <code>license.licenseUsage.meanUsage</code> <em>(integer)</em> Average number of
+observed host licenses in use.</li>
+<li>  <code>license.licenseUsage.meanCumulativeUtilization</code> <em>(integer)</em> (not
+sure)</li>
+<li>  <code>license.licenseUsage.usedToday</code> <em>(integer)</em> Total number of host
+licenses observed used today.</li>
+</ul>
+<h3 id="api-settings">/api/settings</h3>
+<p><strong>Supported Operations</strong>: <code>GET</code>, <code>POST</code></p>
+
+<p><strong>Fields</strong>:</p>
+
+<ul>
+<li>  <code>rbacEnabled</code> <em>(boolean)</em> Whether RBAC is applied to requests.</li>
+<li>  <code>ldapEnabled</code> <em>(boolean)</em> Whether external authentication is
+activated.</li>
+<li>  <code>activeDirectoryDomain</code> <em>(string)</em> AD domain to use if AD is
+enabled in <code>ldapMode</code>.</li>
+<li>  <code>ldapBaseDN</code> <em>(string)</em> LDAP BaseDN to use for external LDAP
+requests.</li>
+<li>  <code>ldapEncryption</code> <em>(&quot;plain&quot;, &quot;ssl&quot;, &quot;tls&quot;)</em> Type of LDAP binding to
+establish to external LDAP server. (Default: &quot;plain&quot;).</li>
+<li>  <code>ldapHost</code> <em>(string)</em> Hostname of external LDAP server.</li>
+<li>  <code>ldapMode</code> <em>(&quot;standard&quot;, &quot;activeDirectory&quot;)</em> Type of LDAP server
+to use. &quot;standard&quot; is effectively OpenLDAP. (Default: &quot;standard&quot;).</li>
+<li>  <code>ldapLoginAttribute</code> <em>(string)</em> LDAP attribute to use for
+usernames. (default: &quot;uid&quot;).</li>
+<li>  <code>ldapUsername</code> <em>(string)</em> LDAP username.</li>
+<li>  <code>ldapPassword</code> <em>(string)</em> LDAP password.</li>
+<li>  <code>ldapUsersDirectory</code> <em>(string)</em> Attribute and value to qualify the
+directory in which to look up users, e.g. &quot;ou=people&quot;.</li>
+<li>  <code>ldapPort</code> <em>(integer)</em> Port for external LDAP connections not
+using SSL. (default 389).</li>
+<li>  <code>ldapPort</code> <em>(integer)</em> Port for external LDAP connections using
+SSL. (default 636).</li>
+<li>  <code>blueHostHorizon</code> <em>(integer)</em> Time interval (seconds) for when to
+consider a host unreachable. (default 900).</li>
+<li>  <code>logLevel</code> <em>(&quot;emergency&quot;, &quot;alert&quot;, &quot;critical&quot;, &quot;error&quot;, &quot;warning&quot;,
+&quot;notice&quot;, &quot;info&quot;, &quot;debug&quot;)</em> Syslog filter specifying the severity
+level at which messages produced by the API should be emitted to
+syslog and apache.log. (default: error).</li>
+</ul>
+<h3 id="api-user">/api/user</h3>
+<p><strong>Supported Operations</strong>: <code>GET</code>  </p>
+
+<p><strong>Query Parameters</strong>:</p>
+
+<ul>
+<li>  <code>id</code> <em>(regex string)</em> Regular expression for filtering usernames.</li>
+<li>  <code>external</code> <em>(&quot;true&quot;, &quot;false&quot;)</em> Returns only internal users (false)
+or only external (true), or all if not specified.</li>
+</ul>
+<h3 id="api-user-id">/api/user/:id</h3>
+<p><strong>Supported Operations</strong>: <code>GET</code>, <code>PUT</code>, <code>POST</code>, <code>DELETE</code></p>
+
+<p><strong>Fields</strong>:</p>
+
+<ul>
+<li>  <code>id</code> <em>(string)</em> ID of a user.</li>
+<li>  <code>password</code> <em>(string)</em> Password of a user. (Never returned from
+API).</li>
+<li>  <code>email</code> <em>(string)</em> Email address associated with user.</li>
+<li>  <a href="reference-promise-types-roles.html" title="roles"><code>roles</code></a> <em>(array of strings)</em> Set of IDs of roles a user is in.
+(Default: empty)</li>
+<li>  <code>external</code> <em>(boolean)</em> Whether or not the user was found
+externally (LDAP).</li>
+</ul>
+<h3 id="api-role">/api/role</h3>
+<p><strong>Supported Operations</strong>: <code>GET</code></p>
+<h3 id="api-role-id">/api/role/:id</h3>
+<p><strong>Supported Operations</strong>: <code>GET</code>, <code>PUT</code>, <code>POST</code>, <code>DELETE</code></p>
+
+<p><strong>Fields</strong>:</p>
+
+<ul>
+<li>  <code>id</code> <em>(string)</em> ID of a role.</li>
+<li>  <code>description</code> <em>(string)</em> Arbitrary text describing the role</li>
+<li>  <code>includeContext</code> <em>(comma delimited string of regular expression
+strings)</em> Includes hosts visible to the users in the role.</li>
+<li>  <code>excludeContext</code> <em>(comma delimited string of regular expression
+strings)</em> Excludes bundles visible to the users in the role.</li>
+<li>  <code>includeBundles</code> <em>(comma delimited string of regular expression
+strings)</em> Includes bundles visible to the users in the role.</li>
+<li>  <code>excludeBundles</code> <em>(comma delimited string of regular expression
+strings)</em> Excludes bundles visible to the users in the role.</li>
+</ul>
+<h3 id="api-host">/api/host</h3>
+<p><strong>Supported Operations</strong>: <code>GET</code> ,<code>DELETE</code></p>
+
+<p><em>Query Parameters</em>:</p>
+
+<ul>
+<li>  <code>include-context</code> <em>(comma delimited string of regular expression
+strings)</em> Includes hosts having context matching the expression.</li>
+<li>  <code>exclude-context</code> <em>(comma delimited string of regular expression
+strings)</em> Excludes hosts having context matching the expression.</li>
+</ul>
+<h3 id="api-host-host-id">/api/host/:host-id</h3>
+<ul>
+<li>  <code>id</code> <em>(string)</em> ID of a host.</li>
+<li>  <code>hostname</code> <em>(string)</em> Hostname of a host.</li>
+<li>  <code>ip</code> <em>(string)</em> IP address of a host.</li>
+</ul>
+<h4 id="api-host-host-id-vital-vital-id">/api/host/:host-id/vital/:vital-id</h4>
+<p><strong>Supported Operations</strong>: <code>GET</code></p>
+
+<p><em>Query Parameters</em>:</p>
+
+<ul>
+<li>  <code>from</code> <em>(integer)</em> Timestamp marking the start of the interval for
+which to fetch data. Data is only available going back one week.</li>
+<li>  <code>to</code> <em>(integer)</em> End of data interval to be fetched.</li>
+</ul>
+
+<p><strong>Fields</strong>:</p>
+
+<ul>
+<li>  <code>id</code> <em>(string)</em> ID of vital sign.</li>
+<li>  <code>description</code> <em>(string)</em> Description of vital sign.</li>
+<li>  <a href="reference-promise-types-measurements.html#units" title="measurements - units"><code>units</code></a> <em>(string)</em> Measurement unit of vital sign.</li>
+<li>  <code>timestamp</code> <em>(integer)</em> Timestamp of the last received data point.</li>
+<li>  <code>values</code> <em>(array of [ t, y ], where t is the sample timestamp)</em>
+Vital sign data.</li>
+</ul>
+<h3 id="api-query">/api/query</h3>
+<p><strong>Supported Operations</strong>:<br>
+<code>POST</code></p>
+
+<p><strong>Fields</strong>:</p>
+
+<ul>
+<li>  <code>query</code> <em>(string)</em> SQL query string.</li>
+<li>  <code>sortColumn</code> <em>(string)</em> Column on which to sort results. This is
+applied to the result of the SQL query and can be considered post
+processing. The Mission Portal uses this to sort cached reports.</li>
+<li>  <code>sortDescending</code> <em>(boolean)</em> Apply post-sorting in descending order.</li>
+<li>  <code>skip</code> <em>(integer)</em> Number of results to skip for the processed
+query. The Mission Portal uses this for pagination on cached
+results.</li>
+<li>  <code>limit</code> <em>(integer)</em> Limit the number of results in the processed
+query.</li>
+<li>  <code>disableCache</code> <em>(boolean)</em> Don&#39;t use cached data</li>
+</ul>
+<h3 id="api-query-async">/api/query/async</h3>
+<p><strong>Supported Operations</strong>: <code>POST</code></p>
+
+<p><strong>Fields</strong>:</p>
+
+<ul>
+<li>  <code>query</code> <em>(string)</em> SQL query string.</li>
+<li>  <code>id</code> <em>(string)</em> ID of the query job.</li>
+<li>  <code>error</code> <em>(string)</em> Error if anything went wrong.</li>
+</ul>
+<h3 id="api-query-async-async-query-id">/api/query/async/:async-query-id</h3>
+<p><strong>Supported Operations</strong>: <code>GET</code>, <code>DELETE</code></p>
+
+<p><strong>Fields</strong>:</p>
+
+<ul>
+<li>  <code>id</code> <em>(string)</em> ID of the query job.</li>
+<li>  <code>percentageComplete</code> <em>(integer)</em> Processing status for the query.</li>
+<li>  <code>href</code> <em>(string)</em> Download link for the finished report.</li>
+<li>  <code>error</code> <em>(string)</em> Error if anything went wrong.</li>
+</ul>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/reference/enterprise-api/uri-resources.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

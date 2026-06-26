@@ -1,0 +1,801 @@
+<html lang="en">
+<head>
+<title>Role Based Access Control and CFEngine</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Role Based Access Control and CFEngine">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('☺'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">Role Based Access Control and CFEngine</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-is-Role-Based-Access-Control_003f">What is Role Based Access Control?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">RBAC</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#What-is-Role-Based-Access-Control_003f">What is Role Based Access Control?</a>
+<li><a accesskey="2" href="#The-risks-of-RBAC">The risks of RBAC</a>
+<li><a accesskey="3" href="#CFEngine_0027s-approach-to-privilege">CFEngine's approach to privilege</a>
+<li><a accesskey="4" href="#The-chain-of-privilege-in-CFEngine">The chain of privilege in CFEngine</a>
+<li><a accesskey="5" href="#The-role-of-centralized-push-and-pull-in-RBAC">The role of centralized push and pull in RBAC</a>
+<li><a accesskey="6" href="#No-need-for-any-centralization-in-CFEngine">No need for any centralization in CFEngine</a>
+<li><a accesskey="7" href="#The-risk-from-centralized-trusted-hosts">The risk from centralized trusted hosts</a>
+<li><a accesskey="8" href="#The-Policy-Dispatch-Point">The Policy Dispatch Point</a>
+<li><a accesskey="9" href="#The-right-to-edit-and-publish-policy">The right to edit and publish policy</a>
+<li><a href="#The-bowtie-process">The bowtie process</a>
+<li><a href="#Granting-the-right-to-switch-on-special-pre_002ddefined-policies">Granting the right to switch on special pre-defined policies</a>
+</ul>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<div class="node">
+<a name="What-is-Role-Based-Access-Control%3f"></a>
+<a name="What-is-Role-Based-Access-Control_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#The-risks-of-RBAC">The risks of RBAC</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">What is Role Based Access Control?</h3>
+
+<p>Role Based Access Control (RBAC) describes a set of promises made by a host
+to grant privileged access to the system.  In this regard, RBAC is no
+different from any other form of access control, however, it is
+normally used to grant the privilege to execute certain commands that
+make changes to the system &ndash; thus it involves <i>write</i> or <i>change</i>
+privilege.
+
+   <p>The term <i>role</i>-based is used because users are often classified
+into managerial roles that are each assigned different levels of privilege
+with regard to the kind of tasks they need to perform.
+
+   <p>Role Based Access Control is used when remote users request access to
+a privileged service from some kind of service-agent running on a host. 
+For example, the password on the Unix root account is a simple RBAC system where
+access is granted to execute any command with unlimited privilege, to
+any user who knows the root password.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="rbac.png" alt="rbac.png"></div>
+<pre class="sp">
+
+</pre>
+<div align="center">RBAC is about remote action privilege</div>
+<pre class="sp">
+
+</pre>
+
+<div class="node">
+<a name="The-risks-of-RBAC"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#CFEngine_0027s-approach-to-privilege">CFEngine's approach to privilege</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-is-Role-Based-Access-Control_003f">What is Role Based Access Control?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">The risks of RBAC</h3>
+
+<p>Granting privilege to execute commands has obvious risks. The
+implementation of restricted access is usually handled in one of a
+number of different ways.  The term RBAC does not explain, in itself,
+which of these models will be used.
+
+   <p>Two common alternatives may be distinguished:
+
+     <dl>
+<dt><i>Arbitrary commands may be executed by privileged individuals (trusted user model).</i><dd>
+This is a high risk privilege granting system, where arbitrary change privileges are granted to
+users.
+
+     <br><dt><i>Pre-defined privileged operations may be made accessible to certain individuals/roles (Clark-Wilson model).</i><dd>
+This is a lower risk system, where users are only allowed privilege while executing very specific
+pre-defined activities (e.g. the right to initiate a backup).
+
+   </dl>
+
+<div class="node">
+<a name="CFEngine's-approach-to-privilege"></a>
+<a name="CFEngine_0027s-approach-to-privilege"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#The-chain-of-privilege-in-CFEngine">The chain of privilege in CFEngine</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#The-risks-of-RBAC">The risks of RBAC</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">CFEngine's approach to privilege</h3>
+
+<p>CFEngine handles privileged access somewhat differently. To see why, it is important
+to understand what CFEngine is not:
+     <ul>
+<li>CFEngine is not a service agent that grants remote change access to systems. 
+<li>CFEngine is not a remote-control for system operations<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>. 
+</ul>
+   CFEngine is intended for autonomous hands-free operation, and thus the
+issue of remote access almost never arises directly. 
+In CFEngine it is expressly forbidden for a
+part of CFEngine to receive commands from external parties. In a
+limited sense, CFEngine can be configured to listen for requests for
+classes that label the context for extraordinary, predefined
+policies; these can then be activated by certain users (<code>roles</code>
+promises), providing a version of the second form of RBAC above. We shall return to this
+below.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+By design it is not possible to send instructions to CFEngine that have
+not been pre-approved by the host administrator and promised as
+policy. Ultimately the local host administrator can veto any proposals
+for change in any configuration system (e.g. by unplugging the network).
+
+   <p>In CFEngine this is made a central tenet of the management model. 
+</td></tr></table>
+
+   <p>From a security perspective, the elimination of remote command access
+presents a huge simplification to security, without loss of
+functionality. The risk of executing privileged commands on the system is
+exchanged for a right to submit policy changes. Thus the access control
+becomes a matter of <i>who is allowed to approve policy for dissemination</i> to the system.
+
+<div class="node">
+<a name="The-chain-of-privilege-in-CFEngine"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#The-role-of-centralized-push-and-pull-in-RBAC">The role of centralized push and pull in RBAC</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CFEngine_0027s-approach-to-privilege">CFEngine's approach to privilege</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">The chain of privilege in CFEngine</h3>
+
+<p>Even though CFEngine is not in the business of granting privilege for command execution, there
+are security implications to using CFEngine and thus we should
+examine the chain of influence from user to host to understand the implications.
+
+   <p>In normal usage, users work as follows:
+
+     <ul>
+<li>A user edits a CFEngine input file. 
+<li>The input file determines a promise proposal, or template for policy. 
+<li>Someone publishes the policy for dissemination to interested parties. 
+<li>Interested parties (hosts running CFEngine) may choose to download these new propsals
+from trusted sources. These sources are defined in the existing policy which may always
+be vetoed by a local administrator.
+
+     <li>CFEngine will execute the new policies with the maximum privilege granted to it. 
+This privilege can be altered:
+          <ul>
+<li>By virtue of the privilege with the CFEngine itself runs. 
+<li>By the privilege accorded to a promise as a matter of its own policy. 
+</ul>
+     </ul>
+   When planning for the security of system changes, one should assume that any promise
+written in a CFEngine policy will be enforced with maximum privilege.
+
+<div class="node">
+<a name="The-role-of-centralized-push-and-pull-in-RBAC"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#No-need-for-any-centralization-in-CFEngine">No need for any centralization in CFEngine</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#The-chain-of-privilege-in-CFEngine">The chain of privilege in CFEngine</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">The role of centralized push and pull in RBAC</h3>
+
+<p>Centralization is a strategy of collecting resources into a single location. A central resource
+often becomes authoritative for a collection of hosts. Centralization has
+positive and negative aspects
+
+     <ul>
+<li>As a single point of direction, it simplifies the coordination of multiple agents (like a conductor in an orchestra). 
+<li>It can be a single point of failure, and a bottleneck for operations. Becauses centralization concentrates effort,
+brute force must be used by a hub when scaling to many hosts around a centralized strategy. 
+</ul>
+
+   <pre class="sp">
+
+</pre>
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+In terms of privilege, the implications of centralization are significantly
+different for <i>push</i> and <i>pull</i> based systems (see the figures below). 
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+
+Let us first consider the general problem, without reference to CFEngine.
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="central_push.png" alt="central_push.png"></div>
+<div align="center">Pushing out requires distributed RBAC control (read/write).</div>
+   <pre class="sp">
+
+</pre>
+A <i>push</i> is defined to be either
+     <ul>
+<li>The involuntary transmission of data to hosts
+from a hub, or
+<li>The remote execution of commands from the hub to the hosts. 
+</ul>
+   We see easily from the figures below that configuration of adequate access control
+requires access control configuration to be implemented on every managed host. 
+If the hosts require different levels of access in different zones, for instance,
+this requires a distributed configuration control of the RBAC system itself across
+the affected hosts. There is thus a burden to setting up RBAC.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+One configures a system for a <i>push</i>
+system just as one configures a system against attack from outside. In configuration
+terms, push is indistinguishable from an attack. 
+</td></tr></table>
+
+   <p>Pull-based management is fundamentally different. In a pull model, hosts
+download public information (their policy) from a trusted source.
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="central_pull.png" alt="central_pull.png"></div>
+<div align="center">Pulling updates requires only centralized RBAC control for change,</div>
+<div align="center">but not for the update itself (read only).</div>
+   <pre class="sp">
+
+</pre>
+There is no need for access control on the hosts anymore, since they
+are only reading information voluntarily. They may simply reject all attempts
+to send them data, in favour of their voluntary decision to download
+updates.
+
+   <p>Moving from push to pull-based configuration simplifies the number
+of independent points of configuration from N to 1, and the location
+of access control information is simplified from N separate models
+to a single model at the hub. The hub can decide which hosts
+will have access to which policy proposals, so there is no loss
+of privacy: the security model's definition is fully centralized (single point of definition for consistency).
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+     <ul>
+<li>Push-based approaches have centralized execution, but distributed RBAC configuration of the management setting. 
+Multiple, inconsistent pushes from different hubs can even lead to distributed inconsistency that cannot be detected from
+any single location.
+
+     <li>Pull-based approaches have distributed execution, but a single point of security configuration. 
+Inconsistent pulls are impossible, as there is a single point of definition. 
+</ul>
+   </td></tr></table>
+   At CFEngine, we strongly believe that pull-based systems are superior
+for most purposes, because pull's distributed operation reduces the
+risk of the bottleneck, while the centralized definition of access
+rights reduces the risk of error.
+
+   <p>In all further sections, we assume CFEngine's pull-based model.
+
+<div class="node">
+<a name="No-need-for-any-centralization-in-CFEngine"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#The-risk-from-centralized-trusted-hosts">The risk from centralized trusted hosts</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#The-role-of-centralized-push-and-pull-in-RBAC">The role of centralized push and pull in RBAC</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">No need for any centralization in CFEngine</h3>
+
+<p>Before continuing, it is important to emphasize that CFEngine has no
+technological <i>need</i> for centralization. The decision to centralize
+management is a policy decision. Every host can, if desired, be configured as an
+independent device, with its own policy, making no contact with any
+external host. CFEngine is thus ideal for embedded systems and
+environments with partial connectivity, such as ships and submarines. 
+Nevertheless, centralized management is often chosen for its simple
+coordination of decision making. What is important to realize is that
+centralized decision-making is a convenient fiction for managers &ndash;
+no remote party can truly decide the state of a host.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+The owner of a machine always has the privilege to make changes to it. 
+Push-based models of management that pretend to control hosts absolutely
+are simply misleading, as they exist by the good grace of end systems. 
+</td></tr></table>
+
+   <p>In the remainder of this Special Topics Guide, we shall assume the
+common model of centralized management, because that is the
+context in which RBAC is relevant.
+
+<div class="node">
+<a name="The-risk-from-centralized-trusted-hosts"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#The-Policy-Dispatch-Point">The Policy Dispatch Point</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#No-need-for-any-centralization-in-CFEngine">No need for any centralization in CFEngine</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">The risk from centralized trusted hosts</h3>
+
+<p>Centralization has implications for risk<a rel="footnote" href="#fn-2" name="fnd-2"><sup>2</sup></a>.  Gaining malicious control of a trusted source could have a
+significant impact on all the hosts that subscribe to updates from it.
+
+   <p>The risk, in this case, is precisely the same as that for a push-based system that executes
+certain commands.  However, the task of defending a single trusted
+host is (at least psychologically) simpler than that of defending all
+the hosts in the network<a rel="footnote" href="#fn-3" name="fnd-3"><sup>3</sup></a>.
+
+   <p>The risk of propagating a bad change (i.e. an unfortunate mistake) is also no
+different between push and pull.  A bad decision is simply a bad
+decision. The antidote to human errors is to conduct policy reviews, i.e. use
+more pairs of eyes, or `dual-key' solutions.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+Centralize the writing of policy, within a local region to obtain
+straightforward consistency. Don't overcentralize, or you will oversimplfy. 
+One size rarely fits all (see the <i>Special Topics Guide on Federation and Organizational Complexity</i>). 
+RBAC then becomes an issue of: who should
+have the right to edit and publish changes to policy? 
+</td></tr></table>
+
+<div class="node">
+<a name="The-Policy-Dispatch-Point"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#The-right-to-edit-and-publish-policy">The right to edit and publish policy</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#The-risk-from-centralized-trusted-hosts">The risk from centralized trusted hosts</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">The Policy Dispatch Point</h3>
+
+<p>The burden of security is now localized entirely at the Policy Dispatch Point. 
+It becomes the responsibility of this `role' (policy dispatcher) to ensure
+that the desired state is in fact the one that is promised. This happens
+in two practical steps:
+
+     <ul>
+<li>Editing of an SVN repository of working proposals (access to change respository). 
+<li>Merging of changes into the actual published policy (bowtie process). 
+</ul>
+
+   <p>Where the highest levels of paranoia are justified, no host should
+receive automatic updates of policy without explicit human inspection
+and policy review. This is equivalent to allowing no RBAC privileges.
+
+<div class="node">
+<a name="The-right-to-edit-and-publish-policy"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#The-bowtie-process">The bowtie process</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#The-Policy-Dispatch-Point">The Policy Dispatch Point</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">The right to edit and publish policy</h3>
+
+<p>Let's recap' for a moment.  The CFEngine agent runs with maximum
+system privilege (root/Administrator), and makes its decisions based
+on a set of promise proposals that come from some trusted source,
+e.g. the owner of the machine, or some central policy decision point. 
+Once a set of proposals has been published, we simply call these `the policy'.  The agent on
+each host reads these proposals and picks out those that are relevant
+to the current context (`here and now') for each host. The agent then
+tries to keep these promises, by making any necessary changes to the
+system. For most common usages of CFEngine, the effect is that
+anything that is in the published policy is executed with up to
+maximum privilege.
+
+   <p>This means the following:
+
+     <dl>
+<dt><i>Any user who can edit the actual source policy has control over a host.</i><dd>
+The policy should not be writable by any unauthorized user, in any location
+where it will be picked up as part of the policy-appoved process for updating
+policy<a rel="footnote" href="#fn-4" name="fnd-4"><sup>4</sup></a>.
+
+     <br><dt><i>Any user who can cause a new version of the policy to be published for immediate use has privileged access.</i><dd>
+RBAC now means limiting access to the files that define policy.
+
+     <br><dt><i>If policy is automatically checked out of a repository, commit access to the respository can give privileged access.</i><dd>
+There should be a process of approval for changes made to policy. This should  be a human
+process, because ultimately a human must be responsible for publishing a policy. In this situation, RBAC now
+consists of granting access to make commits to the repository.
+
+   </dl>
+
+   <p>The conclusion of this section is that only a small number of highly trusted individuals
+should be able to alter policy themselves.
+
+   <p>Distributed coordination. RBAC is a poor tool for delegating tasks alone, because if multiple
+individuals with access rights are not coordinated in their promises, the result will merely be
+a conflict.
+
+<div class="node">
+<a name="The-bowtie-process"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Granting-the-right-to-switch-on-special-pre_002ddefined-policies">Granting the right to switch on special pre-defined policies</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#The-right-to-edit-and-publish-policy">The right to edit and publish policy</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">The bowtie process</h3>
+
+<p>Promise theory allows us to model the collaborative security
+implications of this (see the figure of the bow-tie structure). A
+simple method of delegating is the following.
+
+     <ol type=1 start=1>
+<li>Delegate responsibility for different issues to admin teams 1,2,3, etc. 
+<li>Make each of these teams responsible for version control of their own
+configuration rules. 
+<li>Make an intermediate agent responsible for collating and vetting the rules, checking for
+irregularities and conflicts. This agent must promise to disallow rules by
+one team that are the responsibility of another team. The agent could be a
+layer of software, but a cheaper and more manageable solution is the make this
+another group of one or more humans.
+
+     <li>Make the resulting collated configuration version controlled. Publish
+approved promises for all hosts to download from a trusted source.
+
+        </ol>
+
+   <p>A review procedure for policy-promises is a good solution if you want
+to delegate responsibility for different parts of a policy to
+different sources. Human judgement as the `arbiter' is irreplaceable,
+but tools can be added to make conflicts easier to detect.
+
+   <p>Promise theory underlines that, if a host or computing device accepts
+policy from any source, then it is alone and entirely responsible for
+this decision. The ultimate responsibility for the published version
+policy is the vetting agent. This creates a shallow hierarchy, but
+there is no reason why this formal body could not be comprised of
+representatives from the multiple teams.
+
+   <p>The figure below shows how a number of policy authoring teams can work together
+safely and securely to write the policy for a number of hosts, by vetting through
+a checkpoint, in a classic `bow-tie' formation.
+
+   <div class="block-image"><img src="delegate.png" alt="Delegation of responsibility requires vetting access"></div>
+
+<div class="node">
+<a name="Granting-the-right-to-switch-on-special-pre-defined-policies"></a>
+<a name="Granting-the-right-to-switch-on-special-pre_002ddefined-policies"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#The-bowtie-process">The bowtie process</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Granting the right to switch on special pre-defined policies</h3>
+
+<p>CFEngine offers one technological convenience that is relevant to RBAC. 
+In the Clark-Wilson security model, non-privileged users can be
+granted limited privilege to execute predefined commands that are
+locked down to specific actions. The Unix <code>ps</code> and <code>passwd</code>
+commands are examples of this, for example.
+
+   <p>Most users do not need to touch CFEngine at all, because policy is
+checked very regularly and promises are enforced with 5 minute
+intervals. In other words, for most users, just waiting will fix anny
+problem. In some cases, there are extraordinary promises or tasks that
+one does not want implemented without human oversight. In that
+instance, one places the relevant promises in a context that is not normally
+active. Users can then activate those sleeping promises by defining the
+context class manually.
+<pre class="verbatim">bundle agent mybundle
+{
+<span class="red">files:
+</span>
+  extraordindary::
+
+<span class="comment">    # ... promises ...
+</span>
+}
+</pre>
+Privileged users who have access to the system do not need RBAC to do this
+as they already have all credentials they need, and can achieve the same thing
+by running the agent with a defined class, e.g.
+
+<pre class="verbatim">
+host# cf-agent -D extraordinary
+
+</pre>
+However, it is also possible to grant access to these parts of a CFEngine policy that are normally
+switched off by using <code>cf-serverd</code> to mediate privilege to execute the agent with this class
+active. For example, setting:
+
+<pre class="verbatim">bundle server access_rules()
+{
+<span class="red">roles:
+</span>
+<span class="comment">  # Allow mark
+</span>
+
+  "extraordinary"<span class="red">  authorize </span>=> { "mark", "sally" };
+}
+
+</pre>
+and running:
+<pre class="verbatim">
+host# cf-runagent -H special_host -D extraordinary
+
+</pre>
+would achieve the same effect without granting any rights to change
+the policy.
+
+   <p>In this example CFEngine promises to grant permission to users
+&lsquo;<samp><span class="samp">mark</span></samp>&rsquo; and &lsquo;<samp><span class="samp">sally</span></samp>&rsquo; to remotely activate classes matching the regular
+expression &lsquo;<samp><span class="samp">extraordinary</span></samp>&rsquo; when using the <code>cf-runagent</code> to
+activate CFEngine. In this way one can implement a form of Role Based
+Access Control (RBAC) for unprivileged users, provided users do not
+have privileged access on the host directly. User identity is based on
+trusted CFEngine keys created by the user and exchanged with the server.
+
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">RBAC</a>
+<ul>
+<li><a href="#What-is-Role-Based-Access-Control_003f">What is Role Based Access Control?</a>
+<li><a href="#The-risks-of-RBAC">The risks of RBAC</a>
+<li><a href="#CFEngine_0027s-approach-to-privilege">CFEngine's approach to privilege</a>
+<li><a href="#The-chain-of-privilege-in-CFEngine">The chain of privilege in CFEngine</a>
+<li><a href="#The-role-of-centralized-push-and-pull-in-RBAC">The role of centralized push and pull in RBAC</a>
+<li><a href="#No-need-for-any-centralization-in-CFEngine">No need for any centralization in CFEngine</a>
+<li><a href="#The-risk-from-centralized-trusted-hosts">The risk from centralized trusted hosts</a>
+<li><a href="#The-Policy-Dispatch-Point">The Policy Dispatch Point</a>
+<li><a href="#The-right-to-edit-and-publish-policy">The right to edit and publish policy</a>
+<li><a href="#The-bowtie-process">The bowtie process</a>
+<li><a href="#Granting-the-right-to-switch-on-special-pre_002ddefined-policies">Granting the right to switch on special pre-defined policies</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://
+ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-
+analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+   <div class="footnote">
+<hr>
+<a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> Many provisioning and management systems are indeed
+effectively remote execution agents and thus RBAC is more relevant to them.</p>
+
+   <p class="footnote"><small>[<a name="fn-2" href="#fnd-2">2</a>]</small> A single point of
+definition could also be a single point of failure.  In CFEngine, a
+central policy hub is not a point of failure, because each agent
+caches all the resources it needs to maintain systems according to its
+current model. At worst, the loss of a hub would mean a delay to
+updates.</p>
+
+   <p class="footnote"><small>[<a name="fn-3" href="#fnd-3">3</a>]</small> User who are adept at automated
+configuration might disagree, as automation makes it easy to harden
+all hosts equally well. Network policies such as firewalls, etc, are
+however, simpler to manage for a single host.</p>
+
+   <p class="footnote"><small>[<a name="fn-4" href="#fnd-4">4</a>]</small> Note that the decision to collect policy updates from somewhere is
+itself a policy decision in CFEngine, so users should always think carefully
+about these decisions.</p>
+
+   <hr></div>
+
+</body></html>
+
+

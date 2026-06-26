@@ -1,0 +1,96 @@
+
+bundle knowledge st_reporting
+
+{
+topics:
+
+"st-reporting";
+Reporting::
+    "Cheaper options - tripwires" ;
+Reporting::
+    "Change auditing - the all seeing eye" ;
+Reporting::
+    "Nova measurements" ;
+Reporting::
+    "Redirecting output to logs" ;
+Reporting::
+    "Creating custom logs" ;
+Reporting::
+    "Including data in reports" ;
+Reporting::
+    "Creating custom reports  all versions" ;
+Reporting::
+    "CFEngine output levels" ;
+Reporting::
+    "Standard reports in CFEngine Nova" ;
+Reporting::
+    "Reporting in CFEngine" ;
+Reporting::
+    "Decentralized data collection in CFEngine" ;
+Reporting::
+    "CMDB and CFEngine" ;
+Reporting::
+    "What is a CMDB?" ;
+Reporting::
+    "Should monitoring and configuration be separate?" ;
+Reporting::
+    "What are monitoring and reporting?" ;
+Special_Topics_Guide::
+    "Reporting"  association => a("discussed in","Reporting","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-reporting.html"
+  represents => { "Reporting" };
+Reporting::
+ "/docs/st-reporting.html#Top"
+  represents => { "Text section" };
+What_are_monitoring_and_reporting_::
+ "/docs/st-reporting.html#What-are-monitoring-and-reporting_003f"
+  represents => { "Text section" };
+Should_monitoring_and_configuration_be_separate_::
+ "/docs/st-reporting.html#Should-monitoring-and-configuration-be-separate_003f"
+  represents => { "Text section" };
+What_is_a_CMDB_::
+ "/docs/st-reporting.html#What-is-a-CMDB_003f"
+  represents => { "Text section" };
+CMDB_and_CFEngine::
+ "/docs/st-reporting.html#CMDB-and-CFEngine"
+  represents => { "Text section" };
+Decentralized_data_collection_in_CFEngine::
+ "/docs/st-reporting.html#Decentralized-data-collection-in-CFEngine"
+  represents => { "Text section" };
+Reporting_in_CFEngine::
+ "/docs/st-reporting.html#Reporting-in-CFEngine"
+  represents => { "Text section" };
+Standard_reports_in_CFEngine_Nova::
+ "/docs/st-reporting.html#Standard-reports-in-CFEngine-Nova"
+  represents => { "Text section" };
+CFEngine_output_levels::
+ "/docs/st-reporting.html#CFEngine-output-levels"
+  represents => { "Text section" };
+Creating_custom_reports__all_versions::
+ "/docs/st-reporting.html#Creating-custom-reports-_002d_002d-all-versions"
+  represents => { "Text section" };
+Including_data_in_reports::
+ "/docs/st-reporting.html#Including-data-in-reports"
+  represents => { "Text section" };
+Creating_custom_logs::
+ "/docs/st-reporting.html#Creating-custom-logs"
+  represents => { "Text section" };
+Redirecting_output_to_logs::
+ "/docs/st-reporting.html#Redirecting-output-to-logs"
+  represents => { "Text section" };
+Nova_measurements::
+ "/docs/st-reporting.html#Nova-measurements"
+  represents => { "Text section" };
+Change_auditing___the_all_seeing_eye::
+ "/docs/st-reporting.html#Change-auditing-_002d-the-all-seeing-eye"
+  represents => { "Text section" };
+Cheaper_options___tripwires::
+ "/docs/st-reporting.html#Cheaper-options-_002d-tripwires"
+  represents => { "Text section" };
+}
+

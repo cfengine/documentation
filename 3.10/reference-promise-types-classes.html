@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.10  Documentation - classes</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.10/assets/global-9291732ba4137970d6f84f199dc9b48d.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "classes";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/" selected>Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:v9zopcogc1m" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a><ul class="level2"><li><a href="reference-promise-types-access.html">access</a></li><li><a href="reference-promise-types-edit_line.html">bundle edit_line</a></li><li><a href="reference-promise-types-edit_xml.html">bundle edit_xml</a></li><li><a class="active" href="reference-promise-types-classes.html">classes</a></li><li><a href="reference-promise-types-commands.html">commands</a></li><li><a href="reference-promise-types-databases.html">databases</a></li><li><a href="reference-promise-types-defaults.html">defaults</a></li><li><a href="reference-promise-types-files.html">files</a></li><li><a href="reference-promise-types-guest_environments.html">guest_environments</a></li><li><a href="reference-promise-types-measurements.html">measurements</a></li><li><a href="reference-promise-types-meta.html">meta</a></li><li><a href="reference-promise-types-methods.html">methods</a></li><li><a href="reference-promise-types-packages.html">packages</a></li><li><a href="reference-promise-types-packages-deprecated.html">packages (deprecated)</a></li><li><a href="reference-promise-types-processes.html">processes</a></li><li><a href="reference-promise-types-reports.html">reports</a></li><li><a href="reference-promise-types-roles.html">roles</a></li><li><a href="reference-promise-types-services.html">services</a></li><li><a href="reference-promise-types-storage.html">storage</a></li><li><a href="reference-promise-types-users.html">users</a></li><li><a href="reference-promise-types-vars.html">vars</a></li></ul></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    classes
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p><a href="reference-promise-types-classes.html" title="classes">Classes</a> promises may be made in any
+bundle. Classes that are set in <code>common</code> bundles are global in scope,
+while classes in all other bundles are local.</p>
+
+<p><strong>Note:</strong> The term class and context are sometimes used interchangeably.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">common</span> <span class="nf">g</span>
+    <span class="p">{</span>
+    <span class="kd">classes</span><span class="p">:</span>
+
+      <span class="s">&quot;one&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;any&quot;</span><span class="p">;</span> <span class="c"># always defined</span>
+      <span class="s">&quot;two&quot;</span><span class="p">;</span> <span class="c"># always defined</span>
+
+      <span class="s">&quot;client_network&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">iprange</span><span class="p">(</span><span class="s">&quot;128.39.89.0/24&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> You can use the following attributes to make a complete promise.</p>
+
+<ul>
+<li>and</li>
+<li>expression</li>
+<li>dist</li>
+<li>or</li>
+<li>not</li>
+<li>xor</li>
+</ul>
+
+<p>If you omit any of them, the class is always defined (as if you said <code>expression
+=&gt; &quot;any&quot;</code>).</p>
+
+<p>For example, the following promise defines the class <code>web</code> when a file exists:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;web&quot;</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;/etc/httpd/httpd.conf&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> The context attributes <a href="reference-promise-types-classes.html#expression" title="classes - expression"><code>expression</code></a>, <a href="reference-promise-types-classes.html#and" title="classes - and"><code>and</code></a>, <a href="reference-promise-types-classes.html#or" title="classes - or"><code>or</code></a>, <a href="reference-promise-types-classes.html#not" title="classes - not"><code>not</code></a>, <a href="reference-promise-types-classes.html#xor" title="classes - xor"><code>xor</code></a>,
+<a href="reference-promise-types-classes.html#dist" title="classes - dist"><code>dist</code></a> were made optional in CFEngine 3.9.0. Before that, one of them was
+required. So the following examples were the valid equivalents of the example
+above before 3.9.0:</p>
+<div class="highlight"><pre><code class="text">bundle agent example
+{
+  classes:
+      &quot;web&quot;
+        expression =&gt; fileexists(&quot;/etc/httpd/httpd.conf&quot;);
+
+      &quot;webserver&quot;
+        expression =&gt; &quot;any&quot;,
+        if =&gt; fileexists(&quot;/etc/httpd/httpd.conf&quot;);
+}
+</code></pre>
+</div>
+
+<hr>
+<h2 id="attributes">Attributes</h2><h3 id="and">and</h3>
+<p><strong>Description:</strong> Combine class sources with AND</p>
+
+<p>The class on the left-hand side is set if all of the class expressions listed
+on the right-hand side are true.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>clist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_!@@$|.()\[\]{}:]+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">classes</span><span class="p">:</span>
+
+      <span class="s">&quot;compound_class&quot;</span> <span class="kr">and</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">classmatch</span><span class="p">(</span><span class="s">&quot;host[0-9].*&quot;</span><span class="p">),</span> <span class="s">&quot;Monday&quot;</span><span class="p">,</span> <span class="s">&quot;Hr02&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>If an expression contains a mixture of different object types that need to be
+ANDed together, this list form is more convenient than providing an
+expression.</p>
+<h3 id="dist">dist</h3>
+<p><strong>Description:</strong> Generate a probabilistic class distribution</p>
+
+<p>Always set one generic class and one additional class, randomly weighted on a
+probability distribution.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#rlist" title="vars - rlist"><code>rlist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>-9.99999E100,9.99999E100</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">classes</span><span class="p">:</span>
+
+      <span class="s">&quot;my_dist&quot;</span>
+
+        <span class="kr">dist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;10&quot;</span><span class="p">,</span> <span class="s">&quot;20&quot;</span><span class="p">,</span> <span class="s">&quot;40&quot;</span><span class="p">,</span> <span class="s">&quot;50&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>In the example above the values sum up to <code>10+20+40+50 = 120</code>. When generating
+the distribution, CFEngine picks a number between <code>1-120</code>, and set the class
+<code>my_dist</code> as well as one of the following classes:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="nf">my_dist_10</span> <span class="p">(</span><span class="mi">10</span><span class="err">/</span><span class="mi">120</span> <span class="nf">of</span> <span class="nf">the</span> <span class="nf">time</span><span class="p">)</span>
+    <span class="nf">my_dist_20</span> <span class="p">(</span><span class="mi">20</span><span class="err">/</span><span class="mi">120</span> <span class="nf">of</span> <span class="nf">the</span> <span class="nf">time</span><span class="p">)</span>
+    <span class="nf">my_dist_40</span> <span class="p">(</span><span class="mi">40</span><span class="err">/</span><span class="mi">120</span> <span class="nf">of</span> <span class="nf">the</span> <span class="nf">time</span><span class="p">)</span>
+    <span class="nf">my_dist_50</span> <span class="p">(</span><span class="mi">50</span><span class="err">/</span><span class="mi">120</span> <span class="nf">of</span> <span class="nf">the</span> <span class="nf">time</span><span class="p">)</span>
+</code></pre>
+</div>
+<h3 id="expression">expression</h3>
+<p><strong>Description:</strong> Evaluate string expression of classes in normal form</p>
+
+<p>Set the class on the left-hand side if the expression on the right-hand side
+evaluates to true. With classes, the notion of &quot;true&quot; is not a boolean state,
+because classes can never be false. They are not booleans. They can be defined
+or undefined, but it&#39;s important to understand that a class may be defined
+<strong>during</strong> the execution of the agent, so the result of an expression may
+change during execution.</p>
+
+<p>Expressions can be:</p>
+
+<ul>
+<li><p>class names, with or without a namespace</p></li>
+<li><p>the literals <code>true</code> (always defined) and <code>false</code> (never defined) that allow JSON booleans to be used inside expressions</p></li>
+<li><p>the logical <em>and</em> operation, expressed as <code>a&amp;b</code> or <code>a.b</code>, which is true if both <code>a</code> and <code>b</code> are true</p></li>
+<li><p>the logical <em>or</em> operation, expressed as <code>a|b</code>, which is true if either <code>a</code> or <code>b</code> are true</p></li>
+<li><p>the logical <em>not</em> operation, expressed as <code>!a</code>, which is true if <code>a</code> is not
+true. Note again here that <code>a</code> could <strong>become</strong> true during the execution. So
+if you have <code>&quot;myclass&quot; expression =&gt; &quot;!x&quot;</code> and <code>x</code> starts undefined but is
+defined later, you could have both <code>x</code> <strong>and</strong> <code>myclass</code> defined!</p></li>
+<li><p>parenthesis <code>(whatever)</code> which operate as expected to prioritize expression evaluation</p></li>
+<li><p>the return value of a function that returns a class, such as <a href="reference-functions-fileexists.html" title="fileexists"><code>fileexists()</code></a> <a href="reference-functions-and.html" title="and"><code>and()</code></a> <a href="reference-functions-userexists.html" title="userexists"><code>userexists()</code></a> etc.</p></li>
+</ul>
+
+<p><strong>Type:</strong> <code>class</code></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_!@@$|.()\[\]{}:]+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">classes</span><span class="p">:</span>
+
+      <span class="s">&quot;class_name&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;solaris|(linux.specialclass)&quot;</span><span class="p">;</span>
+      <span class="s">&quot;has_toor&quot;</span>   <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">userexists</span><span class="p">(</span><span class="s">&quot;toor&quot;</span><span class="p">);</span>
+
+      <span class="c"># it&#39;s unlikely a machine will become Linux during execution</span>
+      <span class="c"># so this is fairly safe</span>
+      <span class="s">&quot;not_linux&quot;</span>   <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;!linux&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;a_or_b&quot;</span>   <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;a|b&quot;</span><span class="p">;</span>
+      <span class="c"># yes, it&#39;s OK to define a class twice, and this is the same outcome</span>
+      <span class="c"># with different syntax</span>
+      <span class="s">&quot;a_and_b&quot;</span>   <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;a&amp;b&quot;</span><span class="p">;</span>
+      <span class="s">&quot;a_and_b&quot;</span>   <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;a.b&quot;</span><span class="p">;</span>
+
+      <span class="c"># yes, it&#39;s OK to define a class twice, and this is the same outcome</span>
+      <span class="c"># with different syntax</span>
+      <span class="s">&quot;linux_and_has_toor&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">and</span><span class="p">(</span><span class="nf">userexists</span><span class="p">(</span><span class="s">&quot;toor&quot;</span><span class="p">),</span> <span class="s">&quot;linux&quot;</span><span class="p">);</span>
+      <span class="s">&quot;linux_and_has_toor&quot;</span> <span class="kr">and</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">userexists</span><span class="p">(</span><span class="s">&quot;toor&quot;</span><span class="p">),</span> <span class="s">&quot;linux&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+<h3 id="or">or</h3>
+<p><strong>Description:</strong> Combine class sources with inclusive OR</p>
+
+<p>The class on the left-hand side will be set if any one (or more) of
+the class expressions on the right-hand side are true.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>clist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_!@@$|.()\[\]{}:]+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">classes</span><span class="p">:</span>
+
+    <span class="s">&quot;compound_test&quot;</span>
+
+      <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">classmatch</span><span class="p">(</span><span class="s">&quot;linux_x86_64_2_6_22.*&quot;</span><span class="p">),</span> <span class="s">&quot;suse_10_3&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>This is useful construction for writing expressions that contain functions.</p>
+<h3 id="persistence">persistence</h3>
+<p><strong>Description:</strong> Make the class persistent to avoid re-evaluation</p>
+
+<p>The value specifies time in minutes.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">common</span> <span class="nf">setclasses</span>
+<span class="p">{</span>
+<span class="kd">classes</span><span class="p">:</span>
+
+  <span class="s">&quot;cached_classes&quot;</span>
+                <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;any&quot;</span> <span class="p">},</span>
+       <span class="kr">persistence</span> <span class="o">=&gt;</span> <span class="s">&quot;1&quot;</span><span class="p">;</span>
+
+  <span class="s">&quot;cached_class&quot;</span>
+       <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;any&quot;</span><span class="p">,</span>
+       <span class="kr">persistence</span> <span class="o">=&gt;</span> <span class="s">&quot;1&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>This feature can be used to avoid recomputing expensive classes calculations
+on each invocation. This is useful if a class discovered is essentially
+constant or only slowly varying, such as a hostname or alias from a
+non-standard naming facility.
+Persistent classes are always global and can not be set to local
+by <strong>scope</strong> directive.</p>
+
+<p>For example, to create a conditional inclusion of costly class evaluations,
+put them into a separate bundle in a file <code>classes.cf.</code></p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># promises.cf</span>
+
+    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="nc">persistent_classes</span><span class="p">::</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;test&quot;</span> <span class="p">};</span>
+
+    <span class="nc">!persistent_classes</span><span class="p">::</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span>  <span class="s">&quot;setclasses&quot;</span><span class="p">,</span> <span class="s">&quot;test&quot;</span> <span class="p">};</span>
+
+    <span class="nc">!persistent_classes</span><span class="p">::</span>
+      <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;classes.cf&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">test</span>
+    <span class="p">{</span>
+    <span class="kd">reports</span><span class="p">:</span>
+
+      <span class="nc">!my_persistent_class</span><span class="p">::</span>
+       <span class="s">&quot;no persistent class&quot;</span><span class="p">;</span>
+
+      <span class="nc">my_persistent_class</span><span class="p">::</span>
+        <span class="s">&quot;persistent class defined&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Then create <code>classes.cf</code></p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># classes.cf</span>
+
+    <span class="k">bundle</span> <span class="k">common</span> <span class="nf">setclasses</span>
+    <span class="p">{</span>
+    <span class="kd">classes</span><span class="p">:</span>
+
+      <span class="s">&quot;persistent_classes&quot;</span>            <span class="c"># timer flag</span>
+             <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;any&quot;</span><span class="p">,</span>
+            <span class="kr">persistence</span> <span class="o">=&gt;</span> <span class="s">&quot;480&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;my_persistent_class&quot;</span>
+                    <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="err">...</span><span class="nf">long</span> <span class="nf">list</span> <span class="nf">or</span> <span class="nf">heavy</span> <span class="nf">function</span><span class="err">...</span> <span class="p">}</span> <span class="p">,</span>
+           <span class="kr">persistence</span> <span class="o">=&gt;</span> <span class="s">&quot;480&quot;</span><span class="p">;</span>
+
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in CFEngine 3.3.0</p>
+<h3 id="not">not</h3>
+<p><strong>Description:</strong> Evaluate the negation of string expression in normal form</p>
+
+<p>The class on the left-hand side will be set if the class expression on the
+right-hand side evaluates to false.</p>
+
+<p><strong>Type:</strong> <code>class</code></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_!@@$|.()\[\]{}:]+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">classes</span><span class="p">:</span>
+
+       <span class="s">&quot;others&quot;</span>  <span class="kr">not</span> <span class="o">=&gt;</span> <span class="s">&quot;linux|solaris&quot;</span><span class="p">;</span>
+       <span class="s">&quot;no_toor&quot;</span> <span class="kr">not</span> <span class="o">=&gt;</span> <span class="nf">userexists</span><span class="p">(</span><span class="s">&quot;toor&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>Knowing that something is not the case is not the same as not knowing whether
+something is the case. That a class is not set could mean either. See the note
+on <a href="reference-language-concepts-classes.html" title="Classes and Decisions">Negative Knowledge</a>.</p>
+<h3 id="scope">scope</h3>
+<p><strong>Description:</strong> Scope of the class set by this promise.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">    namespace
+    bundle
+</code></pre>
+</div>
+
+<p><strong>Default value:</strong> <code>bundle</code> in agent bundles, <a href="reference-components-file_control_promises.html#namespace" title="file control - namespace"><code>namespace</code></a> in common bundles</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;namespace_context&quot;</span>
+          <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;bundle_or_namespace_context&quot;</span><span class="p">;</span> <span class="c"># without an explicit scope, depends on bundle type</span>
+
+      <span class="s">&quot;bundle_context&quot;</span>
+          <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;bundle&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-promise-types.html#scope" title="Promise Types and Attributes - scope"><code>scope</code> in <code>body classes</code></a></p>
+<h3 id="select_class">select_class</h3>
+<p><strong>Description:</strong> Select one of the named list of classes to define based on
+host&#39;s fully qualified domain name, the primary IP address and the UID that
+cf-agent is running under.</p>
+
+<p>This feature is useful for decentralized dynamic grouping. The class is chosen
+deterministically (not randomly) but it is not possible to say which host will
+end up in which class in advance. Only that given stable input a host will
+always end up in the same class every time while running a given version of
+CFEngine.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>clist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_!@@$|.()\[\]{}:]+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">common</span> <span class="nf">g</span>
+    <span class="p">{</span>
+    <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;selection&quot;</span> <span class="kr">select_class</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;one&quot;</span><span class="p">,</span> <span class="s">&quot;two&quot;</span> <span class="p">};</span>
+
+    <span class="kd">reports</span><span class="p">:</span>
+      <span class="nc">one</span><span class="p">::</span>
+        <span class="s">&quot;One was selected&quot;</span><span class="p">;</span>
+      <span class="nc">two</span><span class="p">::</span>
+        <span class="s">&quot;Two was selected&quot;</span><span class="p">;</span>
+      <span class="nc">selection</span><span class="p">::</span>
+         <span class="s">&quot;A selection was made&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>This feature is similar to the <a href="reference-functions-splayclass.html" title="splayclass"><code>splayclass</code> function</a>. However,
+instead of selecting a class for a moment in time, it always chooses one class
+in the list; the same class each time for a given host. This allows hosts to
+be distributed across a controlled list of classes (e.g for load balancing
+purposes).</p>
+
+<p>If a list is used as the input to select_class the promise will only actuate if
+the list is expandable. If the list has not yet been evaluated, the
+select_class will be skipped and wait for a subsequent evaluation pass.</p>
+
+<p>Given stable input, the output of this function will not change between executions of the same version of CFEngine. Its output should not change between versions of CFEngine within the same minor release (3.12.0 -&gt; 3.12.1). Its output may change between minor versions (3.12.0 -&gt; 3.13.0).</p>
+<h3 id="xor">xor</h3>
+<p><strong>Description:</strong> Combine class sources with XOR</p>
+
+<p>The class on the left-hand side is set if an odd number of class expressions
+on the right-hand side matches. This is most commonly used with two class
+expressions.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>clist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_!@@$|.()\[\]{}:]+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">classes</span><span class="p">:</span>
+
+    <span class="s">&quot;order_lunch&quot;</span> <span class="kr">xor</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;Friday&quot;</span><span class="p">,</span> <span class="s">&quot;Hr11&quot;</span><span class="p">};</span> <span class="c"># we get pizza every Friday</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-bundle-common.html">bundle common</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-classes.html">classes</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-promises.html">promises</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 17 March 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/promise-types/classes.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/ae7435d3d24d30077bfbf18438f2444c629f8c69" target="_blank">ae7435d3d24d30077bfbf18438f2444c629f8c69</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.10/assets/footer-4c28dbe187e7b2a3c1504ff564f1b523.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

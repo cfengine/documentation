@@ -1,0 +1,61 @@
+
+bundle knowledge st_menus
+
+{
+topics:
+
+"st-menus";
+Menu_Driven_Configuration::
+    "Should I use menu driven configuration?" ;
+Menu_Driven_Configuration::
+    "Can I see a score-card of compliance?" ;
+Menu_Driven_Configuration::
+    "How do I see what machines keep which promises?" ;
+Menu_Driven_Configuration::
+    "Strong and weak dependency" ;
+Menu_Driven_Configuration::
+    "How do I nest menus and make dependencies?" ;
+Menu_Driven_Configuration::
+    "How do I select from menus?" ;
+Menu_Driven_Configuration::
+    "How do you create menus with CFEngine?" ;
+Menu_Driven_Configuration::
+    "What is menu-driven configuration?" ;
+Special_Topics_Guide::
+    "Menu Driven Configuration"  association => a("discussed in","Menu Driven Configuration","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-menus.html"
+  represents => { "Menu Driven Configuration" };
+Menu_Driven_Configuration::
+ "/docs/st-menus.html#Top"
+  represents => { "Text section" };
+What_is_menu_driven_configuration_::
+ "/docs/st-menus.html#What-is-menu_002ddriven-configuration"
+  represents => { "Text section" };
+How_do_you_create_menus_with_CFEngine_::
+ "/docs/st-menus.html#How-do-you-create-menus-with-CFEngine"
+  represents => { "Text section" };
+How_do_I_select_from_menus_::
+ "/docs/st-menus.html#How-do-I-select-from-menus"
+  represents => { "Text section" };
+How_do_I_nest_menus_and_make_dependencies_::
+ "/docs/st-menus.html#How-do-I-nest-menus-and-make-dependencies"
+  represents => { "Text section" };
+Strong_and_weak_dependency::
+ "/docs/st-menus.html#Strong-and-weak-dependency"
+  represents => { "Text section" };
+How_do_I_see_what_machines_keep_which_promises_::
+ "/docs/st-menus.html#How-do-I-see-what-machines-keep-which-promises"
+  represents => { "Text section" };
+Can_I_see_a_score_card_of_compliance_::
+ "/docs/st-menus.html#Can-I-see-a-score_002dcard-of-compliance"
+  represents => { "Text section" };
+Should_I_use_menu_driven_configuration_::
+ "/docs/st-menus.html#Should-I-use-menu-driven-configuration"
+  represents => { "Text section" };
+}
+

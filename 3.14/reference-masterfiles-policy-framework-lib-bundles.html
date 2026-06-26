@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.14  Documentation - lib/bundles.cf</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.14/assets/global-87598b50cf828dc4e1c1ad7f860740dc.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "lib/bundles.cf";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.14/" selected>Version 3.14 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="012826289311752768906:kp0fmjlfqyu" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a><ul class="level2"><li><a href="reference-masterfiles-policy-framework-update.html">update.cf</a></li><li><a href="reference-masterfiles-policy-framework-promises.html">promises.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls.html">controls/</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_agent.html">controls/cf_agent.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_execd.html">controls/cf_execd.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf-hub.html">controls/cf_hub.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_monitord.html">controls/cf_monitord.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_runagent.html">controls/cf_runagent.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_serverd.html">controls/cf_serverd.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-def.html">controls/def.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-def_inputs.html">controls/def_inputs.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-reports.html">controls/reports.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-update_def.html">controls/update_def.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-update_def_inputs.html">controls/update_def_inputs.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal.html">cfe_internal/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-cfe_cfengine.html">cfe_internal/CFE_cfengine.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update.html">cfe_internal/update/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_dc_workflow.html">cfe_internal/update/cfe_internal_dc_workflow.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_update_from_repository.html">cfe_internal/update/cfe_internal_update_from_repository.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-lib.html">cfe_internal/update/lib.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-systemd_units.html">cfe_internal/update/systemd_units.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_bins.html">cfe_internal/update/update_bins.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_policy.html">cfe_internal/update/update_policy.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_processes.html">cfe_internal/update/update_processes.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-core.html">cfe_internal/core/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise.html">cfe_internal/enterprise/</a></li><li><a href="reference-masterfiles-policy-framework-inventory.html">inventory/</a></li><li><a href="reference-masterfiles-policy-framework-inventory-any.html">inventory/any.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-debian.html">inventory/debian.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-freebsd.html">inventory/freebsd.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-generic.html">inventory/generic.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-linux.html">inventory/linux.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-lsb.html">inventory/lsb.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-macos.html">inventory/macos.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-os.html">inventory/os.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-redhat.html">inventory/redhat.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-suse.html">inventory/suse.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-windows.html">inventory/windows.cf</a></li><li><a href="reference-masterfiles-policy-framework-services.html">services/</a></li><li><a href="reference-masterfiles-policy-framework-services-autorun.html">services/autorun/</a></li><li><a href="reference-masterfiles-policy-framework-services-main.html">services/main.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib.html">lib/</a></li><li><a href="reference-masterfiles-policy-framework-standalone_self_upgrade.html">standalone_self_upgrade.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-autorun.html">lib/autorun.cf</a></li><li><a class="active" href="reference-masterfiles-policy-framework-lib-bundles.html">lib/bundles.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfe_internal.html">lib/cfe_internal.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfe_internal_hub.html">lib/cfe_internal_hub.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfengine_enterprise_hub_ha.html">lib/cfengine_enterprise_hub_ha.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-commands.html">lib/commands.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-common.html">lib/common.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-databases.html">lib/databases.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-edit_xml.html">lib/edit_xml.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-event.html">lib/event.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-examples.html">lib/examples.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-feature.html">lib/feature.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-files.html">lib/files.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-guest_environments.html">lib/guest_environments.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-monitor.html">lib/monitor.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-packages.html">lib/packages.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-paths.html">lib/paths.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-processes.html">lib/processes.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-reports.html">lib/reports.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-services.html">lib/services.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-stdlib.html">lib/stdlib.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-storage.html">lib/storage.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-testing.html">lib/testing.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-users.html">lib/users.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-vcs.html">lib/vcs.cf</a></li></ul></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    lib/bundles.cf
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h3 id="agent-bundles"><a href="reference-components-cf-agent.html" title="cf-agent">agent</a> bundles</h3><h4 id="cronjob">cronjob</h4>
+<p><strong>Prototype:</strong> <code>cronjob(commands, user, hours, mins)</code></p>
+
+<p><strong>Description:</strong> Defines a cron job for <code>user</code></p>
+
+<p>Adds a line to crontab, if necessary.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>commands</code>: The commands that should be run</li>
+<li><code>user</code>: The owner of crontab</li>
+<li><code>hours</code>: The hours at which the job should run</li>
+<li><code>mins</code>: The minutes at which the job should run</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="kd">methods</span><span class="p">:</span>
+ <span class="s">&quot;cron&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">cronjob</span><span class="p">(</span><span class="s">&quot;/bin/ls&quot;</span><span class="p">,</span><span class="s">&quot;mark&quot;</span><span class="p">,</span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="s">&quot;5,10&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">cronjob</span><span class="p">(</span><span class="nv">commands</span><span class="p">,</span><span class="nv">user</span><span class="p">,</span><span class="nv">hours</span><span class="p">,</span><span class="nv">mins</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="nc">suse|sles</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">crontab</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/spool/cron/tabs&quot;</span><span class="p">;</span>
+    <span class="nc">redhat|fedora</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">crontab</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/spool/cron&quot;</span><span class="p">;</span>
+    <span class="nc">freebsd</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">crontab</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/cron/tabs&quot;</span><span class="p">;</span>
+    <span class="nc">!(suse|sles|redhat|fedora|freebsd)</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">crontab</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/spool/cron/crontabs&quot;</span><span class="p">;</span>
+
+    <span class="nc">any</span><span class="p">::</span>
+      <span class="c"># We escape the user supplied values so that we can search to see if the</span>
+      <span class="c"># entry already exists with slightly different spacing.</span>
+      <span class="p">&quot;</span><span class="nv">e_mins</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">escape</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(mins)</span><span class="s">&quot;</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">e_hours</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">escape</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(hours)</span><span class="s">&quot;</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">e_commands</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">escape</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(commands)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="nc">!windows</span><span class="p">::</span>
+
+      <span class="c"># We tolerate existing entries that differ only in whitespace and avoid</span>
+      <span class="c"># entering duplicate entries.</span>
+
+      <span class="s">&quot;present_with_potentially_different_spacing&quot;</span>
+        <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regline</span><span class="p">(</span> <span class="s">&quot;^</span><span class="si">$(e_mins)</span><span class="se">\s</span><span class="s">+</span><span class="si">$(e_hours)</span><span class="se">\s</span><span class="s">+</span><span class="se">\*\s</span><span class="s">+</span><span class="se">\*\s</span><span class="s">+</span><span class="se">\*\s</span><span class="s">+</span><span class="si">$(e_commands)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(crontab)</span><span class="s">/</span><span class="si">$(user)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+
+    <span class="nc">!windows.!present_with_potentially_different_spacing</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(crontab)</span><span class="s">/</span><span class="si">$(user)</span><span class="s">&quot;</span>
+
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;A user&#39;s regular batch jobs are added to this file&quot;</span><span class="p">,</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(mins)</span><span class="s"> </span><span class="si">$(hours)</span><span class="s"> * * * </span><span class="si">$(commands)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mo</span><span class="p">(</span><span class="s">&quot;600&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(user)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;changed_crontab&quot;</span><span class="p">);</span>
+
+  <span class="kd">processes</span><span class="p">:</span>
+
+    <span class="nc">changed_crontab</span><span class="p">::</span>
+      <span class="s">&quot;cron&quot;</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Most crons need to be huped after file changes&quot;</span><span class="p">,</span>
+      <span class="kr">signals</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;hup&quot;</span> <span class="p">};</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="rm_rf">rm_rf</h4>
+<p><strong>Prototype:</strong> <code>rm_rf(name)</code></p>
+
+<p><strong>Description:</strong> recursively remove <code>name</code> to any depth, including base</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>name</code>: the file or directory name</li>
+</ul>
+
+<p>This bundle will remove <code>name</code> to any depth, including <code>name</code> itself.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="kd">methods</span><span class="p">:</span>
+    <span class="s">&quot;bye&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">rm_rf</span><span class="p">(</span><span class="s">&quot;/var/tmp/oldstuff&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">rm_rf</span><span class="p">(</span><span class="nv">name</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="s">&quot;rm&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">rm_rf_depth</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">name</span><span class="p">),</span><span class="s">&quot;inf&quot;</span><span class="p">);</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="rm_rf_depth">rm_rf_depth</h4>
+<p><strong>Prototype:</strong> <code>rm_rf_depth(name, depth)</code></p>
+
+<p><strong>Description:</strong> recursively remove <code>name</code> to depth <a href="reference-promise-types-files.html#depth" title="files - depth"><code>depth</code></a>, including base</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>name</code>: the file or directory name</li>
+<li><code>depth</code>: how far to descend</li>
+</ul>
+
+<p>This bundle will remove <code>name</code> to depth <a href="reference-promise-types-files.html#depth" title="files - depth"><code>depth</code></a>, including <code>name</code> itself.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="kd">methods</span><span class="p">:</span>
+    <span class="s">&quot;bye&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">rm_rf_depth</span><span class="p">(</span><span class="s">&quot;/var/tmp/oldstuff&quot;</span><span class="p">,</span> <span class="s">&quot;100&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">rm_rf_depth</span><span class="p">(</span><span class="nv">name</span><span class="p">,</span><span class="nv">depth</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;isdir&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">isdir</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">name</span><span class="p">));</span>
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="nc">isdir</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">&quot;</span>
+      <span class="kr">file_select</span> <span class="o">=&gt;</span> <span class="nf">all</span><span class="p">,</span>
+      <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">recurse_with_base</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">depth</span><span class="p">)),</span>
+      <span class="kr">delete</span> <span class="o">=&gt;</span> <span class="nf">tidy</span><span class="p">;</span>
+
+      <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">/.&quot;</span>
+        <span class="kr">delete</span> <span class="o">=&gt;</span> <span class="nf">tidy</span><span class="p">;</span>
+
+    <span class="nc">!isdir</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">&quot;</span> <span class="kr">delete</span> <span class="o">=&gt;</span> <span class="nf">tidy</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="fileinfo">fileinfo</h4>
+<p><strong>Prototype:</strong> <code>fileinfo(f)</code></p>
+
+<p><strong>Description:</strong> provide access to file stat fields from the bundle caller and report
+file stat info for file &quot;f&quot; if &quot;verbose_mode&quot; class is defined</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>f</code>: file or files to stat</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">files</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;/tmp/example1&quot;</span><span class="p">,</span> <span class="s">&quot;/tmp/example2&quot;</span> <span class="p">};</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(files)</span><span class="s">&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_ok</span><span class="p">(</span><span class="s">&quot;verbose_mode&quot;</span><span class="p">),</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;verbose_mode is defined because the fileinfo bundle restricts the report of the file info to verbose mode&quot;</span><span class="p">;</span>
+
+    <span class="s">&quot;/tmp/example3&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_ok</span><span class="p">(</span><span class="s">&quot;verbose_mode&quot;</span><span class="p">),</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;verbose_mode is defined because the fileinfo bundle restricts the report of the file info to verbose mode&quot;</span><span class="p">;</span>
+
+
+  <span class="kd">methods</span><span class="p">:</span>
+    <span class="s">&quot;fileinfo&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">fileinfo</span><span class="p">(</span> <span class="nv">@(files)</span> <span class="p">);</span>
+    <span class="s">&quot;fileinfo&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">fileinfo</span><span class="p">(</span> <span class="s">&quot;/tmp/example3&quot;</span> <span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(files)</span><span class="s">: </span><span class="si">$(fileinfo.fields)</span><span class="s"> = &#39;</span><span class="si">$(fileinfo.stat[$(files)][$(fileinfo.fields)])</span><span class="s">&#39;&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][size])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][gid])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][uid])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][ino])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][nlink])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][ctime])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][atime])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][mtime])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][mode])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][modeoct])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][permstr])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][permoct])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][type])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][devno])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][dev_minor])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][dev_major])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][basename])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][dirname])</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">fileinfo</span><span class="p">(</span><span class="nv">f</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">fields</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">splitstring</span><span class="p">(</span><span class="s">&quot;size,gid,uid,ino,nlink,ctime,atime,mtime,mode,modeoct,permstr,permoct,type,devno,dev_minor,dev_major,basename,dirname,linktarget,linktarget_shallow&quot;</span><span class="p">,</span> <span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="mi">999</span><span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">stat[$(f)][$(fields)]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">filestat</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">f</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">fields</span><span class="p">));</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">verbose_mode</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: file </span><span class="si">$(f)</span><span class="s"> has </span><span class="si">$(fields)</span><span class="s"> = </span><span class="si">$(stat[$(f)][$(fields)])</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="logrotate">logrotate</h4>
+<p><strong>Prototype:</strong> <code>logrotate(log_files, max_size, rotate_levels)</code></p>
+
+<p><strong>Description:</strong> rotate specified &quot;log_files&quot; larger than &quot;max_size&quot;. Keep
+&quot;rotate_levels&quot; versions of the files before overwriting the oldest one</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>log_files</code>: single file or list of files to evaluate for rotation</li>
+<li><code>max_size</code>: minimum size in bytes that the file will grow to before being rotated</li>
+<li><code>rotate_levels</code>: number of rotations to keep before overwriting the oldest one</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">logdirs</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;/var/log/syslog&quot;</span><span class="p">,</span> <span class="s">&quot;/var/log/maillog&quot;</span><span class="p">};</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+    <span class="s">&quot;logrotate&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">logrotate</span><span class="p">(</span> <span class="nv">@(logdirs)</span><span class="p">,</span> <span class="s">&quot;1M&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span> <span class="p">);</span>
+    <span class="s">&quot;logrotate&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">logrotate</span><span class="p">(</span> <span class="s">&quot;/var/log/mylog, &quot;</span><span class="mi">1</span><span class="s">&quot;, &quot;</span><span class="mi">5</span><span class="s">&quot; );</span>
+<span class="s">    &quot;</span><span class="nf">logrotate</span><span class="s">&quot; usebundle =&gt; logrotate( &quot;</span><span class="err">/</span><span class="nf">var</span><span class="err">/</span><span class="nf">log</span><span class="err">/</span><span class="nf">alog</span><span class="p">,</span> <span class="s">&quot;500k&quot;</span><span class="p">,</span> <span class="s">&quot;7&quot;</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">logrotate</span><span class="p">(</span><span class="nv">log_files</span><span class="p">,</span> <span class="nv">max_size</span><span class="p">,</span> <span class="nv">rotate_levels</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(log_files)</span><span class="s">&quot;</span>
+      <span class="kr">comment</span>     <span class="o">=&gt;</span> <span class="s">&quot;Rotate file if above specified size&quot;</span><span class="p">,</span>
+      <span class="kr">rename</span>      <span class="o">=&gt;</span> <span class="nf">rotate</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(rotate_levels)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">file_select</span> <span class="o">=&gt;</span> <span class="nf">bigger_than</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(max_size)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="nf">log_files</span><span class="p">)</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="prunedir">prunedir</h4>
+<p><strong>Prototype:</strong> <code>prunedir(dir, max_days)</code></p>
+
+<p><strong>Description:</strong> delete plain files inside &quot;dir&quot; older than &quot;max_days&quot; (not recursively).</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>dir</code>: directory to examine for files</li>
+<li><code>max_days</code>: maximum number of days old a files mtime is allowed to before deletion</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">dirs</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;/tmp/logs&quot;</span><span class="p">,</span> <span class="s">&quot;/tmp/logs2&quot;</span> <span class="p">};</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+    <span class="s">&quot;prunedir&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">prunedir</span><span class="p">(</span> <span class="nv">@(dirs)</span><span class="p">,</span> <span class="s">&quot;1&quot;</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">prunedir</span><span class="p">(</span><span class="nv">dir</span><span class="p">,</span> <span class="nv">max_days</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(dir)</span><span class="s">&quot;</span>
+      <span class="kr">comment</span>       <span class="o">=&gt;</span> <span class="s">&quot;Delete plain files inside directory older than max_days&quot;</span><span class="p">,</span>
+      <span class="kr">delete</span>        <span class="o">=&gt;</span> <span class="nf">tidy</span><span class="p">,</span>
+      <span class="kr">file_select</span>   <span class="o">=&gt;</span> <span class="nf">filetype_older_than</span><span class="p">(</span><span class="s">&quot;plain&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(max_days)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">depth_search</span>  <span class="o">=&gt;</span> <span class="nf">recurse</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="prunetree">prunetree</h4>
+<p><strong>Prototype:</strong> <code>prunetree(dir, depth, max_days)</code></p>
+
+<p><strong>Description:</strong> Delete files and directories inside &quot;dir&quot; up to &quot;depth&quot; older than &quot;max_days&quot;.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>dir</code>: directory to examine for files</li>
+<li><code>depth</code>: How many levels to descend</li>
+<li><code>max_days</code>: maximum number of days old a files mtime is allowed to before deletion</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">dirs</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;/tmp/logs&quot;</span><span class="p">,</span> <span class="s">&quot;/tmp/logs2&quot;</span> <span class="p">};</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+    <span class="s">&quot;prunetree&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">prunetree</span><span class="p">(</span> <span class="nv">@(dirs)</span><span class="p">,</span> <span class="nf">inf</span><span class="p">,</span> <span class="s">&quot;1&quot;</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">prunetree</span><span class="p">(</span><span class="nv">dir</span><span class="p">,</span> <span class="nv">depth</span><span class="p">,</span> <span class="nv">max_days</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(dir)</span><span class="s">&quot;</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Delete files and directories under </span><span class="si">$(dir)</span><span class="s"> up to </span><span class="si">$(depth)</span><span class="s"></span>
+<span class="s">                    depth older than </span><span class="si">$(max_days)</span><span class="s">&quot;</span><span class="p">,</span>
+
+      <span class="kr">delete</span>        <span class="o">=&gt;</span> <span class="nf">tidy</span><span class="p">,</span>
+      <span class="kr">file_select</span>   <span class="o">=&gt;</span> <span class="nf">days_old</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="nf">max_days</span><span class="p">)</span> <span class="p">),</span>
+      <span class="kr">depth_search</span>  <span class="o">=&gt;</span> <span class="nf">recurse_with_base</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="nf">depth</span><span class="p">)</span> <span class="p">);</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="url_ping">url_ping</h4>
+<p><strong>Prototype:</strong> <code>url_ping(host, method, port, uri)</code></p>
+
+<p><strong>Description:</strong> ping HOST:PORT/URI using METHOD</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>host</code>: the host name</li>
+<li><code>method</code>: the HTTP method (HEAD or GET)</li>
+<li><code>port</code>: the port number, e.g. 80</li>
+<li><code>uri</code>: the URI, e.g. /path/to/resource</li>
+</ul>
+
+<p>This bundle will send a simple HTTP request and read 20 bytes back,
+then compare them to <code>200 OK.*</code> (ignoring leading spaces).</p>
+
+<p>If the data matches, the global class &quot;url_ok_HOST&quot; will be set, where
+HOST is the canonified host name, i.e. <code>canonify($(host))</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="kd">methods</span><span class="p">:</span>
+    <span class="s">&quot;check&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">url_ping</span><span class="p">(</span><span class="s">&quot;cfengine.com&quot;</span><span class="p">,</span> <span class="s">&quot;HEAD&quot;</span><span class="p">,</span> <span class="s">&quot;80&quot;</span><span class="p">,</span> <span class="s">&quot;/bill/was/here&quot;</span><span class="p">);</span>
+<span class="kd">reports</span><span class="p">:</span>
+  <span class="nc">url_ok_cfengine_com</span><span class="p">::</span>
+    <span class="s">&quot;CFEngine&#39;s web site is up&quot;</span><span class="p">;</span>
+  <span class="nc">url_not_ok_cfengine_com</span><span class="p">::</span>
+    <span class="s">&quot;CFEngine&#39;s web site *may* be down.  Or you&#39;re offline.&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">url_ping</span><span class="p">(</span><span class="nv">host</span><span class="p">,</span> <span class="nv">method</span><span class="p">,</span> <span class="nv">port</span><span class="p">,</span> <span class="nv">uri</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">url_check</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">readtcp</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">host</span><span class="p">),</span>
+                                    <span class="err">$</span><span class="p">(</span><span class="nf">port</span><span class="p">),</span>
+                                    <span class="s">&quot;</span><span class="si">$(method)</span><span class="s"> </span><span class="si">$(uri)</span><span class="s"> HTTP/1.1</span><span class="si">$(const.r)$(const.n)</span><span class="s">Host:</span><span class="si">$(host)$(const.r)$(const.n)$(const.r)$(const.n)</span><span class="s">&quot;</span><span class="p">,</span>
+                                    <span class="mi">20</span><span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">chost</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">canonify</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">host</span><span class="p">));</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;url_ok_</span><span class="si">$(chost)</span><span class="s">&quot;</span>
+      <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">,</span>
+      <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regcmp</span><span class="p">(</span><span class="s">&quot;[^</span><span class="se">\n</span><span class="s">]*200 OK.*</span><span class="se">\n</span><span class="s">.*&quot;</span><span class="p">,</span>
+                           <span class="err">$</span><span class="p">(</span><span class="nf">url_check</span><span class="p">));</span>
+
+      <span class="s">&quot;url_not_ok_</span><span class="si">$(chost)</span><span class="s">&quot;</span>
+      <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">,</span>
+      <span class="kr">not</span> <span class="o">=&gt;</span> <span class="nf">regcmp</span><span class="p">(</span><span class="s">&quot;[^</span><span class="se">\n</span><span class="s">]*200 OK.*</span><span class="se">\n</span><span class="s">.*&quot;</span><span class="p">,</span>
+                           <span class="err">$</span><span class="p">(</span><span class="nf">url_check</span><span class="p">));</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">verbose_mode</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(method)</span><span class="s"> </span><span class="si">$(host)</span><span class="s">:</span><span class="si">$(port)</span><span class="s">/</span><span class="si">$(uri)</span><span class="s"> got 200 OK&quot;</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;url_ok_</span><span class="si">$(chost)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(method)</span><span class="s"> </span><span class="si">$(host)</span><span class="s">:</span><span class="si">$(port)</span><span class="s">/</span><span class="si">$(uri)</span><span class="s"> did *not* get 200 OK&quot;</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;url_not_ok_</span><span class="si">$(chost)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cmerge">cmerge</h4>
+<p><strong>Prototype:</strong> <code>cmerge(name, varlist)</code></p>
+
+<p><strong>Description:</strong> bundle to merge many data containers into one</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>name</code>: the variable name to create</li>
+<li><code>varlist</code>: a list of variable names (**MUST** be a list)</li>
+</ul>
+
+<p>The result will be in <code>cmerge.$(name)</code>.  You can also use
+<code>cmerge.$(name)_str</code> for a string version of the merged containers.</p>
+
+<p>The name is variable so you can call this bundle for more than one
+merge.</p>
+
+<p>If you merge a key-value map into an array or vice versa, the map
+always wins.  So this example will result in a key-value map even
+though <code>cmerge.$(name)</code> starts as an array.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">run</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="c"># the &quot;mymerge&quot; tag is user-defined</span>
+      <span class="s">&quot;a&quot;</span>       <span class="kr">data</span>  <span class="o">=&gt;</span> <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;</span><span class="p">{</span> <span class="s">&quot;mark&quot;</span><span class="err">:</span> <span class="s">&quot;b&quot;</span> <span class="p">}</span><span class="err">&#39;</span><span class="p">),</span> <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;mymerge&quot;</span> <span class="p">};</span>
+      <span class="s">&quot;b&quot;</span>       <span class="kr">data</span>  <span class="o">=&gt;</span> <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;</span><span class="p">{</span> <span class="s">&quot;volker&quot;</span><span class="err">:</span> <span class="s">&quot;h&quot;</span> <span class="p">}</span><span class="err">&#39;</span><span class="p">),</span> <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;mymerge&quot;</span> <span class="p">};</span>
+
+      <span class="c"># you can list them explicitly: &quot;default:run.a&quot; through &quot;default:run.d&quot;</span>
+      <span class="p">&quot;</span><span class="nv">todo</span><span class="p">&quot;</span>    <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">variablesmatching</span><span class="p">(</span><span class="s">&quot;.*&quot;</span><span class="p">,</span> <span class="s">&quot;mymerge&quot;</span><span class="p">);</span>
+
+      <span class="c"># you can use cmerge.all_str instead of accessing the merged data directly</span>
+      <span class="p">&quot;</span><span class="nv">merged_str</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">format</span><span class="p">(</span><span class="s">&quot;%S&quot;</span><span class="p">,</span> <span class="s">&quot;cmerge.all&quot;</span><span class="p">);</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="s">&quot;go&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">cmerge</span><span class="p">(</span><span class="s">&quot;all&quot;</span><span class="p">,</span> <span class="nv">@(todo)</span><span class="p">);</span> <span class="c"># merge a, b into container cmerge.all</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="s">&quot;merged = </span><span class="si">$(cmerge.all_str)</span><span class="s">&quot;</span><span class="p">;</span> <span class="c"># will print a map with keys &quot;mark&quot; and &quot;volker&quot;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">cmerge</span><span class="p">(</span><span class="nv">name</span><span class="p">,</span> <span class="nv">varlist</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;[]&#39;</span><span class="p">),</span>            <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;free&quot;</span><span class="p">;</span>
+      <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">name</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">varlist</span><span class="p">)),</span> <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;free&quot;</span><span class="p">;</span> <span class="c"># iterates!</span>
+      <span class="p">&quot;</span><span class="nv">$(name)_str</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">format</span><span class="p">(</span><span class="s">&quot;%S&quot;</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="nf">name</span><span class="p">)),</span>    <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;free&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="collect_vars">collect_vars</h4>
+<p><strong>Prototype:</strong> <code>collect_vars(name, tag, flatten)</code></p>
+
+<p><strong>Description:</strong> bundle to collect tagged variables into a data container</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>name</code>: the variable name to create inside <code>collect_vars</code></li>
+<li><code>tag</code>: the tag regex string to match e.g. &quot;beta,gamma=.*&quot;</li>
+<li><code>flatten</code>: to flatten variable values, set to &quot;any&quot; or &quot;true&quot; or &quot;1&quot;</li>
+</ul>
+
+<p>The result will be a map in <code>collect.$(name)</code>. You can also use
+<code>cmerge.$(name)_str</code> for a string version of the merged containers
+(if it fits in a CFEngine string).</p>
+
+<p>The name is variable so you can call this bundle for more than one
+collection.</p>
+
+<p>Every found variable will be a key in the map, unless you specify
+<code>flatten</code>, in which case they&#39;ll be flattened into a top-level array
+of data.</p>
+
+<p>The <code>flatten</code> parameter can be &quot;any&quot; or &quot;true&quot; or &quot;1&quot; to be true.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(sys.libdir)</span><span class="s">/stdlib.cf&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="c"># the &quot;mymerge&quot; tag is user-defined</span>
+      <span class="s">&quot;a&quot;</span> <span class="kr">data</span>  <span class="o">=&gt;</span> <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;</span><span class="p">{</span> <span class="s">&quot;mark&quot;</span><span class="err">:</span> <span class="s">&quot;burgess&quot;</span> <span class="p">}</span><span class="err">&#39;</span><span class="p">),</span> <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;mymerge&quot;</span> <span class="p">};</span>
+      <span class="s">&quot;b&quot;</span> <span class="kr">data</span>  <span class="o">=&gt;</span> <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;</span><span class="p">{</span> <span class="s">&quot;volker&quot;</span><span class="err">:</span> <span class="s">&quot;hilsheimer&quot;</span> <span class="p">}</span><span class="err">&#39;</span><span class="p">),</span> <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;mymerge&quot;</span> <span class="p">};</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="c"># merge a, b into container collect_vars.all</span>
+      <span class="s">&quot;go&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">collect_vars</span><span class="p">(</span><span class="s">&quot;all&quot;</span><span class="p">,</span> <span class="s">&quot;mymerge&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
+      <span class="c"># flatten a, b into container collect_vars.flattened</span>
+      <span class="s">&quot;go_flatten&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">collect_vars</span><span class="p">(</span><span class="s">&quot;flattened&quot;</span><span class="p">,</span> <span class="s">&quot;mymerge&quot;</span><span class="p">,</span> <span class="s">&quot;true&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="c"># merged = {&quot;default:main.a&quot;:{&quot;mark&quot;:&quot;burgess&quot;},&quot;default:main.b&quot;:{&quot;volker&quot;:&quot;hilsheimer&quot;}}</span>
+      <span class="s">&quot;merged = </span><span class="si">$(collect_vars.all_str)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="c"># flattened = {&quot;mark&quot;:&quot;burgess&quot;,&quot;volker&quot;:&quot;hilsheimer&quot;}</span>
+      <span class="s">&quot;flattened = </span><span class="si">$(collect_vars.flattened_str)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">collect_vars</span><span class="p">(</span><span class="nv">name</span><span class="p">,</span> <span class="nv">tag</span><span class="p">,</span> <span class="nv">flatten</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;flatten&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">flatten</span><span class="p">),</span> <span class="s">&quot;any&quot;</span><span class="p">);</span>
+      <span class="s">&quot;flatten&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">flatten</span><span class="p">),</span> <span class="s">&quot;1&quot;</span><span class="p">);</span>
+      <span class="s">&quot;flatten&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">flatten</span><span class="p">),</span> <span class="s">&quot;true&quot;</span><span class="p">);</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">todo_$(name)</span><span class="p">&quot;</span>    <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">variablesmatching</span><span class="p">(</span><span class="s">&quot;.*&quot;</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="nf">tag</span><span class="p">));</span>
+
+    <span class="nc">!flatten</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">&quot;</span>
+        <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;</span><span class="p">{}</span><span class="err">&#39;</span><span class="p">),</span>
+        <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;free&quot;</span><span class="p">;</span>
+
+      <span class="c"># this iterates!</span>
+      <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">&quot;</span>
+        <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">name</span><span class="p">),</span> <span class="err">&#39;</span><span class="p">{</span> <span class="s">&quot;</span><span class="si">$(todo_$(name))</span><span class="s">&quot;</span><span class="err">:</span> <span class="err">$</span><span class="p">(</span><span class="nf">todo_</span><span class="err">$</span><span class="p">(</span><span class="nf">name</span><span class="p">))</span> <span class="p">}</span><span class="err">&#39;</span><span class="p">),</span>
+        <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;free&quot;</span><span class="p">;</span>
+
+    <span class="nc">flatten</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">&quot;</span>
+        <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;[]&#39;</span><span class="p">),</span>
+        <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;free&quot;</span><span class="p">;</span>
+
+      <span class="c"># this iterates!</span>
+      <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">&quot;</span>
+        <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">name</span><span class="p">),</span> <span class="s">&quot;</span><span class="si">$(todo_$(name))</span><span class="s">&quot;</span><span class="p">),</span>
+        <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;free&quot;</span><span class="p">;</span>
+
+    <span class="nc">any</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">$(name)_str</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">format</span><span class="p">(</span><span class="s">&quot;%S&quot;</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="nf">name</span><span class="p">)),</span>
+        <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;free&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="run_ifdefined">run_ifdefined</h4>
+<p><strong>Prototype:</strong> <code>run_ifdefined(namespace, mybundle)</code></p>
+
+<p><strong>Description:</strong> bundle to maybe run another bundle dynamically</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>namespace</code>: the namespace, usually <code>$(this.namespace)</code></li>
+<li><code>mybundle</code>: the bundle to maybe run</li>
+</ul>
+
+<p>This bundle simply is a way to run another bundle only if it&#39;s defined.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">run</span>
+<span class="p">{</span>
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="c"># does nothing if bundle &quot;runthis&quot; is not defined</span>
+      <span class="s">&quot;go&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">run_ifdefined</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">this</span><span class="err">.</span><span class="nf">namespace</span><span class="p">),</span> <span class="nf">runthis</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">run_ifdefined</span><span class="p">(</span><span class="nv">namespace</span><span class="p">,</span> <span class="nv">mybundle</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">bundlesfound</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">bundlesmatching</span><span class="p">(</span><span class="s">&quot;^</span><span class="si">$(namespace)</span><span class="s">:</span><span class="si">$(mybundle)</span><span class="s">$&quot;</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">count</span><span class="p">&quot;</span> <span class="kt">int</span> <span class="o">=&gt;</span> <span class="nf">length</span><span class="p">(</span><span class="nf">bundlesfound</span><span class="p">);</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="s">&quot;any&quot;</span>
+      <span class="kr">usebundle</span>  <span class="o">=&gt;</span> <span class="err">$</span><span class="p">(</span><span class="nf">bundlesfound</span><span class="p">),</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="nf">count</span><span class="p">));</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">verbose_mode</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: found matching bundles </span><span class="si">$(bundlesfound)</span><span class="s"> for namespace &#39;</span><span class="si">$(namespace)</span><span class="s">&#39; and bundle &#39;</span><span class="si">$(mybundle)</span><span class="s">&#39;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-controls.html">controls</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-mpf.html">mpf</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 10 July 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/masterfiles-policy-framework/lib-bundles.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/d99dd1f07cf37da07fbd675717c47f3201990891" target="_blank">d99dd1f07cf37da07fbd675717c47f3201990891</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.14/assets/footer-0ce0c884995cf0be0e878ec70c137005.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

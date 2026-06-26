@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.14  Documentation - LDAP authentication API</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.14/assets/global-87598b50cf828dc4e1c1ad7f860740dc.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "LDAP authentication API";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.14/" selected>Version 3.14 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="012826289311752768906:kp0fmjlfqyu" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a><ul class="level2"><li><a href="reference-enterprise-api-ref-changes.html">Changes REST API</a></li><li><a href="reference-enterprise-api-ref-federated-reporting-api.html">Federated reporting configuration API</a></li><li><a href="reference-enterprise-api-ref-health-diagnostic.html">Health diagnostic API</a></li><li><a href="reference-enterprise-api-ref-host.html">Host REST API</a></li><li><a href="reference-enterprise-api-ref-export-import-api.html">Import & Export API</a></li><li><a href="reference-enterprise-api-ref-inventory.html">Inventory API</a></li><li><a class="active" href="reference-enterprise-api-ref-ldap-api.html">LDAP authentication API</a></li><li><a href="reference-enterprise-api-ref-query.html">Query REST API</a></li><li><a href="reference-enterprise-api-ref-sql-schema.html">SQL Schema</a></li><li><a href="reference-enterprise-api-ref-status-settings.html">Status and Settings REST API</a></li><li><a href="reference-enterprise-api-ref-users-rbac.html">Users and Access-Control REST API</a></li><li><a href="reference-enterprise-api-ref-vcs-settings.html">VCS settings API</a></li><li><a href="reference-enterprise-api-ref-web-rbac.html">Web RBAC API</a></li></ul></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-enterprise-api-ref.html">Enterprise API Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    LDAP authentication API
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>LDAP authentication API allows to check ldap user credentials and change LDAP settings.</p>
+<h2 id="login">Login</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/ldap/login">https://hub.cfengine.com/ldap/login</a></p>
+
+<p><strong>Method:</strong> POST</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>username</strong> <em>(string)</em>
+Username from LDAP</li>
+<li><strong>password</strong> <em>(string)</em>
+User password</li>
+</ul>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 200 Ok
+{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;You are successfully authenticated&quot;
+}
+</code></pre>
+</div>
+<h2 id="get-settings">Get settings</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/ldap/settings">https://hub.cfengine.com/ldap/settings</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Headers:</strong></p>
+
+<ul>
+<li><strong>Authorization: api_token</strong> <em>(string)</em>
+Set token to access api. To get the token please look at - <code>/var/cfengine/httpd/htdocs/ldap/config/settings.php</code></li>
+</ul>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 200 Ok
+{
+    &quot;success&quot;: true,
+    &quot;data&quot;: {
+        &quot;domain_controller&quot;: &quot;local.loc&quot;,
+        &quot;base_dn&quot;: &quot;DC=local,DC=loc&quot;,
+        &quot;login_attribute&quot;: &quot;cn&quot;,
+        &quot;port&quot;: 365,
+        &quot;use_ssl&quot;: false,
+        &quot;use_tls&quot;: false,
+        &quot;timeout&quot;: 5,
+        &quot;admin_username&quot;: &quot;cn=admin,DC=local,DC=loc&quot;,
+        &quot;admin_password&quot;: &quot;Password is set&quot;
+    }
+}
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+
+<ul>
+<li><strong>domain_controller</strong>
+The domain controllers option is   server name located on your network that serve Active Directory.</li>
+<li><strong>base_dn</strong>
+The base distinguished name is the base distinguished name you&#39;d like to perform operations on. An example base DN would be DC=corp,DC=acme,DC=org.</li>
+<li><strong>login_attribute</strong>
+Login attribute like cn or uid</li>
+<li><strong>port</strong>
+The port option is used for authenticating and binding to your AD server. The default ports are already used for non SSL and SSL connections (389 and 636).</li>
+<li><strong>use_ssl</strong>
+Use ssl for connection</li>
+<li><strong>use_tls</strong>
+Use tls for connection</li>
+<li><strong>timeout</strong>
+The timeout option allows you to configure the amount of seconds to wait until your application receives a response from your LDAP server.</li>
+<li><strong>admin_username</strong>
+LDAP admin distinguished name. Emp.: cn=admin,dc=jumpcloud,dc=com</li>
+<li><strong>admin_password</strong>
+LDAP admin password.</li>
+</ul>
+<h2 id="update-settings">Update settings</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/ldap/settings">https://hub.cfengine.com/ldap/settings</a></p>
+
+<p><strong>Method:</strong> PATCH</p>
+
+<p>Note that the PATCH HTTP method only requires partial JSON for an update. Such as {&quot;port&quot;:3269} instead of the entire set of parameters.</p>
+
+<p><strong>Headers:</strong></p>
+
+<ul>
+<li><p><strong>Authorization: api_token</strong> <em>(string)</em>
+Set token to access api. To get the token please look at - <code>/var/cfengine/httpd/htdocs/ldap/config/settings.php</code></p></li>
+<li><p><strong>Content-Type: application/json</strong> <em>(string)</em>
+Content-Type must be application/json for the API to parse JSON provided.</p></li>
+</ul>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>domain_controller</strong> <em>(string)</em>
+The domain controllers option is   server name located on your network that serve Active Directory.</li>
+<li><strong>base_dn</strong> <em>(string)</em>
+The base distinguished name is the base distinguished name you&#39;d like to perform operations on. An example base DN would be DC=corp,DC=acme,DC=org.</li>
+<li><strong>login_attribute</strong>  <em>(string)</em>
+Login attribute like cn or uid</li>
+<li><strong>port</strong> <em>(integer)</em>
+The port option is used for authenticating and binding to your AD server. The default ports are already used for non SSL and SSL connections (389 and 636).  Optional parameter.</li>
+<li><strong>use_ssl</strong> <em>(boolean)</em>
+Use ssl for connection.  Optional parameter.</li>
+<li><strong>use_tls</strong> <em>(boolean)</em>
+Use tls for connection.  Optional parameter.</li>
+<li><strong>timeout</strong> <em>(integer)</em>
+The timeout option allows you to configure the amount of seconds to wait until your application receives a response from your LDAP server.  Optional parameter.</li>
+<li><strong>admin_username</strong>
+    LDAP admin distinguished name. Emp.: cn=admin,dc=jumpcloud,dc=com</li>
+<li><strong>admin_password</strong>
+    LDAP admin password.</li>
+</ul>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 200 Ok
+{
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Settings successfully saved.&quot;
+}
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-enterprise.html">enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-api.html">api</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-authenticating.html">authenticating</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-ldap.html">ldap</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 10 July 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/enterprise-api-ref/ldap-api.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/d99dd1f07cf37da07fbd675717c47f3201990891" target="_blank">d99dd1f07cf37da07fbd675717c47f3201990891</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.14/assets/footer-0ce0c884995cf0be0e878ec70c137005.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

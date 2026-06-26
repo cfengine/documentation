@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.10  Documentation - Using CFEngine with Open Nebula</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.10/assets/global-9291732ba4137970d6f84f199dc9b48d.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Using CFEngine with Open Nebula";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/" selected>Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:v9zopcogc1m" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-design-center.html">Design Center Overview</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a><ul class="level2"><li><a href="guide-special-topics-adopting-cfengine.html">Adopting CFEngine</a></li><li><a href="guide-special-topics-agility.html">Agility</a></li><li><a href="guide-special-topics-application-management.html">Application Management</a></li><li><a href="guide-special-topics-build-deploy-manage-audit.html">Build Deploy Manage Audit</a></li><li><a href="guide-special-topics-change-management.html">Change Management</a></li><li><a href="guide-special-topics-cloud-computing.html">Cloud Computing</a></li><li><a href="guide-special-topics-content-driven-policy.html">Content Driven Policy</a></li><li><a href="guide-special-topics-devops.html">Devops</a></li><li><a href="guide-special-topics-distributed-scheduling.html">Distributed Scheduling</a></li><li><a href="guide-special-topics-file-content.html">File Content</a></li><li><a href="guide-special-topics-glossary.html">Glossary</a></li><li><a href="guide-special-topics-hierarchies.html">Hierarchies</a></li><li><a href="guide-special-topics-itil.html">ITIL</a></li><li><a href="guide-special-topics-iteration.html">Iteration (Loops)</a></li><li><a href="guide-special-topics-modularity.html">Modularity and Orchestrating System Policy</a></li><li><a href="guide-special-topics-orchestration.html">Orchestration</a></li><li><a href="guide-special-topics-stigs.html">STIGs</a></li><li><a href="guide-special-topics-teamwork.html">Teamwork</a></li><li><a class="active" href="guide-special-topics-open-nebula.html">Using CFEngine with Open Nebula</a></li></ul></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-special-topics.html">Special Topics</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Using CFEngine with Open Nebula
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h1 id="what-is-open-nebula">What is Open Nebula?</h1>
+<p>Open Nebula is an Open Source framework for Cloud Computing that aims to become
+an industry standard. The project is designed to be scalable and offer
+compatibility with Amazon EC2 the Open Cloud Computing Interface (OCCI). Open
+Nebula is used as a cloud controller in a number of large private clouds.</p>
+<h1 id="how-can-cfengine-work-with-open-nebula">How can CFEngine work with Open Nebula?</h1>
+<p>CFEngine is a lifecycle management tool that can be integrated with a Cloud
+Computing framework in a number of ways. Of the four phases of the computer
+lifecycle, Open Nebula and CFEngine will play different roles.</p>
+
+<ul>
+<li><p>Build</p>
+
+<p>Open Nebula focuses on building virtual machines in a managed framework, based
+on pre-built images. CFEngine can further customize these images through
+package of customized installation measures.</p></li>
+<li><p>Deploy</p>
+
+<p>Open Nebula provides manual controls to bring up and tear down generic
+virtualized machines containing a baseline of software. CFEngine can further
+deploy patches and updates to these basic images without needing to take down
+a machine.</p></li>
+<li><p>Manage</p>
+
+<p>One a machine is running, CFEngine can manage it exactly like any other
+physical computer.</p></li>
+<li><p>Audit/Report</p>
+
+<p>CFEngine&#39;s local agents can extract information and learn system trends and
+characteristics over time. These may be collected in CFEngine&#39;s reporting
+interface or Mission Portal.</p></li>
+</ul>
+
+<p>Open Nebula&#39;s focus is on managing the deployment and recycling of the computing
+infrastructure. CFEngine picks up where Open Nebula leaves off and manages the
+dynamic lifecycle of software, applications and runtime state.</p>
+<h1 id="example-setup">Example Setup</h1>
+<p>This guide is based on an example setup provding a framework to demonstrate how
+CFEngine can be used to automate Open Nebula configuration. The following
+assumptions serve as an example and should be altered to fit your needs:</p>
+
+<ul>
+<li>All physical hosts are running Ubnutu, KVM and CFEngine 3.</li>
+<li>All physical hosts are on the same network.</li>
+<li>The CFEngine policy hub is running on the Open nebula front end.</li>
+<li>NFS will be used to share virtual machine images between hosts.</li>
+</ul>
+
+<p>Open nebula requires a single front-end machine and one or more node
+controllers. The front end is a management machine that is used to monitor and
+issue commands to the node controllers. Node controllers provide virtual machine
+resources. The promises that follow concentrate on the configuration of the
+front-end and a single cluster-node. In order to increase the capacity of your
+private cloud we can simply classify a new physical machine as another
+cluster-node.</p>
+
+<p><img src="./open-nebula-architecture.png" alt="Open Nebula Architecture"></p>
+<h2 id="installation-and-dependancy-configuration">Installation and dependancy configuration</h2>
+<p>First we can classify the physical machines in this case by IP address:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">classes</span><span class="p">:</span>
+        <span class="s">&quot;front_end&quot;</span> <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;192.168.1.2&quot;</span><span class="p">};</span>
+        <span class="s">&quot;node_controllers&quot;</span> <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;192.168.1.3&quot;</span><span class="p">};</span>
+</code></pre>
+</div>
+
+<p>If we want multiple node controllers then we can instead setup an slist variable
+IP addresses of intended node controllers. This will allow the &quot;onehost create&quot;
+command to execution each new node controller in turn reducing redundancy in the
+policy file for example:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">vars</span><span class="p">:</span>
+ <span class="p">&quot;</span><span class="nv">node_controller</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;192.168.1.3&quot;</span><span class="p">,</span> <span class="s">&quot;192.168.1.4&quot;</span><span class="p">,</span> <span class="s">&quot;192.168.1.5&quot;</span> <span class="p">};</span>
+
+<span class="kd">commands</span><span class="p">:</span>
+        <span class="s">&quot;/usr/bin/onehost create </span><span class="si">$(node_controller)</span><span class="s"> im_kvm vmm_kvm tm_nfs&quot;</span><span class="p">,</span>
+                           <span class="kr">contain</span> <span class="o">=&gt;</span> <span class="nf">oneadmin</span><span class="p">;</span>
+
+
+<span class="kd">classes</span><span class="p">:</span>
+
+  <span class="s">&quot;policy_host&quot;</span> <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                      <span class="nf">classmatch</span><span class="p">(</span><span class="nf">canonify</span><span class="p">(</span><span class="s">&quot;ipv4_</span><span class="si">$(node_controller)</span><span class="s">&quot;</span><span class="p">)),</span>
+                      <span class="nf">classmatch</span><span class="p">(</span><span class="nf">canonify</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(node_controller)</span><span class="s">&quot;</span><span class="p">))</span>
+                      <span class="p">};</span>
+</code></pre>
+</div>
+
+<p>To install the dependancies for each physical machine we can define these in a
+list and use the CFEngine standard library package promises to install them:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">vars</span><span class="p">:</span>
+
+<span class="p">&quot;</span><span class="nv">front_end_deps</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                          <span class="s">&quot;libcurl3&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;libmysqlclient16&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;libruby1.8&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;libsqlite3-ruby&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;libsqlite3-ruby1.8&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;libxmlrpc-c3&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;libxmlrpc-core-c3&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;mysql-common&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;ruby&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;ruby1.8&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;nfs-kernel-server&quot;</span>
+                          <span class="p">};</span>
+<span class="p">&quot;</span><span class="nv">cluster_node_deps</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="s">&quot;ruby&quot;</span><span class="p">,</span>
+            <span class="s">&quot;kvm&quot;</span><span class="p">,</span>
+            <span class="s">&quot;libvirt-bin&quot;</span><span class="p">,</span>
+            <span class="s">&quot;ubuntu-vm-builder&quot;</span><span class="p">,</span>
+            <span class="s">&quot;nfs-client&quot;</span><span class="p">,</span>
+            <span class="s">&quot;kvm-pxe&quot;</span>
+            <span class="p">};</span>
+</code></pre>
+</div>
+
+<p>Promises to perform dependency installation:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">packages</span><span class="p">:</span>
+
+<span class="nc">front_end</span><span class="p">::</span>
+   <span class="s">&quot;</span><span class="si">$(front_end_deps)</span><span class="s">&quot;</span>
+
+             <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Install open nebula front end dependencies&quot;</span><span class="p">,</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">generic</span><span class="p">,</span>
+             <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_ok</span><span class="p">(</span><span class="s">&quot;ensure_opennebula_running&quot;</span><span class="p">);</span>
+
+<span class="nc">node_controller</span><span class="p">::</span>
+   <span class="s">&quot;</span><span class="si">$(node_controller_deps)</span><span class="s">&quot;</span>
+             <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Install open nebula node controller dependencies&quot;</span><span class="p">,</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">generic</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>The additional line in the front end dependancy installation promise, assuming a
+successful installation, will ensure the Open Nebula daemon is running at all
+times:</p>
+<div class="highlight"><pre><code class="cf3"><span class="nc">front_end</span><span class="p">::</span>
+
+<span class="nc">ensure_opennebula_running</span><span class="p">::</span>
+        <span class="s">&quot;.*oned.*&quot;</span><span class="p">,</span>
+        <span class="kr">restart_class</span> <span class="o">=&gt;</span> <span class="s">&quot;start_oned&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Resulting in:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">commands</span><span class="p">:</span>
+
+<span class="nc">start_oned</span><span class="p">::</span>
+    <span class="s">&quot;/usr/bin/one start&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Execute the opennebula daemon&quot;</span><span class="p">,</span>
+        <span class="kr">contain</span> <span class="o">=&gt;</span> <span class="nf">oneadmin</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Since we will be using Open Nebula version 2 we must manually supply the
+package:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">commands</span><span class="p">:</span>
+
+<span class="nc">front_end.!opennebula_installed</span><span class="p">::</span>
+    <span class="s">&quot;/usr/bin/dpkg -i /root/opennebula_2.0-1_i386.deb&quot;</span><span class="p">,</span>
+    <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;install opennebula package if it isnt already&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>This promise points to the Open Nebula package file in /root/. To prevent
+repeated installation we can do a check to see if Open Nebula has already been
+installed by classifying a successful installation as having the oned.conf file
+in existence:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">classes</span><span class="p">:</span>
+
+    <span class="s">&quot;opennebula_installed&quot;</span> <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;/etc/one/oned.conf&quot;</span><span class="p">)};</span>
+</code></pre>
+</div>
+
+<p>Open nebula requires a privileged user &quot;oneadmin&quot; to issue commands. In order to
+have CFEngine perform these commands with the correct privileges we can use the
+contain body by appending the following to commands promises:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="kr">contain</span> <span class="o">=&gt;</span> <span class="nf">oneadmin</span>
+</code></pre>
+</div>
+
+<p>This will in turn apply owner and group permissions of the oneadmin user:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">contain</span> <span class="nf">oneadmin</span>
+<span class="p">{</span>
+<span class="kr">exec_owner</span> <span class="o">=&gt;</span> <span class="s">&quot;oneadmin&quot;</span><span class="p">;</span>
+<span class="kr">exec_group</span> <span class="o">=&gt;</span> <span class="s">&quot;oneadmin&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Next: Open Nebula environment configuration, Previous: Installation and
+dependancy configuration, Up: Top NFS config for shared image repository</p>
+
+<p>If not present append the NFS export directory stored in the corresponding
+variable (including a new line):</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">vars</span><span class="p">:</span>
+
+<span class="p">&quot;</span><span class="nv">nfs_export_dir</span><span class="p">&quot;</span>
+
+   <span class="kt">slist</span> <span class="o">=&gt;</span>
+     <span class="p">{</span>
+     <span class="s">&quot;/var/lib/one 192.168.1.2/255.255.255.0(rw,sync,no_subtree_check)&quot;</span><span class="p">,</span>
+     <span class="s">&quot;&quot;</span>
+     <span class="p">};</span>
+
+<span class="kd">files</span><span class="p">:</span>
+
+<span class="s">&quot;/etc/exports&quot;</span><span class="p">,</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_lines</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">nfs_export_dir</span><span class="p">)),</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;export nfs image repo&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>To ensure the NFS service remains available:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">processes</span><span class="p">:</span>
+
+<span class="nc">ensure_nfs_running</span><span class="p">::</span>
+        <span class="s">&quot;.*nfsd.*&quot;</span><span class="p">,</span>
+                <span class="kr">restart_class</span> <span class="o">=&gt;</span> <span class="s">&quot;start_nfs&quot;</span><span class="p">;</span>
+
+<span class="nf">If</span> <span class="nf">this</span> <span class="nf">is</span> <span class="nf">found</span> <span class="nf">to</span> <span class="nf">be</span> <span class="nf">false</span> <span class="nf">then</span> <span class="nf">we</span> <span class="kd">classify</span><span class="p">:</span>
+
+<span class="nc">start_nfs</span><span class="p">::</span>
+        <span class="s">&quot;service nfs-kernel-server restart&quot;</span><span class="p">,</span>
+                 <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;restart nfs&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>In order to ensure the share is mounted on all node controllers we can use the
+NFS promise:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">storage</span><span class="p">:</span>
+
+<span class="nc">cluster_node</span><span class="p">::</span>
+<span class="s">&quot;/var/lib/one&quot;</span><span class="p">,</span>
+       <span class="kr">mount</span>  <span class="o">=&gt;</span> <span class="nf">nfs</span><span class="p">(</span><span class="s">&quot;192.168.1.2&quot;</span><span class="p">,</span><span class="s">&quot;/var/lib/one&quot;</span><span class="p">),</span>
+       <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;mount image repo from front end&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Next we will create a directory to hold our virtual machine images:</p>
+<div class="highlight"><pre><code class="cf3"><span class="s">&quot;/var/lib/one/images/.&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;create dir in image repo share&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">,</span> <span class="s">&quot;oneadmin&quot;</span><span class="p">,</span> <span class="s">&quot;oneadmin&quot;</span><span class="p">),</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h2 id="open-nebula-environment-configuration">Open Nebula environment configuration</h2>
+<p>Create the oneadmin bashrc file containing the ONE_XMLRPC environment variable with appropriate permissions:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">files</span><span class="p">:</span>
+ <span class="nc">front_end</span><span class="p">::</span>
+  <span class="s">&quot;/var/lib/one/.bashrc&quot;</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;setup oneadmin env&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">,</span> <span class="s">&quot;oneadmin&quot;</span><span class="p">,</span> <span class="s">&quot;oneadmin&quot;</span><span class="p">),</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span>
+            <span class="s">&quot;export ONE_XMLRPC=http://localhost:2633/RPC2&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>We also need to create the one_auth file:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">files</span><span class="p">:</span>
+ <span class="nc">front_end</span><span class="p">::</span>
+  <span class="s">&quot;/var/lib/one/.one/one_auth&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;create open nebula auth file&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">,</span> <span class="s">&quot;oneadmin&quot;</span><span class="p">,</span> <span class="s">&quot;oneadmin&quot;</span><span class="p">),</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;username:password&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Finally password-less authentication for the oneadmin user:</p>
+
+<p>Add key to autorized_keys file:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">files</span><span class="p">:</span>
+  <span class="nc">front_end</span><span class="p">::</span>
+    <span class="s">&quot;/var/lib/one/.ssh/authorized_keys&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;copy sshkey to authorized&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">,</span> <span class="s">&quot;oneadmin&quot;</span><span class="p">,</span> <span class="s">&quot;oneadmin&quot;</span><span class="p">),</span>
+        <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">local_cp</span><span class="p">(</span><span class="s">&quot;/var/lib/one/.ssh/id_rsa.pub&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Disable known hosts prompt:</p>
+<div class="highlight"><pre><code class="cf3"><span class="nc">front_end</span><span class="p">::</span>
+<span class="s">&quot;/var/lib/one/.ssh/config&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;disable strict host key checking&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">,</span> <span class="s">&quot;oneadmin&quot;</span><span class="p">,</span> <span class="s">&quot;oneadmin&quot;</span><span class="p">),</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;Host *</span>
+<span class="s">        StrictHostKeyChecking no&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Now on the node controller(s) we need to add the oneadmin group and user with
+the same uid and gid as the front end and add the oneadmin user to the libvertd
+group:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">files</span><span class="p">:</span>
+ <span class="nc">node_controller</span><span class="p">::</span>
+  <span class="s">&quot;/etc/passwd&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;add oneadmin user to node controller&quot;</span><span class="p">,</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;oneadmin:x:999:999::/srv/cloud/one:/bin/bash&quot;</span><span class="p">);</span>
+
+ <span class="s">&quot;/etc/group&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;add oneadmin group to node controller&quot;</span><span class="p">,</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;oneadmin:x:999:&quot;</span><span class="p">);</span>
+
+ <span class="s">&quot;/etc/group&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span><span class="s">&quot;add oneadmin to libvirtd group&quot;</span><span class="p">,</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_user_field</span><span class="p">(</span><span class="s">&quot;libvirtd&quot;</span><span class="p">,</span><span class="s">&quot;4&quot;</span><span class="p">,</span><span class="s">&quot;oneadmin&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Now that the user environment is configured we can register our node controller
+with the front end:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">files</span><span class="p">:</span>
+ <span class="nc">front_end</span><span class="p">::</span>
+      <span class="s">&quot;/usr/bin/onehost create 192.168.1.2 im_kvm vmm_kvm tm_nfs&quot;</span><span class="p">,</span>
+        <span class="kr">contain</span> <span class="o">=&gt;</span> <span class="nf">oneadmin</span><span class="p">;</span>
+</code></pre>
+</div>
+<h2 id="network-configuration">Network configuration</h2>
+<p>Before we can create virtual networks we must configure our node controller
+interfaces. In this example we will bridge a virtual interface (vbr0) with eth0.
+First we define the contents of the interfaces file in a variable:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">vars</span><span class="p">:</span>
+<span class="p">&quot;</span><span class="nv">interfaces_contents</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                               <span class="s">&quot;auto lo&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;iface lo inet loopback&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;auto vbr0&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;iface vbr0 inet static&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;address 192.168.1.2&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;netmask 255.255.255.0&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;network 192.168.1.0&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;broadcast 192.168.1.255&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;gateway 192.168.1.1&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;dns-nameservers 192.168.1.1&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;bridge_ports    eth0&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;bridge_stp      off&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;bridge_maxwait  0&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;bridge_fd       0&quot;</span>
+                               <span class="p">};</span>
+</code></pre>
+</div>
+
+<p>Next we edit the interfaces file to include our new settings:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">files</span><span class="p">:</span>
+<span class="nc">node_controller</span><span class="p">::</span>
+<span class="s">&quot;/etc/network/interfaces&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;ensure bridge for open nebula vm networks&quot;</span><span class="p">,</span>
+        <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_lines</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">interfaces_contents</span><span class="p">)),</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>And restart networking:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">commands</span><span class="p">:</span>
+  <span class="nc">restart_networking</span><span class="p">::</span>
+
+    <span class="s">&quot;/etc/init.d/networking restart&quot;</span><span class="p">,</span>
+       <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;restart networking&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Now we have configured the network bridge we can create an Open Nebula virtual
+network file and submit it to the system. The contents of the virtual network
+template file could be defined as a variable as we have seen before but in this
+case it is passed as a parameter to the append promise body:</p>
+<div class="highlight"><pre><code class="cf3"><span class="s">&quot;/var/lib/one/network.template&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;create lan template&quot;</span><span class="p">,</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">,</span> <span class="s">&quot;oneadmin&quot;</span><span class="p">,</span> <span class="s">&quot;oneadmin&quot;</span><span class="p">),</span>
+        <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;NAME = </span><span class="se">\&quot;</span><span class="s">VM LAN</span><span class="se">\&quot;</span><span class="s"></span>
+<span class="s">TYPE = FIXED</span>
+<span class="s">BRIDGE = vbr0</span>
+<span class="s">LEASES = [IP=192.168.1.100]&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>The network template only deals with fixed ip addresses and provides only one
+lease. Obviously this should be altered to suite your requirements. Now we have
+a template we can register it with open nebula:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">commands</span><span class="p">:</span>
+  <span class="nc">front_end</span><span class="p">::</span>
+     <span class="s">&quot;/usr/bin/onevnet create /var/lib/one/network.template&quot;</span><span class="p">,</span>
+        <span class="kr">contain</span> <span class="o">=&gt;</span> <span class="nf">oneadmin</span><span class="p">;</span>
+</code></pre>
+</div>
+<h2 id="virtual-machine-template-configuration">Virtual machine template configuration</h2>
+<p>This follows the same pattern as virtual network setup. First we create the
+template file:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">files</span><span class="p">:</span>
+
+  <span class="s">&quot;/var/lib/one/vm.template&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;create vm template&quot;</span><span class="p">,</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">,</span> <span class="s">&quot;oneadmin&quot;</span><span class="p">,</span> <span class="s">&quot;oneadmin&quot;</span><span class="p">),</span>
+        <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;NAME   = ubuntu-10.04-i386</span>
+<span class="s">CPU    = 0.1</span>
+<span class="s">MEMORY = 256</span>
+<span class="s">DISK   = [</span>
+<span class="s">   source   = </span><span class="se">\&quot;</span><span class="s">/var/lib/one/images/open_nebula.img</span><span class="se">\&quot;</span><span class="s">,</span>
+<span class="s">   target   = </span><span class="se">\&quot;</span><span class="s">vda</span><span class="se">\&quot;</span><span class="s">,</span>
+<span class="s">   readonly = </span><span class="se">\&quot;</span><span class="s">no</span><span class="se">\&quot;</span><span class="s"> ]</span>
+<span class="s">DISK   = [</span>
+<span class="s">   type     = </span><span class="se">\&quot;</span><span class="s">swap</span><span class="se">\&quot;</span><span class="s">,</span>
+<span class="s">   size     = 1024,</span>
+<span class="s">   target   = </span><span class="se">\&quot;</span><span class="s">vdb</span><span class="se">\&quot;</span><span class="s">]</span>
+
+<span class="s">NIC    = [ NETWORK = </span><span class="se">\&quot;</span><span class="s">VM LAN</span><span class="se">\&quot;</span><span class="s"> ]</span>
+<span class="s">INPUT = [ TYPE = </span><span class="se">\&quot;</span><span class="s">mouse</span><span class="se">\&quot;</span><span class="s">,  BUS = </span><span class="se">\&quot;</span><span class="s">ps2</span><span class="se">\&quot;</span><span class="s"> ]</span>
+<span class="s">GRAPHICS = [TYPE = </span><span class="se">\&quot;</span><span class="s">vnc</span><span class="se">\&quot;</span><span class="s">, LISTEN = </span><span class="se">\&quot;</span><span class="s">localhost</span><span class="se">\&quot;</span><span class="s">, PORT = 5910]</span>
+<span class="s">&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Now we can launch the virtual machine defined in its template file:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">commands</span><span class="p">:</span>
+  <span class="nc">front_end</span><span class="p">::</span>
+      <span class="s">&quot;/usr/bin/onevm create /var/lib/one/vm.template&quot;</span><span class="p">,</span>
+        <span class="kr">contain</span> <span class="o">=&gt;</span> <span class="nf">oneadmin</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>If we increase the leases in our network template each time the onevm create
+command is issued a new virtual machine will be launched up to the number of
+available leases.</p>
+<h2 id="open-nebula-commands">Open Nebula Commands</h2>
+<p>It should be noted that commands, particularly those that are Open Nebula
+specific, will be run each time cf-agent is executed. Since this goes against
+the idea of convergence it is necessary to add some additional classification.
+One method is to create a &#39;stamp&#39; file after a particular command is
+successfully executed. If this file exists then (or if its time stamp is
+older/newer than some value) the machines classified as having to run the
+command loose that class preventing future execution.</p>
+<h2 id="virtual-machine-configuration">Virtual machine configuration</h2>
+<p>With CFEngine preinstalled in our virtual machine image we can configure our
+generic image to the required specification on the fly. For community edition we
+will need to exchange keys and define access rules to the virtual machine can
+collect the policy files. with CFEngine nova this step is even simpler as we can
+set a start up script to issue the bootstrap command so the new vm automatically
+registers with the policy hub.</p>
+
+<p>Once registration is complete we can define a new class based on the ip of our
+virtual machine. In this example that is 192.168.1.100 so we can create a class
+with a meaningful name:</p>
+<div class="highlight"><pre><code class="cf3"><span class="s">&quot;webserver&quot;</span> <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;192_168_1_100&quot;</span><span class="p">};</span>
+</code></pre>
+</div>
+
+<p>Now we have define webserver we can simply apply promises to it as if it was any
+other machine for example:</p>
+<h2 id="webserver-in-open-nebula">Webserver in Open Nebula</h2>
+<p>First we install apache:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">packages</span><span class="p">:</span>
+ <span class="nc">webserver</span><span class="p">::</span>
+
+   <span class="s">&quot;apache2&quot;</span><span class="p">,</span>
+    <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;install apache2 on webserver vm&quot;</span><span class="p">,</span>
+    <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+        <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">generic</span><span class="p">,</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_ok</span><span class="p">(</span><span class="s">&quot;ensure_apache_running&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Next we ensure it is running</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">processes</span><span class="p">:</span>
+  <span class="nc">ensure_apache_running</span><span class="p">::</span>
+
+         <span class="s">&quot;.*apache2.*&quot;</span>
+                <span class="kr">restart_class</span> <span class="o">=&gt;</span> <span class="s">&quot;start_apache&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>If not, the service is restarted</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">commands</span><span class="p">:</span>
+  <span class="nc">start_apache</span><span class="p">::</span>
+
+    <span class="s">&quot;/etc/init.d/apache2 restart&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Finally we can copy some content into the document root on our new virtual
+webserver:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">files</span><span class="p">:</span>
+  <span class="s">&quot;/var/www&quot;</span>
+
+     <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">system</span><span class="p">(</span><span class="s">&quot;744&quot;</span><span class="p">),</span>
+     <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">uu_scp</span><span class="p">(</span><span class="s">&quot;/root/webserver_site_files&quot;</span><span class="p">,</span><span class="s">&quot;192.168.1.6&quot;</span><span class="p">),</span>
+     <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">recurse</span><span class="p">(</span><span class="s">&quot;inf&quot;</span><span class="p">),</span>
+     <span class="kr">action</span> <span class="o">=&gt;</span> <span class="nf">u_immediate</span><span class="p">;</span>
+</code></pre>
+</div>
+<h1 id="open-nebula-summary">Open Nebula Summary</h1>
+<p>Now we have a convergent self-repairing, Open Nebula powered private cloud! The
+main benefits in combining CFEngine and Open Nebula are the facility to increase
+infrastructure capacity just by connecting a new node controller to the network,
+and then allowing CFEngine to configure and maintain it over time. Finally,
+there is the hands-free configuration of generic virtual machine images to an
+arbitrary specification, without touching the virtual machine itself.</p>
+
+<p>There is a vast array of configuration options and choices to be made in an Open
+Nebula setup, as with CFEngine. This flexibility is one of its strengths. This
+guide demonstrates only a small subset of possible configuration choices aiming
+to provide a starting point for more comprehensive setups.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-special-topics.html">special topics</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-guide.html">guide</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 17 March 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/special-topics/open-nebula.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/ae7435d3d24d30077bfbf18438f2444c629f8c69" target="_blank">ae7435d3d24d30077bfbf18438f2444c629f8c69</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.10/assets/footer-4c28dbe187e7b2a3c1504ff564f1b523.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,324 @@
+
+bundle knowledge cf3_solutions
+
+{
+topics:
+
+"cf3-solutions";
+Common_low_level_issues::
+    "Web server modules" ;
+Common_low_level_issues::
+    "Unmount NFS filesystem" ;
+Common_low_level_issues::
+    "Tidying garbage files" ;
+Common_low_level_issues::
+    "Set up a PXE boot server" ;
+Common_low_level_issues::
+    "Ordering promises" ;
+Common_low_level_issues::
+    "Mount NFS filesystem" ;
+Common_low_level_issues::
+    "Editing tabular files" ;
+Common_low_level_issues::
+    "Editing files" ;
+Common_low_level_issues::
+    "Copy then edit a file convergently" ;
+Common_low_level_issues::
+    "Copy files" ;
+Common_low_level_issues::
+    "Check file or directory permissions" ;
+Common_low_level_issues::
+    "Add variable definitions to a file e.g. /etc/system" ;
+Common_low_level_issues::
+    "Add software packages to the system" ;
+Common_low_level_issues::
+    "Add users to passwd and group" ;
+Common_low_level_issues::
+    "Add lines to a file" ;
+Common_low_level_issues::
+    "Common low level issues" ;
+Common_high_level_issues::
+    "Templating" ;
+Common_high_level_issues::
+    "Set up a web server" ;
+Common_high_level_issues::
+    "Set up sudo" ;
+Common_high_level_issues::
+    "Set up name resolution" ;
+Common_high_level_issues::
+    "Set up HPC clusters" ;
+Common_high_level_issues::
+    "Postfix mail configuration" ;
+Manage_users::
+    "Remove users" ;
+Manage_users::
+    "Add users" ;
+Common_high_level_issues::
+    "Manage users" ;
+Manage_a_system_process::
+    "Prune processes" ;
+Manage_a_system_process::
+    "Ensure not running" ;
+Manage_a_system_process::
+    "Ensure running" ;
+Common_high_level_issues::
+    "Manage a system process" ;
+Manage_a_system_file::
+    "Custom editing" ;
+Manage_a_system_file::
+    "Macro template" ;
+Manage_a_system_file::
+    "Simple versioned template" ;
+Manage_a_system_file::
+    "Simple template" ;
+Common_high_level_issues::
+    "Manage a system file" ;
+Common_high_level_issues::
+    "Log rotation" ;
+Common_high_level_issues::
+    "Find the MAC address" ;
+Common_high_level_issues::
+    "Laptop support configuration" ;
+Common_high_level_issues::
+    "Distribute ssh keys" ;
+Common_high_level_issues::
+    "Distribute root passwords" ;
+Common_high_level_issues::
+    "Garbage collection" ;
+Common_high_level_issues::
+    "Change detection" ;
+Centralized_Management::
+    "Updating from a central hub" ;
+Centralized_Management::
+    "Variation in hosts" ;
+Centralized_Management::
+    "All hosts the same" ;
+Common_high_level_issues::
+    "Centralized Management" ;
+Common_high_level_issues::
+    "Common high level issues" ;
+Begin___Get_Started::
+    "Software and patch installation" ;
+Begin___Get_Started::
+    "Mount a filesystem" ;
+Begin___Get_Started::
+    "Check filesystem space" ;
+Begin___Get_Started::
+    "Restart process" ;
+Begin___Get_Started::
+    "Kill process" ;
+Begin___Get_Started::
+    "Command or script execution" ;
+Begin___Get_Started::
+    "Hashing for change detection" ;
+Begin___Get_Started::
+    "Disabling and rotating files" ;
+Begin___Get_Started::
+    "Editing password or group files" ;
+Begin___Get_Started::
+    "Copy directory trees" ;
+Begin___Get_Started::
+    "Copy single files" ;
+Begin___Get_Started::
+    "Creating files and directories" ;
+Introduction::
+    "Begin - Get Started" ;
+Introduction::
+    "Introduction" ;
+Special_Topics_Guide::
+    "CFEngine-Solutions"  association => a("discussed in","CFEngine-Solutions","discusses");
+
+
+occurrences:
+
+manuals::
+ "/docs/cf3-solutions.html"
+  represents => { "CFEngine Solutions" };
+CFEngine_Solutions::
+ "/docs/cf3-solutions.html#Top"
+  represents => { "Text section" };
+Introduction::
+ "/docs/cf3-solutions.html#Introduction"
+  represents => { "manual chapter" };
+Begin___Get_Started::
+ "/docs/cf3-solutions.html#Begin-_002d-Get-started"
+  represents => { "manual section Begin - Get Started" };
+Creating_files_and_directories::
+ "/docs/cf3-solutions.html#Creating-files-and-directories"
+  represents => { "manual subsection" };
+Copy_single_files::
+ "/docs/cf3-solutions.html#Copy-single-files"
+  represents => { "manual subsection" };
+Copy_directory_trees::
+ "/docs/cf3-solutions.html#Copy-directory-trees"
+  represents => { "manual subsection" };
+Editing_password_or_group_files::
+ "/docs/cf3-solutions.html#Editing-password-or-group-files"
+  represents => { "manual subsection" };
+Disabling_and_rotating_files::
+ "/docs/cf3-solutions.html#Disabling-and-rotating-files"
+  represents => { "manual subsection" };
+Hashing_for_change_detection::
+ "/docs/cf3-solutions.html#Hashing-for-change-detection-_002d-tripwire"
+  represents => { "manual subsection" };
+Command_or_script_execution::
+ "/docs/cf3-solutions.html#Command-or-script-execution"
+  represents => { "manual subsection" };
+Kill_process::
+ "/docs/cf3-solutions.html#Kill-process"
+  represents => { "manual subsection" };
+Restart_process::
+ "/docs/cf3-solutions.html#Restart-process"
+  represents => { "manual subsection" };
+Check_filesystem_space::
+ "/docs/cf3-solutions.html#Check-filesystem-space"
+  represents => { "manual subsection" };
+Mount_a_filesystem::
+ "/docs/cf3-solutions.html#Mount-a-filesystem"
+  represents => { "manual subsection" };
+Software_and_patch_installation::
+ "/docs/cf3-solutions.html#Software-and-patch-installation"
+  represents => { "manual subsection" };
+Common_high_level_issues::
+ "/docs/cf3-solutions.html#Common-high-level-issues"
+  represents => { "manual chapter" };
+Centralized_Management::
+ "/docs/cf3-solutions.html#Centralized-Management"
+  represents => { "manual section Centralized Management" };
+All_hosts_the_same::
+ "/docs/cf3-solutions.html#All-hosts-the-same"
+  represents => { "manual subsection" };
+Variation_in_hosts::
+ "/docs/cf3-solutions.html#Variation-in-hosts"
+  represents => { "manual subsection" };
+Updating_from_a_central_hub::
+ "/docs/cf3-solutions.html#Updating-from-a-central-hub"
+  represents => { "manual subsection" };
+Change_detection::
+ "/docs/cf3-solutions.html#Change-detection"
+  represents => { "manual section Change detection" };
+Garbage_collection::
+ "/docs/cf3-solutions.html#Garbage-collection"
+  represents => { "manual section Garbage collection" };
+Distribute_root_passwords::
+ "/docs/cf3-solutions.html#Distribute-root-passwords"
+  represents => { "manual section Distribute root passwords" };
+Distribute_ssh_keys::
+ "/docs/cf3-solutions.html#Distribute-ssh-keys"
+  represents => { "manual section Distribute ssh keys" };
+Laptop_support_configuration::
+ "/docs/cf3-solutions.html#Laptop-support-configuration"
+  represents => { "manual section Laptop support configuration" };
+Find_the_MAC_address::
+ "/docs/cf3-solutions.html#Find-MAC-address"
+  represents => { "manual section Find the MAC address" };
+Log_rotation::
+ "/docs/cf3-solutions.html#Log-rotation"
+  represents => { "manual section Log rotation" };
+Manage_a_system_file::
+ "/docs/cf3-solutions.html#Manage-a-system-file"
+  represents => { "manual section Manage a system file" };
+Simple_template::
+ "/docs/cf3-solutions.html#Simple-template"
+  represents => { "manual subsection" };
+Simple_versioned_template::
+ "/docs/cf3-solutions.html#Simple-versioned-template"
+  represents => { "manual subsection" };
+Macro_template::
+ "/docs/cf3-solutions.html#Macro-template"
+  represents => { "manual subsection" };
+Macro_template::
+ "/docs/cf3-solutions.html#Macro-template"
+  represents => { "code example" };
+Custom_editing::
+ "/docs/cf3-solutions.html#Custom-editing"
+  represents => { "manual subsection" };
+Manage_a_system_process::
+ "/docs/cf3-solutions.html#Manage-a-system-process"
+  represents => { "manual section Manage a system process" };
+Ensure_running::
+ "/docs/cf3-solutions.html#Ensure-running"
+  represents => { "manual subsection" };
+Ensure_not_running::
+ "/docs/cf3-solutions.html#Ensure-not-running"
+  represents => { "manual subsection" };
+Prune_processes::
+ "/docs/cf3-solutions.html#Prune-processes"
+  represents => { "manual subsection" };
+Manage_users::
+ "/docs/cf3-solutions.html#Manage-users"
+  represents => { "manual section Manage users" };
+Add_users::
+ "/docs/cf3-solutions.html#Add-users"
+  represents => { "manual subsection" };
+Remove_users::
+ "/docs/cf3-solutions.html#Remove-users"
+  represents => { "manual subsection" };
+Postfix_mail_configuration::
+ "/docs/cf3-solutions.html#Postfix-mail-configuration"
+  represents => { "manual section Postfix mail configuration" };
+Set_up_HPC_clusters::
+ "/docs/cf3-solutions.html#Set-up-HPC-clusters"
+  represents => { "manual section Set up HPC clusters" };
+Set_up_name_resolution::
+ "/docs/cf3-solutions.html#Set-up-name-resolution"
+  represents => { "manual section Set up name resolution" };
+Set_up_sudo::
+ "/docs/cf3-solutions.html#Set-up-sudo"
+  represents => { "manual section Set up sudo" };
+Set_up_a_web_server::
+ "/docs/cf3-solutions.html#Set-up-a-web-server"
+  represents => { "manual section Set up a web server" };
+Templating::
+ "/docs/cf3-solutions.html#Templating"
+  represents => { "manual section Templating" };
+Common_low_level_issues::
+ "/docs/cf3-solutions.html#Common-low-level-issues"
+  represents => { "manual chapter" };
+Add_lines_to_a_file::
+ "/docs/cf3-solutions.html#Add-lines-to-a-file"
+  represents => { "manual section Add lines to a file" };
+Add_users_to_passwd_and_group::
+ "/docs/cf3-solutions.html#Add-users-to-passwd-and-group"
+  represents => { "manual section Add users to passwd and group" };
+Add_software_packages_to_the_system::
+ "/docs/cf3-solutions.html#Add-software-packages-to-the-system"
+  represents => { "manual section Add software packages to the system" };
+Add_variable_definitions_to_a_file_e_g___etc_system::
+ "/docs/cf3-solutions.html#Add-variable-definitions-to-a-file"
+  represents => { "manual section Add variable definitions to a file e.g. /etc/system" };
+Check_file_or_directory_permissions::
+ "/docs/cf3-solutions.html#Check-file-or-directory-permissions"
+  represents => { "manual section Check file or directory permissions" };
+Copy_files::
+ "/docs/cf3-solutions.html#Copy-files"
+  represents => { "manual section Copy files" };
+Copy_then_edit_a_file_convergently::
+ "/docs/cf3-solutions.html#Copy-then-edit"
+  represents => { "manual section Copy then edit a file convergently" };
+Editing_files::
+ "/docs/cf3-solutions.html#Editing-files"
+  represents => { "manual section Editing files" };
+Editing_tabular_files::
+ "/docs/cf3-solutions.html#Editing-tabular-files"
+  represents => { "manual section Editing tabular files" };
+Mount_NFS_filesystem::
+ "/docs/cf3-solutions.html#Mount-NFS-filesystem"
+  represents => { "manual section Mount NFS filesystem" };
+Ordering_promises::
+ "/docs/cf3-solutions.html#Ordering-promises"
+  represents => { "manual section Ordering promises" };
+Set_up_a_PXE_boot_server::
+ "/docs/cf3-solutions.html#Set-up-a-PXE-boot-server"
+  represents => { "manual section Set up a PXE boot server" };
+Tidying_garbage_files::
+ "/docs/cf3-solutions.html#Tidying-garbage-files"
+  represents => { "manual section Tidying garbage files" };
+Unmount_NFS_filesystem::
+ "/docs/cf3-solutions.html#Unmount-NFS-filesystem"
+  represents => { "manual section Unmount NFS filesystem" };
+Web_server_modules::
+ "/docs/cf3-solutions.html#Web-server-modules"
+  represents => { "manual section Web server modules" };
+}
+

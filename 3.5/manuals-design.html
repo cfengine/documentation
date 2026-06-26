@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - Design</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html"  class="navselected" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="index.html">CFEngine 3.5</a></li><li><a href="getting-started.html">Getting Started</a></li><li><a href="whats-new.html">New in CFEngine</a></li><li><a href="manuals.html">CFEngine Manuals</a></li><li><a href="reference.html">CFEngine Reference</a></li><li><a href="examples.html">CFEngine Examples</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li class="selected"><span>Design</span></li><li><a href="manuals-architecture.html">Architecture</a></li><li><a href="manuals-components.html">The CFEngine Components</a></li><li><a href="manuals-language-concepts.html">Language Concepts</a></li><li><a href="manuals-design-center.html">Design Center</a></li><li><a href="manuals-writing-policy.html">Writing Policy</a></li><li><a href="manuals-enterprise-reporting.html">Enterprise Reporting</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="manuals.html">CFEngine Manuals</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>Design</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/manuals.html">manuals</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/systems.html">systems</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/configuration-management.html">configuration management</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/automation.html">automation</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/design.html">design</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/promises.html">promises</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>Design</h1>
+                    <p>CFEngine was designed to enable scalable configuration management in
+any kind of environment, with an emphasis on supporting large, Unix-like 
+systems that are connected via TCP/IP.</p>
+
+<p>CFEngine doesn&#39;t depend on or assume the presence of reliable
+infrastructure. It works opportunistically in any environment, using
+the fewest possible resources, and it has a limited set of software
+dependencies. It can run anywhere, and this lean approach to
+CFEngine&#39;s architecture makes it possible to support both traditional
+server-based approaches to configuration as well as more novel
+platforms for configuration including embedded and mobile systems.</p>
+
+<p>CFEngine&#39;s design allows you to create fault-tolerant, available systems
+which are independent of external requirements. CFEngine works in all
+the places you think it should, and all the new places you haven&#39;t even
+thought of yet.</p>
+<h2 id="managing-expectations-with-promises">Managing Expectations with Promises</h2>
+<p>CFEngine works on a simple notion of <strong>promises</strong>. A promise is the 
+documentation of an intention to act or behave in some manner. When you make a 
+promise, it is an effort to improve trust. Trust is an economic time-saver. If 
+you can&#39;t trust you have to verify everything, and that is expensive.</p>
+
+<p>Everything in CFEngine can be thought of as a promise to be kept by different 
+resources in the system. In a system that delivers a web site with Apache 
+<code>httpd</code>, an important promise may be to make sure that <code>httpd</code> is installed, 
+running, and accessible on port 80. In a system which needs to satisfy mid-day 
+traffic on a busy web site, a promise may be to ensure that there are 200 
+application servers running during normal business hours.</p>
+
+<p>These promises are not top-down directives for a central authority to push 
+through the system. Try running a large organization on top-down authority 
+alone. Try to manage a group of people without empowering and trusting them to 
+make independent decisions.</p>
+
+<p>CFEngine is a system that emphasizes the promises a client makes to the 
+overall CFEngine network. They are the rules which clients are responsible for 
+implementing. We can create large systems of scale because we don&#39;t create a 
+bulky centralized authority. There is no single point-of-failure both when 
+managing machines and people.</p>
+
+<p>Combining promises with patterns to describe where and when promises should 
+apply is what CFEngine is all about.</p>
+<h2 id="automation-with-cfengine">Automation with CFEngine</h2>
+<p>Users are good at researching solutions and making design decisions, but awful 
+at repeated execution. Machines are pitiful at making decisions, but very good 
+at reliable implementation at very large scale. It makes sense to let each 
+side do the job that they are good at. With CFEngine, users make decisions and 
+write promises for machines to implement and satisfy.</p>
+
+<p>A CFEngine user will declare a promise in CFEngine, and CFEngine will then 
+translate this promise into a series of actions to implement. For the most 
+part, CFEngine understands how to deliver on promises, and they don&#39;t need to 
+be given explicit instructions for completing tasks. It is your job to make 
+decisions about the systems you are managing and to describe those in suitable 
+promises. It is CFEngine&#39;s job to automate and deliver a promise.</p>
+
+<p>CFEngine is a distributed solution that is completely independent of host
+operating systems, network topology or system processes. You describe the
+ideal state of a given system by creating promises and the CFEngine agents
+ensures that the necessary steps are taken to achieve this state. Automation
+in CFEngine is executed through a series of
+<a href="manuals-components.html" title="The CFEngine Components">components</a> that run locally on hosts.</p>
+<h2 id="phases-of-system-management">Phases of System Management</h2>
+<p>There are four commonly cited phases in managing systems with CFEngine: Build, 
+Deploy, Manage, and Audit.</p>
+<h3 id="build">Build</h3>
+<p>A system is based on a number of decisions and resources that need to be 
+`built&#39; before they can be implemented. You don&#39;t need to decide every detail, 
+just enough to build trust and predictability into your system. In CFEngine, 
+what you build is a template of proposed promises for the machines being 
+managed.  If the machines in a system all make and keep these promises, the 
+system will function seamlessly as planned.</p>
+<h3 id="deploy">Deploy</h3>
+<p>Deploying really means implementing the policy that was already decided. In 
+transaction systems, one tries to push out changes one-by-one, hence 
+`deploying&#39; the decision. In CFEngine you simply publish your policy (in 
+CFEngine parlance these are &quot;promise proposals&quot;) and the machines see the new 
+proposals and can adjust accordingly. Each machine runs an agent that is 
+capable of implementing policies and maintaining them over time without 
+further assistance. </p>
+<h3 id="manage">Manage</h3>
+<p>Once a decision is made, unplanned events will occur. Such incidents 
+traditionally set off alarms and humans rush to make new transactions to 
+repair them.  In CFEngine, the autonomous agent manages the system, and you 
+only have to deal with rare events that cannot be dealt with automatically.<br>
+This is the key difference of CFEngine, a focus on autonomy and creating 
+agents that are smart enough to adapt to changing situations.</p>
+<h3 id="audit">Audit</h3>
+<p>In traditional configuration systems, the outcome is far from clear after a 
+one-shot transaction, so one audits the system to determine what actually 
+happened. In CFEngine, changes are not just initiated once, but locally 
+audited and maintained. Decision outcomes are assured by design in CFEngine 
+and maintained automatically, so the main worry is managing conflicting. Users 
+can sit back and examine regular reports of compliance generated by the 
+agents, without having to arrange for new transactions to roll-out changes.</p>
+
+<p>You should not think of CFEngine as a roll-out system, i.e. one that attempts 
+to force out absolute changes and perhaps reverse them in case of error. 
+Roll-out and roll-back are theoretically flawed concepts that only sometimes 
+work in practice. With CFEngine, you publish a sequence of policy revisions, 
+always moving forward (because like it or not, time only goes in one 
+direction). All of the desired-state changes are managed locally by each 
+individual host, and continuously repaired to ensure on-going compliance 
+with policy.</p>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/manuals/design.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

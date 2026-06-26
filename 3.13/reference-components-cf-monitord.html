@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.13  Documentation - cf-monitord</title>
+        <link rel="icon" type="image/png" href="favicon.png">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.13/assets/global-f8d3d88f1cc74c2ac5c8e408cd101409.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "cf-monitord";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.13/" selected>Version 3.13 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                    <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:bphk6hztv2i" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a><ul class="level2"><li><a href="reference-components-cf-agent.html">cf-agent</a></li><li><a href="reference-components-cf-serverd.html">cf-serverd</a></li><li><a href="reference-components-cf-execd.html">cf-execd</a></li><li><a href="reference-components-cf-promises.html">cf-promises</a></li><li><a class="active" href="reference-components-cf-monitord.html">cf-monitord</a></li><li><a href="reference-components-cf-key.html">cf-key</a></li><li><a href="reference-components-cf-runagent.html">cf-runagent</a></li><li><a href="reference-components-cf-hub.html">cf-hub</a></li><li><a href="reference-components-cf-net.html">cf-net</a></li><li><a href="reference-components-file_control_promises.html">file control</a></li></ul></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-components.html">Components and Common Control</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    cf-monitord
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p><code>cf-monitord</code> is the monitoring daemon for CFEngine. It samples probes defined
+in policy using <a href="reference-promise-types-measurements.html" title="measurements"><code>measurements</code></a> type promises and attempts to learn the normal
+system state based on current and past observations. Current estimates are made
+available as <a href="reference-special-variables.html" title="Special Variables">special variables</a> (e.g.
+<a href="reference-special-variables-mon.html#mon-av_cpu" title="mon - mon.av_cpu"><code>$(mon.av_cpu)</code></a>) to <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>, which may use them to inform
+policy decisions.</p>
+
+<p><code>cf-monitord</code> keeps the promises made in <code>common</code>and <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>monitor</code></a> bundles, and is
+affected by  <code>common</code> and <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>monitor</code></a> control bodies.</p>
+<h2 id="command-reference">Command reference</h2><div class="highlight"><pre><code class="text">  --help        , -h       - Print the help message
+  --debug       , -d       - Enable debugging output
+  --verbose     , -v       - Output verbose information about the behaviour of the agent
+  --dry-run     , -n       - All talk and no action mode - make no changes, only inform of promises not kept
+  --version     , -V       - Output the version of the software
+  --no-lock     , -K       - Ignore system lock
+  --file        , -f value - Specify an alternative input file than the default. This option is overridden by FILE if supplied as argument.
+  --log-level   , -g value - Specify how detailed logs should be. Possible values: &#39;error&#39;, &#39;warning&#39;, &#39;notice&#39;, &#39;info&#39;, &#39;verbose&#39;, &#39;debug&#39;
+  --inform      , -I       - Print basic information about changes made to the system, i.e. promises repaired
+  --diagnostic  , -x       - Activate internal diagnostics (developers only)
+  --no-fork     , -F       - Run process in foreground, not as a daemon
+  --histograms  , -H       - Ignored for backward compatibility
+  --tcpdump     , -T       - Interface with tcpdump if available to collect data about network
+  --color       , -C value - Enable colorized output. Possible values: &#39;always&#39;, &#39;auto&#39;, &#39;never&#39;. If option is used, the default value is &#39;auto&#39;
+  --timestamp   , -l       - Log timestamps on each line of log output
+</code></pre>
+</div>
+<h2 id="standard-measurements">Standard measurements:</h2>
+<p>The <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a> service monitors a number of variables as standard on Unix
+and Windows systems. Windows is fundamentally different from Unix and
+currently has less support for out-of-the-box probes.</p>
+
+<ol>
+<li> users: Users logged in</li>
+<li> rootprocs: Privileged system processes</li>
+<li> otherprocs: Non-privileged process</li>
+<li> diskfree: Free disk on / partition</li>
+<li> loadavg: % kernel load utilization</li>
+<li> netbiosns_in: netbios name lookups (in)</li>
+<li> netbiosns_out: netbios name lookups (out)</li>
+<li> netbiosdgm_in: netbios name datagrams (in)</li>
+<li> netbiosdgm_out: netbios name datagrams (out)</li>
+<li>netbiosssn_in: netbios name sessions (in)</li>
+<li>netbiosssn_out: netbios name sessions (out)</li>
+<li>irc_in: IRC connections (in)</li>
+<li>irc_out: IRC connections (out)</li>
+<li>cfengine_in: CFEngine connections (in)</li>
+<li>cfengine_out: CFEngine connections (out)</li>
+<li>nfsd_in: nfs connections (in)</li>
+<li>nfsd_out: nfs connections (out)</li>
+<li>smtp_in: smtp connections (in)</li>
+<li>smtp_out: smtp connections (out)</li>
+<li>www_in: www connections (in)</li>
+<li>www_out: www connections (out)</li>
+<li>ftp_in: ftp connections (in)</li>
+<li>ftp_out: ftp connections (out)</li>
+<li>ssh_in: ssh connections (in)</li>
+<li>ssh_out: ssh connections (out)</li>
+<li>wwws_in: wwws connections (in)</li>
+<li>wwws_out: wwws connections (out)</li>
+<li>icmp_in: ICMP packets (in)</li>
+<li>icmp_out: ICMP packets (out)</li>
+<li>udp_in: UDP dgrams (in)</li>
+<li>udp_out: UDP dgrams (out)</li>
+<li>dns_in: DNS requests (in)</li>
+<li>dns_out: DNS requests (out)</li>
+<li>tcpsyn_in: TCP sessions (in)</li>
+<li>tcpsyn_out: TCP sessions (out)</li>
+<li>tcpack_in: TCP acks (in)</li>
+<li>tcpack_out: TCP acks (out)</li>
+<li>tcpfin_in: TCP finish (in)</li>
+<li>tcpfin_out: TCP finish (out)</li>
+<li>tcpmisc_in: TCP misc (in)</li>
+<li>tcpmisc_out: TCP misc (out)</li>
+<li>webaccess: Webserver hits</li>
+<li>weberrors: Webserver errors</li>
+<li>syslog: New log entries (Syslog)</li>
+<li>messages: New log entries (messages)</li>
+<li>temp0: CPU Temperature core 0</li>
+<li>temp1: CPU Temperature core 1</li>
+<li>temp2: CPU Temperature core 2</li>
+<li>temp3: CPU Temperature core 3</li>
+<li>cpu: %CPU utilization (all)</li>
+<li>cpu0: %CPU utilization core 0</li>
+<li>cpu1: %CPU utilization core 1</li>
+<li>cpu2: %CPU utilization core 2</li>
+<li>cpu3: %CPU utilization core 3</li>
+</ol>
+
+<p>Slots with a higher number are used for custom measurement promises in
+CFEngine Enterprise.</p>
+
+<p>These values collected and analyzed by <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a> are transformed
+into agent variables in the <code>$(mon.</code>name<code>)</code> context.</p>
+
+<p>Note: There is no way for force a refresh of the monitored data.</p>
+<h2 id="control-promises">Control Promises</h2>
+<p>Settings describing the details of the fixed behavioral promises
+made by <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a>. The system defaults will be sufficient for
+most users. This configurability potential, however, will be a key
+to developing the integrated monitoring capabilities of CFEngine.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">monitor</span> <span class="k">control</span>
+    <span class="p">{</span>
+        <span class="c">#version =&gt; &quot;1.2.3.4&quot;;</span>
+
+        <span class="kr">forgetrate</span> <span class="o">=&gt;</span> <span class="s">&quot;0.7&quot;</span><span class="p">;</span>
+        <span class="kr">tcpdump</span> <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">;</span>
+        <span class="kr">tcpdumpcommand</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/tcpdump -i eth1 -n -t -v&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="forgetrate">forgetrate</h3>
+<p><strong>Description:</strong> Decimal fraction [0,1] weighting of new values over
+old in 2d-average computation</p>
+
+<p>Configurable settings for the machine-learning algorithm that
+tracks system behavior. This is only for expert users. This
+parameter effectively determines (together with the monitoring
+rate) how quickly CFEngine forgets its previous history.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#real" title="vars - real"><code>real</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,1</code></p>
+
+<p><strong>Default value:</strong> 0.6</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">monitor</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">forgetrate</span> <span class="o">=&gt;</span> <span class="s">&quot;0.7&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="histograms">histograms</h3>
+<p><strong>Deprecated:</strong> Ignored, kept for backward compatibility</p>
+
+<p><a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a> now always keeps histograms information, so this
+option is a no-op kept for backward compatibility. It used to cause
+CFEngine to learn the conformally transformed distributions of
+fluctuations about the mean.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> true</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">monitor</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">histograms</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="monitorfacility">monitorfacility</h3>
+<p><strong>Description:</strong> Menu option for syslog facility</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">LOG_USER
+LOG_DAEMON
+LOG_LOCAL0
+LOG_LOCAL1
+LOG_LOCAL2
+LOG_LOCAL3
+LOG_LOCAL4
+LOG_LOCAL5
+LOG_LOCAL6
+LOG_LOCAL7
+</code></pre>
+</div>
+
+<p><strong>Default value:</strong> <code>LOG_USER</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="text">body monitor control
+{
+monitorfacility =&gt; &quot;LOG_USER&quot;;
+}
+</code></pre>
+</div>
+<h3 id="tcpdump">tcpdump</h3>
+<p><strong>Description:</strong> true/false use tcpdump if found</p>
+
+<p>Interface with TCP stream if possible.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+<div class="highlight"><pre><code class="text">body monitor control
+{
+tcpdump =&gt; &quot;true&quot;;
+}
+</code></pre>
+</div>
+<h3 id="tcpdumpcommand">tcpdumpcommand</h3>
+<p><strong>Description:</strong> Path to the tcpdump command on this system</p>
+
+<p>If this is defined, the monitor will try to interface with the TCP
+stream and monitor generic package categories for anomalies.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>&quot;?(/.*)</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">monitor</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">tcpdumpcommand</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/tcpdump -i eth1&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-components.html">components</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-cf-monitord.html">cf-monitord</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 11 January 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/components/cf-monitord.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/b04b1f6f002a2f00c34834c7f4e2a3b4111fd67d" target="_blank">b04b1f6f002a2f00c34834c7f4e2a3b4111fd67d</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.13/assets/footer-dfbb901e0ce1de822a7bc04bca20268e.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

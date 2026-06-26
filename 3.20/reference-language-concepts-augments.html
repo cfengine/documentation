@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.20  Documentation - Augments</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/reference/language-concepts/augments.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-reference-language-concepts-augments.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-language-concepts-augments.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='assets/global-2492ce7571245ef106dbe85ec06e4908.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Augments";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/" selected>Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="96c0f638b03564284" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components</a></li><li><a href="reference-promise-types.html">Promise Types</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a><ul class="level2"><li><a href="reference-language-concepts-bundles.html">Bundles</a></li><li><a href="reference-language-concepts-bodies.html">Bodies</a></li><li><a href="reference-language-concepts-promises.html">Promises</a></li><li><a href="reference-language-concepts-normal-ordering.html">Normal Ordering</a></li><li><a href="reference-language-concepts-classes.html">Classes and Decisions</a></li><li><a href="reference-language-concepts-variables.html">Variables</a></li><li><a class="active" href="reference-language-concepts-augments.html">Augments</a></li><li><a href="reference-language-concepts-loops.html">Loops</a></li><li><a href="reference-language-concepts-pattern-matching-and-referencing.html">Pattern Matching and Referencing</a></li><li><a href="reference-language-concepts-namespaces.html">Namespaces</a></li><li><a href="reference-language-concepts-modules.html">Modules</a></li></ul></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-language-concepts.html">Language Concepts</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Augments
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Augments files can be used to define variables and classes for use by
+<strong>all</strong> CFEngine components <strong>before</strong> any parsing or evaluation happen. Augments are fundamentally
+JSON data files, so you should view and edit them with a JSON-aware editor if
+possible. This is a convenient way to override defaults defined in the default policy,
+the Masterfiles Policy Framework (MPF), without modifying the shipped policy files.</p>
+<h2 id="using-the-mpf-without-maintaining-your-own-patches-to-it">Using the MPF without maintaining your own patches to it</h2>
+<p>As an example, you can add your own policy file to inputs and bundle name to the
+bundle sequence, without editing <a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a>, by adding the Augments file below
+(<code>/var/cfengine/masterfiles/def.json</code>):</p>
+<div class="highlight"><pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;inputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;services/my_policy_file.cf&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;vars&quot;</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;control_common_bundlesequence_end&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;my_bundle_name&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>In this case, the contents of the policy file, <code>/var/cfengine/masterfiles/services/my_policy_file.cf</code>, could look something like this:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">my_bundle_name</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">files</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;/tmp/hello&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">create</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">content</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;cfengine&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>You can ensure the file is deleted and use the info log output to confirm that the policy is actually being run:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ cf-agent -Kf update.cf &amp;&amp; cf-agent -K
+$ rm /tmp/hello ; cf-agent -KI
+    info: Created file &#39;/tmp/hello&#39;, mode 0600
+    info: Updated content of &#39;/tmp/hello&#39; with content &#39;cfengine&#39;
+</code></pre>
+</div>
+
+<p>In this example, <code>control_common_bundlesequence_end</code> is a special variable, handled by the Masterfiles Policy Framework (MPF).
+To learn about more variables like this and ways to interact with the MPF without editing it, see the <a href="reference-masterfiles-policy-framework.html" title="Masterfiles Policy Framework">MPF Reference documentation</a>.
+The rest of this documentation page below focuses on the specifics of how augments files work, independently of everything they can be used for in the MPF.</p>
+<h2 id="augments-files">Augments Files</h2>
+<p>There are two canonical augments files, <code>host_specific.json</code>, and <code>def.json</code> which may load additional Augments
+as specified by the <a href="reference-language-concepts-augments.html#augments" title="Augments - augments "><em>augments</em> key</a>.</p>
+<h3 id="host_specific-json">host_specific.json</h3>
+<p>If <code>$(sys.workdir)/data/host_specific.json</code> (typically <code>/var/cfengine/data/host_specific.json</code>) is the first augments file that is loaded. Any variables defined as a result of processing this file
+are automatically tagged with <code>source=cmdb</code>. Variables defined from this file can not be overridden by subsequently processed augments files. Policy always wins and thus <em>can</em> overwrite the variable.</p>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li>This file does not support the <a href="reference-language-concepts-augments.html#augments" title="Augments - augments "><em>augments</em> key</a>.</li>
+<li>This file does not support expansion of CFEngine variables, including <a href="reference-special-variables-sys.html" title="sys"><code>sys</code></a> variables (unlike <code>def.json</code>).</li>
+</ul>
+<h3 id="def-json">def.json</h3>
+<p>The file <code>def.json</code> is found based on the location of the policy entry (the first policy file read by the agent):</p>
+
+<ul>
+<li>with no arguments, it&#39;s in <code>$(sys.inputdir)/def.json</code> because
+<code>$(sys.inputdir)/promises.cf</code> is used</li>
+<li>with <code>-f /dirname/myfile.cf</code>, it&#39;s in <code>/dirname/def.json</code></li>
+<li>with <code>-f ./myfile.cf</code>, it&#39;s in <code>./def.json</code></li>
+</ul>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li><a href="reference-special-variables-sys.html" title="sys"><code>sys</code></a> variables are expanded (unlike <code>host_specific.json</code>).</li>
+<li><code>def_preferred.json</code> will be used instead of <code>def.json</code> if it is present. This preferential loading can be disabled by providing the <code>--ignore-preferred-augments</code> option to the agent.</li>
+</ul>
+<h2 id="augments-keys">Augments Keys</h2>
+<p>An augments file can contain the following keys:</p>
+<h3 id="inputs">inputs</h3>
+<p>This key is supported in <code>def.json</code>, <code>def_preferred.json</code>, and augments loaded by the <a href="reference-language-concepts-augments.html#augments" title="Augments - augments "><em>augments</em> key</a>.</p>
+
+<p>Filenames entered here will appear in the <code>def.augments_inputs</code> variable.</p>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li><p>Files are loaded relative to <a href="reference-special-variables-sys.html#sys-policy_entry_dirname"><code>sys.policy_entry_dirname</code></a>.</p></li>
+<li><p>The <em>inputs</em> key has precedence over the <em>vars</em> key.</p></li>
+<li><p>If both the <em>inputs</em> key and <code>vars.augments_inputs</code> are populated concurrently,
+the variable <code>def.augments_inputs</code> will hold the value set by the <em>inputs</em>
+key. The <code>def.augments_inputs</code> variable is part of the default inputs in the
+<a href="reference-masterfiles-policy-framework.html" title="Masterfiles Policy Framework"><code>Masterfiles Policy Framework</code></a>.</p></li>
+</ul>
+
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;inputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;services/hello-world.cf&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;example.cf&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;/tmp/my_policy.cf&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;vars&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_inputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;goodbye.cf&quot;</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The above Augments results in <code>$(sys.policy_entry_dirname)/services/hello-world.cf</code>, <code>$(sys.policy_entry_dirname)/example.cf</code> and <code>/tmp/my_policy.cf</code> being added to inputs.</p>
+<div class="highlight"><pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;vars&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_inputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;goodbye.cf&quot;</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The above Augments results in <code>$(sys.policy_entry_dirname)/goodbye.cf</code> being added to inputs.</p>
+<h3 id="variables">variables</h3>
+<p>This key is supported in both <code>host_specific.json</code>, <code>def.json</code>, <code>def_preferred.json</code>, and augments loaded by the <a href="reference-language-concepts-augments.html#augments" title="Augments - augments "><em>augments</em> key</a>.</p>
+
+<p>Variables defined here can target a <em>namespace</em> and or <em>bundle</em> scope explicitly. When defined from <code>host_specific.json</code>, variables default to the <code>main</code> <em>bundle</em> in the <a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a> <em>namespace</em> (<code>$(data:main.MyVariable)</code>).</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;VariableWithImplicitNamespaceAndBundle&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Variables can target the <em>implicit namespace</em> while specifying the <em>bundle</em>.</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;my_bundle.VariableWithImplicitNamespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Variables can also target a namespace explicitly.</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;MyNamespace:my_bundle.Variable&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The <a href="reference-promise-types.html#comment" title="Promise Types - comment"><code>comment</code></a> key is <em>optional</em>, if supplied, the comment will be associated with the variable definition as if you had applied the <em>comment</em> attribute to a vars type promise.</p>
+
+<p>For example, this JSON:</p>
+<div class="highlight"><pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;MyNamespace:my_bundle.Variable&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;An optional note about why this variable is important&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Is equivalent to this policy:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="kr">namespace</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;MyNamespace&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">my_bundle</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">Variable</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;An optional note about why this variable is important&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The <code>tags</code> key is <em>optional</em>, if supplied, the tags will be associated with the variable definition as if you had applied the <em>meta</em> attribute to a vars type promise.</p>
+
+<p>For example, this JSON:</p>
+<div class="highlight"><pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;variables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;MyNamespace:my_bundle.Variable&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;value&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;inventory&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;attribute_name=My Inventory&quot;</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Is equivalent to this policy:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="kr">namespace</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;MyNamespace&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">my_bundle</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">Variable</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">meta</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;inventory&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;attribute_name=My Inventory&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>
+* <code>vars</code> and <code>variables</code> keys are allowed concurrently in the same file.
+* If <code>vars</code> and <code>variables</code> keys in the same augments file define the same variable, the definition provided by the <strong><code>variables</code> key wins</strong>.</p>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Added in 3.18.0</li>
+</ul>
+<h3 id="vars">vars</h3>
+<p>This key is supported in both <code>host_sepecific.json</code>, <code>def.json</code>, and <code>def_preferred.json</code> and augments loaded by the augments key.</p>
+
+<p>Variables defined here can target a <em>namespace</em> and or <em>bundle</em> scope
+explicitly. When defined from <code>def.json</code>, variables default to the <a href="reference-special-variables-def.html" title="def"><code>def</code></a>
+<em>bundle</em> in the <code>default</code> <em>namespace</em> (<code>$(default:def.MyVariable)</code>).</p>
+
+<p>Thus:</p>
+<div class="highlight"><pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;vars&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;22-333-4444&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;myplatform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$(sys.os)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;MyBundle.MyVariable&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MyValue in MyBundle.MyVariable&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;MyNamespace:MyBundle.MyVariable&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MyValue in MyNamespace:MyBundle.MyVariable&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>results in the variable <code>default:def.phone</code> with value <code>22-333-4444</code>,
+<code>default:def.myplatform</code> with the value of your current OS,
+<code>default:MyBundle.MyVariable</code> with the value <code>MyValue in MyBundle.MyVariable</code>
+and <code>MyNamespace:MyBundle.MyVariable</code> with the value <code>MyValue</code> in
+<code>MyNamespace:MyBundle.MyVariable</code>.</p>
+
+<p>Again, note that this happens before policy is parsed or evaluated.</p>
+
+<p>You can see the list of variables thus defined in the output of <code>cf-promises
+--show-vars</code> (see <a href="reference-components.html" title="Components">Components</a>). They will be tagged with
+the tag <code>source=augments_file</code>. For instance, the above two variables (assuming
+you placed the data in <code>$(sys.inputdir)/def.json</code>) result in</p>
+<div class="highlight"><pre><code class="text"><span></span>cf-promises --show-vars=default:def
+...
+default:def.myplatform                   linux                                                        source=augments_file
+default:def.phone                        22-333-4444                                                  source=augments_file
+</code></pre>
+</div>
+
+<p>Variables of other types than string can be defined too, like in this example</p>
+<div class="highlight"><pre><code class="text"><span></span>&quot;vars&quot; : {
+    &quot;str1&quot; : &quot;string 1&quot;,
+    &quot;num1&quot; : 5,
+    &quot;num2&quot; : 3.5
+    &quot;slist1&quot; : [&quot;sliststr1&quot;, &quot;sliststr2&quot;]
+    &quot;array1&quot; : {
+        &quot;idx1&quot; : &quot;val1&quot;,
+        &quot;idx2&quot; : &quot;val2&quot;
+    }
+}
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>
+* <code>vars</code> and <code>variables</code> keys are allowed concurrently in the same file.
+* If <code>vars</code> and <code>variables</code> keys in the same augments file define the same variable, the definition provided by the <strong><code>variables</code> key wins</strong>.</p>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>3.18.0 gained ability to specify the <em>namespace</em> and <em>bundle</em> the variable should be defined in.</li>
+</ul>
+<h3 id="classes">classes</h3>
+<p>This key is supported in both <code>host_sepecific.json</code>, <code>def.json</code>, <code>def_preferred.json</code>, and augments loaded by the augments key.</p>
+
+<p>Any class defined via augments will be evaluated and installed as
+<a href="reference-language-concepts-classes.html"><strong>soft</strong> classes</a>. This key supports both
+<em>array</em> and <em>dict</em> formats.</p>
+
+<p>For an array each element of the array is tested against currently defined
+classes as an <a href="reference-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">anchored regular expression</a> unless the string ends with <code>::</code> indicating it should be interpreted as a
+<a href="reference-language-concepts-classes.html"><em>class expression</em></a>.</p>
+
+<p><strong>For example:</strong></p>
+<div class="highlight"><pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_regex_my_always&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;any&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_regex_my_other_apache&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;server[34]&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;debian.*&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_regex_my_other_always&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;augments_class_from_regex_my_always&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_regex_when_MISSING_not_defined&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;^(?!MISSING).*&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_regex&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;cfengine_\\d+&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_single_class_as_regex&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;cfengine&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_single_class_as_expression&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;cfengine::&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_classexpression_and&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;cfengine.cfengine_3::&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_classexpression_not&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;!MISSING::&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_classexpression_or&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;cfengine|cfengine_3::&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_classexpression_complex&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;(cfengine|cfengine_3).!MISSING::&quot;</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The <code>tags</code>, <a href="reference-promise-types.html#comment" title="Promise Types - comment"><code>comment</code></a>, and the mutually exclusive <code>class_expressions</code>, and <code>regular_expressions</code> subkeys
+are supported when using the <em>dict</em> structure.</p>
+
+<p><strong>For example:</strong></p>
+<div class="highlight"><pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;myclass_defined_by_augments_in_def_json_3_18_0_v0&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;class_expressions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;linux.redhat::&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;cfengine|linux::&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Optional description about why this class is important&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;optional&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tags&quot;</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;myclass_defined_by_augments_in_def_json_3_18_0_v1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;regular_expressions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;linux.*&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;cfengine.*&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;optional&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tags&quot;</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Note that augments is processed at the very beginning of agent evaluation. You
+can use any <strong>hard</strong> classes, <a href="reference-language-concepts-classes.html"><strong>persistent</strong> classes</a>
+, or classes defined earlier in the augments list. Test carefully,
+custom <a href="reference-language-concepts-classes.html"><strong>soft</strong> classes</a> may not be defined early enough
+for use. Thus:</p>
+<div class="highlight"><pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_regex_my_always&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;any&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_regex_my_other_apache&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;server[34]&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;debian.*&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_regex_my_other_always&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;augments_class_from_regex_my_always&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_regex_when_MISSING_not_defined&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;^(?!MISSING).*&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_regex&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;cfengine_\\d+&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_single_class_as_regex&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;cfengine&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_single_class_as_expression&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;cfengine::&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_classexpression_and&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;cfengine.cfengine_3::&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_classexpression_not&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;!MISSING::&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_classexpression_or&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;cfengine|cfengine_3::&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;augments_class_from_classexpression_complex&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;(cfengine|cfengine_3).!MISSING::&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;myclass_defined_by_augments_in_def_json_3_18_0_v0&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;class_expressions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;linux.redhat::&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;cfengine|linux::&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Optional description about why this class is important&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;optional&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tags&quot;</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;myclass_defined_by_augments_in_def_json_3_18_0_v1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;regular_expressions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;linux.*&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;cfengine.*&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;tags&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;optional&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tags&quot;</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>results in
+* <code>augments_class_from_rgex_my_always</code> being always defined.</p>
+
+<ul>
+<li><p><code>augments_class_from_regex_my_other_apache</code> will be defined if the classes
+<code>server3</code> or <code>server4</code> are defined, or if any class starting with <code>debian</code> is
+defined.</p></li>
+<li><p><code>augments_class_from_regex_my_other_always</code> will be defined because
+<code>augments_class_from_regex_my_always</code> is listed first and always defined.</p></li>
+<li><p><code>augments_class_from_regex_when_MISSING_not_defined</code> will be defined if the
+class <code>MISSING</code> is not defined.</p></li>
+<li><p><code>augments_class_from_single_class_as_regex</code> will be defined because the class
+<a href="https://cfengine.com" title="CFEngine Homepage"><code>cfengine</code></a> is always defined.</p></li>
+<li><p><code>augments_class_from_single_class_as_expression</code> will be defined because
+<a href="https://cfengine.com" title="CFEngine Homepage"><code>cfengine</code></a> is defined when interpreted as a class expression.</p></li>
+<li><p><code>augments_class_from_classexpression_and</code> will be defined because the class
+<a href="https://cfengine.com" title="CFEngine Homepage"><code>cfengine</code></a> and the class <code>cfengine_3</code> are defined and the class expression
+<code>cfengine.cfengine_3::</code> evaluates to true.</p></li>
+<li><p><code>augments_class_from_classexpression_not</code> will be defined because the class
+expression <code>!MISSING::</code> evaluates to false since the class <code>MISSING</code> is not
+defined.</p></li>
+<li><p><code>augments_class_from_classexpression_or</code> will be defined because the class
+expression <code>cfengine|cfengine_3::</code> evaluates to true since at least one of
+<a href="https://cfengine.com" title="CFEngine Homepage"><code>cfengine</code></a> or <code>cfengine_3</code> will always be defined by cfengine 3 agents.</p></li>
+<li><p><code>augments_class_from_classexpression_complex</code> will be defined because the
+class expression <code>(cfengine|cfengine_3).!MISSING::</code> evaluates to true since at
+least one of <a href="https://cfengine.com" title="CFEngine Homepage"><code>cfengine</code></a> or <code>cfengine_3</code> will always be defined by cfengine 3
+agents and <code>MISSING</code> is not defined.</p></li>
+<li><p><code>myclass_defined_by_augments_in_def_json_3_18_0_v0</code> will be defined because
+the class expression <code>cfengine|linux::</code> will always be true since there is
+always a <a href="https://cfengine.com" title="CFEngine Homepage"><code>cfengine</code></a> class defined.</p></li>
+<li><p><code>myclass_defined_by_augments_in_def_json_3_18_0_v1</code> will be defined because the expression <code>cfengine.**</code> will match at least one defined class, <a href="https://cfengine.com" title="CFEngine Homepage"><code>cfengine</code></a></p></li>
+</ul>
+
+<p>You can see the list of classes thus defined through <code>def.json</code> in the output
+of <code>cf-promises --show-classes</code> (see <a href="reference-components.html" title="Components">Components</a>). They
+will be tagged with the tags <code>source=augments_file</code>. For instance:</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">% </span>cf-promises --show-classes<span class="o">=</span>my
+<span class="go">Class name                                                   Meta tags                                Comment</span>
+<span class="go">augments_class_from_regex_my_always                          source=augments_file</span>
+<span class="go">augments_class_from_regex_my_other_always                    source=augments_file</span>
+<span class="go">augments_class_from_regex_my_other_apache                    source=augments_file</span>
+<span class="go">myclass_defined_by_augments_in_def_json_3_18_0_v0            optional,tags,source=augments_file       Optional description about why this class is important</span>
+<span class="go">myclass_defined_by_augments_in_def_json_3_18_0_v1            optional,tags,source=augments_file</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong></p>
+
+<ul>
+<li>Functions that use regular expressions with classes: <a href="reference-functions-classesmatching.html" title="classesmatching"><code>classesmatching()</code></a>,
+<a href="reference-functions-classmatch.html" title="classmatch"><code>classmatch()</code></a>, <a href="reference-functions-countclassesmatching.html" title="countclassesmatching"><code>countclassesmatching()</code></a></li>
+</ul>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>3.18.0
+
+<ul>
+<li>Support for dict structure for classes and support for metadata (<a href="reference-promise-types.html#comment" title="Promise Types - comment"><code>comment</code></a>, <code>tags</code>) added.</li>
+<li>Classes are defined as <em>soft</em> classes instead of <em>hard</em> classes.</li>
+</ul></li>
+</ul>
+<h3 id="augments">augments</h3>
+<p>This key is supported in <code>def.json</code>, <code>def_preferred.json</code>, and augments loaded by the <a href="reference-language-concepts-augments.html#augments" title="Augments - augments "><em>augments</em> key</a>.</p>
+
+<p>A list of file names that should be merged using <a href="reference-functions-mergedata.html" title="mergedata"><code>mergedata()</code></a> semantic</p>
+
+<p><strong>Example:</strong></p>
+
+<p>Here we merge a platform specific augments on to the <code>def.json</code> loaded next to
+the policy entry and see what the resulting variable values will
+be.</p>
+
+<p>The <code>def.json</code> next to the policy entry:</p>
+<div class="highlight"><pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;vars&quot;</span><span class="p">:{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;my_var&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;defined in def.json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;my_other_var&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Defined ONLY in def.json&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;augments&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;/var/cfengine/augments/$(sys.flavor).json&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The platform specific augments on a CentOS 6 host:</p>
+
+<p><code>/var/cfengine/augments/centos_6.json</code>:</p>
+<div class="highlight"><pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;vars&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;my_var&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Overridden in centos_6.json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;centos_6_var&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Defined ONLY in centos_6.json&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The expected values of the variables defined in the def bundle scope:</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">R: def.my_var == Overridden in centos_6.json</span>
+<span class="go">R: def.my_other_var == Defined ONLY in def.json</span>
+<span class="go">R: def.centos_6_var == Defined ONLY in centos_6.json</span>
+</code></pre>
+</div>
+<h2 id="history">History</h2>
+<ul>
+<li>3.18.0
+
+<ul>
+<li>Introduced <code>variables</code> key with support for metadata (<a href="reference-promise-types.html#comment" title="Promise Types - comment"><code>comment</code></a>, <code>tags</code>) and targeting the <em>namespace</em> and <em>bundle</em>.</li>
+<li>Introduced ability for <a href="reference-promise-types-vars.html" title="vars"><code>vars</code></a> to target <em>namespace</em> and <em>bundle</em> <code>variables</code> key with support for metadata (<a href="reference-promise-types.html#comment" title="Promise Types - comment"><code>comment</code></a>, <code>tags</code>).</li>
+<li>Introduced metadata (<a href="reference-promise-types.html#comment" title="Promise Types - comment"><code>comment</code></a>, <code>tags</code>) support for <a href="reference-promise-types-classes.html" title="classes"><code>classes</code></a> key.</li>
+<li>Introduced <code>def_preferred.json</code> and  <code>--ignore-preferred-augments</code> to disable it.</li>
+<li>Classes defined from augments are now <em>soft</em> classes and not <em>hard</em> classes.</li>
+<li>Introduced parsing of <code>$(sys.workdir)/data/host_specific.json</code></li>
+</ul></li>
+<li>3.12.2, 3.14.0 introduced class expression interpretation (<code>::</code> suffix) to classes key</li>
+<li>3.12.0 introduced the <code>augments</code> key</li>
+<li>3.7.3 back port <code>def.json</code> parsing in core agent and load <code>def.json</code> if present next to policy entry</li>
+<li>3.8.2 removed core support for <a href="reference-components.html#inputs" title="Components - inputs"><code>inputs</code></a> key, load <code>def.json</code> if present next to policy entry</li>
+<li>3.8.1 <code>def.json</code> parsing moved from policy to core agent for resolution of classes and variables to be able to affect control bodies</li>
+<li>3.7.0 introduced augments concept into the Masterfiles Policy Framework</li>
+</ul>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-manuals.html">manuals</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-language.html">language</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-syntax.html">syntax</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-concepts.html">concepts</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-augments.html">augments</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 03 October 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.20/generator/pages/reference/language-concepts/augments.markdown/reference/language-concepts/augments.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-e4781e211c818162ced38e083ca9577f.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+
+bundle knowledge st_iterate
+
+{
+topics:
+
+"st-iterate";
+Iteration::
+    "Summary of iteration" ;
+Iteration::
+    "The power of iteration in CFEngine" ;
+Iteration::
+    "Nesting promises workaround" ;
+Iteration::
+    "Iterating across multiple lists, revisted" ;
+Iteration::
+    "Fixing Iterating across nested lists" ;
+Iteration::
+    "Iterating over nested lists" ;
+Iteration::
+    "Iterating across multiple lists" ;
+Iteration::
+    "Iterated promises" ;
+Iteration::
+    "What is iteration?" ;
+Special_Topics_Guide::
+    "Iteration"  association => a("discussed in","Iteration","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-iterate.html"
+  represents => { "Iteration in CFEngine" };
+Iteration::
+ "/docs/st-iterate.html#Top"
+  represents => { "Text section" };
+What_is_iteration_::
+ "/docs/st-iterate.html#What-is-Iteration_003f"
+  represents => { "Text section" };
+Iterated_promises::
+ "/docs/st-iterate.html#Iterated-promises"
+  represents => { "Text section" };
+Iterating_across_multiple_lists::
+ "/docs/st-iterate.html#Iterating-across-multiple-lists"
+  represents => { "Text section" };
+Iterating_over_nested_lists::
+ "/docs/st-iterate.html#Iterating-over-nested-lists"
+  represents => { "Text section" };
+Iterating_over_nested_lists::
+ "/docs/st-iterate.html#Iterating-over-nested-lists"
+  represents => { "code example" };
+Fixing_Iterating_across_nested_lists::
+ "/docs/st-iterate.html#Fixing-Iterating-across-nested-lists"
+  represents => { "Text section" };
+Iterating_across_multiple_lists__revisted::
+ "/docs/st-iterate.html#Iterating-revisted"
+  represents => { "Text section" };
+Nesting_promises_workaround::
+ "/docs/st-iterate.html#Nesting-promises-workaround"
+  represents => { "Text section" };
+Nesting_promises_workaround::
+ "/docs/st-iterate.html#Nesting-promises-workaround"
+  represents => { "code example" };
+The_power_of_iteration_in_CFEngine::
+ "/docs/st-iterate.html#Power"
+  represents => { "Text section" };
+Summary_of_iteration::
+ "/docs/st-iterate.html#Summary-of-iteration"
+  represents => { "Text section" };
+}
+

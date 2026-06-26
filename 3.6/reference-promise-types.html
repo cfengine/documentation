@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.6  Documentation - Promise Types and Attributes</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.6/assets/global-ac3885a0674bd3c9117d62800be1608f.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Promise Types and Attributes";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                 <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html" selected>Version 3.6 (EOL)</option>
+			                 <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:bm0uhfq8ykk" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a class="active" href="reference-promise-types.html">Promise Types and Attributes</a><ul class="level2"><li><a href="reference-promise-types-access.html">access</a></li><li><a href="reference-promise-types-edit_xml.html">bundle edit_xml</a></li><li><a href="reference-promise-types-edit_line.html">bundle edit_line</a></li><li><a href="reference-promise-types-classes.html">classes</a></li><li><a href="reference-promise-types-commands.html">commands</a></li><li><a href="reference-promise-types-databases.html">databases</a></li><li><a href="reference-promise-types-defaults.html">defaults</a></li><li><a href="reference-promise-types-files.html">files</a></li><li><a href="reference-promise-types-guest_environments.html">guest_environments</a></li><li><a href="reference-promise-types-measurements.html">measurements</a></li><li><a href="reference-promise-types-methods.html">methods</a></li><li><a href="reference-promise-types-meta.html">meta</a></li><li><a href="reference-promise-types-packages.html">packages</a></li><li><a href="reference-promise-types-processes.html">processes</a></li><li><a href="reference-promise-types-reports.html">reports</a></li><li><a href="reference-promise-types-roles.html">roles</a></li><li><a href="reference-promise-types-services.html">services</a></li><li><a href="reference-promise-types-storage.html">storage</a></li><li><a href="reference-promise-types-users.html">users</a></li><li><a href="reference-promise-types-vars.html">vars</a></li></ul></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-standard-library.html">Standard Library</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Promise Types and Attributes
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Within a bundle, the promise types are executed in a round-robin fashion in the
+following <a href="guide-language-concepts-normal-ordering.html" title="Normal Ordering">normal ordering</a>. Which promise types are available
+depends on the <a href="guide-language-concepts-bundles.html" title="Bundles">bundle</a> type:</p>
+<div class="tableOverflow"><table><thead><tr>
+<th>Promise Type</th>
+<th align="center">common</th>
+<th align="center">agent</th>
+<th align="center">server</th>
+<th align="left">monitor</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="reference-promise-types-meta.html" title="meta">meta</a> - information about promise bundles</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="left">x</td>
+</tr>
+<tr>
+<td><a href="reference-promise-types-vars.html" title="vars">vars</a> - a variable, representing a value</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="left">x</td>
+</tr>
+<tr>
+<td><a href="reference-promise-types-defaults.html" title="defaults">defaults</a> - a default value for bundle parameters</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="left">x</td>
+</tr>
+<tr>
+<td><a href="reference-promise-types-classes.html" title="classes">classes</a> - a class, representing a state of the system</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="left">x</td>
+</tr>
+<tr>
+<td><a href="reference-promise-types-users.html" title="users">users</a> - add or remove users</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><a href="reference-promise-types-files.html" title="files">files</a> - configure a file</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><a href="reference-promise-types-packages.html" title="packages">packages</a> - install a package</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><a href="reference-promise-types-guest_environments.html" title="guest_environments">guest_environments</a></td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><a href="reference-promise-types-methods.html" title="methods">methods</a> - take on a whole bundle of other promises</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><a href="reference-promise-types-processes.html" title="processes">processes</a> - start or terminate processes</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><a href="reference-promise-types-services.html" title="services">services</a> - start or stop services</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><a href="reference-promise-types-commands.html" title="commands">commands</a> - execute a command</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><a href="reference-promise-types-storage.html" title="storage">storage</a> - verify attached storage</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><a href="reference-promise-types-databases.html" title="databases">databases</a> - configure a database</td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><a href="reference-promise-types-access.html" title="access">access</a> - grant or deny access to file objects</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><a href="reference-promise-types-roles.html" title="roles">roles</a> - allow certain users to activate certain classes</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">x</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td><a href="reference-promise-types-measurements.html" title="measurements">measurements</a> - measure or sample data from the system</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="left">x</td>
+</tr>
+<tr>
+<td><a href="reference-promise-types-reports.html" title="reports">reports</a> - report a message</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="center">x</td>
+<td align="left">x</td>
+</tr>
+</tbody></table></div>
+<p>See each promise type&#39;s reference documentation for detailed lists of available
+attributes.</p>
+<h2 id="common-attributes">Common Attributes</h2>
+<p>The following attributes are available to all promise types.</p>
+<h3 id="action">action</h3>
+<p><strong>Type:</strong> <code>body action</code></p>
+<h4 id="action_policy">action_policy</h4>
+<p><strong>Description:</strong> Determines whether to repair or report about non-kept promises</p>
+
+<p>The <a href="reference-promise-types.html#action" title="Promise Types and Attributes - action"><code>action</code></a> settings allow general transaction control to be implemented on
+promise verification. Action bodies place limits on how often to verify the
+promise and what classes to raise in the case that the promise can or cannot be
+kept.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">    fix
+    warn
+    nop
+</code></pre>
+</div>
+
+<p><strong>Example:</strong></p>
+
+<p>The following example shows a simple use of transaction control:</p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">action</span> <span class="nf">warn_only</span>
+     <span class="p">{</span>
+     <span class="kr">action_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;warn&quot;</span><span class="p">;</span>
+     <span class="kr">ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;60&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Note that actions can be added to sub-bundles like methods and editing bundles,
+and that promises within these do not inherit action settings at higher levels.
+Thus, in the following example there are two levels of action setting:</p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+     <span class="p">{</span>
+     <span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;testbundle&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+
+     <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">testbundle</span>
+     <span class="p">{</span>
+     <span class="kd">files</span><span class="p">:</span>
+
+       <span class="s">&quot;/var/cfengine/inputs/.*&quot;</span>
+
+            <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">DeleteLinesMatching</span><span class="p">(</span><span class="s">&quot;.*cfenvd.*&quot;</span><span class="p">),</span>
+            <span class="kr">action</span> <span class="o">=&gt;</span> <span class="nf">WarnOnly</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">DeleteLinesMatching</span><span class="p">(</span><span class="nv">regex</span><span class="p">)</span>
+     <span class="p">{</span>
+       <span class="kd">delete_lines</span><span class="p">:</span>
+
+         <span class="s">&quot;</span><span class="si">$(regex)</span><span class="s">&quot;</span> <span class="kr">action</span> <span class="o">=&gt;</span> <span class="nf">WarnOnly</span><span class="p">;</span>
+
+     <span class="p">}</span>
+
+     <span class="k">body</span> <span class="k">action</span> <span class="nf">WarnOnly</span>
+     <span class="p">{</span>
+       <span class="kr">action_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;warn&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>
+The <a href="reference-promise-types.html#action" title="Promise Types and Attributes - action"><code>action</code></a> setting for the <a href="reference-promise-types-files.html" title="files"><code>files</code></a> promise means that file edits will
+not be committed to disk, only warned about. This is a master-level
+promise that overrides anything that happens during the editing. The
+<a href="reference-promise-types.html#action" title="Promise Types and Attributes - action"><code>action</code></a> setting in the <a href="reference-promise-types-files.html#edit_line" title="files - edit_line"><code>edit_line</code></a> bundle means that the internal memory
+modeling of the file will only warn about changes rather than
+committing them to the memory model. This makes little difference to the
+end result, but it means that CFEngine will report</p>
+<div class="highlight"><pre><code class="cf3">    <span class="nf">Need</span> <span class="nf">to</span> <span class="nf">delete</span> <span class="nf">line</span> <span class="err">-</span> <span class="err">...</span> <span class="err">-</span> <span class="nf">but</span> <span class="nf">only</span> <span class="nf">a</span> <span class="nf">warning</span> <span class="nf">was</span> <span class="nf">promised</span>
+</code></pre>
+</div>
+
+<p>Instead of</p>
+<div class="highlight"><pre><code class="cf3">    <span class="nf">Deleting</span> <span class="nf">the</span> <span class="nf">promised</span> <span class="nf">line</span> <span class="err">...</span> <span class="nf">Need</span> <span class="nf">to</span> <span class="nf">save</span> <span class="nf">file</span> <span class="err">-</span> <span class="nf">but</span> <span class="nf">only</span> <span class="nf">a</span> <span class="nf">warning</span> <span class="nf">was</span> <span class="nf">promised</span>
+</code></pre>
+</div>
+
+<p>In either case, no changes will be made to the disk, but the messages given by
+<a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> will differ.</p>
+<h4 id="ifelapsed">ifelapsed</h4>
+<p><strong>Description:</strong> The number of minutes before next allowed assessment of a
+promise is set using <code>ifelapsed</code>. This overrides the global settings.  Promises
+which take a long time to verify should usually be protected with a long value
+for this parameter.</p>
+
+<p>This serves as a resource &#39;spam&#39; protection. A CFEngine check could easily run
+every 5 minutes provided resource intensive operations are not performed on
+every run. Using time classes such as <code>Hr12</code> is one part of this strategy;
+using <code>ifelapsed</code> is another, which is not tied to a specific time.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Default value:</strong> <a href="reference-components-cf-agent.html#ifelapsed" title="cf-agent - ifelapsed">control body value</a></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="c">#local</span>
+
+     <span class="k">body</span> <span class="k">action</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">ifelapsed</span>   <span class="o">=&gt;</span> <span class="s">&quot;120&quot;</span><span class="p">;</span>  <span class="c"># 2 hours</span>
+     <span class="kr">expireafter</span> <span class="o">=&gt;</span> <span class="s">&quot;240&quot;</span><span class="p">;</span>  <span class="c"># 4 hours</span>
+     <span class="p">}</span>
+
+     <span class="c"># global</span>
+
+     <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+     <span class="p">{</span>
+     <span class="kr">ifelapsed</span>   <span class="o">=&gt;</span> <span class="s">&quot;180&quot;</span><span class="p">;</span>  <span class="c"># 3 hours</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="expireafter">expireafter</h4>
+<p><strong>Description:</strong> The Number of minutes a promise is allowed to run before the
+agent is terminated.</p>
+
+<p><strong>Note</strong>: Not to be confused
+with <a href="reference-promise-types-commands.html#exec_timeout" title="commands - exec_timeout"><code>body contain exec_timeout</code></a> in commands type
+promises, the original agent does <strong>not</strong> terminate the promise. When a
+subsequent agent notices that a promise actuation has persisted for longer than
+<code>expireafter</code> the subsequent agent will kill the agent that appears to be stuck
+on the long running promise.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Default value:</strong> <a href="reference-components-cf-agent.html#expireafter" title="cf-agent - expireafter">control body value</a></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">action</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">ifelapsed</span>   <span class="o">=&gt;</span> <span class="s">&quot;120&quot;</span><span class="p">;</span>  <span class="c"># 2 hours</span>
+     <span class="kr">expireafter</span> <span class="o">=&gt;</span> <span class="s">&quot;240&quot;</span><span class="p">;</span>  <span class="c"># 4 hours</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>See Also:</strong> <a href="reference-promise-types-commands.html#exec_timeout" title="commands - exec_timeout"><code>body contain exec_timeout</code></a>, <a href="reference-components-cf-agent.html#expireafter" title="cf-agent - expireafter"><code>body agent control expireafter</code></a>, <a href="reference-components-cf-execd.html#agent_expireafter" title="cf-execd - agent_expireafter"><code>body executor control agent_expireafter</code></a></p>
+<h4 id="log_string">log_string</h4>
+<p><strong>Description:</strong> The message to be written to the log when a promise
+verification leads to a repair.</p>
+
+<p>The <code>log_string</code> works together with <a href="reference-promise-types.html#log_kept" title="Promise Types and Attributes - log_kept"><code>log_kept</code></a>, <a href="reference-promise-types.html#log_repaired" title="Promise Types and Attributes - log_repaired"><code>log_repaired</code></a>, and
+<a href="reference-promise-types.html#log_failed" title="Promise Types and Attributes - log_failed"><code>log_failed</code></a> to define a string for logging to one of the named files depending
+on promise outcome, or to standard output if the log file is stipulated as
+<code>stdout</code>. Log strings on standard output are denoted by an <code>L:</code> prefix.</p>
+
+<p>Note that <code>log_string</code> does not interact with <a href="reference-promise-types.html#log_level" title="Promise Types and Attributes - log_level"><code>log_level</code></a>, which is about
+regular system output messages.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="nf">promise</span><span class="err">-</span><span class="kd">type</span><span class="p">:</span>
+
+     <span class="s">&quot;promiser&quot;</span>
+
+       <span class="kr">attr</span> <span class="o">=&gt;</span> <span class="s">&quot;value&quot;</span><span class="p">,</span>
+       <span class="kr">action</span> <span class="o">=&gt;</span> <span class="nf">log_me</span><span class="p">(</span><span class="s">&quot;checked </span><span class="si">$(this.promiser)</span><span class="s"> in promise </span><span class="si">$(this.handle)</span><span class="s">&quot;</span><span class="p">);</span>
+
+    <span class="c"># ..</span>
+
+    <span class="k">body</span> <span class="k">action</span> <span class="nf">log_me</span><span class="p">(</span><span class="nv">s</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="kr">log_string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(s)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Hint</strong>: The promise handle <a href="reference-special-variables-this.html#this-handle" title="this - this.handle"><code>$(this.handle)</code></a> can be a
+useful referent in a log message, indicating the origin of the message. In
+<a href="enterprise-cfengine-guide.html" title="CFEngine Enterprise">CFEngine Enterprise</a>, promise handles make it easy to interpret report data.</p>
+<h4 id="log_kept">log_kept</h4><h4 id="log_repaired">log_repaired</h4><h4 id="log_failed">log_failed</h4>
+<p><strong>Description:</strong> The names of files to which <a href="reference-promise-types.html#log_string" title="Promise Types and Attributes - log_string"><code>log_string</code></a> will be saved
+for kept, repaired and failed promises.</p>
+
+<p>When used together with <a href="reference-promise-types.html#log_string" title="Promise Types and Attributes - log_string"><code>log_string</code></a>, the current promise will log its status
+using the log string to the respective file.</p>
+
+<p>If these log names are absent, the default logging destination for the log
+string is syslog, but only for non-kept promises. Only the <a href="reference-promise-types.html#log_string" title="Promise Types and Attributes - log_string"><code>log_string</code></a> is
+affected by this setting. Other messages destined for logging are sent to
+syslog.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>stdout|udp_syslog|(&quot;?[a-zA-Z]:\\.*)|(/.*)</code></p>
+
+<p>This string should be the full path to a text file which will contain the log,
+or one of the following special values:</p>
+
+<ul>
+<li><code>stdout</code></li>
+</ul>
+
+<p>Send the log message to the standard output, prefixed with an L: to indicate a
+log message.</p>
+
+<ul>
+<li><code>udp_syslog</code></li>
+</ul>
+
+<p>Log messages to <a href="reference-components.html#syslog_host" title="Components and Common Control - syslog_host">syslog_host</a> as
+defined in body common control over UDP. Please note
+<a href="http://en.wikipedia.org/wiki/Syslog#Limitations">UDP is unreliable</a>.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">test</span>
+     <span class="p">{</span>
+     <span class="kd">vars</span><span class="p">:</span>
+
+       <span class="p">&quot;</span><span class="nv">software</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;/root/xyz&quot;</span><span class="p">,</span> <span class="s">&quot;/tmp/xyz&quot;</span> <span class="p">};</span>
+
+     <span class="kd">files</span><span class="p">:</span>
+
+       <span class="s">&quot;</span><span class="si">$(software)</span><span class="s">&quot;</span>
+
+         <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+          <span class="kr">action</span> <span class="o">=&gt;</span> <span class="nf">logme</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(software)</span><span class="s">&quot;</span><span class="p">);</span>
+
+     <span class="p">}</span>
+
+     <span class="k">body</span> <span class="k">action</span> <span class="nf">logme</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+     <span class="p">{</span>
+     <span class="kr">log_kept</span> <span class="o">=&gt;</span> <span class="s">&quot;/tmp/private_keptlog.log&quot;</span><span class="p">;</span>
+     <span class="kr">log_failed</span> <span class="o">=&gt;</span> <span class="s">&quot;/tmp/private_faillog.log&quot;</span><span class="p">;</span>
+     <span class="kr">log_repaired</span> <span class="o">=&gt;</span> <span class="s">&quot;/tmp/private_replog.log&quot;</span><span class="p">;</span>
+     <span class="kr">log_string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.date)</span><span class="s"> </span><span class="si">$(x)</span><span class="s"> promise status&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="k">body</span> <span class="k">action</span> <span class="nf">immediate_syslog</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+     <span class="p">{</span>
+     <span class="kr">log_repaired</span> <span class="o">=&gt;</span> <span class="s">&quot;udp_syslog&quot;</span><span class="p">;</span>
+     <span class="kr">log_string</span> <span class="o">=&gt;</span> <span class="s">&quot;CFEngine repaired promise </span><span class="si">$(this.handle)</span><span class="s"> - </span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>It is intended that named file logs should be different for the three cases:
+promise kept, promise not kept and promise repaired.</p>
+<h4 id="log_level">log_level</h4>
+<p><strong>Description:</strong> Describes the reporting level sent to syslog.</p>
+
+<p>Use this as an alternative to auditing if you wish to use the syslog mechanism
+to centralize or manage messaging from CFEngine. A backup of these messages
+will still be kept in <code>WORKDIR/outputs</code> if you are using <a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a>.</p>
+
+<p>On the native Windows version of CFEngine Enterprise, using verbose will
+include a message when the promise is kept or repaired in the event log.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">    inform
+    verbose
+    error
+    log
+</code></pre>
+</div>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">action</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">log_level</span> <span class="o">=&gt;</span> <span class="s">&quot;inform&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="log_priority">log_priority</h4>
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">    emergency
+    alert
+    critical
+    error
+    warning
+    notice
+    info
+    debug
+</code></pre>
+</div>
+
+<p><strong>Description:</strong> The <code>log_priority</code> menu option policy is the priority level
+of the log message, as interpreted by a syslog server. It determines the
+importance of messages from CFEngine.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">action</span> <span class="nf">low_priority</span>
+     <span class="p">{</span>
+     <span class="kr">log_priority</span> <span class="o">=&gt;</span> <span class="s">&quot;info&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="value_kept">value_kept</h4>
+<p><strong>Deprecated:</strong> This menu option policy is deprecated as of 3.6.0. It performs
+no action and is kept for backward compatibility.</p>
+<h4 id="value_repaired">value_repaired</h4>
+<p><strong>Deprecated:</strong> This menu option policy is deprecated as of 3.6.0. It performs
+no action and is kept for backward compatibility.</p>
+<h4 id="value_notkept">value_notkept</h4>
+<p><strong>Deprecated:</strong> This menu option policy is deprecated as of 3.6.0. It performs
+no action and is kept for backward compatibility.</p>
+<h4 id="audit">audit</h4>
+<p><strong>Description:</strong> A true/false switch for detailed audit records of a promise.</p>
+
+<p>If this is set, CFEngine will perform auditing on this specific promise. This
+means that all details surrounding the verification of the current promise will
+be recorded in the audit database.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">action</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="c"># ...</span>
+
+     <span class="kr">audit</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="background">background</h4>
+<p><strong>Description:</strong> A true/false switch for parallelizing the promise repair.</p>
+
+<p>If possible, perform the verification of the current promise in the background.
+This is advantageous only if the verification might take a significant amount
+of time, e.g. in remote copying of filesystem/disk scans.</p>
+
+<p>On the Windows version of CFEngine Enterprise, this can be useful if we don&#39;t
+want to wait for a particular command to finish execution before checking the
+next promise. This is particular for the Windows platform because there is
+no way that a program can start itself in the background here; in other words,
+fork off a child process. However, file operations can not be performed in the
+background on Windows.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">action</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">background</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="report_level">report_level</h4>
+<p><strong>Description:</strong> Defines the reporting level for standard output for this promise.</p>
+
+<p><a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> can be run in verbose mode (-v), inform mode (-I) and just print
+errors (no arguments). This attribute allows to set these three output levels
+on a per promise basis, allowing the promise to be more verbose than the global
+setting (but not less).</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">    inform
+    verbose
+    error
+    log
+</code></pre>
+</div>
+
+<p><strong>Default value:</strong> none</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">action</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">report_level</span> <span class="o">=&gt;</span> <span class="s">&quot;verbose&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="measurement_class">measurement_class</h4>
+<p><strong>Description:</strong> If set, performance will be measured and recorded under this
+identifier.</p>
+
+<p>By setting this string you switch on performance measurement for the current
+promise, and also give the measurement a name.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">action</span> <span class="nf">measure</span>
+     <span class="p">{</span>
+     <span class="kr">measurement_class</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(this.promiser)</span><span class="s"> long job scan of /usr&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The identifier forms a partial identity for optional performance scanning of
+promises of the form:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">ID</span><span class="p">:</span><span class="nf">promise</span><span class="err">-</span><span class="kd">type</span><span class="p">:</span><span class="nf">promiser</span><span class="err">.</span>
+</code></pre>
+</div>
+<h3 id="classes">classes</h3>
+<p><strong>Type:</strong> <a href="reference-promise-types.html#classes"><code>body classes</code></a></p>
+<h4 id="scope">scope</h4>
+<p><strong>Description:</strong> Scope of the class set by this body.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">    namespace
+    bundle
+</code></pre>
+</div>
+
+<p><strong>Default value:</strong> namespace</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">classes</span> <span class="nf">bundle_class</span>
+    <span class="p">{</span>
+      <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;bundle&quot;</span><span class="p">;</span>
+      <span class="kr">promise_kept</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;bundle_context&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> This attribute was introduced in CFEngine 3.5</p>
+
+<p><strong>See also:</strong> <a href="reference-promise-types-classes.html#scope" title="classes - scope"><code>scope</code> in <code>classes</code> promises</a></p>
+<h4 id="promise_repaired">promise_repaired</h4>
+<p><strong>Description:</strong> Classes to be defined globally if the promise was &#39;repaired&#39;.</p>
+
+<p>If the classes are set, a corrective action had to be taken to keep the
+promise.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_$(){}\[\].:]+</code></p>
+
+<p>Note that any strings passed to this list are automatically canonified, so it
+is unnecessary to call a canonify function on such inputs.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">classes</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">promise_repaired</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;change_happened&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Important</strong>: Complex promises can report misleadingly; for example, <a href="reference-promise-types-files.html" title="files"><code>files</code></a>
+promises that set multiple parameters on a file simultaneously.</p>
+
+<p>The classes for different parts of a promise are not separable. Thus, if you
+promise to create and file and change its permissions, when the file exists
+with incorrect permissions, <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> will report that the <a href="reference-promise-types.html#promise_kept" title="Promise Types and Attributes - promise_kept"><code>promise_kept</code></a> for
+the file existence, but <code>promise_repaired</code> for the permissions. If you need
+separate reports, you should code two separate promises rather than
+&#39;overloading&#39; a single one.</p>
+<h4 id="repair_failed">repair_failed</h4>
+<p><strong>Description:</strong> Classes to be defined globally if the promise could not be
+kept.</p>
+
+<p>If the classes are set, the corrective action to keep the promise failed for
+some reason.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_$(){}\[\].:]+</code></p>
+
+<p>Note that any strings passed to this list are automatically canonified, so it
+is unnecessary to call a canonify function on such inputs.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">classes</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">repair_failed</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;unknown_error&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="repair_denied">repair_denied</h4>
+<p><strong>Description:</strong> Classes to be defined globally if the promise could not be
+repaired due to denied access to required resources.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_$(){}\[\].:]+</code></p>
+
+<p>Note that any strings passed to this list are automatically canonified, so it
+is unnecessary to call a canonify function on such inputs.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">classes</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">repair_denied</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;permission_failure&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In the above example, a promise could not be kept because access to a key
+resource was denied.</p>
+<h4 id="repair_timeout">repair_timeout</h4>
+<p><strong>Description:</strong> Classes to be defined globally if the promise could not be
+repaired due to timeout.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_$(){}\[\].:]+</code></p>
+
+<p>Note that any strings passed to this list are automatically canonified, so it
+is unnecessary to call a canonify function on such inputs.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">classes</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">repair_timeout</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;too_slow&quot;</span><span class="p">,</span> <span class="s">&quot;did_not_wait&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In the above example, a promise maintenance repair timed-out waiting for some
+dependent resource.</p>
+<h4 id="promise_kept">promise_kept</h4>
+<p><strong>Description:</strong> Classes to be defined globally if the promise was kept without
+any corrective action.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_$(){}\[\].:]+</code></p>
+
+<p>Note that any strings passed to this list are automatically canonified, so it
+is unnecessary to call a canonify function on such inputs.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">classes</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">promise_kept</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;success&quot;</span><span class="p">,</span> <span class="s">&quot;kaplah&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The class in the above example is set if no action was necessary by <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>,
+because the promise concerned was already kept without further action required.</p>
+
+<p><strong>Note</strong>: Complex promises can report misleadingly. For example,
+<a href="reference-promise-types-files.html" title="files"><code>files</code></a>promises that set multiple parameters on a file simultaneously.</p>
+
+<p>The classes for different parts of a promise are not separable. Thus, if you
+promise to create and file and change its permissions, when the file exists
+with incorrect permissions, <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> will report that the <code>promise_kept</code> for
+the file existence, but <a href="reference-promise-types.html#promise_repaired" title="Promise Types and Attributes - promise_repaired"><code>promise_repaired</code></a> for the permissions. If you need
+separate reports, you should code two separate promises rather than
+&#39;overloading&#39; a single one.</p>
+<h4 id="cancel_kept">cancel_kept</h4>
+<p><strong>Description:</strong> Classes to be canceled if the promise is kept.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_$(){}\[\].:]+</code></p>
+
+<p>Note that any strings passed to this list are automatically canonified, so it
+is unnecessary to call a canonify function on such inputs.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">classes</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">cancel_kept</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;success&quot;</span><span class="p">,</span> <span class="s">&quot;kaplah&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In the above example, if the promise was already kept and nothing was done,
+cancel (undefine) any of the listed classes so that they are no longer defined.</p>
+
+<p><strong>History:</strong> This attribute was introduced in CFEngine version 3.0.4 (2010)</p>
+<h4 id="cancel_repaired">cancel_repaired</h4>
+<p><strong>Description:</strong> Classes to be canceled if the promise is repaired.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_$(){}\[\].:]+</code></p>
+
+<p>Note that any strings passed to this list are automatically canonified, so
+it is unnecessary to call a canonify function on such inputs.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">classes</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">cancel_repaired</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;change_happened&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In the above example, if the promise was repaired and changes were made to the
+system, cancel (undefine) any of the listed classes so that they are no longer
+defined.</p>
+
+<p><strong>History:</strong> This attribute was introduced in CFEngine version 3.0.4 (2010)</p>
+<h4 id="cancel_notkept">cancel_notkept</h4>
+<p><strong>Description:</strong> Classes to be canceled if the promise is not kept for any
+reason.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_$(){}\[\].:]+</code></p>
+
+<p>Note that any strings passed to this list are automatically canonified, so
+it is unnecessary to call a canonify function on such inputs.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">classes</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">cancel_notkept</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;failure&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In the above example, if the promise was not kept but nothing could be done,
+cancel (undefine) any of the listed classes so that they are no longer
+defined.</p>
+
+<p><strong>History:</strong> This attribute was introduced in CFEngine version 3.0.4 (2010)</p>
+<h4 id="kept_returncodes">kept_returncodes</h4>
+<p><strong>Description:</strong> Return codes that indicate a kept <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a> promise.</p>
+
+<p>Currently, the attribute has impact on the following command-related promises:</p>
+
+<ul>
+<li>All promises of type <code>commands:</code></li>
+<li><a href="reference-promise-types-files.html" title="files"><code>files</code></a>-promises containing a <a href="reference-promise-types-files.html#transformer" title="files - transformer"><code>transformer</code></a>-attribute</li>
+<li>The package manager change command in <a href="reference-promise-types-packages.html" title="packages"><code>packages</code></a>-promises (e.g. the command
+for add, remove, etc.)</li>
+</ul>
+
+<p>If none of the attributes <code>kept_returncodes</code>, <a href="reference-promise-types.html#repaired_returncodes" title="Promise Types and Attributes - repaired_returncodes"><code>repaired_returncodes</code></a>, or
+<a href="reference-promise-types.html#failed_returncodes" title="Promise Types and Attributes - failed_returncodes"><code>failed_returncodes</code></a> are set, the default is to consider a return code zero as
+promise repaired, and nonzero as promise failed.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[-0-9_$(){}\[\].]+</code></p>
+
+<p>Note that the return codes may overlap, so multiple classes may be set from one
+return code. In Unix systems the possible return codes are usually in the range
+from 0 to 255.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">cmdtest</span>
+     <span class="p">{</span>
+     <span class="kd">commands</span><span class="p">:</span>
+       <span class="s">&quot;/bin/false&quot;</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">example</span><span class="p">;</span>
+
+     <span class="kd">reports</span><span class="p">:</span>
+       <span class="nc">waskept</span><span class="p">::</span>
+         <span class="s">&quot;The command-promise was kept!&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="k">body</span> <span class="k">classes</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">kept_returncodes</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;0&quot;</span><span class="p">,</span> <span class="s">&quot;1&quot;</span> <span class="p">};</span>
+     <span class="kr">promise_kept</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;waskept&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In the above example, a list of integer return codes indicates that a
+command-related promise has been kept. This can in turn be used to define
+classes using the <a href="reference-promise-types.html#promise_kept" title="Promise Types and Attributes - promise_kept"><code>promise_kept</code></a> attribute, or merely alter the total
+compliance statistics.</p>
+
+<p><strong>History:</strong> Was introduced in version 3.1.3, Nova 2.0.2 (2010)</p>
+<h4 id="repaired_returncodes">repaired_returncodes</h4>
+<p><strong>Description:</strong> Return codes that indicate a repaired <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a> promise</p>
+
+<p>Currently, the attribute has impact on the following command-related promises:</p>
+
+<ul>
+<li>All promises of type <code>commands:</code></li>
+<li><a href="reference-promise-types-files.html" title="files"><code>files</code></a>-promises containing a <a href="reference-promise-types-files.html#transformer" title="files - transformer"><code>transformer</code></a>-attribute</li>
+<li>The package manager change command in <a href="reference-promise-types-packages.html" title="packages"><code>packages</code></a>-promises (e.g. the command
+for add, remove, etc.)</li>
+</ul>
+
+<p>If none of the attributes <a href="reference-promise-types.html#kept_returncodes" title="Promise Types and Attributes - kept_returncodes"><code>kept_returncodes</code></a>, <code>repaired_returncodes</code>, or
+<a href="reference-promise-types.html#failed_returncodes" title="Promise Types and Attributes - failed_returncodes"><code>failed_returncodes</code></a> are set, the default is to consider a return code zero as
+promise repaired, and nonzero as promise failed.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[-0-9_$(){}\[\].]+</code></p>
+
+<p>Note that the return codes may overlap, so multiple classes may be set from one
+return code. In Unix systems the possible return codes are usually in the range
+from 0 to 255.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">cmdtest</span>
+     <span class="p">{</span>
+     <span class="kd">commands</span><span class="p">:</span>
+       <span class="s">&quot;/bin/false&quot;</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">example</span><span class="p">;</span>
+
+     <span class="kd">reports</span><span class="p">:</span>
+       <span class="nc">wasrepaired</span><span class="p">::</span>
+         <span class="s">&quot;The command-promise got repaired!&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="k">body</span> <span class="k">classes</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">repaired_returncodes</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;0&quot;</span><span class="p">,</span> <span class="s">&quot;1&quot;</span> <span class="p">};</span>
+     <span class="kr">promise_repaired</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;wasrepaired&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In the above example, a list of integer return codes indicating that a
+command-related promise has been repaired. This can in turn be used to define
+classes using the <a href="reference-promise-types.html#promise_repaired" title="Promise Types and Attributes - promise_repaired"><code>promise_repaired</code></a> attribute, or merely alter the total
+compliance statistics.</p>
+
+<p><strong>History:</strong> Was introduced in version 3.1.3, Nova 2.0.2 (2010)</p>
+<h4 id="failed_returncodes">failed_returncodes</h4>
+<p><strong>Description:</strong> A <code>failed_returncodes</code> slist contains return codes indicating
+a failed command-related promise.</p>
+
+<p>Currently, the attribute has impact on the following command-related promises:</p>
+
+<ul>
+<li>All promises of type <code>commands:</code></li>
+<li><a href="reference-promise-types-files.html" title="files"><code>files</code></a>-promises containing a <a href="reference-promise-types-files.html#transformer" title="files - transformer"><code>transformer</code></a>-attribute</li>
+<li>The package manager change command in <a href="reference-promise-types-packages.html" title="packages"><code>packages</code></a>-promises (e.g. the command
+for add, remove, etc.)</li>
+</ul>
+
+<p>If none of the attributes <a href="reference-promise-types.html#kept_returncodes" title="Promise Types and Attributes - kept_returncodes"><code>kept_returncodes</code></a>, <a href="reference-promise-types.html#repaired_returncodes" title="Promise Types and Attributes - repaired_returncodes"><code>repaired_returncodes</code></a>, or
+<code>failed_returncodes</code> are set, the default is to consider a return code zero as
+promise repaired, and nonzero as promise failed.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[-0-9_$(){}\[\].]+</code></p>
+
+<p>Note that the return codes may overlap, so multiple classes may be set from one
+return code. In Unix systems the possible return codes are usually in the range
+from 0 to 255.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+     <span class="p">{</span>
+     <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;cmdtest&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+
+     <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">cmdtest</span>
+     <span class="p">{</span>
+     <span class="kd">files</span><span class="p">:</span>
+     <span class="s">&quot;/tmp/test&quot;</span>
+       <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">copy</span><span class="p">(</span><span class="s">&quot;/etc/passwd&quot;</span><span class="p">);</span>
+
+
+     <span class="s">&quot;/tmp/test&quot;</span>
+       <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">example</span><span class="p">,</span>
+       <span class="kr">transformer</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/grep -q lkajfo999999 </span><span class="si">$(this.promiser)</span><span class="s">&quot;</span><span class="p">;</span>
+
+     <span class="kd">reports</span><span class="p">:</span>
+       <span class="nc">hasfailed</span><span class="p">::</span>
+         <span class="s">&quot;The files-promise failed!&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="k">body</span> <span class="k">classes</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">failed_returncodes</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;1&quot;</span> <span class="p">};</span>
+     <span class="kr">repair_failed</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;hasfailed&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+
+     <span class="k">body</span> <span class="k">copy_from</span> <span class="nf">copy</span><span class="p">(</span><span class="nv">file</span><span class="p">)</span>
+     <span class="p">{</span>
+     <span class="kr">source</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(file)</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The above example contains a list of integer return codes indicating that a
+command-related promise has failed. This can in turn be used to define classes
+using the <a href="reference-promise-types.html#promise_repaired" title="Promise Types and Attributes - promise_repaired"><code>promise_repaired</code></a> attribute, or merely alter the total compliance
+statistics.</p>
+
+<p><strong>History:</strong> Was introduced in version 3.1.3, Nova 2.0.2 (2010)</p>
+<h4 id="persist_time">persist_time</h4>
+<p><strong>Description:</strong> The number of minutes the specified classes should remain
+active.</p>
+
+<p>By default classes are ephemeral entities that disappear when <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>
+terminates. By setting a persistence time, they can last even when the agent is
+not running.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">classes</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">persist_time</span> <span class="o">=&gt;</span> <span class="s">&quot;10&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="timer_policy">timer_policy</h4>
+<p><strong>Description:</strong> Determines whether a persistent class restarts its counter
+when rediscovered.</p>
+
+<p>In most cases resetting a timer will give a more honest appraisal of which
+classes are currently important, but if we want to activate a response of
+limited duration as a rare event then an absolute time limit is useful.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">    absolute
+    reset
+</code></pre>
+</div>
+
+<p><strong>Default value:</strong> reset</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">classes</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">timer_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;reset&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="comment">comment</h3>
+<p><strong>Description:</strong> Describes the real intention of the promise.</p>
+
+<p>Comments written in code follow the program, they are not merely discarded;
+they appear in reports and error messages.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;This comment follows the data for reference ...&quot;</span><span class="p">,</span>
+</code></pre>
+</div>
+<h3 id="depends_on">depends_on</h3>
+<p><strong>Description:</strong> A list of promise handles for promises that must have an outcome of KEPT or REPAIRED in order for the promise to be actuated.</p>
+
+<p>This is a list of promise handles for whom this promise is a promisee. In other
+words, we acknowledge that this promise will be affected by the list of
+promises whose handles are specified. It has the effect of partially ordering
+promises.</p>
+
+<p>As of version 3.4.0, this feature may be considered short-hand for setting
+classes. If one promise depends on a list of others, it will not be verified
+unless the dependent promises have already been verified and kept: in other
+words, as long as the dependent promises are either kept or repaired the
+dependee can be verified.</p>
+
+<p>Handles in other namespaces may be referred to by namespace:handle.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;one&quot;</span>  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">one</span>
+<span class="p">{</span>
+  <span class="kd">reports</span><span class="p">:</span>
+
+      <span class="s">&quot;two&quot;</span>
+      <span class="kr">depends_on</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;handle_one&quot;</span> <span class="p">};</span>
+
+      <span class="s">&quot;one&quot;</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;handle_one&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This policy can be found in
+<code>/var/cfengine/share/doc/examples/depends_on.cf</code>
+and downloaded directly from
+<a href="https://raw.github.com/cfengine/core/master/examples/depends_on.cf" target="_blank">github</a>.</p>
+<h3 id="handle">handle</h3>
+<p><strong>Description:</strong> A unique id-tag string for referring to this as a promisee
+elsewhere.</p>
+
+<p>A promise handle allows you to refer to a promise as the promisee of
+<a href="reference-promise-types.html#depends_on" title="Promise Types and Attributes - depends_on"><code>depends_on</code></a> client of another promise. Handles are essential for mapping
+dependencies and performing impact analyses.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p>Handles may consist of regular identifier characters. CFEngine automatically
+`canonifies&#39; the names of handles to conform to this standard.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">access</span><span class="p">:</span>
+
+  <span class="s">&quot;/source&quot;</span>
+
+    <span class="kr">handle</span>  <span class="o">=&gt;</span> <span class="s">&quot;update_rule&quot;</span><span class="p">,</span>
+    <span class="kr">admit</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong> If the handle name is based on a variable, and the variable
+fails to expand, the handle will be based on the name of the variable
+rather than its content.</p>
+<h3 id="ifvarclass">ifvarclass</h3>
+<p><strong>Description:</strong> Describes extended classes ANDed with context.</p>
+
+<p>This is an additional class expression that will be evaluated after the
+<code>class::</code> classes have selected promises. It is provided in order to enable a
+channel between variables and classes.</p>
+
+<p>The result is thus the logical AND of the ordinary classes and the variable
+classes.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+
+<p>The generic example has the form:</p>
+<div class="highlight"><pre><code class="cf3">     <span class="nf">promise</span><span class="err">-</span><span class="kd">type</span><span class="p">:</span>
+
+       <span class="s">&quot;promiser&quot;</span>
+
+         <span class="nf">ifvarclass</span> <span class="err">=</span> <span class="s">&quot;</span><span class="si">$(program)</span><span class="s">_running|(</span><span class="si">$(program)</span><span class="s">_notfoundHr12)&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>A specific example would be:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+    <span class="p">{</span>
+    <span class="kd">commands</span><span class="p">:</span>
+
+     <span class="nc">any</span><span class="p">::</span>
+
+        <span class="s">&quot;/bin/echo This is linux&quot;</span>
+
+           <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;linux&quot;</span><span class="p">;</span>
+
+        <span class="s">&quot;/bin/echo This is solaris&quot;</span>
+
+           <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;solaris&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This function is provided so that one can form expressions that link variables
+and classes. For example:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># Check that all components are running</span>
+
+    <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">component</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;cf-monitord&quot;</span><span class="p">,</span> <span class="s">&quot;cf-serverd&quot;</span> <span class="p">};</span>
+
+    <span class="kd">processes</span><span class="p">:</span>
+
+      <span class="s">&quot;</span><span class="si">$(component)</span><span class="s">&quot;</span> <span class="kr">restart_class</span> <span class="o">=&gt;</span> <span class="nf">canonify</span><span class="p">(</span><span class="s">&quot;start_</span><span class="si">$(component)</span><span class="s">&quot;</span><span class="p">);</span>
+
+    <span class="kd">commands</span><span class="p">:</span>
+
+       <span class="s">&quot;/var/cfengine/bin/</span><span class="si">$(component)</span><span class="s">&quot;</span>
+
+           <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">canonify</span><span class="p">(</span><span class="s">&quot;start_</span><span class="si">$(component)</span><span class="s">&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Notice that the function <a href="reference-functions-canonify.html" title="canonify"><code>canonify()</code></a> is provided to convert a general variable
+input into a string composed only of legal characters, using the same algorithm
+that CFEngine uses.</p>
+<h3 id="meta">meta</h3>
+<p><strong>Description:</strong> User-data associated with policy, e.g. key=value strings.</p>
+
+<p>It is sometimes convenient to attach meta-data of a more technical nature to
+policy. It may be used for arbitrary key=value strings for example.</p>
+
+<p>Note that the inventory reporting of CFEngine Enterprise 3.6 and later uses the
+meta attributes <code>inventory</code> and <code>attribute_name=</code>, so these should be considered
+reserved for this purpose.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">files</span><span class="p">:</span>
+
+  <span class="s">&quot;/etc/special_file&quot;</span>
+
+    <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Special file is a requirement. Talk to Fred X.&quot;</span><span class="p">,</span>
+    <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+
+    <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;owner=John&quot;</span><span class="p">,</span>  <span class="s">&quot;version=2.0&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.3.0, Nova 2.2.0 (2012)</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-bundles.html">bundles</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-common.html">common</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-promises.html">promises</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/promise-types.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/13cbf18729a5bf43d836f72e30aab3b2b0bdee7f" target="_blank">13cbf18729a5bf43d836f72e30aab3b2b0bdee7f</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.6/assets/footer-1ca6436dd462ed6a69ad3f2dba0774f0.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

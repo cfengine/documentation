@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.19  Documentation - Mustache templating</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/guide/faq/mustache-templating.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-guide-faq-mustache-templating.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <link rel="canonical" href="https://docs.cfengine.com/latest/guide-faq-mustache-templating.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='assets/global-6a0b9da22cb0d4bd16e0e337e3484c43.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Mustache templating";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/">Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/" selected>Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a></li><li><a href="guide-faq.html">FAQ</a><ul class="level2"><li><a href="guide-faq-why-cfengine.html">Why CFEngine?</a></li><li><a href="guide-faq-what-is-cfengine.html">What is CFEngine?</a></li><li><a href="guide-faq-how-does-cfengine-work.html">How does CFEngine work?</a></li><li><a href="guide-faq-why-knowledge-management.html">Why knowledge management?</a></li><li><a href="guide-faq-enterprise-license.html">Requesting a CFEngine Enterprise License</a></li><li><a href="guide-faq-uninstall-reinstall.html">Uninstalling/Reinstalling</a></li><li><a href="guide-faq-output-email.html">Agent output email</a></li><li><a href="guide-faq-enterprise.html">CFEngine Enterprise</a></li><li><a href="guide-faq-debugging-mission-portal.html">Debugging Mission Portal</a></li><li><a href="guide-faq-debugging-slow-queries.html">Debugging Slow Queries</a></li><li><a href="guide-faq-enterprise-report-filtering.html">Enterprise Report Filtering</a></li><li><a href="guide-faq-enterprise-report-collection.html">Enterprise report collection</a></li><li><a href="guide-faq-show-classes-and-vars.html">How can I tell what Classes and Variables are defined?</a></li><li><a href="guide-faq-fix-trust-after-ip-change.html">How do I fix trust after an IP change?</a></li><li><a href="guide-faq-fix-undefined-body-error.html">How do I fix undefined body errors?</a></li><li><a href="guide-faq-integrate-custom-policy.html">How do I integrate custom policy?</a></li><li><a href="guide-faq-find-public-key-for-host-sha.html">How to find the public key for a given host SHA</a></li><li><a href="guide-faq-manual-execution.html">Manual Execution</a></li><li><a class="active" href="guide-faq-mustache-templating.html">Mustache templating</a></li><li><a href="guide-faq-unable-to-log-in-mission-portal.html">Unable to log into Mission Portal</a></li><li><a href="guide-faq-users.html">Users</a></li><li><a href="guide-faq-variables.html">Variables</a></li><li><a href="guide-faq-what-is-promise-locking.html">What is promise locking?</a></li><li><a href="guide-faq-why-are-remote-agents-not-updating.html">Why are remote agents not updating?</a></li><li><a href="guide-faq-why-are-files-not-being-distributed.html">Why are some files inside masterfiles not being updated/distributed?</a></li><li><a href="guide-faq-fhs.html">Why does cfengine install into /var/cfengine instead of following the FHS?</a></li><li><a href="guide-faq-what-did-cfengine-change.html">What did cfengine do?</a></li></ul></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-faq.html">FAQ</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Mustache templating
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h2 id="cfengine-specific-extensions">CFEngine specific extensions</h2>
+<p>CFEngine has several extensions to the mustache standard.</p>
+
+<ul>
+<li><code>-top-</code> special key representing the complete data given.</li>
+<li><code>%</code> variable prefix causing data to be rendered as multi-line json representation.</li>
+<li><code>$</code> variable prefix causing data to be rendered as compact json representation.</li>
+<li><code>@</code> expands the current key being iterated.</li>
+</ul>
+
+<p><strong>See also:</strong> <a href="reference-promise-types-files.html#template_method-mustache-extensions" title="files - template_method mustache extensions"><code>template_method</code> <code>mustache</code> extensions</a></p>
+<h2 id="how-can-i-pass-a-data-variable-to-template_data">How can I pass a data variable to template_data?</h2>
+<p>Just use <code>template_data =&gt; @(mycontainer)</code>.</p>
+
+<p>If you need to extract a portion of the container or merge it with another, use
+<code>template_data =&gt; mergedata(&quot;mycontainer[piece]&quot;, &quot;othercontainer&quot;)</code>.</p>
+<h2 id="can-i-render-a-mustache-template-into-a-string">Can I render a Mustache template into a string?</h2>
+<p>Yes, see <a href="reference-functions-string_mustache.html" title="string_mustache"><code>string_mustache()</code></a>.</p>
+<h2 id="how-do-i-render-a-section-only-if-a-given-class-is-defined">How do I render a section only if a given class is defined?</h2>
+<p>In this Mustache example the word &#39;Enterprise&#39; will only be rendered if the
+class &#39;enterprise&#39; is defined.</p>
+
+<p>This template should not be passed a data container; it uses the <a href="reference-functions-datastate.html" title="datastate"><code>datastate()</code></a>
+of the CFEngine system. That&#39;s where <code>classes.enterprise</code> and
+<code>vars.sys.cf_version</code> came from.</p>
+<div class="highlight"><pre><code class="text">Version: CFEngine {{#classes.enterprise}}Enterprise{{/classes.enterprise}} {{vars.sys.cf_version}}
+</code></pre>
+</div>
+<h2 id="how-do-i-use-class-expressions">How do I use class expressions?</h2>
+<p>Mustache does not understand CFEngine&#39;s class expression logic and it is not
+possible to use full class expressions in mustache templates. Instead, use class
+expressions inside cfengine policy to define a singular class which can be used
+to conditionally render a block.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+  <span class="kd">classes</span><span class="p">:</span>
+
+      <span class="s">&quot;known_day_of_week&quot;</span>
+        <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)&quot;</span><span class="p">;</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">rendered</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">string_mustache</span><span class="p">(</span>
+<span class="s">&quot;{{#classes.known_day_of_week}}I recognize the day of the week.{{/classes.known_day_of_week}}</span>
+<span class="s">{{^classes.class_you_are_looking_for}}</span>
+<span class="s">The class you are looking for is not defined.</span>
+<span class="s">{{/classes.class_you_are_looking_for}}&quot;</span><span class="p">,</span>
+                                  <span class="nf">datastate</span><span class="p">());</span>
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(rendered)</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Here we define the class <code>known_day_of_week</code> as long as there is a class
+representing a known day. Then we render the value of the string variable
+&quot;rendered&quot; using <a href="reference-functions-string_mustache.html" title="string_mustache"><code>string_mustache()</code></a> with a template that includes a section
+that is conditional when <code>classes.known_day_of_week</code> is <code>true</code> and another section
+when <code>classes.class_you_are_looking_for</code> is not defined based on the data
+provided from <a href="reference-functions-datastate.html" title="datastate"><code>datastate()</code></a> which is the default set of data to use for mustache
+templates when explicit data is not provided. Finally we report the variable to
+see the rendered template.</p>
+<div class="highlight"><pre><code class="cf3">
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">R: I recognize the day of the week.
+The class you are looking for is not defined.
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="cf3">
+</code></pre>
+</div>
+
+<p>We can see in the output that the conditional text was rendered as expected.
+Try adjusting the template or the class expression.</p>
+
+<p>This policy can be found in
+<code>/var/cfengine/share/doc/examples/mustache_classes.cf</code>
+and downloaded directly from
+<a href="https://raw.github.com/cfengine/core/master/examples/mustache_classes.cf" target="_blank">github</a>.</p>
+<h2 id="how-do-i-iterate-over-a-list">How do I iterate over a list?</h2>
+<p>This template should not be passed a data container; it uses the <a href="reference-functions-datastate.html" title="datastate"><code>datastate()</code></a>
+of the CFEngine system. That&#39;s where <code>vars.mon.listening_tcp4_ports</code> came from.</p>
+<div class="highlight"><pre><code class="text">{{#vars.mon.listening_tcp4_ports}}
+  * {{.}}
+{{/vars.mon.listening_tcp4_ports}}
+</code></pre>
+</div>
+<h2 id="how-can-i-access-keys-when-iterating-over-a-dict">How can I access keys when iterating over a dict?</h2>
+<p>In CFEngine, the <code>@</code> symbol expands to the current key  when iterating over a dict.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(with)</span><span class="s">&quot;</span>
+        <span class="kr">with</span> <span class="o">=&gt;</span> <span class="nf">string_mustache</span><span class="p">(</span><span class="s">&quot;datastate() provides {{#-top-}} {{{@}}}{{/-top-}}&quot;</span><span class="p">,</span> <span class="nf">datastate</span><span class="p">()</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">R: datastate() provides  classes vars
+</code></pre>
+</div>
+
+<p>This policy can be found in
+<code>/var/cfengine/share/doc/examples/mustache_extension_expand_key.cf</code>
+and downloaded directly from
+<a href="https://raw.github.com/cfengine/core/master/examples/mustache_extension_expand_key.cf" target="_blank">github</a>.</p>
+<h2 id="can-you-use-nested-classes">Can you use nested classes?</h2>
+<p>You can. This is handy when options slightly differ for different operating systems.
+In this example for ssh daemon the authorized key configuration will only be added if
+class <code>SSH_LDAP_PUBKEY_BUNDLE</code> is true and for the class debian/centos diffenrent
+keywords are added.</p>
+<div class="highlight"><pre><code class="text">{{#classes.SSH_LDAP_PUBKEY_BUNDLE}}
+    {{#classes.debian}}
+AuthorizedKeysCommand {{vars.sara_data.ssh.authorized_keys_command}}
+AuthorizedKeysCommandUser {{vars.sara_data.ssh.authorized_keys_commanduser}}
+    {{/classes.debian}}
+    {{#classes.centos}}
+AuthorizedKeysCommand {{vars.sara_data.ssh.authorized_keys_command}}
+AuthorizedKeysCommandRunAs {{vars.sara_data.ssh.authorized_keys_commanduser}}
+    {{/classes.centos}}
+{{/classes.SSH_LDAP_PUBKEY_BUNDLE}}
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-getting-started.html">getting started</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-mustache.html">mustache</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-faq.html">faq</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 06 July 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/guide/faq/mustache-templating.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-38e3fd0081b106f885a95356ca1249c5.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

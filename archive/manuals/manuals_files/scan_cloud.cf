@@ -1,0 +1,66 @@
+
+bundle knowledge st_cloud
+
+{
+topics:
+
+"st-cloud";
+Cloud_Computing::
+    "The future - molecular computing" ;
+Cloud_Computing::
+    "What if I change my mind about Cloud Computing?" ;
+Cloud_Computing::
+    "Challenges for Cloud Computing" ;
+Cloud_Computing::
+    "Isnt virtualization inefficient?" ;
+Cloud_Computing::
+    "How does Cloud relate to virtualization?" ;
+Cloud_Computing::
+    "Permanent infra-structure with vibrant change" ;
+Cloud_Computing::
+    "How does CFEngine enable Cloud Computing?" ;
+Cloud_Computing::
+    "Is Cloud Computing for everything and everyone?" ;
+Cloud_Computing::
+    "What is Cloud Computing?" ;
+Special_Topics_Guide::
+    "Cloud Computing"  association => a("discussed in","Cloud Computing","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-cloud.html"
+  represents => { "Cloud" };
+Cloud_Computing::
+ "/docs/st-cloud.html#Top"
+  represents => { "Text section" };
+What_is_Cloud_Computing_::
+ "/docs/st-cloud.html#What-is-Cloud-Computing_003f"
+  represents => { "Text section" };
+Is_Cloud_Computing_for_everything_and_everyone_::
+ "/docs/st-cloud.html#Is-Cloud-Computing-for-everything-and-everyone_003f"
+  represents => { "Text section" };
+How_does_CFEngine_enable_Cloud_Computing_::
+ "/docs/st-cloud.html#How-does-CFEngine-enable-Cloud-Computing_003f"
+  represents => { "Text section" };
+Permanent_infra_structure_with_vibrant_change::
+ "/docs/st-cloud.html#Permanent-infra_002dstructure-with-vibrant-change"
+  represents => { "Text section" };
+How_does_Cloud_relate_to_virtualization_::
+ "/docs/st-cloud.html#How-does-Cloud-relate-to-virtualization_003f"
+  represents => { "Text section" };
+Isnt_virtualization_inefficient_::
+ "/docs/st-cloud.html#Isn_0027t-virtualization-inefficient_003f"
+  represents => { "Text section" };
+Challenges_for_Cloud_Computing::
+ "/docs/st-cloud.html#Challenges-for-Cloud-Computing"
+  represents => { "Text section" };
+What_if_I_change_my_mind_about_Cloud_Computing_::
+ "/docs/st-cloud.html#What-if-I-change-my-mind-about-Cloud-Computing_003f"
+  represents => { "Text section" };
+The_future___molecular_computing::
+ "/docs/st-cloud.html#The-future-_002d-molecular-computing"
+  represents => { "Text section" };
+}
+

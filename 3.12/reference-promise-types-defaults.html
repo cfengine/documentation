@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.12  Documentation - defaults</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-promise-types-defaults.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='/docs/3.12/assets/global-2ea8d2fcc0dbfebdbe7d10e6eca6a3b3.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "defaults";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/" selected>Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a><ul class="level2"><li><a href="reference-promise-types-access.html">access</a></li><li><a href="reference-promise-types-edit_line.html">bundle edit_line</a></li><li><a href="reference-promise-types-edit_xml.html">bundle edit_xml</a></li><li><a href="reference-promise-types-databases.html">databases</a></li><li><a href="reference-promise-types-guest_environments.html">guest_environments</a></li><li><a href="reference-promise-types-classes.html">classes</a></li><li><a href="reference-promise-types-commands.html">commands</a></li><li><a class="active" href="reference-promise-types-defaults.html">defaults</a></li><li><a href="reference-promise-types-files.html">files</a></li><li><a href="reference-promise-types-measurements.html">measurements</a></li><li><a href="reference-promise-types-meta.html">meta</a></li><li><a href="reference-promise-types-methods.html">methods</a></li><li><a href="reference-promise-types-packages.html">packages</a></li><li><a href="reference-promise-types-packages-deprecated.html">packages (deprecated)</a></li><li><a href="reference-promise-types-processes.html">processes</a></li><li><a href="reference-promise-types-reports.html">reports</a></li><li><a href="reference-promise-types-roles.html">roles</a></li><li><a href="reference-promise-types-services.html">services</a></li><li><a href="reference-promise-types-storage.html">storage</a></li><li><a href="reference-promise-types-users.html">users</a></li><li><a href="reference-promise-types-vars.html">vars</a></li></ul></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    defaults
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Defaults promises are related to <a href="reference-language-concepts-variables.html" title="Variables">variables</a>. If a variable or
+parameter in a promise bundle is undefined, or its value is defined to be
+invalid, a default value can be promised instead.</p>
+
+<p>CFEngine does not use Perl semantics: i.e. undefined variables do not map to
+the empty string, they remain as variables for possible future expansion. Some
+variables might be defined but still contain unresolved variables. To handle
+this you will need to match the <code>$(abc)</code> form of the variables.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;main&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+    <span class="p">{</span>
+    <span class="kd">methods</span><span class="p">:</span>
+
+      <span class="s">&quot;example&quot;</span>  <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">test</span><span class="p">(</span><span class="s">&quot;one&quot;</span><span class="p">,</span><span class="s">&quot;x&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(four)</span><span class="s">&quot;</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">test</span><span class="p">(</span><span class="nv">a</span><span class="p">,</span><span class="nv">b</span><span class="p">,</span><span class="nv">c</span><span class="p">,</span><span class="nv">d</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="kd">defaults</span><span class="p">:</span>
+
+     <span class="p">&quot;</span><span class="nv">a</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;default a&quot;</span><span class="p">,</span> <span class="kr">if_match_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+     <span class="p">&quot;</span><span class="nv">b</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;default b&quot;</span><span class="p">,</span> <span class="kr">if_match_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;x&quot;</span><span class="p">;</span>
+     <span class="p">&quot;</span><span class="nv">c</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;default c&quot;</span><span class="p">,</span> <span class="kr">if_match_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+     <span class="p">&quot;</span><span class="nv">d</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;default d&quot;</span><span class="p">,</span> <span class="kr">if_match_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\$\(</span><span class="s">[a-zA-Z0-9_.]+</span><span class="se">\)</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="kd">reports</span><span class="p">:</span>
+
+       <span class="s">&quot;a = &#39;</span><span class="si">$(a)</span><span class="s">&#39;, b = &#39;</span><span class="si">$(b)</span><span class="s">&#39;, c = &#39;</span><span class="si">$(c)</span><span class="s">&#39; d = &#39;</span><span class="si">$(d)</span><span class="s">&#39;&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Another example:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+<span class="kd">defaults</span><span class="p">:</span>
+
+  <span class="p">&quot;</span><span class="nv">X</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;I am a default value&quot;</span><span class="p">;</span>
+  <span class="p">&quot;</span><span class="nv">Y</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;I am a default list item 1&quot;</span><span class="p">,</span> <span class="s">&quot;I am a default list item 2&quot;</span> <span class="p">};</span>
+
+<span class="kd">methods</span><span class="p">:</span>
+
+ <span class="s">&quot;example&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">mymethod</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="s">&quot;bbb&quot;</span><span class="p">);</span>
+
+<span class="kd">reports</span><span class="p">:</span>
+
+   <span class="s">&quot;The default value of X is </span><span class="si">$(X)</span><span class="s">&quot;</span><span class="p">;</span>
+   <span class="s">&quot;The default value of Y is </span><span class="si">$(Y)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">###########################################################</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">mymethod</span><span class="p">(</span><span class="nv">a</span><span class="p">,</span><span class="nv">b</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+
+  <span class="p">&quot;</span><span class="nv">no_return</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;ok&quot;</span><span class="p">;</span> <span class="c"># readfile(&quot;/dont/exist&quot;,&quot;123&quot;);</span>
+
+<span class="kd">defaults</span><span class="p">:</span>
+
+  <span class="p">&quot;</span><span class="nv">a</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;AAAAAAAAA&quot;</span><span class="p">,</span>   <span class="kr">if_match_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+  <span class="p">&quot;</span><span class="nv">b</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;BBBBBBBBB&quot;</span><span class="p">,</span>   <span class="kr">if_match_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+  <span class="p">&quot;</span><span class="nv">no_return</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;no such file&quot;</span><span class="p">;</span>
+
+<span class="kd">reports</span><span class="p">:</span>
+
+     <span class="s">&quot;The value of a is </span><span class="si">$(a)</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="s">&quot;The value of b is </span><span class="si">$(b)</span><span class="s">&quot;</span><span class="p">;</span>
+
+     <span class="s">&quot;The value of no_return is </span><span class="si">$(no_return)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<hr>
+<h2 id="attributes">Attributes</h2><h3 id="if_match_regex">if_match_regex</h3>
+<p><strong>Description:</strong> If this <a href="reference-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">anchored</a> regular expression matches the
+current value of the variable, replace it with default.</p>
+
+<p>If a parameter or variable is already defined in the current context, and the
+value matches this regular expression, it will be deemed invalid and replaced
+with the default value.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+
+<span class="p">{</span>     
+  <span class="kd">defaults</span><span class="p">:</span>
+
+      <span class="c"># We can have default values even if variables are not defined at all.</span>
+      <span class="c"># This is equivalent to a variable definition, so not particularly useful.</span>
+
+      <span class="p">&quot;</span><span class="nv">X</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;I am a default value&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">Y</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;I am a default list item 1&quot;</span><span class="p">,</span> <span class="s">&quot;I am a default list item 2&quot;</span> <span class="p">};</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+
+      <span class="c"># More useful, defaults if parameters are passed to a param bundle</span>
+
+      <span class="s">&quot;example&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">mymethod</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="s">&quot;bbb&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+
+      <span class="s">&quot;The default value of X is </span><span class="si">$(X)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="s">&quot;The default value of Y is </span><span class="si">$(Y)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">mymethod</span><span class="p">(</span><span class="nv">a</span><span class="p">,</span><span class="nv">b</span><span class="p">)</span>
+
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">no_return</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;ok&quot;</span><span class="p">;</span> <span class="c"># readfile(&quot;/dont/exist&quot;,&quot;123&quot;);</span>
+
+  <span class="kd">defaults</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">a</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;AAAAAAAAA&quot;</span><span class="p">,</span>   <span class="kr">if_match_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">b</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;BBBBBBBBB&quot;</span><span class="p">,</span>   <span class="kr">if_match_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">no_return</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;no such file&quot;</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+
+      <span class="s">&quot;The value of a is </span><span class="si">$(a)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="s">&quot;The value of b is </span><span class="si">$(b)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;The value of no_return is </span><span class="si">$(no_return)</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">R: The value of a is AAAAAAAAA
+R: The value of b is bbb
+R: The value of no_return is ok
+R: The default value of X is I am a default value
+R: The default value of Y is I am a default list item 1
+R: The default value of Y is I am a default list item 2
+</code></pre>
+</div>
+
+<p>This policy can be found in
+<code>/var/cfengine/share/doc/examples/defaults.cf</code>
+and downloaded directly from
+<a href="https://raw.github.com/cfengine/core/master/examples/defaults.cf" target="_blank">github</a>.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-bundle-common.html">bundle common</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-defaults.html">defaults</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-promises.html">promises</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 27 October 2021
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/promise-types/defaults.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/3d161b229c7df44b99d8cd6c71640ab53c94fcbd" target="_blank">3d161b229c7df44b99d8cd6c71640ab53c94fcbd</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.12/assets/footer-135fa20640bb1a2bbe772d22c46414cb.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

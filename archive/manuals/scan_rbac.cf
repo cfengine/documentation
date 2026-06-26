@@ -1,0 +1,76 @@
+
+bundle knowledge st_rbac
+
+{
+topics:
+
+"st-rbac";
+RBAC::
+    "Granting the right to switch on special pre-defined policies" ;
+RBAC::
+    "The bowtie process" ;
+RBAC::
+    "The right to edit and publish policy" ;
+RBAC::
+    "The Policy Dispatch Point" ;
+RBAC::
+    "The risk from centralized trusted hosts" ;
+RBAC::
+    "No need for any centralization in CFEngine" ;
+RBAC::
+    "The role of centralized push and pull in RBAC" ;
+RBAC::
+    "The chain of privilege in CFEngine" ;
+RBAC::
+    "CFEngines approach to privilege" ;
+RBAC::
+    "The risks of RBAC" ;
+RBAC::
+    "What is Role Based Access Control?" ;
+Special_Topics_Guide::
+    "RBAC"  association => a("discussed in","RBAC","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-rbac.html"
+  represents => { "Role Based Access Control and CFEngine" };
+RBAC::
+ "/docs/st-rbac.html#Top"
+  represents => { "Text section" };
+What_is_Role_Based_Access_Control_::
+ "/docs/st-rbac.html#What-is-Role-Based-Access-Control_003f"
+  represents => { "Text section" };
+The_risks_of_RBAC::
+ "/docs/st-rbac.html#The-risks-of-RBAC"
+  represents => { "Text section" };
+CFEngines_approach_to_privilege::
+ "/docs/st-rbac.html#CFEngine_0027s-approach-to-privilege"
+  represents => { "Text section" };
+The_chain_of_privilege_in_CFEngine::
+ "/docs/st-rbac.html#The-chain-of-privilege-in-CFEngine"
+  represents => { "Text section" };
+The_role_of_centralized_push_and_pull_in_RBAC::
+ "/docs/st-rbac.html#The-role-of-centralized-push-and-pull-in-RBAC"
+  represents => { "Text section" };
+No_need_for_any_centralization_in_CFEngine::
+ "/docs/st-rbac.html#No-need-for-any-centralization-in-CFEngine"
+  represents => { "Text section" };
+The_risk_from_centralized_trusted_hosts::
+ "/docs/st-rbac.html#The-risk-from-centralized-trusted-hosts"
+  represents => { "Text section" };
+The_Policy_Dispatch_Point::
+ "/docs/st-rbac.html#The-Policy-Dispatch-Point"
+  represents => { "Text section" };
+The_right_to_edit_and_publish_policy::
+ "/docs/st-rbac.html#The-right-to-edit-and-publish-policy"
+  represents => { "Text section" };
+The_bowtie_process::
+ "/docs/st-rbac.html#The-bowtie-process"
+  represents => { "Text section" };
+Granting_the_right_to_switch_on_special_pre_defined_policies::
+ "/docs/st-rbac.html#Granting-the-right-to-switch-on-special-pre_002ddefined-policies"
+  represents => { "Text section" };
+}
+

@@ -1,0 +1,1341 @@
+<html lang="en">
+<head>
+<title>Monitoring with CFEngine</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Monitoring with CFEngine">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('☺'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background: none !important;
+    border: none !important;
+    padding: 5px; 
+
+/*    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;*/
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">Monitoring with CFEngine</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Monitoring-introduction">Monitoring introduction</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">Measurement and Monitoring</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Monitoring-introduction">Monitoring introduction</a>
+<li><a accesskey="2" href="#Monitoring-customization">Monitoring customization</a>
+</ul>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<div class="node">
+<a name="Monitoring-introduction"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Monitoring-customization">Monitoring customization</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Monitoring introduction</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#What-is-monitoring_003f">What is monitoring?</a>
+<li><a accesskey="2" href="#What-are-the-goals-of-monitoring_003f">What are the goals of monitoring?</a>
+<li><a accesskey="3" href="#What-does-monitoring-software-do_003f">What does monitoring software do?</a>
+<li><a accesskey="4" href="#Monitoring-in-CFEngine">Monitoring in CFEngine</a>
+<li><a accesskey="5" href="#Visualization-of-monitoring-in-CFEngine">Visualization of monitoring in CFEngine</a>
+<li><a accesskey="6" href="#Standard-measured-variables">Standard measured variables</a>
+<li><a accesskey="7" href="#Estimate-of-the-level-of-normality">Estimate of the level of normality</a>
+<li><a accesskey="8" href="#Variables">Variables</a>
+<li><a accesskey="9" href="#Entropy">Entropy</a>
+<li><a href="#Persistent-classes-for-alert-conditions">Persistent classes for alert conditions</a>
+</ul>
+
+<div class="node">
+<a name="What-is-monitoring%3f"></a>
+<a name="What-is-monitoring_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-are-the-goals-of-monitoring_003f">What are the goals of monitoring?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Monitoring-introduction">Monitoring introduction</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-introduction">Monitoring introduction</a>
+
+</div>
+
+<h3 class="unnumberedsec">What is monitoring?</h3>
+
+<p>The world of IT management is replete with monitoring
+software. Monitoring is considered to be a major part of management,
+and it plays a kind of `feel good' role to engineers even when it
+often reveals little useful information. Users are often fiercely
+loyal to certain monitoring solutions, However, most monitoring systems have
+some key problems:
+
+     <ul>
+<li>Many monitoring systems are so heavy weight that they lead to
+ a system large overhead.
+
+     <li>Scalability of monitoring solutions is often poor, both in terms
+of system resource consumption and comprehensability of the data collected. 
+</ul>
+   One might argue that these problems can be traced back to the overly ambitious
+nature of what they try to achieve.
+
+   <p>Some common or popular monitoring solutions include:
+     <ul>
+<li>HP OpenView
+<li>Nagios
+<li>Munin
+<li>Zenoss
+<li>Ganglia
+<li>collectd
+</ul>
+
+<div class="node">
+<a name="What-are-the-goals-of-monitoring%3f"></a>
+<a name="What-are-the-goals-of-monitoring_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-does-monitoring-software-do_003f">What does monitoring software do?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-is-monitoring_003f">What is monitoring?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-introduction">Monitoring introduction</a>
+
+</div>
+
+<h3 class="unnumberedsec">What are the goals of monitoring?</h3>
+
+<p>Few montioring systems yield accurate or even very clear results about
+systems, and yet we feel reassured by moving traces.  We monitor
+systems first and foremost out of a desire for knowledge.  If that
+seems like a trivial statement, you should examine your own
+motivations carefully &ndash; what is it you really want from a monitoring
+solution? Accurate data, or some basic reassurance?
+
+   <p>As scientific instruments, most monitoring software is rather poorly
+constructed. The devices are rarely calibrated, the results are
+presented without context, sorted according to arbitrary thresholds,
+and it is unclear what delay there was between the sampling of the
+system and the presentation of the data.  That makes the data values
+and the traces almost useless - but not quite.  What users really see
+in monitoring is patterns of change. Monitoring software forms a
+bridge between actual data about the system and the habits of the
+human brain.
+
+<div class="node">
+<a name="What-does-monitoring-software-do%3f"></a>
+<a name="What-does-monitoring-software-do_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Monitoring-in-CFEngine">Monitoring in CFEngine</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-are-the-goals-of-monitoring_003f">What are the goals of monitoring?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-introduction">Monitoring introduction</a>
+
+</div>
+
+<h3 class="unnumberedsec">What does monitoring software do?</h3>
+
+<p>Typically, monitoring software samples data from systems through a number of
+probes and presents the data in some graphical form. A few systems can also
+perform statistical analysis and even look-ahead forecasting of the data. 
+Much monitoring software is based on the Simple Network Management
+Protocol (SNMP) which is an active probe regime usually run from a
+centralized network manager.
+
+   <p>The simple fact of the matter is that most monitoring software
+simple presents a rough visualization of the raw data to users
+as either a set of alarms (loggable messages) or as a moving time-series,
+analogous to a hospital vital-signs monitor (EEG or ECG).
+
+   <p>If one is cynical, it might be said that some monitoring systems waste
+users' time by producing moving graphs with a level of detail that is
+utterly inappropriate. Users then sit transfixed to these moving
+traces, watching for any insignificant change &ndash; and, because there is
+no context or history to meaure the changes against, every change
+appears to be interesting.
+
+<div class="node">
+<a name="Monitoring-in-CFEngine"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Visualization-of-monitoring-in-CFEngine">Visualization of monitoring in CFEngine</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-does-monitoring-software-do_003f">What does monitoring software do?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-introduction">Monitoring introduction</a>
+
+</div>
+
+<h3 class="unnumberedsec">Monitoring in CFEngine</h3>
+
+<p>In CFEngine, there is <code>cf-monitord</code>, which runs as a local agent
+on every computer.  This daemon wakes up every couple of minutes and
+samples data for a number of variables without using the network. The
+data are then stored in an embedded database on the localhost, using a
+smart algorithm that prevents the datasize from growing endlessly. 
+CFEngine uses a model of system behaviour based on the findings of
+research about how computers behave in a network. The model reveals
+strong weekly patterns in most measurable data, or no pattern
+whatsoever. This knowledge can be used to compress the data by a large
+factor and enables <code>cf-monitord</code> to carry out a real time
+statistical analysis of the normal behaviour that is updated over
+time.
+
+   <p>CFEngine was not written to replace other monitoring systems,
+but to achieve rather concrete goals. In order to achieve these
+goals, CFEngine does not monitor as often as other systems,
+and it presents results rather differently.
+
+   <p>The goals of monitoring in CFEngine are:
+
+     <ul>
+<li>To not waste users' time with insignificant changes, but provide
+meaningful updates at a rate that is defensible based on the rate of
+change of the system. 
+<li>To provide meaningful information that is placed in
+the context of what is normal. 
+<li>To reveal trends and patterns at a glance.
+
+     <li>To scale to tens of thousands of hosts without placing a significant
+burden on the hosts being monitored. 
+<li>To be as hands-free in configuration as possible, but allow customization.
+
+     <li>To provide a feedback mechanism for system policy so that systems can
+respond directly to conditions that are detected. 
+</ul>
+
+   <p>The information returned by <code>cf-monitord</code> comes in a number of forms:
+
+     <ul>
+<li>As visual, plottable graphs. 
+<li>As CFEngine classes that are passed to <code>cf-agent</code> and may be used to generate
+alarms or automatic responses. 
+</ul>
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="timeseries.png" alt="timeseries.png"></div>
+<pre class="sp">
+
+</pre>
+<div align="center">A graphical rendering of a 100 x load average pattern collected by a host.</div>
+<pre class="sp">
+
+</pre>
+
+<div class="node">
+<a name="Visualization-of-monitoring-in-CFEngine"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Standard-measured-variables">Standard measured variables</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Monitoring-in-CFEngine">Monitoring in CFEngine</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-introduction">Monitoring introduction</a>
+
+</div>
+
+<h3 class="unnumberedsec">Visualization of monitoring in CFEngine</h3>
+
+<p>The CFEngine community edition provides limited support for
+visualization.  The <code>cf-report</code> command can be used to generate
+files that can be plotted with other free software. So far this is not
+well documented, since the process requires special knowledge of some
+less-well known Open Source tools (see Reference Manual, reporter
+control promises).
+
+   <p>However, in the commercial edition of CFEngine (Nova/Enterprise), much effort has been put into making the centralized
+collection and visualization of these data straightforward and
+powerful so that all of the learned information about a network
+may be seen and analysed from a single location.
+
+   <p>Any model of fluctuating values is based on the idea that the changing
+signal has a basic separation of signal and noise. The variability of
+the signal is generally characterized by a probability distribution
+which often peaks about the mean value. Some tools and many papers
+assume that the distribution of fluctuations is Gaussian. This is
+almost never the case in real computer systems.
+
+   <p>CFEngine plots the following values together to provide
+an interpretive context for the data:
+
+     <ul>
+<li>The last sampled value (&lsquo;<samp><span class="samp">value</span></samp>&rsquo;). This is the actual `current value'. This is the orange
+line in the figure above. 
+<li>The rolling average of the data for each 5 minute interval of the week (&lsquo;<samp><span class="samp">av</span></samp>&rsquo;). This represents
+the best estimate of what is normal. This is the green line in the figure above. 
+<li>An envelope of on standard deviation above (red vertical bars) and below (green vertical bars) the average
+to show the envelope of normal `variation' (&lsquo;<samp><span class="samp">dev</span></samp>&rsquo;). 
+</ul>
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+Note: it is a common misconception that the mean and standard deviation only
+apply to Gaussian statistical models. This is not true, although it is true that
+these quantities have a special significance for these distributions. You may think
+of the rolling mean as a representative average value that represents what is approximately
+`normal'. The standard deviation plays the role of an approximate estimate of the uncertainty
+in the value of the mean. These values should be treated as heuristics, not as absolute truths
+in any reasonable statistical interpretation of the data. 
+</td></tr></table>
+
+<!--  -->
+<!-- SECTION -->
+<!--  -->
+<div class="node">
+<a name="Standard-measured-variables"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Estimate-of-the-level-of-normality">Estimate of the level of normality</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Visualization-of-monitoring-in-CFEngine">Visualization of monitoring in CFEngine</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-introduction">Monitoring introduction</a>
+
+</div>
+
+<h3 class="unnumberedsec">Standard measured variables</h3>
+
+<p>When CFEngine detects an anomaly, it classified the current statistical
+state of the system into a number of classes.
+
+   <p>CFEngine classifies anomalies by whether the currently measured state of
+the system is higher or lower than the average for the current time of
+week. The amount of deviation is based on an estimate of the `standard
+deviation'. The precise definition of the average and standard
+deviations is complex, and is discussed in the paper "M. Burgess,
+Probabilistic anomaly detection in distributed computer
+networks", (submitted to Science of Computer Programming, and available
+on the web).
+
+   <p>The list of measured attributes is currently fixed to the following:
+
+   <p>The first part of the string is from the list:
+
+     <dl>
+<dt><code>users</code><dd>The number of different users that appear in the process table of the system. 
+<br><dt><code>rootprocs</code><dd>The nunmber of current processes started by root/Administrator. 
+<br><dt><code>userprocs</code><dd>The number of current processes started by non-privileged users. 
+<br><dt><code>diskfree</code><dd>The amount of disk free on root file system. 
+<br><dt><code>loadavg</code><dd>The load average of the system (actually multiplied by 100). 
+</dl>
+   Socket counts of network services distinguish between incoming and outgoing
+sockets (to a service or from a client).
+     <dl>
+<dt><code>netbiosns</code><dd>Registers traffic to/from port 137. 
+<br><dt><code>netbiosdgm</code><dd>Registers traffic to/from port 138. 
+<br><dt><code>netbiosssn</code><dd>Registers traffic to/from port 139. 
+<br><dt><code>irc</code><dd>Registers traffic to/from port 194. 
+<br><dt><code>CFEngine</code><dd>Registers traffic to/from port 5308. 
+<br><dt><code>nfsd</code><dd>Registers traffic to/from port 2049. 
+<br><dt><code>smtp</code><dd>Registers traffic to/from port 25. 
+<br><dt><code>www</code><dd>Registers traffic to/from port 80. 
+<br><dt><code>ftp</code><dd>Registers traffic to/from port 21. 
+<br><dt><code>ssh</code><dd>Registers traffic to/from port 22. 
+<br><dt><code>wwws</code><dd>Registers traffic to/from port 443. 
+</dl>
+
+   <p>If you have tcpdump program installed in a standard location, then the monitor can be confugured to
+collect data about the network flows to your host.
+
+     <dl>
+<dt><code>icmp</code><dd>Traffic belonging to the ICMP protocol (ping etc). 
+<br><dt><code>dns</code><dd>Traffic to port 53, the Domain Name Service (usually a special case of UDP). 
+<br><dt><code>udp</code><dd>Miscellaneous UDP traffic that is not related to DNS. 
+<br><dt><code>tcpsyn</code><dd>Registers TCP packets with SYN flag set. 
+<br><dt><code>tcpack</code><dd>Registers TCP packets with ACK flag set. 
+<br><dt><code>tcpfin</code><dd>Registers TCP packers with FIN flag set. 
+<br><dt><code>misc</code><dd>Registers all other packets, not covered above. 
+</dl>
+
+<div class="node">
+<a name="Estimate-of-the-level-of-normality"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Variables">Variables</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Standard-measured-variables">Standard measured variables</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-introduction">Monitoring introduction</a>
+
+</div>
+
+<h3 class="unnumberedsec">Estimate of the level of normality</h3>
+
+<p>When <code>cf-monitord</code> has accurate knowledge of statistics, it classifies
+the current state into 3 levels:
+
+   <p><a name="index-normal-1"></a><a name="index-dev1-2"></a><a name="index-dev2-3"></a><a name="index-anomaly-4"></a><a name="index-microanomaly-5"></a>
+     <dl>
+<dt><code>normal</code><dd>means that the current level is less
+than one standard deviation above normal. 
+<br><dt><code>dev1</code><dd>means that the
+current level is at least one standard deviation about the average.
+
+     <br><dt><code>dev2</code><dd>means that the current level is at least two standard
+deviations about the average.
+
+     <br><dt><code>anomaly</code><dd>means that the current level is more than 3 standard deviations above average.
+
+   </dl>
+
+<p class="noindent">Each of these charaxterizations assumes that there are good data
+available. The <samp><span class="file">cf-monitord</span></samp> evaluates its data and decides whether or
+not the data are too noisy to be really useful.  If the data are too
+noisy but the level <i>appears</i> to be more than two standard deviations
+above aaverage, then the category <code>microanomaly</code> is used.
+
+   <p>Here are some example classes:
+
+<pre class="smallexample">     userprocs_high_dev2
+     userprocs_low_dev1
+     www_in_high_anomaly
+     smtp_out_high_dev2
+</pre>
+   <p class="noindent">A complete list of standard metrics
+<a name="index-Anomalies-6"></a>Base classes:
+<pre class="smallexample">       users
+       rootprocs
+       otherprocs
+       diskfree
+       loadavg
+       netbiosns_in
+       netbiosns_out
+       netbiosdgm_in
+       netbiosdgm_out
+       netbiosssn_in
+       netbiosssn_out
+       irc_in
+       irc_out
+       CFEngine_in
+       CFEngine_out
+       nfsd_in
+       nfsd_out
+       smtp_in
+       smtp_out
+       www_in
+       www_out
+       ftp_in
+       ftp_out
+       ssh_in
+       ssh_out
+       wwws_in
+       wwws_out
+       icmp_in
+       icmp_out
+       udp_in
+       udp_out
+       dns_in
+       dns_out
+       tcpsyn_in
+       tcpsyn_out
+       tcpack_in
+       tcpack_out
+       tcpfin_in
+       tcpfin_out
+       tcpmisc_in
+       tcpmisc_out
+</pre>
+   <p>Suffixes:
+<pre class="smallexample">     _high_microanomaly
+     _low_microanomaly
+     
+     _high_dev1
+     _low_dev1
+     
+     _high_dev2
+     _low_dev2
+     
+     _high_anomaly
+     _low_anomaly
+     
+     _high_ldt
+     _low_ldt
+</pre>
+   <div class="node">
+<a name="Variables"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Entropy">Entropy</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Estimate-of-the-level-of-normality">Estimate of the level of normality</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-introduction">Monitoring introduction</a>
+
+</div>
+
+<h3 class="unnumberedsec">Variables</h3>
+
+<p>The <code>cf-monitord</code> sets variables which cache the values that were valid at the
+time of the anomaly's occurrance. These are of the same form as above.
+<pre class="smallexample">     value_rootprocs
+     average_rootprocs
+     stddev_rootprocs
+     
+     value_nsfd_in
+     average_nfsd_in
+     stddev_nfsd_in
+</pre>
+   <p>The Leap Detection Test buffer is called
+<pre class="smallexample">     ldtbuf_users
+     ldtbuf_otherprocs
+</pre>
+   <p>etc.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Entropy">Entropy</a>
+</ul>
+
+<div class="node">
+<a name="Entropy"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Persistent-classes-for-alert-conditions">Persistent classes for alert conditions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Variables">Variables</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-introduction">Monitoring introduction</a>
+
+</div>
+
+<h3 class="unnumberedsec">Entropy</h3>
+
+<p>For network related data, CFEngine evaluates the entropy in the
+currently measured sample of measurements, with respect to the
+different IP addresses of the sources.  You can use these to predicate
+the appearance of an anomaly, e.g. 
+<a name="index-Entropy-7"></a>
+<pre class="smallexample">      entropy_www_in_high
+      entropy_smtp_in_low
+</pre>
+   <p>For example, if you only want to know when a huge amount of SMTP traffic arrives from a
+single IP source, you would label your anomaly response:
+<pre class="smallexample">     entropy_smtp_in_low.smtp_in_high_anomaly::
+</pre>
+   <p class="noindent">since the entropy is low when the majority of traffic
+comes from only a small number of IP addresses (e.g. one). The entropy is maximal
+when activity comes equally from several different sources.
+
+<div class="node">
+<a name="Persistent-classes-for-alert-conditions"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Entropy">Entropy</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-introduction">Monitoring introduction</a>
+
+</div>
+
+<h3 class="unnumberedsec">Persistent classes for alert conditions</h3>
+
+<p>Another application for alerts is to pass signals from one invocation of the CFEngine agent to
+another by persistent, shared memory.  For example, suppose a
+short-lived anomaly event triggers a class that relates to a security
+alert. The event class might be too short-lived to be followed up by
+cfagent in full. One could thus set a long term class that would
+trigger up several follow-up checks.  A persistent class could also be
+used to exclude an operation for an interval of time.
+
+   <p>Persistent class memory can be added through a system alert functions
+to give timer behaviour.  For example, consider setting a class that
+acts like a non-resettable timer. It is defined for exactly 10 minutes
+before expiring.
+
+<pre class="verbatim">body classes example
+     {
+     persist_time => "10";
+     }
+
+body classes example
+     {
+     timer_policy => "reset";
+     }
+
+</pre>
+
+<div class="node">
+<a name="Monitoring-customization"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Monitoring-introduction">Monitoring introduction</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">2 Monitoring customization</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#What-are-measurements_003f">What are measurements?</a>
+<li><a accesskey="2" href="#measurements-promises">measurements promises</a>
+<li><a accesskey="3" href="#Scanning-log-files-for-patterns">Scanning log files for patterns</a>
+<li><a accesskey="4" href="#FTP">FTP</a>
+<li><a accesskey="5" href="#DNS">DNS</a>
+<li><a accesskey="6" href="#Email">Email</a>
+<li><a accesskey="7" href="#Milter">Milter</a>
+<li><a accesskey="8" href="#Breakin">Breakin</a>
+<li><a accesskey="9" href="#Threshold-monitoring">Threshold monitoring</a>
+<li><a href="#Summary-Monitoring">Summary Monitoring</a>
+</ul>
+
+<div class="node">
+<a name="What-are-measurements%3f"></a>
+<a name="What-are-measurements_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#measurements-promises">measurements promises</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Monitoring-customization">Monitoring customization</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-customization">Monitoring customization</a>
+
+</div>
+
+<h3 class="unnumberedsec">What are measurements?</h3>
+
+<pre class="sp">
+
+</pre>
+Measurement promises perform sampling of system variables, and
+scanning of files and probes, at regular controllable intervals in
+order to present an efficient overview of actual changes taking place over time.
+
+<div class="node">
+<a name="measurements-promises"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Scanning-log-files-for-patterns">Scanning log files for patterns</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-are-measurements_003f">What are measurements?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-customization">Monitoring customization</a>
+
+</div>
+
+<h3 class="unnumberedsec"><code>measurements</code> promises</h3>
+
+<pre class="sp">
+
+</pre>
+
+In CFEngine Nova and above, you can extract data from the
+system in sophisticated ways from files or pipes, using Perl
+Compatible Regular Expressions to match text. The <code>cf-monitord</code>
+agent is responsible for processing measurement promises.
+
+   <p>In this example, we count lines matching a pattern in a file. 
+You might want to scan a log for instances of a particular
+message and trace this number over time.
+
+<div class="node">
+<a name="Scanning-log-files-for-patterns"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#FTP">FTP</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#measurements-promises">measurements promises</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-customization">Monitoring customization</a>
+
+</div>
+
+<h3 class="unnumberedsec">Scanning log files for patterns</h3>
+
+<pre class="sp">
+
+</pre>
+
+You will have to scan the log file for each separate summary
+you want to keep, so you win a lot of efficiency by lumping
+together mulitple patterns in a longer regular expressions.
+
+   <p>Be careful however about the trade-off. Disk access is certainly the
+most expensive computing resource, but a smart filesystem might do good caching.
+
+   <p>Regular expression processing, on the other hand, is CPU expensive, so
+if you have very long or complex patterns to match, you will begin
+to eat up CPU time too.
+
+   <p>At the end of the day, you should probably do some tests to find a good
+balance.  One goal of CFEngine is to minimally impact your system performance,
+but it is possible to write promises that have the opposite effect.  Check
+your work!
+
+<pre class="verbatim">
+bundle monitor watch
+{
+measurements:
+
+   "/home/mark/tmp/file"
+
+         handle => "line_counter",
+    stream_type => "file",
+      data_type => "counter",
+    match_value => scan_log("MYLINE.*"),
+   history_type => "log",
+         action => sample_rate("0");
+
+}
+
+##########################################################
+
+body match_value scan_log(line)
+{
+select_line_matching => "$(line)";
+track_growing_file => "true";
+}
+
+body action sample_rate(x)
+{
+ifelapsed => "$(x)";
+expireafter => "10";
+}
+</pre>
+
+<div class="node">
+<a name="FTP"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#DNS">DNS</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Scanning-log-files-for-patterns">Scanning log files for patterns</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-customization">Monitoring customization</a>
+
+</div>
+
+<h3 class="unnumberedsec">Scanning syslog for FTP statistics</h3>
+
+<pre class="sp">
+
+</pre>
+
+There are many things that you can set CFEngine at monitoring.  For example,
+CFEngine can automtically collect information about the number of socket-level
+connections made to the ftp server, but you might want more detailed
+statistics.  For example, you might want to track the volume of data sent
+and received, or the number of failed logins.  Here are a collection of
+monitoring promises for doing just that.
+
+   <p>Note that the ftp logs are maintained by syslog, so it is necessary to match
+only those lines which correspond to the appropriate service.  We also assume
+that the specific messages are sent to <samp><span class="file">/var/log/messages</span></samp>, while your
+configuration may specify otherwise.  Likewise, your operating systems's
+version of ftp may issue messages with a slightly different format than ours
+
+<pre class="verbatim">
+bundle monitor watch_ftp
+{
+vars:
+   "dir" slist => { "get", "put" };
+
+measurements:
+
+   "/var/log/messages"
+
+	handle => "ftp_bytes_${dir}",
+   stream_type => "file",
+     data_type => "int",
+   match_value => extract_log(".*ftpd\[.*", ".*${dir} .* = (\d+) bytes.*"),
+  history_type => "log",
+	action => sample_rate("0");
+
+   "/var/log/messages"
+
+	handle => "ftp_failed_login",
+   stream_type => "file",
+     data_type => "counter",
+   match_value => scan_log(".*ftpd\[.*", ".*FTP LOGIN FAILED.*"),
+  history_type => "log",
+	action => sample_rate("0");
+
+   "/var/log/messages"
+
+	handle => "ftp_failed_anonymous_login",
+   stream_type => "file",
+     data_type => "counter",
+   match_value => scan_log(".*ftpd\[.*", ".*ANONYMOUS FTP LOGIN REFUSED.*"),
+  history_type => "log",
+	action => sample_rate("0");
+
+}
+
+##########################################################
+
+body match_value scan_log(line)
+{
+select_line_matching => "$(line)";
+track_growing_file => "true";
+}
+
+body match_value extract_log(line, extract)
+{
+select_line_matching => "$(line)";
+extraction_regex => "$(extract)";
+track_growing_file => "true";
+}
+
+body action sample_rate(x)
+{
+ifelapsed => "$(x)";
+expireafter => "10";
+}
+</pre>
+
+<div class="node">
+<a name="DNS"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Email">Email</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#FTP">FTP</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-customization">Monitoring customization</a>
+
+</div>
+
+<h3 class="unnumberedsec">Scanning DNS logs for query statistics</h3>
+
+<pre class="sp">
+
+</pre>
+
+Another thing you might want to do is monitor the types of queries that your
+DNS server is being given.  One possible reason for this is to test for
+unusual behavior.  For example, suddenly seeing a surge in &lsquo;<samp><span class="samp">MX</span></samp>&rsquo; requests
+might indicate that your system is being targeted by spammers (or that one of
+your users is sending spam).  If you are thinking of converting to IPv6, you
+might want to compare the number of &lsquo;<samp><span class="samp">A</span></samp>&rsquo; requests to &lsquo;<samp><span class="samp">AAAA</span></samp>&rsquo; and
+&lsquo;<samp><span class="samp">A6</span></samp>&rsquo; requests to see how effective your IPv6 implementation is.
+
+   <p>Because DNS logs are directly maintained by &lsquo;<samp><span class="samp">bind</span></samp>&rsquo; or &lsquo;<samp><span class="samp">named</span></samp>&rsquo; (and
+do not go through syslog), the parsing can be simpler.  However, you <i>do</i>
+need to configure DNS to log query requests to the appropriate log file.  In
+our case, we use <samp><span class="file">/var/log/named/queries</span></samp>.
+
+<pre class="verbatim">
+bundle monitor watch_dns
+{
+vars:
+    "query_type" slist => { "A", "AAAA", "A6", "CNAME", "MX", "NS",
+                            "PTR", "SOA", "TXT", "SRV", "ANY" };
+measurements:
+    "/var/log/named/queries"
+        handle => "DNS_$(query_type)_counter",
+        stream_type => "file",
+        data_type => "counter",
+        match_value => scan_log(".* IN $(query_type).*"),
+        history_type => "log",
+        action => sample_rate("0");
+}
+
+##########################################################
+
+body match_value scan_log(line)
+{
+select_line_matching => "$(line)";
+track_growing_file => "true";
+}
+
+body action sample_rate(x)
+{
+ifelapsed => "$(x)";
+expireafter => "10";
+}
+</pre>
+
+<div class="node">
+<a name="Email"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Milter">Milter</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#DNS">DNS</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-customization">Monitoring customization</a>
+
+</div>
+
+<h3 class="unnumberedsec">Scanning syslog for email statistics</h3>
+
+<pre class="sp">
+
+</pre>
+
+Email is another syslog-based facility that you may want to use CFEngine to
+monitor.  There are a number of volumetric data that are of interest.  For
+example, the number of messages sent and received, the number of messages
+that have been deferred (a large number might indicate networking problems or
+spam bounces), and the number of spam messages that have been
+detected and removed by the assorted spam filters.
+
+   <p>The samples below assume that there is a separate logfile for email (called
+<samp><span class="file">/var/log/maillog</span></samp>) and that a few of the standard sendmail rulesets
+have been enabled (see
+&lsquo;<samp><span class="samp">http://www.sendmail.org/~ca/email/relayingdenied.html</span></samp>&rsquo; for details). 
+As with any syslog-generated file, you need to check for the appropriate
+service, and in this case we are lumping local messages (sent through
+&lsquo;<samp><span class="samp">sm-mta</span></samp>&rsquo;) and remote messages (sent through &lsquo;<samp><span class="samp">sendmail</span></samp>&rsquo;) into a
+single count.  Your mileage may of course vary.
+
+   <p>If you use one or more sendmail "milters", each of these will also output
+their own syslog messages, and you may choose to track the volume of
+rejections on a per-filter basis.
+
+<pre class="verbatim">
+bundle monitor watch_email
+{
+vars:
+    "sendmail" string => ".*(sendmail|sm-mta)\[.*";
+
+    "action" slist => { "Sent", "Deferred" };
+
+measurements:
+
+   "/var/log/maillog"
+
+         handle => "spam_rejected",
+    stream_type => "file",
+      data_type => "counter",
+                   # This matches 3 kinds of rulesets: check_mail,
+		   # check_rcpt, and check_relay
+    match_value => scan_log("$(sendmail)ruleset=check_(mail|rcpt|relay).*"),
+   history_type => "log",
+         action => sample_rate("0");
+
+   "/var/log/maillog"
+
+         handle => canonify("mail_$(action)",
+    stream_type => "file",
+      data_type => "counter",
+    match_value => scan_log("$(sendmail)stat=$(action) .*"),
+   history_type => "log",
+         action => sample_rate("0");
+
+}
+
+##########################################################
+
+body match_value scan_log(line)
+{
+select_line_matching => "$(line)";
+track_growing_file => "true";
+}
+
+body action sample_rate(x)
+{
+ifelapsed => "$(x)";
+expireafter => "10";
+}
+</pre>
+
+<div class="node">
+<a name="Milter"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Breakin">Breakin</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Email">Email</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-customization">Monitoring customization</a>
+
+</div>
+
+<h3 class="unnumberedsec">Scanning syslog for email milter failures</h3>
+
+<pre class="sp">
+
+</pre>
+
+Milters are relatively new in sendmail, and some have problems.  You can also
+use monitoring to detect certain types of failure modes.  For example, if a
+milter is running (that is, there is a process present) but it does not
+respond correctly, sendmail will log an entry like this in syslog (where
+&lsquo;<samp><span class="samp">xyzzy</span></samp>&rsquo; is the name of the milter in question):
+
+<pre class="verbatim">Milter (xyzzy): to error state
+</pre>
+
+   <p>A small number of these messages is no big deal, since sometimes the milter
+has temporary problems or simply encounters an email message that it finds
+confounding.  But a larger value of these messages usually indicates that the
+milter is in a broken state, and should be restarted.
+
+   <p>You can use &lsquo;<samp><span class="samp">cf-monitord</span></samp>&rsquo; to check for the number of these kinds of
+messages, and use the soft classes that it creates to change how
+&lsquo;<samp><span class="samp">cf-agent</span></samp>&rsquo; operates.  For example, here we will restart any milter
+which is showing a high number of failure-mode messages:
+
+<pre class="verbatim">bundle monitor watch_milter
+{
+vars:
+   "milter" slist => { "dcc", "bogom", "greylist" };
+
+measurements:
+
+   "/var/log/maillog"
+
+         handle => "${milter}_errors",
+    stream_type => "file",
+      data_type => "counter",
+    match_value => scan_log(".*Milter (${milter}): to error state"),
+   history_type => "log",
+         action => sample_rate("0");
+}
+
+bundle agent fix_milter
+{
+vars:
+    "m[dcc]" string      => "/var/dcc/libexec/start-dccm";
+    "m[bogom]" string    => "/usr/local/etc/rc.d/milter-bogom.sh restart";
+    "m[greylist]" string => "/usr/local/etc/rc.d/milter-greylist restart";
+
+commands:
+    "$(m[$(watch_milter.milter)])"
+	ifvarclass => "$(watch_milter.milter)_high";
+}
+</pre>
+
+<div class="node">
+<a name="Breakin"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Threshold-monitoring">Threshold monitoring</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Milter">Milter</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-customization">Monitoring customization</a>
+
+</div>
+
+<h3 class="unnumberedsec">Scanning syslog for breakin attempts</h3>
+
+<pre class="sp">
+
+</pre>
+
+A lot of script-kiddies will probe your site for vulnerabilities, using
+dictionaries of account/password combinations, looking for unguarded accounts
+or accouts with default passwords.  Most of these scans are harmless, because
+a well-maintained site will not use the default passwords that these hackers
+seek to exploit.
+
+   <p>However, knowing that you are being scanned is a good thing, and CFEngine can
+help you find that out.  Because &lsquo;<samp><span class="samp">sshd</span></samp>&rsquo; logs it's message through
+&lsquo;<samp><span class="samp">syslog</span></samp>&rsquo;, we again need to filter lines based on the service name.  On
+our system, authorization messages are routed to <samp><span class="file">/var/log/auth.log</span></samp>,
+and we would monitor it like this:
+
+<pre class="verbatim">bundle monitor watch_breakin_attempts
+{
+measurements:
+    "/var/log/auth.log"
+	 # This is likely what you'll see when a script kiddie probes
+	 # your system
+
+         handle => "ssh_username_probe",
+    stream_type => "file",
+      data_type => "counter",
+    match_value => scan_log(".*sshd\[.*Invalid user.*"),
+   history_type => "log",
+         action => sample_rate("0");
+
+    "/var/log/auth.log"
+	 # As scary as this looks, it may just be because someone's DNS
+	 # records are misconfigured - but you should double check!
+
+         handle => "ssh_reverse_map_problem",
+    stream_type => "file",
+      data_type => "counter",
+    match_value => scan_log(".*sshd\[.*POSSIBLE BREAK-IN ATTEMPT!.*"),
+   history_type => "log",
+         action => sample_rate("0");
+
+    "/var/log/auth.log"
+	 # Someone is trying to log in to an account that is locked
+	 # out in the sshd config file
+
+         handle => "ssh_denygroups",
+    stream_type => "file",
+      data_type => "counter",
+    match_value => scan_log(".*sshd\[.*group is listed in DenyGroups.*"),
+   history_type => "log",
+         action => sample_rate("0");
+
+    "/var/log/auth.log"
+	 # This is more a configuration error in /etc/passwd than a
+	 # breakin attempt...
+
+         handle => "ssh_no_shell",
+    stream_type => "file",
+      data_type => "counter",
+    match_value => scan_log(".*sshd\[.*because shell \S+ does not exist.*"),
+   history_type => "log",
+         action => sample_rate("0");
+
+    "/var/log/auth.log"
+	 # These errors usually indicate a problem authenticating to your
+	 # IMAP or POP3 server
+
+         handle => "ssh_pam_error",
+    stream_type => "file",
+      data_type => "counter",
+    match_value => scan_log(".*sshd\[.*error: PAM: authentication error.*"),
+   history_type => "log",
+         action => sample_rate("0");
+
+    "/var/log/auth.log"
+	 # These errors usually indicate that you haven't rebuilt your
+	 # database after changing /etc/login.conf - maybe you should
+	 # include a rule to do this command: cap_mkdb /etc/login.conf
+
+         handle => "ssh_pam_error",
+    stream_type => "file",
+      data_type => "counter",
+    match_value => scan_log(".*sshd\[.*login_getclass: unknown class.*"),
+   history_type => "log",
+         action => sample_rate("0");
+}
+
+</pre>
+
+   <p>See the CFEngine Nova documentation for more possibilities of measurement
+promises.
+
+<div class="node">
+<a name="Threshold-monitoring"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Summary-Monitoring">Summary Monitoring</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Breakin">Breakin</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-customization">Monitoring customization</a>
+
+</div>
+
+<h3 class="unnumberedsec">Threshold monitoring</h3>
+
+<pre class="verbatim">vars:
+
+ "probes" slist => { "www", "smtp", "ssh" };
+
+classes:
+
+ "$(probes)_threshold" expression => isgreaterthan("$(mon.$(probes))","50");
+
+reports:
+
+  "Help $(probes)!" ifvarclass => "$(probes)_threshold";
+
+</pre>
+
+<div class="node">
+<a name="Summary-Monitoring"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Threshold-monitoring">Threshold monitoring</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Monitoring-customization">Monitoring customization</a>
+
+</div>
+
+<h3 class="unnumberedsec">Summary Monitoring</h3>
+
+<p>There are endless possibilities for monitoring with CFEngine
+Nova. This document has suggested a few.
+
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">Measurement and Monitoring</a>
+<li><a name="toc_Monitoring-introduction" href="#Monitoring-introduction">1 Monitoring introduction</a>
+<ul>
+<li><a href="#What-is-monitoring_003f">What is monitoring?</a>
+<li><a href="#What-are-the-goals-of-monitoring_003f">What are the goals of monitoring?</a>
+<li><a href="#What-does-monitoring-software-do_003f">What does monitoring software do?</a>
+<li><a href="#Monitoring-in-CFEngine">Monitoring in CFEngine</a>
+<li><a href="#Visualization-of-monitoring-in-CFEngine">Visualization of monitoring in CFEngine</a>
+<li><a href="#Standard-measured-variables">Standard measured variables</a>
+<li><a href="#Estimate-of-the-level-of-normality">Estimate of the level of normality</a>
+<li><a href="#Variables">Variables</a>
+<li><a href="#Entropy">Entropy</a>
+<li><a href="#Persistent-classes-for-alert-conditions">Persistent classes for alert conditions</a>
+</li></ul>
+<li><a name="toc_Monitoring-customization" href="#Monitoring-customization">2 Monitoring customization</a>
+<ul>
+<li><a href="#What-are-measurements_003f">What are measurements?</a>
+<li><a href="#measurements-promises"><code>measurements</code> promises</a>
+<li><a href="#Scanning-log-files-for-patterns">Scanning log files for patterns</a>
+<li><a href="#FTP">Scanning syslog for FTP statistics</a>
+<li><a href="#DNS">Scanning DNS logs for query statistics</a>
+<li><a href="#Email">Scanning syslog for email statistics</a>
+<li><a href="#Milter">Scanning syslog for email milter failures</a>
+<li><a href="#Breakin">Scanning syslog for breakin attempts</a>
+<li><a href="#Threshold-monitoring">Threshold monitoring</a>
+<li><a href="#Summary-Monitoring">Summary Monitoring</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://
+ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-
+analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.10  Documentation - Networking</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.10/assets/global-9291732ba4137970d6f84f199dc9b48d.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Networking";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/" selected>Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:v9zopcogc1m" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a><ul class="level2"><li><a href="guide-introduction-architecture-design.html">CFEngine Architecture and Design</a></li><li><a href="guide-introduction-directory-structure.html">CFEngine Directory Structure</a></li><li><a class="active" href="guide-introduction-networking.html">Networking</a></li></ul></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-design-center.html">Design Center Overview</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-introduction.html">Introduction and System Overview</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Networking
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Starting <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> sets up a line of communication between
+hosts. This daemon authenticates requests from the network and processes them
+according to rules specified in the
+<a href="reference-components-cf-serverd.html#control-promises" title="cf-serverd - Control Promises"><code>server control</code></a> body and server bundles
+containing <a href="reference-promise-types-access.html" title="access"><code>access</code></a> promises.</p>
+
+<p>The server can allow the network to access files or to execute CFEngine:</p>
+
+<ul>
+<li><p>The only contact <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> makes to the server is via remote copy
+requests. It does not and cannot grant any access to a system from the
+network. It is only able to request access to files on the remote server.</p></li>
+<li><p><a href="reference-components-cf-runagent.html" title="cf-runagent"><code>cf-runagent</code></a> can be used to run <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> on a number
+of remote hosts.</p></li>
+</ul>
+
+<p>Unlike other approaches to automation, CFEngine does not rely on SSH key
+authentication and configuring trust, the communication between hosts is very
+structured and also able to react to availability issues. This means that you
+don&#39;t have to arrange login credentials to get CFEngine to work. If large
+portions of your network stop working, then CFEngine on each individual host
+understands how to keep on running and delivering promises.</p>
+
+<p>In particular, if the network is not working,
+CFEngine agents skip downloading new promises and continue
+with what they already have. CFEngine was specifically designed to be resilient
+against connectivity issues network failure may be in question. CFEngine is
+fault tolerant and opportunistic.</p>
+<h2 id="connecting-to-server">Connecting to server</h2>
+<p>In order to connect to the CFEngine server you need:</p>
+
+<ul>
+<li><strong>A public-private key pair</strong>. It is automatically generated during package
+installation or during bootstrap. To manually create a key pair,
+run <a href="reference-components-cf-key.html" title="cf-key"><code>cf-key</code></a>.</li>
+<li><strong>Network connectivity</strong> with an IPv4 or IPv6 address.</li>
+<li><strong>Permission to connect</strong> to the server.
+The <a href="reference-components-cf-serverd.html#control-promises" title="cf-serverd - Control Promises"><code>server control</code></a> body must grant access
+to your computer and public key by name or IP address, by listing it in
+the appropriate access lists (see below).</li>
+<li><strong>Mutual key trust</strong>.
+Your public key must be trusted by the server, and you must trust the server&#39;s
+public key. The first part is established by having the
+<a href="reference-components-cf-serverd.html#trustkeysfrom" title="cf-serverd - trustkeysfrom"><code>trustkeysfrom</code></a> setting open on the server for the first
+connection of the agent. It should be closed later to avoid trusting new agents.
+The second part is established by bootstrapping the agent to the hub, or by
+executing a <a href="reference-promise-types-files.html#copy_from" title="files - copy_from"><code>copy_from</code></a> files promise using <code>trustkey=&gt;&quot;true&quot;</code>.</li>
+<li><strong>Permission to access something</strong>.
+Your host name or IP address must be mentioned in an <a href="reference-promise-types-access.html" title="access"><code>access</code></a> promise
+inside a server bundle, made by the file that you are trying to access.</li>
+</ul>
+
+<p>If all of the above criteria are met, connection will be established and data
+will be transferred between client and server. The client can only send short
+requests, following the CFEngine protocol. The server can return data in a
+variety of forms, usually files, but sometimes console output.</p>
+<h2 id="bootstrapping">Bootstrapping</h2>
+<p><a href="guide-installation-and-configuration-general-installation.html#bootstrap" title="General Installation - Bootstrap ">Bootstrap</a> is the manual first run of cf-agent that establishes
+communication with the policy server.
+Bootstrapping executes the <code>failsafe.cf</code> policy that connects to
+the server, establishes trust to the server&#39;s key, and that starts the
+CFEngine daemon processes <a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a>, <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> and <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a>.
+The host that other hosts are bootstrapped to
+automatically assumes the role of policy server.</p>
+
+<p>You should bootstrap the policy server first to itself:</p>
+<div class="highlight"><pre><code class="text">$ /var/cfengine/bin/cf-agent --bootstrap [public IP of localhost]
+</code></pre>
+</div>
+
+<p>Then execute the same step (using the exact same IP)
+on all hosts that should pull policy from that server.
+CFEngine will create keys if there are none present, and exchange
+those to establish trust.</p>
+
+<p>CFEngine will output diagnostic information upon bootstrap. In case of error,
+investigate the <a href="reference-promise-types-access.html" title="access"><code>access</code></a> promises the server is making (run <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> in
+verbose mode on the policy hub for more informative messages). Note that
+by default, CFEngine&#39;s server daemon <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> trusts incoming connections
+from hosts within the same <code>/16</code> subnet.</p>
+
+<p>After a host has been bootstrapped, the text file <code>policy_server.dat</code> in
+the CFEngine installation contains the IP address of the policy server.</p>
+<h2 id="key-exchange">Key exchange</h2>
+<p>The key exchange model used by CFEngine is based on that used by OpenSSH. It
+is a peer to peer exchange model, not a central certificate authority model.
+This means that there are no scalability bottlenecks (at least by design,
+though you might introduce your own if you go for an overly centralized
+architecture).</p>
+
+<p>Key exchange is handled automatically by CFEngine and all you need to do is to
+decide which keys to trust. The server (<a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a>) trusts new keys only
+from addresses in <a href="reference-components-cf-serverd.html#trustkeysfrom" title="cf-serverd - trustkeysfrom"><code>trustkeysfrom</code></a>. Once a key has been
+accepted you should close down <a href="reference-components-cf-serverd.html#trustkeysfrom" title="cf-serverd - trustkeysfrom"><code>trustkeysfrom</code></a> list. Then, even if a malicious peer
+is spoofing an allowed IP address, its unknown key will be denied.</p>
+
+<p>Once you have arranged for the right to connect to the server, you must decide
+which hosts will have access to which files. This is done with <a href="reference-promise-types-access.html" title="access"><code>access</code></a> promises.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">server</span> <span class="nf">access_rules</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kd">access</span><span class="p">:</span>
+    <span class="s">&quot;/path/file&quot;</span>
+      <span class="kr">admit</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="s">&quot;127.0.0.2&quot;</span><span class="p">,</span> <span class="s">&quot;127.0.0.3&quot;</span> <span class="p">},</span>
+      <span class="kr">deny</span>    <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;192.168.0.0/8&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>On the client side, i.e. <a href="reference-components-cf-runagent.html" title="cf-runagent"><code>cf-runagent</code></a> and <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>, there are three issues:</p>
+
+<ol>
+<li> Choosing which server to connect to.</li>
+<li> Trusting the key of any previously unknown servers</li>
+<li> Choosing whether data transfers should be encrypted (with
+<a href="reference-promise-types-files.html#encrypt" title="files - encrypt"><code>encrypt</code></a>) - not applicable if you are using new <a href="reference-components.html#protocol_version" title="Components and Common Control - protocol_version"><code>protocol_version</code></a>.</li>
+</ol>
+
+<p>There are two ways of managing trust of server keys by a client. One is an
+automated option, setting the option <a href="reference-promise-types-files.html#trustkey" title="files - trustkey"><code>trustkey</code></a> in a <a href="reference-promise-types-files.html#copy_from" title="files - copy_from"><code>copy_from</code></a> files promise, e.g.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">copy_from</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="c"># .. other settings ..</span>
+  <span class="kr">trustkey</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Another way is to run <a href="reference-components-cf-runagent.html" title="cf-runagent"><code>cf-runagent</code></a> in interactive mode. When you run
+<a href="reference-components-cf-runagent.html" title="cf-runagent"><code>cf-runagent</code></a>, unknown server keys are offered to you interactively (as with
+<code>ssh</code>) for you to accept or deny manually:</p>
+<div class="highlight"><pre><code class="text"> $ WARNING - You do not have a public key from host ubik.iu.hio.no = 128.39.74.25
+ $ Do you want to accept one on trust? (yes/no)
+ --&gt;
+</code></pre>
+</div>
+
+<p>Once public keys have been exchanged from client to server and from server to
+client, the issue of trust is solved according to public key authentication
+schemes. You only need to worry about trust when one side of a connection has
+never seen the other side before.</p>
+<h3 id="time-windows-races">Time windows (races)</h3>
+<p>All security is based on a moment of trust that is granted by a user at some
+point in time – and is assumed thereafter (once given, hard to rescind).
+Cryptographic key methods only remove the need for a repeat of the trust
+decision. After the first exchange, trust is no longer needed, because the
+keys allow identity to be actually verified.</p>
+
+<p>Even if you leave the trust options switched on, you are not blindly trusting
+the hosts you know about. The only potential insecurity lies in any new keys
+that you have not thought about. If you use wildcards or IP prefixes in the
+trust rules, then other hosts might be able to spoof their way in on trust
+because you have left open a hole for them to exploit. That is why it is
+recommended to set the system to the state of zero trust
+immediately after key transfer, by commenting or emptying out the trust options
+(<a href="reference-components-cf-serverd.html#trustkeysfrom" title="cf-serverd - trustkeysfrom"><code>trustkeysfrom</code></a> on the server).</p>
+
+<p>It is possible, though somewhat laborious, to transfer the keys out of band,
+by copying <code>/var/cfengine/ppkeys/localhost.pub</code> to
+<code>/var/cfengine/ppkeys/user-aaa.bbb.ccc.mmm</code> (assuming IPv4) on another host.
+e.g.</p>
+<div class="highlight"><pre><code class="text">     localhost.pub -&gt; root-128.39.74.71.pub
+</code></pre>
+</div>
+
+<!--**TODO: update with new key file name format** -->
+<h3 id="other-users-than-root">Other users than root</h3>
+<p>CFEngine normally runs as user &quot;root&quot; (except on Windows which does
+not normally have a root user), i.e. a privileged administrator. If
+other users are to be granted access to the system, they must also
+generate a key and go through the same process. In addition, the
+users must be added to the server configuration file.</p>
+<h2 id="encryption">Encryption</h2>
+<p>CFEngine has 2 communication protocols. <code>classic</code> or <code>1</code> and <code>2</code> or <code>latest</code>.
+Each protocol provides different encryption options for keeping file contents
+private during transfer.</p>
+
+<p>However, the main role of encryption in configuration management is for
+authentication. Secrets should not be transferred through policy, encrypted or
+not. Policy files should be considered public, and any leakage should not
+reveal secret information.</p>
+
+<p><strong>Note:</strong> Connections from the cf-agent are cached as described in the
+documentation for body <a href="reference-promise-types-files.html#copy_from" title="files - copy_from"><code>copy_from</code></a>.</p>
+<h3 id="protocol-classic">Protocol Classic</h3>
+<p>Encryption for Enterprise is symmetric AES 256 bit in CBC mode, using
+a session key exchanged during the RSA handshake.</p>
+
+<p>In core/community as <strong>outgoing</strong> outlined in the
+<a href="reference-promise-types-files.html#encrypt" title="files - encrypt">body copy_from <code>encrypt</code></a> documentation the initial
+connection is encrypted using the public/private keys for the client
+and server hosts. After the initial connection is established
+subsequent connections and data transfer is encrypted by a randomly
+generated Blowfish key that is refreshed each session.</p>
+
+<p>With the classic protocol cf-serverd has the ability to enforce that a
+file transfer be encrypted by setting the
+<a href="reference-promise-types-access.html#ifencrypted" title="access - ifencrypted"><code>ifencrypted</code> access attribute</a>. When ACLs that
+require encryption have unencrypted access attempts cf-serverd logs an
+error message indicating the file requires encryption. Access to files
+that cf-serverd requires to be encrypted can be logged by setting the
+<a href="reference-components-cf-serverd.html#logencryptedtransfers" title="cf-serverd - logencryptedtransfers">body server control <code>logencryptedtransfers</code> attribute</a>.</p>
+<h3 id="protocol-2">Protocol 2</h3>
+<p>3.6 introduced a new protocol option for communication with
+cf-serverd. <a href="reference-components.html#protocol_version" title="Components and Common Control - protocol_version">Protocol 2</a>
+is the default in 3.7+ and uses a TLS session for encryption.</p>
+
+<p><strong>Note:</strong> When protocol 2 is in use legacy encryption attributes are <strong>noop</strong>.</p>
+
+<p>The following attributes are affected:</p>
+
+<ul>
+<li><a href="reference-promise-types-files.html#encrypt" title="files - encrypt">encrypt`</a> in copy from bodies</li>
+<li><a href="reference-promise-types-access.html#ifencrypted" title="access - ifencrypted"><code>ifencrypted</code></a> in in access promises</li>
+<li><a href="reference-components-cf-serverd.html#logencryptedtransfers" title="cf-serverd - logencryptedtransfers"><code>logencryptedtransfers</code></a> in body common
+control</li>
+</ul>
+
+<p>The specific encryption algorithm used depends on the cipher
+negotiated between the client and the server. You can control which
+ciphers are allowed by cf-serverd for <strong>incoming</strong> connections by
+setting the
+<a href="reference-components-cf-serverd.html#allowciphers" title="cf-serverd - allowciphers">body server control <code>allowciphers</code> attribute</a>. Controlling
+which ciphers are allowed to be used in <strong>outgoing</strong> connections is
+done by setting
+<a href="reference-components.html#tls_ciphers" title="Components and Common Control - tls_ciphers">body common control <code>tls_ciphers</code></a>.</p>
+
+<p>Additionally the minimum version of TLS required for <strong>incoming</strong>
+connections can be set in
+<a href="reference-components-cf-serverd.html#allowtlsversion" title="cf-serverd - allowtlsversion">body server control <code>allowtlsversion</code></a>
+and the minimum version of TLS required for <strong>outgoing</strong> connections
+can be set in
+<a href="reference-components.html#tls_min_version" title="Components and Common Control - tls_min_version">body common control <code>tls_min_version</code></a>.</p>
+
+<p>There are debug and verbose level logs produced by cf-agent to
+indicate when TLS is in use.</p>
+
+<p>The following was captured by running the agent update policy in debug
+mode.</p>
+
+<p><code>/var/cfenigne/bin/cf-agent -Kdf update.cf</code></p>
+<div class="highlight"><pre><code class="text">verbose: Connected to host 192.168.33.2 address 192.168.33.2 port 5308
+  debug: TLSVerifyCallback: no ssl-&gt;peer_cert
+  debug: TLSVerifyCallback: no conn_info-&gt;key
+  debug: This must be the initial TLS handshake, accepting
+verbose: TLS version negotiated:  TLSv1.2; Cipher: AES256-GCM-SHA384,TLSv1/SSLv3
+verbose: TLS session established, checking trust...
+verbose: Received public key compares equal to the one we have stored
+verbose: Server is TRUSTED, received key &#39;SHA=5d20c01e4230aa53863eb36686eaa882094cdbddf53545616dfd588f00cc0659&#39; MATCHES stored one.
+  debug: TLSRecvLines(): CFE_v2 cf-serverd 3.7.1.
+  debug: TLSRecvLines(): OK WELCOME USERNAME=root
+</code></pre>
+</div>
+
+<p>cf-serverd emits verbose and debug log messages indicating when TLS is in use.</p>
+
+<p>The following was captured by starting cf-serverd in the foreground
+with debug mode.</p>
+
+<p><code>/var/cfenigne/bin/cf-serverd -Fd</code></p>
+<div class="highlight"><pre><code class="text">verbose: New connection (from 192.168.33.3, sd 7), spawning new thread...
+verbose: CollectCallHasPending: false
+  debug: Waiting at incoming select...
+   info: 192.168.33.3&gt; Accepting connection
+verbose: 192.168.33.3&gt; Setting socket timeout to 600 seconds.
+verbose: 192.168.33.3&gt; Peeked nothing important in TCP stream, considering the protocol as TLS
+  debug: 192.168.33.3&gt; Peeked data: ....2......ak.
+  debug: 192.168.33.3&gt; TLSVerifyCallback: no ssl-&gt;peer_cert
+  debug: 192.168.33.3&gt; TLSVerifyCallback: no conn_info-&gt;key
+  debug: 192.168.33.3&gt; This must be the initial TLS handshake, accepting
+verbose: 192.168.33.3&gt; TLS version negotiated:  TLSv1.2; Cipher: AES256-GCM-SHA384,TLSv1/SSLv3
+verbose: 192.168.33.3&gt; TLS session established, checking trust...
+  debug: 192.168.33.3&gt; TLSRecvLines(): CFE_v2 cf-agent 3.7.1.
+  debug: 192.168.33.3&gt; TLSRecvLines(): IDENTITY USERNAME=root.
+verbose: 192.168.33.3&gt; Setting IDENTITY: USERNAME=root
+verbose: 192.168.33.3&gt; Received public key compares equal to the one we have stored
+verbose: 192.168.33.3&gt; SHA=4f25279831eeaf579d2e3451345854a93fdefc856ad741bd59515b859fb84dea: Client is TRUSTED, public key MATCHES stored one.
+</code></pre>
+</div>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>When setting up <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a>, you might see the error message</p>
+<div class="highlight"><pre><code class="text">  Unspecified server refusal
+</code></pre>
+</div>
+
+<p>This means that <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> is unable or is unwilling to authenticate the
+connection from your client machine. The message is deliberately non-specific
+so that anyone attempting to attack or exploit the service will not be given
+information which might be useful to them.</p>
+
+<!-- **TODO: how/where to check the server log?** -->
+
+<p>There is a simple checklist for curing this problem:</p>
+
+<ol>
+<li>Make sure that you have granted access to the client&#39;s address in the
+<a href="reference-components-cf-serverd.html#control-promises" title="cf-serverd - Control Promises"><code>server control</code></a> body.</li>
+<li>Make sure the connecting client is granted access to the requested resources
+(files usually) in the <code>access_rules</code> promise bundle.</li>
+<li>See the verbose log of the server for the exact error message, since the
+client always gets the &quot;Unspecified server refusal&quot; reply from the server.
+To run the server in verbose, kill cf-serverd on the policy hub and run:
+$ cf-serverd -v
+and then manually run <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> on the client.</li>
+<li>In the unlikely case that you still get no indication of the denial, try
+increasing the agent run verbosity. <code>cf-agent -I</code> for info-level messages
+or even <code>cf-agent -v</code> for verbose.</li>
+</ol>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-troubleshooting.html">troubleshooting</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-connectivity.html">connectivity</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-network.html">network</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-server.html">server</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-access.html">access</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-remote.html">remote</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-keys.html">keys</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-encryption.html">encryption</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-security.html">security</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 17 March 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/introduction/networking.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/ae7435d3d24d30077bfbf18438f2444c629f8c69" target="_blank">ae7435d3d24d30077bfbf18438f2444c629f8c69</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.10/assets/footer-4c28dbe187e7b2a3c1504ff564f1b523.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

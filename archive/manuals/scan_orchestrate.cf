@@ -1,0 +1,92 @@
+
+bundle knowledge st_orchestrate
+
+{
+topics:
+
+"st-orchestrate";
+Orchestration::
+    "Distributing Ordering between hosts with CFEngine Nova" ;
+Orchestration::
+    "Overriding order" ;
+Orchestration::
+    "Bundle ordering" ;
+Orchestration::
+    "Ordering operations in CFEngine" ;
+Orchestration::
+    "Bulk operations are handled by repeating patterns over lists" ;
+Orchestration::
+    "Black, grey and white box encapsulation in CFEngine" ;
+Orchestration::
+    "Hiding details" ;
+Orchestration::
+    "High level services in CFEngine" ;
+Orchestration::
+    "Is CFEngine patch-oriented or package-oriented?" ;
+Orchestration::
+    "Levels of policy abstraction" ;
+Orchestration::
+    "How does CFEngine deal with modularity and orchestration?" ;
+Orchestration::
+    "What is orchestration?" ;
+Orchestration::
+    "What is modularity?" ;
+Special_Topics_Guide::
+    "Orchestration"  association => a("discussed in","Orchestration","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-orchestrate.html"
+  represents => { "Modularizing and Orchestrating System Policy" };
+Orchestration::
+ "/docs/st-orchestrate.html#Top"
+  represents => { "Text section" };
+What_is_modularity_::
+ "/docs/st-orchestrate.html#What-is-modularity_003f"
+  represents => { "Text section" };
+What_is_orchestration_::
+ "/docs/st-orchestrate.html#What-is-orchestration_003f"
+  represents => { "Text section" };
+How_does_CFEngine_deal_with_modularity_and_orchestration_::
+ "/docs/st-orchestrate.html#How-does-CFEngine-deal-with-modularity-and-orchestration_003f"
+  represents => { "Text section" };
+Levels_of_policy_abstraction::
+ "/docs/st-orchestrate.html#Levels-of-policy-abstraction"
+  represents => { "Text section" };
+Levels_of_policy_abstraction::
+ "/docs/st-orchestrate.html#Levels-of-policy-abstraction"
+  represents => { "code example" };
+Levels_of_policy_abstraction::
+ "/docs/st-orchestrate.html#Levels-of-policy-abstraction"
+  represents => { "code example" };
+Is_CFEngine_patch_oriented_or_package_oriented_::
+ "/docs/st-orchestrate.html#Is-CFEngine-patch-or-package-oriented_003f"
+  represents => { "Text section" };
+High_level_services_in_CFEngine::
+ "/docs/st-orchestrate.html#High-level-services-in-CFEngine"
+  represents => { "Text section" };
+Hiding_details::
+ "/docs/st-orchestrate.html#Hiding-details"
+  represents => { "Text section" };
+Black__grey_and_white_box_encapsulation_in_CFEngine::
+ "/docs/st-orchestrate.html#Black"
+  represents => { "Text section" };
+Bulk_operations_are_handled_by_repeating_patterns_over_lists::
+ "/docs/st-orchestrate.html#Bulk-operations-are-handled-by-repeating-patterns-over-lists"
+  represents => { "Text section" };
+Ordering_operations_in_CFEngine::
+ "/docs/st-orchestrate.html#Ordering-operations-in-CFEngine"
+  represents => { "Text section" };
+Bundle_ordering::
+ "/docs/st-orchestrate.html#Bundle-ordering"
+  represents => { "Text section" };
+Overriding_order::
+ "/docs/st-orchestrate.html#Overriding-order"
+  represents => { "Text section" };
+Distributing_Ordering_between_hosts_with_CFEngine_Nova::
+ "/docs/st-orchestrate.html#Distributing-Ordering-between-hosts-with-CFEngine-Nova"
+  represents => { "Text section" };
+}
+

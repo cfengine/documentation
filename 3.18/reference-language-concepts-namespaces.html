@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.18  Documentation - Namespaces</title>
+        <link rel="icon" type="image/svg+xml" href="./media/images/favicon.svg">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-language-concepts-namespaces.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+        <link href='assets/global-337446952f2ea3d590f5c3e3687cd5f0.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Namespaces";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.24/">Version 3.24 (LTS)</option>
+<option value="/docs/3.23/">Version 3.23 (EOL non-LTS)</option>
+<option value="/docs/3.22/">Version 3.22 (non-LTS)</option>
+<option value="/docs/3.21/">Version 3.21 (LTS)</option>
+<option value="/docs/3.20/">Version 3.20 (EOL non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/" selected>Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (EOL LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="c5f68dd2aab4228c4" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components</a></li><li><a href="reference-promise-types.html">Promise Types</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a><ul class="level2"><li><a href="reference-language-concepts-bundles.html">Bundles</a></li><li><a href="reference-language-concepts-bodies.html">Bodies</a></li><li><a href="reference-language-concepts-promises.html">Promises</a></li><li><a href="reference-language-concepts-normal-ordering.html">Normal Ordering</a></li><li><a href="reference-language-concepts-classes.html">Classes and Decisions</a></li><li><a href="reference-language-concepts-variables.html">Variables</a></li><li><a href="reference-language-concepts-augments.html">Augments</a></li><li><a href="reference-language-concepts-loops.html">Loops</a></li><li><a href="reference-language-concepts-pattern-matching-and-referencing.html">Pattern Matching and Referencing</a></li><li><a class="active" href="reference-language-concepts-namespaces.html">Namespaces</a></li><li><a href="reference-language-concepts-modules.html">Modules</a></li></ul></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-language-concepts.html">Language Concepts</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Namespaces
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>By default all promises are made in the <code>default</code> namespace. Specifying a namespace
+places the bundle or body in a different namespace to allow re-use of common
+names. Using namespaces makes it easier to share and consume policy from other
+authors.</p>
+
+<p>Like bundle names and classes, namespaces may only contain alphanumeric and
+underscore characters (<code>a-zA-Z0-9_</code>).</p>
+<h2 id="declaration">Declaration</h2>
+<p>Namespaces are declared with <a href="reference-components-file_control_promises.html#namespace" title="file control - namespace"><code>body file control</code></a>. A
+namespace applies within a single file to all subsequently defined bodies and bundles
+following the namespace declaration until a different namespace has been
+declared or until the end of the file.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">__main__</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Main in my_namespace namespace&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="kd">my_namespace</span><span class="p">:</span><span class="nf">main</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;Main in your_namespace namespace&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="kd">your_namespace</span><span class="p">:</span><span class="nf">main</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;my_bundle in default namespace&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">my_bundle</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Inside </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">body</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="kr">namespace</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;my_namespace&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">main</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Inside </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">body</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kr">namespace</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;your_namespace&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">main</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Inside </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">body</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kr">namespace</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;default&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">my_bundle</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Inside </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text"><span></span>R: Inside my_namespace:main
+R: Inside your_namespace:main
+R: Inside default:my_bundle
+R: Inside default:main
+</code></pre>
+</div>
+
+<p>This policy can be found in
+<code>/var/cfengine/share/doc/examples/namespace_declaration.cf</code>
+and downloaded directly from
+<a href="https://raw.github.com/cfengine/core/master/examples/namespace_declaration.cf" target="_blank">github</a>.</p>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li>Multiple namespaces can be declared within the same file</li>
+<li>The same namespace can be declared in multiple files</li>
+<li>The same namespace can be declared in the same file multiple times</li>
+</ul>
+<h2 id="methods-usebundle">Methods|usebundle</h2>
+<p>Methods promises assume you are referring to a bundle in the same namespace as
+the promiser. To refer to a bundle in another namespace you <em>must</em> specify the
+namespace by prefixing the bundle name with the namespace followed by a colon
+(<code>:</code>).</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">__main__</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="c"># Call the bundle named main within the example_space namespace.</span>
+<span class="w">      </span><span class="s">&quot;example_space:main&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">body</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kr">namespace</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;example_space&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">main</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="c"># Call the bundle &#39;my_bundle&#39; within the current namespace</span>
+<span class="w">      </span><span class="s">&quot;When not specified, we assume you are refering to a bundle or body within the same namespace&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">my_bundle</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Called &#39;my_bundle&#39; from </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> (the same namespace).&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">      </span><span class="c"># Call the bundle &#39;my_bundle&#39; from the &#39;example_space&#39; namespace</span>
+<span class="w">      </span><span class="s">&quot;When explicitly specified, the policy reader has less congnitive burden&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="kd">example_space</span><span class="p">:</span><span class="nf">my_bundle</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Called &#39;example_space:my_bundle&#39; </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> (the same namespace).&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">my_bundle</span><span class="p">(</span><span class="nv">string</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;In </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">handle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(string)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;</span><span class="si">$(string)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text"><span></span>R: In example_space:my_bundle
+R: Called &#39;my_bundle&#39; from example_space:main (the same namespace).
+R: In example_space:my_bundle
+R: Called &#39;example_space:my_bundle&#39; example_space:main (the same namespace).
+</code></pre>
+</div>
+
+<p>This policy can be found in
+<code>/var/cfengine/share/doc/examples/namespace_methods-usebundle.cf</code>
+and downloaded directly from
+<a href="https://raw.github.com/cfengine/core/master/examples/namespace_methods-usebundle.cf" target="_blank">github</a>.</p>
+<h2 id="bodies">Bodies</h2>
+<p>Bodies are assumed to be within the same namespace as the promiser. To use a body from another namespace the namespace must be specified by prefixing the body name with the namespace followed by a colon (<code>:</code>).</p>
+
+<p>A common mistake is forgetting to specify <code>default:</code> when using bodies from the standard library which resides in the <code>default</code> namespace.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">__main__</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;example_space:main&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">body</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kr">namespace</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;example_space&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">main</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="c"># Use the &#39;first_line&#39; printfile body from the current namespace</span>
+<span class="w">      </span><span class="s">&quot;Specifying a body without explict namespace assumes the same namespace.</span><span class="si">$(const.n)</span><span class="s">Show me the first 1 line of this file&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">printfile</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">first_line</span><span class="p">(</span><span class="w"> </span><span class="err">$</span><span class="p">(</span><span class="nf">this</span><span class="err">.</span><span class="nf">promise_filename</span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">      </span><span class="c"># Use the &#39;first_two_lines&#39; printfile body from the &#39;default&#39; namespace</span>
+<span class="w">      </span><span class="s">&quot;Forgetting to prefix bodies with &#39;default:&#39; is a common mistake when using the standard library.</span><span class="si">$(const.n)</span><span class="s">Show me the first 2 line of this file&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">printfile</span><span class="w"> </span><span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">first_two_lines</span><span class="p">(</span><span class="w"> </span><span class="err">$</span><span class="p">(</span><span class="nf">this</span><span class="err">.</span><span class="nf">promise_filename</span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">body</span><span class="w"> </span><span class="k">printfile</span><span class="w"> </span><span class="nf">first_line</span><span class="p">(</span><span class="nv">file</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kr">file_to_print</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(file)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">number_of_lines</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;1&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">body</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kr">namespace</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;default&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">body</span><span class="w"> </span><span class="k">printfile</span><span class="w"> </span><span class="nf">first_two_lines</span><span class="p">(</span><span class="nv">file</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kr">file_to_print</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(file)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">number_of_lines</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;2&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text"><span></span>R: Specifying a body without explict namespace assumes the same namespace.
+Show me the first 1 line of this file
+R: bundle agent __main__
+R: Forgetting to prefix bodies with &#39;default:&#39; is a common mistake when using the standard library.
+Show me the first 2 line of this file
+R: bundle agent __main__
+R: {
+</code></pre>
+</div>
+
+<p>This policy can be found in
+<code>/var/cfengine/share/doc/examples/namespace_bodies.cf</code>
+and downloaded directly from
+<a href="https://raw.github.com/cfengine/core/master/examples/namespace_bodies.cf" target="_blank">github</a>.</p>
+<h2 id="variables">Variables</h2>
+<p>Variables (except for Special Variables) are assumed to be within the same scope
+as the promiser but can also be referenced fully qualified with the namespace.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">__main__</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="kd">methods</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example:demo&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">body</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kr">namespace</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;example&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">demo</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">color</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;#f5821f&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Unqualified: The color is </span><span class="si">$(color)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="c"># ENT-8817 &quot;Bundle-qualified: The color is $(demo.color)&quot;;</span>
+<span class="w">      </span><span class="s">&quot;Fully-qualified: The color is </span><span class="si">$(example:demo.color)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text"><span></span>R: Unqualified: The color is #f5821f
+R: Fully-qualified: The color is #f5821f
+</code></pre>
+</div>
+
+<p>This policy can be found in
+<code>/var/cfengine/share/doc/examples/namespace_variable_references.cf</code>
+and downloaded directly from
+<a href="https://raw.github.com/cfengine/core/master/examples/namespace_variable_references.cf" target="_blank">github</a>.</p>
+
+<p><a href="reference-special-variables.html" title="Special Variables">Special variables</a> are always accessible without a namespace
+  prefix. For example, <a href="reference-special-variables-this.html" title="this"><code>this</code></a>, <a href="reference-special-variables-mon.html" title="mon"><code>mon</code></a>, <a href="reference-special-variables-sys.html" title="sys"><code>sys</code></a>, and <a href="reference-special-variables-const.html" title="const"><code>const</code></a> fall in this category.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">__main__</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="kd">methods</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;special_variables_example:demo&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">body</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kr">namespace</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;special_variables_example&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">demo</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Special Variables live in the default namespace but don&#39;t have to be fully qualified when referenced ...&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;In </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> </span><span class="si">$(const.dollar)</span><span class="s">(sys.cf_version_major) == </span><span class="si">$(sys.cf_version_major)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;In </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> </span><span class="si">$(default:const.dollar)</span><span class="s">(default:sys.cf_version_major) == </span><span class="si">$(default:sys.cf_version_major)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text"><span></span>R: Special Variables live in the default namespace but don&#39;t have to be fully qualified when referenced ...
+R: In special_variables_example:demo $(sys.cf_version_major) == 3
+R: In special_variables_example:demo $(default:sys.cf_version_major) == 3
+</code></pre>
+</div>
+
+<p>This policy can be found in
+<code>/var/cfengine/share/doc/examples/namespace_special_var_exception.cf</code>
+and downloaded directly from
+<a href="https://raw.github.com/cfengine/core/master/examples/namespace_special_var_exception.cf" target="_blank">github</a>.</p>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li>The <a href="reference-language-concepts-augments.html#variables" title="Augments - variables "><code>variables</code> Augments key</a> defines variables in the
+<code>main</code> bundle of the <a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a> namespace by default but supports seeding variable
+values in any specified namespace.</li>
+</ul>
+<h2 id="classes">Classes</h2>
+<p>Promises can only define classes within the current namespace. Classes are
+understood to refer to classes in the current namespace if a namespace is not
+specified (except for Hard Classes). To refer to a
+class in a different namespace prefix the class with the namespace suffixed by a
+colon (<code>:</code>).</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">__main__</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;mynamespace:my_bundle&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">a_bundle_scoped_class_in_my_namespaced_bundle</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;In </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> I see &#39;a_bundle_scoped_class_in_my_namespaced_bundle::&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">!a_bundle_scoped_class_in_my_namespaced_bundle</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;In </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> I do not see &#39;a_bundle_scoped_class_in_my_namespaced_bundle::&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">a_namespace_scoped_class_in_my_namespaced_bundle</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;In </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> I see &#39;a_namespace_scoped_class_in_my_namespaced_bundle::&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">!a_namespace_scoped_class_in_my_namespaced_bundle</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;In </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> I do not see &#39;a_namespace_scoped_class_in_my_namespaced_bundle::&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">mynamespace</span><span class="p">:</span><span class="nc">a_bundle_scoped_class_in_my_namespaced_bundle</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;In </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> I see &#39;mynamespace:a_bundle_scoped_class_in_my_namespaced_bundle::&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="err">!</span><span class="kd">mynamespace</span><span class="p">:</span><span class="nc">a_bundle_scoped_class_in_my_namespaced_bundle</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;In </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> I do not see &#39;mynamespace:a_bundle_scoped_class_in_my_namespaced_bundle::&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">mynamespace</span><span class="p">:</span><span class="nc">a_namespace_scoped_class_in_my_namespaced_bundle</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;In </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> I see &#39;mynamespace:a_namespace_scoped_class_in_my_namespaced_bundle::&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">body</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="kr">namespace</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;mynamespace&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">my_bundle</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">classes</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;a_bundle_scoped_class_in_my_namespaced_bundle&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;a_namespace_scoped_class_in_my_namespaced_bundle&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">scope</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">a_bundle_scoped_class_in_my_namespaced_bundle</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;In </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> I see &#39;a_bundle_scoped_class_in_my_namespaced_bundle::&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">!a_bundle_scoped_class_in_my_namespaced_bundle</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;In </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> I do not see &#39;a_bundle_scoped_class_in_my_namespaced_bundle::&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">a_namespace_scoped_class_in_my_namespaced_bundle</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;In </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> I see &#39;a_namespace_scoped_class_in_my_namespaced_bundle::&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">!a_namespace_scoped_class_in_my_namespaced_bundle</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;In </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> I do not see &#39;a_namespace_scoped_class_in_my_namespaced_bundle::&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">mynamespace</span><span class="p">:</span><span class="nc">a_bundle_scoped_class_in_my_namespaced_bundle</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;In </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> I see &#39;mynamespace:a_bundle_scoped_class_in_my_namespaced_bundle::&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="err">!</span><span class="kd">mynamespace</span><span class="p">:</span><span class="nc">a_bundle_scoped_class_in_my_namespaced_bundle</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;In </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> I do not see &#39;mynamespace:a_bundle_scoped_class_in_my_namespaced_bundle::&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">mynamespace</span><span class="p">:</span><span class="nc">a_namespace_scoped_class_in_my_namespaced_bundle</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;In </span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s"> I see &#39;mynamespace:a_namespace_scoped_class_in_my_namespaced_bundle::&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text"><span></span>R: In mynamespace:my_bundle I see &#39;a_bundle_scoped_class_in_my_namespaced_bundle::&#39;
+R: In mynamespace:my_bundle I see &#39;a_namespace_scoped_class_in_my_namespaced_bundle::&#39;
+R: In mynamespace:my_bundle I see &#39;mynamespace:a_bundle_scoped_class_in_my_namespaced_bundle::&#39;
+R: In mynamespace:my_bundle I see &#39;mynamespace:a_namespace_scoped_class_in_my_namespaced_bundle::&#39;
+R: In default:main I do not see &#39;a_bundle_scoped_class_in_my_namespaced_bundle::&#39;
+R: In default:main I do not see &#39;a_namespace_scoped_class_in_my_namespaced_bundle::&#39;
+R: In default:main I do not see &#39;mynamespace:a_bundle_scoped_class_in_my_namespaced_bundle::&#39;
+R: In default:main I see &#39;mynamespace:a_namespace_scoped_class_in_my_namespaced_bundle::&#39;
+</code></pre>
+</div>
+
+<p>This policy can be found in
+<code>/var/cfengine/share/doc/examples/namespace_classes.cf</code>
+and downloaded directly from
+<a href="https://raw.github.com/cfengine/core/master/examples/namespace_classes.cf" target="_blank">github</a>.</p>
+
+<p><a href="reference-language-concepts-classes.html#hard-classes" title="Classes and Decisions - Hard Classes">Hard classes</a> exist in all namespaces and
+thus can be referred to from any namespace without qualification.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">__main__</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;example:my_bundle&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nc">cfengine</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;From the &#39;</span><span class="si">$(this.namespace)</span><span class="s">&#39; namespace the class expression &#39;cfengine::&#39; evaluates true&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">default</span><span class="p">:</span><span class="nc">cfengine</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;From the &#39;</span><span class="si">$(this.namespace)</span><span class="s">&#39; namespace the class expression &#39;default:cfengine::&#39; evaluates true&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;The class &#39;cfengine&#39; has tags: </span><span class="si">$(with)</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">with</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">join</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;, &quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">getclassmetatags</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;cfengine&quot;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">body</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="kr">namespace</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;example&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">my_bundle</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nc">cfengine</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;From the &#39;</span><span class="si">$(this.namespace)</span><span class="s">&#39; namespace the class expression &#39;cfengine::&#39; evaluates true&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">default</span><span class="p">:</span><span class="nc">cfengine</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;From the &#39;</span><span class="si">$(this.namespace)</span><span class="s">&#39; namespace the class expression &#39;default:cfengine::&#39; evaluates true&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text"><span></span>R: From the &#39;example&#39; namespace the class expression &#39;cfengine::&#39; evaluates true
+R: From the &#39;example&#39; namespace the class expression &#39;default:cfengine::&#39; evaluates true
+R: From the &#39;default&#39; namespace the class expression &#39;cfengine::&#39; evaluates true
+R: From the &#39;default&#39; namespace the class expression &#39;default:cfengine::&#39; evaluates true
+R: The class &#39;cfengine&#39; has tags: inventory, attribute_name=none, source=agent, hardclass
+</code></pre>
+</div>
+
+<p>This policy can be found in
+<code>/var/cfengine/share/doc/examples/namespace_hard_classes.cf</code>
+and downloaded directly from
+<a href="https://raw.github.com/cfengine/core/master/examples/namespace_hard_classes.cf" target="_blank">github</a>.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-manuals.html">manuals</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-language.html">language</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-syntax.html">syntax</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-concepts.html">concepts</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-namespace.html">namespace</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 23 July 2024
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.18/generator/pages/reference/language-concepts/namespaces.markdown/reference/language-concepts/namespaces.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-6e603435d313e50beb7f6915d5c67a09.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

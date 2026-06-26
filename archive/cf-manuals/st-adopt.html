@@ -1,0 +1,519 @@
+<html lang="en">
+<head>
+<title>Adopting CFEngine in Your Organization</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Adopting CFEngine in Your Organization">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; }
+  span.sansserif { font-family:sans-serif; font-weight:normal; }
+body {
+	font-family: Verdana, DejaVu, Vera, Geneva, sans-serif;
+	padding: 10px;
+}
+.node
+{
+	text-align: right;
+	padding: 2px;
+	font-size: smaller;
+}
+.node hr {
+	border: 0;
+	width: 100%;
+	color: #CCC;
+	background-color: #CCC;
+	height: 5px;
+}
+.section {
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+h1 {
+	font-weight: bold;
+	color: #666;
+}
+h2 {
+	font-weight: bold;
+	color: #666;
+}
+h3 {
+	margin-top: 3px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+}
+
+.menu
+{
+}
+
+.contents
+{
+	background-color: #CCC;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 10px;
+}
+
+.index-cp
+{
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 70%; }
+
+.tynn {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: smaller;
+        font-style: normal;
+        font-weight: lighter;
+        margin-bottom: 0em;
+     font-size: 11pt;
+        }
+
+.verbatim {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+
+.example {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	width: 100%;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+.smallexample {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	width: 100%;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+.cartouche {
+	background-color: #CCC;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	padding: 5px;
+	font-style: italic;
+        width: 100%;
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }--></style>
+</head>
+<body>
+<h1 class="settitle">Adopting CFEngine in Your Organization</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-does-adoption-involve_003f">What does adoption involve?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">Adoption</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#What-does-adoption-involve_003f">What does adoption involve?</a>
+<li><a accesskey="2" href="#The-Mission-Plan">The Mission Plan</a>
+<li><a accesskey="3" href="#Commercial-or-Free_003f">Commercial or Free?</a>
+<li><a accesskey="4" href="#Installation-or-Pilot">Installation or Pilot</a>
+<li><a accesskey="5" href="#Identifying-the-Team">Identifying the Team</a>
+<li><a accesskey="6" href="#Training-and-Certification">Training and Certification</a>
+<li><a accesskey="7" href="#Mission-Goal-and-Knowledge-Management">Mission Goal and Knowledge Management</a>
+<li><a accesskey="8" href="#Build">Build</a>
+<li><a accesskey="9" href="#Contact-Cfengine">Contact CFEngine</a>
+</ul>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<div class="node">
+<a name="What-does-adoption-involve%3f"></a>
+<a name="What-does-adoption-involve_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#The-Mission-Plan">The Mission Plan</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">What does adoption involve?</h3>
+
+<pre class="sp">
+
+</pre>
+
+CFEngine is a framework and a methodology with far reaching
+implications for the way you do IT management. The CFEngine approach
+asks you to think in terms of <i>promises</i> and <i>cooperation</i> between
+parts; it automates repair and maintenance processes and provides
+simple integrated Knowledge Management.
+
+   <p>To use CFEngine effectively, you should spend a little time learning
+about the approach to management, as this will save you a lot of time
+and effort in the long run.
+
+<div class="node">
+<a name="The-Mission-Plan"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Commercial-or-Free_003f">Commercial or Free?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-does-adoption-involve_003f">What does adoption involve?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">The Mission Plan</h3>
+
+<pre class="sp">
+
+</pre>
+
+At CFEngine, we refer to the management of your datacentre as `The
+Mission'. The diagram below shows the main steps in preparing mission
+control. Some training is recommended, and as much planning as you can
+manage in advance. Once a mission is underway, you should expect to
+work by making small corrections to the mission plan, rather than
+large risky changes.
+
+<div align="center"><img src="MissionPlan.pdf" alt="Mission Plan"></div>
+
+   <p>Planning does not mean sitting around a table, or in front of a whiteboard.
+Successful planning is a dialogue between theory and practice. It should include
+test pilots and proof-of-concept implementations.
+
+<div class="node">
+<a name="Commercial-or-Free%3f"></a>
+<a name="Commercial-or-Free_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Installation-or-Pilot">Installation or Pilot</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#The-Mission-Plan">The Mission Plan</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Commercial or Free?</h3>
+
+<pre class="sp">
+
+</pre>
+
+The first decision you should make is whether you will choose a route
+of commercial assistance or manage entirely on your own. You can
+choose different levels of assistance, from just training, to
+consulting, to commercial versions of the software that simplify
+certain processes and offer extended features.
+
+   <p>At the very minimum, we recommend that you take a training course
+on CFEngine. Users who don't train often end up using only a fraction
+of the software's potential, and in a sub-optimal way. Think of this
+as an investment in your future.
+
+   <p>The advantages of the commercial products include greatly simplified
+set up procedures, continuous monitoring and automatic knowledge
+integration. See the CFEngine Nova Supplement for more information.
+
+<div class="node">
+<a name="Installation-or-Pilot"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Identifying-the-Team">Identifying the Team</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Commercial-or-Free_003f">Commercial or Free?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Installation or Pilot</h3>
+
+<pre class="sp">
+
+</pre>
+
+You are free to download Community Editions of CFEngine at any time to
+test the software. There is a considerable amount of documentation and
+example policy available on the cfengine.org and cfengine.com web-sites
+to try some simple examples of system management.
+
+   <p>If you intend to purchase a significant number of commercial licenses
+for CFEngine software, you can request a pilot process, during which a
+specialist will install and demonstrate the commercial edition on
+site.
+
+<div class="node">
+<a name="Identifying-the-Team"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Training-and-Certification">Training and Certification</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Installation-or-Pilot">Installation or Pilot</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Identifying the Team</h3>
+
+<pre class="sp">
+
+</pre>
+
+CFEngine will become a core discipline in your organization, taking
+you from reactive fire-fighting to proactive and strategic
+practices. You should invest in a team that embraces its methods. The
+CFEngine team will become the enabler of business agility, security,
+reliability and standardization.
+
+   <p>The CFEngine team needs to have administrator or super-user access
+to systems, and it needs the `headroom' or `slack' to think
+strategically. It needs to build up processes and workflows that
+address quality assurance and minimize the risk of change.
+
+   <p>All teams are important centres for knowledge, and you should provide
+incentives to keep the core team strong and in constant dialogue with
+your organization's strategic leadership. Treat your CFEngine team as
+a trusted partner in business.
+
+<div class="node">
+<a name="Training-and-Certification"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Mission-Goal-and-Knowledge-Management">Mission Goal and Knowledge Management</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Identifying-the-Team">Identifying the Team</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Training and Certification</h3>
+
+<pre class="sp">
+
+</pre>
+
+Once you have tried the simplest examples using CFEngine, we recommend
+at least three days of in-depth training. We can also arrange more
+in-depth training to qualify as a CFEngine Mission Specialist.
+
+<div class="node">
+<a name="Mission-Goal-and-Knowledge-Management"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Build">Build</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Training-and-Certification">Training and Certification</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Mission Goal and Knowledge Management</h3>
+
+<pre class="sp">
+
+</pre>
+
+The main aim of Knowledge Management is to learn from experience, and
+use the accumulated learning to improve the predictability of workflow
+processes. During every mission, there will be unexpected events, and
+an effective team will use knowledge of past and present to respond to
+these unpredictable changes with confidence
+
+   <p>The goal of an IT mission is a <i>predictable operational state</i> that
+lives up to specific policy-determined promises. You need to work out
+what this desired state should be before you can achieve it. No one
+knows this exactly in advance, and most organizations will change
+course over time. However, with good planning and understanding of the
+mission, such adjustments to policy can be small and regular.
+
+   <pre class="sp">
+
+</pre>
+
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+
+   <p>Many small changes are less risky than few large changes, and the
+culture of agility keeps everyone on their toes. Using CFEngine to run
+your mission, you will learn to work pro-actively, adjusting the system
+by refining the mission goal rather than reacting to unexpected
+events.
+
+   </td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+To work consistently and predictably, even when understaffed, requires
+a strategy for describing system resources, policy and state.
+CFEngine can help with all of these. See the Special Topics Guide on
+Knowledge Management.
+
+   <p>A major component of a successful mission, is documenting
+<i>intentions</i>.  What is the goal, and how does it break down into
+concrete, achievable states? CFEngine can help you in this process,
+with training and Professional Services,  but you must establish a
+culture of commitment to the mission and learn how to express these
+commitments in terms of CFEngine <i>promises</i>.
+
+<div class="node">
+<a name="Build"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Contact-Cfengine">Contact CFEngine</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Mission-Goal-and-Knowledge-Management">Mission Goal and Knowledge Management</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Build, Deploy, Manage, Audit</h3>
+
+<pre class="sp">
+
+</pre>
+
+The four mission phases are sometimes referred to as
+
+     <dl>
+<dt><em>Build</em><dd>A mission is based on decisions and resources that need to
+be put assembled or `built' before they can be applied. This is
+the planning phase.
+
+     <p>In cfengine, what you build is a template of proposed promises for the
+machines in an organization such that, if the machines all make and
+keep these promises, the system will function seamlessly as
+planned. This is how it works in a human organization, and this is how
+is works for computers too.
+
+     <br><dt><em>Deploy</em><dd>Deploying really means launching the policy into production.  In
+cfengine you simply publish your policy (in cfengine parlance these
+are `promise proposals') and the machines see the new proposals and
+can adjust accordingly. Each machine runs an agent that is capable of
+keeping the system on course and maintaining it over time without
+further assistance.
+
+     <br><dt><em>Manage</em><dd>Once a decision is made, unplanned events will occur. Such incidents
+traditionally set off alarms and humans rush to make new transactions
+to repair them. Under CFEngine guidance, the autonomous agent manages
+the system, and humans only manage knowledge and have to deal with
+rare events that cannot be dealt with automatically.
+
+     <br><dt><em>Audit</em><dd>CFEngine performs continuous analysis and correction, and commercial
+editions generate explicit reports on mission status.  Users can sit
+back and examine these reports to check mission progress, or examine
+the current state in relation to the knowledge map for the mission.
+
+   </dl>
+
+<div class="node">
+<a name="Contact-Cfengine"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Build">Build</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Contact CFEngine</h3>
+
+<pre class="sp">
+
+</pre>
+
+Contact CFEngine today for more information: <code>contact@cfengine.com</code>.
+
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">Adoption</a>
+<ul>
+<li><a href="#What-does-adoption-involve_003f">What does adoption involve?</a>
+<li><a href="#The-Mission-Plan">The Mission Plan</a>
+<li><a href="#Commercial-or-Free_003f">Commercial or Free?</a>
+<li><a href="#Installation-or-Pilot">Installation or Pilot</a>
+<li><a href="#Identifying-the-Team">Identifying the Team</a>
+<li><a href="#Training-and-Certification">Training and Certification</a>
+<li><a href="#Mission-Goal-and-Knowledge-Management">Mission Goal and Knowledge Management</a>
+<li><a href="#Build">Build, Deploy, Manage, Audit</a>
+<li><a href="#Contact-Cfengine">Contact CFEngine</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://
+ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-
+analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+

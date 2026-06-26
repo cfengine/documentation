@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.19  Documentation - custom</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/reference/promise-types/custom.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-reference-promise-types-custom.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-promise-types-custom.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='assets/global-6a0b9da22cb0d4bd16e0e337e3484c43.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "custom";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/">Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/" selected>Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a><ul class="level2"><li><a href="reference-promise-types-access.html">access</a></li><li><a href="reference-promise-types-databases.html">databases</a></li><li><a href="reference-promise-types-guest_environments.html">guest_environments</a></li><li><a href="reference-promise-types-classes.html">classes</a></li><li><a href="reference-promise-types-commands.html">commands</a></li><li><a class="active" href="reference-promise-types-custom.html">custom</a></li><li><a href="reference-promise-types-defaults.html">defaults</a></li><li><a href="reference-promise-types-files.html">files</a></li><li><a href="reference-promise-types-measurements.html">measurements</a></li><li><a href="reference-promise-types-meta.html">meta</a></li><li><a href="reference-promise-types-methods.html">methods</a></li><li><a href="reference-promise-types-packages.html">packages</a></li><li><a href="reference-promise-types-packages-deprecated.html">packages (deprecated)</a></li><li><a href="reference-promise-types-processes.html">processes</a></li><li><a href="reference-promise-types-reports.html">reports</a></li><li><a href="reference-promise-types-roles.html">roles</a></li><li><a href="reference-promise-types-services.html">services</a></li><li><a href="reference-promise-types-storage.html">storage</a></li><li><a href="reference-promise-types-users.html">users</a></li><li><a href="reference-promise-types-vars.html">vars</a></li></ul></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    custom
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Custom promise types can be added as <em>Promise modules</em>.
+These enable users to implement their own promise types for managing new resources.
+They can be added without a binary upgrade, and shared between users.</p>
+
+<p><strong>History:</strong> Custom promise types were first introduced in 3.17.0.
+Many improvements and bug fixes were made between 3.17.0 and 3.18.0 LTS.</p>
+
+<p>This documentation article provides a complete and detailed specification.
+It includes how to use them, how to implement them using modules, how the protocol works, etc.
+If you are interested in shorter tutorials, there are a few different ones available:</p>
+
+<ul>
+<li><a href="https://cfengine.com/blog/2020/introducing-cfengine-custom-promise-types/">Introducing CFEngine Custom Promise Types - Installation and usage</a></li>
+<li><a href="https://cfengine.com/blog/2020/how-to-implement-cfengine-custom-promise-types-in-python/">How to implement CFEngine Custom Promise Types in Python</a></li>
+<li><a href="https://cfengine.com/blog/2021/how-to-implement-cfengine-custom-promise-types-in-bash/">How to implement CFEngine custom promise types in bash</a></li>
+<li><a href="https://cfengine.com/blog/2021/custom-promise-outcomes-in-mission-portal/">Custom Promise outcomes in Mission Portal</a></li>
+</ul>
+<h2 id="using-custom-promise-types">Using custom promise types</h2>
+<p>A new top level <code>promise</code> block (similar to <code>body</code>) is used to add new promise types.
+After adding a promise type, it is used in the same way as built-in promise types, there is no special syntax.</p>
+<h3 id="example-of-using-a-promise-module">Example of using a promise module</h3><div class="highlight"><pre><code class="cf3"><span class="nf">promise</span> <span class="nf">agent</span> <span class="nf">git</span>
+<span class="p">{</span>
+  <span class="kr">interpreter</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/python3&quot;</span><span class="p">;</span>
+  <span class="kr">path</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/cfengine/inputs/modules/promises/git.py&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+  <span class="kd">git</span><span class="p">:</span>
+    <span class="s">&quot;/opt/cfengine/masterfiles&quot;</span>
+      <span class="kr">repo</span> <span class="o">=&gt;</span> <span class="s">&quot;https://github.com/cfengine/masterfiles&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="evaluation-details">Evaluation details</h2>
+<p>Common attributes and class guards are handled by the agent, and not sent to the promise module.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+  <span class="kd">git</span><span class="p">:</span>
+    <span class="nc">linux</span><span class="p">::</span>
+      <span class="s">&quot;/opt/cfengine/masterfiles&quot;</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="s">&quot;redhat&quot;</span><span class="p">,</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">some_classes_body</span><span class="p">,</span>
+        <span class="kr">repo</span> <span class="o">=&gt;</span> <span class="s">&quot;https://github.com/cfengine/masterfiles&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In this example, the promise module does not receive information about the <a href="reference-promise-types.html#if" title="Promise Types and Attributes - if"><code>if</code></a> and <a href="reference-promise-types-classes.html" title="classes"><code>classes</code></a> attributes, or the <code>linux::</code> class guard.
+The agent evaluates these, and decides whether to request evaluation from the module and which classes to define based on the promise outcome and the <code>some_classes_body</code> classes body.</p>
+
+<p>These attributes are handled by the agent, and cannot be used inside promise modules:</p>
+
+<ul>
+<li><a href="reference-promise-types.html#if" title="Promise Types and Attributes - if"><code>if</code></a> / <a href="reference-promise-types.html#ifvarclass" title="Promise Types and Attributes - ifvarclass"><code>ifvarclass</code></a></li>
+<li><a href="reference-promise-types.html#unless" title="Promise Types and Attributes - unless"><code>unless</code></a></li>
+<li><a href="reference-promise-types.html#action" title="Promise Types and Attributes - action"><code>action</code></a> (body for <a href="reference-components-cf-agent.html#ifelapsed" title="cf-agent - ifelapsed"><code>ifelapsed</code></a>, <a href="reference-components-cf-agent.html#expireafter" title="cf-agent - expireafter"><code>expireafter</code></a>, etc.)
+
+<ul>
+<li><a href="reference-promise-types.html#action_policy" title="Promise Types and Attributes - action_policy"><code>action_policy</code></a>, if not default, will be sent to the module, for dry-run/no-changes functionality</li>
+</ul></li>
+<li><a href="reference-promise-types.html#comment" title="Promise Types and Attributes - comment"><code>comment</code></a></li>
+<li><a href="reference-promise-types.html#depends_on" title="Promise Types and Attributes - depends_on"><code>depends_on</code></a></li>
+<li><a href="examples-tutorials-manage-ntp.html#handle" title="Manage Network Time Protocol - handle"><code>handle</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a></li>
+<li><a href="reference-promise-types.html#with" title="Promise Types and Attributes - with"><code>with</code></a></li>
+<li><a href="reference-promise-types-classes.html" title="classes"><code>classes</code></a></li>
+</ul>
+
+<p>In an early iteration, the agent will emit errors for any of these which are not implemented yet, if you try to use them.</p>
+
+<p>Due to the implementation details, the following attributes from the <a href="reference-promise-types-classes.html" title="classes"><code>classes</code></a> body also cannot be used inside promise modules:</p>
+
+<ul>
+<li><code>classes_name</code></li>
+<li><a href="reference-promise-types.html#scope" title="Promise Types and Attributes - scope"><code>scope</code></a></li>
+<li><a href="reference-promise-types.html#promise_repaired" title="Promise Types and Attributes - promise_repaired"><code>promise_repaired</code></a></li>
+<li><a href="reference-promise-types.html#repair_failed" title="Promise Types and Attributes - repair_failed"><code>repair_failed</code></a></li>
+<li><a href="reference-promise-types.html#repair_denied" title="Promise Types and Attributes - repair_denied"><code>repair_denied</code></a></li>
+<li><a href="reference-promise-types.html#repair_timeout" title="Promise Types and Attributes - repair_timeout"><code>repair_timeout</code></a></li>
+<li><a href="reference-promise-types.html#promise_kept" title="Promise Types and Attributes - promise_kept"><code>promise_kept</code></a></li>
+<li><a href="reference-promise-types.html#cancel_repaired" title="Promise Types and Attributes - cancel_repaired"><code>cancel_repaired</code></a></li>
+<li><a href="reference-promise-types.html#cancel_kept" title="Promise Types and Attributes - cancel_kept"><code>cancel_kept</code></a></li>
+<li><a href="reference-promise-types.html#cancel_notkept" title="Promise Types and Attributes - cancel_notkept"><code>cancel_notkept</code></a></li>
+<li><a href="reference-promise-types.html#kept_returncodes" title="Promise Types and Attributes - kept_returncodes"><code>kept_returncodes</code></a></li>
+<li><a href="reference-promise-types.html#repaired_returncodes" title="Promise Types and Attributes - repaired_returncodes"><code>repaired_returncodes</code></a></li>
+<li><a href="reference-promise-types.html#failed_returncodes" title="Promise Types and Attributes - failed_returncodes"><code>failed_returncodes</code></a></li>
+<li><a href="reference-promise-types.html#persist_time" title="Promise Types and Attributes - persist_time"><code>persist_time</code></a></li>
+<li><a href="reference-promise-types.html#timer_policy" title="Promise Types and Attributes - timer_policy"><code>timer_policy</code></a></li>
+</ul>
+<h2 id="creating-custom-promise-types">Creating custom promise types</h2>
+<p>The agent spawns the promise module as a subprocess and communicates with it using it&#39;s standard input and output (stdin, stdout).
+It does not use command line arguments, or standard error output (stderr), but these may be used for testing / debugging promise modules.
+Everything written to stdin and stdout should follow the module protocol described below.</p>
+<h3 id="custom-promise-types-using-provided-libraries">Custom promise types using provided libraries</h3>
+<p>We provide libraries in some programming languages, which abstract away the protocol, letting you only implement the business logic for the promise type.
+Here is an example promise type, written in Python, using our library:</p>
+<div class="highlight"><pre><code class="python"><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">cfengine</span> <span class="kn">import</span> <span class="n">PromiseModule</span><span class="p">,</span> <span class="n">ValidationError</span>
+
+
+<span class="k">class</span> <span class="nc">GitPromiseTypeModule</span><span class="p">(</span><span class="n">PromiseModule</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">validate_promise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">promiser</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">promiser</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;File path &#39;{promiser}&#39; must be absolute&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">attributes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="o">!=</span> <span class="s2">&quot;repo&quot;</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Unknown attribute &#39;{name}&#39; for git promises&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;repo&quot;</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">str</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;&#39;repo&#39; must be string for git promise types&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">evaluate_promise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">promiser</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">promiser</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">ValidationError</span><span class="p">(</span><span class="s2">&quot;File path must be absolute&quot;</span><span class="p">)</span>
+
+        <span class="n">folder</span> <span class="o">=</span> <span class="n">promiser</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">attributes</span><span class="p">[</span><span class="s2">&quot;repo&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">promise_kept</span><span class="p">()</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_info</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Cloning &#39;{url}&#39; -&gt; &#39;{folder}&#39;...&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;git clone {url} {folder} 1&gt;/dev/null 2&gt;/dev/null&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_info</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Successfully cloned &#39;{url}&#39; -&gt; &#39;{folder}&#39;&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">promise_repaired</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">log_error</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Failed to clone &#39;{url}&#39; -&gt; &#39;{folder}&#39;&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">promise_not_kept</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">GitPromiseTypeModule</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</code></pre>
+</div>
+<h3 id="logging">Logging</h3>
+<p>Log levels in CFEngine are explained here:
+<a href="https://github.com/cfengine/core/blob/master/CONTRIBUTING.md#log-levels">https://github.com/cfengine/core/blob/master/CONTRIBUTING.md#log-levels</a></p>
+
+<p>In short, when writing a promise module, these log levels should be used:</p>
+
+<ul>
+<li><code>critical</code> - Serious errors in protocol or module itself (not in policy)</li>
+<li><code>error</code> - Errors when validating / evaluating a promise, including syntax errors and promise not kept</li>
+<li><code>warning</code> - The promise did not fail, but there is something the user (policy writer) should probably fix. Some examples:
+
+<ul>
+<li>Policy relies on deprecated behavior/syntax which will change</li>
+<li>Policy uses demo / unsafe options which should be avoided in a production environment</li>
+</ul></li>
+<li><code>notice</code> - Unusual events which you want to notify the user about
+
+<ul>
+<li>Most promise types won&#39;t need this - usually <code>info</code> or <code>warning</code> is more appropriate</li>
+<li>Useful for events which happen rarely and are not the result of a promise, for example:</li>
+<li>New credentials detected</li>
+<li>New host bootstrapped</li>
+<li>The module made a change to the system for itself to work (database initialized, user created)</li>
+</ul></li>
+<li><code>info</code> - Changes made to the system (usually 1 per repaired promise, more if the promise made multiple different changes to the system)</li>
+<li><a href="reference-components-cf-agent.html#verbose" title="cf-agent - verbose"><code>verbose</code></a> - Human understandable detailed information about promise evaluation</li>
+<li><code>debug</code> - Programmer-level information that is only useful for CFEngine developers or module developers</li>
+</ul>
+
+<p>Note that all log levels, except for <code>debug</code>, should be friendly to non-developers, and not include programmer&#39;s details (such as protocol messages, source code references, function names, etc.).</p>
+<h3 id="results">Results</h3>
+<p>Each operation performed by the module, sends a result back to the agent.
+The possible results are as follows:</p>
+
+<ul>
+<li>Shared between operations:
+
+<ul>
+<li><code>error</code> - an unexpected error occured in the module or protocol, indicating a bug in CFEngine or the promise module</li>
+<li>Should be explained by a <code>critical</code> level log message</li>
+</ul></li>
+<li>Promise validation:
+
+<ul>
+<li><code>valid</code> - No problems with the data or data types in promise</li>
+<li><code>invalid</code> - There are problems with the promise data or data types</li>
+<li>Should be explained by an <code>error</code> level log message</li>
+</ul></li>
+<li>Promise evaluation:
+
+<ul>
+<li>The module should assume the promise has already been validated.</li>
+<li>It does not need to validate the promise again, and should <strong>not</strong> return <code>valid</code> / <code>invalid</code>.</li>
+<li><code>kept</code> - promise satisfied already, no change made</li>
+<li><code>repaired</code> - promise not satisfied before, but fixed now</li>
+<li>The change should be explained in a <code>info</code> level log message</li>
+<li><code>not_kept</code> - promise not satisfied before, and could not be fixed</li>
+<li>Should be explained by an <code>error</code> level log message</li>
+</ul></li>
+<li>Teminate:
+
+<ul>
+<li><code>success</code> - Module succesfully terminated without errors</li>
+<li><code>failure</code> - There were problems when trying to clean up / terminate</li>
+<li>Should be explained by a <code>critical</code> level log message</li>
+</ul></li>
+</ul>
+
+<p>Built-in CFEngine promises may have multiple outcomes when evaluated.
+For the sake of simplicity, custom promises may only have 1 outcome, logic should be as follows:</p>
+
+<ol>
+<li>If the promise was already satisfied and no changes were necessary, the promise was <code>kept</code></li>
+<li>Otherwise, if there were issues and the module could not fix/satisfy all parts of the promise, it was <code>not_kept</code>.</li>
+<li>Otherwise, if some changes were made (successfully), the promise was <code>repaired</code>.</li>
+</ol>
+<h3 id="protocol">Protocol</h3>
+<p>To implement a promise module from scratch, you will have to implement the promise module protocol.
+2 variants of the protocol are provided.
+1 JSON based and 1 line based.</p>
+
+<p><strong>Note: if you are using the library, as shown above, you don&#39;t have to care / learn about the following internals of the protocol.</strong></p>
+<h3 id="protocol-header">Protocol header</h3>
+<p>When a promise module starts, the agent sends a protocol header (single line), followed by 2 newline characters.</p>
+
+<p>The header sent by cf-agent consists of 3 space-separated parts:</p>
+
+<ul>
+<li>Name of program - Example: <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a></li>
+<li>CFEngine version - Example: <code>3.16.0</code></li>
+<li>Highest supported protocol version - Example: <code>v1</code></li>
+</ul>
+
+<p>The header response sent by the module consists of 3 or more space separated parts:</p>
+
+<ul>
+<li>Module name - Example: <code>git_promise_module</code></li>
+<li>Module version - Example: <code>0.0.1</code></li>
+<li>Requested protocol version - Example: <code>v1</code></li>
+<li>Rest of line, optional: Feature requests/flags - Example: <code>line_based</code></li>
+</ul>
+
+<p>The header has the same syntax regardless of protocol (It is used to determine protocol).
+The module should respond with the same protocol version, or lower.
+Lowest protocol version wins.
+The promise module should not request features which are unavailable in the requested protocol version.</p>
+
+<p>There is no <code>success</code> message after the headers are exchanged.
+The module can assume that the version and requested features were accepted.
+The agent will terminate the module and error, if it requests something invalid.</p>
+<h4 id="example-headers">Example headers:</h4>
+<p>Request sent by cf-agent to promise module:</p>
+<div class="highlight"><pre><code class="text">cf-agent 3.16.0 v1
+</code></pre>
+</div>
+
+<p>Response, requesting line based protocol:</p>
+<div class="highlight"><pre><code class="text">git_promise_module 0.0.1 v1 line_based
+</code></pre>
+</div>
+
+<p>Response, requesting JSON based protocol:</p>
+<div class="highlight"><pre><code class="text">git_promise_module 0.0.1 v1 json_based
+</code></pre>
+</div>
+
+<p>After the initial exchange of protocol headers, the module responds to requests from the agent, using the agreed upon protocol.
+Requests and responses follow the same format and rules, and are commonly called messages.
+For each request, there should be exactly one response.</p>
+<h3 id="protocol-request-sequence">Protocol request sequence</h3>
+<p>A promise module will receive 3 types of requests (operations):</p>
+
+<ol>
+<li><code>validate_promise</code> - Validate the promiser string, attribute names, types and values</li>
+<li><code>evaluate_promise</code> - Check the current state of the system and perform changes if necessary</li>
+<li><code>terminate</code> - Shut down the module</li>
+</ol>
+
+<p>Both validation and evaluation happen on fully resolved promises.
+If the promise has unresolved variables (strings containing <code>$(</code> or <code>${</code> in attributes or promiser) no requests will be sent to validate or evaluate the promise.
+The agent should skip such promises until the variables are resolved, or mark them as not kept if they never resolve.
+This makes it easier, safer and less error prone to implement promise modules - the module does not have to account for edge cases where strings contain unresolved variables.
+(In the future, we might add other, optional mechanisms for validating unresolved promises).</p>
+
+<p>Any promise must be validated before it is evaluated.
+When handling <code>evaluate_promise</code> requests, the module can assume that validation was already performed and successful, with the same attributes and promiser string.
+It is not guaranteed that <em>the previous request</em> was a <code>validate_promise</code> request.
+A <code>validate_promise</code> request does not imply that the next request will be <code>evaluate_promise</code>.</p>
+
+<p>The agent <em>might</em> start multiple processes of the same module in parallel, for example for a module implementing multiple promise types.
+The module should not rely on this.
+Additionally, the same module may be started and stopped multiple times during an agent run, so don&#39;t make any assumptions that it will only run once per agent run.</p>
+
+<p>The promise module&#39;s responses to cf-agent requests must include <code>operation</code> and <code>result</code>.
+Promiser string and attributes are typically added for convenience.</p>
+<h5 id="result-classes">Result classes</h5>
+<p>After promise evaluation the module can send back a list of classes to set, to give more information about what happened.
+Result classes should only be included in the response to <code>evaluate</code> requests - validation, or other operations should not define classes.
+Exactly what classes to set and what information they should give the policy writer is up to the module author.
+They are not required, and for simple promises, they might not be necessary.
+Some examples could be: <code>masterfiles_cloned</code>, <code>ran_git_clone</code>, <code>masterfiles_cloned_from_github</code> etc.
+Both how many classes are set, and the class names can be dynamic, depending on the promiser, attribute, module, etc.
+In the JSON protocol, they are a list of strings, in the line based protocol, they are a comma separated list.
+In both cases, the key is <code>result_classes</code>.
+See examples for both protocols in their sections below.</p>
+<h4 id="json-protocol">JSON protocol</h4>
+<p>The JSON based protocol supports all aspects of CFEngine promises, including <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a>, <a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a> containers, and strings with newlines, tabs, etc.
+It is designed to be easy to implement in a language with JSON support.</p>
+
+<p>Protocol messages are separated by empty lines (double newline).
+The headers (request and response) are not JSON, but a sequence of space-separated values.
+All messages sent by cf-agent and the promise module are single line JSON-data, except:</p>
+
+<ul>
+<li>Headers (both from cf-agent and promise module) are not JSON.</li>
+<li>JSON responses sent from promise module may optionally be preceeded by log messages, as explained below.</li>
+</ul>
+
+<p>Within strings in the JSON data, newline characters must be escaped (<code>\n</code>).
+This is not strictly required by the JSON spec, but most implementations do this anyway.</p>
+<h5 id="example-requests-in-json-based-protocol">Example requests in JSON based protocol</h5><div class="highlight"><pre><code class="text">cf-agent 3.16.0 v1
+
+{&quot;operation&quot;: &quot;validate_promise&quot;, &quot;log_level&quot;: &quot;info&quot;, &quot;promise_type&quot;: &quot;git&quot;, &quot;promiser&quot;: &quot;/opt/cfengine/masterfiles&quot;, &quot;attributes&quot;: {&quot;repo&quot;: &quot;https://github.com/cfengine/masterfiles&quot;}}
+
+{&quot;operation&quot;: &quot;evaluate_promise&quot;, &quot;log_level&quot;: &quot;info&quot;, &quot;promise_type&quot;: &quot;git&quot;, &quot;promiser&quot;: &quot;/opt/cfengine/masterfiles&quot;, &quot;attributes&quot;: {&quot;repo&quot;: &quot;https://github.com/cfengine/masterfiles&quot;}}
+
+{&quot;operation&quot;: &quot;terminate&quot;, &quot;log_level&quot;: &quot;info&quot;}
+</code></pre>
+</div>
+<h5 id="example-response-in-json-based-protocol">Example response in JSON based protocol</h5><div class="highlight"><pre><code class="text">git_promise_module 0.0.1 v1 json_based
+
+{&quot;operation&quot;: &quot;validate_promise&quot;, &quot;promiser&quot;: &quot;/opt/cfengine/masterfiles&quot;, &quot;attributes&quot;: {&quot;repo&quot;: &quot;https://github.com/cfengine/masterfiles&quot;}, &quot;result&quot;: &quot;valid&quot;}
+
+log_info=Cloning &#39;https://github.com/cfengine/masterfiles&#39; -&gt; &#39;/opt/cfengine/masterfiles&#39;...
+log_info=Successfully cloned &#39;https://github.com/cfengine/masterfiles&#39; -&gt; &#39;/opt/cfengine/masterfiles&#39;
+{&quot;operation&quot;: &quot;evaluate_promise&quot;, &quot;promiser&quot;: &quot;/opt/cfengine/masterfiles&quot;, &quot;attributes&quot;: {&quot;repo&quot;: &quot;https://github.com/cfengine/masterfiles&quot;}, &quot;result_classes&quot;: [&quot;masterfiles_cloned&quot;], &quot;result&quot;: &quot;repaired&quot;}
+
+{&quot;operation&quot;: &quot;terminate&quot;, &quot;result&quot;: &quot;success&quot;}
+</code></pre>
+</div>
+
+<p>In the example above, log messages are sent to the agent on separate lines.
+The syntax is the same as for the line based protocol, described below.
+This is done so the agent can print the messages while the promise is evaluating.
+(In the example, cloning the repo takes a few seconds, and it is nice to get some feedback).</p>
+
+<p>Log messages formatted like this must be before the JSON message, and it is optional.
+You can also include log messages in the JSON data:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;operation&quot;: &quot;evaluate_promise&quot;,
+  &quot;promiser&quot;: &quot;/opt/cfengine/masterfiles&quot;,
+  &quot;attributes&quot;: {
+    &quot;repo&quot;: &quot;https://github.com/cfengine/masterfiles&quot;}
+  },
+  &quot;log&quot;: [
+    {
+      &quot;level&quot;: &quot;info&quot;,
+      &quot;message&quot;: &quot;Cloning &#39;https://github.com/cfengine/masterfiles&#39; -&gt; &#39;/opt/cfengine/masterfiles&#39;...&quot;
+    }
+  ],
+  &quot;result_classes&quot;: [
+    &quot;masterfiles_cloned&quot;
+  ],
+  &quot;result&quot;: &quot;repaired&quot;
+}
+</code></pre>
+</div>
+
+<p>(Formatted here for readability, JSON data must still be on a single line in protocol).</p>
+<h4 id="line-based-protocol">Line based protocol</h4>
+<p>The line based protocol supports a limited subset of features of CFEngine promises, which should be enough for most use cases.
+In particular, data passed to the module (through promise attributes) must be strings, without newlines.
+<a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a>, <a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a> containers, and strings with newlines are not supported.
+It is designed to be easy to implement in a language which doesn&#39;t have JSON support.</p>
+
+<p>A protocol message is a sequence of lines, separated by newline characters, and terminated by an extra newline character (empty line).
+Each line is a key-value pair, separated by <code>=</code>.
+Anything before the first <code>=</code> of a line is the key, anything after is the value.</p>
+
+<p>The key may not be empty, but the value may.
+The key must consist of lowercase letters and underscores, not numbers, spaces, quotes, or other symbols (<code>[a-z_]+</code>).
+The value may contain anything (including <code>=</code> signs) except for newlines and zero-bytes.</p>
+<h5 id="example-requests-in-line-based-protocol">Example requests in line based protocol</h5><h5 id="example-response-in-line-based-protocol">Example response in line based protocol</h5><h5 id="repeated-keys">Repeated keys</h5>
+<p>In some cases, the left side keys within the protocol message are not unique.
+Most notably, this is useful for logging in response messages:</p>
+<div class="highlight"><pre><code class="text">log_verbose=Users left in list: &#39;alice&#39;, &#39;bob&#39;, &#39;charlie&#39;
+log_info=User &#39;alice&#39; created
+log_info=User &#39;alice&#39; added to group &#39;testers&#39;
+log_verbose=Users left in list: &#39;bob&#39;, &#39;charlie&#39;
+log_info=User &#39;bob&#39; created
+log_info=User &#39;bob&#39; added to group &#39;testers&#39;
+log_verbose=Users left in list: &#39;charlie&#39;
+log_info=User &#39;charlie&#39; created
+log_info=User &#39;charlie&#39; added to group &#39;testers&#39;
+log_verbose=No users left in list
+</code></pre>
+</div>
+
+<p>This enables the agent to filter the log messages based on log level, and also print them in the correct order.</p>
+<h2 id="additional-reading">Additional reading</h2>
+<p>See these tutorials / blog posts, for more examples or inspiration:</p>
+
+<ul>
+<li><a href="https://cfengine.com/blog/2020/introducing-cfengine-custom-promise-types/">Introducing CFEngine Custom Promise Types - Installation and usage</a></li>
+<li><a href="https://cfengine.com/blog/2020/how-to-implement-cfengine-custom-promise-types-in-python/">How to implement CFEngine Custom Promise Types in Python</a></li>
+<li><a href="https://cfengine.com/blog/2021/how-to-implement-cfengine-custom-promise-types-in-bash/">How to implement CFEngine Custom Promise Types in Bash</a></li>
+<li><a href="https://cfengine.com/blog/2021/custom-promise-outcomes-in-mission-portal/">Custom Promise outcomes in Mission Portal</a></li>
+</ul>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-bundle-agent.html">bundle agent</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-promises.html">promises</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 06 July 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/reference/promise-types/custom.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-38e3fd0081b106f885a95356ca1249c5.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

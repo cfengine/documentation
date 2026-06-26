@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - Upgrade Instructions</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html"  class="navselected" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="index.html">CFEngine 3.5</a></li><li><a href="getting-started.html">Getting Started</a></li><li><a href="whats-new.html">New in CFEngine</a></li><li><a href="manuals.html">CFEngine Manuals</a></li><li><a href="reference.html">CFEngine Reference</a></li><li><a href="examples.html">CFEngine Examples</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li><a href="getting-started-installation.html">Installing CFEngine</a></li><li><a href="getting-started-learning-tools.html">Learning Tools</a></li><li><a href="getting-started-support-and-community.html">Support and Community</a></li><li class="selected"><span>Upgrade Instructions</span></li><li><a href="getting-started-supported-platforms.html">Supported Platforms and Versions</a></li><li><a href="getting-started-known-issues.html">Known Issues</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="getting-started.html">Getting Started</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>Upgrade Instructions</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/getting-started.html">getting started</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/enterprise.html">enterprise</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/upgrade.html">upgrade</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>Upgrade Instructions</h1>
+                    <h3 id="this-upgrade-guide-assumes-that-you-are-upgrading-an-existing-cfengine-installation-of-one-of-the-following-versions"><center data-behavior="exclude-from-toc">This upgrade guide assumes that you are upgrading an existing CFEngine installation of one of the following versions:</center></h3><h3 id="2-2-x-or-3-0-x"><center data-behavior="exclude-from-toc">2.2.x or 3.0.x</center></h3>
+<p>Upgrading CFEngine Enterprise needs some planning, since there may be 
+dependencies on your existing policies and/or changes in naming 
+convention/syntax in CFEngine itself. For this reason, it is currently a 
+manual process. Automatic upgrade of agents is possible through the hub but 
+again, needs careful planning and consideration before applying to a large 
+schema.</p>
+<h3 id="always-verify-the-upgrade-in-a-test-environment-prior-to-upgrading-production-environments"><center data-behavior="exclude-from-toc">Always verify the upgrade in a test environment prior to upgrading production environments!</center></h3>
+<p>Before embarking on the upgrade, you should familiarize yourself with the 
+<a href="getting-started-known-issues.html" title="Known Issues">known issues</a> and have a good understanding of the existing configuration of the hub or agents or both. As much as possible is covered in this document, taking into consideration its scope and intended audience. Other more detailed problems, specific to your own setup may not be covered here. It is therefore imperative that any questions or doubts you have are directed towards your support representative.</p>
+
+<p>Please do not hesitate to contact your sales representative, or our support 
+engineers through the <a href="https://cfengine.zendesk.com" title="CFEngine - Support Desk">support system</a></p>
+
+<p>As a quick summary for a 3.0 upgrade, the Enterprise 3.0 clients work
+great with a 3.5.1 policy server and report correctly to the 3.5.1
+hub. They work well with most 3.5.1 policy, although you <strong>have</strong> to
+test to be sure you have no incompatible functions or promise
+attributes <strong>before</strong> you push anything out to the clients.</p>
+
+<p>3.5.1 clients <strong>may</strong> work with the 3.0 server but this is not
+supported, recommended, or tested.</p>
+
+<p>Thus, for the upgrade from 3.0 we suggest upgrading the hub&#39;s policy
+to what comes with 3.5.1 (especially the update.cf in the top-level
+directory) and testing that with both 3.0 and 3.5.1 clients. Then
+upgrade the policy hub to 3.5.1. Then upgrade the clients in
+increasingly broader <em>waves</em> to make sure any issues only affect a
+small subset of the population.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>CFEngine 3 Enterprise HUB version 2.2.x/3.0.x</li>
+<li>Linux shell</li>
+</ul>
+<h2 id="before-you-start-make-a-backup">Before you start: Make a Backup</h2>
+<p>Backup /var/cfengine/masterfiles to /var/cfengine/masterfiles_$(date) using
+the following command:</p>
+
+<p><code>
+  $ cp -r $WORKDIR/masterfiles $WORKDIR/masterfiles_$(date +%T_%F)
+</code></p>
+
+<ul>
+<li><p>move/copy/update some files to the new policy framework</p></li>
+<li><p>update /var/cfengine/bin/cf-twin to the latest version
+$ cp -vf $WORKDIR/bin/cf-agent $WORKDIR/bin/cf-twin</p></li>
+<li><p>remove MongoDB lock file
+$ rm -f $WORKDIR/state/mongod.lock</p></li>
+</ul>
+<h3 id="in-case-of-failure-restoring-the-previous-installation-from-backup">In case of Failure: Restoring the previous installation from backup</h3>
+<ul>
+<li>remove <a href="manuals-design-center-enterprise-sketch-flow.html#var-cfengine-masterfiles" title="Sketch Flow in CFEngine Enterprise - /var/cfengine/masterfiles"><code>/var/cfengine/masterfiles</code></a> and <code>/var/cfengine/inputs</code> directories</li>
+<li>rename <code>/var/cfengine/masterfiles_$(date)</code> to <a href="manuals-design-center-enterprise-sketch-flow.html#var-cfengine-masterfiles" title="Sketch Flow in CFEngine Enterprise - /var/cfengine/masterfiles"><code>/var/cfengine/masterfiles</code></a></li>
+<li>remove the 3.5.0 <code>cfengine-nova-hub</code> package</li>
+<li>reinstall your previous cfengine packages</li>
+<li>rebootstrap the HUB. MP should be up and running in less than 10 minutes</li>
+</ul>
+<h2 id="prepare-policy-files-when-upgrading-from-2-2-x">Prepare policy files when upgrading from 2.2.x</h2>
+<p>This section can be skipped if you are upgrading from 3.0.x to 3.5</p>
+
+<p>As part of the process from 2.x to 3, more structure was introduced to the 
+CFEngine working directory, such that CFE_ prefixed files were moved into a 
+new subdirectory <code>/var/cfengine/masterfiles/cfe_internal</code>
+It&#39;s therefore necessary to make some edits to your 
+<code>/var/cfengine/masterfiles/promises.cf</code> by adding <code>cfe_internal/</code> to the path 
+of all CFE_ prefixed files.</p>
+
+<p>For example, in the old form, you might find:</p>
+
+<p><code>CFE_knowledge.cf</code></p>
+
+<p>the new form for 3.x would be:</p>
+
+<p><code>cfe_internal/CFE_knowledge.cf</code></p>
+
+<p>A list of files that this applies to is:</p>
+<div class="highlight"><pre><code class="text">CFE_knowledge.cf
+CFE_hub_specific.cf
+CFE_cfengine.cf 
+</code></pre>
+</div>
+
+<p>Add <code>cfe_internal/example_use_goals.cf</code> to inputs section in &#39;$WORKDIR/masterfiles/promises.cf.&#39;</p>
+
+<p>Ensure that <code>libraries/</code> is added as a prefix to any reference to 
+<code>cfengine_stdlib.cf</code>.</p>
+
+<p>Add services/ to path of file_change.cf (we group services together in a 
+directory to avoid ending up cluttering the content of <code>masterfiles</code> when 
+there are many service policies)</p>
+
+<p>Add <code>cfe_internal_hub_vars</code> to <a href="reference-components.html#bundlesequence" title="Components and Common Control - bundlesequence"><code>bundlesequence</code></a> section.</p>
+
+<p>Add <code>cfsketch_run</code> to <a href="reference-components.html#bundlesequence" title="Components and Common Control - bundlesequence"><code>bundlesequence</code></a> and <code>cf-sketch-runfile.cf</code> to inputs 
+section.</p>
+<h3 id="if-you-ve-never-modified-failsafe-cf-or-update-cf">If you&#39;ve never modified failsafe.cf or update.cf...</h3>
+<p>Replace <a href="manuals-writing-policy-configuration-file-structure.html#update-cf" title="Default Configuration File Structure - update.cf"><code>update.cf</code></a> with <code>update_bins.cf</code> and <code>update_policy.cf</code>:</p>
+<div class="highlight"><pre><code class="text">  $ sed -i &#39;s/&quot;update.cf&quot;,/&quot;update_bins.cf&quot;,\n                    &quot;update_policy.cf&quot;,/g&#39; $WORKDIR/masterfiles/promises.cf
+
+   * rename goal_1 to goal_infosec
+  $ sed -i &#39;s/goal_1/goal_infosec/g&#39; $WORKDIR/masterfiles/promises.cf
+
+   * rename goal_2 to goal_complicance
+  $ sed -i &#39;s/goal_2/goal_compliance/g&#39; $WORKDIR/masterfiles/promises.cf
+
+   * remove commercial_customer class
+  $ sed -i &#39;/commercial_customer::/d&#39; $WORKDIR/masterfiles/promises.cf
+
+   * remove nova_edition and constellation_editon classes
+  $ sed -i &#39;/nova_edition.*::/d&#39; $WORKDIR/masterfiles/promises.cf
+
+   * remove garbage_collection because we have one in CFE_cfengine.cf
+  $ sed -i &#39;/maintenance.*goal_3/d&#39; $WORKDIR/masterfiles/promises.cf
+  $ sed -i &#39;/comment.*rotation.*Nova/d&#39; $WORKDIR/masterfiles/promises.cf
+  $ sed -i &#39;/usebundle.*garbage_collection/d&#39; $WORKDIR/masterfiles/promises.cf
+
+   * since the depends_on attribute has changed behavior (see the release notes), having it there might cause problems.
+  $ sed -i &#39;/depends_on/d&#39; $WORKDIR/masterfiles/services/file_change.cf
+  $ sed -i &#39;/depends_on/d&#39; $WORKDIR/masterfiles/update.cf
+</code></pre>
+</div>
+
+<p>Once the edits are done, please make sure your policy is correct by verifying the resultant policy files.</p>
+
+<ul>
+<li>verify for syntax errors</li>
+</ul>
+<div class="highlight"><pre><code class="text">      $ /var/cfengine/bin/cf-promises -f /var/cfengine/masterfiles/failsafe.cf
+      $ /var/cfengine/bin/cf-promises -f /var/cfengine/masterfiles/promises.cf
+</code></pre>
+</div>
+
+<ul>
+<li>if there is no error, please run failsafe to start up all CFEngine processes</li>
+</ul>
+<div class="highlight"><pre><code class="text">      $ /var/cfengine/bin/cf-agent -f /var/cfengine/masterfiles/failsafe.cf -IK
+</code></pre>
+</div>
+
+<ul>
+<li><p>We highly recommend cosmetic re-work of the resulting policy to ensure readability. See our new 3.0.0 framework in <code>/var/cfengine/share/NovaBase</code></p></li>
+<li><p>You should keep all control bodies (body agent/executor/server/hub/reporter/monitor/runagent control) and server access_rule() bundle to at least have some suggested attributes</p></li>
+</ul>
+<h3 id="if-you-have-modified-failsafe-cf-or-update-cf">If you have modified failsafe.cf or update.cf?...</h3>
+<p>Synchronize the contents in failsafe.cf and update.cf manually.</p>
+
+<p>For example; the promiser <code>/var/cfengine/bin/mongod &lt;parameters&gt;</code> in bundle 
+<code>update</code> in update.cf: change it to run in file-based configuration mode 
+(this bundle is called <code>update_policy</code> in the 3.0.0 policy framework).</p>
+<div class="highlight"><pre><code class="cf3">       <span class="kd">vars</span><span class="p">:</span>
+
+        <span class="p">&quot;</span><span class="nv">mongodb_dir</span><span class="p">&quot;</span>        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/state&quot;</span><span class="p">,</span>
+                            <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Directory where MongoDB files will be stored on hub - if changed: requires DB shutdown and move of files&quot;</span><span class="p">,</span>
+                             <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_policy_mongodb_dir&quot;</span><span class="p">;</span>
+
+        <span class="p">&quot;</span><span class="nv">mongodb_conf_file</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">translatepath</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(inputs_dir)</span><span class="s">/failsafe/mongod.conf&quot;</span><span class="p">),</span>
+                            <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Path to MongoDB configuration file&quot;</span><span class="p">,</span>
+                             <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_policy_mongodb_conf_file&quot;</span><span class="p">;</span>
+
+       <span class="kd">commands</span><span class="p">:</span>
+
+        <span class="nc">!windows.am_policy_hub.start_mongod</span><span class="p">::</span>
+
+         <span class="s">&quot;/var/cfengine/bin/mongod --dbpath </span><span class="si">$(update_policy.mongodb_dir)</span><span class="s"> --config </span><span class="si">$(update_policy.mongodb_conf_file)</span><span class="s"> &gt; /dev/null &lt; /dev/null 2&gt;&amp;1&quot;</span>
+</code></pre>
+</div>
+
+<p>Some contents of your current bundle agent update_bins in update.cf might be 
+outdated. Please keep it similar to 
+<code>/var/cfengine/share/NovaBase/failsafe/update_bins.cf</code> as much as possible.</p>
+<h2 id="migrate-to-new-database-structure">Migrate to new database structure</h2>
+<p>After an upgrade to from a 3.0 or 3.5.x release to 3.5.2, monitoring data
+needs to be migrated to a different data schema.</p>
+
+<p>A script <code>db-move-monitoring-to-cfmonitor.js</code> that performs the migration is 
+made available for download together with the 3.5.2 packages. </p>
+
+<ol>
+<li><p>Make sure you have 2X the database size (needed for db repair)</p>
+<div class="highlight"><pre><code class="text">#db size in mb
+$ /var/cfengine/bin/mongo --quiet cfreport --eval &quot;printjson(db.stats(1024*1024)[&#39;fileSize&#39;])&quot;;
+</code></pre>
+</div></li>
+<li><p>Run migration script</p>
+<div class="highlight"><pre><code class="text">$ /var/cfengine/bin/mongo --quiet admin db-move-monitoring-to-cfmonitor.js
+</code></pre>
+</div></li>
+</ol>
+<h2 id="upgrade-procedure-for-the-hosts">Upgrade procedure for the hosts</h2>
+<p>For host upgrades there are 2 approaches: manual or automatic upgrade.</p>
+<h3 id="manual">Manual</h3>
+<p>Update <code>cfengine-nova</code> on each client by rpm, dpkg or corresponding Windows command. For Linux/UNIX systems, update cf-twin as follows:</p>
+<div class="highlight"><pre><code class="text">$ cp -vf /var/cfengine/bin/cf-agent /var/cfengine/bin/cf-twin
+</code></pre>
+</div>
+
+<p>For Windows systems copy/overwrite the content of <code>C:\Program Files\Cfengine\bin</code> to <code>C:\Program Files\Cfengine\bin-twin</code></p>
+<h3 id="automatic">Automatic</h3>
+<p>On the hub, copy the client <code>cfengine-nova</code> packages to the operating system 
+specific distribution directories in <code>/var/cfengine/master_software_updates</code> 
+and CFEngine 3 Enterprise will take care of the rest.</p>
+<h3 id="agent-package-upgrade-through-the-hub-from-v2-2-3">Agent package upgrade through the hub from v2.2.3</h3>
+<p>Please note that although it is possible to upgrade agents through the hub, 
+for Debian format (.deb) packages (both <code>x86_64</code> and <code>i386</code>) it is necessary 
+to edit the <a href="manuals-writing-policy-configuration-file-structure.html#update-cf" title="Default Configuration File Structure - update.cf"><code>update.cf</code></a> on each agent before proceeding. The reason for this 
+is that the naming convention used in 2.2.3 is at odds with the one that has 
+since been adopted by CFEngine and in the wider community. As a result, the 
+<a href="manuals-writing-policy-configuration-file-structure.html#update-cf" title="Default Configuration File Structure - update.cf"><code>update.cf</code></a> script in v2.2.3 clients expects i686 (hard coded) and x86_64 for 
+the architecture part in the package name. So package upgrade will only work 
+for .deb packages if the package is renamed before it is copied into the 
+relevant architecture subdirectory under 
+<code>/var/cfengine/master_software_updates</code>.</p>
+
+<p>For example, if your upgrade package is named like this:</p>
+
+<p><code>cfengine-nova_3.5.0XXXX_amd64.deb</code> or <code>cfengine-nova_3.5.0XXXX_i386.deb</code></p>
+
+<p>you should rename them so they look like this:</p>
+
+<p><code>cfengine-nova_3.5.0XXXX_x86_64.deb</code> or <code>cfengine-nova_3.5.0XXXX_i686.deb</code></p>
+
+<p><em>before</em> copying them into </p>
+
+<p><code>/var/cfengine/master_software_updates/&lt;arch subdirectory&gt;</code> on the hub</p>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/getting-started/upgrade.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.7  Documentation - Design Center REST API</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.7/assets/global-fd19e55abf031add992b4d4a2d9bb344.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Design Center REST API";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.13/">Version 3.13 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/" selected>Version 3.7 (EOL)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:skcdq5u4lcc" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a><ul class="level2"><li><a href="reference-enterprise-api-ref-changes.html">Changes REST API</a></li><li><a class="active" href="reference-enterprise-api-ref-design-center.html">Design Center REST API</a></li><li><a href="reference-enterprise-api-ref-host.html">Host REST API</a></li><li><a href="reference-enterprise-api-ref-query.html">Query REST API</a></li><li><a href="reference-enterprise-api-ref-sql-schema.html">SQL Schema</a></li><li><a href="reference-enterprise-api-ref-status-settings.html">Status and Settings REST API</a></li><li><a href="reference-enterprise-api-ref-users-rbac.html">Users and Access-Control REST API</a></li></ul></li><li><a href="reference-standard-library.html">Standard Library</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-enterprise-api-ref.html">Enterprise API Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Design Center REST API
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Please see <a href="reference-design-center-api.html" title="The Design Center API">The Design Center API</a> for the Design Center API
+commands that are wrapped by the following Enterprise API commands.</p>
+<h2 id="list-of-sketches">List of sketches</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/sketch">https://hub.cfengine.com/api/dc/sketch</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 69,
+    &quot;total&quot;: 69,
+    &quot;timestamp&quot;: 1383829723
+  },
+  &quot;data&quot;: [
+    {
+      &quot;Utilities::Staging&quot;: {
+        &quot;metadata&quot;: {
+          &quot;authors&quot;: [
+            &quot;Ted Zlatanov &lt;tzz@lifelogs.com&gt;&quot;
+          ],
+          &quot;version&quot;: 1,
+          &quot;name&quot;: &quot;Utilities::Staging&quot;,
+          &quot;license&quot;: &quot;MIT&quot;,
+          &quot;description&quot;: &quot;Stage a directory of content to a target directory.&quot;,
+          &quot;tags&quot;: [
+            &quot;cfdc&quot;,
+            &quot;stage&quot;,
+            &quot;directory&quot;,
+            &quot;rsync&quot;
+          ],
+          &quot;depends&quot;: {
+            &quot;cfengine&quot;: {
+              &quot;version&quot;: &quot;3.5.0&quot;
+            },
+            &quot;CFEngine::dclib::3.5.0&quot;: [],
+            &quot;CFEngine::dclib&quot;: [],
+            &quot;CFEngine::stdlib&quot;: {
+              &quot;version&quot;: 109
+            }
+          }
+        }
+      }
+    }
+  ]
+}
+</code></pre>
+</div>
+<h2 id="information-about-specific-sketch">Information about specific sketch</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/sketch/:sketchName">https://hub.cfengine.com/api/dc/sketch/:sketchName</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 1,
+    &quot;total&quot;: 1,
+    &quot;timestamp&quot;: 1383831531
+  },
+  &quot;data&quot;: [
+    {
+      &quot;namespace&quot;: &quot;cfdc_staging&quot;,
+      &quot;manifest&quot;: {
+        &quot;test.cf&quot;: {
+          &quot;comment&quot;: &quot;Test Policy&quot;
+        },
+        &quot;params/demo.json&quot;: {
+          &quot;comment&quot;: &quot;Demo parameters.&quot;
+        },
+        &quot;README.md&quot;: {
+          &quot;documentation&quot;: true
+        },
+        &quot;test.pl&quot;: {
+          &quot;test&quot;: true
+        },
+        &quot;main.cf&quot;: {
+          &quot;desc&quot;: &quot;main file&quot;
+        }
+      },
+      &quot;interface&quot;: [
+        &quot;main.cf&quot;
+      ],
+      &quot;metadata&quot;: {
+        &quot;authors&quot;: [
+          &quot;Ted Zlatanov &lt;tzz@lifelogs.com&gt;&quot;
+        ],
+        &quot;version&quot;: 1,
+        &quot;name&quot;: &quot;Utilities::Staging&quot;,
+        &quot;license&quot;: &quot;MIT&quot;,
+        &quot;description&quot;: &quot;Stage a directory of content to a target directory.&quot;,
+        &quot;tags&quot;: [
+          &quot;cfdc&quot;,
+          &quot;stage&quot;,
+          &quot;directory&quot;,
+          &quot;rsync&quot;
+        ],
+        &quot;depends&quot;: {
+          &quot;cfengine&quot;: {
+            &quot;version&quot;: &quot;3.5.0&quot;
+          },
+          &quot;CFEngine::dclib::3.5.0&quot;: [],
+          &quot;CFEngine::dclib&quot;: [],
+          &quot;CFEngine::stdlib&quot;: {
+            &quot;version&quot;: 109
+          }
+        }
+      },
+      &quot;entry_point&quot;: null,
+      &quot;api&quot;: {
+        &quot;stage&quot;: [
+          {
+            &quot;name&quot;: &quot;runenv&quot;,
+            &quot;type&quot;: &quot;environment&quot;
+          },
+          {
+            &quot;name&quot;: &quot;metadata&quot;,
+            &quot;type&quot;: &quot;metadata&quot;
+          },
+          {
+            &quot;name&quot;: &quot;source_dir&quot;,
+            &quot;validation&quot;: &quot;PATH_ABSOLUTE_UNIX_OR_WINDOWS&quot;,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Directory where the content can be found.&quot;
+          },
+          {
+            &quot;name&quot;: &quot;dest_dir&quot;,
+            &quot;validation&quot;: &quot;PATH_ABSOLUTE_UNIX_OR_WINDOWS&quot;,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Directory where the content will be installed.&quot;
+          },
+          {
+            &quot;name&quot;: &quot;owner&quot;,
+            &quot;validation&quot;: &quot;USERNAME_UNIX&quot;,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Owner of the dest_dir after staging.&quot;
+          },
+          {
+            &quot;name&quot;: &quot;group&quot;,
+            &quot;validation&quot;: &quot;USERNAME_UNIX&quot;,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Owner of the dest_dir after staging.&quot;
+          },
+          {
+            &quot;name&quot;: &quot;dirmode&quot;,
+            &quot;validation&quot;: &quot;DIGITS&quot;,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;Directory mode to install.&quot;
+          },
+          {
+            &quot;name&quot;: &quot;filemode&quot;,
+            &quot;validation&quot;: &quot;DIGITS&quot;,
+            &quot;type&quot;: &quot;string&quot;,
+            &quot;description&quot;: &quot;File mode to install.&quot;
+          },
+          {
+            &quot;name&quot;: &quot;options&quot;,
+            &quot;type&quot;: &quot;array&quot;,
+            &quot;default&quot;: {
+              &quot;precommand&quot;: &quot;/bin/echo precommand&quot;,
+              &quot;postcommand&quot;: &quot;/bin/echo postcommand&quot;,
+              &quot;excluded&quot;: [
+                &quot;.cvs&quot;,
+                &quot;.svn&quot;,
+                &quot;.subversion&quot;,
+                &quot;.git&quot;,
+                &quot;.bzr&quot;
+              ]
+            },
+            &quot;description&quot;: &quot;Staging options.&quot;
+          },
+          {
+            &quot;name&quot;: &quot;staged&quot;,
+            &quot;type&quot;: &quot;return&quot;
+          },
+          {
+            &quot;name&quot;: &quot;directory&quot;,
+            &quot;type&quot;: &quot;return&quot;
+          }
+        ]
+      }
+    }
+  ]
+}
+</code></pre>
+</div>
+<h2 id="install-sketch-in-the-system">Install sketch in the system</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/sketch/:sketchName">https://hub.cfengine.com/api/dc/sketch/:sketchName</a></p>
+
+<p><strong>Method:</strong> PUT</p>
+
+<p><strong>Example usage:</strong> <a href="examples-enterprise-api-examples-dc-interaction.html#sample-api-call-to-install-sketch" title="Enterprise API interaction with Design Center - Sample API call to Install sketch"><code>Sample API call to Install sketch</code></a></p>
+<h2 id="list-of-available-definitions">List of available definitions</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/definition">https://hub.cfengine.com/api/dc/definition</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 1,
+    &quot;total&quot;: 28,
+    &quot;timestamp&quot;: 1383831645
+  },
+  &quot;data&quot;: [
+    {
+      &quot;e180fc753487e749056f422f89420d06&quot;: {
+        &quot;Data::Classes&quot;: {
+          &quot;url_retriever&quot;: &quot;/usr/bin/curl -s&quot;,
+          &quot;CF_MP_ENTRY_POINT&quot;: &quot;bynet&quot;,
+          &quot;regex&quot;: &quot;daas&quot;,
+          &quot;url&quot;: &quot;http://asw.as&quot;,
+          &quot;classname&quot;: &quot;as&quot;
+        }
+      },
+      &quot;efce8022c7a53d3755ded38aa6b64730&quot;: {
+        &quot;Utilities::abortclasses&quot;: {
+          &quot;alert_only&quot;: &quot;1&quot;,
+          &quot;trigger_file&quot;: &quot;/COWBOY&quot;,
+          &quot;timeout&quot;: {
+            &quot;hours&quot;: 24,
+            &quot;years&quot;: 0,
+            &quot;minutes&quot;: 0,
+            &quot;action&quot;: &quot;abortclasses_timeout_action_noop&quot;,
+            &quot;months&quot;: 0,
+            &quot;enabled&quot;: false,
+            &quot;days&quot;: &quot;144&quot;
+          },
+          &quot;trigger_context&quot;: &quot;any&quot;,
+          &quot;abortclass&quot;: &quot;class&quot;
+        }
+      }
+    }
+  ]
+}
+</code></pre>
+</div>
+<h2 id="create-new-definition">Create new definition</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/definition/:definitionName">https://hub.cfengine.com/api/dc/definition/:definitionName</a></p>
+
+<p><strong>Method:</strong> PUT</p>
+
+<p><strong>Example Request Body:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>{
+  &quot;sketchName&quot;: &quot;test&quot;,
+  &quot;params&quot;: {
+    &quot;param_1&quot;: &quot;value&quot;
+  }
+}
+</code></pre>
+</div>
+
+<p><strong>Example usage:</strong> <a href="examples-enterprise-api-examples-dc-interaction.html#sample-api-call-to-define-sketch-parameters" title="Enterprise API interaction with Design Center - Sample API call to Define sketch parameters"><code>Sample API call to Define sketch parameters</code></a></p>
+<h2 id="list-of-available-environments">List of available environments</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/environment">https://hub.cfengine.com/api/dc/environment</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 1,
+    &quot;total&quot;: 6,
+    &quot;timestamp&quot;: 1383831817
+  },
+  &quot;data&quot;: [
+    {
+      &quot;092b04a40fdd4cb8bfdb685f2c4a0328&quot;: {
+        &quot;verbose&quot;: &quot;&quot;,
+        &quot;test&quot;: &quot;&quot;,
+        &quot;activated&quot;: {
+          &quot;include&quot;: [
+            &quot;cfengine_3&quot;
+          ],
+          &quot;class_function&quot;: [
+            {
+              &quot;function&quot;: &quot;classmatch&quot;,
+              &quot;args&quot;: [
+                &quot;cfengine_3&quot;
+              ]
+            }
+          ],
+          &quot;exclude&quot;: []
+        }
+      }
+    }
+  ]
+}
+</code></pre>
+</div>
+<h2 id="create-new-environment">Create new environment</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/environment/:name">https://hub.cfengine.com/api/dc/environment/:name</a></p>
+
+<p><strong>Method:</strong> PUT</p>
+
+<p><strong>Example Request Body:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>{
+  &quot;environment&quot;: [
+    &quot;cfengine3&quot;
+  ]
+}
+</code></pre>
+</div>
+
+<p><strong>Example usage:</strong> <a href="examples-enterprise-api-examples-dc-interaction.html#sample-api-call-to-define-environment" title="Enterprise API interaction with Design Center - Sample API call to Define environment"><code>Sample API call to Define environment</code></a></p>
+<h2 id="list-of-available-activations">List of available activations</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/activation">https://hub.cfengine.com/api/dc/activation</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>sketch</strong>
+Name of the sketch</li>
+<li><strong>details</strong>
+1 or 0 for extended details</li>
+</ul>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 1,
+    &quot;total&quot;: 9,
+    &quot;timestamp&quot;: 1383831923
+  },
+  &quot;data&quot;: [
+    {
+      &quot;Data::Classes&quot;: [
+        {
+          &quot;params&quot;: [
+            &quot;3603e753b8cb8ecc4d440dc91cd74742&quot;
+          ],
+          &quot;environment&quot;: &quot;092b04a40fdd4cb8bfdb685f2c4a0328&quot;,
+          &quot;target&quot;: &quot;sketches&quot;,
+          &quot;identifier&quot;: &quot;cc&quot;,
+          &quot;bundle&quot;: &quot;byfile&quot;,
+          &quot;metadata&quot;: {
+            &quot;identifier&quot;: &quot;cc&quot;,
+            &quot;timestamp&quot;: 1379939700
+          }
+        },
+        {
+          &quot;params&quot;: [
+            &quot;e180fc753487e749056f422f89420d06&quot;
+          ],
+          &quot;environment&quot;: &quot;092b04a40fdd4cb8bfdb685f2c4a0328&quot;,
+          &quot;target&quot;: &quot;sketches&quot;,
+          &quot;identifier&quot;: &quot;aaa&quot;,
+          &quot;bundle&quot;: &quot;bynet&quot;,
+          &quot;metadata&quot;: {
+            &quot;identifier&quot;: &quot;aaa&quot;,
+            &quot;timestamp&quot;: 1380011681
+          }
+        }
+      ],
+      &quot;Packages::removed&quot;: [
+        {
+          &quot;params&quot;: [
+            &quot;8f068e0b3d7c2edc2d113a48b2485f94&quot;
+          ],
+          &quot;environment&quot;: &quot;092b04a40fdd4cb8bfdb685f2c4a0328&quot;,
+          &quot;target&quot;: &quot;sketches&quot;,
+          &quot;identifier&quot;: &quot;12&quot;,
+          &quot;bundle&quot;: &quot;removed&quot;,
+          &quot;metadata&quot;: {
+            &quot;identifier&quot;: &quot;12&quot;,
+            &quot;timestamp&quot;: 1382366628
+          }
+        },
+        {
+          &quot;params&quot;: [
+            &quot;e3134847d954d98d7419137b437cfd3c&quot;
+          ],
+          &quot;environment&quot;: &quot;092b04a40fdd4cb8bfdb685f2c4a0328&quot;,
+          &quot;target&quot;: &quot;sketches&quot;,
+          &quot;identifier&quot;: &quot;xz&quot;,
+          &quot;bundle&quot;: &quot;removed&quot;,
+          &quot;metadata&quot;: {
+            &quot;identifier&quot;: &quot;xz&quot;,
+            &quot;timestamp&quot;: 1382367291
+          }
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+</div>
+<h2 id="activation-details">Activation details</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/activation/:activation_id/:sketchName">https://hub.cfengine.com/api/dc/activation/:activation_id/:sketchName</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>sketchName</strong>
+Name of the sketch</li>
+<li><strong>details</strong>
+1 or 0 for host and other details</li>
+</ul>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 1,
+    &quot;total&quot;: 1,
+    &quot;timestamp&quot;: 1383832020
+  },
+  &quot;data&quot;: [
+    [
+      {
+        &quot;params&quot;: [
+          &quot;087b875ad637c6392acc3b78b66910cb&quot;
+        ],
+        &quot;environment&quot;: &quot;092b04a40fdd4cb8bfdb685f2c4a0328&quot;,
+        &quot;target&quot;: &quot;sketches&quot;,
+        &quot;identifier&quot;: &quot;pokemon&quot;,
+        &quot;bundle&quot;: &quot;installed&quot;,
+        &quot;metadata&quot;: {
+          &quot;identifier&quot;: &quot;pokemon&quot;,
+          &quot;timestamp&quot;: 1383306456
+        },
+        &quot;details&quot;: {
+          &quot;params&quot;: {
+            &quot;CF_MP_ENTRY_POINT&quot;: &quot;installed&quot;,
+            &quot;pkgs_add&quot;: [
+              &quot;po&quot;
+            ]
+          },
+          &quot;environments&quot;: {
+            &quot;verbose&quot;: &quot;&quot;,
+            &quot;test&quot;: &quot;&quot;,
+            &quot;activated&quot;: {
+              &quot;include&quot;: [
+                &quot;cfengine_3&quot;
+              ],
+              &quot;class_function&quot;: [
+                {
+                  &quot;function&quot;: &quot;classmatch&quot;,
+                  &quot;args&quot;: [
+                    &quot;cfengine_3&quot;
+                  ]
+                }
+              ],
+              &quot;exclude&quot;: []
+            }
+          },
+          &quot;hosts&quot;: []
+        }
+      }
+    ]
+  ]
+}
+</code></pre>
+</div>
+<h2 id="create-new-activation">Create new activation</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/activation/:id">https://hub.cfengine.com/api/dc/activation/:id</a></p>
+
+<p><strong>Method:</strong> PUT</p>
+
+<p><strong>Example Request Body:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>{
+  &quot;environmentName&quot;: &quot;092b04a40fdd4cb8bfdb685f2c4a0328&quot;,
+  &quot;paramName&quot;: &quot;c53db12b79d5b2b74f319b91caf7e88f&quot;,
+  &quot;bundleName&quot;: &quot;installed&quot;
+}
+</code></pre>
+</div>
+
+<p><strong>Example usage:</strong> <a href="examples-enterprise-api-examples-dc-interaction.html#sample-api-call-to-activate-sketch" title="Enterprise API interaction with Design Center - Sample API call to Activate sketch"><code>Sample API call to Activate sketch</code></a></p>
+<h2 id="delete-the-activation">Delete the activation</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/activation/:id">https://hub.cfengine.com/api/dc/activation/:id</a></p>
+
+<p><strong>Method:</strong> DELETE</p>
+<h2 id="list-of-validations">List of validations</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/validation">https://hub.cfengine.com/api/dc/validation</a></p>
+
+<p><strong>Method:</strong> GET</p>
+<h2 id="get-validation-details">Get validation details</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/validation/:id">https://hub.cfengine.com/api/dc/validation/:id</a></p>
+
+<p><strong>Method:</strong> GET</p>
+<h2 id="set-validation-type">Set validation type</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/validate/:validationType">https://hub.cfengine.com/api/dc/validate/:validationType</a></p>
+
+<p><strong>Method:</strong> POST</p>
+
+<p><strong>Example Request Body:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>{
+  &quot;validationData&quot;: [
+    &quot;asdasd&quot;
+  ]
+}
+</code></pre>
+</div>
+<h2 id="get-workspace">Get workspace</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/workspace">https://hub.cfengine.com/api/dc/workspace</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p>Checks for the workspace and returns the path.</p>
+<h2 id="post-the-commits">Post the commits</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/workspace/commit">https://hub.cfengine.com/api/dc/workspace/commit</a></p>
+
+<p><strong>Method:</strong> POST</p>
+
+<p><strong>Example Request Body:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>{
+  &quot;message&quot;: &quot;some message&quot;,
+  &quot;userEmail&quot;: &quot;email.com&quot;
+}
+</code></pre>
+</div>
+
+<p><strong>Example usage:</strong> <a href="examples-enterprise-api-examples-dc-interaction.html#sample-api-call-to-commit-changes" title="Enterprise API interaction with Design Center - Sample API call to Commit changes"><code>Sample API call to Commit changes</code></a></p>
+<h2 id="reset-the-user-workspace">Reset the user workspace</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/workspace/reset">https://hub.cfengine.com/api/dc/workspace/reset</a></p>
+
+<p><strong>Method:</strong> POST</p>
+<h2 id="list-workspace-settings">List workspace settings</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/workspace/settings">https://hub.cfengine.com/api/dc/workspace/settings</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p>Returns the settings of the workspace (VCS settings), 404 if not found.</p>
+<h2 id="create-settings">Create settings</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/workspace/settings">https://hub.cfengine.com/api/dc/workspace/settings</a></p>
+
+<p><strong>Method:</strong> POST</p>
+
+<p>Content-Type header should be multipart/form-data.</p>
+
+<p><strong>Example Request Body:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>{
+  &quot;gitServer&quot;: &quot;serverurl&quot;,
+  &quot;gitEmail&quot;: &quot;email.com&quot;,
+  &quot;gitBranch&quot;: &quot;gitbranch name&quot;,
+  &quot;gitAuthor&quot;: &quot;author name&quot;,
+  &quot;gitPrivateKey&quot;: &quot;@filepath&quot;
+}
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="bash"><span></span>curl -F <span class="s2">&quot;gitServer=servername&quot;</span> -F <span class="s2">&quot;gitEmail=mail&quot;</span> -F <span class="s2">&quot;gitPrivateKey=@/home/user1/Desktop/id_rsa&quot;</span> http://server
+</code></pre>
+</div>
+<h2 id="delete-settings">Delete settings</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/dc/workspace/settings">https://hub.cfengine.com/api/dc/workspace/settings</a></p>
+
+<p><strong>Method:</strong> DELETE</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-enterprise.html">enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-rest.html">rest</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-api.html">api</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-dc.html">dc</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-sketch.html">sketch</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-uri.html">uri</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-design-center.html">design center</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 12 April 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/enterprise-api-ref/design-center.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/34a63926eaa48e77d433eef63e7fec91c25bf534" target="_blank">34a63926eaa48e77d433eef63e7fec91c25bf534</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.7/assets/footer-a434e55eb3b9456e270479ce96049098.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

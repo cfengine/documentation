@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - SQL Queries</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html"  class="navselected" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="manuals-design.html">Design</a></li><li><a href="manuals-architecture.html">Architecture</a></li><li><a href="manuals-components.html">The CFEngine Components</a></li><li><a href="manuals-language-concepts.html">Language Concepts</a></li><li><a href="manuals-design-center.html">Design Center</a></li><li><a href="manuals-writing-policy.html">Writing Policy</a></li><li><a href="manuals-enterprise-reporting.html">Enterprise Reporting</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li><a href="manuals-enterprise-reporting-architecture.html">Reporting Architecture</a></li><li><a href="manuals-enterprise-api.html">Enterprise API</a></li><li class="selected"><span>SQL Queries</span></li><li><a href="manuals-enterprise-reporting-multi-site-queries.html">Multi-Site Queries</a></li><li><a href="manuals-enterprise-reporting-porting-guide.html">API Porting Guide</a></li><li><a href="manuals-enterprise-reporting-troubleshooting.html">Troubleshooting</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="manuals.html">CFEngine Manuals</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="manuals-enterprise-reporting.html">Enterprise Reporting</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>SQL Queries</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/manuals.html">manuals</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/enterprise.html">enterprise</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/rest.html">rest</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/api.html">api</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/reporting.html">reporting</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/sql.html">sql</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/queries.html">queries</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>SQL Queries</h1>
+                    <p>The standard way of creating reports in CFEngine Enterprise 3.0 is with SQL 
+queries. See the chapter on SQL queries for an explanation. The API has a few 
+ways of creating a report.</p>
+
+<ul>
+<li>  Synchronous query, where we issue a query and wait for the table to
+be sent back with the response.</li>
+<li>  Asynchronous query, where we get a response immediately with an id
+that we can later query to download the report.</li>
+<li>  Subscribed query, where we specify a query to be run on a schedule
+and have the result emailed to someone.</li>
+</ul>
+<h2 id="synchronous-queries">Synchronous Queries</h2>
+<p>Issuing a synchronous query is the most straight forward way of running
+an SQL query. We simply issue the query and wait for a result to come
+back.</p>
+
+<p><strong>Request</strong>(lines split and indented for presentability)</p>
+<div class="highlight"><pre><code class="text">curl -k --user admin:admin https://test.cfengine.com/api/query -X POST -d
+{
+  &quot;query&quot;: &quot;SELECT ...&quot;
+}
+</code></pre>
+</div>
+
+<p><strong>Response</strong></p>
+<div class="highlight"><pre><code class="text">{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 1,
+    &quot;total&quot;: 1,
+    &quot;timestamp&quot;: 1351003514
+  },
+  &quot;data&quot;: [
+    {
+      &quot;query&quot;: &quot;SELECT ...&quot;,
+      &quot;header&quot;: [
+        &quot;Column 1&quot;,
+        &quot;Column 2&quot;
+      ],
+      &quot;rowCount&quot;: 3,
+      &quot;rows&quot;: [
+      ]
+      &quot;cached&quot;: false,
+      &quot;sortDescending&quot;: false
+    }
+  ]
+}
+</code></pre>
+</div>
+<h2 id="asynchronous-queries">Asynchronous Queries</h2>
+<p>Because some queries may take some time to compute, it is possible to
+fire off a query and check the status of it later. This is useful for
+dumping a lot of data into CSV files for example. The sequence consists
+of three steps.</p>
+
+<ol>
+<li> Issue the asynchronous query and get a job id</li>
+<li> Check status of processing using the id</li>
+<li> When the query is completed, get a download link using the id</li>
+</ol>
+<h3 id="issuing-the-query">Issuing The Query</h3>
+<p><strong>Request</strong></p>
+<div class="highlight"><pre><code class="text">curl -k --user admin:admin https://test.cfengine.com/api/query/async -X POST -d
+{
+  &quot;query&quot;: &quot;SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts JOIN Contexts ON Hosts.Hostkey = Contexts.HostKey WHERE Contexts.ContextName = \&quot;ubuntu\&quot;&quot;
+}
+</code></pre>
+</div>
+
+<p><strong>Response</strong>(lines split and indented for presentability)</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 1,
+    &quot;total&quot;: 1,
+    &quot;timestamp&quot;: 1351003514
+  },
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;32ecb0a73e735477cc9b1ea8641e5552&quot;,
+      &quot;query&quot;: &quot;SELECT ...&quot;
+    }
+  ]
+]
+</code></pre>
+</div>
+<h3 id="checking-status">Checking Status</h3>
+<p><strong>Request</strong></p>
+<div class="highlight"><pre><code class="text">curl -k --user admin:admin https://test.cfengine.com/api/query/async/:id
+</code></pre>
+</div>
+
+<p><strong>Response</strong></p>
+<div class="highlight"><pre><code class="text">{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 1,
+    &quot;total&quot;: 1,
+    &quot;timestamp&quot;: 1351003514
+  },
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;32ecb0a73e735477cc9b1ea8641e5552&quot;,
+      &quot;percentageComplete&quot;: 42,
+    ]
+}
+</code></pre>
+</div>
+<h3 id="getting-the-completed-report">Getting The Completed Report</h3>
+<p>This is the same API call as checking the status. Eventually, the
+<strong>percentageComplete</strong> field will reach 100 and there will be a link to
+the completed report available for downloading.</p>
+
+<p><strong>Request</strong></p>
+<div class="highlight"><pre><code class="text">curl -k --user admin:admin https://test.cfengine.com/api/query/async/:id
+</code></pre>
+</div>
+
+<p><strong>Response</strong></p>
+<div class="highlight"><pre><code class="text">{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 1,
+    &quot;total&quot;: 1,
+    &quot;timestamp&quot;: 1351003514
+  },
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;32ecb0a73e735477cc9b1ea8641e5552&quot;,
+      &quot;percentageComplete&quot;: 100,
+      &quot;href&quot;: &quot;https://test.cfengine.com/api/static/32ecb0a73e735477cc9b1ea8641e5552.csv&quot;
+    }
+  ]
+}
+</code></pre>
+</div>
+<h2 id="subscribed-queries">Subscribed Queries</h2>
+<p>Subscribed queries happen in the context of a user. Any user can create
+a query on a schedule and have it email to someone.</p>
+
+<p><strong>Request</strong> (lines split and indented for presentability)</p>
+<div class="highlight"><pre><code class="text">curl -k --user admin:admin https://test.cfengine.com/api/user/name/
+   subscription/query/file-changes-report -X PUT -d
+{
+  &quot;to&quot;: &quot;email@domain.com&quot;,
+  &quot;query&quot;: &quot;SELECT ...&quot;,
+  &quot;schedule&quot;: &quot;Monday.Hr23.Min59&quot;,
+  &quot;title&quot;: &quot;Report title&quot;
+  &quot;description&quot;: &quot;Text that will be included in email&quot;
+  &quot;outputTypes&quot;: [ &quot;pdf&quot; ]
+}
+</code></pre>
+</div>
+
+<p><strong>Response</strong></p>
+<div class="highlight"><pre><code class="text">204 No Content
+</code></pre>
+</div>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/manuals/enterprise-reporting/sql-queries.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

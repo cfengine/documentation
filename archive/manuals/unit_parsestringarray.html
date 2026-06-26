@@ -1,0 +1,43 @@
+ <div id="wholebody"><div id="pagebody"><div class="rtop"><div class="r1"></div><div class="r2"></div><div class="r3"></div><div class="r4"></div></div><div id="content">
+<pre>
+<h1>Cfengine 3 example unit_parsestringarray.html</h1>
+
+
+body common control 
+{
+bundlesequence => { test("/tmp/test.txt") };
+}
+
+bundle agent test(f) 
+{
+vars:
+
+ #######################################
+ # Define data inline for convenience
+ #######################################
+
+  "table"   string => 
+
+"one: a
+two: b
+three: c";
+
+#######################################
+
+ "dim" int => parsestringarray(
+	                      "items",
+			      "$(table)",
+			      "\s*#[^\n]*",
+			      ":",
+			      "1000",
+			      "200000"
+			      );
+
+ "keys" slist => getindices("items");
+
+reports:
+  cfengine_3::
+	"$(keys)";
+}
+}
+</div><div class="rbottom"><div class="r4"></div><div class="r3"></div><div class="r2"></div><div class="r1"></div></div></div></div></div>

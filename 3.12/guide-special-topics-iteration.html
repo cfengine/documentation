@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.12  Documentation - Iteration (Loops)</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/guide-special-topics-iteration.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='/docs/3.12/assets/global-2ea8d2fcc0dbfebdbe7d10e6eca6a3b3.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Iteration (Loops)";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/" selected>Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a><ul class="level2"><li><a href="guide-special-topics-adopting-cfengine.html">Adopting CFEngine</a></li><li><a href="guide-special-topics-agility.html">Agility</a></li><li><a href="guide-special-topics-application-management.html">Application Management</a></li><li><a href="guide-special-topics-build-deploy-manage-audit.html">Build Deploy Manage Audit</a></li><li><a href="guide-special-topics-change-management.html">Change Management</a></li><li><a href="guide-special-topics-cloud-computing.html">Cloud Computing</a></li><li><a href="guide-special-topics-content-driven-policy.html">Content Driven Policy</a></li><li><a href="guide-special-topics-devops.html">Devops</a></li><li><a href="guide-special-topics-distributed-scheduling.html">Distributed Scheduling</a></li><li><a href="guide-special-topics-file-content.html">File Content</a></li><li><a href="guide-special-topics-glossary.html">Glossary</a></li><li><a href="guide-special-topics-hierarchies.html">Hierarchies</a></li><li><a href="guide-special-topics-itil.html">ITIL</a></li><li><a class="active" href="guide-special-topics-iteration.html">Iteration (Loops)</a></li><li><a href="guide-special-topics-modularity.html">Modularity and Orchestrating System Policy</a></li><li><a href="guide-special-topics-orchestration.html">Orchestration</a></li><li><a href="guide-special-topics-stigs.html">STIGs</a></li><li><a href="guide-special-topics-teamwork.html">Teamwork</a></li><li><a href="guide-special-topics-open-nebula.html">Using CFEngine with Open Nebula</a></li></ul></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-special-topics.html">Special Topics</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Iteration (Loops)
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h1 id="what-is-iteration">What is iteration?</h1>
+<p>Iteration is about repeating operations in a list. In CFEngine, iteration is
+used to make a number of related promises, that fall into a pattern based on
+elements of a list. This is what would correspond to something like this
+pseudo-code in an imperative language:</p>
+<div class="highlight"><pre><code class="text">foreach item in list
+  make promise
+end
+</code></pre>
+</div>
+
+<p>In CFEngine, we do not write loops; rather, they are implicit. Suppose ‘@(list)’
+is a list variable (the ‘@’ means list). If we refer to this identifier using a
+scalar reference ‘$(list)’, then CFEngine understands this to mean, take each
+scalar item in the list and repeat the current promise, replacing the instance
+with elements of the list in turn.</p>
+<h1 id="iterated-promises">Iterated promises</h1>
+<p>Consider the following set of promises to report on the values of four separate
+monitor values:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">no_iteration</span>
+<span class="p">{</span>
+<span class="kd">reports</span><span class="p">:</span>
+  <span class="nc">cfengine_3</span><span class="p">::</span>
+    <span class="s">&quot;mon.value_rootprocs is </span><span class="si">$(mon.value_rootprocs)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;mon.value_otherprocs is </span><span class="si">$(mon.value_otherprocs)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;mon.value_diskfree is </span><span class="si">$(mon.value_diskfree)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;mon.value_loadavg is </span><span class="si">$(mon.value_loadavg)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>What we did was create four distinct reports, where each report announces which
+monitor variable it will be reporting, and the follows with the actual value of
+that monitor variable. For simple reports, this is perfectly adequate and
+straightforward, but it lacks abstraction and repeatability. Suppose we wanted
+to add a variable to report, we&#39;d need a new report promise. If we wanted to
+change the wording of the reports, we&#39;d possibly have to edit four promises, and
+this can be time consuming and error-prone.</p>
+
+<p>Consider instead the following example, which generates exactly the same
+reports:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">iteration1</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">monvars</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+               <span class="s">&quot;rootprocs&quot;</span><span class="p">,</span>
+                       <span class="s">&quot;otherprocs&quot;</span><span class="p">,</span>
+                       <span class="s">&quot;diskfree&quot;</span><span class="p">,</span>
+                       <span class="s">&quot;loadavg&quot;</span>
+                       <span class="p">};</span>
+
+<span class="kd">reports</span><span class="p">:</span>
+
+  <span class="nc">cfengine_3</span><span class="p">::</span>
+
+    <span class="s">&quot;mon.value_</span><span class="si">$(monvars)</span><span class="s"> is </span><span class="si">$(mon.value_$(monvars))</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>What we have done is to first specify a list variable monvars, and then iterate
+over the values contained in that list by referencing the list variable as a
+scalar. In CFEngine, simply referring to a list variable as a scalar
+automatically iterates over that variable.</p>
+
+<p>Note that in terms of raw &quot;lines of code&quot;, neither example shows an advantage
+(and in fact, the reports that are created by the iteration in this second
+example are identical to the reports in the first example).</p>
+
+<p>However, we already have a gain in maintainer efficiency. By changing the single
+report format, we automatically change all the reports. And we have separated
+the semantics of the reports from the list of monitoring variables.</p>
+
+<p>Admittedly, this is a simple example, but if you understand this one, we can
+continue with more compelling examples.</p>
+<h1 id="iterating-across-multiple-lists">Iterating across multiple lists</h1>
+<p>Although iteration is a powerful concept in and of itself, CFEngine can iterate
+across multiple lists simultaneously. In the previous example, we looked at the
+current values of four monitor variables, but since CFEngine also gives us
+access to the averaged values and the standard deviation, how would we create a
+series of reports that listed all three statistical components of each variable?
+The answer is simply to do another iteration:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">iteration2</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">stats</span><span class="p">&quot;</span>   <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="s">&quot;av&quot;</span><span class="p">,</span> <span class="s">&quot;dev&quot;</span> <span class="p">};</span>
+
+    <span class="p">&quot;</span><span class="nv">monvars</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                       <span class="s">&quot;rootprocs&quot;</span><span class="p">,</span>
+                       <span class="s">&quot;otherprocs&quot;</span><span class="p">,</span>
+                       <span class="s">&quot;diskfree&quot;</span><span class="p">,</span>
+                       <span class="s">&quot;loadavg&quot;</span>
+                       <span class="p">};</span>
+<span class="kd">reports</span><span class="p">:</span>
+
+  <span class="nc">cfengine_3</span><span class="p">::</span>
+    <span class="s">&quot;mon.</span><span class="si">$(stats)</span><span class="s">_</span><span class="si">$(monvars)</span><span class="s"> is </span><span class="si">$(mon.$(stats)_$(monvars))</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Through the addition of a new list called stats, we can now iterate over both it
+and the monvars list in the same promise. The reports that we thus generate will
+report on value_rootprocs, av_rootprocs, and dev_rootprocs, followed next by
+value_otherprocs, av_otherprocs, etc, ending finally with dev_loadavg. The
+leftward lists are iterated over completely before going to the next value in
+the rightward lists.</p>
+<h1 id="iterating-over-nested-lists">Iterating over nested lists</h1>
+<p>Recall that CFEngine iterates over complete promise units, not small parts of a
+promise. Let&#39;s look at an example that could show a common misunderstanding.</p>
+
+<p>If you look at the monitor variables that are described in the CFEngine
+Reference Guide, you&#39;ll notice that some variables reference the number of
+packets in and out of a host. So you might be tempted to do the following, which
+might not do what you expect.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">iteration3a</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">stats</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="s">&quot;av&quot;</span><span class="p">,</span> <span class="s">&quot;dev&quot;</span> <span class="p">};</span>
+    <span class="p">&quot;</span><span class="nv">inout</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;in&quot;</span><span class="p">,</span> <span class="s">&quot;out&quot;</span> <span class="p">};</span>
+
+    <span class="p">&quot;</span><span class="nv">monvars</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="s">&quot;rootprocs&quot;</span><span class="p">,</span>    <span class="s">&quot;otherprocs&quot;</span><span class="p">,</span>
+        <span class="s">&quot;diskfree&quot;</span><span class="p">,</span>
+        <span class="s">&quot;loadavg&quot;</span><span class="p">,</span>
+        <span class="s">&quot;smtp_</span><span class="si">$(inout)</span><span class="s">&quot;</span><span class="p">,</span>  <span class="c">#</span>
+        <span class="s">&quot;www_</span><span class="si">$(inout)</span><span class="s">&quot;</span><span class="p">,</span>   <span class="c"># look here</span>
+        <span class="s">&quot;wwws_</span><span class="si">$(inout)</span><span class="s">&quot;</span>   <span class="c">#</span>
+        <span class="p">};</span>
+
+<span class="kd">reports</span><span class="p">:</span>
+  <span class="nc">cfengine_3</span><span class="p">::</span>
+    <span class="s">&quot;mon.</span><span class="si">$(stats)</span><span class="s">_</span><span class="si">$(monvars)</span><span class="s"> is </span><span class="si">$(mon.$(stats)_$(monvars))</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>What this says is, for each value in ‘$(inout)’, define ‘monvars’ to be a
+variable. There are thus two attempts to defined the single name ‘monvars’ as a
+list with two different right-hand-sides (one for <code>in&#39; and one for</code>out&#39;). This
+will result in the error:</p>
+<div class="highlight"><pre><code class="text">!! Redefinition of variable &quot;monvars&quot; (embedded list in RHS) in context &quot;iteration3a&quot;
+!! Redefinition of variable &quot;monvars&quot; (embedded list in RHS) in context &quot;iteration3a&quot;
+</code></pre>
+</div>
+
+<p>Whenever a promise contains an iteration (that is, when the promise string or
+any of its attributes contain a scalar reference to a list variable), that
+promise is automatically re-stated with successive values from the list. So the
+example above is exactly the same as if we had said the following:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">iteration3b</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">stats</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="s">&quot;av&quot;</span><span class="p">,</span> <span class="s">&quot;dev&quot;</span> <span class="p">};</span>
+
+    <span class="p">&quot;</span><span class="nv">monvars</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="s">&quot;rootprocs&quot;</span><span class="p">,</span>    <span class="s">&quot;otherprocs&quot;</span><span class="p">,</span>
+        <span class="s">&quot;diskfree&quot;</span><span class="p">,</span>
+        <span class="s">&quot;loadavg&quot;</span><span class="p">,</span>
+        <span class="s">&quot;smtp_in&quot;</span><span class="p">,</span>
+        <span class="s">&quot;www_in&quot;</span><span class="p">,</span>   <span class="s">&quot;wwws_in&quot;</span>
+        <span class="p">};</span>
+
+    <span class="p">&quot;</span><span class="nv">monvars</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="s">&quot;rootprocs&quot;</span><span class="p">,</span>    <span class="s">&quot;otherprocs&quot;</span><span class="p">,</span>
+        <span class="s">&quot;diskfree&quot;</span><span class="p">,</span>
+        <span class="s">&quot;loadavg&quot;</span><span class="p">,</span>
+        <span class="s">&quot;smtp_out&quot;</span><span class="p">,</span>
+        <span class="s">&quot;www_out&quot;</span><span class="p">,</span>  <span class="s">&quot;wwws_out&quot;</span>
+        <span class="p">};</span>
+
+<span class="kd">reports</span><span class="p">:</span>
+  <span class="nc">cfengine_3</span><span class="p">::</span>
+    <span class="s">&quot;mon.</span><span class="si">$(stats)</span><span class="s">_</span><span class="si">$(monvars)</span><span class="s"> is </span><span class="si">$(mon.$(stats)_$(monvars))</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Notice that the promise is repeated twice, but the only thing that is different
+is the right hand side of the promise – the contents of the list, expanded using
+iteration over the inout list variable. Not only will this not do what we want,
+it will generate an error, because the second promise on the variable monvars
+will overwrite the value promised in the first promise! All that we will see in
+the reports are the second definition of the monvars list.</p>
+<h1 id="fixing-iterating-across-nested-lists">Fixing Iterating across nested lists</h1><div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">iteration3c</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">stats</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="s">&quot;av&quot;</span><span class="p">,</span> <span class="s">&quot;dev&quot;</span> <span class="p">};</span>
+    <span class="p">&quot;</span><span class="nv">inout</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;in&quot;</span><span class="p">,</span> <span class="s">&quot;out&quot;</span> <span class="p">};</span>
+
+    <span class="p">&quot;</span><span class="nv">monvars_$(inout)</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                <span class="s">&quot;smtp_</span><span class="si">$(inout)</span><span class="s">&quot;</span><span class="p">,</span>  <span class="c">#</span>
+                                <span class="s">&quot;www_</span><span class="si">$(inout)</span><span class="s">&quot;</span><span class="p">,</span>   <span class="c"># look here</span>
+                                <span class="s">&quot;wwws_</span><span class="si">$(inout)</span><span class="s">&quot;</span>   <span class="c">#</span>
+                                <span class="p">};</span>
+
+<span class="kd">reports</span><span class="p">:</span>
+  <span class="nc">cfengine_3</span><span class="p">::</span>
+    <span class="s">&quot;mon.</span><span class="si">$(stats)</span><span class="s">_</span><span class="si">$(monvars_in)</span><span class="s">  is </span><span class="si">$(mon.$(stats)_$(monvars_in))</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;mon.</span><span class="si">$(stats)</span><span class="s">_</span><span class="si">$(monvars_out)</span><span class="s"> is </span><span class="si">$(mon.$(stats)_$(monvars_out))</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>CFEngine does not allow an unlimited level of nesting, for reasons of efficiency
+and readability, and adding further levels of nesting will start to work against
+you. Note that we had to explicitly refer to the two variables that we
+created:$(monvars_in)and$(monvars_out), and specifying more will get very messy
+very quickly. However, the next sections show an easier-to-read workaround.</p>
+<h1 id="iterating-across-multiple-lists-revisted">Iterating across multiple lists, revisted</h1>
+<p>When a list variable is referenced as a scalar variable (that is, when the list
+variable is referenced as $(list)) instead of as a list (using @(list)),
+CFEngine assumes that it should substitute each scalar from the list in turn,
+and thus iterate over the list elements using a loop.</p>
+
+<p>If more than one list variable is referenced in this manner in a single promise,
+each list variable is iterated over, so that every possible combination of
+scalar components is represented. Consider the following example.</p>
+
+<p>In this example, note that the letters list is referenced in both the left-hand
+and right-hand side of the promise, the digits list is referenced only in the
+left-hand side, and the symbols list is only referenced in the left-hand side:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">iteration4a</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">letters</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span> <span class="p">};</span>
+    <span class="p">&quot;</span><span class="nv">digits</span><span class="p">&quot;</span>  <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span> <span class="p">};</span>
+    <span class="p">&quot;</span><span class="nv">symbols</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;@&quot;</span><span class="p">,</span> <span class="s">&quot;#&quot;</span> <span class="p">};</span>
+
+<span class="kd">commands</span><span class="p">:</span>
+    <span class="s">&quot;/bin/echo </span><span class="si">${letters}</span><span class="s">, </span><span class="si">${digits}</span><span class="s">+</span><span class="si">${digits}</span><span class="s">, &quot;</span>
+    <span class="kr">args</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">${letters}</span><span class="s"> and </span><span class="si">${symbols}</span><span class="s">&#39;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Like a backwards-reading odometer, the left-most variable cycles the fastest and
+the right-most list cycles the slowest. Most importantly, no matter how many
+times or places a list variable is referenced as a scalar in a single promise,
+each combination of values is visited only once, regardless of whether the
+iteration variable is in the lefthand side or the righthand side of a promise or
+both.</p>
+
+<p>The example above is exactly equivalent to this (much more) verbose set of
+promises. As you can see, there are 2*2*2 = 8 promises generated, which contains
+every possible comination of elements from the lists letters, digits, and
+symbols:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">iteration4b</span>
+<span class="p">{</span>
+<span class="kd">commands</span><span class="p">:</span>
+    <span class="s">&quot;/bin/echo a, 1+1, &quot;</span>
+    <span class="kr">args</span> <span class="o">=&gt;</span> <span class="s">&quot;a and @&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/bin/echo b, 1+1, &quot;</span>
+    <span class="kr">args</span> <span class="o">=&gt;</span> <span class="s">&quot;b and @&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/bin/echo a, 2+2, &quot;</span>
+    <span class="kr">args</span> <span class="o">=&gt;</span> <span class="s">&quot;a and @&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/bin/echo b, 2+2, &quot;</span>
+    <span class="kr">args</span> <span class="o">=&gt;</span> <span class="s">&quot;b and @&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/bin/echo a, 1+1, &quot;</span>
+    <span class="kr">args</span> <span class="o">=&gt;</span> <span class="s">&quot;a and #&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/bin/echo b, 1+1, &quot;</span>
+    <span class="kr">args</span> <span class="o">=&gt;</span> <span class="s">&quot;b and #&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/bin/echo a, 2+2, &quot;</span>
+    <span class="kr">args</span> <span class="o">=&gt;</span> <span class="s">&quot;a and #&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/bin/echo b, 2+2, &quot;</span>
+    <span class="kr">args</span> <span class="o">=&gt;</span> <span class="s">&quot;b and #&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h1 id="nesting-promises-workaround">Nesting promises workaround</h1>
+<p>Recall the problem of nesting iterations, we can now see how to repair our
+error. The key is to ensure that there is a distinct and unique promise created
+for every combination of iterated variables that we want to use. Here is how to
+solve the problem of listing the input and output packet counts:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">iteration5a</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">stats</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="s">&quot;av&quot;</span><span class="p">,</span> <span class="s">&quot;dev&quot;</span> <span class="p">};</span>
+    <span class="p">&quot;</span><span class="nv">inout</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;in&quot;</span><span class="p">,</span> <span class="s">&quot;out&quot;</span> <span class="p">};</span>
+    <span class="p">&quot;</span><span class="nv">io_names</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;smtp&quot;</span><span class="p">,</span> <span class="s">&quot;www&quot;</span><span class="p">,</span> <span class="s">&quot;wwws&quot;</span> <span class="p">};</span>
+    <span class="p">&quot;</span><span class="nv">io_vars[$(io_names)_$(inout)]</span><span class="p">&quot;</span> <span class="kt">int</span> <span class="o">=&gt;</span> <span class="s">&quot;0&quot;</span><span class="p">;</span>
+    <span class="p">&quot;</span><span class="nv">monvars</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="s">&quot;rootprocs&quot;</span><span class="p">,</span>    <span class="s">&quot;otherprocs&quot;</span><span class="p">,</span>
+        <span class="s">&quot;diskfree&quot;</span><span class="p">,</span>
+        <span class="s">&quot;loadavg&quot;</span><span class="p">,</span>
+        <span class="nf">getindices</span><span class="p">(</span><span class="s">&quot;io_vars&quot;</span><span class="p">)</span>
+        <span class="p">};</span>
+
+<span class="kd">reports</span><span class="p">:</span>
+  <span class="nc">cfengine_3</span><span class="p">::</span>
+    <span class="s">&quot;mon.</span><span class="si">$(stats)</span><span class="s">_</span><span class="si">$(monvars)</span><span class="s"> is </span><span class="si">$(mon.$(stats)_$(monvars))</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The output of this is</p>
+<div class="highlight"><pre><code class="text">R: mon.value_rootprocs is $(mon.value_rootprocs)
+R: mon.av_rootprocs is $(mon.av_rootprocs)
+R: mon.dev_rootprocs is $(mon.dev_rootprocs)
+R: mon.value_otherprocs is $(mon.value_otherprocs)
+R: mon.av_otherprocs is $(mon.av_otherprocs)
+R: mon.dev_otherprocs is $(mon.dev_otherprocs)
+R: mon.value_diskfree is $(mon.value_diskfree)
+R: mon.av_diskfree is $(mon.av_diskfree)
+R: mon.dev_diskfree is $(mon.dev_diskfree)
+R: mon.value_loadavg is $(mon.value_loadavg)
+R: mon.av_loadavg is $(mon.av_loadavg)
+R: mon.dev_loadavg is $(mon.dev_loadavg)
+R: mon.value_wwws_in is $(mon.value_wwws_in)
+R: mon.av_wwws_in is $(mon.av_wwws_in)
+R: mon.dev_wwws_in is $(mon.dev_wwws_in)
+R: mon.value_www_out is $(mon.value_www_out)
+R: mon.av_www_out is $(mon.av_www_out)
+R: mon.dev_www_out is $(mon.dev_www_out)
+R: mon.value_www_in is $(mon.value_www_in)
+R: mon.av_www_in is $(mon.av_www_in)
+R: mon.dev_www_in is $(mon.dev_www_in)
+R: mon.value_smtp_in is $(mon.value_smtp_in)
+R: mon.av_smtp_in is $(mon.av_smtp_in)
+R: mon.dev_smtp_in is $(mon.dev_smtp_in)
+R: mon.value_wwws_out is $(mon.value_wwws_out)
+R: mon.av_wwws_out is $(mon.av_wwws_out)
+R: mon.dev_wwws_out is $(mon.dev_wwws_out)
+R: mon.value_smtp_out is $(mon.value_smtp_out)
+R: mon.av_smtp_out is $(mon.av_smtp_out)
+R: mon.dev_smtp_out is $(mon.dev_smtp_out)
+</code></pre>
+</div>
+
+<p>In this case, all we are doing is creating an array called io_vars. Note that
+the indices of the elements of the array are iterated from two lists, so in this
+case we&#39;ll have 2*3 = 6 elements in the array, covering all the combinations of
+the two lists inout and inout-names.</p>
+
+<p>The values of the array elements can be whatever we like. In this case, we&#39;re
+making all the values 0, because we don&#39;t care what the actual values are – we
+only care about the keys of the array. We add the list of the keys to the
+monvars list by using the return value from getindices(&quot;io_vars&quot;).</p>
+
+<p>Looking at the example above, you might just as easily be tempted to do the
+following:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">iteration5b</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">stats</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="s">&quot;av&quot;</span><span class="p">,</span> <span class="s">&quot;dev&quot;</span> <span class="p">};</span>
+    <span class="p">&quot;</span><span class="nv">inout</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;in&quot;</span><span class="p">,</span> <span class="s">&quot;out&quot;</span> <span class="p">};</span>
+    <span class="p">&quot;</span><span class="nv">io_names</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;smtp&quot;</span><span class="p">,</span> <span class="s">&quot;www&quot;</span><span class="p">,</span> <span class="s">&quot;wwws&quot;</span> <span class="p">};</span>
+    <span class="p">&quot;</span><span class="nv">io_vars[$(io_names)_$(inout)]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(io_names)</span><span class="s">_</span><span class="si">$(inout)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">&quot;</span><span class="nv">monvars</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="s">&quot;rootprocs&quot;</span><span class="p">,</span>    <span class="s">&quot;otherprocs&quot;</span><span class="p">,</span>
+        <span class="s">&quot;diskfree&quot;</span><span class="p">,</span>
+        <span class="s">&quot;loadavg&quot;</span><span class="p">,</span>
+        <span class="nv">@(io_vars)</span>
+        <span class="p">};</span>
+
+<span class="kd">reports</span><span class="p">:</span>
+  <span class="nc">cfengine_3</span><span class="p">::</span>
+    <span class="s">&quot;mon.</span><span class="si">$(stats)</span><span class="s">_</span><span class="si">$(monvars)</span><span class="s"> is </span><span class="si">$(mon.$(stats)_$(monvars))</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>However, this is wrong. We cannot use <code>@(io_vars)</code>, because <code>io_vars</code> is not a
+list, it is an array! You can only use the <code>@</code> dereferencing sigil on lists.</p>
+<h1 id="the-power-of-iteration-in-cfengine">The power of iteration in CFEngine</h1>
+<p>Iteration and abstraction are power tools in CFEngine. In closing, consider the
+following simple and straightforward example, where we report on all of the
+monitoring variables available to us in CFEngine:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">iteration6</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">stats</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;value&quot;</span><span class="p">,</span> <span class="s">&quot;av&quot;</span><span class="p">,</span> <span class="s">&quot;dev&quot;</span><span class="p">};</span>
+
+    <span class="p">&quot;</span><span class="nv">inout</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;in&quot;</span><span class="p">,</span> <span class="s">&quot;out&quot;</span><span class="p">};</span>
+    <span class="p">&quot;</span><span class="nv">io_names</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="s">&quot;netbiosns&quot;</span><span class="p">,</span> <span class="s">&quot;netbiosdgm&quot;</span><span class="p">,</span> <span class="s">&quot;netbiosssn&quot;</span><span class="p">,</span>
+        <span class="s">&quot;irc&quot;</span><span class="p">,</span>
+        <span class="s">&quot;cfengine&quot;</span><span class="p">,</span>
+        <span class="s">&quot;nfsd&quot;</span><span class="p">,</span>
+        <span class="s">&quot;smtp&quot;</span><span class="p">,</span>
+        <span class="s">&quot;www&quot;</span><span class="p">,</span>      <span class="s">&quot;wwws&quot;</span><span class="p">,</span>
+        <span class="s">&quot;ftp&quot;</span><span class="p">,</span>
+        <span class="s">&quot;ssh&quot;</span><span class="p">,</span>
+        <span class="s">&quot;dns&quot;</span><span class="p">,</span>
+        <span class="s">&quot;icmp&quot;</span><span class="p">,</span>     <span class="s">&quot;udp&quot;</span><span class="p">,</span>
+        <span class="s">&quot;tcpsyn&quot;</span><span class="p">,</span>   <span class="s">&quot;tcpack&quot;</span><span class="p">,</span>   <span class="s">&quot;tcpfin&quot;</span><span class="p">,</span>   <span class="s">&quot;tcpmisc&quot;</span>
+        <span class="p">};</span>
+    <span class="p">&quot;</span><span class="nv">io_vars[$(io_names)_$(inout)]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(io_names)</span><span class="s">_</span><span class="si">$(inout)</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="p">&quot;</span><span class="nv">n</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;0&quot;</span><span class="p">,</span> <span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span><span class="p">};</span>
+    <span class="p">&quot;</span><span class="nv">n_names</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="s">&quot;temp&quot;</span><span class="p">,</span>
+        <span class="s">&quot;cpu&quot;</span>
+        <span class="p">};</span>
+    <span class="p">&quot;</span><span class="nv">n_vars[$(n_names)$(n)]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(n_names)$(n)</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="p">&quot;</span><span class="nv">monvars</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="s">&quot;rootprocs&quot;</span><span class="p">,</span>    <span class="s">&quot;otherprocs&quot;</span><span class="p">,</span>
+        <span class="s">&quot;diskfree&quot;</span><span class="p">,</span>
+        <span class="s">&quot;loadavg&quot;</span><span class="p">,</span>
+        <span class="s">&quot;webaccess&quot;</span><span class="p">,</span>    <span class="s">&quot;weberrors&quot;</span><span class="p">,</span>
+        <span class="s">&quot;syslog&quot;</span><span class="p">,</span>
+        <span class="s">&quot;messages&quot;</span><span class="p">,</span>
+        <span class="nf">getindices</span><span class="p">(</span><span class="s">&quot;io_vars&quot;</span><span class="p">),</span>
+        <span class="nf">getindices</span><span class="p">(</span><span class="s">&quot;n_vars&quot;</span><span class="p">)</span>
+        <span class="p">};</span>
+
+<span class="kd">reports</span><span class="p">:</span>
+  <span class="nc">cfengine_3</span><span class="p">::</span>
+    <span class="s">&quot;mon.</span><span class="si">$(stats)</span><span class="s">_</span><span class="si">$(monvars)</span><span class="s"> is </span><span class="si">$(mon.$(stats)_$(monvars))</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In this example, we create a two arrays (io_vars and n_vars), and a number of
+lists (but the most important ones are stats and monvars). We have but a single
+report promise, but it iterates over these latter two lists. With only a single
+reports promise and intelligent use of lists and arrays, we are able to report
+on every one of the 3*(8+2*18+4*2)==156 monitor variables. And to change the
+format of every report, we will only have a single statement to change.</p>
+<h1 id="summary-of-iteration">Summary of iteration</h1>
+<p>Used judiciously and intelligently, iterators are a powerful way of expressing
+patterns. They enable you to abstract out the concepts from the nitty-gritty
+details, and to specify, in very few lines, complex combinations of elements.
+Perhaps more importantly, they ease the burden of maintainability, by making
+short work of repetitive problems.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-special-topics.html">special topics</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-guide.html">guide</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 27 October 2021
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/special-topics/iteration.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/3d161b229c7df44b99d8cd6c71640ab53c94fcbd" target="_blank">3d161b229c7df44b99d8cd6c71640ab53c94fcbd</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.12/assets/footer-135fa20640bb1a2bbe772d22c46414cb.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

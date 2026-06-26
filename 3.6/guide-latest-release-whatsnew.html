@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.6  Documentation - New in CFEngine</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.6/assets/global-ac3885a0674bd3c9117d62800be1608f.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "New in CFEngine";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                 <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html" selected>Version 3.6 (EOL)</option>
+			                 <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:bm0uhfq8ykk" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a><ul class="level2"><li><a class="active" href="guide-latest-release-whatsnew.html">New in CFEngine</a><ul class="level3"><li><a href="guide-latest-release-whatsnew-changelog-core.html">ChangeLog</a></li><li><a href="guide-latest-release-whatsnew-changelog-enterprise.html">Enterprise ChangeLog</a></li></ul></li><li><a href="guide-latest-release-supported-platforms.html">Supported Platforms and Versions</a></li><li><a href="guide-latest-release-policy-framework-updates.html">Policy Framework Updates</a></li><li><a href="guide-latest-release-known-issues.html">Known Issues</a></li></ul></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-language-concepts.html">Language Concepts</a></li><li><a href="guide-design-center.html">Design Center Overview</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-latest-release.html">Latest Release</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    New in CFEngine
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <!--- TODO: move up when no longer a pre-release
+
+**IMPORTANT NOTE:** This is a pre-release of CFEngine, intended for testing and
+showcase only.
+
+-->
+
+<p>CFEngine 3.6 is the latest version of CFEngine. The <a href="guide-latest-release-whatsnew.html#cfengine-enterprise" title="New in CFEngine - CFEngine Enterprise ">Enterprise edition</a> introduces
+numerous improvements to the Mission Portal - a dashboard for getting a quick overview
+of the system status and compliance, alerts and notifications for changes to the
+system, a new user interface for inventory management and a tighter integration with
+Design Center.</p>
+
+<p>Policy writers and community users, CFEngine 3.6 introduces a broad range of improvements and new
+functionality to the policy language, new capabilities for configuration management
+and tighter integration with data from external sources.</p>
+<h2 id="improvements-for-policy-writers">Improvements for Policy Writers</h2>
+<p>A number of changes have been made to the CFEngine core to further improve stability,
+scalability and security.</p>
+<h3 id="user-account-management">User Account Management</h3>
+<p>The new <a href="reference-promise-types-users.html" title="users"><code>users</code></a> promise type allows for management and configuration of local user
+accounts with CFEngine.</p>
+<h3 id="data-containers-for-structured-data">Data Containers for Structured Data</h3>
+<p>The new variable type <a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a> allows handling of structured data within CFEngine policy.
+Structured data can be read from JSON strings and files, which allows integrating of
+CFEngine policies with any external data source that can export to JSON.</p>
+
+<p>A range of new functions allow creating and operating on structured data.</p>
+<h3 id="tagging-with-meta-data">Tagging with Meta Data</h3>
+<p>Classes and variables can be tagged with meta data for extended annotation and
+documentation of knowledge directly in the language. Classes and variables can be
+searched by tags in policy, and CFEngine Enterprise uses tags to identify relevant
+information reported by the host. CFEngine sets a number of tags on hard classes and
+special variables by default.</p>
+<h3 id="improved-file-templating-engine">Improved File Templating Engine</h3>
+<p>CFEngine 3.6 introduces support for <a href="reference-promise-types-files.html#template_method" title="files - template_method"><code>mustache</code></a> templates, which
+is tightly integrated with data containers and provides easy and data-driven configuration
+file management.</p>
+<h3 id="new-and-improved-functions">New and Improved Functions</h3>
+<p>CFEngine 3.6 adds a list of new built-in functions:</p>
+
+<ul>
+<li><a href="reference-functions-bundlesmatching.html" title="bundlesmatching"><code>bundlesmatching()</code></a> - returns list of defined bundles matching a regex</li>
+<li><a href="reference-functions-canonifyuniquely.html" title="canonifyuniquely"><code>canonifyuniquely()</code></a> - converts a string into a unique, legal class name</li>
+<li><a href="reference-functions-classesmatching.html" title="classesmatching"><code>classesmatching()</code></a> - returns list of set classes matching a regex</li>
+<li><a href="reference-functions-eval.html" title="eval"><code>eval()</code></a> - evaluates mathematical expressions</li>
+<li><a href="reference-functions-findfiles.html" title="findfiles"><code>findfiles()</code></a> - returns list of files matching a search pattern</li>
+<li><a href="reference-functions-makerule.html" title="makerule"><code>makerule()</code></a> - evaluates whether a target file needs to be rebuilt from sources</li>
+<li><a href="reference-functions-max.html" title="max"><code>max()</code></a>, <a href="reference-functions-mean.html" title="mean"><code>mean()</code></a>, <a href="reference-functions-min.html" title="min"><code>min()</code></a> - returns maximum, mean and minimum in a container or list</li>
+<li><a href="reference-functions-packagesmatching.html" title="packagesmatching"><code>packagesmatching()</code></a> - returns a filtered list of installed packages.</li>
+<li><a href="reference-functions-string_downcase.html" title="string_downcase"><code>string_downcase()</code></a>, <a href="reference-functions-string_upcase.html" title="string_upcase"><code>string_upcase()</code></a> - returns the lower-/upper-case version of a string</li>
+<li><a href="reference-functions-string_head.html" title="string_head"><code>string_head()</code></a>, <a href="reference-functions-string_tail.html" title="string_tail"><code>string_tail()</code></a> - returns the beginning/end of a string</li>
+<li><a href="reference-functions-string_length.html" title="string_length"><code>string_length()</code></a> - returns the length of a string</li>
+<li><a href="reference-functions-string_reverse.html" title="string_reverse"><code>string_reverse()</code></a> - reverses a string</li>
+<li><a href="reference-functions-variablesmatching.html" title="variablesmatching"><code>variablesmatching()</code></a> - returns a list of variables matching a regex</li>
+<li><a href="reference-functions-variance.html" title="variance"><code>variance()</code></a> - returns the variance of numbers in a list</li>
+</ul>
+
+<p>The following functions are added and improved to work with the new <a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a> container
+type:</p>
+
+<ul>
+<li><a href="reference-functions-data_readstringarray.html" title="data_readstringarray"><code>data_readstringarray()</code></a> - read a delimited file into a data map</li>
+<li><a href="reference-functions-data_readstringarrayidx.html" title="data_readstringarrayidx"><code>data_readstringarrayidx()</code></a> - read a delimited file into a data array</li>
+<li><a href="reference-functions-datastate.html" title="datastate"><code>datastate()</code></a> - create a <a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a> variable with currently set classes and variables</li>
+<li><code>datatype()</code> -</li>
+<li><a href="reference-functions-format.html" title="format"><code>format()</code></a> - <code>%S</code> can be used to serialize &#39;data&#39; containers into a string</li>
+<li><a href="reference-functions-mergedata.html" title="mergedata"><code>mergedata()</code></a> - merge two data containers</li>
+<li><a href="reference-functions-parsejson.html" title="parsejson"><code>parsejson()</code></a> - create a data container from a JSON string</li>
+<li><a href="reference-functions-readjson.html" title="readjson"><code>readjson()</code></a> - create a data container from a file that contains JSON</li>
+<li><a href="reference-functions-storejson.html" title="storejson"><code>storejson()</code></a> - serialize a data container into a string</li>
+</ul>
+<h3 id="network-protocol-on-top-of-tls">Network Protocol on top of TLS</h3>
+<p>CFEngine 3.6 introduces a new networking protocol, which uses TLS for authentication.
+After the authentication, all dialog is encrypted within the established TLS session.</p>
+
+<p>To ease with the upgrade process, <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> is still able to speak the legacy
+protocol with old agents, and new agents can speak the legacy protocol with old servers.
+CFEngine operators should turn off support for the legacy protocol as soon as all hosts
+are running 3.6 to benefit from the full encryption and future improvements.</p>
+
+<p>The new network protocol supports a range of new attributes for more precise access
+control to server resources.</p>
+<h3 id="other-core-changes">Other Core Changes</h3>
+<p>CFEngine 3.6 uses <a href="http://symas.com/mdb/" title="Symas Lightning Memory-Mapped Database">LMDB</a> as the default embedded database. LMDB is both robust and fast,
+and replaces TokyoCabinet on the majority of supported platforms.</p>
+
+<p>Logging output of the CFEngine binaries has been further improved: <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> now includes
+the relevant client IP address in all messages; <a href="reference-promise-types-reports.html" title="reports"><code>reports</code></a> promises generate messages without
+prefix except <code>R:</code>, and execution state information (such as passes or promise type
+changes) are included in the log.</p>
+
+<p>Relative paths are supported in <a href="reference-promise-types-files.html#copy_from" title="files - copy_from"><code>copy_from</code></a> promises, and can used together with the
+<a href="reference-promise-types-access.html#shortcut" title="access - shortcut"><code>shortcut</code></a> aliasing based on <a href="reference-special-variables-connection.html" title="connection"><code>connection</code></a> data in <a href="reference-promise-types-access.html" title="access"><code>access</code></a> promises to implement simple
+and dynamic multi-tenancy within a single policy server.</p>
+<h2 id="cfengine-enterprise">CFEngine Enterprise</h2><h3 id="mission-portal">Mission Portal</h3>
+<p>CFEngine 3.6 introduces a flexible and dynamic dashboard with <a href="enterprise-cfengine-guide-alerts-notifications.html" title="Alerts and Notifications">alerts and notifications</a>
+to the Mission Portal. Users can create conditions and group those together in dashboard
+widgets that provide a quick overview over various business-critical aspects of the CFEngine
+managed system.</p>
+
+<p><a href="enterprise-cfengine-guide-reporting.html" title="Reporting UI">Inventory reports</a> provide fast access to the managed assets, be it hosts or software.
+Inventory data can be added through policy to read additional information from sources
+available to each host, such as a CMDB.</p>
+<h3 id="enterprise-platform-and-api">Enterprise Platform and API</h3>
+<p>The Enterprise platform in 3.6 is using PostgreSQL, which significantly improves the
+speed of reports in the Mission Portal and through the Enterprise APIs. The Enterprise
+Server uses an optimized data collection protocol that reduces the network traffic and
+allows for even greater scalability.</p>
+
+<p>The <a href="enterprise-cfengine-guide-enterprise-api.html" title="Enterprise API">Enterprise API</a> provides faster access to more data about hosts, promise compliance,
+software inventories, classes and variables. Thanks to the PostgreSQL backend the API supports
+complex SQL queries. The API from CFEngine Enterprise 2.2 is no longer supported.</p>
+
+<p>The integration with authentication services (LDAP or ActiveDirectory) has changed to allow
+filter stings to be specified, providing greater flexibility in controlling access to CFEngine
+Enterprise.</p>
+<h3 id="windows-support">Windows Support</h3>
+<p>A number of improvements to CFEngine&#39;s string handling on Windows makes sure that
+line endings are preserved in modified files, and use Windows compliance CRLF endings
+in newly created files.</p>
+<h2 id="change-history">Change History</h2>
+<p>For a complete history of changes in CFEngine, see the <a href="guide-latest-release-whatsnew-changelog-core.html" title="ChangeLog"><code>ChangeLog</code></a> and
+<a href="guide-latest-release-whatsnew-changelog-enterprise.html" title="Enterprise ChangeLog"><code>Enterprise ChangeLog</code></a>.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-releases.html">releases</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-latest-release.html">latest release</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-3-6.html">3.6</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-platforms.html">platforms</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-versions.html">versions</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-what-s-new.html">what's new</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/latest-release/whatsnew.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/13cbf18729a5bf43d836f72e30aab3b2b0bdee7f" target="_blank">13cbf18729a5bf43d836f72e30aab3b2b0bdee7f</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.6/assets/footer-1ca6436dd462ed6a69ad3f2dba0774f0.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

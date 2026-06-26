@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.9  Documentation - packages</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.9/assets/global-bbcdf8cb2135dbef89c4d6d19c9604bb.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "packages";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+                       <option value="/docs/3.9/index.html" selected>Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+                       <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:eahkid3txr8" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a><ul class="level2"><li><a href="reference-promise-types-access.html">access</a></li><li><a href="reference-promise-types-edit_line.html">bundle edit_line</a></li><li><a href="reference-promise-types-edit_xml.html">bundle edit_xml</a></li><li><a href="reference-promise-types-classes.html">classes</a></li><li><a href="reference-promise-types-commands.html">commands</a></li><li><a href="reference-promise-types-databases.html">databases</a></li><li><a href="reference-promise-types-defaults.html">defaults</a></li><li><a href="reference-promise-types-files.html">files</a></li><li><a href="reference-promise-types-guest_environments.html">guest_environments</a></li><li><a href="reference-promise-types-methods.html">methods</a></li><li><a href="reference-promise-types-meta.html">meta</a></li><li><a href="reference-promise-types-measurements.html">measurements</a></li><li><a href="reference-promise-types-packages-deprecated.html">packages (deprecated)</a></li><li><a class="active" href="reference-promise-types-packages.html">packages</a></li><li><a href="reference-promise-types-processes.html">processes</a></li><li><a href="reference-promise-types-reports.html">reports</a></li><li><a href="reference-promise-types-roles.html">roles</a></li><li><a href="reference-promise-types-services.html">services</a></li><li><a href="reference-promise-types-storage.html">storage</a></li><li><a href="reference-promise-types-users.html">users</a></li><li><a href="reference-promise-types-vars.html">vars</a></li></ul></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-standard-library.html">Standard Library</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    packages
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>CFEngine 3.7 and later supports package management through a simple promise
+interface. Using a small set of attributes you can make promises about the state
+of software on a host, whether it should be installed, not installed, or at a
+specific version.</p>
+
+<p>CFEngine 3.6 and older had a different package promise implementation, which is
+still functional, but considered deprecated. However, it may still be in use by
+existing policy files, and it may cover platforms which the new implementation
+does not currently cover. To read about the old package promise, go to the
+<a href="reference-promise-types-packages-deprecated.html" title="packages (deprecated)">old package promise section</a>.</p>
+
+<p>The actual communication with the package manager on the system is handled by so
+called <a href="reference-standard-library-package_modules.html" title="Package Modules">package modules</a>, which are specifically written for
+each type of package manager. CFEngine comes with out-of-the-box support for the
+following package managers:</p>
+
+<ul>
+<li><code>yum</code>: YUM package manager and accompanying rpm package manager.</li>
+<li><code>apt_get</code>: Apt package manager and accompanying dpkg package manager.</li>
+<li><code>freebsd_ports</code>: FreeBSD Ports</li>
+<li><code>nimclient</code> - AIX NIM client</li>
+<li><code>pkg</code> - FreeBSD pkg</li>
+<li><code>pkgsrc</code> -  <a href="https://www.pkgsrc.org/">pkgsrc</a></li>
+</ul>
+
+<p>Both <code>yum</code> and <code>apt_get</code> package managers require Python version 2 to be
+installed on the host.</p>
+<div class="highlight"><pre><code class="cf3">  <span class="kd">packages</span><span class="p">:</span>
+      <span class="s">&quot;apache2&quot;</span>
+        <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span>
+        <span class="kr">package_module</span> <span class="o">=&gt;</span> <span class="nf">apt_get</span><span class="p">,</span>
+        <span class="kr">version</span> <span class="o">=&gt;</span> <span class="s">&quot;2.2.22&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>In this example, we want the software package &quot;apache2&quot; to be present on the
+system, and we want it to be version 2.2.22. If this requirement cannot be
+fulfilled (for example because the package repository doesn&#39;t have it), the
+promise will fail.</p>
+
+<p>It is also possible to specify a package file name, if the package resides on
+the local filesystem, like this:</p>
+<div class="highlight"><pre><code class="cf3">  <span class="kd">packages</span><span class="p">:</span>
+      <span class="s">&quot;/mnt/nfs/packages/apache2-2.2.22.x86_64.rpm&quot;</span>
+        <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span>
+        <span class="kr">package_module</span> <span class="o">=&gt;</span> <span class="nf">yum</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>The default package module can be globally specified with the
+<a href="reference-components.html#package_module" title="Components and Common Control - package_module"><code>package_module</code></a> attribute
+in body common control.</p>
+
+<p>Note that if your <a href="reference-promise-types-vars.html#policy" title="vars - policy"><code>policy</code></a> attribute specifies &quot;absent&quot;, then the promiser
+string needs to be a bare package name, you cannot use a file name for this.</p>
+<h2 id="attributes">Attributes</h2><h3 id="common-attributes">Common Attributes</h3>
+<p>Common attributes are available to all promise types. Full details for common
+attributes can be found in the <a href="reference-promise-types.html#common-attributes" title="Promise Types and Attributes - Common Attributes">Common Attributes section</a> of
+the <a href="reference-promise-types.html" title="Promise Types and Attributes">Promise Types and Attributes</a> page. The common attributes are as follows:</p>
+<h4 id="action"><a href="reference-promise-types.html#action" title="Promise Types and Attributes - action">action</a></h4><h4 id="classes"><a href="reference-promise-types.html#classes" title="Promise Types and Attributes - classes">classes</a></h4><h4 id="comment"><a href="reference-promise-types.html#comment" title="Promise Types and Attributes - comment">comment</a></h4><h4 id="depends_on"><a href="reference-promise-types.html#depends_on" title="Promise Types and Attributes - depends_on">depends_on</a></h4><h4 id="handle"><a href="reference-promise-types.html#handle" title="Promise Types and Attributes - handle">handle</a></h4><h4 id="ifvarclass"><a href="reference-promise-types.html#ifvarclass" title="Promise Types and Attributes - ifvarclass">ifvarclass</a></h4><h4 id="meta"><a href="reference-promise-types.html#meta" title="Promise Types and Attributes - meta">meta</a></h4>
+<hr>
+<h3 id="architecture">architecture</h3>
+<p><strong>Description:</strong> The architecture we want the promise to consider.</p>
+
+<p>The promise will only consider the architecture specified when performing
+package manipulations, but depending on the underlying package manager, this may
+indirectly affect other architectures.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">  <span class="kd">packages</span><span class="p">:</span>
+    <span class="s">&quot;apache&quot;</span>
+        <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span>
+        <span class="kr">package_module</span> <span class="o">=&gt;</span> <span class="nf">apt_get</span><span class="p">,</span>
+        <span class="kr">architecture</span> <span class="o">=&gt;</span> <span class="s">&quot;x86_64&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="options">options</h3>
+<p><strong>Description:</strong> Options to pass to the underlying package module.</p>
+
+<p><code>options</code> is a catchall attribute in order to pass arbitrary data into the
+package module which is carrying out package operations. It is meant as a
+rescue solution when a package module has added functionality which is not
+covered by the package promise API. As such there is no official documentation
+for this attribute, its usage depends on the package module in question.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">  <span class="kd">packages</span><span class="p">:</span>
+    <span class="s">&quot;apache&quot;</span>
+        <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span>
+        <span class="kr">package_module</span> <span class="o">=&gt;</span> <span class="nf">my_package_module</span><span class="p">,</span>
+        <span class="kr">options</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;repository=myrepo&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+<h3 id="policy">policy</h3>
+<p><strong>Description:</strong> Whether the package should be present or absent on the system.</p>
+
+<p><code>policy</code> is the only mandatory package promise attribute.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>present|absent</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">  <span class="kd">packages</span><span class="p">:</span>
+    <span class="s">&quot;apache&quot;</span>
+        <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;absent&quot;</span><span class="p">,</span>
+        <span class="kr">package_module</span> <span class="o">=&gt;</span> <span class="nf">apt_get</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="version">version</h3>
+<p><strong>Description:</strong> The version we want the promise to consider.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Note:</strong> When policy <code>present</code> is used version may be set to <code>latest</code> to
+ensure the latest available version from a repository is installed.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">  <span class="kd">packages</span><span class="p">:</span>
+    <span class="s">&quot;apache&quot;</span>
+        <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;absent&quot;</span><span class="p">,</span>
+        <span class="kr">package_module</span> <span class="o">=&gt;</span> <span class="nf">apt_get</span><span class="p">,</span>
+        <span class="kr">version</span> <span class="o">=&gt;</span> <span class="s">&quot;2.2.22&quot;</span><span class="p">;</span>
+
+    <span class="s">&quot;ssh&quot;</span>
+        <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span>
+        <span class="kr">package_module</span> <span class="o">=&gt;</span> <span class="nf">apt_get</span><span class="p">,</span>
+        <span class="kr">version</span> <span class="o">=&gt;</span> <span class="s">&quot;latest&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="package_module">package_module</h3>
+<p><strong>Type:</strong> <code>body package_module</code></p>
+
+<p>The package module body you wish to use for the package promise. The default is
+platform dependent, see
+<a href="reference-components.html#package_module" title="Components and Common Control - package_module"><code>package_module</code></a> in Components
+and Common Control. The name of the body is expected to be the same as the name
+of the package module inside <code>/var/cfengine/modules/packages</code>.</p>
+<h4 id="common-body-attributes">Common Body Attributes</h4>
+<p>Common body attributes are available to all body types. Full details for common
+body attributes can be found in the
+<a href="reference-promise-types.html#common-body-attributes" title="Promise Types and Attributes - Common Body Attributes">Common Body Attributes section</a>
+of the <a href="reference-promise-types.html" title="Promise Types and Attributes">Promise Types and Attributes</a> page. The common attributes are as
+follows:</p>
+<h5 id="inherit_from"><a href="reference-promise-types.html#inherit_from" title="Promise Types and Attributes - inherit_from">inherit_from</a></h5><h5 id="meta"><a href="reference-promise-types.html#meta" title="Promise Types and Attributes - meta">meta</a></h5>
+<hr>
+<h4 id="default_options">default_options</h4>
+<p><strong>Description:</strong> Options to pass to to the package module by default.</p>
+
+<p>See the <a href="reference-promise-types-packages.html#options" title="packages - options"><code>options</code></a> attribute for details on what options do.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">package_module</span> <span class="nf">apt_get</span>
+<span class="p">{</span>
+    <span class="kr">default_options</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;use_curl=1&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="query_installed_ifelapsed">query_installed_ifelapsed</h4>
+<p><strong>Description:</strong> How often to query the system for currently installed packages.</p>
+
+<p>For performance reasons, CFEngine maintains a cache of currently installed
+packages, to avoid calling the package manager too often. This attribute tells
+CFEngine how often to update this cache (in minutes).</p>
+
+<p>The cache is always updated when CFEngine makes changes to the system.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> (Positive integer)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">package_module</span> <span class="nf">apt_get</span>
+<span class="p">{</span>
+    <span class="c"># Query the package database only every four hours.</span>
+    <span class="kr">query_installed_ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;240&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Note for <a href="reference-promise-types-packages.html#package_module" title="packages - package_module"><code>package_module</code></a> authors</strong>:
+<a href="reference-standard-library-package_modules.html#list-installed" title="Package Modules - list-installed"><code>list-installed</code></a> will be called when the agent
+repairs a package using the given <a href="reference-promise-types-packages.html#package_module" title="packages - package_module"><code>package_module</code></a>, when the lock has expired or
+when the agent is run without locks.</p>
+
+<p><strong>See Also:</strong> <a href="reference-standard-library-package_modules.html" title="Package Modules"><code>Package Modules</code></a></p>
+<h4 id="query_updates_ifelapsed">query_updates_ifelapsed</h4>
+<p><strong>Description:</strong> How often to query the package manager for new updates.</p>
+
+<p>In order not to query repository servers too often, CFEngine maintains a cache
+of the currently available package updates. This attribute tells CFEngine how
+often to update this cache (in minutes).</p>
+
+<p>Even when making package changes to the system, CFEngine will not query this
+information more often than this attribute specifies, however it may make a
+local query in order to update the cache from local, already downloaded data.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> (Positive integer)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">package_module</span> <span class="nf">apt_get</span>
+<span class="p">{</span>
+    <span class="c"># Query package updates only every 24 hours.</span>
+    <span class="kr">query_updates_ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;1440&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Note for <a href="reference-promise-types-packages.html#package_module" title="packages - package_module"><code>package_module</code></a> authors</strong>:
+<a href="reference-standard-library-package_modules.html#list-updates" title="Package Modules - list-updates"><code>list-updates</code></a> will be called when the lock has
+expired or when the agent is run without locks.
+<a href="reference-standard-library-package_modules.html#list-updates-local" title="Package Modules - list-updates-local"><code>list-updates-local</code></a> is called in all
+other conditions.</p>
+
+<p><strong>See Also:</strong> <a href="reference-standard-library-package_modules.html" title="Package Modules"><code>Package Modules</code></a></p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-bundle-agent.html">bundle agent</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-packages.html">packages</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-packages-promises.html">packages promises</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-promise-types.html">promise types</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 02 March 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/promise-types/packages.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/04ad849bd97ab6da773794babca26d9dd8806039" target="_blank">04ad849bd97ab6da773794babca26d9dd8806039</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.9/assets/footer-e9812654bffc243fc0dd77cc1c8e348e.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

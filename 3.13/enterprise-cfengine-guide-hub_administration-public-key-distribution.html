@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.13  Documentation - Public key distribution</title>
+        <link rel="icon" type="image/png" href="favicon.png">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.13/assets/global-f8d3d88f1cc74c2ac5c8e408cd101409.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Public key distribution";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.13/" selected>Version 3.13 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                    <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:bphk6hztv2i" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html"  class="navselected" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="enterprise-cfengine-guide-install-get-started.html">Install and Get Started</a></li><li><a href="enterprise-cfengine-guide-user-interface.html">User Interface</a></li><li><a href="enterprise-cfengine-guide-settings.html">Settings</a></li><li><a href="enterprise-cfengine-guide-hosts-health.html">Hosts and Health</a></li><li><a href="enterprise-cfengine-guide-alerts-notifications.html">Alerts and Notifications</a></li><li><a href="enterprise-cfengine-guide-alerts-custom-actions.html">Custom actions for Alerts</a></li><li><a href="enterprise-cfengine-guide-reporting.html">Enterprise Reporting</a></li><li><a href="enterprise-cfengine-guide-monitoring.html">Monitoring</a></li><li><a href="enterprise-cfengine-guide-enterprise-api.html">Enterprise API</a></li><li><a href="enterprise-cfengine-guide-best-practices.html">Best Practices</a></li><li><a href="enterprise-cfengine-guide-high-availability.html">High Availability</a></li><li><a href="enterprise-cfengine-guide-hub_administration.html">Hub Administration</a><ul class="level2"><li><a href="enterprise-cfengine-guide-hub_administration-extending-mission-portal.html">Extending Mission Portal</a></li><li><a href="enterprise-cfengine-guide-hub_administration-adjusting-schedules.html">Adjusting Schedules</a></li><li><a href="enterprise-cfengine-guide-hub_administration-backup-and-restore.html">Backup and Restore</a></li><li><a href="enterprise-cfengine-guide-hub_administration-custom-ldap-port.html">Configure a custom LDAP port</a></li><li><a href="enterprise-cfengine-guide-hub_administration-custom-ldaps-certificate.html">Custom LDAPs Certificate</a></li><li><a href="enterprise-cfengine-guide-hub_administration-custom-https-certificate.html">Custom SSL Certificate</a></li><li><a href="enterprise-cfengine-guide-hub_administration-enable-plain-http.html">Enable plain http</a></li><li><a href="enterprise-cfengine-guide-hub_administration-lookup-license-info.html">Lookup License Info</a></li><li><a href="enterprise-cfengine-guide-hub_administration-policy-deployment.html">Policy Deployment</a></li><li><a class="active" href="enterprise-cfengine-guide-hub_administration-public-key-distribution.html">Public key distribution</a></li><li><a href="enterprise-cfengine-guide-hub_administration-reinstall.html">Re-installing Enterprise Hub</a></li><li><a href="enterprise-cfengine-guide-hub_administration-regenerate-self-signed-cert.html">Regenerate Self Signed SSL Certificate</a></li><li><a href="enterprise-cfengine-guide-hub_administration-reset-admin-creds.html">Reset administrative credentials</a></li></ul></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="enterprise-cfengine-guide.html">CFEngine Enterprise</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="enterprise-cfengine-guide-hub_administration.html">Hub Administration</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Public key distribution
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <blockquote>
+<p>How can I arrange for the hosts in my infrastructure to trust a new key?</p>
+</blockquote>
+
+<p>If you are deploying a new hub, or authorizing a non-hub to copy files from
+peers you will need to establish trust before communication can be established.</p>
+
+<p>In order for trust to be established each host must have the public key of the
+other host stored in <code>$(sys.ppkeys)</code> named for the public key sha.</p>
+
+<p>For example, we have 2 hosts. host001 with public key sha
+<code>SHA=917962161107efaed9610de3e034085373142f577fb7e7b9bddec2955b748836</code> and hub
+with public key sha
+<code>SHA=af00250085306c68bb6d5f489f0239e2d7ff8a1f53f2d00e77c9ad2044309dfe</code>. For
+trust to be established <code>host001</code> must have
+<code>$(sys.workdir)/ppkeys/root-SHA=af00250085306c68bb6d5f489f0239e2d7ff8a1f53f2d00e77c9ad2044309dfe.pub</code>
+and hub must have
+<code>$(sys.workdir)/ppkeys/root-SHA=917962161107efaed9610de3e034085373142f577fb7e7b9bddec2955b748836.pub</code>.
+The files must be root owned with write access restricted to the owner (644 or
+less).</p>
+
+<p>This policy shows how public keys can be stored in a central location on the
+policy server and automatically installed on all hosts.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">trust_distkeys</span>
+<span class="c">#@ brief Example public key distribution</span>
+<span class="p">{</span>
+  <span class="kd">meta</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">tags</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;autorun&quot;</span> <span class="p">};</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="s">&quot;keystore&quot;</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;We want all hosts to trust these hosts because they perform</span>
+<span class="s">                    critical functions like policy serving.&quot;</span><span class="p">,</span>
+        <span class="kr">string</span> <span class="o">=&gt;</span> <span class="nf">ifelse</span><span class="p">(</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="s">&quot;def.trustkeys[keystore])&quot;</span> <span class="p">),</span> <span class="s">&quot;</span><span class="si">$(def.trustkeys[keystore])</span><span class="s">&quot;</span><span class="p">,</span>
+                                      <span class="s">&quot;distkeys&quot;</span><span class="p">);</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+
+      <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/ppkeys/.&quot;</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;trust_distkeys&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;We need trust all the keys stored in `</span><span class="si">$(keystore)</span><span class="s">` on</span>
+<span class="s">                   `</span><span class="si">$(sys.policy_hub)</span><span class="s">` so that we can communicate with them</span>
+<span class="s">                   using the CFEngine protocol.&quot;</span><span class="p">,</span>
+        <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">remote_dcp</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="nf">keystore</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">sys</span><span class="err">.</span><span class="nf">policy_hub</span><span class="p">)</span> <span class="p">),</span>
+        <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">basedir</span><span class="p">,</span>
+        <span class="kr">file_select</span> <span class="o">=&gt;</span> <span class="nf">public_keys</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span> <span class="mi">644</span><span class="p">,</span> <span class="nf">root</span><span class="p">,</span> <span class="nf">root</span> <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">server</span> <span class="nf">share_distkeys</span>
+<span class="c">#@ brief Share the directory containing public keys we need to distribute</span>
+<span class="p">{</span>
+  <span class="kd">access</span><span class="p">:</span>
+
+    <span class="nc">(policy_server|am_policy_hub)</span><span class="p">::</span>
+
+      <span class="s">&quot;/var/cfengine/distkeys/&quot;</span>
+        <span class="kr">admit_ips</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;0.0.0.0/0&quot;</span> <span class="p">},</span>
+        <span class="kr">shortcut</span> <span class="o">=&gt;</span> <span class="s">&quot;distkeys&quot;</span><span class="p">,</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;access_share_distkeys&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;This directory contains public keys of hosts that should be</span>
+<span class="s">                    trusted by everyone.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">depth_search</span> <span class="nf">basedir</span>
+<span class="c">#@ brief Search the files in the top level of the source directory</span>
+<span class="p">{</span>
+      <span class="kr">include_basedir</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+      <span class="kr">depth</span> <span class="o">=&gt;</span> <span class="s">&quot;1&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">file_select</span> <span class="nf">public_keys</span>
+<span class="c">#@ brief Select plain files matching public key file naming patterns</span>
+<span class="p">{</span>
+        <span class="c"># root-SHA=abc123.pub</span>
+        <span class="kr">leaf_name</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="se">\w</span><span class="s">+-(SHA|MD5)=[[:alnum:]]+</span><span class="se">\.</span><span class="s">pub&quot;</span> <span class="p">};</span>
+        <span class="kr">file_types</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;plain&quot;</span> <span class="p">};</span>
+
+        <span class="kr">file_result</span> <span class="o">=&gt;</span> <span class="s">&quot;leaf_name.file_types&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-cfengine-enterprise.html">cfengine enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-hub-administration.html">hub administration</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-key-distribution.html">key distribution</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-trust-establishment.html">trust establishment</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 11 January 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/enterprise-cfengine-guide/hub_administration/public-key-distribution.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/b04b1f6f002a2f00c34834c7f4e2a3b4111fd67d" target="_blank">b04b1f6f002a2f00c34834c7f4e2a3b4111fd67d</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.13/assets/footer-dfbb901e0ce1de822a7bc04bca20268e.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

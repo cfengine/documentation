@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - Networking</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html"  class="navselected" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="manuals-design.html">Design</a></li><li><a href="manuals-architecture.html">Architecture</a></li><li><a href="manuals-components.html">The CFEngine Components</a></li><li><a href="manuals-language-concepts.html">Language Concepts</a></li><li><a href="manuals-design-center.html">Design Center</a></li><li><a href="manuals-writing-policy.html">Writing Policy</a></li><li><a href="manuals-enterprise-reporting.html">Enterprise Reporting</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li class="selected"><span>Networking</span></li><li><a href="manuals-architecture-policy-workflow.html">Policy Workflow</a></li><li><a href="manuals-architecture-distributed-discovery.html">Distributed Discovery</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="manuals.html">CFEngine Manuals</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="manuals-architecture.html">Architecture</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>Networking</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/manuals.html">manuals</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/troubleshooting.html">troubleshooting</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/connectivity.html">connectivity</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/network.html">network</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/server.html">server</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/access.html">access</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/remote.html">remote</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/keys.html">keys</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/encryption.html">encryption</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/security.html">security</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>Networking</h1>
+                    <p>Starting <a href="reference-components-cfserver.html" title="cf-serverd"><code>cf-serverd</code></a>, sets up a line of communication between 
+hosts. This daemon authenticates requests from the network and processes them 
+according to rules specified in the server control body and server bundles 
+containing access promises. The server can allow the network to access files, 
+or to execute CFEngine.</p>
+
+<p>The only contact <a href="reference-components-cfagent.html" title="cf-agent"><code>cf-agent</code></a> makes to the server is via remote copy 
+requests. It does not and cannot grant any access to a system from the 
+network. It is only able request access to files on the remote server.</p>
+
+<p>Lastly, <a href="reference-components-cfrunagent.html" title="cf-runagent"><code>cf-runagent</code></a> can be used to run <a href="reference-components-cfagent.html" title="cf-agent"><code>cf-agent</code></a> on a number 
+of remote hosts.</p>
+
+<p>Unlike other approaches to automation, CFEngine does not rely on SSH key 
+authentication and configuring trust, the communication between hosts is very 
+structured and also able to react to availability issues. This means that you 
+don&#39;t have to arrange risk login credentials to get CFEngine to work. If large 
+portions of your network stop working, individual host in the CFEngine system
+understand how to keep on running and delivering promises.</p>
+
+<p>If the network is not working, CFEngine agents skip new promises and continue 
+with what they already have. CFEngine was specifically designed be resilient 
+against connectivity issues network failure may be in question. CFEngine is
+fault tolerant and opportunistic.</p>
+<h2 id="server-connection">Server Connection</h2>
+<p>In order to connect to the CFEngine server you need:</p>
+
+<ul>
+<li>A public-private key pair</li>
+</ul>
+
+<p>To create a key pair, run <a href="reference-components-cfkey.html" title="cf-key"><code>cf-key</code></a>.</p>
+
+<ul>
+<li>An IP (v4 or v6) address.</li>
+</ul>
+
+<p>You must be online with a configured network address. </p>
+
+<ul>
+<li>Permission to connect to the server</li>
+</ul>
+
+<p>The server control body must grant access to your computer and public key by 
+name or IP address, by listing it in one of the lists (see below).</p>
+
+<ul>
+<li>Mutual trust</li>
+</ul>
+
+<p>Your public key must be trusted by the server, and you must trust the server&#39;s 
+public key. By mutually trusting each others&#39; keys, client and server agree to 
+use that key as a sufficient identifier for the computer. </p>
+
+<ul>
+<li>Permission to access something</li>
+</ul>
+
+<p>Your host name or IP address must be mentioned in an <a href="reference-promise-types-access.html" title="access"><code>access</code> promise</a>
+inside a server bundle, made by the file that you are trying to access.</p>
+
+<p>If all of the above criteria are met, connection will be established and data 
+will be transferred between client and server. The client can only send short 
+requests, following the CFEngine protocol. The server can return data in a 
+variety of forms, usually files, but sometimes console output.</p>
+<h3 id="bootstrapping">Bootstrapping</h3>
+<p>Bootstrapping establishes a connection between host and policy server, and
+executes the policy that starts the CFEngine daemon processes 
+<a href="reference-components-cfexecd.html" title="cf-execd"><code>cf-execd</code></a>, <a href="reference-components-cfserver.html" title="cf-serverd"><code>cf-serverd</code></a> and 
+<a href="reference-components-cfmonitord.html" title="cf-monitord"><code>cf-monitord</code></a>. The host that other hosts are bootstrapped to
+automatically assumes the role of policy server.</p>
+
+<p>You should bootstrap the policy server first to itself:</p>
+<div class="highlight"><pre><code class="text">$ /var/cfengine/bin/cf-agent --bootstrap [public IP of localhost]
+</code></pre>
+</div>
+
+<p>Then execute the same step on all hosts that should pull policy from that
+server. CFEngine will create keys if there are none present, and exchange 
+those to establish trust.</p>
+
+<p>CFEngine will output diagnostic information upon bootstrap. In case of error, 
+investigate the <a href="reference-promise-types-access.html" title="access"><code>access</code> promises</a> the server is making. Note that 
+by default, CFEngine&#39;s server daemon <a href="reference-components-cfserver.html" title="cf-serverd"><code>cf-serverd</code></a> trust incoming connections 
+from hosts within the same subnet.</p>
+<h2 id="key-exchange">Key exchange</h2>
+<p>The key exchange model used by CFEngine is based on that used by OpenSSH. It 
+is a peer to peer exchange model, not a central certificate authority model. 
+This means that there are no scalability bottlenecks (at least by design, 
+though you might introduce your own if you go for an overly centralized 
+architecture).</p>
+
+<p>Key exchange is handled automatically by CFEngine and all you need to do is to 
+decide which keys to trust. The server <a href="reference-components-cfserver.html" title="cf-serverd"><code>cf-serverd</code></a> blocks the acceptance of 
+unknown keys by default. In order to accept such a new key, the IP address of 
+the presumed client must be listed in the <a href="reference-components-cfserver.html#trustkeysfrom" title="cf-serverd - trustkeysfrom"><code>trustkeysfrom</code></a> stanza of a <code>server</code> 
+bundle (these bundles can be placed in any file). Once a key has been 
+accepted, it will never be replaced with a new key, thus no more trust is 
+offered or required.</p>
+
+<p>Once you have arranged for the right to connect to the server, you must decide 
+which hosts will have access to which files. This is done with <a href="reference-promise-types-access.html" title="access"><code>access</code> 
+promises</a>.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">server</span> <span class="nf">access_rules</span><span class="p">()</span>
+
+    <span class="p">{</span>
+    <span class="kd">access</span><span class="p">:</span>
+
+      <span class="s">&quot;/path/file&quot;</span>
+
+        <span class="kr">admit</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="s">&quot;127.0.0.2&quot;</span><span class="p">,</span> <span class="s">&quot;127.0.0.3&quot;</span> <span class="p">},</span>
+        <span class="kr">deny</span>    <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;192</span><span class="se">\.</span><span class="s">.*&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>On the client side, i.e. <a href="reference-components-cfrunagent.html" title="cf-runagent"><code>cf-runagent</code></a> and 
+<a href="reference-components-cfagent.html" title="cf-agent"><code>cf-agent</code></a>, there are three issues:</p>
+
+<ol>
+<li> Choosing which server to connect to.</li>
+<li> Trusting the identity of any previously unknown servers, i.e.
+trusting the server&#39;s public key to be its and no one else&#39;s. (The
+issues here are the same as for the server.)</li>
+<li> Choosing whether data transfers should be encrypted (with
+<a href="reference-promise-types-files.html#encrypt" title="files - encrypt"><code>encrypt</code></a>).</li>
+</ol>
+
+<p>There are two ways of managing trust of server keys by a client. One is an 
+automated option, setting the option <a href="reference-promise-types-files.html#trustkey" title="files - trustkey"><code>trustkey</code></a> in a <a href="reference-promise-types-files.html#copy_from" title="files - copy_from"><code>copy_from</code></a> stanza, e.g.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">copy_from</span> <span class="nf">example</span>
+    <span class="p">{</span>
+      <span class="c"># .. other settings ..</span>
+      <span class="kr">trustkey</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Another way is to run <a href="reference-components-cfrunagent.html" title="cf-runagent"><code>cf-runagent</code></a> in interactive mode. When you run 
+<a href="reference-components-cfrunagent.html" title="cf-runagent"><code>cf-runagent</code></a>, unknown server keys are offered to you interactively (as with 
+<code>ssh</code>) for you to accept or deny manually:</p>
+<div class="highlight"><pre><code class="text"> $ WARNING - You do not have a public key from host ubik.iu.hio.no = 128.39.74.25
+ $ Do you want to accept one on trust? (yes/no)
+ --&gt;
+</code></pre>
+</div>
+
+<p>Once public keys have been exchanged from client to server and from server to 
+client, the issue of trust is solved according to public key authentication 
+schemes. You only need to worry about trust when one side of a connection has 
+never seen the other side before.</p>
+<h3 id="time-windows-races">Time windows (races)</h3>
+<p>All security is based on a moment of trust that is granted by a user at some 
+point in time – and is assumed thereafter (once given, hard to rescind). 
+Cryptographic key methods only remove the need for a repeat of the trust 
+decision. After the first exchange, trust is no longer needed, because they 
+keys allow identity to be actually verified.</p>
+
+<p>Even if you leave the trust options switched on, you are not blindly trusting 
+the hosts you know about. The only potential insecurity lies in any new keys 
+that you have not thought about. If you use wildcards or IP prefixes in the 
+trust rules, then other hosts might be able to spoof their way in on trust 
+because you have left open a hole for them to exploit. That is why it is 
+recommended to return the system to the default state of zero trust 
+immediately after key transfer, by commenting out the trust options.</p>
+
+<p>It is possible, though somewhat laborious, to transfer the keys out of band, 
+by copying <code>/var/cfengine/ppkeys/localhost.pub</code> to 
+<code>/var/cfengine/ppkeys/user-aaa.bbb.ccc.mmm</code> (assuming IPv4) on another host. 
+e.g.</p>
+<div class="highlight"><pre><code class="text">     localhost.pub -&gt; root-128.39.74.71.pub
+</code></pre>
+</div>
+
+<!--**TODO: update with new key file name format** -->
+<h3 id="other-users-than-root">Other users than root</h3>
+<p>CFEngine normally runs as user &quot;root&quot; (except on Windows which does
+not normally have a root user), i.e. a privileged administrator. If
+other users are to be granted access to the system, they must also
+generate a key and go through the same process. In addition, the
+users must be added to the server configuration file.</p>
+<h2 id="encryption">Encryption</h2>
+<p>CFEngine provides encryption for keeping file contents private during transfer. It is assumed that users will use this judiciously. There is nothing to be gained by encrypting the transfer of public files – overt use of encryption just contributes to global warming, burning unnecessary CPU cycles without offering any security.</p>
+
+<p>The main role for encryption in configuration management is for authentication. CFEngine always uses encryption during authentication, so none of the encryption settings affect the security of authentication.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>When setting up <a href="reference-components-cfserver.html" title="cf-serverd"><code>cf-serverd</code></a>, you might see the error message</p>
+<div class="highlight"><pre><code class="text">  Unspecified server refusal
+</code></pre>
+</div>
+
+<p>This means that <a href="reference-components-cfserver.html" title="cf-serverd"><code>cf-serverd</code></a> is unable or is unwilling to authenticate the 
+connection from your client machine. The message is deliberately non-specific 
+so that anyone attempting to attack or exploit the service will not be given 
+information which might be useful to them.</p>
+
+<!-- **TODO: how/where to check the server log?** -->
+
+<p>There is a simple checklist for curing this problem:</p>
+
+<ol>
+<li> Make sure that the domain variable is set in the configuration
+files read by both client and server; alternatively use
+<a href="reference-components-cfagent.html#skipidentify" title="cf-agent - skipidentify"><code>skipidentify</code></a> and <a href="reference-components-cfserver.html#skipverify" title="cf-serverd - skipverify"><code>skipverify</code></a> to decouple DNS from the the
+authentication.</li>
+<li> Make sure that you have granted access to your client in the
+server body</li>
+</ol>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+    <span class="p">{</span>
+        <span class="kr">allowconnects</span>         <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">,</span> <span class="s">&quot;::1&quot;</span> <span class="err">...</span><span class="nf">etc</span> <span class="p">};</span>
+        <span class="kr">allowallconnects</span>      <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">,</span> <span class="s">&quot;::1&quot;</span> <span class="err">...</span><span class="nf">etc</span> <span class="p">};</span>
+        <span class="kr">trustkeysfrom</span>         <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">,</span> <span class="s">&quot;::1&quot;</span> <span class="err">...</span><span class="nf">etc</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<ol>
+<li> Make sure you have created valid keys for the hosts using
+<a href="reference-components-cfkey.html" title="cf-key"><code>cf-key</code></a>.</li>
+<li> If you are using secure copy, make sure that you have created a
+key file and that you have distributed and installed it to all
+participating hosts in your cluster.</li>
+</ol>
+
+<p>Always remember that you can run CFEngine in verbose or debugging modes to see 
+how the authentication takes place:</p>
+<div class="highlight"><pre><code class="text">$ cf-agent -v
+$ cf-serverd -v
+</code></pre>
+</div>
+
+<p><a href="reference-components-cfagent.html" title="cf-agent"><code>cf-agent</code></a> reports that access is denied regardless of the nature
+of the error, to avoid giving away information which might be used
+by an attacker. To find out the real reason for a denial, use
+verbose ‘-v’ or even debugging mode ‘-d2’.</p>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/manuals/architecture/networking.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+
+body common control
+
+{
+bundlesequence  => { "fixdocs"  };
+}
+
+########################################################
+
+bundle agent fixdocs
+
+{
+vars:
+
+"docs" slist => {
+                "cf-anomaly",        
+                "cfengine-Anomalies",
+                "cf-Filters",
+                "cf-remotecomm",
+                "cf-begin-linux",
+                "cfengine-Reference",
+                "cf-Modularize",
+                "cf_topic_map.cf",
+                "cf-begin-windows",
+                "cfengine-Tutorial"   
+                "cf-Packages"
+                };
+
+
+classes:
+
+ "change_$(docs)"  expression => isnewerthan();
+
+
+
+files:
+
+
+commands:
+
+ "/usr/bin/makeinfo" 
+      args => "--html --no-split --css-include=cfcomdoc.css /home/mark/LapTop/GNU-cfengine/trunk/doc/$(docs).texinfo";
+
+ "./scan_texinfo" args => "cfengine-Reference.html > scan_reference.cf";
+
+}
+

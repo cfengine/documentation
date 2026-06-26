@@ -1,0 +1,81 @@
+
+bundle knowledge st_distsched
+
+{
+topics:
+
+"st-distsched";
+CFEngine_Tutorial::
+    "Summary of Distributed Scheduling" ;
+CFEngine_Tutorial::
+    "Long workflow chains" ;
+CFEngine_Tutorial::
+    "Self-healing workflows" ;
+CFEngine_Tutorial::
+    "Triggering multiple follow-ups" ;
+CFEngine_Tutorial::
+    "Aggregation of multiple jobs" ;
+CFEngine_Tutorial::
+    "More links in the chain" ;
+CFEngine_Tutorial::
+    "Fancy distributed encapsulation" ;
+CFEngine_Tutorial::
+    "Regular workflows" ;
+CFEngine_Tutorial::
+    "One-off workflows" ;
+CFEngine_Tutorial::
+    "Job scheduling and periodic maintenance" ;
+CFEngine_Tutorial::
+    "Coordinating dispatch" ;
+CFEngine_Tutorial::
+    "What is distributed scheduling?" ;
+Special_Topics_Guide::
+    "CFEngine-Tutorial"  association => a("discussed in","CFEngine-Tutorial","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-distsched.html"
+  represents => { "Distributed Scheduling" };
+CFEngine_Tutorial::
+ "/docs/st-distsched.html#Top"
+  represents => { "Text section" };
+What_is_distributed_scheduling_::
+ "/docs/st-distsched.html#What-is-distributed-scheduling_003f"
+  represents => { "Text section" };
+Coordinating_dispatch::
+ "/docs/st-distsched.html#Coordinating-dispatch"
+  represents => { "Text section" };
+Job_scheduling_and_periodic_maintenance::
+ "/docs/st-distsched.html#Job-scheduling-and-periodic-maintenance"
+  represents => { "Text section" };
+One_off_workflows::
+ "/docs/st-distsched.html#One_002doff-workflows"
+  represents => { "Text section" };
+Regular_workflows::
+ "/docs/st-distsched.html#Regular-workflows"
+  represents => { "Text section" };
+Fancy_distributed_encapsulation::
+ "/docs/st-distsched.html#Fancy-distributed-encapsulation"
+  represents => { "Text section" };
+More_links_in_the_chain::
+ "/docs/st-distsched.html#More-links-in-the-chain"
+  represents => { "Text section" };
+Aggregation_of_multiple_jobs::
+ "/docs/st-distsched.html#Aggregation-of-multiple-jobs"
+  represents => { "Text section" };
+Triggering_multiple_follow_ups::
+ "/docs/st-distsched.html#Triggering-multiple-follow_002dups"
+  represents => { "Text section" };
+Self_healing_workflows::
+ "/docs/st-distsched.html#Self_002dhealing-workflows"
+  represents => { "Text section" };
+Long_workflow_chains::
+ "/docs/st-distsched.html#Long-workflow-chains"
+  represents => { "Text section" };
+Summary_of_Distributed_Scheduling::
+ "/docs/st-distsched.html#Summary-of-Distributed-Scheduling"
+  represents => { "Text section" };
+}
+

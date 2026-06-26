@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.9  Documentation - Installing Enterprise for Production</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.9/assets/global-bbcdf8cb2135dbef89c4d6d19c9604bb.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Installing Enterprise for Production";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+                       <option value="/docs/3.9/index.html" selected>Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+                       <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:eahkid3txr8" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a><ul class="level2"><li><a href="guide-installation-and-configuration-pre-installation-checklist.html">Pre-Installation Checklist</a></li><li><a href="guide-installation-and-configuration-general-installation.html">General Installation</a><ul class="level3"><li><a href="guide-installation-and-configuration-general-installation-installation-enterprise-free-aws-rhel.html">Using Amazon Web Services</a></li><li><a href="guide-installation-and-configuration-general-installation-installation-enterprise-free.html">Installing Enterprise 25 Free</a></li><li><a href="guide-installation-and-configuration-general-installation-installation-enterprise-vagrant.html">Using Vagrant</a></li><li><a class="active" href="guide-installation-and-configuration-general-installation-installation-enterprise.html">Installing Enterprise for Production</a></li><li><a href="guide-installation-and-configuration-general-installation-installation-community.html">Installing Community</a></li></ul></li><li><a href="guide-installation-and-configuration-secure-bootstrap.html">Secure Bootstrap</a></li><li><a href="guide-installation-and-configuration-upgrading.html">Upgrading</a></li><li><a href="guide-installation-and-configuration-version-control.html">Version Control</a></li></ul></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-design-center.html">Design Center Overview</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-installation-and-configuration.html">Installation and Configuration</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-installation-and-configuration-general-installation.html">General Installation</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Installing Enterprise for Production
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>These instructions describe how to install the latest version of
+CFEngine Enterprise in a production environment using pre-compiled rpm
+and deb packages for Ubuntu, Debian, Redhat, CentOS, and SUSE.</p>
+<h2 id="general-requirements">General Requirements</h2>
+<p>CFEngine recommends the following:</p>
+
+<p><strong>Host Memory</strong></p>
+
+<p>During normal operation the CFEngine processes consume about 30 MB of
+resident memory (RSS) on hosts with the agent only (not acting as
+Policy Server).</p>
+
+<p>However there might be spikes due to e.g. commands executed from the
+CFEngine policy so it is generally recommended to have at least 256 MB
+available memory in order to run the CFEngine agent software.</p>
+
+<p><strong>Host disk</strong></p>
+
+<p>So that the agent is not affected by full disks it is recommended that
+<code>/var/cfengine</code> be on it&#39;s own partition.</p>
+
+<p>On Unix-like systems, under normal operation CFEngine can consume
+100 MB of the partition mounted where CFEngine is installed (usually
+<code>/var/cfengine</code>).  On Windows systems, CFEngine can consume up to 1GB
+(usually <code>C:\Program Files\Cfengine</code>).  The higher disk usage on
+Windows is due to lack of support for sparse files on this platform,
+which is utilized by a dependency of CFEngine (lmdb) when available.</p>
+
+<p>The agent builds local differential reports for promise outcomes. The
+longer the period between collections from the enterprise hub the more
+resources are required to calculate these differentials. You can
+control the maximum disk space used by diff reports (contexts,
+variables, software installed, software patches, lastseen hosts and
+promise executions) by adjusting <code>def.max_client_history_size</code>.</p>
+
+<p><strong>Network</strong></p>
+
+<ul>
+<li><p>Verify that the machine’s network connection is working and that
+port 5308 (used by CFEngine) is open for both incoming and outgoing
+connections.</p></li>
+<li><p>If a firewall is active on your operating system, adapt it to it to
+allow for communication on port 5308 or disable it.</p></li>
+</ul>
+
+<p>CFEngine bundles all critical dependencies into the package; therefore,
+additional software is not required.</p>
+
+<p><strong>Requirements for VIOS</strong></p>
+
+<p>CFEngine Enterprise has
+<a href="http://www.ibm.com/partnerworld/gsd/solutiondetails.do?solution=48493">Virtual I/O Server (VIOS) Recognized status</a>
+from IBM.  This means that CFEngine Enterprise has been technically
+verified by IBM to be installed in and manage VIOS environments.</p>
+
+<p>During testing, CFEngine Enterprise was seen to use up to 2% of the
+VIOS CPU during <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> runs with the default CFEngine policy. The
+resource utilization may vary depending on the policy CFEngine is
+running.  The VIOS should be configured with Shared Processors in
+Uncapped mode.</p>
+<h2 id="policy-server-requirements">Policy Server Requirements</h2>
+<p>Please note that the resource requirements below are meant as minimum
+guidelines and have been obtained with syntethic testing, and it is
+always better to leave some headroom if intermittent bottlenecks
+should occur.  The key drivers for the vertical scalability of the
+Policy Servers are 1) the number of agents bootstrapped and 2) the
+size and complexity of the CFEngine policy.</p>
+<h3 id="cfapache-and-cfpostgres-users">cfapache and cfpostgres users</h3>
+<p>The CFEngine Server requires two users: <strong>cfapache</strong> and
+<strong>cfpostgres</strong>.  If these users do not exist during installation of
+the server package, they will be created, so if there are constraints
+on user creation, please ensure that these users exists prior to
+installation.</p>
+
+<p>These users are not required nor created by the agent package.</p>
+<h3 id="dedicated-os">Dedicated OS</h3>
+<p>The CFEngine Server is only supported when installed on a <strong>dedicated,
+vanilla OS</strong> (i.e. it only has repositories and packages officially
+supported by the OS vendor). This is because the CFEngine Server uses
+services, e.g. apache, that are configured for CFEngine and may
+conflict with other custom application configurations.</p>
+
+<p>One option, especially for smaller installations, is to run the
+CFEngine Server in a VM. But please consider the performance
+requirements when doing this.</p>
+<h3 id="cpu">CPU</h3>
+<p>A modern 64-bit processor with 12 or more cores for handling up to
+5000 bootstrapped agents.  This number is also linear with respect to
+the number of bootstrapped agents (so 6 cores would suffice for 2500
+agents).</p>
+<h3 id="memory">Memory</h3>
+<p>Minimum 2GB memory, but not lower than <strong>8MB per bootstrapped
+agent</strong>. This means that, for a server with 5000 hosts, you should
+have at least 40GB of memory.</p>
+<h3 id="disk-sizing-and-partitioning">Disk sizing and partitioning</h3>
+<p>So that the agent is not affected by full disks it is recommended that
+<code>/var/cfengine</code> be on it&#39;s own partition.</p>
+
+<p>It is recommended that <code>$(sys.workdir)/state/pg</code> is mounted on a
+<strong>separate disk</strong>. This will give PostgreSQL, which can be very disk I/O
+intensive, dedicated resources.</p>
+
+<p>Plan for approximately <strong>100MB of disk space per bootstrapped agent</strong>.
+This means that, for a server with 5000 hosts, you should have at
+least 500 GB available on the database partition.</p>
+
+<p>xfs is strongly recommended as the file system type for the file
+system mounted on <code>$(sys.workdir)/state/pg</code>. ext4 can be used as an
+alternative, but ext3 should be avoided.</p>
+<h3 id="disk-speed">Disk speed</h3>
+<p>For 5000 bootstrapped agents, the disk that serves PostgreSQL
+(<code>$(sys.workdir)/state/pg</code>) should be able to perform at least <strong>1000
+IOPS</strong> (in 16KiB block size) and 10 MB/s. The disk mounted on
+<code>$(sys.workdir)</code> should be able to perform at least 500 IOPS and 0.5
+MB/s. <strong>SSD is recommended</strong> for the disk that serves PostgreSQL
+(<code>$(sys.workdir)/state/pg</code>).</p>
+
+<p>If you do not have separate partitions for <code>$(sys.workdir)</code> and
+<code>$(sys.workdir)/state/pg</code>, the speed required by the disk serving
+<code>$(sys.workdir)</code> adds up (for 5000 bootstrapped agents it would be
+1500 IOPS and 10.5 MB/s).</p>
+
+<p><strong>Note</strong> Your storage IOPS specification may be given in 4KiB block
+  size, in which case you would need to divide it by 4 to get the
+  corresponding 16KiB <em>theoretical maximum</em>.</p>
+<h3 id="network">Network</h3>
+<p>For serving policy and collecting reports for up to 5000 bootstrapped
+agents, plan for at least 30 MB/s (240 MBit) speed on the interface
+that connects the Policy Server with the agents.</p>
+<h3 id="open-file-descriptors">Open file descriptors</h3>
+<p>The policy server should ideally be able to accept connections from
+all clients; i.e. to allow at least as many incoming connections as
+there are clients.  The system limit for this is controlled by <code>ulimit
+-n</code>; so the parent process from which you bootstrap should, for a
+server with 5000 hosts, run <code>ulimit -n 5000</code> first.  You should also
+add such a <code>ulimit -n</code> command to the script that implements <code>service
+cfengine3 start</code> (and <code>restart</code>) and to any policy that starts
+<a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> or <a href="reference-components-cf-hub.html" title="cf-hub"><code>cf-hub</code></a>.  For very large numbers of clients, it may
+be advantageous to build a custom kernel to allow setting <code>ulimit -n</code>
+high enough.  You should also amend the value of <a href="reference-components-cf-agent.html#maxconnections" title="cf-agent - maxconnections"><code>maxconnections</code></a> set
+in <code>cf_serverd.cf</code> under <code>$(sys.workdir)/masterfiles/controls/</code> to the
+number of clients, likewise.</p>
+<h2 id="download-packages">Download Packages</h2>
+<p><a href="http://cfengine.com/product/free-download">Download CFEngine</a></p>
+<h2 id="install-packages">Install Packages</h2>
+<p>CFEngine Enterprise is provided in two packages; one is for the Policy
+Server (hub) and the other is for each Host (client).</p>
+
+<p><strong>Log in as root</strong> and then follow these steps to install CFEngine
+  Enterprise:</p>
+
+<ol>
+<li><p>On the designated Policy Server, install the <code>cfengine-nova-hub</code> package:</p>
+<div class="highlight"><pre><code class="console"><span class="go">[RedHat/CentOS/SUSE] # rpm -i &lt;hub package&gt;.rpm</span>
+<span class="go">[Debian/Ubuntu]      # dpkg -i &lt;hub package&gt;.deb</span>
+</code></pre>
+</div></li>
+<li><p>On each Host, install the <code>cfengine-nova</code> package:</p>
+<div class="highlight"><pre><code class="console"><span class="go">[RedHat/CentOS/SUSE] # rpm -i &lt;agent package&gt;.rpm</span>
+<span class="go">[Debian/Ubuntu]      # dpkg -i &lt;agent package&gt;.deb</span>
+<span class="go">[Solaris]            # pkgadd -d &lt;agent package&gt;.pkg all</span>
+<span class="go">[AIX]                # installp -a -d &lt;agent package&gt;.bff cfengine.cfengine-nova</span>
+<span class="go">[HP-UX]              # swinstall -s &lt;full path to agent package&gt;.depot cfengine-nova</span>
+</code></pre>
+</div></li>
+</ol>
+
+<p>Note: Install actions logged to <code>/var/logs/cfengine-install.log</code>.</p>
+<h2 id="bootstrap">Bootstrap</h2>
+<p>Run the bootstrap command, <strong>first</strong> on the policy server and then on each
+host:</p>
+<div class="highlight"><pre><code class="console"><span class="gp">#</span> /var/cfengine/bin/cf-agent --bootstrap &lt;IP address of the Policy Server&gt;
+</code></pre>
+</div>
+
+<p>After bootstrapping the hub run the policy to complete the hub configuration.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">#</span> /var/cfengine/bin/cf-agent -Kf update.cf; /var/cfengine/bin/cf-agent -K
+</code></pre>
+</div>
+<h2 id="licensed-installations">Licensed installations</h2>
+<p>If you are evaluating CFEngine Enterprise or otherwise using it in an
+environment with less than 25 agents connecting to a Policy Server,
+you do not need a license and there is no expiry.</p>
+
+<p>If you are a customer, please send the Policy Server&#39;s public key
+to CFEngine support to obtain a license.</p>
+
+<p>It&#39;s best to pack the public key into an archive so that it does not
+get corrupt in transit.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">#</span> tar --create --gzip --directory /var/cfengine --file <span class="k">$(</span>hostname<span class="k">)</span>-ppkeys.tar.gz ppkeys/localhost.pub
+</code></pre>
+</div>
+
+<p>CFEngine will send you a <code>license.dat</code> file. Install the obtained
+license with <a href="reference-components-cf-key.html" title="cf-key"><code>cf-key</code></a>.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">#</span> cf-key --install-license ./license.dat
+</code></pre>
+</div>
+<h2 id="next-steps">Next Steps</h2>
+<p>When bootstrapping is complete, CFEngine is up and running on your system.</p>
+
+<p>The Mission Portal is immediately accessible. Connect to the Policy Server
+through your web browser at http://<code>&lt;IP address of your Policy Server&gt;</code>.</p>
+
+<p>To be able to use the Mission Portal&#39;s Design Center
+front-end, continue with <a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-integrating-mission-portal-with-git.html" title="Integrating Mission Portal with git">integrating Mission Portal with git</a>.</p>
+
+<p>Learn more about CFEngine by using the following resources:</p>
+
+<ul>
+<li><p>Tutorial: <a href="examples.html#tutorial-for-running-examples" title="Examples and Tutorials - Tutorial for Running Examples ">Tutorial for Running Examples</a></p></li>
+<li><p>Tutorial: <a href="examples-tutorials-deploy_sketch.html" title="Configure and Deploy a Policy Using Sketches">Configure and deploy a policy using sketches in the Design Center.</a></p></li>
+<li><p><a href="guide.html" title="Guide">CFEngine Guide</a></p></li>
+<li><p><a href="examples.html" title="Examples and Tutorials">Tutorials and Examples</a></p></li>
+</ul>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-getting-started.html">getting started</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-installation.html">installation</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-enterprise-production.html">enterprise production</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 02 March 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/installation-and-configuration/general-installation/installation-enterprise.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/04ad849bd97ab6da773794babca26d9dd8806039" target="_blank">04ad849bd97ab6da773794babca26d9dd8806039</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.9/assets/footer-e9812654bffc243fc0dd77cc1c8e348e.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

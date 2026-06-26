@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.10  Documentation - Set up time management through NTP</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.10/assets/global-9291732ba4137970d6f84f199dc9b48d.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Set up time management through NTP";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/" selected>Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:v9zopcogc1m" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a><ul class="level2"><li><a href="examples-example-snippets-general.html">General Examples</a></li><li><a href="examples-example-snippets-cfengine-administration.html">CFEngine Administration Examples</a></li><li><a href="examples-example-snippets-promise-patterns.html">Common Promise Patterns</a><ul class="level3"><li><a href="examples-example-snippets-promise-patterns-example_aborting_execution.html">Aborting execution</a></li><li><a href="examples-example-snippets-promise-patterns-example_change_detection.html">Change detection</a></li><li><a href="examples-example-snippets-promise-patterns-example_diskfree.html">Check filesystem space</a></li><li><a href="examples-example-snippets-promise-patterns-example_copy_single_files.html">Copy single files</a></li><li><a href="examples-example-snippets-promise-patterns-example_create_filedir.html">Create files and directories</a></li><li><a href="examples-example-snippets-promise-patterns-example_edit_motd.html">Customize Message of the Day</a></li><li><a href="examples-example-snippets-promise-patterns-example_ssh_keys.html">Distribute ssh keys</a></li><li><a href="examples-example-snippets-promise-patterns-example_process_kill.html">Ensure a process is not running</a></li><li><a href="examples-example-snippets-promise-patterns-example_enable_service.html">Ensure a service is enabled and running</a></li><li><a href="examples-example-snippets-promise-patterns-example_find_mac_addr.html">Find the MAC address</a></li><li><a href="examples-example-snippets-promise-patterns-example_install_package.html">Install packages</a></li><li><a href="examples-example-snippets-promise-patterns-example_mount_nfs.html">Mount NFS filesystem</a></li><li><a href="examples-example-snippets-promise-patterns-example_process_restart.html">Restart a Process</a></li><li><a href="examples-example-snippets-promise-patterns-example_edit_name_resolution.html">Set up name resolution with DNS</a></li><li><a href="examples-example-snippets-promise-patterns-example_sudoers.html">Set up sudo</a></li><li><a class="active" href="examples-example-snippets-promise-patterns-example_ntp.html">Set up time management through NTP</a></li><li><a href="examples-example-snippets-promise-patterns-example_updating_from_central_hub.html">Updating from a central policy server</a></li></ul></li><li><a href="examples-example-snippets-timing-counting-measuring.html">Measuring Examples</a></li><li><a href="examples-example-snippets-software-adminstration.html">Software Administration Examples</a></li><li><a href="examples-example-snippets-commands-scripts-execution.html">Commands, Scripts, and Execution Examples</a></li><li><a href="examples-example-snippets-basic-file-directory.html">File and Directory Examples</a></li><li><a href="examples-example-snippets-file-template.html">File Template Examples</a></li><li><a href="examples-example-snippets-active_directory.html">Interacting with Directory Services</a></li><li><a href="examples-example-snippets-database.html">Database Examples</a></li><li><a href="examples-example-snippets-network.html">Network Examples</a></li><li><a href="examples-example-snippets-system-security.html">System Security Examples</a></li><li><a href="examples-example-snippets-system-information.html">System Information Examples</a></li><li><a href="examples-example-snippets-system-administration.html">System Administration Examples</a></li><li><a href="examples-example-snippets-system-file.html">System File Examples</a></li><li><a href="examples-example-snippets-windows-registry.html">Windows Registry Examples</a></li><li><a href="examples-example-snippets-file_permissions.html">File Permissions</a></li><li><a href="examples-example-snippets-user-management.html">User Management Examples</a></li></ul></li><li><a href="examples-tutorials.html">Tutorials</a></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a></li></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-example-snippets.html">Example Snippets</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-example-snippets-promise-patterns.html">Common Promise Patterns</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Set up time management through NTP
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>The following sets up a local NTP server that synchronizes with pool.ntp.org and
+clients that synchronize with your local NTP server. See bottom of this example
+if you don&#39;t want to build a server, but use a &quot;brute force&quot; method (repeated
+ntpdate syncs).</p>
+
+<p>This example demonstrates you can have a lot of low-level detailed control if you want it.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">system_time_ntp</span>
+    <span class="p">{</span>
+     <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="nc">linux</span><span class="p">::</span>
+
+       <span class="p">&quot;</span><span class="nv">cache_dir</span><span class="p">&quot;</span>   <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/cache&quot;</span><span class="p">;</span>  <span class="c"># Cache directory for NTP config files</span>
+
+       <span class="p">&quot;</span><span class="nv">ntp_conf</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/etc/ntp.conf&quot;</span><span class="p">;</span>  <span class="c"># Target file for NTP configuration</span>
+
+       <span class="p">&quot;</span><span class="nv">ntp_server</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;172.16.12.161&quot;</span><span class="p">;</span>  <span class="c">#</span>
+       <span class="p">&quot;</span><span class="nv">ntp_network</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;172.16.12.0&quot;</span><span class="p">;</span>    <span class="c"># IP address and netmask of your local NTP server</span>
+       <span class="p">&quot;</span><span class="nv">ntp_mask</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;255.255.255.0&quot;</span><span class="p">;</span>  <span class="c">#</span>
+
+       <span class="p">&quot;</span><span class="nv">ntp_pkgs</span><span class="p">&quot;</span>    <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;ntp&quot;</span> <span class="p">};</span>         <span class="c"># NTP packages to be installed to ensure service</span>
+
+
+    <span class="c"># Define a class for the NTP server</span>
+     <span class="kd">classes</span><span class="p">:</span>
+
+      <span class="nc">any</span><span class="p">::</span>
+
+       <span class="s">&quot;ntp_hosts&quot;</span>         <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">classmatch</span><span class="p">(</span><span class="nf">canonify</span><span class="p">(</span><span class="s">&quot;ipv4_</span><span class="si">$(ntp_server)</span><span class="s">&quot;</span><span class="p">))</span> <span class="p">};</span>
+
+
+    <span class="c"># Ensure that the NTP packages are installed</span>
+     <span class="kd">packages</span><span class="p">:</span>
+
+      <span class="nc">ubuntu</span><span class="p">::</span>
+
+       <span class="s">&quot;</span><span class="si">$(ntp_pkgs)</span><span class="s">&quot;</span>
+
+             <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;setup NTP&quot;</span><span class="p">,</span>
+          <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+          <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">generic</span><span class="p">;</span>
+
+
+    <span class="c"># Ensure existence of file and directory for NTP drift learning statistics</span>
+     <span class="kd">files</span><span class="p">:</span>
+
+      <span class="nc">linux</span><span class="p">::</span>
+
+       <span class="s">&quot;/var/lib/ntp/ntp.drift&quot;</span>
+
+          <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Enable ntp service&quot;</span><span class="p">,</span>
+           <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+
+       <span class="s">&quot;/var/log/ntpstats/.&quot;</span>
+
+          <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Create a statistic directory&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">,</span><span class="s">&quot;ntp&quot;</span><span class="p">,</span><span class="s">&quot;ntp&quot;</span><span class="p">),</span>
+           <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+
+      <span class="nc">ntp_hosts</span><span class="p">::</span>
+
+
+    <span class="c"># Build the cache configuration file for the NTP server</span>
+       <span class="s">&quot;/var/cfengine/cache/ntp.conf&quot;</span>
+
+            <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Build </span><span class="si">$(this.promiser)</span><span class="s"> cache file for NTP server&quot;</span><span class="p">,</span>
+             <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+          <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">,</span>
+          <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">restore_ntp_master</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(ntp_network)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(ntp_mask)</span><span class="s">&quot;</span><span class="p">);</span>
+
+      <span class="nc">centos.ntp_hosts</span><span class="p">::</span>
+
+
+    <span class="c"># Copy the cached configuration file to its target destination</span>
+       <span class="s">&quot;</span><span class="si">$(ntp_conf)</span><span class="s">&quot;</span>
+
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Ensure </span><span class="si">$(this.promiser)</span><span class="s"> in a perfect condition&quot;</span><span class="p">,</span>
+          <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">local_cp</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(cache_dir)</span><span class="s">/ntp.conf&quot;</span><span class="p">),</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;refresh_ntpd_centos&quot;</span><span class="p">);</span>
+
+      <span class="nc">ubuntu.ntp_hosts</span><span class="p">::</span>
+
+       <span class="s">&quot;</span><span class="si">$(ntp_conf)</span><span class="s">&quot;</span>
+
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Ensure </span><span class="si">$(this.promiser)</span><span class="s"> in a perfect condition&quot;</span><span class="p">,</span>
+          <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">local_cp</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(cache_dir)</span><span class="s">/ntp.conf&quot;</span><span class="p">),</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;refresh_ntpd_ubuntu&quot;</span><span class="p">);</span>
+
+      <span class="nc">!ntp_hosts</span><span class="p">::</span>
+
+
+    <span class="c"># Build the cache configuration file for the NTP client</span>
+       <span class="s">&quot;</span><span class="si">$(cache_dir)</span><span class="s">/ntp.conf&quot;</span>
+
+            <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Build </span><span class="si">$(this.promiser)</span><span class="s"> cache file for NTP client&quot;</span><span class="p">,</span>
+             <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+          <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">,</span>
+          <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">restore_ntp_client</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(ntp_server)</span><span class="s">&quot;</span><span class="p">);</span>
+
+      <span class="nc">centos.!ntp_hosts</span><span class="p">::</span>
+
+
+    <span class="c"># Copy the cached configuration file to its target destination</span>
+       <span class="s">&quot;</span><span class="si">$(ntp_conf)</span><span class="s">&quot;</span>
+
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Ensure </span><span class="si">$(this.promiser)</span><span class="s"> in a perfect condition&quot;</span><span class="p">,</span>
+          <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">local_cp</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(cache_dir)</span><span class="s">/ntp.conf&quot;</span><span class="p">),</span>
+            <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;refresh_ntpd_centos&quot;</span><span class="p">);</span>
+
+      <span class="nc">ubuntu.!ntp_hosts</span><span class="p">::</span>
+
+       <span class="s">&quot;</span><span class="si">$(ntp_conf)</span><span class="s">&quot;</span>
+
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Ensure </span><span class="si">$(this.promiser)</span><span class="s"> in a perfect condition&quot;</span><span class="p">,</span>
+          <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">local_cp</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(cache_dir)</span><span class="s">/ntp.conf&quot;</span><span class="p">),</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;refresh_ntpd_ubuntu&quot;</span><span class="p">);</span>
+
+
+    <span class="c"># Set classes (conditions) for to restart the NTP daemon if there have been any changes to configuration</span>
+     <span class="kd">processes</span><span class="p">:</span>
+
+      <span class="nc">centos</span><span class="p">::</span>
+
+       <span class="s">&quot;ntpd.*&quot;</span>
+
+          <span class="kr">restart_class</span> <span class="o">=&gt;</span> <span class="s">&quot;refresh_ntpd_centos&quot;</span><span class="p">;</span>
+
+      <span class="nc">ubuntu</span><span class="p">::</span>
+
+       <span class="s">&quot;ntpd.*&quot;</span>
+
+          <span class="kr">restart_class</span> <span class="o">=&gt;</span> <span class="s">&quot;refresh_ntpd_ubuntu&quot;</span><span class="p">;</span>
+
+
+    <span class="c"># Restart the NTP daemon if the configuration has changed</span>
+     <span class="kd">commands</span><span class="p">:</span>
+
+      <span class="nc">refresh_ntpd_centos</span><span class="p">::</span>
+
+       <span class="s">&quot;/etc/init.d/ntpd restart&quot;</span><span class="p">;</span>
+
+      <span class="nc">refresh_ntpd_ubuntu</span><span class="p">::</span>
+
+       <span class="s">&quot;/etc/init.d/ntp restart&quot;</span><span class="p">;</span>
+
+    <span class="p">}</span>
+
+    <span class="c">#######################################################</span>
+
+    <span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">restore_ntp_master</span><span class="p">(</span><span class="nv">network</span><span class="p">,</span><span class="nv">mask</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="kd">vars</span><span class="p">:</span>
+     <span class="p">&quot;</span><span class="nv">list</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span>
+    <span class="s">&quot;######################################</span>
+<span class="s">    # ntp.conf-master</span>
+
+<span class="s">    driftfile /var/lib/ntp/ntp.drift</span>
+<span class="s">    statsdir /var/log/ntpstats/</span>
+
+<span class="s">    statistics loopstats peerstats clockstats</span>
+<span class="s">    filegen loopstats file loopstats type day enable</span>
+<span class="s">    filegen peerstats file peerstats type day enable</span>
+<span class="s">    filegen clockstats file clockstats type day enable</span>
+
+<span class="s">    # Use public servers from the pool.ntp.org project.</span>
+<span class="s">    # Please consider joining the pool (http://www.pool.ntp.org/join.html).</span>
+<span class="s">    # Consider changing the below servers to a location near you for better time</span>
+<span class="s">    # e.g. server 0.europe.pool.ntp.org, or server 0.no.pool.ntp.org etc.</span>
+<span class="s">    server 0.centos.pool.ntp.org</span>
+<span class="s">    server 1.centos.pool.ntp.org</span>
+<span class="s">    server 2.centos.pool.ntp.org</span>
+
+<span class="s">    # Permit time synchronization with our time source, but do not</span>
+<span class="s">    # permit the source to query or modify the service on this system.</span>
+<span class="s">    restrict -4 default kod nomodify notrap nopeer noquery</span>
+<span class="s">    restrict -6 default kod nomodify notrap nopeer noquery</span>
+
+<span class="s">    # Permit all access over the loopback interface.  This could</span>
+<span class="s">    # be tightened as well, but to do so would effect some of</span>
+<span class="s">    # the administrative functions.</span>
+<span class="s">    restrict 127.0.0.1</span>
+<span class="s">    restrict ::1</span>
+
+<span class="s">    # Hosts on local network are less restricted.</span>
+<span class="s">    restrict </span><span class="si">$(network)</span><span class="s"> mask </span><span class="si">$(mask)</span><span class="s"> nomodify notrap&quot;</span><span class="p">;</span>
+
+    <span class="kd">insert_lines</span><span class="p">:</span>
+     <span class="s">&quot;</span><span class="si">$(list)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c">#######################################################</span>
+
+    <span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">restore_ntp_client</span><span class="p">(</span><span class="nv">serverip</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="kd">vars</span><span class="p">:</span>
+     <span class="p">&quot;</span><span class="nv">list</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span>
+    <span class="s">&quot;######################################</span>
+<span class="s">    # This file is protected by cfengine #</span>
+<span class="s">    ######################################</span>
+<span class="s">    # ntp.conf-client</span>
+
+<span class="s">    driftfile /var/lib/ntp/ntp.drift</span>
+<span class="s">    statsdir /var/log/ntpstats/</span>
+
+<span class="s">    statistics loopstats peerstats clockstats</span>
+<span class="s">    filegen loopstats file loopstats type day enable</span>
+<span class="s">    filegen peerstats file peerstats type day enable</span>
+<span class="s">    filegen clockstats file clockstats type day enable</span>
+
+<span class="s">    # Permit time synchronization with our time source, but do not</span>
+<span class="s">    # permit the source to query or modify the service on this system.</span>
+<span class="s">    restrict -4 default kod nomodify notrap nopeer noquery</span>
+<span class="s">    restrict -6 default kod nomodify notrap nopeer noquery</span>
+
+<span class="s">    # Permit all access over the loopback interface.  This could</span>
+<span class="s">    # be tightened as well, but to do so would effect some of</span>
+<span class="s">    # the administrative functions.</span>
+<span class="s">    restrict 127.0.0.1</span>
+<span class="s">    restrict ::1</span>
+<span class="s">    server </span><span class="si">$(serverip)</span><span class="s"></span>
+<span class="s">    restrict </span><span class="si">$(serverip)</span><span class="s"> nomodify&quot;</span><span class="p">;</span>
+
+    <span class="kd">insert_lines</span><span class="p">:</span>
+     <span class="s">&quot;</span><span class="si">$(list)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This policy can be found in <code>/var/cfengine/share/doc/examples/example_ntp.cf</code></p>
+
+<p>If you don&#39;t want to build a server, you might do like this:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">time_management</span>
+    <span class="p">{</span>
+     <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="nc">any</span><span class="p">::</span>
+
+       <span class="p">&quot;</span><span class="nv">ntp_server</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;no.pool.ntp.org&quot;</span><span class="p">;</span>
+
+     <span class="kd">commands</span><span class="p">:</span>
+
+      <span class="nc">any</span><span class="p">::</span>
+
+          <span class="s">&quot;/usr/sbin/ntpdate </span><span class="si">$(ntp_server)</span><span class="s">&quot;</span>
+
+         <span class="kr">contain</span> <span class="o">=&gt;</span> <span class="nf">silent</span><span class="p">;</span>
+
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This is a hard reset of the time, it corrects it immediately. This may cause problems
+if there are large deviations in time and you are using time sensitive software on your
+system. An NTP daemon setup as shown above, on the other hand, slowly adapts the time
+to avoid causing disruption. In addition, the NTP daemon can be configured to learn your
+system&#39;s time drift and automatically adjust for it without having to be in touch with
+the server at all times.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-examples.html">examples</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-policy.html">policy</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-ntp.html">ntp</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-file-editing.html">file editing</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 17 March 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/examples/example-snippets/promise-patterns/example_ntp.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/ae7435d3d24d30077bfbf18438f2444c629f8c69" target="_blank">ae7435d3d24d30077bfbf18438f2444c629f8c69</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.10/assets/footer-4c28dbe187e7b2a3c1504ff564f1b523.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

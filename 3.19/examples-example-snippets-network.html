@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.19  Documentation - Network Examples</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/examples/example-snippets/network.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-examples-example-snippets-network.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <link rel="canonical" href="https://docs.cfengine.com/latest/examples-example-snippets-network.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='assets/global-6a0b9da22cb0d4bd16e0e337e3484c43.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Network Examples";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/">Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/" selected>Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a><ul class="level2"><li><a href="examples-example-snippets-general.html">General Examples</a></li><li><a href="examples-example-snippets-cfengine-administration.html">CFEngine Administration Examples</a></li><li><a href="examples-example-snippets-promise-patterns.html">Common Promise Patterns</a></li><li><a href="examples-example-snippets-timing-counting-measuring.html">Measuring Examples</a></li><li><a href="examples-example-snippets-software-adminstration.html">Software Administration Examples</a></li><li><a href="examples-example-snippets-commands-scripts-execution.html">Commands, Scripts, and Execution Examples</a></li><li><a href="examples-example-snippets-basic-file-directory.html">File and Directory Examples</a></li><li><a href="examples-example-snippets-file-template.html">File Template Examples</a></li><li><a href="examples-example-snippets-active_directory.html">Interacting with Directory Services</a></li><li><a href="examples-example-snippets-database.html">Database Examples</a></li><li><a class="active" href="examples-example-snippets-network.html">Network Examples</a></li><li><a href="examples-example-snippets-system-security.html">System Security Examples</a></li><li><a href="examples-example-snippets-system-information.html">System Information Examples</a></li><li><a href="examples-example-snippets-system-administration.html">System Administration Examples</a></li><li><a href="examples-example-snippets-system-file.html">System File Examples</a></li><li><a href="examples-example-snippets-windows-registry.html">Windows Registry Examples</a></li><li><a href="examples-example-snippets-file_permissions.html">File Permissions</a></li><li><a href="examples-example-snippets-user-management.html">User Management Examples</a></li></ul></li><li><a href="examples-tutorials.html">Tutorials</a></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-example-snippets.html">Example Snippets</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Network Examples
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <ul>
+<li><a href="examples-example-snippets-network.html#find-mac-address" title="Network Examples - Find MAC address">Find MAC address</a></li>
+<li><a href="examples-example-snippets-network.html#client-server-example" title="Network Examples - Client-server example">Client-server example</a></li>
+<li><a href="examples-example-snippets-network.html#read-from-a-tcp-socket" title="Network Examples - Read from a TCP socket">Read from a TCP socket</a></li>
+<li><a href="examples-example-snippets-network.html#set-up-a-pxe-boot-server" title="Network Examples - Set up a PXE boot server">Set up a PXE boot server</a></li>
+<li><a href="examples-example-snippets-network.html#resolver-management" title="Network Examples - Resolver management">Resolver management</a></li>
+<li><a href="examples-example-snippets-network.html#mount-nfs-filesystem" title="Network Examples - Mount NFS filesystem">Mount NFS filesystem</a></li>
+<li><a href="examples-example-snippets-network.html#unmount-nfs-filesystem" title="Network Examples - Unmount NFS filesystem">Unmount NFS filesystem</a></li>
+<li>Find the MAC address</li>
+<li>Mount NFS filesystem</li>
+</ul>
+<h2 id="find-mac-address">Find MAC address</h2>
+<p>Finding the ethernet address can be hard, but on Linux it is straightforward.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">test</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+
+    <span class="nc">linux</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">interface</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;/sbin/ifconfig eth0&quot;</span><span class="p">,</span><span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+
+    <span class="nc">solaris</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">interface</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;/usr/sbin/ifconfig bge0&quot;</span><span class="p">,</span><span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+
+    <span class="nc">freebsd</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">interface</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;/sbin/ifconfig le0&quot;</span><span class="p">,</span><span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+
+    <span class="nc">darwin</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">interface</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;/sbin/ifconfig en0&quot;</span><span class="p">,</span><span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+
+    <span class="nc">linux</span><span class="p">::</span>
+
+      <span class="s">&quot;ok&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regextract</span><span class="p">(</span>
+                                     <span class="s">&quot;.*HWaddr ([^</span><span class="se">\s</span><span class="s">]+).*(</span><span class="se">\n</span><span class="s">.*)*&quot;</span><span class="p">,</span>
+                                     <span class="s">&quot;</span><span class="si">$(interface)</span><span class="s">&quot;</span><span class="p">,</span>
+                                     <span class="s">&quot;mac&quot;</span>
+      <span class="p">);</span>
+
+    <span class="nc">solaris</span><span class="p">::</span>
+
+      <span class="s">&quot;ok&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regextract</span><span class="p">(</span>
+                                     <span class="s">&quot;.*ether ([^</span><span class="se">\s</span><span class="s">]+).*(</span><span class="se">\n</span><span class="s">.*)*&quot;</span><span class="p">,</span>
+                                     <span class="s">&quot;</span><span class="si">$(interface)</span><span class="s">&quot;</span><span class="p">,</span>
+                                     <span class="s">&quot;mac&quot;</span>
+      <span class="p">);</span>
+
+    <span class="nc">freebsd</span><span class="p">::</span>
+
+      <span class="s">&quot;ok&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regextract</span><span class="p">(</span>
+                                     <span class="s">&quot;.*ether ([^</span><span class="se">\s</span><span class="s">]+).*(</span><span class="se">\n</span><span class="s">.*)*&quot;</span><span class="p">,</span>
+                                     <span class="s">&quot;</span><span class="si">$(interface)</span><span class="s">&quot;</span><span class="p">,</span>
+                                     <span class="s">&quot;mac&quot;</span>
+      <span class="p">);</span>
+
+    <span class="nc">darwin</span><span class="p">::</span>
+
+      <span class="s">&quot;ok&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regextract</span><span class="p">(</span>
+                                     <span class="s">&quot;(?s).*ether ([^</span><span class="se">\s</span><span class="s">]+).*(</span><span class="se">\n</span><span class="s">.*)*&quot;</span><span class="p">,</span>
+                                     <span class="s">&quot;</span><span class="si">$(interface)</span><span class="s">&quot;</span><span class="p">,</span>
+                                     <span class="s">&quot;mac&quot;</span>
+      <span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+
+    <span class="nc">ok</span><span class="p">::</span>
+
+      <span class="s">&quot;MAC address is </span><span class="si">$(mac[1])</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="client-server-example">Client-server example</h2><div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;testbundle&quot;</span> <span class="p">};</span>
+      <span class="kr">version</span> <span class="o">=&gt;</span> <span class="s">&quot;1.2.3&quot;</span><span class="p">;</span>
+      <span class="c">#fips_mode =&gt; &quot;true&quot;;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">testbundle</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;/home/mark/tmp/testcopy&quot;</span>
+      <span class="kr">comment</span>  <span class="o">=&gt;</span> <span class="s">&quot;test copy promise&quot;</span><span class="p">,</span>
+      <span class="kr">copy_from</span>    <span class="o">=&gt;</span> <span class="nf">mycopy</span><span class="p">(</span><span class="s">&quot;/home/mark/LapTop/words&quot;</span><span class="p">,</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">),</span>
+      <span class="kr">perms</span>        <span class="o">=&gt;</span> <span class="nf">system</span><span class="p">,</span>
+      <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">recurse</span><span class="p">(</span><span class="s">&quot;inf&quot;</span><span class="p">),</span>
+      <span class="kr">classes</span>      <span class="o">=&gt;</span> <span class="nf">satisfied</span><span class="p">(</span><span class="s">&quot;copy_ok&quot;</span><span class="p">);</span>
+
+      <span class="s">&quot;/home/mark/tmp/testcopy/single_file&quot;</span>
+      <span class="kr">comment</span>  <span class="o">=&gt;</span> <span class="s">&quot;test copy promise&quot;</span><span class="p">,</span>
+      <span class="kr">copy_from</span>    <span class="o">=&gt;</span> <span class="nf">mycopy</span><span class="p">(</span><span class="s">&quot;/home/mark/LapTop/Cfengine3/trunk/README&quot;</span><span class="p">,</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">),</span>
+      <span class="kr">perms</span>        <span class="o">=&gt;</span> <span class="nf">system</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">copy_ok</span><span class="p">::</span>
+      <span class="s">&quot;Files were copied..&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">perms</span> <span class="nf">system</span>
+<span class="p">{</span>
+      <span class="kr">mode</span>  <span class="o">=&gt;</span> <span class="s">&quot;0644&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">depth_search</span> <span class="nf">recurse</span><span class="p">(</span><span class="nv">d</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">depth</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(d)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">copy_from</span> <span class="nf">mycopy</span><span class="p">(</span><span class="nv">from</span><span class="p">,</span><span class="nv">server</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">source</span>      <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(from)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">servers</span>     <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(server)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">compare</span>     <span class="o">=&gt;</span> <span class="s">&quot;digest&quot;</span><span class="p">;</span>
+      <span class="kr">encrypt</span>     <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+      <span class="kr">verify</span>      <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+      <span class="kr">copy_backup</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>                  <span class="c">#/false/timestamp</span>
+      <span class="kr">purge</span>       <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">;</span>
+      <span class="kr">type_check</span>  <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+      <span class="kr">force_ipv4</span>  <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+      <span class="kr">trustkey</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">classes</span> <span class="nf">satisfied</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">promise_repaired</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">persist_time</span> <span class="o">=&gt;</span> <span class="s">&quot;0&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">allowconnects</span>         <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">,</span> <span class="s">&quot;::1&quot;</span> <span class="p">};</span>
+      <span class="kr">allowallconnects</span>      <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">,</span> <span class="s">&quot;::1&quot;</span> <span class="p">};</span>
+      <span class="kr">trustkeysfrom</span>         <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">,</span> <span class="s">&quot;::1&quot;</span> <span class="p">};</span>
+      <span class="c"># allowusers</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">server</span> <span class="nf">my_access_rules</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="kd">access</span><span class="p">:</span>
+      <span class="s">&quot;/home/mark/LapTop&quot;</span>
+      <span class="kr">admit</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="read-from-a-tcp-socket">Read from a TCP socket</h2><div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;example&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">my80</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">readtcp</span><span class="p">(</span><span class="s">&quot;research.iu.hio.no&quot;</span><span class="p">,</span><span class="s">&quot;80&quot;</span><span class="p">,</span><span class="s">&quot;GET /index.php HTTP/1.1</span><span class="si">$(const.r)$(const.n)</span><span class="s">Host: research.iu.hio.no</span><span class="si">$(const.r)$(const.n)$(const.r)$(const.n)</span><span class="s">&quot;</span><span class="p">,</span><span class="mi">20</span><span class="p">);</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;server_ok&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regcmp</span><span class="p">(</span><span class="s">&quot;.*200 OK.*</span><span class="se">\n</span><span class="s">.*&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(my80)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">server_ok</span><span class="p">::</span>
+      <span class="s">&quot;Server is alive&quot;</span><span class="p">;</span>
+    <span class="nc">!server_ok</span><span class="p">::</span>
+      <span class="s">&quot;Server is not responding - got </span><span class="si">$(my80)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="set-up-a-pxe-boot-server">Set up a PXE boot server</h2>
+<p>Use CFEngine to set up a PXE boot server.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;pxe&quot;</span> <span class="p">};</span>
+      <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(sys.libdir)</span><span class="s">/stdlib.cf&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">pxe</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">software</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                            <span class="s">&quot;atftp&quot;</span><span class="p">,</span>
+                            <span class="s">&quot;dhcp-server&quot;</span><span class="p">,</span>
+                            <span class="s">&quot;syslinux&quot;</span><span class="p">,</span>
+                            <span class="s">&quot;apache2&quot;</span>
+      <span class="p">};</span>
+
+      <span class="p">&quot;</span><span class="nv">dirs</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="s">&quot;/tftpboot&quot;</span><span class="p">,</span>
+            <span class="s">&quot;/tftpboot/CFEngine/rpm&quot;</span><span class="p">,</span>
+            <span class="s">&quot;/tftpboot/CFEngine/inputs&quot;</span><span class="p">,</span>
+            <span class="s">&quot;/tftpboot/pxelinux.cfg&quot;</span><span class="p">,</span>
+            <span class="s">&quot;/tftpboot/kickstart&quot;</span><span class="p">,</span>
+            <span class="s">&quot;/srv/www/repos&quot;</span>
+      <span class="p">};</span>
+
+      <span class="p">&quot;</span><span class="nv">tmp_location</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/tftpboot/CFEngine/inputs&quot;</span><span class="p">;</span>
+
+      <span class="c"># Distros that we can install</span>
+
+      <span class="p">&quot;</span><span class="nv">rh_distros</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;4.7&quot;</span><span class="p">,</span> <span class="s">&quot;5.2&quot;</span> <span class="p">};</span>
+      <span class="p">&quot;</span><span class="nv">centos_distros</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;5.2&quot;</span> <span class="p">};</span>
+
+      <span class="c"># File contents of atftp configuration</span>
+
+      <span class="p">&quot;</span><span class="nv">atftpd_conf</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span>
+      <span class="s">&quot;</span>
+
+<span class="s">ATFTPD_OPTIONS=</span><span class="se">\&quot;</span><span class="s">--daemon </span><span class="se">\&quot;</span><span class="s"></span>
+<span class="s">ATFTPD_USE_INETD=</span><span class="se">\&quot;</span><span class="s">no</span><span class="se">\&quot;</span><span class="s"></span>
+<span class="s">ATFTPD_DIRECTORY=</span><span class="se">\&quot;</span><span class="s">/tftpboot</span><span class="se">\&quot;</span><span class="s"></span>
+<span class="s">ATFTPD_BIND_ADDRESSES=</span><span class="se">\&quot;\&quot;</span><span class="s"></span>
+<span class="s">       &quot;</span><span class="p">;</span>
+      <span class="c"># File contents of DHCP configuration</span>
+
+      <span class="p">&quot;</span><span class="nv">dhcpd</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span>
+      <span class="s">&quot;</span>
+
+<span class="s">DHCPD_INTERFACE=</span><span class="se">\&quot;</span><span class="s">eth0</span><span class="se">\&quot;</span><span class="s"></span>
+<span class="s">DHCPD_RUN_CHROOTED=</span><span class="se">\&quot;</span><span class="s">yes</span><span class="se">\&quot;</span><span class="s"></span>
+<span class="s">DHCPD_CONF_INCLUDE_FILES=</span><span class="se">\&quot;\&quot;</span><span class="s"></span>
+<span class="s">DHCPD_RUN_AS=</span><span class="se">\&quot;</span><span class="s">dhcpd</span><span class="se">\&quot;</span><span class="s"></span>
+<span class="s">DHCPD_OTHER_ARGS=</span><span class="se">\&quot;\&quot;</span><span class="s"></span>
+<span class="s">DHCPD_BINARY=</span><span class="se">\&quot;\&quot;</span><span class="s"></span>
+<span class="s">       &quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">dhcpd_conf</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span>
+      <span class="s">&quot;</span>
+
+<span class="s">allow booting;</span>
+<span class="s">allow bootp;</span>
+<span class="s">ddns-update-style none; ddns-updates off;</span>
+<span class="s"> subnet 192.168.0.0 netmask 255.255.255.0 {</span>
+<span class="s">   range 192.168.0.20 192.168.0.254;</span>
+<span class="s">   default-lease-time 3600;</span>
+<span class="s">   max-lease-time 4800;</span>
+<span class="s">   option routers 192.168.0.1;</span>
+<span class="s">   option domain-name </span><span class="se">\&quot;</span><span class="s">test.CFEngine.com</span><span class="se">\&quot;</span><span class="s">;</span>
+<span class="s">   option domain-name-servers 192.168.0.1;</span>
+<span class="s">   next-server 192.168.0.1;</span>
+<span class="s">   filename </span><span class="se">\&quot;</span><span class="s">pxelinux.0</span><span class="se">\&quot;</span><span class="s">;</span>
+<span class="s"> }</span>
+<span class="s"> group {</span>
+<span class="s">   host node1 {</span>
+<span class="s">     # Dummy machine</span>
+
+<span class="s">     hardware ethernet 00:0F:1F:94:FE:07;</span>
+<span class="s">     fixed-address 192.168.0.11;</span>
+<span class="s">     option host-name </span><span class="se">\&quot;</span><span class="s">node1</span><span class="se">\&quot;</span><span class="s">;</span>
+<span class="s">   }</span>
+<span class="s">   host node2 {</span>
+<span class="s">     # Dell Inspiron 1150</span>
+
+<span class="s">     hardware ethernet 00:0F:1F:0E:70:E7;</span>
+<span class="s">     fixed-address 192.168.0.12;</span>
+<span class="s">     option host-name </span><span class="se">\&quot;</span><span class="s">node2</span><span class="se">\&quot;</span><span class="s">;</span>
+<span class="s">   }</span>
+<span class="s"> }</span>
+<span class="s">        &quot;</span><span class="p">;</span>
+      <span class="c"># File contains of Apache2 HTTP configuration</span>
+
+      <span class="p">&quot;</span><span class="nv">httpd_conf</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span>
+      <span class="s">&quot;</span>
+
+<span class="s">&lt;Directory /srv/www/repos&gt;</span>
+<span class="s">Options Indexes</span>
+<span class="s">AllowOverride None</span>
+<span class="s">&lt;/Directory&gt;</span>
+<span class="s">Alias /repos /srv/www/repos</span>
+
+<span class="s">&lt;Directory /tftpboot/distro/RHEL/5.2&gt;</span>
+<span class="s">Options Indexes</span>
+<span class="s">AllowOverride None</span>
+<span class="s">&lt;/Directory&gt;</span>
+<span class="s">Alias /distro/rhel/5.2 /tftpboot/distro/RHEL/5.2</span>
+<span class="s">&lt;Directory /tftpboot/distro/RHEL/4.7&gt;</span>
+<span class="s">Options Indexes</span>
+<span class="s">AllowOverride None</span>
+<span class="s">&lt;/Directory&gt;</span>
+<span class="s">Alias /distro/rhel/4.7 /tftpboot/distro/RHEL/4.7</span>
+<span class="s">&lt;Directory /tftpboot/distro/CentOS/5.2&gt;</span>
+<span class="s">Options Indexes</span>
+<span class="s">AllowOverride None</span>
+<span class="s">&lt;/Directory&gt;</span>
+<span class="s">Alias /distro/centos/5.2 /tftpboot/distro/CentOS/5.2</span>
+<span class="s">&lt;Directory /tftpboot/kickstart&gt;</span>
+<span class="s">Options Indexes</span>
+<span class="s">AllowOverride None</span>
+<span class="s">&lt;/Directory&gt;</span>
+<span class="s">Alias /kickstart /tftpboot/kickstart</span>
+<span class="s">&lt;Directory /tftpboot/CFEngine&gt;</span>
+<span class="s">Options Indexes</span>
+<span class="s">AllowOverride None</span>
+<span class="s">&lt;/Directory&gt;</span>
+<span class="s">Alias /CFEngine /tftpboot/CFEngine</span>
+<span class="s">        &quot;</span><span class="p">;</span>
+      <span class="c"># File contains of Kickstart for RHEL5 configuration</span>
+
+      <span class="p">&quot;</span><span class="nv">kickstart_rhel5_conf</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span>
+      <span class="s">&quot;</span>
+
+
+<span class="s">auth  --useshadow  --enablemd5</span>
+<span class="s">bootloader --location=mbr</span>
+<span class="s">clearpart --all --initlabel</span>
+<span class="s">graphical</span>
+<span class="s">firewall --disabled</span>
+<span class="s">firstboot --disable</span>
+<span class="s">key 77244a6377a8044a</span>
+<span class="s">keyboard no</span>
+<span class="s">lang en_US</span>
+<span class="s">logging --level=info</span>
+<span class="s">url --url=http://192.168.0.1/distro/rhel/5.2</span>
+<span class="s">network --bootproto=dhcp --device=eth0 --onboot=on</span>
+<span class="s">reboot</span>
+<span class="s">rootpw --iscrypted $1$eOnXdDPF$279sQ//zry6rnQktkATeM0</span>
+<span class="s">selinux --disabled</span>
+<span class="s">timezone --isUtc Europe/Oslo</span>
+<span class="s">install</span>
+<span class="s">part swap --bytes-per-inode=4096 --fstype=</span><span class="se">\&quot;</span><span class="s">swap</span><span class="se">\&quot;</span><span class="s"> --recommended</span>
+<span class="s">part / --bytes-per-inode=4096 --fstype=</span><span class="se">\&quot;</span><span class="s">ext3</span><span class="se">\&quot;</span><span class="s"> --grow --size=1</span>
+<span class="s">%packages</span>
+<span class="s">@core</span>
+<span class="s">@base</span>
+<span class="s">db4-devel</span>
+<span class="s">openssl-devel</span>
+<span class="s">gcc</span>
+<span class="s">flex</span>
+<span class="s">bison</span>
+<span class="s">libacl-devel</span>
+<span class="s">libselinux-devel</span>
+<span class="s">pcre-devel</span>
+
+<span class="s">device-mapper-multipath</span>
+<span class="s">-sysreport</span>
+<span class="s">%post</span>
+<span class="s">cd /root</span>
+<span class="s">rpm -i http://192.168.0.1/CFEngine/rpm/CFEngine-3.0.1b1-1.el5.i386.rpm</span>
+
+<span class="s">cd /etc/yum.repos.d</span>
+<span class="s">wget http://192.168.0.1/repos/RHEL5.Base.repo</span>
+<span class="s">rpm --import /etc/pki/rpm-gpg/*</span>
+<span class="s">yum clean all</span>
+<span class="s">yum update</span>
+<span class="s">mkdir -p /root/CFEngine_init</span>
+<span class="s">cd /root/CFEngine_init</span>
+<span class="s">wget -nd -r http://192.168.0.1/CFEngine/inputs/</span>
+<span class="s">/usr/local/sbin/cf-agent -B</span>
+<span class="s">/usr/local/sbin/cf-agent</span>
+<span class="s">        &quot;</span><span class="p">;</span>
+      <span class="c"># File contains of PXElinux boot menu</span>
+
+      <span class="p">&quot;</span><span class="nv">pxelinux_boot_menu</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span>
+      <span class="s">&quot;</span>
+
+<span class="s">boot options:</span>
+<span class="s">     rhel5   - install 32 bit i386 RHEL 5.2             (MANUAL)</span>
+<span class="s">     rhel5w  - install 32 bit i386 RHEL 5.2             (AUTO)</span>
+<span class="s">     rhel4   - install 32 bit i386 RHEL 4.7 AS          (MANUAL)</span>
+<span class="s">     centos5 - install 32 bit i386 CentOS 5.2 (Desktop) (MANUAL)</span>
+<span class="s">        &quot;</span><span class="p">;</span>
+      <span class="c"># File contains of PXElinux default configuration</span>
+
+      <span class="p">&quot;</span><span class="nv">pxelinux_default</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span>
+      <span class="s">&quot;</span>
+
+
+<span class="s">default rhel5</span>
+<span class="s">timeout 300</span>
+<span class="s">prompt 1</span>
+<span class="s">display pxelinux.cfg/boot.msg</span>
+<span class="s">F1 pxelinux.cfg/boot.msg</span>
+
+<span class="s">label rhel5</span>
+<span class="s">   kernel vmlinuz-RHEL5U2</span>
+<span class="s">   append initrd=initrd-RHEL5U2 load_ramdisk=1 ramdisk_size=16384 install=http://192.168.0.1/distro/rhel/5.2</span>
+
+<span class="s">label rhel5w</span>
+<span class="s">   kernel vmlinuz-RHEL5U2</span>
+<span class="s">   append initrd=initrd-RHEL5U2 load_ramdisk=1 ramdisk_size=16384 ks=http://192.168.0.1/kickstart/kickstart-RHEL5U2.cfg</span>
+
+<span class="s">label rhel4</span>
+<span class="s">   kernel vmlinuz-RHEL4U7</span>
+<span class="s">   append initrd=initrd-RHEL4U7 load_ramdisk=1 ramdisk_size=16384 install=http://192.168.0.1/distro/rhel/4.7</span>
+
+<span class="s">label centos5</span>
+<span class="s">   kernel vmlinuz-CentOS5.2</span>
+<span class="s">   append initrd=initrd-CentOS5.2 load_ramdisk=1 ramdisk_size=16384 install=http://192.168.0.1/distro/centos/5.2</span>
+<span class="s">        &quot;</span><span class="p">;</span>
+      <span class="c"># File contains of specified PXElinux default to be a RHEL5 webserver</span>
+
+      <span class="p">&quot;</span><span class="nv">pxelinux_rhel5_webserver</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span>
+      <span class="s">&quot;</span>
+
+
+<span class="s">default rhel5w</span>
+<span class="s">label rhel5w</span>
+<span class="s">   kernel vmlinuz-RHEL5U2</span>
+<span class="s">   append initrd=initrd-RHEL5U2 load_ramdisk=1 ramdisk_size=16384 ks=http://192.168.0.1/kickstart/kickstart-RHEL5U2.cfg</span>
+<span class="s">        &quot;</span><span class="p">;</span>
+      <span class="c"># File contains of a local repository for RHEL5</span>
+
+      <span class="p">&quot;</span><span class="nv">rhel5_base_repo</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span>
+      <span class="s">&quot;</span>
+
+
+<span class="s">[Server]</span>
+<span class="s">name=Server</span>
+<span class="s">baseurl=http://192.168.0.1/repos/rhel5/Server/</span>
+<span class="s">enable=1</span>
+<span class="s">[VT]</span>
+<span class="s">name=VT</span>
+<span class="s">baseurl=http://192.168.0.1/repos/rhel5/VT/</span>
+<span class="s">enable=1</span>
+<span class="s">[Cluster]</span>
+<span class="s">name=Cluster</span>
+<span class="s">baseurl=http://192.168.0.1/repos/rhel5/Cluster/</span>
+<span class="s">enable=1</span>
+<span class="s">[ClusterStorage]</span>
+<span class="s">name=Cluster Storage</span>
+<span class="s">baseurl=http://192.168.0.1/repos/rhel5/ClusterStorage/</span>
+<span class="s">enable=1</span>
+<span class="s">        &quot;</span><span class="p">;</span>
+      <span class="c">#####################################################</span>
+
+
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="nc">packages_ok</span><span class="p">::</span>
+      <span class="c"># Create files/dirs and edit the new files</span>
+
+      <span class="s">&quot;/tftpboot/distro/RHEL/</span><span class="si">$(rh_distros)</span><span class="s">/.&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;/tftpboot/distro/CentOS/</span><span class="si">$(centos_distros)</span><span class="s">/.&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;</span><span class="si">$(dirs)</span><span class="s">/.&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;/tftpboot/pxelinux.cfg/boot.msg&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mo</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">),</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(pxelinux_boot_menu)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">;</span>
+
+      <span class="s">&quot;/tftpboot/pxelinux.cfg/default&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mo</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">),</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(pxelinux_default)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">;</span>
+
+      <span class="s">&quot;/tftpboot/pxelinux.cfg/default.RHEL5.webserver&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mo</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">),</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(pxelinux_rhel5_webserver)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">;</span>
+
+      <span class="s">&quot;/tftpboot/kickstart/kickstart-RHEL5U2.cfg&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mo</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">),</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(kickstart_rhel5_conf)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">;</span>
+
+      <span class="s">&quot;/srv/www/repos/RHEL5.Base.repo&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mo</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">),</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(rhel5_base_repo)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">;</span>
+
+      <span class="c"># Copy files</span>
+
+      <span class="s">&quot;/tftpboot&quot;</span>
+      <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">local_cp</span><span class="p">(</span><span class="s">&quot;/usr/share/syslinux&quot;</span><span class="p">),</span>
+      <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">recurse</span><span class="p">(</span><span class="s">&quot;inf&quot;</span><span class="p">),</span>
+      <span class="kr">file_select</span> <span class="o">=&gt;</span> <span class="nf">pxelinux_files</span><span class="p">,</span>
+      <span class="kr">action</span> <span class="o">=&gt;</span> <span class="nf">immediate</span><span class="p">;</span>
+
+      <span class="s">&quot;</span><span class="si">$(tmp_location)</span><span class="s">&quot;</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">m</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">),</span>
+      <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">local_cp</span><span class="p">(</span><span class="s">&quot;/var/cfengine/inputs&quot;</span><span class="p">),</span>
+      <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">recurse</span><span class="p">(</span><span class="s">&quot;inf&quot;</span><span class="p">),</span>
+      <span class="kr">file_select</span> <span class="o">=&gt;</span> <span class="nf">input_files</span><span class="p">,</span>
+      <span class="kr">action</span> <span class="o">=&gt;</span> <span class="nf">immediate</span><span class="p">;</span>
+
+      <span class="c"># Edit atftp, dhcp and apache2 configurations</span>
+
+      <span class="s">&quot;/etc/sysconfig/atftpd&quot;</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(atftpd_conf)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">,</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">satisfied</span><span class="p">(</span><span class="s">&quot;atftpd_ready&quot;</span><span class="p">);</span>
+
+      <span class="s">&quot;/etc/sysconfig/dhcpd&quot;</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(dhcpd)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">;</span>
+
+      <span class="s">&quot;/etc/dhcpd.conf&quot;</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(dhcpd_conf)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">,</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">satisfied</span><span class="p">(</span><span class="s">&quot;dhcpd_ready&quot;</span><span class="p">);</span>
+
+      <span class="s">&quot;/etc/apache2/httpd.conf&quot;</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(httpd_conf)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">std_defs</span><span class="p">,</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">satisfied</span><span class="p">(</span><span class="s">&quot;apache2_ok&quot;</span><span class="p">);</span>
+      <span class="c"># Make a static link</span>
+
+      <span class="s">&quot;/tftpboot/pxelinux.cfg/C0A8000C&quot;</span>
+      <span class="kr">link_from</span> <span class="o">=&gt;</span> <span class="nf">mylink</span><span class="p">(</span><span class="s">&quot;/tftpboot/pxelinux.cfg/default.RHEL5.webserver&quot;</span><span class="p">);</span>
+      <span class="c"># Hash comment some lines for apaches</span>
+
+    <span class="nc">apache2_ok</span><span class="p">::</span>
+      <span class="s">&quot;/etc/apache2/httpd.conf&quot;</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">comment_lines_matching_apache2</span><span class="p">(</span><span class="s">&quot;#&quot;</span><span class="p">),</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">satisfied</span><span class="p">(</span><span class="s">&quot;apache2_ready&quot;</span><span class="p">);</span>
+  <span class="kd">commands</span><span class="p">:</span>
+      <span class="c"># Restart services</span>
+
+    <span class="nc">atftpd_ready</span><span class="p">::</span>
+      <span class="s">&quot;/etc/init.d/atftpd restart&quot;</span><span class="p">;</span>
+    <span class="nc">dhcpd_ready</span><span class="p">::</span>
+      <span class="s">&quot;/etc/init.d/dhcpd restart&quot;</span><span class="p">;</span>
+    <span class="nc">apache2_ready</span><span class="p">::</span>
+      <span class="s">&quot;/etc/init.d/apache2 restart&quot;</span><span class="p">;</span>
+
+      <span class="c">#####################################################</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+
+    <span class="nc">ipv4_192_168_0_1</span><span class="p">::</span>
+      <span class="c"># Only the PXE boot server</span>
+
+      <span class="s">&quot;</span><span class="si">$(software)</span><span class="s">&quot;</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">zypper</span><span class="p">,</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">satisfied</span><span class="p">(</span><span class="s">&quot;packages_ok&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+
+<span class="k">body</span> <span class="k">file_select</span> <span class="nf">pxelinux_files</span>
+<span class="p">{</span>
+      <span class="kr">leaf_name</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;pxelinux.0&quot;</span> <span class="p">};</span>
+      <span class="kr">file_result</span> <span class="o">=&gt;</span> <span class="s">&quot;leaf_name&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">copy_from</span> <span class="nf">mycopy_local</span><span class="p">(</span><span class="nv">from</span><span class="p">,</span><span class="nv">server</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">source</span>      <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(from)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">compare</span>     <span class="o">=&gt;</span> <span class="s">&quot;digest&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">link_from</span> <span class="nf">mylink</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">source</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">link_type</span> <span class="o">=&gt;</span> <span class="s">&quot;symlink&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">classes</span> <span class="nf">satisfied</span><span class="p">(</span><span class="nv">new_class</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">promise_kept</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(new_class)</span><span class="s">&quot;</span><span class="p">};</span>
+      <span class="kr">promise_repaired</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(new_class)</span><span class="s">&quot;</span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">comment_lines_matching_apache2</span><span class="p">(</span><span class="nv">comment</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">regex</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="se">\s</span><span class="s">.*Options</span><span class="se">\s</span><span class="s">None&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="se">\s</span><span class="s">.*AllowOverride</span><span class="se">\s</span><span class="s">None&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="se">\s</span><span class="s">.*Deny</span><span class="se">\s</span><span class="s">from</span><span class="se">\s</span><span class="s">all&quot;</span> <span class="p">};</span>
+
+  <span class="kd">replace_patterns</span><span class="p">:</span>
+      <span class="s">&quot;^(</span><span class="si">$(regex)</span><span class="s">)$&quot;</span>
+      <span class="kr">replace_with</span> <span class="o">=&gt;</span> <span class="nf">comment</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(comment)</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">file_select</span> <span class="nf">input_files</span>
+<span class="p">{</span>
+      <span class="kr">leaf_name</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;.*.cf&quot;</span><span class="p">,</span><span class="s">&quot;.*.dat&quot;</span><span class="p">,</span><span class="s">&quot;.*.txt&quot;</span> <span class="p">};</span>
+      <span class="kr">file_result</span> <span class="o">=&gt;</span> <span class="s">&quot;leaf_name&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="resolver-management">Resolver management</h2><div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">common</span> <span class="nf">g</span> <span class="c"># globals</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">searchlist</span><span class="p">&quot;</span>  <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                               <span class="s">&quot;search iu.hio.no&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;search cfengine.com&quot;</span>
+      <span class="p">};</span>
+      <span class="p">&quot;</span><span class="nv">nameservers</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                               <span class="s">&quot;128.39.89.10&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;128.39.74.16&quot;</span><span class="p">,</span>
+                               <span class="s">&quot;192.168.1.103&quot;</span>
+      <span class="p">};</span>
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;am_name_server&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">reglist</span><span class="p">(</span><span class="s">&quot;@(nameservers)&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(sys.ipv4[eth1])</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+    <span class="nc">any</span><span class="p">::</span>
+      <span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span>
+                           <span class="s">&quot;g&quot;</span><span class="p">,</span>
+                           <span class="nf">resolver</span><span class="p">(</span><span class="nv">@(g.searchlist)</span><span class="p">,</span><span class="nv">@(g.nameservers)</span><span class="p">)</span>
+      <span class="p">};</span>
+      <span class="kr">domain</span> <span class="o">=&gt;</span> <span class="s">&quot;iu.hio.no&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">resolver</span><span class="p">(</span><span class="nv">s</span><span class="p">,</span><span class="nv">n</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="c"># When passing parameters down, we have to refer to</span>
+      <span class="c"># a source context</span>
+
+      <span class="s">&quot;</span><span class="si">$(sys.resolv)</span><span class="s">&quot;</span>  <span class="c"># test on &quot;/tmp/resolv.conf&quot; #</span>
+      <span class="kr">create</span>        <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">edit_line</span>     <span class="o">=&gt;</span> <span class="nf">doresolv</span><span class="p">(</span><span class="s">&quot;@(this.s)&quot;</span><span class="p">,</span><span class="s">&quot;@(this.n)&quot;</span><span class="p">),</span>
+      <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">reconstruct</span><span class="p">;</span>
+      <span class="c"># or edit_defaults =&gt; modify</span>
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">doresolv</span><span class="p">(</span><span class="nv">s</span><span class="p">,</span><span class="nv">n</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">line</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(s)</span><span class="p">,</span> <span class="nv">@(n)</span> <span class="p">};</span>
+  <span class="kd">insert_lines</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(line)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">edit_defaults</span> <span class="nf">reconstruct</span>
+<span class="p">{</span>
+      <span class="kr">empty_file_before_editing</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+      <span class="kr">edit_backup</span> <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">;</span>
+      <span class="kr">max_file_size</span> <span class="o">=&gt;</span> <span class="s">&quot;100000&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">edit_defaults</span> <span class="nf">modify</span>
+<span class="p">{</span>
+      <span class="kr">empty_file_before_editing</span> <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">;</span>
+      <span class="kr">edit_backup</span> <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">;</span>
+      <span class="kr">max_file_size</span> <span class="o">=&gt;</span> <span class="s">&quot;100000&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="mount-nfs-filesystem">Mount NFS filesystem</h2><div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;mounts&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">mounts</span>
+<span class="p">{</span>
+  <span class="kd">storage</span><span class="p">:</span>
+      <span class="s">&quot;/mnt&quot;</span> <span class="kr">mount</span>  <span class="o">=&gt;</span> <span class="nf">nfs</span><span class="p">(</span><span class="s">&quot;slogans.iu.hio.no&quot;</span><span class="p">,</span><span class="s">&quot;/home&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">mount</span> <span class="nf">nfs</span><span class="p">(</span><span class="nv">server</span><span class="p">,</span><span class="nv">source</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">mount_type</span> <span class="o">=&gt;</span> <span class="s">&quot;nfs&quot;</span><span class="p">;</span>
+      <span class="kr">mount_source</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(source)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">mount_server</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(server)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="c">#mount_options =&gt; { &quot;rw&quot; };</span>
+      <span class="kr">edit_fstab</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+      <span class="kr">unmount</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="unmount-nfs-filesystem">Unmount NFS filesystem</h2><div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;mounts&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">mounts</span>
+<span class="p">{</span>
+  <span class="kd">storage</span><span class="p">:</span>
+      <span class="c"># Assumes the filesystem has been exported</span>
+
+      <span class="s">&quot;/mnt&quot;</span> <span class="kr">mount</span>  <span class="o">=&gt;</span> <span class="nf">nfs</span><span class="p">(</span><span class="s">&quot;server.example.org&quot;</span><span class="p">,</span><span class="s">&quot;/home&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">mount</span> <span class="nf">nfs</span><span class="p">(</span><span class="nv">server</span><span class="p">,</span><span class="nv">source</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">mount_type</span> <span class="o">=&gt;</span> <span class="s">&quot;nfs&quot;</span><span class="p">;</span>
+      <span class="kr">mount_source</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(source)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">mount_server</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(server)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">edit_fstab</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+      <span class="kr">unmount</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-examples.html">examples</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 06 July 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/examples/example-snippets/network.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-38e3fd0081b106f885a95356ca1249c5.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.14  Documentation - Examples and Tutorials</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.14/assets/global-87598b50cf828dc4e1c1ad7f860740dc.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Examples and Tutorials";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.14/" selected>Version 3.14 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="012826289311752768906:kp0fmjlfqyu" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a></li><li><a href="examples-tutorials.html">Tutorials</a></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a></li></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Examples and Tutorials
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h2 id="links-to-examples">Links to Examples</h2>
+<ul>
+<li><a href="examples-example-snippets.html" title="Example Snippets">Example Snippets</a>: This section is divided into topical areas and includes many examples of policy and promises. Each of the snippets can be easily copied or downloaded to a policy server and used as is.</li>
+</ul>
+
+<p>Note: CFEngine also includes a small set of examples by default, which can be 
+found in <code>/var/cfengine/share/doc/examples</code>.</p>
+
+<ul>
+<li><a href="examples-enterprise-api-examples.html" title="Enterprise API Examples">Enterprise API Examples</a></li>
+<li><a href="examples-tutorials.html" title="Tutorials">Tutorials</a></li>
+</ul>
+
+<p>See Also: </p>
+
+<ul>
+<li><a href="examples.html#tutorial-for-running-examples" title="Examples and Tutorials - Tutorial for Running Examples ">Tutorial for Running Examples</a>
+
+<ul>
+<li><a href="examples.html#hello-world-policy-example" title="Examples and Tutorials - &quot;Hello World&quot; Policy Example ">&quot;Hello World&quot; Policy Example</a></li>
+<li><a href="examples.html#activate-a-bundle-manually" title="Examples and Tutorials - Activate a Bundle Manually ">Activate a Bundle Manually</a></li>
+<li><a href="examples.html#make-the-example-stand-alone" title="Examples and Tutorials - Make the Example Stand Alone ">Make the Example Stand Alone</a></li>
+<li><a href="examples.html#make-the-example-an-executable-script" title="Examples and Tutorials - Make the Example an Executable Script ">Make the Example an Executable Script</a></li>
+<li><a href="examples.html#integrating-the-example-into-your-main-policy" title="Examples and Tutorials - Integrating the Example into your Main Policy ">Integrating the Example into your Main Policy</a></li>
+</ul></li>
+</ul>
+<h2 id="tutorial-for-running-examples">Tutorial for Running Examples</h2>
+<p>In this tutorial, you will perform the following:</p>
+
+<ul>
+<li>Create a simple &quot;Hello World!&quot; example policy file</li>
+<li>Make the example a standalone policy</li>
+<li>Make the example an executable script</li>
+<li>Add the example to the main policy file (<a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a>)</li>
+</ul>
+
+<p><strong>Note</strong> if your CFEngine administrator has enabled continuous deployment of the policy from a Version Control System, your changes may be overwritten!</p>
+<h3 id="hello-world-policy-example">&quot;Hello World&quot; Policy Example</h3>
+<p>Policies contain <strong>bundles</strong>, which are collections of promises. A <strong>promise</strong> is a declaration of
+intent. Bundles allow related promises to be grouped together, as illustrated in the steps that follow.</p>
+
+<p>Following these steps, you will login to your policy server via the SSH protocol, use the vi command line editor to create a policy file named hello_world.cf, and create a bundle that calls a promise to display some text.</p>
+
+<ol>
+<li>Log into a running server machine using ssh (PuTTY may be used if using Windows). </li>
+<li>Type <code>sudo su</code> for super user (enter your password if prompted).</li>
+<li>To get to the <strong>masterfiles</strong> directory, type <code>cd /var/cfengine/masterfiles</code>.</li>
+<li>Create the file with the command: <code>vi hello_world.cf</code></li>
+<li><p>In the vi editor, enter <code>i</code> for &quot;Insert&quot; and enter the following content (ie. copy and paste from a text editor):</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">hello_world</span>
+<span class="p">{</span>
+  <span class="kd">reports</span><span class="p">:</span>
+
+    <span class="nc">any</span><span class="p">::</span>
+
+      <span class="s">&quot;Hello World!&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div></li>
+<li><p>Exit the &quot;Insert&quot; mode by pressing the &quot;esc&quot; button. This will return to the command prompt.</p></li>
+<li><p>Save the changes to the file by typing <code>:w</code> then &quot;Enter&quot;. </p></li>
+<li><p>Exit vi by typing <code>:q</code> then &quot;Enter&quot;.</p></li>
+</ol>
+
+<p>In the policy file above, we have defined an <strong>agent bundle</strong> named <code>hello_world</code>. Agent
+bundles are only evaluated by <strong>cf-agent</strong>, the <a href="reference-components-cf-agent.html" title="cf-agent">agent component</a> of CFEngine.</p>
+
+<p>This bundle <a href="reference-promise-types.html" title="Promise Types and Attributes">promises</a> to <a href="reference-promise-types-reports.html" title="reports">report</a> on any <a href="reference-language-concepts-classes.html" title="Classes and Decisions">class of
+hosts</a>. </p>
+<h3 id="activate-a-bundle-manually">Activate a Bundle Manually</h3>
+<p>Activate the bundle manually by executing the following command at prompt:</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">%</span> /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf --bundlesequence hello_world
+</code></pre>
+</div>
+
+<p>This command instructs CFEngine to ignore <a href="guide-writing-and-serving-policy-controlling-frequency.html" title="Controlling Frequency">locks</a>, load
+the <code>hello_world.cf</code> policy, and activate the <code>hello_world</code> bundle. See the output below:</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">#</span> /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf --bundlesequence hello_world
+<span class="go">2013-08-20T14:03:43-0500   notice: R: Hello World!</span>
+</code></pre>
+</div>
+
+<p>As you get familiar with CFEngine, you&#39;ll probably start shortening this command to this equivalent:</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">/var/cfengine/bin/cf-agent -Kf ./hello_world.cf -b hello_world</span>
+</code></pre>
+</div>
+
+<p>Note the full path to the binary in the above command. CFEngine stores its binaries in /var/cfengine/bin
+on Linux and Unix systems. Your path might vary depending on your platform and the packages your are using. 
+CFEngine uses /var because it is one of the Unix file systems that resides locally. 
+Thus, CFEngine can function even if everything else fails 
+(your other file systems, your network, and even system binaries) and possibly repair problems. </p>
+<h3 id="make-the-example-stand-alone">Make the Example Stand Alone</h3>
+<p>Instead of specifying the bundle sequence on the command line (as it was above), a <a href="reference-components.html#common-control" title="Components and Common Control - Common Control">body common
+control</a> section can be added to
+the policy file. The <strong>body common control</strong> refers to those promises that are hard-coded into
+all CFEngine components and therefore affect the behavior of all components. Note that only
+ one <code>body common control</code> is allowed per agent activation.</p>
+
+<p>Go back into vi by typing &quot;vi&quot; at the prompt. Then type <code>i</code> to insert
+ <strong>body common control</strong> to <code>hello_world.cf</code>. Place it above <strong>bundle agent hello_world</strong>, as 
+shown in the following example:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+  <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;hello_world&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">hello_world</span>
+<span class="p">{</span>
+  <span class="kd">reports</span><span class="p">:</span>
+
+    <span class="nc">any</span><span class="p">::</span>
+
+      <span class="s">&quot;Hello World!&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Now press &quot;esc&quot; to exit the &quot;Insert&quot; mode, then type <code>:w</code> to save the file changes and &quot;Enter&quot;.
+Exit vi by typing <code>:q</code> then &quot;Enter.&quot; This will return to the prompt.</p>
+
+<p>Execute the following command:<br>
+<code>
+/var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf
+</code></p>
+
+<p>The output is shown below:</p>
+<div class="highlight"><pre><code class="text"><span></span># /var/cfengine/bin/cf-agent --no-lock --file ./hello_world.cf
+2013-08-20T14:25:36-0500   notice: R: Hello World!
+</code></pre>
+</div>
+
+<p>Note: It may be necessary to add a reference to the standard library within the body common control section, and remove the bundlesequence line. Example:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span> <span class="k">common</span> <span class="k">control</span> <span class="p">{</span>
+
+    <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span>
+       <span class="s">&quot;libraries/cfengine_stdlib.cf&quot;</span><span class="p">,</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="make-the-example-an-executable-script">Make the Example an Executable Script</h3>
+<p>Add the <code>#!</code> marker (&quot;shebang&quot;) to <code>hello_world.cf</code> in order to invoke CFEngine policy as an executable script:
+Again type &quot;vi&quot; then &quot;Enter&quot; then <code>i</code> to insert the following:</p>
+<div class="highlight"><pre><code class="text"><span></span>#!/var/cfengine/bin/cf-agent --no-lock
+</code></pre>
+</div>
+
+<p>Add it before <strong>body common control</strong>, as shown below:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="c">#!/var/cfengine/bin/cf-agent --no-lock</span>
+<span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+  <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;hello_world&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">hello_world</span>
+<span class="p">{</span>
+  <span class="kd">reports</span><span class="p">:</span>
+
+    <span class="nc">any</span><span class="p">::</span>
+
+      <span class="s">&quot;Hello World!&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Now exit &quot;Insert&quot; mode by pressing &quot;esc&quot;. Save file changes by typing <code>:w</code> then &quot;Enter&quot; 
+then exit vi by typing <code>:q</code> then &quot;Enter&quot;. This will return to the prompt.</p>
+
+<p>Make the policy file executable, and then run it, by typing the following two commands:</p>
+<div class="highlight"><pre><code class="text"><span></span>chmod +x ./hello_world.cf 
+</code></pre>
+</div>
+
+<p>Followed by:</p>
+<div class="highlight"><pre><code class="text"><span></span>./hello_world.cf
+</code></pre>
+</div>
+
+<p>See the output below:</p>
+<div class="highlight"><pre><code class="text"><span></span># chmod +x ./hello_world.cf
+# ./hello_world.cf
+2013-08-20T14:39:34-0500   notice: R: Hello World!
+</code></pre>
+</div>
+<h3 id="integrating-the-example-into-your-main-policy">Integrating the Example into your Main Policy</h3>
+<p>Make the example policy part of your main policy by
+doing the following on your policy server:</p>
+
+<ol>
+<li><p>Ensure the example is located in <code>/var/cfengine/masterfiles</code>.</p></li>
+<li><p>If the example contains a <code>body common control</code> section, delete it. That 
+section will look something like this:</p>
+<div class="highlight"><pre><code class="cf3"><span></span>      <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+      <span class="p">{</span>
+        <span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;hello_world&quot;</span> <span class="p">};</span>
+      <span class="p">}</span>
+</code></pre>
+</div></li>
+</ol>
+
+<p>You cannot have duplicate control bodies (i.e. two
+agent control bodies, one in the main file and one
+in the example) as CFEngine won&#39;t know which it
+should use and they may conflict.</p>
+
+<p>To resolve this, copy the contents of the control body section from the
+example into the identically named control body section in the main policy
+file <code>/var/cfengine/masterfiles/promises.cf</code>and then remove the control body
+from the example.       </p>
+
+<ol>
+<li><p>Insert the example&#39;s bundle name in the <a href="reference-components.html#bundlesequence" title="Components and Common Control - bundlesequence"><code>bundlesequence</code></a> section
+of the main policy file <code>/var/cfengine/masterfiles/promises.cf</code>:</p>
+<div class="highlight"><pre><code class="cf3"><span></span>      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="err">...</span>
+          <span class="s">&quot;hello_world&quot;</span><span class="p">,</span>
+          <span class="err">...</span>
+      <span class="p">};</span>
+</code></pre>
+</div></li>
+<li><p>Insert the policy file name in the <a href="reference-components.html#inputs" title="Components and Common Control - inputs"><code>inputs</code></a> section of the main policy file
+<code>/var/cfengine/masterfiles/promises.cf</code>:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="err">...</span>
+    <span class="s">&quot;hello_world.cf&quot;</span><span class="p">,</span>
+    <span class="err">...</span>
+<span class="p">};</span>
+</code></pre>
+</div></li>
+<li><p>You must also remove any inputs section from the example that 
+includes the external library:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="s">&quot;libraries/cfengine_stdlib.cf&quot;</span>
+<span class="p">};</span>
+</code></pre>
+</div>
+
+<p>This is necessary, since <code>cfengine_stdlib.cf</code> is already included
+in the inputs section of the master policy.</p></li>
+<li><p>The example policy will now be executed every five minutes along with the rest
+of your main policy.</p></li>
+</ol>
+
+<p><strong>Notes:</strong> You may have to fill the example with data before it will work.
+For example, the LDAP query in <code>active_directory.cf</code> needs a domain name.
+In the variable declaration, replace &quot;cftesting&quot; with your domain name:</p>
+<div class="highlight"><pre><code class="cf3"><span></span>  <span class="kd">vars</span><span class="p">:</span>
+    <span class="c"># NOTE: Edit this to your domain, e.g. &quot;corp&quot;</span>
+    <span class="p">&quot;</span><span class="nv">domain_name</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;cftesting&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-examples.html">examples</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 10 July 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/examples.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/d99dd1f07cf37da07fbd675717c47f3201990891" target="_blank">d99dd1f07cf37da07fbd675717c47f3201990891</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.14/assets/footer-0ce0c884995cf0be0e878ec70c137005.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

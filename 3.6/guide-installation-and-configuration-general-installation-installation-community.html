@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.6  Documentation - Installing Community</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.6/assets/global-ac3885a0674bd3c9117d62800be1608f.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Installing Community";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                 <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html" selected>Version 3.6 (EOL)</option>
+			                 <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:bm0uhfq8ykk" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a><ul class="level2"><li><a href="guide-installation-and-configuration-pre-installation-checklist.html">Pre-Installation Checklist</a></li><li><a href="guide-installation-and-configuration-secure-bootstrap.html">Secure Bootstrap</a></li><li><a href="guide-installation-and-configuration-general-installation.html">General Installation</a><ul class="level3"><li><a href="guide-installation-and-configuration-general-installation-installation-enterprise-free-aws-rhel.html">Using Amazon Web Services</a></li><li><a href="guide-installation-and-configuration-general-installation-installation-enterprise-free.html">Installing Enterprise 25 Free</a></li><li><a href="guide-installation-and-configuration-general-installation-installation-enterprise-vagrant.html">Using Vagrant</a></li><li><a href="guide-installation-and-configuration-general-installation-installation-enterprise.html">Installing Enterprise for Production</a></li><li><a class="active" href="guide-installation-and-configuration-general-installation-installation-community.html">Installing Community</a></li></ul></li><li><a href="guide-installation-and-configuration-upgrading-to-36.html">Upgrading to 3.6</a></li><li><a href="guide-installation-and-configuration-version-control.html">Version Control</a></li></ul></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-language-concepts.html">Language Concepts</a></li><li><a href="guide-design-center.html">Design Center Overview</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-installation-and-configuration.html">Installation and Configuration</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-installation-and-configuration-general-installation.html">General Installation</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Installing Community
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>These instructions describe how to download and install the latest version of CFEngine Community using pre-compiled rpm and
+deb packages for Ubuntu, Debian, Redhat, CentOS, and SUSE.</p>
+
+<p>It also provides instructions for the following:</p>
+
+<ul>
+<li><strong>Install CFEngine on a Policy Server (hub) and on a Host (client).</strong>
+A Policy Server (hub) is a CFEngine instance that contains promises (business policy) that get deployed to Hosts.
+Hosts are clients that retrieve and execute promises.</li>
+<li><strong>Bootstrap the Policy Server to itself and then bootstrap the Host(s) to the Policy Server.</strong>
+Bootstrapping establishes a trust relationship between the Policy Server
+and all Hosts. Thus, business policy that you create in the Policy Server can be deployed to Hosts throughout your company.
+Bootstrapping completes the installation process.</li>
+</ul>
+
+<p><em>Tutorials, recommended reading. and production environment recommendations appear at the end of this page.</em></p>
+
+<hr>
+<h2 id="quick-setup-installation-script">Quick Setup Installation Script</h2>
+<p>Please Note: Internet access is required from the host if you wish to use the quick install script.</p>
+
+<p>Use the following script to install CFEngine on your 32- or 64-bit machine.</p>
+<div class="highlight"><pre><code class="text">$ wget -O- http://cfengine.package-repos.s3.amazonaws.com/quickinstall/quick-install-cfengine-community.sh | sudo bash
+</code></pre>
+</div>
+
+<ol>
+<li>Run this script on your designated Policy Server machine <strong>and</strong> on your designated Host machine(s).</li>
+<li>Bootstrap the Policy Server to itself and then bootstrap your Host(s) to the Policy Server by running the following command:
+<code>
+$ sudo /var/cfengine/bin/cf-agent --bootstrap &lt;IP address of policy server&gt;
+</code>
+If you require more details on bootstrapping, review Step 3 below. Bootstrapping completes the installation.</li>
+<li>Go to the <a href="guide-installation-and-configuration-general-installation-installation-community.html#tutorials" title="Installing Community - Tutorials">Tutorials</a> section to learn how to use CFEngine.
+<hr></li>
+</ol>
+<h2 id="1-download-packages">1. Download Packages</h2>
+<p>Select the package to download that matches your operating system.
+This stores the cfengine-community_3.6.1-1_* file onto your machine.</p>
+
+<p><strong>Redhat/CentOS/SUSE 64-bit:</strong></p>
+<div class="highlight"><pre><code class="text">$ wget http://cfengine.package-repos.s3.amazonaws.com/community_binaries/cfengine-community-3.6.1-1.x86_64.rpm
+</code></pre>
+</div>
+
+<p><strong>Redhat/CentOS/SUSE 32-bit:</strong></p>
+<div class="highlight"><pre><code class="text">$ wget http://cfengine.package-repos.s3.amazonaws.com/community_binaries/cfengine-community-3.6.1-1.i386.rpm
+</code></pre>
+</div>
+
+<p><strong>Ubuntu/Debian 64-bit:</strong></p>
+<div class="highlight"><pre><code class="text">$ wget http://cfengine.package-repos.s3.amazonaws.com/community_binaries/cfengine-community_3.6.1-1_amd64.deb
+</code></pre>
+</div>
+
+<p><strong>Ubuntu/Debian 32-bit:</strong></p>
+<div class="highlight"><pre><code class="text">$ wget http://cfengine.package-repos.s3.amazonaws.com/community_binaries/cfengine-community_3.6.1-1_i386.deb
+</code></pre>
+</div>
+<h2 id="2-install-cfengine-on-a-policy-server">2. Install CFEngine on a Policy Server</h2>
+<p>Install the package on a machine designated as a Policy Server.  A Policy Server is a CFEngine instance that contains promises (business policy)
+that get deployed to Hosts. Hosts are instances (clients) that retrieve and execute promises.</p>
+
+<p>Choose the right command for your operating system:</p>
+
+<p><strong>Redhat/CentOS/SUSE 64-bit:</strong></p>
+<div class="highlight"><pre><code class="text">$ sudo rpm -i cfengine-community-3.6.1-1.x86_64.rpm
+</code></pre>
+</div>
+
+<p><strong>Redhat/CentOS/SUSE 32-bit:</strong></p>
+<div class="highlight"><pre><code class="text">$ sudo rpm -i cfengine-community_3.6.1-1.i386.rpm
+</code></pre>
+</div>
+
+<p><strong>Ubuntu/Debian 64-bit:</strong></p>
+<div class="highlight"><pre><code class="text">$ sudo dpkg -i cfengine-community_3.6.1-1_amd64.deb
+</code></pre>
+</div>
+
+<p><strong>Ubuntu/Debian 32-bit:</strong></p>
+<div class="highlight"><pre><code class="text">$ sudo dpkg -i cfengine-community_3.6.1-1_i386.deb
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> You might get a message like this: &quot;Policy is not found in /var/cfengine/inputs, not starting CFEngine.&quot; Do not worry;
+this is taken care of during the bootstrapping process.</p>
+<h2 id="3-bootstrap-the-policy-server">3. Bootstrap the Policy Server</h2>
+<p>The Policy Server must be bootstrapped to itself. Find the IP address of your Policy Server (type $ ifconfig).</p>
+
+<p>Run the bootstrap command:</p>
+<div class="highlight"><pre><code class="text">$ sudo /var/cfengine/bin/cf-agent --bootstrap &lt;IP address of policy server&gt;
+</code></pre>
+</div>
+
+<p><strong>Example: $ sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12</strong></p>
+
+<p>Upon successful completion, a confirmation message appears: &quot;Bootstrap to &#39;192.168.1.12&#39; completed successfully!&quot;</p>
+
+<p>Type the following to check which version of CFEngine your are running:</p>
+<div class="highlight"><pre><code class="text">$ /var/cfengine/bin/cf-promises --version
+</code></pre>
+</div>
+
+<p>The Policy Server is installed.</p>
+<h2 id="4-install-cfengine-on-a-host">4. Install CFEngine on a Host</h2>
+<p>As stated earlier, Hosts are instances that retrieve and execute promises from the Policy Server. Install
+a package on your Host. Use the same package you installed on the Policy Server in Step 2. Note that you must have access
+to at least one more VM or server and it must be on the same network as the Policy Server that you just installed.</p>
+<h2 id="5-bootstrap-the-host-to-the-policy-server">5. Bootstrap the Host to the Policy Server</h2>
+<p>The Host(s) must be bootstrapped to the Policy Server in order to establish a connection between the Host and
+the Policy Server. Run the same commands that you ran in Step 3.</p>
+<div class="highlight"><pre><code class="text">$ sudo /var/cfengine/bin/cf-agent --bootstrap &lt;IP address of policy server&gt;
+</code></pre>
+</div>
+
+<p><strong>Example: $ sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12</strong></p>
+
+<p>The CFEngine installation process is complete.</p>
+
+<hr>
+<h2 id="tutorials">Tutorials</h2><h3 id="create-a-policy-hello-world">Create a policy (&quot;hello world&quot;)</h3>
+<p>Step 1. Create a file called <strong>hello_world.cf</strong> and add the following content:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+  <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;test&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">test</span>
+<span class="p">{</span>
+  <span class="kd">reports</span><span class="p">:</span>                   <span class="c"># This is a promise type.</span>
+
+    <span class="nc">cfengine_3</span><span class="p">::</span>           <span class="c"># This means the promise will only</span>
+                             <span class="c"># be kept on a CFEngine_3 system.</span>
+      <span class="s">&quot;Hello World&quot;</span><span class="p">;</span>         <span class="c"># This is a simple promise; it generates a report</span>
+                             <span class="c"># that says &quot;Hello world&quot;.</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Step 2. Run the policy:</p>
+<div class="highlight"><pre><code class="text">$ sudo /var/cfengine/bin/cf-agent hello_world.cf
+</code></pre>
+</div>
+
+<p>The policy displays the following output:</p>
+
+<p><strong>R: Hello world</strong></p>
+
+<p>Find more policy examples in the <a href="examples.html" title="Examples and Tutorials">Examples section</a>.</p>
+<h3 id="create-a-distributed-policy">Create a distributed policy</h3>
+<p>Create a policy that ensures (promises) that a file called <strong>example.txt</strong> will always
+exist on the Host.</p>
+
+<p>Step 1. On the Policy Server, create a file called <strong>mypolicy.cf</strong> and add it to the <strong>/var/cfengine/masterfiles</strong>
+directory:</p>
+<div class="highlight"><pre><code class="text">$ sudo &lt;editor&gt; /var/cfengine/masterfiles/mypolicy.cf
+</code></pre>
+</div>
+
+<p>Step 2. Add the following lines to the file:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+<span class="kd">files</span><span class="p">:</span>
+   <span class="nc">cfengine_3</span><span class="p">::</span>      <span class="c"># This is a class context (the promise will only</span>
+                     <span class="c"># be kept on a CFEngine_3 system)</span>
+
+  <span class="s">&quot;/home/vagrant/example.txt&quot;</span>  <span class="c"># Path and name of the file we wish to ensure exists</span>
+       <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>       <span class="c"># Make sure the file exists; create if it does not</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Step 3. Update <strong>/var/cfengine/masterfiles/promises.cf</strong> to include this new policy. To do so, modify
+the <strong>promises.cf</strong> file to ensure that (1 the <strong>mypolicy.cf</strong> file is being included in the next policy
+distribution and that (2 <strong>example</strong> is in the bundlesequence.</p>
+<div class="highlight"><pre><code class="text">$ sudo &lt;editor&gt; /var/cfengine/masterfiles/promises.cf
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="cf3"><span class="err">...</span>
+<span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                 <span class="c"># Common bundles first for best practice</span>
+                    <span class="s">&quot;def&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;example&quot;</span><span class="p">,</span>
+<span class="err">...</span>
+
+<span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+         <span class="c"># Global common bundles</span>
+            <span class="s">&quot;def.cf&quot;</span><span class="p">,</span>
+            <span class="s">&quot;mypolicy.cf&quot;</span><span class="p">,</span>
+<span class="err">...</span>
+</code></pre>
+</div>
+
+<p>The process is complete. The next time CFEngine runs on the Host (which by default is every 5 minutes),
+it will pull down the latest policy update and ensure that the <strong>example.txt</strong> file exists (this is the desired
+state). In fact, any Host that has installed CFEngine will contain the <strong>example.txt</strong> file (because we defined
+the cfengine_3:: class above).</p>
+<h3 id="try-these-advanced-tutorials">Try these advanced tutorials:</h3>
+<ul>
+<li><a href="examples.html#tutorial-for-running-examples" title="Examples and Tutorials - Tutorial for Running Examples ">Tutorial for Running Examples</a></li>
+<li><a href="examples-tutorials-distribute-files-from-a-central-location.html" title="Distribute files from a central location">Distribute files from a central location.</a> This advanced, command-line tutorial shows
+you how to distribute policy files from the Policy Server to all pertinent Hosts.</li>
+</ul>
+<h2 id="recommended-reading">Recommended Reading</h2>
+<ul>
+<li>CFEngine <a href="guide-language-concepts.html" title="Language Concepts">language concepts</a></li>
+</ul>
+<h2 id="production-environment">Production Environment</h2>
+<p>If you plan to use Community in a production environment, complete the following general requirements:</p>
+
+<p><strong>Host(s) Memory</strong></p>
+
+<p>256 MB available memory in order to run the CFEngine agent software (cf-agent).</p>
+
+<p><strong>Disk Storage</strong></p>
+
+<p>A full installation of CFEngine requires 25 MB. Additional disk usage
+depends on your specific policies, especially those that concern reporting.</p>
+
+<p><strong>Network</strong></p>
+
+<ul>
+<li><p>Verify that the machine’s network connection is working and that port 5308
+(used by CFEngine) is open for both incoming and outgoing connections.</p></li>
+<li><p>If iptables are active on your operating system, stop this service or adapt
+it to allow for communication on the above ports. If applicable, type the
+following two commands: /<code>etc/init.d/iptables stop</code> and <code>chkconfig iptables
+off</code></p></li>
+</ul>
+
+<hr>
+<h2 id="rate-your-experience">Rate your experience</h2>
+<p>Everyone is a first-time user a some point. We want to make the CFEngine Enterprise installation process easy for all of our new users.
+Before you forget your first-time experience, we would love for you to let us know how we can improve on this process.</p>
+
+<iframe src="https://docs.google.com/forms/d/1wnVR3HQwUNKs5fT0zf_OHjtIQxI_nd00QCFbDZOyXZk/viewform?embedded=true" width="760" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-getting-started.html">getting started</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-installation.html">installation</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-community.html">community</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/installation-and-configuration/general-installation/installation-community.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/13cbf18729a5bf43d836f72e30aab3b2b0bdee7f" target="_blank">13cbf18729a5bf43d836f72e30aab3b2b0bdee7f</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.6/assets/footer-1ca6436dd462ed6a69ad3f2dba0774f0.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

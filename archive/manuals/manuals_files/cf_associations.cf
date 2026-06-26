@@ -1,0 +1,346 @@
+bundle knowledge cf_assoc
+
+{
+vars:
+
+ # Leave the capitalization
+
+ "method_ref" slist =>  
+            { 
+            "Method self-test questions",
+            "Remote method examples",
+            "Method example: SSH key distribution",
+            "Local method examples",
+            "Cfengine Methods" 
+            };
+
+  "d[f]" string => "discussed in";
+  "d[b]" string => "discusses";
+
+  "solve2[f]" string => "is solved with cfengine 2 by";
+  "solve2[b]" string => "2 solves";
+
+  "solve3[f]" string => "is solved with cfengine 3 by";
+  "solve3[b]" string => "3 solves";
+
+  "datatypes" slist => { "string", "slist", "real", "rlist", "int", "ilist" };
+
+ ###########################################################################################
+
+topics:
+
+  Special_Topics_Guide::
+
+    "Content-Driven Policies"
+
+          comment => "A mechanism for managing standardized policies by providing tabular data for input",
+          association => a("is typically used together with","Notes on windows policies","may be simplified with");
+
+  Introduction_to_Cfengine_Nova::
+
+    "What's new in Nova 2.0"
+          association => a("see also","Content-Driven Policies","relates to");
+
+    "What's new in Nova 2.0"
+          association => a("see also","Virtualization","relates to");
+
+    "What's new in Nova 2.0"
+          association => a("new agent component","cf-hub","relates to");
+
+    "What's new in Nova 2.0"
+          association => a("key feature","Mission Portal","relates to");
+
+    "What's new in Nova 2.0"
+          association => a("key feature","Policy editor","relates to");
+
+    "What's new in Nova 2.0"
+          association => a("key feature","service catalogue","relates to");
+
+  management_terminology::
+
+    "goals"
+        association => a("may refer to","business goals","see also");
+
+    "goals"
+        association => a("are displayed in","service catalogue","displays");
+
+    "business goals"
+        association => a("are displayed in","service catalogue","displays");
+
+  knowledge_model::
+
+    "service catalogue"
+          association => a("shows progress towards","business goals","may be seen in");
+
+  concepts::
+
+    "authentication"       association => a("$(solve2[f])","remote access","$(solve2[b])");
+    "policy server"        association => a("is the single source for","policy","is sourced from");
+    "policy server"        association => a("are located in","places","can be served by one or more");
+    "policy hub"        association => a("is a different name for","policy server","is a different name for");
+    "policy hub"        association => a("are located in","places","can be served by one or more");
+
+  data_types::
+
+      "$(datatypes)" association => see("body_constraints::$(datatypes)");
+      "$(datatypes)" association => see("vars_promises::$(datatypes)");
+
+  promise_theory::
+
+    "body-constaint" association => a("is realized in","body constraints","are examples of");
+
+  models_of_system_administration::
+
+   "promise theory" association => a("may be considered","A theory for ITIL","is offered by");
+
+
+ #
+ # These are references connecting topics across manuals
+ #
+
+ manual::
+
+    "short topic" association => a("is discussed in","Special Topics Guide","discusses");
+    "Special Topics Guide" association => a("is a kind of","manual","has type");
+    "Adoption" association => a("involves","Build, Deploy, Manage, Audit","is involved in");
+    "Adoption" association => a("involves","BDMA","is involved in");
+    "Adoption" association => a("involves","The Mission Plan","is involved in");
+    "Identifying the Team" association => a("see also","The Mission Plan","see also");
+
+    "Quality Assurance around cfengine" association => a("is part of","procedures","should include");
+
+
+    "tidy" association => a("is implemented in cf3 by","delete","implements");
+    "Checksums and change management" association => a("see also","change management","see also");
+    "module"       association => a("see also","body_constraints::module","see also");
+    "module"       association => a("see also","modules","see also");
+
+
+    "match_value (compound body)" association => a("see also","match_value","see also");
+    "association (compound body)" association => a("see also","association","see also");
+    "volume (compound body)" association => a("see also","volume","see also");
+    "mount (compound body)" association => a("see also","mount","see also");
+    "process_select (compound body)" association => a("see also","process_select","see also");
+    "process_count (compound body)" association => a("see also","process_count","see also");
+    "package_method (compound body)" association => a("see also","package_method","see also");
+    "tcp_ip (compound body)" association => a("see also","tcp_ip","see also");
+    "delete_select (compound body)" association => a("see also","delete_select","see also");
+    "replace_with (compound body)" association => a("see also","replace_with","see also");
+    "edit_field (compound body)" association => a("see also","edit_field","see also");
+    "insert_select (compound body)" association => a("see also","insert_select","see also");
+    "location (compound body)" association => a("see also","location","see also");
+    "acl (compound body)" association => a("see also","acl","see also");
+    "depth_search (compound body)" association => a("see also","depth_search","see also");
+    "edit_defaults (compound body)" association => a("see also","edit_defaults","see also");
+    "rename (compound body)" association => a("see also","rename","see also");
+    "delete (compound body)" association => a("see also","delete","see also");
+    "changes (compound body)" association => a("see also","changes","see also");
+    "perms (compound body)" association => a("see also","perms","see also");
+    "link_from (compound body)" association => a("see also","link_from","see also");
+    "copy_from (compound body)" association => a("see also","copy_from","see also");
+    "file_select (compound body)" association => a("see also","file_select","see also");
+    "database_server (compound body)" association => a("see also","database_server","see also");
+    "contain (compound body)" association => a("see also","contain","see also");
+    "select_region (compound body)" association => a("see also","select_region","see also");
+    "classes (compound body)" association => a("see also","classes","see also");
+    "action (compound body)" association => a("see also","action","see also");
+    "printfile (compound body)" association => a("see also","printfile","see also"); 
+
+procedures::
+
+    "adding users";
+    "removing users";
+    "changing passwords"            comment => "Editing local system accounts";
+
+    "change detection scans"        comment => "Implementing security tripwires",
+                                    association => a("$(solve2[f])","change detection","$(solve2[b])");
+    "set up a neighbourhood watch"  comment => "Redundant change monitoring in peer clusters",
+                                    association => a("$(solve2[f])","tamperproof data","$(solve2[b])");
+
+    "change detection scans"        association => a("$(solve3[f])","changes__compound_body_","$(solve3[b])");
+    "change detection scans"        association => a("$(solve3[f])","files promises in agent","$(solve3[b])");
+
+    "change detection scans"        association => a("are summarized in","Status level meters","summarize");
+
+    "garbage collection"            comment => "Tidying up unused files to free disk resources",
+                                    association => a("$(solve3[f])","cf3_reference::delete (compound_body)","$(solve3[b])");
+
+
+    "set up name resolution"        comment => "Configure IP <-> name resolution",
+                                    association => a("$(solve2[f])","resolve","$(solve2[b])");
+    "set up resolv.conf"            association => a("$(solve2[f])","resolve","$(solve2[b])");
+
+
+    "remote copy"                 association => a("$(solve2[f])","Debugging cfengine client-server","$(solve2[b])");
+
+
+
+management_issues::
+
+  "business value" association => a("can be tracked with","value_kept","can track");
+  "business value" association => a("can be tracked with","value_notkept","can track");
+  "business value" association => a("can be tracked with","value_repaired","can track");
+
+  "business value" association => a("is of interest to","manager view","can gain insight into");
+  "business value" association => a("may be seen in","business value reports","offer insight into");
+
+  "patch management" association => a("is implemented by","packages","implements");
+
+cfengine_2::
+
+    "HashCommentLinesMatching"  association => a("upgrades to","comment_lines_matching","corresponds to");
+    "HashUnCommentLinesMatching"  association => a("upgrades to","uncomment_lines_matching","corresponds to");
+
+    "WarnIfLineMatching"   association => a("is implemented using","delete_lines","can implement");
+
+promise_theory::
+
+   "dependencies" association => a("implemented in","body_contstrains::service_dependencies","implement");
+   "dependencies" association => a("are explained in","Understanding dependencies","explains");
+
+
+Monitoring_extensions::
+
+  "Integration of monitoring with knowledge base" association => a("has an example","export_zenoss","is an example of");
+
+
+
+#######################################################################################
+# OCCURRENCES
+#######################################################################################
+
+
+occurrences:
+
+  business_value::
+ 
+     "/docs/cfnova.html#Business-value-reports"
+      represents => { "Nova report" };
+
+ "/docs/cfnova.html#Nova-attends-to-business-goals"
+      represents => { "manual section Nova" };
+
+  cf_hub::
+
+    "/docs/cf3-reference.html#cf_002dhub"
+      represents => { "manual subsection" };
+
+  dependencies::
+
+       "/welcome/services"
+      represents => { "Service overview" };
+
+     "/docs/cfnova.html#Understanding-dependencies"
+      represents => { "Understanding with Nova" };
+
+     "/docs/cfnova.html#Policy-analysis"
+      represents => { "Visualizing" };
+
+   peer_to_peer_network::
+
+    "http://project.iu.hio.no/linkpapers.php"
+      represents => { "research" };
+
+   availability::
+
+    "http://project.iu.hio.no/hvs.php"
+      represents => { "research" };
+
+   computer_immunology::
+
+     "http://project.iu.hio.no/asysadmpapers.php"
+      represents => { "research" };
+
+     "http://project.iu.hio.no/anomalypapers.php"
+      represents => { "research" };
+
+   promise_theory::
+
+     "http://project.iu.hio.no/promises.php"
+      represents => { "research" };
+
+   overlapping_sets::
+
+    "https://www.cfengine.com/inside/Papers/tiny_intro.pdf"
+      represents => { "overview paper" };
+
+   getting_started_with_cfengine::
+
+    "https://www.cfengine.com/inside/Papers/tiny_intro.pdf"
+      represents => { "overview paper" };
+
+    "/docs/cf3-reference#Getting-started"
+      represents => { "cf3" };
+
+
+   BDIM::
+
+     "Attempting to optimize business outcome by good IT management"
+      represents => { "definitions" },
+      representation => "literal";
+
+   configuration_management::
+
+     "Deciding and maintaining the data and processes resources of computer systems"
+      represents => { "definitions" },
+      representation => "literal";
+
+   CM::
+
+     "ITIL's notion of configuration management - asset and inventory management"
+      represents => { "definitions" },
+      representation => "literal";
+
+   incident_management::
+
+     "Dealing with events that do not conform to policy"
+      represents => { "definitions" },
+      representation => "literal";
+
+   FCAPS::
+
+     "Fault, Configuration/Change, Accounting, Performance and Security"
+      represents => { "definitions" },
+      representation => "literal";
+
+   voluntary_cooperation::
+
+     "A model in which humans and computers cannot be assumed to fall into compliance, they must promise their policy behaviour"
+      represents => { "definitions" },
+      representation => "literal";
+
+   SLA::
+
+     "A contract between a service provider and a service consumer that defines the terms of expected service levels"
+      represents => { "definitions" },
+      representation => "literal";
+
+   contract::
+
+     "A bilateral set of promises about which a number of parties hope to agree"
+      represents => { "definitions" },
+      representation => "literal";
+
+   agreement::
+
+     "A promise by two or more parties to accept and believe certain information"
+      represents => { "definitions" },
+      representation => "literal";
+
+   #####################################################
+   # Alien references
+   #####################################################
+
+
+ cfagent_command_options::
+
+      "/docs/cf-QuickRef3"
+         represents => { "manual" };
+
+  cfengine_3::
+
+  "/docs/cf3-reference.html"
+          represents => { "manual" };
+
+
+}

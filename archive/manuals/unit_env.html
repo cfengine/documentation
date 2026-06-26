@@ -1,0 +1,20 @@
+ <div id="wholebody"><div id="pagebody"><div class="rtop"><div class="r1"></div><div class="r2"></div><div class="r3"></div><div class="r4"></div></div><div id="content">
+<pre>
+<h1>Cfengine 3 example unit_env.html</h1>
+
+body common control
+{
+bundlesequence => { "one" };
+}
+
+body agent control
+{
+environment => { "A=123", "B=456", "PGK_PATH=/tmp"};
+}
+
+bundle agent one
+{
+commands:
+
+  "/usr/bin/env";
+}</div><div class="rbottom"><div class="r4"></div><div class="r3"></div><div class="r2"></div><div class="r1"></div></div></div></div></div>

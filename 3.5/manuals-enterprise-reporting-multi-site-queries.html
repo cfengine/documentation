@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - Multi-Site Queries</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html"  class="navselected" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="manuals-design.html">Design</a></li><li><a href="manuals-architecture.html">Architecture</a></li><li><a href="manuals-components.html">The CFEngine Components</a></li><li><a href="manuals-language-concepts.html">Language Concepts</a></li><li><a href="manuals-design-center.html">Design Center</a></li><li><a href="manuals-writing-policy.html">Writing Policy</a></li><li><a href="manuals-enterprise-reporting.html">Enterprise Reporting</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li><a href="manuals-enterprise-reporting-architecture.html">Reporting Architecture</a></li><li><a href="manuals-enterprise-api.html">Enterprise API</a></li><li><a href="manuals-enterprise-reporting-sql-queries.html">SQL Queries</a></li><li class="selected"><span>Multi-Site Queries</span></li><li><a href="manuals-enterprise-reporting-porting-guide.html">API Porting Guide</a></li><li><a href="manuals-enterprise-reporting-troubleshooting.html">Troubleshooting</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="manuals.html">CFEngine Manuals</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="manuals-enterprise-reporting.html">Enterprise Reporting</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>Multi-Site Queries</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/manuals.html">manuals</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/enterprise.html">enterprise</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/rest.html">rest</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/api.html">api</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/reporting.html">reporting</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/sql.html">sql</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/queries.html">queries</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/multi-site.html">multi-site</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>Multi-Site Queries</h1>
+                    <p>A CFEngine site can be viewed as an independent group of machines/devices 
+managed and maintained by CFEngine. Distribution and execution of policies and 
+report collection happen within a site.</p>
+
+<p>Policy distribution is handled by the policy-server, <a href="reference-components-cfserver.html" title="cf-serverd"><code>cf-serverd</code></a>. CFEngine 
+agents (<a href="reference-components-cfagent.html" title="cf-agent"><code>cf-agent</code></a>) &quot;pull&quot; the policies made available by the policy-server 
+and apply them to the clients. CFEngine&#39;s report collector (<a href="reference-components-cfhub.html" title="cf-hub"><code>cf-hub</code></a>) gathers 
+reports from all the available agents and stores them into a centralized 
+reporting database. These reports can then be accessed through the CFEngine 
+Mission Portal or the CFEngine Enterprise API (introduced in v3.0). An 
+organization can maintain multiple sites. Until CFEngine Enterprise v3.0.x, 
+the reports collected in one site could not be easily compared/co-related with 
+another site.</p>
+
+<p>In 3.5, with enhancements to the Enterprise API, querying multiple sites with 
+a single command is possible. SQL queries can be executed on different sites 
+transparently with multi-site query tool, thus making it is easier for users 
+get a high level overview of their systems. The same queries that was being 
+used to find answers about a particular site can be used on multiple sites. 
+E.g.,</p>
+<div class="highlight"><pre><code class="text">SELECT count(*) as total_count FROM Hosts;
+</code></pre>
+</div>
+
+<p>when executed with the multi-query tool gives the total number of hosts 
+bootstrapped to &quot;all&quot; the sites.</p>
+
+<p>The following diagram shows an overview of how multi-query reporting tool 
+works.</p>
+
+<p><img src="multisite_query_simplified.png" alt=""></p>
+<h3 id="definition">Definition</h3>
+<ul>
+<li>Aggregator</li>
+</ul>
+
+<p>A python script <code>multidb-query.py</code> that distributes the queries to available 
+CFEngine Database Servers and aggregates the result.</p>
+
+<ul>
+<li>Aggregated database interface</li>
+</ul>
+
+<p>Combines all the sqlite3 result files and presents an interface for the 
+aggregator to send the aggregation query. This is implemented internally with 
+the use of sqlite&#39;s ATTACH DATABASE command.</p>
+
+<ul>
+<li>Replica detection</li>
+</ul>
+
+<p>The <a href="examples-enterprise-api.html" title="Enterprise API">Enterprise API</a> returns the available replica set to 
+redirect the query.</p>
+
+<ul>
+<li>sqlite3 export</li>
+</ul>
+
+<p>A part of reporting engine that converts the result-set into a sqlite3 db file 
+for transfer to the aggregator.</p>
+<h3 id="installation">Installation</h3>
+<p>Ubuntu 12.04 (precise):</p>
+<div class="highlight"><pre><code class="text">    $ sudo apt-get install gdebi-core
+    $ sudo gdebi cfengine-multihub_1.0.0_all.deb (installs dependencies too)
+    $ sudo apt-get install python-pip (might need to upgrade requests see Troubleshooting)
+    $ sudo pip install requests --upgrade
+</code></pre>
+</div>
+<h3 id="common-use-cases">Common use cases</h3>
+<ol>
+<li>Simple query (SELECT * FROM Hosts;)</li>
+</ol>
+<div class="highlight"><pre><code class="text">    ./multidb-query.py -u&quot;admin&quot; -p&quot;admin&quot; -H&#39;[[&quot;192.168.0.2&quot;, &quot;192.168.0.3&quot;, &quot;192.168.0.4&quot;],[&quot;192.168.0.5&quot;],[&quot;192.168.0.6&quot;]]&#39; -q&quot;SELECT * FROM Hosts;&quot; -s&quot;http&quot; -c
+    HostKey                                 HostName    IPAddress   ReportTimeStamp FirstReportTimeStamp
+    20ecdd8da8aacd89fe1317dbfd399cf69a011bcdd7919fac753a11f9db46ceb7    192.168.0.6 192.168.0.6 1370294146  1370282434
+    0821cf714637e2446df0d445fd4a25b587df3f00bd6eb408e6a90f0bf67342e8    master      192.168.0.2 1370294127  1370281540
+    5252d3cdbcdcd61bedc0b4e49f890a54a75693848ab50f8e1276d426a5d235d5    192.168.0.5 192.168.0.5 1370294140  1370282119
+</code></pre>
+</div>
+
+<ol>
+<li>Joins between multiple tables</li>
+</ol>
+
+<p>Find all RedHat hosts:
+<code>
+    ./multidb-query.py -u&quot;admin&quot; -p&quot;admin&quot; -s&quot;http&quot; -c -H&#39;[[&quot;192.168.0.2&quot;, &quot;192.168.0.3&quot;, &quot;192.168.0.4&quot;],[&quot;192.168.0.5&quot;],[&quot;192.168.0.6&quot;]]&#39; -q&quot;SELECT h.HostName AS hname, v.VariableValue AS vvalue FROM Hosts AS h INNER JOIN Variables AS v ON h.HostKey=v.HostKey where v.VariableName=\&quot;flavour\&quot; AND v.VariableValue REGEXP(\&quot;redhat.*\&quot;);&quot;    
+    hname       vvalue
+    192.168.0.6 redhat_5
+    master      redhat_5
+    192.168.0.5 redhat_5    
+</code></p>
+
+<p>Important: It is recommended for column names / table names to be aliased 
+during JOIN queries. <code>SELECT *</code> on a JOIN query may result in errors, because 
+different tables can have columns with the same name, eg. HostKey is common in 
+most tables. The Enterprise API (server) will not be able to create 
+intermediate(results) database for transfer to the client.</p>
+
+<ol>
+<li>Count &amp; Aggregation queries</li>
+</ol>
+
+<p>Count the number of RedHat hosts:</p>
+<div class="highlight"><pre><code class="bash">    ./multidb-query.py -u<span class="s2">&quot;admin&quot;</span> -p<span class="s2">&quot;admin&quot;</span> -s<span class="s2">&quot;http&quot;</span> -c -H<span class="s1">&#39;[[&quot;192.168.0.2&quot;, &quot;192.168.0.3&quot;, &quot;192.168.0.4&quot;],[&quot;192.168.0.5&quot;],[&quot;192.168.0.6&quot;]]&#39;</span> -q<span class="s2">&quot;SELECT count(h.HostName) as redhat_hosts_count FROM Hosts AS h INNER JOIN Variables AS v ON h.HostKey=v.HostKey where v.VariableName=\&quot;flavour\&quot; AND v.VariableValue REGEXP(\&quot;redhat.*\&quot;);&quot;</span>
+    redhat_hosts_count
+    3
+</code></pre>
+</div>
+
+<ol>
+<li>Sorting and Grouping</li>
+</ol>
+<div class="highlight"><pre><code class="text">    ./multidb-query.py -u&quot;admin&quot; -p&quot;admin&quot; -H&#39;[[&quot;192.168.0.2&quot;, &quot;192.168.0.3&quot;, &quot;192.168.0.4&quot;],[&quot;192.168.0.5&quot;],[&quot;192.168.0.6&quot;]]&#39; -q&quot;SELECT * FROM Variables ORDER BY VariableType LIMIT 4;&quot; -s&quot;http&quot; -c
+    HostKey                              NameSpace  Bundle      VariableName    VariableValue   VariableType
+    20ecdd8da8aacd89fe1317dbfd399cf69a011bcdd7919fac753a11f9db46ceb7 sys    workdir /var/cfengine   string
+    20ecdd8da8aacd89fe1317dbfd399cf69a011bcdd7919fac753a11f9db46ceb7 sys    winsysdir   /dev/null   string
+    20ecdd8da8aacd89fe1317dbfd399cf69a011bcdd7919fac753a11f9db46ceb7 sys    winprogdir86    /dev/null   string
+    20ecdd8da8aacd89fe1317dbfd399cf69a011bcdd7919fac753a11f9db46ceb7 sys    winprogdir  /dev/null   string
+</code></pre>
+</div>
+<h3 id="interface">Interface</h3>
+<ul>
+<li>Input</li>
+</ul>
+
+<p>SQL query, CFEngine Enterprise Servers with replica set defined e.g. <code>[[cfdb1,cfdb2,cfdb3], [cfdb4,cfdb5,cfdb6]]</code>, username/password</p>
+
+<ul>
+<li>Output</li>
+</ul>
+
+<p>Query result table printed to the terminal (tab separated)</p>
+
+<ul>
+<li>Errors</li>
+</ul>
+
+<p>Displayed in the format - &quot;ERROR:[host IP]:Error message&quot;</p>
+
+<ul>
+<li>Debugging and trouble shooting</li>
+</ul>
+
+<p>Various output levels (--info, --debug) available</p>
+<h4 id="command-line-interface">Command line interface:</h4><div class="highlight"><pre><code class="text">optional arguments:  
+-h, --help
+  show this help message and exit  
+-d, --debug
+  Enable debugging output  
+-i, --inform
+  Output details about the current operation. Similar to &#39;verbose&#39; mode  
+-t TIMEOUT, --timeout TIMEOUT  
+  Maximum time to wait for a hub to respond
+-c, --cleanup
+  Remove intermediate files  
+-e, --continue-on-error  
+  Continue on error. Reports will be generated if report collection from 
+  at least one hub is succesful  
+-s URL_SCHEME_NAME, --url-scheme-name URL_SCHEME_NAME  
+  Url scheme name. eg. https(default), http  
+
+Required arguments:  
+ -u USER, --user USER
+   Username that has permissions to query all the hubs  
+ -p PASSWORD, --password PASSWORD  
+   Password for user  
+ -H HUBS, --hubs HUBS  2D array of hub ips. eg.  
+   &quot;[[&#39;10.0.0.5&#39;,&#39;10.0.0.6&#39;],[&#39;10.0.0.7&#39;]]&quot;  
+ -q SQL, --sql SQL
+   SQL query string  
+</code></pre>
+</div>
+<h3 id="limitations">Limitations:</h3>
+<ol>
+<li>Embedded SQL is not supported at the moment eg. you will not be able to do: </li>
+</ol>
+<div class="highlight"><pre><code class="text">    SELECT count(SELECT DISTINCT HostName From Hosts) from Hosts
+</code></pre>
+</div>
+<h3 id="recommendations-and-best-practices">Recommendations and best practices:</h3>
+<p>Always use aliases for operations involving multiple tables eg. instead of 
+this:</p>
+<div class="highlight"><pre><code class="text">SELECT Hosts.HostKey, PromiseLogs.HostKey FROM Hosts INNER JOIN 
+    PromiseLogs ON Hosts.HostKey=PromiseLogs.HostKey;
+</code></pre>
+</div>
+
+<p>use:</p>
+<div class="highlight"><pre><code class="text">SELECT Hosts.HostKey AS hkey, PromiseLogs.HostKey AS pkey FROM Hosts INNER 
+    JOIN PromiseLogs ON hkey=pkey;
+</code></pre>
+</div>
+
+<p>or even better:</p>
+<div class="highlight"><pre><code class="text">SELECT h.HostKey AS hkey, p.HostKey AS pkey FROM Hosts AS h INNER JOIN 
+    PromiseLogs AS p ON hkey=pkey;
+</code></pre>
+</div>
+
+<p>Always use aliases for functions</p>
+<div class="highlight"><pre><code class="text">eg. SELECT count(*) as column_count from Hosts
+</code></pre>
+</div>
+
+<p>Use LIMIT with ORDER BY whenever possible</p>
+
+<p>Instead of:</p>
+<div class="highlight"><pre><code class="text">SELECT Hosts.HostName AS Name FROM Hosts
+    LIMIT 10
+</code></pre>
+</div>
+
+<p>(This might return data that come from a single CFDB)</p>
+
+<p>Use:</p>
+<div class="highlight"><pre><code class="text">SELECT Hosts.HostName AS Name FROM Hosts
+    ORDER BY Hosts.ReportTimeStampLIMIT 10
+</code></pre>
+</div>
+<h3 id="troubleshooting">Troubleshooting:</h3><h4 id="error-in-status-query">Error in status query</h4>
+<p>Always check the syslog in the corresponding  CFEngine Database Server if the error output at the 
+multi-site client is not sufficient. The ip address for the machine where the 
+error occurred is prefixed with every error message. There are --inform(-i) 
+and --debug(-d) options available that provide detail about the individual 
+steps on the operation.</p>
+<div class="highlight"><pre><code class="text">ERROR:root:[10.100.100.130] Error exporting results to sqlite3 database file
+ERROR:root:Error in status query
+</code></pre>
+</div>
+
+<p>Something went wrong while executing the SQL query at the server. Check the syslog in [10.100.100.130]. If you see something like the following, it means that the Enterprise API received the exact same query:</p>
+<div class="highlight"><pre><code class="text">Error executing query - message: database is locked, sql: &quot;CREATE TABLE results
+</code></pre>
+</div>
+
+<p>Same query from multiple requests at the same time is not supported currently. A simple example would be - trying to query the same  CFEngine Database Server in a multi-site query:</p>
+<div class="highlight"><pre><code class="text">$ python multidb-query.py -u admin -p admin
+    -H &#39;[[&quot;10.100.100.130&quot;], [&quot;10.100.100.130&quot;]]&#39; -s&quot;http&quot;
+    -q&quot;SELECT HostName, Count(1) as HostCount FROM Hosts GROUP BY HostName LIMIT 100&quot;.
+</code></pre>
+</div>
+<h4 id="no-hubs-available-to-query">No hubs available to query</h4><div class="highlight"><pre><code class="text">ERROR:root:Error: No hubs available to query, cannot continue
+</code></pre>
+</div>
+
+<p>If one of the hubs in the query cannot be contacted, the query cannot continue 
+by default. To override this behavior use the <code>-e, --continue-on-error</code> 
+option.</p>
+
+<p>If you still get this error with <code>-e</code>, then there is probably a problem with 
+network connectivity.</p>
+<h4 id="no-hubs-available-to-query-for-a-group">No hubs available to query for a group</h4><div class="highlight"><pre><code class="text">WARNING:root:No hubs available to query for group: [u&#39;10.100.100.10&#39;, u&#39;10.100.100.11&#39;]
+</code></pre>
+</div>
+
+<p>This warning is displayed when run with <em>-e, --continue-on-error</em> option.
+This means that none of the members in the replica set could be contacted.</p>
+<h4 id="invalid-response-code">Invalid response code</h4>
+<p>This is the HTTP response code received from the server. Currently only 200 
+(success) is regarded as valid</p>
+
+<p>Check if CFEngine enterprise api is running and responding correctly on the site.
+eg. curl admin:admin <a href="http://10.100.100.130/api">http://10.100.100.130/api</a></p>
+<h4 id="connection-error">Connection Error</h4>
+<p>Connection errors can be caused due to various reasons. A stack trace is 
+printed in case of a connection error.</p>
+
+<ul>
+<li>Use of incorrect URL Scheme name</li>
+</ul>
+
+<p>Multi-Site reporting uses &quot;HTTPS&quot; by default. If you are hosting CFEngine 
+Enterprise API under a different URL Scheme name, you would get</p>
+<div class="highlight"><pre><code class="text">ConnectionError: HTTPSConnectionPool(host=&#39;10.100.100.177&#39;, port=443): Max retries exceeded with url: /api (Caused by &lt;class &#39;socket.error&#39;&gt;: [Errno 111] Connection refused)
+INFO 2013-05-13 15:23:15,168 [10.100.100.177] Hub NOT available for report query
+</code></pre>
+</div>
+
+<p>You can specify a different scheme name with the option:</p>
+<div class="highlight"><pre><code class="text">-s URL_SCHEME_NAME, --url-scheme-name URL_SCHEME_NAME
+                        Url scheme name. eg. https(default), http
+
+
+$ ./multidb-query.py -u&quot;admin&quot; -p&quot;admin&quot;
+  -H&#39;[[&quot;10.100.100.177&quot;],[&quot;10.100.100.179&quot;]]&#39; -q&quot;SELECT * from hosts;&quot;
+  -s&quot;http&quot; -i
+</code></pre>
+</div>
+<h4 id="invalid-input-ip-addresses-list">Invalid input IP addresses list</h4>
+<p>If you do not supply a proper JSON array with correctly formatted IP addresses, you might get an error such as the following:</p>
+<div class="highlight"><pre><code class="text">ERROR 2013-05-29 14:50:02,158 Invalid hub IP addresses list. No JSON object could be decoded
+</code></pre>
+</div>
+
+<p>or,</p>
+<div class="highlight"><pre><code class="text">ERROR 2013-05-29 14:55:40,419 Invalid hub IP addresses list. Expecting , delimiter: line 1 column 8 (char 8)
+</code></pre>
+</div>
+
+<p>Please make sure that the IP address list supplied is properly formatted.  </p>
+<div class="highlight"><pre><code class="text">-H&quot;[&#39;10.100.100.130&#39;],[&#39;10.100.100.131&#39;]&quot;
+</code></pre>
+</div>
+
+<p>Incorrect - a proper JSON array needs to be enclosed in an outer square 
+brackets <code>[]</code></p>
+<div class="highlight"><pre><code class="text">-H&quot;[[&#39;10.100.100.130&#39;],[&#39;10.100.100.131&#39;]]&quot;
+</code></pre>
+</div>
+
+<p>Incorrect, notice the outer double quotes, and inner single quotes.</p>
+<div class="highlight"><pre><code class="text">-H&#39;[[&quot;10.100.100.130&quot;],[&quot;10.100.100.131&quot;]]&#39;
+</code></pre>
+</div>
+
+<p>Correct.</p>
+
+<p>To supply replica set groups:  </p>
+<div class="highlight"><pre><code class="text">-H&#39;[[&quot;10.100.100.130&quot;, &quot;10.100.100.132&quot;, &quot;10.100.100.133&quot;],[&quot;10.100.100.131&quot;, &quot;10.100.100.135&quot;]]&#39;
+</code></pre>
+</div>
+<h4 id="outdated-python-requests-version">Outdated python-requests version</h4>
+<p>The api for python-requests has been changed v1.0.0 (<a href="https://github.com/kennethreitz/requests/blob/master/HISTORY.rst">https://github.com/kennethreitz/requests/blob/master/HISTORY.rst</a>)<br>
+Sample errors:</p>
+<div class="highlight"><pre><code class="text">AttributeError: &#39;Response&#39; object has no attribute &#39;json&#39;
+AttributeError: &#39;Response&#39; object has no attribute &#39;text&#39;
+</code></pre>
+</div>
+
+<p>To upgrade python-requests:</p>
+<div class="highlight"><pre><code class="bash">sudo pip install requests --upgrade
+</code></pre>
+</div>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/manuals/enterprise-reporting/multi-site-queries.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,1363 @@
+<html lang="en">
+<head>
+<title>CFEngine Language Fundamentals (Windows)</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CFEngine Language Fundamentals (Windows)">
+<meta name="generator" content="makeinfo 4.12">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; }
+  span.sansserif { font-family:sans-serif; font-weight:normal; }
+h1, h2, a, table.list th
+{
+    color: #1f6e6b;
+}
+
+.node
+{
+background: #ddd url(Logo2-small.png) right no-repeat;
+}
+
+.menu
+{
+background: #eef url(menu.png) right no-repeat;
+}
+
+.contents
+{
+background-color: #e9f4e9;
+}
+
+.index-cp
+{
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+  border-color: #4e8b8c;
+  border-style: solid;
+  border-width: 1px;
+}
+
+BODY {
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-style: normal;
+     font-size: 11pt;
+     background: #FFFFFF;
+     color: #000000;
+     }
+
+P {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  }
+
+FONT.liten {font-size: 70%; }
+
+H1, H2, H3 {
+        font-weight: normal;
+        color: #2c2e70;
+        margin-bottom: 0em;
+        }
+
+TABLE { vertical-align: top; }
+
+H1 { font-size: 140% }
+H2 { font-size: 120% }
+H3 { font-size: 110% }
+H4 { font-style: italic; }
+
+TD, TH, UL {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-style: normal;
+        }
+
+TH { background: #9999FF;
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     color: blue;
+  font-size: 10pt;
+   }
+
+TD { color: #000000;
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-size: 10pt;
+   }
+
+PRE { font-family: "Lucida Typewriter", "Courier", monotype;
+      font-style: normal;
+     font-size: 11pt;
+background-color: #eee;
+    }
+
+.tynn {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: smaller;
+        font-style: normal;
+        font-weight: lighter;
+        margin-bottom: 0em;
+     font-size: 11pt;
+        }
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+--></style>
+</head>
+<body>
+<h1 class="settitle">CFEngine Language Fundamentals (Windows)</h1>
+<div class="node">
+<p><hr>
+<a name="Top"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Declarative-language">Declarative language</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">CFEngine Language Fundamentals</h2>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+
+   <p><h2>Summary of contents</h2>
+
+<!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+<ul class="menu">
+<li><a accesskey="1" href="#Declarative-language">Declarative language</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Declarative-language"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Declarative language</h2>
+
+<p>CFEngine is a program meant to automate the job of system
+administrators. Instead of writing adhoc custom scripts, cfengine
+gives you the easy way of expressing the solution with simple and
+straight forward declarative language. The declarative language allows
+you to specify a policy for cfengine to implement. For example as a
+policy, an administrator may want tmp directory to be emptied every
+three days, may want the password file to always have the permission
+644, ensure that apache is up all the time etc.  The policies such as
+these and many more can easily be written for cfengine to implement.
+For example a simple code such as
+
+<pre class="smallexample">     files:
+      c:\filename  mode=644 checksum=md5 action=fixall
+</pre>
+   <p class="noindent">will enable cfengine to implement a file policy without any complex
+script. CFEngine makes the policy implementation easy and simple.
+
+<ul class="menu">
+<li><a accesskey="1" href="#CFEngine-Components">CFEngine Components</a>
+<li><a accesskey="2" href="#Installation">Installation</a>
+<li><a accesskey="3" href="#The-structure-of-cfengine-declarative-language">The structure of cfengine declarative language</a>
+<li><a accesskey="4" href="#Debugging-Cfengine">Debugging CFEngine</a>
+<li><a accesskey="5" href="#Sequenece-vrs-order">Sequenece vrs order</a>
+<li><a accesskey="6" href="#CFEngine-Variables">CFEngine Variables</a>
+<li><a accesskey="7" href="#Input_002foutput">Input/output</a>
+<li><a accesskey="8" href="#Escape-sequence">Escape sequence</a>
+<li><a accesskey="9" href="#Selection-or-Classes">Selection or Classes</a>
+<li><a href="#Logical-Operators-and-classes">Logical Operators and classes</a>
+<li><a href="#User-Defined-Classes">User Defined Classes</a>
+<li><a href="#Multiple-Classes">Multiple Classes</a>
+<li><a href="#List">List</a>
+<li><a href="#Recursion">Recursion</a>
+<li><a href="#Methods">Methods</a>
+<li><a href="#Method-and-return-value">Method and return value</a>
+<li><a href="#CFEngine-Built-in-Methods">CFEngine Built in Methods</a>
+<li><a href="#List-and-methods">List and methods </a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="CFEngine-Components"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Installation">Installation</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Declarative-language">Declarative language</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.1 CFEngine Components</h3>
+
+     <ul>
+<li>Cfagent is the most important component of cfengine software. It is the robot that interpret the user policy and implement it in a convergent manner.
+<li>Cfexecd is the component that can schedule the execution of cfengine and inform the administrator about the results of the execution via email.
+<li>Cfservd is the server daemon component. It is responsible only two operations, remote copy and execution. This means you don’t need cfservd to enable cfengine work. It is only becomes necessary when remote copy and execution are concerned.
+<li>Cfenvd is used to collect statistical data about resource usage on each for anomaly detection.
+<li>Cfkey is for public and private key generation.
+<li>Cfshow  converts the cfengine database into ASCII  format and dump it in a file.
+<li>Cfenvgraph formats the cfenvd database in a form that can be plotted
+<li>Cfrun allows remote host to request the execution of cfengine.
+</ul>
+
+   <p>As beginners we will first concentrate on how to use cfagent to
+implement simple policies since it is the most important component or
+agent of the cfengine configuration management software. Don’t rush to
+setup client/server configuration since it is not really needed to run
+cfengine except for pulling operations. The CFEngine client/server
+setup is only for update or copying or pulling of files from cfengine
+server to cfengine client. The actual configuration management is done
+by cfagent running on a host. By understanding how to run cfengine
+configuration script on your local host is more than 60% of what is
+required to implement cfengine network environment.
+
+<div class="node">
+<p><hr>
+<a name="Installation"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#The-structure-of-cfengine-declarative-language">The structure of cfengine declarative language</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CFEngine-Components">CFEngine Components</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.2 Installation</h3>
+
+     <ul>
+<li>Download the cfengine binary for the windows operating system from cfengine.com website into any directory (c:\user say).
+<li> Unpack the zip file to any directory of your choice ( e.g c:\bin ) to obtain the cfengine binary
+<li> All you need is <samp><span class="file">cygwin1.dll</span></samp>. You can obtain the
+<samp><span class="file">cygwin1.dll</span></samp> by first installing cygwin on your windows system.
+You then have to copy the cygwin1.dll from <samp><span class="file">/usr/bin/cygwin1.dll</span></samp>
+to the directory containing your cfengine binary files or put it in
+<samp><span class="file">C:\Windows\System32</span></samp>. Uninstall cygwin from your system. You don't need
+to install cygwin on the rest of your windows systems, you only have
+to copy the cygwin1.dll and distribute it with your binary. Please
+note that downloading cygwin1.dll directly may not work!!
+<li> Run the cmd DOS command from "Run" or "Start" to the DOS prompt
+<li>cd to your cfengine binary directory ( e.g cd bin )
+<li>Run the command cfagent -vp, you should see the cfengine hard classes display. The command will also create the c:\var\cfengine directory including the other important cfengine subdirectories such as modules etc.
+<li>Now you may copy your cfengine binary into <samp><span class="file">c:\var\cfengine\bin</span></samp>
+including your cygwin1.dll library. By default cfengine runs from
+     <pre class="smallexample">             c:\var\cfengine directory.
+</pre>
+     <li> You should create the cfengine inputs directory in
+<samp><span class="file">c:\var\cfengine</span></samp>. This is where cfengine reads its default
+configuration files.
+<li>Run the cfkey command to create the cfengine key pairs. This keys will be found in <samp><span class="file">c:\var\cfengine\ppkeys</span></samp>
+<li>To start using cfengine to manage your system, please read the online tutorial at cfengine.com or cfengine.org
+<li> Note you can decide to use the cygdrive to specify a path to windows
+file E.g <samp><span class="file">/cygdrive/c/myfile</span></samp> means <samp><span class="file">c:\myfile</span></samp> or you can
+do it straight away in cfengine as <samp><span class="file">c:\myfile</span></samp>.
+<li></ul>
+
+<div class="node">
+<p><hr>
+<a name="The-structure-of-cfengine-declarative-language"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Debugging-Cfengine">Debugging CFEngine</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Installation">Installation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.3 The structure of cfengine declarative language</h3>
+
+<p>The structure of cfengine declarative language is given below
+<pre class="smallexample">     control:
+      variable_1 = ( <var>value1 value2 ...</var> )
+      variable_2 = ( <var>value1 value2 ...</var> )
+     ...
+      variable_n = ( <var>value1 value2 ...</var> )
+
+      stanza1:
+
+       [<var>condition or class</var>]::
+        <var>target  attribute1=value1, attribue2=value2 ...</var>
+
+      stanza2:
+
+       [<var>condition or class</var>]::
+
+         <var>target attribute1=value1, attribue2=value2 ...  </var>
+</pre>
+   <p>The control stanza is a special stanza where all the global variables
+that will be used in the policy file are defined. The control could be
+used to specify the order of execution, access control etc.
+
+   <p><code>variable1</code> ... are the variable names, they can be
+reserved or predefined variables or user defined variables. The values
+of the variable are specified in the parenthesis. The values can be a
+stanza or action type, a class or Boolean, a path or any appropriate
+user defined value. The stanzas define the rule type or action type,
+for example files rule type or action type, disk rule type or action
+type etc.
+
+   <p>Each stanza consists of optional condition for which the policy should
+be implemented. The condition or class ( as called by cfengine ) must
+be followed by double colon.  Within every stanza or rule type (action
+type) we have target, attributes or options, values and
+action. Usually, such attributes are defined by cfengine. However, one
+can define their own attribute using the cfengine "defined"
+keyword. For example the simple files stanza can have the following
+attributes or options: <code>owner</code>, <code>mode</code>, <code>checksum</code>.
+
+   <p>The values of the attributes are either predefined or user
+defined. For example the value for the mode attribute <code>644</code> is user
+defined but the value for checksum is <code>md5</code> which is predefined.  The
+target defines the object to which cfengine will manage or operate on.
+A target can be a file, a directory, a process etc.  action defines
+the operation we want cfengine to perform on a given target. We also
+have the target which specifies the object we want to apply the
+policy.
+
+   <p>In summary cfengine declarative language consist of
+
+     <ul>
+<li>special rule type called control
+<li>varibles and values
+<li>rule type, action type or stanza
+<li>classes or conditions
+<li>policies
+</ul>
+
+   <p>Example 1
+
+   <p>We are going to test cfengine by simple files rule type example. We
+will check if a file has mode <code>644</code> if not we change it to <code>000</code>.
+
+<pre class="smallexample">     #cf_ex1.conf
+     control:
+      actionsequence = ( files )
+     files:
+      /cygdrive/c:/cfengine/testfile.txt mode=000 action=fixall
+     #end
+</pre>
+   <p>This policy specification allows cfengine to check if the target
+(<samp><span class="file">testfile.txt</span></samp>) has permission <code>000</code>, if not cfengine will change
+the permission to <code>000</code>. This check can be done every minute, hour
+depending on what you want. CFEngine will automate the administrator's
+job. The permission <code>000</code> means no one can read, write or execute the
+file.
+
+   <p>We will run cfagent to test if this policy will be implemented. We
+first have to create the file testfile.txt and make it readable,
+writable and executable by all. To do that right click the file and go
+to properties -&gt; security and change the permissions.  Now create a
+file called <samp><span class="file">cf_ex1.conf</span></samp> and type in the file policy in example 1.
+Save the file in <samp><span class="file">c:\var\cfengine\inputs</span></samp> folder. CFEngine by default
+look for all the configurations files from <samp><span class="file">c:\var\cfengine\inputs</span></samp>.
+
+   <p>Type the following command for cfengine to implement the policy:
+<pre class="smallexample">
+     c:\var\cfengine\bin&gt;cfagent -vKf cf_ex1.conf
+
+</pre>
+   <p class="noindent">The directory <samp><span class="file">c:\var\cfengine\bin</span></samp> is where the cfengine agent is located and <samp><span class="option">-v</span></samp>
+is for verbose output, <samp><span class="option">-K</span></samp> is a command to force the
+implementation of policy and <samp><span class="option">-f</span></samp> is used to specify the file
+which contains the policy configuration. The policy configuration file
+is found in <samp><span class="file">cf_ex1.conf</span></samp>. By default cfagent runs every 1 minute and if
+that time is not elapsed since the last run the current configuration
+will not be executed so <samp><span class="option">-K</span></samp> option is used to override this default
+option.  In example 1 the actionsequence variable (directive or
+command) has the value files. The value of the actionsequenece
+variable is placed in parenthesis. There should be a space before and
+after the variable value ( files ). The values of actionsequance
+represent the rule type and the sequence of execution.
+
+   <p>The sequence of
+execution is simply first come first serve. E.g
+<pre class="smallexample">     actionsequenece = ( files shellcommands )
+</pre>
+   <p class="noindent">means the files command must be executed before
+the shellcommnds. The files stanza or rule type has the target
+<samp><span class="file">testfiles.txt</span></samp> (the full path of the file should be specified)
+and attributes or options of the files are mode and action and the
+values are 000 and fixall respectively. The action is a special
+attribute. It is used to specify operation to be performed or action
+to be taken. The cygdrive is more reliable way of specifying cfengine
+path. The path <samp><span class="file">/cygdrive/c/cfengine/testfile.txt</span></samp> will be
+interpreted as <samp><span class="file">c:\cfengine\testfiles.txt</span></samp> in windows.
+
+<!-- Example 2 -->
+   <p>This example adds shell commands to example 1 and executes it from cfengine
+<pre class="smallexample">
+     #cf_ex2.conf
+     control:
+      actionsequence = ( files shellcommands )
+      files:
+      /cygdrive/c/cfengine/testfile.txt mode=644 action=fixall
+
+     shellcommands:
+       "/bin/echo ...second cfengine script ..."
+
+</pre>
+   <p>This example shows that cfengine configuration file may contain more
+than one action type. The files action type just fix the file
+permission of the testfile.txt and the shellcommands action type just
+echoes or displays a message `second cfengine script'.
+
+<div class="node">
+<p><hr>
+<a name="Debugging-Cfengine"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Sequenece-vrs-order">Sequenece vrs order</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#The-structure-of-cfengine-declarative-language">The structure of cfengine declarative language</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.4 Debugging CFEngine</h3>
+
+<p>This section helps us to understand some simple errors that we may encounter when creating cfengine configuration file. Whenever an error occurs in cfengine configuration files, cfengine will tell which line in the configuration contains the error. Using the –v option in cfagent execution helps us spot the error.
+
+   <p>Example 2b
+
+   <p>One of the common errors a beginner could make is the space around the actionsequence. In this example we try to remove the space around the action sequence value, files, and examine the response from cfengine.
+
+<pre class="smallexample">
+     #cf_ex2b.conf
+     control:
+      actionsequence = (files)  #no space around the files rule type
+     files:
+      /cygdrive/c/cfengine/testfile.txt mode=000 action=fixall
+     #end
+</pre>
+   <p>Now run the following command
+c:\var\cfengine\bin&gt;cfagent -vKf cf_ex1b.conf
+
+   <p>The message you will see is:
+/var/cfengine/inputs/cf_ex1b.conf:2: syntax error
+
+   <p>This means you should examine line 2 of the cf_ex1b.conf file. Usually fengine does not suggest the kind of error. As a general rule it is good to always run cfengine with the verbose option. Also any time you have an error cfengine will be able to tell the line number in which the error occurred.
+
+<div class="node">
+<p><hr>
+<a name="Sequenece-vrs-order"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#CFEngine-Variables">CFEngine Variables</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Debugging-Cfengine">Debugging CFEngine</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.5 Sequence vrs order</h3>
+
+<p>The order in which you write the rule types in cfengine doesn't affect the sequence of execution. For example, example 2 can be rewritten as
+
+<pre class="smallexample">     #cf_ex2a.conf
+     control:
+      actionsequence = ( files shellcommands )
+     shellcommands:
+       "/bin/echo ...second cfengine script ..."
+     files:
+      /cygdrive/c/cfengine/testfile.txt mode=644 action=fixall
+     #end
+</pre>
+   <p>The results will be the same. The files rule type will be executed first followed by shellcommands since the actionsequence specifies so. So the sequence is specified by the actionsequence but the order of rules does not matter.
+
+<div class="node">
+<p><hr>
+<a name="CFEngine-Variables"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Input_002foutput">Input/output</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Sequenece-vrs-order">Sequenece vrs order</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.6 CFEngine Variables</h3>
+
+<p>Variables allow us to store data in memory for processing. It enable a programmer to reference a certain memory location. Variables are declared in cfengine as follows:
+name = ( value1, value2 ... )
+
+   <p>The name can be any name that follows the general programming standard. The name can also be predefined name. Values are either given or user supplied. A variable can hold one or more data. Example 3 shows how to work with cfengine variables.
+
+<pre class="smallexample">     Example 3
+     #cf_ex3.conf
+      control:
+        actionsequence = ( shellcommands )
+         hello = ( "hello cfengine " )  #hello variable
+        shellcommands:
+        "/bin/echo ..$(hello).."
+
+</pre>
+   <p>This code declares the hello variable and assigns the value "hello
+cfengine". We then use shellcommands stanza to display the value of
+the variables. The code $(hello) shows how cfengine references
+variables. There are two ways of referencing cfengine variables. We
+can reference a variable with parenthesis or curly bracket. For
+example <code>$(hello)</code> can be rewritten as <code>${hello}</code>.
+
+<pre class="smallexample">
+     #cf_ex4.conf
+
+      control:
+        actionsequence = ( shellcommands )
+         hello = ( "hello cfengine " )  #hello variable
+
+      shellcommands:
+
+        "/bin/echo ..${hello}.."
+
+</pre>
+   <p>Example 4 will produce the same result as example 3. The only
+difference is that the parenthesis is changed to curly brace i.e.
+<code>${hello}</code>.
+
+<div class="node">
+<p><hr>
+<a name="Input%2foutput"></a>
+<a name="Input_002foutput"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Escape-sequence">Escape sequence</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CFEngine-Variables">CFEngine Variables</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.7 Input/output</h3>
+
+<p>The values of a variable can be specified in the cfengine
+configuration file or read from a file. Example 5 read data from a
+file and stores it in a variable.
+
+<pre class="smallexample">     Example 5
+     #cf_ex5.conf
+     control:
+        actionsequence = ( shellcommands )
+        data = ( ReadFile(/cygdrive/c/cfengine/data.txt,100) )  #reading from a file
+
+      shellcommands:
+
+        "/bin/echo ..$(data).."
+
+</pre>
+   <p>This example reads data from the file data.txt using the cfengine
+ReadFile method. The output is stored in the variable data and the
+result displayed by shellcommands. The <code>ReadFile()</code> method has two
+parameters, the file name and the number of characters to be read.
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Escape-sequence"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Selection-or-Classes">Selection or Classes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Input_002foutput">Input/output</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.8 Escape Sequence</h3>
+
+<p>Special keys such as tab, newline etc can also be represented in
+cfengine to format output. The following are the some of the escape
+sequence.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">cr</span></samp>&rsquo;<dd>Expands to the carriage-return character.
+<br><dt>&lsquo;<samp><span class="samp">dblquote</span></samp>&rsquo;<dd>Expands to a double quote "
+<br><dt>&lsquo;<samp><span class="samp">dollar</span></samp>&rsquo;<dd>Expands to `$'.
+<br><dt>&lsquo;<samp><span class="samp">lf</span></samp>&rsquo;<dd>Expands to a line-feed character
+<br><dt>&lsquo;<samp><span class="samp">n</span></samp>&rsquo;<dd>Expands to a newline character.
+<br><dt>&lsquo;<samp><span class="samp">quote</span></samp>&rsquo;<dd>Expands to a single quote '.
+<br><dt>&lsquo;<samp><span class="samp">spc</span></samp>&rsquo;<dd>Expands simply to a single space. This can be used to place spaces in filenames etc.
+<br><dt>&lsquo;<samp><span class="samp">tab</span></samp>&rsquo;<dd>Expands to a single tab character.
+</dl>
+
+   <p>Example 5a
+<pre class="smallexample">     #cf_ex5a.conf
+
+     control:
+        actionsequence = ( shellcommands )
+
+     alerts:
+        compiled_on_cygwin::
+
+          "The car cost $(n) $(dollar)20,000 "
+
+</pre>
+   <p>The output will be:
+
+<pre class="smallexample">     The car cost
+     $20,000
+</pre>
+   <p>Write a sentence and put it in double quote
+
+<div class="node">
+<p><hr>
+<a name="Selection-or-Classes"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Logical-Operators-and-classes">Logical Operators and classes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Escape-sequence">Escape sequence</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.9 Selection or Classes</h3>
+
+<p>Selection or classes allow a program to decide which code to
+execute. In cfengine such commands are called classes. There are no if
+statement in cfengine, only classes.  By default cfengine classifies
+the system environment and used the results to make decisions. The
+classes are Boolean with true or false values. We can see the default
+or defined classes by running <code>cfagent -vp</code> command. My system has the
+following define classes
+
+<pre class="smallexample">     Defined Classes = ( 192_168_157 192_168_157_1 192_168_189 192_168_189_1 32_bit A
+     ugust Day7 Hr11 Hr11_Q4 IBM Min55_00 Min58 Q4 Thursday Yr2008 any cfengine_2_2 c
+     fengine_2_2_8 cfengine_2_2_8_pwin compiled_on_cygwin cygwin_nt_6_0_1_5_25_0_156_
+     4_2_ cygwin_nt_6_0_i686 cygwin_nt_6_0_i686_1_5_25_0_156_4_2_ cygwin_nt_6_0_i686_
+     1_5_25_0_156_4_2__2008_06_12_19_34 i686 ibm ipv4_192 ipv4_192_168 ipv4_192_168_1
+     57 ipv4_192_168_157_1 ipv4_192_168_189 ipv4_192_168_189_1 net_iface_eth0 net_ifa
+     ce_eth1 net_iface_lo nt undefined_domain )
+</pre>
+   <p>This means I can use any of these values to make a decision. For example, this configuration
+
+<pre class="smallexample">     files:
+        August::
+     /cygdrive/c/cfengine/testfile mode=644 action=fixall
+</pre>
+   <p>Means the file operation should be performed if the month is August. Each of the names in the Defined Classes can be used to write a conditional statement. Thus they are meant for decision making.
+
+   <p>Users can also define their own classes which can also be used for decision making.
+
+   <p>Example 6
+This example displays the message "...cfengine classes in action.."  if the compiled_on_cygwin classes is found on your system. CFEngine will check if " compiled_on_cygwin" is part of the defined classes and displays the message accordingly.
+
+<pre class="smallexample">     #cf_ex6.conf
+
+     control:
+
+     alerts:
+
+        compiled_on_cygwin::
+
+            "..cfengine classes in action.."
+</pre>
+   <p>We can have two or more classes as shown in example 7
+
+<pre class="smallexample">     #cf_ex7.conf
+
+     control:
+
+     alerts:
+        compiled_on_cygwin::
+
+            "..cfengine classes in action..windows"
+
+        SuSe::
+
+             "..cfengine classes in action..suse"
+
+</pre>
+   <p>CFEngine will display only the first message since there is no
+<code>SuSE</code> classes in my defined classes above
+
+<div class="node">
+<p><hr>
+<a name="Logical-Operators-and-classes"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#User-Defined-Classes">User Defined Classes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Selection-or-Classes">Selection or Classes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.10 Logical Operators and classes</h3>
+
+<p>Logical operators are used to combine conditional statements or
+classes. For example we can check if a our operating system is windows
+or linux, the operating system is windows and the time is quarter pass
+two and so on.
+
+   <p>CFEngine has the following  logical operators:
+     <ul>
+<li>OR   &mdash; &lsquo;<samp><span class="samp">|</span></samp>&rsquo; or &lsquo;<samp><span class="samp">||</span></samp>&rsquo;
+<li>AND  &mdash; &lsquo;<samp><span class="samp">&amp;</span></samp>&rsquo; or &lsquo;<samp><span class="samp">.</span></samp>&rsquo; (dot)
+<li>Not  &mdash; &lsquo;<samp><span class="samp">!</span></samp>&rsquo;
+<li>Grouping &mdash;  &lsquo;<samp><span class="samp">( )</span></samp>&rsquo;
+</ul>
+
+<pre class="smallexample">     Example 8
+     #cf_ex8.conf
+     control:
+
+     alerts:
+
+       redhat.SuSE::
+
+            "..cfengine classes found.."
+
+</pre>
+   <p>The output is nothing.
+
+   <p>Example 8 shows the combination of two classes redhat and
+SuSe. redhat.SuSe means if the distribution is redhat and suse display
+the "cfengine classes found". Since a distribution cannot be both
+redhat and suse or the two classes are not found in the defined
+classes above nothing is displayed.
+
+<pre class="smallexample">      #cf_ex9.conf
+      control:
+        alerts:
+          compile_on_cygwin|SuSe::
+            "..at least on class is found.."
+</pre>
+   <p>This means if either of the classes <code>compile_on_cygwin</code> or
+<code>SuSE</code> if found on the system, display the message.
+
+<pre class="smallexample">     #cf_ex10.conf
+
+     control:
+
+     alerts:
+
+       !redhat|Hr10::
+
+            "..cfengine classes in action.."
+
+</pre>
+   <p>This means if distribution is not redhat or the hour is 10 am display the results.
+
+<div class="node">
+<p><hr>
+<a name="User-Defined-Classes"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Multiple-Classes">Multiple Classes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Logical-Operators-and-classes">Logical Operators and classes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.11 User Defined Classes</h3>
+
+<p>It is possible to define your own class using the define keyword or classes rule or action type.
+
+<pre class="smallexample">     #cf_ex11.conf   User define classes and sequence
+
+     control:
+
+     classes:
+
+       Check = ( FileExists(/cygdrive/c/cfengine/cf.txt) )
+
+     alerts:
+
+        Check::
+         "yes"
+
+</pre>
+   <p>This example defines the class <code>Check</code> using the classes rule type. The
+method <code>FileExists()</code> is cfengine method which check whether or not a
+file exists. The value of the class <code>Check</code> is true if the file cf.txt
+is found <samp><span class="file">c:\cfengine</span></samp> in directory. The output of the policy will be
+yes if the file is found.
+
+<!-- Example 12 -->
+   <p>Sometimes you may want cfengine to be aware of your user defined class
+before it is used. We do this by using the AddInstallable method.
+
+<pre class="smallexample">     #cf_ex12.conf
+
+     control:
+          #add class that might become define at run time
+           AddInstallable = ( Check )
+     classes:
+       Check = ( FileExists(/cygdrive/c/cfengine/cf.txt) )
+
+     alerts:
+        Check::
+         "yes"
+</pre>
+   <!-- Example 13 -->
+   <p>User defined classes can be define at runtime.
+<pre class="smallexample">     #cf_ex13.conf
+     #User define classes and sequence
+
+     control:
+         actionsequence = ( files )
+         #add class that might become define at run time
+         #the order of usage is not important
+         AddInstallable  = ( RCheck )
+
+     files:
+
+       RCheck::   #RCheck is true
+
+          /cygdrive/c/cfengine/test mode=700 action=fixall
+
+     files:
+           #define stores the outcome of execution
+           #if mode is not 777 then change to 777 and set RCheck to true
+
+           /cygdrive/c/cfengine/test1 mode=777 action=fixall define=RCheck
+
+</pre>
+   <p>This example uses the outcome of results in the second stanza (test1)
+to fix the file permission for the <samp><span class="file">test</span></samp> file. The entire policy
+reads like this, if the file permission for <samp><span class="file">test1</span></samp> file is not <code>777</code>
+and the action is taken to change it to 777 then change the permission
+of the <samp><span class="file">test</span></samp> file to <code>700</code>. The order is not important; the right
+instruction will be executed.
+
+<div class="node">
+<p><hr>
+<a name="Multiple-Classes"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#List">List</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#User-Defined-Classes">User Defined Classes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.12 Multiple Classes</h3>
+
+<pre class="smallexample">     #User define classes
+     control:
+       #add class that might become define at run time
+        actionsequence = ( files )
+        AddInstallable = ( WinXP Indigo )
+
+     classes:
+
+       #list of classes of pcs
+       WinXP  = ( pc121 pc122 linux )
+       #-box2 and -box4 not part
+       Indigo  = ( irix -box2 -box4 )
+      #if file exist
+
+       RCheck = ( FileExists(/cygdrive/c/cfengine/sequence.txt) )
+
+     files:
+
+       RCheck.WinXP::   #RCheck and pc121 or RCheck and p122 or RCheck and linux is true
+
+         /cygdrive/c/cfengine/test.txt mode=600 action=fixall
+
+</pre>
+<div class="node">
+<p><hr>
+<a name="List"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Recursion">Recursion</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Multiple-Classes">Multiple Classes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.13 List</h3>
+
+<p>CFEngine list allows you to specify a list of items which can be
+treated as a single variable. A list can be any set of names, file
+names etc. The example 22 shows how to create a list.
+
+<!-- Example 22 -->
+<pre class="smallexample">     control:
+       alist = ( "one:two:three:four:five" )
+
+     alerts:
+
+      compiled_on_cygwin::
+
+       " $(alist)"
+
+</pre>
+   <p>By default a list should be separated by colon. This can be changed using the Split option.
+
+<!-- Example 23 -->
+<pre class="smallexample">
+     control:
+
+        Split = ( , )
+        alist = ( "one,two,three,four,five" )
+
+     alerts:
+
+      compiled_on_cygwin::
+       " $(alist)"
+
+</pre>
+   <p>The <code>Split</code> method allows us to change the default colon to comma. The
+power of a list is made clear when it is supplied as a parameter to a
+method.
+
+<pre class="smallexample">     control:
+             Split = ( " " )
+             mylist = ( "mark ricky bad-dude" )
+
+     tidy:
+             /cygdrive/c/$(mylist) pattern=*.cfsaved age=1
+
+</pre>
+   <p>In this example cfengine will iterate and substitute mylist with each
+of the elements of in the list. It will then delete all .cfsaved file
+which is a day old in each of the directory.
+
+<div class="node">
+<p><hr>
+<a name="Recursion"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Methods">Methods</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#List">List</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.14 Recursion</h3>
+
+<p>Recursion is used to iterate a directory of files and
+subdirectories. The keyword for recursion is recurse. The value of
+recurse is from <code>0</code> to <code>inf</code> (infinity). Where <code>0</code>
+means stay in the current directory and infinity means everything in
+the current directory including subdirectories.
+
+<!-- Example 24 -->
+<pre class="smallexample">     control:
+      actionsequence = ( files )
+
+     files:
+      /cygdrive/c/cfengineDoc mode=644 action=fixall recurse=inf
+
+</pre>
+   <p class="noindent">This example means change the mode of everything in the directory tree to 644.
+
+<!-- Example 25 -->
+<pre class="smallexample">     control:
+      actionsequence = ( files )
+
+     files:
+
+       /cygdrive/c/cfengineDoc mode=644 action=fixall recurse=1
+
+</pre>
+   <p>This example means change the mode of current directory and subdirectory to 644.
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Methods"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Method-and-return-value">Method and return value</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Recursion">Recursion</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.15 Methods</h3>
+
+<p>A method is a set of instructions that achieve a specific task. It is
+possible to perform a task using cfengine method. Methods in cfengine
+is given by
+
+<pre class="smallexample">     control
+
+      MethodName = ( name )
+      MethodParameters = ( p1 p2 ... )
+
+       <var>method-body</var>
+
+</pre>
+   <p>The <code>MethodName</code> directive is use to specify the method name and the
+<code>MethodParameters</code> specifies the parameters. The number of parameters
+can zero or more. The method body is the usual cfengine policy
+code. It is not different from what we know so far. We begin with a
+simple method that displays a message.
+
+<!-- Example 26 -->
+<pre class="smallexample">     #cf_ex26.conf   User define classes and sequence
+     control:
+
+       MethodName = ( UserClass )
+
+        #add class that might become define at run time
+           AddInstallable = ( Check )
+
+     classes:
+       Check = ( FileExists(/cygdrive/c/cfengine/cf.txt) )
+
+     alerts:
+        Check::
+         "Yes the cf exist"
+       !Check::
+          "No, cf does not exist"
+
+</pre>
+   <p>This method checks if the file cf exist and display a message. The
+method is called <code>UserClass</code> and has no parameter. In cfengine it is
+required that a method is placed in a special directory called
+modules. The default location of this directory is
+<samp><span class="file">c:\var\cfengine\modules</span></samp>. You should copy the <samp><span class="file">cf_ex26.conf</span></samp> file into
+the modules folder. The next step is to create a method call
+configuration file to make use of the method as in example 27.
+
+<!-- Example 27 -->
+<pre class="smallexample">     #cf_ex27.conf
+
+     control:
+      actionsequence = ( methods )
+
+     methods:
+       UserClass(void)
+       action=cf_ex26.conf #include the method here
+       returnvars=null  #no return value
+       server=localhost #run the method on local machine
+
+</pre>
+   <p>The method call has the methods rule type. It is used to call the
+method. Under methods rule type we call the method by name. Since our
+method has no parameters we supply void as parameter entry. The action
+directive now specifies which file contains the method. The <code>returnvars</code>
+allows the return value to be store and reuse it later. Our method has
+no return type so the value of return type is null. The server
+attribute or option allows you to specify which host will run the
+method. In this example the local host will run the method.
+
+   <p>The next example shows how to use parameter in methods.
+
+   <p>Example 28
+<pre class="smallexample">     #cf_ex28.conf   User define classes and sequence
+
+     control:
+
+       MethodName = ( UserClass )
+       MethodParameters = ( filename )
+
+        #add class that might become define at run time
+
+           AddInstallable = ( Check )
+
+     classes:
+       Check = ( FileExists("/cygdrive/c/cfengine/$(filename)") )
+
+     alerts:
+        Check::
+         "Yes the cf exists"
+       !Check::
+          "No, cf does not exists"
+
+</pre>
+   <p>This method performs the same task as example 26 however the file name
+will not be fix but vary. The name will now be supplied at method
+call. Example 29 is the method call for example 28. Note that the file
+path is in double quote.
+
+<!-- Example 29 -->
+<pre class="smallexample">
+     control:
+      actionsequence = ( methods )
+
+     methods:
+      UserClass(cf)
+      action=cf_ex28.conf
+      returnvars=null
+      server=localhost
+
+</pre>
+   <p>This example calls the method UserClass and supply the parameter
+cf. The cf will replace the variable or parameter <samp><span class="file">filename</span></samp> so that
+the file path will <samp><span class="file">c:\cfengine\cf</span></samp>. As usual the action option
+specifies the file which contains the method. The method file must be
+located in the modules directory. Note that the method call
+configuration file should not be in the modules directory.
+
+<div class="node">
+<p><hr>
+<a name="Method-and-return-value"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#CFEngine-Built-in-Methods">CFEngine Built in Methods</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Methods">Methods</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.16 Method and return value</h3>
+
+<p>A method can return a value which could be used for further
+operation. In this case the return value will not be null. Example 30
+illustrates how this could be done.
+
+<!-- Example 30 -->
+<pre class="smallexample">     #cf_ex30.conf   User define classes and sequence
+
+     control:
+       MethodName = ( ReturnName )
+       MethodParameters = ( filename )
+
+     classes:
+
+        every = ( any )
+
+     alerts:
+       every::
+        ReturnVariables("$(filename)")
+
+</pre>
+   <p>This method just accepts a file name and returns the name of the
+file. The alerts rule type is needed to return the results. The method
+call for example 30 is shown below.
+
+<!-- Example 31 -->
+<pre class="smallexample">
+     control:
+      actionsequence = ( methods )
+
+     methods:
+      ReturnName(cf)
+      action=cf_ex30.conf
+      returnvars=results
+      server=localhost
+
+     classes:
+      every = ( any )
+
+     alerts:
+           every::
+            "The file name is $(ReturnName.results)"
+
+</pre>
+   <p>Here the returnvars value is results. This means the file name being
+returned by the method will be stored in the variable results. We then
+use the alerts command to display the file name. The results variable
+is accessed using the name of the method name.  Example 32 This
+example shows how to use more than one parameters in cfengine method.
+
+<pre class="smallexample">     #cf_ex32.conf User define classes and sequence
+
+     control:
+       actionsequence = ( editfiles )
+       MethodName = ( EditMethod )
+       MethodParameters = ( filename data )
+
+     editfiles:
+
+      {  /cygdrive/c/cfengine/$(filename)
+         AppendIfNoSuchLine
+          "$(data)"
+      }
+
+     classes:
+        every = ( any )
+
+     alerts:
+       every::
+        ReturnVariables("The file name is $(filename) and was editted with $(data)")
+
+</pre>
+   <p>Example 33 calls the method in example 32.
+
+   <p>Example 33
+
+<pre class="smallexample">     control:
+      actionsequence = ( methods )
+     methods:
+      EditMethod(cf,"insert data here")
+      action=cf_ex32.conf
+      returnvars=results
+      server=localhost
+     classes:
+      every = ( any )
+     alerts:
+           every::
+            "The file name is $(EditMethod.results)"
+</pre>
+   <div class="node">
+<p><hr>
+<a name="CFEngine-Built-in-Methods"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#List-and-methods">List and methods</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Method-and-return-value">Method and return value</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.17 CFEngine Built in Methods</h3>
+
+<p>CFEngine provides a number of built-in functions for evaluating
+classes, based on file tests and perform other functions. Using these
+built-in functions is quicker than calling the shell test function.
+
+     <dl>
+<dt>&lsquo;<samp><span class="samp">AccessedBefore(f1,f2)</span></samp>&rsquo;<dd>    True if file 1 was accessed more recently than file 2 (UNIX atime)
+<br><dt>&lsquo;<samp><span class="samp">ChangedBefore(f1,f2)</span></samp>&rsquo;<dd>    True if file 1's attributes were changed in any way more recently than file 2's (UNIX ctime)
+<br><dt>&lsquo;<samp><span class="samp">ClassMatch(regexp)</span></samp>&rsquo;<dd>    True if the quoted regular expression matches one of the currently defined classes. It is wise to place ClassMatch at the end of your parsing in order to capture as many of the user-defined classes as possible.
+     <pre class="smallexample">                        classes:
+                           userdef = ( ClassMatch(.*linux.*) )
+</pre>
+     <br><dt>&lsquo;<samp><span class="samp">FileExists(file)</span></samp>&rsquo;<dd>    True if the named file object (file/directory or link) exists.
+<br><dt>&lsquo;<samp><span class="samp">GroupExists(groupname|gid)</span></samp>&rsquo;<dd>    True if the groupname or group id is registered on the system.
+<br><dt>&lsquo;<samp><span class="samp">HostRange(basename,start-stop)</span></samp>&rsquo;<dd>    True if the current relative domain name begins with basename and ends with an integer between start and stop. Note well: matching is case insensitive (both hostname and basename are converted to all lower case for comparison.)
+<br><dt>&lsquo;<samp><span class="samp">IsDefined(variable-id)</span></samp>&rsquo;<dd>    True if the named variable is defined. Note well: use the variable name, not its contents (that is, IsDefined(var), and not <code>IsDefined(${var})</code>)
+<br><dt>&lsquo;<samp><span class="samp">IsDir(f)</span></samp>&rsquo;<dd>    True if the file f is a directory
+<br><dt>&lsquo;<samp><span class="samp">IsLink(f)</span></samp>&rsquo;<dd>    True if the file f is a symbolic link
+<br><dt>&lsquo;<samp><span class="samp">IsPlain(f)</span></samp>&rsquo;<dd>    True if the file f is a plain file
+<br><dt>&lsquo;<samp><span class="samp">IsNewerThan(f1,f2)</span></samp>&rsquo;<dd>    True if file 2 was modified more recently than file 1 (UNIX mtime)
+<br><dt>&lsquo;<samp><span class="samp">IPRange(address-range)</span></samp>&rsquo;<dd>    True if the current host lies within the specified IP range
+<br><dt>&lsquo;<samp><span class="samp">PrepModule(module,arg1 arg2...)</span></samp>&rsquo;<dd>    True if the named module exists and can be executed. The module is assumed to follow the standard programming interface for modules (see Writing plugin modules in tutorial). Unlike actionsequence modules, these modules are evaluated immediately on parsing. Note that the module should be specified relative to the authorized module directory.
+
+     <br><dt>&lsquo;<samp><span class="samp">Regcmp(regexp,string or list separated string)</span></samp>&rsquo;<dd>    True if the string matched the regular expression regexp.
+<br><dt>&lsquo;<samp><span class="samp">ReturnsZero(command)</span></samp>&rsquo;<dd>    True if the named shell command returns with exit code zero (success). The command is executed without a shell wrapper.
+<br><dt>&lsquo;<samp><span class="samp">ReturnsZeroShell(command)</span></samp>&rsquo;<dd>    True if the named shell command returns with exit code zero (success) when executed in the environment of a shell wrapper.
+
+     <br><dt>&lsquo;<samp><span class="samp">Strcmp(s1,s2)</span></samp>&rsquo;<dd>    True if the string s1 exactly matches s2
+
+     <br><dt>&lsquo;<samp><span class="samp">UserExists(username|uid)</span></samp>&rsquo;<dd>    True if the username or user id is registered on the system (this does not imply that the user can log in or has a home directory).
+
+     <br><dt>&lsquo;<samp><span class="samp">IsGreaterThan(s1,s2)</span></samp>&rsquo;<dd>    Returns true if the value of s1 is greater than the value of s2. Note that, if the strings have numerical values, a numerical comparison is performed, otherwise a string comparison is used.
+
+     <br><dt>&lsquo;<samp><span class="samp">IsLessThan(s1,s2)</span></samp>&rsquo;<dd>    Returns true if the value of s1 is less than the value of s2. Note that, if the strings have numerical values, a numerical comparison is performed, otherwise a string comparison is used.
+</dl>
+
+<pre class="smallexample">     Example
+
+     control:
+
+       actionsequence = ( files )
+       a = ( 2.12 )
+       b = ( 2.11 )
+
+     classes:
+
+       lt = ( IsLessThan(${a},${b}) )
+       gt = ( IsGreaterThan(${a},${b}) )
+
+     alerts:
+       lt:: "$(a) LESS THAN $(b)"
+       gt:: "$(a) GREATER THAN $(b)"
+
+</pre>
+     <dl>
+<dt>&lsquo;<samp><span class="samp">ExecResult(command)</span></samp>&rsquo;<dd>Executes the named command without a shell-wrapper and inserts the output into the variable. Note that, when this is used in cfengine built-in list variables, any spaces are interpreted as list separators. In other lists, normal rules for iteration apply.
+
+     <br><dt>&lsquo;<samp><span class="samp">ExecShellResult(command)</span></samp>&rsquo;<dd>    Executes the named command with a shell-wrapper and inserts the output into the variable. Note that, when this is used in cfengine built-in list variables, any spaces are interpreted as list separators. In other lists, normal rules for iteration apply.
+
+     <br><dt>&lsquo;<samp><span class="samp">RandomInt(a,b)</span></samp>&rsquo;<dd>    Generate a random integer between a and b.
+
+     <br><dt>&lsquo;<samp><span class="samp">ReadArray(filename,fileformat,separator,comment,Max number of bytes)</span></samp>&rsquo;<dd>    Reads up to a maximum number of bytes from a properly formatted file into a one-dimensional associated array. File formats are:
+    autokey
+        If this format is specified, ReadArray tries to interpret the file as a table of items separated with the separator character. Blank lines and comments (to end of line) are ignored. Items are keyed numerically starting from 1 to the maximum number in the file. The newline $(n) is always considered to be a separator, no matter what the current separator is.
+    textkey
+        If this format is specified, ReadArray tries to interpret the file as a list of lines of the form:
+                         key,value
+<br><dt>&lsquo;<samp><span class="samp">ReadFile(filename,Max number of bytes)</span></samp>&rsquo;<dd>    Read a maximum number of bytes from a file.
+<br><dt>&lsquo;<samp><span class="samp">ReadTable(filename,fileformat,separator,comment,Max number of bytes)</span></samp>&rsquo;<dd>    Reads up to a maximum number of bytes from a properly formatted file into a two-dimensional associated array.
+    autokey
+        If this format is specified, ReadArray tries to interpret the file as a table of items separated with the separator character. Blank lines and comments (to end of line) are ignored. Items are keyed numerically starting from 1 to the maximum number in the file. Any lines that do not contain the correct number of separators cause the function to fail without making any assignment.
+    textkey
+        If this format is specified, ReadArray tries to interpret the file as a list of lines of the form:
+                         key1,key2,value1
+                         key3,key4,value2
+              This variable would then be references as $(table[key1][key2]).
+<br><dt>&lsquo;<samp><span class="samp">ReadList(filename,fileformat,comment,Max number of bytes)</span></samp>&rsquo;<dd>    Reads up to a maximum number of bytes from a properly formatted file into a listvariable. File formats are:
+    lines
+        If this format is specified, ReadList tries to interpret the file as a list of items on separate lines. The value returned is a list formatted by the Split character.
+                hosts = ( ReadList(/var/cfengine/inputs/datafile,lines,#,1000) )
+
+     <br><dt>&lsquo;<samp><span class="samp">ReadTCP(host/IP,portnumber,send string,Max number of bytes)</span></samp>&rsquo;<dd>
+Reads up to a maximum number of bytes from a TCP service. Can be used
+to test whether certain services are responding to queries. It is
+recommended that this be used primarily to check services running on
+localhost. Bear in mind that this clause, executed on 100 hosts will
+produce the effect of a distributed denial of service attack, so the
+probe should be restricted to a single representative tester-host. For
+example:
+
+   </dl>
+
+<div class="node">
+<p><hr>
+<a name="List-and-methods"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CFEngine-Built-in-Methods">CFEngine Built in Methods</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Declarative-language">Declarative language</a>
+
+</div>
+
+<h3 class="section">1.18 List and methods</h3>
+
+<p>What makes cfengine method powerful is the iteration. It is possible to iterate over a list using method. When a list is passed to a method cfengine will automatically iterate over the list.
+
+   <p>Example 34
+<pre class="smallexample">     #cf_ex34.conf
+
+     control:
+
+       MethodName = ( ReturnName )
+       MethodParameters = ( filename )
+
+     classes:
+        every = ( any )
+
+     alerts:
+       every::
+        ReturnVariables("$(filename)")
+</pre>
+   <p>We call the above method with example 35
+
+   <p>Example 35
+
+<pre class="smallexample">     control:
+
+      actionsequence = ( methods )
+      alist = ( one:two:three:four:five )
+
+     methods:
+
+      ReturnName($(alist))
+      action=cf_ex24.conf
+      returnvars=results
+      server=localhost
+
+     classes:
+
+      every = ( any )
+
+     alerts:
+
+       every::
+        "The file name is $(ReturnName.results)"
+
+</pre>
+   <p><a name="Contents">
+
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">CFEngine Language Fundamentals</a>
+<li><a name="toc_Declarative-language" href="#Declarative-language">1 Declarative language</a>
+<ul>
+<li><a href="#CFEngine-Components">1.1 CFEngine Components</a>
+<li><a href="#Installation">1.2 Installation</a>
+<li><a href="#The-structure-of-cfengine-declarative-language">1.3 The structure of cfengine declarative language</a>
+<li><a href="#Debugging-Cfengine">1.4 Debugging CFEngine</a>
+<li><a href="#Sequenece-vrs-order">1.5 Sequence vrs order</a>
+<li><a href="#CFEngine-Variables">1.6 CFEngine Variables</a>
+<li><a href="#Input_002foutput">1.7 Input/output</a>
+<li><a href="#Escape-sequence">1.8 Escape Sequence</a>
+<li><a href="#Selection-or-Classes">1.9 Selection or Classes</a>
+<li><a href="#Logical-Operators-and-classes">1.10 Logical Operators and classes</a>
+<li><a href="#User-Defined-Classes">1.11 User Defined Classes</a>
+<li><a href="#Multiple-Classes">1.12 Multiple Classes</a>
+<li><a href="#List">1.13 List</a>
+<li><a href="#Recursion">1.14 Recursion</a>
+<li><a href="#Methods">1.15 Methods</a>
+<li><a href="#Method-and-return-value">1.16 Method and return value</a>
+<li><a href="#CFEngine-Built-in-Methods">1.17 CFEngine Built in Methods</a>
+<li><a href="#List-and-methods">1.18 List and methods</a>
+</li></ul>
+</li></ul>
+</div>
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+

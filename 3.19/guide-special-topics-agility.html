@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.19  Documentation - Agility</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/guide/special-topics/agility.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-guide-special-topics-agility.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <link rel="canonical" href="https://docs.cfengine.com/latest/guide-special-topics-agility.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='assets/global-6a0b9da22cb0d4bd16e0e337e3484c43.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Agility";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/">Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/" selected>Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a><ul class="level2"><li><a href="guide-special-topics-adopting-cfengine.html">Adopting CFEngine</a></li><li><a class="active" href="guide-special-topics-agility.html">Agility</a></li><li><a href="guide-special-topics-application-management.html">Application Management</a></li><li><a href="guide-special-topics-build-deploy-manage-audit.html">Build Deploy Manage Audit</a></li><li><a href="guide-special-topics-change-management.html">Change Management</a></li><li><a href="guide-special-topics-cloud-computing.html">Cloud Computing</a></li><li><a href="guide-special-topics-content-driven-policy.html">Content Driven Policy</a></li><li><a href="guide-special-topics-devops.html">Devops</a></li><li><a href="guide-special-topics-distributed-scheduling.html">Distributed Scheduling</a></li><li><a href="guide-special-topics-file-content.html">File Content</a></li><li><a href="guide-special-topics-glossary.html">Glossary</a></li><li><a href="guide-special-topics-hierarchies.html">Hierarchies</a></li><li><a href="guide-special-topics-itil.html">ITIL</a></li><li><a href="guide-special-topics-iteration.html">Iteration (Loops)</a></li><li><a href="guide-special-topics-modularity.html">Modularity and Orchestrating System Policy</a></li><li><a href="guide-special-topics-orchestration.html">Orchestration</a></li><li><a href="guide-special-topics-stigs.html">STIGs</a></li><li><a href="guide-special-topics-teamwork.html">Teamwork</a></li><li><a href="guide-special-topics-open-nebula.html">Using CFEngine with Open Nebula</a></li></ul></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-special-topics.html">Special Topics</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Agility
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h1 id="understanding-agility">Understanding Agility</h1>
+<p>We intuitively recognize agility as the capability to respond rapidly enough and
+flexibly enough to a difficult challenge. If we imagine an animal surviving in
+the wild, a climber on a rock-face or a wrestler engaged in combat, we identify
+the skills of anticipation, speed of response and the ability to adapt or bend
+without breaking to meet the challenges.</p>
+
+<ul>
+<li>Anticipate.</li>
+<li>Act.</li>
+<li>Adapt.</li>
+</ul>
+
+<p>In infrastructure management, agility represents the need to handle changing
+demand for service, to repair an absence of service, and to improve and deploy
+new services in response to changes from users and market requirements. It is
+tied to economic, business or work-related imperatives by the need to maintain a
+competitive lead.</p>
+
+<p>The compelling event that our system must respond to might represent danger, or
+merely a self-imposed deadline. In either case, there is generally a penalty
+associated with a lack of agility: a blow, a fall or a loss.</p>
+
+<ul>
+<li>What make agility possible?</li>
+<li>The capacity of a system</li>
+<li>Speed</li>
+<li>Precision</li>
+<li>Comprehension</li>
+<li>Efficiency</li>
+</ul>
+<h2 id="what-make-agility-possible">What make agility possible?</h2>
+<p>To understand agility, we have to understand time and the capacity for change.
+Agility is a relative concept: it&#39;s about adapting quickly enough, in the right
+context, with the right measure and in the right way. Below, we&#39;ll try to gain
+an engineering perspective on agility to see what enables it and what throttles
+it.</p>
+
+<p>To respond to a challenge there are four stages that need attention:</p>
+
+<ul>
+<li>To comprehend the challenge.</li>
+<li>To solve the challenge.</li>
+<li>To respond to the challenge.</li>
+<li>To confirm or verify the response.</li>
+</ul>
+
+<p>Each of these phases takes actual clock-time and requires a certain flexibility.
+Our goal is to keep these phases simple and therefore cheap for the long-term.
+Affording the time and flexibility needed is the key to being agile. Technology
+can help with this, if we adopt sound practices.</p>
+
+<p>Intuitively, we understand agility to be related to our capacity to respond to a
+situation. Let&#39;s try to pin this idea down more precisely.</p>
+<h2 id="the-capacity-of-a-system">The capacity of a system</h2>
+<p>The capacity of a system is defined to be its maximum rate of change. Most
+often, this refers to speed of the system response to a single request1.</p>
+
+<p>In engineering, capacity is measured in changes per second, so it represents the
+maximum speed of a system within a single thread of activity2.</p>
+<h2 id="speed">Speed</h2>
+<p>Speed is the rate at which change takes place. For a configuration tool like
+CFEngine, speed can be measured either as</p>
+
+<ul>
+<li><p>Clock speed</p>
+
+<p>The actual elapsed wall-clock time-rate at which work gets done, including
+any breaks and pauses in the schedule.</p>
+
+<p>This depends on how often checks are made, or the interval between them,
+e.g. in CFEngine, the default schedule is to verify promises every five
+minutes.</p></li>
+<li><p>System speed</p>
+
+<p>The average speed of the system when it is actually busy working on a
+problem, excluding breaks and pauses. For example, once CFEngine has been
+scheduled at the end of a five minute interval, it might take a few seconds
+to make necessary changes.</p></li>
+</ul>
+
+<p>Engineers can try to define an engineering scale of agility as the ratio of
+available speed to required speed and ratio of number ways a system can be
+changed to the number of ways imperatives require us to change.</p>
+
+<p>Agility is proportional to both how much speed we can muster compared to what is
+required, and the number of change-capabilities we possess, compared to what we
+need to meet a challenge. In other words: how well equipped are we? As
+engineers, we could write something like this:</p>
+<div class="highlight"><pre><code class="text">                Available speed under control        Changes available
+    Agility =~  -----------------------------  *  -----------------------
+                      Required speed                 Changes Required
+</code></pre>
+</div>
+
+<p>Although such a scale might be hard to measure and follow in practice, the
+definition makes simple engineering sense3, and brings some insight into what we
+need to think about. What it suggests is that agility is a combination of speed
+and precision.</p>
+
+<p>What is required speed? It is is the rate of change we have to be able to enact
+in order to achieve and maintain a state (keep a promise) that is aligned with
+our intent. This requires a dependence on technology and human processes.</p>
+
+<p>The weakest link in any chain of dependencies limits the speed. The weakest link
+might be a human who doesn&#39;t understand what to do, or a broken wire or a
+misconfigured switch, so there are many possible failure modes for agility. An
+organization is an information rich society with complex interplays between Man
+and Machine; agility challenges us to think about these weakest links and try to
+bolster them with CFEngine&#39;s technology.</p>
+
+<p>For example:</p>
+
+<ul>
+<li><p>If we think in terms of services, it is the Service Level you have to achieve
+in order to comply with a Service Level Agreement.</p></li>
+<li><p>If we think of a support ticket, it is the speed we have to work at in order
+to keep the impact of an unpredicted change within acceptable levels.</p></li>
+</ul>
+
+<p>What we call /acceptable/ is a subjective judgement, i.e. a matter for policy to
+decide. So there are many uncertainties and relativisms in such definitions. It
+would be inconceivable to claim any kind of industry standard for these.</p>
+
+<p><img src="./agility.png" alt="How agility depends on technology measures"></p>
+
+<p>We can write some scaling laws for the dependencies of agility to see where the
+failure modes might arise.</p>
+
+<p>The speed available to meet a challenge is (on average) the maximum speed we can
+reliably maintain over time divided by the number of challenges we have to share
+between.</p>
+<div class="highlight"><pre><code class="text">                                Expected capacity * reliability
+    Average available speed =~  -------------------------------
+                                    Consumers or challenges
+</code></pre>
+</div>
+
+<p>This expression says that the rate at which we get work done on average depends
+no only on how we share maximum capacity amongst a number of different
+consumers, clients, processes, etc, but also on how much of the time this
+capacity is fully available, perhaps because systems are down or unavailable.</p>
+
+<p>The appearance of reliability in this expression therefore tells us that
+maintenance of the system, and anticipation of failure will play a key role in
+agility. Remarkably this is usually unexpected for most practitioners, and most
+of system planning goes into first time deployment, rather than maintaining
+operational state.</p>
+<h2 id="precision">Precision</h2>
+<p>Acting quickly is not enough: we also need to be accurate in responding to
+change[<sup>4].</sup> We need to be able to:</p>
+
+<ul>
+<li><p>Model the desired outcome accurately in terms of universal policy coordinates:
+<strong>Why</strong>, <strong>When</strong>, <strong>Where</strong>, <strong>What</strong>, <strong>How</strong>.</p></li>
+<li><p>Maximize the chance that the promised outcome will be achieved.</p></li>
+</ul>
+
+<p>Precision is maximized when:</p>
+
+<ul>
+<li><p>Changes are `precise&#39;, i.e. they can be made at a highly granular level,
+without disturbing areas that are not relevant (few side-effects).</p></li>
+<li><p>Policy is able to model or describe the desired state accurately, i.e. within
+the relevant area, the state is within acceptable tolerances.</p></li>
+<li><p>If any assumptions are hidden, they are describable in terms of the model, not
+determined by the limitations of the software5.</p></li>
+<li><p>The agent executes the details of the model quickly and verifiably, in a
+partially unpredictable environment, i.e. it should be fault tolerant.</p></li>
+<li><p>If the model cannot be implemented, it is possible to determine why and decide
+whether the problem lies in an incorrect assumption or a flaw in the
+implementation.</p></li>
+</ul>
+
+<p>CFEngine is a fault tolerant system – it continues to work on what it can even
+when some parts of its model don&#39;t work out as expected[<sup>6].</sup></p>
+
+<p>Next: Efficiency, Previous: Precision, Up: Understanding Agility
+1.5 Comprehension</p>
+
+<p>The next challenge is concerns a human limitation. One of the greatest challenges in any organization lies in comprehending the system.</p>
+
+<p>Comprehensibility increases if something is predictable, or steady in its behaviour, but it decreases in proportion to the number of things we need to think about – which includes the many different contexts such as environments, or groups of machines with different purposes or profiles.</p>
+<div class="highlight"><pre><code class="text">                    Predictability (Reliability)    Predictability
+</code></pre>
+</div>
+
+<p>Comprehensibility =~  ---------------------------- = ----------------
+                                 Contexts                 Diversity</p>
+
+<p>Our ability to comprehend behaviour depends on how predictable it is, i.e. how well it meets our expectations. For technology, we expect behaviour to be as close as possible on our intentions. CFEngine&#39;s maintenance of promises ensures that this is done with best possible effort and a rapid cycle of checking.</p>
+
+<p>To keep the number of contexts to a minimum, CFEngine avoids mixing up what policy is being expressed with how the promises are kept. It uses a declarative language to separate the what from the how. This allows ordinary users to see what was intended without having to know the meaning of how, as was the case when scripting was used to configure systems.</p>
+
+<p>Previous: Comprehension, Up: Understanding Agility
+1.6 Efficiency</p>
+
+<p>Finally, if we think about the efficiency of a configuration, which is another way of estimating its simplicity, we are interested in how much work it takes to represent our intentions. There are two ways we can think about efficiency: the efficiency of the automated process and the human efficiency in deploying it.</p>
+
+<p>If the technology has a high overhead, the cost of maintaining change is high and efficiency is low:</p>
+
+<p>The efficiency of the technology decreases with the more resources it uses, e.g. like memory and CPU. Resources used to run the technology itself are pure overhead and take away from the real work of your system.</p>
+<div class="highlight"><pre><code class="text">                                  Resources used
+     Resource Efficiency =~  1 -  ---------------
+                                  Total resources
+</code></pre>
+</div>
+
+<p>It is a design goal of CFEngine to maintain minimal overhead in all situations. The second aspect of efficiency is how much planning or rule-making is needed to manage the relevant issues.</p>
+
+<p>The efficiency of a model decreases when you put more effort into managing a certain number of things. If you can manage a large number of things with a few simple constraints, that is efficient.</p>
+<div class="highlight"><pre><code class="text">                          Number of objects affected
+  Model Efficiency =~  -------------------------------
+                       Number of rules and constraints
+</code></pre>
+</div>
+
+<p>General patterns play a role too in simplifying, because the reduce the number of special rules and constraints down to fewer more generic rules. If we make good use of patterns, we can make few rules that cover many cases. If there are no discernible patterns, every special case is a costly exception. This affects not just the technology cost, but also the cognitive cost (i.e. the comprehensibility).</p>
+
+<p>Efficiency therefore plays a role in agility, because it affects the cost of change. Greater efficiency generally means greater speed, and more greater likelihood for precision.</p>
+
+<p>Next: Agility in your work, Previous: Understanding Agility, Up: Top
+2 Aspects of CFEngine that bring agility</p>
+
+<p>We can now summarize some qualities of CFEngine that favour agility:</p>
+
+<ul>
+<li><p>Ability to express clear intentions about desired outcome (comprehension).</p></li>
+<li><p>Availability of insight into system performance and state (comprehension).</p></li>
+<li><p>Ability to manage large numbers of hosts and resources with a few generic
+patterns (efficiency).</p></li>
+<li><p>Ability to bundle related details into simple containers (comprehension
+without loss of adaptability).</p></li>
+<li><p>Ability to accurately customize policy down to a low level without programming
+(adaptability).</p></li>
+<li><p>Ability to recover quickly from faults and failures. The default, parallelized
+execution framework verifies promises every 5 minutes for rapid fault
+detection and change deployment (clock speed)7 .</p></li>
+<li><p>A quick system monitoring/sampling rate – every 2.5 minutes (Nyquist
+frequency), for automated hands-free response to errors.</p></li>
+<li><p>Ability to recover cheaply. The lightweight resource footprint of CFEngine
+that consumes few system resources required for actual business (system speed
+– low overhead, maximum capacity).</p></li>
+<li><p>Ability to increase number of clients without significant penalty (scalability
+and easy increase of capacity).</p></li>
+<li><p>A single framework for all devices and operating systems (ease of migrating
+from one platform to another).</p></li>
+<li><p>What agility means in different environments</p></li>
+<li><p>Separating What from How</p></li>
+<li><p>Packaging limits agility</p></li>
+<li><p>How abstraction improves agility</p></li>
+<li><p>Increasing system capacity - by scaling</p></li>
+</ul>
+<h2 id="what-agility-means-in-different-environments">What agility means in different environments</h2>
+<p>Let&#39;s examine some example cases where agility plays a role. Agility only has
+meaning relative to an environment, so in the following sections, we cite the
+remarks of CFEngine users (in quotes), and their example environments.</p>
+
+<p>Users&#39; expectations for agility can differ dramatically in the present; but if
+we think just a few years down the line, and follow the trends, it seems clear
+that limber systems must prevail in IT&#39;s evolutionary jungle.</p>
+
+<ul>
+<li>Desktop management</li>
+<li>Web shops</li>
+<li>Cloud providers</li>
+<li>High Performance Computing</li>
+<li>Government</li>
+<li>Finance</li>
+<li>Manufacturing</li>
+</ul>
+<h3 id="desktop-management">Desktop management</h3>
+<p>&quot;The desktop space can be a very volatile environment, with multiple platforms.&quot;</p>
+
+<p>Speed:</p>
+<div class="highlight"><pre><code class="text">Speed is essential when there is a need to respond to a security threat that
+affects all of the desktop systems; e.g. when dealing with malware that
+requires the distribution of updated virus.dat files, etc. CFEngine can be
+very helpful by automating the process of distributing and restarting the
+application responsible for virus detection and mitigation. Systems that
+have been breached, need to be returned to known and secure state quickly to
+avoid loss. CFEngine can quickly detect and correct host based intrusions
+using file-scanning techniques and can secure hosts for examination, or just
+repair them quickly.
+
+Another case for agility lies in user request processing. For example, when
+a new user joins a workplace and needs resources such as desktop, laptop,
+phone, Internet connection, VPN connection, VM instances, etc. Speed is of
+the essence to minimize employee downtime.
+</code></pre>
+</div>
+
+<p>Precision:</p>
+<div class="highlight"><pre><code class="text">Desktop environments can involve many different platforms: Windows, multiple
+flavours of Linux and Macintosh, etc. A uniform low-cost way of
+`provisioning&#39; and maintaining all of these, as well as responding to common
+threats is of significant value.
+
+Precision is important to ensure that the resources made available are
+indeed the correct ones. Inaccuracy can be a potential security issue, or
+merely a productivity question.
+
+Precision also comes into play when an enterprise rolls out new patches or
+productivity upgrades. These upgrades need to be uniformly and precisely
+distributed to all of the desktop systems during a given change window. By
+design, desktop clients running CFEngine automatically check for changes in
+system state and can precisely propagate desired state. In the case of
+system restoration due to corruption or hardware failure, CFEngine can
+greatly reduce the time needed to return to the most current enterprise
+build.
+</code></pre>
+</div>
+<h3 id="web-shops">Web shops</h3>
+<p>Modern web-based companies often base their entire financial operations around
+an active web site. Down-time of the web service is mission critical.</p>
+
+<p>Speed:</p>
+<div class="highlight"><pre><code class="text">The frequency of maintenance is not usually critical in web shops, since
+configuration changes can be planned to occur over hours rather than
+minutes. During software updates and system repairs, however, speed and
+orchestration are issues, as time lost during upgrades is often revenue
+lost, and a lack of coordination of multiple parts could cause effective
+downtime.
+
+It is therefore easy to scale the management of a web service, as change is
+rarely considered to be time-critical.
+
+Resource availability for the web service is an issue on busy web servers,
+however web services are typically quite slow already and it is easy to load
+balance a web service, so resource efficiency of the management software is
+not usually considered a high priority, until the possible savings become
+significant with thousands of hosts.
+
+Credit card information is subject to PCI-DSS regulation and requires a
+continuous verification for auditing purposes, but these systems are often
+separated from the main web service. Speed of execution can be seen as an
+advantage by some auditors where repairs to security matters and detection
+of breaches are carefully monitored.
+</code></pre>
+</div>
+
+<p>Precision:</p>
+<div class="highlight"><pre><code class="text">The level of customization in a web shop could be quite high, as there is a
+stack of interdependent services including databases and name services that
+have to work seamlessly, and the rate of deployment of new versions of the
+software might be relatively high.
+
+Customization and individuality is a large part of a website&#39;s business
+competitiveness. Maintaining precise
+</code></pre>
+</div>
+<h3 id="cloud-providers">Cloud providers</h3>
+<p>Speed:</p>
+<div class="highlight"><pre><code class="text">The cloud was designed for shorter time-scales, and relatively quick
+turnover of needs. That suggests that configuration will change quite often.
+For Infrastructure-as-a-Service providers and consumers, set up and
+tear-down rates are quite high so efficient and speedy configuration is
+imperative.
+</code></pre>
+</div>
+
+<p>Precision:</p>
+<div class="highlight"><pre><code class="text">For Software and Platform as a service providers, stability, high
+performance and regulation are key issues, and scaling up and down for
+demand is probably the fastest rate of change.
+</code></pre>
+</div>
+<h3 id="high-performance-computing">High Performance Computing</h3>
+<p>High Performance clusters are typically found in the oil and gas industry, in
+movie, financial, weather and aviation industries, and any other modelling
+applications where raw computation is used to crunch numbers.</p>
+
+<p>Speed:</p>
+<div class="highlight"><pre><code class="text">The lightweight footprint of CFEngine is a major benefit here, as every CPU
+cycle and megabyte of memory is precious, so workflow is not disrupted.
+
+&quot;A single node in the compute grid being out of sync with the others can
+cause the entire grid to cause failed jobs or otherwise introduce
+unpredictability into the environment, as it may produce results that differ
+from its peers. Thus it is imperative that repairs to an incorrect state
+happen as soon as possible, to minimize the impact of these issues.&quot;
+</code></pre>
+</div>
+
+<p>Precision:</p>
+<div class="highlight"><pre><code class="text">&quot;Precision is exquisitely important in an HPC grid. When making a
+configuration change, due to the homogeneity of the environment, small
+changes can have enormous impacts due to the quantity of affected systems. I
+liken this to the &quot;monoculture&quot; problem in replanted forests – everything is
+the same, so what would ordinarily be a small, easily-contained problem like
+a fungus outbreak, quickly spreads into an uncontrollable disaster. Thus,
+with HPC systems it is imperative that any changes deployed are precise, to
+ensure that no unintended consequences will occur. This is clearly directly
+related to comprehensibility of the environment – it is difficult or
+impossible to make a precise change when you don&#39;t fully comprehend the
+environment.&quot;
+</code></pre>
+</div>
+<h3 id="government">Government</h3>
+<p>Speed:</p>
+<div class="highlight"><pre><code class="text">Government is not known for speed.
+</code></pre>
+</div>
+
+<p>Precision:</p>
+<div class="highlight"><pre><code class="text">&quot;Government systems are reviewed and audited under FISMA and so one has
+often thought in terms of the ability to reduce complexity to make the
+problem manageable. Government typically wants the one-size-fits-all
+solution to system management and could benefit from something that can
+manage complexity and diversity while providing some central control (I bet
+you hate that word). The only thing we might have in common with finance is
+auditing but I&#39;m sure the methods and goals are completely different.
+Finance is big money trying to make more big money. Government is focused
+more on compliance with its own regulations.&quot;
+</code></pre>
+</div>
+<h3 id="finance">Finance</h3>
+<p>Speed:</p>
+<div class="highlight"><pre><code class="text">One of the key factors in finance is liability. Fear of error, has led to
+very slow processing of change.
+
+High availability in CFEngine is used for continuous auditing and security.
+Passing regulatory frameworks like SOX, SAS-70, ISO 20k, etc can depend on
+this non-intrusive availability. Liability is a major concern and
+significant levels of approval are generally required to make changes, with
+tracking of individual responsibility. Out-of-hours change windows are
+common for making upgrades and making intended changes. Scalability of
+reporting is a key here, but change happens slowly.
+</code></pre>
+</div>
+
+<p>Precision:</p>
+<div class="highlight"><pre><code class="text">Security and hence tight control of approved software are major challenges
+in government regulated institutions. Agility has been a low priority in the
+past, but this will have to change as the rest of the world&#39;s IT services
+accelerate.
+</code></pre>
+</div>
+<h3 id="manufacturing">Manufacturing</h3>
+<p>SCADA (supervisory control and data acquisition) generally refers to industrial
+control systems (ICS): computer systems that monitor and control industrial,
+infrastructure, or facility-based processes, as described below.</p>
+
+<p>Speed:</p>
+<div class="highlight"><pre><code class="text">Manufacturing is a curious mix of all the mention areas and more. In
+addition to the above, there is an tool component. The tools can design,
+build, test, track, and ship a physical unit. Downtime of any component is
+measured in missed revenue, so speed of detection and repair is crucial.
+</code></pre>
+</div>
+
+<p>Precision:</p>
+<div class="highlight"><pre><code class="text">&quot;We need to ensure agility and accuracy of reporting. We need to know what
+is going on at any microsecond of the day. One faulty tool can throw a
+wrench in the whole works. The digital equivalent of the steam whistle to
+stop the line.
+
+From there, all the tool information is fed upstream to servers, from there
+to databases, then reports, that statistical analysis, and so on. Each piece
+needs to move with the product and incorporate it. It is a steady chain of
+events where are all information is liquid and relevant.
+
+Not only do you have the security requirements, from virus updates to top
+secret classification, but these tools need to never stop, ever. Also, these
+tools need constant reconfiguration depending on the product they are
+working on: e.g. you can&#39;t use the same set of procedures on XBox chip as a
+cellphone memory module. And all the tools are different too: one may be a
+probe to detect microscopic fractures in the layers, one tool may just track
+it&#39;s position in line. Supply and demand, cost and revenue.&quot;
+</code></pre>
+</div>
+<h2 id="separating-what-from-how-devops">Separating What from How (DevOps)</h2>
+<p>If you have to designs a programmatic solution to a challenge, it will cost you
+highly in terms of cognitive investment, testing and clarity of purpose to
+future users. Thinkingprocess(how) instead ofknowledge(what) is a classic
+carry-over from the era of 2nd Wave industrialization8.</p>
+
+<p>Think of CFEngine as an active knowledge management system, rather than as a
+relatively passive programming framework.</p>
+
+<p>For `DevOps&#39;: programming is for your application, consider its deployment to be
+part of the documentation.</p>
+
+<p>Many programmatic systems and <code>APIs&#39; force you to explain how something will be
+accomplished and the statement about</code>what&#39; the outcome will be is left to an
+implicit assumption. Such systems are called imperative systems.</p>
+
+<p>CFEngine is a declarative system. In a declarative system, the reverse is true.
+You begin by writing down What you are trying to accomplish and the How is more
+implicit. The way this is done is by separating data from algorithm in the
+model. CFEngine encourages this with its language, but you can go even further
+by using the tools optimally.</p>
+
+<p>CFEngine allows you to represent raw data as variables, or as strings within
+your policy. For example:</p>
+<div class="highlight"><pre><code class="text">bundle agent name
+{
+  vars:
+
+    &quot;main_server&quot; string =&gt; &quot;abc.123.com&quot;;
+
+    &quot;package_source[ubuntu]&quot; string =&gt; &quot;repository.ubuntu.com&quot;;
+    &quot;package_source[suse]&quot;   string =&gt; &quot;repository.suse.com&quot;;
+
+ # Promises that use these data
+ #
+ # packages:
+ # processes:
+ # files:
+ # services: , etc
+}
+</code></pre>
+</div>
+
+<p>By separating `what&#39; data like this out of the details of how they are used, it
+becomes easier to comprehend and locate, and it becomes fast to change, and the
+accuracy of the change is easily perceived. Moreover, CFEngine can track the
+impact of such a change by seeing where the data are used.</p>
+
+<p>CFEngine&#39;s knowledge management can tell you which system promises depend on
+which data in a clear manner, so you will know the impact of a change to the
+data.</p>
+
+<p>You can also keep data outside your policy in databases, or sources like:</p>
+
+<ul>
+<li>LDAP</li>
+<li>NIS</li>
+<li>DNS</li>
+<li>System files</li>
+</ul>
+
+<p>For example, reading in data from a system file is very convenient. This is what
+Unix-like system do for passwords and user management.</p>
+
+<p>What you might lose when making an input matrix is the why. Is there an
+explanation that fits all these cases, or does each case need a special
+explanation? We recommend that you include as much information as possible about
+`why&#39;.</p>
+<h2 id="packaging-limits-agility">Packaging limits agility</h2>
+<p>Atomicity enables agility. Atomicity, or the avoidance of dependency, is a key
+approach to simplicity. Today this is often used to argue to packaging of
+software.</p>
+
+<p>Handling software and system configuration as packages of data makes certain
+processes appear superficially easy, because you get a single object to deal
+with, that has a name and a version number. However, to maintain flexibility we
+should not bundle too many features into a package.</p>
+
+<p>A tin of soup or a microwave meal might be a superficially easy way to make
+dinner, for many scenarios, but the day you get a visitor with special dietary
+requirements (vegetarian or allergic etc) then the prepackaging is a major
+obstacle to adapting: the recipe cannot be changed and repackaged without going
+back to the factory that made it. Thus oversimplification generally tends to end
+up sending up back to work around the technology.</p>
+
+<p>CFEngine&#39;s modelling language gives you control over the smallest ingredients,
+but also allows you to package your own containers or work with other suppliers&#39;
+packages. This ensures that adaptability is not sacrificed for superficial ease.</p>
+
+<p>For example: your system&#39;s package model can cooperate with CFEngine make asking
+CFEngine to promise to work with the package manager:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">packages</span><span class="p">:</span>
+    <span class="s">&quot;apache2&quot;</span><span class="p">;</span>
+    <span class="s">&quot;php5&quot;</span><span class="p">;</span>
+    <span class="s">&quot;opera&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>If you need to change what happens under the covers, it is very simple to do
+this in CFEngine. You can copy the details of the existing methods, because the
+details are not hard-coded, and you can make your own custom version quickly.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">packages</span><span class="p">:</span>
+      <span class="s">&quot;apache2&quot;</span>
+        <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">my_special_package_manager_interface</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="how-abstraction-improves-agility">How abstraction improves agility</h2>
+<p>Abstraction allows us to turn special cases into general patterns. This leads to
+a compression of information, as we can make defaults for the general patterns,
+which do not have to be repeated each time.</p>
+
+<p>Service promises are good example of this9, for example:</p>
+<div class="highlight"><pre><code class="text">bundle agent example
+{
+  services:
+    &quot;wwww&quot;;
+}
+</code></pre>
+</div>
+
+<p>In this promise, all of the details of what happens to turn on the web service
+have been hidden behind this simple identifier ‘www’. This looks easy, but is it
+simple?</p>
+
+<p>In this case, it is both easy and simple. Let&#39;s check why. We have to ask the
+question: how does this abstraction improve speed and precision in the long run?</p>
+
+<p>Obviously, it provides short term ease by allowing many complex operations to
+take place with the utterance of just a single word10. But any software can pull
+that smoke and mirrors trick. To be agile, it must be possible to understand and
+change the details of what happens when this services is promised. Some tools
+hard-code processes for this kind of statement, requiring an understanding of
+programming in a development language to alter the result. In CFEngine, the
+definitions underlying this are written in the high-level declarative CFEngine
+language, using the same paradigm, and can therefore be altered by the users who
+need the promise, with only a small amount of work.</p>
+
+<p>Thus, simplicity is assured by having consistency of interface and low cost
+barrier to changing the meaning of the definition.</p>
+<h2 id="increasing-system-capacity-by-scaling">Increasing system capacity (by scaling)</h2>
+<p>Capacity in IT infrastructure is increased by increasing machine power. Today,
+at the limit of hardware capacity, this typically means increasing the number of
+machines serving a task. Cloud services have increased the speed agility with
+which resources can be deployed – whether public or private cloud – but they do
+not usually provide any customization tools. This is where CFEngine brings
+significant value.</p>
+
+<p>The rapid deployment of new services is assisted by:</p>
+
+<ul>
+<li><p>Virtualization hypervisor control or private cloud management (libvirt
+integration).</p></li>
+<li><p>Rapid, massively-parallelized custom configuration.</p></li>
+<li><p>Avoidance of network dependencies.</p></li>
+</ul>
+
+<p>Related to capacity is the issue of scaling services for massive available
+capacity.</p>
+
+<p>By scalability we mean the intrinsic capacity of a system to handle growth.
+Growth in a system can occur in three ways: by the volume of input the system
+must handle, in the total size of its infrastructure, and by the complexity of
+the processes within it.</p>
+
+<p>For a system to be called scalable, growth should proceed unhindered, i.e. the
+size and volume of processing may expand without significantly affecting the
+average service level per node.</p>
+
+<p>Although most of us have an intuitive notion of what scalability means, a full
+understanding of it is a very complex issue, mainly because there are so many
+factors to take into account. One factor that is often forgotten in considering
+scalability, is the human ability to comprehend the system as it grows.
+Limitations of comprehension often lead to over-simplification and
+lowest-common-denominator standardization.</p>
+
+<p>Scalability is addressed in a separate document: Scale and Scalability, so we
+shall not discuss it further here.</p>
+<h1 id="agility-in-your-work">Agility in your work</h1>
+<ul>
+<li>Easy versus simple</li>
+<li>How does complexity affect agility?</li>
+<li>An effective understanding helps agility</li>
+<li>Maximizing business imperatives</li>
+<li>What does agility cost?</li>
+<li>Who is responsible for agility?</li>
+</ul>
+<h2 id="easy-versus-simple">Easy versus simple</h2>
+<p>Just as we separate goals from actions, and strategy from tactics, so we can
+separate what is easy from what is simple. Easy brings short-term gratification,
+but simple makes the future cost less.</p>
+
+<p>Easyis about barriers to adoption. If there is a cost associated with moving
+ahead that makes it hard:</p>
+
+<ul>
+<li>A psychological cost</li>
+<li>A cognitive cost</li>
+<li>It takes too long</li>
+<li>It costs too much money</li>
+</ul>
+
+<p>Simple is about what happens next. Once you have started, what happens if you
+want to change something?</p>
+
+<p>Total cost of ownership is reduced if a design is simple, as there are only a
+few things to learn in total. Even if those things are hard to learn, it is a
+one-off investment and everything that follows will be easy.</p>
+
+<p>Unlike some tools, with CFEngine, you do not need to program `how&#39; to do things,
+only what you want to happen. This is always done by using the same kinds of
+declarations, based on the same model. You don&#39;t need to learn new principles
+and ideas, just more of the same.</p>
+<h2 id="how-does-complexity-affect-agility">How does complexity affect agility?</h2>
+<p>In the past[<sup>11],</sup> it was common to manage change by making everything the same.
+Today, the individualized custom experience is what today&#39;s information-society
+craves. Being forced into a single mold is a hindrance to adaptability and
+therefore to agility. To put it another way, in the modern world of commerce,
+consumers rule the roost, and agility is competitive edge in a market of many
+more players than before.</p>
+
+<p>Of course, it is not quite that simple. Today, we live in a culture of `ease&#39;,
+and we focus on what can be done easily (low initial investment) rather than
+worrying about long term simplicity (Total Cost of Ownership).</p>
+
+<p>At CFEngine, we believe that <code>easy&#39; answers often suffer from the sin of
+over-simplification, and can lead to risky practices. After all, anyone can make
+something appear superficially easy by papering over a mess, or applying raw
+effort, but this will not necessarily scale up cheaply over time. Moreover,
+making a risky process</code>too easy&#39; can encourage haste and carelessness.</p>
+
+<p>Any problem has an intrinsic complexity, which can be measured by the smallest
+amount of information required to manage it, without loss of control.</p>
+
+<ul>
+<li><p>Ease is the absence of a barrier or cost to action.</p></li>
+<li><p>Simplicity is a strategy for minimizing Total Cost of Ownership.</p></li>
+</ul>
+
+<p>Making something truly simple is a very hard problem, but it is an investment in
+future change. What is easy today might be expensive to make easy tomorrow. But
+if something is truly simple, then the work is all up front in learning the
+basics, and does not come as an unexpected surprise down the line.</p>
+
+<p>At CFEngine, we believe in agility through simplicity, and so we invest
+continuous research into making our technology genuinely simple for trained
+users. We know that a novice user will not necessarily find CFEngine easy, but
+after a small amount of training, CFEngine will be a tool for life, not just a
+hurried deployment.</p>
+
+<p>Simplicity in CFEngine is addressed in the following ways:</p>
+
+<ul>
+<li><p>The software has few dependencies that complicate installation and upgrading.</p></li>
+<li><p>Changes made are atomic and minimize dependencies.</p></li>
+<li><p>Each host works as an independent entity, reducing communication fragility.</p></li>
+<li><p>The configuration model is based on Promise Theory – a very consistent and
+simple approach to modelling autonomous cooperative systems.</p></li>
+<li><p>All hosts run the same software agents on all operating platforms (from mobile
+phones to mainframes), and understand a single common language of intent,
+which they can translate into native system calls. So there are few exceptions
+to deal with.</p></li>
+<li><p>Comprehensive facilities are allowed for making use of patterns and other
+total-information-reducing tactics.</p></li>
+</ul>
+
+<p>A certain level of complexity might be necessary and desirable – complexity is
+relative. Some organizations still try to remain agile by avoiding complexity.
+However, the ability to respond to complex scenarios often requires us to dabble
+with diversity. Avoiding it merely creates a lack of agility, as one is held
+back by the need to over-simplify.</p>
+<h2 id="an-effective-understanding-helps-agility">An effective understanding helps agility</h2>
+<p>All configuration issues, including fitness for purpose, boil down to three
+things: why, what and how. Knowing why we do something is the most important way
+of avoiding error and risk of failure. Simplicity then comes from keeping the
+<code>what&#39; and the</code>how&#39; separate, and reducing the how to a predictable, repairable
+transaction. This is what CFEngine&#39;sconvergent promisetechnology does.</p>
+
+<p>Knowledge is an antidote to uncertainty. Insight into patterns, brings
+simplicity to the information management, and insight into behaviour allows us
+to estimate impact of change, thus avoiding the risk associated with agility.</p>
+
+<p>In configuration <code>what&#39; represents transitory knowledge, while</code>how&#39; is often
+more lasting and can be absorbed into the infrastructure. The consistency and
+repairability of `how&#39; makes it simpler to change what without risk.</p>
+<h2 id="maximizing-business-imperatives">Maximizing business imperatives</h2>
+<p>Agility allows companies and public services to compete and address the needs of
+continuous service improvement. This requires insight into IT operations from
+business and vice versa. Recently, the <code>DevOps&#39; movement in web arenas has
+emphasized the need for a more streamlined approach to integrating
+business-driven change and IT operations. Whatever we choose to call this, and
+in whatever arena,</code>connecting the dots between business and IT&#39; is a major
+enabler for agility to business imperatives.</p>
+
+<p>Some business issues are inherently complex, e.g. software customization and
+security, because they introduce multifaceted conflicts of interest that need to
+resolved with clear documentation about why.</p>
+
+<p>Be careful about choosing a solution because it has a low initial outlay cost.
+Look to the long term cost, or the Total Cost of Ownership over the next 5
+years.</p>
+
+<p>Many businesses have used the argument: everything is getting cheaper so it
+doesn&#39;t matter if my software is inefficient – I can brute force it in a year&#39;s
+time with more memory and a faster CPU. The flaw in this argument is that
+complexity and scale are also increasing, and you will need those savings down
+the line even more than you do now.</p>
+
+<p>The ability to model our intentions in a clearly understandable way enables
+insight and understanding; this, in turn, allows us to anticipate and comprehend
+challenges. CFEngine&#39;s knowledge management features help to make the
+configuration itself a part of the documentation of the system. Instead of
+relying on command line tools to interact, the user documents intentions (as
+`promises to be kept&#39;). These promises, and how well they have been kept, can be
+examined either from the original specification or in the Mission Portal.</p>
+
+<p>In the industrial age, the strategy was to supply sufficient force to a small
+problem in order to <code>control&#39; it by brute force. In systems today the scale and
+complexity are such that no such brute force approach can seriously be expected
+to work. Thus one is reduced to a more even state of affairs: learning to work
+with the environment</code>as is&#39;, with clear expectations of what is possible and
+controlling only certain parts on which crucial things depend.</p>
+<h2 id="what-does-agility-cost">What does agility cost?</h2>
+<p>CFEngine is designed to have a low Total Cost of Ownership, by being
+exceptionally lightweight and conceptually simple. The investment in CFEngine is
+a `learning curve&#39; that some find daunting. Indeed, at CFEngine, we work on
+reducing this initial learning curve all the time – but what really saves you in
+the end is simplicity without over-simplification.</p>
+
+<p>At a deployment in the banking sector, CFEngine replaced an incumbent software
+solution where 200 machines were required to make the management infrastructure
+scale to the task.</p>
+
+<p>CFEngine replaced this with 3 machines, and a reduced workforce. After the
+replacement the clock-time required for system updates went from 45 minutes to
+16 seconds.</p>
+
+<p>The total cost of providing for agility can be costly or it can be cheap. By
+design, CFEngine aims to make scale and agility inexpensive in the long run.</p>
+<h2 id="who-is-responsible-for-agility">Who is responsible for agility?</h2>
+<p>The bottom line is: you are! Diversity and customization are basic freedoms that
+user-driven services demand in today&#39;s world, and having the agility to meet
+changing desires is going to be an increasingly important and prominent feature
+of IT, as we delve further into the information-based society.</p>
+
+<p>Competitive edge, response to demands, in both private sector and research,
+makes agility the actual product of a not-too-distant tomorrow.</p>
+
+<p>Who or what makes agility a reality? The simple answer to this question is
+everyone and everything. Change is a chain of dependent activities and the
+weakest link in the chain is the limiting factor. Often, that is human
+knowledge, since it is the part of the chain that we take most for granted.</p>
+
+<p>CFEngine has been carefully designed to support agile operations for the long
+term, by investing in knowledge management, speed and efficiency.</p>
+
+<p>Footnotes</p>
+
+<p>[<sup>1]:</sup> Capacity is often loosely referred to as `bandwidth&#39; because of its
+    connection to signal propagation in communication science, but this is not
+    strictly correct, as bandwidth refers to parallel channels.</p>
+
+<p>[<sup>2]:</sup> For example, for a single coding frequency, the capacity of a
+    communications channel is measured in bits per second, and the bandwidth is
+    the number multiplied by the number of parallel frequencies.</p>
+
+<p>[<sup>3]:</sup> If available speed matches need, and we have the capability to make all
+    required changes, then we can claim exactly 100% agility. If we have less
+    than required, then we get a smaller number, and if we have excess speed or
+    changeability then we can even claim a super-efficiency.</p>
+
+<p>[<sup>4]:</sup> In the 20th century, science learned that there is no such thing as
+    determinism – the idea that you can guarantee an outcome absolutely. If you
+    still think in such terms, you will be quickly disappointed. The best we can
+    accomplish is to maximize the likelihood of a predictable result, relative
+    to the kind of environment in which we work.</p>
+
+<p>[<sup>5]:</sup> In some other configuration software, assumptions are hard-coded into the
+    tools themselves, making the outcome undocumented.</p>
+
+<p>[<sup>6]:</sup> Other systems that claim to be deterministic simply stop with error
+    messages. What is the correct behaviour? Clearly, this is a subjective
+    choice. The important thing is that your system for change behaves in a
+    predictable way.</p>
+
+<p>[<sup>7]:</sup> Two related concepts that are frequently referred to are the classic
+    reliability measures: Mean Time Before Failure (MTBF) or proactive health
+    and Mean Time To Repair (MTTR), speed of recovery: (i) If we are proactive
+    or quick at recovering from minor problems, larger outages can be avoided.
+    Recovery agility plays a role in avoiding cascade failure. (ii) If the time
+    to repair is long, or the repair is inaccurate, this could result if more
+    widespread problems. Inaccurate change or repair often leads to attempts to
+    `roll-back&#39;, causing further problems.</p>
+
+<p>[<sup>8]:</sup> See <a href="http://www.cfengine.com/blog/sysadmin-3.0-and-the-third-wave">http://www.cfengine.com/blog/sysadmin-3.0-and-the-third-wave</a></p>
+
+<p>[<sup>9]:</sup> Service promises, as described here, were introduced into version 3.3.0 of
+    CFEngine in 2012.</p>
+
+<p>[<sup>10]:</sup> All good magic stories begin like this.</p>
+
+<p>[<sup>11]:</sup> Perhaps not just in the past. We are emerging from an industrial era of
+    management where mass producing everything the same was the cheapest
+    approach to scaling up services. However, today personal freedom demands
+    variety and will not tolerate such oversimplification.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-special-topics.html">special topics</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-guide.html">guide</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 06 July 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/guide/special-topics/agility.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-38e3fd0081b106f885a95356ca1249c5.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

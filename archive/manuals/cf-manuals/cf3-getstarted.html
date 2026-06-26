@@ -1,0 +1,869 @@
+<html lang="en">
+<head>
+<title>CFEngine 3 Get Started Guide</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CFEngine 3 Get Started Guide">
+<meta name="generator" content="makeinfo 4.9">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+h1, h2, a, table.list th
+{
+    color: #1f6e6b;
+}
+
+.node
+{ 
+background: #ddd url(Logo2-small.png) right no-repeat;
+}
+
+.menu
+{  
+background: #eef url(menu.png) right no-repeat;
+}
+
+.contents
+{
+background-color: #e9f4e9; 
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{ 
+  border-color: #4e8b8c;
+  border-style: solid;
+  border-width: 1px;
+}
+
+BODY {
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-style: normal;
+     font-size: 11pt;
+     background: #FFFFFF;
+     color: #000000;
+     }
+        
+P { 
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  }
+
+FONT.liten {font-size: 70%; }
+
+H1, H2, H3 {
+        font-weight: normal;
+        color: #2c2e70;
+        margin-bottom: 0em;
+        }
+
+TABLE { vertical-align: top; } 
+
+H1 { font-size: 140% }
+H2 { font-size: 120% }
+H3 { font-size: 110% }
+H4 { font-style: italic; }
+
+TD, TH, UL {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-style: normal;
+        }
+
+TH { background: #9999FF;
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     color: blue;
+  font-size: 10pt;
+   }
+
+TD { color: #000000;
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-size: 10pt;
+   }
+
+PRE { font-family: "Lucida Typewriter", "Courier", monotype;
+      font-style: normal;
+     font-size: 11pt;
+background-color: #eee;
+    }
+ 
+.tynn {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: smaller;
+        font-style: normal;
+        font-weight: lighter;
+        margin-bottom: 0em;
+     font-size: 11pt;
+        }
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+--></style>
+</head>
+<body>
+<h1 class="settitle">CFEngine 3 Get Started Guide</h1>
+<div class="node">
+<p><hr>
+<a name="Top"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Changes-in-cfengine">Changes in cfengine</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">CFEngine-Modularization</h2>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+
+   <p><h2>Summary of contents</h2>
+
+<!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#Changes-in-cfengine">Changes in cfengine</a>
+<li><a accesskey="2" href="#A-simple-crash-course">A simple crash course</a>
+<li><a accesskey="3" href="#How-to-run-cfengine-3-examples">How to run cfengine 3 examples</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Changes-in-cfengine"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#A-simple-crash-course">A simple crash course</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Changes in cfengine</h2>
+
+<p>CFEngine is a suite of programs for integrated autonomic management of
+either individual or networked computers. It has existed a This document represents
+cfengine versions 3.0.0 and later, which are a radical departure from
+earlier versions.
+
+   <p>CFEngine 3 has been changed so as to be both a more powerful and much
+simpler. CFEngine 3 is not backwards compatible with the cfengine 2
+configuration language, but it interoperates with cfengine 2 so that
+it is "run-time compatible".  This means that you can change over to
+version 3 slowly, with low risk and at your own speed.
+
+   <p>With cfengine 3 you can install, configure and maintain computers
+using powerful hands-free tools. You can also integrate knowledge
+management and diagnosis into the processes.
+
+   <p>CFEngine differs from most management systems in being
+
+     <ul>
+<li>Open software (GPL). 
+<li>Lightweight and generic. 
+<li>Non-reliant on a working network to function correctly. 
+<li>Capable of making each and every host autonomous
+</ul>
+
+   <p>CFEngine 3 consists of a number of components:
+
+     <dl>
+<dt><code>cf-agent</code><dd>Active agent
+<br><dt><code>cf-execd</code><dd>Scheduler
+<br><dt><code>cf-graph</code><dd>Graph data extractor
+<br><dt><code>cf-know</code><dd>Knowledge modelling agent
+<br><dt><code>cf-monitord</code><dd>Passive monitoring agent
+<br><dt><code>cf-promises</code><dd>Promise validator
+<br><dt><code>cf-runAgent</code><dd>Remote run agent
+<br><dt><code>cf-serverd</code><dd>Server agent
+<br><dt><code>cf-show</code><dd>Self-knowledge extractor
+</dl>
+
+   <p>The starred components are new. The daemon formally called
+<code>cfenvd</code> i previous versions of cfengine is now called
+<code>cf-monitord</code>.
+
+   <p>Unlike previous versions of cfengine, which had no consistent model
+for its features, you can recognize <i>everything</i> in cfengine 3
+from just a few concepts.
+
+   <p>Concept Quick description
+Promise
+A statement about the state we desire to maintain&lt;/td&gt;
+Promise bundles
+A collection of promises&lt;/td&gt;
+Promise bodies
+A part of a promise which details and constrains its nature&lt;/td&gt;
+Data types
+An interpretation of a scalar value: string, integer or real number&lt;/td&gt;
+Variables
+An association of the form "LVALUE <i>represents</i> RVALUE", where rval may be a scalar value or a list of scalar values
+Functions
+Built-in parameterized rvalues
+Classes
+Cfengine's boolean classifiers that describe context
+
+   <p>If you have used cfengine before then the most visible part of
+cfengine 3 will be its new language interface.  Although it has been
+clear for a long time that the organically grown language used in
+cfengines 1 and 2 developed many problems, it was not immediately
+clear exactly what would be better. It has taken years of research to
+simplify the successful features of cfengine to a single overarching
+model. To understand the new cfengine, it is best to set aside any
+preconceptions about what cfengine is today. CFEngine 3 is a genuine
+"next generation" effort, which is will be a springboard into the
+future of system management.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Why-change-the-language">Why change the language</a>
+<li><a accesskey="2" href="#Testing-as-a-non_002dprivilieged-user">Testing as a non-privilieged user</a>
+<li><a accesskey="3" href="#The-bear-necessities-of-a-cfengine-3">The bear necessities of a cfengine 3</a>
+<li><a accesskey="4" href="#Familiiarizing-yourself">Familiiarizing yourself</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Why-change-the-language"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Testing-as-a-non_002dprivilieged-user">Testing as a non-privilieged user</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Changes-in-cfengine">Changes in cfengine</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Changes-in-cfengine">Changes in cfengine</a>
+
+</div>
+
+<h3 class="section">1.1 Why change the language?</h3>
+
+<p>Many attempts at improving the user interface of cfengine have been
+proposed but none of them have been sufficiently impressive to make
+the change worthwhile before now. Some have gone in for an Object Oriented
+approach, but this imposes a hierarchical model that does not fit
+cfengine's autonomous peer model.  The main goal in changing the
+language is to simplify and improve the robustness and functionality
+without sacrificing the basic freedoms and concepts. Concepts such as
+explicit loops and and tests have long been banished from cfengine and
+proposals to reintroduce them have been dismissed &mdash; something better
+is needed. The difficulty, of course is to provide a genuine
+simplification and improvement that is robust and lasting: this
+requires a deep understanding of the problem.
+
+   <p>CFEngine 3's new language is a direct implementation of a model
+developed at Oslo University College over the past four years, known
+colloquially as "promise theory".  Promises were originally introduced
+by Mark Burgess as a way to talk about cfengine's model of autonomy
+and have since become a powerful way of modelling cooperative
+systems. CFEngine 3 is a generic implementation of the language of
+promises that allows all of the aspects of configuration management to
+be unified under a single umbrella.
+
+   <p>Why talk about promises instead of simply talking about changes? After all,
+the trend in business and IT management today is to talk about Change
+Management, e.g. in the IT Infrastructure Library (ITIL) terminology. 
+This comes from a long history of process management thinking. But we are not
+really interested in change &ndash; we are interested in being in a state where we
+don't need to make any changes. In other words we want to be able to promise
+that the system is correct, verify this and only make changes if our promises
+are not kept.
+
+   <p>To put it another way, cfengine is not really a <i>change
+management</i> system, it is a <i>maintenance system</i>. Maintenance
+is the process of making small changes or corrections to a model. A
+"model" is just another word for a template or a specification of how
+we want the system to work. CFEngine's model is based on the idea of
+promises, which means that it focuses on what is stable and lasting
+about a system &ndash; not about what is changing.
+
+   <p>This is an important philosophical shift. It means we are focused
+mainly on what is right and not on what is wrong. By saying what
+"right" is (the ideal state of our system) we are focussed on the
+actual behaviour. If we focus too much on the changes, i.e. the
+differences between now and the future, we might forget to verify that what
+we assume is working now in fact works.
+
+   <p>Models that talk about change management tend to forget that after
+every change there is a litany of <i>incidents</i> during which it is
+necessary to repair the system or return it to its intended state. 
+But if we know what we have promised, it is easy to verify whether the
+promise is kept. 
+This means that it is the <i>promises</i> about how the system should
+be that are most important, not the actual changes that are made in
+order to keep them.
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Testing-as-a-non-privilieged-user"></a>
+<a name="Testing-as-a-non_002dprivilieged-user"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#The-bear-necessities-of-a-cfengine-3">The bear necessities of a cfengine 3</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Why-change-the-language">Why change the language</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Changes-in-cfengine">Changes in cfengine</a>
+
+</div>
+
+<h3 class="section">1.2 Testing as a non-privilieged user</h3>
+
+<p>One of the practical advantages of cfengine is that you can test it
+without the need for root or administrator privileges. This is
+recommended for all new users of cfengine 3.
+
+   <p>CFEngine operates with the notion of a work-directory. The default
+work directory for the <code>root</code> user is <samp><span class="file">/var/cfengine</span></samp>
+(except on Debian Linux and various derivatives which prefer
+<samp><span class="file">/var/lib/cfengine</span></samp>).  For any other user, the work directory
+lies in the user's home directory, named <samp><span class="file">~/.cfagent</span></samp>. CFEngine
+prefers you to keep certain files here.  You should not resist this
+too strongly or you will make unnecessary trouble for yourself.  The
+decision to have this `known directory' was made to simplify a lot of
+configuration.
+
+   <p>To test cfengine as an ordinary user, do the following:
+
+     <ul>
+<li>Compile and make the software. 
+<li>Copy the binaries into the work directory:
+     <pre class="smallexample">          host$ mkdir -p ~/.cfagent/inputs
+          host$ mkdir -p ~/.cfagent/bin
+          host$ cd src
+          host$ cp cf-* ~/.cfagent/bin
+          host$ cd ../inputs
+          host$ cp *.cf ~/.cfagent/inputs
+     </pre>
+     </ul>
+
+   <p>You can test the software and play with configuration files by editing the basic get-started files
+directly in the <samp><span class="file">~/.cfagent/inputs</span></samp> directory. For example, try the following:
+
+<pre class="smallexample">     host$ ~/.cfagent/bin/cf-promises
+     host$ ~/.cfagent/bin/cf-promises --verbose
+</pre>
+   <p>This is always the way to start checking a configuration in cfengine
+3. If a configuration does not pass this check/test, you will not be
+allowed to use it, and <samp><span class="file">cf-agent</span></samp> will look for the file
+<samp><span class="file">failsafe.cf</span></samp>.
+
+   <p>Notice that the cfengine 3 binaries have slightly different names than the cfengine
+2 binaries. They all start with the <samp><span class="file">cf-</span></samp> prefix.
+<pre class="smallexample">     host$ ~/.cfagent/bin/cf-agent
+</pre>
+   <!--  -->
+<div class="node">
+<p><hr>
+<a name="The-bear-necessities-of-a-cfengine-3"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Familiiarizing-yourself">Familiiarizing yourself</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Testing-as-a-non_002dprivilieged-user">Testing as a non-privilieged user</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Changes-in-cfengine">Changes in cfengine</a>
+
+</div>
+
+<h3 class="section">1.3 The bear necessities of a cfengine 3</h3>
+
+<pre class="smallexample">     #######################################################
+     #
+     # The starting point for every configuration
+     #
+     #######################################################
+     
+     body common control
+     
+     {
+     any::
+     
+       bundlesequence  =&gt; { "testbundle" };
+     }
+     
+     #######################################################
+     
+     bundle agent testbundle
+     
+     {
+     
+     }
+     
+</pre>
+   <p>If you try to process this using the <code>cf-promises</code> command, you will
+see something like this:
+
+<pre class="smallexample">     atlas$ ~/LapTop/Cfengine3/trunk/src/cf-promises -f ./unit_null_config.cf
+     cf3:./unit_null_config.cf:21,1: syntax error, near token '}'
+     Summarizing promises as text to ./unit_null_config.cf.txt
+     Summarizing promises as html to ./unit_null_config.cf.html
+</pre>
+   <p>Examine the two files produced:
+
+<pre class="smallexample">     cat ./unit_null_config.cf.txt
+     firefox ./unit_null_config.cf.html
+</pre>
+   <!--  -->
+<div class="node">
+<p><hr>
+<a name="Familiiarizing-yourself"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#The-bear-necessities-of-a-cfengine-3">The bear necessities of a cfengine 3</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Changes-in-cfengine">Changes in cfengine</a>
+
+</div>
+
+<h3 class="section">1.4 Familiarizing yourself</h3>
+
+<p>To familiarize yourself with cfengine 3, type or paste in the following example text:
+
+<pre class="smallexample">     ########################################################
+     #
+     # Simple test execution
+     #
+     ########################################################
+     
+     body common control
+     
+     {
+     bundlesequence  =&gt; { "testbundle" };
+     }
+     
+     ########################################################
+     
+     bundle agent testbundle
+     
+     {
+     vars:
+     
+       "size" int =&gt; "46k";
+       "rand" int =&gt; randomint("33","$(size)");
+     
+     
+     commands:
+     
+       "/bin/echo Hello"
+     
+          # additional args that do not become path of $(this.promiser)
+     
+          args =&gt; "world - $(size)/$(rand)",
+     
+          contain =&gt; standard,
+          classes =&gt; mydefine("followup","alert");
+     
+     
+       followup::
+     
+          "/bin/ls"
+            contain =&gt; standard;
+     
+     reports:
+     
+       alert::
+     
+          "What happened?";
+     
+     }
+     
+     ######################################################################
+     
+     body contain standard
+     
+     {
+     exec_owner =&gt; "mark";
+     useshell =&gt; "true";
+     }
+     
+     ######################################################################
+     
+     body classes mydefine(class,alert)
+     
+     {
+     on_change =&gt; { "$(class)" };
+     on_failure =&gt; { "$(alert)" };
+     }
+</pre>
+   <p>If you are familiar with cfengine's history, this will look quite
+strange to you, but fear not.
+
+   <p>This example shows all of the main features of cfengine: bundles,
+bodies, control, variables, and promises.  To the casual eye it might
+look complex, but that is because it is explicit about all of the
+details. Fortunately it is easy to hide many of these details to
+make the example simpler without sacrificing any functionality.
+
+   <p>The first thing to try with this example is to verify it &ndash; did we
+make any mistakes? Are there any inconsistencies? To do this we use
+the new cfengine program <code>cf-promises</code>. Let's assume that you
+typed this into a file called <samp><span class="file">test.cf</span></samp> in the current directory.
+
+<pre class="smallexample">     cf-promises -f ./test.cf
+</pre>
+   <p>If all is well, typing this command shows no output. Try now running the
+command with verbose output.
+
+<pre class="smallexample">     cf-agent -f ./test.cf -v
+</pre>
+   <p>Now you see a lot of information
+
+<pre class="smallexample">     Reference time set to Sat Aug  2 11:26:06 2008
+     
+     cf3 CFEngine - 3.0.0
+     Free Software Foundation 1994-
+     Donated by Mark Burgess, Oslo University College, Norway
+     cf3 ------------------------------------------------------------------------
+     cf3 Host name is: atlas
+     cf3 Operating System Type is linux
+     cf3 Operating System Release is 2.6.22.18-0.2-default
+     cf3 Architecture = x86_64
+     cf3 Using internal soft-class linux for host linux
+     cf3 The time is now Sat Aug  2 11:26:06 2008
+     cf3 ------------------------------------------------------------------------
+     cf3 Additional hard class defined as: 64_bit
+     cf3 Additional hard class defined as: linux_2_6_22_18_0_2_default
+     cf3 Additional hard class defined as: linux_x86_64
+     cf3 Additional hard class defined as: linux_x86_64_2_6_22_18_0_2_default
+     cf3 GNU autoconf class from compile time: compiled_on_linux_gnu
+     cf3 Interface 1: lo
+     cf3 Trying to locate my IPv6 address
+     cf3 Looking for environment from cfenvd...
+     cf3 Unable to detect environment from cfMonitord
+     ---------------------------------------------------------------------
+     Loading persistent classes
+     ---------------------------------------------------------------------
+     
+     ---------------------------------------------------------------------
+     Loaded persistent memory
+     ---------------------------------------------------------------------
+     cf3   &gt; Parsing file ./test.cf
+     ---------------------------------------------------------------------
+     Agent's basic classified context
+     ---------------------------------------------------------------------
+     
+     
+     Defined Classes = ( any Saturday Hr11 Min26 Min25_30 Q2 Hr11_Q2 Day2
+     August Yr2008 linux atlas 64_bit linux_2_6_22_18_0_2_default x86_64
+     linux_x86_64 linux_x86_64_2_6_22_18_0_2_default
+     linux_x86_64_2_6_22_18_0_2_default__1_SMP_2008_06_09_13_53_20__0200
+     compiled_on_linux_gnu net_iface_lo )
+     
+     Negated Classes = ( )
+     
+     Installable classes = ( )
+     cf3 Wrote expansion summary to promise_output_common.html
+     cf3 Inputs are valid
+</pre>
+   <p>The last two lines of this are of interest. Each time a component of
+cfengine 3 parses a number of promises, it summarizes the information
+in an HTML file called generically <code>promise_output_</code><i>component-type</i><code>.html</code>. 
+In this case the <code>cf-promises</code> command represents all possible promises,
+by the type "common". You can view this output file in a suitable web browser
+to see exactly what cfengine has understood by the configuration. 
+The output looks something like this:
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="A-simple-crash-course"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#How-to-run-cfengine-3-examples">How to run cfengine 3 examples</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Changes-in-cfengine">Changes in cfengine</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">2 A simple crash course in concepts</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Rules-are-promises">Rules are promises</a>
+<li><a accesskey="2" href="#Containers">Containers</a>
+<li><a accesskey="3" href="#Types-in-cfengine-3">Types in cfengine 3</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Rules-are-promises"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Containers">Containers</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#A-simple-crash-course">A simple crash course</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#A-simple-crash-course">A simple crash course</a>
+
+</div>
+
+<h3 class="section">2.1 Rules are promises</h3>
+
+<p>Everything in cfengine 3 can be interpreted as a promise. Promises can
+be made about all kinds of different subjects, from file attributes,
+to the execution of commands, to access control decisions and
+knowledge relationships.
+
+   <p>This simple but powerful idea allows a very practical uniformity in
+cfengine syntax.  There is only one grammatical form for statements in
+the language that you need to know and it looks generically like this:
+
+<pre class="smallexample">     
+      type:
+     
+        classes::
+     
+         "promiser" -&gt; { "promisee1", "promisee2", ... }
+     
+            attribute_1 =&gt; value_1,
+            attribute_2 =&gt; value_2,
+            ...
+            attribute_n =&gt; value_n;
+     
+</pre>
+   <p class="noindent">We speak of a promiser (the abstract oject making the promise), the promisee
+is the abstract object to whom the promise is made, and them there is a list
+of associations that we call the `body' of the promise, which together with the
+promiser-type tells us what it is all about.
+
+   <p>Not all of these elements are necessary every time. Some promises contain a lot
+of implicit behaviour. In other cases we might want to be much more explicit. 
+For example, the simplest promise looks like this:
+
+<pre class="smallexample">     
+     commands:
+     
+       "/bin/echo hello world";
+     
+</pre>
+   <p class="noindent">This promise has default attributes for everything except the `promiser', i.e. the
+command string that promises to execute. 
+A more complex promise contains many attributes:
+
+<pre class="smallexample">     
+     files:
+     
+       "/home/mark/tmp/test_plain" -&gt; "system blue team",
+     
+            comment =&gt; "This comment follows the rule for knowledge integration",
+            perms   =&gt; users("@(usernames)"),
+            create  =&gt; "true";
+     
+</pre>
+   <p>The list of promisees is not used by cfengine except for documentation, just
+as the comment attribute (which can be added to any promise) has no actual function
+other than to provide more information to the user in error tracing and auditing.
+
+   <p>You see several kinds of object in this example. All literal strings
+(e.g. <code>"true"</code>) in cfengine 3 must be quoted. This provides
+absolute consistency and makes type-checking easy and error-correction
+powerful. All function-like objects (e.g. <code>users("..")</code>) are either builtin
+special functions or parameterized templates which contain the `meat' of the right hand
+side.
+
+<div class="node">
+<p><hr>
+<a name="Containers"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Types-in-cfengine-3">Types in cfengine 3</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Rules-are-promises">Rules are promises</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#A-simple-crash-course">A simple crash course</a>
+
+</div>
+
+<h3 class="section">2.2 Containers</h3>
+
+<p>In addition to statements (which we call simply promises), cfengine allows
+you to bundle things into containers. A container for promises is called simply a bundle.
+
+<pre class="smallexample">     
+     bundle agent identifier
+     
+     {
+     commands:
+     
+       "/bin/echo These commands are a silly way to use cfengine";
+       "/bin/ls -l";
+       "/bin/echo But they illustrate a point";
+     
+     }
+     
+</pre>
+   <p>Bundles serve two purposes: they allow us to collect related promises under a
+single heading, like a subroutine, and they allow us to mix configuration for different
+parts of cfengine in the same file. The type of a bundle is the name of the component
+of cfengine for which it is intended.
+
+   <p>For instance, we can make a self-contained example agent-server
+configuration by labelling the bundles:
+
+<pre class="smallexample">     
+     #
+     # Not a complete example
+     #
+     
+     bundle agent testbundle
+     
+     {
+     files:
+     
+       "/home/mark/tmp/testcopy"
+     
+         copy_from    =&gt; mycopy("/home/mark/LapTop/words","127.0.0.1"),
+         perms        =&gt; system,
+         depth_search =&gt; recurse("inf");
+     
+     }
+     
+     #
+     
+     bundle server access_rules
+     
+     {
+     access:
+     
+       "/home/mark/LapTop"
+     
+         admit   =&gt; { "127.0.0.1" };
+     }
+     
+</pre>
+   <p>Another type of container in cfengine 3 is a `body' part. Body parts
+exist to hide complex parameter information in reusable containers. 
+The right hand side of some attribute assignments use body containers
+to reduce the amount of in-line information and preserve readability. 
+You cannot choose where to use bodies: either they are used or they
+are not used for a particular kind of attribute. What you can choose, however, is
+the name and number of parameters for the body; and you can make as many of them as you like:
+For example:
+
+<pre class="smallexample">     
+     body copy_from mycopy(from,server)
+     
+     {
+     source      =&gt; "$(from)";
+     servers     =&gt; { "$(server)" };
+     copy_backup =&gt; "true";
+     
+     special_class::
+     
+       purge       =&gt; "true";
+     }
+     
+</pre>
+   <p>Notice also that classes can be used in bodies as well as parameters so that
+you can hide environmental adaptations in these bodies also. The classes used
+here are effectively ANDed with the classes under which the calling promise
+is defined.
+
+<div class="node">
+<p><hr>
+<a name="Types-in-cfengine-3"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Containers">Containers</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#A-simple-crash-course">A simple crash course</a>
+
+</div>
+
+<h3 class="section">2.3 Types in cfengine 3</h3>
+
+<p>A key difference in cfengine 3 compared to earlier versions is the
+presence of data types. Data types are a mechanism for associating
+values and checking consistency in a language. Once again, there is a
+simple pattern to types in cfengine.
+
+   <p>The principle is very simple: types exist in order to match like a
+plug-socket relationship. In the examples above, you can see two places
+where types are used to match templates:
+
+     <ul>
+<li>Matching bundles to components:
+     <pre class="smallexample">          
+          bundle TYPE name  # matches TYPE to running agent
+          {
+          }
+          
+     </pre>
+     <li>Match bodies templates to lvalues in <code>lvalues =&gt; rvalue</code> constraints:
+
+     <pre class="smallexample">          
+          body TYPE name    # matches TYPE =&gt; name in promise
+          {
+          }
+          
+     </pre>
+     </ul>
+
+   <p>Check these by identifying the words `<samp><span class="samp">agent</span></samp>' and `<samp><span class="samp">copy_from</span></samp>'
+in the examples above. Types are there to make configuration more robust.
+
+<div class="node">
+<p><hr>
+<a name="How-to-run-cfengine-3-examples"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#A-simple-crash-course">A simple crash course</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">3 How to run cfengine 3 examples</h2>
+
+<p>These instructions assume that you have all of your configuration in a
+single test file, such as the example in the distriution directory
+<samp><span class="file">tests/units</span></samp>.
+
+     <ol type=1 start=1>
+<li>Test the file as a non-privileged user first, if you can.
+
+     <li>Always verify syntax first with <code>cf-promises</code>. This require no privileges
+an <code>cf-agent</code> will not execute a configuration that has not passed this test.
+
+     <pre class="smallexample">          
+          host$ cf-promises -f ./inputfile.cf
+          
+     </pre>
+     <li>Run the examples like this, e.g.
+
+     <pre class="smallexample">          
+          host$ make
+          host$ src/cf-promises -f ./tests/units/unit_server_copy_localhost.cf
+          host$ src/cf-serverd -f ./tests/units/unit_server_copy_localhost.cf
+          host$ src/cf-agent -f ./tests/units/unit_server_copy_localhost.cf
+          
+     </pre>
+        </ol>
+
+<!-- ========================================================================= -->
+<!-- @node Index,  , CFEngine Methods, Top -->
+<!-- @unnumbered Concept Index -->
+<!-- @printindex cp -->
+<!-- ========================================================================= -->
+<p><a name="Contents">
+
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">CFEngine-Modularization</a>
+<li><a name="toc_Changes-in-cfengine" href="#Changes-in-cfengine">1 Changes in cfengine</a>
+<ul>
+<li><a href="#Why-change-the-language">1.1 Why change the language?</a>
+<li><a href="#Testing-as-a-non_002dprivilieged-user">1.2 Testing as a non-privilieged user</a>
+<li><a href="#The-bear-necessities-of-a-cfengine-3">1.3 The bear necessities of a cfengine 3</a>
+<li><a href="#Familiiarizing-yourself">1.4 Familiarizing yourself</a>
+</li></ul>
+<li><a name="toc_A-simple-crash-course" href="#A-simple-crash-course">2 A simple crash course in concepts</a>
+<ul>
+<li><a href="#Rules-are-promises">2.1 Rules are promises</a>
+<li><a href="#Containers">2.2 Containers</a>
+<li><a href="#Types-in-cfengine-3">2.3 Types in cfengine 3</a>
+</li></ul>
+<li><a name="toc_How-to-run-cfengine-3-examples" href="#How-to-run-cfengine-3-examples">3 How to run cfengine 3 examples</a>
+</li></ul>
+</div>
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+

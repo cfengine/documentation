@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.12  Documentation - Health diagnostic API</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-enterprise-api-ref-health-diagnostic.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='/docs/3.12/assets/global-2ea8d2fcc0dbfebdbe7d10e6eca6a3b3.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Health diagnostic API";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/" selected>Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a><ul class="level2"><li><a href="reference-enterprise-api-ref-changes.html">Changes REST API</a></li><li><a class="active" href="reference-enterprise-api-ref-health-diagnostic.html">Health diagnostic API</a></li><li><a href="reference-enterprise-api-ref-host.html">Host REST API</a></li><li><a href="reference-enterprise-api-ref-export-import-api.html">Import & Export API</a></li><li><a href="reference-enterprise-api-ref-inventory.html">Inventory API</a></li><li><a href="reference-enterprise-api-ref-ldap-api.html">LDAP authentication API</a></li><li><a href="reference-enterprise-api-ref-query.html">Query REST API</a></li><li><a href="reference-enterprise-api-ref-sql-schema.html">SQL Schema</a></li><li><a href="reference-enterprise-api-ref-status-settings.html">Status and Settings REST API</a></li><li><a href="reference-enterprise-api-ref-users-rbac.html">Users and Access-Control REST API</a></li></ul></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-enterprise-api-ref.html">Enterprise API Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Health diagnostic API
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>This API provides access to health diagnostic information.</p>
+<h2 id="get-health-diagnostic-status">Get health diagnostic status</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/health-diagnostic/status">https://hub.cfengine.com/api/health-diagnostic/status</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text">{
+    &quot;hostsNeverCollected&quot;: 1,
+    &quot;hostNotRecentlyCollected&quot;: 0,
+    &quot;hostsUsingSameIdentity&quot;: 0,
+    &quot;agentNotRunRecently&quot;: 2,
+    &quot;lastAgentRunUnsuccessful&quot;: 0,
+    &quot;totalFailed&quot;: 3,
+    &quot;total&quot;: &quot;50642&quot;
+}
+</code></pre>
+</div>
+<h2 id="list-of-health-diagnostic-report-categories">List of health diagnostic report categories</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/health-diagnostic/report_ids">https://hub.cfengine.com/api/health-diagnostic/report_ids</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text">[
+    &quot;hostsNeverCollected&quot;,
+    &quot;notRecentlyCollected&quot;,
+    &quot;hostsUsingSameIdentity&quot;,
+    &quot;agentNotRunRecently&quot;,
+    &quot;lastAgentRunUnsuccessful&quot;
+]
+</code></pre>
+</div>
+<h2 id="get-health-diagnostic-report-data">Get health diagnostic report data</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/health-diagnostic/report/:report_id">https://hub.cfengine.com/api/health-diagnostic/report/:report_id</a></p>
+
+<p><strong>Method:</strong> POST</p>
+
+<p>Execute user SQL query. Accepts SQL compatible with PostgreSQL database. Query is a subject to Role Base Access Control and will include data for hosts that issuing user have permissions to access. Read-only SQL is allowed.</p>
+
+<p>API performance depend on the query result size, to achieve fastest results consider narrowing result set at much as possible.</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>report_id</strong> <em>(string)</em>
+Report id.
+List of report ids you can obtain through <a href="reference-enterprise-api-ref-health-diagnostic.html#list-of-health-diagnostic-report-categories" title="Health diagnostic API - List of health diagnostic report categories">List of health diagnostic report categories</a></li>
+<li><strong>sortColumn</strong> <em>(string)</em>
+Column name on which to sort results. Optional parameter.</li>
+<li><strong>sortDescending</strong> <em>(boolean)</em>
+Sorting order. Optional parameter.</li>
+<li><strong>skip</strong> <em>(integer)</em>
+Number of results to skip for the processed
+query. The Mission Portal uses this for pagination. Optional parameter.</li>
+<li><strong>limit</strong>  <em>(integer)</em>
+Limit the number of results in the query.</li>
+<li><strong>hostContextInclude</strong> <em>(array)</em>
+Includes only results that concern hosts which have all specified CFEngine contexts (class) set. Optional parameter.</li>
+<li><strong>hostContextExclude</strong> <em>(array)</em>
+Excludes results that concern hosts which have specified CFEngine context (class) set. Hosts that have at lest one of the specified contexts set will be excluded from the results. Optional parameter.</li>
+</ul>
+
+<p><strong>CURL Request Example:</strong>
+<code>
+curl -k --user &lt;username&gt;:&lt;password&gt; -X POST \
+  https://hub.cfengine.com/api/health-diagnostic/report/agentNotRunRecently \
+  -H &#39;Content-Type: application/json&#39; \
+  -d &#39;{&quot;limit&quot;: 50}&#39;
+</code></p>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text">{
+    &quot;data&quot;: [
+        {
+            &quot;header&quot;: [
+                {
+                    &quot;columnName&quot;: &quot;key&quot;,
+                    &quot;columnType&quot;: &quot;STRING&quot;
+                },
+                {
+                    &quot;columnName&quot;: &quot;Host name&quot;,
+                    &quot;columnType&quot;: &quot;STRING&quot;
+                },
+                {
+                    &quot;columnName&quot;: &quot;Last report collected&quot;,
+                    &quot;columnType&quot;: &quot;STRING&quot;
+                },
+                {
+                    &quot;columnName&quot;: &quot;Last agent local execution time&quot;,
+                    &quot;columnType&quot;: &quot;STRING&quot;
+                }
+            ],
+            &quot;query&quot;: &quot;SELECT h.Hostkey as key,h.hostname as \&quot;Host name\&quot;, lastreporttimestamp as \&quot;Last report collected\&quot;, agentstatus.lastagentlocalexecutiontimestamp as \&quot;Last agent local execution time\&quot;  \n                            FROM vm_hosts h \n                            LEFT JOIN agentstatus  ON agentstatus.Hostkey = h.Hostkey WHERE h.HostKey IN (SELECT result.hostkey FROM (SELECT agentstatus.HostKey \n                      FROM agentstatus \n                      LEFT JOIN vm_hosts ON vm_hosts.hostkey = agentstatus.hostkey\n                      WHERE  extract(epoch from (lastReportTimeStamp::timestamp - lastagentlocalexecutiontimestamp::timestamp)) &gt; agentexecutioninterval::int  * 1.3) AS result \n                      WHERE hostkey IS NOT NULL  AND HostKey NOT IN (SELECT hostkey FROM hosts_not_reported) AND HostKey NOT IN (SELECT Hosts_view.HostKey \n                      FROM vm_hosts Hosts_view \n                      WHERE Hosts_view.lastreporttimestamp &lt; to_timestamp(&#39;1549559891&#39;)) AND HostKey NOT IN (SELECT SameHosts.HostKey \n                      FROM (\n                          SELECT remotehostkey as HostKey FROM lastseenhostslogs GROUP BY remotehostkey HAVING COUNT(distinct remotehostip) &gt; 1\n                          ) AS SameHosts))&quot;,
+            &quot;queryTimeMs&quot;: 1408,
+            &quot;rowCount&quot;: 2,
+            &quot;rows&quot;: [
+                [
+                    &quot;SHA=aasdsfdgddswrdfgddfdfgwerdffb86&quot;,
+                    &quot;SHA=aasdsfdgddswrdfgddfdfgwerdffb86&quot;,
+                    &quot;2019-02-27 15:16:52.987126+00&quot;,
+                    &quot;2019-02-27 15:05:56.567979+00&quot;
+                ],
+                [
+                    &quot;SHA=fe7f992547addc96fe167bacd6de37681c188709ce9f01fb995f03124ef2a934&quot;,
+                    &quot;vagrant-ubuntu-trusty-64&quot;,
+                    &quot;2019-03-05 10:26:08+00&quot;,
+                    &quot;2019-03-04 08:38:30+00&quot;
+                ]
+            ]
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;count&quot;: 1,
+        &quot;page&quot;: 1,
+        &quot;timestamp&quot;: 1551782115,
+        &quot;total&quot;: 1
+    }
+}
+</code></pre>
+</div>
+<h2 id="list-of-health-diagnostic-dismissed-hosts">List of health diagnostic dismissed hosts</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/health-diagnostic/dismiss/:report_id">https://hub.cfengine.com/api/health-diagnostic/dismiss/:report_id</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Parameters</strong></p>
+
+<ul>
+<li><strong>report_id</strong> <em>(string)</em>
+Report id.
+List of report ids you can obtain through <a href="reference-enterprise-api-ref-health-diagnostic.html#list-of-health-diagnostic-report-categories" title="Health diagnostic API - List of health diagnostic report categories">List of health diagnostic report categories</a></li>
+<li><strong>offset</strong> <em>(integer)</em>
+Number of results to skip for the processed query.</li>
+<li><strong>limit</strong>  <em>(integer)</em>
+Limit the number of results in the query.</li>
+</ul>
+
+<p><strong>CURL Request Example:</strong>
+<code>
+curl -k --user &lt;username&gt;:&lt;password&gt; -X GET \
+  https://hub.cfengine.com/api/health-diagnostic/dismiss/notRecentlyCollected?limit=3&amp;offset=0 
+</code></p>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text">{
+    &quot;data&quot;: [
+        {
+            &quot;header&quot;: [
+                {
+                    &quot;columnName&quot;: &quot;hostkey&quot;,
+                    &quot;columnType&quot;: &quot;STRING&quot;
+                },
+                {
+                    &quot;columnName&quot;: &quot;hostname&quot;,
+                    &quot;columnType&quot;: &quot;STRING&quot;
+                },
+                {
+                    &quot;columnName&quot;: &quot;ipaddress&quot;,
+                    &quot;columnType&quot;: &quot;STRING&quot;
+                },
+                {
+                    &quot;columnName&quot;: &quot;lastreporttimestamp&quot;,
+                    &quot;columnType&quot;: &quot;STRING&quot;
+                },
+                {
+                    &quot;columnName&quot;: &quot;firstreporttimestamp&quot;,
+                    &quot;columnType&quot;: &quot;STRING&quot;
+                }
+            ],
+            &quot;query&quot;: &quot;SELECT * FROM m_hosts WHERE hostkey IN (SELECT hostkey FROM health_diagnostics_dismissed WHERE report_type = &#39;notRecentlyCollected&#39; AND username = &#39;admin&#39;)&quot;,
+            &quot;queryTimeMs&quot;: 26,
+            &quot;rowCount&quot;: 50,
+            &quot;rows&quot;: [
+                [
+                    &quot;SHA=aasdsfdgddswrdfgddfdfgdffb8922&quot;,
+                    &quot;SHA=aasdsfdgddswrdfgddfdfgdffb8922&quot;,
+                    null,
+                    &quot;2019-02-27 10:32:12.813777+00&quot;,
+                    &quot;2019-02-27 10:32:12.813777+00&quot;
+                ],
+                [
+                    &quot;SHA=aasdsfdgddswrdfgddfdfgdffb8930&quot;,
+                    &quot;SHA=aasdsfdgddswrdfgddfdfgdffb8930&quot;,
+                    null,
+                    &quot;2019-02-27 10:32:12.813777+00&quot;,
+                    &quot;2019-02-27 10:32:12.813777+00&quot;
+                ],
+                [
+                    &quot;SHA=aasdsfdgddswrdfgddfdfgdffb8925&quot;,
+                    &quot;SHA=aasdsfdgddswrdfgddfdfgdffb8925&quot;,
+                    null,
+                    &quot;2019-02-27 10:32:12.813777+00&quot;,
+                    &quot;2019-02-27 10:32:12.813777+00&quot;
+                ]
+            ]
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;count&quot;: 1,
+        &quot;page&quot;: 1,
+        &quot;timestamp&quot;: 1553087363,
+        &quot;total&quot;: 1
+    }
+}
+</code></pre>
+</div>
+<h2 id="dismiss-hosts-from-health-diagnostic">Dismiss hosts from health diagnostic</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/health-diagnostic/dismiss/:report_id">https://hub.cfengine.com/api/health-diagnostic/dismiss/:report_id</a></p>
+
+<p><strong>Method:</strong> POST</p>
+
+<p><strong>Parameters</strong></p>
+
+<ul>
+<li><strong>report_id</strong> <em>(string)</em>
+Report id.
+List of report ids you can obtain through <a href="reference-enterprise-api-ref-health-diagnostic.html#list-of-health-diagnostic-report-categories" title="Health diagnostic API - List of health diagnostic report categories">List of health diagnostic report categories</a></li>
+<li><strong>hosts</strong> <em>(array)</em>
+Array of host keys to dismiss</li>
+</ul>
+
+<p><strong>CURL Request Example:</strong>
+<code>
+curl -k --user admin:admin -X POST \
+  https://hub.cfengine.com/api/health-diagnostic/dismiss/notRecentlyCollected \
+  -H &#39;Content-Type: application/json&#39; \
+  -d &#39;{&quot;hosts&quot;: [&quot;SHA=aasdsfdgddswrdfgddfdfgwerdffb86&quot;, &quot;SHA=fe7f992547addc96fe167bacd6de37681c188709ce9f01fb995f03124ef2a934&quot;]}&#39;
+</code></p>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text">HTTP 201 CREATED
+</code></pre>
+</div>
+<h2 id="remove-hosts-from-dismissed-list">Remove hosts from dismissed list</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/health-diagnostic/dismiss/:report_id">https://hub.cfengine.com/api/health-diagnostic/dismiss/:report_id</a></p>
+
+<p><strong>Method:</strong> DELETE</p>
+
+<p><strong>Parameters</strong></p>
+
+<ul>
+<li><strong>report_id</strong> <em>(string)</em>
+Report id.
+List of report ids you can obtain through <a href="reference-enterprise-api-ref-health-diagnostic.html#list-of-health-diagnostic-report-categories" title="Health diagnostic API - List of health diagnostic report categories">List of health diagnostic report categories</a></li>
+<li><strong>hosts</strong> <em>(array)</em>
+Array of host keys to remove from dismissed list</li>
+</ul>
+
+<p><strong>CURL Request Example:</strong>
+<code>
+curl -k --user admin:admin -X POST \
+  https://hub.cfengine.com/api/health-diagnostic/dismiss/notRecentlyCollected \
+  -H &#39;Content-Type: application/json&#39; \
+  -d &#39;{&quot;hosts&quot;: [&quot;SHA=aasdsfdgddswrdfgddfdfgwerdffb86&quot;, &quot;SHA=fe7f992547addc96fe167bacd6de37681c188709ce9f01fb995f03124ef2a934&quot;]}&#39;
+</code></p>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text">HTTP 202 ACCEPTED
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-enterprise.html">enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-api.html">api</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-reporting.html">reporting</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-uri.html">uri</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-health.html">health</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 27 October 2021
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/enterprise-api-ref/health-diagnostic.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/3d161b229c7df44b99d8cd6c71640ab53c94fcbd" target="_blank">3d161b229c7df44b99d8cd6c71640ab53c94fcbd</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.12/assets/footer-135fa20640bb1a2bbe772d22c46414cb.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

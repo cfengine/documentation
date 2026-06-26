@@ -1,0 +1,106 @@
+
+bundle knowledge SpecialTopic_Monitoring
+
+{
+topics:
+
+"SpecialTopic_Monitoring";
+    "Summary Monitoring"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "Threshold monitoring"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "Scanning syslog for breakin attempts"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "Scanning syslog for email milter failures"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "Scanning syslog for email statistics"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "Scanning DNS logs for query statistics"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "Scanning syslog for FTP statistics"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "Scanning log files for patterns"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "measurements promises"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "What are measurements?"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "Persistent classes for alert conditions"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "Entropy"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "Variables"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "Estimate of the level of normality"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "Standard measured variables"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "Visualization of monitoring in CFEngine"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "Monitoring in CFEngine"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "What does monitoring software do?"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "What are the goals of monitoring?"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+    "What is monitoring?"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Measurement and Monitoring"  association => a("discusses","Monitoring with CFEngine","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Monitoring.html"
+  represents => { "Official CFEngine document"},  about_topics => { "monitoring with cfengine" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html"
+  represents => { "Special Topics Guide"},  about_topics => { "monitoring with cfengine" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#Top"
+  represents => { "Text section" }, about_topics => { "measurement and monitoring" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#Monitoring-introduction"
+  represents => { "manual chapter" }, about_topics => { "monitoring introduction"};
+ "/knowledge/docs/SpecialTopic_Monitoring.html#What-is-monitoring_003f"
+  represents => { "Text section" }, about_topics => { "what is monitoring?" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#What-are-the-goals-of-monitoring_003f"
+  represents => { "Text section" }, about_topics => { "what are the goals of monitoring?" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#What-does-monitoring-software-do_003f"
+  represents => { "Text section" }, about_topics => { "what does monitoring software do?" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#Monitoring-in-CFEngine"
+  represents => { "Text section" }, about_topics => { "monitoring in cfengine" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#Visualization-of-monitoring-in-CFEngine"
+  represents => { "Text section" }, about_topics => { "visualization of monitoring in cfengine" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#Standard-measured-variables"
+  represents => { "Text section" }, about_topics => { "standard measured variables" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#Estimate-of-the-level-of-normality"
+  represents => { "Text section" }, about_topics => { "estimate of the level of normality" };
+examples:: "/knowledge/docs/SpecialTopic_Monitoring.html#index-normal-1"
+ about_topics => { "Estimate of the level of normality" },
+  represents => { "code example" };
+examples:: "/knowledge/docs/SpecialTopic_Monitoring.html#index-Anomalies-6"
+ about_topics => { "Estimate of the level of normality" },
+  represents => { "code example" };
+examples:: "/knowledge/docs/SpecialTopic_Monitoring.html#index-Anomalies-6"
+ about_topics => { "Estimate of the level of normality" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#Variables"
+  represents => { "Text section" }, about_topics => { "variables" };
+examples:: "/knowledge/docs/SpecialTopic_Monitoring.html#Variables"
+ about_topics => { "Variables" },
+  represents => { "code example" };
+examples:: "/knowledge/docs/SpecialTopic_Monitoring.html#Variables"
+ about_topics => { "Variables" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#Entropy"
+  represents => { "Text section" }, about_topics => { "entropy" };
+examples:: "/knowledge/docs/SpecialTopic_Monitoring.html#index-Entropy-7"
+ about_topics => { "Entropy" },
+  represents => { "code example" };
+examples:: "/knowledge/docs/SpecialTopic_Monitoring.html#index-Entropy-7"
+ about_topics => { "Entropy" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#Persistent-classes-for-alert-conditions"
+  represents => { "Text section" }, about_topics => { "persistent classes for alert conditions" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#Monitoring-customization"
+  represents => { "manual chapter" }, about_topics => { "monitoring customization"};
+ "/knowledge/docs/SpecialTopic_Monitoring.html#What-are-measurements_003f"
+  represents => { "Text section" }, about_topics => { "what are measurements?" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#measurements-promises"
+  represents => { "Text section" }, about_topics => { "measurements promises" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#Scanning-log-files-for-patterns"
+  represents => { "Text section" }, about_topics => { "scanning log files for patterns" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#FTP"
+  represents => { "Text section" }, about_topics => { "scanning syslog for ftp statistics" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#DNS"
+  represents => { "Text section" }, about_topics => { "scanning dns logs for query statistics" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#Email"
+  represents => { "Text section" }, about_topics => { "scanning syslog for email statistics" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#Milter"
+  represents => { "Text section" }, about_topics => { "scanning syslog for email milter failures" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#Breakin"
+  represents => { "Text section" }, about_topics => { "scanning syslog for breakin attempts" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#Threshold-monitoring"
+  represents => { "Text section" }, about_topics => { "threshold monitoring" };
+ "/knowledge/docs/SpecialTopic_Monitoring.html#Summary-Monitoring"
+  represents => { "Text section" }, about_topics => { "summary monitoring" };
+}
+

@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.18  Documentation - Modularity and Orchestrating System Policy</title>
+        <link rel="icon" type="image/svg+xml" href="./media/images/favicon.svg">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/guide-special-topics-modularity.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+        <link href='assets/global-337446952f2ea3d590f5c3e3687cd5f0.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Modularity and Orchestrating System Policy";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.24/">Version 3.24 (LTS)</option>
+<option value="/docs/3.23/">Version 3.23 (EOL non-LTS)</option>
+<option value="/docs/3.22/">Version 3.22 (non-LTS)</option>
+<option value="/docs/3.21/">Version 3.21 (LTS)</option>
+<option value="/docs/3.20/">Version 3.20 (EOL non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/" selected>Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (EOL LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="c5f68dd2aab4228c4" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a><ul class="level2"><li><a href="guide-special-topics-adopting-cfengine.html">Adopting CFEngine</a></li><li><a href="guide-special-topics-agility.html">Agility</a></li><li><a href="guide-special-topics-application-management.html">Application Management</a></li><li><a href="guide-special-topics-build-deploy-manage-audit.html">Build Deploy Manage Audit</a></li><li><a href="guide-special-topics-change-management.html">Change Management</a></li><li><a href="guide-special-topics-cloud-computing.html">Cloud Computing</a></li><li><a href="guide-special-topics-content-driven-policy.html">Content Driven Policy</a></li><li><a href="guide-special-topics-devops.html">Devops</a></li><li><a href="guide-special-topics-distributed-scheduling.html">Distributed Scheduling</a></li><li><a href="guide-special-topics-file-content.html">File Content</a></li><li><a href="guide-special-topics-glossary.html">Glossary</a></li><li><a href="guide-special-topics-hierarchies.html">Hierarchies</a></li><li><a href="guide-special-topics-itil.html">ITIL</a></li><li><a href="guide-special-topics-iteration.html">Iteration (Loops)</a></li><li><a class="active" href="guide-special-topics-modularity.html">Modularity and Orchestrating System Policy</a></li><li><a href="guide-special-topics-orchestration.html">Orchestration</a></li><li><a href="guide-special-topics-stigs.html">STIGs</a></li><li><a href="guide-special-topics-security.html">Security</a></li><li><a href="guide-special-topics-teamwork.html">Teamwork</a></li><li><a href="guide-special-topics-open-nebula.html">Using CFEngine with Open Nebula</a></li></ul></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">External resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-special-topics.html">Special Topics</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Modularity and Orchestrating System Policy
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h1 id="what-is-modularity">What is modularity?</h1>
+<p>Modularity is the ability to separate concerns within a total process, and hide
+the details of the different concerns in different containers. In CFEngine, this
+is a service oriented view, in which different aspects of a problem are separated
+and turned into generic components that offer a service. We often talk about
+black boxes, grey boxes or white boxes depending on the extent to which the user
+of a service can see the details within the containers.</p>
+<h1 id="what-is-orchestration">What is orchestration?</h1>
+<p>Orchestration is the ability to coordinate many different processes in time and
+space, around a system, so that the sum of those processes yields a harmonious
+result through cooperation.</p>
+
+<p>Orchestration is not about centralized control, though this is common
+misperception. An orchestra does not manage to play a symphony because the
+conductor pulls every player&#39;s strings or blows every trumpet in person, but
+rather because each autonomous player has a copy of the script, knows what to
+do, and can use just the little additional information from the conductor to
+access a viewpoint that is not available to an individual. An orchestra is a
+weakly coupled expert system in which the management (conductor) provides a
+service to the players.</p>
+
+<p>CFEngine works like an orchestra – this is why is scales so well. Each computer
+is an autonomous entity, getting its script and a few occasional pieces of
+information from the policy server (conductor). The coupling between the agents
+is weak – there is slack that makes the behaviour robust to minor errors in
+communication or timing.</p>
+<h1 id="how-does-cfengine-deal-with-modularity-and-orchestration">How does CFEngine deal with modularity and orchestration?</h1>
+<p>Promise Theory provides simple principles for hiding details: agents are
+considered to reveal a kind of service interface to peers, that is advertised by
+making a promise to someone. We assume an agent exerts best effort in keeping
+its promises. Orchestration requires a promise to coordinate and the promise to
+use that coordination service. These basic ideas are built into CFEngine.</p>
+
+<p>CFEngine provides containers called bundles for creating modular parts. Bundles
+can be independent (and therefore parallelizable) or they can be dependent (in
+which case the sequence in which they verify their promises matters).</p>
+
+<p>In a computer centre with many different machines, there is an additional
+dimension to orchestration – multiple orchestras. Each machine has a number of
+resources that need to be orchestrated, and the different machines themselves
+might also need to cooperate because they provide services to one another. The
+principles are the same in both cases, but the confusion between them is
+typically the reason why large systems do not scale well.</p>
+<h1 id="levels-of-policy-abstraction">Levels of policy abstraction</h1>
+<p>CFEngine offers a number of layers of abstraction. The most fundamental atom in
+CFEngine is the promise. Promises can be made about many system issues, and you
+described in what context promises are to be kept.</p>
+<h2 id="menu-level">Menu level</h2>
+<p>At this high level, a user <code>selects&#39; from a set of pre-defined</code>services&#39; (or
+bundles in CFEngine parlance). In commercial editions, users may view the set of
+services as a Service Catalogue, from which each host selects its roles. The
+selection is not made by every host, rather one places hosts into roles that
+will keep certain promises, just as different voices in an orchestra are
+assigned certain parts to play.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">service_catalogue</span><span class="w"> </span><span class="c"># menu</span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nc">any</span><span class="p">::</span><span class="w"> </span><span class="c"># selected by everyone</span>
+<span class="w">     </span><span class="s">&quot;everyone&quot;</span><span class="w"> </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">time_management</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Ensure clocks are synchronized&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="s">&quot;everyone&quot;</span><span class="w"> </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">garbage_collection</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Clear junk and rotate logs&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">mailservers</span><span class="p">::</span><span class="w"> </span><span class="c"># selected by hosts in class</span>
+<span class="w">    </span><span class="s">&quot;mail server&quot;</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;goal_3&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;goal_1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;goal_2&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">                  </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">app_mail_postfix</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;The mail delivery agent&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;mail server&quot;</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="nf">goal_3</span><span class="p">,</span><span class="w"></span>
+<span class="w">                  </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">app_mail_imap</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;The mail reading service&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;mail server&quot;</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="nf">goal_3</span><span class="p">,</span><span class="w"></span>
+<span class="w">                  </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">app_mail_mailman</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;The mailing list handler&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The resulting menu of services can be browsed in the Mission Portal interface.</p>
+
+<p>A human-readable Service Catalogue generated from technical specifications shows
+what goals are being attended to automatically</p>
+<h2 id="bundle-level">Bundle level</h2>
+<p>At this level, users can switch on and off predefined features, or re-use
+standard methods, e.g. for editing files:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span><span class="w"> </span><span class="k">common</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">bundlesequence</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"></span>
+<span class="w">                  </span><span class="nf">webserver</span><span class="p">(</span><span class="s">&quot;on&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">                  </span><span class="nf">dns</span><span class="p">(</span><span class="s">&quot;on&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">                  </span><span class="nf">security_set</span><span class="p">(</span><span class="s">&quot;on&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">                  </span><span class="nf">ftp</span><span class="p">(</span><span class="s">&quot;off&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                  </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The set of bundles that can be selected from is extensible by the user.</p>
+<h2 id="promise-level">Promise level</h2>
+<p>This is the most detailed level of configuration, and gives full convergent
+promise behaviour to the user. At this promise level, you can specificy every
+detail of promise-keeping behaviour, and combine promises together, reusing
+bundles and methods from standard libraries, or creating your own.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">addpasswd</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="c"># want to set these values by the names of their array keys</span>
+
+<span class="w">  </span><span class="p">&quot;</span><span class="nv">pwd[mark]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;mark:x:1000:100:Mark B:/home/mark:/bin/bash&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">&quot;</span><span class="nv">pwd[fred]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;fred:x:1001:100:Right Said:/home/fred:/bin/bash&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">&quot;</span><span class="nv">pwd[jane]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;jane:x:1002:100:Jane Doe:/home/jane:/bin/bash&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">files</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;/etc/passwd&quot;</span><span class="w">           </span><span class="c"># Use standard library functions</span>
+<span class="w">        </span><span class="kr">create</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Ensure listed users are present&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="kr">perms</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">     </span><span class="kr">edit_line</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">append_users_starting</span><span class="p">(</span><span class="s">&quot;addpasswd.pwd&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h2 id="spread-sheet-level-data-driven">Spread-sheet level (data-driven)</h2>
+<p>CFEngine community and commercial editions support a kind of spreadsheet. In a
+spreadsheet approach, you create only the data to be inserted into predefined
+promises. The data are entered in tabular form, and may be browsed in the web
+interface. This form of entry is preferred in some environments, especially on
+the Windows platform.</p>
+<h1 id="is-cfengine-patch-oriented-or-package-oriented">Is CFEngine patch-oriented or package-oriented?</h1>
+<p>Some system management products are patching systems. They package lumps of
+software and configuration along with scripts. If something goes wrong they
+simply update or replace the package with a new one. This is a patching model of
+system installation, but it is not a good model for repair as it nearly always
+leads to interruption of service or even requires a reboot.</p>
+
+<p>Installation of packages overwrites too much data in one go to be an effective
+model of simple repair1. It can be both ineffecient and destructive. CFEngine
+manages addressable entities at the lowest possible level so that
+ultra-fine-grained repair can be performed with no interruption of service, e.g.
+altering a field within a line in a file, or restarting one process, or altering
+one bit of a flag in each file in a set of directories. The power to express
+sophisticated patterns is what makes CFEngine&#39;s approach both non-intrusive and
+robust.</p>
+<h1 id="high-level-services-in-cfengine">High level services in CFEngine</h1>
+<p>CFEngine is designed to handle high level simplicity (without sacrificing low
+level capability) by working with configuration patterns, after all
+configuration is all about promising consistent patterns of system state in the
+resources of the system. Lists, for instance, are a particularly common kind of
+pattern: for each of the following... make a similar promise. There are several
+ways to organize patterns, using containers, lists and associative arrays. Let&#39;s
+look at how to configure a number of application services.</p>
+
+<p>At the simplest or highest level, we can turn services into &quot;genes&quot; to switch on
+and off on your basic &quot;stem cell&quot; machines.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">bundlesequence</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"></span>
+<span class="w">                  </span><span class="nf">webserver</span><span class="p">(</span><span class="s">&quot;on&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">                  </span><span class="nf">dns</span><span class="p">(</span><span class="s">&quot;on&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">                  </span><span class="nf">security_set</span><span class="p">(</span><span class="s">&quot;on&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">                  </span><span class="nf">ftp</span><span class="p">(</span><span class="s">&quot;off&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                  </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>This obviously looks simple, but this kind of simplicity is cheating as we are
+hiding all the details of what is going to happen – we don&#39;t know if they are
+hard-coded, or whether we can decide ourselves. Anyone can play that game! The
+true test is whether we can retain the power to decide the low-level details
+without having to program in a low level language like Ruby, Python or Perl.
+Let&#39;s peel back some of the layers, knowing that we can hide as many of the
+details as we like.</p>
+
+<p>A simple, but low level approach to deploying a service, that veteran users will
+recognize, is the following. This is a simple example of orchestration between a
+promise to raise a signal about a missing process and another promise to restart
+said process once its absence has been discovered and signalled.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">application_services</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">processes</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;sshd&quot;</span><span class="w">  </span><span class="kr">restart_class</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;start_ssh&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;httpd&quot;</span><span class="w"> </span><span class="kr">restart_class</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;start_spache&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">commands</span><span class="p">:</span><span class="w"></span>
+
+<span class="w"> </span><span class="nc">start_ssh</span><span class="p">::</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;/etc/init.d/sshd restart&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w"> </span><span class="nc">start_apache</span><span class="p">::</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;/etc/init.d/apache restart&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>But the first thing we see is that there is a repeated pattern, so we could
+rewrite this as a single promise for a list of services, at the cost of a loss
+of transparency. However, this is the power of abstraction.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">application_services</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="p">&quot;</span><span class="nv">service</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;ssh&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;apache&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mysql&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w"> </span><span class="c">#</span>
+<span class="w"> </span><span class="c"># Apply the following promises to this list...</span>
+<span class="w"> </span><span class="c">#</span>
+
+<span class="kd">services</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">   </span><span class="s">&quot;</span><span class="si">$(service)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h1 id="hiding-details">Hiding details</h1>
+<p>Resource abstraction, or hiding system specific details inside a kind of
+grey-box, is just another service as far as CFEngine is concerned – and we
+generally map services to bundles.</p>
+
+<p>Many system variables are discovered automatically by CFEngine and provided &quot;out
+of the box&quot;, e.g. the location of the filesystem table might be /etc/fstab, or
+/etc/vfstab or even /etc/filesystems, but CFEngine allows you to refer simply to
+<strong>$(sys.fstab)</strong>. Soft-coded abstraction needs cannot be discovered by the
+system however. So how do we create this mythical resource abstraction layer? It
+is simple. Elsewhere we have defined basic settings.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">common</span><span class="w"> </span><span class="nf">res</span><span class="w"> </span><span class="c"># abstraction layer</span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">solaris</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">   </span><span class="p">&quot;</span><span class="nv">cfg_file[ssh]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;/etc/sshd_config&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">&quot;</span><span class="nv">daemon[ssh] </span><span class="p">&quot;</span><span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;sshd&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">&quot;</span><span class="nv">start[ssh] </span><span class="p">&quot;</span><span class="w">   </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;/etc/init.d/sshd restart&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">linux.SuSE</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">   </span><span class="p">&quot;</span><span class="nv">cfg_file[ssh]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;/etc/ssh/sshd_config&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">&quot;</span><span class="nv">daemon[ssh] </span><span class="p">&quot;</span><span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;sshd&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">&quot;</span><span class="nv">start[ssh] </span><span class="p">&quot;</span><span class="w">   </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;/etc/init.d/sshd restart&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">default</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">   </span><span class="p">&quot;</span><span class="nv">cfg_file[ssh]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;/etc/sshd_config&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">&quot;</span><span class="nv">daemon[ssh] </span><span class="p">&quot;</span><span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;sshd&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="p">&quot;</span><span class="nv">start[ssh] </span><span class="p">&quot;</span><span class="w">   </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;/etc/init.d/sshd restart&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">classes</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;default&quot;</span><span class="w"> </span><span class="kr">and</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;!SuSE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;solaris&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Some of the attempts to recreate a CFEngine-like tool try to hard code many
+decisions, meaning that minor changes in operating system versions require basic
+re-coding of the software. CFEngine does not make decisions for you without your
+permission.</p>
+<h1 id="black-grey-and-white-box-encapsulation-in-cfengine">Black, grey and white box encapsulation in CFEngine</h1>
+<p>CFEngine&#39;s ability to abstract system decisions as promises also applies to
+bundles of promises. After all, we can package promises as bumper compendia for
+grouping together related matters in a single package. Naturally, CFEngine never
+abandons its insistence on <b>convergence</b>, merely for the sake of making
+things look simple. Using CFEngine, you can create convergent orchestration.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">services</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w"> </span><span class="p">&quot;</span><span class="nv">service</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;dhcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;sshd&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+<span class="w"> </span><span class="s">&quot;any&quot;</span><span class="w"> </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">fix_service</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(service)</span><span class="s">&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">         </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Make sure the basic application services are running&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The code above is all you really want to see. The rest can be hidden in
+libraries that you rarely look at. In CFEngine, we want the intentions to shine
+forth and the low level details to be clear on inspection, but hidden from view.</p>
+
+<p>We can naturally modularize the packaged bundle of fully convergent promises and
+keep it as library code for reuse. Notice that CFEngine adds comments in the
+code that follow processes through execution, allowing you to see the full
+intentions behind the promises in logs and error messages. In commercial
+versions, you can trace these comments to see your process details.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">fix_service</span><span class="p">(</span><span class="nv">service</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">files</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;</span><span class="si">$(res.cfg_file[$(service)])</span><span class="s">&quot;</span><span class="w"></span>
+
+<span class="w"> </span><span class="c">#</span>
+<span class="w"> </span><span class="c"># reserved_word =&gt; use std templates, e.g. cp(), p(), or roll your own</span>
+<span class="w"> </span><span class="c">#</span>
+<span class="w">     </span><span class="kr">copy_from</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">cp</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(g.masterfiles)</span><span class="s">/</span><span class="si">$(service)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;policy_host.mydomain&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">         </span><span class="kr">perms</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">p</span><span class="p">(</span><span class="s">&quot;0600&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">       </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">define</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(service)</span><span class="s">_restart&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;failed&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">       </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Copy a stock configuration file template from repository&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">processes</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;</span><span class="si">$(res.daemon[$(service)])</span><span class="s">&quot;</span><span class="w"></span>
+
+<span class="w">     </span><span class="kr">restart_class</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">canonify</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(service)</span><span class="s">_restart&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">           </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Check that the server process is running...&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">commands</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;</span><span class="si">$(res.start[$(service)])</span><span class="s">&quot;</span><span class="w"></span>
+
+<span class="w">           </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Method for starting this service&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">canonify</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(service)</span><span class="s">_restart&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h1 id="bulk-operations-are-handled-by-repeating-patterns-over-lists">Bulk operations are handled by repeating patterns over lists</h1>
+<p>The power of CFEngine is to be able to handle lists of similar patterns in a
+powerful way. You can also wrap the whole experience in a method-bundle, and we
+can extend this kind of pattern to implement other interfaces, all without low
+level programming.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="c">#</span>
+<span class="c"># Remove certain services from xinetd - for system hardening</span>
+<span class="c">#</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">linux_harden_methods</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">   </span><span class="p">&quot;</span><span class="nv">services</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                       </span><span class="s">&quot;chargen&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                       </span><span class="s">&quot;chargen-udp&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                       </span><span class="s">&quot;cups-lpd&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                       </span><span class="s">&quot;finger&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                       </span><span class="s">&quot;rlogin&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                       </span><span class="s">&quot;rsh&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                       </span><span class="s">&quot;talk&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                       </span><span class="s">&quot;telnet&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                       </span><span class="s">&quot;tftp&quot;</span><span class="w"></span>
+<span class="w">                       </span><span class="p">};</span><span class="w"></span>
+<span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="c">#</span>
+<span class="w">    </span><span class="c"># for each $(services) in @(services) do disable_xinetd($(services))</span>
+<span class="w">    </span><span class="c">#</span>
+
+<span class="w">   </span><span class="s">&quot;any&quot;</span><span class="w">  </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">disable_xinetd</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(services)</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>In the library of generic templates, we may keep one or more methods for
+implementing service disablement. For example, this simple interface to Linux&#39;s
+chkconfig is one approach, which need not be hard-coded in Ruby using Cfeninge.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="c">#</span>
+<span class="c"># For the standard library</span>
+<span class="c">#</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">disable_xinetd</span><span class="p">(</span><span class="nv">name</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="p">&quot;</span><span class="nv">status</span><span class="p">&quot;</span><span class="w"></span>
+
+<span class="w">     </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;/sbin/chkconfig --list </span><span class="si">$(name)</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;useshell&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">classes</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;on&quot;</span><span class="w">  </span><span class="kr">expression</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">regcmp</span><span class="p">(</span><span class="s">&quot;.*on&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(status)</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;off&quot;</span><span class="w"> </span><span class="kr">expression</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">regcmp</span><span class="p">(</span><span class="s">&quot;.*off&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(status)</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">commands</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nc">on</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;/sbin/chkconfig </span><span class="si">$(name)</span><span class="s"> off&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;disable </span><span class="si">$(name)</span><span class="s"> service&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">   </span><span class="nc">on</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;disable </span><span class="si">$(name)</span><span class="s"> service.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="nc">off</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;</span><span class="si">$(name)</span><span class="s"> has been already disabled. Don&#39;t need to perform the action.&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h1 id="ordering-operations-in-cfengine">Ordering operations in CFEngine</h1>
+<p>Ordering of operations is less important than you probably think. We are taught
+to think of computing as an linear sequence of steps, but this ignores a crucial
+fact about distributed systems: that many parts are independent of each other
+and exist in parallel.</p>
+
+<p>Nevertheless there are sometimes cases of strong inter-dependency (that we
+strive to avoid, as they lead to most of the difficulties of system management)
+where order is important. In re-designing CFEngine, we have taken a pragmatic
+approach to ordering. Essentially, CFEngine takes care of ordering for you for
+most cases – and you can override the order in three ways:</p>
+
+<ul>
+<li><p>CFEngine checks promises of the same type in the order in which they are
+defined, unless overridden</p></li>
+<li><p>Bulk ordering of composite promises (called bundles) is handled using an
+overall list using the bundlesequence (replaces the actionsequence in
+previous CFEngines)</p></li>
+<li><p>Dependency coupling through dynamic classes, may be used to guarantee
+ordering in the few cases where this is required, as in the example below:</p></li>
+</ul>
+<h2 id="bundle-ordering">Bundle ordering</h2>
+<p>There are two methods, working at different levels. At the top-most level there
+is the master bundlesequence</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span><span class="w"> </span><span class="k">common</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">bundlesequence</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;bundle_one&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bundle_two&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bundle_three&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>For simple cases this is good enough, but the main purpose of the bundlesequence
+is to easily be able to switch on or off bundles by commenting them out.</p>
+
+<p>A more flexible way of ordering bundles is to wrap the ordered process in a
+master-bundle. Then you can create new sequences of bundles (parameterized in
+more sophisticated ways) using methods promises. Methods promises are simply
+promises to re-use bundles, possibly with different parameters.</p>
+
+<p>The default behaviour is to retain the order of these promises; the effect is to
+`execute&#39; these bundles in the assumed order:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">a_bundle_subsequence</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nc">classes</span><span class="p">::</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;any&quot;</span><span class="w"> </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">bundle_one</span><span class="p">(</span><span class="s">&quot;something&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;any&quot;</span><span class="w"> </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">bundle_two</span><span class="p">(</span><span class="s">&quot;something&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;any&quot;</span><span class="w"> </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">bundle_three</span><span class="p">(</span><span class="s">&quot;something&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Alternatively, the same effect can be achieved as follows.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">a_bundle_subsequence</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nc">classes</span><span class="p">::</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;any&quot;</span><span class="w"> </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">generic_bundle</span><span class="p">(</span><span class="s">&quot;something&quot;</span><span class="p">,</span><span class="s">&quot;one&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;any&quot;</span><span class="w"> </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">generic_bundle</span><span class="p">(</span><span class="s">&quot;something&quot;</span><span class="p">,</span><span class="s">&quot;two&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;any&quot;</span><span class="w"> </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">generic_bundle</span><span class="p">(</span><span class="s">&quot;something&quot;</span><span class="p">,</span><span class="s">&quot;three&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Or ultimately:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">a_bundle_subsequence</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="p">&quot;</span><span class="nv">list</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;one&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;two&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;three&quot;</span><span class="p">};</span><span class="w"></span>
+
+<span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nc">classes</span><span class="p">::</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;any&quot;</span><span class="w"> </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">generic_bundle</span><span class="p">(</span><span class="s">&quot;something&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(list)</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h2 id="overriding-order">Overriding order</h2>
+<p>CFEngine is designed to handle non-deterministic events, such as anomalies and
+unexpected changes to system state, so it needs to adapt. For this, there is no
+deterministic solution and approximate methods are required. Nevertheless, it is
+possible to make CFEngine sort out dependent orderings, even when confounded by
+humans, as in this example:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">order</span><span class="w"></span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+
+<span class="w"> </span><span class="p">&quot;</span><span class="nv">list</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;three&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;four&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="kd">commands</span><span class="p">:</span><span class="w"></span>
+
+<span class="w"> </span><span class="nc">ok_later</span><span class="p">::</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;/bin/echo five&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w"> </span><span class="nc">any</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;/bin/echo one&quot;</span><span class="w">     </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">define</span><span class="p">(</span><span class="s">&quot;ok_later&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;/bin/echo two&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;/bin/echo </span><span class="si">$(list)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The output of which becomes:</p>
+<div class="highlight"><pre><code class="text"><span></span>Q: &quot;.../bin/echo one&quot;: one
+Q: &quot;.../bin/echo two&quot;: two
+Q: &quot;.../bin/echo three&quot;: three
+Q: &quot;.../bin/echo four&quot;: four
+Q: &quot;.../bin/echo five&quot;: five
+</code></pre>
+</div>
+<h1 id="distributed-orchestration-between-hosts-with-cfengine-enterprise">Distributed Orchestration between hosts with CFEngine Enterprise</h1>
+<p>CFEngine Enterprise edition adds many powerful features to CFEngine, including a
+decentralized approach to coordinating activities across multiple hosts. Some
+tools try to approach this by centralizing data from the network in a single
+location, but this has two problems:</p>
+
+<ul>
+<li><p>It leads to a bottleneck by design that throttles performance seriously.</p></li>
+<li><p>It relies on the network being available.</p></li>
+</ul>
+
+<p>With CFEngine Nova there are are both decentralized network approaches to this
+problem, and probabilistic methods that do not require the network at all.</p>
+<h2 id="basic-communication-methods-for-orchestration">Basic communication methods for orchestration</h2>
+<p>The two examples below illustrate the basic syntax constructions for
+communication using systems. We can pass class data and variable data between
+systems in a peer to peer fashion, or through an Enterprise hub. You can run
+these with a server and an agent just on localhost to illustrate the principles.</p>
+
+<p>In this first example, three persistent classes, with names following a known
+pattern are defined on a remote system (by the agent). The server bundle then
+grants access to these using an access promise. Finally, a function call to
+remoteclassesmatching imports the classes, with a prefix to the local system.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span><span class="w"> </span><span class="k">common</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">bundlesequence</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;overture&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="kr">inputs</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;cfengine_stdlib.cf&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">body</span><span class="w"> </span><span class="k">server</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="kr">allowconnects</span><span class="w">         </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&quot;::1&quot;</span><span class="p">,};</span><span class="w"></span>
+<span class="kr">allowallconnects</span><span class="w">      </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&quot;::1&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="kr">trustkeysfrom</span><span class="w">         </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&quot;::1&quot;</span><span class="p">,};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">#######################################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">overture</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">classes</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;extended_context&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="kr">expression</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">remoteclassesmatching</span><span class="p">(</span><span class="s">&quot;.*did.*&quot;</span><span class="p">,</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="s">&quot;yes&quot;</span><span class="p">,</span><span class="s">&quot;got&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">files</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">   </span><span class="s">&quot;/etc/passwd&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="kr">create</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">set_outcome_classes</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w"> </span><span class="nc">got_did_task_one</span><span class="p">::</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;task 1 complete&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w"> </span><span class="nc">extended_context.got_did_task_two</span><span class="p">::</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;task 2 complete&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w"> </span><span class="nc">extended_context.got_did_task_three</span><span class="p">::</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;task 3 complete&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">body</span><span class="w"> </span><span class="k">classes</span><span class="w"> </span><span class="nf">set_outcome_classes</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">promise_kept</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;did_task_one&quot;</span><span class="p">,</span><span class="s">&quot;did_task_two&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;did_task_three&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="kr">promise_repaired</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;did_task_one&quot;</span><span class="p">,</span><span class="s">&quot;did_task_two&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;did_task_three&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="c">#cancel_kept =&gt; { &quot;did_task_one&quot; };</span>
+<span class="kr">persist_time</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;10&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">server</span><span class="w"> </span><span class="nf">my_access_rules</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">access</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;did.*&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="kr">resource_type</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;context&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kr">admit</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The output of this, on success is simply:</p>
+<div class="highlight"><pre><code class="text"><span></span>R: task 1 complete
+R: task 2 complete
+R: task 3 complete
+</code></pre>
+</div>
+
+<p>In this second example, we pass actual variable data between hosts. The generic
+peer function remotescalar can address any other host running cf-serverd. The
+abbreviated interface hubknowledge assumes that it should get data from a hub.</p>
+
+<p>Both these functions ask for an identifier; it is up to the server to interpret
+what this means and to return a value of its choosing. If the identifier matches
+a persistent scalar variable (such as is used to count distributed processes in
+CFEngine Enterprise) then this will be returned preferentially. If no such
+variable is found, then the server will look for a literal string in a server
+bundle with a handle that matches the requested object.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span><span class="w"> </span><span class="k">common</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">bundlesequence</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;overture&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="kr">inputs</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;cfengine_stdlib.cf&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">body</span><span class="w"> </span><span class="k">server</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+
+<span class="p">{</span><span class="w"></span>
+<span class="kr">allowconnects</span><span class="w">         </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&quot;::1&quot;</span><span class="p">,};</span><span class="w"></span>
+<span class="kr">allowallconnects</span><span class="w">      </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&quot;::1&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="kr">trustkeysfrom</span><span class="w">         </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&quot;::1&quot;</span><span class="p">,};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">#######################################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">overture</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="p">&quot;</span><span class="nv">remote</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">remotescalar</span><span class="p">(</span><span class="s">&quot;test_scalar&quot;</span><span class="p">,</span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="s">&quot;yes&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="p">&quot;</span><span class="nv">know</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">hubknowledge</span><span class="p">(</span><span class="s">&quot;test_scalar&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="p">&quot;</span><span class="nv">count_getty</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">hubknowledge</span><span class="p">(</span><span class="s">&quot;count_getty&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">processes</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="c"># Use the enumerated library body to count hosts running getty</span>
+
+<span class="w">  </span><span class="s">&quot;getty&quot;</span><span class="w"></span>
+
+<span class="w">       </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Count this host if a job is matched&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">enumerate</span><span class="p">(</span><span class="s">&quot;count_getty&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w"> </span><span class="nc">!elsewhere</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">    </span><span class="s">&quot;GOT remote scalar </span><span class="si">$(remote)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;GOT knowedge scalar </span><span class="si">$(know)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;GOT persistent scalar </span><span class="si">$(xyz)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">#######################################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">server</span><span class="w"> </span><span class="nf">my_access_rules</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">access</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;value of my test_scalar, can expand variables here - </span><span class="si">$(sys.host)</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="kr">handle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;test_scalar&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Grant access to contents of test_scalar VAR&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kr">resource_type</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;literal&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kr">admit</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;XYZ&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="kr">resource_type</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;variable&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kr">handle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;XYZ&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kr">admit</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>You can run this example on a single host, running the server, the agent and the
+hub (if you have Enterprise CFEngine). The output will be something like this:</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">host$ ./cf-agent -f ~/test.cf -K</span>
+<span class="go">R: GOT remote scalar value of my test_scalar, can expand variables here - cflu-10004</span>
+<span class="go">R: GOT knowedge scalar value of my test_scalar, can expand variables here - cflu-10004</span>
+<span class="go">R: GOT persistent scalar 1</span>
+</code></pre>
+</div>
+<h2 id="run-job-or-reboot-only-if-n-out-m-systems-are-running">Run job or reboot only if n out m systems are running</h2>
+<p>The ability to base local promises on global knowledge seems superficially
+attractive in some cases. As a strategy this way of thinking requires a lot of
+caution. We have to assume that all knowledge gathered about an environment is
+subject to errors, latencies and a dozen other uncertainties that make any
+snapshot of remotely assessed current state subject to considerable healthy
+suspicion. This is not a weakness of CFEngine – in fact CFEngine has mechanisms
+that make it as reliable as you are likely to find in any technology – rather it
+is a fundamental limitation of distributed systems, and it is strongly dependent
+on the architectures you build.</p>
+
+<p>In the following example, we show how you can make certain decisions based on
+global, uncertain knowledge, allowing for the fact that the information is
+uncertain. In other words, we aim to err on the safe side. In this case we ask
+how could we reboot systems after an upgrade only if doing so would not
+jeopardize a Service Level Agreement to have at least 20 machines running at all
+times. Since the globally counted instances of a running process cannot be
+greater than the actual number, this particular problem satisfies the constraint
+of erring on the side of caution.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="c">############################################################</span>
+<span class="c">#</span>
+<span class="c">#  Keep a special promise only if at least n or m hosts</span>
+<span class="c">#  keep a specific promise</span>
+<span class="c">#</span>
+<span class="c">#  This method works with Enterprise CFEngine</span>
+<span class="c">#</span>
+<span class="c">#  If you want to test this on localhost, just edit /etc/hosts</span>
+<span class="c">#  to add host1 host2 host3 host4 as aliases to localhost</span>
+<span class="c">#</span>
+<span class="c">############################################################</span>
+
+<span class="k">body</span><span class="w"> </span><span class="k">common</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">bundlesequence</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;n_of_m_symphony&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="kr">inputs</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;cfengine_stdlib.cf&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">############################################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">n_of_m_symphony</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="p">&quot;</span><span class="nv">count_compliant_hosts</span><span class="p">&quot;</span><span class="w">  </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">hubknowledge</span><span class="p">(</span><span class="s">&quot;running_myprocess&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">classes</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;reboot&quot;</span><span class="w"> </span><span class="kr">expression</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">isgreaterthan</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(count_compliant_hosts)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;20&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">processes</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;myprocess&quot;</span><span class="w"></span>
+
+<span class="w">       </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Count this host if a job is matched&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">enumerate</span><span class="p">(</span><span class="s">&quot;running_myprocess&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">commands</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">reboot</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">     </span><span class="s">&quot;/bin/shutdown now&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+
+<span class="c">#######################################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">server</span><span class="w"> </span><span class="nf">my_access_rules</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">access</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;value of my test_scalar, can expand variables here - </span><span class="si">$(sys.host)</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="kr">handle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;test_scalar&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Grant access to contents of test_scalar VAR&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kr">resource_type</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;literal&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kr">admit</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;running_myprocess&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="kr">resource_type</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;variable&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kr">admit</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h1 id="the-self-healing-chain---inverse-dominoes">The self-healing chain - inverse Dominoes</h1>
+<p>A self-healing chain is the opposite of a dominoe event. If a part of the chain
+is `down&#39;, it will be revived. If these events depend on one another, then the
+resuscitation of this part which cause all of the subsequent parts to be
+repaired too.</p>
+
+<p>Let&#39;s start with the more common case of the independently repairable services,
+such as one might find in a multi-tier architecture: database, web-servers,
+applications etc.</p>
+
+<p>The following example can be run on a multiple hosts or on a single host, using
+the aliases described in the example. It illustrates coordination through the
+use of CFEngine&#39;s remoteclasses function in the Enterprise edition to get
+confirmation of the self-healing structure. In fact, the verification of the
+self-healing is optional if one trusts the underlying system.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="c">############################################################</span>
+<span class="c">#</span>
+<span class="c"># The self-healing tower: Anti-Dominoes</span>
+<span class="c">#</span>
+<span class="c">#  This method works with CFEngine Enterprise</span>
+<span class="c">#</span>
+<span class="c">#  If you want to test this on localhost, just edit /etc/hosts</span>
+<span class="c">#  to add host1 host2 host3 host4 as aliases to localhost</span>
+<span class="c">#</span>
+<span class="c">############################################################</span>
+
+<span class="k">body</span><span class="w"> </span><span class="k">common</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">bundlesequence</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;weak_dependency_symphony&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="kr">inputs</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;cfengine_stdlib.cf&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">body</span><span class="w"> </span><span class="k">server</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">allowconnects</span><span class="w">         </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&quot;::1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">@(def.acl)</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="kr">allowallconnects</span><span class="w">      </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s">&quot;::1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">@(def.acl)</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">############################################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">weak_dependency_symphony</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">   </span><span class="c"># We have to seed the beginning by creating the tower</span>
+<span class="w">   </span><span class="c"># /tmp/tower_localhost</span>
+
+<span class="w">   </span><span class="nc">host1</span><span class="p">::</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;tower&quot;</span><span class="w">  </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">tier1</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">publish_ok</span><span class="p">(</span><span class="s">&quot;ok_O&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="nc">host2</span><span class="p">::</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;tower&quot;</span><span class="w">  </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">tier2</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">publish_ok</span><span class="p">(</span><span class="s">&quot;ok_1&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="nc">host3</span><span class="p">::</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;tower&quot;</span><span class="w">  </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">tier3</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">publish_ok</span><span class="p">(</span><span class="s">&quot;ok_2&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="nc">host4</span><span class="p">::</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;tower&quot;</span><span class="w">  </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">tier4</span><span class="p">,</span><span class="w"></span>
+<span class="w">               </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">publish_ok</span><span class="p">(</span><span class="s">&quot;ok_f&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">classes</span><span class="p">:</span><span class="w"></span>
+
+<span class="w"> </span><span class="nc">ok_O</span><span class="p">::</span><span class="w"> </span><span class="c"># Wait for the methods, report on host1 only</span>
+
+<span class="w">  </span><span class="s">&quot;check1&quot;</span><span class="w"> </span><span class="kr">expression</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">remoteclassesmatching</span><span class="p">(</span><span class="s">&quot;ok.*&quot;</span><span class="p">,</span><span class="s">&quot;host2&quot;</span><span class="p">,</span><span class="s">&quot;yes&quot;</span><span class="p">,</span><span class="s">&quot;a&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;check2&quot;</span><span class="w"> </span><span class="kr">expression</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">remoteclassesmatching</span><span class="p">(</span><span class="s">&quot;ok.*&quot;</span><span class="p">,</span><span class="s">&quot;host3&quot;</span><span class="p">,</span><span class="s">&quot;yes&quot;</span><span class="p">,</span><span class="s">&quot;a&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;check3&quot;</span><span class="w"> </span><span class="kr">expression</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">remoteclassesmatching</span><span class="p">(</span><span class="s">&quot;ok.*&quot;</span><span class="p">,</span><span class="s">&quot;host4&quot;</span><span class="p">,</span><span class="s">&quot;yes&quot;</span><span class="p">,</span><span class="s">&quot;a&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">ok_O</span><span class="p">::</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;tier 1 is ok&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nc">a_ok_1</span><span class="p">::</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;tier 2 is ok&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nc">a_ok_2</span><span class="p">::</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;tier 3 is ok&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="nc">a_ok_f</span><span class="p">::</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;tier 4 is ok&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">ok_O&amp;a_ok_1&amp;a_ok_2&amp;a_ok_f</span><span class="p">::</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;The Tower is standing&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">!(ok_O&amp;a_ok_1&amp;a_ok_2&amp;a_ok_f)</span><span class="p">::</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot;The Tower is down&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">############################################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">tier1</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">files</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;/tmp/something_to_do_1&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">create</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">tier2</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">files</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;/tmp/something_to_do_2&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">create</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">tier3</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">files</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;/tmp/something_to_do_3&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">create</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">tier4</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">files</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;/tmp/something_to_do_4&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">create</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">############################################################</span>
+
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">server</span><span class="w"> </span><span class="nf">my_access_rules</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">access</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;ok.*&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="kr">resource_type</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;context&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kr">admit</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">############################################################</span>
+
+<span class="k">body</span><span class="w"> </span><span class="k">classes</span><span class="w"> </span><span class="nf">publish_ok</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">promise_repaired</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="kr">promise_kept</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="kr">cancel_notkept</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="kr">persist_time</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;2&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>If we execute this simple test on a single host, or allow it to be executed on
+distributed hosts, the chain forms and quickly stands up the system into a tower
+of dependencies.</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">host$ ~/LapTop/cfengine/core/src/cf-agent -f ~/orchestrate/self-healing-chain.cf -K</span>
+<span class="go">R: tier 1 is ok</span>
+<span class="go">R: tier 2 is ok</span>
+<span class="go">R: tier 3 is ok</span>
+<span class="go">R: tier 4 is ok</span>
+<span class="go">R: The Tower is standing</span>
+</code></pre>
+</div>
+
+<p>If we break the tower, by giving it an impossible promise to keep, e.g. changing
+the name of the directory in tier 3 to something that cannot be created2, then
+tier 3 will fail and the output looks like this:</p>
+
+<p><code>console
+host$ ~/LapTop/cfengine/core/src/cf-agent -f ~/orchestrate/self-healing-chain.cf -K
+Unable to make directories to /xtmp/something_to_do_3
+ !!! System reports error for cf_mkdir: &quot;Permission denied&quot;
+R: tier 1 is ok
+R: tier 2 is ok
+R: tier 4 is ok
+R: The Tower is down
+</code>`</p>
+
+<p>Clearly, whatever tier 3 is really supposed to do, any promise failure would
+result in the same behaviour. If we then correct the policy to make it
+repairable, the output heals quickly:</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">host$ ~/LapTop/cfengine/core/src/cf-agent -f ~/orchestrate/self-healing-chain.cf -K</span>
+<span class="go">R: tier 1 is ok</span>
+<span class="go">R: tier 2 is ok</span>
+<span class="go">R: tier 4 is ok</span>
+<span class="go">R: The Tower is down</span>
+<span class="go">R: tier 3 is ok</span>
+<span class="go">R: The Tower is standing</span>
+</code></pre>
+</div>
+<h2 id="a-domino-sequence">A Domino sequence</h2>
+<p>A different kind of orchestration is a domino cascade, that starts from some
+initial trigger, and causes a change in one host that causes a change in the
+next, etc. These examples show how this can easily be carried out by CFEngine.
+Dominio cascades can be done with Community or Enterprise editions, but are
+limited to single machines in each step.</p>
+
+<p>The basic principle is shown below3.</p>
+
+<p>Note: to simulate this on a single host, start the server and agent with this
+same file as input, and make aliases to localhost in /etc/hosts as described in
+the example.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="c">############################################################</span>
+<span class="c">#</span>
+<span class="c">#  Dominoes</span>
+<span class="c">#</span>
+<span class="c">#  This method works with either Community of Enterprise</span>
+<span class="c">#</span>
+<span class="c">#  If you want to test this on localhost, just edit /etc/hosts</span>
+<span class="c">#  to add host1 host2 host3 host4 as aliases to localhost</span>
+<span class="c">#</span>
+<span class="c">############################################################</span>
+
+<span class="k">body</span><span class="w"> </span><span class="k">common</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">bundlesequence</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;dominoes_symphony&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="kr">inputs</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;cfengine_stdlib.cf&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">############################################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">dominoes_symphony</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">   </span><span class="c"># We have to seed the beginning by creating the dominoes</span>
+<span class="w">   </span><span class="c"># /tmp/dominoes_localhost</span>
+
+<span class="w">   </span><span class="nc">host1</span><span class="p">::</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;dominoes&quot;</span><span class="w">  </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">hand_over</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span><span class="s">&quot;host1&quot;</span><span class="p">,</span><span class="s">&quot;overture&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="nc">host2</span><span class="p">::</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;dominoes&quot;</span><span class="w">  </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">hand_over</span><span class="p">(</span><span class="s">&quot;host1&quot;</span><span class="p">,</span><span class="s">&quot;host2&quot;</span><span class="p">,</span><span class="s">&quot;first_movement&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="nc">host3</span><span class="p">::</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;dominoes&quot;</span><span class="w">  </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">hand_over</span><span class="p">(</span><span class="s">&quot;host2&quot;</span><span class="p">,</span><span class="s">&quot;host3&quot;</span><span class="p">,</span><span class="s">&quot;second_movement&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="nc">host4</span><span class="p">::</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;dominoes&quot;</span><span class="w">  </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">hand_over</span><span class="p">(</span><span class="s">&quot;host3&quot;</span><span class="p">,</span><span class="s">&quot;host4&quot;</span><span class="p">,</span><span class="s">&quot;final_movement&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">                </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">if_ok</span><span class="p">(</span><span class="s">&quot;finale&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">finale</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">   </span><span class="s">&quot;The visitors book of the Dominoes method&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">printfile</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">visitors_book</span><span class="p">(</span><span class="s">&quot;/tmp/dominoes_host4&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">############################################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">hand_over</span><span class="p">(</span><span class="nv">predecessor</span><span class="p">,</span><span class="nv">myalias</span><span class="p">,</span><span class="nv">method</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+
+<span class="w"> </span><span class="c"># This is a wrapper for the orchestration</span>
+
+<span class="kd">files</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;/tmp/tip_the_dominoes&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Wait for our cue or relay/conductor baton&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">copy_from</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">secure_cp</span><span class="p">(</span><span class="s">&quot;/tmp/dominoes_</span><span class="si">$(predecessor)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(predecessor)</span><span class="s">&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;cue_action&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">cue_action</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">   </span><span class="s">&quot;the music happens&quot;</span><span class="w"></span>
+
+<span class="w">       </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;One off activity&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="err">$</span><span class="p">(</span><span class="nf">method</span><span class="p">),</span><span class="w"></span>
+<span class="w">       </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">if_ok</span><span class="p">(</span><span class="s">&quot;pass_the_stick&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">files</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">pass_the_stick</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">   </span><span class="s">&quot;/tmp/tip_the_dominoes&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Add our signature to the dominoes&#39;s tail&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="kr">edit_line</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;Knocked over </span><span class="si">$(myalias)</span><span class="s"> and did: </span><span class="si">$(method)</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="s">&quot;/tmp/dominoes_</span><span class="si">$(myalias)</span><span class="s">&quot;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Dominoes in position to be beamed up by next agent&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="kr">copy_from</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">local_cp</span><span class="p">(</span><span class="s">&quot;/tmp/tip_the_dominoes&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">############################################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">overture</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">!xyz</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">    </span><span class="s">&quot;Singing the overture...&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">first_movement</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">!xyz</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">    </span><span class="s">&quot;Singing the first adagio...&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">second_movement</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">!xyz</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">    </span><span class="s">&quot;Singing second allegro...&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">final_movement</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">!xyz</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">    </span><span class="s">&quot;Trumpets for the finale&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">############################################################</span>
+
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">server</span><span class="w"> </span><span class="nf">my_access_rules</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">access</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;/tmp&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="kr">admit</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;did.*&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="kr">resource_type</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;context&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kr">admit</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+
+
+<span class="k">body</span><span class="w"> </span><span class="k">printfile</span><span class="w"> </span><span class="nf">visitors_book</span><span class="p">(</span><span class="nv">file</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">file_to_print</span><span class="w">   </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(file)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="kr">number_of_lines</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;10&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>When executed, this produces output only on the final host in the chain, showing
+the correct ordering out operations. The sequence also passes a file from host
+to host as a coordination token, like a baton in a relay race, and each host
+signs this so that the final host has a log of every host involved in the
+cascade.</p>
+<div class="highlight"><pre><code class="text"><span></span>R: Singing the overture...
+R: Singing the first adagio...
+R: Singing second allegro...
+R: Trumpets for the finale
+
+R: The visitors book of the Dominoes method
+R: Knocked over host1 and did: overture
+R: Knocked over host2 and did: first_movement
+R: Knocked over host3 and did: second_movement
+R: Knocked over host4 and did: final_movement
+</code></pre>
+</div>
+
+<p>The average time for such a cascade to complete will be half the length of the
+chain multiplied by the run-interval, if normal cf-execd splaytime is used.
+Without any splaying, the average time will be the run interval multiplied by
+the chain length. The completion time could be increased by using cf-runagent.</p>
+<h2 id="a-chinese-dragon-star-pattern">A Chinese Dragon star pattern</h2>
+<p>The Chinese dragon darts back and forth between different hosts, forming a chain
+of events, and leaving a trail behind it. This pattern is much like the Domino
+pattern, except that it follows a star. The orchestrated sequence of events
+follows the dragon from its lair to the first satellite host, then back to its
+lair to record the journey, then out to the next satellite, then back to its
+lair, etc.</p>
+
+<p>A prototypical application for this kind of pattern is taking servers, one by
+one, off a load balancer (in the dragon&#39;s lair) and then upgrading them, before
+reinstating them and moving on to the next host.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="c">############################################################</span>
+<span class="c">#</span>
+<span class="c">#  Chinese Dragon Dancing on a Star</span>
+<span class="c">#</span>
+<span class="c">#  This method works with either Community or Enterprise.</span>
+<span class="c">#  and uses named signals</span>
+<span class="c">#</span>
+<span class="c">#  If you want to test this on localhost, just edit /etc/hosts</span>
+<span class="c">#  to add host1 host2 host3 host4 as aliases to localhost</span>
+<span class="c">#</span>
+<span class="c">############################################################</span>
+
+<span class="k">body</span><span class="w"> </span><span class="k">common</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">bundlesequence</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;dragon_symphony&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="kr">inputs</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;cfengine_stdlib.cf&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">############################################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">dragon_symphony</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">   </span><span class="c"># We have to seed the beginning by creating the dragon</span>
+<span class="w">   </span><span class="c"># /tmp/dragon_localhost</span>
+
+<span class="w">    </span><span class="s">&quot;dragon&quot;</span><span class="w">  </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">visit</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span><span class="s">&quot;host1&quot;</span><span class="p">,</span><span class="s">&quot;chapter1&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="s">&quot;dragon&quot;</span><span class="w">  </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">visit</span><span class="p">(</span><span class="s">&quot;host1&quot;</span><span class="p">,</span><span class="s">&quot;host2&quot;</span><span class="p">,</span><span class="s">&quot;chapter2&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="s">&quot;dragon&quot;</span><span class="w">  </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">visit</span><span class="p">(</span><span class="s">&quot;host2&quot;</span><span class="p">,</span><span class="s">&quot;host3&quot;</span><span class="p">,</span><span class="s">&quot;chapter3&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="s">&quot;dragon&quot;</span><span class="w">  </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">visit</span><span class="p">(</span><span class="s">&quot;host3&quot;</span><span class="p">,</span><span class="s">&quot;host4&quot;</span><span class="p">,</span><span class="s">&quot;chapter4&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">                </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">if_ok</span><span class="p">(</span><span class="s">&quot;finale&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">finale</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">    </span><span class="s">&quot;The dragon is slain:&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="kr">printfile</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">visitors_book</span><span class="p">(</span><span class="s">&quot;/tmp/shoo_dragon_host4&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">############################################################</span>
+<span class="c"># Define the</span>
+<span class="c">############################################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">chapter1</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="c"># Do something significant here</span>
+
+<span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w"> </span><span class="nc">host1</span><span class="p">::</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot; ----&gt; Breathing fire on </span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">chapter2</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="c"># Do something significant here</span>
+
+<span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w"> </span><span class="nc">host2</span><span class="p">::</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot; ----&gt; Breathing fire on </span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">chapter3</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="c"># Do something significant here</span>
+
+<span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w"> </span><span class="nc">host3</span><span class="p">::</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot; ----&gt; Breathing fire on </span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">chapter4</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="c"># Do something significant here</span>
+
+<span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w"> </span><span class="nc">host4</span><span class="p">::</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot; ----&gt; Breathing fire on </span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">############################################################</span>
+<span class="c"># Orchestration wrappers</span>
+<span class="c">############################################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">visit</span><span class="p">(</span><span class="nv">predecessor</span><span class="p">,</span><span class="nv">satellite</span><span class="p">,</span><span class="nv">method</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+
+<span class="w"> </span><span class="c"># This is a wrapper for the orchestration will be acted on</span>
+<span class="w"> </span><span class="c"># first by the dragon&#39;s lair and then by the satellite</span>
+
+<span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="p">&quot;</span><span class="nv">dragons_lair</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;host0&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">files</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="c"># We start in the dragon&#39;s lair ..</span>
+
+<span class="w">  </span><span class="s">&quot;/tmp/unleash_dragon&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Unleash the dragon&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">rename</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">to</span><span class="p">(</span><span class="s">&quot;/tmp/enter_the_dragon&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;dispatch_dragon_</span><span class="si">$(satellite)</span><span class="s">&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">             </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(dragons_lair)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c"># if we are the dragon&#39;s lair, welcome the dragon back, shooed from the satellite</span>
+
+<span class="w">  </span><span class="s">&quot;/tmp/enter_the_dragon&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Returning from a visit to a satellite&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">copy_from</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">secure_cp</span><span class="p">(</span><span class="s">&quot;/tmp/shoo_dragon_</span><span class="si">$(predecessor)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(predecessor)</span><span class="s">&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;dispatch_dragon_</span><span class="si">$(satellite)</span><span class="s">&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">             </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(dragons_lair)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="c"># If we are a satellite, receive the dragon from its lair</span>
+
+<span class="w">  </span><span class="s">&quot;/tmp/enter_the_dragon&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Wait for our cue or relay/conductor baton&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">copy_from</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">secure_cp</span><span class="p">(</span><span class="s">&quot;/tmp/dragon_</span><span class="si">$(satellite)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(dragons_lair)</span><span class="s">&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;cue_action_on_</span><span class="si">$(satellite)</span><span class="s">&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">             </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(satellite)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">   </span><span class="s">&quot;check in at home&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Edit the load balancer?&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">switch_satellite</span><span class="p">(</span><span class="s">&quot; -&gt; Send dragon to </span><span class="si">$(satellite)</span><span class="s">&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;send_the_dragon_to_</span><span class="si">$(satellite)</span><span class="s">&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">             </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;dispatch_dragon_</span><span class="si">$(satellite)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="s">&quot;dragon visits&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;One off activity that the nodes carry out while the dragon visits&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="err">$</span><span class="p">(</span><span class="nf">method</span><span class="p">)(</span><span class="s">&quot;</span><span class="si">$(satellite)</span><span class="s">&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;send_the_dragon_back_from_</span><span class="si">$(satellite)</span><span class="s">&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">             </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;cue_action_on_</span><span class="si">$(satellite)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="kd">files</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="c"># hub/lair hub signs the book too and schedules the dragon for next satellite</span>
+
+<span class="w">   </span><span class="s">&quot;/tmp/dragon_</span><span class="si">$(satellite)</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="kr">create</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Add our signature to the dragon&#39;s tail&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">edit_line</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">sign_visitor_book</span><span class="p">(</span><span class="s">&quot;Dragon returned from </span><span class="si">$(predecessor)</span><span class="s">&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">             </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;send_the_dragon_to_</span><span class="si">$(satellite)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="c"># Satellite signs the book and shoos dragon for hub to collect</span>
+
+<span class="w">   </span><span class="s">&quot;/tmp/shoo_dragon_</span><span class="si">$(satellite)</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="kr">create</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Add our signature to the dragon&#39;s tail&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">edit_line</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">sign_visitor_book</span><span class="p">(</span><span class="s">&quot;Dragon visited </span><span class="si">$(satellite)</span><span class="s"> and did: </span><span class="si">$(method)</span><span class="s">&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">             </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;send_the_dragon_back_from_</span><span class="si">$(satellite)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">!xyz</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">    </span><span class="s">&quot;Done </span><span class="si">$(satellite)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">############################################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">switch_satellite</span><span class="p">(</span><span class="nv">name</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">files</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">   </span><span class="s">&quot;/tmp/enter_the_dragon&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Add our signature to the dragon&#39;s tail&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">edit_line</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;Switch new dragon&#39;s target </span><span class="si">$(name)</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="nc">!xyz</span><span class="p">::</span><span class="w"></span>
+<span class="w">   </span><span class="s">&quot; X Switching new dragon&#39;s target </span><span class="si">$(name)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+
+<span class="c">############################################################</span>
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">edit_line</span><span class="w"> </span><span class="nf">sign_visitor_book</span><span class="p">(</span><span class="nv">s</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">insert_lines</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;/tmp/enter_the_dragon&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Import the current visitor&#39;s book&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kr">insert_type</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;file&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;</span><span class="si">$(s)</span><span class="s">&quot;</span><span class="w"> </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Append this string to the visitor&#39;s book&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">############################################################</span>
+
+
+<span class="k">bundle</span><span class="w"> </span><span class="k">server</span><span class="w"> </span><span class="nf">my_access_rules</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kd">access</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;/tmp&quot;</span><span class="w"></span>
+
+<span class="w">        </span><span class="kr">admit</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">  </span><span class="s">&quot;did.*&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="kr">resource_type</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;context&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kr">admit</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+
+<span class="c">############################################################</span>
+
+<span class="k">body</span><span class="w"> </span><span class="k">printfile</span><span class="w"> </span><span class="nf">visitors_book</span><span class="p">(</span><span class="nv">file</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="kr">file_to_print</span><span class="w">   </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(file)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="kr">number_of_lines</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;100&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Let&#39;s test it on a single host, equipped with aliases to the see entire flow.</p>
+
+<p>Without the trigger, this simply yields</p>
+<div class="highlight"><pre><code class="text"><span></span>R: Done host1
+R: Done host2
+R: Done host3
+R: Done host4
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">host$ touch /tmp/unleash_dragon</span>
+
+<span class="go">host$ ~/LapTop/cfengine/core/src/cf-agent -f ~/orchestrate/dragon.cf -K</span>
+<span class="go">R:  X Switching new dragon&#39;s target  -&gt; Send dragon to host1</span>
+<span class="go">R: Done host1</span>
+<span class="go">R: Done host2</span>
+<span class="go">R: Done host3</span>
+<span class="go">R: Done host4</span>
+
+<span class="go">host$ ~/LapTop/cfengine/core/src/cf-agent -f ~/orchestrate/dragon.cf -K</span>
+<span class="go">R:  ----&gt; Breathing fire on host1</span>
+<span class="go">R: Done host1</span>
+<span class="go">R:  X Switching new dragon&#39;s target  -&gt; Send dragon to host2</span>
+<span class="go">R: Done host2</span>
+<span class="go">R: Done host3</span>
+<span class="go">R: Done host4</span>
+<span class="go">host$</span>
+
+<span class="go">host$ ~/LapTop/cfengine/core/src/cf-agent -f ~/orchestrate/dragon.cf -K</span>
+<span class="go">R:  ----&gt; Breathing fire on host1</span>
+<span class="go">R: Done host1</span>
+<span class="go">R:  X Switching new dragon&#39;s target  -&gt; Send dragon to host2</span>
+<span class="go">R:  ----&gt; Breathing fire on host2</span>
+<span class="go">R: Done host2</span>
+<span class="go">R:  X Switching new dragon&#39;s target  -&gt; Send dragon to host3</span>
+<span class="go">R: Done host3</span>
+<span class="go">R: Done host4</span>
+
+<span class="go">host$ ~/LapTop/cfengine/core/src/cf-agent -f ~/orchestrate/dragon.cf -K</span>
+<span class="go">R:  ----&gt; Breathing fire on host1</span>
+<span class="go">R: Done host1</span>
+<span class="go">R:  X Switching new dragon&#39;s target  -&gt; Send dragon to host2</span>
+<span class="go">R:  ----&gt; Breathing fire on host2</span>
+<span class="go">R: Done host2</span>
+<span class="go">R:  X Switching new dragon&#39;s target  -&gt; Send dragon to host3</span>
+<span class="go">R:  ----&gt; Breathing fire on host3</span>
+<span class="go">R: Done host3</span>
+<span class="go">R:  X Switching new dragon&#39;s target  -&gt; Send dragon to host4</span>
+<span class="go">R: Done host4</span>
+<span class="go">host$ ~/LapTop/cfengine/core/src/cf-agent -f ~/orchestrate/dragon.cf -K</span>
+<span class="go">R:  ----&gt; Breathing fire on host1</span>
+<span class="go">R: Done host1</span>
+<span class="go">R:  X Switching new dragon&#39;s target  -&gt; Send dragon to host2</span>
+<span class="go">R:  ----&gt; Breathing fire on host2</span>
+<span class="go">R: Done host2</span>
+<span class="go">R:  X Switching new dragon&#39;s target  -&gt; Send dragon to host3</span>
+<span class="go">R:  ----&gt; Breathing fire on host3</span>
+<span class="go">R: Done host3</span>
+<span class="go">R:  X Switching new dragon&#39;s target  -&gt; Send dragon to host4</span>
+<span class="go">R:  ----&gt; Breathing fire on host4</span>
+<span class="go">R: Done host4</span>
+
+<span class="go">R: The dragon is slain:</span>
+<span class="go">R: Switch new dragon&#39;s target  -&gt; Send dragon to host1</span>
+<span class="go">R: Dragon returned from localhost</span>
+<span class="go">R: Dragon visited host1 and did: chapter1</span>
+<span class="go">R: Switch new dragon&#39;s target  -&gt; Send dragon to host2</span>
+<span class="go">R: Dragon returned from host1</span>
+<span class="go">R: Dragon visited host2 and did: chapter2</span>
+<span class="go">R: Switch new dragon&#39;s target  -&gt; Send dragon to host3</span>
+<span class="go">R: Dragon returned from host2</span>
+<span class="go">R: Dragon visited host3 and did: chapter3</span>
+<span class="go">R: Switch new dragon&#39;s target  -&gt; Send dragon to host4</span>
+<span class="go">R: Dragon returned from host3</span>
+<span class="go">R: Dragon visited host4 and did: chapter4</span>
+</code></pre>
+</div>
+
+<p>Table of Contents</p>
+<div class="highlight"><pre><code class="text"><span></span>Orchestration
+    What is modularity?
+    What is orchestration?
+    How does CFEngine deal with modularity and orchestration?
+    Levels of policy abstraction
+    Is CFEngine patch-oriented or package-oriented?
+    High level services in CFEngine
+    Hiding details
+    Black, grey and white box encapsulation in CFEngine
+    Bulk operations are handled by repeating patterns over lists
+    Ordering operations in CFEngine
+    Bundle ordering
+    Overriding order
+    Distributed Orchestration between hosts with CFEngine Enterprise
+        Basic communication methods for orchestration
+        Run job or reboot only if n out m systems are running
+        The self-healing chain - inverse Dominoes
+        A Domino sequence
+        A Chinese Dragon star pattern
+</code></pre>
+</div>
+
+<p>Footnotes</p>
+
+<p>[1] Sometimes it is desirable to reinstall an entire package, but normally this is only true for software upgrades. CFEngine has an interface for working in concert with local package managers (RPM,DEB,MSI, etc).</p>
+
+<p>[2] For this illustration, we run in non-privileged mode and choose a directory name we do not have permission to create.</p>
+
+<p>[3] This example has deliberately been made general enough to demonstrate on a single host with several aliases. If each host can be guaranteed to have a unique name and address, we could simplify the hand_over wrapper</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-special-topics.html">special topics</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-guide.html">guide</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 23 July 2024
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.18/generator/pages/guide/special-topics/modularity.markdown/guide/special-topics/modularity.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-6e603435d313e50beb7f6915d5c67a09.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+
+bundle knowledge SpecialTopic_Virtualization
+
+{
+topics:
+
+"SpecialTopic_Virtualization";
+Special_Topics_Guide::
+    "Virtual network example"  association => a("discusses","Virtualization and Cloud Support in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Virtualized host examples"  association => a("discusses","Virtualization and Cloud Support in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Example deployment"  association => a("discusses","Virtualization and Cloud Support in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Distinct states"  association => a("discusses","Virtualization and Cloud Support in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Virtualization types supported"  association => a("discusses","Virtualization and Cloud Support in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Guest environments promises"  association => a("discusses","Virtualization and Cloud Support in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "What can CFEngine do with virtual machines?"  association => a("discusses","Virtualization and Cloud Support in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Why build virtualization support into CFEngine?"  association => a("discusses","Virtualization and Cloud Support in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "What are virtualization and cloud computing?"  association => a("discusses","Virtualization and Cloud Support in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Virtualization"  association => a("discusses","Virtualization and Cloud Support in CFEngine","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Virtualization.html"
+  represents => { "Official CFEngine document"},  about_topics => { "virtualization and cloud support in cfengine" };
+ "/knowledge/docs/SpecialTopic_Virtualization.html"
+  represents => { "Special Topics Guide"},  about_topics => { "virtualization and cloud support in cfengine" };
+ "/knowledge/docs/SpecialTopic_Virtualization.html#Top"
+  represents => { "Text section" }, about_topics => { "virtualization" };
+ "/knowledge/docs/SpecialTopic_Virtualization.html#What-are-virtualization-and-cloud-computing_003f"
+  represents => { "Text section" }, about_topics => { "what are virtualization and cloud computing?" };
+ "/knowledge/docs/SpecialTopic_Virtualization.html#Why-build-virtualization-support-into-CFEngine_003f"
+  represents => { "Text section" }, about_topics => { "why build virtualization support into cfengine?" };
+ "/knowledge/docs/SpecialTopic_Virtualization.html#What-can-CFEngine-do-with-virtual-machines_003f"
+  represents => { "Text section" }, about_topics => { "what can cfengine do with virtual machines?" };
+ "/knowledge/docs/SpecialTopic_Virtualization.html#Guest-environments-promises"
+  represents => { "Text section" }, about_topics => { "guest environments promises" };
+ "/knowledge/docs/SpecialTopic_Virtualization.html#Virtualization-types-supported"
+  represents => { "Text section" }, about_topics => { "virtualization types supported" };
+ "/knowledge/docs/SpecialTopic_Virtualization.html#Distinct-states"
+  represents => { "Text section" }, about_topics => { "distinct states" };
+ "/knowledge/docs/SpecialTopic_Virtualization.html#Example-deployment"
+  represents => { "Text section" }, about_topics => { "example deployment" };
+ "/knowledge/docs/SpecialTopic_Virtualization.html#Virtualized-host-examples"
+  represents => { "Text section" }, about_topics => { "virtualized host examples" };
+ "/knowledge/docs/SpecialTopic_Virtualization.html#Virtual-network-example"
+  represents => { "Text section" }, about_topics => { "virtual network example" };
+}
+

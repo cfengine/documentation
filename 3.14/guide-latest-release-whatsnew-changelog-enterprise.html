@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.14  Documentation - Enterprise ChangeLog</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.14/assets/global-87598b50cf828dc4e1c1ad7f860740dc.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Enterprise ChangeLog";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.14/" selected>Version 3.14 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="012826289311752768906:kp0fmjlfqyu" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a><ul class="level2"><li><a href="guide-latest-release-whatsnew.html">New in CFEngine</a><ul class="level3"><li><a href="guide-latest-release-whatsnew-changelog-core.html">ChangeLog</a></li><li><a href="guide-latest-release-whatsnew-changelog-masterfiles-policy-framework.html">Masterfiles ChangeLog</a></li><li><a class="active" href="guide-latest-release-whatsnew-changelog-enterprise.html">Enterprise ChangeLog</a></li></ul></li><li><a href="guide-latest-release-supported-platforms.html">Supported Platforms and Versions</a></li><li><a href="guide-latest-release-known-issues.html">Known Issues</a></li></ul></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-latest-release.html">Latest Release</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-latest-release-whatsnew.html">New in CFEngine</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Enterprise ChangeLog
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p><strong>See Also:</strong> <a href="guide-latest-release-whatsnew-changelog-core.html" title="ChangeLog">Core Changelog</a>, <a href="guide-latest-release-whatsnew-changelog-masterfiles-policy-framework.html" title="Masterfiles ChangeLog">Masterfiles Changelog</a></p>
+
+<pre>
+3.14.0:
+    - Added Federated Reporting APIs (ENT-4379)
+    - Added Health diagnostic API (ENT-4444)
+    - Added SQL queries to change saved reports (ENT-4093)
+    - Added data transfer module that allows to transfer Mission portal 
+      data between hubs (ENT-4126)
+    - Added decommissioned hosts widget to dashboard (ENT-4603)
+    - Added hostname to host page header (ENT-4620)
+    - Added log messages to the Policy analyser summary table (ENT-4323)
+    - Added missing slash in async query result URL (ENT-4553)
+    - Added new `is` match condition to software update alerts (ENT-569)
+    - Added new widgets to default dashboard after upgrade (ENT-4301)
+    - Added newline to API error responses (ENT-4747)
+    - Added not kept badge count to Policy analyzer app (ENT-4275)
+    - Added possibility to dismiss hosts from Health diagnostic reports
+      (ENT-3950)
+    - Added web role-based access control and RBAC API (ENT-4139)
+    - Aligned host info and default saved reports for software updates available
+      (ENT-4726)
+    - Aligned host info software report columns with stock software report
+      (ENT-4726)
+    - Inventory API now allows multiple values for one filter (ENT-4371)
+    - Made permissions of CFE_ROBOT user more strict (ENT-4513)
+    - Changed clear_hosts_references to delete lastseenhosts based on hostkey
+    - Changed columns type from integer to biginteger for existing tables
+      (ENT-4350)
+    - Changed hosts include/exclude requests to POST (ENT-4636)
+    - Changed m_host to vm_hosts in API to avoid querying to the protected materialized view
+    - Changed m_inventory into a regular table (ENT-4554)
+    - Changed policy analyzer hosts source from vm_hosts to hosts (ENT-4740)
+    - Changed trigger on insert into __hosts from EACH STATEMENT to EACH ROW
+      (ENT-4662)
+    - Changed trigger to refresh m_hosts from EACH ROW to EACH STATEMENT
+      (ENT-4443)
+    - Check processFilters function argument (ENT-4634)
+    - Clarified error message when report collection data is invalid
+      (ENT-4495)
+    - Deny using materialized view over QUERY API (ENT-4477)
+    - Disable database triggers in the data generator (ENT-4662)
+    - Discover new hosts for report collection every minute (ENT-3844)
+    - Do not generate rbac_role_permission for cf_remoteagent role
+      (ENT-4139)
+    - Do not wrap hostname in <a> tag (ENT-4216)
+    - Expanded remote hub API with statistics data (ENT-4771)
+    - Extended status API to return hub info (ENT-4567)
+    - Fixed Host API deletion status codes (ENT-4265)
+    - Fixed detection of recent Windows versions (ENT-3363)
+    - Fixed edit sub-category dialog title (ENT-791)
+    - Fixed empty 'Hosts never collected from' health diagnostic report (ENT-4696)
+    - Fixed errors in cf-serverd when loading old JSON promise log (ENT-4555)
+    - Fixed hanging reports with no errors in logs (ENT-4397)
+    - Fixed host tree loading issue (ENT-4214)
+    - Fixed host tree to show hosts when the uncategorized view is selected (ENT-4461)
+    - Fixed JS error on scheduled reports (ENT-4638)
+    - Fixed JSON content in the policy analyzer editor (ENT-4279)
+    - Fixed Policy analyzer filter by directory/file (ENT-4405)
+    - Fixed REST API basic authentication (ENT-4349)
+    - Fixed broken ootb_import.sql (ENT-4303)
+    - Fixed date extraction from table name in promise_log_partition_cleanup postgresql function
+      (ENT-4588)
+    - Fixed duplicate key value violates unique constraint variables_dictionary_attribute_name
+      (ENT-4342)
+    - Fixed inventory API limit in case of NULL value (ENT-4585)
+    - Fixed inventory widget empty and duplicate values (ENT-4464)
+    - Fixed license expiration in Mission Portal (ENT-4385)
+    - Fixed wrong file owner of generated scheduled reports (ENT-4600)
+    - Fixed 2 small memory leaks in enterprise agent (ENT-4313)
+    - Fixed a segmentation fault in parsing of reporting data
+      If csv files in /var/cfengine/state/ (generated by agent runs)
+      were corrupted, cf-serverd would crash while reading them. (ENT-4505)
+    - Fixed an issue with error handling in cf-hub delta queries
+      cf-hub will now attempt a rebase if it cannot obtain the
+      last report timestamp. This change only affects scheduled
+      runs, not when invoked with `--query delta` from command
+      line. This also means that hosts which are not present in
+      status table will be rebased (not delta from 0). (ENT-4319)
+    - Fixed an issue with manual cf-hub delta queries
+      When invoked manually (cf-hub --query delta) it would request
+      the wrong starting timestamp from client, causing patch failures. (ENT-4120)
+    - Fixed edge case memory leak in enterprise agent/server (ENT-4313)
+    - Fixed memory leaks in cf-hub (ENT-4313)
+    - Fixed small memory leak in enterprise hub / agent (ENT-4313)
+    - Fixed small memory leak when using HA (ENT-4586)
+    - Fixed JS Errors in policy analyzer app (ENT-4799)
+    - Implemented web role-based access control (ENT-4139)
+    - Improved readability of reporting information on host info page
+      (ENT-4531)
+    - Made it possible to edit software available and installed reports and add new filters to them
+      (ENT-4278)
+    - Moved Health diagnostics from Mission portal to API (ENT-4444)
+    - Prevented segmentation fault in enterprise API when LicenseInfo is empty
+      (ENT-4376)
+    - Relaced refresh materialized inventory view function by update_inventory
+      (ENT-4554)
+    - Removed xss_clean validation rule from LDAP settings form because it prevents saving specific characters
+      (ENT-4654)
+    - Renamed "IP Naming" to "Report Collection" (ENT-4471)
+    - Renamed the "Status" table to "__Status" with RBAC-checked view
+      (ENT-4331)
+    - Renamed Host count widget to Newly bootstrapped hosts (ENT-4649)
+    - Simplified error handling and error messages for failed report collection
+      (ENT-4495)
+    - Switched perms of various temporary files in state to 0600
+      These files were created with 0644 permissions, and then
+      repaired in policy. However, since they are deleted / recreated
+      periodically, it causes INFO noise. Safer and better user
+      experience to create them with restricted permissions to
+      begin with.
+      Affected files:
+      * `$(sys.statedir)/context.cache.tmp`
+      * `$(sys.statedir)/variable.cache.tmp`
+      * `$(sys.statedir)/diff/*.diff`
+      * `$(sys.statedir)/previous_state/*.cache`
+      (ENT-4601)
+    - Updated links to postgresql docs to match running version (ENT-4436)
+    - Updated role database entry on POST requests instead of deletion and creation
+      This change was made to avoid deleting related to role entries because previously while role updating the database entry is deleted and recreated.
+      (ENT-4483)
+    - HTTPS protocol is now used in CLI commands (ENT-4361)
+    - Fixed license count for hosts with duplicate entries in lastseen DB
+      (ENT-4595)
+    - Variable values can no longer be NULL in reporting
+      The reporting system doesn't distinguish between NULL
+      and empty string. Previously, variables with value
+      "" would show up in psql as NULL. This can be
+      cumbersome when writing queries, and doesn't
+      accurately reflect the variable value in policy.
+      NULLs are now converted to empty string before
+      insert. This change only affects 2 tables in
+      postgresql: "variables" and "variableslog".
+      This change can trigger a rebase if you already
+      have reporting data with variablevalue=NULL.
+      (ENT-4093)
+    - cf-hub now validates that variable types are within range (ENT-4507)
+
+        Packaging changes:
+    - Added ubuntu 18 to the list of build platforms (ENT-4041)
+    - Clean php extensions directory before install (ENT-2614)
+    - Disable phar read only (ENT-4126)
+    - Do not check for absence of postgresql directory before migration
+      (ENT-4557)
+    - Fixed patterns not to include square brackets (ENT-4515)
+    - Fixed running cfengine3 init script in AIX RPMs (ENT-4305)
+    - Rewrote PostgreSQL migration (ENT-4353)
+    - Set -e in package scriptlets (ENT-3385)
+    - Set explicit permissions on the install log file (ENT-4506)
+    - Updated dependency table (ENT-4227)
+    - Password operations are now hidden from the install log (ENT-4512)
+    - Internal keys are now rotated on every upgrade (ENT-4515)
+    - Updated lcov from 1.13 to 1.14
+    - Updated lmdb from 0.9.22 to 0.9.23
+    - Updated pcre from 8.42 to 8.43
+    - Updated sasl2 from 2.1.26 to 2.1.27
+    - Updated libiconv from 1.15 to 1.16
+    - Updated libxml2 from 2.9.8 to 2.9.9
+    - Updated libyaml from 0.2.1 to 0.2.2
+    - Updated openldap from 2.4.46 to 2.4.47
+    - Updated libcurl-hub from 7.61.1 to 7.64.1
+    - Updated apr from 1.6.5 to 1.7.0
+    - Updated apache from 2.4.35 to 2.4.39
+    - Updated postgresql-hub from 11.0 to 11.3
+    - Updated php from 7.2.11 to 7.3.5
+    - Updated libcurl from 7.61.1 to 7.64.1
+    - Updated OpenSSL from 1.1.1 to 1.1.1b
+    - Updated git from 2.19.1 to 2.21.0
+    - Upgraded CodeIgniter from 3.1.3 to 3.1.10 (ENT-4486)
+
+3.13.0:
+    - Make class inventory available via inventory API (ENT-3885)
+    - Add custom SQL condition info to the Help page. (ENT-3821)
+    - Add line number to the promise execution log (ENT-3925)
+    - Add the policy file hash to the promise execution log (ENT-3996)
+    - Added an error summary when running cf-hub --query
+    - Allow to deselect default role. (ENT-3854)
+    - Change default limit of inventory widgets. (ENT-3875)
+    - Change design center data processing. (ENT-3818)
+    - Change/policy url format was changed (ENT-3895)
+    - Changed exit codes of cf-hub to be much more useful
+      In short, when using --query, exit code will be number of failed
+      host report collections, up to 100. 101+ are reserved for specific
+      error conditions. See documentation for full details.
+      Ticket: (ENT-3829)
+    - Fixed issue when Changes report sometimes was shown empty. (ENT-3894)
+    - Clean up grammar in bootstrap tour (ENT-3912)
+    - Clear hosts references in case of host was deleted. (ENT-3902)
+    - Group hosts without category into a "hosts without category" category
+      in a hosts tree (ENT-3877)
+    - Export with several order by expressions was fixed. (ENT-3943)
+    - Fix array encoding in Pest methods. (ENT-3818)
+    - Fix different order in exported reports. (ENT-3982)
+    - Fix error message on host tree when a user does not have any role.
+      (ENT-3901)
+    - Fix inventory filter value cannot be changed after clicking close button.
+      (ENT-3919)
+    - Fix waiting for element in selenium CustomAlertCondtionTest
+      (ENT-3874)
+    - Fix wrong hosts are using the same identity diagnostic reports.
+      (ENT-3876)
+    - Handle unauthorized XHR requests. (ENT-3992)
+    - Hide edit user possibility for external users. (ENT-3940)
+    - Link to host page was added in Inventory report. (ENT-516)
+    - Method to define the default inventory filter condition was fixed.
+      (ENT-3911)
+    - New type of report was added to identify hosts likely using same identity.
+      (ENT-3550)
+    - Parsing of Changes/policy exclude and include parameters were changed.
+      (ENT-3895)
+    - Pause/Resume tour guide  possibility was added (ENT-3867)
+    - Refresh materialized view in case of a host was bootstrapped.
+      (ENT-3748)
+    - Remove wrong code that produces warnings from cli_tasks. (ENT-3928)
+    - Removing a user confirmation text was changed. (ENT-3643)
+    - Report Hosts never collected from was added to health diagnostics
+      (ENT-3551)
+    - Report Hosts never collected from was added to health diagnostics
+      (ENT-3551)
+    - Report Several hosts likely using same identity (ENT-3550)
+    - Fix issue with exporting big (2-5M records) reports by running export
+      by parts (ENT-3870)
+    - Set sendmail protocol selected by default. (ENT-3815)
+    - Show apply, cancel, clear buttons on reports with filter. (ENT-3881)
+    - Show ldap users into internal users tab. (ENT-3909)
+    - Show license reminder when licenseGranted more than 25. (ENT-3653)
+    - Silenced error about row number in error_log (ENT-3565)
+    - The SQL query to get hosts information was fixed. (ENT-3900)
+    - Tour guide about what's new in Mission Portal (ENT-3853)
+    - Validation improvements on LDAP settings. (ENT-3816)
+    - adjust enterprise code for atexit to cleanup refactoring (ENT-3756)
+    - fix host count group by in Firefox (ENT-3893)
+    - refine data_generator documentation (ENT-3887)
+
+        Packaging changes:
+    - Make runalerts.php executable. (ENT-3921)
+    - Move old shared/GUI files aside during upgrade (ENT-3898)
+    - Set right owner and permissions to httpd/htdocs. (ENT-3906)
+    - Treat php.ini as a config file by pacakge (ENT-3835)
+    - Update PHP from 7.2.6 to 7.2.11
+    - Upgrade PostgreSQL from 10.4 to 11.0
+    - Update git from 2.17.0 to 2.19.1
+    - Update Apache from 2.4.33 to 2.4.35
+    - Update APR from 1.6.3 to 1.6.5
+    - Upgrade CURL from 7.59.0 to 7.61.0
+    - Upgrade libacl from 2.2.52 to 2.2.53
+    - Update libattr from 2.4.47 to 2.4.48
+    - Upgrade YAML from 0.1.7 to 0.2.1
+    - Upgrade OpenSSL to 1.1.1
+
+3.12.0:
+    - Get cmdline info about all processes at once on windows (ENT-2536)
+    - Redis database and cf-consumer are no longer used
+      All reports are applied to postgres from cf-hub worker threads.
+      Logging and measurements have been updated to reflect this change.
+      Reporting statuses (success, failure, rebase, retry) are no longer
+      duplicated in these two databases. All statuses are stored and read
+      from postgres
+      The diagnostics measurement redis_processing_time_per_host has been
+      replaced by hub_processing_time_per_host, tracking the time
+      hub uses to apply reports to postgres (excluding time spent
+      collecting report from client) (ENT-2814)
+    - Added ability to exclude specific hosts from dashboard alert conditions
+      (ENT-3491)
+    - Added the option to skip mailing scheduled reports if 0 records added
+      (ENT-3584)
+    - System V init now notifies when it skips managing postgres because of HA
+      (ENT-3657)
+    - Inventory charts were added to dashboard (ENT-3234)
+    - Custom SQL-based condition type was added (ENT-3553)
+    - Remove old LDAP implementation
+      /api/settings only supports ldapHost(ldapApiUrl) and ldapEnabled(ldap or
+      internal) now. All other settings are managed with /ldap/settings API.
+      (ENT-3247)
+    - Mail settings were added into Settings and Welcome tour parts
+    - Warn when attempting to delete missing *.diff file during serving rebase
+      query by cf-serverd (ENT-3261)
+    - Ensure that runalerts.php is shutdown when using sysvinit (ENT-3310)
+    - Categorization view sharing in the hosts app fixed (ENT-3110)
+    - Add default alert for failed policy deployment (ENT-3436)
+    - Increase auto-increment limits for __PromiseLog, __MonitoringMgMeta,
+      __MonitoringYrMeta tables (ENT-3404)
+    - Add b-tree index for variable value - improving inventory and variable
+      table equality and 'like' lookup performance (ENT-3393)
+    - Improve loading of monitoring app (ENT-3232)
+    - Reordered --help output and fixed smaller inconsistencies (ENT-3562)
+    - Validate Class Regex properly in Mission Portal Hosts tree (ENT-3340)
+    - Increase password limit to 100 characters (ENT-2767)
+    - Sync masterfiles-stage with core-contrib (ENT-3434)
+    - Remove extra column "host key" in report export (ENT-3102)
+    - Inventory Policy Release ID by default (CFE-2097)
+    - Fixed lastseen interval values in LastSeenHosts report (ENT-3320)
+    - Include Agent Execution Status report in rebase query replies (ENT-3246)
+    - Disable Design Center by default (ENT-3462)
+    - Added inventory API
+    - Speed up host tree loading (ENT-3474)
+    - Include time to pack reports in benchmarks (ENT-3323)
+    - Fix multiple users to subscribing to same report
+    - Added Event API
+    - Ignore non numeric values in free disk space report (ENT-3305)
+    - Added Host count API and trend widget for dashboard (ENT-3484)
+    - Inventory UI now uses inventory API (ENT-2801)
+    - Increased cf-hub network timeout from 10 to 30 seconds (ENT-3153)
+    - Changed exit codes of cf-hub to be much more useful
+      In short, when using --query, exit code will be number of failed
+      host report collections, up to 100. 101+ are reserved for specific
+      error conditions. (ENT-3829)
+    - Added an error summary when running cf-hub --query
+    - Remove count of updates installed from host info page
+      Updates installed are only available for some platforms and only from the legacy
+      package promise implementation. It is being removed to avoid making users think
+      no patches are installed when the platform doesn't differentiate patch installs
+      from base packages (ENT-3401)
+    - Query API response now properly informs of invalid requests (ENT-3226)
+    - New type of report was added to identify hosts likely using same identity
+      (ENT-3550)
+    - Report Hosts never collected from was added to health diagnostics (ENT-3551)
+    - Windows 10 OS is now correctly detected for platform classes (ENT-3363)
+
+    Packaging changes:
+    - Optimise Windows version generation
+    - Use share/GUI as template when purging httpd/htdocs dir (ENT-3217)
+    - Removed obsolete options from PostgreSQL config (ENT-3656)
+    - Added cf_net.exe to msi packaging
+    - Remove package installation of cf-twin (CFE-2029)
+    - Remove unused sysconfig variable RUN_CF_HUB (CFE-2739)
+    - Run ldap migration script in postinstall.sh (ENT-3284)
+    - Ensure Enterprise Hub package upgrade aborts when backup fails (ENT-3336)
+    - Enable LDAP support in PHP (ENT-3373)
+    - Run ldap post-install.sh after installation (ENT-3382)
+    - Set default memory_limit for php to 256M (ENT-3391)
+    - Upgrade using pg_upgrade instead of dump/restore (ENT-3398)
+    - Remove libphp5.so (ENT-3520)
+    - Remove libmcrypt dependency
+    - Update PCRE from 8.40 to 8.42
+    - Update rsync from 3.1.2 to 3.1.3
+    - Update PostgreSQL from 9.6.2 to 10.4
+    - Update git from 2.13.0 to 2.17.1
+    - Update LMDB from 0.9.19 to 0.9.22
+    - Update libxml2 from 2.9.4 to 2.9.8
+    - Update PHP from 5.6.30 to 7.2.6
+    - Update OpenSSL from 1.0.2k to 1.1.0h
+    - Update CURL from 7.54.0 to 7.60.0
+    - Update OpenLDAP from 2.4.44 to 2.4.46
+    - Update Apache from 2.4.25 to 2.4.33
+    - Update APR from 1.5.2 to 1.6.3
+    - Update APR-util from 1.5.4 to 1.6.1
+
+3.11.0:
+    - Optimize Query API by removing subsequent count query for pagination
+      (ENT-2829)
+    - cf-monitord: fix custom measurements of type counter
+    - Fix saved report access by roles (ENT-3099)
+    - Add button for copy host link (ENT-3096)
+    - Logs from mission portal moved outside webroot folder (ENT-2758)
+    - Maintain sorting of columns in export inventory report (ENT-614)
+    - Can't export csv fix (ENT-3092)
+    - Make host links clickable (ENT-3094)
+    - Show changes reports for “today” by default (ENT-2840)
+    - Add global host search (ENT-3059)
+    - Add CoreOS to the default hosts tree (ENT-3135)
+    - Fix bogus error messages output from cf-monitord with custom measurements
+      promises (ENT-2595)
+    - Add possibility to save username with dots
+    - Fix disapearing hosts after upgrade (ENT-3112)
+    - Enforce license expiry correctly (remove extra month) (ENT-2261)
+    - Fix file descriptor leak in hub's cf-serverd with call-collected clients
+      (ENT-3088)
+    - Stop service cfengine3 status from warning on multiple httpd processes
+      (ENT-3123)
+    - Monitoring app in Mission Portal never loads (ENT-3232)
+    - BugFix: allow multiple users to subscribe to same report
+    - Categorization view sharing in the hosts app fixed (ENT-3110)
+    - Warn when attempting to delete missing *.diff file during serving rebase query by cf-serverd (ENT-3261)
+    - Clear inventory lists from braces and quotes (ENT-154)
+
+    Packaging changes:
+    - Create a tar.gz binary package for CoreOS or other systems
+    - Fix: Mission Portal availability on install without running policy
+      (ENT-3035)
+    - Fix inability to correctly manage cf-postgres service after
+      upgrade (CFE-2545)
+    - Relocate Mission Portal application logs
+      Mission Portals application logs have moved from
+      /var/cfengine/httpd/htdocs/application/logs to
+      /var/cfengine/httpd/logs/application (ENT-2758)
+    - Set default timezone for php to UTC (ENT-3131)
+    - Update autoconf from 2.60 to 2.69
+    - Update curl from 7.50.3 to 7.53.1
+    - Update libiconv from 1.14 to 1.15
+    - Upgrade to LMDB 0.9.19
+    - Remove postgresql dependency on agents in our binary packages
+      (ENT-3164)
+    - Update libcurl to 7.54.1
+    - Remove libvirt dependency from our binary packages (ENT-3164)
+    - Update lcov from 1.10 to 1.13
+    - Update PCRE from 8.39 to 8.41
+    - Update Apache from 2.4.25 to 2.4.27
+    - Update Redis from 3.2.6 to 3.2.9
+    - Update PostgreSQL from 9.6.1 to 9.6.3
+    - Update PHP from 5.6.29 to 5.6.31
+    - Upgrade openldap from 2.4.44 to 2.4.45
+    - Update Git from 2.10.2 to 2.13.3
+
+3.10.0:
+    - Upgrade CFEngine dependencies to the following versions:
+      - PostgreSQL 9.6.0
+      - Redis 3.2.4
+      - PHP 5.6.26
+      - Git 2.10.1
+    - Add: Inventory for system product name (model) (ENT-2780)
+    - Change: Disable TCP and redis (ENT-2761)
+    - Change: Rename duplicate bodies in ha_update.cf (ENT-2753)
+    - Add: Ensure appropriate permissions for SSL files (ENT-760)
+    - Fix cf-serverd being launched under wrong account on Windows.
+      (ENT-2755)
+    - Enterprise: Fix Postgres database migration from 3.8- to 3.9+.
+      (ENT-2760)
+    - Hub package no longer depends on libltdl. (ENT-2714)
+    - Add: Enterprise appliaction log dir to rotation
+    - Change: Session Cookies use HTTPOnly and secure attribtues (ENT-2781)
+    - Change: re-enable hub process maintainance
+    - Change: Disable RC4 Cipher for ssl in Mission Portal
+    - Change: Reduce php info leak
+    - Change: Reduce Enteprise webserver info
+    - Fix errors of type "No file object exsists in path" on
+      Windows.
+    - Canonify class names stored in class history log. (ENT-2821)
+    - Change: Disable autocomplete for login
+    - Fix a bug which incorrectly detected PostgreSQL running
+      status when running "/etc/init.d/cfengine3 status".
+    - Optimize Query API by removing subsequent count query for
+      pagination. (ENT-2829)
+
+3.9.0:
+    - Change: Render Mission Portal httpd.conf with mustache
+      (Jira ENT-2568)
+    - Change: Switch to http redirect by default (Jira ENT-2071)
+    - Fix exporting CSV reports through HTTPS. (Redmine #7267)
+    - Add: Bundle to generate a self signed cert for Mission Portal
+    - For call collect in Enterprise, default collect_window
+      setting increased from 10 to 30 seconds for reliability reasons
+      in large-scale environments.
+    - Upgrade CFEngine dependencies to the following versions:
+      - Apache     2.4.20
+      - Git        2.8.3
+      - PHP        5.6.22
+      - PostgreSQL 9.5.3
+      - Redis      3.0.7
+      - rsync      3.1.2
+      (Jira ENT-2720)
+    - Fix scheduled report not beeing emailed when report type is set to only contain CSV file type.
+      (Redmine #3780, #7619)
+    - Introduce class json log. (Redmine #7951)
+    - Introduce new promise log logging. (Redmine #7887)
+    - Fix broken call collect. (Redmine #7701)
+    - Fix error logging to MP via HTTPS. (Redmine #7687)
+
+3.8.2:
+        No Enterprise specific fixes for 3.8.2, see Community changelog.
+
+3.8.1:
+    Changes:
+    - Upgrade CFEngine Enterprise dependencies to the following versions:
+      - OpenSSL   1.0.2e
+      - PCRE      8.38
+      - libxml2   2.9.3
+      - OpenLDAP  2.4.43
+      - Redis     3.0.6
+      - PHP       5.6.17
+      - libcurl   7.46.0
+      - Git       2.6.5
+
+3.8.0:
+    Changes:
+    - Move hub_log from /var/cfengine to /var/cfengine/log.
+    - Change in behaviour: when running "cf-hub -q -H" manual
+      report collection, policy is parsed before collecting, so there must be
+      valid policy in inputs directory. (Redmine #7542)
+    - Introduce by field truncation for promise execution entries.
+      (Redmine #7466)
+    - Move promise_summary.log into /var/cfengine/log directory.
+
+    Bug fixes:
+    - CFEngine on Windows no longer truncates log messages if the
+      program in question is killed halfway through.
+    - For call collect in Enterprise, default collect_window
+      setting increased from 10 to 30 seconds for reliability reasons
+      in large-scale environments.
+    - Fix package not installing on Windows 2008 32-bit. (Redmine #7478)
+    - Fix not being able to delete log files while CFEngine is running on
+      Windows. (Redmine #7149)
+    - Fix: Typo in cf-hub error message
+    - Fix resource restrictions of SQL API matching table names as substrings.
+      (Redmine #7536)
+    - Removed error message from cf-serverd when not finding software inventory.
+      E.g. "Failed to access current state for report: 'software'".
+    - Fix last agent run timestamp in Agents not reporting (health bar).
+      (Redmine #7406)
+
+3.7.2:
+    Bug fixes:
+    - For call collect in Enterprise, default collect_window
+      setting increased from 10 to 30 seconds for reliability reasons
+      in large-scale environments.
+    - CFEngine on Windows no longer truncates log messages if the
+      program in question is killed halfway through.
+    - Fix: Typo in cf-hub error message
+    - Removed error message from cf-serverd when not finding software inventory.
+      E.g. "Failed to access current state for report: 'software'".
+
+3.7.1:
+    Behavior changes:
+    - Change in behaviour: when running "cf-hub -q -H" manual
+      report collection, policy is parsed before collecting, so there must be
+      valid policy in inputs directory. (Redmine #7542)
+
+    Bug fixes:
+    - Fix resource restrictions of SQL API matching table names as substrings.
+      (Redmine #7536)
+    - Add truncation for promise attribute sizes to prevent 
+      from ignoring to long reports. (Redmine: #7466)
+    - Fix last agent run timestamp in Agents not reporting (health bar).
+      (Redmine #7406)
+    - Fix noise from internal policy to upgrade windows agents
+      (Redmine #7456)
+    - Fix package not installing on Windows 2008 32-bit. (Redmine #7478)
+
+3.7.0:
+    Mission Portal:
+    - Multiple dashboards
+    - Dashboard sharing
+    - 'Changes' report type added
+    - 'Changes' widget introduced
+    - Added more out-of-the-box inventory variables
+
+    Bug fixes:
+    - Fix for health status in header occasionally not loading
+    - Fixed icons disappearing from host categorization dropdown after editing
+        - Process matching on Windows has been rewritten, which should make
+          process promises work more reliable there. (Redmine #6977)
+        - Failure in output log cleanup on Windows has been fixed. (Redmine
+          #7149)
+
+    API:
+    - Introduce Changes API
+    - Remove PromiseExecutionsLog (replaced with Changes API)
+    - Remove SoftwareUpdatesLog
+
+3.6.6:
+    Bug fixes:
+    - Ignore empty log messages while logging promise executions in cf-agent evaluation.
+    - Fix Postgres CPU usage spikes.
+    - Fix upgrate for monitoring.
+    - Fix duplicate key value violates unique constraint "status_pkey" error.
+    - Reduce database size in high load hub by making vacuum strategy more aggressive.
+
+3.6.5:
+        Bug fixes:
+        - Fix cleaning-up monitoring during upgrade.
+    - Remove unused bundles.lmdb to reduce agent I/O usage. 
+        - Redesign classes and variables storage (for reporting) to reduce I/O usage.
+        - Improve API performance for DELETE requests on /api/host/:id resources. 
+        
+        Mission Portal:
+        - Small CSS changes
+        - Widgets & alerts view - UI changes
+        - Updated links to support portal
+
+3.6.4:
+        Bug fixes:
+        - Fix "cfe_autorun_inventory_dmidecode" error message on Windows if
+          Powershell is not installed.
+        - Fix bogus failed promise, "cfe_internal...", as a result of indexing
+          packages for the inventory screen. (Redmine #6865)
+
+        Mission Portal:
+        - LDAP settings UI improvements
+        - Unsaved SQL and Inventory Reports are preserved while refreshing/navigating in browser browser
+        - Help text: Added instructions to turn on Monitoring data
+        - Health bar dropdown labels and reports renamed
+
+    Changes:
+        - Introduce automatic rebase for the client if the client have not been successfully 
+          collected for defined period of time. Timeout is set by client_history_timeout 
+          attibute in hub body and if it is not set, it defaults to 6 hours.
+          Note: During rebase all accumulated reports up till that event 
+                are ignored and not collected by the cf-hub.
+
+3.6.3:
+       Mission Portal:
+       - Added license information to header
+       - General UI cleanups and small bug fixes
+       - Optimization of Software Updates alert
+       - Inventory reports:
+         - Made software filtering case insensitive
+         - Updated help text
+         - Performance improvements
+       - Alerts:
+         - Bug fix for duplicate alerts in overview
+         - Bug fixes for deleting alerts & widgets
+       - Settings:
+         - LDAP search filter help text & validation
+
+3.6.2:
+       Changes:
+       - Monitoring magnified and monitoring yearly database schema have been redesigned
+         to reduce database disk space usage over time.
+       - RBAC backend have been redesigned from dynamically generated tmp views 
+         to static global views that use session variables for passing context filters
+         and host identifier. Filtering also switched from dynamically generated queries
+         to Full Text Search.
+         
+        Mission Portal:
+        - UI changes: redesigned alerts + conditions overview screen
+        - Layout improvement of alert results view
+        - Added navigation menu buttons to dashboard + alerts screens
+        - High Availability status added to header bar
+        - Custom notification script UI added to settings and alert editing
+        - Added 'Low disk space' alert + 'System health' widget OOTB
+        - Bug fixing/small UI improvements
+
+3.6.1:
+       Changes:
+       - 'cf-key --install-license' installs hub-specific license key file "fqname-hostkey.dat"
+         in $WORKDIR/licenses, where they can easily be managed centrally via a VCS
+       - hub-specific license file is searched in $WORKDIR/licenses before license.dat is searched
+         in $WORKDIR, $WORKDIR/inputs and $WORKDIR/masterfiles
+       - Where appropriate, Enterprise API returns proper NULL json objects rather than literal
+         "NULL" values
+
+       Mission Portal:
+       - streamlined UI for inventory reporting
+       - fix username/role lookup failures if external authentication backend is case insensitive
+       - reduce number of LDAP roundtrips
+       - allow filtering of reports by category
+       - allow reordering of widgets on dashboard
+       - UI for bulk-deleting decommissioned hosts from "health" menu
+       - various behind-the-scene fixes and improvements to speed up UI and reporting
+
+       Platform support:
+       - Introduced Windows support into the CFEngine 3.6 series.
+
+3.6.0
+       Mission Portal:
+       - UI and layout improvements and cleanups
+       - Dashboard and alerts introduced
+       - Inventory report type and view introduced
+       - Report categories introduced
+       - CFEngine health indicator added to UI with links to associated reports
+       - Host number indicator added to UI
+       - Inline help and help pop-ups added for new features
+       - Welcome tour pop-up introduced
+       - Host filter UI improvements - search host name, select/deselect all
+       - About CFEngine page - license and version information has moved to a dedicated page in settings
+       - Fixes for IE8 compatibility
+       - Added option in UI to allow logging in to Mission Portal over https
+       - Design Center sketch catalog redesign - sketches can now be filtered by category, tag, or search
+       - UI to reset git settings in Design Center
+
+       Hub:
+       - Remove --cache / -a command line option from cf-hub binary
+       - Remove --index / -i command line option from cf-hub binary
+       - Remove --maintain / -m command line option from cf-hub binary (Maintenance process have been implemented in the policy)
+       - Remove MongoDB Diagnostics
+       - Promise repaired/notkept log have been removed from report collection. It have been replaced by promise executions report.
+       - Total compliance report have been removed from report collection.
+       - Setuid report have been removed.
+       - Promise definitions report have been removed.
+       - Promise and bundle compliance reports have been removed. Their functionality have been replaced with promise executions report.
+       - Reporting database and report collection architecture have been redesigned to improve performance and scalability characteristics.
+       - MongoDB reporting database have been replaced with PostgreSQL 9.3
+       - Context, Variable, Software Installed, Software Patches and Promise Execution reports support history over time.
+         History length is controlled per report type and can be configured in cfe_internal_hub_maintain bundle.
+       - Introduce new hub query type: 'rebase' ('full' query aliases 'rebase') for re-downloading full state of the client in current moment.
+         Rebase query result overwrites all non-historical entries about the host in the database.
+       - Include meta data contents to contexts and variables reports.
+
+       Enterprise Rest API:
+       - Rest interface for Design center
+       - Additional information returned for host (lastreport and firstseen)
+       - Rest API 2.2 (/rest API) have been removed.
+       - Enterprise API performance have been improved.
+       - SQL API table schema have been redesigned.
+       - Remove API cache.
+       - Pagination and sorting improvements.
+       - Introduce 'hostIdentifier' setting to /api/settings.
+       - Fixes in LDAP support.
+       - Delete host API now additionally removes host from lastseen database as also removes host public key.
+
+       Bug fixes:
+       - Removed MongoDB
+       - cf-serverd for Windows now binds to both IPv4 and IPv6 by default, not just IPv6. (Redmine #3980)
+       - cf-agent now reports host packages installed and available by default. (Redmine #3257)
+       - Fixed incorrect file diff generation when a line had moved within a file, and
+         certain other corner cases. (Redmine #5015)
+       - Windows fixes:
+         - CFEngine now handles Windows newlines correctly within text files when editing or using
+           the module protocol. Existing text files will keep their newline type (either LF or
+           CRLF), whereas new files will get CRLF newlines. (Redmine #4733)
+         - CFEngine will no longer display a blocking popup if it crashes.
+         - CFEngine now reports uptime correctly on Windows.
+
+       Enterprise extensions:
+       - Remove promise_notkept_log_include, promise_notkept_log_exclude, promise_repaired_log_include, promise_repaired_log_exclude (syntax is valid but not functional)
+       - Remove classes_include, classes_exclude, variables_include, variables_exclude (syntax is valid but not functional)
+       - Introduce promise_handle_include, promise_handle_exclude attributes from report_data_select
+       - Introduce metatags_include, metatags_exclude attributes from report_data_select
+       - Deprecate export_zenoss attribute
+       - Introduce promise_execution.log containing outcome and information about all executed promises.
+         It can be found under cfengine/state/ data format is CSV.
+       - Agent execution time have been included into benchmarks report.
+       - After disabling report_data_select filtering rule, include last known value in next packaged report.
+
+3.5.3
+       Bug fixes:
+       - purge old data for promises with long promise handles (Redmine #3438)
+       - fix constraint violation in PromiseDefinitions table which resulted in error everytime this table was loaded (Redmine #3370)
+       - enable update of promise definitions database from policy
+       - fix cfengine3 init.d script to correctly detect debian systems with yum installed (Redmine #3589)
+
+       Mission Portal:
+       - various layout and UI fixes
+       - fix editing of event trackers
+       - speed up listing of hosts for promises not kept - maintain host context (Redmine #3474)
+       - ability to manually add context filter in the SQL app (Redmine #3466)
+       - host identifier settings simplified (Redmine #3101)
+
+       Packaging fixes:
+       - Correct php.ini path in the packaged httpd (Redmine #3445)
+       - Add missing mongodb tools in ubuntu/debian hub packages (Redmine #3444)
+       - Fix manpath error for SLES (Redmine #3539)
+       - Fix file permissions - some policy files had executable bit set (Redmine #3521)
+
+3.5.2
+       Changes:
+       - MongoDB has been upgraded to version 2.2.4
+       - monitoring data has moved into a separate database
+         See db-move-monitoring-to-cfmonitor.js script to migrate data
+
+       Bug Fixes:
+       - Fix segfault of cf-serverd on HP-UX
+       - Do not to start a mongodb repair unnecessarily
+       - cf-hub -H now supports multiple hosts
+
+       Mission Portal:
+       - Reports can be published and shared between users
+       - Various UI improvements
+       - Optimizations in the report engine
+
+3.5.1
+       Mission Portal:
+       - SQL queries can be shared between users
+       - Fix timing issues for downloading large SQL reports
+       - Purge sketch data when no longer used by active sketches
+       - Uninstall sketches that have no activation
+       - Support for boolean, menu option and optional parameters in Design Center UI
+       - UI fixes to user and role management pages
+       - Delete navigation tree definitions of deleted uses
+       - Fixes to password reset
+       - General UI improvments
+       - Fixes for IE8 compatibility
+
+       Changes:
+       - Perform a database repair from init script if unclean shutdown of mongod is detected - Redmine #3035
+       - Data collection and cf-hub
+           - Improved database connection handling during report collection by cf-hub.
+       - REST APIs support an optional disableCache flag; when set, the backend always hits the MongoDB - Redmine #2945
+
+       Bug Fixes:
+       - don't generate ERR message during maintenance if environments couldn't be queried, changed to INFO message
+       - Fix usemodule on Windows (Redmine #1884)
+       - Fixed replica set detection (regression in 3.5) - Redmine #2806
+       - Set correct precision format when storing db diagnostics to avoid null-values
+       - Fix possible division-by-zero bug in compliance meters (Redmine #2734)
+
+
+3.5.0
+       New features:
+       - Mission Portal
+           - added Design Center UI to simplify sketch activation, including MP specific git settings to support version control of sketch configurations
+           - re-focused apps support quick navigation
+           - added persisting host and policy context between apps
+           - extended the SQL builder interface with more tables
+               - Added FirstReportTimeStamp into Hosts table in SQL REST API.
+                 This time value represent fist report time after bootstrap,
+                 already bootstrapped agents will set this with first report after update.
+               - Added regular expression support to SQL queries
+               - HostContext filter support in SQL REST API.
+           - added global navigation trees which are only editable by admins, including the option to share trees with other users
+
+       - REST API extensions
+           - New optional parameters for REST API were added: hostContextInclude and hostContextExclude (array type)
+           - PromiseContext filter support in SQL REST API.
+             New optional parameter for REST API was added: promiseContext (input: all / user / system)
+
+       - Data collection and cf-hub
+           - Added set and clear triggers for persistently disabling CFEngine components.
+             eg. to disable cf-monitord, run cf-agent with "-Dset_persistent_disable_cf_monitord"
+             to re-enable use: "-Dclear_persistent_disable_cf_monitord"
+           - Host side report content filter for class, variable, promise log and monitoring reports.
+             Controlled by report_data_select body in access promise.
+           - Diagnostics logging and SQL REST API for MongoDB, report collection and maintenance process on the enterprise hub.
+       - Windows
+           - Windows Powershell support. execresult(), returnszero() and commands promises now
+             supports "powershell" as an option in addition to the "noshell" and "useshell" variants.
+             "powershell" is also added as a hard class in order to test whether Powershell is available.
+
+       Changes:
+       - Mission Portal
+           - new visual design
+           - streamlined interactions for building new trees
+           - trees are now loaded lazily
+           - general clean-up to the tree controls
+           - hosts in trees are no longer color coded
+           - hosts are only classified as red, green or missing data
+           - operating system tree is now loaded by default
+           - SQL queries are now run by default after clicking their respective links, running a query is now primary action in the UI (#2393)
+           - data and result sets can now by filtered based on navi-tree
+           - logged-in user's name is visible again in the toolbar
+           - removed beta apps
+       - Windows
+           - Improved ACL handling on Windows, which led to some syntax changes. We now consistently
+             use the term "default" to describe ACLs that can be inherited by child objects. These
+             keywords have received new names:
+               acl_directory_inherit -> acl_default
+                specify_inherit_aces -> specify_default_aces
+             The old keywords are deprecated, but still valid. In addition, a new keyword
+             "acl_inherit" controls inheritance behavior on Windows. This feature does not exist on
+             Unix platforms.
+       - Enterprise API
+           - Export SQL results to sqlite3 database file
+       - Data Collection and cf-hub
+           - cf-hub has got an option -q to query reports from the running agent.
+             This option used to reside in cf-runagent, and has been moved to cf-hub.
+           - Full and delta reports send only mon and sys variables as also hosts excluding policy
+             server are reporting only subset of monitoring data.
+             This can be changed using access promise in default cf_serverd.cf policy.
+       - Removed license checking on hosts.
+
+       Bugfixes:
+       - Mission Portal
+           - promise finder now does string matching
+           - assigning roles in user management now makes sense
+           - report builder now has a "new query" button
+           - blue hosts' lacking data history is indicated correctly now
+           - CSS fixes
+           - finders no longer load duplicate list items
+           - Fix inconsistent behavior of black host status directly after install.
+       - Enterprise API
+           - Fix some REST queries not working on replica secondaries (eg. the /rest/host/:id)
+       - Remove HTML output from Total Compliance report
+
+3.0.x   Removed unused options "[-t][-r][-u]" from cf-know
+
+3.0.1   $(sys.licenses_installtime) variable removed from "Enterprise Free"
+
+3.0.0   New Reporting Engine: A SQL interface to reports collected by hub.
+
+    We allow all standardised SQL SELECT constructs to query the SQL reports database, with the following additions:
+        - TIMESTAMP_UNIX() - seconds elapsed since 1970
+        - TIMESTAMP_UNIX_DAYS() - days elapsed since 1970
+    These are added to avoid use of non-portable SQL date/time functions.
+
+        Enterprise API:
+                Read + write REST interface for
+                - report querying(utilizes underlying reporting engine)
+                - user management
+                - can be used with REST API v1 in parallel
+
+        Configurable hostnames(host/system identifier) in reports
+                - can take any of the sys variables(eg.$(sys.fqhost))
+
+        When decommissioning (deleting a host) from the Mission Portal/Enterprise API,
+        the public keys of the clients are also removed
+
+        Ability to delete multiple hosts from the mission portal
+
+        Improvements on the hub maintenance process
+                - less resource intensive and configurable
+                - New option for cf-hub added (-m) for Enterprise database maintenance
+
+        Fixes on database connections problems
+                - If you were seeing "connection refused because too many open connections",
+                  in database log please consider upgrading
+
+        Changed "nova>" to "enterprise>" in agent verbose output
+                - Please update email filters
+
+        Removed internal CFE promises from reporting
+
+        New classes enterprise, enterprise_X, enterprise_X_Y, enterprise_X_Y_Z
+    on CFEngine Enterprise, to reflect the version running. New variable
+    sys.enterprise_version that holds the CFEngine Enterprise version.
+    This complements the Nova classes and the sys.nova_version variable,
+    which will eventually be deprecated.
+
+        Fix file change report containing warning message as filename for new/deleted files
+
+        File diff log (nova_diff.log) have been extended with promise handle name.
+
+        Total compliance output in cf-agent verbose mode and promise_summary.log
+        have been extended with user and cfengine internal compliance level.
+
+        System variables are collected by hub in every delta query
+
+        Fix software reports showing "(never)" in the "Last seen" column
+
+        Fix "blue hosts" list being empty for clients that don't have class keys
+
+        Sendmail is installed by default on the hub - required for emailing of reports
+
+        32-bit hub installations no longer supported
+
+    Created a variable update_policy.mongodb_dir, for cases where MongoDB
+    should not run out of /var/cfengine/state (could grow to tens of gigabytes).
+
+    Removed commercial_customer class, as it was unused in internal policies.
+    Please use enterprise_edition instead if you used this in your policies.
+
+    New performance report events: DBPurgeHostsAll, DBMaintenance,
+    DBMaintenanceTimestampsSingleHost, DBCacheCompliance, DBReportCollectAll.
+
+    License verification is made more robust by not relying on the last-seen
+    database anymore. This means you do not need to bootstrap a client to
+    verify the license. See the cf-key --install-license option.
+
+2.2.0
+    More diagnostics on report collection from cf-hub. Logging more
+    useful information in cf-hub -l, measuring total collection time
+    in benchmarks report, under id "ReportCollectAll".
+
+    Fixed issue where client would show as green in the Mission Portal when no
+    data was received, e.g. due to access or license error at client.
+    Now correctly shows as blue in these cases.
+
+    Greatly reduced amount of connections from cf-hub
+    to localhost mongodb. Now there is one connection per
+    cf-hub run (max 50), before it was three per client.
+
+    Software and variable report now contains end-node discovery time.
+
+    Software and patches available/status reports contain maximum 5-minute old data,
+    improved from 6 hours in last release. This will only apply to clients
+    that are upgraded to 2.2.0.
+
+    Software report query from Mission Portal is much faster on larger data-sets due
+    to removal of autocomplete feature.
+
+    Upgraded mongod from version 1.8.2 to 2.0.4, which increases
+    efficiency on concurrency and reduces memory usage.
+
+    New function hostswithclass() that generates a list of hosts in a given class
+    on the hub.
+
+    The bundled failsafe.cf policy now has trustkey=false to avoid IP spoofing
+    attacks in default policy
+
+
+2.1.0
+    New interface with interactive graphs on Nova hub.
+
+    User management on hub.
+
+    Allowing TAB in file diff report. Better handling
+    of large diffs and attempts to diff binaries.
+
+    Support for adding notes to all hosts and reports.
+
+    Support for policy staging environments.
+
+    Nova reports can be exported to file and imported manually
+    using cf-report -x and cf-report -i.
+
+    Faster collection of monitoring (vitals) data due to
+    new protocol and data structure.
+
+    Long-term storage (one year) of diff and changes reports.
+
+    The variables report got a last-seen column. Now variables
+    are stored in the hub for a longer time like classes,
+    and not overwritten on every update.
+
+    The report of reports-promises are shown in the promise repaired log
+    in the Mission Portal.
+
+    New option cf-hub --cache, recreates the cache data needed
+    by the web interface.
+
+    Only showing the last seen host name and ip address when
+    listing hosts and on the host page.
+
+    Reliability improvements, especially when querying
+    the variables report.
+
+2.0.2
+    Much faster report querying.
+
+    Allows to specify age interval when querying promise not
+    kept and repaired.
+
+    Promiser conflict identifcation.
+
+    Built with Cfengine Community Edition 3.1.4.
+
+2.0.1
+    Fixed promise query of not kept/promise repaired logs.
+
+1.2.0
+    Windows Event Logs include output_prefix if set, and which component
+    reported the event. The verbosity of event logs have been reduced
+    by not including promise kept and repaired events, this can now be
+    tuned with action.log_level.
+
+    Take out network communications from total state calculation,
+    as it gets counted twice.
+
+1.1.2
+    Encryption problems fixed in Community Edition.
+
+    Built with Cfengine Community Edition 3.0.4p3.
+
+1.1.0
+    Regular expressions in file paths supported on Windows by using
+    forward slash as path separator.
+
+    CPU utilization report on Windows.
+    Users logged in report on Windows.
+
+    On the Windows cf-serverd, requests for /var/cfengine are
+    translated to $(sys.workdir)\Cfengine, and path separators are
+    automatically adjusted ("/" becomes "\"). This yields support for
+    more platform-independent promises and allows for automatic
+    copying of reports from Windows clients to the policy server.
+
+    Scale on graphs in the Knowledge Map, and different background
+    color gives more readability.
+
+    Special functions added for accessing remote classes for distributed cooperation.
+
+1.0.0
+    Reports added to cf-report for compliance, setuid, file_changes etc.
+    Added csv format also
+
+    Automating topic map integration of policy, with impact analysis
+    using promisee and builds_on promises.
+
+    Literal string lookup in server.
+
+    Database SQL and registry functions added. Verification and sanity
+    checking of SQL database table structure. Create and destroy
+    databases convergently.
+
+    Access control list support for Linux.
+
+    Powerful and lightweight promises for Customizable monitoring and
+    system discovery promises added to cf-monitord.
+
+    Longterm memory for 3 year trend analysis.
+</pre>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-what-s-new.html">what's new</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-enterprise.html">enterprise</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 10 July 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/latest-release/whatsnew/changelog-enterprise.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/d99dd1f07cf37da07fbd675717c47f3201990891" target="_blank">d99dd1f07cf37da07fbd675717c47f3201990891</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.14/assets/footer-0ce0c884995cf0be0e878ec70c137005.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

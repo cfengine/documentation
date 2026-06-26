@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.20  Documentation - sys</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/reference/special-variables/sys.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-reference-special-variables-sys.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-special-variables-sys.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='assets/global-2492ce7571245ef106dbe85ec06e4908.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "sys";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/" selected>Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="96c0f638b03564284" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components</a></li><li><a href="reference-promise-types.html">Promise Types</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a><ul class="level2"><li><a href="reference-special-variables-connection.html">connection</a></li><li><a href="reference-special-variables-const.html">const</a></li><li><a href="reference-special-variables-def.html">def</a></li><li><a href="reference-special-variables-edit.html">edit</a></li><li><a href="reference-special-variables-match.html">match</a></li><li><a href="reference-special-variables-mon.html">mon</a></li><li><a class="active" href="reference-special-variables-sys.html">sys</a></li><li><a href="reference-special-variables-this.html">this</a></li></ul></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-special-variables.html">Special Variables</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    sys
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>System variables are derived from CFEngine&#39;s automated discovery of system
+values. They are provided as variables in order to make automatically adaptive
+rules for configuration.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="kd">files</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;</span><span class="si">$(sys.resolv)</span><span class="s">&quot;</span><span class="w"></span>
+
+<span class="w">          </span><span class="kr">create</span><span class="w">        </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="kr">edit_line</span><span class="w">     </span><span class="o">=&gt;</span> <span class="nf">doresolv</span><span class="p">(</span><span class="s">&quot;@(this.list1)&quot;</span><span class="p">,</span><span class="s">&quot;@(this.list2)&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">          </span><span class="kr">edit_defaults</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">reconstruct</span><span class="p">;</span><span class="w"></span>
+</code></pre>
+</div>
+<h3 id="sys-arch">sys.arch</h3>
+<p>The variable gives the kernel&#39;s short architecture description.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># arch = x86_64</span>
+</code></pre>
+</div>
+<h3 id="sys-bindir">sys.bindir</h3>
+<p>The name of the directory where CFEngine looks for its binaries..</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># bindir = /var/cfengine/bin</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.6</p>
+<h3 id="sys-cdate">sys.cdate</h3>
+<p>The date of the system in canonical form, i.e. in the form of a class, from when the agent initialized.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># cdate = Sun_Dec__7_10_39_53_2008_</span>
+</code></pre>
+</div>
+<h3 id="sys-cf_promises">sys.cf_promises</h3>
+<p>A variable containing the path to the CFEngine syntax analyzer
+<a href="reference-components-cf-promises.html" title="cf-promises"><code>cf-promises</code></a> on the platform you are using.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="kd">classes</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;syntax_ok&quot;</span><span class="w"> </span><span class="kr">expression</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">returnszero</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(sys.cf_promises)</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre>
+</div>
+<h3 id="sys-cf_version">sys.cf_version</h3>
+<p>The variable gives the version of the running CFEngine Core.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># cf_version = 3.0.5</span>
+</code></pre>
+</div>
+<h3 id="sys-cf_version_major">sys.cf_version_major</h3>
+<p>The variable gives the major version of the running CFEngine Core.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># cf_version = 3.0.5</span>
+<span class="w">    </span><span class="c"># cf_version_major = 3</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.5.1, Enterprise 3.5.1.</p>
+<h3 id="sys-cf_version_minor">sys.cf_version_minor</h3>
+<p>The variable gives the minor version of the running CFEngine Core.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># cf_version = 3.0.5</span>
+<span class="w">    </span><span class="c"># cf_version_minor = 0</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.5.1, Enterprise 3.5.1.</p>
+<h3 id="sys-cf_version_patch">sys.cf_version_patch</h3>
+<p>The variable gives the patch version of the running CFEngine Core.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># cf_version = 3.0.5</span>
+<span class="w">    </span><span class="c"># cf_version_patch = 5</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.5.1, Enterprise 3.5.1.</p>
+<h3 id="sys-cf_version_release">sys.cf_version_release</h3>
+<p>The variable gives the release number of the running CFEngine Core.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># cf_version_release = 1</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.16.0.</p>
+<h3 id="sys-class">sys.class</h3>
+<p>This variable contains the name of the hard-class category for this host
+(i.e. its top level operating system type classification).</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># class = linux</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-sys.html#sys-os" title="sys - sys.os"><code>sys.os</code></a></p>
+<h3 id="sys-cpus">sys.cpus</h3>
+<p>A variable containing the number of CPU cores detected. On systems which
+provide virtual cores, it is set to the total number of virtual, not
+physical, cores. In addition, on a single-core system the class <code>1_cpu</code>
+is set, and on multi-core systems the class <em>n</em><code>_cpus</code> is set, where
+<em>n</em> is the number of cores identified.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">     </span><span class="s">&quot;Number of CPUS = </span><span class="si">$(sys.cpus)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="nc">8_cpus</span><span class="p">::</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;This system has 8 processors.&quot;</span><span class="p">;</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.3.0, Enterprise 2.2.0 (2012)</p>
+<h3 id="sys-crontab">sys.crontab</h3>
+<p>The variable gives the location of the current users&#39;s master crontab
+directory.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># crontab = /var/spool/crontab/root</span>
+</code></pre>
+</div>
+<h3 id="sys-date">sys.date</h3>
+<p>The date of the system as a text string, from when the agent initialized.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># date = Sun Dec  7 10:39:53 2008</span>
+</code></pre>
+</div>
+<h3 id="sys-doc_root">sys.doc_root</h3>
+<p>A scalar variable containing the default path for the document root of
+the standard web server package.</p>
+
+<p><strong>History:</strong> Was introduced in 3.1.0, Enterprise 2.0.</p>
+<h3 id="sys-domain">sys.domain</h3>
+<p>The domain name as discovered by CFEngine. If the DNS is in use, it could
+be possible to derive the domain name from its DNS registration, but in
+general there is no way to discover this value automatically. The
+<code>common control</code> body permits the ultimate specification of this value.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># domain = example.org</span>
+</code></pre>
+</div>
+<h3 id="sys-enterprise_version">sys.enterprise_version</h3>
+<p>The variable gives the version of the running CFEngine Enterprise
+Edition.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># enterprise_version = 3.0.0</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.5.0, Enterprise 3.0.0.</p>
+<h3 id="sys-expires">sys.expires</h3>
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Removed 3.5.0</li>
+<li>Introduced in version 3.1.4, Enterprise 2.0.2 (2011).</li>
+</ul>
+<h3 id="sys-exports">sys.exports</h3>
+<p>The location of the system NFS exports file.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># exports = /etc/exports</span>
+<span class="w">    </span><span class="c"># exports = /etc/dfs/dfstab</span>
+</code></pre>
+</div>
+<h3 id="sys-failsafe_policy_path">sys.failsafe_policy_path</h3>
+<p>The name of the failsafe policy file.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># failsafe_policy_path = /var/cfengine/inputs/failsafe.cf</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.6</p>
+<h3 id="sys-flavor-sys-flavour">sys.flavor, sys.flavour</h3>
+<p>A variable containing an operating system identification string that is
+used to determine the current release of the operating system in a form
+that can be used as a label in naming. This is used, for instance, to
+detect which package name to choose when updating software binaries for
+CFEngine.</p>
+
+<p>These two variables are synonyms for each other.</p>
+
+<p><strong>History:</strong> Was introduced in 3.2.0, Enterprise 2.0</p>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-sys.html#sys-ostype" title="sys - sys.ostype"><code>sys.ostype</code></a></p>
+<h3 id="sys-fqhost">sys.fqhost</h3>
+<p>The fully qualified name of the host. In order to compute this value
+properly, the domain name must be defined.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># fqhost = host.example.org</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-sys.html#sys-uqhost"><code>sys.uqhost</code></a></p>
+<h3 id="sys-fstab">sys.fstab</h3>
+<p>The location of the system filesystem (mount) table.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># fstab = /etc/fstab</span>
+</code></pre>
+</div>
+<h3 id="sys-hardware_addresses">sys.hardware_addresses</h3>
+<p>This is a list variable containing a list of all known MAC addresses for
+system interfaces.</p>
+
+<p><strong>History:</strong> Was introduced in 3.3.0, Enterprise 2.2.0 (2011)</p>
+<h3 id="sys-hardware_mac-interface_name">sys.hardware_mac[interface_name]</h3>
+<p>This contains the MAC address of the named interface. For example:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;Tell me </span><span class="si">$(sys.hardware_mac[eth0])</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> The <em>keys</em> in this array are <a href="reference-functions-canonify.html" title="canonify">canonified</a>. For example, the entry for <code>wlan0.1</code> would be found under the <code>wlan0_1</code> key. Ref: <a href="https://tracker.mender.io/browse/CFE-3224">CFE-3224</a>.</p>
+
+<p><strong>History:</strong> Was introduced in 3.3.0, Enterprise 2.2.0 (2011)</p>
+<h3 id="sys-host">sys.host</h3>
+<p>The name of the current host, according to the kernel. It is undefined
+whether this is qualified or unqualified with a domain name.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># host = myhost</span>
+</code></pre>
+</div>
+<h3 id="sys-inet">sys.inet</h3>
+<p>The available information about the IPv4 network stack, from when the agent initialized. This is currently available only on Linux systems with the special <code>/proc/net/*</code> information files.</p>
+
+<p>From the route table, the <code>default_gateway</code> is extracted. From the list of routes in <code>routes</code>, the <code>default_route</code> is copied to the top level for convenience.</p>
+
+<p>Each route&#39;s flags are extracted in a convenient list format.</p>
+
+<p>The <code>stats</code> key contains all the TCP and IP counters provided by the system in <code>/proc/net/netstat</code>.</p>
+
+<p><strong>History:</strong> Was introduced in 3.9.0.</p>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-sys.html#sys-inet6" title="sys - sys.inet6"><code>sys.inet6</code></a>, <a href="reference-special-variables-sys.html#sys-interfaces_data" title="sys - sys.interfaces_data"><code>sys.interfaces_data</code></a></p>
+<div class="highlight"><pre><code class="text"><span></span>    % cat /proc/net/route
+Iface   Destination Gateway     Flags   RefCnt  Use Metric  Mask        MTU Window  IRTT
+enp4s0  00000000    0102A8C0    0003    0   0   100 00000000    0   0   0
+enp4s0  0000FEA9    00000000    0001    0   0   1000    0000FFFF    0   0   0
+enp4s0  0002A8C0    00000000    0001    0   0   100 00FFFFFF    0   0   0
+
+    % cat /proc/net/netstat
+TcpExt: SyncookiesSent SyncookiesRecv SyncookiesFailed EmbryonicRsts PruneCalled RcvPruned OfoPruned OutOfWindowIcmps LockDroppedIcmps ArpFilter TW TWRecycled TWKilled PAWSPassive PAWSActive PAWSEstab DelayedACKs DelayedACKLocked DelayedACKLost ListenOverflows ListenDrops TCPPrequeued TCPDirectCopyFromBacklog TCPDirectCopyFromPrequeue TCPPrequeueDropped TCPHPHits TCPHPHitsToUser TCPPureAcks TCPHPAcks TCPRenoRecovery TCPSackRecovery TCPSACKReneging TCPFACKReorder TCPSACKReorder TCPRenoReorder TCPTSReorder TCPFullUndo TCPPartialUndo TCPDSACKUndo TCPLossUndo TCPLostRetransmit TCPRenoFailures TCPSackFailures TCPLossFailures TCPFastRetrans TCPForwardRetrans TCPSlowStartRetrans TCPTimeouts TCPLossProbes TCPLossProbeRecovery TCPRenoRecoveryFail TCPSackRecoveryFail TCPSchedulerFailed TCPRcvCollapsed TCPDSACKOldSent TCPDSACKOfoSent TCPDSACKRecv TCPDSACKOfoRecv TCPAbortOnData TCPAbortOnClose TCPAbortOnMemory TCPAbortOnTimeout TCPAbortOnLinger TCPAbortFailed TCPMemoryPressures TCPSACKDiscard TCPDSACKIgnoredOld TCPDSACKIgnoredNoUndo TCPSpuriousRTOs TCPMD5NotFound TCPMD5Unexpected TCPSackShifted TCPSackMerged TCPSackShiftFallback TCPBacklogDrop TCPMinTTLDrop TCPDeferAcceptDrop IPReversePathFilter TCPTimeWaitOverflow TCPReqQFullDoCookies TCPReqQFullDrop TCPRetransFail TCPRcvCoalesce TCPOFOQueue TCPOFODrop TCPOFOMerge TCPChallengeACK TCPSYNChallenge TCPFastOpenActive TCPFastOpenActiveFail TCPFastOpenPassive TCPFastOpenPassiveFail TCPFastOpenListenOverflow TCPFastOpenCookieReqd TCPSpuriousRtxHostQueues BusyPollRxPackets TCPAutoCorking TCPFromZeroWindowAdv TCPToZeroWindowAdv TCPWantZeroWindowAdv TCPSynRetrans TCPOrigDataSent TCPHystartTrainDetect TCPHystartTrainCwnd TCPHystartDelayDetect TCPHystartDelayCwnd TCPACKSkippedSynRecv TCPACKSkippedPAWS TCPACKSkippedSeq TCPACKSkippedFinWait2 TCPACKSkippedTimeWait TCPACKSkippedChallenge TCPWinProbe TCPKeepAlive
+TcpExt: 0 0 0 19896 7 0 0 9 0 0 560727 0 0 0 0 3575 2049614 302 313016 0 0 17283401 130554 186252521 0 126381259 21978 34307113 42386136 481 386568 7 175 316 11 822 2028 483 20959 148926 16709 267 271328 38869 512579 72057 281202 375133 561590 150370 23 59420 0 106 391776 9062 174837 4389 211213 13931 0 14556 0 0 0 585 594 65103 100117 0 0 0 0 2199955 0 0 0 0 0 0 0 15 36402752 5236349 0 7020 7132 4057 0 0 0 0 0 0 70 0 17925237 24 30 71 693624 275201738 33 992 2253 49843 136 484 21848 0 25 218 10478 503111
+IpExt: InNoRoutes InTruncatedPkts InMcastPkts OutMcastPkts InBcastPkts OutBcastPkts InOctets OutOctets InMcastOctets OutMcastOctets InBcastOctets OutBcastOctets InCsumErrors InNoECTPkts InECT1Pkts InECT0Pkts InCEPkts
+IpExt: 0 0 1304886 130589 3784495 6 437612883789 422416538003 334973818 8189234 817859007 284 1 487495405 18258 4804476 543340
+
+    # sys.inet = {
+    &quot;default_gateway&quot;: &quot;192.168.2.1&quot;,
+    &quot;default_route&quot;: {
+      &quot;active_default_gateway&quot;: true,
+      &quot;dest&quot;: &quot;0.0.0.0&quot;,
+      &quot;flags&quot;: [
+        &quot;up&quot;,
+        &quot;net&quot;,
+        &quot;default&quot;,
+        &quot;gateway&quot;
+      ],
+      &quot;gateway&quot;: &quot;192.168.2.1&quot;,
+      &quot;interface&quot;: &quot;enp4s0&quot;,
+      &quot;irtt&quot;: 0,
+      &quot;mask&quot;: &quot;0.0.0.0&quot;,
+      &quot;metric&quot;: 100,
+      &quot;mtu&quot;: 0,
+      &quot;refcnt&quot;: 0,
+      &quot;use&quot;: 0,
+      &quot;window&quot;: 0
+    },
+    &quot;routes&quot;: [
+      {
+        &quot;active_default_gateway&quot;: true,
+        &quot;dest&quot;: &quot;0.0.0.0&quot;,
+        &quot;flags&quot;: [
+          &quot;up&quot;,
+          &quot;net&quot;,
+          &quot;default&quot;,
+          &quot;gateway&quot;
+        ],
+        &quot;gateway&quot;: &quot;192.168.2.1&quot;,
+        &quot;interface&quot;: &quot;enp4s0&quot;,
+        &quot;irtt&quot;: 0,
+        &quot;mask&quot;: &quot;0.0.0.0&quot;,
+        &quot;metric&quot;: 100,
+        &quot;mtu&quot;: 0,
+        &quot;refcnt&quot;: 0,
+        &quot;use&quot;: 0,
+        &quot;window&quot;: 0
+      },
+      {
+        &quot;active_default_gateway&quot;: false,
+        &quot;dest&quot;: &quot;169.254.0.0&quot;,
+        &quot;flags&quot;: [
+          &quot;up&quot;,
+          &quot;net&quot;,
+          &quot;not_default&quot;,
+          &quot;local&quot;
+        ],
+        &quot;gateway&quot;: &quot;0.0.0.0&quot;,
+        &quot;interface&quot;: &quot;enp4s0&quot;,
+        &quot;irtt&quot;: 0,
+        &quot;mask&quot;: &quot;255.255.0.0&quot;,
+        &quot;metric&quot;: 1000,
+        &quot;mtu&quot;: 0,
+        &quot;refcnt&quot;: 0,
+        &quot;use&quot;: 0,
+        &quot;window&quot;: 0
+      },
+      {
+        &quot;active_default_gateway&quot;: false,
+        &quot;dest&quot;: &quot;192.168.2.0&quot;,
+        &quot;flags&quot;: [
+          &quot;up&quot;,
+          &quot;net&quot;,
+          &quot;not_default&quot;,
+          &quot;local&quot;
+        ],
+        &quot;gateway&quot;: &quot;0.0.0.0&quot;,
+        &quot;interface&quot;: &quot;enp4s0&quot;,
+        &quot;irtt&quot;: 0,
+        &quot;mask&quot;: &quot;255.255.255.0&quot;,
+        &quot;metric&quot;: 100,
+        &quot;mtu&quot;: 0,
+        &quot;refcnt&quot;: 0,
+        &quot;use&quot;: 0,
+        &quot;window&quot;: 0
+      }
+    ],
+    &quot;stats&quot;: {
+      &quot;IpExt&quot;: {
+        &quot;InBcastOctets&quot;: &quot;817859007&quot;,
+        &quot;InBcastPkts&quot;: &quot;3784495&quot;,
+        &quot;InCEPkts&quot;: &quot;543340&quot;,
+        &quot;InCsumErrors&quot;: &quot;1&quot;,
+        &quot;InECT0Pkts&quot;: &quot;4804476&quot;,
+        &quot;InECT1Pkts&quot;: &quot;18258&quot;,
+        &quot;InMcastOctets&quot;: &quot;334973818&quot;,
+        &quot;InMcastPkts&quot;: &quot;1304886&quot;,
+        &quot;InNoECTPkts&quot;: &quot;487495405&quot;,
+        &quot;InNoRoutes&quot;: &quot;0&quot;,
+        &quot;InOctets&quot;: &quot;437612883789&quot;,
+        &quot;InTruncatedPkts&quot;: &quot;0&quot;,
+        &quot;OutBcastOctets&quot;: &quot;284&quot;,
+        &quot;OutBcastPkts&quot;: &quot;6&quot;,
+        &quot;OutMcastOctets&quot;: &quot;8189234&quot;,
+        &quot;OutMcastPkts&quot;: &quot;130589&quot;,
+        &quot;OutOctets&quot;: &quot;422416538003&quot;
+      },
+      &quot;TcpExt&quot;: {
+        &quot;ArpFilter&quot;: &quot;0&quot;,
+        &quot;BusyPollRxPackets&quot;: &quot;0&quot;,
+        &quot;DelayedACKLocked&quot;: &quot;302&quot;,
+        &quot;DelayedACKLost&quot;: &quot;313016&quot;,
+        &quot;DelayedACKs&quot;: &quot;2049614&quot;,
+        &quot;EmbryonicRsts&quot;: &quot;19896&quot;,
+        &quot;IPReversePathFilter&quot;: &quot;0&quot;,
+        &quot;ListenDrops&quot;: &quot;0&quot;,
+        &quot;ListenOverflows&quot;: &quot;0&quot;,
+        &quot;LockDroppedIcmps&quot;: &quot;0&quot;,
+        &quot;OfoPruned&quot;: &quot;0&quot;,
+        &quot;OutOfWindowIcmps&quot;: &quot;9&quot;,
+        &quot;PAWSActive&quot;: &quot;0&quot;,
+        &quot;PAWSEstab&quot;: &quot;3575&quot;,
+        &quot;PAWSPassive&quot;: &quot;0&quot;,
+        &quot;PruneCalled&quot;: &quot;7&quot;,
+        &quot;RcvPruned&quot;: &quot;0&quot;,
+        &quot;SyncookiesFailed&quot;: &quot;0&quot;,
+        &quot;SyncookiesRecv&quot;: &quot;0&quot;,
+        &quot;SyncookiesSent&quot;: &quot;0&quot;,
+        &quot;TCPACKSkippedChallenge&quot;: &quot;218&quot;,
+        &quot;TCPACKSkippedFinWait2&quot;: &quot;0&quot;,
+        &quot;TCPACKSkippedPAWS&quot;: &quot;484&quot;,
+        &quot;TCPACKSkippedSeq&quot;: &quot;21848&quot;,
+        &quot;TCPACKSkippedSynRecv&quot;: &quot;136&quot;,
+        &quot;TCPACKSkippedTimeWait&quot;: &quot;25&quot;,
+        &quot;TCPAbortFailed&quot;: &quot;0&quot;,
+        &quot;TCPAbortOnClose&quot;: &quot;13931&quot;,
+        &quot;TCPAbortOnData&quot;: &quot;211213&quot;,
+        &quot;TCPAbortOnLinger&quot;: &quot;0&quot;,
+        &quot;TCPAbortOnMemory&quot;: &quot;0&quot;,
+        &quot;TCPAbortOnTimeout&quot;: &quot;14556&quot;,
+        &quot;TCPAutoCorking&quot;: &quot;17925237&quot;,
+        &quot;TCPBacklogDrop&quot;: &quot;0&quot;,
+        &quot;TCPChallengeACK&quot;: &quot;7132&quot;,
+        &quot;TCPDSACKIgnoredNoUndo&quot;: &quot;65103&quot;,
+        &quot;TCPDSACKIgnoredOld&quot;: &quot;594&quot;,
+        &quot;TCPDSACKOfoRecv&quot;: &quot;4389&quot;,
+        &quot;TCPDSACKOfoSent&quot;: &quot;9062&quot;,
+        &quot;TCPDSACKOldSent&quot;: &quot;391776&quot;,
+        &quot;TCPDSACKRecv&quot;: &quot;174837&quot;,
+        &quot;TCPDSACKUndo&quot;: &quot;20959&quot;,
+        &quot;TCPDeferAcceptDrop&quot;: &quot;0&quot;,
+        &quot;TCPDirectCopyFromBacklog&quot;: &quot;130554&quot;,
+        &quot;TCPDirectCopyFromPrequeue&quot;: &quot;186252521&quot;,
+        &quot;TCPFACKReorder&quot;: &quot;175&quot;,
+        &quot;TCPFastOpenActive&quot;: &quot;0&quot;,
+        &quot;TCPFastOpenActiveFail&quot;: &quot;0&quot;,
+        &quot;TCPFastOpenCookieReqd&quot;: &quot;0&quot;,
+        &quot;TCPFastOpenListenOverflow&quot;: &quot;0&quot;,
+        &quot;TCPFastOpenPassive&quot;: &quot;0&quot;,
+        &quot;TCPFastOpenPassiveFail&quot;: &quot;0&quot;,
+        &quot;TCPFastRetrans&quot;: &quot;512579&quot;,
+        &quot;TCPForwardRetrans&quot;: &quot;72057&quot;,
+        &quot;TCPFromZeroWindowAdv&quot;: &quot;24&quot;,
+        &quot;TCPFullUndo&quot;: &quot;2028&quot;,
+        &quot;TCPHPAcks&quot;: &quot;42386136&quot;,
+        &quot;TCPHPHits&quot;: &quot;126381259&quot;,
+        &quot;TCPHPHitsToUser&quot;: &quot;21978&quot;,
+        &quot;TCPHystartDelayCwnd&quot;: &quot;49843&quot;,
+        &quot;TCPHystartDelayDetect&quot;: &quot;2253&quot;,
+        &quot;TCPHystartTrainCwnd&quot;: &quot;992&quot;,
+        &quot;TCPHystartTrainDetect&quot;: &quot;33&quot;,
+        &quot;TCPKeepAlive&quot;: &quot;503111&quot;,
+        &quot;TCPLossFailures&quot;: &quot;38869&quot;,
+        &quot;TCPLossProbeRecovery&quot;: &quot;150370&quot;,
+        &quot;TCPLossProbes&quot;: &quot;561590&quot;,
+        &quot;TCPLossUndo&quot;: &quot;148926&quot;,
+        &quot;TCPLostRetransmit&quot;: &quot;16709&quot;,
+        &quot;TCPMD5NotFound&quot;: &quot;0&quot;,
+        &quot;TCPMD5Unexpected&quot;: &quot;0&quot;,
+        &quot;TCPMemoryPressures&quot;: &quot;0&quot;,
+        &quot;TCPMinTTLDrop&quot;: &quot;0&quot;,
+        &quot;TCPOFODrop&quot;: &quot;0&quot;,
+        &quot;TCPOFOMerge&quot;: &quot;7020&quot;,
+        &quot;TCPOFOQueue&quot;: &quot;5236349&quot;,
+        &quot;TCPOrigDataSent&quot;: &quot;275201738&quot;,
+        &quot;TCPPartialUndo&quot;: &quot;483&quot;,
+        &quot;TCPPrequeueDropped&quot;: &quot;0&quot;,
+        &quot;TCPPrequeued&quot;: &quot;17283401&quot;,
+        &quot;TCPPureAcks&quot;: &quot;34307113&quot;,
+        &quot;TCPRcvCoalesce&quot;: &quot;36402752&quot;,
+        &quot;TCPRcvCollapsed&quot;: &quot;106&quot;,
+        &quot;TCPRenoFailures&quot;: &quot;267&quot;,
+        &quot;TCPRenoRecovery&quot;: &quot;481&quot;,
+        &quot;TCPRenoRecoveryFail&quot;: &quot;23&quot;,
+        &quot;TCPRenoReorder&quot;: &quot;11&quot;,
+        &quot;TCPReqQFullDoCookies&quot;: &quot;0&quot;,
+        &quot;TCPReqQFullDrop&quot;: &quot;0&quot;,
+        &quot;TCPRetransFail&quot;: &quot;15&quot;,
+        &quot;TCPSACKDiscard&quot;: &quot;585&quot;,
+        &quot;TCPSACKReneging&quot;: &quot;7&quot;,
+        &quot;TCPSACKReorder&quot;: &quot;316&quot;,
+        &quot;TCPSYNChallenge&quot;: &quot;4057&quot;,
+        &quot;TCPSackFailures&quot;: &quot;271328&quot;,
+        &quot;TCPSackMerged&quot;: &quot;0&quot;,
+        &quot;TCPSackRecovery&quot;: &quot;386568&quot;,
+        &quot;TCPSackRecoveryFail&quot;: &quot;59420&quot;,
+        &quot;TCPSackShiftFallback&quot;: &quot;2199955&quot;,
+        &quot;TCPSackShifted&quot;: &quot;0&quot;,
+        &quot;TCPSchedulerFailed&quot;: &quot;0&quot;,
+        &quot;TCPSlowStartRetrans&quot;: &quot;281202&quot;,
+        &quot;TCPSpuriousRTOs&quot;: &quot;100117&quot;,
+        &quot;TCPSpuriousRtxHostQueues&quot;: &quot;70&quot;,
+        &quot;TCPSynRetrans&quot;: &quot;693624&quot;,
+        &quot;TCPTSReorder&quot;: &quot;822&quot;,
+        &quot;TCPTimeWaitOverflow&quot;: &quot;0&quot;,
+        &quot;TCPTimeouts&quot;: &quot;375133&quot;,
+        &quot;TCPToZeroWindowAdv&quot;: &quot;30&quot;,
+        &quot;TCPWantZeroWindowAdv&quot;: &quot;71&quot;,
+        &quot;TCPWinProbe&quot;: &quot;10478&quot;,
+        &quot;TW&quot;: &quot;560727&quot;,
+        &quot;TWKilled&quot;: &quot;0&quot;,
+        &quot;TWRecycled&quot;: &quot;0&quot;
+      }
+    }
+  }
+</code></pre>
+</div>
+<h3 id="sys-inet6">sys.inet6</h3>
+<p>The available information about the IPv6 network stack, from when the agent initialized. This is currently available only on Linux systems with the special <code>/proc/net/*</code> information files.</p>
+
+<p>The configured devices with IPv6 addresses from <code>/proc/net/if_inet6</code> are collected under <code>addresses</code>.</p>
+
+<p>The routes from <code>/proc/net/ipv6_route</code> are collected but not analyzed for default route etc. as with IPv4 routes in <a href="reference-special-variables-sys.html#sys-inet" title="sys - sys.inet"><code>sys.inet</code></a>.</p>
+
+<p>The network statistics from <code>/proc/net/snmp6</code> are converted to a convenient key-value format under <code>stats</code>.</p>
+
+<p><strong>History:</strong> Was introduced in 3.9.0.</p>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-sys.html#sys-inet" title="sys - sys.inet"><code>sys.inet</code></a>, <a href="reference-special-variables-sys.html#sys-interfaces_data" title="sys - sys.interfaces_data"><code>sys.interfaces_data</code></a></p>
+<div class="highlight"><pre><code class="text"><span></span>    % cat /proc/net/if_inet6
+00000000000000000000000000000001 01 80 10 80       lo
+fe80000000000000004249fffebdd7b4 04 40 20 80  docker0
+fe80000000000000c27cd1fffe3eada6 02 40 20 80   enp4s0
+
+    % cat /proc/net/ipv6_route
+fe800000000000000000000000000000 40 00000000000000000000000000000000 00 00000000000000000000000000000000 00000100 00000001 00000004 00000001   enp4s0
+00000000000000000000000000000000 00 00000000000000000000000000000000 00 00000000000000000000000000000000 ffffffff 00000001 0007e26c 00200200       lo
+00000000000000000000000000000001 80 00000000000000000000000000000000 00 00000000000000000000000000000000 00000000 00000009 0000020b 80200001       lo
+fe80000000000000c27cd1fffe3eada6 80 00000000000000000000000000000000 00 00000000000000000000000000000000 00000000 00000002 00000004 80200001       lo
+ff000000000000000000000000000000 08 00000000000000000000000000000000 00 00000000000000000000000000000000 00000100 00000008 0003ffc5 00000001   enp4s0
+00000000000000000000000000000000 00 00000000000000000000000000000000 00 00000000000000000000000000000000 ffffffff 00000001 0007e26c 00200200       lo
+
+    % cat /proc/net/snmp6
+Ip6InReceives                       492189
+Ip6InHdrErrors                      0
+Ip6InTooBigErrors                   0
+Ip6InNoRoutes                       0
+Ip6InAddrErrors                     0
+Ip6InUnknownProtos                  0
+Ip6InTruncatedPkts                  0
+Ip6InDiscards                       0
+Ip6InDelivers                       490145
+Ip6OutForwDatagrams                 0
+Ip6OutRequests                      12145
+Ip6OutDiscards                      6
+Ip6OutNoRoutes                      249070
+Ip6ReasmTimeout                     0
+Ip6ReasmReqds                       0
+Ip6ReasmOKs                         0
+Ip6ReasmFails                       0
+Ip6FragOKs                          0
+Ip6FragFails                        0
+Ip6FragCreates                      0
+Ip6InMcastPkts                      488766
+Ip6OutMcastPkts                     10304
+Ip6InOctets                         132343220
+Ip6OutOctets                        1522724
+Ip6InMcastOctets                    131896014
+Ip6OutMcastOctets                   1076616
+Ip6InBcastOctets                    0
+Ip6OutBcastOctets                   0
+Ip6InNoECTPkts                      492196
+Ip6InECT1Pkts                       0
+Ip6InECT0Pkts                       0
+Ip6InCEPkts                         0
+Icmp6InMsgs                         275
+Icmp6InErrors                       0
+Icmp6OutMsgs                        1815
+Icmp6OutErrors                      0
+Icmp6InCsumErrors                   0
+Icmp6InDestUnreachs                 0
+Icmp6InPktTooBigs                   0
+Icmp6InTimeExcds                    0
+Icmp6InParmProblems                 0
+Icmp6InEchos                        0
+Icmp6InEchoReplies                  0
+Icmp6InGroupMembQueries             0
+Icmp6InGroupMembResponses           1
+Icmp6InGroupMembReductions          1
+Icmp6InRouterSolicits               0
+Icmp6InRouterAdvertisements         0
+Icmp6InNeighborSolicits             5
+Icmp6InNeighborAdvertisements       268
+Icmp6InRedirects                    0
+Icmp6InMLDv2Reports                 0
+Icmp6OutDestUnreachs                0
+Icmp6OutPktTooBigs                  0
+Icmp6OutTimeExcds                   0
+Icmp6OutParmProblems                0
+Icmp6OutEchos                       0
+Icmp6OutEchoReplies                 0
+Icmp6OutGroupMembQueries            0
+Icmp6OutGroupMembResponses          0
+Icmp6OutGroupMembReductions         0
+Icmp6OutRouterSolicits              396
+Icmp6OutRouterAdvertisements        0
+Icmp6OutNeighborSolicits            206
+Icmp6OutNeighborAdvertisements      5
+Icmp6OutRedirects                   0
+Icmp6OutMLDv2Reports                1208
+Icmp6InType131                      1
+Icmp6InType132                      1
+Icmp6InType135                      5
+Icmp6InType136                      268
+Icmp6OutType133                     396
+Icmp6OutType135                     206
+Icmp6OutType136                     5
+Icmp6OutType143                     1208
+Udp6InDatagrams                     486201
+Udp6NoPorts                         0
+Udp6InErrors                        0
+Udp6OutDatagrams                    7273
+Udp6RcvbufErrors                    0
+Udp6SndbufErrors                    0
+Udp6InCsumErrors                    0
+Udp6IgnoredMulti                    0
+UdpLite6InDatagrams                 0
+UdpLite6NoPorts                     0
+UdpLite6InErrors                    0
+UdpLite6OutDatagrams                0
+UdpLite6RcvbufErrors                0
+UdpLite6SndbufErrors                0
+UdpLite6InCsumErrors                0
+
+    # sys.inet6 = {
+    &quot;addresses&quot;: {
+      &quot;docker0&quot;: {
+        &quot;address&quot;: &quot;d7b4:febd:49ff:42:0:0:0:fe80&quot;,
+        &quot;device_number&quot;: 4,
+        &quot;interface&quot;: &quot;docker0&quot;,
+        &quot;prefix_length&quot;: 64,
+        &quot;raw_flags&quot;: &quot;80&quot;,
+        &quot;scope&quot;: 32
+      },
+      &quot;enp4s0&quot;: {
+        &quot;address&quot;: &quot;ada6:fe3e:d1ff:c27c:0:0:0:fe80&quot;,
+        &quot;device_number&quot;: 2,
+        &quot;interface&quot;: &quot;enp4s0&quot;,
+        &quot;prefix_length&quot;: 64,
+        &quot;raw_flags&quot;: &quot;80&quot;,
+        &quot;scope&quot;: 32
+      },
+      &quot;lo&quot;: {
+        &quot;address&quot;: &quot;1:0:0:0:0:0:0:0&quot;,
+        &quot;device_number&quot;: 1,
+        &quot;interface&quot;: &quot;lo&quot;,
+        &quot;prefix_length&quot;: 128,
+        &quot;raw_flags&quot;: &quot;80&quot;,
+        &quot;scope&quot;: 16
+      }
+    },
+    &quot;routes&quot;: [
+      {
+        &quot;dest&quot;: &quot;0:0:0:0:0:0:0:0&quot;,
+        &quot;dest_prefix&quot;: &quot;40&quot;,
+        &quot;flags&quot;: [
+          &quot;up&quot;,
+          &quot;net&quot;,
+          &quot;local&quot;
+        ],
+        &quot;interface&quot;: &quot;enp4s0&quot;,
+        &quot;metric&quot;: 256,
+        &quot;next_hop&quot;: &quot;0:0:0:0:0:0:0:0&quot;,
+        &quot;refcnt&quot;: 1,
+        &quot;source_prefix&quot;: &quot;00&quot;,
+        &quot;use&quot;: 4
+      },
+      {
+        &quot;dest&quot;: &quot;0:0:0:0:0:0:0:0&quot;,
+        &quot;dest_prefix&quot;: &quot;80&quot;,
+        &quot;flags&quot;: [
+          &quot;up&quot;,
+          &quot;net&quot;,
+          &quot;local&quot;
+        ],
+        &quot;interface&quot;: &quot;lo&quot;,
+        &quot;metric&quot;: 0,
+        &quot;next_hop&quot;: &quot;0:0:0:0:0:0:0:0&quot;,
+        &quot;refcnt&quot;: 2,
+        &quot;source_prefix&quot;: &quot;00&quot;,
+        &quot;use&quot;: 4
+      }
+    ],
+    &quot;stats&quot;: {
+      &quot;Icmp6InCsumErrors&quot;: 0,
+      &quot;Icmp6InDestUnreachs&quot;: 0,
+      &quot;Icmp6InEchoReplies&quot;: 0,
+      &quot;Icmp6InEchos&quot;: 0,
+      &quot;Icmp6InErrors&quot;: 0,
+      &quot;Icmp6InGroupMembQueries&quot;: 0,
+      &quot;Icmp6InGroupMembReductions&quot;: 1,
+      &quot;Icmp6InGroupMembResponses&quot;: 1,
+      &quot;Icmp6InMLDv2Reports&quot;: 0,
+      &quot;Icmp6InMsgs&quot;: 275,
+      &quot;Icmp6InNeighborAdvertisements&quot;: 268,
+      &quot;Icmp6InNeighborSolicits&quot;: 5,
+      &quot;Icmp6InParmProblems&quot;: 0,
+      &quot;Icmp6InPktTooBigs&quot;: 0,
+      &quot;Icmp6InRedirects&quot;: 0,
+      &quot;Icmp6InRouterAdvertisements&quot;: 0,
+      &quot;Icmp6InRouterSolicits&quot;: 0,
+      &quot;Icmp6InTimeExcds&quot;: 0,
+      &quot;Icmp6InType131&quot;: 1,
+      &quot;Icmp6InType132&quot;: 1,
+      &quot;Icmp6InType135&quot;: 5,
+      &quot;Icmp6InType136&quot;: 268,
+      &quot;Icmp6OutDestUnreachs&quot;: 0,
+      &quot;Icmp6OutEchoReplies&quot;: 0,
+      &quot;Icmp6OutEchos&quot;: 0,
+      &quot;Icmp6OutErrors&quot;: 0,
+      &quot;Icmp6OutGroupMembQueries&quot;: 0,
+      &quot;Icmp6OutGroupMembReductions&quot;: 0,
+      &quot;Icmp6OutGroupMembResponses&quot;: 0,
+      &quot;Icmp6OutMLDv2Reports&quot;: 1208,
+      &quot;Icmp6OutMsgs&quot;: 1815,
+      &quot;Icmp6OutNeighborAdvertisements&quot;: 5,
+      &quot;Icmp6OutNeighborSolicits&quot;: 206,
+      &quot;Icmp6OutParmProblems&quot;: 0,
+      &quot;Icmp6OutPktTooBigs&quot;: 0,
+      &quot;Icmp6OutRedirects&quot;: 0,
+      &quot;Icmp6OutRouterAdvertisements&quot;: 0,
+      &quot;Icmp6OutRouterSolicits&quot;: 396,
+      &quot;Icmp6OutTimeExcds&quot;: 0,
+      &quot;Icmp6OutType133&quot;: 396,
+      &quot;Icmp6OutType135&quot;: 206,
+      &quot;Icmp6OutType136&quot;: 5,
+      &quot;Icmp6OutType143&quot;: 1208,
+      &quot;Ip6FragCreates&quot;: 0,
+      &quot;Ip6FragFails&quot;: 0,
+      &quot;Ip6FragOKs&quot;: 0,
+      &quot;Ip6InAddrErrors&quot;: 0,
+      &quot;Ip6InBcastOctets&quot;: 0,
+      &quot;Ip6InCEPkts&quot;: 0,
+      &quot;Ip6InDelivers&quot;: 490145,
+      &quot;Ip6InDiscards&quot;: 0,
+      &quot;Ip6InECT0Pkts&quot;: 0,
+      &quot;Ip6InECT1Pkts&quot;: 0,
+      &quot;Ip6InHdrErrors&quot;: 0,
+      &quot;Ip6InMcastOctets&quot;: 131896014,
+      &quot;Ip6InMcastPkts&quot;: 488766,
+      &quot;Ip6InNoECTPkts&quot;: 492196,
+      &quot;Ip6InNoRoutes&quot;: 0,
+      &quot;Ip6InOctets&quot;: 132343220,
+      &quot;Ip6InReceives&quot;: 492189,
+      &quot;Ip6InTooBigErrors&quot;: 0,
+      &quot;Ip6InTruncatedPkts&quot;: 0,
+      &quot;Ip6InUnknownProtos&quot;: 0,
+      &quot;Ip6OutBcastOctets&quot;: 0,
+      &quot;Ip6OutDiscards&quot;: 6,
+      &quot;Ip6OutForwDatagrams&quot;: 0,
+      &quot;Ip6OutMcastOctets&quot;: 1076616,
+      &quot;Ip6OutMcastPkts&quot;: 10304,
+      &quot;Ip6OutNoRoutes&quot;: 249070,
+      &quot;Ip6OutOctets&quot;: 1522724,
+      &quot;Ip6OutRequests&quot;: 12145,
+      &quot;Ip6ReasmFails&quot;: 0,
+      &quot;Ip6ReasmOKs&quot;: 0,
+      &quot;Ip6ReasmReqds&quot;: 0,
+      &quot;Ip6ReasmTimeout&quot;: 0,
+      &quot;Udp6IgnoredMulti&quot;: 0,
+      &quot;Udp6InCsumErrors&quot;: 0,
+      &quot;Udp6InDatagrams&quot;: 486201,
+      &quot;Udp6InErrors&quot;: 0,
+      &quot;Udp6NoPorts&quot;: 0,
+      &quot;Udp6OutDatagrams&quot;: 7273,
+      &quot;Udp6RcvbufErrors&quot;: 0,
+      &quot;Udp6SndbufErrors&quot;: 0,
+      &quot;UdpLite6InCsumErrors&quot;: 0,
+      &quot;UdpLite6InDatagrams&quot;: 0,
+      &quot;UdpLite6InErrors&quot;: 0,
+      &quot;UdpLite6NoPorts&quot;: 0,
+      &quot;UdpLite6OutDatagrams&quot;: 0,
+      &quot;UdpLite6RcvbufErrors&quot;: 0,
+      &quot;UdpLite6SndbufErrors&quot;: 0
+    }
+  }
+</code></pre>
+</div>
+<h3 id="sys-inputdir">sys.inputdir</h3>
+<p>The name of the inputs directory where CFEngine looks for its policy files.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># inputdir = /var/cfengine/inputs</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.6</p>
+<h3 id="sys-interface">sys.interface</h3>
+<p>The assumed (default) name of the main system interface on this host.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># interface = eth0</span>
+</code></pre>
+</div>
+<h3 id="sys-interfaces">sys.interfaces</h3>
+<p>Displays a system list of configured interfaces currently active in use
+by the system. This list is detected at runtime and it passed in the
+variables report to the CFEngine Enterprise Database.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">example_sys_interfaces</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Address: </span><span class="si">$(sys.ip_addresses)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Interface: </span><span class="si">$(sys.interfaces)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Address of &#39;</span><span class="si">$(sys.interfaces)</span><span class="s">&#39; is &#39;</span><span class="si">$(sys.ipv4[$(sys.interfaces)])</span><span class="s">&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">__main__</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;example_sys_interfaces&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p><strong>Example Output:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>R: Address: 127.0.0.1
+R: Address: 192.168.42.189
+R: Address: 192.168.122.1
+R: Address: 172.17.0.1
+R: Address: 192.168.33.1
+R: Address: 172.27.224.211
+R: Address: 192.168.69.1
+R: Interface: wlan0
+R: Interface: virbr0
+R: Interface: docker0
+R: Interface: vboxnet3
+R: Interface: tun0
+R: Interface: vboxnet13
+R: Address of &#39;wlan0&#39; is &#39;192.168.42.189&#39;
+R: Address of &#39;virbr0&#39; is &#39;192.168.122.1&#39;
+R: Address of &#39;docker0&#39; is &#39;172.17.0.1&#39;
+R: Address of &#39;vboxnet3&#39; is &#39;192.168.33.1&#39;
+R: Address of &#39;tun0&#39; is &#39;172.27.224.211&#39;
+R: Address of &#39;vboxnet13&#39; is &#39;192.168.69.1&#39;
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.3.0, Enterprise 2.2.0 (2011)</p>
+<h3 id="sys-interfaces_data">sys.interfaces_data</h3>
+<p>The network statistics of the system interfaces, from when the agent initialized. This is currently available only on Linux systems with the special <code>/proc/net/dev</code> file.</p>
+
+<p><strong>History:</strong> Was introduced in 3.9.0.</p>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-sys.html#sys-inet6" title="sys - sys.inet6"><code>sys.inet6</code></a>, <a href="reference-special-variables-sys.html#sys-inet" title="sys - sys.inet"><code>sys.inet</code></a></p>
+<div class="highlight"><pre><code class="text"><span></span>    % cat /proc/net/dev
+Inter-|   Receive                                                |  Transmit
+ face |bytes    packets errs drop fifo frame compressed multicast|bytes    packets errs drop fifo colls carrier compressed
+enp4s0: 446377831179 492136556    0    0    0     0          0         0 428200856331 499195545    0    0    0     0       0          0
+    lo: 1210580426 1049790    0    0    0     0          0         0 1210580426 1049790    0    0    0     0       0          0
+wlp3s0:       0       0    0    0    0     0          0         0        0       0    0    0    0     0       0          0
+
+    # sys.interfaces_data = {
+    &quot;enp4s0&quot;: {
+      &quot;device&quot;: &quot;enp4s0&quot;,
+      &quot;receive_bytes&quot;: &quot;446377831179&quot;,
+      &quot;receive_compressed&quot;: &quot;0&quot;,
+      &quot;receive_drop&quot;: &quot;0&quot;,
+      &quot;receive_errors&quot;: &quot;0&quot;,
+      &quot;receive_fifo&quot;: &quot;0&quot;,
+      &quot;receive_frame&quot;: &quot;0&quot;,
+      &quot;receive_multicast&quot;: &quot;0&quot;,
+      &quot;receive_packets&quot;: &quot;492136556&quot;,
+      &quot;transmit_bytes&quot;: &quot;428200856331&quot;,
+      &quot;transmit_compressed&quot;: &quot;0&quot;,
+      &quot;transmit_drop&quot;: &quot;0&quot;,
+      &quot;transmit_errors&quot;: &quot;0&quot;,
+      &quot;transmit_fifo&quot;: &quot;0&quot;,
+      &quot;transmit_frame&quot;: &quot;0&quot;,
+      &quot;transmit_multicast&quot;: &quot;0&quot;,
+      &quot;transmit_packets&quot;: &quot;499195545&quot;
+    },
+    &quot;lo&quot;: {
+      &quot;device&quot;: &quot;lo&quot;,
+      &quot;receive_bytes&quot;: &quot;1210580426&quot;,
+      &quot;receive_compressed&quot;: &quot;0&quot;,
+      &quot;receive_drop&quot;: &quot;0&quot;,
+      &quot;receive_errors&quot;: &quot;0&quot;,
+      &quot;receive_fifo&quot;: &quot;0&quot;,
+      &quot;receive_frame&quot;: &quot;0&quot;,
+      &quot;receive_multicast&quot;: &quot;0&quot;,
+      &quot;receive_packets&quot;: &quot;1049790&quot;,
+      &quot;transmit_bytes&quot;: &quot;1210580426&quot;,
+      &quot;transmit_compressed&quot;: &quot;0&quot;,
+      &quot;transmit_drop&quot;: &quot;0&quot;,
+      &quot;transmit_errors&quot;: &quot;0&quot;,
+      &quot;transmit_fifo&quot;: &quot;0&quot;,
+      &quot;transmit_frame&quot;: &quot;0&quot;,
+      &quot;transmit_multicast&quot;: &quot;0&quot;,
+      &quot;transmit_packets&quot;: &quot;1049790&quot;
+    },
+    &quot;wlp3s0&quot;: {
+      &quot;device&quot;: &quot;wlp3s0&quot;,
+      &quot;receive_bytes&quot;: &quot;0&quot;,
+      &quot;receive_compressed&quot;: &quot;0&quot;,
+      &quot;receive_drop&quot;: &quot;0&quot;,
+      &quot;receive_errors&quot;: &quot;0&quot;,
+      &quot;receive_fifo&quot;: &quot;0&quot;,
+      &quot;receive_frame&quot;: &quot;0&quot;,
+      &quot;receive_multicast&quot;: &quot;0&quot;,
+      &quot;receive_packets&quot;: &quot;0&quot;,
+      &quot;transmit_bytes&quot;: &quot;0&quot;,
+      &quot;transmit_compressed&quot;: &quot;0&quot;,
+      &quot;transmit_drop&quot;: &quot;0&quot;,
+      &quot;transmit_errors&quot;: &quot;0&quot;,
+      &quot;transmit_fifo&quot;: &quot;0&quot;,
+      &quot;transmit_frame&quot;: &quot;0&quot;,
+      &quot;transmit_multicast&quot;: &quot;0&quot;,
+      &quot;transmit_packets&quot;: &quot;0&quot;
+    }
+  }
+</code></pre>
+</div>
+<h3 id="sys-interface_flags">sys.interface_flags</h3>
+<p>Contains a space separated list of the flags of the named interface. e.g.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;eth0 flags: </span><span class="si">$(sys.interface_flags[eth0])</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Outputs:</p>
+<div class="highlight"><pre><code class="text"><span></span>R: eth0 flags: up broadcast running multicast
+</code></pre>
+</div>
+
+<p>The following device flags are supported:</p>
+
+<ul>
+<li>up</li>
+<li>broadcast</li>
+<li>debug</li>
+<li>loopback</li>
+<li>pointopoint</li>
+<li>notrailers</li>
+<li>running</li>
+<li>noarp</li>
+<li>promisc</li>
+<li>allmulti</li>
+<li>multicast</li>
+</ul>
+
+<p><strong>History:</strong> Was introduced in 3.5.0 (2013)</p>
+<h3 id="sys-ip_addresses">sys.ip_addresses</h3>
+<p>Displays a system list of IP addresses currently in use by the system.
+This list is detected at runtime and passed in the variables report to the
+CFEngine Enterprise Database.</p>
+
+<p>To use this list in a policy, you will need a local copy since only
+local variables can be iterated.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">test</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">     </span><span class="c"># To iterate, we need a local copy</span>
+
+<span class="w">     </span><span class="p">&quot;</span><span class="nv">i1</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">@(sys.ip_addresses)</span><span class="p">}</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="p">&quot;</span><span class="nv">i2</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">@(sys.interfaces)</span><span class="p">}</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="s">&quot;Addresses: </span><span class="si">$(i1)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;Interfaces: </span><span class="si">$(i2)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;Addresses of the interfaces: </span><span class="si">$(sys.ipv4[$(i2)])</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.3.0, Enterprise 2.2.0 (2011)</p>
+<h3 id="sys-ip2iface">sys.ip2iface</h3>
+<p>A map of full IPv4 addresses (key) to the system interface (value),
+e.g. <code>$(sys.ip2iface[1.2.3.4])</code>.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># If the IPv4 address on the interfaces are</span>
+<span class="w">    </span><span class="c">#    le0 = 192.168.1.101</span>
+<span class="w">    </span><span class="c">#    xr1 = 10.12.7.254</span>
+<span class="w">    </span><span class="c">#</span>
+<span class="w">    </span><span class="c"># Then you will have</span>
+<span class="w">    </span><span class="c"># sys.ip2iface[192.168.1.101] = le0</span>
+<span class="w">    </span><span class="c"># sys.ip2iface[10.12.7.254] = xr1</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li><p>The list of addresses may be acquired with <code>getindices(&quot;sys.ip2iface&quot;)</code> (or
+from any of the other associative arrays). Only those interfaces which are
+marked as &quot;up&quot; and have an IP address will have entries.</p></li>
+<li><p>The <em>values</em> in this array are <a href="reference-functions-canonify.html" title="canonify">canonified</a>. For example, the entry for <code>wlan0.1</code> would be <code>wlan0_1</code>. Ref: <a href="https://tracker.mender.io/browse/CFE-3224">CFE-3224</a>.</p></li>
+</ul>
+
+<p><strong>History:</strong> Was introduced in 3.9.</p>
+<h3 id="sys-ipv4">sys.ipv4</h3>
+<p>All four octets of the IPv4 address of the first system interface.</p>
+
+<p><strong>Note</strong>:</p>
+
+<p>If your system has a single ethernet interface, <code>$(sys.ipv4)</code> will contain
+your IPv4 address. However, if your system has multiple interfaces, then
+<code>$(sys.ipv4)</code> will simply be the IPv4 address of the first interface in the
+list that has an assigned address, Use <code>$(sys.ipv4[interface_name])</code> for
+details on obtaining the IPv4 addresses of all interfaces on a system.</p>
+<h3 id="sys-ipv4-interface_name">sys.ipv4[interface_name]</h3>
+<p>The full IPv4 address of the system interface named as the associative
+array index, e.g. <code>$(sys.ipv4[le0])</code> or <code>$(sys.ipv4[xr1])</code>.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># If the IPv4 address on the interfaces are</span>
+<span class="w">    </span><span class="c">#    le0 = 192.168.1.101</span>
+<span class="w">    </span><span class="c">#    xr1 = 10.12.7.254</span>
+<span class="w">    </span><span class="c">#</span>
+<span class="w">    </span><span class="c"># Then the octets of all interfaces are accessible as an associative array</span>
+<span class="w">    </span><span class="c"># sys.ipv4_1[le0] = 192</span>
+<span class="w">    </span><span class="c"># sys.ipv4_2[le0] = 192.168</span>
+<span class="w">    </span><span class="c"># sys.ipv4_3[le0] = 192.168.1</span>
+<span class="w">    </span><span class="c">#   sys.ipv4[le0] = 192.168.1.101</span>
+<span class="w">    </span><span class="c"># sys.ipv4_1[xr1] = 10</span>
+<span class="w">    </span><span class="c"># sys.ipv4_2[xr1] = 10.12</span>
+<span class="w">    </span><span class="c"># sys.ipv4_3[xr1] = 10.12.7</span>
+<span class="w">    </span><span class="c">#   sys.ipv4[xr1] = 10.12.7.254</span>
+</code></pre>
+</div>
+
+<p><strong>Note</strong>:</p>
+
+<p>The list of interfaces may be acquired with <code>getindices(&quot;sys.ipv4&quot;)</code> (or
+from any of the other associative arrays). Only those interfaces which
+are marked as &quot;up&quot; and have an IP address will be listed.</p>
+<h3 id="sys-ipv4_1-interface_name">sys.ipv4_1[interface_name]</h3>
+<p>The first octet of the IPv4 address of the system interface named as the
+associative array index, e.g. <code>$(ipv4_1[le0])</code> or <code>$(ipv4_1[xr1])</code>.</p>
+
+<p><strong>Note:</strong> The <em>keys</em> in this array are <a href="reference-functions-canonify.html" title="canonify">canonified</a>. For example, the entry for <code>wlan0.1</code> would be found under the <code>wlan0_1</code> key. Ref: <a href="https://tracker.mender.io/browse/CFE-3224">CFE-3224</a>.</p>
+<h3 id="sys-ipv4_2-interface_name">sys.ipv4_2[interface_name]</h3>
+<p>The first two octets of the IPv4 address of the system interface named as the associative array index, e.g. <code>$(ipv4_2[le0])</code> or <code>$(ipv4_2[xr1])</code>.</p>
+
+<p><strong>Note:</strong> The <em>keys</em> in this array are <a href="reference-functions-canonify.html" title="canonify">canonified</a>. For example, the entry for <code>wlan0.1</code> would be found under the <code>wlan0_1</code> key. Ref: <a href="https://tracker.mender.io/browse/CFE-3224">CFE-3224</a>.</p>
+<h3 id="sys-ipv4_3-interface_name">sys.ipv4_3[interface_name]</h3>
+<p>The first three octets of the IPv4 address of the system interface named as the associative array index, e.g. <code>$(ipv4_3[le0])</code> or <code>$(ipv4_3[xr1])</code>.</p>
+
+<p><strong>Note:</strong> The <em>keys</em> in this array are <a href="reference-functions-canonify.html" title="canonify">canonified</a>. For example, the entry for <code>wlan0.1</code> would be found under the <code>wlan0_1</code> key. Ref: <a href="https://tracker.mender.io/browse/CFE-3224">CFE-3224</a>.</p>
+<h3 id="sys-key_digest">sys.key_digest</h3>
+<p>The digest of the host&#39;s cryptographic public key.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># sys.key_digest = MD5=bc230448c9bec14b9123443e1608ac07</span>
+</code></pre>
+</div>
+<h3 id="sys-last_policy_update">sys.last_policy_update</h3>
+<p>Timestamp when last policy change was seen by host</p>
+<h3 id="sys-libdir">sys.libdir</h3>
+<p>The name of the directory where CFEngine looks for its libraries.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># libdir = /var/cfengine/inputs/lib</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.6, version based sub directory removed in
+CFEngine 3.8.</p>
+<h3 id="sys-local_libdir">sys.local_libdir</h3>
+<p>The name of the directory where CFEngine looks for its libraries, without any prefixes.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># local_libdir = lib</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.6, version based sub directory removed in
+CFEngine 3.8.</p>
+<h3 id="sys-logdir">sys.logdir</h3>
+<p>The name of the directory where CFEngine log files are saved</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># logdir = /var/cfengine/</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.6</p>
+<h3 id="sys-license_owner">sys.license_owner</h3>
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Removed 3.5.0</li>
+<li>Introduced in version 3.1.4, Enterprise 2.0.2 (2011).</li>
+</ul>
+<h3 id="sys-licenses_granted">sys.licenses_granted</h3>
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Removed 3.5.0</li>
+<li>Was introduced in version 3.1.4, Enterprise 2.0.2 (2011).</li>
+</ul>
+<h3 id="sys-long_arch">sys.long_arch</h3>
+<p>The long architecture name for this system kernel. This name is
+sometimes quite unwieldy but can be useful for logging purposes.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># long_arch = linux_x86_64_2_6_22_19_0_1_default__1_SMP_2008_10_14_22_17_43__0200</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-sys.html#sys-ostype" title="sys - sys.ostype"><code>sys.ostype</code></a></p>
+<h3 id="sys-maildir">sys.maildir</h3>
+<p>The name of the system email spool directory.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># maildir = /var/spool/mail</span>
+</code></pre>
+</div>
+<h3 id="sys-masterdir">sys.masterdir</h3>
+<p>The name of the directory on the hub where CFEngine looks for inputs to be validated and copied into <a href="reference-special-variables-sys.html#sys-inputdir" title="sys - sys.inputdir"><code>sys.inputdir</code></a>.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># masterdir = /var/cfengine/masterfiles</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.6</p>
+<h3 id="sys-nova_version">sys.nova_version</h3>
+<p>The variable gives the version of the running CFEngine Enterprise Edition.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="c"># nova_version = 1.1.3</span>
+</code></pre>
+</div>
+<h3 id="sys-os">sys.os</h3>
+<p>The name of the operating system according to the kernel.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># os = linux</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-sys.html#sys-ostype" title="sys - sys.ostype"><code>sys.ostype</code></a></p>
+<h3 id="sys-os_release">sys.os_release</h3>
+<p>Information parsed from <code>/etc/os-release</code> if present.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">main</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;</span><span class="si">$(with)</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="kr">with</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">string_mustache</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nv">@(sys.os_release)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Policy Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>R: {
+  &quot;BUG_REPORT_URL&quot;: &quot;https://bugs.launchpad.net/ubuntu/&quot;,
+  &quot;HOME_URL&quot;: &quot;https://www.ubuntu.com/&quot;,
+  &quot;ID&quot;: &quot;ubuntu&quot;,
+  &quot;ID_LIKE&quot;: &quot;debian&quot;,
+  &quot;NAME&quot;: &quot;Ubuntu&quot;,
+  &quot;PRETTY_NAME&quot;: &quot;Ubuntu 17.10&quot;,
+  &quot;PRIVACY_POLICY_URL&quot;: &quot;https://www.ubuntu.com/legal/terms-and-policies/privacy-policy&quot;,
+  &quot;SUPPORT_URL&quot;: &quot;https://help.ubuntu.com/&quot;,
+  &quot;UBUNTU_CODENAME&quot;: &quot;artful&quot;,
+  &quot;VERSION&quot;: &quot;17.10 (Artful Aardvark)&quot;,
+  &quot;VERSION_CODENAME&quot;: &quot;artful&quot;,
+  &quot;VERSION_ID&quot;: &quot;17.10&quot;
+}
+</code></pre>
+</div>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Added in 3.11.0</li>
+</ul>
+<h3 id="sys-ostype">sys.ostype</h3>
+<p>Another name for the operating system.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># ostype = linux_x86_64</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-sys.html#sys-class" title="sys - sys.class"><code>sys.class</code></a></p>
+<h3 id="sys-piddir">sys.piddir</h3>
+<p>The name of the directory where CFEngine saves the daemon pid files.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># piddir = /var/cfengine/</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.6</p>
+<h3 id="sys-policy_entry_basename">sys.policy_entry_basename</h3>
+<p>The basename of the first policy file read by the agent. For example
+<code>promises.cf</code> or <code>update.cf</code>.</p>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-sys.html#sys-policy_entry_dirname"><code>sys.policy_entry_dirname</code></a> <a href="reference-special-variables-sys.html#sys-policy_entry_dirname"><code>sys.policy_entry_filename</code></a></p>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Introduced 3.12.0</li>
+</ul>
+<h3 id="sys-policy_entry_dirname">sys.policy_entry_dirname</h3>
+<p>The full path to the directory containing the first policy file read by the agent. For example
+<code>/var/cfengine/inputs</code> or <code>~/.cfagent/inputs</code>.</p>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-sys.html#sys-policy_entry_basename" title="sys - sys.policy_entry_basename"><code>sys.policy_entry_basename</code></a> <a href="reference-special-variables-sys.html#sys-policy_entry_filename"><code>sys.policy_entry_filename</code></a></p>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Introduced 3.12.0</li>
+</ul>
+<h3 id="sys-policy_entry_filename">sys.policy_entry_filename</h3>
+<p>The full path to the first policy file read by the agent. For example
+<code>/var/cfengine/inputs/promises.cf</code> or <code>~/.cfagent/inputs/promises.cf</code>.</p>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-sys.html#sys-policy_entry_basename" title="sys - sys.policy_entry_basename"><code>sys.policy_entry_basename</code></a> <a href="reference-special-variables-sys.html#sys-policy_entry_dirname" title="sys - sys.policy_entry_dirname"><code>sys.policy_entry_dirname</code></a></p>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Introduced 3.12.0</li>
+</ul>
+<h3 id="sys-policy_hub">sys.policy_hub</h3>
+<p>IP of the machine acting as the policy server.</p>
+
+<p><code>$(sys.workdir)/policy_server.dat</code> stores bootstrap information. If bootstrapped to a hostname, the value is the current IP the hostname resolves to. If bootstrapped to an IP, the value is the stored IP. The variable is undefined if <code>$(sys.workdir)/policy_server.dat</code> does not exist or is empty.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">     </span><span class="s">&quot;Policy hub is </span><span class="si">$(sys.policy_hub)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Introduced in version 3.1.0b1,Enterprise 2.0.0b1 (2010).</li>
+<li>Available in Community since 3.2.0</li>
+</ul>
+<h3 id="sys-policy_hub_port">sys.policy_hub_port</h3>
+<p>The default port which <code>cf-agent</code> will use by default when making outbound
+connections to <code>cf-serverd</code>. This defaults to <code>5308</code> but can be
+overridden based on the data provided during bootstrap stored in
+<code>$(sys.workdir)/policy_server.dat</code>.</p>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Introduced in version 3.10.0 (2016).</li>
+</ul>
+<h3 id="sys-release">sys.release</h3>
+<p>The kernel release of the operating system.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># release = 2.6.22.19-0.1-default</span>
+</code></pre>
+</div>
+<h3 id="sys-resolv">sys.resolv</h3>
+<p>The location of the system resolver file.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># resolv = /etc/resolv.conf</span>
+</code></pre>
+</div>
+<h3 id="sys-statedir">sys.statedir</h3>
+<p>The name of the state directory where CFEngine looks for its embedded database files.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># statedir = /var/cfengine/state</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.7</p>
+<h3 id="sys-sysday">sys.sysday</h3>
+<p>A variable containing the time since the UNIX Epoch (00:00:00 UTC, January 1,
+1970), measured in days. It is equivalent to <code>$(sys.systime)</code> divided by the
+number of seconds in a day, expressed as an integer. No time zone conversion
+is performed, the direct result of the time() system call is used. This value
+is most commonly used in the /etc/shadow file.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">   </span><span class="c"># sysday = 15656</span>
+
+<span class="w">   </span><span class="nf">Corresponds</span><span class="w"> </span><span class="nf">to</span><span class="w"> </span><span class="nf">Monday</span><span class="p">,</span><span class="w"> </span><span class="nf">November</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">2012</span><span class="err">.</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.6</p>
+<h3 id="sys-systime">sys.systime</h3>
+<p>A variable containing the result of the time() system call, which is the
+time since the UNIX Epoch (00:00:00 UTC, January 1, 1970), measured in
+seconds. See also <code>$(sys.sysday)</code>.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">   </span><span class="c"># systime = 1352754900</span>
+
+<span class="w">   </span><span class="nf">Corresponds</span><span class="w"> </span><span class="nf">to</span><span class="w"> </span><span class="nf">Mon</span><span class="w"> </span><span class="nf">Nov</span><span class="w"> </span><span class="mi">12</span><span class="w"> </span><span class="kd">21</span><span class="p">:</span><span class="kd">15</span><span class="p">:</span><span class="mi">00</span><span class="w"> </span><span class="mi">2012</span><span class="w"> </span><span class="nf">UTC</span><span class="err">.</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.6</p>
+<h3 id="sys-update_policy_path">sys.update_policy_path</h3>
+<p>The name of the update policy file.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># update_policy_path = /var/cfengine/inputs/update.cf</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.6</p>
+<h3 id="sys-uptime">sys.uptime</h3>
+<p>A variable containing the number of minutes which the system has been
+online.  (Not implemented on the Windows platform.)</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">   </span><span class="c"># uptime = 69735</span>
+
+<span class="w">   </span><span class="nf">Equivalent</span><span class="w"> </span><span class="nf">uptime</span><span class="w"> </span><span class="nf">command</span><span class="w"> </span><span class="kd">output</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="kd">16</span><span class="p">:</span><span class="kd">24</span><span class="p">:</span><span class="mi">52</span><span class="w"> </span><span class="nf">up</span><span class="w"> </span><span class="mi">48</span><span class="w"> </span><span class="nf">days</span><span class="p">,</span><span class="w"> </span><span class="kd">10</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="w">  </span><span class="mi">1</span><span class="w"> </span><span class="nf">user</span><span class="p">,</span><span class="w">  </span><span class="nf">load</span><span class="w"> </span><span class="kd">average</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00</span><span class="p">,</span><span class="w"> </span><span class="mf">0.00</span><span class="p">,</span><span class="w"> </span><span class="mf">0.00</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.6</p>
+<h3 id="sys-user_data">sys.user_data</h3>
+<p>A data container with the user information of the user that started the agent.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># user_data = {</span>
+<span class="w">        </span><span class="s">&quot;description&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;gid&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;home_dir&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;/root&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;shell&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;/bin/bash&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;uid&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s">&quot;username&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.10</p>
+<h3 id="sys-uqhost">sys.uqhost</h3>
+<p>The unqualified name of the current host.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># uqhost = myhost</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-sys.html#sys-fqhost" title="sys - sys.fqhost"><code>sys.fqhost</code></a></p>
+<h3 id="sys-version">sys.version</h3>
+<p>The version of the running kernel. On Linux, this corresponds to the
+output of <code>uname -v</code>.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># version = #55-Ubuntu SMP Mon Jan 10 23:42:43 UTC 2011</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)</p>
+<h3 id="sys-windir">sys.windir</h3>
+<p>On the Windows version of CFEngine Enterprise, this is the path to the Windows
+directory of this system.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># windir = C:\WINDOWS</span>
+</code></pre>
+</div>
+<h3 id="sys-winprogdir">sys.winprogdir</h3>
+<p>On the Windows version of CFEngine Enterprise, this is the path to the program
+files directory of the system.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># winprogdir = C:\Program Files</span>
+</code></pre>
+</div>
+<h3 id="sys-winprogdir86">sys.winprogdir86</h3>
+<p>On 64 bit Windows versions of CFEngine Enterprise, this is the path to the 32
+bit (x86) program files directory of the system.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># winprogdir86 = C:\Program Files (x86)</span>
+</code></pre>
+</div>
+<h3 id="sys-winsysdir">sys.winsysdir</h3>
+<p>On the Windows version of CFEngine Enterprise, this is the path to the Windows
+system directory.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># winsysdir = C:\WINDOWS\system32</span>
+</code></pre>
+</div>
+<h3 id="sys-workdir">sys.workdir</h3>
+<p>The location of the CFEngine work directory and cache.
+For the system privileged user this is normally:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># workdir = /var/cfengine</span>
+</code></pre>
+</div>
+
+<p>For non-privileged users it is in the user&#39;s home directory:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># workdir = /home/user/.cfagent</span>
+</code></pre>
+</div>
+
+<p>On the Windows version of CFEngine Enterprise, it is normally under program
+files (the directory name may change with the language of Windows):</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="c"># workdir = C:\Program Files\CFEngine</span>
+</code></pre>
+</div>
+<h2 id=""></h2>
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-variables.html">variables</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-sys.html">sys</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-discovery.html">discovery</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-system.html">system</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-inventory.html">inventory</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 03 October 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.20/generator/pages/reference/special-variables/sys.markdown/reference/special-variables/sys.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-e4781e211c818162ced38e083ca9577f.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

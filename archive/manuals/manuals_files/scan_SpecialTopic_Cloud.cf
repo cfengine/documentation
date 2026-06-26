@@ -1,0 +1,57 @@
+
+bundle knowledge SpecialTopic_Cloud
+
+{
+topics:
+
+"SpecialTopic_Cloud";
+Special_Topics_Guide::
+    "The future - molecular computing"  association => a("discusses","Cloud","is discussed in");
+Special_Topics_Guide::
+    "What if I change my mind about Cloud Computing?"  association => a("discusses","Cloud","is discussed in");
+Special_Topics_Guide::
+    "Challenges for Cloud Computing"  association => a("discusses","Cloud","is discussed in");
+Special_Topics_Guide::
+    "Isnt virtualization inefficient?"  association => a("discusses","Cloud","is discussed in");
+Special_Topics_Guide::
+    "How does Cloud relate to virtualization?"  association => a("discusses","Cloud","is discussed in");
+Special_Topics_Guide::
+    "Permanent infra-structure with vibrant change"  association => a("discusses","Cloud","is discussed in");
+Special_Topics_Guide::
+    "How does CFEngine enable Cloud Computing?"  association => a("discusses","Cloud","is discussed in");
+Special_Topics_Guide::
+    "Is Cloud Computing for everything and everyone?"  association => a("discusses","Cloud","is discussed in");
+Special_Topics_Guide::
+    "What is Cloud Computing?"  association => a("discusses","Cloud","is discussed in");
+Special_Topics_Guide::
+    "Cloud Computing"  association => a("discusses","Cloud","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Cloud.html"
+  represents => { "Official CFEngine document"},  about_topics => { "cloud" };
+ "/knowledge/docs/SpecialTopic_Cloud.html"
+  represents => { "Special Topics Guide"},  about_topics => { "cloud" };
+ "/knowledge/docs/SpecialTopic_Cloud.html#Top"
+  represents => { "Text section" }, about_topics => { "cloud computing" };
+ "/knowledge/docs/SpecialTopic_Cloud.html#What-is-Cloud-Computing_003f"
+  represents => { "Text section" }, about_topics => { "what is cloud computing?" };
+ "/knowledge/docs/SpecialTopic_Cloud.html#Is-Cloud-Computing-for-everything-and-everyone_003f"
+  represents => { "Text section" }, about_topics => { "is cloud computing for everything and everyone?" };
+ "/knowledge/docs/SpecialTopic_Cloud.html#How-does-CFEngine-enable-Cloud-Computing_003f"
+  represents => { "Text section" }, about_topics => { "how does cfengine enable cloud computing?" };
+ "/knowledge/docs/SpecialTopic_Cloud.html#Permanent-infra_002dstructure-with-vibrant-change"
+  represents => { "Text section" }, about_topics => { "permanent infra-structure with vibrant change" };
+ "/knowledge/docs/SpecialTopic_Cloud.html#How-does-Cloud-relate-to-virtualization_003f"
+  represents => { "Text section" }, about_topics => { "how does cloud relate to virtualization?" };
+ "/knowledge/docs/SpecialTopic_Cloud.html#Isn_0027t-virtualization-inefficient_003f"
+  represents => { "Text section" }, about_topics => { "isnt virtualization inefficient?" };
+ "/knowledge/docs/SpecialTopic_Cloud.html#Challenges-for-Cloud-Computing"
+  represents => { "Text section" }, about_topics => { "challenges for cloud computing" };
+ "/knowledge/docs/SpecialTopic_Cloud.html#What-if-I-change-my-mind-about-Cloud-Computing_003f"
+  represents => { "Text section" }, about_topics => { "what if i change my mind about cloud computing?" };
+ "/knowledge/docs/SpecialTopic_Cloud.html#The-future-_002d-molecular-computing"
+  represents => { "Text section" }, about_topics => { "the future - molecular computing" };
+}
+

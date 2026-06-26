@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - sys</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html"  class="navselected" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-enterprise-api.html">Enterprise  API Reference</a></li><li><a href="reference-syntax.html">Syntax, identifiers and names</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li><a href="reference-special-variables-context-const.html">const</a></li><li><a href="reference-special-variables-context-edit.html">edit</a></li><li><a href="reference-special-variables-context-match.html">match</a></li><li><a href="reference-special-variables-context-mon.html">mon</a></li><li class="selected"><span>sys</span></li><li><a href="reference-special-variables-context-this.html">this</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference-special-variables.html">Special Variables</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>sys</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/reference.html">reference</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/variables.html">variables</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/sys.html">sys</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/discovery.html">discovery</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/system.html">system</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/inventory.html">inventory</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>sys</h1>
+                    <p>System variables are derived from CFEngine&#39;s automated discovery of system 
+values. They are provided as variables in order to make automatically adaptive 
+rules for configuration.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">files</span><span class="p">:</span>
+
+      <span class="s">&quot;</span><span class="si">$(sys.resolv)</span><span class="s">&quot;</span>
+
+          <span class="kr">create</span>        <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+          <span class="kr">edit_line</span>     <span class="o">=&gt;</span> <span class="nf">doresolv</span><span class="p">(</span><span class="s">&quot;@(this.list1)&quot;</span><span class="p">,</span><span class="s">&quot;@(this.list2)&quot;</span><span class="p">),</span>
+          <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">reconstruct</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="sys-arch">sys.arch</h3>
+<p>The variable gives the kernel&#39;s short architecture description.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># arch = x86_64</span>
+</code></pre>
+</div>
+<h3 id="sys-cdate">sys.cdate</h3>
+<p>The date of the system in canonical form, i.e. in the form of a class, from when the agent initialized.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># cdate = Sun_Dec__7_10_39_53_2008_</span>
+</code></pre>
+</div>
+<h3 id="sys-cf_promises">sys.cf_promises</h3>
+<p>A variable containing the path to the CFEngine syntax analyzer
+<a href="reference-components-cfpromises.html" title="cf-promises"><code>cf-promises</code></a> on the platform you are using.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">classes</span><span class="p">:</span>
+
+      <span class="s">&quot;syntax_ok&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">returnszero</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(sys.cf_promises)</span><span class="s">&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+<h3 id="sys-cf_version">sys.cf_version</h3>
+<p>The variable gives the version of the running CFEngine Core.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># cf_version = 3.0.5</span>
+</code></pre>
+</div>
+<h3 id="sys-cf_version_major">sys.cf_version_major</h3>
+<p>The variable gives the major version of the running CFEngine Core.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># cf_version = 3.0.5</span>
+    <span class="c"># cf_version_major = 3</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.5.1, Enterprise 3.5.1.</p>
+<h3 id="sys-cf_version_minor">sys.cf_version_minor</h3>
+<p>The variable gives the minor version of the running CFEngine Core.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># cf_version = 3.0.5</span>
+    <span class="c"># cf_version_minor = 0</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.5.1, Enterprise 3.5.1.</p>
+<h3 id="sys-cf_version_patch">sys.cf_version_patch</h3>
+<p>The variable gives the patch version of the running CFEngine Core.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># cf_version = 3.0.5</span>
+    <span class="c"># cf_version_patch = 5</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.5.1, Enterprise 3.5.1.</p>
+<h3 id="sys-class">sys.class</h3>
+<p>This variable contains the name of the hard-class category for this host
+(i.e. its top level operating system type classification).</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># class = linux</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-context-sys.html#sys-os" title="sys - sys.os"><code>sys.os</code></a></p>
+<h3 id="sys-cpus">sys.cpus</h3>
+<p>A variable containing the number of CPU cores detected. On systems which
+provide virtual cores, it is set to the total number of virtual, not
+physical, cores. In addition, on a single-core system the class <code>1_cpu</code>
+is set, and on multi-core systems the class <em>n</em><code>_cpus</code> is set, where
+<em>n</em> is the number of cores identified.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">reports</span><span class="p">:</span>
+
+     <span class="s">&quot;Number of CPUS = </span><span class="si">$(sys.cpus)</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="nc">8_cpus</span><span class="p">::</span>
+       <span class="s">&quot;This system has 8 processors.&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.3.0, Enterprise 2.2.0 (2012)</p>
+<h3 id="sys-crontab">sys.crontab</h3>
+<p>The variable gives the location of the current users&#39;s master crontab
+directory.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># crontab = /var/spool/crontab/root </span>
+</code></pre>
+</div>
+<h3 id="sys-date">sys.date</h3>
+<p>The date of the system as a text string, from when the agent initialized.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># date = Sun Dec  7 10:39:53 2008</span>
+</code></pre>
+</div>
+<h3 id="sys-doc_root">sys.doc_root</h3>
+<p>A scalar variable containing the default path for the document root of
+the standard web server package.</p>
+
+<p><strong>History:</strong> Was introduced in 3.1.0, Enterprise 2.0.</p>
+<h3 id="sys-domain">sys.domain</h3>
+<p>The domain name as discovered by CFEngine. If the DNS is in use, it could
+be possible to derive the domain name from its DNS registration, but in
+general there is no way to discover this value automatically. The
+<code>common control</code> body permits the ultimate specification of this value.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># domain = example.org</span>
+</code></pre>
+</div>
+<h3 id="sys-enterprise_version">sys.enterprise_version</h3>
+<p>The variable gives the version of the running CFEngine Enterprise
+Edition.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># enterprise_version = 3.0.0</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.5.0, Enterprise 3.0.0</p>
+<h3 id="sys-expires">sys.expires</h3><div class="highlight"><pre><code class="cf3">    <span class="kd">reports</span><span class="p">:</span>
+
+     <span class="nc">enterprise</span><span class="p">::</span>
+
+      <span class="s">&quot;License expires </span><span class="si">$(sys.expires)</span><span class="s">&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="sys-exports">sys.exports</h3>
+<p>The location of the system NFS exports file.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># exports = /etc/exports</span>
+    <span class="c"># exports = /etc/dfs/dfstab</span>
+</code></pre>
+</div>
+<h3 id="sys-flavor-sys-flavour">sys.flavor, sys.flavour</h3>
+<p>A variable containing an operating system identification string that is
+used to determine the current release of the operating system in a form
+that can be used as a label in naming. This is used, for instance, to
+detect which package name to choose when updating software binaries for
+CFEngine.</p>
+
+<p>These two variables are synonyms for each other.</p>
+
+<p><strong>History:</strong> Was introduced in 3.2.0, Enterprise 2.0</p>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-context-sys.html#sys-ostype" title="sys - sys.ostype"><code>sys.ostype</code></a></p>
+<h3 id="sys-fqhost">sys.fqhost</h3>
+<p>The fully qualified name of the host. In order to compute this value
+properly, the domain name must be defined.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># fqhost = host.example.org</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-context-sys.html#sys-uqhost" title="sys - sys.uqhost"><code>sys.uqhost</code></a></p>
+<h3 id="sys-fstab">sys.fstab</h3>
+<p>The location of the system filesystem (mount) table.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># fstab = /etc/fstab</span>
+</code></pre>
+</div>
+<h3 id="sys-hardware_addresses">sys.hardware_addresses</h3>
+<p>This is a list variable containing a list of all known MAC addresses for
+system interfaces.</p>
+
+<p><strong>History:</strong> Was introduced in 3.3.0, Enterprise 2.2.0 (2011)</p>
+<h3 id="sys-hardware_mac-interface_name">sys.hardware_mac[interface_name]</h3>
+<p>This contains the MAC address of the named interface. For example:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">reports</span><span class="p">:</span>
+        <span class="s">&quot;Tell me </span><span class="si">$(harware_mac[eth0])</span><span class="s">&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.3.0, Enterprise 2.2.0 (2011)</p>
+<h3 id="sys-host">sys.host</h3>
+<p>The name of the current host, according to the kernel. It is undefined
+whether this is qualified or unqualified with a domain name.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># host = myhost</span>
+</code></pre>
+</div>
+<h3 id="sys-interface">sys.interface</h3>
+<p>The assumed (default) name of the main system interface on this host.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># interface = eth0</span>
+</code></pre>
+</div>
+<h3 id="sys-interfaces">sys.interfaces</h3>
+<p>Displays a system list of configured interfaces currently active in use
+by the system. This list is detected at runtime and it passed in the
+variables report to the CFEngine Enterprise Database.</p>
+
+<p>To use this list in a policy, you will need a local copy since only
+local variables can be iterated.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">test</span>
+    <span class="p">{</span>
+    <span class="kd">vars</span><span class="p">:</span>
+
+     <span class="c"># To iterate, we need a local copy</span>
+
+     <span class="p">&quot;</span><span class="nv">i1</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(sys.ip_addresses)</span><span class="p">}</span> <span class="p">;</span>
+     <span class="p">&quot;</span><span class="nv">i2</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(sys.interfaces)</span><span class="p">}</span> <span class="p">;</span>
+
+    <span class="kd">reports</span><span class="p">:</span>
+
+        <span class="s">&quot;Addresses: </span><span class="si">$(i1)</span><span class="s">&quot;</span><span class="p">;</span>
+        <span class="s">&quot;Interfaces: </span><span class="si">$(i2)</span><span class="s">&quot;</span><span class="p">;</span>
+        <span class="s">&quot;Addresses of the interfaces: </span><span class="si">$(sys.ipv4[$(i2)</span><span class="s">])&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.3.0, Enterprise 2.2.0 (2011)</p>
+<h3 id="sys-interface_flags">sys.interface_flags</h3>
+<p>Contains a space separated list of the flags of the named interface. e.g.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">reports</span><span class="p">:</span>
+        <span class="s">&quot;eth0 flags: </span><span class="si">$(sys.interface_flags[eth0])</span><span class="s">&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Outputs:</p>
+<div class="highlight"><pre><code class="text">R: eth0 flags: up broadcast running multicast
+</code></pre>
+</div>
+
+<p>The following device flags are supported: </p>
+
+<ul>
+<li>up</li>
+<li>broadcast</li>
+<li>debug</li>
+<li>loopback</li>
+<li>pointopoint</li>
+<li>notrailers</li>
+<li>running</li>
+<li>noarp</li>
+<li>promisc</li>
+<li>allmulti</li>
+<li>multicast</li>
+</ul>
+
+<p><strong>History:</strong> Was introduced in 3.5.0 (2013)</p>
+<h3 id="sys-ip_addresses">sys.ip_addresses</h3>
+<p>Displays a system list of IP addresses currently in use by the system.
+This list is detected at runtime and passed in the variables report to the 
+CFEngine Enterprise Database.</p>
+
+<p>To use this list in a policy, you will need a local copy since only
+local variables can be iterated.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">test</span>
+    <span class="p">{</span>
+    <span class="kd">vars</span><span class="p">:</span>
+
+     <span class="c"># To iterate, we need a local copy</span>
+
+     <span class="p">&quot;</span><span class="nv">i1</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(sys.ip_addresses)</span><span class="p">}</span> <span class="p">;</span>
+     <span class="p">&quot;</span><span class="nv">i2</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(sys.interfaces)</span><span class="p">}</span> <span class="p">;</span>
+
+    <span class="kd">reports</span><span class="p">:</span>
+
+        <span class="s">&quot;Addresses: </span><span class="si">$(i1)</span><span class="s">&quot;</span><span class="p">;</span>
+        <span class="s">&quot;Interfaces: </span><span class="si">$(i2)</span><span class="s">&quot;</span><span class="p">;</span>
+        <span class="s">&quot;Addresses of the interfaces: </span><span class="si">$(sys.ipv4[$(i2)</span><span class="s">])&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.3.0, Enterprise 2.2.0 (2011)</p>
+<h3 id="sys-ipv4">sys.ipv4</h3>
+<p>All four octets of the IPv4 address of the first system interface.</p>
+
+<p><strong>Note</strong>:  </p>
+
+<p>If your system has a single ethernet interface, <code>$(sys.ipv4)</code> will contain 
+your IPv4 address. However, if your system has multiple interfaces, then 
+<code>$(sys.ipv4)</code> will simply be the IPv4 address of the first interface in the 
+list that has an assigned address, Use <code>$(sys.ipv4[interface_name])</code> for 
+details on obtaining the IPv4 addresses of all interfaces on a system.</p>
+<h3 id="sys-ipv4-interface_name">sys.ipv4[interface_name]</h3>
+<p>The full IPv4 address of the system interface named as the associative
+array index, e.g. <code>$(ipv4[le0])</code> or <code>$(ipv4[xr1])</code>.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># If the IPv4 address on the interfaces are</span>
+    <span class="c">#    le0 = 192.168.1.101</span>
+    <span class="c">#    xr1 = 10.12.7.254</span>
+    <span class="c">#</span>
+    <span class="c"># Then the octets of all interfaces are accessible as an associative array</span>
+    <span class="c"># ipv4_1[le0] = 192</span>
+    <span class="c"># ipv4_2[le0] = 192.168</span>
+    <span class="c"># ipv4_3[le0] = 192.168.1</span>
+    <span class="c">#   ipv4[le0] = 192.168.1.101</span>
+    <span class="c"># ipv4_1[xr1] = 10</span>
+    <span class="c"># ipv4_2[xr1] = 10.12</span>
+    <span class="c"># ipv4_3[xr1] = 10.12.7</span>
+    <span class="c">#   ipv4[xr1] = 10.12.7.254</span>
+</code></pre>
+</div>
+
+<p><strong>Note</strong>:  </p>
+
+<p>The list of interfaces may be acquired with <code>getindices(&quot;sys.ipv4&quot;)</code> (or
+from any of the other associative arrays). Only those interfaces which
+are marked as &quot;up&quot; and have an IP address will be listed.</p>
+<h3 id="sys-ipv4_1-interface_name">sys.ipv4_1[interface_name]</h3>
+<p>The first octet of the IPv4 address of the system interface named as the
+associative array index, e.g. <code>$(ipv4_1[le0])</code> or <code>$(ipv4_1[xr1])</code>.</p>
+<h3 id="sys-ipv4_2-interface_name">sys.ipv4_2[interface_name]</h3>
+<p>The first two octets of the IPv4 address of the system interface named as the associative array index, e.g. <code>$(ipv4_2[le0])</code> or <code>$(ipv4_2[xr1])</code>.</p>
+<h3 id="sys-ipv4_3-interface_name">sys.ipv4_3[interface_name]</h3>
+<p>The first three octets of the IPv4 address of the system interface named as the associative array index, e.g. <code>$(ipv4_3[le0])</code> or <code>$(ipv4_3[xr1])</code>.</p>
+<h3 id="sys-last_policy_update">sys.last_policy_update</h3>
+<p>Timestamp when last policy change was seen by host</p>
+<h3 id="sys-license_owner">sys.license_owner</h3><div class="highlight"><pre><code class="cf3">    <span class="kd">reports</span><span class="p">:</span>
+
+     <span class="nc">enterprise</span><span class="p">::</span>
+
+      <span class="s">&quot;This version of CFEngine is licensed to </span><span class="si">$(sys.license_owner)</span><span class="s">&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)</p>
+<h3 id="sys-licenses_granted">sys.licenses_granted</h3><div class="highlight"><pre><code class="cf3">    <span class="kd">reports</span><span class="p">:</span>
+
+     <span class="nc">enterprise</span><span class="p">::</span>
+
+      <span class="s">&quot;There are </span><span class="si">$(sys.licenses_granted)</span><span class="s"> licenses granted for use&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)</p>
+<h3 id="sys-long_arch">sys.long_arch</h3>
+<p>The long architecture name for this system kernel. This name is
+sometimes quite unwieldy but can be useful for logging purposes.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># long_arch = linux_x86_64_2_6_22_19_0_1_default__1_SMP_2008_10_14_22_17_43__0200</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-context-sys.html#sys-ostype" title="sys - sys.ostype"><code>sys.ostype</code></a></p>
+<h3 id="sys-maildir">sys.maildir</h3>
+<p>The name of the system email spool directory.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># maildir = /var/spool/mail</span>
+</code></pre>
+</div>
+
+<!---
+### sys.nova_version
+
+The variable gives the version of the running CFEngine Enterprise Edition.
+
+```cf3
+# nova_version = 1.1.3
+```
+-->
+<h3 id="sys-os">sys.os</h3>
+<p>The name of the operating system according to the kernel.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># os = linux</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-context-sys.html#sys-ostype" title="sys - sys.ostype"><code>sys.ostype</code></a></p>
+<h3 id="sys-ostype">sys.ostype</h3>
+<p>Another name for the operating system.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># ostype = linux_x86_64</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-context-sys.html#sys-class" title="sys - sys.class"><code>sys.class</code></a></p>
+<h3 id="sys-policy_hub">sys.policy_hub</h3>
+<p>Hostname of the machine acting as the policy server. This value is set
+during bootstrap. In case bootstrap was not performed, it is set to
+undefined.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">reports</span><span class="p">:</span>
+
+     <span class="s">&quot;Policy hub is </span><span class="si">$(sys.policy_hub)</span><span class="s">&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in version 3.1.0b1,Enterprise 2.0.0b1 (2010).
+Available in Community since 3.2.0</p>
+<h3 id="sys-release">sys.release</h3>
+<p>The kernel release of the operating system.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># release = 2.6.22.19-0.1-default</span>
+</code></pre>
+</div>
+<h3 id="sys-resolv">sys.resolv</h3>
+<p>The location of the system resolver file.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># resolv = /etc/resolv.conf</span>
+</code></pre>
+</div>
+<h3 id="sys-uqhost">sys.uqhost</h3>
+<p>The unqualified name of the current host.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># uqhost = myhost</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-special-variables-context-sys.html#sys-fqhost" title="sys - sys.fqhost"><code>sys.fqhost</code></a></p>
+<h3 id="sys-version">sys.version</h3>
+<p>The version of the running kernel. On Linux, this corresponds to the
+output of <code>uname -v</code>.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># version = #55-Ubuntu SMP Mon Jan 10 23:42:43 UTC 2011</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in version 3.1.4,Enterprise 2.0.2 (2011)</p>
+<h3 id="sys-windir">sys.windir</h3>
+<p>On the Windows version of CFEngine Enterprise, this is the path to the Windows
+directory of this system.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># windir = C:\WINDOWS</span>
+</code></pre>
+</div>
+<h3 id="sys-winprogdir">sys.winprogdir</h3>
+<p>On the Windows version of CFEngine Enterprise, this is the path to the program
+files directory of the system.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># winprogdir = C:\Program Files</span>
+</code></pre>
+</div>
+<h3 id="sys-winprogdir86">sys.winprogdir86</h3>
+<p>On 64 bit Windows versions of CFEngine Enterprise, this is the path to the 32
+bit (x86) program files directory of the system.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># winprogdir86 = C:\Program Files (x86)</span>
+</code></pre>
+</div>
+<h3 id="sys-winsysdir">sys.winsysdir</h3>
+<p>On the Windows version of CFEngine Enterprise, this is the path to the Windows
+system directory.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># winsysdir = C:\WINDOWS\system32</span>
+</code></pre>
+</div>
+<h3 id="sys-workdir">sys.workdir</h3>
+<p>The location of the CFEngine <a href="manuals-components.html#the-working-directory" title="The CFEngine Components - The Working Directory">work 
+directory</a> and cache. 
+For the system privileged user this is normally:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># workdir = /var/cfengine</span>
+</code></pre>
+</div>
+
+<p>For non-privileged users it is in the user&#39;s home directory:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># workdir = /home/user/.cfagent</span>
+</code></pre>
+</div>
+
+<p>On the Windows version of CFEngine Enterprise, it is normally under program
+files (the directory name may change with the language of Windows):</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># workdir = C:\Program Files\CFEngine</span>
+</code></pre>
+</div>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/reference/special-variables/sys.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

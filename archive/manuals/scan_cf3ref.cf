@@ -1,0 +1,4954 @@
+
+bundle knowledge cf3_reference
+
+{
+topics:
+
+"cf3-reference";
+Logs_and_records::
+    "State information" ;
+Logs_and_records::
+    "Additional reports in commcerical cfengine versions" ;
+Logs_and_records::
+    "Reports in outputs" ;
+Logs_and_records::
+    "Text logs" ;
+Logs_and_records::
+    "Embedded Databases" ;
+Logs_and_records::
+    "Logs and records" ;
+Variable_context_this::
+    "Variable this.promiser" ;
+Variable_context_this::
+    "Variable this.promise_linenumber" ;
+Variable_context_this::
+    "Variable this.promise_filename" ;
+Variable_context_this::
+    "Variable this.handle" ;
+Special_Variables::
+    "Variable context this" ;
+Variable_context_sys::
+    "Variable sys.workdir" ;
+Variable_context_sys::
+    "Variable sys.winsysdir" ;
+Variable_context_sys::
+    "Variable sys.winprogdir86" ;
+Variable_context_sys::
+    "Variable sys.winprogdir" ;
+Variable_context_sys::
+    "Variable sys.windir" ;
+Variable_context_sys::
+    "Variable sys.version" ;
+Variable_context_sys::
+    "Variable sys.uqhost" ;
+Variable_context_sys::
+    "Variable sys.resolv" ;
+Variable_context_sys::
+    "Variable sys.release" ;
+Variable_context_sys::
+    "Variable sys.policy_hub" ;
+Variable_context_sys::
+    "Variable sys.ostype" ;
+Variable_context_sys::
+    "Variable sys.os" ;
+Variable_context_sys::
+    "Variable sys.nova_version" ;
+Variable_context_sys::
+    "Variable sys.maildir" ;
+Variable_context_sys::
+    "Variable sys.long_arch" ;
+Variable_context_sys::
+    "Variable sys.licenses_installtime" ;
+Variable_context_sys::
+    "Variable sys.licenses_granted" ;
+Variable_context_sys::
+    "Variable sys.license_owner" ;
+Variable_context_sys::
+    "Variable sys.key_digest" ;
+Variable_context_sys::
+    "Variable sys.ipv4_3[interface_name]" ;
+Variable_context_sys::
+    "Variable sys.ipv4_2[interface_name]" ;
+Variable_context_sys::
+    "Variable sys.ipv4_1[interface_name]" ;
+Variable_context_sys::
+    "Variable sys.ipv4[interface_name]" ;
+Variable_context_sys::
+    "Variable sys.ipv4" ;
+Variable_context_sys::
+    "Variable sys.interface" ;
+Variable_context_sys::
+    "Variable sys.host" ;
+Variable_context_sys::
+    "Variable sys.fstab" ;
+Variable_context_sys::
+    "Variable sys.fqhost" ;
+Variable_context_sys::
+    "Variable sys.exports" ;
+Variable_context_sys::
+    "Variable sys.expires" ;
+Variable_context_sys::
+    "Variable sys.domain" ;
+Variable_context_sys::
+    "Variable sys.date" ;
+Variable_context_sys::
+    "Variable sys.class" ;
+Variable_context_sys::
+    "Variable sys.cf_version" ;
+Variable_context_sys::
+    "Variable sys.cf_twin" ;
+Variable_context_sys::
+    "Variable sys.cf_serverd" ;
+Variable_context_sys::
+    "Variable sys.cf_runagent" ;
+Variable_context_sys::
+    "Variable sys.cf_report" ;
+Variable_context_sys::
+    "Variable sys.cf_promises" ;
+Variable_context_sys::
+    "Variable sys.cf_monitord" ;
+Variable_context_sys::
+    "Variable sys.cf_know" ;
+Variable_context_sys::
+    "Variable sys.cf_key" ;
+Variable_context_sys::
+    "Variable sys.cf_hub" ;
+Variable_context_sys::
+    "Variable sys.cf_execd" ;
+Variable_context_sys::
+    "Variable sys.cf_agent" ;
+Variable_context_sys::
+    "Variable sys.cdate" ;
+Variable_context_sys::
+    "Variable sys.arch" ;
+Special_Variables::
+    "Variable context sys" ;
+Variable_context_mon::
+    "Variable mon.dev_cpu3" ;
+Variable_context_mon::
+    "Variable mon.av_cpu3" ;
+Variable_context_mon::
+    "Variable mon.value_cpu3" ;
+Variable_context_mon::
+    "Variable mon.dev_cpu2" ;
+Variable_context_mon::
+    "Variable mon.av_cpu2" ;
+Variable_context_mon::
+    "Variable mon.value_cpu2" ;
+Variable_context_mon::
+    "Variable mon.dev_cpu1" ;
+Variable_context_mon::
+    "Variable mon.av_cpu1" ;
+Variable_context_mon::
+    "Variable mon.value_cpu1" ;
+Variable_context_mon::
+    "Variable mon.dev_cpu0" ;
+Variable_context_mon::
+    "Variable mon.av_cpu0" ;
+Variable_context_mon::
+    "Variable mon.value_cpu0" ;
+Variable_context_mon::
+    "Variable mon.dev_cpu" ;
+Variable_context_mon::
+    "Variable mon.av_cpu" ;
+Variable_context_mon::
+    "Variable mon.value_cpu" ;
+Variable_context_mon::
+    "Variable mon.dev_temp3" ;
+Variable_context_mon::
+    "Variable mon.av_temp3" ;
+Variable_context_mon::
+    "Variable mon.value_temp3" ;
+Variable_context_mon::
+    "Variable mon.dev_temp2" ;
+Variable_context_mon::
+    "Variable mon.av_temp2" ;
+Variable_context_mon::
+    "Variable mon.value_temp2" ;
+Variable_context_mon::
+    "Variable mon.dev_temp1" ;
+Variable_context_mon::
+    "Variable mon.av_temp1" ;
+Variable_context_mon::
+    "Variable mon.value_temp1" ;
+Variable_context_mon::
+    "Variable mon.dev_temp0" ;
+Variable_context_mon::
+    "Variable mon.av_temp0" ;
+Variable_context_mon::
+    "Variable mon.value_temp0" ;
+Variable_context_mon::
+    "Variable mon.dev_messages" ;
+Variable_context_mon::
+    "Variable mon.av_messages" ;
+Variable_context_mon::
+    "Variable mon.value_messages" ;
+Variable_context_mon::
+    "Variable mon.dev_syslog" ;
+Variable_context_mon::
+    "Variable mon.av_syslog" ;
+Variable_context_mon::
+    "Variable mon.value_syslog" ;
+Variable_context_mon::
+    "Variable mon.dev_weberrors" ;
+Variable_context_mon::
+    "Variable mon.av_weberrors" ;
+Variable_context_mon::
+    "Variable mon.value_weberrors" ;
+Variable_context_mon::
+    "Variable mon.dev_webaccess" ;
+Variable_context_mon::
+    "Variable mon.av_webaccess" ;
+Variable_context_mon::
+    "Variable mon.value_webaccess" ;
+Variable_context_mon::
+    "Variable mon.dev_tcpmisc_out" ;
+Variable_context_mon::
+    "Variable mon.av_tcpmisc_out" ;
+Variable_context_mon::
+    "Variable mon.value_tcpmisc_out" ;
+Variable_context_mon::
+    "Variable mon.dev_tcpmisc_in" ;
+Variable_context_mon::
+    "Variable mon.av_tcpmisc_in" ;
+Variable_context_mon::
+    "Variable mon.value_tcpmisc_in" ;
+Variable_context_mon::
+    "Variable mon.dev_tcpfin_out" ;
+Variable_context_mon::
+    "Variable mon.av_tcpfin_out" ;
+Variable_context_mon::
+    "Variable mon.value_tcpfin_out" ;
+Variable_context_mon::
+    "Variable mon.dev_tcpfin_in" ;
+Variable_context_mon::
+    "Variable mon.av_tcpfin_in" ;
+Variable_context_mon::
+    "Variable mon.value_tcpfin_in" ;
+Variable_context_mon::
+    "Variable mon.dev_tcpack_out" ;
+Variable_context_mon::
+    "Variable mon.av_tcpack_out" ;
+Variable_context_mon::
+    "Variable mon.value_tcpack_out" ;
+Variable_context_mon::
+    "Variable mon.dev_tcpack_in" ;
+Variable_context_mon::
+    "Variable mon.av_tcpack_in" ;
+Variable_context_mon::
+    "Variable mon.value_tcpack_in" ;
+Variable_context_mon::
+    "Variable mon.dev_tcpsyn_out" ;
+Variable_context_mon::
+    "Variable mon.av_tcpsyn_out" ;
+Variable_context_mon::
+    "Variable mon.value_tcpsyn_out" ;
+Variable_context_mon::
+    "Variable mon.dev_tcpsyn_in" ;
+Variable_context_mon::
+    "Variable mon.av_tcpsyn_in" ;
+Variable_context_mon::
+    "Variable mon.value_tcpsyn_in" ;
+Variable_context_mon::
+    "Variable mon.dev_dns_out" ;
+Variable_context_mon::
+    "Variable mon.av_dns_out" ;
+Variable_context_mon::
+    "Variable mon.value_dns_out" ;
+Variable_context_mon::
+    "Variable mon.dev_dns_in" ;
+Variable_context_mon::
+    "Variable mon.av_dns_in" ;
+Variable_context_mon::
+    "Variable mon.value_dns_in" ;
+Variable_context_mon::
+    "Variable mon.dev_udp_out" ;
+Variable_context_mon::
+    "Variable mon.av_udp_out" ;
+Variable_context_mon::
+    "Variable mon.value_udp_out" ;
+Variable_context_mon::
+    "Variable mon.dev_udp_in" ;
+Variable_context_mon::
+    "Variable mon.av_udp_in" ;
+Variable_context_mon::
+    "Variable mon.value_udp_in" ;
+Variable_context_mon::
+    "Variable mon.dev_icmp_out" ;
+Variable_context_mon::
+    "Variable mon.av_icmp_out" ;
+Variable_context_mon::
+    "Variable mon.value_icmp_out" ;
+Variable_context_mon::
+    "Variable mon.dev_icmp_in" ;
+Variable_context_mon::
+    "Variable mon.av_icmp_in" ;
+Variable_context_mon::
+    "Variable mon.value_icmp_in" ;
+Variable_context_mon::
+    "Variable mon.dev_wwws_out" ;
+Variable_context_mon::
+    "Variable mon.av_wwws_out" ;
+Variable_context_mon::
+    "Variable mon.value_wwws_out" ;
+Variable_context_mon::
+    "Variable mon.dev_wwws_in" ;
+Variable_context_mon::
+    "Variable mon.av_wwws_in" ;
+Variable_context_mon::
+    "Variable mon.value_wwws_in" ;
+Variable_context_mon::
+    "Variable mon.dev_ssh_out" ;
+Variable_context_mon::
+    "Variable mon.av_ssh_out" ;
+Variable_context_mon::
+    "Variable mon.value_ssh_out" ;
+Variable_context_mon::
+    "Variable mon.dev_ssh_in" ;
+Variable_context_mon::
+    "Variable mon.av_ssh_in" ;
+Variable_context_mon::
+    "Variable mon.value_ssh_in" ;
+Variable_context_mon::
+    "Variable mon.dev_ftp_out" ;
+Variable_context_mon::
+    "Variable mon.av_ftp_out" ;
+Variable_context_mon::
+    "Variable mon.value_ftp_out" ;
+Variable_context_mon::
+    "Variable mon.dev_ftp_in" ;
+Variable_context_mon::
+    "Variable mon.av_ftp_in" ;
+Variable_context_mon::
+    "Variable mon.value_ftp_in" ;
+Variable_context_mon::
+    "Variable mon.dev_www_out" ;
+Variable_context_mon::
+    "Variable mon.av_www_out" ;
+Variable_context_mon::
+    "Variable mon.value_www_out" ;
+Variable_context_mon::
+    "Variable mon.dev_www_in" ;
+Variable_context_mon::
+    "Variable mon.av_www_in" ;
+Variable_context_mon::
+    "Variable mon.value_www_in" ;
+Variable_context_mon::
+    "Variable mon.dev_smtp_out" ;
+Variable_context_mon::
+    "Variable mon.av_smtp_out" ;
+Variable_context_mon::
+    "Variable mon.value_smtp_out" ;
+Variable_context_mon::
+    "Variable mon.dev_smtp_in" ;
+Variable_context_mon::
+    "Variable mon.av_smtp_in" ;
+Variable_context_mon::
+    "Variable mon.value_smtp_in" ;
+Variable_context_mon::
+    "Variable mon.dev_nfsd_out" ;
+Variable_context_mon::
+    "Variable mon.av_nfsd_out" ;
+Variable_context_mon::
+    "Variable mon.value_nfsd_out" ;
+Variable_context_mon::
+    "Variable mon.dev_nfsd_in" ;
+Variable_context_mon::
+    "Variable mon.av_nfsd_in" ;
+Variable_context_mon::
+    "Variable mon.value_nfsd_in" ;
+Variable_context_mon::
+    "Variable mon.dev_cfengine_out" ;
+Variable_context_mon::
+    "Variable mon.av_cfengine_out" ;
+Variable_context_mon::
+    "Variable mon.value_cfengine_out" ;
+Variable_context_mon::
+    "Variable mon.dev_cfengine_in" ;
+Variable_context_mon::
+    "Variable mon.av_cfengine_in" ;
+Variable_context_mon::
+    "Variable mon.value_cfengine_in" ;
+Variable_context_mon::
+    "Variable mon.dev_irc_out" ;
+Variable_context_mon::
+    "Variable mon.av_irc_out" ;
+Variable_context_mon::
+    "Variable mon.value_irc_out" ;
+Variable_context_mon::
+    "Variable mon.dev_irc_in" ;
+Variable_context_mon::
+    "Variable mon.av_irc_in" ;
+Variable_context_mon::
+    "Variable mon.value_irc_in" ;
+Variable_context_mon::
+    "Variable mon.dev_netbiosssn_out" ;
+Variable_context_mon::
+    "Variable mon.av_netbiosssn_out" ;
+Variable_context_mon::
+    "Variable mon.value_netbiosssn_out" ;
+Variable_context_mon::
+    "Variable mon.dev_netbiosssn_in" ;
+Variable_context_mon::
+    "Variable mon.av_netbiosssn_in" ;
+Variable_context_mon::
+    "Variable mon.value_netbiosssn_in" ;
+Variable_context_mon::
+    "Variable mon.dev_netbiosdgm_out" ;
+Variable_context_mon::
+    "Variable mon.av_netbiosdgm_out" ;
+Variable_context_mon::
+    "Variable mon.value_netbiosdgm_out" ;
+Variable_context_mon::
+    "Variable mon.dev_netbiosdgm_in" ;
+Variable_context_mon::
+    "Variable mon.av_netbiosdgm_in" ;
+Variable_context_mon::
+    "Variable mon.value_netbiosdgm_in" ;
+Variable_context_mon::
+    "Variable mon.dev_netbiosns_out" ;
+Variable_context_mon::
+    "Variable mon.av_netbiosns_out" ;
+Variable_context_mon::
+    "Variable mon.value_netbiosns_out" ;
+Variable_context_mon::
+    "Variable mon.dev_netbiosns_in" ;
+Variable_context_mon::
+    "Variable mon.av_netbiosns_in" ;
+Variable_context_mon::
+    "Variable mon.value_netbiosns_in" ;
+Variable_context_mon::
+    "Variable mon.dev_loadavg" ;
+Variable_context_mon::
+    "Variable mon.av_loadavg" ;
+Variable_context_mon::
+    "Variable mon.value_loadavg" ;
+Variable_context_mon::
+    "Variable mon.dev_diskfree" ;
+Variable_context_mon::
+    "Variable mon.av_diskfree" ;
+Variable_context_mon::
+    "Variable mon.value_diskfree" ;
+Variable_context_mon::
+    "Variable mon.dev_otherprocs" ;
+Variable_context_mon::
+    "Variable mon.av_otherprocs" ;
+Variable_context_mon::
+    "Variable mon.value_otherprocs" ;
+Variable_context_mon::
+    "Variable mon.dev_rootprocs" ;
+Variable_context_mon::
+    "Variable mon.av_rootprocs" ;
+Variable_context_mon::
+    "Variable mon.value_rootprocs" ;
+Variable_context_mon::
+    "Variable mon.dev_users" ;
+Variable_context_mon::
+    "Variable mon.av_users" ;
+Variable_context_mon::
+    "Variable mon.value_users" ;
+Special_Variables::
+    "Variable context mon" ;
+Variable_context_match::
+    "Variable match.0" ;
+Special_Variables::
+    "Variable context match" ;
+Variable_context_edit::
+    "Variable edit.filename" ;
+Special_Variables::
+    "Variable context edit" ;
+Variable_context_const::
+    "Variable const.t" ;
+Variable_context_const::
+    "Variable const.r" ;
+Variable_context_const::
+    "Variable const.n" ;
+Variable_context_const::
+    "Variable const.endl" ;
+Variable_context_const::
+    "Variable const.dollar" ;
+Special_Variables::
+    "Variable context const" ;
+Special_Variables::
+    "Special Variables" ;
+Special_functions::
+    "Function userexists" ;
+Special_functions::
+    "Function usemodule" ;
+Special_functions::
+    "Function translatepath" ;
+Special_functions::
+    "Function sum" ;
+Special_functions::
+    "Function strcmp" ;
+Special_functions::
+    "Function splitstring" ;
+Special_functions::
+    "Function splayclass" ;
+Special_functions::
+    "Function selectservers" ;
+Special_functions::
+    "Function rrange" ;
+Special_functions::
+    "Function returnszero" ;
+Special_functions::
+    "Function remoteclassesmatching" ;
+Special_functions::
+    "Function remotescalar" ;
+Special_functions::
+    "Function regldap" ;
+Special_functions::
+    "Function reglist" ;
+Special_functions::
+    "Function regline" ;
+Special_functions::
+    "Function registryvalue" ;
+Special_functions::
+    "Function regextract" ;
+Special_functions::
+    "Function regcmp" ;
+Special_functions::
+    "Function regarray" ;
+Special_functions::
+    "Function readtcp" ;
+Special_functions::
+    "Function readstringlist" ;
+Special_functions::
+    "Function readstringarrayidx" ;
+Special_functions::
+    "Function readstringarray" ;
+Special_functions::
+    "Function readreallist" ;
+Special_functions::
+    "Function readrealarray" ;
+Special_functions::
+    "Function readintlist" ;
+Special_functions::
+    "Function readintarray" ;
+Special_functions::
+    "Function readfile" ;
+Special_functions::
+    "Function randomint" ;
+Special_functions::
+    "Function product" ;
+Special_functions::
+    "Function peerleaders" ;
+Special_functions::
+    "Function peerleader" ;
+Special_functions::
+    "Function peers" ;
+Special_functions::
+    "Function parsestringarrayidx" ;
+Special_functions::
+    "Function parsestringarray" ;
+Special_functions::
+    "Function parserealarray" ;
+Special_functions::
+    "Function parseintarray" ;
+Special_functions::
+    "Function on" ;
+Special_functions::
+    "Function now" ;
+Special_functions::
+    "Function ldapvalue" ;
+Special_functions::
+    "Function ldaplist" ;
+Special_functions::
+    "Function ldaparray" ;
+Special_functions::
+    "Function laterthan" ;
+Special_functions::
+    "Function lastnode" ;
+Special_functions::
+    "Function join" ;
+Special_functions::
+    "Function isvariable" ;
+Special_functions::
+    "Function isplain" ;
+Special_functions::
+    "Function isnewerthan" ;
+Special_functions::
+    "Function islink" ;
+Special_functions::
+    "Function islessthan" ;
+Special_functions::
+    "Function isgreaterthan" ;
+Special_functions::
+    "Function isexecutable" ;
+Special_functions::
+    "Function isdir" ;
+Special_functions::
+    "Function irange" ;
+Special_functions::
+    "Function iprange" ;
+Special_functions::
+    "Function hubknowledge" ;
+Special_functions::
+    "Function hostsseen" ;
+Special_functions::
+    "Function hostrange" ;
+Special_functions::
+    "Function hostinnetgroup" ;
+Special_functions::
+    "Function ip2host" ;
+Special_functions::
+    "Function host2ip" ;
+Special_functions::
+    "Function hashmatch" ;
+Special_functions::
+    "Function hash" ;
+Special_functions::
+    "Function groupexists" ;
+Special_functions::
+    "Function grep" ;
+Special_functions::
+    "Function getvalues" ;
+Special_functions::
+    "Function getusers" ;
+Special_functions::
+    "Function getuid" ;
+Special_functions::
+    "Function getindices" ;
+Special_functions::
+    "Function getgid" ;
+Special_functions::
+    "Function getfields" ;
+Special_functions::
+    "Function getenv" ;
+Special_functions::
+    "Function filesize" ;
+Special_functions::
+    "Function filesexist" ;
+Special_functions::
+    "Function fileexists" ;
+Special_functions::
+    "Function execresult" ;
+Special_functions::
+    "Function escape" ;
+Special_functions::
+    "Function diskfree" ;
+Special_functions::
+    "Function countlinesmatching" ;
+Special_functions::
+    "Function countclassesmatching" ;
+Special_functions::
+    "Function classmatch" ;
+Special_functions::
+    "Function classify" ;
+Special_functions::
+    "Function changedbefore" ;
+Special_functions::
+    "Function canonify" ;
+Special_functions::
+    "Function ago" ;
+Special_functions::
+    "Function accumulated" ;
+Special_functions::
+    "Function accessedbefore" ;
+Introduction_to_functions::
+    "Functions which work with or on regular expressions" ;
+Introduction_to_functions::
+    "Functions involving date or time" ;
+Introduction_to_functions::
+    "Functions which look at variables" ;
+Introduction_to_functions::
+    "Functions which look at file metadata" ;
+Introduction_to_functions::
+    "Functions which read strings" ;
+Introduction_to_functions::
+    "Functions which read" ;
+Introduction_to_functions::
+    "Functions which read the Windows registry" ;
+Introduction_to_functions::
+    "Functions which read from the network" ;
+Introduction_to_functions::
+    "Functions which read LDAP data" ;
+Introduction_to_functions::
+    "Functions which read files" ;
+Introduction_to_functions::
+    "Functions which read the environment" ;
+Introduction_to_functions::
+    "Functions which read command output" ;
+Introduction_to_functions::
+    "Functions which read classes" ;
+Introduction_to_functions::
+    "Functions which read from a remote-cfengine" ;
+Introduction_to_functions::
+    "Functions which read disk data" ;
+Introduction_to_functions::
+    "Functions which read arrays" ;
+Introduction_to_functions::
+    "Functions which read large data" ;
+Introduction_to_functions::
+    "Functions which fill arrays" ;
+Introduction_to_functions::
+    "Functions which return string" ;
+Introduction_to_functions::
+    "Functions which return real" ;
+Introduction_to_functions::
+    "Functions which return int" ;
+Introduction_to_functions::
+    "Functions which return" ;
+Introduction_to_functions::
+    "Functions which return class" ;
+Introduction_to_functions::
+    "Functions listed by return value" ;
+Special_functions::
+    "Introduction to functions"  association => a("discussed in","Introduction to functions","discusses");
+Special_functions::
+    "Special functions" ;
+documentation::
+    "track_growing_file"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "extraction_regex"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "select_line_number"  association => a("is contained in","cf3-reference","contains");
+measurements_promises_in_monitor::
+    "match_value" ;
+measurements_promises_in_monitor::
+    "units" ;
+measurements_promises_in_monitor::
+    "history_type" ;
+measurements_promises_in_monitor::
+    "data_type" ;
+measurements_promises_in_monitor::
+    "stream_type" ;
+Bundles_of_monitor::
+    "measurements promises in monitor" ;
+Bundles_of_monitor::
+    "Bundles of monitor" ;
+occurrences_promises_in_knowledge::
+    "path_root" ;
+occurrences_promises_in_knowledge::
+    "web_root" ;
+occurrences_promises_in_knowledge::
+    "representation" ;
+occurrences_promises_in_knowledge::
+    "represents" ;
+Bundles_of_knowledge::
+    "occurrences promises in knowledge" ;
+documentation::
+    "associates"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "backward_relationship"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "forward_relationship"  association => a("is contained in","cf3-reference","contains");
+topics_promises_in_knowledge::
+    "association" ;
+Bundles_of_knowledge::
+    "topics promises in knowledge" ;
+things_promises_in_knowledge::
+    "uses" ;
+things_promises_in_knowledge::
+    "provides" ;
+things_promises_in_knowledge::
+    "needs" ;
+things_promises_in_knowledge::
+    "is_part_of" ;
+things_promises_in_knowledge::
+    "is_located_in" ;
+things_promises_in_knowledge::
+    "is_connected_to" ;
+things_promises_in_knowledge::
+    "generalizations" ;
+things_promises_in_knowledge::
+    "determines" ;
+things_promises_in_knowledge::
+    "certainty" ;
+things_promises_in_knowledge::
+    "causes" ;
+things_promises_in_knowledge::
+    "caused_by" ;
+things_promises_in_knowledge::
+    "belongs_to" ;
+things_promises_in_knowledge::
+    "affects" ;
+things_promises_in_knowledge::
+    "synonyms" ;
+Bundles_of_knowledge::
+    "things promises in knowledge" ;
+inferences_promises_in_knowledge::
+    "qualifiers" ;
+inferences_promises_in_knowledge::
+    "precedents" ;
+Bundles_of_knowledge::
+    "inferences promises in knowledge" ;
+Bundles_of_knowledge::
+    "Bundles of knowledge" ;
+roles_promises_in_server::
+    "authorize" ;
+Bundles_of_server::
+    "roles promises in server" ;
+access_promises_in_server::
+    "resource_type" ;
+access_promises_in_server::
+    "ifencrypted" ;
+access_promises_in_server::
+    "maproot" ;
+access_promises_in_server::
+    "deny" ;
+access_promises_in_server::
+    "admit" ;
+access_promises_in_server::
+    "Access Example" ;
+Bundles_of_server::
+    "access promises in server" ;
+Bundles_of_server::
+    "Bundles of server" ;
+documentation::
+    "scan_arrivals"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "sensible_count"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "sensible_size"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "freespace"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "check_foreign"  association => a("is contained in","cf3-reference","contains");
+storage_promises_in_agent::
+    "volume" ;
+documentation::
+    "unmount"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "mount_options"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "mount_server"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "mount_source"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "mount_type"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "edit_fstab"  association => a("is contained in","cf3-reference","contains");
+storage_promises_in_agent::
+    "mount" ;
+Bundles_of_agent::
+    "storage promises in agent" ;
+documentation::
+    "service_dependence_chain"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "service_autostart_policy"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "service_args"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "service_type"  association => a("is contained in","cf3-reference","contains");
+services_promises_in_agent::
+    "service_method" ;
+services_promises_in_agent::
+    "service_dependencies" ;
+services_promises_in_agent::
+    "service_policy" ;
+Bundles_of_agent::
+    "services promises in agent" ;
+processes_promises_in_agent::
+    "signals" ;
+processes_promises_in_agent::
+    "restart_class" ;
+processes_promises_in_agent::
+    "process_stop" ;
+documentation::
+    "vsize"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "threads"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "tty"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "ttime_range"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "stime_range"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "status"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "rsize"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "process_result"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "process_owner"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "priority"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "ppid"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "pgid"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "pid"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "command"  association => a("is contained in","cf3-reference","contains");
+processes_promises_in_agent::
+    "process_select" ;
+documentation::
+    "out_of_range_define"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "match_range"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "in_range_define"  association => a("is contained in","cf3-reference","contains");
+processes_promises_in_agent::
+    "process_count" ;
+Bundles_of_agent::
+    "processes promises in agent" ;
+packages_promises_in_agent::
+    "package_version" ;
+packages_promises_in_agent::
+    "package_select" ;
+packages_promises_in_agent::
+    "package_policy" ;
+documentation::
+    "package_multiline_start"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_version_regex"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_verify_command"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_update_command"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_patch_version_regex"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_patch_name_regex"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_patch_list_command"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_patch_installed_regex"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_patch_command"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_patch_arch_regex"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_noverify_returncode"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_noverify_regex"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_name_regex"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_name_convention"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_list_version_regex"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_list_update_ifelapsed"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_list_update_command"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_list_name_regex"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_list_command"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_list_arch_regex"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_installed_regex"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_file_repositories"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_delete_convention"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_delete_command"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_changes"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_arch_regex"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "package_add_command"  association => a("is contained in","cf3-reference","contains");
+packages_promises_in_agent::
+    "package_method" ;
+packages_promises_in_agent::
+    "package_architectures" ;
+Bundles_of_agent::
+    "packages promises in agent" ;
+outputs_promises_in_agent::
+    "promiser_type" ;
+outputs_promises_in_agent::
+    "output_level" ;
+Bundles_of_agent::
+    "outputs promises in agent" ;
+methods_promises_in_agent::
+    "usebundle" ;
+Bundles_of_agent::
+    "methods promises in agent" ;
+documentation::
+    "ipv6_address"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "ipv4_netmask"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "ipv4_address"  association => a("is contained in","cf3-reference","contains");
+interfaces_promises_in_agent::
+    "tcp_ip" ;
+Bundles_of_agent::
+    "interfaces promises in agent" ;
+documentation::
+    "replace_value"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "occurrences"  association => a("is contained in","cf3-reference","contains");
+replace_patterns_promises_in_edit_line::
+    "replace_with" ;
+Bundles_of_agent::
+    "replace_patterns promises in edit_line" ;
+documentation::
+    "value_separator"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "start_fields_from_zero"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "select_field"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "field_value"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "field_separator"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "field_operation"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "extend_fields"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "allow_blank_fields"  association => a("is contained in","cf3-reference","contains");
+field_edits_promises_in_edit_line::
+    "edit_field" ;
+Bundles_of_agent::
+    "field_edits promises in edit_line" ;
+insert_lines_promises_in_edit_line::
+    "whitespace_policy" ;
+documentation::
+    "select_line_matching"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "first_last"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "before_after"  association => a("is contained in","cf3-reference","contains");
+insert_lines_promises_in_edit_line::
+    "location" ;
+documentation::
+    "insert_if_not_contains_from_list"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "insert_if_contains_from_list"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "insert_if_not_match_from_list"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "insert_if_match_from_list"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "insert_if_not_startwith_from_list"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "insert_if_startwith_from_list"  association => a("is contained in","cf3-reference","contains");
+insert_lines_promises_in_edit_line::
+    "insert_select" ;
+insert_lines_promises_in_edit_line::
+    "insert_type" ;
+insert_lines_promises_in_edit_line::
+    "expand_scalars" ;
+Bundles_of_agent::
+    "insert_lines promises in edit_line" ;
+delete_lines_promises_in_edit_line::
+    "not_matching" ;
+documentation::
+    "delete_if_not_contains_from_list"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "delete_if_contains_from_list"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "delete_if_not_match_from_list"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "delete_if_match_from_list"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "delete_if_not_startwith_from_list"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "delete_if_startwith_from_list"  association => a("is contained in","cf3-reference","contains");
+delete_lines_promises_in_edit_line::
+    "delete_select" ;
+Bundles_of_agent::
+    "delete_lines promises in edit_line" ;
+documentation::
+    "select_end"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "select_start"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "include_end_delimiter"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "include_start_delimiter"  association => a("is contained in","cf3-reference","contains");
+__promises_in_edit_line::
+    "select_region" ;
+Bundles_of_agent::
+    "* promises in edit_line" ;
+files_promises_in_agent::
+    "transformer" ;
+files_promises_in_agent::
+    "touch" ;
+files_promises_in_agent::
+    "repository" ;
+documentation::
+    "rotate"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "newname"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "disable_suffix"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "disable_mode"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "disable"  association => a("is contained in","cf3-reference","contains");
+files_promises_in_agent::
+    "rename" ;
+documentation::
+    "rxdirs"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "owners"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "mode"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "groups"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "bsdflags"  association => a("is contained in","cf3-reference","contains");
+files_promises_in_agent::
+    "perms" ;
+files_promises_in_agent::
+    "pathtype" ;
+files_promises_in_agent::
+    "move_obstructions" ;
+documentation::
+    "when_no_source"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "when_linking_children"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "link_children"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "copy_patterns"  association => a("is contained in","cf3-reference","contains");
+files_promises_in_agent::
+    "link_from" ;
+documentation::
+    "file_result"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "issymlinkto"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "file_types"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "exec_program"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "exec_regex"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "atime"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "mtime"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "ctime"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "search_bsdflags"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "search_groups"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "search_owners"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "search_size"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "search_mode"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "path_name"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "leaf_name"  association => a("is contained in","cf3-reference","contains");
+files_promises_in_agent::
+    "file_select" ;
+documentation::
+    "recognize_join"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "max_file_size"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "empty_file_before_editing"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "edit_backup"  association => a("is contained in","cf3-reference","contains");
+files_promises_in_agent::
+    "edit_defaults" ;
+files_promises_in_agent::
+    "edit_xml" ;
+files_promises_in_agent::
+    "edit_line" ;
+documentation::
+    "xdev"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "traverse_links"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "rmdeadlinks"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "include_dirs"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "include_basedir"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "exclude_dirs"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "depth"  association => a("is contained in","cf3-reference","contains");
+files_promises_in_agent::
+    "depth_search" ;
+documentation::
+    "rmdirs"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "dirlinks"  association => a("is contained in","cf3-reference","contains");
+files_promises_in_agent::
+    "delete" ;
+files_promises_in_agent::
+    "create" ;
+documentation::
+    "verify"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "type_check"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "stealth"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "purge"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "preserve"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "portnumber"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "force_update"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "link_type"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "linkcopy_patterns"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "findertype"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "copy_size"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "copylink_patterns"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "check_root"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "copy_backup"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "compare"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "collapse_destination_dir"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "servers"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "source"  association => a("is contained in","cf3-reference","contains");
+files_promises_in_agent::
+    "copy_from" ;
+documentation::
+    "report_diffs"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "update_hashes"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "report_changes"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "hash"  association => a("is contained in","cf3-reference","contains");
+files_promises_in_agent::
+    "changes" ;
+documentation::
+    "specify_inherit_aces"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "acl_type"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "acl_method"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "acl_directory_inherit"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "aces"  association => a("is contained in","cf3-reference","contains");
+files_promises_in_agent::
+    "acl" ;
+Bundles_of_agent::
+    "files promises in agent" ;
+environments_promises_in_agent::
+    "environment_type" ;
+environments_promises_in_agent::
+    "environment_state" ;
+documentation::
+    "env_spec_file"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "env_baseline"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "env_disk"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "env_memory"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "env_cpus"  association => a("is contained in","cf3-reference","contains");
+environments_promises_in_agent::
+    "environment_resources" ;
+documentation::
+    "env_network"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "env_name"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "env_addresses"  association => a("is contained in","cf3-reference","contains");
+environments_promises_in_agent::
+    "environment_interface" ;
+environments_promises_in_agent::
+    "environment_host" ;
+Bundles_of_agent::
+    "environments promises in agent" ;
+databases_promises_in_agent::
+    "registry_exclude" ;
+databases_promises_in_agent::
+    "database_rows" ;
+databases_promises_in_agent::
+    "database_columns" ;
+databases_promises_in_agent::
+    "database_operation" ;
+databases_promises_in_agent::
+    "database_type" ;
+documentation::
+    "db_server_connection_db"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "db_server_type"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "db_server_host"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "db_server_password"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "db_server_owner"  association => a("is contained in","cf3-reference","contains");
+databases_promises_in_agent::
+    "database_server" ;
+Bundles_of_agent::
+    "databases promises in agent" ;
+commands_promises_in_agent::
+    "module" ;
+documentation::
+    "no_output"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "preview"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "chroot"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "chdir"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "exec_timeout"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "exec_group"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "exec_owner"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "umask"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "useshell"  association => a("is contained in","cf3-reference","contains");
+commands_promises_in_agent::
+    "contain" ;
+commands_promises_in_agent::
+    "args" ;
+Bundles_of_agent::
+    "commands promises in agent" ;
+Bundles_of_agent::
+    "Bundles of agent" ;
+__promises::
+    "comment" ;
+__promises::
+    "depends_on" ;
+__promises::
+    "handle" ;
+__promises::
+    "ifvarclass" ;
+documentation::
+    "timer_policy"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "persist_time"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "failed_returncodes"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "repaired_returncodes"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "kept_returncodes"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "cancel_notkept"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "cancel_repaired"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "cancel_kept"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "promise_kept"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "repair_timeout"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "repair_denied"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "repair_failed"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "promise_repaired"  association => a("is contained in","cf3-reference","contains");
+__promises::
+    "classes" ;
+documentation::
+    "measurement_class"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "report_level"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "background"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "audit"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "value_notkept"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "value_repaired"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "value_kept"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "log_failed"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "log_repaired"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "log_priority"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "log_kept"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "log_level"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "log_string"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "action_policy"  association => a("is contained in","cf3-reference","contains");
+__promises::
+    "action" ;
+Bundles_of_common::
+    "* promises" ;
+reports_promises::
+    "showstate" ;
+reports_promises::
+    "report_to_file" ;
+documentation::
+    "number_of_lines"  association => a("is contained in","cf3-reference","contains");
+documentation::
+    "file_to_print"  association => a("is contained in","cf3-reference","contains");
+reports_promises::
+    "printfile" ;
+reports_promises::
+    "lastseen" ;
+reports_promises::
+    "friend_pattern" ;
+Bundles_of_common::
+    "reports promises" ;
+classes_promises::
+    "select_class" ;
+classes_promises::
+    "not" ;
+classes_promises::
+    "expression" ;
+classes_promises::
+    "dist" ;
+classes_promises::
+    "xor" ;
+classes_promises::
+    "and" ;
+classes_promises::
+    "or" ;
+Bundles_of_common::
+    "classes promises" ;
+vars_promises::
+    "policy" ;
+vars_promises::
+    "rlist" ;
+vars_promises::
+    "ilist" ;
+vars_promises::
+    "slist" ;
+vars_promises::
+    "real" ;
+vars_promises::
+    "int" ;
+vars_promises::
+    "string" ;
+Bundles_of_common::
+    "vars promises" ;
+Bundles_of_common::
+    "Bundles of common" ;
+hub_control_promises::
+    "hub_schedule" ;
+hub_control_promises::
+    "federation" ;
+hub_control_promises::
+    "export_zenoss" ;
+Control_promises::
+    "hub control promises" ;
+reporter_control_promises::
+    "time_stamps" ;
+reporter_control_promises::
+    "report_output" ;
+reporter_control_promises::
+    "reports" ;
+reporter_control_promises::
+    "html_embed" ;
+reporter_control_promises::
+    "error_bars" ;
+reporter_control_promises::
+    "csv2xml" ;
+reporter_control_promises::
+    "auto_scaling" ;
+reporter_control_promises::
+    "aggregation_point" ;
+Control_promises::
+    "reporter control promises" ;
+knowledge_control_promises::
+    "view_projections" ;
+knowledge_control_promises::
+    "style_sheet" ;
+knowledge_control_promises::
+    "sql_connection_db" ;
+knowledge_control_promises::
+    "sql_server" ;
+knowledge_control_promises::
+    "sql_passwd" ;
+knowledge_control_promises::
+    "sql_owner" ;
+knowledge_control_promises::
+    "sql_database" ;
+knowledge_control_promises::
+    "sql_type" ;
+knowledge_control_promises::
+    "query_output" ;
+knowledge_control_promises::
+    "query_engine" ;
+knowledge_control_promises::
+    "manual_source_directory" ;
+knowledge_control_promises::
+    "id_prefix" ;
+knowledge_control_promises::
+    "html_footer" ;
+knowledge_control_promises::
+    "html_banner" ;
+knowledge_control_promises::
+    "goal_patterns" ;
+knowledge_control_promises::
+    "goal_categories" ;
+knowledge_control_promises::
+    "graph_output" ;
+knowledge_control_promises::
+    "graph_directory" ;
+knowledge_control_promises::
+    "generate_manual" ;
+knowledge_control_promises::
+    "document_root" ;
+knowledge_control_promises::
+    "build_directory" ;
+Control_promises::
+    "knowledge control promises" ;
+executor_control_promises::
+    "exec_command" ;
+executor_control_promises::
+    "executorfacility" ;
+executor_control_promises::
+    "schedule" ;
+executor_control_promises::
+    "mailmaxlines" ;
+executor_control_promises::
+    "smtpserver" ;
+executor_control_promises::
+    "mailto" ;
+executor_control_promises::
+    "mailfrom" ;
+executor_control_promises::
+    "splaytime" ;
+Control_promises::
+    "executor control promises" ;
+runagent_control_promises::
+    "timeout"  association => a("is contained in","cf3-reference","contains");
+runagent_control_promises::
+    "output_directory" ;
+runagent_control_promises::
+    "output_to_file" ;
+runagent_control_promises::
+    "background_children" ;
+runagent_control_promises::
+    "encrypt"  association => a("is contained in","cf3-reference","contains");
+runagent_control_promises::
+    "trustkey"  association => a("is contained in","cf3-reference","contains");
+runagent_control_promises::
+    "force_ipv4"  association => a("is contained in","cf3-reference","contains");
+runagent_control_promises::
+    "hosts" ;
+Control_promises::
+    "runagent control promises" ;
+monitor_control_promises::
+    "tcpdumpcommand" ;
+monitor_control_promises::
+    "tcpdump" ;
+monitor_control_promises::
+    "histograms" ;
+monitor_control_promises::
+    "monitorfacility" ;
+monitor_control_promises::
+    "forgetrate" ;
+Control_promises::
+    "monitor control promises" ;
+server_control_promises::
+    "trustkeysfrom" ;
+server_control_promises::
+    "skipverify" ;
+server_control_promises::
+    "serverfacility" ;
+server_control_promises::
+    "port" ;
+server_control_promises::
+    "logencryptedtransfers" ;
+server_control_promises::
+    "logallconnections" ;
+server_control_promises::
+    "keycacheTTL" ;
+server_control_promises::
+    "dynamicaddresses" ;
+server_control_promises::
+    "denyconnects" ;
+server_control_promises::
+    "denybadclocks" ;
+server_control_promises::
+    "cfruncommand" ;
+server_control_promises::
+    "allowusers" ;
+server_control_promises::
+    "allowconnects" ;
+server_control_promises::
+    "allowallconnects" ;
+Control_promises::
+    "server control promises" ;
+agent_control_promises::
+    "verbose" ;
+agent_control_promises::
+    "default_timeout" ;
+agent_control_promises::
+    "timezone" ;
+agent_control_promises::
+    "track_value" ;
+agent_control_promises::
+    "syslog" ;
+agent_control_promises::
+    "suspiciousnames" ;
+agent_control_promises::
+    "skipidentify" ;
+agent_control_promises::
+    "sensiblesize" ;
+agent_control_promises::
+    "sensiblecount" ;
+agent_control_promises::
+    "secureinput" ;
+agent_control_promises::
+    "default_repository" ;
+agent_control_promises::
+    "refresh_processes" ;
+agent_control_promises::
+    "repchar" ;
+agent_control_promises::
+    "nonalphanumfiles" ;
+agent_control_promises::
+    "mountfilesystems" ;
+agent_control_promises::
+    "maxconnections" ;
+agent_control_promises::
+    "max_children" ;
+agent_control_promises::
+    "intermittency" ;
+agent_control_promises::
+    "inform" ;
+agent_control_promises::
+    "ifelapsed"  association => a("is contained in","cf3-reference","contains");
+agent_control_promises::
+    "hostnamekeys" ;
+agent_control_promises::
+    "files_auto_define" ;
+agent_control_promises::
+    "files_single_copy" ;
+agent_control_promises::
+    "expireafter"  association => a("is contained in","cf3-reference","contains");
+agent_control_promises::
+    "exclamation" ;
+agent_control_promises::
+    "environment" ;
+agent_control_promises::
+    "editfilesize" ;
+agent_control_promises::
+    "editbinaryfilesize" ;
+agent_control_promises::
+    "dryrun" ;
+agent_control_promises::
+    "defaultcopytype" ;
+agent_control_promises::
+    "checksum_alert_time" ;
+agent_control_promises::
+    "childlibpath" ;
+agent_control_promises::
+    "hashupdates" ;
+agent_control_promises::
+    "bindtointerface" ;
+agent_control_promises::
+    "binarypaddingchar" ;
+agent_control_promises::
+    "auditing" ;
+agent_control_promises::
+    "alwaysvalidate" ;
+agent_control_promises::
+    "agentfacility" ;
+agent_control_promises::
+    "agentaccess" ;
+agent_control_promises::
+    "addclasses" ;
+agent_control_promises::
+    "abortbundleclasses" ;
+agent_control_promises::
+    "abortclasses" ;
+Control_promises::
+    "agent control promises" ;
+common_control_promises::
+    "fips_mode" ;
+common_control_promises::
+    "syslog_port" ;
+common_control_promises::
+    "syslog_host" ;
+common_control_promises::
+    "site_classes" ;
+common_control_promises::
+    "host_licenses_paid" ;
+common_control_promises::
+    "require_comments" ;
+common_control_promises::
+    "domain" ;
+common_control_promises::
+    "output_prefix" ;
+common_control_promises::
+    "lastseenexpireafter" ;
+common_control_promises::
+    "version" ;
+common_control_promises::
+    "inputs" ;
+common_control_promises::
+    "ignore_missing_inputs" ;
+common_control_promises::
+    "ignore_missing_bundles" ;
+common_control_promises::
+    "bundlesequence" ;
+Control_promises::
+    "common control promises" ;
+Control_promises::
+    "Control promises" ;
+A_complete_configuration::
+    "Recovery from errors in the software" ;
+A_complete_configuration::
+    "Recovery from errors in the configuration" ;
+A_complete_configuration::
+    "What should a failsafe and update file contain?" ;
+A_complete_configuration::
+    "failsafe.cf" ;
+A_complete_configuration::
+    "update.cf" ;
+A_complete_configuration::
+    "site.cf" ;
+A_complete_configuration::
+    "promises.cf" ;
+A_complete_configuration::
+    "A complete configuration" ;
+How_to_run_cfengine_3_examples::
+    "How to run cfengine 3 examples" ;
+A_simple_crash_course_in_concepts::
+    "Developer structures" ;
+A_simple_crash_course_in_concepts::
+    "Distributed discovery" ;
+Pattern_matching_and_referencing::
+    "Special topics on Regular Expressions" ;
+Pattern_matching_and_referencing::
+    "Anchored vs. unanchored regular expressions" ;
+Pattern_matching_and_referencing::
+    "Regular expressions in paths" ;
+Pattern_matching_and_referencing::
+    "Commenting lines" ;
+Pattern_matching_and_referencing::
+    "Runaway change warning" ;
+A_simple_crash_course_in_concepts::
+    "Pattern matching and referencing" ;
+A_simple_crash_course_in_concepts::
+    "Loops and lists in cfengine 3" ;
+Normal_ordering::
+    "Knowledge normal ordering" ;
+Normal_ordering::
+    "Monitor normal ordering" ;
+Normal_ordering::
+    "Server normal ordering" ;
+Normal_ordering::
+    "Agent normal ordering" ;
+A_simple_crash_course_in_concepts::
+    "Normal ordering" ;
+Variable_expansion_in_cfengine_3::
+    "Arrays in cfengine 3" ;
+Variable_expansion_in_cfengine_3::
+    "Special list value cf_null" ;
+Variable_expansion_in_cfengine_3::
+    "List variable substitution and expansion" ;
+Variable_expansion_in_cfengine_3::
+    "Scalar variable expansion" ;
+A_simple_crash_course_in_concepts::
+    "Variable expansion in cfengine 3" ;
+A_simple_crash_course_in_concepts::
+    "Datatypes in cfengine 3" ;
+A_simple_crash_course_in_concepts::
+    "Types in cfengine 3" ;
+A_simple_crash_course_in_concepts::
+    "When and where are promises made?" ;
+A_simple_crash_course_in_concepts::
+    "Containers" ;
+A_simple_crash_course_in_concepts::
+    "Best practice for writing promises" ;
+A_simple_crash_course_in_concepts::
+    "Rules are promises" ;
+A_simple_crash_course_in_concepts::
+    "A simple crash course in concepts" ;
+Remote_access_troubleshooting::
+    "Encryption" ;
+Remote_access_troubleshooting::
+    "Other users than root" ;
+Remote_access_troubleshooting::
+    "Time windows" ;
+Remote_access_troubleshooting::
+    "Key exchange" ;
+Remote_access_troubleshooting::
+    "Server connection" ;
+Cfengine_3_2_0a1_r2426M__Getting_started::
+    "Remote access troubleshooting" ;
+Cfengine_3_2_0a1_r2426M__Getting_started::
+    "Familiarizing yourself" ;
+Cfengine_3_2_0a1_r2426M__Getting_started::
+    "The bare necessities of a cfengine 3" ;
+Cfengine_3_2_0a1_r2426M__Getting_started::
+    "Testing as a non-privilieged user" ;
+Cfengine_3_2_0a1_r2426M__Getting_started::
+    "Upgrading from cfengine 2" ;
+Cfengine_3_2_0a1_r2426M__Getting_started::
+    "Filenames and paths" ;
+Decisions::
+    "Global and local classes" ;
+Decisions::
+    "Class combination operators and precedence" ;
+Decisions::
+    "Cfengine hard classes" ;
+Cfengine_3_2_0a1_r2426M__Getting_started::
+    "Decisions" ;
+Cfengine_3_2_0a1_r2426M__Getting_started::
+    "The work directory" ;
+Cfengine_3_2_0a1_r2426M__Getting_started::
+    "Syntax, identifiers and names" ;
+Cfengine_3_2_0a1_r2426M__Getting_started::
+    "Installation" ;
+Cfengine_3_2_0a1_r2426M__Getting_started::
+    "A renewed cfengine" ;
+Cfengine_3_2_0a1_r2426M__Getting_started::
+    "Core concepts" ;
+Software_components::
+    "cf-hub" ;
+Software_components::
+    "cf-key" ;
+Software_components::
+    "cf-report" ;
+Software_components::
+    "cf-serverd" ;
+Software_components::
+    "cf-runagent" ;
+Software_components::
+    "cf-promises" ;
+Software_components::
+    "cf-monitord" ;
+Software_components::
+    "cf-know*" ;
+Software_components::
+    "cf-execd" ;
+Software_components::
+    "cf-agent" ;
+Cfengine_3_2_0a1_r2426M__Getting_started::
+    "Software components" ;
+Cfengine_3_2_0a1_r2426M__Getting_started::
+    "Cfengine 3.2.0a1.r2426M  Getting started" ;
+Special_Topics_Guide::
+    "CFEngine-AutoReference"  association => a("discussed in","CFEngine-AutoReference","discusses");
+
+
+occurrences:
+
+manuals::
+ "/docs/cf3-reference.html"
+  represents => { "CFEngine reference manual" };
+CFEngine_AutoReference::
+ "/docs/cf3-reference.html#Top"
+  represents => { "Text section" };
+Cfengine_3_2_0a1_r2426M__Getting_started::
+ "/docs/cf3-reference.html#Getting-started"
+  represents => { "manual chapter" };
+Software_components::
+ "/docs/cf3-reference.html#Software-components"
+  represents => { "manual section Software components" };
+cf_agent::
+ "/docs/cf3-reference.html#cf_002dagent"
+  represents => { "manual subsection" };
+cf_execd::
+ "/docs/cf3-reference.html#cf_002dexecd"
+  represents => { "manual subsection" };
+cf_know_::
+ "/docs/cf3-reference.html#cf_002dknow"
+  represents => { "manual subsection" };
+cf_monitord::
+ "/docs/cf3-reference.html#cf_002dmonitord"
+  represents => { "manual subsection" };
+cf_promises::
+ "/docs/cf3-reference.html#cf_002dpromises"
+  represents => { "manual subsection" };
+cf_runagent::
+ "/docs/cf3-reference.html#cf_002drunagent"
+  represents => { "manual subsection" };
+cf_serverd::
+ "/docs/cf3-reference.html#cf_002dserverd"
+  represents => { "manual subsection" };
+cf_report::
+ "/docs/cf3-reference.html#cf_002dreport"
+  represents => { "manual subsection" };
+cf_key::
+ "/docs/cf3-reference.html#cf_002dkey"
+  represents => { "manual subsection" };
+cf_hub::
+ "/docs/cf3-reference.html#cf_002dhub"
+  represents => { "manual subsection" };
+Core_concepts::
+ "/docs/cf3-reference.html#Core-concepts"
+  represents => { "manual section Core concepts" };
+A_renewed_cfengine::
+ "/docs/cf3-reference.html#A-renewed-cfengine"
+  represents => { "manual section A renewed cfengine" };
+Installation::
+ "/docs/cf3-reference.html#Installation"
+  represents => { "manual section Installation" };
+Installation::
+ "/docs/cf3-reference.html#Installation"
+  represents => { "code example" };
+Syntax__identifiers_and_names::
+ "/docs/cf3-reference.html#Syntax"
+  represents => { "manual section Syntax, identifiers and names" };
+The_work_directory::
+ "/docs/cf3-reference.html#Work-directory"
+  represents => { "manual section The work directory" };
+The_work_directory::
+ "/docs/cf3-reference.html#Work-directory"
+  represents => { "code example" };
+Decisions::
+ "/docs/cf3-reference.html#Decisions"
+  represents => { "manual section Decisions" };
+Cfengine_hard_classes::
+ "/docs/cf3-reference.html#Hard-classes"
+  represents => { "manual subsection" };
+Cfengine_hard_classes::
+ "/docs/cf3-reference.html#Hard-classes"
+  represents => { "code example" };
+Class_combination_operators_and_precedence::
+ "/docs/cf3-reference.html#Class-combination-operators-and-precedence"
+  represents => { "manual subsection" };
+Global_and_local_classes::
+ "/docs/cf3-reference.html#Global-and-local-classes"
+  represents => { "manual subsection" };
+Filenames_and_paths::
+ "/docs/cf3-reference.html#Filenames-and-paths"
+  represents => { "manual section Filenames and paths" };
+Filenames_and_paths::
+ "/docs/cf3-reference.html#Filenames-and-paths"
+  represents => { "code example" };
+Filenames_and_paths::
+ "/docs/cf3-reference.html#Filenames-and-paths"
+  represents => { "code example" };
+Filenames_and_paths::
+ "/docs/cf3-reference.html#Filenames-and-paths"
+  represents => { "code example" };
+Upgrading_from_cfengine_2::
+ "/docs/cf3-reference.html#Upgrading-from-cfengine-2"
+  represents => { "manual section Upgrading from cfengine 2" };
+Testing_as_a_non_privilieged_user::
+ "/docs/cf3-reference.html#Testing-as-a-non_002dprivilieged-user"
+  represents => { "manual section Testing as a non-privilieged user" };
+Testing_as_a_non_privilieged_user::
+ "/docs/cf3-reference.html#Testing-as-a-non_002dprivilieged-user"
+  represents => { "code example" };
+Testing_as_a_non_privilieged_user::
+ "/docs/cf3-reference.html#Testing-as-a-non_002dprivilieged-user"
+  represents => { "code example" };
+Testing_as_a_non_privilieged_user::
+ "/docs/cf3-reference.html#Testing-as-a-non_002dprivilieged-user"
+  represents => { "code example" };
+The_bare_necessities_of_a_cfengine_3::
+ "/docs/cf3-reference.html#The-bare-necessities-of-a-cfengine-3"
+  represents => { "manual section The bare necessities of a cfengine 3" };
+The_bare_necessities_of_a_cfengine_3::
+ "/docs/cf3-reference.html#The-bare-necessities-of-a-cfengine-3"
+  represents => { "code example" };
+The_bare_necessities_of_a_cfengine_3::
+ "/docs/cf3-reference.html#The-bare-necessities-of-a-cfengine-3"
+  represents => { "code example" };
+Familiarizing_yourself::
+ "/docs/cf3-reference.html#Familiiarizing-yourself"
+  represents => { "manual section Familiarizing yourself" };
+Familiarizing_yourself::
+ "/docs/cf3-reference.html#Familiiarizing-yourself"
+  represents => { "code example" };
+Familiarizing_yourself::
+ "/docs/cf3-reference.html#Familiiarizing-yourself"
+  represents => { "code example" };
+Familiarizing_yourself::
+ "/docs/cf3-reference.html#Familiiarizing-yourself"
+  represents => { "code example" };
+Remote_access_troubleshooting::
+ "/docs/cf3-reference.html#Remote-access-troubleshooting"
+  represents => { "manual section Remote access troubleshooting" };
+Server_connection::
+ "/docs/cf3-reference.html#Server-connection"
+  represents => { "manual subsection" };
+Server_connection::
+ "/docs/cf3-reference.html#Server-connection"
+  represents => { "code example" };
+Key_exchange::
+ "/docs/cf3-reference.html#Key-exchange"
+  represents => { "manual subsection" };
+Key_exchange::
+ "/docs/cf3-reference.html#Key-exchange"
+  represents => { "code example" };
+Time_windows::
+ "/docs/cf3-reference.html#Time-windows"
+  represents => { "manual subsection" };
+Time_windows::
+ "/docs/cf3-reference.html#Time-windows"
+  represents => { "code example" };
+Other_users_than_root::
+ "/docs/cf3-reference.html#Other-users-than-root"
+  represents => { "manual subsection" };
+Encryption::
+ "/docs/cf3-reference.html#Encryption"
+  represents => { "manual subsection" };
+A_simple_crash_course_in_concepts::
+ "/docs/cf3-reference.html#A-simple-crash-course"
+  represents => { "manual chapter" };
+Rules_are_promises::
+ "/docs/cf3-reference.html#Rules-are-promises"
+  represents => { "manual section Rules are promises" };
+Rules_are_promises::
+ "/docs/cf3-reference.html#Rules-are-promises"
+  represents => { "code example" };
+Rules_are_promises::
+ "/docs/cf3-reference.html#Rules-are-promises"
+  represents => { "code example" };
+Rules_are_promises::
+ "/docs/cf3-reference.html#Rules-are-promises"
+  represents => { "code example" };
+Best_practice_for_writing_promises::
+ "/docs/cf3-reference.html#Best-practice-for-writing-promises"
+  represents => { "manual section Best practice for writing promises" };
+Containers::
+ "/docs/cf3-reference.html#Containers"
+  represents => { "manual section Containers" };
+Containers::
+ "/docs/cf3-reference.html#Containers"
+  represents => { "code example" };
+Containers::
+ "/docs/cf3-reference.html#Containers"
+  represents => { "code example" };
+Containers::
+ "/docs/cf3-reference.html#Containers"
+  represents => { "code example" };
+When_and_where_are_promises_made_::
+ "/docs/cf3-reference.html#When-and-where-are-promises-made_003f"
+  represents => { "manual section When and where are promises made?" };
+When_and_where_are_promises_made_::
+ "/docs/cf3-reference.html#When-and-where-are-promises-made_003f"
+  represents => { "code example" };
+Types_in_cfengine_3::
+ "/docs/cf3-reference.html#Types-in-cfengine-3"
+  represents => { "manual section Types in cfengine 3" };
+Types_in_cfengine_3::
+ "/docs/cf3-reference.html#Types-in-cfengine-3"
+  represents => { "code example" };
+Types_in_cfengine_3::
+ "/docs/cf3-reference.html#Types-in-cfengine-3"
+  represents => { "code example" };
+Datatypes_in_cfengine_3::
+ "/docs/cf3-reference.html#Datatypes-in-cfengine-3"
+  represents => { "manual section Datatypes in cfengine 3" };
+Variable_expansion_in_cfengine_3::
+ "/docs/cf3-reference.html#Variable-expansion-in-cfengine-3"
+  represents => { "manual section Variable expansion in cfengine 3" };
+Scalar_variable_expansion::
+ "/docs/cf3-reference.html#Scalar-variable-expansion"
+  represents => { "manual subsection" };
+List_variable_substitution_and_expansion::
+ "/docs/cf3-reference.html#List-variable-substitution-and-expansion"
+  represents => { "manual subsection" };
+Special_list_value_cf_null::
+ "/docs/cf3-reference.html#Special-list-value-cf_005fnull"
+  represents => { "manual subsection" };
+Arrays_in_cfengine_3::
+ "/docs/cf3-reference.html#Arrays-in-cfengine-3"
+  represents => { "manual subsection" };
+Normal_ordering::
+ "/docs/cf3-reference.html#Normal-ordering"
+  represents => { "manual section Normal ordering" };
+Agent_normal_ordering::
+ "/docs/cf3-reference.html#Agent-normal-ordering"
+  represents => { "manual subsection" };
+Server_normal_ordering::
+ "/docs/cf3-reference.html#Server-normal-ordering"
+  represents => { "manual subsection" };
+Monitor_normal_ordering::
+ "/docs/cf3-reference.html#Monitor-normal-ordering"
+  represents => { "manual subsection" };
+Knowledge_normal_ordering::
+ "/docs/cf3-reference.html#Knowledge-normal-ordering"
+  represents => { "manual subsection" };
+Loops_and_lists_in_cfengine_3::
+ "/docs/cf3-reference.html#Loops-and-lists-in-cfengine-3"
+  represents => { "manual section Loops and lists in cfengine 3" };
+Pattern_matching_and_referencing::
+ "/docs/cf3-reference.html#Pattern-matching-and-referencing"
+  represents => { "manual section Pattern matching and referencing" };
+Pattern_matching_and_referencing::
+ "/docs/cf3-reference.html#Pattern-matching-and-referencing"
+  represents => { "code example" };
+Pattern_matching_and_referencing::
+ "/docs/cf3-reference.html#Pattern-matching-and-referencing"
+  represents => { "code example" };
+Runaway_change_warning::
+ "/docs/cf3-reference.html#Runaway-change-warning"
+  represents => { "manual subsection" };
+Runaway_change_warning::
+ "/docs/cf3-reference.html#Runaway-change-warning"
+  represents => { "code example" };
+Commenting_lines::
+ "/docs/cf3-reference.html#Commenting-lines"
+  represents => { "manual subsection" };
+Regular_expressions_in_paths::
+ "/docs/cf3-reference.html#Regular-expressions-in-paths"
+  represents => { "manual subsection" };
+Anchored_vs__unanchored_regular_expressions::
+ "/docs/cf3-reference.html#Anchored-vs_002e-unanchored-regular-expressions"
+  represents => { "manual subsection" };
+Special_topics_on_Regular_Expressions::
+ "/docs/cf3-reference.html#Special-topics-on-Regular-Expressions"
+  represents => { "manual subsection" };
+Distributed_discovery::
+ "/docs/cf3-reference.html#Distributed-discovery"
+  represents => { "manual section Distributed discovery" };
+Developer_structures::
+ "/docs/cf3-reference.html#Developer-structures"
+  represents => { "manual section Developer structures" };
+How_to_run_cfengine_3_examples::
+ "/docs/cf3-reference.html#How-to-run-cfengine-3-examples"
+  represents => { "manual chapter" };
+How_to_run_cfengine_3_examples::
+ "/docs/cf3-reference.html#How-to-run-cfengine-3-examples"
+  represents => { "code example" };
+How_to_run_cfengine_3_examples::
+ "/docs/cf3-reference.html#How-to-run-cfengine-3-examples"
+  represents => { "code example" };
+How_to_run_cfengine_3_examples::
+ "/docs/cf3-reference.html#How-to-run-cfengine-3-examples"
+  represents => { "code example" };
+A_complete_configuration::
+ "/docs/cf3-reference.html#A-complete-configuration"
+  represents => { "manual chapter" };
+promises_cf::
+ "/docs/cf3-reference.html#promises_002ecf"
+  represents => { "manual section promises.cf" };
+site_cf::
+ "/docs/cf3-reference.html#site_002ecf"
+  represents => { "manual section site.cf" };
+update_cf::
+ "/docs/cf3-reference.html#update_002ecf"
+  represents => { "manual section update.cf" };
+failsafe_cf::
+ "/docs/cf3-reference.html#failsafe_002ecf"
+  represents => { "manual section failsafe.cf" };
+What_should_a_failsafe_and_update_file_contain_::
+ "/docs/cf3-reference.html#What-should-a-failsafe-or-update-file-contain"
+  represents => { "manual section What should a failsafe and update file contain?" };
+Recovery_from_errors_in_the_configuration::
+ "/docs/cf3-reference.html#Recovery-from-errors-in-the-configuration"
+  represents => { "manual section Recovery from errors in the configuration" };
+Recovery_from_errors_in_the_software::
+ "/docs/cf3-reference.html#Recovery-from-errors-in-the-software"
+  represents => { "manual section Recovery from errors in the software" };
+Control_promises::
+ "/docs/cf3-reference.html#Control-Promises"
+  represents => { "manual chapter" };
+common_control_promises::
+ "/docs/cf3-reference.html#control-common"
+  represents => { "manual section common control promises" };
+common_control_promises::
+ "/docs/cf3-reference.html#control-common"
+  represents => { "code example" };
+bundlesequence::
+ "/docs/cf3-reference.html#bundlesequence-in-common"
+  represents => { "manual subsection" };
+ignore_missing_bundles::
+ "/docs/cf3-reference.html#ignore_005fmissing_005fbundles-in-common"
+  represents => { "manual subsection" };
+ignore_missing_inputs::
+ "/docs/cf3-reference.html#ignore_005fmissing_005finputs-in-common"
+  represents => { "manual subsection" };
+inputs::
+ "/docs/cf3-reference.html#inputs-in-common"
+  represents => { "manual subsection" };
+version::
+ "/docs/cf3-reference.html#version-in-common"
+  represents => { "manual subsection" };
+lastseenexpireafter::
+ "/docs/cf3-reference.html#lastseenexpireafter-in-common"
+  represents => { "manual subsection" };
+output_prefix::
+ "/docs/cf3-reference.html#output_005fprefix-in-common"
+  represents => { "manual subsection" };
+domain::
+ "/docs/cf3-reference.html#domain-in-common"
+  represents => { "manual subsection" };
+require_comments::
+ "/docs/cf3-reference.html#require_005fcomments-in-common"
+  represents => { "manual subsection" };
+host_licenses_paid::
+ "/docs/cf3-reference.html#host_005flicenses_005fpaid-in-common"
+  represents => { "manual subsection" };
+site_classes::
+ "/docs/cf3-reference.html#site_005fclasses-in-common"
+  represents => { "manual subsection" };
+syslog_host::
+ "/docs/cf3-reference.html#syslog_005fhost-in-common"
+  represents => { "manual subsection" };
+syslog_port::
+ "/docs/cf3-reference.html#syslog_005fport-in-common"
+  represents => { "manual subsection" };
+fips_mode::
+ "/docs/cf3-reference.html#fips_005fmode-in-common"
+  represents => { "manual subsection" };
+agent_control_promises::
+ "/docs/cf3-reference.html#control-agent"
+  represents => { "manual section agent control promises" };
+agent_control_promises::
+ "/docs/cf3-reference.html#control-agent"
+  represents => { "code example" };
+abortclasses::
+ "/docs/cf3-reference.html#abortclasses-in-agent"
+  represents => { "manual subsection" };
+abortbundleclasses::
+ "/docs/cf3-reference.html#abortbundleclasses-in-agent"
+  represents => { "manual subsection" };
+addclasses::
+ "/docs/cf3-reference.html#addclasses-in-agent"
+  represents => { "manual subsection" };
+agentaccess::
+ "/docs/cf3-reference.html#agentaccess-in-agent"
+  represents => { "manual subsection" };
+agentfacility::
+ "/docs/cf3-reference.html#agentfacility-in-agent"
+  represents => { "manual subsection" };
+alwaysvalidate::
+ "/docs/cf3-reference.html#alwaysvalidate-in-agent"
+  represents => { "manual subsection" };
+auditing::
+ "/docs/cf3-reference.html#auditing-in-agent"
+  represents => { "manual subsection" };
+binarypaddingchar::
+ "/docs/cf3-reference.html#binarypaddingchar-in-agent"
+  represents => { "manual subsection" };
+bindtointerface::
+ "/docs/cf3-reference.html#bindtointerface-in-agent"
+  represents => { "manual subsection" };
+hashupdates::
+ "/docs/cf3-reference.html#hashupdates-in-agent"
+  represents => { "manual subsection" };
+childlibpath::
+ "/docs/cf3-reference.html#childlibpath-in-agent"
+  represents => { "manual subsection" };
+checksum_alert_time::
+ "/docs/cf3-reference.html#checksum_005falert_005ftime-in-agent"
+  represents => { "manual subsection" };
+defaultcopytype::
+ "/docs/cf3-reference.html#defaultcopytype-in-agent"
+  represents => { "manual subsection" };
+dryrun::
+ "/docs/cf3-reference.html#dryrun-in-agent"
+  represents => { "manual subsection" };
+editbinaryfilesize::
+ "/docs/cf3-reference.html#editbinaryfilesize-in-agent"
+  represents => { "manual subsection" };
+editfilesize::
+ "/docs/cf3-reference.html#editfilesize-in-agent"
+  represents => { "manual subsection" };
+environment::
+ "/docs/cf3-reference.html#environment-in-agent"
+  represents => { "manual subsection" };
+exclamation::
+ "/docs/cf3-reference.html#exclamation-in-agent"
+  represents => { "manual subsection" };
+expireafter::
+ "/docs/cf3-reference.html#expireafter-in-agent"
+  represents => { "manual subsection" };
+files_single_copy::
+ "/docs/cf3-reference.html#files_005fsingle_005fcopy-in-agent"
+  represents => { "manual subsection" };
+files_auto_define::
+ "/docs/cf3-reference.html#files_005fauto_005fdefine-in-agent"
+  represents => { "manual subsection" };
+hostnamekeys::
+ "/docs/cf3-reference.html#hostnamekeys-in-agent"
+  represents => { "manual subsection" };
+ifelapsed::
+ "/docs/cf3-reference.html#ifelapsed-in-agent"
+  represents => { "manual subsection" };
+inform::
+ "/docs/cf3-reference.html#inform-in-agent"
+  represents => { "manual subsection" };
+intermittency::
+ "/docs/cf3-reference.html#intermittency-in-agent"
+  represents => { "manual subsection" };
+max_children::
+ "/docs/cf3-reference.html#max_005fchildren-in-agent"
+  represents => { "manual subsection" };
+maxconnections::
+ "/docs/cf3-reference.html#maxconnections-in-agent"
+  represents => { "manual subsection" };
+mountfilesystems::
+ "/docs/cf3-reference.html#mountfilesystems-in-agent"
+  represents => { "manual subsection" };
+nonalphanumfiles::
+ "/docs/cf3-reference.html#nonalphanumfiles-in-agent"
+  represents => { "manual subsection" };
+repchar::
+ "/docs/cf3-reference.html#repchar-in-agent"
+  represents => { "manual subsection" };
+refresh_processes::
+ "/docs/cf3-reference.html#refresh_005fprocesses-in-agent"
+  represents => { "manual subsection" };
+default_repository::
+ "/docs/cf3-reference.html#default_005frepository-in-agent"
+  represents => { "manual subsection" };
+secureinput::
+ "/docs/cf3-reference.html#secureinput-in-agent"
+  represents => { "manual subsection" };
+sensiblecount::
+ "/docs/cf3-reference.html#sensiblecount-in-agent"
+  represents => { "manual subsection" };
+sensiblesize::
+ "/docs/cf3-reference.html#sensiblesize-in-agent"
+  represents => { "manual subsection" };
+skipidentify::
+ "/docs/cf3-reference.html#skipidentify-in-agent"
+  represents => { "manual subsection" };
+suspiciousnames::
+ "/docs/cf3-reference.html#suspiciousnames-in-agent"
+  represents => { "manual subsection" };
+syslog::
+ "/docs/cf3-reference.html#syslog-in-agent"
+  represents => { "manual subsection" };
+track_value::
+ "/docs/cf3-reference.html#track_005fvalue-in-agent"
+  represents => { "manual subsection" };
+timezone::
+ "/docs/cf3-reference.html#timezone-in-agent"
+  represents => { "manual subsection" };
+default_timeout::
+ "/docs/cf3-reference.html#default_005ftimeout-in-agent"
+  represents => { "manual subsection" };
+verbose::
+ "/docs/cf3-reference.html#verbose-in-agent"
+  represents => { "manual subsection" };
+server_control_promises::
+ "/docs/cf3-reference.html#control-server"
+  represents => { "manual section server control promises" };
+server_control_promises::
+ "/docs/cf3-reference.html#control-server"
+  represents => { "code example" };
+allowallconnects::
+ "/docs/cf3-reference.html#allowallconnects-in-server"
+  represents => { "manual subsection" };
+allowconnects::
+ "/docs/cf3-reference.html#allowconnects-in-server"
+  represents => { "manual subsection" };
+allowusers::
+ "/docs/cf3-reference.html#allowusers-in-server"
+  represents => { "manual subsection" };
+auditing::
+ "/docs/cf3-reference.html#auditing-in-server"
+  represents => { "manual subsection" };
+bindtointerface::
+ "/docs/cf3-reference.html#bindtointerface-in-server"
+  represents => { "manual subsection" };
+cfruncommand::
+ "/docs/cf3-reference.html#cfruncommand-in-server"
+  represents => { "manual subsection" };
+denybadclocks::
+ "/docs/cf3-reference.html#denybadclocks-in-server"
+  represents => { "manual subsection" };
+denyconnects::
+ "/docs/cf3-reference.html#denyconnects-in-server"
+  represents => { "manual subsection" };
+dynamicaddresses::
+ "/docs/cf3-reference.html#dynamicaddresses-in-server"
+  represents => { "manual subsection" };
+hostnamekeys::
+ "/docs/cf3-reference.html#hostnamekeys-in-server"
+  represents => { "manual subsection" };
+keycacheTTL::
+ "/docs/cf3-reference.html#keycacheTTL-in-server"
+  represents => { "manual subsection" };
+logallconnections::
+ "/docs/cf3-reference.html#logallconnections-in-server"
+  represents => { "manual subsection" };
+logencryptedtransfers::
+ "/docs/cf3-reference.html#logencryptedtransfers-in-server"
+  represents => { "manual subsection" };
+maxconnections::
+ "/docs/cf3-reference.html#maxconnections-in-server"
+  represents => { "manual subsection" };
+port::
+ "/docs/cf3-reference.html#port-in-server"
+  represents => { "manual subsection" };
+serverfacility::
+ "/docs/cf3-reference.html#serverfacility-in-server"
+  represents => { "manual subsection" };
+skipverify::
+ "/docs/cf3-reference.html#skipverify-in-server"
+  represents => { "manual subsection" };
+trustkeysfrom::
+ "/docs/cf3-reference.html#trustkeysfrom-in-server"
+  represents => { "manual subsection" };
+monitor_control_promises::
+ "/docs/cf3-reference.html#control-monitor"
+  represents => { "manual section monitor control promises" };
+monitor_control_promises::
+ "/docs/cf3-reference.html#control-monitor"
+  represents => { "code example" };
+forgetrate::
+ "/docs/cf3-reference.html#forgetrate-in-monitor"
+  represents => { "manual subsection" };
+monitorfacility::
+ "/docs/cf3-reference.html#monitorfacility-in-monitor"
+  represents => { "manual subsection" };
+histograms::
+ "/docs/cf3-reference.html#histograms-in-monitor"
+  represents => { "manual subsection" };
+tcpdump::
+ "/docs/cf3-reference.html#tcpdump-in-monitor"
+  represents => { "manual subsection" };
+tcpdumpcommand::
+ "/docs/cf3-reference.html#tcpdumpcommand-in-monitor"
+  represents => { "manual subsection" };
+runagent_control_promises::
+ "/docs/cf3-reference.html#control-runagent"
+  represents => { "manual section runagent control promises" };
+runagent_control_promises::
+ "/docs/cf3-reference.html#control-runagent"
+  represents => { "code example" };
+hosts::
+ "/docs/cf3-reference.html#hosts-in-runagent"
+  represents => { "manual subsection" };
+port::
+ "/docs/cf3-reference.html#port-in-runagent"
+  represents => { "manual subsection" };
+force_ipv4::
+ "/docs/cf3-reference.html#force_005fipv4-in-runagent"
+  represents => { "manual subsection" };
+trustkey::
+ "/docs/cf3-reference.html#trustkey-in-runagent"
+  represents => { "manual subsection" };
+encrypt::
+ "/docs/cf3-reference.html#encrypt-in-runagent"
+  represents => { "manual subsection" };
+background_children::
+ "/docs/cf3-reference.html#background_005fchildren-in-runagent"
+  represents => { "manual subsection" };
+max_children::
+ "/docs/cf3-reference.html#max_005fchildren-in-runagent"
+  represents => { "manual subsection" };
+output_to_file::
+ "/docs/cf3-reference.html#output_005fto_005ffile-in-runagent"
+  represents => { "manual subsection" };
+output_directory::
+ "/docs/cf3-reference.html#output_005fdirectory-in-runagent"
+  represents => { "manual subsection" };
+timeout::
+ "/docs/cf3-reference.html#timeout-in-runagent"
+  represents => { "manual subsection" };
+executor_control_promises::
+ "/docs/cf3-reference.html#control-executor"
+  represents => { "manual section executor control promises" };
+executor_control_promises::
+ "/docs/cf3-reference.html#control-executor"
+  represents => { "code example" };
+splaytime::
+ "/docs/cf3-reference.html#splaytime-in-executor"
+  represents => { "manual subsection" };
+mailfrom::
+ "/docs/cf3-reference.html#mailfrom-in-executor"
+  represents => { "manual subsection" };
+mailto::
+ "/docs/cf3-reference.html#mailto-in-executor"
+  represents => { "manual subsection" };
+smtpserver::
+ "/docs/cf3-reference.html#smtpserver-in-executor"
+  represents => { "manual subsection" };
+mailmaxlines::
+ "/docs/cf3-reference.html#mailmaxlines-in-executor"
+  represents => { "manual subsection" };
+schedule::
+ "/docs/cf3-reference.html#schedule-in-executor"
+  represents => { "manual subsection" };
+executorfacility::
+ "/docs/cf3-reference.html#executorfacility-in-executor"
+  represents => { "manual subsection" };
+exec_command::
+ "/docs/cf3-reference.html#exec_005fcommand-in-executor"
+  represents => { "manual subsection" };
+knowledge_control_promises::
+ "/docs/cf3-reference.html#control-knowledge"
+  represents => { "manual section knowledge control promises" };
+knowledge_control_promises::
+ "/docs/cf3-reference.html#control-knowledge"
+  represents => { "code example" };
+build_directory::
+ "/docs/cf3-reference.html#build_005fdirectory-in-knowledge"
+  represents => { "manual subsection" };
+document_root::
+ "/docs/cf3-reference.html#document_005froot-in-knowledge"
+  represents => { "manual subsection" };
+generate_manual::
+ "/docs/cf3-reference.html#generate_005fmanual-in-knowledge"
+  represents => { "manual subsection" };
+graph_directory::
+ "/docs/cf3-reference.html#graph_005fdirectory-in-knowledge"
+  represents => { "manual subsection" };
+graph_output::
+ "/docs/cf3-reference.html#graph_005foutput-in-knowledge"
+  represents => { "manual subsection" };
+goal_categories::
+ "/docs/cf3-reference.html#goal_005fcategories-in-knowledge"
+  represents => { "manual subsection" };
+goal_patterns::
+ "/docs/cf3-reference.html#goal_005fpatterns-in-knowledge"
+  represents => { "manual subsection" };
+html_banner::
+ "/docs/cf3-reference.html#html_005fbanner-in-knowledge"
+  represents => { "manual subsection" };
+html_footer::
+ "/docs/cf3-reference.html#html_005ffooter-in-knowledge"
+  represents => { "manual subsection" };
+id_prefix::
+ "/docs/cf3-reference.html#id_005fprefix-in-knowledge"
+  represents => { "manual subsection" };
+manual_source_directory::
+ "/docs/cf3-reference.html#manual_005fsource_005fdirectory-in-knowledge"
+  represents => { "manual subsection" };
+query_engine::
+ "/docs/cf3-reference.html#query_005fengine-in-knowledge"
+  represents => { "manual subsection" };
+query_output::
+ "/docs/cf3-reference.html#query_005foutput-in-knowledge"
+  represents => { "manual subsection" };
+sql_type::
+ "/docs/cf3-reference.html#sql_005ftype-in-knowledge"
+  represents => { "manual subsection" };
+sql_database::
+ "/docs/cf3-reference.html#sql_005fdatabase-in-knowledge"
+  represents => { "manual subsection" };
+sql_owner::
+ "/docs/cf3-reference.html#sql_005fowner-in-knowledge"
+  represents => { "manual subsection" };
+sql_passwd::
+ "/docs/cf3-reference.html#sql_005fpasswd-in-knowledge"
+  represents => { "manual subsection" };
+sql_server::
+ "/docs/cf3-reference.html#sql_005fserver-in-knowledge"
+  represents => { "manual subsection" };
+sql_connection_db::
+ "/docs/cf3-reference.html#sql_005fconnection_005fdb-in-knowledge"
+  represents => { "manual subsection" };
+style_sheet::
+ "/docs/cf3-reference.html#style_005fsheet-in-knowledge"
+  represents => { "manual subsection" };
+view_projections::
+ "/docs/cf3-reference.html#view_005fprojections-in-knowledge"
+  represents => { "manual subsection" };
+reporter_control_promises::
+ "/docs/cf3-reference.html#control-reporter"
+  represents => { "manual section reporter control promises" };
+aggregation_point::
+ "/docs/cf3-reference.html#aggregation_005fpoint-in-reporter"
+  represents => { "manual subsection" };
+auto_scaling::
+ "/docs/cf3-reference.html#auto_005fscaling-in-reporter"
+  represents => { "manual subsection" };
+build_directory::
+ "/docs/cf3-reference.html#build_005fdirectory-in-reporter"
+  represents => { "manual subsection" };
+csv2xml::
+ "/docs/cf3-reference.html#csv2xml-in-reporter"
+  represents => { "manual subsection" };
+error_bars::
+ "/docs/cf3-reference.html#error_005fbars-in-reporter"
+  represents => { "manual subsection" };
+html_banner::
+ "/docs/cf3-reference.html#html_005fbanner-in-reporter"
+  represents => { "manual subsection" };
+html_embed::
+ "/docs/cf3-reference.html#html_005fembed-in-reporter"
+  represents => { "manual subsection" };
+html_footer::
+ "/docs/cf3-reference.html#html_005ffooter-in-reporter"
+  represents => { "manual subsection" };
+query_engine::
+ "/docs/cf3-reference.html#query_005fengine-in-reporter"
+  represents => { "manual subsection" };
+reports::
+ "/docs/cf3-reference.html#reports-in-reporter"
+  represents => { "manual subsection" };
+report_output::
+ "/docs/cf3-reference.html#report_005foutput-in-reporter"
+  represents => { "manual subsection" };
+style_sheet::
+ "/docs/cf3-reference.html#style_005fsheet-in-reporter"
+  represents => { "manual subsection" };
+time_stamps::
+ "/docs/cf3-reference.html#time_005fstamps-in-reporter"
+  represents => { "manual subsection" };
+hub_control_promises::
+ "/docs/cf3-reference.html#control-hub"
+  represents => { "manual section hub control promises" };
+export_zenoss::
+ "/docs/cf3-reference.html#export_005fzenoss-in-hub"
+  represents => { "manual subsection" };
+federation::
+ "/docs/cf3-reference.html#federation-in-hub"
+  represents => { "manual subsection" };
+hub_schedule::
+ "/docs/cf3-reference.html#hub_005fschedule-in-hub"
+  represents => { "manual subsection" };
+port::
+ "/docs/cf3-reference.html#port-in-hub"
+  represents => { "manual subsection" };
+Bundles_of_common::
+ "/docs/cf3-reference.html#Bundles-for-common"
+  represents => { "manual chapter" };
+Bundles_of_common::
+ "/docs/cf3-reference.html#Bundles-for-common"
+  represents => { "code example" };
+vars_promises::
+ "/docs/cf3-reference.html#vars-in-common-promises"
+  represents => { "manual section vars promises" };
+string::
+ "/docs/cf3-reference.html#string-in-vars"
+  represents => { "manual subsection" };
+int::
+ "/docs/cf3-reference.html#int-in-vars"
+  represents => { "manual subsection" };
+real::
+ "/docs/cf3-reference.html#real-in-vars"
+  represents => { "manual subsection" };
+slist::
+ "/docs/cf3-reference.html#slist-in-vars"
+  represents => { "manual subsection" };
+ilist::
+ "/docs/cf3-reference.html#ilist-in-vars"
+  represents => { "manual subsection" };
+rlist::
+ "/docs/cf3-reference.html#rlist-in-vars"
+  represents => { "manual subsection" };
+policy::
+ "/docs/cf3-reference.html#policy-in-vars"
+  represents => { "manual subsection" };
+classes_promises::
+ "/docs/cf3-reference.html#classes-in-common-promises"
+  represents => { "manual section classes promises" };
+or::
+ "/docs/cf3-reference.html#or-in-classes"
+  represents => { "manual subsection" };
+and::
+ "/docs/cf3-reference.html#and-in-classes"
+  represents => { "manual subsection" };
+xor::
+ "/docs/cf3-reference.html#xor-in-classes"
+  represents => { "manual subsection" };
+dist::
+ "/docs/cf3-reference.html#dist-in-classes"
+  represents => { "manual subsection" };
+dist::
+ "/docs/cf3-reference.html#dist-in-classes"
+  represents => { "code example" };
+expression::
+ "/docs/cf3-reference.html#expression-in-classes"
+  represents => { "manual subsection" };
+not::
+ "/docs/cf3-reference.html#not-in-classes"
+  represents => { "manual subsection" };
+select_class::
+ "/docs/cf3-reference.html#select_005fclass-in-classes"
+  represents => { "manual subsection" };
+reports_promises::
+ "/docs/cf3-reference.html#reports-in-common-promises"
+  represents => { "manual section reports promises" };
+friend_pattern::
+ "/docs/cf3-reference.html#friend_005fpattern-in-reports"
+  represents => { "manual subsection" };
+intermittency::
+ "/docs/cf3-reference.html#intermittency-in-reports"
+  represents => { "manual subsection" };
+lastseen::
+ "/docs/cf3-reference.html#lastseen-in-reports"
+  represents => { "manual subsection" };
+printfile::
+ "/docs/cf3-reference.html#printfile-in-reports"
+  represents => { "manual subsection" };
+file_to_print::
+ "/docs/cf3-reference.html#printfile-in-reports"
+  represents => { "document" };
+number_of_lines::
+ "/docs/cf3-reference.html#printfile-in-reports"
+  represents => { "document" };
+report_to_file::
+ "/docs/cf3-reference.html#report_005fto_005ffile-in-reports"
+  represents => { "manual subsection" };
+showstate::
+ "/docs/cf3-reference.html#showstate-in-reports"
+  represents => { "manual subsection" };
+__promises::
+ "/docs/cf3-reference.html#g_t_002a-in-common-promises"
+  represents => { "manual section * promises" };
+action::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "manual subsection" };
+action_policy::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "document" };
+action::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "code example" };
+action::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "code example" };
+ifelapsed::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "document" };
+expireafter::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "document" };
+log_string::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "document" };
+log_level::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "document" };
+log_kept::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "document" };
+log_priority::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "document" };
+log_repaired::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "document" };
+log_failed::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "document" };
+value_kept::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "document" };
+value_repaired::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "document" };
+value_notkept::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "document" };
+audit::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "document" };
+background::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "document" };
+report_level::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "document" };
+measurement_class::
+ "/docs/cf3-reference.html#action-in-_002a"
+  represents => { "document" };
+classes::
+ "/docs/cf3-reference.html#classes-in-_002a"
+  represents => { "manual subsection" };
+promise_repaired::
+ "/docs/cf3-reference.html#classes-in-_002a"
+  represents => { "document" };
+repair_failed::
+ "/docs/cf3-reference.html#classes-in-_002a"
+  represents => { "document" };
+repair_denied::
+ "/docs/cf3-reference.html#classes-in-_002a"
+  represents => { "document" };
+repair_timeout::
+ "/docs/cf3-reference.html#classes-in-_002a"
+  represents => { "document" };
+promise_kept::
+ "/docs/cf3-reference.html#classes-in-_002a"
+  represents => { "document" };
+cancel_kept::
+ "/docs/cf3-reference.html#classes-in-_002a"
+  represents => { "document" };
+cancel_repaired::
+ "/docs/cf3-reference.html#classes-in-_002a"
+  represents => { "document" };
+cancel_notkept::
+ "/docs/cf3-reference.html#classes-in-_002a"
+  represents => { "document" };
+kept_returncodes::
+ "/docs/cf3-reference.html#classes-in-_002a"
+  represents => { "document" };
+repaired_returncodes::
+ "/docs/cf3-reference.html#classes-in-_002a"
+  represents => { "document" };
+failed_returncodes::
+ "/docs/cf3-reference.html#classes-in-_002a"
+  represents => { "document" };
+persist_time::
+ "/docs/cf3-reference.html#classes-in-_002a"
+  represents => { "document" };
+timer_policy::
+ "/docs/cf3-reference.html#classes-in-_002a"
+  represents => { "document" };
+ifvarclass::
+ "/docs/cf3-reference.html#ifvarclass-in-_002a"
+  represents => { "manual subsection" };
+handle::
+ "/docs/cf3-reference.html#handle-in-_002a"
+  represents => { "manual subsection" };
+depends_on::
+ "/docs/cf3-reference.html#depends_005fon-in-_002a"
+  represents => { "manual subsection" };
+comment::
+ "/docs/cf3-reference.html#comment-in-_002a"
+  represents => { "manual subsection" };
+Bundles_of_agent::
+ "/docs/cf3-reference.html#Bundles-for-agent"
+  represents => { "manual chapter" };
+Bundles_of_agent::
+ "/docs/cf3-reference.html#Bundles-for-agent"
+  represents => { "code example" };
+commands_promises_in_agent::
+ "/docs/cf3-reference.html#commands-in-agent-promises"
+  represents => { "manual section commands promises in agent" };
+commands_promises_in_agent::
+ "/docs/cf3-reference.html#commands-in-agent-promises"
+  represents => { "code example" };
+commands_promises_in_agent::
+ "/docs/cf3-reference.html#commands-in-agent-promises"
+  represents => { "code example" };
+args::
+ "/docs/cf3-reference.html#args-in-commands"
+  represents => { "manual subsection" };
+contain::
+ "/docs/cf3-reference.html#contain-in-commands"
+  represents => { "manual subsection" };
+useshell::
+ "/docs/cf3-reference.html#contain-in-commands"
+  represents => { "document" };
+umask::
+ "/docs/cf3-reference.html#contain-in-commands"
+  represents => { "document" };
+exec_owner::
+ "/docs/cf3-reference.html#contain-in-commands"
+  represents => { "document" };
+exec_group::
+ "/docs/cf3-reference.html#contain-in-commands"
+  represents => { "document" };
+exec_timeout::
+ "/docs/cf3-reference.html#contain-in-commands"
+  represents => { "document" };
+chdir::
+ "/docs/cf3-reference.html#contain-in-commands"
+  represents => { "document" };
+chroot::
+ "/docs/cf3-reference.html#contain-in-commands"
+  represents => { "document" };
+preview::
+ "/docs/cf3-reference.html#contain-in-commands"
+  represents => { "document" };
+no_output::
+ "/docs/cf3-reference.html#contain-in-commands"
+  represents => { "document" };
+module::
+ "/docs/cf3-reference.html#module-in-commands"
+  represents => { "manual subsection" };
+module::
+ "/docs/cf3-reference.html#module-in-commands"
+  represents => { "code example" };
+module::
+ "/docs/cf3-reference.html#module-in-commands"
+  represents => { "code example" };
+module::
+ "/docs/cf3-reference.html#module-in-commands"
+  represents => { "code example" };
+module::
+ "/docs/cf3-reference.html#module-in-commands"
+  represents => { "code example" };
+module::
+ "/docs/cf3-reference.html#module-in-commands"
+  represents => { "code example" };
+databases_promises_in_agent::
+ "/docs/cf3-reference.html#databases-in-agent-promises"
+  represents => { "manual section databases promises in agent" };
+databases_promises_in_agent::
+ "/docs/cf3-reference.html#databases-in-agent-promises"
+  represents => { "code example" };
+database_server::
+ "/docs/cf3-reference.html#database_005fserver-in-databases"
+  represents => { "manual subsection" };
+db_server_owner::
+ "/docs/cf3-reference.html#database_005fserver-in-databases"
+  represents => { "document" };
+db_server_password::
+ "/docs/cf3-reference.html#database_005fserver-in-databases"
+  represents => { "document" };
+db_server_host::
+ "/docs/cf3-reference.html#database_005fserver-in-databases"
+  represents => { "document" };
+db_server_type::
+ "/docs/cf3-reference.html#database_005fserver-in-databases"
+  represents => { "document" };
+db_server_connection_db::
+ "/docs/cf3-reference.html#database_005fserver-in-databases"
+  represents => { "document" };
+database_type::
+ "/docs/cf3-reference.html#database_005ftype-in-databases"
+  represents => { "manual subsection" };
+database_operation::
+ "/docs/cf3-reference.html#database_005foperation-in-databases"
+  represents => { "manual subsection" };
+database_columns::
+ "/docs/cf3-reference.html#database_005fcolumns-in-databases"
+  represents => { "manual subsection" };
+database_rows::
+ "/docs/cf3-reference.html#database_005frows-in-databases"
+  represents => { "manual subsection" };
+registry_exclude::
+ "/docs/cf3-reference.html#registry_005fexclude-in-databases"
+  represents => { "manual subsection" };
+environments_promises_in_agent::
+ "/docs/cf3-reference.html#environments-in-agent-promises"
+  represents => { "manual section environments promises in agent" };
+environment_host::
+ "/docs/cf3-reference.html#environment_005fhost-in-environments"
+  represents => { "manual subsection" };
+environment_interface::
+ "/docs/cf3-reference.html#environment_005finterface-in-environments"
+  represents => { "manual subsection" };
+env_addresses::
+ "/docs/cf3-reference.html#environment_005finterface-in-environments"
+  represents => { "document" };
+env_name::
+ "/docs/cf3-reference.html#environment_005finterface-in-environments"
+  represents => { "document" };
+env_network::
+ "/docs/cf3-reference.html#environment_005finterface-in-environments"
+  represents => { "document" };
+environment_resources::
+ "/docs/cf3-reference.html#environment_005fresources-in-environments"
+  represents => { "manual subsection" };
+env_cpus::
+ "/docs/cf3-reference.html#environment_005fresources-in-environments"
+  represents => { "document" };
+env_memory::
+ "/docs/cf3-reference.html#environment_005fresources-in-environments"
+  represents => { "document" };
+env_disk::
+ "/docs/cf3-reference.html#environment_005fresources-in-environments"
+  represents => { "document" };
+env_baseline::
+ "/docs/cf3-reference.html#environment_005fresources-in-environments"
+  represents => { "document" };
+env_spec_file::
+ "/docs/cf3-reference.html#environment_005fresources-in-environments"
+  represents => { "document" };
+environment_state::
+ "/docs/cf3-reference.html#environment_005fstate-in-environments"
+  represents => { "manual subsection" };
+environment_type::
+ "/docs/cf3-reference.html#environment_005ftype-in-environments"
+  represents => { "manual subsection" };
+files_promises_in_agent::
+ "/docs/cf3-reference.html#files-in-agent-promises"
+  represents => { "manual section files promises in agent" };
+files_promises_in_agent::
+ "/docs/cf3-reference.html#files-in-agent-promises"
+  represents => { "code example" };
+acl::
+ "/docs/cf3-reference.html#acl-in-files"
+  represents => { "manual subsection" };
+aces::
+ "/docs/cf3-reference.html#acl-in-files"
+  represents => { "document" };
+acl::
+ "/docs/cf3-reference.html#acl-in-files"
+  represents => { "code example" };
+acl_directory_inherit::
+ "/docs/cf3-reference.html#acl-in-files"
+  represents => { "document" };
+acl_method::
+ "/docs/cf3-reference.html#acl-in-files"
+  represents => { "document" };
+acl_type::
+ "/docs/cf3-reference.html#acl-in-files"
+  represents => { "document" };
+specify_inherit_aces::
+ "/docs/cf3-reference.html#acl-in-files"
+  represents => { "document" };
+changes::
+ "/docs/cf3-reference.html#changes-in-files"
+  represents => { "manual subsection" };
+hash::
+ "/docs/cf3-reference.html#changes-in-files"
+  represents => { "document" };
+report_changes::
+ "/docs/cf3-reference.html#changes-in-files"
+  represents => { "document" };
+update_hashes::
+ "/docs/cf3-reference.html#changes-in-files"
+  represents => { "document" };
+report_diffs::
+ "/docs/cf3-reference.html#changes-in-files"
+  represents => { "document" };
+copy_from::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "manual subsection" };
+source::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+servers::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+collapse_destination_dir::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+compare::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+copy_backup::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+encrypt::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+check_root::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+copylink_patterns::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+copy_size::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+findertype::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+linkcopy_patterns::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+link_type::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+force_update::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+force_ipv4::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+portnumber::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+preserve::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+purge::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+stealth::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+timeout::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+trustkey::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+type_check::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+verify::
+ "/docs/cf3-reference.html#copy_005ffrom-in-files"
+  represents => { "document" };
+create::
+ "/docs/cf3-reference.html#create-in-files"
+  represents => { "manual subsection" };
+delete::
+ "/docs/cf3-reference.html#delete-in-files"
+  represents => { "manual subsection" };
+dirlinks::
+ "/docs/cf3-reference.html#delete-in-files"
+  represents => { "document" };
+rmdirs::
+ "/docs/cf3-reference.html#delete-in-files"
+  represents => { "document" };
+depth_search::
+ "/docs/cf3-reference.html#depth_005fsearch-in-files"
+  represents => { "manual subsection" };
+depth::
+ "/docs/cf3-reference.html#depth_005fsearch-in-files"
+  represents => { "document" };
+exclude_dirs::
+ "/docs/cf3-reference.html#depth_005fsearch-in-files"
+  represents => { "document" };
+include_basedir::
+ "/docs/cf3-reference.html#depth_005fsearch-in-files"
+  represents => { "document" };
+include_dirs::
+ "/docs/cf3-reference.html#depth_005fsearch-in-files"
+  represents => { "document" };
+rmdeadlinks::
+ "/docs/cf3-reference.html#depth_005fsearch-in-files"
+  represents => { "document" };
+traverse_links::
+ "/docs/cf3-reference.html#depth_005fsearch-in-files"
+  represents => { "document" };
+xdev::
+ "/docs/cf3-reference.html#depth_005fsearch-in-files"
+  represents => { "document" };
+edit_line::
+ "/docs/cf3-reference.html#edit_005fline-in-files"
+  represents => { "manual subsection" };
+edit_xml::
+ "/docs/cf3-reference.html#edit_005fxml-in-files"
+  represents => { "manual subsection" };
+edit_defaults::
+ "/docs/cf3-reference.html#edit_005fdefaults-in-files"
+  represents => { "manual subsection" };
+edit_backup::
+ "/docs/cf3-reference.html#edit_005fdefaults-in-files"
+  represents => { "document" };
+empty_file_before_editing::
+ "/docs/cf3-reference.html#edit_005fdefaults-in-files"
+  represents => { "document" };
+max_file_size::
+ "/docs/cf3-reference.html#edit_005fdefaults-in-files"
+  represents => { "document" };
+recognize_join::
+ "/docs/cf3-reference.html#edit_005fdefaults-in-files"
+  represents => { "document" };
+file_select::
+ "/docs/cf3-reference.html#file_005fselect-in-files"
+  represents => { "manual subsection" };
+leaf_name::
+ "/docs/cf3-reference.html#file_005fselect-in-files"
+  represents => { "document" };
+path_name::
+ "/docs/cf3-reference.html#file_005fselect-in-files"
+  represents => { "document" };
+search_mode::
+ "/docs/cf3-reference.html#file_005fselect-in-files"
+  represents => { "document" };
+search_size::
+ "/docs/cf3-reference.html#file_005fselect-in-files"
+  represents => { "document" };
+search_owners::
+ "/docs/cf3-reference.html#file_005fselect-in-files"
+  represents => { "document" };
+search_groups::
+ "/docs/cf3-reference.html#file_005fselect-in-files"
+  represents => { "document" };
+search_bsdflags::
+ "/docs/cf3-reference.html#file_005fselect-in-files"
+  represents => { "document" };
+ctime::
+ "/docs/cf3-reference.html#file_005fselect-in-files"
+  represents => { "document" };
+mtime::
+ "/docs/cf3-reference.html#file_005fselect-in-files"
+  represents => { "document" };
+atime::
+ "/docs/cf3-reference.html#file_005fselect-in-files"
+  represents => { "document" };
+exec_regex::
+ "/docs/cf3-reference.html#file_005fselect-in-files"
+  represents => { "document" };
+exec_program::
+ "/docs/cf3-reference.html#file_005fselect-in-files"
+  represents => { "document" };
+file_types::
+ "/docs/cf3-reference.html#file_005fselect-in-files"
+  represents => { "document" };
+issymlinkto::
+ "/docs/cf3-reference.html#file_005fselect-in-files"
+  represents => { "document" };
+file_result::
+ "/docs/cf3-reference.html#file_005fselect-in-files"
+  represents => { "document" };
+link_from::
+ "/docs/cf3-reference.html#link_005ffrom-in-files"
+  represents => { "manual subsection" };
+copy_patterns::
+ "/docs/cf3-reference.html#link_005ffrom-in-files"
+  represents => { "document" };
+link_children::
+ "/docs/cf3-reference.html#link_005ffrom-in-files"
+  represents => { "document" };
+link_type::
+ "/docs/cf3-reference.html#link_005ffrom-in-files"
+  represents => { "document" };
+source::
+ "/docs/cf3-reference.html#link_005ffrom-in-files"
+  represents => { "document" };
+when_linking_children::
+ "/docs/cf3-reference.html#link_005ffrom-in-files"
+  represents => { "document" };
+when_no_source::
+ "/docs/cf3-reference.html#link_005ffrom-in-files"
+  represents => { "document" };
+move_obstructions::
+ "/docs/cf3-reference.html#move_005fobstructions-in-files"
+  represents => { "manual subsection" };
+pathtype::
+ "/docs/cf3-reference.html#pathtype-in-files"
+  represents => { "manual subsection" };
+perms::
+ "/docs/cf3-reference.html#perms-in-files"
+  represents => { "manual subsection" };
+bsdflags::
+ "/docs/cf3-reference.html#perms-in-files"
+  represents => { "document" };
+groups::
+ "/docs/cf3-reference.html#perms-in-files"
+  represents => { "document" };
+mode::
+ "/docs/cf3-reference.html#perms-in-files"
+  represents => { "document" };
+owners::
+ "/docs/cf3-reference.html#perms-in-files"
+  represents => { "document" };
+rxdirs::
+ "/docs/cf3-reference.html#perms-in-files"
+  represents => { "document" };
+rename::
+ "/docs/cf3-reference.html#rename-in-files"
+  represents => { "manual subsection" };
+disable::
+ "/docs/cf3-reference.html#rename-in-files"
+  represents => { "document" };
+disable_mode::
+ "/docs/cf3-reference.html#rename-in-files"
+  represents => { "document" };
+disable_suffix::
+ "/docs/cf3-reference.html#rename-in-files"
+  represents => { "document" };
+newname::
+ "/docs/cf3-reference.html#rename-in-files"
+  represents => { "document" };
+rotate::
+ "/docs/cf3-reference.html#rename-in-files"
+  represents => { "document" };
+repository::
+ "/docs/cf3-reference.html#repository-in-files"
+  represents => { "manual subsection" };
+touch::
+ "/docs/cf3-reference.html#touch-in-files"
+  represents => { "manual subsection" };
+transformer::
+ "/docs/cf3-reference.html#transformer-in-files"
+  represents => { "manual subsection" };
+__promises_in_edit_line::
+ "/docs/cf3-reference.html#g_t_002a-in-edit_005fline-promises"
+  represents => { "manual section * promises in edit_line" };
+select_region::
+ "/docs/cf3-reference.html#select_005fregion-in-_002a"
+  represents => { "manual subsection" };
+include_start_delimiter::
+ "/docs/cf3-reference.html#select_005fregion-in-_002a"
+  represents => { "document" };
+include_end_delimiter::
+ "/docs/cf3-reference.html#select_005fregion-in-_002a"
+  represents => { "document" };
+select_start::
+ "/docs/cf3-reference.html#select_005fregion-in-_002a"
+  represents => { "document" };
+select_region::
+ "/docs/cf3-reference.html#select_005fregion-in-_002a"
+  represents => { "code example" };
+select_end::
+ "/docs/cf3-reference.html#select_005fregion-in-_002a"
+  represents => { "document" };
+select_region::
+ "/docs/cf3-reference.html#select_005fregion-in-_002a"
+  represents => { "code example" };
+delete_lines_promises_in_edit_line::
+ "/docs/cf3-reference.html#delete_005flines-in-edit_005fline-promises"
+  represents => { "manual section delete_lines promises in edit_line" };
+delete_select::
+ "/docs/cf3-reference.html#delete_005fselect-in-delete_005flines"
+  represents => { "manual subsection" };
+delete_if_startwith_from_list::
+ "/docs/cf3-reference.html#delete_005fselect-in-delete_005flines"
+  represents => { "document" };
+delete_if_not_startwith_from_list::
+ "/docs/cf3-reference.html#delete_005fselect-in-delete_005flines"
+  represents => { "document" };
+delete_if_match_from_list::
+ "/docs/cf3-reference.html#delete_005fselect-in-delete_005flines"
+  represents => { "document" };
+delete_if_not_match_from_list::
+ "/docs/cf3-reference.html#delete_005fselect-in-delete_005flines"
+  represents => { "document" };
+delete_if_contains_from_list::
+ "/docs/cf3-reference.html#delete_005fselect-in-delete_005flines"
+  represents => { "document" };
+delete_if_not_contains_from_list::
+ "/docs/cf3-reference.html#delete_005fselect-in-delete_005flines"
+  represents => { "document" };
+not_matching::
+ "/docs/cf3-reference.html#not_005fmatching-in-delete_005flines"
+  represents => { "manual subsection" };
+insert_lines_promises_in_edit_line::
+ "/docs/cf3-reference.html#insert_005flines-in-edit_005fline-promises"
+  represents => { "manual section insert_lines promises in edit_line" };
+insert_lines_promises_in_edit_line::
+ "/docs/cf3-reference.html#insert_005flines-in-edit_005fline-promises"
+  represents => { "code example" };
+expand_scalars::
+ "/docs/cf3-reference.html#expand_005fscalars-in-insert_005flines"
+  represents => { "manual subsection" };
+insert_type::
+ "/docs/cf3-reference.html#insert_005ftype-in-insert_005flines"
+  represents => { "manual subsection" };
+insert_select::
+ "/docs/cf3-reference.html#insert_005fselect-in-insert_005flines"
+  represents => { "manual subsection" };
+insert_if_startwith_from_list::
+ "/docs/cf3-reference.html#insert_005fselect-in-insert_005flines"
+  represents => { "document" };
+insert_if_not_startwith_from_list::
+ "/docs/cf3-reference.html#insert_005fselect-in-insert_005flines"
+  represents => { "document" };
+insert_if_match_from_list::
+ "/docs/cf3-reference.html#insert_005fselect-in-insert_005flines"
+  represents => { "document" };
+insert_if_not_match_from_list::
+ "/docs/cf3-reference.html#insert_005fselect-in-insert_005flines"
+  represents => { "document" };
+insert_if_contains_from_list::
+ "/docs/cf3-reference.html#insert_005fselect-in-insert_005flines"
+  represents => { "document" };
+insert_if_not_contains_from_list::
+ "/docs/cf3-reference.html#insert_005fselect-in-insert_005flines"
+  represents => { "document" };
+location::
+ "/docs/cf3-reference.html#location-in-insert_005flines"
+  represents => { "manual subsection" };
+before_after::
+ "/docs/cf3-reference.html#location-in-insert_005flines"
+  represents => { "document" };
+first_last::
+ "/docs/cf3-reference.html#location-in-insert_005flines"
+  represents => { "document" };
+select_line_matching::
+ "/docs/cf3-reference.html#location-in-insert_005flines"
+  represents => { "document" };
+whitespace_policy::
+ "/docs/cf3-reference.html#whitespace_005fpolicy-in-insert_005flines"
+  represents => { "manual subsection" };
+field_edits_promises_in_edit_line::
+ "/docs/cf3-reference.html#field_005fedits-in-edit_005fline-promises"
+  represents => { "manual section field_edits promises in edit_line" };
+field_edits_promises_in_edit_line::
+ "/docs/cf3-reference.html#field_005fedits-in-edit_005fline-promises"
+  represents => { "code example" };
+edit_field::
+ "/docs/cf3-reference.html#edit_005ffield-in-field_005fedits"
+  represents => { "manual subsection" };
+allow_blank_fields::
+ "/docs/cf3-reference.html#edit_005ffield-in-field_005fedits"
+  represents => { "document" };
+extend_fields::
+ "/docs/cf3-reference.html#edit_005ffield-in-field_005fedits"
+  represents => { "document" };
+field_operation::
+ "/docs/cf3-reference.html#edit_005ffield-in-field_005fedits"
+  represents => { "document" };
+field_separator::
+ "/docs/cf3-reference.html#edit_005ffield-in-field_005fedits"
+  represents => { "document" };
+field_value::
+ "/docs/cf3-reference.html#edit_005ffield-in-field_005fedits"
+  represents => { "document" };
+select_field::
+ "/docs/cf3-reference.html#edit_005ffield-in-field_005fedits"
+  represents => { "document" };
+start_fields_from_zero::
+ "/docs/cf3-reference.html#edit_005ffield-in-field_005fedits"
+  represents => { "document" };
+value_separator::
+ "/docs/cf3-reference.html#edit_005ffield-in-field_005fedits"
+  represents => { "document" };
+replace_patterns_promises_in_edit_line::
+ "/docs/cf3-reference.html#replace_005fpatterns-in-edit_005fline-promises"
+  represents => { "manual section replace_patterns promises in edit_line" };
+replace_patterns_promises_in_edit_line::
+ "/docs/cf3-reference.html#replace_005fpatterns-in-edit_005fline-promises"
+  represents => { "code example" };
+replace_with::
+ "/docs/cf3-reference.html#replace_005fwith-in-replace_005fpatterns"
+  represents => { "manual subsection" };
+occurrences::
+ "/docs/cf3-reference.html#replace_005fwith-in-replace_005fpatterns"
+  represents => { "document" };
+replace_value::
+ "/docs/cf3-reference.html#replace_005fwith-in-replace_005fpatterns"
+  represents => { "document" };
+interfaces_promises_in_agent::
+ "/docs/cf3-reference.html#interfaces-in-agent-promises"
+  represents => { "manual section interfaces promises in agent" };
+interfaces_promises_in_agent::
+ "/docs/cf3-reference.html#interfaces-in-agent-promises"
+  represents => { "code example" };
+tcp_ip::
+ "/docs/cf3-reference.html#tcp_005fip-in-interfaces"
+  represents => { "manual subsection" };
+ipv4_address::
+ "/docs/cf3-reference.html#tcp_005fip-in-interfaces"
+  represents => { "document" };
+ipv4_netmask::
+ "/docs/cf3-reference.html#tcp_005fip-in-interfaces"
+  represents => { "document" };
+ipv6_address::
+ "/docs/cf3-reference.html#tcp_005fip-in-interfaces"
+  represents => { "document" };
+methods_promises_in_agent::
+ "/docs/cf3-reference.html#methods-in-agent-promises"
+  represents => { "manual section methods promises in agent" };
+methods_promises_in_agent::
+ "/docs/cf3-reference.html#methods-in-agent-promises"
+  represents => { "code example" };
+usebundle::
+ "/docs/cf3-reference.html#usebundle-in-methods"
+  represents => { "manual subsection" };
+outputs_promises_in_agent::
+ "/docs/cf3-reference.html#outputs-in-agent-promises"
+  represents => { "manual section outputs promises in agent" };
+output_level::
+ "/docs/cf3-reference.html#output_005flevel-in-outputs"
+  represents => { "manual subsection" };
+promiser_type::
+ "/docs/cf3-reference.html#promiser_005ftype-in-outputs"
+  represents => { "manual subsection" };
+packages_promises_in_agent::
+ "/docs/cf3-reference.html#packages-in-agent-promises"
+  represents => { "manual section packages promises in agent" };
+package_architectures::
+ "/docs/cf3-reference.html#package_005farchitectures-in-packages"
+  represents => { "manual subsection" };
+package_method::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "manual subsection" };
+package_add_command::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_arch_regex::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_changes::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_delete_command::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_delete_convention::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_file_repositories::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_installed_regex::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_list_arch_regex::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_list_command::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_list_name_regex::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_list_update_command::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_list_update_ifelapsed::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_list_version_regex::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_name_convention::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_name_regex::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_noverify_regex::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_noverify_returncode::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_patch_arch_regex::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_patch_command::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_patch_installed_regex::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_patch_list_command::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_patch_name_regex::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_patch_version_regex::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_update_command::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_verify_command::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_version_regex::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_multiline_start::
+ "/docs/cf3-reference.html#package_005fmethod-in-packages"
+  represents => { "document" };
+package_policy::
+ "/docs/cf3-reference.html#package_005fpolicy-in-packages"
+  represents => { "manual subsection" };
+package_select::
+ "/docs/cf3-reference.html#package_005fselect-in-packages"
+  represents => { "manual subsection" };
+package_version::
+ "/docs/cf3-reference.html#package_005fversion-in-packages"
+  represents => { "manual subsection" };
+processes_promises_in_agent::
+ "/docs/cf3-reference.html#processes-in-agent-promises"
+  represents => { "manual section processes promises in agent" };
+processes_promises_in_agent::
+ "/docs/cf3-reference.html#processes-in-agent-promises"
+  represents => { "code example" };
+processes_promises_in_agent::
+ "/docs/cf3-reference.html#processes-in-agent-promises"
+  represents => { "code example" };
+processes_promises_in_agent::
+ "/docs/cf3-reference.html#processes-in-agent-promises"
+  represents => { "code example" };
+processes_promises_in_agent::
+ "/docs/cf3-reference.html#processes-in-agent-promises"
+  represents => { "code example" };
+processes_promises_in_agent::
+ "/docs/cf3-reference.html#processes-in-agent-promises"
+  represents => { "code example" };
+process_count::
+ "/docs/cf3-reference.html#process_005fcount-in-processes"
+  represents => { "manual subsection" };
+in_range_define::
+ "/docs/cf3-reference.html#process_005fcount-in-processes"
+  represents => { "document" };
+match_range::
+ "/docs/cf3-reference.html#process_005fcount-in-processes"
+  represents => { "document" };
+out_of_range_define::
+ "/docs/cf3-reference.html#process_005fcount-in-processes"
+  represents => { "document" };
+process_select::
+ "/docs/cf3-reference.html#process_005fselect-in-processes"
+  represents => { "manual subsection" };
+command::
+ "/docs/cf3-reference.html#process_005fselect-in-processes"
+  represents => { "document" };
+pid::
+ "/docs/cf3-reference.html#process_005fselect-in-processes"
+  represents => { "document" };
+pgid::
+ "/docs/cf3-reference.html#process_005fselect-in-processes"
+  represents => { "document" };
+ppid::
+ "/docs/cf3-reference.html#process_005fselect-in-processes"
+  represents => { "document" };
+priority::
+ "/docs/cf3-reference.html#process_005fselect-in-processes"
+  represents => { "document" };
+process_owner::
+ "/docs/cf3-reference.html#process_005fselect-in-processes"
+  represents => { "document" };
+process_result::
+ "/docs/cf3-reference.html#process_005fselect-in-processes"
+  represents => { "document" };
+rsize::
+ "/docs/cf3-reference.html#process_005fselect-in-processes"
+  represents => { "document" };
+status::
+ "/docs/cf3-reference.html#process_005fselect-in-processes"
+  represents => { "document" };
+stime_range::
+ "/docs/cf3-reference.html#process_005fselect-in-processes"
+  represents => { "document" };
+ttime_range::
+ "/docs/cf3-reference.html#process_005fselect-in-processes"
+  represents => { "document" };
+tty::
+ "/docs/cf3-reference.html#process_005fselect-in-processes"
+  represents => { "document" };
+threads::
+ "/docs/cf3-reference.html#process_005fselect-in-processes"
+  represents => { "document" };
+vsize::
+ "/docs/cf3-reference.html#process_005fselect-in-processes"
+  represents => { "document" };
+process_stop::
+ "/docs/cf3-reference.html#process_005fstop-in-processes"
+  represents => { "manual subsection" };
+restart_class::
+ "/docs/cf3-reference.html#restart_005fclass-in-processes"
+  represents => { "manual subsection" };
+signals::
+ "/docs/cf3-reference.html#signals-in-processes"
+  represents => { "manual subsection" };
+services_promises_in_agent::
+ "/docs/cf3-reference.html#services-in-agent-promises"
+  represents => { "manual section services promises in agent" };
+service_policy::
+ "/docs/cf3-reference.html#service_005fpolicy-in-services"
+  represents => { "manual subsection" };
+service_dependencies::
+ "/docs/cf3-reference.html#service_005fdependencies-in-services"
+  represents => { "manual subsection" };
+service_method::
+ "/docs/cf3-reference.html#service_005fmethod-in-services"
+  represents => { "manual subsection" };
+service_type::
+ "/docs/cf3-reference.html#service_005fmethod-in-services"
+  represents => { "document" };
+service_args::
+ "/docs/cf3-reference.html#service_005fmethod-in-services"
+  represents => { "document" };
+service_autostart_policy::
+ "/docs/cf3-reference.html#service_005fmethod-in-services"
+  represents => { "document" };
+service_dependence_chain::
+ "/docs/cf3-reference.html#service_005fmethod-in-services"
+  represents => { "document" };
+storage_promises_in_agent::
+ "/docs/cf3-reference.html#storage-in-agent-promises"
+  represents => { "manual section storage promises in agent" };
+storage_promises_in_agent::
+ "/docs/cf3-reference.html#storage-in-agent-promises"
+  represents => { "code example" };
+mount::
+ "/docs/cf3-reference.html#mount-in-storage"
+  represents => { "manual subsection" };
+edit_fstab::
+ "/docs/cf3-reference.html#mount-in-storage"
+  represents => { "document" };
+mount_type::
+ "/docs/cf3-reference.html#mount-in-storage"
+  represents => { "document" };
+mount_source::
+ "/docs/cf3-reference.html#mount-in-storage"
+  represents => { "document" };
+mount_server::
+ "/docs/cf3-reference.html#mount-in-storage"
+  represents => { "document" };
+mount_options::
+ "/docs/cf3-reference.html#mount-in-storage"
+  represents => { "document" };
+unmount::
+ "/docs/cf3-reference.html#mount-in-storage"
+  represents => { "document" };
+volume::
+ "/docs/cf3-reference.html#volume-in-storage"
+  represents => { "manual subsection" };
+check_foreign::
+ "/docs/cf3-reference.html#volume-in-storage"
+  represents => { "document" };
+freespace::
+ "/docs/cf3-reference.html#volume-in-storage"
+  represents => { "document" };
+sensible_size::
+ "/docs/cf3-reference.html#volume-in-storage"
+  represents => { "document" };
+sensible_count::
+ "/docs/cf3-reference.html#volume-in-storage"
+  represents => { "document" };
+scan_arrivals::
+ "/docs/cf3-reference.html#volume-in-storage"
+  represents => { "document" };
+Bundles_of_server::
+ "/docs/cf3-reference.html#Bundles-for-server"
+  represents => { "manual chapter" };
+Bundles_of_server::
+ "/docs/cf3-reference.html#Bundles-for-server"
+  represents => { "code example" };
+access_promises_in_server::
+ "/docs/cf3-reference.html#access-in-server-promises"
+  represents => { "manual section access promises in server" };
+access_promises_in_server::
+ "/docs/cf3-reference.html#access-in-server-promises"
+  represents => { "code example" };
+Access_Example::
+ "/docs/cf3-reference.html#Access-Example"
+  represents => { "manual subsection" };
+admit::
+ "/docs/cf3-reference.html#admit-in-access"
+  represents => { "manual subsection" };
+deny::
+ "/docs/cf3-reference.html#deny-in-access"
+  represents => { "manual subsection" };
+maproot::
+ "/docs/cf3-reference.html#maproot-in-access"
+  represents => { "manual subsection" };
+ifencrypted::
+ "/docs/cf3-reference.html#ifencrypted-in-access"
+  represents => { "manual subsection" };
+resource_type::
+ "/docs/cf3-reference.html#resource_005ftype-in-access"
+  represents => { "manual subsection" };
+roles_promises_in_server::
+ "/docs/cf3-reference.html#roles-in-server-promises"
+  represents => { "manual section roles promises in server" };
+roles_promises_in_server::
+ "/docs/cf3-reference.html#roles-in-server-promises"
+  represents => { "code example" };
+authorize::
+ "/docs/cf3-reference.html#authorize-in-roles"
+  represents => { "manual subsection" };
+Bundles_of_knowledge::
+ "/docs/cf3-reference.html#Bundles-for-knowledge"
+  represents => { "manual chapter" };
+Bundles_of_knowledge::
+ "/docs/cf3-reference.html#Bundles-for-knowledge"
+  represents => { "code example" };
+inferences_promises_in_knowledge::
+ "/docs/cf3-reference.html#inferences-in-knowledge-promises"
+  represents => { "manual section inferences promises in knowledge" };
+inferences_promises_in_knowledge::
+ "/docs/cf3-reference.html#inferences-in-knowledge-promises"
+  represents => { "code example" };
+inferences_promises_in_knowledge::
+ "/docs/cf3-reference.html#inferences-in-knowledge-promises"
+  represents => { "code example" };
+precedents::
+ "/docs/cf3-reference.html#precedents-in-inferences"
+  represents => { "manual subsection" };
+qualifiers::
+ "/docs/cf3-reference.html#qualifiers-in-inferences"
+  represents => { "manual subsection" };
+things_promises_in_knowledge::
+ "/docs/cf3-reference.html#things-in-knowledge-promises"
+  represents => { "manual section things promises in knowledge" };
+synonyms::
+ "/docs/cf3-reference.html#synonyms-in-things"
+  represents => { "manual subsection" };
+affects::
+ "/docs/cf3-reference.html#affects-in-things"
+  represents => { "manual subsection" };
+belongs_to::
+ "/docs/cf3-reference.html#belongs_005fto-in-things"
+  represents => { "manual subsection" };
+caused_by::
+ "/docs/cf3-reference.html#caused_005fby-in-things"
+  represents => { "manual subsection" };
+causes::
+ "/docs/cf3-reference.html#causes-in-things"
+  represents => { "manual subsection" };
+certainty::
+ "/docs/cf3-reference.html#certainty-in-things"
+  represents => { "manual subsection" };
+determines::
+ "/docs/cf3-reference.html#determines-in-things"
+  represents => { "manual subsection" };
+generalizations::
+ "/docs/cf3-reference.html#generalizations-in-things"
+  represents => { "manual subsection" };
+is_connected_to::
+ "/docs/cf3-reference.html#is_005fconnected_005fto-in-things"
+  represents => { "manual subsection" };
+is_located_in::
+ "/docs/cf3-reference.html#is_005flocated_005fin-in-things"
+  represents => { "manual subsection" };
+is_part_of::
+ "/docs/cf3-reference.html#is_005fpart_005fof-in-things"
+  represents => { "manual subsection" };
+needs::
+ "/docs/cf3-reference.html#needs-in-things"
+  represents => { "manual subsection" };
+provides::
+ "/docs/cf3-reference.html#provides-in-things"
+  represents => { "manual subsection" };
+uses::
+ "/docs/cf3-reference.html#uses-in-things"
+  represents => { "manual subsection" };
+topics_promises_in_knowledge::
+ "/docs/cf3-reference.html#topics-in-knowledge-promises"
+  represents => { "manual section topics promises in knowledge" };
+topics_promises_in_knowledge::
+ "/docs/cf3-reference.html#topics-in-knowledge-promises"
+  represents => { "code example" };
+association::
+ "/docs/cf3-reference.html#association-in-topics"
+  represents => { "manual subsection" };
+forward_relationship::
+ "/docs/cf3-reference.html#association-in-topics"
+  represents => { "document" };
+backward_relationship::
+ "/docs/cf3-reference.html#association-in-topics"
+  represents => { "document" };
+associates::
+ "/docs/cf3-reference.html#association-in-topics"
+  represents => { "document" };
+synonyms::
+ "/docs/cf3-reference.html#synonyms-in-topics"
+  represents => { "manual subsection" };
+generalizations::
+ "/docs/cf3-reference.html#generalizations-in-topics"
+  represents => { "manual subsection" };
+occurrences_promises_in_knowledge::
+ "/docs/cf3-reference.html#occurrences-in-knowledge-promises"
+  represents => { "manual section occurrences promises in knowledge" };
+occurrences_promises_in_knowledge::
+ "/docs/cf3-reference.html#occurrences-in-knowledge-promises"
+  represents => { "code example" };
+represents::
+ "/docs/cf3-reference.html#represents-in-occurrences"
+  represents => { "manual subsection" };
+representation::
+ "/docs/cf3-reference.html#representation-in-occurrences"
+  represents => { "manual subsection" };
+web_root::
+ "/docs/cf3-reference.html#web_005froot-in-occurrences"
+  represents => { "manual subsection" };
+path_root::
+ "/docs/cf3-reference.html#path_005froot-in-occurrences"
+  represents => { "manual subsection" };
+Bundles_of_monitor::
+ "/docs/cf3-reference.html#Bundles-for-monitor"
+  represents => { "manual chapter" };
+Bundles_of_monitor::
+ "/docs/cf3-reference.html#Bundles-for-monitor"
+  represents => { "code example" };
+measurements_promises_in_monitor::
+ "/docs/cf3-reference.html#measurements-in-monitor-promises"
+  represents => { "manual section measurements promises in monitor" };
+stream_type::
+ "/docs/cf3-reference.html#stream_005ftype-in-measurements"
+  represents => { "manual subsection" };
+data_type::
+ "/docs/cf3-reference.html#data_005ftype-in-measurements"
+  represents => { "manual subsection" };
+history_type::
+ "/docs/cf3-reference.html#history_005ftype-in-measurements"
+  represents => { "manual subsection" };
+units::
+ "/docs/cf3-reference.html#units-in-measurements"
+  represents => { "manual subsection" };
+match_value::
+ "/docs/cf3-reference.html#match_005fvalue-in-measurements"
+  represents => { "manual subsection" };
+select_line_matching::
+ "/docs/cf3-reference.html#match_005fvalue-in-measurements"
+  represents => { "document" };
+select_line_number::
+ "/docs/cf3-reference.html#match_005fvalue-in-measurements"
+  represents => { "document" };
+extraction_regex::
+ "/docs/cf3-reference.html#match_005fvalue-in-measurements"
+  represents => { "document" };
+track_growing_file::
+ "/docs/cf3-reference.html#match_005fvalue-in-measurements"
+  represents => { "document" };
+Special_functions::
+ "/docs/cf3-reference.html#Special-functions"
+  represents => { "manual chapter" };
+Introduction_to_functions::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "manual section Introduction to functions" };
+Functions_listed_by_return_value::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "manual subsection" };
+Functions_which_return_class::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_return::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_return_int::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_return::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_return_real::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_return_string::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_fill_arrays::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "manual subsection" };
+Functions_which_read_large_data::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "manual subsection" };
+Functions_which_read_arrays::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_read_disk_data::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_read_from_a_remote_cfengine::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_read_classes::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_read_command_output::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_read_the_environment::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_read_files::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_read_LDAP_data::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_read_from_the_network::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_read_the_Windows_registry::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_read::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_read_strings::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "Text section" };
+Functions_which_look_at_file_metadata::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "manual subsection" };
+Functions_which_look_at_variables::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "manual subsection" };
+Functions_involving_date_or_time::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "manual subsection" };
+Functions_which_work_with_or_on_regular_expressions::
+ "/docs/cf3-reference.html#Introduction-to-functions"
+  represents => { "manual subsection" };
+Function_accessedbefore::
+ "/docs/cf3-reference.html#Function-accessedbefore"
+  represents => { "manual section Function accessedbefore" };
+Function_accessedbefore::
+ "/docs/cf3-reference.html#Function-accessedbefore"
+  represents => { "code example" };
+Function_accumulated::
+ "/docs/cf3-reference.html#Function-accumulated"
+  represents => { "manual section Function accumulated" };
+Function_ago::
+ "/docs/cf3-reference.html#Function-ago"
+  represents => { "manual section Function ago" };
+Function_canonify::
+ "/docs/cf3-reference.html#Function-canonify"
+  represents => { "manual section Function canonify" };
+Function_changedbefore::
+ "/docs/cf3-reference.html#Function-changedbefore"
+  represents => { "manual section Function changedbefore" };
+Function_classify::
+ "/docs/cf3-reference.html#Function-classify"
+  represents => { "manual section Function classify" };
+Function_classmatch::
+ "/docs/cf3-reference.html#Function-classmatch"
+  represents => { "manual section Function classmatch" };
+Function_countclassesmatching::
+ "/docs/cf3-reference.html#Function-countclassesmatching"
+  represents => { "manual section Function countclassesmatching" };
+Function_countlinesmatching::
+ "/docs/cf3-reference.html#Function-countlinesmatching"
+  represents => { "manual section Function countlinesmatching" };
+Function_diskfree::
+ "/docs/cf3-reference.html#Function-diskfree"
+  represents => { "manual section Function diskfree" };
+Function_escape::
+ "/docs/cf3-reference.html#Function-escape"
+  represents => { "manual section Function escape" };
+Function_execresult::
+ "/docs/cf3-reference.html#Function-execresult"
+  represents => { "manual section Function execresult" };
+Function_fileexists::
+ "/docs/cf3-reference.html#Function-fileexists"
+  represents => { "manual section Function fileexists" };
+Function_filesexist::
+ "/docs/cf3-reference.html#Function-filesexist"
+  represents => { "manual section Function filesexist" };
+Function_filesize::
+ "/docs/cf3-reference.html#Function-filesize"
+  represents => { "manual section Function filesize" };
+Function_getenv::
+ "/docs/cf3-reference.html#Function-getenv"
+  represents => { "manual section Function getenv" };
+Function_getfields::
+ "/docs/cf3-reference.html#Function-getfields"
+  represents => { "manual section Function getfields" };
+Function_getgid::
+ "/docs/cf3-reference.html#Function-getgid"
+  represents => { "manual section Function getgid" };
+Function_getindices::
+ "/docs/cf3-reference.html#Function-getindices"
+  represents => { "manual section Function getindices" };
+Function_getuid::
+ "/docs/cf3-reference.html#Function-getuid"
+  represents => { "manual section Function getuid" };
+Function_getusers::
+ "/docs/cf3-reference.html#Function-getusers"
+  represents => { "manual section Function getusers" };
+Function_getvalues::
+ "/docs/cf3-reference.html#Function-getvalues"
+  represents => { "manual section Function getvalues" };
+Function_grep::
+ "/docs/cf3-reference.html#Function-grep"
+  represents => { "manual section Function grep" };
+Function_groupexists::
+ "/docs/cf3-reference.html#Function-groupexists"
+  represents => { "manual section Function groupexists" };
+Function_hash::
+ "/docs/cf3-reference.html#Function-hash"
+  represents => { "manual section Function hash" };
+Function_hashmatch::
+ "/docs/cf3-reference.html#Function-hashmatch"
+  represents => { "manual section Function hashmatch" };
+Function_host2ip::
+ "/docs/cf3-reference.html#Function-host2ip"
+  represents => { "manual section Function host2ip" };
+Function_ip2host::
+ "/docs/cf3-reference.html#Function-ip2host"
+  represents => { "manual section Function ip2host" };
+Function_hostinnetgroup::
+ "/docs/cf3-reference.html#Function-hostinnetgroup"
+  represents => { "manual section Function hostinnetgroup" };
+Function_hostrange::
+ "/docs/cf3-reference.html#Function-hostrange"
+  represents => { "manual section Function hostrange" };
+Function_hostsseen::
+ "/docs/cf3-reference.html#Function-hostsseen"
+  represents => { "manual section Function hostsseen" };
+Function_hubknowledge::
+ "/docs/cf3-reference.html#Function-hubknowledge"
+  represents => { "manual section Function hubknowledge" };
+Function_iprange::
+ "/docs/cf3-reference.html#Function-iprange"
+  represents => { "manual section Function iprange" };
+Function_irange::
+ "/docs/cf3-reference.html#Function-irange"
+  represents => { "manual section Function irange" };
+Function_isdir::
+ "/docs/cf3-reference.html#Function-isdir"
+  represents => { "manual section Function isdir" };
+Function_isexecutable::
+ "/docs/cf3-reference.html#Function-isexecutable"
+  represents => { "manual section Function isexecutable" };
+Function_isgreaterthan::
+ "/docs/cf3-reference.html#Function-isgreaterthan"
+  represents => { "manual section Function isgreaterthan" };
+Function_islessthan::
+ "/docs/cf3-reference.html#Function-islessthan"
+  represents => { "manual section Function islessthan" };
+Function_islink::
+ "/docs/cf3-reference.html#Function-islink"
+  represents => { "manual section Function islink" };
+Function_isnewerthan::
+ "/docs/cf3-reference.html#Function-isnewerthan"
+  represents => { "manual section Function isnewerthan" };
+Function_isplain::
+ "/docs/cf3-reference.html#Function-isplain"
+  represents => { "manual section Function isplain" };
+Function_isvariable::
+ "/docs/cf3-reference.html#Function-isvariable"
+  represents => { "manual section Function isvariable" };
+Function_join::
+ "/docs/cf3-reference.html#Function-join"
+  represents => { "manual section Function join" };
+Function_lastnode::
+ "/docs/cf3-reference.html#Function-lastnode"
+  represents => { "manual section Function lastnode" };
+Function_laterthan::
+ "/docs/cf3-reference.html#Function-laterthan"
+  represents => { "manual section Function laterthan" };
+Function_ldaparray::
+ "/docs/cf3-reference.html#Function-ldaparray"
+  represents => { "manual section Function ldaparray" };
+Function_ldaparray::
+ "/docs/cf3-reference.html#Function-ldaparray"
+  represents => { "code example" };
+Function_ldaparray::
+ "/docs/cf3-reference.html#Function-ldaparray"
+  represents => { "code example" };
+Function_ldaplist::
+ "/docs/cf3-reference.html#Function-ldaplist"
+  represents => { "manual section Function ldaplist" };
+Function_ldaplist::
+ "/docs/cf3-reference.html#Function-ldaplist"
+  represents => { "code example" };
+Function_ldaplist::
+ "/docs/cf3-reference.html#Function-ldaplist"
+  represents => { "code example" };
+Function_ldapvalue::
+ "/docs/cf3-reference.html#Function-ldapvalue"
+  represents => { "manual section Function ldapvalue" };
+Function_ldapvalue::
+ "/docs/cf3-reference.html#Function-ldapvalue"
+  represents => { "code example" };
+Function_now::
+ "/docs/cf3-reference.html#Function-now"
+  represents => { "manual section Function now" };
+Function_on::
+ "/docs/cf3-reference.html#Function-on"
+  represents => { "manual section Function on" };
+Function_parseintarray::
+ "/docs/cf3-reference.html#Function-parseintarray"
+  represents => { "manual section Function parseintarray" };
+Function_parserealarray::
+ "/docs/cf3-reference.html#Function-parserealarray"
+  represents => { "manual section Function parserealarray" };
+Function_parsestringarray::
+ "/docs/cf3-reference.html#Function-parsestringarray"
+  represents => { "manual section Function parsestringarray" };
+Function_parsestringarrayidx::
+ "/docs/cf3-reference.html#Function-parsestringarrayidx"
+  represents => { "manual section Function parsestringarrayidx" };
+Function_peers::
+ "/docs/cf3-reference.html#Function-peers"
+  represents => { "manual section Function peers" };
+Function_peers::
+ "/docs/cf3-reference.html#Function-peers"
+  represents => { "code example" };
+Function_peerleader::
+ "/docs/cf3-reference.html#Function-peerleader"
+  represents => { "manual section Function peerleader" };
+Function_peerleader::
+ "/docs/cf3-reference.html#Function-peerleader"
+  represents => { "code example" };
+Function_peerleaders::
+ "/docs/cf3-reference.html#Function-peerleaders"
+  represents => { "manual section Function peerleaders" };
+Function_peerleaders::
+ "/docs/cf3-reference.html#Function-peerleaders"
+  represents => { "code example" };
+Function_product::
+ "/docs/cf3-reference.html#Function-product"
+  represents => { "manual section Function product" };
+Function_randomint::
+ "/docs/cf3-reference.html#Function-randomint"
+  represents => { "manual section Function randomint" };
+Function_readfile::
+ "/docs/cf3-reference.html#Function-readfile"
+  represents => { "manual section Function readfile" };
+Function_readintarray::
+ "/docs/cf3-reference.html#Function-readintarray"
+  represents => { "manual section Function readintarray" };
+Function_readintarray::
+ "/docs/cf3-reference.html#Function-readintarray"
+  represents => { "code example" };
+Function_readintarray::
+ "/docs/cf3-reference.html#Function-readintarray"
+  represents => { "code example" };
+Function_readintlist::
+ "/docs/cf3-reference.html#Function-readintlist"
+  represents => { "manual section Function readintlist" };
+Function_readrealarray::
+ "/docs/cf3-reference.html#Function-readrealarray"
+  represents => { "manual section Function readrealarray" };
+Function_readreallist::
+ "/docs/cf3-reference.html#Function-readreallist"
+  represents => { "manual section Function readreallist" };
+Function_readstringarray::
+ "/docs/cf3-reference.html#Function-readstringarray"
+  represents => { "manual section Function readstringarray" };
+Function_readstringarray::
+ "/docs/cf3-reference.html#Function-readstringarray"
+  represents => { "code example" };
+Function_readstringarray::
+ "/docs/cf3-reference.html#Function-readstringarray"
+  represents => { "code example" };
+Function_readstringarrayidx::
+ "/docs/cf3-reference.html#Function-readstringarrayidx"
+  represents => { "manual section Function readstringarrayidx" };
+Function_readstringarrayidx::
+ "/docs/cf3-reference.html#Function-readstringarrayidx"
+  represents => { "code example" };
+Function_readstringarrayidx::
+ "/docs/cf3-reference.html#Function-readstringarrayidx"
+  represents => { "code example" };
+Function_readstringlist::
+ "/docs/cf3-reference.html#Function-readstringlist"
+  represents => { "manual section Function readstringlist" };
+Function_readstringlist::
+ "/docs/cf3-reference.html#Function-readstringlist"
+  represents => { "code example" };
+Function_readtcp::
+ "/docs/cf3-reference.html#Function-readtcp"
+  represents => { "manual section Function readtcp" };
+Function_regarray::
+ "/docs/cf3-reference.html#Function-regarray"
+  represents => { "manual section Function regarray" };
+Function_regcmp::
+ "/docs/cf3-reference.html#Function-regcmp"
+  represents => { "manual section Function regcmp" };
+Function_regcmp::
+ "/docs/cf3-reference.html#Function-regcmp"
+  represents => { "code example" };
+Function_regextract::
+ "/docs/cf3-reference.html#Function-regextract"
+  represents => { "manual section Function regextract" };
+Function_registryvalue::
+ "/docs/cf3-reference.html#Function-registryvalue"
+  represents => { "manual section Function registryvalue" };
+Function_regline::
+ "/docs/cf3-reference.html#Function-regline"
+  represents => { "manual section Function regline" };
+Function_reglist::
+ "/docs/cf3-reference.html#Function-reglist"
+  represents => { "manual section Function reglist" };
+Function_regldap::
+ "/docs/cf3-reference.html#Function-regldap"
+  represents => { "manual section Function regldap" };
+Function_regldap::
+ "/docs/cf3-reference.html#Function-regldap"
+  represents => { "code example" };
+Function_regldap::
+ "/docs/cf3-reference.html#Function-regldap"
+  represents => { "code example" };
+Function_remotescalar::
+ "/docs/cf3-reference.html#Function-remotescalar"
+  represents => { "manual section Function remotescalar" };
+Function_remotescalar::
+ "/docs/cf3-reference.html#Function-remotescalar"
+  represents => { "code example" };
+Function_remoteclassesmatching::
+ "/docs/cf3-reference.html#Function-remoteclassesmatching"
+  represents => { "manual section Function remoteclassesmatching" };
+Function_returnszero::
+ "/docs/cf3-reference.html#Function-returnszero"
+  represents => { "manual section Function returnszero" };
+Function_rrange::
+ "/docs/cf3-reference.html#Function-rrange"
+  represents => { "manual section Function rrange" };
+Function_selectservers::
+ "/docs/cf3-reference.html#Function-selectservers"
+  represents => { "manual section Function selectservers" };
+Function_splayclass::
+ "/docs/cf3-reference.html#Function-splayclass"
+  represents => { "manual section Function splayclass" };
+Function_splitstring::
+ "/docs/cf3-reference.html#Function-splitstring"
+  represents => { "manual section Function splitstring" };
+Function_strcmp::
+ "/docs/cf3-reference.html#Function-strcmp"
+  represents => { "manual section Function strcmp" };
+Function_sum::
+ "/docs/cf3-reference.html#Function-sum"
+  represents => { "manual section Function sum" };
+Function_translatepath::
+ "/docs/cf3-reference.html#Function-translatepath"
+  represents => { "manual section Function translatepath" };
+Function_usemodule::
+ "/docs/cf3-reference.html#Function-usemodule"
+  represents => { "manual section Function usemodule" };
+Function_userexists::
+ "/docs/cf3-reference.html#Function-userexists"
+  represents => { "manual section Function userexists" };
+Special_Variables::
+ "/docs/cf3-reference.html#Special-Variables"
+  represents => { "manual chapter" };
+Variable_context_const::
+ "/docs/cf3-reference.html#Variable-context-const"
+  represents => { "manual section Variable context const" };
+Variable_const_dollar::
+ "/docs/cf3-reference.html#Variable-const_002edollar"
+  represents => { "manual subsection" };
+Variable_const_endl::
+ "/docs/cf3-reference.html#Variable-const_002eendl"
+  represents => { "manual subsection" };
+Variable_const_n::
+ "/docs/cf3-reference.html#Variable-const_002en"
+  represents => { "manual subsection" };
+Variable_const_r::
+ "/docs/cf3-reference.html#Variable-const_002er"
+  represents => { "manual subsection" };
+Variable_const_t::
+ "/docs/cf3-reference.html#Variable-const_002et"
+  represents => { "manual subsection" };
+Variable_context_edit::
+ "/docs/cf3-reference.html#Variable-context-edit"
+  represents => { "manual section Variable context edit" };
+Variable_edit_filename::
+ "/docs/cf3-reference.html#Variable-edit_002efilename"
+  represents => { "manual subsection" };
+Variable_context_match::
+ "/docs/cf3-reference.html#Variable-context-match"
+  represents => { "manual section Variable context match" };
+Variable_match_0::
+ "/docs/cf3-reference.html#Variable-match_002e0"
+  represents => { "manual subsection" };
+Variable_context_mon::
+ "/docs/cf3-reference.html#Variable-context-mon"
+  represents => { "manual section Variable context mon" };
+Variable_mon_value_users::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fusers"
+  represents => { "manual subsection" };
+Variable_mon_av_users::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fusers"
+  represents => { "manual subsection" };
+Variable_mon_dev_users::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fusers"
+  represents => { "manual subsection" };
+Variable_mon_value_rootprocs::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005frootprocs"
+  represents => { "manual subsection" };
+Variable_mon_av_rootprocs::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005frootprocs"
+  represents => { "manual subsection" };
+Variable_mon_dev_rootprocs::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005frootprocs"
+  represents => { "manual subsection" };
+Variable_mon_value_otherprocs::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fotherprocs"
+  represents => { "manual subsection" };
+Variable_mon_av_otherprocs::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fotherprocs"
+  represents => { "manual subsection" };
+Variable_mon_dev_otherprocs::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fotherprocs"
+  represents => { "manual subsection" };
+Variable_mon_value_diskfree::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fdiskfree"
+  represents => { "manual subsection" };
+Variable_mon_av_diskfree::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fdiskfree"
+  represents => { "manual subsection" };
+Variable_mon_dev_diskfree::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fdiskfree"
+  represents => { "manual subsection" };
+Variable_mon_value_loadavg::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005floadavg"
+  represents => { "manual subsection" };
+Variable_mon_av_loadavg::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005floadavg"
+  represents => { "manual subsection" };
+Variable_mon_dev_loadavg::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005floadavg"
+  represents => { "manual subsection" };
+Variable_mon_value_netbiosns_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fnetbiosns_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_netbiosns_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fnetbiosns_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_netbiosns_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fnetbiosns_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_netbiosns_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fnetbiosns_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_netbiosns_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fnetbiosns_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_netbiosns_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fnetbiosns_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_netbiosdgm_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fnetbiosdgm_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_netbiosdgm_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fnetbiosdgm_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_netbiosdgm_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fnetbiosdgm_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_netbiosdgm_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fnetbiosdgm_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_netbiosdgm_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fnetbiosdgm_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_netbiosdgm_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fnetbiosdgm_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_netbiosssn_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fnetbiosssn_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_netbiosssn_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fnetbiosssn_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_netbiosssn_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fnetbiosssn_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_netbiosssn_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fnetbiosssn_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_netbiosssn_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fnetbiosssn_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_netbiosssn_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fnetbiosssn_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_irc_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005firc_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_irc_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005firc_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_irc_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005firc_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_irc_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005firc_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_irc_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005firc_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_irc_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005firc_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_cfengine_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fcfengine_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_cfengine_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fcfengine_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_cfengine_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fcfengine_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_cfengine_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fcfengine_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_cfengine_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fcfengine_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_cfengine_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fcfengine_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_nfsd_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fnfsd_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_nfsd_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fnfsd_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_nfsd_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fnfsd_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_nfsd_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fnfsd_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_nfsd_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fnfsd_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_nfsd_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fnfsd_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_smtp_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fsmtp_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_smtp_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fsmtp_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_smtp_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fsmtp_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_smtp_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fsmtp_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_smtp_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fsmtp_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_smtp_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fsmtp_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_www_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fwww_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_www_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fwww_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_www_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fwww_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_www_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fwww_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_www_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fwww_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_www_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fwww_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_ftp_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fftp_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_ftp_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fftp_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_ftp_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fftp_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_ftp_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fftp_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_ftp_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fftp_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_ftp_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fftp_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_ssh_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fssh_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_ssh_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fssh_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_ssh_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fssh_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_ssh_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fssh_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_ssh_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fssh_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_ssh_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fssh_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_wwws_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fwwws_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_wwws_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fwwws_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_wwws_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fwwws_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_wwws_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fwwws_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_wwws_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fwwws_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_wwws_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fwwws_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_icmp_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005ficmp_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_icmp_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005ficmp_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_icmp_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005ficmp_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_icmp_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005ficmp_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_icmp_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005ficmp_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_icmp_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005ficmp_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_udp_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fudp_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_udp_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fudp_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_udp_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fudp_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_udp_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fudp_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_udp_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fudp_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_udp_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fudp_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_dns_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fdns_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_dns_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fdns_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_dns_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fdns_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_dns_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fdns_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_dns_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fdns_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_dns_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fdns_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_tcpsyn_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005ftcpsyn_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_tcpsyn_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005ftcpsyn_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_tcpsyn_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005ftcpsyn_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_tcpsyn_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005ftcpsyn_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_tcpsyn_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005ftcpsyn_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_tcpsyn_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005ftcpsyn_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_tcpack_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005ftcpack_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_tcpack_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005ftcpack_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_tcpack_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005ftcpack_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_tcpack_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005ftcpack_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_tcpack_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005ftcpack_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_tcpack_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005ftcpack_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_tcpfin_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005ftcpfin_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_tcpfin_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005ftcpfin_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_tcpfin_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005ftcpfin_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_tcpfin_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005ftcpfin_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_tcpfin_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005ftcpfin_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_tcpfin_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005ftcpfin_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_tcpmisc_in::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005ftcpmisc_005fin"
+  represents => { "manual subsection" };
+Variable_mon_av_tcpmisc_in::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005ftcpmisc_005fin"
+  represents => { "manual subsection" };
+Variable_mon_dev_tcpmisc_in::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005ftcpmisc_005fin"
+  represents => { "manual subsection" };
+Variable_mon_value_tcpmisc_out::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005ftcpmisc_005fout"
+  represents => { "manual subsection" };
+Variable_mon_av_tcpmisc_out::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005ftcpmisc_005fout"
+  represents => { "manual subsection" };
+Variable_mon_dev_tcpmisc_out::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005ftcpmisc_005fout"
+  represents => { "manual subsection" };
+Variable_mon_value_webaccess::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fwebaccess"
+  represents => { "manual subsection" };
+Variable_mon_av_webaccess::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fwebaccess"
+  represents => { "manual subsection" };
+Variable_mon_dev_webaccess::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fwebaccess"
+  represents => { "manual subsection" };
+Variable_mon_value_weberrors::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fweberrors"
+  represents => { "manual subsection" };
+Variable_mon_av_weberrors::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fweberrors"
+  represents => { "manual subsection" };
+Variable_mon_dev_weberrors::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fweberrors"
+  represents => { "manual subsection" };
+Variable_mon_value_syslog::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fsyslog"
+  represents => { "manual subsection" };
+Variable_mon_av_syslog::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fsyslog"
+  represents => { "manual subsection" };
+Variable_mon_dev_syslog::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fsyslog"
+  represents => { "manual subsection" };
+Variable_mon_value_messages::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fmessages"
+  represents => { "manual subsection" };
+Variable_mon_av_messages::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fmessages"
+  represents => { "manual subsection" };
+Variable_mon_dev_messages::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fmessages"
+  represents => { "manual subsection" };
+Variable_mon_value_temp0::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005ftemp0"
+  represents => { "manual subsection" };
+Variable_mon_av_temp0::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005ftemp0"
+  represents => { "manual subsection" };
+Variable_mon_dev_temp0::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005ftemp0"
+  represents => { "manual subsection" };
+Variable_mon_value_temp1::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005ftemp1"
+  represents => { "manual subsection" };
+Variable_mon_av_temp1::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005ftemp1"
+  represents => { "manual subsection" };
+Variable_mon_dev_temp1::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005ftemp1"
+  represents => { "manual subsection" };
+Variable_mon_value_temp2::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005ftemp2"
+  represents => { "manual subsection" };
+Variable_mon_av_temp2::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005ftemp2"
+  represents => { "manual subsection" };
+Variable_mon_dev_temp2::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005ftemp2"
+  represents => { "manual subsection" };
+Variable_mon_value_temp3::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005ftemp3"
+  represents => { "manual subsection" };
+Variable_mon_av_temp3::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005ftemp3"
+  represents => { "manual subsection" };
+Variable_mon_dev_temp3::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005ftemp3"
+  represents => { "manual subsection" };
+Variable_mon_value_cpu::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fcpu"
+  represents => { "manual subsection" };
+Variable_mon_av_cpu::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fcpu"
+  represents => { "manual subsection" };
+Variable_mon_dev_cpu::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fcpu"
+  represents => { "manual subsection" };
+Variable_mon_value_cpu0::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fcpu0"
+  represents => { "manual subsection" };
+Variable_mon_av_cpu0::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fcpu0"
+  represents => { "manual subsection" };
+Variable_mon_dev_cpu0::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fcpu0"
+  represents => { "manual subsection" };
+Variable_mon_value_cpu1::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fcpu1"
+  represents => { "manual subsection" };
+Variable_mon_av_cpu1::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fcpu1"
+  represents => { "manual subsection" };
+Variable_mon_dev_cpu1::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fcpu1"
+  represents => { "manual subsection" };
+Variable_mon_value_cpu2::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fcpu2"
+  represents => { "manual subsection" };
+Variable_mon_av_cpu2::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fcpu2"
+  represents => { "manual subsection" };
+Variable_mon_dev_cpu2::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fcpu2"
+  represents => { "manual subsection" };
+Variable_mon_value_cpu3::
+ "/docs/cf3-reference.html#Variable-mon_002evalue_005fcpu3"
+  represents => { "manual subsection" };
+Variable_mon_av_cpu3::
+ "/docs/cf3-reference.html#Variable-mon_002eav_005fcpu3"
+  represents => { "manual subsection" };
+Variable_mon_dev_cpu3::
+ "/docs/cf3-reference.html#Variable-mon_002edev_005fcpu3"
+  represents => { "manual subsection" };
+Variable_context_sys::
+ "/docs/cf3-reference.html#Variable-context-sys"
+  represents => { "manual section Variable context sys" };
+Variable_sys_arch::
+ "/docs/cf3-reference.html#Variable-sys_002earch"
+  represents => { "manual subsection" };
+Variable_sys_cdate::
+ "/docs/cf3-reference.html#Variable-sys_002ecdate"
+  represents => { "manual subsection" };
+Variable_sys_cf_agent::
+ "/docs/cf3-reference.html#Variable-sys_002ecf_005fagent"
+  represents => { "manual subsection" };
+Variable_sys_cf_execd::
+ "/docs/cf3-reference.html#Variable-sys_002ecf_005fexecd"
+  represents => { "manual subsection" };
+Variable_sys_cf_hub::
+ "/docs/cf3-reference.html#Variable-sys_002ecf_005fhub"
+  represents => { "manual subsection" };
+Variable_sys_cf_key::
+ "/docs/cf3-reference.html#Variable-sys_002ecf_005fkey"
+  represents => { "manual subsection" };
+Variable_sys_cf_know::
+ "/docs/cf3-reference.html#Variable-sys_002ecf_005fknow"
+  represents => { "manual subsection" };
+Variable_sys_cf_monitord::
+ "/docs/cf3-reference.html#Variable-sys_002ecf_005fmonitord"
+  represents => { "manual subsection" };
+Variable_sys_cf_promises::
+ "/docs/cf3-reference.html#Variable-sys_002ecf_005fpromises"
+  represents => { "manual subsection" };
+Variable_sys_cf_report::
+ "/docs/cf3-reference.html#Variable-sys_002ecf_005freport"
+  represents => { "manual subsection" };
+Variable_sys_cf_runagent::
+ "/docs/cf3-reference.html#Variable-sys_002ecf_005frunagent"
+  represents => { "manual subsection" };
+Variable_sys_cf_serverd::
+ "/docs/cf3-reference.html#Variable-sys_002ecf_005fserverd"
+  represents => { "manual subsection" };
+Variable_sys_cf_twin::
+ "/docs/cf3-reference.html#Variable-sys_002ecf_005ftwin"
+  represents => { "manual subsection" };
+Variable_sys_cf_version::
+ "/docs/cf3-reference.html#Variable-sys_002ecf_005fversion"
+  represents => { "manual subsection" };
+Variable_sys_class::
+ "/docs/cf3-reference.html#Variable-sys_002eclass"
+  represents => { "manual subsection" };
+Variable_sys_date::
+ "/docs/cf3-reference.html#Variable-sys_002edate"
+  represents => { "manual subsection" };
+Variable_sys_domain::
+ "/docs/cf3-reference.html#Variable-sys_002edomain"
+  represents => { "manual subsection" };
+Variable_sys_expires::
+ "/docs/cf3-reference.html#Variable-sys_002eexpires"
+  represents => { "manual subsection" };
+Variable_sys_exports::
+ "/docs/cf3-reference.html#Variable-sys_002eexports"
+  represents => { "manual subsection" };
+Variable_sys_fqhost::
+ "/docs/cf3-reference.html#Variable-sys_002efqhost"
+  represents => { "manual subsection" };
+Variable_sys_fstab::
+ "/docs/cf3-reference.html#Variable-sys_002efstab"
+  represents => { "manual subsection" };
+Variable_sys_host::
+ "/docs/cf3-reference.html#Variable-sys_002ehost"
+  represents => { "manual subsection" };
+Variable_sys_interface::
+ "/docs/cf3-reference.html#Variable-sys_002einterface"
+  represents => { "manual subsection" };
+Variable_sys_ipv4::
+ "/docs/cf3-reference.html#Variable-sys_002eipv4"
+  represents => { "manual subsection" };
+Variable_sys_ipv4_interface_name_::
+ "/docs/cf3-reference.html#Variable-sys_002eipv4_005binterface_005fname_005d"
+  represents => { "manual subsection" };
+Variable_sys_ipv4_1_interface_name_::
+ "/docs/cf3-reference.html#Variable-sys_002eipv4_005f1_005binterface_005fname_005d"
+  represents => { "manual subsection" };
+Variable_sys_ipv4_2_interface_name_::
+ "/docs/cf3-reference.html#Variable-sys_002eipv4_005f2_005binterface_005fname_005d"
+  represents => { "manual subsection" };
+Variable_sys_ipv4_3_interface_name_::
+ "/docs/cf3-reference.html#Variable-sys_002eipv4_005f3_005binterface_005fname_005d"
+  represents => { "manual subsection" };
+Variable_sys_key_digest::
+ "/docs/cf3-reference.html#Variable-sys_002ekey_005fdigest"
+  represents => { "manual subsection" };
+Variable_sys_license_owner::
+ "/docs/cf3-reference.html#Variable-sys_002elicense_005fowner"
+  represents => { "manual subsection" };
+Variable_sys_licenses_granted::
+ "/docs/cf3-reference.html#Variable-sys_002elicenses_005fgranted"
+  represents => { "manual subsection" };
+Variable_sys_licenses_installtime::
+ "/docs/cf3-reference.html#Variable-sys_002elicenses_005finstalltime"
+  represents => { "manual subsection" };
+Variable_sys_long_arch::
+ "/docs/cf3-reference.html#Variable-sys_002elong_005farch"
+  represents => { "manual subsection" };
+Variable_sys_maildir::
+ "/docs/cf3-reference.html#Variable-sys_002emaildir"
+  represents => { "manual subsection" };
+Variable_sys_nova_version::
+ "/docs/cf3-reference.html#Variable-sys_002enova_005fversion"
+  represents => { "manual subsection" };
+Variable_sys_os::
+ "/docs/cf3-reference.html#Variable-sys_002eos"
+  represents => { "manual subsection" };
+Variable_sys_ostype::
+ "/docs/cf3-reference.html#Variable-sys_002eostype"
+  represents => { "manual subsection" };
+Variable_sys_policy_hub::
+ "/docs/cf3-reference.html#Variable-sys_002epolicy_005fhub"
+  represents => { "manual subsection" };
+Variable_sys_release::
+ "/docs/cf3-reference.html#Variable-sys_002erelease"
+  represents => { "manual subsection" };
+Variable_sys_resolv::
+ "/docs/cf3-reference.html#Variable-sys_002eresolv"
+  represents => { "manual subsection" };
+Variable_sys_uqhost::
+ "/docs/cf3-reference.html#Variable-sys_002euqhost"
+  represents => { "manual subsection" };
+Variable_sys_version::
+ "/docs/cf3-reference.html#Variable-sys_002eversion"
+  represents => { "manual subsection" };
+Variable_sys_windir::
+ "/docs/cf3-reference.html#Variable-sys_002ewindir"
+  represents => { "manual subsection" };
+Variable_sys_winprogdir::
+ "/docs/cf3-reference.html#Variable-sys_002ewinprogdir"
+  represents => { "manual subsection" };
+Variable_sys_winprogdir86::
+ "/docs/cf3-reference.html#Variable-sys_002ewinprogdir86"
+  represents => { "manual subsection" };
+Variable_sys_winsysdir::
+ "/docs/cf3-reference.html#Variable-sys_002ewinsysdir"
+  represents => { "manual subsection" };
+Variable_sys_workdir::
+ "/docs/cf3-reference.html#Variable-sys_002eworkdir"
+  represents => { "manual subsection" };
+Variable_context_this::
+ "/docs/cf3-reference.html#Variable-context-this"
+  represents => { "manual section Variable context this" };
+Variable_this_handle::
+ "/docs/cf3-reference.html#Variable-context-this"
+  represents => { "manual subsection" };
+Variable_this_promise_filename::
+ "/docs/cf3-reference.html#Variable-context-this"
+  represents => { "manual subsection" };
+Variable_this_promise_linenumber::
+ "/docs/cf3-reference.html#Variable-context-this"
+  represents => { "manual subsection" };
+Variable_this_promiser::
+ "/docs/cf3-reference.html#Variable-context-this"
+  represents => { "manual subsection" };
+Logs_and_records::
+ "/docs/cf3-reference.html#Logs-and-records"
+  represents => { "manual chapter" };
+Embedded_Databases::
+ "/docs/cf3-reference.html#Embedded-Databases"
+  represents => { "manual section Embedded Databases" };
+Text_logs::
+ "/docs/cf3-reference.html#Text-logs"
+  represents => { "manual section Text logs" };
+Reports_in_outputs::
+ "/docs/cf3-reference.html#Reports-in-outputs"
+  represents => { "manual section Reports in outputs" };
+Additional_reports_in_commcerical_cfengine_versions::
+ "/docs/cf3-reference.html#Additional-reports-in-commercical-cfengine-versions"
+  represents => { "manual section Additional reports in commcerical cfengine versions" };
+State_information::
+ "/docs/cf3-reference.html#State-information"
+  represents => { "manual section State information" };
+}
+

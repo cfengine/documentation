@@ -1,0 +1,81 @@
+
+bundle knowledge SpecialTopic_MissionCritical
+
+{
+topics:
+
+"SpecialTopic_MissionCritical";
+Special_Topics_Guide::
+    "Appendix Shutting down Mongo with replication"  association => a("discusses","CFEngine for Mission Critical Operations","is discussed in");
+Special_Topics_Guide::
+    "Appendix MongoDB access from the command line."  association => a("discusses","CFEngine for Mission Critical Operations","is discussed in");
+Special_Topics_Guide::
+    "Separating Policy Changes from ad-hoc Changes"  association => a("discusses","CFEngine for Mission Critical Operations","is discussed in");
+Special_Topics_Guide::
+    "How do I make a change in mission-critical infrastructure?"  association => a("discusses","CFEngine for Mission Critical Operations","is discussed in");
+Special_Topics_Guide::
+    "Variables and classes for hubs"  association => a("discusses","CFEngine for Mission Critical Operations","is discussed in");
+Special_Topics_Guide::
+    "Features of hub/policy server redundancy"  association => a("discusses","CFEngine for Mission Critical Operations","is discussed in");
+Special_Topics_Guide::
+    "Redundant hub architecture"  association => a("discusses","CFEngine for Mission Critical Operations","is discussed in");
+Special_Topics_Guide::
+    "Setting up redundant monitoring hubs"  association => a("discusses","CFEngine for Mission Critical Operations","is discussed in");
+Special_Topics_Guide::
+    "High availability access to the Mission Portal"  association => a("discusses","CFEngine for Mission Critical Operations","is discussed in");
+Special_Topics_Guide::
+    "How CFEngine contributes to reducing mission risks"  association => a("discusses","CFEngine for Mission Critical Operations","is discussed in");
+Special_Topics_Guide::
+    "Strategy for Mission Critical Operations"  association => a("discusses","CFEngine for Mission Critical Operations","is discussed in");
+Special_Topics_Guide::
+    "Key terminology for Mission Critical Systems"  association => a("discusses","CFEngine for Mission Critical Operations","is discussed in");
+Special_Topics_Guide::
+    "Model-based planning for stability"  association => a("discusses","CFEngine for Mission Critical Operations","is discussed in");
+Special_Topics_Guide::
+    "Factors affecting Risk"  association => a("discusses","CFEngine for Mission Critical Operations","is discussed in");
+Special_Topics_Guide::
+    "What are Mission Critical Operations?"  association => a("discusses","CFEngine for Mission Critical Operations","is discussed in");
+Special_Topics_Guide::
+    "CFEngine for Mission Critical Operations"  association => a("discusses","CFEngine for Mission Critical Operations","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_MissionCritical.html"
+  represents => { "Official CFEngine document"},  about_topics => { "cfengine for mission critical operations" };
+ "/knowledge/docs/SpecialTopic_MissionCritical.html"
+  represents => { "Special Topics Guide"},  about_topics => { "cfengine for mission critical operations" };
+ "/knowledge/docs/SpecialTopic_MissionCritical.html#Top"
+  represents => { "Text section" }, about_topics => { "cfengine for mission critical operations" };
+ "/knowledge/docs/SpecialTopic_MissionCritical.html#What-are-Mission-Critical-Operations_003f"
+  represents => { "Text section" }, about_topics => { "what are mission critical operations?" };
+ "/knowledge/docs/SpecialTopic_MissionCritical.html#Factors-affecting-Risk"
+  represents => { "Text section" }, about_topics => { "factors affecting risk" };
+ "/knowledge/docs/SpecialTopic_MissionCritical.html#Model_002dbased-planning-for-stability"
+  represents => { "Text section" }, about_topics => { "model-based planning for stability" };
+ "/knowledge/docs/SpecialTopic_MissionCritical.html#Key-terminology-for-Mission-Critical-Systems"
+  represents => { "Text section" }, about_topics => { "key terminology for mission critical systems" };
+ "/knowledge/docs/SpecialTopic_MissionCritical.html#Strategy-for-Mission-Critical-Operations"
+  represents => { "Text section" }, about_topics => { "strategy for mission critical operations" };
+ "/knowledge/docs/SpecialTopic_MissionCritical.html#How-CFEngine-contributes-to-reducing-mission-risks"
+  represents => { "Text section" }, about_topics => { "how cfengine contributes to reducing mission risks" };
+ "/knowledge/docs/SpecialTopic_MissionCritical.html#High-availability-access-to-the-Mission-Portal"
+  represents => { "Text section" }, about_topics => { "high availability access to the mission portal" };
+ "/knowledge/docs/SpecialTopic_MissionCritical.html#Setting-up-redundant-monitoring-hubs"
+  represents => { "Text section" }, about_topics => { "setting up redundant monitoring hubs" };
+ "/knowledge/docs/SpecialTopic_MissionCritical.html#Redundant-hub-architecture"
+  represents => { "Text section" }, about_topics => { "redundant hub architecture" };
+ "/knowledge/docs/SpecialTopic_MissionCritical.html#Features-of-hub_002fpolicy-server-redundancy"
+  represents => { "Text section" }, about_topics => { "features of hub/policy server redundancy" };
+ "/knowledge/docs/SpecialTopic_MissionCritical.html#Variables-and-classes-for-hubs"
+  represents => { "Text section" }, about_topics => { "variables and classes for hubs" };
+ "/knowledge/docs/SpecialTopic_MissionCritical.html#How-do-I-make-a-change-in-mission_002dcritical-infrastructure_003f"
+  represents => { "Text section" }, about_topics => { "how do i make a change in mission-critical infrastructure?" };
+ "/knowledge/docs/SpecialTopic_MissionCritical.html#Separating-Policy-Changes-from-ad_002dhoc-Changes"
+  represents => { "Text section" }, about_topics => { "separating policy changes from ad-hoc changes" };
+ "/knowledge/docs/SpecialTopic_MissionCritical.html#Appendix-1"
+  represents => { "Text section" }, about_topics => { "appendix mongodb access from the command line." };
+ "/knowledge/docs/SpecialTopic_MissionCritical.html#Appendix-2"
+  represents => { "Text section" }, about_topics => { "appendix shutting down mongo with replication" };
+}
+

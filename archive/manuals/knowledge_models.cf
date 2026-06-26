@@ -1,0 +1,1357 @@
+############################################################################
+#
+# Knowledge base / ontology
+#
+############################################################################
+
+bundle knowledge knowledge_models
+
+{
+vars:
+
+  #
+  # Association bank
+  #
+
+  "impl[f]" string => "implements";
+  "impl[b]" string => "may be implemented by";
+
+  "impr[f]" string => "improves";
+  "impr[b]" string => "is improved by";
+
+  "eg[f]" string => "exemplifies";
+  "eg[b]" string => "has example";
+
+  "inst[f]" string => "is an instance of";
+  "inst[b]" string => "has instances";
+
+  "add[f]" string => "feature added in";
+  "add[b]" string => "added feature";
+
+  "attr[f]" string => "is an attribute of";
+  "attr[b]" string => "has attribute";
+
+  "cause[f]" string => "can be caused by";
+  "cause[b]" string => "can cause";
+
+  "chg[f]" string => "changes";
+  "chg[b]" string => "is changed by";
+
+  "use[f]" string => "may be used for";
+  "use[b]" string => "makes use of";
+
+  "it[f]" string => "can be iterated action";
+  "it[b]" string => "has iterators";
+
+  "wrote[f]" string => "is the author of";
+  "wrote[b]" string => "was written by";
+
+  "edited[f]" string => "edited";
+  "edited[b]" string => "was edited by";
+
+  "about[f]" string => "deals with concept of";
+  "about[b]" string => "concept explained in";
+
+  "same[f]" string => "is related to";
+  "same[b]" string => "is related to";
+
+  "part[f]" string => "is a component of";
+  "part[b]" string => "has component";
+
+  "comp[f]" string => "is an element of";
+  "comp[b]" string => "consists of";
+
+  "version[f]" string => "is a version of";
+  "version[b]" string => "has version";
+
+  "prom[f]" string => "is a promise type in";
+  "prom[b]" string => "has promise types";
+
+  "better[f]" string => "is replaced by";
+  "better[b]" string => "replaces";
+
+  "var[fb]" string => "is a variant of";
+
+  "man[f]" string => "is managed by";
+  "man[b]" string => "is used to manage";
+
+  "linux_distros" slist => { "suse", "ubuntu", "fedora", "redhat", "debian", "slackware", "gentoo", "mandrake", "mandriva", "unitedlinux" };
+
+  "bv" slist => { 
+                "reliability", 
+                "availability", 
+                "budget", 
+                "normal operational behaviour", 
+                "unusual operational behaviour", 
+                "crises and fire fighting" 
+                };
+  
+  "sox" slist => { "identity management", "change management" };
+
+  "selfstar" slist => { "computer immunology", "autonomics", "self-healing" };
+
+  "mail_daemons" slist => { "sendmail", "postfix", "exim", "smtpd" };
+  "used_by_mail_daemons" slist => { "sendmail", "postfix", "exim", "saslauthd", "freshclam", "clamd", "clamav-milter", "spamd", "amavisd" };
+
+  # Specific versions we need to mention explicitly
+
+  "cfversions" slist => { "version 2", "community", "nova", "constellation" };
+
+  #
+  # Some related topics form a promise "group by association"
+  #
+
+  "cf2_actions"   slist => {
+                           "acl",
+                           "alerts",
+                           "binservers",
+                           "broadcast",
+                           "copy",
+                           "defaultroute",
+                           "disks",
+                           "directories",
+                           "disable",
+                           "editfiles",
+                           "files",
+                           "filters",
+                           "groups",
+                           "homeservers",
+                           "ignore",
+                           "import",
+                           "interfaces",
+                           "links",
+                           "mailserver",
+                           "methods",
+                           "miscmounts",
+                           "mountables",
+                           "processes",
+                           "packages",
+                           "rename",
+                           "required",
+                           "resolve",
+                           "scli",
+                           "shellcommands",
+                           "strategies",
+                           "tidy",
+                           "unmount" 
+                           };
+
+  "cf3_actions"   slist => { "vars", "files", "processes", "commands", "storage", "reports", "topics", "occurrences" };
+
+  "nova_actions"  slist => { "databases", "measurements", "environments" };
+
+  "all_actions"   slist => { @(cf3_actions), @(cf2_actions), @(nova_actions) };
+
+  "nova_features"  slist => { "ldap integration", "sql integration", "windows registry editing", "impact analysis",
+                              "access control list management", "serving literal data", "syntax lookup" };
+
+  "seg_causes" slist => { "bad memory reference", "bad library", "software build error", "software bug" };
+
+
+######################################################
+
+things:
+
+ # This is example knowledge -- add your own
+
+ services::
+
+  "installation"         comment => "Installing computers from bare metal";
+  "boot services"        comment => "Boot services are a way of booting a computer directly from the network";
+  "application services" comment => "Software running on servers";
+  "network services"     comment => "Network connectivity and availability";
+  "monitoring"           comment => "Pseudo-real-time status information about system components",
+                     association => a("contributes to","mission status","draws on data from");
+  "scheduling"           comment => "Set the time and place for jobs to run";
+  "desktop"              comment => "Confgure the desktop environment for workstations";
+  "access control"       comment => "Restricting user access to objects";
+  "compliance"           comment => "Collective issues to ensure policy decisions are implemented";
+
+  "virtualization"       comment => "Virtual hosts running on a hypervisor";
+  "cloud"                comment => "Platform as a service. Implementing disposable virtual computers on demand.",
+                     association => a("typically implemented using","virtualization","may be used to implement");
+  "time services"        comment => "Clock synchronization and timezones";
+  "logging"              comment => "Archiving system messages and events";
+  "monitoring"           comment => "Data sampling and collection";
+
+ monitoring::
+
+  "SNMP"                 comment => "Simple Network Management Protocol.";
+  "cacti"                comment => "System monitoring and graphing tool";
+  "nagios"               comment => "System monitoring and graphing tool";
+  "interactive load monitor";
+  "processor snapshot";
+
+ logging::
+
+  "syslog"                comment => "Unix log aggregator";
+  "syslog-ng"             comment => "Unix log aggregator (improved version)";
+  "log rotation"          comment => "The act of periodically emptying and archiving system logs";
+
+ access_control::
+
+  "pam"; 
+  "passwords"; 
+  "shadow file";
+  "iptables"; 
+  "ssh key management";
+  "tcp wrappers";
+
+ virtualization::
+
+   "kdm"                 comment => "The Linux kernel virtualization scheme";
+   "vmware"              comment => "The commercial VM implementation derived from IBM's VM system.";
+   "xen"                 comment => "The paravirtualization project for Linux";
+   "hyper-V"             comment => "The Windows virtualization framework";
+
+ desktop::
+
+   "X Windows" comment => "The Unix Windowing system";
+   "GDM"       comment => "The login manager for X Windows";
+   "GNOME"     comment => "The GNOME window manager for Unix";
+   "KDE"       comment => "The Qt based KDE window manager for Unix";
+
+ scheduling::
+
+   "cron" comment => "The periodic time based scheduler (as in chronometer)";
+   "at"   comment => "The one-shot job scheduler";
+
+ application_services::
+
+  "mail"               comment => "Electronic mail service, as made famous by the Unix operating system.";
+  "configuration"      comment => "Cfengine desired-state automation and self-repair service";
+  "web"                comment => "The WWW web service";
+  "directory services" comment => "Directory services are look-up services, typically with identity or host information.";
+  "storage"            comment => "Remotely accessible disk volumes.";
+  "database"           comment => "Relational database services";
+  "login"              comment => "The ability to log onto systems with a username and password";
+  "daemons"            comment => "Unix parlance for a running background process that handles an application service";
+
+daemons::
+
+ "httpd" comment => "The apache web daemon",
+         affects => { "application_services::web", "promise_types::processes" },
+         provides => { "application_services::web", "www" },
+       is_part_of => { "application_services::web" };
+
+  "saslauthd"     comment => "Authentication module for the mail delivery service";
+  "freshclam"     comment => "Gets updates for the clam virus scanner";
+  "clamd"         comment => "A mail anti-virus content scanner";
+  "clamav-milter" comment => "Mail virus scanner interface for clamd";
+  "spamd"         comment => "A mail spam scanner, Spam Assassin service";
+  "amavisd"       comment => "Yet another virus/spam scanner";
+  "smtpd"         comment => "SMTP server used by postfix";
+
+
+
+ "$(mail_daemons)" comment => "Email delivery software",
+         affects => { "application_services::mail", "promise_types::processes" },
+         provides => { "application_services::mail", "smtp" },
+       is_part_of => { "application_services::mail" },
+             uses => { "@(used_by_mail_daemons)" };
+
+
+ network_services::
+
+  "routing"      comment => "Router and switch configuration";
+  "connectivity" comment => "Cables and hardware";
+
+ boot_services::
+
+  "PXE"   comment => "A composite network service based on the PXE protocol, allows systems to boot directly from the network.";
+  "BOOTP" comment => "A simple broadcast protocol for booting a system directly from the network, e.g. for installation purposes.";
+
+  "grub" comment => "The Linux boot menu";
+
+ directory_services::
+
+  "DNS"      comment => "Domain Name Service for translating Internet addresses into hostnames and vice versa.";
+  "LDAP"     comment => "A well-known directory service. MS Active Directory purports to support this standard.";
+  "NIS"      comment => "Sun's Network Information Service (previously called Yellow Pages).";
+  "DHCP"     comment => "An IP configuration service.";
+
+ database::
+
+  "mysql"    comment => "Open source SQL database engine optimized for web",
+             association => a("is managed by","promise_types::database","may be used to manage");
+
+  "postgres" comment => "Open source relational SQL database engine for transaction processing",
+             association => a("is managed by","promise_types::database","may be used to manage");
+
+  "oracle"   comment => "Commercial relational SQL database";
+
+ storage::
+
+  "NFS"      comment => "Network File System (storage)",
+             association => a("is managed by","promise_types::storage","may be used to manage");
+
+
+  "samba"    comment => "The Unix service for integrating with MS Windows";
+
+
+
+
+
+
+ ########################################################################
+
+ faults::
+
+  "segmentation fault"       association => a("$(cause[f])","@(seg_causes)","$(cause[f])");
+  "remote connection problem";
+  "web server not running";
+  "print server not running";
+  "bad memory reference";
+  "allowConnectionsFrom not set";
+  "allowMultipleConnectionsFrom not set";
+  "trustKeysFrom not set";
+  "access to file not granted";
+  "insufficient permissions";
+  "File system not mounted";
+
+ ########################################################################
+
+topics:
+
+ compliance::
+
+
+   "ITIL" comment => "Stands for Information Technology Infrastructure Library. ITIL is a set of self-proclaimed best-practices originally developed by the British government. It can be viewed as mainly common-sense rules. Cfengine can be used as a component in becoming ITIL-compliant. By translating many of your best practices into policy rules, you can have Cfengine ensure parts of ITIL-compliance.";
+
+
+   "ISO/IEC 20000"   comment => "A standards document based on a subset of ITIL",
+                     association => a("standardizes a part of","ITIL","expands on standard");
+
+   "eTOM"  comment => "The Extended Telecom Operations Map";
+
+   "SOX"      comment => "The Sarbanes-Oxley Act",
+              association => A("involves",@(sox),"is a principal component of");
+
+   "EUROSOX"  comment => "The 8th EU data directive",
+              association => A("involves",@(sox),"is a principal component of");
+
+   "SAS-70"  comment => "Stands for Statement of Auditing Standards no. 70. SAS-70 is an auditing standard. SAS 70 defines the professional standards used by a service auditor to assess the internal controls of a service organization and issue a service auditor's report. Cfengine can be used to ensure SAS-70 compliance in the same way you can achieve other standardization compliance.",
+
+      association => a("is a framework for implementing","SOX","falls within the bounds of");
+
+   "SOX"  
+
+      comment => "Stands for Sarbanes-Oxley Act is a United States federal law in response to a number of major corporate and accounting scandals including those affecting Enron, Tyco International, Adelphia, Peregrine Systems and WorldCom. The intention behind the law is to ensure financial reporting. This law calls for standardization of datacenters under this law and the need to show compliance. Cfengine can be used as a tool for ensuring specific parts of the compliance.",
+
+      association => a("corresponds to","EUROSOX","corresponds to");
+   
+   "CMDB" comment => "Configuration Management Database. A form of extended inventory system, championed by ITIL.";
+
+   "auditing" comment => "A process to verify that the datacenter operate according to the guidelines and legislations. A rapid growth in datacenter size and complexity, combined with government regulations, have called for a drastic increase in audits.  Cfengine comes with reporting and logging capabilities that make auditing straightforward.";
+
+
+ ########################################################################
+
+
+ management_terminology::
+
+   "BDIM"  comment => "Business Driven IT Management";
+   "road map";
+   "adoption of cfengine";
+   "authoring";
+   "departments";
+   "teamwork";
+   "teams";
+   "version control";
+   "gold server";
+   "CM"       association => a("is the ITIL name for","Configuration Management","in ITIL is called");
+   "budget"   association => a("is an aspect of","BDIM","in ITIL is called");
+
+   "FCAPS";
+   "business process";
+   "operations";
+
+   "SLA" comment => "Service Level Agreement",
+               association => a("is an example of","Agreement","has exemplar");
+
+   "contract"  association => a("is a bilateral bundle of","promise suggestions","can be combined into a");
+
+   "agreement";
+   "enterprise";
+
+   "baseline" comment => "Definition of what your system looks like or what it must look like. Many traditional vendors in the industry require a baseline to be able to roll out their system and get it running. In Cfengine, there is no need for a special baseline. Cfengine focuses on the opposite – the end state.";
+
+    "CI" comment => "Configuration Items. Computer related items that can be configured. Items typically are servers, routers, switches, applications and storage devices. Cfengine can discover different types of CIs automatically, trace dependencies and make them available in reports through an online knowledge portal.",
+
+     association => a("is an object for","configuration management","is about the management of");
+
+   "pre-screening" comment => "The ability to foresee consequences of change. If you make a change one place, what’s the impact of the rest of the datacenter? Cfengine includes a dry-run mode which simulates the consequences of a change.";
+
+   "provisioning" comment => "The ability to install and adopt new services, applications, OS and servers, e.g. using PXE-boot Cfengine can turn any server into anything kind of server with any kind of service running on it. Cfengine can easily deploy a service or new application throughout the datacenter, regardless of the number of servers.";
+
+  "goals"  comment => "Top level managment objectives for a company";
+
+
+
+
+ ########################################################################
+
+  environment::
+
+   "hard classes";
+   "soft classes";
+   "persistent classes";
+   
+   "monitoring" comment => "Ability to monitor the current state of your datacenter. Cfengine can sample and trace behaviour, monitoring your datacenter intelligently, using historic data to decide whether a behaviour should call for action or not.",
+
+     association => a("detects","environment","is detected by");
+
+
+
+ ########################################################################
+
+  security::
+
+   "access control" association => a("$(impl[f])","Role based access control","$(impl[b])"); 
+
+   "authentication";
+   "permission";
+   "privacy";
+   "encryption";
+   "public private keys";
+   "private keys";
+   "publickeys";
+   "DMZ";
+   "trust in cfengine";
+   "firewalls";
+   "trusted third party";
+   "key exchange";
+   "digests";
+   "digest";
+   "hashes";
+   "hash";
+   "checksums";
+   "role based access control";
+
+   "friend status";
+   "instrumentation";
+   "lastseen";
+
+   "tamperproof system" association => a("$(impl[f])","body changes detect_all_change","$(impl[b])"); 
+
+ technical_concepts::
+
+   "scalability" comment => "The ability of a system design to cope with increasing levels of service.";
+   "automation";
+   "symptoms";
+   "resources";
+   "redundancy";
+   "rollback"  comment => "Refers to the belief that one can reverse errors by imitating transaction control in computer management.";
+   "$(bv)";
+   "software";
+   "faults"               comment => "Error messages and conditions";
+   "intermittency"        comment => "The entropy of availability of a service";
+   "entropy"              comment => "A measure of the variation in an observation";
+   "files"                comment => "Notable or special files and types";
+   "research"             comment => "Cfengine research";
+   "distributed system";
+   "modules";
+   "template";
+
+   "variables"  association => a("$(same[f])","Special variables","$(same[f])");
+   "variables"  association => a("are promised by","vars","are promises about");
+   "arrays"     association => a("are a special case of","variables","see also");
+
+   "variables"      association => a("$(impl[b])","setting variables with functions","$(impl[f])");
+
+
+   "functions"; 
+   "lists"          association => a("explained in","List variable substitution and expansion","comments on");
+
+   "global variables" association => a("explained in","List variable substitution and expansion","comments on");
+
+   "versions";
+   "data types";
+
+
+ ########################################################################
+
+ "cfengine components";
+
+  cfengine_components::
+
+   "cfagent"    association => a("$(part[f])","cfengine 2","$(part[b])");
+   "cfservd"    association => a("$(part[f])","cfengine 2","$(part[b])");
+   "cfexecd"    association => a("$(part[f])","cfengine 2","$(part[b])");
+   "cfenvd"     association => a("$(part[f])","cfengine 2","$(part[b])");
+   "cfrun"      association => a("$(part[f])","cfengine 2","$(part[b])");
+   "cfshow"     association => a("$(part[f])","cfengine 2","$(part[b])");
+   "cfenvgraph" association => a("$(part[f])","cfengine 2","$(part[b])");
+   "cfd"        association => a("$(part[f])","cfengine 1","$(part[b])");
+
+   "cfagent"    association => a("$(var[fb])","cf-agent","$(var[fb])");
+   "cfservd"    association => a("$(var[fb])","cf-serverd","$(var[fb])");
+   "cfexecd"    association => a("$(var[fb])","cf-execd","$(var[fb])");
+   "cfenvd"     association => a("$(var[fb])","cf-monitord","$(var[fb])");
+   "cfrun"      association => a("$(var[fb])","cf-runagent","$(var[fb])");
+   "cfshow"     association => a("$(var[fb])","cf-report","$(var[fb])");
+   "cfenvgraph" association => a("$(var[fb])","cf-report","$(var[fb])");
+   "cfd"        association => a("$(var[fb])","cfservd","$(var[fb])");
+   "cfd"        association => a("$(var[fb])","cf-serverd","$(var[fb])");
+
+
+
+   "cf-promises" association => a("$(part[f])","cfengine 3","$(part[b])");
+   "cf-agent"    association => a("$(part[f])","cfengine 3","$(part[b])");
+   "cf-serverd"  association => a("$(part[f])","cfengine 3","$(part[b])");
+   "cf-execd"    association => a("$(part[f])","cfengine 3","$(part[b])");
+   "cf-monitord" association => a("$(part[f])","cfengine 3","$(part[b])");
+   "cf-runagent" association => a("$(part[f])","cfengine 3","$(part[b])");
+   "cf-know"     association => a("$(part[f])","cfengine 3","$(part[b])");
+   "cf-report"   association => a("$(part[f])","cfengine 3","$(part[b])");
+
+   "cfengine 1" association => a("$(version[f])","cfengine","$(version[b])");
+   "cfengine 2" association => a("$(version[f])","cfengine","$(version[b])");
+   "cfengine 3" association => a("$(version[f])","cfengine","$(version[b])");
+   "cfengine nova" association => a("$(version[f])","cfengine 3","$(version[b])");
+   "cfengine nova" association => a("$(version[f])","enterprise level cfengine","$(version[b])");
+
+   "cfengine $(cfversions)" comment => "cfengine version",
+                            association => a("$(version[f])","cfengine","$(version[b])");
+
+   "enterprise level cfengine";
+
+ ########################################################################
+
+  cfengine_3::
+
+    "string";
+    "slist"        association => a("is a list of","string","has list type");
+    "int";
+    "ilist"        association => a("is a list of","int","has list type");
+    "real";
+    "rlist"        association => a("is a list of","real","has list type");
+
+    "$(cf3_actions)" association => a("$(prom[f])","cfengine 3","$(prom[b])");
+    "$(nova_actions)" association => a("$(prom[f])","cfengine nova","$(prom[b])");
+
+  cfengine_2::
+
+    "$(cf2_actions)" 
+
+              comment => "This syntax is now deprecated",
+          association => a("$(prom[f])","cfengine 2","$(prom[b])");
+
+    "cfengine 2 control settings" comment => "Parameters that affect the behaviour of the agent rather than affect the system configuration.";
+
+     "acl"         association => a("corresponds to","promise_types::files","is the new syntax for");
+     "alerts"      association => a("corresponds to","promise_types::reports","is the new syntax for");
+     "copy"        association => a("corresponds to","promise_types::files","is the new syntax for");
+     "disks"       association => a("corresponds to","promise_types::storage","is the new syntax for");
+     "directories"  association => a("corresponds to","promise_types::files","is the new syntax for");
+     "disable"     association => a("corresponds to","promise_types::files","is the new syntax for");
+     "editfiles"   association => a("corresponds to","promise_types::files","is the new syntax for");
+     "files"       association => a("corresponds to","promise_types::files","is the new syntax for");
+     "groups"      association => a("corresponds to","promise_types::classes","is the new syntax for");
+     "links"       association => a("corresponds to","promise_types::files","is the new syntax for");
+     "methods"     association => a("corresponds to","promise_types::methods","is the new syntax for");
+     "miscmounts"  association => a("corresponds to","promise_types::storage","is the new syntax for");
+     "processes"  association => a("corresponds to","promise_types::processes","is the new syntax for");
+     "packages"  association => a("corresponds to","promise_types::packages","is the new syntax for");
+     "rename"  association => a("corresponds to","promise_types::files","is the new syntax for");
+     "required"  association => a("corresponds to","promise_types::storage","is the new syntax for");
+     "resolve"  association => a("corresponds to","promise_types::edit_line","is the new syntax for");
+     "shellcommands"  association => a("corresponds to","promise_types::commands","is the new syntax for");
+     "strategies"  association => a("corresponds to","promise_types::classes","is the new syntax for");
+     "tidy"  association => a("corresponds to","promise_types::files","is the new syntax for");
+     "unmount"   association => a("corresponds to","promise_types::storage","is the new syntax for");
+
+ ########################################################################
+
+  operating_systems:: 
+
+   "gnu/linux"  association => a("$(same[f])","linux","$(same[b])");
+   "solaris"    association => a("is a current name for","sunos","is recently called");
+   "macos X"    association => a("is a synonym for","darwin","is a synonym for");
+   "distro"                 association => a("is a packaging of","linux","is packaged as a");
+   "darwin"   association => a("see also","macos X","see also");
+
+   "$(linux_distros)"
+
+         association => a("is distro of","linux","has distro"),
+             comment => "Linux distro $(linux_distros)",   
+     generalizations => {"operating systems"};
+
+
+ ########################################################################
+
+  Contact_Information::
+
+   "email address";
+   "home page";
+   "website";
+   "phone number office";
+   "phone number mobile";
+
+ ########################################################################
+
+ research::
+
+  "models of system administration";
+  "models of knowledge";
+  "models of organization";
+
+ monitoring::
+
+   "anomaly detection";
+
+ #
+ #
+
+ management_issues::
+
+   "business value"                 association => A("$(impr[b])","@(selfstar)","$(impr[f])");
+   "business value"                 association => A("$(impl[b])","value_kept","$(impl[f])");
+   "business value"                 association => A("$(impl[b])","value_notkept","$(impl[f])");
+   "business value"                 association => A("$(impl[b])","value_repaired","$(impl[f])");
+
+   "maintenance paradigms"          comment => "Approaches to keeping systems in an operational state";
+   "team work"                      comment => "Focused group in a flat organization for efficient communication and decision-making";
+   "compliance"                     association => a("is documented by","manual::Reporting","documents");
+
+   "capacity planning"              comment => "Sometimes called dimensioning or service provisioning. Determining whether sufficient resources will be available to deliver planned services";
+
+   "storage management"             comment => "Disk volumes, primary, redundant and secondary storage (backup)";
+
+   "identity management"            comment => "Managing user credentials";
+
+   "knowledge management"            association => a("$(impl[b])","cf-know","$(impl[f])");
+
+   "management terminology";
+
+   "compliance"                      comment => "Frameworks for standardizing and regulating systems";
+
+   "cloud computing"                 comment => "A model of management in which computing resources are borrowed and returned to a common pool",
+                                association => a("see also","models_of_system_administration::cloud","see also");
+
+   "cloud computing"            association => a("see also","models_of_organization::cloud","see also");
+
+   "incident management"             comment => "Repairing policy violations",
+                                 association => a("see also","manual::Incident Management vs Maintenance","see also");
+
+
+   "identity management"             comment => "Managing user accounts",
+                                 association => a("$(impl[b])","manual::Changing a password","$(impl[f])");
+
+
+   "release management"              comment => "The process of preparing for major changes to policy or enterprise activity.";
+
+
+   "application management"          comment => "Deploying and patching applications, inclding the ability to configure specific applications, like Apache-servers, Microsoft Exchange, etc.",
+                                 association => a("$(same[f])","Software Management","$(same[f])");
+
+   "reporting"                       comment => "Extracting information in human readable form";
+
+
+
+   "change management" comment => "The ability to trace, log and manipulate change in files. Whenever a change occurs in a file, this probably affects some other parts of the system. The ability to track, log and potentially restore changes are important for many purposes.",
+
+       association => a("$(impl[b])","procedures::change detection scans","$(impl[f])");
+
+   "change management"        
+
+       association => a("$(impl[b])","body_constraints::changes","$(impl[f])");
+
+   "configuration management" comment => "The ability to configure a Datacenter through configuration settings. This is the core of Cfengine. Cfengine comes with many advanced tools to ease the configuration of Datacenters and have it self-repair according the settings you define. See also Configuration Items (CIs), Change Management.";
+
+
+   "system discovery" comment => "The ability to detect new items (see CIs) in a datacenter. Cfengine recognizes new items on the fly and you can have them reported automatically. No need for data mining or guesses.";
+
+   "inventory" comment => "List of items within a datacenter, e.g. servers, applications, services. Expressed in terms of a static database that is being updated every now on then, depending on how often you scan the network. Cfengine holds accurate inventory lists and reports can easily be created on the fly. Cfengine dosen’t hold any static database that requires frequent scan (that takes a lot of resources) to describe the inventory.";
+
+   "orchestration" comment => "Making the parts of a distributed system work together with a minimum of interation",
+               association => a("$(impl[b])","distributed scheduling","$(impl[f])");
+
+   #
+
+
+ BDMA::
+
+  #
+
+  "build"  comment => "Also called \"provisioning\" systems, i.e. the process of specifying and assembling the resources to fulfill a set of system promises. Traditionally servers were built as a \"golden image\" for cloning. Under cfengine, the build phase of the server lifecycle involves planning policy for the desired-state. Installation may also be considered a part of the build process.";
+
+  "build" association => a("bare metal installation with","PXE","can be used as part of");
+  "build" association => a("consists of","system policy","can be used as part of");
+  "build" association => a("consists of","system services","are a key ingredient for");
+  "build" association => a("consists of","promises","are a key ingredient for");    
+
+  #
+
+  "deploy" comment => "Traditionally servers were deployed by pushing out a cloned image. Under cfengine the deployment of policy just means publishing a new version of policy on a policy server.";
+
+  "deploy" association => a("makes use of","bundles::update","can be used as part of");    
+  "deploy" association => a("makes use of","packages","can be used as part of");    
+
+  #
+
+ "management" comment => "Traditionally servers needed to be managed by responding to incidents. Under cfengine indicdents are repaired automatically and management is chiefly about observing and diving the success of the current system policy.";
+
+  "management" association => a("consists of","monitoring","can be used as part of");    
+  "management" association => a("consists of","system outputs","can be used as part of");    
+  "management" association => a("consists of","repair","is an aspect of");    
+
+  #
+
+ "audit" comment => "Traditionally servers needed to be audited to determine their actual state. Under cfengine, auditing simply means generating summary reports about recent compliance or repair operations.";
+
+  "audit" association => a("consists of","system reports","are an aspect of");    
+
+
+models_of_system_administration::
+
+  "BDMA"               comment => "Build, Deploy, Manage, Audit, system lifecycle";
+  "promise theory"     association => a("is implemented in","cfengine","is the reference implementation of");
+
+  "convergent operators" association => a("implement","convergence","is implemented by");
+  "computer immunology" association => A("improves","@(bv)","is improved by");
+  "autonomics"          association => A("improves","@(bv)","is improved by");
+  "self-healing"        association => A("improves","@(bv)","is improved by"),
+                            comment => "System exhibiting automated repair and maintenance";
+
+models_of_knowledge::
+
+  "topic maps"          comment => "ISO standard electronic index with semantic annotations";
+  "pattern matching"    comment => "Classifying items by the patterns they form";
+
+models_of_organization::
+
+   "hierarchies"             comment => "Ranked, authoritative organizational tree structures",
+                         association => a("are discussed in","Special_Topics_Guide::Hierarchies","discusses");
+
+
+   "federated architecture"  comment => "A model of independent parts under a common umbrella",
+                         association => a("is a strategy for","scalability","refers to the concept of");
+   "federated architecture" association => a("appears in","Distributed execution and federation","uses the concept of");
+   "federated architecture" association => a("is explained further in","Special_Topics_Guide::Federation","uses the concept of");
+
+   "homogeneous system"      comment => "Systems in which all components are uniform";
+   "heterogeneous system"    comment => "Systems in which components are non-uniform";
+   "peer to peer network";
+   "object orientation"      association => a("$(same[f])","object paradigm","$(same[f])");
+   "hierarchical structure"  association => a("$(same[f])","object orientation","$(same[f])");
+   "hierarchical structure"  association => a("$(same[f])","object paradigm","$(same[f])");
+   "hierarchical structure"  association => a("$(same[f])","Hierarchies","$(same[f])");
+   "service orientation"     association => a("$(same[f])","peer to peer network","$(same[f])");
+   "aspect paradigm"         association => a("$(same[f])","aspect orientation","$(same[f])");
+   "object paradigm"         association => a("$(same[f])","object orientation","$(same[f])");
+   "cascading"               association => a("$(same[f])","hierarchical structure","$(same[f])");
+   "overlapping sets"        comment => "Cfengine's way of viewing non-exclusive categories. In OO-modelling, categories are always mutually exclusive, but this need not be the case in Cfengine.";
+
+   "company"                 comment => "A commercial organization, or firm.";
+   "cloud"                   comment => "A pool of computers that can be used and returned on demand",
+                     association => a("typically implemented using","virtualization","may be used to implement");
+
+
+convergent_operators::
+
+   "idempotence"      comment => "Idempotence is a mathematical property of operations or changes. An operator is idempotent if applying it twice is the same as applying it once. This is not the same as convergence, because the result need not be anchored to anything. e.g. <pre>touch myfile</pre> is idempotent but it is not a fixed point because its effect depends on which directory the operation is performed in. <pre>touch /tmp/myfile</pre> is convergent.",
+                      association => a("is a partial property of","convergence","implies of the end-state");
+
+   "convergence"      comment => "The idea that we always move closer to the desired state of a system on every promise verification. Once the desired state has been reached, the state hsa converged and no further changes take place. Normally convergence to the desired state happens in a single repair, unless there are dependencies that cannot be resolved. Convergence is a stronger constraint on system behaviour than idempotence.",
+                      association => a("$(same[f])","Convergence","$(same[f])");
+
+promise_theory::
+
+  "agents";
+  "intentions";
+  "bundles"           association => a("are collections of","promises","combine to form");
+
+   "policy"           comment => "A declared set of intentions describing how systems should behave",
+                      association => a("is a collection of","promises","combine into");
+  "promise proposals" association => a("are a basis for","promises","may be based on");
+
+  "promises"          association => a("reveal","intentions","are revealed in the form of");
+  "promises"          association => a("can be made about","topics","can be the subject of");
+  "promises"          association => a("are a form of","communicated information","includes");
+
+  "conditional promises" association => a("are completed by","promise of necessary conditions","complete");
+
+  "announcements"     association => a("are a form of","communicated information","includes");
+
+  "promiser"          association => a("makes a","promise","is made by a");
+  "promisee"          association => a("is the recipient of","promise","is made to a");
+  "handle"            comment => "An identifier string that labels a promise proposal for easy reference",
+                      association => a("may refer to more than one","promiser","can make promises labelled by a");
+
+  "handles"           association => a("is the category for a promise","handle","belongs to the set of");
+  "handles"           association => a("promises","label","are labelled by");
+
+  "promise-type"      association => a("describes the nature (or category) of a","promise","is qualified by its");
+  "promise-type"      association => a("has instances","@(all_actions)","is an instance of");
+
+  "promise body"      association => a("has attribute","body-type","is an attribute of");
+  "promise body"      association => a("has attribute","body-constraint","is an attribute of");
+  "body-type"         association => a("describes the subject (nature or quality) of a","body-constraint","is qualified by its");
+  "body-constraint"   association => a("describes the extent (or quantity) of a","promise","is quantified by its");
+
+  "topic-types";
+  "topics"            association => a("can talk about","promises","can be represented as");
+  "topics"            association => a("can be combined into","stories","can be broken down into");
+  "topics"            association => a("can be classified into disjoint","topic types","are disjoint classes of");
+
+  "facts"             association => a("can be the subject of","intentions","can talk about");
+  "behaviours"        association => a("can be the subject of","intentions","can talk about");
+  "actions"           association => a("can be the subject of","intentions","can talk about");
+
+  "conceptual relationships";
+  "causative relationships";
+  "location relationships";
+  "structural relationships";
+  "associations"      association => a("represent","conceptual relationships","can be represented as");
+  "associations"      association => a("represent","location relationships","can be represented as");
+  "associations"      association => a("represent","causative relationships","can be represented as");
+  "associations"      association => a("represent","structural relationships","can be represented as");
+
+  "type-instances"  association => a("is another term for","topics","may be described as");
+  "topic-instances" association => a("are realizations of","topics","are discussed in");
+  "topic-instances" association => a("are simply called","occurrences","might be called");
+  "occurrence-types"  association => a("are also called","topic map sub-types","might be called");
+  "occurrences"       association => a("are classified into disjoint","occurrence types","are disjoint classes of");
+  "intentions";
+
+  "subjects"          association => a("are represented as","topics","are knowledge-map instances of"),
+                      comment => "An abstraction for any things that can be discussed";
+
+  "associations"      association => a("form networks of","topics","are inter-related through");
+
+  "communicated information";
+
+  "services"          association => a("are formed by associating","promises","combine into");
+
+  "stories"           association => a("are formed by associating","topics","can be combined into");
+  "stories"           association => a("can talk about","workflows","can be the subject of");
+  "workflows"         association => a("are formed by associating","actions","combine into");
+
+  "dependencies"      association => a("result in","conditional promises","require the use of");
+
+  "versions"          association => a("label variations in","occurrences","vary according to");
+
+  "roles"             association => a("are recurring patterns of","promises","define");
+  "roles"             association => a("are identified in","agents","play different");
+
+  "voluntary cooperation";
+
+ body_constraint::
+
+   "rvalue";
+   "lvalue";
+
+ topic_maps::
+
+   "the tao" comment => "topics, associations and occurrences";
+   "linear topic map notation";
+
+
+topics:
+
+  #
+  # Manuals
+  #
+
+  "special topics guides" comment => "Short documents that highlight a specific issue";
+
+  "manuals" comment => "Short documents that highlight a specific issue";
+
+ special_topics_guides::
+
+   "adoption of cfengine";
+
+   "cdp" comment => "Content Driven Policies or Data Driven Policy. This is a standard template, usually written by Cfengine that allows users to provide just stripped down data, in \"spreadsheet\" format to accomplish certain policy.";
+
+
+
+  ################################################################
+
+
+
+ eTOM::
+
+   "http://en.wikipedia.org/wiki/ETOM"
+            represents => { "definitions" };
+
+   "The Enhanced Telecom Operations Map"
+            represents => { "definitions" },
+            representation => "literal";
+
+
+  ITIL::
+
+   "http://en.wikipedia.org/wiki/ITIL"
+            represents => { "definitions" };
+
+   "http://www.itil-officialsite.com"
+            represents => { "official website" };
+
+  topic_maps::
+
+    "http://www.ontopia.com"
+
+        represents => { "introduction" },
+        representation => "url",
+        comment => "Ontopia - the home of topic maps";
+
+  linear_topic_map_notation::
+
+      "http://www.ontopia.net/download/ltm.html"
+
+        represents => { "description" },
+        representation => "url";
+
+  topic_maps::
+
+      "http://www.ontopia.net/topicmaps/materials/tao.html"
+
+        represents => { "tutorial" },
+        representation => "url";
+
+  suse::
+
+     "http://www.opensuse.org"
+
+            represents => { "official website" },
+            representation => "url",
+            # url is default?
+            comment => "Main website";
+
+  lvalue::
+
+     "A variable identifier, i.e. the left hand side of an '=' association. The promiser in a variable promise."
+            represents => { "definitions" },
+            representation => "literal";
+
+  rvalue::
+
+     "A variable value, i.e. the right hand side of an '=' association. The value promised in a variable promise."
+            represents => { "definitions" },
+            representation => "literal";
+
+   management_issues::
+
+       "Aspects of IT management typically covered by ITIL"
+            represents => { "definitions" },
+            representation => "literal";
+
+   distributed_system::
+
+       "Any computer system consisting of more than one host"
+            represents => { "definitions" },
+            representation => "literal";
+
+   homogeneous_system::
+
+       "Any computer system that is composed of only one type of operating system"
+            represents => { "definitions" },
+            representation => "literal";
+
+   heterogeneous_system::
+
+       "Any computer system that is composed of multiple operating system types"
+            represents => { "definitions" },
+            representation => "literal";
+
+   pattern_matching::
+
+       "Approaches to identifying and modelling objects"
+            represents => { "definitions" },
+            representation => "literal";
+
+   operating_systems::
+
+       "The software installed on a computer that provides its basic software infrastructure"
+            represents => { "definitions" },
+            representation => "literal";
+
+
+   autonomics::
+       "IBM's name for the idea of self-healing and self-regulating systems"
+            represents => { "definitions" },
+            representation => "literal";
+
+
+
+   computer_immunology::
+
+       "An idea developed by Mark Burgess of Oslo University College in 1998 for self-healing systems. Related ideas were proposed by Stephanie Forrest's group at the University of New Mexico."
+            represents => { "definitions" },
+            representation => "literal";
+
+   functions::
+
+     "/docs/cf3-reference#Special-functions"
+          represents => { "cf3" };
+
+
+  hard_classes::
+
+   "/docs/cf3-reference#Hard-classes"
+          represents => { "manual" };
+
+   "A classification of the basic environment that is immutable, e.g. about the system hardware"
+          represents => { "definitions" },
+            representation => "literal";
+
+  soft_classes::
+
+   "A classification of the dynamic environment that can change depending on context, e.g. about the system hardware"
+          represents => { "definitions" },
+            representation => "literal";
+
+  role_based_access_control::
+
+     "/docs/cf3-reference#roles-in-server-promises"
+          represents => { "cf3" };
+
+
+  enterprise_level_cfengine::
+
+   "Cfengine Enterprise editions are commercially licensed versions of Cfengine 3 with build-time library extensions. They are directed at organizations and scenarios where the need for complex, supported management processes arises. They provide extended functionality and time-saving process simplifications to the automation of datacentres."
+
+          represents => { "definitions" },
+            representation => "literal";
+
+
+
+ security::
+
+  "https://cfengine.com/inside/security"
+
+          represents => { "advisories" };
+
+
+ ITIL::
+
+  "http://www.itframeworks.org/wiki/Information_Technology_Infrastructure_Library"
+
+          represents => { "free wiki" };
+
+
+  voluntary_cooperation::
+
+     "Describes the approach to modelling in which one does not assume absolute power to control, but rather assumes best effort of the system parts. A promise is an expression of voluntary cooperation - the opposite of an obligation."
+            represents => { "definitions" },
+            representation => "literal";
+
+  agents::
+     "Describes any system components that can give or receive promises, either physical or abstract; e.g. files, processes, topics, etc."
+            represents => { "definitions" },
+            representation => "literal";
+  lvalue::
+     "Refers to the left hand side of an assignment \"lvalue => rvalue\""
+            represents => { "definitions" },
+            representation => "literal";
+
+     "/docs/cf3-reference#Types-in-cfengine-3"
+            represents => { "Cfengine reference" };
+
+  rvalue::
+     "Refers to the right hand side of an assignment \"lvalue => rvalue\""
+            represents => { "definitions" },
+            representation => "literal";
+
+     "/docs/cf3-reference#Types-in-cfengine-3"
+            represents => { "Cfengine reference" };
+
+  structural_relationships:: 
+ 
+     "img/clusters.png"
+            represents => { "image" },
+            representation => "image";
+
+  intentions::
+
+     "Ideas that might lead to courses of action and some time past, present or future."
+            represents => { "definitions" },
+            representation => "literal";
+
+  bundles::
+     "Collections of promises are called bundles."
+            represents => { "definitions" },
+            representation => "literal";
+
+     "A container for grouping related promises"
+            represents => { "definitions" },
+            representation => "literal";
+
+  promise_body::
+
+     "Attribute of a promise, like a template for parameterizing compound promise attributes"
+            represents => { "definitions" },
+            representation => "literal";
+
+
+  promise_proposals::
+
+     "Before a promise has been accepted and made it can be written down as a proposal. A contract contains many promise proposals, for instance."
+            represents => { "definitions" },
+            representation => "literal";
+
+  promises::
+
+     "When an agent's intention becomes public knowledge we call it a promise."
+            represents => { "definitions" },
+            representation => "literal";
+
+  conditional_promises::
+
+     "A promise that is made subject to a pre-condition is not a true promise unless the condition can also be promised. Condition promises are often used to express dependencies."
+            represents => { "definitions" },
+            representation => "literal";
+
+  announcements::
+
+     "The act of making public some information is called an announcement."
+            represents => { "definitions" },
+            representation => "literal";
+
+  promiser:: 
+
+     "The agent or entity that makes a promise is called the promiser."
+            represents => { "definitions" },
+            representation => "literal";
+
+  promisee::      
+
+     "The recipient of a promise is called the promisee."
+            represents => { "definitions" },
+            representation => "literal";
+
+  promise_body::
+
+     "The body of a promise contains the details that describe its substance. This generally has the name of some variable and a constraint on the values that the promiser promises it will have."
+            represents => { "definitions" },
+            representation => "literal";
+
+  body_type::  
+
+     "The subject of a promise is limited to a system of non-overlapping, or disjoint types, e.g. in cfengine files, processes, knowledge, etc"
+            represents => { "definitions" },
+            representation => "literal";
+
+  body_constraint::
+
+     "A description of the range of values that an agent promises to restrict its behaviour to."
+            represents => { "definitions" },
+            representation => "literal";
+
+  topic_types::
+
+     "Topics (in topic maps) are classified into non-overlapping or disjoint types."
+            represents => { "definitions" },
+            representation => "literal";
+  topics::   
+
+     "Topics are the way we represent abstract subjects in a topic map. A topic is implemented as a database entry."
+            represents => { "definitions" },
+            representation => "literal";
+
+  subjects::
+
+     "A subject is an abstract concept -- it is any thing that can be talked about or discussed."
+            represents => { "definitions" },
+            representation => "literal";
+
+  facts::        
+
+     "Irrefutable pieces of information that can be observed."
+            represents => { "definitions" },
+            representation => "literal";
+
+  behaviours::      
+
+     "Characteristics of a system that can be observed."
+            represents => { "definitions" },
+            representation => "literal";
+
+  actions::    
+
+     "Changes instigated by a system leading to observable effects."
+            represents => { "definitions" },
+            representation => "literal";
+
+  associations::
+
+     "Trains of thought that link one topic with another."
+            represents => { "definitions" },
+            representation => "literal";
+
+  conceptual_relationships::
+
+     "Ideas that are related in documentable fashion."
+            represents => { "definitions" },
+            representation => "literal";
+
+  causative_relationships::
+
+     "When one topic impacts on another, we can say there is a cause-effect relationship."
+            represents => { "definitions" },
+            representation => "literal";
+
+  location_relationships::
+
+     "Spatial relationships, like up,down,left,right"
+            represents => { "definitions" },
+            representation => "literal";
+
+  structural_relationships::
+
+     "When a part of something is contained within another part, or is a piece of a whole then we can call this a structural relationship"
+            represents => { "definitions" },
+            representation => "literal";
+
+  type_instances::
+
+     "Occurrences of a type of object. In a topic map, topics are type occurrences. In a policy, promises are type occurrences."
+            represents => { "definitions" },
+            representation => "literal";
+
+  topic_instances::
+
+     "Topic instances are called occurrences in topic map parlance."
+            represents => { "definitions" },
+            representation => "literal";
+
+  occurrence_types::
+
+     "Occurrences are classified by the topics that refer to them. When a topic claims that an occurrence represents it somehow it uses a representation label (also called a subtype in topic map parlance). These partition occurrences into overlapping sets since an occurrence could represent several topics."
+            represents => { "definitions" },
+            representation => "literal";
+
+  occurrences::
+
+     "An information resource that represents a topic. Typically a document, database entry, image or other medium."
+            represents => { "definitions" },
+            representation => "literal";
+
+  communicated_information::
+
+     "Any information that is transmitted falls into this category. It is a container class for more specific messages, e.g. promises."
+            represents => { "definitions" },
+            representation => "literal";
+
+  services::
+
+     "An abstraction for actions or processes that are associated with a specific set of promises. Services are economically motivated black-boxes for promises."
+            represents => { "definitions" },
+            representation => "literal";
+
+
+  stories::       
+
+     "A sequence of topics that relates a start and an end point through a topic map. Different
+aths through a topic map can relate different stories. An entire story promises to have some intention."
+            represents => { "definitions" },
+            representation => "literal";
+
+  workflows::
+
+     "A representation or story about actions or services. "
+            represents => { "definitions" },
+            representation => "literal";
+
+
+  dependencies::     
+
+     "Promises or promisees that provide the pre-requisites for conditional promises may be called dependencies of the conditional promise."
+            represents => { "definitions" },
+            representation => "literal";
+
+
+  versions::
+
+     "An indentity string that distinguishes altered states of an agent or occurrence of a topic."
+            represents => { "definitions" },
+            representation => "literal";
+
+   promises::
+
+       "Assertions about the desired properties of a system"
+            represents => { "definitions" },
+            representation => "literal";
+
+   promise_type::
+
+       "The type of cfengine rules are called promise types"
+            represents => { "definitions" },
+            representation => "literal";
+
+   promise_theory::
+
+       "A model for representing systems of interacting parts, such as computer networks. Orginally described by Mark Burgess to describe cfengine as no other models were suitable."
+            represents => { "definitions" },
+            representation => "literal";
+
+
+
+#########################################################
+
+occurrences:
+
+convergence::
+
+   "https://cfengine.com/img/outside/convergence.png"
+     represents => { "image" },
+     representation => "image";
+
+   "https://cfengine.com/cftimes/stories/cm/4"
+     represents => { "popular" };
+
+
+computer_immunology::
+
+   "https://cfengine.com/cftimes/stories/sick",
+            represents => { "popular science" };
+
+ convergent_operators::
+
+   "http://research.iu.hio.no/papers/immunity.pdf",
+            represents => { "paper" };
+
+   "http://research.iu.hio.no/papers/MACE-v2.pdf",
+            represents => { "paper" };
+
+   "https://cfengine.com/cftimes/stories/cm"
+            represents => { "popular science" };
+
+ configuration_management::
+
+   "http://research.iu.hio.no/papers/alvamark.pdf",
+            represents => { "paper" };
+
+ anomaly_detection::
+
+   "http://research.iu.hio.no/anomalypapers.php",
+            represents => { "paper" };
+
+
+ promises::
+
+   "http://research.iu.hio.no/papers/origin2.pdf",
+            represents => { "paper" };
+
+
+   "https://cfengine.com/presentation/slide/ICAC/0"
+            represents => { "keynote speech" };
+
+ business_value::
+
+  "http://www.cfengine.org/cftimes/articles/0000000027.html"
+            represents => { "cftimes article" };
+
+  "http://www.iu.hio.no/~mark/blog_busval.html"
+            represents => { "Mark Burgess blog" };
+
+ rollback::
+
+     "/docs/st-iterate.html",
+      represents => { "definitions", "Example" };
+
+
+
+}
+

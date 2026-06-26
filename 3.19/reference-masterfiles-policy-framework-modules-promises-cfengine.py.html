@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.19  Documentation - modules/promises/cfengine.py</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/reference/masterfiles-policy-framework/modules-promises-cfengine.py.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-reference-masterfiles-policy-framework-modules-promises-cfengine.py.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-masterfiles-policy-framework-modules-promises-cfengine.py.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='assets/global-6a0b9da22cb0d4bd16e0e337e3484c43.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "modules/promises/cfengine.py";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/">Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/" selected>Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a><ul class="level2"><li><a href="reference-masterfiles-policy-framework-promises.html">promises.cf</a></li><li><a href="reference-masterfiles-policy-framework-update.html">update.cf</a></li><li><a href="reference-masterfiles-policy-framework-standalone_self_upgrade.html">standalone_self_upgrade.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal.html">cfe_internal/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-cfe_cfengine.html">cfe_internal/CFE_cfengine.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-core.html">cfe_internal/core/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-core-watchdog.html">cfe_internal/core/watchdog</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-core-watchdog-watchdog.html">cfe_internal/core/watchdog/watchdog.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise.html">cfe_internal/enterprise/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation.html">cfe_internal/enterprise/federation/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation-federation.html">cfe_internal/enterprise/federation/federation.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-recommendations.html">cfe_internal/recommendations.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update.html">cfe_internal/update/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_dc_workflow.html">cfe_internal/update/cfe_internal_dc_workflow.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_update_from_repository.html">cfe_internal/update/cfe_internal_update_from_repository.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-lib.html">cfe_internal/update/lib.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-systemd_units.html">cfe_internal/update/systemd_units.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_bins.html">cfe_internal/update/update_bins.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_policy.html">cfe_internal/update/update_policy.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_processes.html">cfe_internal/update/update_processes.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls.html">controls/</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_agent.html">controls/cf_agent.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_execd.html">controls/cf_execd.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf-hub.html">controls/cf_hub.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_monitord.html">controls/cf_monitord.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_runagent.html">controls/cf_runagent.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_serverd.html">controls/cf_serverd.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-def.html">controls/def.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-def_inputs.html">controls/def_inputs.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-reports.html">controls/reports.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-update_def.html">controls/update_def.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-update_def_inputs.html">controls/update_def_inputs.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory.html">inventory/</a></li><li><a href="reference-masterfiles-policy-framework-inventory-any.html">inventory/any.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-debian.html">inventory/debian.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-freebsd.html">inventory/freebsd.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-generic.html">inventory/generic.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-linux.html">inventory/linux.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-lsb.html">inventory/lsb.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-macos.html">inventory/macos.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-os.html">inventory/os.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-redhat.html">inventory/redhat.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-suse.html">inventory/suse.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-windows.html">inventory/windows.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib.html">lib/</a></li><li><a href="reference-masterfiles-policy-framework-lib-autorun.html">lib/autorun.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-bundles.html">lib/bundles.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfe_internal.html">lib/cfe_internal.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfe_internal_hub.html">lib/cfe_internal_hub.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfengine_enterprise_hub_ha.html">lib/cfengine_enterprise_hub_ha.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-commands.html">lib/commands.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-common.html">lib/common.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-databases.html">lib/databases.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-edit_xml.html">lib/edit_xml.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-event.html">lib/event.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-examples.html">lib/examples.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-feature.html">lib/feature.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-files.html">lib/files.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-guest_environments.html">lib/guest_environments.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-monitor.html">lib/monitor.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-packages.html">lib/packages.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-paths.html">lib/paths.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-processes.html">lib/processes.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-reports.html">lib/reports.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-services.html">lib/services.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-stdlib.html">lib/stdlib.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-storage.html">lib/storage.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-testing.html">lib/testing.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-users.html">lib/users.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-vcs.html">lib/vcs.cf</a></li><li><a href="reference-masterfiles-policy-framework-modules.html">modules/</a></li><li><a href="reference-masterfiles-policy-framework-modules-packages.html">modules/packages/</a></li><li><a href="reference-masterfiles-policy-framework-modules-packages-vendored.html">modules/packages/vendored/</a></li><li><a href="reference-masterfiles-policy-framework-modules-promises.html">modules/promises/</a></li><li><a class="active" href="reference-masterfiles-policy-framework-modules-promises-cfengine.py.html">modules/promises/cfengine.py</a></li><li><a href="reference-masterfiles-policy-framework-modules-promises-cfengine.sh.html">modules/promises/cfengine.sh</a></li><li><a href="reference-masterfiles-policy-framework-services.html">services/</a></li><li><a href="reference-masterfiles-policy-framework-services-autorun.html">services/autorun/</a></li><li><a href="reference-masterfiles-policy-framework-services-main.html">services/main.cf</a></li></ul></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    modules/promises/cfengine.py
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <div class="highlight"><pre><code class="text">import sys
+import json
+import traceback
+from copy import copy
+from collections import OrderedDict
+
+_LOG_LEVELS = {
+    level: idx
+    for idx, level in enumerate(
+        (&quot;critical&quot;, &quot;error&quot;, &quot;warning&quot;, &quot;notice&quot;, &quot;info&quot;, &quot;verbose&quot;, &quot;debug&quot;)
+    )
+}
+
+
+def _skip_until_empty_line(file):
+    while True:
+        line = file.readline().strip()
+        if not line:
+            break
+
+
+def _get_request(file, record_file=None):
+    line = file.readline()
+    blank_line = file.readline()
+    if record_file is not None:
+        record_file.write(&quot;&lt; &quot; + line)
+        record_file.write(&quot;&lt; &quot; + blank_line)
+
+    return json.loads(line.strip())
+
+
+def _put_response(data, file, record_file=None):
+    data = json.dumps(data)
+    file.write(data + &quot;\n\n&quot;)
+    file.flush()
+
+    if record_file is not None:
+        record_file.write(&quot;&gt; &quot; + data + &quot;\n&quot;)
+        record_file.write(&quot;&gt; \n&quot;)
+
+
+def _would_log(level_set, msg_level):
+    if msg_level not in _LOG_LEVELS:
+        # uknown level, assume it would be logged
+        return True
+
+    return _LOG_LEVELS[msg_level] &lt;= _LOG_LEVELS[level_set]
+
+
+def _cfengine_type(typing):
+    if typing is str:
+        return &quot;string&quot;
+    if typing is int:
+        return &quot;int&quot;
+    if typing in (list, tuple):
+        return &quot;slist&quot;
+    if typing is dict:
+        return &quot;data container&quot;
+    if typing is bool:
+        return &quot;true/false&quot;
+    return &quot;Error in promise module&quot;
+
+
+class AttributeObject(object):
+    def __init__(self, d):
+        for key, value in d.items():
+            setattr(self, key, value)
+
+
+class ValidationError(Exception):
+    def __init__(self, message):
+        self.message = message
+
+
+class ProtocolError(Exception):
+    def __init__(self, message):
+        self.message = message
+
+
+class Result:
+    # Promise evaluation outcomes, can reveal &quot;real&quot; problems with system:
+    KEPT = &quot;kept&quot;  # Satisfied already, no change
+    REPAIRED = &quot;repaired&quot;  # Not satisfied before , but fixed
+    NOT_KEPT = &quot;not_kept&quot;  # Not satisfied before , not fixed
+
+    # Validation only, can reveal problems in CFEngine policy:
+    VALID = &quot;valid&quot;  # Validation successful
+    INVALID = &quot;invalid&quot;  # Validation failed, error in cfengine policy
+
+    # Generic succes / fail for init / terminate requests:
+    SUCCESS = &quot;success&quot;
+    FAILURE = &quot;failure&quot;
+
+    # Unexpected, can reveal problems in promise module:
+    ERROR = &quot;error&quot;  # Something went wrong in module / protocol
+
+
+class PromiseModule:
+    def __init__(
+        self, name=&quot;default_module_name&quot;, version=&quot;0.0.1&quot;, record_file_path=None
+    ):
+        self.name = name
+        self.version = version
+        # Note: The class doesn&#39;t expose any way to set protocol version
+        # or flags, because that should be abstracted away from the
+        # user (module author).
+        self._validator_attributes = OrderedDict()
+        self._result_classes = None
+
+        # File to record all the incoming and outgoing communication
+        self._record_file = open(record_file_path, &quot;a&quot;) if record_file_path else None
+
+    def start(self, in_file=None, out_file=None):
+        self._in = in_file or sys.stdin
+        self._out = out_file or sys.stdout
+
+        first_line = self._in.readline()
+        if self._record_file is not None:
+            self._record_file.write(&quot;&lt; &quot; + first_line)
+
+        header = first_line.strip().split(&quot; &quot;)
+        name = header[0]
+        version = header[1]
+        protocol_version = header[2]
+        # flags = header[3:] -- unused for now
+
+        assert len(name) &gt; 0  # cf-agent
+        assert version.startswith(&quot;3.&quot;)  # 3.18.0
+        assert protocol_version[0] == &quot;v&quot;  # v1
+
+        _skip_until_empty_line(self._in)
+
+        header_reply = &quot;{name} {version} v1 json_based\n\n&quot;.format(
+            name=self.name, version=self.version
+        )
+        self._out.write(header_reply)
+        self._out.flush()
+
+        if self._record_file is not None:
+            self._record_file.write(&quot;&gt; &quot; + header_reply.strip() + &quot;\n&quot;)
+            self._record_file.write(&quot;&gt;\n&quot;)
+
+        while True:
+            self._response = {}
+            self._result = None
+            request = _get_request(self._in, self._record_file)
+            self._handle_request(request)
+
+    def _convert_types(self, promiser, attributes):
+        # Will only convert types if module has typing information:
+        if not self._has_validation_attributes:
+            return promiser, attributes
+
+        replacements = {}
+        for name, value in attributes.items():
+            if type(value) is not str:
+                # If something is not string, assume it is correct type
+                continue
+            if name not in self._validator_attributes:
+                # Unknown attribute, this will cause a validation error later
+                continue
+            # &quot;true&quot;/&quot;false&quot; -&gt; True/False
+            if self._validator_attributes[name][&quot;typing&quot;] is bool:
+                if value == &quot;true&quot;:
+                    replacements[name] = True
+                elif value == &quot;false&quot;:
+                    replacements[name] = False
+            # &quot;int&quot; -&gt; int()
+            elif self._validator_attributes[name][&quot;typing&quot;] is int:
+                try:
+                    replacements[name] = int(value)
+                except ValueError:
+                    pass
+
+        # Don&#39;t edit dict while iterating over it, after instead:
+        attributes.update(replacements)
+
+        return (promiser, attributes)
+
+    def _handle_request(self, request):
+        if not request:
+            sys.exit(&quot;Error: Empty/invalid request or EOF reached&quot;)
+
+        operation = request[&quot;operation&quot;]
+        self._log_level = request.get(&quot;log_level&quot;, &quot;info&quot;)
+        self._response[&quot;operation&quot;] = operation
+
+        # Agent will never request log level critical
+        assert self._log_level in [
+            &quot;error&quot;,
+            &quot;warning&quot;,
+            &quot;notice&quot;,
+            &quot;info&quot;,
+            &quot;verbose&quot;,
+            &quot;debug&quot;,
+        ]
+
+        if operation in [&quot;validate_promise&quot;, &quot;evaluate_promise&quot;]:
+            promiser = request[&quot;promiser&quot;]
+            attributes = request.get(&quot;attributes&quot;, {})
+            promiser, attributes = self._convert_types(promiser, attributes)
+            promiser, attributes = self.prepare_promiser_and_attributes(
+                promiser, attributes
+            )
+            self._response[&quot;promiser&quot;] = promiser
+            self._response[&quot;attributes&quot;] = attributes
+
+        if operation == &quot;init&quot;:
+            self._handle_init()
+        elif operation == &quot;validate_promise&quot;:
+            self._handle_validate(promiser, attributes, request)
+        elif operation == &quot;evaluate_promise&quot;:
+            self._handle_evaluate(promiser, attributes)
+        elif operation == &quot;terminate&quot;:
+            self._handle_terminate()
+        else:
+            self._log_level = None
+            raise ProtocolError(
+                &quot;Unknown operation: &#39;{operation}&#39;&quot;.format(operation=operation)
+            )
+
+        self._log_level = None
+
+    def _add_result(self):
+        self._response[&quot;result&quot;] = self._result
+
+    def _add_result_classes(self):
+        if self._result_classes:
+            self._response[&quot;result_classes&quot;] = self._result_classes
+
+    def _add_traceback_to_response(self):
+        if self._log_level != &quot;debug&quot;:
+            return
+
+        trace = traceback.format_exc()
+        logs = self._response.get(&quot;log&quot;, [])
+        logs.append({&quot;level&quot;: &quot;debug&quot;, &quot;message&quot;: trace})
+        self._response[&quot;log&quot;] = logs
+
+    def add_attribute(
+        self,
+        name,
+        typing,
+        default=None,
+        required=False,
+        default_to_promiser=False,
+        validator=None,
+    ):
+        attribute = OrderedDict()
+        attribute[&quot;name&quot;] = name
+        attribute[&quot;typing&quot;] = typing
+        attribute[&quot;default&quot;] = default
+        attribute[&quot;required&quot;] = required
+        attribute[&quot;default_to_promiser&quot;] = default_to_promiser
+        attribute[&quot;validator&quot;] = validator
+        self._validator_attributes[name] = attribute
+
+    @property
+    def _has_validation_attributes(self):
+        return bool(self._validator_attributes)
+
+    def create_attribute_object(self, promiser, attributes):
+
+        # Check for missing required attributes:
+        for name, attribute in self._validator_attributes.items():
+            if attribute[&quot;required&quot;] and name not in attributes:
+                raise ValidationError(
+                    &quot;Missing required attribute &#39;{name}&#39;&quot;.format(name=name)
+                )
+
+        # Check for unknown attributes:
+        for name in attributes:
+            if name not in self._validator_attributes:
+                raise ValidationError(&quot;Unknown attribute &#39;{name}&#39;&quot;.format(name=name))
+
+        # Check typings and run custom validator callbacks:
+        for name, value in attributes.items():
+            expected = _cfengine_type(self._validator_attributes[name][&quot;typing&quot;])
+            found = _cfengine_type(type(value))
+            if found != expected:
+                raise ValidationError(
+                    &quot;Wrong type for attribute &#39;{name}&#39;, requires &#39;{expected}&#39;, not &#39;{value}&#39;({found})&quot;.format(
+                        name=name, expected=expected, value=value, found=found
+                    )
+                )
+            if self._validator_attributes[name][&quot;validator&quot;]:
+                # Can raise ValidationError:
+                self._validator_attributes[name][&quot;validator&quot;](value)
+
+        # Construct as dict first:
+        attribute_dict = OrderedDict()
+
+        # Copy attributes specified by user policy:
+        for key, value in attributes.items():
+            attribute_dict[key] = value
+
+        # Set defaults based on promise module validation hints:
+        for name, value in self._validator_attributes.items():
+            if value.get(&quot;default_to_promiser&quot;, False):
+                attribute_dict.setdefault(name, promiser)
+            elif value.get(&quot;default&quot;, None) is not None:
+                attribute_dict.setdefault(name, copy(value[&quot;default&quot;]))
+            else:
+                attribute_dict.setdefault(name, None)
+
+        # Finally, convert to an object:
+        return AttributeObject(attribute_dict)
+
+    def _validate_attributes(self, promiser, attributes):
+        if not self._has_validation_attributes:
+            # Can only validate attributes if module
+            # provided typings for attributes
+            return
+        self.create_attribute_object(promiser, attributes)
+        return  # Only interested in exceptions, return None
+
+    def _handle_init(self):
+        self._result = self.protocol_init(None)
+        self._add_result()
+        _put_response(self._response, self._out, self._record_file)
+
+    def _handle_validate(self, promiser, attributes, request):
+        try:
+            self.validate_attributes(promiser, attributes)
+            returned = self.validate_promise(promiser, attributes)
+            if returned is None:
+                # Good, expected
+                self._result = Result.VALID
+            else:
+                # Bad, validate method shouldn&#39;t return anything else
+                self.log_critical(
+                    &quot;Bug in promise module {name} - validate_promise() should not return anything&quot;.format(
+                        name=self.name
+                    )
+                )
+                self._result = Result.ERROR
+        except ValidationError as e:
+            message = str(e)
+            if &quot;promise_type&quot; in request:
+                message += &quot; for {request_promise_type} promise with promiser &#39;{promiser}&#39;&quot;.format(
+                    request_promise_type=request[&quot;promise_type&quot;], promiser=promiser
+                )
+            else:
+                message += &quot; for promise with promiser &#39;{promiser}&#39;&quot;.format(
+                    promiser=promiser
+                )
+            if &quot;filename&quot; in request and &quot;line_number&quot; in request:
+                message += &quot; ({request_filename}:{request_line_number})&quot;.format(
+                    request_filename=request[&quot;filename&quot;],
+                    request_line_number=request[&quot;line_number&quot;],
+                )
+
+            self.log_error(message)
+            self._result = Result.INVALID
+        except Exception as e:
+            self.log_critical(
+                &quot;{error_type}: {error}&quot;.format(error_type=type(e).__name__, error=e)
+            )
+            self._add_traceback_to_response()
+            self._result = Result.ERROR
+        self._add_result()
+        _put_response(self._response, self._out, self._record_file)
+
+    def _handle_evaluate(self, promiser, attributes):
+        self._result_classes = None
+        try:
+            results = self.evaluate_promise(promiser, attributes)
+
+            # evaluate_promise should return either a result or a (result, result_classes) pair
+            if type(results) == str:
+                self._result = results
+            else:
+                assert len(results) == 2
+                self._result = results[0]
+                self._result_classes = results[1]
+        except Exception as e:
+            self.log_critical(
+                &quot;{error_type}: {error}&quot;.format(error_type=type(e).__name__, error=e)
+            )
+            self._add_traceback_to_response()
+            self._result = Result.ERROR
+        self._add_result()
+        self._add_result_classes()
+        _put_response(self._response, self._out, self._record_file)
+
+    def _handle_terminate(self):
+        self._result = self.protocol_terminate()
+        self._add_result()
+        _put_response(self._response, self._out, self._record_file)
+        sys.exit(0)
+
+    def _log(self, level, message):
+        if self._log_level is not None and not _would_log(self._log_level, level):
+            return
+
+        # Message can be str or an object which implements __str__()
+        # for example an exception:
+        message = str(message).replace(&quot;\n&quot;, r&quot;\n&quot;)
+        assert &quot;\n&quot; not in message
+        self._out.write(&quot;log_{level}={message}\n&quot;.format(level=level, message=message))
+        self._out.flush()
+
+        if self._record_file is not None:
+            self._record_file.write(
+                &quot;log_{level}={message}\n&quot;.format(level=level, message=message)
+            )
+
+    def log_critical(self, message):
+        self._log(&quot;critical&quot;, message)
+
+    def log_error(self, message):
+        self._log(&quot;error&quot;, message)
+
+    def log_warning(self, message):
+        self._log(&quot;warning&quot;, message)
+
+    def log_notice(self, message):
+        self._log(&quot;notice&quot;, message)
+
+    def log_info(self, message):
+        self._log(&quot;info&quot;, message)
+
+    def log_verbose(self, message):
+        self._log(&quot;verbose&quot;, message)
+
+    def log_debug(self, message):
+        self._log(&quot;debug&quot;, message)
+
+    def _log_traceback(self):
+        trace = traceback.format_exc().split(&quot;\n&quot;)
+        for line in trace:
+            self.log_debug(line)
+
+    # Functions to override in subclass:
+
+    def protocol_init(self, version):
+        return Result.SUCCESS
+
+    def prepare_promiser_and_attributes(self, promiser, attributes):
+        &quot;&quot;&quot;Override if you want to modify promiser or attributes before validate or evaluate&quot;&quot;&quot;
+        return (promiser, attributes)
+
+    def validate_attributes(self, promiser, attributes):
+        &quot;&quot;&quot;Override this if you want to prevent automatic validation&quot;&quot;&quot;
+        return self._validate_attributes(promiser, attributes)
+
+    def validate_promise(self, promiser, attributes):
+        &quot;&quot;&quot;Must override this or use validation through self.add_attribute()&quot;&quot;&quot;
+        if not self._has_validation_attributes:
+            raise NotImplementedError(&quot;Promise module must implement validate_promise&quot;)
+
+    def evaluate_promise(self, promiser, attributes):
+        raise NotImplementedError(&quot;Promise module must implement evaluate_promise&quot;)
+
+    def protocol_terminate(self):
+        return Result.SUCCESS
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-promise-modules.html">promise modules</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-mpf.html">mpf</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 06 July 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/reference/masterfiles-policy-framework/modules-promises-cfengine.py.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-38e3fd0081b106f885a95356ca1249c5.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

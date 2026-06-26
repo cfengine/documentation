@@ -1,0 +1,878 @@
+<p><h1>CFEngine Site Policy Summary (version not specified)</h1> <html><head>
+<link rel="stylesheet" type="text/css" href="http://www.cfengine.org/css/promises.css" />
+</head>
+
+<a name="bundle_update"></a><div id="bundle"><table class=border><tr><td><h2> Bundle <span class="bodytype">agent</span> <span class="bodyname">update</span>
+ <tr><td> ARGS:</td></tr>
+
+<tr><td><table class="border"><tr><td><tr><td><a name="type_vars"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_update_cf_7"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_update">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_update_cf_7">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_update_cf_7">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">vars</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'master_location'</b> make the promise to default promisee 'cf-agent' (about vars)...
+
+<br><span class="lval">........................string</span> => /home/mark/cfengine-inputs , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>update</b> (type agent) in '<i>/home/mark/.cfagent/inputs/update.cf</i>' near line 7</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td><a name="type_files"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_update_cf_13"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_update">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_update_cf_13">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_update_cf_13">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">files</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'/var/cfengine/inputs'</b> make the promise to default promisee 'cf-agent' (about files)...
+
+<br><span class="lval">........................perms</span> =>  <span class="bodytype">perms</span> <a href="#body_system"><span class="bodyname">system</span>(<span class="args">p</span>,
+)</a><br><span class="lval">.............................mode</span> => '<span class="rval">$(p)'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">........................copy_from</span> =>  <span class="bodytype">copy_from</span> <a href="#body_mycopy"><span class="bodyname">mycopy</span>(<span class="args">from</span>,
+<span class="args">server</span>,
+)</a><br><span class="lval">.............................source</span> => '<span class="rval">$(from)'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................compare</span> => '<span class="rval">digest'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">........................depth_search</span> =>  <span class="bodytype">depth_search</span> <a href="#body_recurse"><span class="bodyname">recurse</span>(<span class="args">d</span>,
+)</a><br><span class="lval">.............................depth</span> => '<span class="rval">$(d)'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">........................action</span> =>  <span class="bodytype">action</span> <a href="#body_immediate"><span class="bodyname">immediate</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................ifelapsed</span> => '<span class="rval">1'</span> if sub-body context <span class="class">any</span>
+ , if body <a href="#class_context">context</a> any
+<hr><p><div id="compliance">Compliance last checked on Sat Apr 25 11:23:00 2009. At that time the system was COMPLIANT. Average compliance 100.0 pm 0.0 percent. </div><p><small>Promise (version not specified) belongs to bundle <b>update</b> (type agent) in '<i>/home/mark/.cfagent/inputs/update.cf</i>' near line 13</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_update_cf_20"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_update">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_update_cf_20">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_update_cf_20">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">files</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'/var/cfengine/bin'</b> make the promise to default promisee 'cf-agent' (about files)...
+
+<br><span class="lval">........................perms</span> =>  <span class="bodytype">perms</span> <a href="#body_system"><span class="bodyname">system</span>(<span class="args">p</span>,
+)</a><br><span class="lval">.............................mode</span> => '<span class="rval">$(p)'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">........................copy_from</span> =>  <span class="bodytype">copy_from</span> <a href="#body_mycopy"><span class="bodyname">mycopy</span>(<span class="args">from</span>,
+<span class="args">server</span>,
+)</a><br><span class="lval">.............................source</span> => '<span class="rval">$(from)'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................compare</span> => '<span class="rval">digest'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">........................depth_search</span> =>  <span class="bodytype">depth_search</span> <a href="#body_recurse"><span class="bodyname">recurse</span>(<span class="args">d</span>,
+)</a><br><span class="lval">.............................depth</span> => '<span class="rval">$(d)'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">........................action</span> =>  <span class="bodytype">action</span> <a href="#body_immediate"><span class="bodyname">immediate</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................ifelapsed</span> => '<span class="rval">1'</span> if sub-body context <span class="class">any</span>
+ , if body <a href="#class_context">context</a> any
+<hr><p><div id="compliance">Compliance last checked on Sat Apr 25 11:23:00 2009. At that time the system was COMPLIANT. Average compliance 100.0 pm 0.0 percent. </div><p><small>Promise (version not specified) belongs to bundle <b>update</b> (type agent) in '<i>/home/mark/.cfagent/inputs/update.cf</i>' near line 20</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></h2></table></div>
+<a name="bundle_g"></a><div id="bundle"><table class=border><tr><td><h2> Bundle <span class="bodytype">common</span> <span class="bodyname">g</span>
+ <tr><td> ARGS:</td></tr>
+
+<tr><td><table class="border"><tr><td><tr><td><a name="type_vars"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_13"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_g">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_13">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_13">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">vars</span>, <a href="#class_context">context</a> is <span class="class">SuSE</span> <br><hr>
+
+Resource object <b>'crontab'</b> make the promise to default promisee 'cf-common' (about vars)...
+
+<br><span class="lval">........................string</span> => /var/spool/cron/tabs/root , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>g</b> (type common) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 13</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_17"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_g">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_17">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_17">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">vars</span>, <a href="#class_context">context</a> is <span class="class">!SuSE</span> <br><hr>
+
+Resource object <b>'crontab'</b> make the promise to default promisee 'cf-common' (about vars)...
+
+<br><span class="lval">........................string</span> => /var/spool/cron/crontabs/root , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>g</b> (type common) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 17</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></h2></table></div>
+<a name="bundle_cfengine"></a><div id="bundle"><table class=border><tr><td><h2> Bundle <span class="bodytype">agent</span> <span class="bodyname">cfengine</span>
+ <tr><td> ARGS:</td></tr>
+
+<tr><td><table class="border"><tr><td><tr><td><a name="type_classes"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_31"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_cfengine">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_31">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_31">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">classes</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'integrate_cfengine2'</b> make the promise to default promisee 'cf-agent' (about classes)...
+
+<br><span class="lval">........................and</span> => <span class="rval"> {'fileexists($(sys.workdir)/inputs/cfagent.conf,)','fileexists($(sys.workdir)/bin/cfagent,)'}</span> , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>cfengine</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 31</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td><a name="type_vars"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_38"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_cfengine">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_38">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_38">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">vars</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'cf2bits'</b> make the promise to default promisee 'cf-agent' (about vars)...
+
+<br><span class="lval">........................slist</span> => <span class="rval"> {'cfenvd','cfservd','cfexecd'}</span> , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>cfengine</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 38</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td><a name="type_commands"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_46"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_cfengine">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_46">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_46">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">commands</span>, <a href="#class_context">context</a> is <span class="class">integrate_cfengine2</span> <br><hr>
+
+Resource object <b>'$(sys.workdir)/bin/cfagent'</b> make the promise to default promisee 'cf-agent' (about commands)...
+
+<br><span class="lval">........................action</span> =>  <span class="bodytype">action</span> <a href="#body_longjob"><span class="bodyname">longjob</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................ifelapsed</span> => '<span class="rval">240'</span> if sub-body context <span class="class">any</span>
+ , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>cfengine</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 46</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td><a name="type_files"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_54"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_cfengine">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_54">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_54">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">files</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'$(sys.workdir)/inputs/.*'</b> make the promise to default promisee 'cf-agent' (about files)...
+
+<br><span class="lval">........................comment</span> => Check if there are still promises about cfengine 2 that need removing , if body <a href="#class_context">context</a> any
+<br><span class="lval">........................edit_line</span> => DeleteLinesMatching(.*$(cf2bits).*,)<br><span class="lval">........................file_select</span> =>  <span class="bodytype">file_select</span> <a href="#body_OldCf2Files"><span class="bodyname">OldCf2Files</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................leaf_name</span> => '<span class="rval"> {'promises.cf','site.cf','library.cf','failsafe.cf','.*.txt','.*.html','.*~','#.*'}'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................file_result</span> => '<span class="rval">!leaf_name'</span> if sub-body context <span class="class">any</span>
+ , if body <a href="#class_context">context</a> any
+<br><span class="lval">........................action</span> =>  <span class="bodytype">action</span> <a href="#body_WarnOnly"><span class="bodyname">WarnOnly</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................action_policy</span> => '<span class="rval">warn'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................ifelapsed</span> => '<span class="rval">60'</span> if sub-body context <span class="class">any</span>
+ , if body <a href="#class_context">context</a> any
+<hr><p><div id="compliance">Compliance last checked on Sat Apr 25 09:55:06 2009. At that time the system was COMPLIANT. Average compliance 100.0 pm 1.6 percent. </div><p><small>Promise (version not specified) belongs to bundle <b>cfengine</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 54</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_63"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_cfengine">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_63">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_63">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">files</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'$(g.crontab)'</b> make the promise to default promisee 'cf-agent' (about files)...
+
+<br><span class="lval">........................edit_line</span> => upgrade_cfexecd , if body <a href="#class_context">context</a> any
+<hr><p><div id="compliance">Compliance last checked on Sat Apr 25 11:23:01 2009. At that time the system was COMPLIANT. Average compliance 100.0 pm 0.0 percent. </div><p><small>Promise (version not specified) belongs to bundle <b>cfengine</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 63</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td><a name="type_processes"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_69"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_cfengine">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_69">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_69">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">processes</span>, <a href="#class_context">context</a> is <span class="class">exec_fix</span> <br><hr>
+
+Resource object <b>'cron'</b> make the promise to default promisee 'cf-agent' (about processes)...
+
+<br><span class="lval">........................signals</span> => <span class="rval"> {'hup'}</span> , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>cfengine</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 69</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></h2></table></div>
+<a name="bundle_main"></a><div id="bundle"><table class=border><tr><td><h2> Bundle <span class="bodytype">agent</span> <span class="bodyname">main</span>
+ <tr><td> ARGS:</td></tr>
+
+<tr><td><table class="border"><tr><td><tr><td><a name="type_vars"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_83"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_main">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_83">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_83">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">vars</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'component'</b> make the promise to default promisee 'cf-agent' (about vars)...
+
+<br><span class="lval">........................slist</span> => <span class="rval"> {'cf-monitord','cf-serverd'}</span> , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>main</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 83</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td><a name="type_files"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_91"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_main">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_91">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_91">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">files</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'/tmp/resolv.conf'</b> make the promise to default promisee 'cf-agent' (about files)...
+
+<br><span class="lval">........................create</span> => true , if body <a href="#class_context">context</a> any
+<br><span class="lval">........................edit_line</span> => resolver , if body <a href="#class_context">context</a> any
+<br><span class="lval">........................edit_defaults</span> =>  <span class="bodytype">edit_defaults</span> <a href="#body_def"><span class="bodyname">def</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................empty_file_before_editing</span> => '<span class="rval">false'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................edit_backup</span> => '<span class="rval">false'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................max_file_size</span> => '<span class="rval">100000'</span> if sub-body context <span class="class">any</span>
+ , if body <a href="#class_context">context</a> any
+<hr><p><div id="compliance">Compliance last checked on Sat Apr 25 11:23:00 2009. At that time the system was COMPLIANT. Average compliance 100.0 pm 0.0 percent. </div><p><small>Promise (version not specified) belongs to bundle <b>main</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 91</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td><a name="type_processes"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_104"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_main">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_104">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_104">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">processes</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'cfenvd'</b> make the promise to default promisee 'cf-agent' (about processes)...
+
+<br><span class="lval">........................signals</span> => <span class="rval"> {'term'}</span> , if body <a href="#class_context">context</a> any
+<hr><p><div id="compliance">Compliance last checked on Sat Apr 25 11:23:00 2009. At that time the system was COMPLIANT. Average compliance 100.0 pm 0.0 percent. </div><p><small>Promise (version not specified) belongs to bundle <b>main</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 104</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_114"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_main">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_114">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_114">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">processes</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'$(component)'</b> make the promise to default promisee 'cf-agent' (about processes)...
+
+<br><span class="lval">........................restart_class</span> => canonify(start_$(component),)<hr><p><div id="compliance">Compliance last checked on Sat Apr 25 11:23:00 2009. At that time the system was COMPLIANT. Average compliance 100.0 pm 0.0 percent. </div><p><small>Promise (version not specified) belongs to bundle <b>main</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 114</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td><a name="type_commands"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_122"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_main">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_122">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_122">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">commands</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'$(sys.workdir)/bin/$(component)'</b> make the promise to default promisee 'cf-agent' (about commands)...
+
+<br><span class="lval">........................ifvarclass</span> => canonify(start_$(component),)<hr><p><div id="compliance">Compliance last checked on Sat Mar 28 09:10:33 2009. At that time the system was COMPLIANT. Average compliance 100.0 pm 0.4 percent. </div><p><small>Promise (version not specified) belongs to bundle <b>main</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 122</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></h2></table></div>
+<a name="bundle_garbage_collection"></a><div id="bundle"><table class=border><tr><td><h2> Bundle <span class="bodytype">agent</span> <span class="bodyname">garbage_collection</span>
+ <tr><td> ARGS:</td></tr>
+
+<tr><td><table class="border"><tr><td><tr><td><a name="type_files"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_136"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_garbage_collection">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_136">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_136">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">files</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'$(sys.workdir)/outputs'</b> make the promise to default promisee 'cf-agent' (about files)...
+
+<br><span class="lval">........................delete</span> =>  <span class="bodytype">delete</span> <a href="#body_tidy"><span class="bodyname">tidy</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................dirlinks</span> => '<span class="rval">delete'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................rmdirs</span> => '<span class="rval">true'</span> if sub-body context <span class="class">any</span>
+ , if body <a href="#class_context">context</a> any
+<br><span class="lval">........................file_select</span> =>  <span class="bodytype">file_select</span> <a href="#body_days_old"><span class="bodyname">days_old</span>(<span class="args">days</span>,
+)</a><br><span class="lval">.............................mtime</span> => '<span class="rval">irange(ago(1,0,0,0,0,0,)ago(0,0,$(days),0,0,0,))'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................file_result</span> => '<span class="rval">mtime'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">........................depth_search</span> =>  <span class="bodytype">depth_search</span> <a href="#body_recurse"><span class="bodyname">recurse</span>(<span class="args">d</span>,
+)</a><br><span class="lval">.............................depth</span> => '<span class="rval">$(d)'</span> if sub-body context <span class="class">any</span>
+<hr><p><div id="compliance">Compliance last checked on Sat Apr 25 11:23:00 2009. At that time the system was COMPLIANT. Average compliance 100.0 pm 0.0 percent. </div><p><small>Promise (version not specified) belongs to bundle <b>garbage_collection</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 136</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></h2></table></div>
+<a name="bundle_anomalies"></a><div id="bundle"><table class=border><tr><td><h2> Bundle <span class="bodytype">agent</span> <span class="bodyname">anomalies</span>
+ <tr><td> ARGS:</td></tr>
+
+<tr><td><table class="border"><tr><td><tr><td><a name="type_reports"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_182"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_anomalies">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_182">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_182">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">reports</span>, <a href="#class_context">context</a> is <span class="class">rootprocs_high_dev2</span> <br><hr>
+
+Resource object <b>'RootProc anomaly high 2 dev on $(sys.host) at $(sys.env_time) measured value $(sys.value_rootprocs) av $(sys.average_rootprocs) pm $(sys.stddev_rootprocs)'</b> make the promise to default promisee 'cf-agent' (about reports)...
+
+<br><span class="lval">........................showstate</span> => <span class="rval"> {'rootprocs'}</span> , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>anomalies</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 182</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_189"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_anomalies">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_189">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_189">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">reports</span>, <a href="#class_context">context</a> is <span class="class">entropy_www_in_high&anomaly_hosts.www_in_high_anomaly</span> <br><hr>
+
+Resource object <b>'HIGH ENTROPY Incoming www anomaly high anomaly dev!! on $(sys.host) at $(sys.env_time) 
+    - measured value $(sys.value_www_in) av $(sys.average_www_in) pm $(sys.stddev_www_in)'</b> make the promise to default promisee 'cf-agent' (about reports)...
+
+<br><span class="lval">........................showstate</span> => <span class="rval"> {'incoming.www'}</span> , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>anomalies</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 189</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_196"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_anomalies">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_196">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_196">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">reports</span>, <a href="#class_context">context</a> is <span class="class">entropy_www_in_low.anomaly_hosts.www_in_high_anomaly</span> <br><hr>
+
+Resource object <b>'LOW ENTROPY Incoming www anomaly high anomaly dev!! on $(sys.host) at $(sys.env_time)
+     - measured value $(svalue_www_in) av $(average_www_in) pm $(stddev_www_in)'</b> make the promise to default promisee 'cf-agent' (about reports)...
+
+<br><span class="lval">........................showstate</span> => <span class="rval"> {'incoming.www'}</span> , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>anomalies</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 196</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_203"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_anomalies">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_203">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_203">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">reports</span>, <a href="#class_context">context</a> is <span class="class">entropy_tcpsyn_in_low.anomaly_hosts.tcpsyn_in_high_dev2</span> <br><hr>
+
+Resource object <b>'Anomalous number of new TCP connections on $(sys.host) at $(sys.env_time) 
+    - measured value $(sys.value_tcpsyn_in) av $(sys.average_tcpsyn_in) pm $(sys.stddev_tcpsyn_in)'</b> make the promise to default promisee 'cf-agent' (about reports)...
+
+<br><span class="lval">........................showstate</span> => <span class="rval"> {'incoming.tcpsyn'}</span> , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>anomalies</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 203</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_210"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_anomalies">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_210">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_210">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">reports</span>, <a href="#class_context">context</a> is <span class="class">entropy_dns_in_low.anomaly_hosts.dns_in_high_anomaly</span> <br><hr>
+
+Resource object <b>'Anomalous (3dev) incoming DNS packets on $(sys.host) at $(sys.env_time) 
+    - measured value $(sys.value_dns_in) av $(average_dns_in) pm $(sys.stddev_dns_in)'</b> make the promise to default promisee 'cf-agent' (about reports)...
+
+<br><span class="lval">........................showstate</span> => <span class="rval"> {'incoming.dns'}</span> , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>anomalies</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 210</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_217"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_anomalies">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_217">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_217">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">reports</span>, <a href="#class_context">context</a> is <span class="class">entropy_dns_in_low.anomaly_hosts.udp_in_high_dev2</span> <br><hr>
+
+Resource object <b>'Anomalous (2dev) incoming (non-DNS) UDP traffic on $(sys.host) at $(sys.env_time) 
+    - measured value $(sys.value_udp_in) av $(sys.average_udp_in) pm $(sys.stddev_udp_in)'</b> make the promise to default promisee 'cf-agent' (about reports)...
+
+<br><span class="lval">........................showstate</span> => <span class="rval"> {'incoming.udp'}</span> , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>anomalies</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 217</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_224"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_anomalies">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_224">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_224">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">reports</span>, <a href="#class_context">context</a> is <span class="class">anomaly_hosts.icmp_in_high_anomaly.!entropy_icmp_in_high</span> <br><hr>
+
+Resource object <b>'Anomalous low entropy (3dev) incoming ICMP traffic on $(sys.host) at $(sys.env_time) 
+    - measured value $(sys.value_icmp_in) av $(sys.average_icmp_in) pm $(sys.stddev_icmp_in)'</b> make the promise to default promisee 'cf-agent' (about reports)...
+
+<br><span class="lval">........................showstate</span> => <span class="rval"> {'incoming.icmp'}</span> , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>anomalies</b> (type agent) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 224</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></h2></table></div>
+<a name="bundle_access_rules"></a><div id="bundle"><table class=border><tr><td><h2> Bundle <span class="bodytype">server</span> <span class="bodyname">access_rules</span>
+ <tr><td> ARGS:</td></tr>
+
+<tr><td><table class="border"><tr><td><tr><td><a name="type_access"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_237"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_access_rules">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_237">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_237">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">access</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'/home/mark/LapTop'</b> make the promise to default promisee 'cf-server' (about access)...
+
+<br><span class="lval">........................admit</span> => <span class="rval"> {'127.0.0.1'}</span> , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>access_rules</b> (type server) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 237</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_241"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_access_rules">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_241">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_241">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">access</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'/home/mark/.cfagent/bin/cf-agent'</b> make the promise to default promisee 'cf-server' (about access)...
+
+<br><span class="lval">........................admit</span> => <span class="rval"> {'127.0.0.1'}</span> , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>access_rules</b> (type server) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 241</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td><a name="type_roles"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_site_cf_245"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_access_rules">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_site_cf_245">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_site_cf_245">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">roles</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'.*'</b> make the promise to default promisee 'cf-server' (about roles)...
+
+<br><span class="lval">........................authorize</span> => <span class="rval"> {'mark'}</span> , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>access_rules</b> (type server) in '<i>/home/mark/.cfagent/inputs/site.cf</i>' near line 245</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></h2></table></div>
+<a name="bundle_resolver"></a><div id="bundle"><table class=border><tr><td><h2> Bundle <span class="bodytype">edit_line</span> <span class="bodyname">resolver</span>
+ <tr><td> ARGS:</td></tr>
+
+<tr><td><table class="border"><tr><td><tr><td><a name="type_vars"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_library_cf_70"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_resolver">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_library_cf_70">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_library_cf_70">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">vars</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'search'</b> make the promise to default promisee 'cf-edit_line' (about vars)...
+
+<br><span class="lval">........................slist</span> => <span class="rval"> {'search iu.hio.no cfengine.com'}</span> , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>resolver</b> (type edit_line) in '<i>/home/mark/.cfagent/inputs/library.cf</i>' near line 70</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td><a name="type_delete_lines"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_library_cf_74"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_resolver">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_library_cf_74">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_library_cf_74">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">delete_lines</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'search.*'</b> make the promise to default promisee 'cf-edit_line' (about delete_lines)...
+
+<hr><p><div id="compliance">Compliance last checked on Sat Apr 25 11:23:00 2009. At that time the system was COMPLIANT. Average compliance 100.0 pm 0.0 percent. </div><p><small>Promise (version not specified) belongs to bundle <b>resolver</b> (type edit_line) in '<i>/home/mark/.cfagent/inputs/library.cf</i>' near line 74</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td><a name="type_insert_lines"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_library_cf_78"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_resolver">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_library_cf_78">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_library_cf_78">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">insert_lines</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'$(search)'</b> make the promise to default promisee 'cf-edit_line' (about insert_lines)...
+
+<br><span class="lval">........................location</span> =>  <span class="bodytype">location</span> <a href="#body_start"><span class="bodyname">start</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................before_after</span> => '<span class="rval">before'</span> if sub-body context <span class="class">any</span>
+ , if body <a href="#class_context">context</a> any
+<hr><p><div id="compliance">Compliance last checked on Sat Apr 25 11:23:00 2009. At that time the system was COMPLIANT. Average compliance 100.0 pm 0.0 percent. </div><p><small>Promise (version not specified) belongs to bundle <b>resolver</b> (type edit_line) in '<i>/home/mark/.cfagent/inputs/library.cf</i>' near line 78</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></h2></table></div>
+<a name="bundle_DeleteLinesMatching"></a><div id="bundle"><table class=border><tr><td><h2> Bundle <span class="bodytype">edit_line</span> <span class="bodyname">DeleteLinesMatching</span>
+ <tr><td> ARGS:</td></tr>
+
+<tr><td>   scalar arg <span class="args">regex</span>
+</td></tr><tr><td><table class="border"><tr><td><tr><td><a name="type_delete_lines"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_library_cf_105"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_DeleteLinesMatching">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_library_cf_105">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_library_cf_105">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">delete_lines</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'$(regex)'</b> make the promise to default promisee 'cf-edit_line' (about delete_lines)...
+
+<br><span class="lval">........................action</span> =>  <span class="bodytype">action</span> <a href="#body_WarnOnly"><span class="bodyname">WarnOnly</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................action_policy</span> => '<span class="rval">warn'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................ifelapsed</span> => '<span class="rval">60'</span> if sub-body context <span class="class">any</span>
+ , if body <a href="#class_context">context</a> any
+<p><small>Promise (version not specified) belongs to bundle <b>DeleteLinesMatching</b> (type edit_line) in '<i>/home/mark/.cfagent/inputs/library.cf</i>' near line 105</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></h2></table></div>
+<a name="bundle_upgrade_cfexecd"></a><div id="bundle"><table class=border><tr><td><h2> Bundle <span class="bodytype">edit_line</span> <span class="bodyname">upgrade_cfexecd</span>
+ <tr><td> ARGS:</td></tr>
+
+<tr><td><table class="border"><tr><td><tr><td><a name="type_classes"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_library_cf_124"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_upgrade_cfexecd">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_library_cf_124">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_library_cf_124">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">classes</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'exec_fix'</b> make the promise to default promisee 'cf-edit_line' (about classes)...
+
+<br><span class="lval">........................not</span> => regline(.*cf-execd.*,$(edit.filename),)<p><small>Promise (version not specified) belongs to bundle <b>upgrade_cfexecd</b> (type edit_line) in '<i>/home/mark/.cfagent/inputs/library.cf</i>' near line 124</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td><a name="type_insert_lines"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_library_cf_130"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_upgrade_cfexecd">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_library_cf_130">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_library_cf_130">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">insert_lines</span>, <a href="#class_context">context</a> is <span class="class">exec_fix</span> <br><hr>
+
+Resource object <b>'0,5,10,15,20,25,30,35,40,45,50,55 * * * * /var/cfengine/bin/cf-execd -F'</b> make the promise to default promisee 'cf-edit_line' (about insert_lines)...
+
+<p><small>Promise (version not specified) belongs to bundle <b>upgrade_cfexecd</b> (type edit_line) in '<i>/home/mark/.cfagent/inputs/library.cf</i>' near line 130</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td><a name="type_replace_patterns"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_library_cf_134"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_upgrade_cfexecd">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_library_cf_134">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_library_cf_134">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">replace_patterns</span>, <a href="#class_context">context</a> is <span class="class">any</span> <br><hr>
+
+Resource object <b>'cfexecd'</b> make the promise to default promisee 'cf-edit_line' (about replace_patterns)...
+
+<br><span class="lval">........................replace_with</span> =>  <span class="bodytype">replace_with</span> <a href="#body_With"><span class="bodyname">With</span>(<span class="args">x</span>,
+)</a><br><span class="lval">.............................replace_value</span> => '<span class="rval">$(x)'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................occurrences</span> => '<span class="rval">all'</span> if sub-body context <span class="class">any</span>
+<p><small>Promise (version not specified) belongs to bundle <b>upgrade_cfexecd</b> (type edit_line) in '<i>/home/mark/.cfagent/inputs/library.cf</i>' near line 134</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+<tr><td><a name="type_reports"></a>
+</td></tr><tr><td>
+<tr><td><table class="border"><tr><td>
+<a name="promise_library_cf_140"></a>
+<div id="nav">
+<a href="promises.cf.html#bundle_upgrade_cfexecd">[BUNDLE]</a>&nbsp;
+<a href="promises.cf.html#promise_library_cf_140">[TEMPLATE]</a>
+<a href="promise_output_common.html#promise_library_cf_140">[RESULT]</a>
+</div>
+Promise type is <span class="subtype">reports</span>, <a href="#class_context">context</a> is <span class="class">exec_fix</span> <br><hr>
+
+Resource object <b>'Added a 5 minute schedule to crontabs'</b> make the promise to default promisee 'cf-edit_line' (about reports)...
+
+<p><small>Promise (version not specified) belongs to bundle <b>upgrade_cfexecd</b> (type edit_line) in '<i>/home/mark/.cfagent/inputs/library.cf</i>' near line 140</small></p>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></table></td></tr>
+</td></tr>
+</td></tr></h2></table></div>
+<h1>All Bodies</h1><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_control"></a> <span class="bodytype">common</span> <a href="#body_control"><span class="bodyname">control</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................bundlesequence</span> => '<span class="rval"> {'update','garbage_collection','main','cfengine'}'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................inputs</span> => '<span class="rval"> {'update.cf','site.cf','library.cf'}'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_control"></a> <span class="bodytype">agent</span> <a href="#body_control"><span class="bodyname">control</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................ifelapsed</span> => '<span class="rval">15'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_control"></a> <span class="bodytype">monitor</span> <a href="#body_control"><span class="bodyname">control</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................forgetrate</span> => '<span class="rval">0.7'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................histograms</span> => '<span class="rval">true'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_control"></a> <span class="bodytype">executor</span> <a href="#body_control"><span class="bodyname">control</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................splaytime</span> => '<span class="rval">1'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................mailto</span> => '<span class="rval">cfengine_mail@example.org'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................smtpserver</span> => '<span class="rval">localhost'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................mailmaxlines</span> => '<span class="rval">30'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................schedule</span> => '<span class="rval"> {'any'}'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................exec_command</span> => '<span class="rval">$(sys.workdir)/bin/cf-agent -f failsafe.cf && $(sys.workdir)/bin/cf-agent'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_control"></a> <span class="bodytype">reporter</span> <a href="#body_control"><span class="bodyname">control</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................reports</span> => '<span class="rval"> {'performance','last_seen','monitor_history'}'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................build_directory</span> => '<span class="rval">/tmp/nerves'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................report_output</span> => '<span class="rval">html'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_control"></a> <span class="bodytype">runagent</span> <a href="#body_control"><span class="bodyname">control</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................hosts</span> => '<span class="rval"> {'127.0.0.1'}'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_control"></a> <span class="bodytype">server</span> <a href="#body_control"><span class="bodyname">control</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................allowconnects</span> => '<span class="rval"> {'127.0.0.1','::1'}'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................allowallconnects</span> => '<span class="rval"> {'127.0.0.1','::1'}'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................trustkeysfrom</span> => '<span class="rval"> {'127.0.0.1','::1'}'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................cfruncommand</span> => '<span class="rval">$(sys.workdir)/bin/cf-agent -f failsafe.cf && $(sys.workdir)/bin/cf-agent'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................allowusers</span> => '<span class="rval"> {'root'}'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_system"></a> <span class="bodytype">perms</span> <a href="#body_system"><span class="bodyname">system</span>(<span class="args">p</span>,
+)</a><br><span class="lval">.............................mode</span> => '<span class="rval">$(p)'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_cf3_files"></a> <span class="bodytype">file_select</span> <a href="#body_cf3_files"><span class="bodyname">cf3_files</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................leaf_name</span> => '<span class="rval"> {'cf-.*'}'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................file_result</span> => '<span class="rval">leaf_name'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_mycopy"></a> <span class="bodytype">copy_from</span> <a href="#body_mycopy"><span class="bodyname">mycopy</span>(<span class="args">from</span>,
+<span class="args">server</span>,
+)</a><br><span class="lval">.............................source</span> => '<span class="rval">$(from)'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................compare</span> => '<span class="rval">digest'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_immediate"></a> <span class="bodytype">action</span> <a href="#body_immediate"><span class="bodyname">immediate</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................ifelapsed</span> => '<span class="rval">1'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_OldCf2Files"></a> <span class="bodytype">file_select</span> <a href="#body_OldCf2Files"><span class="bodyname">OldCf2Files</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................leaf_name</span> => '<span class="rval"> {'promises.cf','site.cf','library.cf','failsafe.cf','.*.txt','.*.html','.*~','#.*'}'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................file_result</span> => '<span class="rval">!leaf_name'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_measure"></a> <span class="bodytype">action</span> <a href="#body_measure"><span class="bodyname">measure</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................measurement_class</span> => '<span class="rval">Detect Changes in /usr'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................ifelapsed</span> => '<span class="rval">240'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................expireafter</span> => '<span class="rval">240'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_p"></a> <span class="bodytype">perms</span> <a href="#body_p"><span class="bodyname">p</span>(<span class="args">user</span>,
+<span class="args">mode</span>,
+)</a><br><span class="lval">.............................owners</span> => '<span class="rval"> {'$(user)'}'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................mode</span> => '<span class="rval">$(mode)'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_recurse"></a> <span class="bodytype">depth_search</span> <a href="#body_recurse"><span class="bodyname">recurse</span>(<span class="args">d</span>,
+)</a><br><span class="lval">.............................depth</span> => '<span class="rval">$(d)'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_tidy"></a> <span class="bodytype">delete</span> <a href="#body_tidy"><span class="bodyname">tidy</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................dirlinks</span> => '<span class="rval">delete'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................rmdirs</span> => '<span class="rval">true'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_days_old"></a> <span class="bodytype">file_select</span> <a href="#body_days_old"><span class="bodyname">days_old</span>(<span class="args">days</span>,
+)</a><br><span class="lval">.............................mtime</span> => '<span class="rval">irange(ago(1,0,0,0,0,0,)ago(0,0,$(days),0,0,0,))'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................file_result</span> => '<span class="rval">mtime'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_lay_trip_wire"></a> <span class="bodytype">changes</span> <a href="#body_lay_trip_wire"><span class="bodyname">lay_trip_wire</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................hash</span> => '<span class="rval">best'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................report_changes</span> => '<span class="rval">content'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................update_hashes</span> => '<span class="rval">yes'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_longjob"></a> <span class="bodytype">action</span> <a href="#body_longjob"><span class="bodyname">longjob</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................ifelapsed</span> => '<span class="rval">240'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_def"></a> <span class="bodytype">edit_defaults</span> <a href="#body_def"><span class="bodyname">def</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................empty_file_before_editing</span> => '<span class="rval">false'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................edit_backup</span> => '<span class="rval">false'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................max_file_size</span> => '<span class="rval">100000'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_start"></a> <span class="bodytype">location</span> <a href="#body_start"><span class="bodyname">start</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................before_after</span> => '<span class="rval">before'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_WarnOnly"></a> <span class="bodytype">action</span> <a href="#body_WarnOnly"><span class="bodyname">WarnOnly</span><span class="args">(no parameters)</span>
+</a><br><span class="lval">.............................action_policy</span> => '<span class="rval">warn'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................ifelapsed</span> => '<span class="rval">60'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_With"></a> <span class="bodytype">replace_with</span> <a href="#body_With"><span class="bodyname">With</span>(<span class="args">x</span>,
+)</a><br><span class="lval">.............................replace_value</span> => '<span class="rval">$(x)'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................occurrences</span> => '<span class="rval">all'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p><tr><td><div id="block"><table class=border cellpadding=5 width=800>
+<tr><td><table class="border"><tr><td>
+<a name="body_scp"></a> <span class="bodytype">copy_from</span> <a href="#body_scp"><span class="bodyname">scp</span>(<span class="args">from</span>,
+<span class="args">server</span>,
+)</a><br><span class="lval">.............................source</span> => '<span class="rval">$(from)'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................compare</span> => '<span class="rval">digest'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................encrypt</span> => '<span class="rval">true'</span> if sub-body context <span class="class">any</span>
+<br><span class="lval">.............................verify</span> => '<span class="rval">true'</span> if sub-body context <span class="class">any</span>
+</td></tr></table></td></tr>
+</table></div></td></tr> 
+ </p></html>

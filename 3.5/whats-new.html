@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - New in CFEngine</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html"  class="navselected" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="index.html">CFEngine 3.5</a></li><li><a href="getting-started.html">Getting Started</a></li><li class="selected"><span>New in CFEngine</span></li><li><a href="manuals.html">CFEngine Manuals</a></li><li><a href="reference.html">CFEngine Reference</a></li><li><a href="examples.html">CFEngine Examples</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>New in CFEngine</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+
+                <h1>New in CFEngine</h1>
+                    <p>CFEngine 3.5 is the latest version of CFEngine 3. It enables Infrastructure
+Engineers to automate IT systems easier, faster and at a greater
+scale than ever before. CFEngine 3.5 allows you to manage very large and 
+complex IT infrastructure installations when agility, scalability, security 
+and stability are critical.</p>
+
+<p>CFEngine 3.5 is compatible with all previous versions of CFEngine 3. Don&#39;t 
+have CFEngine yet? Install and evaluate the latest version of CFEngine 
+Enterprise using our pre-packaged <a href="getting-started-installation-installing-enterprise-vagrant.html" title="Installing Enterprise Vagrant Environment">Vagrant environment</a>.</p>
+<h2 id="easier-to-use">Easier to Use</h2>
+<p>No matter if you are just starting with configuration management and system 
+automation, if you are a CFEngine novice or a battle-hardened policy coder, 
+the new features in CFEngine 3.5 will make it easy for you to get stuff done.</p>
+<h3 id="design-center-with-ui-in-cfengine-enterprise">Design Center, with UI in CFEngine Enterprise</h3>
+<p>CFEngine Enterprise 3.5 includes the brand-new <strong>Design Center app</strong> in the 
+Mission Portal. You are now able to conveniently configure and activate
+sketches through an easy to use graphical interface, and to follow up on
+the activation progress.</p>
+
+<p><img src="new-design-center-config.png" alt="Design Center - Sketch Configuration"></p>
+<h3 id="significantly-improved-parsing-and-evaluation-of-policies">Significantly improved parsing and evaluation of policies</h3>
+<p>A large number of parser and evaluation problems have been fixed. Iterating 
+over <strong>arrays with nested lists</strong> has caused many headaches and workarounds in 
+previous versions of CFEngine. With 3.5, many of those can disappear.</p>
+
+<p>Policy developers get <strong>clear and consistent messages</strong> from the 
+<strong>stricter parser</strong>. <a href="reference-components-cfpromises.html" title="cf-promises"><code>cf-promises</code></a> allowing partial check of policy - now you 
+are not required to have <code>body common control</code> to check syntax. This will 
+allow better integration with editors to perform automatic syntax validation.</p>
+
+<p><strong>Note:</strong> If your policy has syntactically incorrect code, then the new parser 
+will mark those as errors. Fixing those errors should be straight forward, but 
+see the respective section in <a href="getting-started-known-issues.html" title="Known Issues">Known Issues</a> for information.</p>
+
+<p><code>action_policy =&gt; warn</code> now sets <code>not_kept</code> classes, which allows you to see 
+deeper than first order changes that might occur during <strong>dry-runs</strong>.</p>
+
+<p>The <strong>new <a href="reference-promise-types-classes.html#scope" title="classes - scope"><code>scope</code></a> attribute</strong> in <a href="reference-promise-types-classes.html" title="classes"><code>classes</code></a> bodies allows policy writers to set 
+non global classes based on result of a promise. This reduces managing class 
+naming conflicts, especially when multiple activations of a bundle may happen. </p>
+
+<p>Significant enhancements to bundle common paths, including the ability to
+test with automatically defined classes. Policy writers don&#39;t have to maintain 
+their own common paths locations, or hard code paths into each bundle for 
+paths that are well known.</p>
+
+<p>CFEngine operators benefit from a range of improvements in <strong>logging output</strong>, 
+both to the syslog and to the standard output.</p>
+<h3 id="new-built-in-functions-and-capabilities">New built-in functions and capabilities</h3>
+<p>A broad range of new built-in functions simplify the coding of policies
+significantly and offer completely new functionality.</p>
+
+<ul>
+<li>set operation functions that test for set membership and find
+intersections/differences:
+
+<ul>
+<li><a href="reference-functions-every.html" title="every"><code>every()</code></a></li>
+<li><a href="reference-functions-none.html" title="none"><code>none()</code></a></li>
+<li><a href="reference-functions-some.html" title="some"><code>some()</code></a></li>
+<li><a href="reference-functions-intersection.html" title="intersection"><code>intersection()</code></a></li>
+<li><a href="reference-functions-difference.html" title="difference"><code>difference()</code></a></li>
+</ul></li>
+<li>list functions  to look up a specific element, find the list length, extract 
+a portion of the list, reduce it to unique element, sort it, and filter it
+
+<ul>
+<li><a href="reference-functions-nth.html" title="nth"><code>nth()</code></a></li>
+<li><a href="reference-functions-length.html" title="length"><code>length()</code></a></li>
+<li><a href="reference-functions-sublist.html" title="sublist"><code>sublist()</code></a></li>
+<li><a href="reference-functions-unique.html" title="unique"><code>unique()</code></a></li>
+<li><a href="reference-functions-sort.html" title="sort"><code>sort()</code></a></li>
+<li><a href="reference-functions-shuffle.html" title="shuffle"><code>shuffle()</code></a></li>
+<li><a href="reference-functions-filter.html" title="filter"><code>filter()</code></a></li>
+</ul></li>
+<li>function that returns a list of all the classes that match a regular
+expression
+
+<ul>
+<li><a href="reference-functions-classesmatching.html" title="classesmatching"><code>classesmatching()</code></a></li>
+</ul></li>
+<li>function that converts date/time values into a formatted string
+
+<ul>
+<li><a href="reference-functions-strftime.html" title="strftime"><code>strftime()</code></a></li>
+</ul></li>
+<li>function for building a string from data, using sprintf semantics
+
+<ul>
+<li><a href="reference-functions-format.html" title="format"><code>format()</code></a></li>
+</ul></li>
+<li>function for making logical decisions in a function call based on classes
+
+<ul>
+<li><a href="reference-functions-ifelse.html" title="ifelse"><code>ifelse()</code></a></li>
+</ul></li>
+<li>mapping function for arrays
+
+<ul>
+<li><a href="reference-functions-maparray.html" title="maparray"><code>maparray()</code></a></li>
+</ul></li>
+<li>function for getting detailed file information
+
+<ul>
+<li><a href="reference-functions-filestat.html" title="filestat"><code>filestat()</code></a></li>
+</ul></li>
+</ul>
+<h3 id="improved-out-of-the-box-installation">Improved out-of-the-box installation</h3>
+<p>In CFEngine Enterprise, the CFEngine Server and the Mission Portal UI are all 
+up and running as soon as the package installation is completed. CFEngine will
+take over from there, and continue to maintain a healthy Server configuration 
+through policy.</p>
+
+<p><strong>New bootstrap semantics</strong> makes bootstrapping simpler. <strong>avahi auto
+discovery</strong> is available now in addition to specifying a static ip. Clearer
+messages during the bootstrapping process makes it easier to analyze why
+things might not have worked.</p>
+<h2 id="report-collection-at-arbitrary-scale">Report collection at arbitrary scale</h2><h3 id="scalability-across-multiple-sites">Scalability across multiple sites</h3>
+<p>Support for <a href="manuals-enterprise-reporting-multi-site-queries.html" title="Multi-Site Queries"><strong>Multi-Site Querying</strong></a> enables the 
+generation of reports across multiple, globally distributed CFEngine Server 
+installations, and the centralized aggregation of data collected.</p>
+
+<p>Improved performance of <a href="reference-components-cfserver.html" title="cf-serverd"><code>cf-serverd</code></a> allows the handling of more connections 
+in parallel, resulting in faster policy distribution through the network.</p>
+<h3 id="improved-sql-reporting">Improved SQL reporting</h3>
+<p>All <strong>CFEngine reports</strong> are now based on <strong>SQL syntax</strong>. Run one of our
+ready-made reports with a single click, or define your own using the graphical 
+query  builder or direct SQL input. Save and schedule your reports in a quick 
+and easy way.</p>
+
+<ul>
+<li>Promise logs, file, software and compliance information are available
+through <strong>SQL Report app</strong></li>
+<li>Regular expressions are supported in SQL queries</li>
+<li><a href="examples-enterprise-api.html" title="Enterprise API"><strong>Enterprise API</strong></a> supports host
+and promise filtering</li>
+</ul>
+
+<p><img src="new-sql-reports-app.png" alt="Improved SQL Report App in Mission Portal"></p>
+<h2 id="better-tools-for-cfengine-operators">Better tools for CFEngine operators</h2>
+<ul>
+<li>CFEngine Enterprise collects data for diagnostics, available through SQL 
+queries
+
+<ul>
+<li>performance data from MongoDB</li>
+<li><a href="reference-enterprise-api-sql-schema.html#database-diagnostics" title="SQL Schema - Database Diagnostics">lastseen report data</a> for information
+about host connectivity</li>
+<li><a href="reference-enterprise-api-sql-schema.html#hosts" title="SQL Schema - Hosts"><code>FirstReportTimeStamp</code></a> is recorded for all hosts</li>
+<li><a href="reference-enterprise-api-sql-schema.html#hub-diagnostics" title="SQL Schema - Hub Diagnostics">Performance data</a> from <a href="reference-components-cfhub.html" title="cf-hub"><code>cf-hub</code></a></li>
+</ul></li>
+<li>Configurable data collection for Enterprise
+
+<ul>
+<li>Host-side report content filter, controlled by <a href="reference-promise-types-access.html#report_data_select" title="access - report_data_select"><code>report_data_select</code></a> body
+in <a href="reference-promise-types-access.html#report_data_select" title="access - report_data_select">access promise</a></li>
+<li>filters for class, variable, promise log and monitoring reports</li>
+</ul></li>
+<li><a href="reference-components-cfagent.html#command-reference" title="cf-agent - Command reference">Self-diagnostics</a> of a CFEngine agent 
+installation</li>
+</ul>
+<h2 id="streamlined-mission-portal">Streamlined Mission Portal</h2>
+<p>The Mission Portal has received another <strong>major facelift</strong> for this release. 
+Plenty of polish went into the visual and interaction design.</p>
+
+<p><img src="new-mission-portal-ui.png" alt="New Mission Portal UI"></p>
+
+<p><strong>Host categorizations</strong> (aka navigation trees) has received a performance 
+boost, and can now be shared between users. Partition your system any way you 
+like, save your categorization, and give others access. Or simply add others’ 
+categorizations to your own account.</p>
+
+<p><img src="new-mission-portal-sharing.png" alt="Sharing Trees in Mission Portal"></p>
+<h2 id="microsoft-windows-specific-improvements">Microsoft Windows specific improvements</h2>
+<ul>
+<li>Windows PowerShell support in <a href="reference-promise-types-commands.html" title="commands"><code>commands</code> promises</a>,
+<a href="reference-functions-execresult.html" title="execresult"><code>execresult()</code></a> and <a href="reference-functions-returnszero.html" title="returnszero"><code>returnszero()</code></a></li>
+<li>Improved ACL handling on Windows
+
+<ul>
+<li>Note the <a href="reference-promise-types-files.html#acl_default" title="files - acl_default">syntax changes</a> in the
+<a href="whats-new.html#changelog" title="New in CFEngine - ChangeLog">ChangeLog</a></li>
+</ul></li>
+</ul>
+<h2 id="changelog">ChangeLog</h2>
+<p>For a complete list of changes in the CFEngine, see the <code>ChangeLog</code> and 
+<code>ChangeLog.Enterprise</code> files in <code>/var/cfengine/share/doc</code>. The Core change log
+is also available 
+<a href="https://github.com/cfengine/core/blob/3.5.x/ChangeLog">online</a>.</p>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/whatsnew.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

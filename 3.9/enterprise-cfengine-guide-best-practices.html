@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.9  Documentation - Best Practices</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.9/assets/global-bbcdf8cb2135dbef89c4d6d19c9604bb.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Best Practices";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+                       <option value="/docs/3.9/index.html" selected>Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+                       <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:eahkid3txr8" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html"  class="navselected" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="enterprise-cfengine-guide-install-get-started.html">Install and Get Started</a></li><li><a href="enterprise-cfengine-guide-user-interface.html">User Interface</a></li><li><a href="enterprise-cfengine-guide-settings.html">Settings</a></li><li><a href="enterprise-cfengine-guide-hosts-health.html">Hosts and Health</a></li><li><a href="enterprise-cfengine-guide-alerts-custom-actions.html">Custom actions for Alerts</a></li><li><a href="enterprise-cfengine-guide-alerts-notifications.html">Alerts and Notifications</a></li><li><a href="enterprise-cfengine-guide-reporting.html">Enterprise Reporting</a></li><li><a href="enterprise-cfengine-guide-monitoring.html">Monitoring</a></li><li><a href="enterprise-cfengine-guide-design-center.html">Design Center UI</a></li><li><a href="enterprise-cfengine-guide-enterprise-api.html">Enterprise API</a></li><li><a class="active" href="enterprise-cfengine-guide-best-practices.html">Best Practices</a></li><li><a href="enterprise-cfengine-guide-high-availability.html">High Availability</a></li><li><a href="enterprise-cfengine-guide-hub_administration.html">Hub Administration</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="enterprise-cfengine-guide.html">CFEngine Enterprise</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Best Practices
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <ul>
+<li><a href="enterprise-cfengine-guide-best-practices.html#version-control-and-configuration-policy" title="Best Practices - Version Control and Configuration Policy ">Version Control and Configuration Policy</a></li>
+<li><a href="enterprise-cfengine-guide-best-practices.html#scalability" title="Best Practices - Scalability ">Scalability</a></li>
+</ul>
+<h2 id="version-control-and-configuration-policy">Version Control and Configuration Policy</h2>
+<p>CFEngine users version their policies.  It&#39;s a reasonable, easy thing
+to do: you just put <a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-enterprise-sketch-flow.html#var-cfengine-masterfiles" title="Sketch Flow in CFEngine Enterprise - /var/cfengine/masterfiles"><code>/var/cfengine/masterfiles</code></a> under version control
+and... you&#39;re done?</p>
+
+<p>What do you think?  How do you version your own infrastructure?</p>
+<h3 id="problem-statement">Problem statement</h3>
+<p>It turns out everyone likes convenience and writing the versioning
+machinery is hard.  So for CFEngine Enterprise 3.6 we set out to
+provide version control integration with Git out of the box, disabled
+by default.  This allows users to use branches for separate hubs
+(which enables a policy release pipeline) and enables Design Center
+integration.</p>
+<h3 id="release-pipeline">Release pipeline</h3>
+<p>A build and release pipeline is how software is typically delivered to
+production through testing stages.  In the case of CFEngine, policies
+are the software.  Users have at least two stages, development and
+production, but typically the sequence has more stages including
+various forms of testing/QA and pre-production.</p>
+<h2 id="design-center">Design Center</h2>
+<p>The CFEngine Design Center is a way to augment your policies (in a way
+that does not conflict or override your own policies) through a GUI,
+using modular testable policies called sketches.  It&#39;s like a Perl
+CPAN for CFEngine but with a GUI and awesome sauce mixed in.</p>
+<h3 id="how-to-enable-it">How to enable it</h3>
+<p>To enable masterfiles versioning, you have to plan a little bit. These
+are the steps:</p>
+<h4 id="choose-your-repository">Choose your repository</h4>
+<p>You have two options: use the default local Git repository which comes
+with CFEngine Enterprise, or use a remote Git repository accessible
+via the <code>git</code> or <code>https</code> protocol.  The first option is good for
+getting started quickly, but we strongly recommend the second option:
+using a remote repository, populated with the contents of the <code>3.6.x</code>
+branch of our masterfiles repository at
+<a href="https://github.com/cfengine/masterfiles">https://github.com/cfengine/masterfiles</a>.</p>
+<h5 id="using-the-default-local-git-repository">Using the default local Git repository</h5>
+<p>The default repository is a local directory on the hub and set up by
+the <code>cfengine-hub</code> package.  It&#39;s the default in the Mission Portal
+VCS integration panel and resides in <code>/opt/cfengine/masterfiles.git</code>.</p>
+
+<p><strong>PLEASE NOTE: you must use user &quot;cfapache&quot; to interact with this
+repository safely on the hub.</strong></p>
+
+<p>You do not have to do anything to set up this repository - it&#39;s
+already preconfigured and prepopulated out of the box. You just need
+to enable VCS deployments as described below.</p>
+
+<p>To check out this default repository, run the following commands on
+your hub (everything needs to be run as user <code>cfapache</code> for the
+permissions to be set correctly. The first two commands setup some
+basic information needed by git to manipulate the repository):</p>
+<div class="highlight"><pre><code class="text">su - cfapache
+git config --global user.email &quot;your@email.address&quot;
+git config --global user.name &quot;Your Name&quot;
+git clone /opt/cfengine/masterfiles.git
+</code></pre>
+</div>
+
+<p>And then make all the changes in the checked-out <code>masterfiles</code>
+repository.</p>
+<h5 id="using-a-remote-repository">Using a remote repository</h5>
+<p>To use a remote repository, you must enter its address, login
+credentials and the branch you want to use in the Mission Portal VCS
+integration panel. To access it, click on &quot;Settings&quot; in the top-left
+menu of the Mission Portal screen, and then select &quot;Version control
+repository&quot;. This screen by default contains the settings for using
+the built-in local repository.</p>
+
+<p><img src="settings-menu.png" alt="Settings menu"></p>
+
+<p><img src="settings-vcs.png" alt="VCS settings screen"></p>
+<h4 id="make-sure-your-current-masterfiles-are-in-the-chosen-repository">Make sure your current masterfiles are in the chosen repository</h4>
+<p>This is critical.  When you start auto-deploying policy, you <strong>will</strong>
+overwrite your current <a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-enterprise-sketch-flow.html#var-cfengine-masterfiles" title="Sketch Flow in CFEngine Enterprise - /var/cfengine/masterfiles"><code>/var/cfengine/masterfiles</code></a>.  So take the
+current contents thereof and make sure they are in the Git repository
+you chose in the previous step.</p>
+
+<p>For example, if you create a new repository in GitHub by following the
+instructions from <a href="https://help.github.com/articles/create-a-repo">https://help.github.com/articles/create-a-repo</a>, you
+can add the contents of <code>masterfiles</code> to it with the following
+commands (assuming you are already in your local repository checkout):</p>
+<div class="highlight"><pre><code class="text">cp -r /var/cfengine/masterfiles/* .
+git add *
+git commit -m &#39;Initial masterfiles check in&#39;
+git push origin master
+</code></pre>
+</div>
+<h4 id="enable-vcs-deployments-in-the-versioned-update-cf">Enable VCS deployments in the versioned <a href="guide-writing-and-serving-policy-policy-framework.html#update-cf" title="The Policy Framework - update.cf"><code>update.cf</code></a></h4>
+<p>In the file <code>update_def.cf</code> under a version-specific subdirectory of
+<code>controls/</code> in your version-controlled masterfiles, change</p>
+<div class="highlight"><pre><code class="text">#&quot;cfengine_internal_masterfiles_update&quot; expression =&gt; &quot;enterprise.!(cfengine_3_4|cfengine_3_5)&quot;;
+&quot;cfengine_internal_masterfiles_update&quot; expression =&gt; &quot;!any&quot;;
+</code></pre>
+</div>
+
+<p>to</p>
+<div class="highlight"><pre><code class="text">&quot;cfengine_internal_masterfiles_update&quot; expression =&gt; &quot;enterprise.!(cfengine_3_4|cfengine_3_5)&quot;;
+#&quot;cfengine_internal_masterfiles_update&quot; expression =&gt; &quot;!any&quot;;
+</code></pre>
+</div>
+
+<p>This is simply commenting out one line and uncommenting another.</p>
+
+<p>Remember that you need to commit and push these changes to the
+repository you chose in the previous step, so that they are picked up
+when you deploy from the git repository. In your checked out
+<code>masterfiles</code> git repository, these commands should normally do the
+trick:</p>
+<div class="highlight"><pre><code class="text">git add update.cf
+git commit -m &#39;Enabled auto-policy updates&#39;
+git push origin master
+</code></pre>
+</div>
+
+<p>Now you need to do the first-time deployment, whereupon this new
+<a href="guide-writing-and-serving-policy-policy-framework.html#update-cf" title="The Policy Framework - update.cf"><code>update.cf</code></a> and the rest of your versioned masterfiles will overwrite
+<a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-enterprise-sketch-flow.html#var-cfengine-masterfiles" title="Sketch Flow in CFEngine Enterprise - /var/cfengine/masterfiles"><code>/var/cfengine/masterfiles</code></a>.  We made that easy too, using standard
+CFEngine tools. Exit the <code>cfapache</code> account and run the following
+command as <code>root</code> on your hub:</p>
+<div class="highlight"><pre><code class="text">cf-agent -Dcfengine_internal_masterfiles_update -f update.cf
+</code></pre>
+</div>
+
+<p>Easy, right?  You&#39;re done, from now on every time <a href="guide-writing-and-serving-policy-policy-framework.html#update-cf" title="The Policy Framework - update.cf"><code>update.cf</code></a> is run
+(by default, every 5 minutes) it will check out the repository and
+branch you configured in the Mission Portal VCS integration panel.</p>
+
+<p>Please note all the work is done as user <code>cfapache</code> except the very
+last step of writing into <a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-enterprise-sketch-flow.html#var-cfengine-masterfiles" title="Sketch Flow in CFEngine Enterprise - /var/cfengine/masterfiles"><code>/var/cfengine/masterfiles</code></a>.</p>
+<h4 id="how-it-works">How it works</h4>
+<p>The code is fairly simple and can even be modified if you have special
+requirements (e.g. Subversion integration).  But out of the box there
+are three important components. All the scripts below are stored under
+<code>/var/cfengine/httpd/htdocs/api/dc-scripts/</code> in your CFEngine
+Enterprise hub.</p>
+<h5 id="common-sh"><code>common.sh</code></h5>
+<p>The script <code>common.sh</code> is loaded by the deployment script and does two
+things.  First, it redirects all output to
+<code>/var/cfengine/outputs/dc-scripts.log</code>.  So if you have problems,
+check there first.</p>
+
+<p>Second, the script sources <code>/opt/cfengine/dc-scripts/params.sh</code> where
+the essential parameters like repository address and branch live.
+That file is written out by the Mission Portal VCS integration panel,
+so it&#39;s the connection between the Mission Portal GUI and the
+underlying scripts.</p>
+<h5 id="masterfiles-stage-sh"><code>masterfiles-stage.sh</code></h5>
+<p>This script is called to deploy the masterfiles from VCS to
+<a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-enterprise-sketch-flow.html#var-cfengine-masterfiles" title="Sketch Flow in CFEngine Enterprise - /var/cfengine/masterfiles"><code>/var/cfengine/masterfiles</code></a>.  It&#39;s fairly complicated and does not
+depend on CFEngine itself by design; for instance it uses <code>rsync</code> to
+deploy the policies.  You may want to review and even modify it, for
+example choosing to reject deployments that are too different from the
+current version (which could indicate a catastrophic failure or
+misconfiguration).</p>
+
+<p>This script also validates the policies using <code>cf-promises -T</code>.  That
+command looks in a directory and ensures that <a href="guide-writing-and-serving-policy-policy-framework.html#promises-cf" title="The Policy Framework - promises.cf"><code>promises.cf</code></a> in the
+directory is valid.  If it&#39;s not, an error will go in the log file and
+the script exits.</p>
+
+<p><strong>NOTE</strong> this means that clients will <strong>never</strong> get invalid policies
+  according to the hub, although a 3.5 or older client could still
+  receive policies that are only valid in 3.6.  So make sure you test
+  with 3.5 or older if you anticipate that problem during migration,
+  but in a homogeneous client population this is a wonderful
+  guarantee.</p>
+<h5 id="pre-fetch-sh-and-post-update-sh"><code>pre-fetch.sh</code> and <code>post-update.sh</code></h5>
+<p>These scripts are run by the Mission Portal whenever the user
+configures sketches.  They enable the Mission Portal to check out the
+policies, make changes to them, and then commit and push them back.</p>
+<h3 id="design-center-integration">Design Center integration</h3>
+<p>The Design Center integration Just Works when you follow the procedure
+above to enable the VCS integration.  You can then go into the Mission
+Portal, configure any sketch, and voila, in minutes that sketch will
+be activated across your infrastructure.</p>
+<h3 id="manual-policy-changes">Manual policy changes</h3>
+<p>If you want to make manual changes to your policies, simply make those
+changes in a checkout of your masterfiles repository, commit and push
+the changes. The next time <a href="guide-writing-and-serving-policy-policy-framework.html#update-cf" title="The Policy Framework - update.cf"><code>update.cf</code></a> runs, your changes will be
+checked out and in minutes distributed through your entire
+infrastructure.</p>
+<h3 id="benefits">Benefits</h3>
+<p>To conclude, let&#39;s summmarize the benefits of versioning your
+masterfiles using the built-in facilities in CFEngine Enterprise 3.6</p>
+
+<ul>
+<li>easy to use compared to home-grown VCS integration</li>
+<li>supports Git out of the box and, with some work, can support others
+like Subversion</li>
+<li>tested, reliable, and built-in</li>
+<li>Design Center integration</li>
+<li>supports any repository and branch per hub</li>
+<li>your policies are validated before deployment</li>
+<li>integration happens through shell scripts and <a href="guide-writing-and-serving-policy-policy-framework.html#update-cf" title="The Policy Framework - update.cf"><code>update.cf</code></a>, not C
+code or special policies</li>
+</ul>
+<h2 id="scalability">Scalability</h2>
+<p>When running CFEngine Enterprise in a large-scale IT environment with many thousands of hosts, certain issues arise that require different approaches compared with smaller installations.</p>
+
+<p>With CFEngine 3.6, significant testing was performed to identify the issues surrounding scalability and to determine best practices in large-scale installations of CFEngine.</p>
+<h3 id="moving-postgresql-to-separate-hard-drive">Moving PostgreSQL to Separate Hard Drive</h3>
+<p>Moving the PostgreSQL database to another physical hard drive from the other CFEngine components can improve the stability of large-scale installations, particularly when using a solid-state drive (SSD) for hosting the PostgreSQL database.</p>
+
+<p>The data access involves a huge number of random IO operations, with small chunks of data. SSD may give the best performance because it is designed for these types of scenarios.</p>
+
+<p><em>Important</em>: The PostgreSQL data files are in <code>/var/cfengine/state/pg/</code> by default. Before moving the mount point, please make sure that all CFEngine processes (including PostgreSQL) are stopped and the existing data files are copied to the new location.</p>
+<h3 id="setting-the-splaytime">Setting the splaytime</h3>
+<p>The <a href="reference-components-cf-execd.html#splaytime" title="cf-execd - splaytime"><code>splaytime</code></a> tells CFEngine hosts the base interval over which they will communicate with the <code>policy server</code>, which they then use to &quot;splay&quot; or hash their own runtimes.</p>
+
+<p>Thus when <a href="reference-components-cf-execd.html#splaytime" title="cf-execd - splaytime"><code>splaytime</code></a> is set to 4, 1000 hosts will hash their run attempts evenly over 4 minutes, and each minute will see about 250 hosts make a run attempt.  In effect, the hosts will attempt to communicate with the policy server and run their own policies in predictable &quot;waves.&quot;  This limits the number of concurrent connections and overall system load at any given moment.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-cfengine-enterprise.html">cfengine enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-best-practices.html">best practices</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-user-interface.html">user interface</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-mission-portal.html">mission portal</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 02 March 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/enterprise-cfengine-guide/best-practices.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/04ad849bd97ab6da773794babca26d9dd8806039" target="_blank">04ad849bd97ab6da773794babca26d9dd8806039</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.9/assets/footer-e9812654bffc243fc0dd77cc1c8e348e.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

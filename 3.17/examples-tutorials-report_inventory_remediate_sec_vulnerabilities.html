@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.17  Documentation - Reporting and Remediation of Security Vulnerabilities</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/examples-tutorials-report_inventory_remediate_sec_vulnerabilities.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='/docs/3.17/assets/global-4de74225093262155923559d57c53b5c.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Reporting and Remediation of Security Vulnerabilities";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/" selected>Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value=" 61c5dfe74ae502b02" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a></li><li><a href="examples-tutorials.html">Tutorials</a><ul class="level2"><li><a href="examples-tutorials-json-yaml-support-in-cfengine.html">JSON and YAML Support in CFEngine</a></li><li><a href="examples-tutorials-files-tutorial.html">Create, Modify, and Delete Files</a></li><li><a href="examples-tutorials-distribute-files-from-a-central-location.html">Distribute files from a central location</a></li><li><a class="active" href="examples-tutorials-report_inventory_remediate_sec_vulnerabilities.html">Reporting and Remediation of Security Vulnerabilities</a></li><li><a href="examples-tutorials-masterfiles_policy_framework_upgrade.html">Masterfiles Policy Framework Upgrade</a></li><li><a href="examples-tutorials-tags.html">Tags for variables, classes, and bundles</a></li><li><a href="examples-tutorials-custom_inventory.html">Custom Inventory</a></li><li><a href="examples-tutorials-file_comparison.html">File Comparison</a></li></ul></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-tutorials.html">Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Reporting and Remediation of Security Vulnerabilities
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>CFEngine 3.6 Enterprise Hub</li>
+<li>At least one client vulnerable to CVE-2014-6271</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>Remediating security vulnerabilities is a common issue. Sometimes you want to
+know the extent to which your estate is affected by a threat.
+Identification of affected systems can help you prioritize and plan remediation
+efforts. In this tutorial you will learn how to inventory your estate and build
+alerts to find hosts that are affected by the #shellshock exploit. After
+identifying the affected hosts you will patch a subset of the hosts and then be
+able to see the impact on your estate. The same methodology can be applied to
+other issues.</p>
+
+<p><strong>Note:</strong> The included policy does not require CFEngine Enterprise. Only the
+reporting functionality (Mission Portal) requires the Enterprise version.</p>
+<h2 id="inventory-cve-2013-6271">Inventory CVE-2013-6271</h2>
+<p>Writing inventory policy with CFEngine is just like any other CFEngine policy,
+except for the addition of special <a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a> attributes used to augment the
+inventory interface. First you must know how to collect the information you
+want. In this case we know that a vulnerable system will have the word
+<em>vulnerable</em> listed in the output of the command
+<code>env x=&#39;() { :;}; echo vulnerable&#39; $(bash) -c &#39;echo testing CVE-2014-6271&#39;</code>.</p>
+
+<p>This bundle will check if the host is vulnerable to the CVE, define a class
+<em>CVE_2014_6217</em> if it is vulnerable and augment Mission Portals Inventory
+interface in CFEngine Enterprise.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">inventory_CVE_2014_6271</span>
+<span class="p">{</span>
+  <span class="kd">meta</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">description</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;Remote exploit vulnerability in bash http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-6271&quot;</span><span class="p">;</span>
+    <span class="p">&quot;</span><span class="nv">tags</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;autorun&quot;</span> <span class="p">};</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">env</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(paths.env)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">&quot;</span><span class="nv">bash</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/bash&quot;</span><span class="p">;</span>
+    <span class="p">&quot;</span><span class="nv">echo</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(paths.echo)</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="p">&quot;</span><span class="nv">test_result</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(env)</span><span class="s"> x=&#39;() { :;}; </span><span class="si">$(echo)</span><span class="s"> vulnerable&#39; </span><span class="si">$(bash)</span><span class="s"> -c &#39;echo testing CVE-2014-6271&#39;&quot;</span><span class="p">,</span> <span class="s">&quot;useshell&quot;</span><span class="p">);</span>
+
+    <span class="nc">CVE_2014_6271</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">vulnerable</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;CVE-2014-6271&quot;</span><span class="p">,</span>
+        <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;inventory&quot;</span><span class="p">,</span> <span class="s">&quot;attribute_name=Vulnerable CVE(s)&quot;</span> <span class="p">};</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="s">&quot;CVE_2014_6271&quot;</span>
+      <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regcmp</span><span class="p">(</span> <span class="s">&quot;vulnerable.*&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(test_result)</span><span class="s">&quot;</span> <span class="p">),</span>
+      <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">,</span>
+      <span class="kr">persistence</span> <span class="o">=&gt;</span> <span class="s">&quot;10&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;We persist the class for 2 agent runs so that bundles</span>
+<span class="s">         activated before this bundle can use the class on the next</span>
+<span class="s">                 agent execution to coordinate things like package updates.&quot;</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">DEBUG|DEBUG_cve_2014_6217</span><span class="p">::</span>
+      <span class="s">&quot;Test Result: </span><span class="si">$(test_result)</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="nc">CVE_2014_6271.(inform_mode|verbose_mode)</span><span class="p">::</span>
+      <span class="s">&quot;Tested Vulnerable for CVE-2014-6271: </span><span class="si">$($(this.bundle)_meta.description)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="what-does-this-inventory-policy-do">What does this inventory policy do?</h3>
+<p>Meta type promises are used to attach additional information to bundles. We
+have set &#39;description&#39; so that future readers of the policy will know what the
+policy is for and how to get more information on the vulnerability. For
+the sake of simplicity in this example set &#39;autorun&#39; as a tag to the bundle.
+This makes the bundle available for automatic activation when using the autorun
+feature in the Masterfiles Policy Framework.</p>
+
+<p>Next we set the paths to the binaries that we will use to exeucte our test
+command. As of this writing the paths for &#39;env&#39; and &#39;echo&#39; are both in the
+standard libraries paths bundle, but &#39;bash&#39; is not. Note that you may need to
+adjust the path to bash for your platforms. Then we run our test command and
+place the command output into the &#39;test_result&#39; variable. Since we have no
+<em>CVE_2014_6271</em> class defined yet, the next promise to set the variable
+&#39;vulnerable&#39; to &#39;CVE-2014-6271&#39; will be skipped on the first pass. Then the
+classes type promise is evaluated and defines the class <em>CVE_2014_6271</em> if the
+output matches the regular expression &#39;vulnerable.*&#39;. Finally the reports are
+evaluated before starting the second pass. If the class &#39;DEBUG&#39; or
+&#39;DEBUG_inventory_CVE_2014_6271&#39; is set the test command output will be shown,
+and if the vulnerability is present agent is running in inform or verbose mode
+message indicating the host is vulnerable along with the description will be
+output.</p>
+
+<p>On the second pass only that variable &#39;vulnerable&#39; will be set with the value
+&#39;CVE-2014-6271&#39; if the host is vulnerable. Note how this variable tagged with
+&#39;inventory&#39; and &#39;attribute_name=&#39;. These are special meta tags that CFEngine
+Enterprise uses in order to display information.</p>
+<h3 id="deploy-the-policy">Deploy the policy</h3>
+<p>As noted previously, in this example we will use autorun for simplicity. Please
+ensure that the class &quot;services_autorun&quot; is defined. The easiest way to do this
+is to change <code>&quot;services_autorun&quot; expression =&gt; &quot;!any&quot;;</code> to <code>&quot;services_autorun&quot;
+expression =&gt; &quot;any&quot;;</code> in <code>def.cf</code>.</p>
+
+<p>Once you have autorun enabled you need only save the policy into
+<code>services/autorun/inventory_CVE_2014_6271.cf</code>.</p>
+<h3 id="report-on-affected-system-inventory">Report on affected system inventory</h3>
+<p>Within 20 minutes of deploying the policy you should be able to see results in the Inventory Reporting interface.</p>
+
+<p>A new Inventory attribute &#39;Vulnerable CVE(s)&#39; is available.
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_001.jpg" alt="A new Inventory attribute &#39;Vulnerable CVE(s)&#39; is available"></p>
+
+<p>Report showing CVEs that each host is vulnerable to.</p>
+
+<p><img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_002.jpg" alt="Report showing CVEs that each host is vulnerable to"></p>
+
+<p>Chart the Vulnerable CVE(s) and get a visual breakdown.
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_003.jpg" alt="Chart the Vulnerable CVE(s) and get a visual breakdown">
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_004.jpg" alt="Chart the Vulnerable CVE(s) and get a visual breakdown - pie">
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_005.jpg" alt="Chart the Vulnerable CVE(s) and get a visual breakdown - column"></p>
+<h3 id="build-dashboard-widget-with-alerts">Build Dashboard Widget with Alerts</h3>
+<p>Let&#39;s add alerts for CVE(s) to the dashboard.
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_006.jpg" alt="Let&#39;s add alerts for CVE(s) to the dashboard"></p>
+
+<p>Give the dashboard widget a name.
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_007.jpg" alt="Give the dashboard widget a name"></p>
+
+<p>Configure an general CVE alert for the dashboard.
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_008.jpg" alt="Configure an general CVE alert for the dashboard"></p>
+
+<p>Add an additional alert for this specific CVE.
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_010.jpg" alt="Add an additional alert for this specific CVE"></p>
+
+<p>See the dashboard alert in action.
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_012.jpg" alt="See an the dashboard alert in action - visualization">
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_013.jpg" alt="See an the dashboard alert in action - details">
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_014.jpg" alt="See an the dashboard alert in action - alert details 1">
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_015.jpg" alt="See an the dashboard alert in action - specifc alert details"></p>
+<h2 id="remediate-vulnerabilities">Remediate Vulnerabilities</h2>
+<p>Now that we know the extent of exposure lets ensure bash gets updated on some
+of the affected systems. Save the following policy into
+<code>services/autorun/remediate_CVE_2014_6271.cf</code></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">remediate_CVE_2014_6271</span>
+<span class="p">{</span>
+  <span class="kd">meta</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">tags</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;autorun&quot;</span> <span class="p">};</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="s">&quot;allow_update&quot;</span> <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;hub&quot;</span><span class="p">,</span> <span class="s">&quot;host001&quot;</span> <span class="p">};</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+    <span class="nc">allow_update.CVE_2014_6271</span><span class="p">::</span>
+      <span class="s">&quot;Upgrade_Bash&quot;</span>
+        <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">package_latest</span><span class="p">(</span><span class="s">&quot;bash&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="what-does-this-remediation-policy-do">What does this remediation policy do?</h3>
+<p>For simplicity of the example this policy defines the class allow_update on hub
+and host001, but you could use any class that makes sense to you. If the
+allow_update class is set, and the class <em>CVE_2014_6271</em> is defined (indicating
+the host is vulnerable) then the policy ensures that bash is updated to the
+latest version available.</p>
+<h3 id="report-on-affected-systems-inventory-after-remediation">Report on affected systems inventory after remediation</h3>
+<p>Within 20 minutes or so of the policy being deployed you will be able to report on the state of remediation.</p>
+
+<p>See the remediation efforts relfected in the dashboard.
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_017.jpg" alt="See the remediation efforts relfected in the dashboard"></p>
+
+<p>Drill down into the dashboard and alert details.
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_018.jpg" alt="Drill down into the dashboard and alert details - widget alerts">
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_019.jpg" alt="Drill down into the dashboard and alert details - alert detail"></p>
+
+<p>Run an Inventory report to see hosts and their CVE status.
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_020.jpg" alt="Run an Inventory report to see hosts and their CVE status"></p>
+
+<p>Chart the Vulnerable CVE(s) and get a visual breakdown.
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_021.jpg" alt="Chart the Vulnerable CVE(s) and get a visual breakdown - pie">
+<img src="report_inventory_remediate_sec_vulnerabilities_2014-09-29-Selection_022.jpg" alt="Chart the Vulnerable CVE(s) and get a visual breakdown - bar"></p>
+<h2 id="summary">Summary</h2>
+<p>In this tutorial you have learned how to use the reporting and inventory
+features of CFEngine Enterprise to discover and report on affected systems
+before and after remediation efforts.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-examples.html">examples</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-tutorials.html">tutorials</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-enterprise.html">enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-inventory.html">inventory</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-dashboard.html">dashboard</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-alerts.html">alerts</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 09 July 2021
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/examples/tutorials/report_inventory_remediate_sec_vulnerabilities.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/c2073cd2eb5c0d138609876a2101e6614e8752c0" target="_blank">c2073cd2eb5c0d138609876a2101e6614e8752c0</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.17/assets/footer-c635771088a429be0f794a44abddc48f.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

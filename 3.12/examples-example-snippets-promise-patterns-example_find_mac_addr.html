@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.12  Documentation - Find the MAC address</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/examples-example-snippets-promise-patterns-example_find_mac_addr.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='/docs/3.12/assets/global-2ea8d2fcc0dbfebdbe7d10e6eca6a3b3.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Find the MAC address";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/" selected>Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a><ul class="level2"><li><a href="examples-example-snippets-general.html">General Examples</a></li><li><a href="examples-example-snippets-cfengine-administration.html">CFEngine Administration Examples</a></li><li><a href="examples-example-snippets-promise-patterns.html">Common Promise Patterns</a><ul class="level3"><li><a href="examples-example-snippets-promise-patterns-example_aborting_execution.html">Aborting execution</a></li><li><a href="examples-example-snippets-promise-patterns-example_change_detection.html">Change detection</a></li><li><a href="examples-example-snippets-promise-patterns-example_diskfree.html">Check filesystem space</a></li><li><a href="examples-example-snippets-promise-patterns-example_copy_single_files.html">Copy single files</a></li><li><a href="examples-example-snippets-promise-patterns-example_create_filedir.html">Create files and directories</a></li><li><a href="examples-example-snippets-promise-patterns-example_edit_motd.html">Customize Message of the Day</a></li><li><a href="examples-example-snippets-promise-patterns-example_ssh_keys.html">Distribute ssh keys</a></li><li><a href="examples-example-snippets-promise-patterns-example_process_kill.html">Ensure a process is not running</a></li><li><a href="examples-example-snippets-promise-patterns-example_enable_service.html">Ensure a service is enabled and running</a></li><li><a class="active" href="examples-example-snippets-promise-patterns-example_find_mac_addr.html">Find the MAC address</a></li><li><a href="examples-example-snippets-promise-patterns-example_install_package.html">Install packages</a></li><li><a href="examples-example-snippets-promise-patterns-example_mount_nfs.html">Mount NFS filesystem</a></li><li><a href="examples-example-snippets-promise-patterns-example_process_restart.html">Restart a Process</a></li><li><a href="examples-example-snippets-promise-patterns-example_edit_name_resolution.html">Set up name resolution with DNS</a></li><li><a href="examples-example-snippets-promise-patterns-example_sudoers.html">Set up sudo</a></li><li><a href="examples-example-snippets-promise-patterns-example_ntp.html">Set up time management through NTP</a></li><li><a href="examples-example-snippets-promise-patterns-example_updating_from_central_hub.html">Updating from a central policy server</a></li></ul></li><li><a href="examples-example-snippets-timing-counting-measuring.html">Measuring Examples</a></li><li><a href="examples-example-snippets-software-adminstration.html">Software Administration Examples</a></li><li><a href="examples-example-snippets-commands-scripts-execution.html">Commands, Scripts, and Execution Examples</a></li><li><a href="examples-example-snippets-basic-file-directory.html">File and Directory Examples</a></li><li><a href="examples-example-snippets-file-template.html">File Template Examples</a></li><li><a href="examples-example-snippets-active_directory.html">Interacting with Directory Services</a></li><li><a href="examples-example-snippets-database.html">Database Examples</a></li><li><a href="examples-example-snippets-network.html">Network Examples</a></li><li><a href="examples-example-snippets-system-security.html">System Security Examples</a></li><li><a href="examples-example-snippets-system-information.html">System Information Examples</a></li><li><a href="examples-example-snippets-system-administration.html">System Administration Examples</a></li><li><a href="examples-example-snippets-system-file.html">System File Examples</a></li><li><a href="examples-example-snippets-windows-registry.html">Windows Registry Examples</a></li><li><a href="examples-example-snippets-file_permissions.html">File Permissions</a></li><li><a href="examples-example-snippets-user-management.html">User Management Examples</a></li></ul></li><li><a href="examples-tutorials.html">Tutorials</a></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a></li></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-example-snippets.html">Example Snippets</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-example-snippets-promise-patterns.html">Common Promise Patterns</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Find the MAC address
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Finding the ethernet address can vary between operating systems.</p>
+
+<p>We will use CFEngine&#39;s built in function <code>execresult</code> to execute commands
+adapted for different operating systems, assign the output to variables,
+and filter for the MAC address. We then report on the result.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+<span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;example&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+
+  <span class="nc">linux</span><span class="p">::</span>
+    <span class="p">&quot;</span><span class="nv">interface</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;/sbin/ifconfig eth0&quot;</span><span class="p">,</span> <span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+
+  <span class="nc">solaris</span><span class="p">::</span>
+    <span class="p">&quot;</span><span class="nv">interface</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;/usr/sbin/ifconfig bge0&quot;</span><span class="p">,</span> <span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+
+  <span class="nc">freebsd</span><span class="p">::</span>
+    <span class="p">&quot;</span><span class="nv">interface</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;/sbin/ifconfig le0&quot;</span><span class="p">,</span> <span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+
+  <span class="nc">darwin</span><span class="p">::</span>
+    <span class="p">&quot;</span><span class="nv">interface</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;/sbin/ifconfig en0&quot;</span><span class="p">,</span> <span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+
+<span class="c"># Use the CFEngine function &#39;regextract&#39; to match the MAC address,</span>
+<span class="c"># assign it to an array called mac and set a class to indicate positive match</span>
+<span class="kd">classes</span><span class="p">:</span>
+
+  <span class="nc">linux</span><span class="p">::</span>
+
+  <span class="s">&quot;ok&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regextract</span><span class="p">(</span>
+                                <span class="s">&quot;.*HWaddr ([^</span><span class="se">\s</span><span class="s">]+).*(</span><span class="se">\n</span><span class="s">.*)*&quot;</span><span class="p">,</span>  <span class="c"># pattern to match</span>
+                                <span class="s">&quot;</span><span class="si">$(interface)</span><span class="s">&quot;</span><span class="p">,</span>  <span class="c"># string to scan for pattern</span>
+                                <span class="s">&quot;mac&quot;</span>  <span class="c"># put the text that matches the pattern into this array</span>
+                                <span class="p">);</span>
+
+  <span class="nc">solaris|freebsd</span><span class="p">::</span>
+
+   <span class="s">&quot;ok&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regextract</span><span class="p">(</span>
+                                <span class="s">&quot;.*ether ([^</span><span class="se">\s</span><span class="s">]+).*(</span><span class="se">\n</span><span class="s">.*)*&quot;</span><span class="p">,</span>
+                                <span class="s">&quot;</span><span class="si">$(interface)</span><span class="s">&quot;</span><span class="p">,</span>
+                                <span class="s">&quot;mac&quot;</span>
+                                <span class="p">);</span>
+
+
+  <span class="nc">darwin</span><span class="p">::</span>
+
+   <span class="s">&quot;ok&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regextract</span><span class="p">(</span>
+                                <span class="s">&quot;(?s).*ether ([^</span><span class="se">\s</span><span class="s">]+).*(</span><span class="se">\n</span><span class="s">.*)*&quot;</span><span class="p">,</span>
+                                <span class="s">&quot;</span><span class="si">$(interface)</span><span class="s">&quot;</span><span class="p">,</span>
+                                <span class="s">&quot;mac&quot;</span>
+                                <span class="p">);</span>
+
+<span class="c"># Report on the result</span>
+<span class="kd">reports</span><span class="p">:</span>
+
+  <span class="nc">ok</span><span class="p">::</span>
+
+    <span class="s">&quot;MAC address is </span><span class="si">$(mac[1])</span><span class="s">&quot;</span><span class="p">;</span>  <span class="c"># return first element in array &quot;mac&quot;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This policy can be found in <code>/var/cfengine/masterfiles/example_find_mac_addr.cf</code></p>
+
+<p>Example run:</p>
+<div class="highlight"><pre><code class="text"># cf-agent -f example_find_mac_addr.cf
+2013-06-08T16:59:19-0700   notice: R: MAC address is a4:ba:db:d7:59:32
+#
+</code></pre>
+</div>
+
+<p>While the above illustrates the flexiblity of CFEngine in
+running external commands and parsing their output,
+as of CFEngine 3.3.0, Nova 2.2.0 (2011), you can get the MAC
+address natively:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+<span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;example&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+
+  <span class="nc">linux</span><span class="p">::</span>   <span class="p">&quot;</span><span class="nv">interface</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;eth0&quot;</span><span class="p">;</span>
+
+  <span class="nc">solaris</span><span class="p">::</span> <span class="p">&quot;</span><span class="nv">interface</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;bge0&quot;</span><span class="p">;</span>
+
+  <span class="nc">freebsd</span><span class="p">::</span> <span class="p">&quot;</span><span class="nv">interface</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;le0&quot;</span><span class="p">;</span>
+
+  <span class="nc">darwin</span><span class="p">::</span>  <span class="p">&quot;</span><span class="nv">interface</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;en0&quot;</span><span class="p">;</span>
+
+
+<span class="kd">reports</span><span class="p">:</span>
+
+    <span class="s">&quot;MAC address of </span><span class="si">$(interface)</span><span class="s"> is: </span><span class="si">$(sys.hardware_mac[$(interface)])</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-examples.html">examples</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-policy.html">policy</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-mac-address.html">mac address</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 27 October 2021
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/examples/example-snippets/promise-patterns/example_find_mac_addr.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/3d161b229c7df44b99d8cd6c71640ab53c94fcbd" target="_blank">3d161b229c7df44b99d8cd6c71640ab53c94fcbd</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.12/assets/footer-135fa20640bb1a2bbe772d22c46414cb.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

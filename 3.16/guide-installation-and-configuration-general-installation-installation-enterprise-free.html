@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.16  Documentation - Installing Enterprise 25 Free</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.16/assets/global-78ca1ff06c068c806dddb47b0cb1ea40.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Installing Enterprise 25 Free";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.16/" selected>Version 3.16 (non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a><ul class="level2"><li><a href="guide-installation-and-configuration-pre-installation-checklist.html">Pre-Installation Checklist</a></li><li><a href="guide-installation-and-configuration-general-installation.html">General Installation</a><ul class="level3"><li><a href="guide-installation-and-configuration-general-installation-installation-enterprise-free-aws-rhel.html">Using Amazon Web Services</a></li><li><a class="active" href="guide-installation-and-configuration-general-installation-installation-enterprise-free.html">Installing Enterprise 25 Free</a></li><li><a href="guide-installation-and-configuration-general-installation-installation-enterprise-vagrant.html">Using Vagrant</a></li><li><a href="guide-installation-and-configuration-general-installation-installation-enterprise.html">Installing Enterprise for Production</a></li><li><a href="guide-installation-and-configuration-general-installation-installation-coreos.html">Installing Enterprise on CoreOS</a></li><li><a href="guide-installation-and-configuration-general-installation-installation-community.html">Installing Community</a></li><li><a href="guide-installation-and-configuration-general-installation-installation-enterprise-generic-tarball.html">Installing from Binary tarball</a></li></ul></li><li><a href="guide-installation-and-configuration-secure-bootstrap.html">Secure Bootstrap</a></li><li><a href="guide-installation-and-configuration-upgrading.html">Upgrading</a></li><li><a href="guide-installation-and-configuration-version-control.html">Version Control</a></li></ul></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-installation-and-configuration.html">Installation and Configuration</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-installation-and-configuration-general-installation.html">General Installation</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Installing Enterprise 25 Free
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>These instructions describe how to install the latest version of CFEngine Enterprise 25 Free. This is the full
+version of CFEngine Enterprise, but the number of Hosts (clients) is limited to 25.</p>
+
+<p><strong>Note the following requirements:</strong></p>
+
+<ul>
+<li>To install this version of CFEngine Enterprise, your machine must be running a recent version of Linux.
+This installation script has been tested on RHEL 5 and 6, SLES 11, CentOS 5 and 6, and Debian 6 and 7.</li>
+<li>You need a minimum of 2 GB of available memory and a modern 64 bit processor.</li>
+<li>Plan for approximately 100MB of disk space per host. You should provide an
+extra 2G to 4G of disk space if you plan to bootstrap more hosts later.</li>
+<li>You need a least two VMs/servers, one for the Policy Server and one for a Host (client). They must be on the same network.</li>
+<li>The Policy Server needs to run on a dedicated OS with a vanilla installation (i.e. it only has repositories and packages officially
+supported by the OS vendor)</li>
+</ul>
+<h2 id="installation-overview">Installation Overview</h2>
+<p>During the course of the instructions outlined in this guide, you will perform the following tasks:</p>
+
+<ul>
+<li><strong>Install CFEngine Enterprise onto a Policy Server and onto Hosts.</strong>
+A Policy Server (hub) is a CFEngine instance that contains promises (business policy) that get deployed to Hosts.
+Hosts are clients that retrieve and execute promises.</li>
+<li><strong>Bootstrap the Policy Server to itself and then bootstrap each of the Hosts to the Policy Server.</strong> Bootstrapping establishes a trust relationship between the Policy Server
+and all Hosts. Thus, business policy that you create in the Policy Server can be deployed to Hosts throughout your company.
+Bootstrapping completes the installation process.</li>
+<li><strong>Log in to the Mission Portal.</strong> The Mission Portal is a graphical user interface that allows you to verify the
+the actual state of all your Hosts, thus ensuring that your promises are being executed.</li>
+<li><strong>Try out the Tutorials.</strong> Links to three tutorials give you a head start on learning CFEngine.</li>
+</ul>
+<h2 id="1-download-and-install-enterprise-on-a-policy-server">1. Download and install Enterprise on a Policy Server</h2>
+<p>Please Note: Internet access is required from the host if you wish to use the quick install script.</p>
+
+<p>Run the following script on your designated Policy Server (hub) 64-bit machine (32-bit is not supported on the Policy Server):</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> wget http://cfengine.package-repos.s3.amazonaws.com/quickinstall/quick-install-cfengine-enterprise.sh  <span class="o">&amp;&amp;</span> sudo bash ./quick-install-cfengine-enterprise.sh hub
+</code></pre>
+</div>
+
+<p>This script installs the latest CFEngine Enterprise Policy Server on your machine.</p>
+<h2 id="2-bootstrap-the-policy-server">2. Bootstrap the Policy Server</h2>
+<p>The Policy Server must be bootstrapped to itself. Find the IP address of your Policy Server (type $ ifconfig).</p>
+
+<p>Run the bootstrap command:</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> sudo /var/cfengine/bin/cf-agent --bootstrap &lt;IP address of policy server&gt;
+</code></pre>
+</div>
+
+<p><strong>Example: $ sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12</strong></p>
+
+<p>Upon successful completion, a confirmation message appears: &quot;Bootstrap to &#39;192.168.1.12&#39; completed successfully!&quot;</p>
+
+<p>Type the following to check which version of CFEngine your are running:</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> /var/cfengine/bin/cf-promises --version
+</code></pre>
+</div>
+
+<p>The Policy Server is installed.</p>
+<h2 id="3-install-enterprise-on-hosts">3. Install Enterprise on Hosts</h2>
+<p>Install Enterprise on your designated Host(s) by running the script below. Per the <strong>Free 25</strong> agreement, you can
+install Enterprise on 25 Hosts. Note that the Hosts must be
+on the same network as the Policy Server that you just installed in Step 2.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> wget http://cfengine.package-repos.s3.amazonaws.com/quickinstall/quick-install-cfengine-enterprise.sh  <span class="o">&amp;&amp;</span> sudo bash ./quick-install-cfengine-enterprise.sh agent
+</code></pre>
+</div>
+
+<p>Note that this installation works on 64- and 32-bit machines.</p>
+<h2 id="4-bootstrap-the-host-to-the-policy-server">4. Bootstrap the Host to the Policy Server</h2>
+<p>All Hosts must be bootstrapped to the Policy Server in order to establish a connection between the Host and
+the Policy Server. Run the same commands that you ran in Step 3.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> sudo /var/cfengine/bin/cf-agent --bootstrap &lt;IP address of policy server&gt;
+</code></pre>
+</div>
+
+<p><strong>Example: $ sudo /var/cfengine/bin/cf-agent --bootstrap 192.168.1.12</strong></p>
+
+<p>The installation process is complete and CFEngine Enterprise is up and running on your system.</p>
+<h2 id="5-log-in-to-the-mission-portal">5. Log in to the Mission Portal</h2>
+<p>The Mission Portal is immediately accessible. Connect to the Policy Server
+through your web browser at:</p>
+
+<p>http://<code>&lt;IP address of your Policy Server&gt;</code></p>
+
+<p>username: admin
+password: admin</p>
+
+<p>The Mission Portal runs TCP port 80 by default. (Click <a href="https://cfengine.zendesk.com/entries/25005193-Configure-Mission-Portal-to-use-HTTPS-instead-of-HTTP">here</a>
+to configure the Mission Portal to use HTTPS instead of HTTP.) During the initial setup, the Host(s) might take a few minutes to show up in the Mission Portal. Simply refresh the web page
+and login again if necessary.</p>
+
+<p>Note: If you are running Enterprise with Vagrant, you must add the
+correct port: http://localhost:<port> in your browser.  The <port> is the port-forwarder
+number you use in your <strong>Vagrantfile</strong> (e.g. policyserver.vm.network &quot;forwarded_port&quot;, guest: 80, host: 8080; the port will be 8080).</p>
+
+<hr>
+<h2 id="tutorials">Tutorials</h2>
+<ul>
+<li><p><a href="examples.html#tutorial-for-running-examples" title="Examples and Tutorials - Tutorial for Running Examples ">Tutorial for Running Examples</a></p></li>
+<li><p><a href="examples-tutorials-distribute-files-from-a-central-location.html" title="Distribute files from a central location">Distribute files from a central location.</a></p>
+
+<p>Whereas the first tutorial in this list teaches you how to deploy business policy
+through the Mission Portal, this advanced, command-line tutorial shows you how to distribute policy files from the Policy Server to all pertinent Hosts.</p></li>
+</ul>
+<h2 id="recommended-reading">Recommended Reading</h2>
+<ul>
+<li><a href="guide.html" title="Guide">CFEngine Guide</a></li>
+<li><a href="examples.html" title="Examples and Tutorials">Tutorials and Examples</a></li>
+</ul>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-getting-started.html">getting started</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-installation.html">installation</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-enterprise-free.html">enterprise free</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 24 June 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/installation-and-configuration/general-installation/installation-enterprise-free.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/4e9e6860aa094f25a21afcdd2087a240dbb1ba7d" target="_blank">4e9e6860aa094f25a21afcdd2087a240dbb1ba7d</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.16/assets/footer-ae31e033a1a936d598cf1c40b94021b9.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

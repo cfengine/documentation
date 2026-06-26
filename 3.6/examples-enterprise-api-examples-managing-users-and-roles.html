@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.6  Documentation - Managing Users and Roles</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.6/assets/global-ac3885a0674bd3c9117d62800be1608f.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Managing Users and Roles";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                 <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html" selected>Version 3.6 (EOL)</option>
+			                 <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:bm0uhfq8ykk" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a></li><li><a href="examples-tutorials.html">Tutorials</a></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a><ul class="level2"><li><a href="examples-enterprise-api-examples-checking-status.html">Checking Status</a></li><li><a href="examples-enterprise-api-examples-managing-settings.html">Managing Settings</a></li><li><a href="examples-enterprise-api-examples-dc-interaction.html">Enterprise API interaction with Design Center</a></li><li><a class="active" href="examples-enterprise-api-examples-managing-users-and-roles.html">Managing Users and Roles</a></li><li><a href="examples-enterprise-api-examples-browsing-host-information.html">Browsing Host Information</a></li><li><a href="examples-enterprise-api-examples-sql-queries.html">SQL Query Examples</a></li></ul></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-enterprise-api-examples.html">Enterprise API Examples</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Managing Users and Roles
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Users and Roles determine who has access to what data from the API.
+Roles are defined by regular expressions that determine which hosts the
+user can see, and what policy outcomes are restricted.</p>
+<h2 id="example-listing-users">Example: Listing Users</h2>
+<p><strong>Request</strong></p>
+<div class="highlight"><pre><code class="text">curl --user admin:admin http://test.cfengine.com/api/user
+</code></pre>
+</div>
+
+<p><strong>Response</strong></p>
+<div class="highlight"><pre><code class="text">{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 2,
+    &quot;total&quot;: 2,
+    &quot;timestamp&quot;: 1350994249
+  },
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;calvin&quot;,
+      &quot;external&quot;: true,
+      &quot;roles&quot;: [
+        &quot;Huguenots&quot;, &quot;Marketing&quot;
+      ]
+    },
+    {
+      &quot;id&quot;: &quot;quinester&quot;,
+      &quot;name&quot;: &quot;Willard Van Orman Quine&quot;,
+      &quot;email&quot;: &quot;noreply@@aol.com&quot;,
+      &quot;external&quot;: false,
+      &quot;roles&quot;: [
+        &quot;admin&quot;
+      ]
+    }
+  ]
+}
+</code></pre>
+</div>
+<h2 id="example-creating-a-new-user">Example: Creating a New User</h2>
+<p>All users will be created for the internal user table. The API will never
+attempt to write to an external LDAP server.</p>
+
+<p><strong>Request</strong></p>
+<div class="highlight"><pre><code class="text">curl --user admin:admin http://test.cfengine.com/api/user/snookie -X PUT -d
+{
+  &quot;email&quot;: &quot;snookie@mtv.com&quot;,
+  &quot;roles&quot;: [
+    &quot;HR&quot;
+  ]
+}
+</code></pre>
+</div>
+
+<p><strong>Response</strong></p>
+<div class="highlight"><pre><code class="text">201 Created
+}
+</code></pre>
+</div>
+<h2 id="example-updating-an-existing-user">Example: Updating an Existing User</h2>
+<p>Both internal and external users may be updated. When updating an external
+users, the API will essentially annotate metadata for the user, it will never
+write to LDAP. Consequently, passwords may only be updated for internal users.
+Users may only update their own records, as authenticated by their user
+credentials.</p>
+
+<p><strong>Request</strong></p>
+<div class="highlight"><pre><code class="text">curl --user admin:admin http://test.cfengine.com/api/user/calvin -X POST -d
+{
+  &quot;name&quot;: &quot;Calvin&quot;,
+}
+</code></pre>
+</div>
+
+<p><strong>Response</strong></p>
+<div class="highlight"><pre><code class="text">204 No Content
+}
+</code></pre>
+</div>
+<h2 id="example-retrieving-a-user">Example: Retrieving a User</h2>
+<p>It is possible to retrieve data on a single user instead of listing
+everything. The following query is similar to issuing <code>GET
+/api/user?id=calvin</code>, with the exception that the previous query accepts
+a regular expression for <code>id</code>.</p>
+
+<p><strong>Request</strong></p>
+<div class="highlight"><pre><code class="text">curl --user admin:admin http://test.cfengine.com/api/user/calvin
+</code></pre>
+</div>
+
+<p><strong>Response</strong></p>
+<div class="highlight"><pre><code class="text">{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 1,
+    &quot;total&quot;: 1,
+    &quot;timestamp&quot;: 1350994249
+  },
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;calvin&quot;,
+      &quot;name&quot;: &quot;Calvin&quot;,
+      &quot;external&quot;: true,
+      &quot;roles&quot;: [
+        &quot;Huguenots&quot;, &quot;Marketing&quot;
+      ]
+    },
+  ]
+}
+</code></pre>
+</div>
+<h2 id="example-adding-a-user-to-a-role">Example: Adding a User to a Role</h2>
+<p>Adding a user to a role is just an update operation on the user. The full
+role-set is updated, so if you are only appending a role, you may want to
+fetch the user data first, append the role and then update. The same approach
+is used to remove a user from a role.</p>
+
+<p><strong>Request</strong></p>
+<div class="highlight"><pre><code class="text">curl --user admin:admin http://test.cfengine.com/api/user/snookie -X POST -d
+{
+  &quot;roles&quot;: [
+    &quot;HR&quot;, &quot;gcc-contrib&quot;
+  ]
+}
+</code></pre>
+</div>
+
+<p><strong>Response</strong></p>
+<div class="highlight"><pre><code class="text">204 No Content
+}
+</code></pre>
+</div>
+<h2 id="example-deleting-a-user">Example: Deleting a User</h2>
+<p>Users can only be deleted from the internal users table.</p>
+
+<p><strong>Request</strong></p>
+<div class="highlight"><pre><code class="text">curl --user admin:admin http://test.cfengine.com/api/user/snookie -X DELETE
+</code></pre>
+</div>
+
+<p><strong>Response</strong></p>
+<div class="highlight"><pre><code class="text">204 No Content
+</code></pre>
+</div>
+<h2 id="example-creating-a-new-role">Example: Creating a New Role</h2>
+<p>Once you&#39;ve learned how to manage users, managing roles is pretty much the
+same thing. Roles are defined by four fields that filter host data and policy
+data: <code>includeContext</code>, <code>excludeContext</code>, <code>includeBundles</code>, <code>excludeBundles</code>.
+Each field is a comma separated list of regular expressions. See the
+corresponding section on RBAC for an explanation of these fields. Updating,
+and deleting roles are similar to updating and deleting users, using POST and
+DELETE.</p>
+
+<p><strong>Request</strong></p>
+<div class="highlight"><pre><code class="text">curl --user admin:admin http://test.cfengine.com/api/user/solaris-admins -X PUT -d
+{
+  &quot;email&quot;: &quot;snookie@mtv.com&quot;,
+  &quot;roles&quot;: [
+    &quot;description&quot;: &quot;Users managing 64-bit Solaris boxes&quot;,
+    &quot;includeContext&quot;: &quot;solaris,x86_64&quot;,
+  ]
+}
+</code></pre>
+</div>
+
+<p><strong>Response</strong></p>
+<div class="highlight"><pre><code class="text">204 No Content
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-examples.html">examples</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-enterprise.html">enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-rest.html">rest</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-api.html">api</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-reporting.html">reporting</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-users.html">users</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-roles.html">roles</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/examples/enterprise-api-examples/managing-users-and-roles.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/13cbf18729a5bf43d836f72e30aab3b2b0bdee7f" target="_blank">13cbf18729a5bf43d836f72e30aab3b2b0bdee7f</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.6/assets/footer-1ca6436dd462ed6a69ad3f2dba0774f0.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.18  Documentation - Masterfiles Policy Framework Upgrade</title>
+        <link rel="icon" type="image/svg+xml" href="./media/images/favicon.svg">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/examples-tutorials-masterfiles_policy_framework_upgrade.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+        <link href='assets/global-337446952f2ea3d590f5c3e3687cd5f0.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Masterfiles Policy Framework Upgrade";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.24/">Version 3.24 (LTS)</option>
+<option value="/docs/3.23/">Version 3.23 (EOL non-LTS)</option>
+<option value="/docs/3.22/">Version 3.22 (non-LTS)</option>
+<option value="/docs/3.21/">Version 3.21 (LTS)</option>
+<option value="/docs/3.20/">Version 3.20 (EOL non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/" selected>Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (EOL LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="c5f68dd2aab4228c4" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a></li><li><a href="examples-tutorials.html">Tutorials</a><ul class="level2"><li><a href="examples-tutorials-json-yaml-support-in-cfengine.html">JSON and YAML Support in CFEngine</a></li><li><a href="examples-tutorials-installing-cfengine-enterprise-agent.html">Installing CFEngine Enterprise Agent</a></li><li><a href="examples-tutorials-manage-ntp.html">Manage Network Time Protocol</a></li><li><a href="examples-tutorials-manage-local-users.html">Manage local users</a></li><li><a href="examples-tutorials-manage-packages.html">Manage packages</a></li><li><a href="examples-tutorials-manage-processes-and-services.html">Manage processes and services</a></li><li><a href="examples-tutorials-write-cfengine-policy.html">Write cfengine policy</a></li><li><a href="examples-tutorials-files-tutorial.html">Create, Modify, and Delete Files</a></li><li><a href="examples-tutorials-distribute-files-from-a-central-location.html">Distribute files from a central location</a></li><li><a href="examples-tutorials-report_inventory_remediate_sec_vulnerabilities.html">Reporting and Remediation of Security Vulnerabilities</a></li><li><a class="active" href="examples-tutorials-masterfiles_policy_framework_upgrade.html">Masterfiles Policy Framework Upgrade</a></li><li><a href="examples-tutorials-tags.html">Tags for variables, classes, and bundles</a></li><li><a href="examples-tutorials-custom_inventory.html">Custom Inventory</a></li><li><a href="examples-tutorials-dashboard-alerts.html">Dashboard Alerts</a></li><li><a href="examples-tutorials-integrating-alerts-with-pager-duty.html">Integrating alerts with PagerDuty</a></li><li><a href="examples-tutorials-integrating-alerts-with-ticketing-systems.html">Integrating alerts with ticketing systems</a></li><li><a href="examples-tutorials-integrating-with-sumo-logic.html">Integrating with Sumo Logic</a></li><li><a href="examples-tutorials-render-files-with-mustache-templates.html">Render files with Mustache templates</a></li><li><a href="examples-tutorials-file_comparison.html">File Comparison</a></li></ul></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-tutorials.html">Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Masterfiles Policy Framework Upgrade
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Upgrading the Masterfiles Policy Framework (MPF) is the first step in upgrading CFEngine from one version to another. The MPF should always be the same version or newer than the binary versions running.</p>
+
+<p>Upgrading the MPF is not an exact process as the details highly depend on the specifics of the changes made to the default policy. This tutorial leverages <code>git</code> and shows an example of upgrading a simple policy set based on <code>3.18.0</code> to <code>3.18.5</code> and can be used as a reference for upgrading your own policy sets.</p>
+<h1 id="prepare-a-git-clone-of-your-working-masterfiles">Prepare a Git clone of your working masterfiles</h1>
+<p>We will perform the integration work in <code>/tmp/MPF-upgrade/integration</code>. <code>masterfiles</code> should exist in the integration directory and is expected to be both the root of your policy set and a <code>git</code> repository.</p>
+<h2 id="validating-expectations">Validating expectations</h2>
+<p>From <code>/tmp/MPF-upgrade/integration/masterfiles</code>. Let&#39;s inspect what we expect.</p>
+
+<p>Is it the root of a policy set? <a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a> will be present if so.</p>
+<div class="highlight"><pre><code class="bash"><span></span>    <span class="nb">export</span> <span class="nv">INTEGRATION_ROOT</span><span class="o">=</span><span class="s2">&quot;/tmp/MPF-upgrade/integration&quot;</span>
+    <span class="nb">cd</span> <span class="nv">$INTEGRATION_ROOT</span>/masterfiles
+<span class="k">if</span> <span class="o">[</span> -e <span class="s2">&quot;promises.cf&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&quot;promise.cf exists, it&#39;s likely the root of a policy set&quot;</span>
+<span class="k">else</span>
+    <span class="nb">echo</span> <span class="s2">&quot;promises.cf is missing, </span><span class="nv">$INTEGRATION_ROOT</span><span class="s2">/masterfiles does not seem like the root of a policy set&quot;</span>
+<span class="k">fi</span>
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>promise.cf exists, it&#39;s likely the root of a policy set
+</code></pre>
+</div>
+
+<p>Let&#39;s see what version of the MPF we are starting from by looking at <a href="reference-components.html#version" title="Components - version"><code>version</code></a> in <code>body common control</code> of <a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a>.</p>
+<div class="highlight"><pre><code class="bash"><span></span>grep -P <span class="s2">&quot;\s+version\s+=&gt;&quot;</span> <span class="nv">$INTEGRATION_ROOT</span>/masterfiles/promises.cf <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="se">\</span>
+    <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&quot;promises.cf is missing, </span><span class="nv">$INTEGRATION_ROOT</span><span class="s2">/masterfiles does not seem to be the root of a policy set&quot;</span>
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>version =&gt; &quot;CFEngine Promises.cf 3.18.0&quot;;
+</code></pre>
+</div>
+
+<p>And finally, is it a git repository, what is the last commit?</p>
+<div class="highlight"><pre><code class="bash"><span></span>git status <span class="se">\</span>
+      <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$INTEGRATION_ROOT</span><span class="s2">/masterfiles does not appear to be a git repository!&quot;</span> <span class="se">\</span>
+      <span class="o">&amp;&amp;</span> git log -1
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>On branch master
+nothing to commit, working tree clean
+commit a1d0b726bb8894848bc877d037c546062228881f
+Author: Nick Anderson &lt;nick@cmdln.org&gt;
+Date:   Wed Jul 26 17:37:31 2023 -0500
+
+    CFEngine Policy set prior to upgrade
+</code></pre>
+</div>
+<h1 id="merge-upstream-changes-from-the-mpf-into-your-policy">Merge upstream changes from the MPF into your policy</h1><h2 id="remove-everything-except-the-git-directory">Remove everything except the <code>.git</code> directory</h2>
+<p>By first removing everything we will easily be able so see which files are <strong>new</strong>, <strong>changed</strong>, <strong>moved</strong> or <strong>removed</strong> upstream.</p>
+<div class="highlight"><pre><code class="bash"><span></span>rm -rf *
+</code></pre>
+</div>
+
+<p>Check <code>git status</code> to see that all the files have been deleted and are not staged for commit.</p>
+<div class="highlight"><pre><code class="bash"><span></span>git status
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>On branch master
+Changes not staged for commit:
+  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+    deleted:    cfe_internal/CFE_cfengine.cf
+    deleted:    cfe_internal/core/deprecated/cfengine_processes.cf
+    deleted:    cfe_internal/core/host_info_report.cf
+    deleted:    cfe_internal/core/limit_robot_agents.cf
+    deleted:    cfe_internal/core/log_rotation.cf
+    deleted:    cfe_internal/core/main.cf
+    deleted:    cfe_internal/core/watchdog/templates/watchdog-windows.ps1.mustache
+    deleted:    cfe_internal/core/watchdog/templates/watchdog.mustache
+    deleted:    cfe_internal/core/watchdog/watchdog.cf
+    deleted:    cfe_internal/enterprise/CFE_hub_specific.cf
+    deleted:    cfe_internal/enterprise/CFE_knowledge.cf
+    deleted:    cfe_internal/enterprise/federation/federation.cf
+    deleted:    cfe_internal/enterprise/file_change.cf
+    deleted:    cfe_internal/enterprise/ha/ha.cf
+    deleted:    cfe_internal/enterprise/ha/ha_def.cf
+    deleted:    cfe_internal/enterprise/ha/ha_update.cf
+    deleted:    cfe_internal/enterprise/main.cf
+    deleted:    cfe_internal/enterprise/mission_portal.cf
+    deleted:    cfe_internal/enterprise/templates/httpd.conf.mustache
+    deleted:    cfe_internal/enterprise/templates/runalerts.php.mustache
+    deleted:    cfe_internal/enterprise/templates/runalerts.sh.mustache
+    deleted:    cfe_internal/recommendations.cf
+    deleted:    cfe_internal/update/cfe_internal_dc_workflow.cf
+    deleted:    cfe_internal/update/cfe_internal_update_from_repository.cf
+    deleted:    cfe_internal/update/lib.cf
+    deleted:    cfe_internal/update/systemd_units.cf
+    deleted:    cfe_internal/update/update_bins.cf
+    deleted:    cfe_internal/update/update_policy.cf
+    deleted:    cfe_internal/update/update_processes.cf
+    deleted:    cfe_internal/update/windows_unattended_upgrade.cf
+    deleted:    controls/cf_agent.cf
+    deleted:    controls/cf_execd.cf
+    deleted:    controls/cf_hub.cf
+    deleted:    controls/cf_monitord.cf
+    deleted:    controls/cf_runagent.cf
+    deleted:    controls/cf_serverd.cf
+    deleted:    controls/def.cf
+    deleted:    controls/def_inputs.cf
+    deleted:    controls/reports.cf
+    deleted:    controls/update_def.cf
+    deleted:    controls/update_def_inputs.cf
+    deleted:    custom-2.cf
+    deleted:    def.json
+    deleted:    inventory/aix.cf
+    deleted:    inventory/any.cf
+    deleted:    inventory/debian.cf
+    deleted:    inventory/freebsd.cf
+    deleted:    inventory/generic.cf
+    deleted:    inventory/linux.cf
+    deleted:    inventory/lsb.cf
+    deleted:    inventory/macos.cf
+    deleted:    inventory/os.cf
+    deleted:    inventory/redhat.cf
+    deleted:    inventory/suse.cf
+    deleted:    inventory/windows.cf
+    deleted:    lib/autorun.cf
+    deleted:    lib/bundles.cf
+    deleted:    lib/cfe_internal.cf
+    deleted:    lib/cfe_internal_hub.cf
+    deleted:    lib/cfengine_enterprise_hub_ha.cf
+    deleted:    lib/commands.cf
+    deleted:    lib/common.cf
+    deleted:    lib/databases.cf
+    deleted:    lib/deprecated-upstream.cf
+    deleted:    lib/edit_xml.cf
+    deleted:    lib/event.cf
+    deleted:    lib/examples.cf
+    deleted:    lib/feature.cf
+    deleted:    lib/files.cf
+    deleted:    lib/guest_environments.cf
+    deleted:    lib/monitor.cf
+    deleted:    lib/packages-ENT-3719.cf
+    deleted:    lib/packages.cf
+    deleted:    lib/paths.cf
+    deleted:    lib/processes.cf
+    deleted:    lib/reports.cf
+    deleted:    lib/services.cf
+    deleted:    lib/stdlib.cf
+    deleted:    lib/storage.cf
+    deleted:    lib/testing.cf
+    deleted:    lib/users.cf
+    deleted:    lib/vcs.cf
+    deleted:    modules/packages/vendored/WiRunSQL.vbs.mustache
+    deleted:    modules/packages/vendored/apk.mustache
+    deleted:    modules/packages/vendored/apt_get.mustache
+    deleted:    modules/packages/vendored/freebsd_ports.mustache
+    deleted:    modules/packages/vendored/msiexec-list.vbs.mustache
+    deleted:    modules/packages/vendored/msiexec.bat.mustache
+    deleted:    modules/packages/vendored/nimclient.mustache
+    deleted:    modules/packages/vendored/pkg.mustache
+    deleted:    modules/packages/vendored/pkgsrc.mustache
+    deleted:    modules/packages/vendored/slackpkg.mustache
+    deleted:    modules/packages/vendored/snap.mustache
+    deleted:    modules/packages/vendored/yum.mustache
+    deleted:    modules/packages/vendored/zypper.mustache
+    deleted:    promises.cf
+    deleted:    services/autorun/custom-1.cf
+    deleted:    services/autorun/hello.cf
+    deleted:    services/custom-3.cf
+    deleted:    services/init.cf
+    deleted:    services/main.cf
+    deleted:    standalone_self_upgrade.cf
+    deleted:    templates/cf-apache.service.mustache
+    deleted:    templates/cf-execd.service.mustache
+    deleted:    templates/cf-hub.service.mustache
+    deleted:    templates/cf-monitord.service.mustache
+    deleted:    templates/cf-postgres.service.mustache
+    deleted:    templates/cf-runalerts.service.mustache
+    deleted:    templates/cf-serverd.service.mustache
+    deleted:    templates/cfengine3.service.mustache
+    deleted:    templates/cfengine_watchdog.mustache
+    deleted:    templates/federated_reporting/10-base_filter.sed
+    deleted:    templates/federated_reporting/50-merge_inserts.awk
+    deleted:    templates/federated_reporting/config.sh.mustache
+    deleted:    templates/federated_reporting/dump.sh
+    deleted:    templates/federated_reporting/import.sh
+    deleted:    templates/federated_reporting/import_file.sh
+    deleted:    templates/federated_reporting/log.sh.mustache
+    deleted:    templates/federated_reporting/parallel.sh
+    deleted:    templates/federated_reporting/psql_wrapper.sh.mustache
+    deleted:    templates/federated_reporting/pull_dumps_from.sh
+    deleted:    templates/federated_reporting/transport.sh
+    deleted:    templates/host_info_report.mustache
+    deleted:    templates/json_multiline.mustache
+    deleted:    templates/json_serial.mustache
+    deleted:    templates/vercmp.ps1
+    deleted:    update.cf
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre>
+</div>
+<h2 id="install-the-new-version-of-the-mpf">Install the new version of the MPF</h2><h3 id="installing-from-git">Installing from Git</h3>
+<p>First, clone the desired version of the MPF source.</p>
+<div class="highlight"><pre><code class="bash"><span></span><span class="nb">export</span> <span class="nv">MPF_VERSION</span><span class="o">=</span><span class="s2">&quot;3.18.5&quot;</span>
+git clone -b <span class="nv">$MPF_VERSION</span> https://github.com/cfengine/masterfiles <span class="nv">$INTEGRATION_ROOT</span>/masterfiles-source-<span class="nv">$MPF_VERSION</span>
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>Cloning into &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5&#39;...
+Note: switching to &#39;ea81b7b790f1bf98cbf145d8700a06b37d74fb84&#39;.
+
+You are in &#39;detached HEAD&#39; state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c &lt;new-branch-name&gt;
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+</code></pre>
+</div>
+
+<p>Then build and install targeting the integration root directory. When installed from source masterfiles installs into the <code>masterfiles</code> directory.</p>
+<div class="highlight"><pre><code class="bash"><span></span><span class="nb">cd</span> <span class="nv">$INTEGRATION_ROOT</span>/masterfiles-source-<span class="nv">$MPF_VERSION</span>
+<span class="nb">export</span> <span class="nv">EXPLICIT_VERSION</span><span class="o">=</span><span class="nv">$MPF_VERSION</span>
+
+./autogen.sh
+make
+make install <span class="nv">prefix</span><span class="o">=</span><span class="nv">$INTEGRATION_ROOT</span>/
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>./autogen.sh: Running determine-version.sh ...
+./autogen.sh: Running determine-release.sh ...
+All tags pointing to current commit:
+3.18.5
+3.18.5-build5
+Latest version: 3.18.5
+Could not parse it, using default release number 1
+./autogen.sh: Running autoreconf ...
+configure.ac:40: installing &#39;./config.guess&#39;
+configure.ac:40: installing &#39;./config.sub&#39;
+configure.ac:43: installing &#39;./install-sh&#39;
+configure.ac:43: installing &#39;./missing&#39;
+parallel-tests: installing &#39;./test-driver&#39;
+/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking target system type... x86_64-pc-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether UID &#39;1000&#39; is supported by ustar format... yes
+checking whether GID &#39;1000&#39; is supported by ustar format... yes
+checking how to create a ustar tar archive... gnutar
+checking if GNU tar supports --hard-dereference... yes
+checking whether to enable maintainer-specific portions of Makefiles... yes
+checking whether make supports nested variables... (cached) yes
+checking for pkg_install... no
+checking for shunit2... no
+
+Summary:
+Version              -&gt; 3.18.5
+Release              -&gt; 1
+Core directory       -&gt; not set - tests are disabled
+Enterprise directory -&gt; not set - some tests are disabled
+Install prefix       -&gt; /var/cfengine
+bindir               -&gt; /var/cfengine/bin
+
+configure: generating makefile targets
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating controls/update_def.cf
+config.status: creating promises.cf
+config.status: creating standalone_self_upgrade.cf
+config.status: creating tests/Makefile
+config.status: creating tests/acceptance/Makefile
+config.status: creating tests/unit/Makefile
+
+DONE: Configuration done. Run &quot;make install&quot; to install CFEngine Masterfiles.
+
+Making all in tests/
+make[1]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests&#39;
+Making all in .
+make[2]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests&#39;
+make[2]: Nothing to be done for &#39;all-am&#39;.
+make[2]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests&#39;
+Making all in unit
+make[2]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests/unit&#39;
+make[2]: Nothing to be done for &#39;all&#39;.
+make[2]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests/unit&#39;
+make[1]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests&#39;
+make[1]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5&#39;
+make[1]: Nothing to be done for &#39;all-am&#39;.
+make[1]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5&#39;
+Making install in tests/
+make[1]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests&#39;
+Making install in .
+make[2]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests&#39;
+make[3]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests&#39;
+make[3]: Nothing to be done for &#39;install-exec-am&#39;.
+make[3]: Nothing to be done for &#39;install-data-am&#39;.
+make[3]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests&#39;
+make[2]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests&#39;
+Making install in unit
+make[2]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests/unit&#39;
+make[3]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests/unit&#39;
+make[3]: Nothing to be done for &#39;install-exec-am&#39;.
+make[3]: Nothing to be done for &#39;install-data-am&#39;.
+make[3]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests/unit&#39;
+make[2]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests/unit&#39;
+make[1]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5/tests&#39;
+make[1]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5&#39;
+make[2]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5&#39;
+make[2]: Nothing to be done for &#39;install-exec-am&#39;.
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/core/host_info_report.cf ./cfe_internal/core/log_rotation.cf ./cfe_internal/core/main.cf ./cfe_internal/core/limit_robot_agents.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/templates&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/enterprise/templates/runalerts.sh.mustache ./cfe_internal/enterprise/templates/httpd.conf.mustache ./cfe_internal/enterprise/templates/apachectl.mustache ./cfe_internal/enterprise/templates/runalerts.php.mustache &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/templates&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/inventory&#39;
+ /usr/bin/install -c -m 644  ./inventory/windows.cf ./inventory/suse.cf ./inventory/macos.cf ./inventory/lsb.cf ./inventory/any.cf ./inventory/os.cf ./inventory/freebsd.cf ./inventory/generic.cf ./inventory/debian.cf ./inventory/linux.cf ./inventory/redhat.cf ./inventory/aix.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/inventory&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/federation&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/enterprise/federation/federation.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/federation&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/deprecated&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/core/deprecated/cfengine_processes.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/deprecated&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/lib/templates&#39;
+ /usr/bin/install -c -m 644  ./lib/templates/tap.mustache ./lib/templates/junit.mustache &#39;/tmp/MPF-upgrade/integration//masterfiles/lib/templates&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/services/autorun&#39;
+ /usr/bin/install -c -m 644  ./services/autorun/hello.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/services/autorun&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/lib&#39;
+ /usr/bin/install -c -m 644  ./lib/testing.cf ./lib/examples.cf ./lib/packages.cf ./lib/common.cf ./lib/users.cf ./lib/guest_environments.cf ./lib/cfengine_enterprise_hub_ha.cf ./lib/edit_xml.cf ./lib/files.cf ./lib/bundles.cf ./lib/reports.cf ./lib/event.cf ./lib/storage.cf ./lib/paths.cf ./lib/vcs.cf ./lib/stdlib.cf ./lib/autorun.cf ./lib/databases.cf ./lib/feature.cf ./lib/cfe_internal_hub.cf ./lib/monitor.cf ./lib/services.cf ./lib/packages-ENT-3719.cf ./lib/commands.cf ./lib/processes.cf ./lib/cfe_internal.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/lib&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/update&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/update/cfe_internal_dc_workflow.cf ./cfe_internal/update/lib.cf ./cfe_internal/update/update_processes.cf ./cfe_internal/update/windows_unattended_upgrade.cf ./cfe_internal/update/systemd_units.cf ./cfe_internal/update/update_policy.cf ./cfe_internal/update/update_bins.cf ./cfe_internal/update/cfe_internal_update_from_repository.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/update&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/controls&#39;
+ /usr/bin/install -c -m 644  ./controls/cf_agent.cf ./controls/cf_runagent.cf ./controls/cf_execd.cf ./controls/def_inputs.cf ./controls/cf_monitord.cf ./controls/def.cf ./controls/reports.cf ./controls/update_def_inputs.cf ./controls/cf_serverd.cf ./controls/cf_hub.cf ./controls/update_def.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/controls&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/ha&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/enterprise/ha/ha_def.cf ./cfe_internal/enterprise/ha/ha.cf ./cfe_internal/enterprise/ha/ha_update.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/ha&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/modules/packages/vendored&#39;
+ /usr/bin/install -c -m 644  ./modules/packages/vendored/apk.mustache ./modules/packages/vendored/msiexec.bat.mustache ./modules/packages/vendored/nimclient.mustache ./modules/packages/vendored/snap.mustache ./modules/packages/vendored/yum.mustache ./modules/packages/vendored/msiexec-list.vbs.mustache ./modules/packages/vendored/apt_get.mustache ./modules/packages/vendored/slackpkg.mustache ./modules/packages/vendored/pkgsrc.mustache ./modules/packages/vendored/pkg.mustache ./modules/packages/vendored/freebsd_ports.mustache ./modules/packages/vendored/zypper.mustache ./modules/packages/vendored/WiRunSQL.vbs.mustache &#39;/tmp/MPF-upgrade/integration//masterfiles/modules/packages/vendored&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/recommendations.cf ./cfe_internal/CFE_cfengine.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal&#39;
+ /usr/bin/install -c -m 644  ./update.cf ./promises.cf ./standalone_self_upgrade.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/.&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/watchdog&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/core/watchdog/watchdog.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/watchdog&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/watchdog/templates&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/core/watchdog/templates/watchdog-windows.ps1.mustache ./cfe_internal/core/watchdog/templates/watchdog.mustache &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/watchdog/templates&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/templates&#39;
+ /usr/bin/install -c -m 644  ./templates/cf-execd.service.mustache ./templates/cf-apache.service.mustache ./templates/host_info_report.mustache ./templates/cf-monitord.service.mustache ./templates/json_serial.mustache ./templates/json_multiline.mustache ./templates/cf-hub.service.mustache ./templates/cfengine3.service.mustache ./templates/cf-postgres.service.mustache ./templates/cfengine_watchdog.mustache ./templates/vercmp.ps1 ./templates/cf-runalerts.service.mustache ./templates/cf-serverd.service.mustache ./templates/cf-reactor.service.mustache &#39;/tmp/MPF-upgrade/integration//masterfiles/templates&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/enterprise/CFE_knowledge.cf ./cfe_internal/enterprise/file_change.cf ./cfe_internal/enterprise/CFE_hub_specific.cf ./cfe_internal/enterprise/mission_portal.cf ./cfe_internal/enterprise/main.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/templates/federated_reporting&#39;
+ /usr/bin/install -c -m 644  ./templates/federated_reporting/cfsecret.py ./templates/federated_reporting/import_file.sh ./templates/federated_reporting/psql_wrapper.sh.mustache ./templates/federated_reporting/import.sh ./templates/federated_reporting/transfer_distributed_cleanup_items.sh ./templates/federated_reporting/config.sh.mustache ./templates/federated_reporting/distributed_cleanup.py ./templates/federated_reporting/transport.sh ./templates/federated_reporting/log.sh.mustache ./templates/federated_reporting/dump.sh ./templates/federated_reporting/10-base_filter.sed ./templates/federated_reporting/nova_api.py ./templates/federated_reporting/pull_dumps_from.sh ./templates/federated_reporting/50-merge_inserts.awk ./templates/federated_reporting/parallel.sh &#39;/tmp/MPF-upgrade/integration//masterfiles/templates/federated_reporting&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/services&#39;
+ /usr/bin/install -c -m 644  ./services/init.cf ./services/main.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/services&#39;
+make[2]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5&#39;
+make[1]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.18.5&#39;
+</code></pre>
+</div>
+
+<p>We no longer need the source, we can clean it up.</p>
+<div class="highlight"><pre><code class="bash"><span></span><span class="nb">cd</span> <span class="nv">$INTEGRATION_ROOT</span>/
+rm -rf <span class="nv">$INTEGRATION_ROOT</span>/masterfiles-source-<span class="nv">$MPF_VERSION</span>
+</code></pre>
+</div>
+<h2 id="merge-differences">Merge differences</h2>
+<p>Now we can use <code>git status</code> to see an overview of the changes to the repository between our starting point and the new MPF.</p>
+<div class="highlight"><pre><code class="bash"><span></span><span class="nb">cd</span> <span class="nv">$INTEGRATION_ROOT</span>/masterfiles
+git status
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>On branch master
+Changes not staged for commit:
+  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+    modified:   cfe_internal/core/watchdog/templates/watchdog.mustache
+    modified:   cfe_internal/enterprise/CFE_hub_specific.cf
+    modified:   cfe_internal/enterprise/CFE_knowledge.cf
+    modified:   cfe_internal/enterprise/federation/federation.cf
+    modified:   cfe_internal/enterprise/file_change.cf
+    modified:   cfe_internal/enterprise/mission_portal.cf
+    modified:   cfe_internal/enterprise/templates/httpd.conf.mustache
+    modified:   cfe_internal/update/lib.cf
+    modified:   cfe_internal/update/update_bins.cf
+    modified:   cfe_internal/update/update_policy.cf
+    modified:   cfe_internal/update/update_processes.cf
+    modified:   cfe_internal/update/windows_unattended_upgrade.cf
+    modified:   controls/cf_agent.cf
+    modified:   controls/cf_execd.cf
+    modified:   controls/cf_serverd.cf
+    modified:   controls/def.cf
+    modified:   controls/reports.cf
+    modified:   controls/update_def.cf
+    deleted:    custom-2.cf
+    deleted:    def.json
+    modified:   inventory/any.cf
+    modified:   inventory/linux.cf
+    modified:   inventory/os.cf
+    modified:   inventory/redhat.cf
+    modified:   lib/autorun.cf
+    modified:   lib/bundles.cf
+    modified:   lib/cfe_internal_hub.cf
+    deleted:    lib/deprecated-upstream.cf
+    modified:   lib/files.cf
+    modified:   lib/packages.cf
+    modified:   lib/paths.cf
+    modified:   lib/services.cf
+    modified:   modules/packages/vendored/apt_get.mustache
+    modified:   modules/packages/vendored/msiexec-list.vbs.mustache
+    modified:   modules/packages/vendored/pkg.mustache
+    modified:   modules/packages/vendored/zypper.mustache
+    modified:   promises.cf
+    deleted:    services/autorun/custom-1.cf
+    deleted:    services/custom-3.cf
+    modified:   standalone_self_upgrade.cf
+    modified:   templates/cf-apache.service.mustache
+    modified:   templates/cf-execd.service.mustache
+    modified:   templates/cf-hub.service.mustache
+    modified:   templates/cf-monitord.service.mustache
+    modified:   templates/cf-postgres.service.mustache
+    modified:   templates/cf-runalerts.service.mustache
+    modified:   templates/cf-serverd.service.mustache
+    modified:   templates/federated_reporting/config.sh.mustache
+    modified:   templates/federated_reporting/dump.sh
+    modified:   templates/federated_reporting/import.sh
+    modified:   templates/federated_reporting/psql_wrapper.sh.mustache
+    modified:   templates/federated_reporting/pull_dumps_from.sh
+    modified:   update.cf
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+    cfe_internal/enterprise/templates/apachectl.mustache
+    lib/templates/
+    templates/cf-reactor.service.mustache
+    templates/federated_reporting/cfsecret.py
+    templates/federated_reporting/distributed_cleanup.py
+    templates/federated_reporting/nova_api.py
+    templates/federated_reporting/transfer_distributed_cleanup_items.sh
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre>
+</div>
+
+<p>All of the <strong>Untracked files</strong> are new additions from upstream so they should be safe to take.</p>
+<div class="highlight"><pre><code class="bash"><span></span>git add cfe_internal/enterprise/templates/apachectl.mustache
+git add lib/templates/junit.mustache
+git add lib/templates/tap.mustache
+git add templates/cf-reactor.service.mustache
+git add templates/federated_reporting/cfsecret.py
+git add templates/federated_reporting/distributed_cleanup.py
+git add templates/federated_reporting/nova_api.py
+git add templates/federated_reporting/transfer_distributed_cleanup_items.sh
+</code></pre>
+</div>
+
+<p>We can run git status again to see the current overview:</p>
+<div class="highlight"><pre><code class="bash"><span></span>git status
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>On branch master
+Changes to be committed:
+  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)
+    new file:   cfe_internal/enterprise/templates/apachectl.mustache
+    new file:   lib/templates/junit.mustache
+    new file:   lib/templates/tap.mustache
+    new file:   templates/cf-reactor.service.mustache
+    new file:   templates/federated_reporting/cfsecret.py
+    new file:   templates/federated_reporting/distributed_cleanup.py
+    new file:   templates/federated_reporting/nova_api.py
+    new file:   templates/federated_reporting/transfer_distributed_cleanup_items.sh
+
+Changes not staged for commit:
+  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+    modified:   cfe_internal/core/watchdog/templates/watchdog.mustache
+    modified:   cfe_internal/enterprise/CFE_hub_specific.cf
+    modified:   cfe_internal/enterprise/CFE_knowledge.cf
+    modified:   cfe_internal/enterprise/federation/federation.cf
+    modified:   cfe_internal/enterprise/file_change.cf
+    modified:   cfe_internal/enterprise/mission_portal.cf
+    modified:   cfe_internal/enterprise/templates/httpd.conf.mustache
+    modified:   cfe_internal/update/lib.cf
+    modified:   cfe_internal/update/update_bins.cf
+    modified:   cfe_internal/update/update_policy.cf
+    modified:   cfe_internal/update/update_processes.cf
+    modified:   cfe_internal/update/windows_unattended_upgrade.cf
+    modified:   controls/cf_agent.cf
+    modified:   controls/cf_execd.cf
+    modified:   controls/cf_serverd.cf
+    modified:   controls/def.cf
+    modified:   controls/reports.cf
+    modified:   controls/update_def.cf
+    deleted:    custom-2.cf
+    deleted:    def.json
+    modified:   inventory/any.cf
+    modified:   inventory/linux.cf
+    modified:   inventory/os.cf
+    modified:   inventory/redhat.cf
+    modified:   lib/autorun.cf
+    modified:   lib/bundles.cf
+    modified:   lib/cfe_internal_hub.cf
+    deleted:    lib/deprecated-upstream.cf
+    modified:   lib/files.cf
+    modified:   lib/packages.cf
+    modified:   lib/paths.cf
+    modified:   lib/services.cf
+    modified:   modules/packages/vendored/apt_get.mustache
+    modified:   modules/packages/vendored/msiexec-list.vbs.mustache
+    modified:   modules/packages/vendored/pkg.mustache
+    modified:   modules/packages/vendored/zypper.mustache
+    modified:   promises.cf
+    deleted:    services/autorun/custom-1.cf
+    deleted:    services/custom-3.cf
+    modified:   standalone_self_upgrade.cf
+    modified:   templates/cf-apache.service.mustache
+    modified:   templates/cf-execd.service.mustache
+    modified:   templates/cf-hub.service.mustache
+    modified:   templates/cf-monitord.service.mustache
+    modified:   templates/cf-postgres.service.mustache
+    modified:   templates/cf-runalerts.service.mustache
+    modified:   templates/cf-serverd.service.mustache
+    modified:   templates/federated_reporting/config.sh.mustache
+    modified:   templates/federated_reporting/dump.sh
+    modified:   templates/federated_reporting/import.sh
+    modified:   templates/federated_reporting/psql_wrapper.sh.mustache
+    modified:   templates/federated_reporting/pull_dumps_from.sh
+    modified:   update.cf
+</code></pre>
+</div>
+
+<p>Next we want to bring back any of our custom files. Look through the <strong>deleted</strong> files, identify your custom files and restore them with <code>git checkout</code>.</p>
+<div class="highlight"><pre><code class="bash"><span></span>git ls-files --deleted
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>custom-2.cf
+def.json
+lib/deprecated-upstream.cf
+services/autorun/custom-1.cf
+services/custom-3.cf
+</code></pre>
+</div>
+
+<p>Keeping your polices organized together helps to make this process easy. The custom policy files in the example policy set are <code>def.json</code>, <code>services/autorun/custom-1.cf</code>, <code>custom-2.cf</code>, and <code>services/custom-3.cf</code>.</p>
+<div class="highlight"><pre><code class="bash"><span></span>git checkout custom-2.cf
+git checkout def.json
+git checkout services/autorun/custom-1.cf
+git checkout services/custom-3.cf
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>Updated 1 path from the index
+Updated 1 path from the index
+Updated 1 path from the index
+Updated 1 path from the index
+</code></pre>
+</div>
+
+<p>Other deleted files from the upstream framework like <code>lib/deprecated-upstream.cf</code> should be deleted with <code>git rm</code>.</p>
+
+<p><strong>Note:</strong> It is uncommon for any files to be moved or deleted between patch releases (e.g. <code>3.18.0</code> -&gt; <code>3.18.5</code>) like <code>lib/deprecated-upstream.cf</code> in this example.</p>
+<div class="highlight"><pre><code class="bash"><span></span>git rm lib/deprecated-upstream.cf
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>rm &#39;lib/deprecated-upstream.cf&#39;
+</code></pre>
+</div>
+
+<p>The files marked as <strong>modified</strong> in the <code>git status</code> output are files that have changed upstream.</p>
+<div class="highlight"><pre><code class="bash"><span></span>git status
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>On branch master
+Changes to be committed:
+  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)
+    new file:   cfe_internal/enterprise/templates/apachectl.mustache
+    deleted:    lib/deprecated-upstream.cf
+    new file:   lib/templates/junit.mustache
+    new file:   lib/templates/tap.mustache
+    new file:   templates/cf-reactor.service.mustache
+    new file:   templates/federated_reporting/cfsecret.py
+    new file:   templates/federated_reporting/distributed_cleanup.py
+    new file:   templates/federated_reporting/nova_api.py
+    new file:   templates/federated_reporting/transfer_distributed_cleanup_items.sh
+
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+    modified:   cfe_internal/core/watchdog/templates/watchdog.mustache
+    modified:   cfe_internal/enterprise/CFE_hub_specific.cf
+    modified:   cfe_internal/enterprise/CFE_knowledge.cf
+    modified:   cfe_internal/enterprise/federation/federation.cf
+    modified:   cfe_internal/enterprise/file_change.cf
+    modified:   cfe_internal/enterprise/mission_portal.cf
+    modified:   cfe_internal/enterprise/templates/httpd.conf.mustache
+    modified:   cfe_internal/update/lib.cf
+    modified:   cfe_internal/update/update_bins.cf
+    modified:   cfe_internal/update/update_policy.cf
+    modified:   cfe_internal/update/update_processes.cf
+    modified:   cfe_internal/update/windows_unattended_upgrade.cf
+    modified:   controls/cf_agent.cf
+    modified:   controls/cf_execd.cf
+    modified:   controls/cf_serverd.cf
+    modified:   controls/def.cf
+    modified:   controls/reports.cf
+    modified:   controls/update_def.cf
+    modified:   inventory/any.cf
+    modified:   inventory/linux.cf
+    modified:   inventory/os.cf
+    modified:   inventory/redhat.cf
+    modified:   lib/autorun.cf
+    modified:   lib/bundles.cf
+    modified:   lib/cfe_internal_hub.cf
+    modified:   lib/files.cf
+    modified:   lib/packages.cf
+    modified:   lib/paths.cf
+    modified:   lib/services.cf
+    modified:   modules/packages/vendored/apt_get.mustache
+    modified:   modules/packages/vendored/msiexec-list.vbs.mustache
+    modified:   modules/packages/vendored/pkg.mustache
+    modified:   modules/packages/vendored/zypper.mustache
+    modified:   promises.cf
+    modified:   standalone_self_upgrade.cf
+    modified:   templates/cf-apache.service.mustache
+    modified:   templates/cf-execd.service.mustache
+    modified:   templates/cf-hub.service.mustache
+    modified:   templates/cf-monitord.service.mustache
+    modified:   templates/cf-postgres.service.mustache
+    modified:   templates/cf-runalerts.service.mustache
+    modified:   templates/cf-serverd.service.mustache
+    modified:   templates/federated_reporting/config.sh.mustache
+    modified:   templates/federated_reporting/dump.sh
+    modified:   templates/federated_reporting/import.sh
+    modified:   templates/federated_reporting/psql_wrapper.sh.mustache
+    modified:   templates/federated_reporting/pull_dumps_from.sh
+    modified:   update.cf
+</code></pre>
+</div>
+
+<p>It&#39;s best to review the diff of <strong>each</strong> modified to understand the upstream changes as well as identify any local modifications that need to be retained. You should always keep a good record of any modifications made to vendored files to ensure that nothing is lost during future framework upgrades.</p>
+
+<p>For example, here the diff for <a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a> shows upstream changes but also highlights where the vendored policy had been customized to integrate a custom policy.</p>
+<div class="highlight"><pre><code class="bash"><span></span>git diff promises.cf
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="diff"><span></span><span class="gh">diff --git a/promises.cf b/promises.cf</span><span class="w"></span>
+<span class="gh">index 15c0c40..1fd27e5 100644</span><span class="w"></span>
+<span class="gd">--- a/promises.cf</span><span class="w"></span>
+<span class="gi">+++ b/promises.cf</span><span class="w"></span>
+<span class="gu">@@ -59,7 +59,6 @@ body common control</span><span class="w"></span>
+<span class="w"> </span>                          main,<span class="w"></span>
+<span class="w"> </span>                          @(cfengine_enterprise_hub_ha.management_bundles),<span class="w"></span>
+<span class="w"> </span>                          @(def.bundlesequence_end),<span class="w"></span>
+<span class="gd">-custom_2,</span><span class="w"></span>
+
+<span class="w"> </span>      };<span class="w"></span>
+
+<span class="gu">@@ -86,23 +85,17 @@ custom_2,</span><span class="w"></span>
+<span class="w"> </span>                  @(services_autorun.inputs),<span class="w"></span>
+
+<span class="w"> </span>                  &quot;services/main.cf&quot;,<span class="w"></span>
+<span class="gd">-&quot;custom-2.cf&quot;,</span><span class="w"></span>
+<span class="w"> </span>      };<span class="w"></span>
+
+<span class="gd">-      version =&gt; &quot;CFEngine Promises.cf 3.18.0&quot;;</span><span class="w"></span>
+<span class="gi">+      version =&gt; &quot;CFEngine Promises.cf 3.18.5&quot;;</span><span class="w"></span>
+
+<span class="w"> </span>      # From 3.7 onwards there is a new package promise implementation using package<span class="w"></span>
+<span class="w"> </span>      # modules in which you MUST provide package modules used to generate<span class="w"></span>
+<span class="w"> </span>      # software inventory reports. You can also provide global default package module<span class="w"></span>
+<span class="w"> </span>      # instead of specifying it in all package promises.<span class="w"></span>
+<span class="gd">-    (debian).!disable_inventory_package_refresh::</span><span class="w"></span>
+<span class="gi">+    (debian|redhat|centos|suse|sles|opensuse|amazon_linux).cfe_python_for_package_modules_supported.!disable_inventory_package_refresh::</span><span class="w"></span>
+<span class="w"> </span>          package_inventory =&gt; { $(package_module_knowledge.platform_default) };<span class="w"></span>
+
+<span class="gd">-      # We only define pacakge_invetory on redhat like systems that have a</span><span class="w"></span>
+<span class="gd">-      # python version that works with the package module.</span><span class="w"></span>
+<span class="gd">-    (redhat|centos|suse|sles|opensuse|amazon_linux).cfe_yum_package_module_supported.!disable_inventory_package_refresh::</span><span class="w"></span>
+<span class="gd">-        package_inventory =&gt; { $(package_module_knowledge.platform_default) };</span><span class="w"></span>
+<span class="gd">-</span><span class="w"></span>
+<span class="w"> </span>    (debian|redhat|suse|sles|opensuse|amazon_linux)::<span class="w"></span>
+<span class="w"> </span>          package_module =&gt; $(package_module_knowledge.platform_default);<span class="w"></span>
+
+<span class="gu">@@ -127,6 +120,12 @@ custom_2,</span><span class="w"></span>
+<span class="w"> </span>        ignore_missing_inputs =&gt; &quot;$(def.control_common_ignore_missing_inputs)&quot;;<span class="w"></span>
+
+
+<span class="gi">+    control_common_tls_min_version_defined::</span><span class="w"></span>
+<span class="gi">+        tls_min_version =&gt; &quot;$(default:def.control_common_tls_min_version)&quot;; # See also: allowtlsversion in body server control</span><span class="w"></span>
+<span class="gi">+</span><span class="w"></span>
+<span class="gi">+    control_common_tls_ciphers_defined::</span><span class="w"></span>
+<span class="gi">+        tls_ciphers =&gt; &quot;$(default:def.control_common_tls_ciphers)&quot;; # See also: allowciphers in body server control</span><span class="w"></span>
+<span class="gi">+</span><span class="w"></span>
+<span class="w"> </span>}<span class="w"></span>
+
+<span class="w"> </span>bundle common inventory<span class="w"></span>
+<span class="gu">@@ -136,8 +135,6 @@ bundle common inventory</span><span class="w"></span>
+<span class="w"> </span>#<span class="w"></span>
+<span class="w"> </span># Inventory bundles are simply common bundles loaded before anything<span class="w"></span>
+<span class="w"> </span># else in promises.cf<span class="w"></span>
+<span class="gd">-#</span><span class="w"></span>
+<span class="gd">-# Tested to work properly against 3.5.x</span><span class="w"></span>
+<span class="w"> </span>{<span class="w"></span>
+<span class="w"> </span>  classes:<span class="w"></span>
+<span class="w"> </span>      &quot;other_unix_os&quot; expression =&gt; &quot;!(windows|macos|linux|freebsd|aix)&quot;;<span class="w"></span>
+<span class="gu">@@ -341,9 +338,7 @@ bundle common services_autorun</span><span class="w"></span>
+<span class="w"> </span># added to inputs automatically.<span class="w"></span>
+<span class="w"> </span>{<span class="w"></span>
+<span class="w"> </span>  vars:<span class="w"></span>
+<span class="gd">-    services_autorun::</span><span class="w"></span>
+<span class="gd">-      &quot;inputs&quot; slist =&gt; { &quot;$(sys.local_libdir)/autorun.cf&quot; };</span><span class="w"></span>
+<span class="gd">-</span><span class="w"></span>
+<span class="gi">+    services_autorun|services_autorun_inputs::</span><span class="w"></span>
+<span class="w"> </span>      &quot;_default_autorun_input_dir&quot;<span class="w"></span>
+<span class="w"> </span>        string =&gt; &quot;$(this.promise_dirname)/services/autorun&quot;;<span class="w"></span>
+<span class="w"> </span>      &quot;_default_autorun_inputs&quot;<span class="w"></span>
+<span class="gu">@@ -360,23 +355,34 @@ bundle common services_autorun</span><span class="w"></span>
+<span class="w"> </span>      &quot;found_inputs&quot; slist =&gt; { @(_default_autorun_inputs),<span class="w"></span>
+<span class="w"> </span>                                sort( getvalues(_extra_autorun_inputs), &quot;lex&quot;) };<span class="w"></span>
+
+<span class="gd">-      &quot;bundles&quot; slist =&gt; { &quot;autorun&quot; }; # run loaded bundles</span><span class="w"></span>
+<span class="gd">-</span><span class="w"></span>
+<span class="gd">-    !services_autorun::</span><span class="w"></span>
+<span class="gi">+    !(services_autorun|services_autorun_inputs|services_autorun_bundles)::</span><span class="w"></span>
+<span class="w"> </span>      # If services_autorun is not enabled, then we should not extend inputs<span class="w"></span>
+<span class="w"> </span>      # automatically.<span class="w"></span>
+<span class="w"> </span>      &quot;inputs&quot; slist =&gt; { };<span class="w"></span>
+<span class="w"> </span>      &quot;found_inputs&quot; slist =&gt; {};<span class="w"></span>
+<span class="w"> </span>      &quot;bundles&quot; slist =&gt; { &quot;services_autorun&quot; }; # run self<span class="w"></span>
+
+<span class="gi">+    services_autorun|services_autorun_inputs|services_autorun_bundles::</span><span class="w"></span>
+<span class="gi">+      &quot;inputs&quot; slist =&gt; { &quot;$(sys.local_libdir)/autorun.cf&quot; };</span><span class="w"></span>
+<span class="gi">+      &quot;bundles&quot; slist =&gt; { &quot;autorun&quot; }; # run loaded bundles</span><span class="w"></span>
+<span class="gi">+</span><span class="w"></span>
+<span class="w"> </span>  reports:<span class="w"></span>
+<span class="w"> </span>    DEBUG|DEBUG_services_autorun::<span class="w"></span>
+<span class="w"> </span>      &quot;DEBUG $(this.bundle): Services Autorun Disabled&quot;<span class="w"></span>
+<span class="gd">-        if =&gt; &quot;!services_autorun&quot;;</span><span class="w"></span>
+<span class="gi">+        if =&gt; &quot;!(services_autorun|services_autorun_bundles|services_autorun_inputs)&quot;;</span><span class="w"></span>
+
+<span class="w"> </span>      &quot;DEBUG $(this.bundle): Services Autorun Enabled&quot;<span class="w"></span>
+<span class="w"> </span>        if =&gt; &quot;services_autorun&quot;;<span class="w"></span>
+
+<span class="gi">+      &quot;DEBUG $(this.bundle): Services Autorun Bundles Enabled&quot;</span><span class="w"></span>
+<span class="gi">+        if =&gt; &quot;services_autorun_bundles&quot;;</span><span class="w"></span>
+<span class="gi">+</span><span class="w"></span>
+<span class="gi">+      &quot;DEBUG $(this.bundle): Services Autorun Inputs Enabled&quot;</span><span class="w"></span>
+<span class="gi">+        if =&gt; &quot;services_autorun_inputs&quot;;</span><span class="w"></span>
+<span class="gi">+</span><span class="w"></span>
+<span class="gi">+      &quot;DEBUG $(this.bundle): Services Autorun (Bundles &amp; Inputs) Enabled&quot;</span><span class="w"></span>
+<span class="gi">+        if =&gt; &quot;services_autorun_inputs.services_autorun_bundles&quot;;</span><span class="w"></span>
+<span class="gi">+</span><span class="w"></span>
+<span class="w"> </span>      &quot;DEBUG $(this.bundle): adding input=&#39;$(inputs)&#39;&quot;<span class="w"></span>
+<span class="w"> </span>        if =&gt; isvariable(&quot;inputs&quot;);<span class="w"></span>
+</code></pre>
+</div>
+
+<p>Carefully review the diffs and merge or re-integrate your custom changes on top of the upstream files. If you identify changes to the vendored files consider re-integrating those changes in a way that does not modify vendored files, here for example we have migrated the integration of the custom policy to Augments (<code>def.json</code>).</p>
+<div class="highlight"><pre><code class="bash"><span></span>git diff def.json
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="diff"><span></span><span class="gh">diff --git a/def.json b/def.json</span><span class="w"></span>
+<span class="gh">index a7b98e6..60a0ce1 100644</span><span class="w"></span>
+<span class="w">categories: [&quot;examples&quot;, &quot;tutorials&quot;, &quot;masterfiles_policy_framework_upgrade&quot;]</span>
+<span class="w">alias: examples-tutorials-masterfiles_policy_framework_upgrade.html</span>
+<span class="gd">--- a/def.json</span><span class="w"></span>
+<span class="gi">+++ b/def.json</span><span class="w"></span>
+<span class="gu">@@ -1,8 +1,11 @@</span><span class="w"></span>
+<span class="w"> </span>{<span class="w"></span>
+<span class="gd">-  &quot;inputs&quot;: [ &quot;services/custom-3.cf&quot; ],</span><span class="w"></span>
+<span class="gi">+  &quot;inputs&quot;: [ &quot;custom-2.cf&quot;, &quot;services/custom-3.cf&quot; ],</span><span class="w"></span>
+<span class="w"> </span>  &quot;classes&quot;: {<span class="w"></span>
+<span class="w"> </span>    &quot;default:services_autorun&quot;: {<span class="w"></span>
+<span class="w"> </span>      &quot;class_expressions&quot;: [ &quot;any::&quot; ],<span class="w"></span>
+<span class="w"> </span>      &quot;comment&quot;: &quot;We want to use the autorun functionality because it is convenient.&quot;<span class="w"></span>
+<span class="gd">-    }</span><span class="w"></span>
+<span class="gi">+    },</span><span class="w"></span>
+<span class="gi">+  &quot;vars&quot;:{</span><span class="w"></span>
+<span class="gi">+    &quot;control_common_bundlesequence_end&quot;: [ &quot;custom_2&quot; ]</span><span class="w"></span>
+<span class="gi">+  }</span><span class="w"></span>
+<span class="w"> </span>}<span class="w"></span>
+<span class="w">\ No newline at end of file</span>
+</code></pre>
+</div>
+
+<p>So, we now want to accept all the changes to <a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a> and <code>def.json</code>.</p>
+<div class="highlight"><pre><code class="bash"><span></span>git add promises.cf def.json
+</code></pre>
+</div>
+
+<p>If you are unsure if or how to integrate customizations without modifying vendored policy reach out to support for help. For any modified files that you have not customized simply stage them for commit with <code>git add</code>.</p>
+<div class="highlight"><pre><code class="bash"><span></span>git add cfe_internal/core/watchdog/templates/watchdog.mustache
+git add cfe_internal/enterprise/CFE_hub_specific.cf
+git add cfe_internal/enterprise/CFE_knowledge.cf
+git add cfe_internal/enterprise/federation/federation.cf
+git add cfe_internal/enterprise/file_change.cf
+git add cfe_internal/enterprise/mission_portal.cf
+git add cfe_internal/enterprise/templates/httpd.conf.mustache
+git add cfe_internal/update/lib.cf
+git add cfe_internal/update/update_bins.cf
+git add cfe_internal/update/update_policy.cf
+git add cfe_internal/update/update_processes.cf
+git add cfe_internal/update/windows_unattended_upgrade.cf
+git add controls/cf_agent.cf
+git add controls/cf_execd.cf
+git add controls/cf_serverd.cf
+git add controls/def.cf
+git add controls/reports.cf
+git add controls/update_def.cf
+git add def.json
+git add inventory/any.cf
+git add inventory/linux.cf
+git add inventory/os.cf
+git add inventory/redhat.cf
+git add lib/autorun.cf
+git add lib/bundles.cf
+git add lib/cfe_internal_hub.cf
+git add lib/files.cf
+git add lib/packages.cf
+git add lib/paths.cf
+git add lib/services.cf
+git add modules/packages/vendored/apt_get.mustache
+git add modules/packages/vendored/msiexec-list.vbs.mustache
+git add modules/packages/vendored/pkg.mustache
+git add modules/packages/vendored/zypper.mustache
+git add promises.cf
+git add standalone_self_upgrade.cf
+git add templates/cf-apache.service.mustache
+git add templates/cf-execd.service.mustache
+git add templates/cf-hub.service.mustache
+git add templates/cf-monitord.service.mustache
+git add templates/cf-postgres.service.mustache
+git add templates/cf-runalerts.service.mustache
+git add templates/cf-serverd.service.mustache
+git add templates/federated_reporting/config.sh.mustache
+git add templates/federated_reporting/dump.sh
+git add templates/federated_reporting/import.sh
+git add templates/federated_reporting/psql_wrapper.sh.mustache
+git add templates/federated_reporting/pull_dumps_from.sh
+git add update.cf
+</code></pre>
+</div>
+
+<p>Review <code>git status</code> one more time to make sure the changes are as expected.</p>
+<div class="highlight"><pre><code class="bash"><span></span>git status
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>On branch master
+Changes to be committed:
+  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)
+    modified:   cfe_internal/core/watchdog/templates/watchdog.mustache
+    modified:   cfe_internal/enterprise/CFE_hub_specific.cf
+    modified:   cfe_internal/enterprise/CFE_knowledge.cf
+    modified:   cfe_internal/enterprise/federation/federation.cf
+    modified:   cfe_internal/enterprise/file_change.cf
+    modified:   cfe_internal/enterprise/mission_portal.cf
+    new file:   cfe_internal/enterprise/templates/apachectl.mustache
+    modified:   cfe_internal/enterprise/templates/httpd.conf.mustache
+    modified:   cfe_internal/update/lib.cf
+    modified:   cfe_internal/update/update_bins.cf
+    modified:   cfe_internal/update/update_policy.cf
+    modified:   cfe_internal/update/update_processes.cf
+    modified:   cfe_internal/update/windows_unattended_upgrade.cf
+    modified:   controls/cf_agent.cf
+    modified:   controls/cf_execd.cf
+    modified:   controls/cf_serverd.cf
+    modified:   controls/def.cf
+    modified:   controls/reports.cf
+    modified:   controls/update_def.cf
+    modified:   def.json
+    modified:   inventory/any.cf
+    modified:   inventory/linux.cf
+    modified:   inventory/os.cf
+    modified:   inventory/redhat.cf
+    modified:   lib/autorun.cf
+    modified:   lib/bundles.cf
+    modified:   lib/cfe_internal_hub.cf
+    deleted:    lib/deprecated-upstream.cf
+    modified:   lib/files.cf
+    modified:   lib/packages.cf
+    modified:   lib/paths.cf
+    modified:   lib/services.cf
+    new file:   lib/templates/junit.mustache
+    new file:   lib/templates/tap.mustache
+    modified:   modules/packages/vendored/apt_get.mustache
+    modified:   modules/packages/vendored/msiexec-list.vbs.mustache
+    modified:   modules/packages/vendored/pkg.mustache
+    modified:   modules/packages/vendored/zypper.mustache
+    modified:   promises.cf
+    modified:   standalone_self_upgrade.cf
+    modified:   templates/cf-apache.service.mustache
+    modified:   templates/cf-execd.service.mustache
+    modified:   templates/cf-hub.service.mustache
+    modified:   templates/cf-monitord.service.mustache
+    modified:   templates/cf-postgres.service.mustache
+    new file:   templates/cf-reactor.service.mustache
+    modified:   templates/cf-runalerts.service.mustache
+    modified:   templates/cf-serverd.service.mustache
+    new file:   templates/federated_reporting/cfsecret.py
+    modified:   templates/federated_reporting/config.sh.mustache
+    new file:   templates/federated_reporting/distributed_cleanup.py
+    modified:   templates/federated_reporting/dump.sh
+    modified:   templates/federated_reporting/import.sh
+    new file:   templates/federated_reporting/nova_api.py
+    modified:   templates/federated_reporting/psql_wrapper.sh.mustache
+    modified:   templates/federated_reporting/pull_dumps_from.sh
+    new file:   templates/federated_reporting/transfer_distributed_cleanup_items.sh
+    modified:   update.cf
+</code></pre>
+</div>
+
+<p>Make sure the policy validates and commit your changes.</p>
+<div class="highlight"><pre><code class="bash"><span></span>git commit -m <span class="s2">&quot;Upgraded MPF from 3.18.0 to 3.18.5&quot;</span>
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>[master 6e0cbd2] Upgraded MPF from 3.18.0 to 3.18.5
+ 58 files changed, 2476 insertions(+), 526 deletions(-)
+ create mode 100644 cfe_internal/enterprise/templates/apachectl.mustache
+ rewrite inventory/redhat.cf (63%)
+ delete mode 100644 lib/deprecated-upstream.cf
+ create mode 100644 lib/templates/junit.mustache
+ create mode 100644 lib/templates/tap.mustache
+ create mode 100644 templates/cf-reactor.service.mustache
+ create mode 100644 templates/federated_reporting/cfsecret.py
+ create mode 100644 templates/federated_reporting/distributed_cleanup.py
+ create mode 100644 templates/federated_reporting/nova_api.py
+ create mode 100644 templates/federated_reporting/transfer_distributed_cleanup_items.sh
+</code></pre>
+</div>
+
+<p>Now your Masterfiles Policy Framework is upgraded and ready to be tested.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-mpf.html">mpf</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-upgrade.html">upgrade</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-masterfiles.html">masterfiles</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-tutorial.html">tutorial</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 23 July 2024
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.18/examples/tutorials/masterfiles_policy_framework_upgrade.markdown/generator/pages/examples/tutorials/masterfiles_policy_framework_upgrade.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-6e603435d313e50beb7f6915d5c67a09.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

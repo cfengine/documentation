@@ -1,0 +1,71 @@
+
+bundle knowledge cf_QuickRef3
+
+{
+topics:
+
+"cf-QuickRef3";
+Command_reference::
+    "cfkey" ;
+Command_reference::
+    "cf-know - CFEngines knowledge agent" ;
+Command_reference::
+    "cf-report - CFEngines reporting agent" ;
+Command_reference::
+    "cf-runagent - Run agent" ;
+Command_reference::
+    "cf-monitord - CFEngines monitoring agent" ;
+Command_reference::
+    "cf-execd - CFEngines execution agent" ;
+Command_reference::
+    "cf-serverd - CFEngines server agent" ;
+Command_reference::
+    "cf-agent - CFEngines change agent" ;
+Command_reference::
+    "cf-promises - CFEngines promise analyzer" ;
+Command_reference::
+    "Command reference" ;
+Special_Topics_Guide::
+    "CFEngine-Reference"  association => a("discussed in","CFEngine-Reference","discusses");
+
+
+occurrences:
+
+manuals::
+ "/docs/cf-QuickRef3.html"
+  represents => { "Quick Reference Guide for CFEngine 3" };
+CFEngine_Reference::
+ "/docs/cf-QuickRef3.html#Top"
+  represents => { "Text section" };
+Command_reference::
+ "/docs/cf-QuickRef3.html#Command-reference"
+  represents => { "manual chapter" };
+cf_promises___CFEngines_promise_analyzer::
+ "/docs/cf-QuickRef3.html#cf_002dpromises-_002d-CFEngine_0027s-promise-analyzer"
+  represents => { "manual section cf-promises - CFEngines promise analyzer" };
+cf_agent___CFEngines_change_agent::
+ "/docs/cf-QuickRef3.html#cf_002dagent-_002d-CFEngine_0027s-change-agent"
+  represents => { "manual section cf-agent - CFEngines change agent" };
+cf_serverd___CFEngines_server_agent::
+ "/docs/cf-QuickRef3.html#cf_002dserverd-_002d-CFEngine_0027s-server-agent"
+  represents => { "manual section cf-serverd - CFEngines server agent" };
+cf_execd___CFEngines_execution_agent::
+ "/docs/cf-QuickRef3.html#cf_002dexecd-_002d-CFEngine_0027s-execution-agent"
+  represents => { "manual section cf-execd - CFEngines execution agent" };
+cf_monitord___CFEngines_monitoring_agent::
+ "/docs/cf-QuickRef3.html#cf_002dmonitord-_002d-CFEngine_0027s-monitoring-agent"
+  represents => { "manual section cf-monitord - CFEngines monitoring agent" };
+cf_runagent___Run_agent::
+ "/docs/cf-QuickRef3.html#cf_002drunagent-_002d-Run-agent"
+  represents => { "manual section cf-runagent - Run agent" };
+cf_report___CFEngines_reporting_agent::
+ "/docs/cf-QuickRef3.html#cf_002dreport-_002d-CFEngine_0027s-reporting-agent"
+  represents => { "manual section cf-report - CFEngines reporting agent" };
+cf_know___CFEngines_knowledge_agent::
+ "/docs/cf-QuickRef3.html#cf_002dknow-_002d-CFEngine_0027s-knowledge-agent"
+  represents => { "manual section cf-know - CFEngines knowledge agent" };
+cfkey::
+ "/docs/cf-QuickRef3.html#cfkey"
+  represents => { "manual section cfkey" };
+}
+

@@ -1,0 +1,65 @@
+
+########################
+# GOALS as topics
+########################
+
+bundle knowledge goals
+{
+things:
+
+ goals::
+
+ "customer service"
+   handle => "goal_customers", 
+   involves => { "help desk", "compliance" },
+   comment => "Ensure excellence of user experience for customers in services and support";
+
+ "service availability"
+   handle => "goal_availability", 
+ synonyms => { "downtime" },
+    involves => { "network services", "mail services","host configuration","web services","storage","database","login","iaas" },
+   comment => "Keep online services running and available and at all times.";
+
+ "productivity"
+   handle => "goal_productive", 
+   involves => { "user management", "mail services","web","storage","login services", "directory services" },
+   comment => "Keep employees productive in their work with a stable and usable infrastructure";
+
+ "up-to-date infrastructure"
+   handle => "goal_updated",
+   involves => { "software updates" },
+   comment => "Make sure that the latest tools and software are available and that security patches are installed";
+
+ "support organizational agility"
+   handle => "goal_agility", 
+   involves => { "boot services", "devops" },
+   comment => "Keep infrastructure agile and adaptable";
+
+ "organizational growth"
+   handle => "goal_growth", 
+   involves => { "product development", "scalability", "avoid bottlenecks" },
+   comment => "Capabilities to handle planned and unexpected growth of the organization";
+
+ "IT efficiency"
+   handle => "goal_efficiency", 
+   involves => { "CFEngine", "power consumption", "virtualization" },
+   comment => "Keep performance to cost ratio high";
+
+ "regulatory compliance"
+   handle => "goal_compliance", 
+   involves => { "compliance report", "information security" },
+   comment => "Comply with audit requirements in finance/security";
+
+ "information security"
+   handle => "goal_infosec",
+   involves => { "software updates", "security" },
+   comment => "Determine policy for necessary and sufficient information security measures";
+
+
+occurrences:
+
+  # What data support "service availability" etc
+
+
+}
+

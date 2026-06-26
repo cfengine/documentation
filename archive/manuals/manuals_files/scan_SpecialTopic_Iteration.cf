@@ -1,0 +1,63 @@
+
+bundle knowledge SpecialTopic_Iteration
+
+{
+topics:
+
+"SpecialTopic_Iteration";
+Special_Topics_Guide::
+    "Summary of iteration"  association => a("discusses","Iteration in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "The power of iteration in CFEngine"  association => a("discusses","Iteration in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Nesting promises workaround"  association => a("discusses","Iteration in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Iterating across multiple lists, revisted"  association => a("discusses","Iteration in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Fixing Iterating across nested lists"  association => a("discusses","Iteration in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Iterating over nested lists"  association => a("discusses","Iteration in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Iterating across multiple lists"  association => a("discusses","Iteration in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Iterated promises"  association => a("discusses","Iteration in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "What is iteration?"  association => a("discusses","Iteration in CFEngine","is discussed in");
+Special_Topics_Guide::
+    "Iteration"  association => a("discusses","Iteration in CFEngine","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Iteration.html"
+  represents => { "Official CFEngine document"},  about_topics => { "iteration in cfengine" };
+ "/knowledge/docs/SpecialTopic_Iteration.html"
+  represents => { "Special Topics Guide"},  about_topics => { "iteration in cfengine" };
+ "/knowledge/docs/SpecialTopic_Iteration.html#Top"
+  represents => { "Text section" }, about_topics => { "iteration" };
+ "/knowledge/docs/SpecialTopic_Iteration.html#What-is-Iteration_003f"
+  represents => { "Text section" }, about_topics => { "what is iteration?" };
+ "/knowledge/docs/SpecialTopic_Iteration.html#Iterated-promises"
+  represents => { "Text section" }, about_topics => { "iterated promises" };
+ "/knowledge/docs/SpecialTopic_Iteration.html#Iterating-across-multiple-lists"
+  represents => { "Text section" }, about_topics => { "iterating across multiple lists" };
+ "/knowledge/docs/SpecialTopic_Iteration.html#Iterating-over-nested-lists"
+  represents => { "Text section" }, about_topics => { "iterating over nested lists" };
+examples:: "/knowledge/docs/SpecialTopic_Iteration.html#Iterating-over-nested-lists"
+ about_topics => { "Iterating over nested lists" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Iteration.html#Fixing-Iterating-across-nested-lists"
+  represents => { "Text section" }, about_topics => { "fixing iterating across nested lists" };
+ "/knowledge/docs/SpecialTopic_Iteration.html#Iterating-revisted"
+  represents => { "Text section" }, about_topics => { "iterating across multiple lists, revisted" };
+ "/knowledge/docs/SpecialTopic_Iteration.html#Nesting-promises-workaround"
+  represents => { "Text section" }, about_topics => { "nesting promises workaround" };
+examples:: "/knowledge/docs/SpecialTopic_Iteration.html#Nesting-promises-workaround"
+ about_topics => { "Nesting promises workaround" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_Iteration.html#Power"
+  represents => { "Text section" }, about_topics => { "the power of iteration in cfengine" };
+ "/knowledge/docs/SpecialTopic_Iteration.html#Summary-of-iteration"
+  represents => { "Text section" }, about_topics => { "summary of iteration" };
+}
+

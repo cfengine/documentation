@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.18  Documentation - All Promise and Body Types</title>
+        <link rel="icon" type="image/svg+xml" href="./media/images/favicon.svg">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-all-types.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+        <link href='assets/global-337446952f2ea3d590f5c3e3687cd5f0.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "All Promise and Body Types";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.24/">Version 3.24 (LTS)</option>
+<option value="/docs/3.23/">Version 3.23 (EOL non-LTS)</option>
+<option value="/docs/3.22/">Version 3.22 (non-LTS)</option>
+<option value="/docs/3.21/">Version 3.21 (LTS)</option>
+<option value="/docs/3.20/">Version 3.20 (EOL non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/" selected>Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (EOL LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="c5f68dd2aab4228c4" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components</a></li><li><a href="reference-promise-types.html">Promise Types</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a class="active" href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    All Promise and Body Types
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <ul>
+<li><a href="reference-all-types.html#all-promise-types" title="All Promise and Body Types - All Promise Types">All Promise Types</a></li>
+<li><a href="reference-all-types.html#all-body-types" title="All Promise and Body Types - All Body Types">All Body Types</a></li>
+</ul>
+<h2 id="all-promise-types">All Promise Types</h2><h3 id="common-attributes-promise-types-and-attributes-common-attributes">[Common Attributes][Promise Types and Attributes#Common Attributes]</h3>
+<ul>
+<li><a href="reference-promise-types.html#action" title="Promise Types - action"><code>action</code></a>: body <a href="reference-promise-types.html#action" title="Promise Types - action"><code>action</code></a></li>
+<li><a href="reference-promise-types.html#classes" title="Promise Types - classes"><code>classes</code></a>: body <a href="reference-promise-types.html#classes"><code>classes</code></a></li>
+<li><a href="reference-promise-types.html#comment" title="Promise Types - comment"><code>comment</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types.html#depends_on" title="Promise Types - depends_on"><code>depends_on</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types.html#handle" title="Promise Types - handle"><code>handle</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types.html#if" title="Promise Types - if"><code>if</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types.html#ifvarclass" title="Promise Types - ifvarclass"><code>ifvarclass</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types.html#meta" title="Promise Types - meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types.html#unless" title="Promise Types - unless"><code>unless</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types.html#with" title="Promise Types - with"><code>with</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h3 id="access"><a href="reference-promise-types-access.html" title="access">access</a></h3>
+<ul>
+<li><a href="reference-promise-types-access.html#admit" title="access - admit"><code>admit</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-access.html#admit_hostnames" title="access - admit_hostnames"><code>admit_hostnames</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-access.html#admit_ips" title="access - admit_ips"><code>admit_ips</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-access.html#admit_keys" title="access - admit_keys"><code>admit_keys</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-access.html#deny" title="access - deny"><code>deny</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-access.html#deny_hostnames" title="access - deny_hostnames"><code>deny_hostnames</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-access.html#deny_ips" title="access - deny_ips"><code>deny_ips</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-access.html#deny_keys" title="access - deny_keys"><code>deny_keys</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-access.html#ifencrypted" title="access - ifencrypted"><code>ifencrypted</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-access.html#maproot" title="access - maproot"><code>maproot</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-access.html#report_data_select" title="access - report_data_select"><code>report_data_select</code></a>: body <a href="reference-promise-types-access.html#report_data_select" title="access - report_data_select"><code>report_data_select</code></a></li>
+<li><a href="reference-promise-types-access.html#resource_type" title="access - resource_type"><code>resource_type</code></a>: one of <code>path</code>, <code>literal</code>, <code>context</code>, <code>query</code>, <code>variable</code>, <code>bundle</code></li>
+<li><a href="reference-promise-types-access.html#shortcut" title="access - shortcut"><code>shortcut</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h3 id="build_xpath"><a href="reference-promise-types-files-edit_xml-build_xpath.html" title="build_xpath">build_xpath</a></h3>
+<ul>
+<li><a href="reference-promise-types-files-edit_xml-build_xpath.html" title="build_xpath"><code>build_xpath</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-files-edit_xml.html#select_xpath" title="edit_xml - select_xpath"><code>select_xpath</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h3 id="classes"><a href="reference-promise-types-classes.html" title="classes">classes</a></h3>
+<ul>
+<li><a href="reference-promise-types-classes.html#and" title="classes - and"><code>and</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>clist</code></a> in range <code>[a-zA-Z0-9_!&amp;@@$|.()\[\]{}:]+</code></li>
+<li><a href="reference-promise-types-classes.html#dist" title="classes - dist"><code>dist</code></a>: <a href="reference-promise-types-vars.html#rlist" title="vars - rlist"><code>rlist</code></a> in range <code>-9.99999E100,9.99999E100</code></li>
+<li><a href="reference-promise-types-classes.html#expression" title="classes - expression"><code>expression</code></a>: class expression in range <code>[a-zA-Z0-9_!&amp;@@$|.()\[\]{}:]+</code></li>
+<li><a href="reference-promise-types-classes.html#not" title="classes - not"><code>not</code></a>: class expression in range <code>[a-zA-Z0-9_!&amp;@@$|.()\[\]{}:]+</code></li>
+<li><a href="reference-promise-types-classes.html#or" title="classes - or"><code>or</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>clist</code></a> in range <code>[a-zA-Z0-9_!&amp;@@$|.()\[\]{}:]+</code></li>
+<li><a href="reference-promise-types-classes.html#persistence" title="classes - persistence"><code>persistence</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types-classes.html#scope" title="classes - scope"><code>scope</code></a>: one of <a href="reference-components-file_control_promises.html#namespace" title="file control - namespace"><code>namespace</code></a>, <code>bundle</code></li>
+<li><a href="reference-promise-types-classes.html#select_class" title="classes - select_class"><code>select_class</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>clist</code></a> in range <code>[a-zA-Z0-9_!&amp;@@$|.()\[\]{}:]+</code></li>
+<li><a href="reference-promise-types-classes.html#xor" title="classes - xor"><code>xor</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>clist</code></a> in range <code>[a-zA-Z0-9_!&amp;@@$|.()\[\]{}:]+</code></li>
+</ul>
+<h3 id="commands"><a href="reference-promise-types-commands.html" title="commands">commands</a></h3>
+<ul>
+<li><a href="reference-promise-types-commands.html#arglist" title="commands - arglist"><code>arglist</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-commands.html#args" title="commands - args"><code>args</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-commands.html#contain" title="commands - contain"><code>contain</code></a>: body <a href="reference-promise-types-commands.html#contain" title="commands - contain"><code>contain</code></a></li>
+<li><a href="reference-promise-types-commands.html#inform" title="commands - inform"><code>inform</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-commands.html#module" title="commands - module"><code>module</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+</ul>
+<h3 id="databases"><a href="reference-promise-types-databases.html" title="databases">databases</a></h3>
+<ul>
+<li><a href="reference-promise-types-databases.html#database_columns" title="databases - database_columns"><code>database_columns</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-databases.html#database_operation" title="databases - database_operation"><code>database_operation</code></a>: one of <a href="examples-tutorials-manage-ntp.html#create" title="Manage Network Time Protocol - create"><code>create</code></a>, <a href="reference-promise-types-files.html#delete" title="files - delete"><code>delete</code></a>, <code>drop</code>, <code>cache</code>, <a href="reference-promise-types-files.html#verify" title="files - verify"><code>verify</code></a>, <code>restore</code></li>
+<li><a href="reference-promise-types-databases.html#database_rows" title="databases - database_rows"><code>database_rows</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*,.*</code></li>
+<li><a href="reference-promise-types-databases.html#database_server" title="databases - database_server"><code>database_server</code></a>: body <a href="reference-promise-types-databases.html#database_server" title="databases - database_server"><code>database_server</code></a></li>
+<li><a href="reference-promise-types-databases.html#database_type" title="databases - database_type"><code>database_type</code></a>: one of <code>sql</code>, <code>ms_registry</code></li>
+<li><a href="reference-promise-types-databases.html#registry_exclude" title="databases - registry_exclude"><code>registry_exclude</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+</ul>
+<h3 id="defaults"><a href="reference-promise-types-defaults.html" title="defaults">defaults</a></h3>
+<ul>
+<li><a href="reference-promise-types-defaults.html#if_match_regex" title="defaults - if_match_regex"><code>if_match_regex</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h3 id="delete_attribute"><a href="reference-promise-types-files-edit_xml-delete_attribute.html" title="delete_attribute">delete_attribute</a></h3>
+<ul>
+<li><a href="reference-promise-types-files-edit_xml-build_xpath.html" title="build_xpath"><code>build_xpath</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-files-edit_xml.html#select_xpath" title="edit_xml - select_xpath"><code>select_xpath</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h3 id="delete_lines"><a href="reference-promise-types-files-edit_line-delete_lines.html" title="delete_lines">delete_lines</a></h3>
+<ul>
+<li><a href="reference-promise-types-files-edit_line-delete_lines.html#delete_select" title="delete_lines - delete_select"><code>delete_select</code></a>: body <a href="reference-promise-types-files-edit_line-delete_lines.html#delete_select" title="delete_lines - delete_select"><code>delete_select</code></a></li>
+<li><a href="reference-promise-types-files-edit_line-delete_lines.html#not_matching" title="delete_lines - not_matching"><code>not_matching</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files-edit_line-delete_lines.html#select_region" title="delete_lines - select_region"><code>select_region</code></a>: body <a href="reference-promise-types-files-edit_line.html#select_region" title="edit_line - select_region"><code>select_region</code></a></li>
+</ul>
+<h3 id="delete_text"><a href="reference-promise-types-files-edit_xml-delete_text.html" title="delete_text">delete_text</a></h3>
+<ul>
+<li><a href="reference-promise-types-files-edit_xml-build_xpath.html" title="build_xpath"><code>build_xpath</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-files-edit_xml.html#select_xpath" title="edit_xml - select_xpath"><code>select_xpath</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h3 id="delete_tree"><a href="reference-promise-types-files-edit_xml-delete_tree.html" title="delete_tree">delete_tree</a></h3>
+<ul>
+<li><a href="reference-promise-types-files-edit_xml-build_xpath.html" title="build_xpath"><code>build_xpath</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-files-edit_xml.html#select_xpath" title="edit_xml - select_xpath"><code>select_xpath</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h3 id="field_edits"><a href="reference-promise-types-files-edit_line-field_edits.html" title="field_edits">field_edits</a></h3>
+<ul>
+<li><a href="reference-promise-types-files-edit_line-field_edits.html#edit_field" title="field_edits - edit_field"><code>edit_field</code></a>: body <a href="reference-promise-types-files-edit_line-field_edits.html#edit_field" title="field_edits - edit_field"><code>edit_field</code></a></li>
+<li><a href="reference-promise-types-files-edit_line-field_edits.html#select_region" title="field_edits - select_region"><code>select_region</code></a>: body <a href="reference-promise-types-files-edit_line.html#select_region" title="edit_line - select_region"><code>select_region</code></a></li>
+</ul>
+<h3 id="files"><a href="reference-promise-types-files.html" title="files">files</a></h3>
+<ul>
+<li><a href="reference-promise-types-files.html#acl" title="files - acl"><code>acl</code></a>: body <a href="reference-promise-types-files.html#acl" title="files - acl"><code>acl</code></a></li>
+<li><a href="reference-promise-types-files.html#changes" title="files - changes"><code>changes</code></a>: body <a href="reference-promise-types-files.html#changes" title="files - changes"><code>changes</code></a></li>
+<li><a href="reference-promise-types-files.html#content" title="files - content"><code>content</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-files.html#copy_from" title="files - copy_from"><code>copy_from</code></a>: body <a href="reference-promise-types-files.html#copy_from" title="files - copy_from"><code>copy_from</code></a></li>
+<li><a href="reference-promise-types-files.html#create" title="files - create"><code>create</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#delete" title="files - delete"><code>delete</code></a>: body <a href="reference-promise-types-files.html#delete" title="files - delete"><code>delete</code></a></li>
+<li><a href="reference-promise-types-files.html#depth_search" title="files - depth_search"><code>depth_search</code></a>: body <a href="reference-promise-types-files.html#depth_search" title="files - depth_search"><code>depth_search</code></a></li>
+<li><a href="reference-promise-types-files.html#edit_defaults" title="files - edit_defaults"><code>edit_defaults</code></a>: body <a href="reference-promise-types-files.html#edit_defaults" title="files - edit_defaults"><code>edit_defaults</code></a></li>
+<li><a href="reference-promise-types-files.html#edit_line" title="files - edit_line"><code>edit_line</code></a>: <code>bundle</code></li>
+<li><a href="reference-promise-types-files.html#edit_template" title="files - edit_template"><code>edit_template</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+<li><a href="reference-promise-types-files.html#edit_template_string" title="files - edit_template_string"><code>edit_template_string</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-files.html#edit_xml" title="files - edit_xml"><code>edit_xml</code></a>: <code>bundle</code></li>
+<li><a href="reference-promise-types-files.html#file_select" title="files - file_select"><code>file_select</code></a>: body <a href="reference-promise-types-files.html#file_select" title="files - file_select"><code>file_select</code></a></li>
+<li><a href="reference-promise-types-files.html#file_type" title="files - file_type"><code>file_type</code></a>: one of <code>regular</code>, <code>fifo</code></li>
+<li><a href="reference-promise-types-files.html#link_from" title="files - link_from"><code>link_from</code></a>: body <a href="reference-promise-types-files.html#link_from" title="files - link_from"><code>link_from</code></a></li>
+<li><a href="reference-promise-types-files.html#move_obstructions" title="files - move_obstructions"><code>move_obstructions</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#pathtype" title="files - pathtype"><code>pathtype</code></a>: one of <code>literal</code>, <code>regex</code>, <code>guess</code></li>
+<li><a href="reference-promise-types-files.html#perms" title="files - perms"><code>perms</code></a>: body <a href="examples-tutorials-manage-ntp.html#perms" title="Manage Network Time Protocol - perms"><code>perms</code></a></li>
+<li><a href="reference-promise-types-files.html#rename" title="files - rename"><code>rename</code></a>: body <a href="reference-promise-types-files.html#rename" title="files - rename"><code>rename</code></a></li>
+<li><a href="reference-promise-types-files.html#repository" title="files - repository"><code>repository</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+<li><a href="reference-promise-types-files.html#template_data" title="files - template_data"><code>template_data</code></a>: <a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a></li>
+<li><a href="reference-promise-types-files.html#template_method" title="files - template_method"><code>template_method</code></a>: one of <a href="https://cfengine.com" title="CFEngine Homepage"><code>cfengine</code></a>, <code>inline_mustache</code>, <code>mustache</code></li>
+<li><a href="reference-promise-types-files.html#touch" title="files - touch"><code>touch</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#transformer" title="files - transformer"><code>transformer</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+</ul>
+<h3 id="guest_environments"><a href="reference-promise-types-guest_environments.html" title="guest_environments">guest_environments</a></h3>
+<ul>
+<li><a href="reference-promise-types-guest_environments.html#environment_host" title="guest_environments - environment_host"><code>environment_host</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>[a-zA-Z0-9_]+</code></li>
+<li><a href="reference-promise-types-guest_environments.html#environment_interface" title="guest_environments - environment_interface"><code>environment_interface</code></a>: body <a href="reference-promise-types-guest_environments.html#environment_interface" title="guest_environments - environment_interface"><code>environment_interface</code></a></li>
+<li><a href="reference-promise-types-guest_environments.html#environment_resources" title="guest_environments - environment_resources"><code>environment_resources</code></a>: body <a href="reference-promise-types-guest_environments.html#environment_resources" title="guest_environments - environment_resources"><code>environment_resources</code></a></li>
+<li><a href="reference-promise-types-guest_environments.html#environment_state" title="guest_environments - environment_state"><code>environment_state</code></a>: one of <a href="examples-tutorials-manage-ntp.html#create" title="Manage Network Time Protocol - create"><code>create</code></a>, <a href="reference-promise-types-files.html#delete" title="files - delete"><code>delete</code></a>, <code>running</code>, <code>suspended</code>, <code>down</code></li>
+<li><a href="reference-promise-types-guest_environments.html#environment_type" title="guest_environments - environment_type"><code>environment_type</code></a>: one of <code>xen</code>, <code>kvm</code>, <code>esx</code>, <code>vbox</code>, <code>test</code>, <code>xen_net</code>, <code>kvm_net</code>, <code>esx_net</code>, <code>test_net</code>, <code>zone</code>, <code>ec2</code>, <code>eucalyptus</code></li>
+</ul>
+<h3 id="insert_lines"><a href="reference-promise-types-files-edit_line-insert_lines.html" title="insert_lines">insert_lines</a></h3>
+<ul>
+<li><a href="reference-promise-types-files-edit_line-insert_lines.html#expand_scalars" title="insert_lines - expand_scalars"><code>expand_scalars</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files-edit_line-insert_lines.html#insert_select" title="insert_lines - insert_select"><code>insert_select</code></a>: body <a href="reference-promise-types-files-edit_line-insert_lines.html#insert_select" title="insert_lines - insert_select"><code>insert_select</code></a></li>
+<li><a href="reference-promise-types-files-edit_line-insert_lines.html#insert_type" title="insert_lines - insert_type"><code>insert_type</code></a>: one of <code>literal</code>, <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a>, <code>file</code>, <code>file_preserve_block</code>, <code>preserve_block</code>, <code>preserve_all_lines</code></li>
+<li><a href="reference-promise-types-files-edit_line-insert_lines.html#location" title="insert_lines - location"><code>location</code></a>: body <a href="reference-promise-types-files-edit_line-insert_lines.html#location" title="insert_lines - location"><code>location</code></a></li>
+<li><a href="reference-promise-types-files-edit_line-insert_lines.html#select_region" title="insert_lines - select_region"><code>select_region</code></a>: body <a href="reference-promise-types-files-edit_line.html#select_region" title="edit_line - select_region"><code>select_region</code></a></li>
+<li><a href="reference-promise-types-files-edit_line-insert_lines.html#whitespace_policy" title="insert_lines - whitespace_policy"><code>whitespace_policy</code></a>: <code>olist</code> in range <code>ignore_leading,ignore_trailing,ignore_embedded,exact_match</code></li>
+</ul>
+<h3 id="insert_text"><a href="reference-promise-types-files-edit_xml-insert_text.html" title="insert_text">insert_text</a></h3>
+<ul>
+<li><a href="reference-promise-types-files-edit_xml-build_xpath.html" title="build_xpath"><code>build_xpath</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-files-edit_xml.html#select_xpath" title="edit_xml - select_xpath"><code>select_xpath</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h3 id="insert_tree"><a href="reference-promise-types-files-edit_xml-insert_tree.html" title="insert_tree">insert_tree</a></h3>
+<ul>
+<li><a href="reference-promise-types-files-edit_xml-build_xpath.html" title="build_xpath"><code>build_xpath</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-files-edit_xml.html#select_xpath" title="edit_xml - select_xpath"><code>select_xpath</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h3 id="measurements"><a href="reference-promise-types-measurements.html" title="measurements">measurements</a></h3>
+<ul>
+<li><a href="reference-promise-types-measurements.html#data_type" title="measurements - data_type"><code>data_type</code></a>: one of <code>counter</code>, <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a>, <a href="reference-promise-types-vars.html#real" title="vars - real"><code>real</code></a>, <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a>, <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-measurements.html#history_type" title="measurements - history_type"><code>history_type</code></a>: one of <code>weekly</code>, <code>scalar</code>, <code>static</code>, <code>log</code></li>
+<li><a href="reference-promise-types-measurements.html#match_value" title="measurements - match_value"><code>match_value</code></a>: body <a href="reference-promise-types-measurements.html#match_value" title="measurements - match_value"><code>match_value</code></a></li>
+<li><a href="reference-promise-types-measurements.html#stream_type" title="measurements - stream_type"><code>stream_type</code></a>: one of <code>pipe</code>, <code>file</code></li>
+<li><a href="reference-promise-types-measurements.html#units" title="measurements - units"><code>units</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h3 id="meta"><a href="reference-promise-types-meta.html" title="meta">meta</a></h3>
+<ul>
+<li><a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a>: <a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a></li>
+<li><a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h3 id="methods"><a href="reference-promise-types-methods.html" title="methods">methods</a></h3>
+<ul>
+<li><a href="reference-promise-types-methods.html#inherit" title="methods - inherit"><code>inherit</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-methods.html#usebundle" title="methods - usebundle"><code>usebundle</code></a>: <code>bundle</code></li>
+<li><a href="reference-promise-types-methods.html#useresult" title="methods - useresult"><code>useresult</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>[a-zA-Z0-9_$(){}\[\].:]+</code></li>
+</ul>
+<h3 id="packages"><a href="reference-promise-types-packages.html" title="packages">packages</a></h3>
+<ul>
+<li><code>additional_packages</code>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-packages.html#architecture" title="packages - architecture"><code>architecture</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages.html#options" title="packages - options"><code>options</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_architectures" title="packages (deprecated) - package_architectures"><code>package_architectures</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_method" title="packages (deprecated) - package_method"><code>package_method</code></a>: body <a href="reference-promise-types-packages-deprecated.html#package_method" title="packages (deprecated) - package_method"><code>package_method</code></a></li>
+<li><a href="reference-promise-types-packages.html#package_module" title="packages - package_module"><code>package_module</code></a>: body <a href="reference-components.html#package_module" title="Components - package_module"><code>package_module</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_policy" title="packages (deprecated) - package_policy"><code>package_policy</code></a>: one of <code>add</code>, <a href="reference-promise-types-files.html#delete" title="files - delete"><code>delete</code></a>, <code>reinstall</code>, <code>update</code>, <code>addupdate</code>, <code>patch</code>, <a href="reference-promise-types-files.html#verify" title="files - verify"><code>verify</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_select" title="packages (deprecated) - package_select"><code>package_select</code></a>: one of <code>&gt;</code>, <code>&lt;</code>, <code>==</code>, <code>!=</code>, <code>&gt;=</code>, <code>&lt;=</code></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_version" title="packages (deprecated) - package_version"><code>package_version</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages.html#policy" title="packages - policy"><code>policy</code></a>: one of <code>absent</code>, <code>present</code></li>
+<li><a href="reference-promise-types-packages.html#version" title="packages - version"><code>version</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h3 id="processes"><a href="reference-promise-types-processes.html" title="processes">processes</a></h3>
+<ul>
+<li><a href="reference-promise-types-processes.html#process_count" title="processes - process_count"><code>process_count</code></a>: body <a href="reference-promise-types-processes.html#process_count" title="processes - process_count"><code>process_count</code></a></li>
+<li><a href="reference-promise-types-processes.html#process_select" title="processes - process_select"><code>process_select</code></a>: body <a href="reference-promise-types-processes.html#process_select" title="processes - process_select"><code>process_select</code></a></li>
+<li><a href="reference-promise-types-processes.html#process_stop" title="processes - process_stop"><code>process_stop</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+<li><a href="reference-promise-types-processes.html#restart_class" title="processes - restart_class"><code>restart_class</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>[a-zA-Z0-9_$(){}\[\].:]+</code></li>
+<li><a href="reference-promise-types-processes.html#signals" title="processes - signals"><code>signals</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>(hup|int|trap|kill|pipe|cont|abrt|stop|quit|term|child|usr1|usr2|bus|segv|[0-9]+s?)</code></li>
+</ul>
+<h3 id="replace_patterns"><a href="reference-promise-types-files-edit_line-replace_patterns.html" title="replace_patterns">replace_patterns</a></h3>
+<ul>
+<li><a href="reference-promise-types-files-edit_line-replace_patterns.html#replace_with" title="replace_patterns - replace_with"><code>replace_with</code></a>: body <a href="reference-promise-types-files-edit_line-replace_patterns.html#replace_with" title="replace_patterns - replace_with"><code>replace_with</code></a></li>
+<li><a href="reference-promise-types-files-edit_line-replace_patterns.html#select_region" title="replace_patterns - select_region"><code>select_region</code></a>: body <a href="reference-promise-types-files-edit_line.html#select_region" title="edit_line - select_region"><code>select_region</code></a></li>
+</ul>
+<h3 id="reports"><a href="reference-promise-types-reports.html" title="reports">reports</a></h3>
+<ul>
+<li><a href="reference-promise-types-reports.html#bundle_return_value_index" title="reports - bundle_return_value_index"><code>bundle_return_value_index</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>[a-zA-Z0-9_$(){}\[\].:]+</code></li>
+<li><a href="reference-promise-types-reports.html#friend_pattern" title="reports - friend_pattern"><code>friend_pattern</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-reports.html#intermittency" title="reports - intermittency"><code>intermittency</code></a>: <a href="reference-promise-types-vars.html#real" title="vars - real"><code>real</code></a> in range <code>0,1</code></li>
+<li><a href="reference-promise-types-reports.html#lastseen" title="reports - lastseen"><code>lastseen</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types-reports.html#printfile" title="reports - printfile"><code>printfile</code></a>: body <a href="reference-promise-types-reports.html#printfile" title="reports - printfile"><code>printfile</code></a></li>
+<li><a href="reference-promise-types-reports.html#report_to_file" title="reports - report_to_file"><code>report_to_file</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+<li><a href="reference-promise-types-reports.html#showstate" title="reports - showstate"><code>showstate</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+</ul>
+<h3 id="roles"><a href="reference-promise-types-roles.html" title="roles">roles</a></h3>
+<ul>
+<li><a href="reference-promise-types-roles.html#authorize" title="roles - authorize"><code>authorize</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+</ul>
+<h3 id="services"><a href="reference-promise-types-services.html" title="services">services</a></h3>
+<ul>
+<li><a href="reference-promise-types-services.html#service_dependencies" title="services - service_dependencies"><code>service_dependencies</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[a-zA-Z0-9_$(){}\[\].:]+</code></li>
+<li><a href="reference-promise-types-services.html#service_method" title="services - service_method"><code>service_method</code></a>: body <a href="reference-promise-types-services.html#service_method" title="services - service_method"><code>service_method</code></a></li>
+<li><a href="reference-promise-types-services.html#service_policy" title="services - service_policy"><code>service_policy</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h3 id="set_attribute"><a href="reference-promise-types-files-edit_xml-set_attribute.html" title="set_attribute">set_attribute</a></h3>
+<ul>
+<li><a href="reference-promise-types-files-edit_xml-set_attribute.html#attribute_value" title="set_attribute - attribute_value"><code>attribute_value</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-files-edit_xml-build_xpath.html" title="build_xpath"><code>build_xpath</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-files-edit_xml.html#select_xpath" title="edit_xml - select_xpath"><code>select_xpath</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h3 id="set_text"><a href="reference-promise-types-files-edit_xml-set_text.html" title="set_text">set_text</a></h3>
+<ul>
+<li><a href="reference-promise-types-files-edit_xml-build_xpath.html" title="build_xpath"><code>build_xpath</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-files-edit_xml.html#select_xpath" title="edit_xml - select_xpath"><code>select_xpath</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h3 id="storage"><a href="reference-promise-types-storage.html" title="storage">storage</a></h3>
+<ul>
+<li><a href="reference-promise-types-storage.html#mount" title="storage - mount"><code>mount</code></a>: body <a href="reference-promise-types-storage.html#mount" title="storage - mount"><code>mount</code></a></li>
+<li><a href="reference-promise-types-storage.html#volume" title="storage - volume"><code>volume</code></a>: body <a href="reference-promise-types-storage.html#volume" title="storage - volume"><code>volume</code></a></li>
+</ul>
+<h3 id="users"><a href="reference-promise-types-users.html" title="users">users</a></h3>
+<ul>
+<li><a href="reference-promise-types-users.html#description" title="users - description"><code>description</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-users.html#group_primary" title="users - group_primary"><code>group_primary</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-users.html#groups_secondary" title="users - groups_secondary"><code>groups_secondary</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-users.html#home_bundle" title="users - home_bundle"><code>home_bundle</code></a>: <code>bundle</code></li>
+<li><a href="reference-promise-types-users.html#home_bundle_inherit" title="users - home_bundle_inherit"><code>home_bundle_inherit</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-users.html#home_dir" title="users - home_dir"><code>home_dir</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+<li><a href="reference-promise-types-users.html#password" title="users - password"><code>password</code></a>: body <a href="reference-promise-types-users.html#password" title="users - password"><code>password</code></a></li>
+<li><a href="reference-promise-types-users.html#policy" title="users - policy"><code>policy</code></a>: one of <code>present</code>, <code>absent</code>, <code>locked</code></li>
+<li><a href="reference-promise-types-users.html#shell" title="users - shell"><code>shell</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+<li><a href="reference-promise-types-users.html#uid" title="users - uid"><code>uid</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>-99999999999,99999999999</code></li>
+</ul>
+<h3 id="vars"><a href="reference-promise-types-vars.html" title="vars">vars</a></h3>
+<ul>
+<li><a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a>: <a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a></li>
+<li><a href="reference-promise-types-vars.html#ilist" title="vars - ilist"><code>ilist</code></a>: <a href="reference-promise-types-vars.html#ilist" title="vars - ilist"><code>ilist</code></a> in range <code>-99999999999,99999999999</code></li>
+<li><a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>-99999999999,99999999999</code></li>
+<li><a href="reference-promise-types-vars.html#policy" title="vars - policy"><code>policy</code></a>: one of <code>free</code>, <code>overridable</code>, <code>constant</code>, <code>ifdefined</code></li>
+<li><a href="reference-promise-types-vars.html#real" title="vars - real"><code>real</code></a>: <a href="reference-promise-types-vars.html#real" title="vars - real"><code>real</code></a> in range <code>-9.99999E100,9.99999E100</code></li>
+<li><a href="reference-promise-types-vars.html#rlist" title="vars - rlist"><code>rlist</code></a>: <a href="reference-promise-types-vars.html#rlist" title="vars - rlist"><code>rlist</code></a> in range <code>-9.99999E100,9.99999E100</code></li>
+<li><a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h2 id="all-body-types">All Body Types</h2><h3 id="acl"><a href="reference-promise-types-files.html#acl" title="files - acl">acl</a></h3>
+<ul>
+<li><a href="reference-promise-types-files.html#aces" title="files - aces"><code>aces</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>((user|group):[^:]+:[-=+,rwx()dtTabBpcoD]*(:(allow|deny))?)|((all|mask):[-=+,rwx()]*(:(allow|deny))?)</code></li>
+<li><a href="reference-promise-types-files.html#acl_default" title="files - acl_default"><code>acl_default</code></a>: one of <code>nochange</code>, <a href="reference-promise-types-access.html" title="access"><code>access</code></a>, <code>specify</code>, <code>clear</code></li>
+<li><code>acl_directory_inherit</code><sup><strong>deprecated</strong></sup>: one of <code>nochange</code>, <code>parent</code>, <code>specify</code>, <code>clear</code></li>
+<li><a href="reference-promise-types-files.html#acl_inherit" title="files - acl_inherit"><code>acl_inherit</code></a>: one of <code>true</code>, <code>false</code>, <code>yes</code>, <code>no</code>, <code>on</code>, <code>off</code>, <code>nochange</code></li>
+<li><a href="reference-promise-types-files.html#acl_method" title="files - acl_method"><code>acl_method</code></a>: one of <code>append</code>, <code>overwrite</code></li>
+<li><a href="reference-promise-types-files.html#acl_type" title="files - acl_type"><code>acl_type</code></a>: one of <code>generic</code>, <code>posix</code>, <code>ntfs</code></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-files.html#specify_default_aces" title="files - specify_default_aces"><code>specify_default_aces</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>((user|group):[^:]+:[-=+,rwx()dtTabBpcoD]*(:(allow|deny))?)|((all|mask):[-=+,rwx()]*(:(allow|deny))?)</code></li>
+<li><code>specify_inherit_aces</code><sup><strong>deprecated</strong></sup>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>((user|group):[^:]+:[-=+,rwx()dtTabBpcoD]*(:(allow|deny))?)|((all|mask):[-=+,rwx()]*(:(allow|deny))?)</code></li>
+</ul>
+<h3 id="action"><a href="reference-promise-types.html#action" title="Promise Types - action">action</a></h3>
+<ul>
+<li><a href="reference-promise-types.html#action_policy" title="Promise Types - action_policy"><code>action_policy</code></a>: one of <code>fix</code>, <code>warn</code>, <code>nop</code></li>
+<li><a href="reference-promise-types.html#audit" title="Promise Types - audit"><code>audit</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types.html#background" title="Promise Types - background"><code>background</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-agent.html#expireafter" title="cf-agent - expireafter"><code>expireafter</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-components-cf-agent.html#ifelapsed" title="cf-agent - ifelapsed"><code>ifelapsed</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types.html#log_failed" title="Promise Types - log_failed"><code>log_failed</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>stdout|udp_syslog|(&quot;?[a-zA-Z]:\\.*)|(/.*)</code></li>
+<li><a href="reference-promise-types.html#log_kept" title="Promise Types - log_kept"><code>log_kept</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>stdout|udp_syslog|(&quot;?[a-zA-Z]:\\.*)|(/.*)</code></li>
+<li><a href="reference-promise-types.html#log_level" title="Promise Types - log_level"><code>log_level</code></a>: one of <a href="reference-components-cf-agent.html#inform" title="cf-agent - inform"><code>inform</code></a>, <a href="reference-components-cf-agent.html#verbose" title="cf-agent - verbose"><code>verbose</code></a>, <code>error</code>, <code>log</code></li>
+<li><a href="reference-promise-types.html#log_priority" title="Promise Types - log_priority"><code>log_priority</code></a>: one of <code>emergency</code>, <code>alert</code>, <code>critical</code>, <code>error</code>, <code>warning</code>, <code>notice</code>, <code>info</code>, <code>debug</code></li>
+<li><a href="reference-promise-types.html#log_repaired" title="Promise Types - log_repaired"><code>log_repaired</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>stdout|udp_syslog|(&quot;?[a-zA-Z]:\\.*)|(/.*)</code></li>
+<li><a href="reference-promise-types.html#log_string" title="Promise Types - log_string"><code>log_string</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types.html#measurement_class" title="Promise Types - measurement_class"><code>measurement_class</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types.html#report_level" title="Promise Types - report_level"><code>report_level</code></a>: one of <a href="reference-components-cf-agent.html#inform" title="cf-agent - inform"><code>inform</code></a>, <a href="reference-components-cf-agent.html#verbose" title="cf-agent - verbose"><code>verbose</code></a>, <code>error</code>, <code>log</code></li>
+</ul>
+<h3 id="agent"><a href="reference-components-cf-agent.html" title="cf-agent">agent</a></h3>
+<ul>
+<li><a href="reference-components-cf-agent.html#abortbundleclasses" title="cf-agent - abortbundleclasses"><code>abortbundleclasses</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-components-cf-agent.html#abortclasses" title="cf-agent - abortclasses"><code>abortclasses</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-components-cf-agent.html#addclasses" title="cf-agent - addclasses"><code>addclasses</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-components-cf-agent.html#agentaccess" title="cf-agent - agentaccess"><code>agentaccess</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-components-cf-agent.html#agentfacility" title="cf-agent - agentfacility"><code>agentfacility</code></a>: one of <code>LOG_USER</code>, <code>LOG_DAEMON</code>, <code>LOG_LOCAL0</code>, <code>LOG_LOCAL1</code>, <code>LOG_LOCAL2</code>, <code>LOG_LOCAL3</code>, <code>LOG_LOCAL4</code>, <code>LOG_LOCAL5</code>, <code>LOG_LOCAL6</code>, <code>LOG_LOCAL7</code></li>
+<li><a href="reference-components-cf-agent.html#allclassesreport" title="cf-agent - allclassesreport"><code>allclassesreport</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-agent.html#alwaysvalidate" title="cf-agent - alwaysvalidate"><code>alwaysvalidate</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-agent.html#bindtointerface" title="cf-agent - bindtointerface"><code>bindtointerface</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*</code></li>
+<li><a href="reference-components-cf-agent.html#checksum_alert_time" title="cf-agent - checksum_alert_time"><code>checksum_alert_time</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,60</code></li>
+<li><a href="reference-components-cf-agent.html#childlibpath" title="cf-agent - childlibpath"><code>childlibpath</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*</code></li>
+<li><a href="reference-components-cf-agent.html#default_repository" title="cf-agent - default_repository"><code>default_repository</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+<li><a href="reference-components-cf-agent.html#default_timeout" title="cf-agent - default_timeout"><code>default_timeout</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-components-cf-agent.html#defaultcopytype" title="cf-agent - defaultcopytype"><code>defaultcopytype</code></a>: one of <a href="reference-promise-types-files.html#mtime" title="files - mtime"><code>mtime</code></a>, <a href="reference-promise-types-files.html#atime" title="files - atime"><code>atime</code></a>, <a href="reference-promise-types-files.html#ctime" title="files - ctime"><code>ctime</code></a>, <code>digest</code>, <a href="reference-promise-types-files.html#hash" title="files - hash"><code>hash</code></a>, <code>binary</code></li>
+<li><a href="reference-components-cf-agent.html#dryrun" title="cf-agent - dryrun"><code>dryrun</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-agent.html#editbinaryfilesize" title="cf-agent - editbinaryfilesize"><code>editbinaryfilesize</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-components-cf-agent.html#editfilesize" title="cf-agent - editfilesize"><code>editfilesize</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-components-cf-agent.html#environment" title="cf-agent - environment"><code>environment</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[A-Za-z0-9_]+=.*</code></li>
+<li><a href="reference-components-cf-agent.html#expireafter" title="cf-agent - expireafter"><code>expireafter</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-components-cf-agent.html#files_auto_define" title="cf-agent - files_auto_define"><code>files_auto_define</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-agent.html#files_single_copy" title="cf-agent - files_single_copy"><code>files_single_copy</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-agent.html#hashupdates" title="cf-agent - hashupdates"><code>hashupdates</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-agent.html#hostnamekeys" title="cf-agent - hostnamekeys"><code>hostnamekeys</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-agent.html#ifelapsed" title="cf-agent - ifelapsed"><code>ifelapsed</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-components-cf-agent.html#inform" title="cf-agent - inform"><code>inform</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-agent.html#intermittency" title="cf-agent - intermittency"><code>intermittency</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-agent.html#max_children" title="cf-agent - max_children"><code>max_children</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-components-cf-agent.html#maxconnections" title="cf-agent - maxconnections"><code>maxconnections</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-components-cf-agent.html#mountfilesystems" title="cf-agent - mountfilesystems"><code>mountfilesystems</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-agent.html#nonalphanumfiles" title="cf-agent - nonalphanumfiles"><code>nonalphanumfiles</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-agent.html#refresh_processes" title="cf-agent - refresh_processes"><code>refresh_processes</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[a-zA-Z0-9_$(){}\[\].:]+</code></li>
+<li><a href="reference-components-cf-agent.html#repchar" title="cf-agent - repchar"><code>repchar</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.</code></li>
+<li><a href="reference-components-cf-agent.html#report_class_log" title="cf-agent - report_class_log"><code>report_class_log</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-agent.html#secureinput" title="cf-agent - secureinput"><code>secureinput</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-agent.html#select_end_match_eof" title="cf-agent - select_end_match_eof"><code>select_end_match_eof</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-agent.html#sensiblecount" title="cf-agent - sensiblecount"><code>sensiblecount</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-components-cf-agent.html#sensiblesize" title="cf-agent - sensiblesize"><code>sensiblesize</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-components-cf-agent.html#skipidentify" title="cf-agent - skipidentify"><code>skipidentify</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-agent.html#suspiciousnames" title="cf-agent - suspiciousnames"><code>suspiciousnames</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-agent.html#timezone" title="cf-agent - timezone"><code>timezone</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-agent.html#verbose" title="cf-agent - verbose"><code>verbose</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+</ul>
+<h3 id="changes"><a href="reference-promise-types-files.html#changes" title="files - changes">changes</a></h3>
+<ul>
+<li><a href="reference-promise-types-files.html#hash" title="files - hash"><code>hash</code></a>: one of <code>md5</code>, <code>sha1</code>, <code>sha224</code>, <code>sha256</code>, <code>sha384</code>, <code>sha512</code>, <code>best</code></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-files.html#report_changes" title="files - report_changes"><code>report_changes</code></a>: one of <code>all</code>, <code>stats</code>, <a href="reference-promise-types-files.html#content" title="files - content"><code>content</code></a>, <code>none</code></li>
+<li><a href="reference-promise-types-files.html#report_diffs" title="files - report_diffs"><code>report_diffs</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#update_hashes" title="files - update_hashes"><code>update_hashes</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+</ul>
+<h3 id="classes"><a href="reference-promise-types.html#classes">classes</a></h3>
+<ul>
+<li><a href="reference-promise-types.html#cancel_kept" title="Promise Types - cancel_kept"><code>cancel_kept</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[a-zA-Z0-9_$(){}\[\].:]+</code></li>
+<li><a href="reference-promise-types.html#cancel_notkept" title="Promise Types - cancel_notkept"><code>cancel_notkept</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[a-zA-Z0-9_$(){}\[\].:]+</code></li>
+<li><a href="reference-promise-types.html#cancel_repaired" title="Promise Types - cancel_repaired"><code>cancel_repaired</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[a-zA-Z0-9_$(){}\[\].:]+</code></li>
+<li><a href="reference-promise-types.html#failed_returncodes" title="Promise Types - failed_returncodes"><code>failed_returncodes</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[-0-9_$(){}\[\].]+</code></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types.html#kept_returncodes" title="Promise Types - kept_returncodes"><code>kept_returncodes</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[-0-9_$(){}\[\].]+</code></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types.html#persist_time" title="Promise Types - persist_time"><code>persist_time</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types.html#promise_kept" title="Promise Types - promise_kept"><code>promise_kept</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[a-zA-Z0-9_$(){}\[\].:]+</code></li>
+<li><a href="reference-promise-types.html#promise_repaired" title="Promise Types - promise_repaired"><code>promise_repaired</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[a-zA-Z0-9_$(){}\[\].:]+</code></li>
+<li><a href="reference-promise-types.html#repair_denied" title="Promise Types - repair_denied"><code>repair_denied</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[a-zA-Z0-9_$(){}\[\].:]+</code></li>
+<li><a href="reference-promise-types.html#repair_failed" title="Promise Types - repair_failed"><code>repair_failed</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[a-zA-Z0-9_$(){}\[\].:]+</code></li>
+<li><a href="reference-promise-types.html#repair_timeout" title="Promise Types - repair_timeout"><code>repair_timeout</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[a-zA-Z0-9_$(){}\[\].:]+</code></li>
+<li><a href="reference-promise-types.html#repaired_returncodes" title="Promise Types - repaired_returncodes"><code>repaired_returncodes</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[-0-9_$(){}\[\].]+</code></li>
+<li><a href="reference-promise-types-classes.html#scope" title="classes - scope"><code>scope</code></a>: one of <a href="reference-components-file_control_promises.html#namespace" title="file control - namespace"><code>namespace</code></a>, <code>bundle</code></li>
+<li><a href="reference-promise-types.html#timer_policy" title="Promise Types - timer_policy"><code>timer_policy</code></a>: one of <code>absolute</code>, <code>reset</code></li>
+</ul>
+<h3 id="common"><a href="reference-components.html#common-control">common</a></h3>
+<ul>
+<li><a href="reference-components.html#bundlesequence" title="Components - bundlesequence"><code>bundlesequence</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-components.html#bwlimit" title="Components - bwlimit"><code>bwlimit</code></a>: <a href="reference-promise-types-vars.html#real" title="vars - real"><code>real</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-components.html#cache_system_functions" title="Components - cache_system_functions"><code>cache_system_functions</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components.html#domain" title="Components - domain"><code>domain</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*</code></li>
+<li><code>fips_mode</code>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components.html#goal_patterns" title="Components - goal_patterns"><code>goal_patterns</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components.html#ignore_missing_bundles" title="Components - ignore_missing_bundles"><code>ignore_missing_bundles</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components.html#ignore_missing_inputs" title="Components - ignore_missing_inputs"><code>ignore_missing_inputs</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components.html#inputs" title="Components - inputs"><code>inputs</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-components.html#lastseenexpireafter" title="Components - lastseenexpireafter"><code>lastseenexpireafter</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-components.html#output_prefix" title="Components - output_prefix"><code>output_prefix</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-components.html#package_inventory" title="Components - package_inventory"><code>package_inventory</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-components.html#package_module" title="Components - package_module"><code>package_module</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*</code></li>
+<li><a href="reference-components.html#protocol_version" title="Components - protocol_version"><code>protocol_version</code></a>: one of <code>1</code>, <code>classic</code>, <code>2</code>, <code>tls</code>, <code>3</code>, <code>cookie</code>, <code>latest</code></li>
+<li><a href="reference-components.html#require_comments" title="Components - require_comments"><code>require_comments</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components.html#site_classes" title="Components - site_classes"><code>site_classes</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>clist</code></a> in range <code>[a-zA-Z0-9_!&amp;@@$|.()\[\]{}:]+</code></li>
+<li><a href="reference-components.html#syslog_host" title="Components - syslog_host"><code>syslog_host</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>[a-zA-Z0-9_$(){}.:-]+</code></li>
+<li><a href="reference-components.html#syslog_port" title="Components - syslog_port"><code>syslog_port</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-components.html#system_log_level" title="Components - system_log_level"><code>system_log_level</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>(critical|error|warning|notice|info)</code></li>
+<li><a href="reference-components.html#tls_ciphers" title="Components - tls_ciphers"><code>tls_ciphers</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-components.html#tls_min_version" title="Components - tls_min_version"><code>tls_min_version</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-components.html#version" title="Components - version"><code>version</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h3 id="contain"><a href="reference-promise-types-commands.html#contain" title="commands - contain">contain</a></h3>
+<ul>
+<li><a href="reference-promise-types-commands.html#chdir" title="commands - chdir"><code>chdir</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+<li><a href="reference-promise-types-commands.html#chroot" title="commands - chroot"><code>chroot</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+<li><a href="reference-promise-types-commands.html#exec_group" title="commands - exec_group"><code>exec_group</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-commands.html#exec_owner" title="commands - exec_owner"><code>exec_owner</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-commands.html#exec_timeout" title="commands - exec_timeout"><code>exec_timeout</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>1,3600</code></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-commands.html#no_output" title="commands - no_output"><code>no_output</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-commands.html#preview" title="commands - preview"><code>preview</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-commands.html#umask" title="commands - umask"><code>umask</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-commands.html#useshell" title="commands - useshell"><code>useshell</code></a>: one of <code>noshell</code>, <a href="reference-promise-types-commands.html#useshell" title="commands - useshell"><code>useshell</code></a>, <code>powershell</code>, <code>true</code>, <code>false</code>, <code>yes</code>, <code>no</code>, <code>on</code>, <code>off</code></li>
+</ul>
+<h3 id="copy_from"><a href="reference-promise-types-files.html#copy_from" title="files - copy_from">copy_from</a></h3>
+<ul>
+<li><a href="reference-promise-types-files.html#check_root" title="files - check_root"><code>check_root</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#collapse_destination_dir" title="files - collapse_destination_dir"><code>collapse_destination_dir</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#compare" title="files - compare"><code>compare</code></a>: one of <a href="reference-promise-types-files.html#atime" title="files - atime"><code>atime</code></a>, <a href="reference-promise-types-files.html#mtime" title="files - mtime"><code>mtime</code></a>, <a href="reference-promise-types-files.html#ctime" title="files - ctime"><code>ctime</code></a>, <code>digest</code>, <a href="reference-promise-types-files.html#hash" title="files - hash"><code>hash</code></a>, <code>exists</code>, <code>binary</code></li>
+<li><a href="reference-promise-types-files.html#copy_backup" title="files - copy_backup"><code>copy_backup</code></a>: one of <code>true</code>, <code>false</code>, <code>timestamp</code></li>
+<li><a href="reference-promise-types-files.html#copy_size" title="files - copy_size"><code>copy_size</code></a>: <code>irange</code> in range <code>0,inf</code></li>
+<li><a href="reference-promise-types-files.html#copylink_patterns" title="files - copylink_patterns"><code>copylink_patterns</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-runagent.html#encrypt" title="cf-runagent - encrypt"><code>encrypt</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#findertype" title="files - findertype"><code>findertype</code></a>: one of <code>MacOSX</code></li>
+<li><a href="reference-components-cf-runagent.html#force_ipv4" title="cf-runagent - force_ipv4"><code>force_ipv4</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#force_update" title="files - force_update"><code>force_update</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-files.html#link_type" title="files - link_type"><code>link_type</code></a>: one of <code>symlink</code>, <code>hardlink</code>, <code>relative</code>, <code>absolute</code></li>
+<li><a href="reference-promise-types-files.html#linkcopy_patterns" title="files - linkcopy_patterns"><code>linkcopy_patterns</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-files.html#missing_ok" title="files - missing_ok"><code>missing_ok</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#portnumber" title="files - portnumber"><code>portnumber</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-files.html#preserve" title="files - preserve"><code>preserve</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components.html#protocol_version" title="Components - protocol_version"><code>protocol_version</code></a>: one of <code>1</code>, <code>classic</code>, <code>2</code>, <code>tls</code>, <code>3</code>, <code>cookie</code>, <code>latest</code></li>
+<li><a href="reference-promise-types-files.html#purge" title="files - purge"><code>purge</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#servers" title="files - servers"><code>servers</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[A-Za-z0-9_.:\-\[\]]+</code></li>
+<li><a href="reference-promise-types-files.html#source" title="files - source"><code>source</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.+</code></li>
+<li><a href="reference-promise-types-files.html#stealth" title="files - stealth"><code>stealth</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-runagent.html#timeout" title="cf-runagent - timeout"><code>timeout</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>1,3600</code></li>
+<li><a href="reference-components-cf-runagent.html#trustkey" title="cf-runagent - trustkey"><code>trustkey</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#type_check" title="files - type_check"><code>type_check</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#verify" title="files - verify"><code>verify</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+</ul>
+<h3 id="database_server"><a href="reference-promise-types-databases.html#database_server" title="databases - database_server">database_server</a></h3>
+<ul>
+<li><a href="reference-promise-types-databases.html#db_server_connection_db" title="databases - db_server_connection_db"><code>db_server_connection_db</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-databases.html#db_server_host" title="databases - db_server_host"><code>db_server_host</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-databases.html#db_server_owner" title="databases - db_server_owner"><code>db_server_owner</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-databases.html#db_server_password" title="databases - db_server_password"><code>db_server_password</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-databases.html#db_server_type" title="databases - db_server_type"><code>db_server_type</code></a>: one of <code>postgres</code>, <code>mysql</code></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+</ul>
+<h3 id="delete"><a href="reference-promise-types-files.html#delete" title="files - delete">delete</a></h3>
+<ul>
+<li><a href="reference-promise-types-files.html#dirlinks" title="files - dirlinks"><code>dirlinks</code></a>: one of <a href="reference-promise-types-files.html#delete" title="files - delete"><code>delete</code></a>, <code>tidy</code>, <code>keep</code></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-files.html#rmdirs" title="files - rmdirs"><code>rmdirs</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+</ul>
+<h3 id="delete_select"><a href="reference-promise-types-files-edit_line-delete_lines.html#delete_select" title="delete_lines - delete_select">delete_select</a></h3>
+<ul>
+<li><a href="reference-promise-types-files-edit_line-delete_lines.html#delete_if_contains_from_list" title="delete_lines - delete_if_contains_from_list"><code>delete_if_contains_from_list</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-files-edit_line-delete_lines.html#delete_if_match_from_list" title="delete_lines - delete_if_match_from_list"><code>delete_if_match_from_list</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-files-edit_line-delete_lines.html#delete_if_not_contains_from_list" title="delete_lines - delete_if_not_contains_from_list"><code>delete_if_not_contains_from_list</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-files-edit_line-delete_lines.html#delete_if_not_match_from_list" title="delete_lines - delete_if_not_match_from_list"><code>delete_if_not_match_from_list</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-files-edit_line-delete_lines.html#delete_if_not_startwith_from_list" title="delete_lines - delete_if_not_startwith_from_list"><code>delete_if_not_startwith_from_list</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-files-edit_line-delete_lines.html#delete_if_startwith_from_list" title="delete_lines - delete_if_startwith_from_list"><code>delete_if_startwith_from_list</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+</ul>
+<h3 id="depth_search"><a href="reference-promise-types-files.html#depth_search" title="files - depth_search">depth_search</a></h3>
+<ul>
+<li><a href="reference-promise-types-files.html#depth" title="files - depth"><code>depth</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types-files.html#exclude_dirs" title="files - exclude_dirs"><code>exclude_dirs</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-files.html#include_basedir" title="files - include_basedir"><code>include_basedir</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#include_dirs" title="files - include_dirs"><code>include_dirs</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-files.html#rmdeadlinks" title="files - rmdeadlinks"><code>rmdeadlinks</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#traverse_links" title="files - traverse_links"><code>traverse_links</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#xdev" title="files - xdev"><code>xdev</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+</ul>
+<h3 id="edit_defaults"><a href="reference-promise-types-files.html#edit_defaults" title="files - edit_defaults">edit_defaults</a></h3>
+<ul>
+<li><a href="reference-promise-types-files.html#edit_backup" title="files - edit_backup"><code>edit_backup</code></a>: one of <code>true</code>, <code>false</code>, <code>timestamp</code>, <a href="reference-promise-types-files.html#rotate" title="files - rotate"><code>rotate</code></a></li>
+<li><a href="reference-promise-types-files.html#empty_file_before_editing" title="files - empty_file_before_editing"><code>empty_file_before_editing</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#inherit" title="files - inherit"><code>inherit</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-files.html#max_file_size" title="files - max_file_size"><code>max_file_size</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-files.html#recognize_join" title="files - recognize_join"><code>recognize_join</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#rotate" title="files - rotate"><code>rotate</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99</code></li>
+</ul>
+<h3 id="edit_field"><a href="reference-promise-types-files-edit_line-field_edits.html#edit_field" title="field_edits - edit_field">edit_field</a></h3>
+<ul>
+<li><a href="reference-promise-types-files-edit_line-field_edits.html#allow_blank_fields" title="field_edits - allow_blank_fields"><code>allow_blank_fields</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files-edit_line-field_edits.html#extend_fields" title="field_edits - extend_fields"><code>extend_fields</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files-edit_line-field_edits.html#field_operation" title="field_edits - field_operation"><code>field_operation</code></a>: one of <code>prepend</code>, <code>append</code>, <code>alphanum</code>, <a href="reference-promise-types-files.html#delete" title="files - delete"><code>delete</code></a>, <code>set</code></li>
+<li><a href="reference-promise-types-files-edit_line-field_edits.html#field_separator" title="field_edits - field_separator"><code>field_separator</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-files-edit_line-field_edits.html#field_value" title="field_edits - field_value"><code>field_value</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-files-edit_line-field_edits.html#select_field" title="field_edits - select_field"><code>select_field</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999</code></li>
+<li><a href="reference-promise-types-files-edit_line-field_edits.html#start_fields_from_zero" title="field_edits - start_fields_from_zero"><code>start_fields_from_zero</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files-edit_line-field_edits.html#value_separator" title="field_edits - value_separator"><code>value_separator</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>^.$</code></li>
+</ul>
+<h3 id="environment_interface"><a href="reference-promise-types-guest_environments.html#environment_interface" title="guest_environments - environment_interface">environment_interface</a></h3>
+<ul>
+<li><a href="reference-promise-types-guest_environments.html#env_addresses" title="guest_environments - env_addresses"><code>env_addresses</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-guest_environments.html#env_name" title="guest_environments - env_name"><code>env_name</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-guest_environments.html#env_network" title="guest_environments - env_network"><code>env_network</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+</ul>
+<h3 id="environment_resources"><a href="reference-promise-types-guest_environments.html#environment_resources" title="guest_environments - environment_resources">environment_resources</a></h3>
+<ul>
+<li><a href="reference-promise-types-guest_environments.html#env_baseline" title="guest_environments - env_baseline"><code>env_baseline</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+<li><a href="reference-promise-types-guest_environments.html#env_cpus" title="guest_environments - env_cpus"><code>env_cpus</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types-guest_environments.html#env_disk" title="guest_environments - env_disk"><code>env_disk</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types-guest_environments.html#env_memory" title="guest_environments - env_memory"><code>env_memory</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types-guest_environments.html#env_spec" title="guest_environments - env_spec"><code>env_spec</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+</ul>
+<h3 id="executor"><a href="reference-components-cf-execd.html" title="cf-execd">executor</a></h3>
+<ul>
+<li><a href="reference-components-cf-execd.html#agent_expireafter" title="cf-execd - agent_expireafter"><code>agent_expireafter</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,10080</code></li>
+<li><a href="reference-components-cf-execd.html#exec_command" title="cf-execd - exec_command"><code>exec_command</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+<li><a href="reference-components-cf-execd.html#executorfacility" title="cf-execd - executorfacility"><code>executorfacility</code></a>: one of <code>LOG_USER</code>, <code>LOG_DAEMON</code>, <code>LOG_LOCAL0</code>, <code>LOG_LOCAL1</code>, <code>LOG_LOCAL2</code>, <code>LOG_LOCAL3</code>, <code>LOG_LOCAL4</code>, <code>LOG_LOCAL5</code>, <code>LOG_LOCAL6</code>, <code>LOG_LOCAL7</code></li>
+<li><a href="reference-components-cf-execd.html#mailfilter_exclude" title="cf-execd - mailfilter_exclude"><code>mailfilter_exclude</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-execd.html#mailfilter_include" title="cf-execd - mailfilter_include"><code>mailfilter_include</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-execd.html#mailfrom" title="cf-execd - mailfrom"><code>mailfrom</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*@.*</code></li>
+<li><a href="reference-components-cf-execd.html#mailmaxlines" title="cf-execd - mailmaxlines"><code>mailmaxlines</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,1000</code></li>
+<li><a href="reference-components-cf-execd.html#mailsubject" title="cf-execd - mailsubject"><code>mailsubject</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-components-cf-execd.html#mailto" title="cf-execd - mailto"><code>mailto</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*@.*</code></li>
+<li><a href="reference-components-cf-execd.html#runagent_socket_allow_users" title="cf-execd - runagent_socket_allow_users"><code>runagent_socket_allow_users</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-execd.html#schedule" title="cf-execd - schedule"><code>schedule</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-execd.html#smtpserver" title="cf-execd - smtpserver"><code>smtpserver</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*</code></li>
+<li><a href="reference-components-cf-execd.html#splaytime" title="cf-execd - splaytime"><code>splaytime</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+</ul>
+<h3 id="file"><a href="guide-language-concepts-namespaces.html">file</a></h3>
+<ul>
+<li><a href="reference-components-file_control_promises.html#inputs" title="file control - inputs"><code>inputs</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-components-file_control_promises.html#namespace" title="file control - namespace"><code>namespace</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>[a-zA-Z_][a-zA-Z0-9_]*</code></li>
+</ul>
+<h3 id="file_select"><a href="reference-promise-types-files.html#file_select" title="files - file_select">file_select</a></h3>
+<ul>
+<li><a href="reference-promise-types-files.html#atime" title="files - atime"><code>atime</code></a>: <code>irange</code> in range <code>0,2147483647</code></li>
+<li><a href="reference-promise-types-files.html#ctime" title="files - ctime"><code>ctime</code></a>: <code>irange</code> in range <code>0,2147483647</code></li>
+<li><a href="reference-promise-types-files.html#exec_program" title="files - exec_program"><code>exec_program</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+<li><a href="reference-promise-types-files.html#exec_regex" title="files - exec_regex"><code>exec_regex</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-files.html#file_result" title="files - file_result"><code>file_result</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>[!*(leaf_name|path_name|file_types|mode|size|owner|group|atime|ctime|mtime|issymlinkto|exec_regex|exec_program|bsdflags)[|&amp;.]*]*</code></li>
+<li><a href="reference-promise-types-files.html#file_types" title="files - file_types"><code>file_types</code></a>: <code>olist</code> in range <code>plain,reg,symlink,dir,socket,fifo,door,char,block</code></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-files.html#issymlinkto" title="files - issymlinkto"><code>issymlinkto</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-files.html#leaf_name" title="files - leaf_name"><code>leaf_name</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-files.html#mtime" title="files - mtime"><code>mtime</code></a>: <code>irange</code> in range <code>0,2147483647</code></li>
+<li><a href="reference-promise-types-files.html#path_name" title="files - path_name"><code>path_name</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>&quot;?(/.*)</code></li>
+<li><a href="reference-promise-types-files.html#search_bsdflags" title="files - search_bsdflags"><code>search_bsdflags</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[+-]*[(arch|archived|nodump|opaque|sappnd|sappend|schg|schange|simmutable|sunlnk|sunlink|uappnd|uappend|uchg|uchange|uimmutable|uunlnk|uunlink)]+</code></li>
+<li><a href="reference-promise-types-files.html#search_groups" title="files - search_groups"><code>search_groups</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-files.html#search_mode" title="files - search_mode"><code>search_mode</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[0-7augorwxst,+-=]+</code></li>
+<li><a href="reference-promise-types-files.html#search_owners" title="files - search_owners"><code>search_owners</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-files.html#search_size" title="files - search_size"><code>search_size</code></a>: <code>irange</code> in range <code>0,inf</code></li>
+</ul>
+<h3 id="hub"><a href="reference-components-cf-hub.html" title="cf-hub">hub</a></h3>
+<ul>
+<li><a href="reference-components-cf-hub.html#client_history_timeout" title="cf-hub - client_history_timeout"><code>client_history_timeout</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>1,65535</code></li>
+<li><a href="reference-components-cf-hub.html#exclude_hosts" title="cf-hub - exclude_hosts"><code>exclude_hosts</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-hub.html#hub_schedule" title="cf-hub - hub_schedule"><code>hub_schedule</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-hub.html#port" title="cf-hub - port"><code>port</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>1,65535</code></li>
+<li><a href="reference-components-cf-hub.html#query_timeout" title="cf-hub - query_timeout"><code>query_timeout</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,300</code></li>
+</ul>
+<h3 id="insert_select"><a href="reference-promise-types-files-edit_line-insert_lines.html#insert_select" title="insert_lines - insert_select">insert_select</a></h3>
+<ul>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-files-edit_line-insert_lines.html#insert_if_contains_from_list" title="insert_lines - insert_if_contains_from_list"><code>insert_if_contains_from_list</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-files-edit_line-insert_lines.html#insert_if_match_from_list" title="insert_lines - insert_if_match_from_list"><code>insert_if_match_from_list</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-files-edit_line-insert_lines.html#insert_if_not_contains_from_list" title="insert_lines - insert_if_not_contains_from_list"><code>insert_if_not_contains_from_list</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-files-edit_line-insert_lines.html#insert_if_not_match_from_list" title="insert_lines - insert_if_not_match_from_list"><code>insert_if_not_match_from_list</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-files-edit_line-insert_lines.html#insert_if_not_startwith_from_list" title="insert_lines - insert_if_not_startwith_from_list"><code>insert_if_not_startwith_from_list</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-files-edit_line-insert_lines.html#insert_if_startwith_from_list" title="insert_lines - insert_if_startwith_from_list"><code>insert_if_startwith_from_list</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+</ul>
+<h3 id="link_from"><a href="reference-promise-types-files.html#link_from" title="files - link_from">link_from</a></h3>
+<ul>
+<li><a href="reference-promise-types-files.html#copy_patterns" title="files - copy_patterns"><code>copy_patterns</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-files.html#link_children" title="files - link_children"><code>link_children</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#link_type" title="files - link_type"><code>link_type</code></a>: one of <code>symlink</code>, <code>hardlink</code>, <code>relative</code>, <code>absolute</code></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-files.html#source" title="files - source"><code>source</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.+</code></li>
+<li><a href="reference-promise-types-files.html#when_linking_children" title="files - when_linking_children"><code>when_linking_children</code></a>: one of <code>override_file</code>, <code>if_no_such_file</code></li>
+<li><a href="reference-promise-types-files.html#when_no_source" title="files - when_no_source"><code>when_no_source</code></a>: one of <code>force</code>, <a href="reference-promise-types-files.html#delete" title="files - delete"><code>delete</code></a>, <code>nop</code></li>
+</ul>
+<h3 id="location"><a href="reference-promise-types-files-edit_line-insert_lines.html#location" title="insert_lines - location">location</a></h3>
+<ul>
+<li><a href="reference-promise-types-files-edit_line-insert_lines.html#before_after" title="insert_lines - before_after"><code>before_after</code></a>: one of <code>before</code>, <code>after</code></li>
+<li><a href="reference-promise-types-files-edit_line-insert_lines.html#first_last" title="insert_lines - first_last"><code>first_last</code></a>: one of <code>first</code>, <code>last</code></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-files-edit_line-insert_lines.html#select_line_matching" title="insert_lines - select_line_matching"><code>select_line_matching</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*</code></li>
+</ul>
+<h3 id="match_value"><a href="reference-promise-types-measurements.html#match_value" title="measurements - match_value">match_value</a></h3>
+<ul>
+<li><a href="reference-promise-types-measurements.html#extraction_regex" title="measurements - extraction_regex"><code>extraction_regex</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-files-edit_line-insert_lines.html#select_line_matching" title="insert_lines - select_line_matching"><code>select_line_matching</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-measurements.html#select_line_number" title="measurements - select_line_number"><code>select_line_number</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types-measurements.html#select_multiline_policy" title="measurements - select_multiline_policy"><code>select_multiline_policy</code></a>: one of <code>average</code>, <code>sum</code>, <code>first</code>, <code>last</code></li>
+<li><a href="reference-promise-types-measurements.html#track_growing_file" title="measurements - track_growing_file"><code>track_growing_file</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+</ul>
+<h3 id="monitor"><a href="reference-components-cf-monitord.html" title="cf-monitord">monitor</a></h3>
+<ul>
+<li><a href="reference-components-cf-monitord.html#forgetrate" title="cf-monitord - forgetrate"><code>forgetrate</code></a>: <a href="reference-promise-types-vars.html#real" title="vars - real"><code>real</code></a> in range <code>0,1</code></li>
+<li><a href="reference-components-cf-monitord.html#histograms" title="cf-monitord - histograms"><code>histograms</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-monitord.html#monitorfacility" title="cf-monitord - monitorfacility"><code>monitorfacility</code></a>: one of <code>LOG_USER</code>, <code>LOG_DAEMON</code>, <code>LOG_LOCAL0</code>, <code>LOG_LOCAL1</code>, <code>LOG_LOCAL2</code>, <code>LOG_LOCAL3</code>, <code>LOG_LOCAL4</code>, <code>LOG_LOCAL5</code>, <code>LOG_LOCAL6</code>, <code>LOG_LOCAL7</code></li>
+<li><a href="reference-components-cf-monitord.html#tcpdump" title="cf-monitord - tcpdump"><code>tcpdump</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-monitord.html#tcpdumpcommand" title="cf-monitord - tcpdumpcommand"><code>tcpdumpcommand</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+</ul>
+<h3 id="mount"><a href="reference-promise-types-storage.html#mount" title="storage - mount">mount</a></h3>
+<ul>
+<li><a href="reference-promise-types-storage.html#edit_fstab" title="storage - edit_fstab"><code>edit_fstab</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-storage.html#mount_options" title="storage - mount_options"><code>mount_options</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-storage.html#mount_server" title="storage - mount_server"><code>mount_server</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-storage.html#mount_source" title="storage - mount_source"><code>mount_source</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+<li><a href="reference-promise-types-storage.html#mount_type" title="storage - mount_type"><code>mount_type</code></a>: one of <code>nfs</code>, <code>nfs2</code>, <code>nfs3</code>, <code>nfs4</code>, <code>panfs</code>, <code>cifs</code></li>
+<li><a href="reference-promise-types-storage.html#unmount" title="storage - unmount"><code>unmount</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+</ul>
+<h3 id="package_method"><a href="reference-promise-types-packages-deprecated.html#package_method" title="packages (deprecated) - package_method">package_method</a></h3>
+<ul>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_add_command" title="packages (deprecated) - package_add_command"><code>package_add_command</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.+</code></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_arch_regex" title="packages (deprecated) - package_arch_regex"><code>package_arch_regex</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_changes" title="packages (deprecated) - package_changes"><code>package_changes</code></a>: one of <code>individual</code>, <code>bulk</code></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_commands_useshell" title="packages (deprecated) - package_commands_useshell"><code>package_commands_useshell</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_default_arch_command" title="packages (deprecated) - package_default_arch_command"><code>package_default_arch_command</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_delete_command" title="packages (deprecated) - package_delete_command"><code>package_delete_command</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.+</code></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_delete_convention" title="packages (deprecated) - package_delete_convention"><code>package_delete_convention</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_file_repositories" title="packages (deprecated) - package_file_repositories"><code>package_file_repositories</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_installed_regex" title="packages (deprecated) - package_installed_regex"><code>package_installed_regex</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_list_arch_regex" title="packages (deprecated) - package_list_arch_regex"><code>package_list_arch_regex</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_list_command" title="packages (deprecated) - package_list_command"><code>package_list_command</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.+</code></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_list_name_regex" title="packages (deprecated) - package_list_name_regex"><code>package_list_name_regex</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_list_update_command" title="packages (deprecated) - package_list_update_command"><code>package_list_update_command</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_list_update_ifelapsed" title="packages (deprecated) - package_list_update_ifelapsed"><code>package_list_update_ifelapsed</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>-99999999999,99999999999</code></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_list_version_regex" title="packages (deprecated) - package_list_version_regex"><code>package_list_version_regex</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_multiline_start" title="packages (deprecated) - package_multiline_start"><code>package_multiline_start</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_name_convention" title="packages (deprecated) - package_name_convention"><code>package_name_convention</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_name_regex" title="packages (deprecated) - package_name_regex"><code>package_name_regex</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_noverify_regex" title="packages (deprecated) - package_noverify_regex"><code>package_noverify_regex</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_noverify_returncode" title="packages (deprecated) - package_noverify_returncode"><code>package_noverify_returncode</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>-99999999999,99999999999</code></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_patch_arch_regex" title="packages (deprecated) - package_patch_arch_regex"><code>package_patch_arch_regex</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_patch_command" title="packages (deprecated) - package_patch_command"><code>package_patch_command</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.+</code></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_patch_installed_regex" title="packages (deprecated) - package_patch_installed_regex"><code>package_patch_installed_regex</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_patch_list_command" title="packages (deprecated) - package_patch_list_command"><code>package_patch_list_command</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.+</code></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_patch_name_regex" title="packages (deprecated) - package_patch_name_regex"><code>package_patch_name_regex</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_patch_version_regex" title="packages (deprecated) - package_patch_version_regex"><code>package_patch_version_regex</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_update_command" title="packages (deprecated) - package_update_command"><code>package_update_command</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.+</code></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_verify_command" title="packages (deprecated) - package_verify_command"><code>package_verify_command</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.+</code></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_version_equal_command" title="packages (deprecated) - package_version_equal_command"><code>package_version_equal_command</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.+</code></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_version_less_command" title="packages (deprecated) - package_version_less_command"><code>package_version_less_command</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.+</code></li>
+<li><a href="reference-promise-types-packages-deprecated.html#package_version_regex" title="packages (deprecated) - package_version_regex"><code>package_version_regex</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+<h3 id="package_module"><a href="reference-components.html#package_module" title="Components - package_module">package_module</a></h3>
+<ul>
+<li><a href="reference-promise-types-packages.html#default_options" title="packages - default_options"><code>default_options</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-packages.html#interpreter" title="packages - interpreter"><code>interpreter</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages.html#module_path" title="packages - module_path"><code>module_path</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-packages.html#query_installed_ifelapsed" title="packages - query_installed_ifelapsed"><code>query_installed_ifelapsed</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>-99999999999,99999999999</code></li>
+<li><a href="reference-promise-types-packages.html#query_updates_ifelapsed" title="packages - query_updates_ifelapsed"><code>query_updates_ifelapsed</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>-99999999999,99999999999</code></li>
+</ul>
+<h3 id="password"><a href="reference-promise-types-users.html#password" title="users - password">password</a></h3>
+<ul>
+<li><a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-users.html#format" title="users - format"><code>format</code></a>: one of <code>plaintext</code>, <a href="reference-promise-types-files.html#hash" title="files - hash"><code>hash</code></a></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+</ul>
+<h3 id="perms"><a href="examples-tutorials-manage-ntp.html#perms" title="Manage Network Time Protocol - perms">perms</a></h3>
+<ul>
+<li><a href="reference-promise-types-files.html#bsdflags" title="files - bsdflags"><code>bsdflags</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[+-]*[(arch|archived|nodump|opaque|sappnd|sappend|schg|schange|simmutable|sunlnk|sunlink|uappnd|uappend|uchg|uchange|uimmutable|uunlnk|uunlink)]+</code></li>
+<li><a href="reference-promise-types-files.html#groups" title="files - groups"><code>groups</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[a-zA-Z0-9_$.-]+</code></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-files.html#mode" title="files - mode"><code>mode</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>[0-7augorwxst,+-=]+</code></li>
+<li><a href="reference-promise-types-files.html#owners" title="files - owners"><code>owners</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>[a-zA-Z0-9_$.-]+</code></li>
+<li><a href="reference-promise-types-files.html#rxdirs" title="files - rxdirs"><code>rxdirs</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+</ul>
+<h3 id="printfile"><a href="reference-promise-types-reports.html#printfile" title="reports - printfile">printfile</a></h3>
+<ul>
+<li><a href="reference-promise-types-reports.html#file_to_print" title="reports - file_to_print"><code>file_to_print</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-reports.html#number_of_lines" title="reports - number_of_lines"><code>number_of_lines</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>-99999999999,99999999999</code></li>
+</ul>
+<h3 id="process_count"><a href="reference-promise-types-processes.html#process_count" title="processes - process_count">process_count</a></h3>
+<ul>
+<li><a href="reference-promise-types-processes.html#in_range_define" title="processes - in_range_define"><code>in_range_define</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-processes.html#match_range" title="processes - match_range"><code>match_range</code></a>: <code>irange</code> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-processes.html#out_of_range_define" title="processes - out_of_range_define"><code>out_of_range_define</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+</ul>
+<h3 id="process_select"><a href="reference-promise-types-processes.html#process_select" title="processes - process_select">process_select</a></h3>
+<ul>
+<li><a href="reference-promise-types-processes.html#command" title="processes - command"><code>command</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-processes.html#pgid" title="processes - pgid"><code>pgid</code></a>: <code>irange</code> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types-processes.html#pid" title="processes - pid"><code>pid</code></a>: <code>irange</code> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types-processes.html#ppid" title="processes - ppid"><code>ppid</code></a>: <code>irange</code> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types-processes.html#priority" title="processes - priority"><code>priority</code></a>: <code>irange</code> in range <code>-20,+20</code></li>
+<li><a href="reference-promise-types-processes.html#process_owner" title="processes - process_owner"><code>process_owner</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-processes.html#process_result" title="processes - process_result"><code>process_result</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>[(process_owner|pid|ppid||pgid|rsize|vsize|status|command|ttime|stime|tty|priority|threads)[|&amp;!.]*]*</code></li>
+<li><a href="reference-promise-types-processes.html#rsize" title="processes - rsize"><code>rsize</code></a>: <code>irange</code> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types-processes.html#status" title="processes - status"><code>status</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-processes.html#stime_range" title="processes - stime_range"><code>stime_range</code></a>: <code>irange</code> in range <code>0,2147483647</code></li>
+<li><a href="reference-promise-types-processes.html#threads" title="processes - threads"><code>threads</code></a>: <code>irange</code> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types-processes.html#ttime_range" title="processes - ttime_range"><code>ttime_range</code></a>: <code>irange</code> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types-processes.html#tty" title="processes - tty"><code>tty</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-processes.html#vsize" title="processes - vsize"><code>vsize</code></a>: <code>irange</code> in range <code>0,99999999999</code></li>
+</ul>
+<h3 id="rename"><a href="reference-promise-types-files.html#rename" title="files - rename">rename</a></h3>
+<ul>
+<li><a href="reference-promise-types-files.html#disable" title="files - disable"><code>disable</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-files.html#disable_mode" title="files - disable_mode"><code>disable_mode</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>[0-7augorwxst,+-=]+</code></li>
+<li><a href="reference-promise-types-files.html#disable_suffix" title="files - disable_suffix"><code>disable_suffix</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-files.html#newname" title="files - newname"><code>newname</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-files.html#rotate" title="files - rotate"><code>rotate</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99</code></li>
+</ul>
+<h3 id="replace_with"><a href="reference-promise-types-files-edit_line-replace_patterns.html#replace_with" title="replace_patterns - replace_with">replace_with</a></h3>
+<ul>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-files-edit_line-replace_patterns.html#occurrences" title="replace_patterns - occurrences"><code>occurrences</code></a>: one of <code>all</code>, <code>first</code></li>
+<li><a href="reference-promise-types-files-edit_line-replace_patterns.html#replace_value" title="replace_patterns - replace_value"><code>replace_value</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*</code></li>
+</ul>
+<h3 id="report_data_select"><a href="reference-promise-types-access.html#report_data_select" title="access - report_data_select">report_data_select</a></h3>
+<ul>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-access.html#metatags_exclude" title="access - metatags_exclude"><code>metatags_exclude</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-access.html#metatags_include" title="access - metatags_include"><code>metatags_include</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-access.html#monitoring_exclude" title="access - monitoring_exclude"><code>monitoring_exclude</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-access.html#monitoring_include" title="access - monitoring_include"><code>monitoring_include</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-access.html#promise_handle_exclude" title="access - promise_handle_exclude"><code>promise_handle_exclude</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+<li><a href="reference-promise-types-access.html#promise_handle_include" title="access - promise_handle_include"><code>promise_handle_include</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> in range <code>.*</code></li>
+</ul>
+<h3 id="runagent"><a href="reference-components-cf-runagent.html" title="cf-runagent">runagent</a></h3>
+<ul>
+<li><a href="reference-components-cf-runagent.html#background_children" title="cf-runagent - background_children"><code>background_children</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-runagent.html#encrypt" title="cf-runagent - encrypt"><code>encrypt</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-runagent.html#force_ipv4" title="cf-runagent - force_ipv4"><code>force_ipv4</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-runagent.html#hosts" title="cf-runagent - hosts"><code>hosts</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-runagent.html#max_children" title="cf-runagent - max_children"><code>max_children</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-components-cf-runagent.html#output_directory" title="cf-runagent - output_directory"><code>output_directory</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>&quot;?(/.*)</code></li>
+<li><a href="reference-components-cf-runagent.html#output_to_file" title="cf-runagent - output_to_file"><code>output_to_file</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-runagent.html#port" title="cf-runagent - port"><code>port</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>1,65535</code></li>
+<li><a href="reference-components-cf-runagent.html#timeout" title="cf-runagent - timeout"><code>timeout</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>1,9999</code></li>
+<li><a href="reference-components-cf-runagent.html#trustkey" title="cf-runagent - trustkey"><code>trustkey</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+</ul>
+<h3 id="select_region"><a href="reference-promise-types-files-edit_line.html#select_region" title="edit_line - select_region">select_region</a></h3>
+<ul>
+<li><code>include_end_delimiter</code>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><code>include_start_delimiter</code>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><code>select_end</code>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*</code></li>
+<li><a href="reference-components-cf-agent.html#select_end_match_eof" title="cf-agent - select_end_match_eof"><code>select_end_match_eof</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><code>select_start</code>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.*</code></li>
+</ul>
+<h3 id="server"><a href="reference-components-cf-serverd.html" title="cf-serverd">server</a></h3>
+<ul>
+<li><a href="reference-components-cf-serverd.html#allowallconnects" title="cf-serverd - allowallconnects"><code>allowallconnects</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-serverd.html#allowciphers" title="cf-serverd - allowciphers"><code>allowciphers</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-components-cf-serverd.html#allowconnects" title="cf-serverd - allowconnects"><code>allowconnects</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-serverd.html#allowlegacyconnects" title="cf-serverd - allowlegacyconnects"><code>allowlegacyconnects</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-serverd.html#allowtlsversion" title="cf-serverd - allowtlsversion"><code>allowtlsversion</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-components-cf-serverd.html#allowusers" title="cf-serverd - allowusers"><code>allowusers</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-agent.html#auditing" title="cf-agent - auditing"><code>auditing</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-serverd.html#bindtointerface" title="cf-serverd - bindtointerface"><code>bindtointerface</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-components-cf-serverd.html#call_collect_interval" title="cf-serverd - call_collect_interval"><code>call_collect_interval</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-components-cf-serverd.html#cfruncommand" title="cf-serverd - cfruncommand"><code>cfruncommand</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>.+</code></li>
+<li><a href="reference-components-cf-serverd.html#collect_window" title="cf-serverd - collect_window"><code>collect_window</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-components-cf-serverd.html#denybadclocks" title="cf-serverd - denybadclocks"><code>denybadclocks</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-serverd.html#denyconnects" title="cf-serverd - denyconnects"><code>denyconnects</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><code>dynamicaddresses</code>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-agent.html#hostnamekeys" title="cf-agent - hostnamekeys"><code>hostnamekeys</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-serverd.html#listen" title="cf-serverd - listen"><code>listen</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-serverd.html#logallconnections" title="cf-serverd - logallconnections"><code>logallconnections</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-serverd.html#logencryptedtransfers" title="cf-serverd - logencryptedtransfers"><code>logencryptedtransfers</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-components-cf-serverd.html#maxconnections" title="cf-serverd - maxconnections"><code>maxconnections</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-components-cf-serverd.html#port" title="cf-serverd - port"><code>port</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>1,65535</code></li>
+<li><a href="reference-components-cf-serverd.html#serverfacility" title="cf-serverd - serverfacility"><code>serverfacility</code></a>: one of <code>LOG_USER</code>, <code>LOG_DAEMON</code>, <code>LOG_LOCAL0</code>, <code>LOG_LOCAL1</code>, <code>LOG_LOCAL2</code>, <code>LOG_LOCAL3</code>, <code>LOG_LOCAL4</code>, <code>LOG_LOCAL5</code>, <code>LOG_LOCAL6</code>, <code>LOG_LOCAL7</code></li>
+<li><a href="reference-components-cf-serverd.html#skipverify" title="cf-serverd - skipverify"><code>skipverify</code></a><sup><strong>deprecated</strong></sup>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-components-cf-serverd.html#trustkeysfrom" title="cf-serverd - trustkeysfrom"><code>trustkeysfrom</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+</ul>
+<h3 id="service_method"><a href="reference-promise-types-services.html#service_method" title="services - service_method">service_method</a></h3>
+<ul>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-services.html#service_args" title="services - service_args"><code>service_args</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+<li><a href="reference-promise-types-services.html#service_autostart_policy" title="services - service_autostart_policy"><code>service_autostart_policy</code></a>: one of <code>none</code>, <code>boot_time</code>, <code>on_demand</code></li>
+<li><a href="reference-promise-types-services.html#service_bundle" title="services - service_bundle"><code>service_bundle</code></a>: <code>bundle</code></li>
+<li><a href="reference-promise-types-services.html#service_dependence_chain" title="services - service_dependence_chain"><code>service_dependence_chain</code></a>: one of <code>ignore</code>, <code>start_parent_services</code>, <code>stop_child_services</code>, <code>all_related</code></li>
+<li><a href="reference-promise-types-services.html#service_type" title="services - service_type"><code>service_type</code></a>: one of <code>windows</code>, <code>generic</code></li>
+</ul>
+<h3 id="volume"><a href="reference-promise-types-storage.html#volume" title="storage - volume">volume</a></h3>
+<ul>
+<li><a href="reference-promise-types-storage.html#check_foreign" title="storage - check_foreign"><code>check_foreign</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-storage.html#freespace" title="storage - freespace"><code>freespace</code></a>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> in range <code>[0-9]+[MBkKgGmb%]</code></li>
+<li><a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a>: body <a href="reference-promise-types.html#inherit_from" title="Promise Types - inherit_from"><code>inherit_from</code></a></li>
+<li><a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></li>
+<li><a href="reference-promise-types-storage.html#scan_arrivals" title="storage - scan_arrivals"><code>scan_arrivals</code></a>: <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></li>
+<li><a href="reference-promise-types-storage.html#sensible_count" title="storage - sensible_count"><code>sensible_count</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+<li><a href="reference-promise-types-storage.html#sensible_size" title="storage - sensible_size"><code>sensible_size</code></a>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> in range <code>0,99999999999</code></li>
+</ul>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 23 July 2024
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.18/generator/pages/reference/all-types.markdown/reference/all-types.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-6e603435d313e50beb7f6915d5c67a09.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.13  Documentation - Masterfiles Policy Framework</title>
+        <link rel="icon" type="image/png" href="favicon.png">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.13/assets/global-f8d3d88f1cc74c2ac5c8e408cd101409.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Masterfiles Policy Framework";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.13/" selected>Version 3.13 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                    <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:bphk6hztv2i" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a class="active" href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a><ul class="level2"><li><a href="reference-masterfiles-policy-framework-update.html">update.cf</a></li><li><a href="reference-masterfiles-policy-framework-promises.html">promises.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls.html">controls/</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_agent.html">controls/cf_agent.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_execd.html">controls/cf_execd.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf-hub.html">controls/cf_hub.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_monitord.html">controls/cf_monitord.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_runagent.html">controls/cf_runagent.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_serverd.html">controls/cf_serverd.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-def.html">controls/def.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-def_inputs.html">controls/def_inputs.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-reports.html">controls/reports.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-update_def.html">controls/update_def.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-update_def_inputs.html">controls/update_def_inputs.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal.html">cfe_internal/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-cfe_cfengine.html">cfe_internal/CFE_cfengine.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update.html">cfe_internal/update/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_dc_workflow.html">cfe_internal/update/cfe_internal_dc_workflow.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_update_from_repository.html">cfe_internal/update/cfe_internal_update_from_repository.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-lib.html">cfe_internal/update/lib.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-systemd_units.html">cfe_internal/update/systemd_units.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_bins.html">cfe_internal/update/update_bins.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_policy.html">cfe_internal/update/update_policy.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_processes.html">cfe_internal/update/update_processes.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-core.html">cfe_internal/core/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise.html">cfe_internal/enterprise/</a></li><li><a href="reference-masterfiles-policy-framework-inventory.html">inventory/</a></li><li><a href="reference-masterfiles-policy-framework-inventory-any.html">inventory/any.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-debian.html">inventory/debian.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-freebsd.html">inventory/freebsd.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-generic.html">inventory/generic.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-linux.html">inventory/linux.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-lsb.html">inventory/lsb.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-macos.html">inventory/macos.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-os.html">inventory/os.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-redhat.html">inventory/redhat.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-suse.html">inventory/suse.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-windows.html">inventory/windows.cf</a></li><li><a href="reference-masterfiles-policy-framework-services.html">services/</a></li><li><a href="reference-masterfiles-policy-framework-services-autorun.html">services/autorun/</a></li><li><a href="reference-masterfiles-policy-framework-services-main.html">services/main.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib.html">lib/</a></li><li><a href="reference-masterfiles-policy-framework-standalone_self_upgrade.html">standalone_self_upgrade.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-autorun.html">lib/autorun.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-bundles.html">lib/bundles.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfe_internal.html">lib/cfe_internal.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfe_internal_hub.html">lib/cfe_internal_hub.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfengine_enterprise_hub_ha.html">lib/cfengine_enterprise_hub_ha.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-commands.html">lib/commands.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-common.html">lib/common.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-databases.html">lib/databases.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-edit_xml.html">lib/edit_xml.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-event.html">lib/event.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-examples.html">lib/examples.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-feature.html">lib/feature.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-files.html">lib/files.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-guest_environments.html">lib/guest_environments.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-monitor.html">lib/monitor.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-packages.html">lib/packages.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-paths.html">lib/paths.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-processes.html">lib/processes.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-reports.html">lib/reports.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-services.html">lib/services.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-stdlib.html">lib/stdlib.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-storage.html">lib/storage.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-testing.html">lib/testing.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-users.html">lib/users.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-vcs.html">lib/vcs.cf</a></li></ul></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Masterfiles Policy Framework
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>The Masterfiles Policy Framework or MPF also commonly reffered to as simply
+masterfiles is the policy framework that ships with CFEngine.</p>
+
+<p>The Masterfiles Policy Framework is the default policy
+that ships with both the CFEngine Enterprise and
+Community editions. The MPF includes policy to manage
+cfengine itself, the stdlib, and policy to inventory
+various aspects of the system.</p>
+<h1 id="overview">Overview</h1>
+<ul>
+<li><a href="reference-masterfiles-policy-framework-update.html" title="update.cf"><code>update.cf</code></a> - The update policy entry.</li>
+<li><a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a> - The main policy entry.</li>
+<li><a href="reference-masterfiles-policy-framework-lib.html" title="lib/"><code>lib/</code></a> - The standard library.</li>
+<li><a href="reference-masterfiles-policy-framework-inventory.html" title="inventory/"><code>inventory/</code></a> - Inventory policy.</li>
+<li><a href="reference-promise-types-services.html" title="services"><code>services</code></a> - User defined custom policy.</li>
+<li><a href="reference-masterfiles-policy-framework-services-main.html" title="services/main.cf"><code>services/main.cf</code></a> - Contains an empty bundle agent main where custom policy
+can be integrated.</li>
+<li><a href="reference-masterfiles-policy-framework-services-autorun.html" title="services/autorun/"><code>services/autorun/</code></a> - Automatically included policy files.</li>
+</ul>
+
+<p>The MPF is continually updated. You can track its development
+on <a href="https://github.com/cfengine/masterfiles/">github</a>.</p>
+<h1 id="configuration">Configuration</h1>
+<p>The most common controls reference variables in the <code>def</code> bundle in order to
+keep the modifications to the distributed policy contained within a single
+place. The recommended way to set classes and define variables in the <code>def</code>
+bundle is using an <a href="reference-language-concepts-augments.html" title="Augments">augments file</a>. Keeping the modifications to the
+distributed policy set makes policy framework upgrades significantly easier.</p>
+
+<p>Note: If you need to make modification to a shipped file consider opening a pull
+request to expose the tunable into the <code>def</code> bundle.</p>
+
+<p><strong>Note:</strong> <a href="reference-masterfiles-policy-framework-controls-def.html" title="controls/def.cf"><code>controls/def.cf</code></a> contains the defaults and settings for <a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a>
+and <a href="reference-masterfiles-policy-framework-controls-update_def.html" title="controls/update_def.cf"><code>controls/update_def.cf</code></a> contains the defaults and settings for <a href="reference-masterfiles-policy-framework-update.html" title="update.cf"><code>update.cf</code></a>.</p>
+
+<p>Since 3.7.8, 3.10.4, and 3.12.0 The class <code>cf_runagent_initated</code> is defined by
+default in the MPF for agent executions initiated by <a href="reference-components-cf-runagent.html" title="cf-runagent"><code>cf-runagent</code></a> through
+<a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a>. Previously the class <a href="reference-components-cf-serverd.html#cfruncommand" title="cf-serverd - cfruncommand"><code>cfruncommand</code></a> was defined. See <code>body server
+control cfruncommand</code> in <code>controls/cf_serverd.cf</code>.</p>
+<h2 id="update-policy-update-cf">Update Policy (update.cf)</h2>
+<p>Synchronizing clients with the policy server happens here, in
+<a href="reference-masterfiles-policy-framework-update.html" title="update.cf"><code>update.cf</code></a>. Its main job is to copy all the files on the policy
+server (usually the hub) under <code>$(sys.masterdir)</code> (usually
+<code>/var/cfengine/masterfiles</code>) to the local host into <code>$(sys.inputdir)</code>
+(usually <code>/var/cfengine/inputs</code>).</p>
+
+<p>This file should rarely if ever change. Should you ever change it (or
+when you upgrade CFEngine), take special care to ensure the old and
+the new CFEngine can parse and execute this file successfully. If not,
+you risk losing control of your system (that is, <strong>if CFEngine cannot
+successfully execute <a href="reference-masterfiles-policy-framework-update.html" title="update.cf"><code>update.cf</code></a>, it has no mechanism for distributing
+new policy files</strong>).</p>
+
+<p>By default, the policy defined in update.cf is executed at the
+beginning of a <a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a> scheduled agent run (see <a href="reference-components-cf-execd.html#schedule" title="cf-execd - schedule"><code>schedule</code></a> and
+<a href="reference-components-cf-execd.html#exec_command" title="cf-execd - exec_command"><code>exec_command</code></a> as defined in <code>body executor control</code> in
+<a href="reference-masterfiles-policy-framework-controls-cf_execd.html" title="controls/cf_execd.cf"><code>controls/cf_execd.cf</code></a>). When the update policy completes
+(regardless of success or failure) the policy defined in <a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a>
+is activated.</p>
+
+<p>This is a standalone policy file. You can actually run it with
+<code>cf-agent -KI -f ./update.cf</code> but if you don&#39;t understand what that
+command does, please hold off until you&#39;ve gone through the CFEngine
+documentation. The contents of <a href="reference-masterfiles-policy-framework-update.html" title="update.cf"><code>update.cf</code></a> duplicate other things
+under <code>lib</code> sometimes, in order to be completely standalone.</p>
+
+<p>To repeat, when <a href="reference-masterfiles-policy-framework-update.html" title="update.cf"><code>update.cf</code></a> is broken, things go bonkers. CFEngine
+will try to run a backup <code>failsafe.cf</code> you can find in the C core
+under <code>libpromises/failsafe.cf</code> (that <code>.cf</code> file is written into the C
+code and can&#39;t be modified). If things get to that point, you probably
+have to look at why corrupted policies made it into production.</p>
+
+<p>As is typical for CFEngine, the policy and the configuration are mixed. In
+<a href="reference-masterfiles-policy-framework-controls-update_def.html" title="controls/update_def.cf"><code>controls/update_def.cf</code></a> you&#39;ll find some very useful settings. Keep referring
+to <a href="reference-masterfiles-policy-framework-controls-update_def.html" title="controls/update_def.cf"><code>controls/update_def.cf</code></a> as you read this. We are skipping the nonessential
+ones.</p>
+<h3 id="configure-upstream-masterfiles-location-for-policy-update">Configure upstream masterfiles location for policy update</h3>
+<p>Want to get your policy from a place other than <code>/var/cfengine/masterfiles</code> on
+<a href="reference-special-variables-sys.html#sys-policy_hub" title="sys - sys.policy_hub"><code>sys.policy_hub</code></a>?</p>
+
+<p>With an augments like this:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+            &quot;house&quot;: &quot;Gryffindor&quot;,
+            &quot;mpf_update_policy_master_location&quot;: &quot;/srv/cfengine/$(sys.flavor)/$(def.house)&quot;
+          }
+}
+</code></pre>
+</div>
+
+<p>A CentOS 7 host would copy policy from <code>/srv/cfengine/centos_6/Gryffindor</code> to
+<code>$(sys.inputdir)</code> (commonly <code>/var/cfengine/inputs</code>).</p>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Introduced in 3.12.0.</li>
+</ul>
+<h3 id="append-to-inputs-used-by-update-policy">Append to inputs used by update policy</h3>
+<p>You can append to the inputs used by the update policy via augments by defining
+<code>vars.update_inputs</code>. The following example will add the policy file
+<code>my_updatebundle1.cf</code> to the list of policy file inputs during the update policy.</p>
+<div class="highlight"><pre><code class="json"><span class="p">{</span>
+  <span class="nt">&quot;vars&quot;</span><span class="p">:{</span>
+    <span class="nt">&quot;update_inputs&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;my_updatebundle1.cf&quot;</span> <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="append-to-the-update-bundlesequence">Append to the update bundlesequence</h3>
+<p>You can specify bundles which should be run at the end of the default update
+policy bundlesequence by defining <code>control_common_update_bundlesequence_end</code>
+in the vars of an <a href="reference-language-concepts-augments.html" title="Augments">augments file</a>.</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="json"><span class="p">{</span>
+  <span class="nt">&quot;vars&quot;</span><span class="p">:{</span>
+    <span class="nt">&quot;control_common_update_bundlesequence_end&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;my_updatebundle1&quot;</span><span class="p">,</span> <span class="s2">&quot;mybundle2&quot;</span> <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li>The order in which bundles are actuates is not guaranteed.</li>
+<li>The agent will error if a named bundle is not part of inputs.</li>
+</ul>
+<h3 id="specify-the-agent-bundle-used-for-policy-update">Specify the agent bundle used for policy update</h3>
+<p>The MPF uses <code>cfe_internal_update_policy_cpv</code> to update inputs, modules, and
+plugins on remote agents. When new policy is verified by the agent
+<code>/var/cfengine/masterfiles/cf_promises_validated</code> is updated with the current
+timestamp. This file is used by remote agents to avoid unnecessary inspection of
+all files each time the update policy is triggered.</p>
+
+<p>Override this bundle by setting <code>def.mpf_update_policy_bundle</code> via augments:</p>
+<div class="highlight"><pre><code class="text">{
+    &quot;vars&quot;: {
+        &quot;mpf_update_policy_bundle&quot;: &quot;MyCustomPolicyUpdateBundle&quot;
+    }
+}
+</code></pre>
+</div>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Introduced in 3.12.0</li>
+</ul>
+<h4 id="ignore_missing_bundles">ignore_missing_bundles</h4>
+<p>This option allows you to ignore errors when a bundle specified in body common control bundlesequence is not found.</p>
+
+<p>This example illustrates enabling the option via augments.</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;control_common_ignore_missing_bundles&quot;: &quot;true&quot;
+  }
+}
+</code></pre>
+</div>
+
+<p><strong>NOTE:</strong> The same augments key is used for both <a href="reference-masterfiles-policy-framework-update.html" title="update.cf"><code>update.cf</code></a> and <code>promsies.cf</code> entries.</p>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Introduced in 3.12.0</li>
+</ul>
+<h4 id="ignore_missing_inputs">ignore_missing_inputs</h4>
+<p>This option allows you to ignore errors when a file specified in body common control inputs is not found.</p>
+
+<p>This example illustrates enabling the option via augments.</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;control_common_ignore_missing_inputs&quot;: &quot;true&quot;
+  }
+}
+</code></pre>
+</div>
+
+<p><strong>NOTE:</strong> The same augments key is used for both <a href="reference-masterfiles-policy-framework-update.html" title="update.cf"><code>update.cf</code></a> and <code>promsies.cf</code> entries.</p>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Introduced in 3.12.0</li>
+</ul>
+<h3 id="verify-update-transfers">Verify update transfers</h3>
+<p>Enable additional verrification after file transfers during policy update by
+defining the class <code>cfengine_internal_verify_update_transfers</code>. When this
+class is defined, the update policy will hash the transfered file and compare it
+against the hash given by the server</p>
+
+<p>This <a href="reference-language-concepts-augments.html" title="Augments">augments file</a> will enable this behavior for all clients.</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;classes&quot;: {
+    &quot;cfengine_internal_verify_update_transfers&quot;: [ &quot;any&quot; ]
+  }
+}
+</code></pre>
+</div>
+<h3 id="encrypted-transfers">Encrypted transfers</h3>
+<p><strong>Note:</strong> When using protocol version 2 or greater all communications are
+encapsulated within a TLS session. This configuration option is only relevant
+for clients using protocol version 1 (default for versions 3.6 and prior).</p>
+
+<p>To enable encryption during policy updates define the class
+<code>cfengine_internal_encrypt_transfers</code>.</p>
+<h3 id="preserve-permissions">Preserve permissions</h3>
+<p>By default the MPF enforces restrictive permissions for inputs. If the class
+<code>cfengine_internal_preserve_permissions</code> is defined the permissions of the
+policy server&#39;s masterfiles will be preserved when they are copied.</p>
+<h3 id="enable-cfengine-enterprise-ha">Enable CFEngine Enterprise HA</h3>
+<p>When the <code>enable_cfengine_enterprise_hub_ha</code> class is defined the policy to
+manage High Availability of Enterprise Hubs is enabled.</p>
+
+<p><strong>Note:</strong> This class is <strong>not</strong> defined by default.</p>
+<h3 id="disable-cf_promises_validated-check">Disable cf_promises_validated check</h3>
+<p>For non policy hubs the default update policy only performs a full scan of
+masterfiles if <code>cf_promises_validated</code> is repaired. This repair indicates
+that the hub has validated new policy that the client needs to refresh.</p>
+
+<p>To disable this check define the
+<code>cfengine_internal_disable_cf_promises_validated</code> class.</p>
+
+<p>It not recommended to disable this check as it both removes a safety mechanism
+that checks for policy to be valid before allowing clients to download updates,
+and the increased load on the hub will affect scalability.</p>
+
+<p>If you want to periodically perform a full scan consider adding custom policy to
+simply remove <code>$(sys.inputdir)/cf_promises_validated</code>. This will cause the
+file to be repaired during the next update run triggering a full scan.</p>
+<h3 id="automatically-remove-files-not-present-upstream-sync-masterfiles">Automatically remove files not present upstream (SYNC masterfiles)</h3>
+<p>If the class <code>cfengine_internal_purge_policies</code> is defined the update
+behavior to change from only copying changed files down to performing a
+synchronization by purging files on the client that do not exist on the server.</p>
+
+<p>This <a href="reference-language-concepts-augments.html" title="Augments">augments file</a> will enable this behavior for all clients.</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;classes&quot;: {
+    &quot;cfengine_internal_purge_policies&quot;: [ &quot;any&quot; ]
+  }
+}
+</code></pre>
+</div>
+<h3 id="automatically-deploy-masterfiles-from-version-control">Automatically deploy masterfiles from Version Control</h3>
+<p>On a CFEngine Enterprise Hub during the update policy if the class
+<code>cfengine_internal_masterfiles_update</code> is defined masterfiles will be
+automatically deployed from an upstream version control repository using
+the
+<a href="enterprise-cfengine-guide-best-practices.html#version-control-and-configuration-policy" title="Best Practices - Version Control and Configuration Policy ">settings defined via Mission Portal</a> or
+directly in <code>/opt/cfengine/dc-scripts</code>.</p>
+
+<p><strong>Note:</strong> Any policy in the distribution location (/var/cfengine/masterfiles)
+will be deleted the first time this tooling runs. Be wary of local modifications
+before enabling.</p>
+<h3 id="policy-permissions">Policy Permissions</h3>
+<p>By default the policy enforces permissions of <code>0600</code> meaning that inputs are
+only readable by their owner. If you are distributing scripts with your
+masterfiles, be sure there is a policy to ensure they are executable when you
+expect them to be.</p>
+<h3 id="agent-binary-upgrades">Agent binary upgrades</h3>
+<p>Remote agents can upgrade their own binaries using the built in binary upgrade
+policy. Packages must be placed in <code>/var/cfengine/master_software_updates</code> in
+the appropriate platform directory. Clients will automatically download and
+install packages when the <code>trigger_upgrade</code> class is defined during a run of
+<a href="reference-masterfiles-policy-framework-update.html" title="update.cf"><code>update.cf</code></a>.</p>
+
+<p>This <a href="reference-language-concepts-augments.html" title="Augments">augments file</a> will defines <code>trigger_upgrade</code> on hosts with IPv4 addresses in 192.0.2.0/24 or 203.0.113.0/24 or hosts that have a cfengine 3.10 class not for cfengine 3.10.2.</p>
+<div class="highlight"><pre><code class="json"><span class="p">{</span>
+   <span class="nt">&quot;classes&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;trigger_upgrade&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;ipv4_10_10_1&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;ipv4_10_10_2&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;cfengine_3_10_(?!2$)\d+&quot;</span>
+    <span class="p">]</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li>This policy is specific to CFEngine Enterprise.</li>
+<li>The negative look ahead regular expression is useful because it automatically
+turns off on hosts after they reach the target version.</li>
+</ul>
+<h3 id="files-considered-for-copy-during-policy-updates">Files considered for copy during policy updates</h3>
+<p>The default update policy only copies files that match regular expressions
+listed in <code>def.input_name_patterns</code>.</p>
+
+<p>This <a href="reference-language-concepts-augments.html" title="Augments">augments file</a> ensures that only files ending in <code>.cf</code>, <code>.dat</code>,
+<code>.mustache</code>, <code>.json</code>, <code>.yaml</code> and the file
+<code>cf_promises_release_id</code> will be considered by the default update policy.</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars:&quot; {
+    &quot;input_name_patterns&quot;: [ &quot;.*\\.cf&quot;, &quot;.*\\.dat&quot;,
+                             &quot;.*\\.mustache&quot;,
+                             &quot;cf_promises_release_id&quot;,
+                             &quot;.*\\.json&quot;, &quot;.*\\.yaml&quot; ]
+  }
+}
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> This filter does <strong>not</strong> apply to bootstrap operations. During
+bootstrap the
+embedded
+<a href="https://github.com/cfengine/core/blob/master/libpromises/failsafe.cf">failsafe policy</a> is
+used and it decides which files should be copied.</p>
+<h3 id="enable-or-disable-cfengine-components">Enable or disable CFEngine components</h3><h4 id="persistent_disable_-daemon">persistent_disable_*DAEMON*</h4>
+<p><strong>Description:</strong> Disable a CFEngine Enterprise daemon component persistently.</p>
+
+<p><code>DAEMON</code> can be one of <code>cf_execd</code>, <code>cf_monitord</code> or <code>cf_serverd</code>.</p>
+
+<p>This will stop the AGENT from starting automatically.</p>
+
+<p>This <a href="reference-language-concepts-augments.html" title="Augments">augments file</a> will ensure that <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a> is disabled on hosts that have
+<code>server1</code> or the <code>redhat</code> class defined.</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;classes&quot;: {
+    &quot;persistent_disable_cf_monitord&quot;: [ &quot;server1&quot;, &quot;redhat&quot; ]
+  }
+}
+</code></pre>
+</div>
+<h4 id="clear_persistent_disable_-daemon">clear_persistent_disable_*DAEMON*</h4>
+<p><strong>Description:</strong> Re-enable a previously disabled CFEngine Enterprise daemon
+component.</p>
+
+<p><code>DAEMON</code> can be one of <code>cf_execd</code>, <code>cf_monitord</code> or <code>cf_serverd</code>.</p>
+
+<p>This <a href="reference-language-concepts-augments.html" title="Augments">augments file</a> will ensure that <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a> is not disabled on <code>redhat</code>
+hosts.</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;classes&quot;: {
+    &quot;clear_persistent_disable_cf_monitord&quot;: [ &quot;redhat&quot; ]
+  }
+}
+</code></pre>
+</div>
+<h2 id="main-policy-promises-cf">Main Policy (promises.cf)</h2>
+<p>The following settings are defined in <a href="reference-masterfiles-policy-framework-controls-def.html" title="controls/def.cf"><code>controls/def.cf</code></a> can be set from an
+<a href="reference-language-concepts-augments.html" title="Augments">augments file</a>.</p>
+<h3 id="dmidecode-inventory">dmidecode inventory</h3>
+<p>When dmidecode is present, some key system attributes are inventoried. The
+inventoried attributes can be overridden by defining
+<code>def.cfe_autorun_inventory_demidecode[dmidefs]</code> via augments. dmidecode queries
+each key in dmidefs and tags the result with the value prefixed with
+<code>attribute_name=</code> Note, as the dmidefs are overridden, you must supply all
+desired inventory attributes.</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="json"><span class="p">{</span>
+  <span class="nt">&quot;vars&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;cfe_autorun_inventory_dmidecode&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;dmidefs&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;bios-vendor&quot;</span><span class="p">:</span> <span class="s2">&quot;BIOS vendor&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;bios-version&quot;</span><span class="p">:</span> <span class="s2">&quot;BIOS version&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;system-serial-number&quot;</span><span class="p">:</span> <span class="s2">&quot;System serial number&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;system-manufacturer&quot;</span><span class="p">:</span> <span class="s2">&quot;System manufacturer&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;system-version&quot;</span><span class="p">:</span> <span class="s2">&quot;System version&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;system-product-name&quot;</span><span class="p">:</span> <span class="s2">&quot;System product name&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;bios-release-date&quot;</span><span class="p">:</span> <span class="s2">&quot;BIOS release date&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;chassis-serial-number&quot;</span><span class="p">:</span> <span class="s2">&quot;Chassis serial number&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;chassis-asset-tag&quot;</span><span class="p">:</span> <span class="s2">&quot;Chassis asset tag&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;baseboard-asset-tag&quot;</span><span class="p">:</span> <span class="s2">&quot;Baseboard asset tag&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong>
+- Introduced 3.13.0, 3.12.1, 3.10.5</p>
+<h3 id="mailto">mailto</h3>
+<p>The address that <a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a> should email agent output to.</p>
+<h3 id="mailfrom">mailfrom</h3>
+<p>The address that output mailed from <a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a> should come from.</p>
+<h3 id="smtpserver">smtpserver</h3>
+<p>The SMTP server that <a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a> should use to send emails.</p>
+<h3 id="acl">acl</h3>
+<p><code>def.acl</code> is a list of of network ranges that should be allowed to connect to cf-serverd. It is also used in the default access promises to allow hosts access to policy and modules that should be distributed.</p>
+
+<p>Here is an example setting the acl from augments:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;acl&quot;: [ &quot;24.124.0.0/16&quot;, &quot;192.168.33.0/24&quot; ]
+  }
+}
+</code></pre>
+</div>
+
+<p><strong>See Also:</strong> <a href="#configure-networks-allowed-to-make-collect_calls-client-initiated-reporting">Configure networks allowed to make collect calls (client initiated reporting)</a></p>
+<h3 id="ignore_missing_bundles">ignore_missing_bundles</h3>
+<p>This option allows you to ignore errors when a bundle specified in body common control bundlesequence is not found.</p>
+
+<p>This example illustrates enabling the option via augments.</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;control_common_ignore_missing_bundles&quot;: &quot;true&quot;
+  }
+}
+</code></pre>
+</div>
+
+<p><strong>NOTE:</strong> The same augments key is used for both <a href="reference-masterfiles-policy-framework-update.html" title="update.cf"><code>update.cf</code></a> and <a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a> entries.</p>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Introduced in 3.12.0</li>
+</ul>
+<h3 id="ignore_missing_inputs">ignore_missing_inputs</h3>
+<p>This option allows you to ignore errors when a file specified in body common control inputs is not found.</p>
+
+<p>This example illustrates enabling the option via augments.</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;control_common_ignore_missing_inputs&quot;: &quot;true&quot;
+  }
+}
+</code></pre>
+</div>
+
+<p><strong>NOTE:</strong> The same augments key is used for both <a href="reference-masterfiles-policy-framework-update.html" title="update.cf"><code>update.cf</code></a> and <a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a> entries.</p>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Introduced in 3.12.0</li>
+</ul>
+<h3 id="trustkeysfrom">trustkeysfrom</h3>
+<p>The list of network ranges that <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> should trust keys from. This is
+should only be open on policy servers while new hosts are expected to be
+bootstrapped. It should be empty after your hosts have been bootstrapped to
+avoid unwanted hosts from being able to bootstrap.</p>
+
+<p>By default the MPF configures <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> to trust keys from any host. This is
+convenient for simplified bootstrapping. After initial deployment it is
+recommended that this setting be reviewed and adjusted appropriately according
+to the needs of your infrastructure.</p>
+
+<p>The <a href="reference-language-concepts-augments.html" title="Augments">augments</a> file (<code>def.json</code>) can be used to override the
+default setting. For example it can be restricted to <code>127.0.0.1</code> to prevent
+keys from any foreign host from being automatically accepted.</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;trustkeysfrom&quot;: [ &quot;127.0.0.1&quot; ]
+    }
+}
+</code></pre>
+</div>
+
+<p>Prevent automatic trust for any host by specifying an empty value:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;trustkeysfrom&quot;: [ &quot;&quot; ]
+    }
+}
+</code></pre>
+</div>
+<h3 id="services_autorun">services_autorun</h3>
+<p>When the <code>services_autorun</code> class is defined bundles tagged with
+<code>autorun</code> are actuated in lexical order.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">meta</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">tags</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;autorun&quot;</span> <span class="p">};</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;I will report when &#39;services_autorun&#39; is defined.&quot;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> <code>.cf</code> files located in <a href="reference-masterfiles-policy-framework-services-autorun.html" title="services/autorun/"><code>services/autorun/</code></a> are automatically
+included in inputs even when the <code>services_autorun</code> class is <strong>not</strong>
+defined. Bundles tagged with <code>autorun</code> are <strong>not required</strong> to be placed in
+<a href="reference-masterfiles-policy-framework-services-autorun.html" title="services/autorun/"><code>services/autorun/</code></a> in order to be automatically actuated.</p>
+<h3 id="postgresql_full_maintenance">postgresql_full_maintenance</h3>
+<p>On CFEngine Enterprise policy hubs this class is defined by default on Sundays
+at 2am. To adjust when postgres maintenance operations run edit
+<a href="reference-masterfiles-policy-framework-controls-def.html" title="controls/def.cf"><code>controls/def.cf</code></a> directly.</p>
+<h3 id="postgresql_vacuum">postgresql_vacuum</h3>
+<p>On CFEngine Enterprise policy hubs this class is defined by default at 2am when
+<code>postgresql_maintenance_supported</code> is defined except for Sundays.</p>
+
+<p>To adjust when postgres maintenance operations run edit <a href="reference-masterfiles-policy-framework-controls-def.html" title="controls/def.cf"><code>controls/def.cf</code></a>
+directly.</p>
+<h3 id="enable_cfengine_enterprise_hub_ha">enable_cfengine_enterprise_hub_ha</h3>
+<p>Set this class when you want to enable the CFEngine Enterprise HA policies.</p>
+
+<p>This class can be defined by an <a href="reference-language-concepts-augments.html" title="Augments">augments file</a>. For example:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;classes&quot; {
+    &quot;enable_cfengine_enterprise_hub_ha&quot;: [ &quot;hub001&quot; ]
+  }
+}
+</code></pre>
+</div>
+<h3 id="enable_cfe_internal_cleanup_agent_reports">enable_cfe_internal_cleanup_agent_reports</h3>
+<p>This class enables policy that cleans up report diffs when they exceed
+<code>def.max_client_history_size</code>. By default is is <strong>off</strong> unless a CFEngine
+Enterprise agent is detected.</p>
+<h3 id="configure-splaytime">Configure splaytime</h3>
+<p><a href="reference-components-cf-execd.html#splaytime" title="cf-execd - splaytime"><code>splaytime</code></a> is the maximum number of minutes <code>exec_commad</code> should wait before executing.</p>
+
+<p>Note: <a href="reference-components-cf-execd.html#splaytime" title="cf-execd - splaytime"><code>splaytime</code></a> should be less than the scheduled interval plus agent run time. So for example if your agent run time is over 1 minute and you are running the default execution schedule of 5 mintues your splay time should be set to 3.</p>
+
+<p>Configure it via augments by defining <code>control_executor_splaytime</code>:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;control_executor_splaytime&quot;: &quot;3&quot;
+  }
+}
+</code></pre>
+</div>
+<h3 id="configure-agent-expiration">Configure agent expiration</h3>
+<p>cf-agents spawned by cf-execd are killed after this number of minutes of not returning data.</p>
+
+<p>Example configuration via augments:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;control_executor_agent_expireafter&quot;: &quot;15&quot;
+  }
+}
+</code></pre>
+</div>
+<h3 id="configure-agent-execution-schedule">Configure agent execution schedule</h3>
+<p>The execution scheduled is expressesd as a list of classes. If any of the classes are defined when cf-execd wakes up then exec_command is triggered. By default this is set to a list of time based classes for every 5th minute. This results in a 5 minute execution schedule.</p>
+
+<p>Example configuration via augments:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;control_executor_schedule&quot;: [ &quot;Min00&quot;, &quot;Min30&quot; ]
+  }
+}
+</code></pre>
+</div>
+
+<p>The above configuration would result in exec_command being triggered at the top and half hour and sleeping for up to <a href="reference-components-cf-execd.html#splaytime" title="cf-execd - splaytime"><code>splaytime</code></a> before agent execution.</p>
+<h3 id="allow-connections-from-the-classic-legacy-protocol">Allow connections from the classic/legacy protocol</h3>
+<p>By default since 3.9.0 <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> disallows connections from the classic protocol by default. To allow clients using the legacy protocol (versions prior to 3.7.0 by default) define <code>control_server_allowlegacyconnects</code> as a list of networks.</p>
+
+<p>Example definition in augments file:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;control_server_allowlegacyconnects&quot;: [ &quot;0.0.0.0/0&quot; ]
+  }
+}
+</code></pre>
+</div>
+<h3 id="configure-users-allowed-to-initate-execution-via-cf-runagent">Configure users allowed to initate execution via cf-runagent</h3>
+<p>cf-serverd only allows specified users to request unscheduled execution remotely via cf-runagent.</p>
+
+<p>By default the MPF allows <code>root</code> to request unscheduled execution of non policy servers and does not allow any users to request unscheduled execution from policy servers.</p>
+
+<p>To configure the list of users allowed to request unscheduled execution from non policy servers define <code>vars.control_server_allowusers_non_policy_server</code>. This example allows the users <code>hubmanager</code> and  <code>cfoperator</code> to request unscheduled execution from policy servers and no users are allowed to request unscheduled runs from non policy servers.</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;control_server_allowusers_non_policy_server&quot;: [ ],
+    &quot;control_server_allowusers_policy_server&quot;: [ &quot;hubmanager&quot;, &quot;cfoperator&quot; ]
+  }
+}
+</code></pre>
+</div>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Added in 3.13.0, 3.12.1</li>
+</ul>
+<h3 id="configure-retention-for-files-in-log-directories">Configure retention for files in log directories</h3>
+<p>By default the MPF rotates managed log files when they reach 1M in size. To configure this limit via augments define <code>vars.mpf_log_file_max_size</code>.</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;mpf_log_file_max_size&quot;: &quot;10M&quot;
+  }
+}
+</code></pre>
+</div>
+
+<p>By default the MPF keeps up to 10 rotated log files. To configure this limit via augments define <code>vars.mpf_log_file_retention</code>.</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;mpf_log_file_retention&quot;: &quot;5&quot;
+  }
+}
+</code></pre>
+</div>
+
+<p>By default the MPF retains log files in log directories (<code>outputs</code>, <a href="reference-promise-types-reports.html" title="reports"><code>reports</code></a> and application logs in Enterprise) for 30 days. This can be configured by setting <code>vars.mpf_log_dir_retention</code> via augments.</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;mpf_log_dir_retention&quot;: &quot;7&quot;
+  }
+}
+</code></pre>
+</div>
+<h3 id="adjust-the-maximum-amount-of-client-side-report-data-to-retain-cfengine-enterprise">Adjust the maximum amount of client side report data to retain (CFEngine Enterprise)</h3>
+<p>Enterprise agents cache detailed information about each agent run locally. The
+data is purged when the data is reported to a hub. If the volume of data exceeds
+<code>def.max_client_history_size</code> then the client will purge the local data in order
+to keep report collection from timing out.</p>
+
+<p>The default 50M threshold can be configured using an <a href="reference-language-concepts-augments.html" title="Augments">augments file</a>, for example:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;max_client_history_size&quot;: &quot;5M&quot;
+  }
+}
+</code></pre>
+</div>
+<h3 id="enterprise-hub-pull-collection-schedule">Enterprise hub pull collection schedule</h3>
+<p>By default Enterprise hubs initiate pull collection once every 5 minutes. This can be overridden in the MPF by defining <code>def.control_hub_hub_schedule</code> as a list of classes that should trigger collection when defined.</p>
+
+<p>Here we set the schedule to initiate pull collection once every 30 minutes via augments.</p>
+<div class="highlight"><pre><code class="json"><span class="p">{</span>
+  <span class="nt">&quot;vars&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;control_hub_hub_schedule&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;Min00&quot;</span><span class="p">,</span> <span class="s2">&quot;Min30&quot;</span> <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>MPF override introduced in 3.13.0, 3.12.2</li>
+</ul>
+<h3 id="configure-maximum-age-in-hours-of-old-reports-for-cf-hub-to-collect">Configure maximum age in hours of old reports for cf-hub to collect</h3>
+<p>By default cf-hub instructs clients to expire reports older than 6 hours in order to prevent a build up of reports that could cause a condition where the client is never able to send all reports within the collection window.</p>
+
+<p>You can adjust this time by setting <code>vars.control_hub_client_history_timeout</code></p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="json"><span class="p">{</span>
+  <span class="nt">&quot;vars&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;control_hub_client_history_timeout&quot;</span><span class="p">:</span> <span class="s2">&quot;72&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>MPF override introduced in 3.13.0, 3.12.2</li>
+</ul>
+<h3 id="exclude-hosts-from-hub-initiated-report-collection">Exclude hosts from hub initiated report collection</h3>
+<p>You may want to exclude some hosts like community agents, hosts behind NAT, and
+hosts using client initiated reporting from hub initiated report collection. To
+exclude hosts from hub initiated report collection define
+<code>def.control_hub_exclude_hosts</code> in an <a href="reference-language-concepts-augments.html" title="Augments">augments file</a>.</p>
+
+<p>For example to completely disable hub initiated report collection:</p>
+<div class="highlight"><pre><code class="json"><span class="p">{</span>
+  <span class="nt">&quot;vars&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;control_hub_exclude_hosts&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;0.0.0.0/0&quot;</span> <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>MPF override introduced in 3.13.0, 3.12.2</li>
+</ul>
+<h3 id="change-port-used-for-enterprise-report-collection">Change port used for enterprise report collection</h3>
+<p>By default cf-hub collects reports by connecting to port 5308. You can change this default by setting <code>vars.control_hub_port</code> in augments.</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="json"><span class="p">{</span>
+  <span class="nt">&quot;vars&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;control_hub_port&quot;</span><span class="p">:</span> <span class="s2">&quot;8035&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Added in 3.13.0, 3.12.2</li>
+</ul>
+<h3 id="enable-client-initiated-reporting">Enable client initiated reporting</h3>
+<p>In the default configuration for Enterprise report collection the hub
+periodically polls agents that are bootstrapped to collect reports. Sometimes it
+may be desirable or necessary for the client to initiate report collection.</p>
+
+<p>To enable client initiated reporting define the class
+<code>client_initiated_reporting_enabled</code>. You may also want to configure the report
+interval (how frequently an agent will try to report it&#39;s data to the hub) by default it is set to 5. The
+reporting interval <code>def.control_server_call_collect_interval</code> and the class can
+be defined in an <a href="reference-language-concepts-augments.html" title="Augments">augments file</a>.</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;classes&quot; {
+    &quot;client_initiated_reporting_enabled&quot;: [ &quot;any&quot; ]
+  },
+  &quot;vars&quot;: {
+    &quot;control_server_call_collect_interval&quot;: &quot;1&quot;,
+  }
+}
+</code></pre>
+</div>
+<h3 id="configure-client-initiated-reporting-timeout">Configure client initiated reporting timeout</h3>
+<p>By default cf-serverd holds an open connection for client initiated for 30
+seconds. In some environments this value may need to be increased in order for
+report collection to finish. Once the connection has been open for longer than
+the specified seconds it is closed.</p>
+
+<p>The window of time can be controled by setting <code>def.control_server_collect_window</code>.</p>
+
+<p>For example, enable client initated reporting for all hosts with a 10 minute interval and hold the connection open for 90 seconds.</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;classes&quot; {
+    &quot;client_initiated_reporting_enabled&quot;: [ &quot;any&quot; ]
+  },
+  &quot;vars&quot;: {
+    &quot;control_server_collect_window&quot;: &quot;90&quot;,
+    &quot;control_server_call_collect_interval&quot;: &quot;10&quot;
+  }
+}
+</code></pre>
+</div>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Added in 3.10.6, 3.12.2, 3.13.1</li>
+</ul>
+<h3 id="configure-mpf-to-automatically-restart-components-on-relevant-data-change">Configure MPF to automatically restart components on relevant data change</h3>
+<p>While the agent itsef will reload its config upon notice of policy change this
+bundle specifically handles changes to variables used in the MPF which may come
+from external data sources which are unknown to the components themselves.</p>
+
+<p>Note currently only <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> and <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a> are handled. <a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a> is
+<strong>NOT</strong> automatically restarted.</p>
+
+<p>To enable this functionality define the class <strong><code>mpf_augments_control_enabled</code></strong></p>
+<div class="highlight"><pre><code class="text">{
+  &quot;classes&quot;:{
+      &quot;mpf_augments_control_enabled&quot;: [ &quot;any&quot; ]
+  }
+}
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Added 3.11.0</p>
+<h3 id="configure-maxconnections-for-cf-serverd">Configure maxconnections for cf-serverd</h3>
+<p><a href="reference-components-cf-serverd.html#maxconnections" title="cf-serverd - maxconnections"><code>maxconnections</code></a> in <code>body server control</code> configures the maximum number of
+connections allowed by cf-serverd. Recommended to be set greater than the number
+of hosts bootstrapped.</p>
+
+<p>This can be configured via <a href="reference-language-concepts-augments.html" title="Augments">augments</a>:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;:{
+      &quot;control_serverd_maxconnections&quot;: &quot;1000&quot;
+  }
+}
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Added 3.11.0</p>
+<h3 id="configure-networks-allowed-to-make-collect_calls-client-initiated-reporting">Configure networks allowed to make collect_calls (client initiated reporting)</h3>
+<p>By default the hub allows collect calls (client initiated reporting) from the
+networks defined in <code>def.acl</code> To configure which networks are allowed to
+initiate report collection define
+<code>def.mpf_access_rules_collect_calls_admit_ips</code>.</p>
+
+<p>For example to allow client initiated reporting for hosts coming from
+<code>24.124.0.0/16</code>:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;mpf_access_rules_collect_calls_admit_ips&quot;: [ &quot;24.124.0.0/16&quot; ]
+  }
+}
+</code></pre>
+</div>
+
+<p><strong>See Also:</strong> <a href="#acl">Generic acl</a></p>
+<h3 id="configure-enterprise-measurement-monitoring-collection">Configure Enterprise Measurement/Monitoring Collection</h3>
+<p>Metrics recorded by measurement promises in <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a> are only collected by
+default for policy servers. In order to collect metrics for non policy servers
+simply define <code>default_data_select_host_monitoring_include</code> via in an <a href="reference-language-concepts-augments.html" title="Augments">augments file</a>.</p>
+
+<p>For example to collect all measurements for remote agents and only cpu and
+memory related probes on policy servers:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;: {
+    &quot;default_data_select_host_monitoring_include&quot;: [ &quot;.*&quot; ],
+    &quot;default_data_select_policy_hub_monitoring_include&quot;: [ &quot;mem_.*&quot;, &quot;cpu_.*&quot; ]
+  }
+}
+</code></pre>
+</div>
+<h3 id="configure-enterprise-mission-portal-docroot">Configure Enterprise Mission Portal Docroot</h3>
+<p>Primarily for developer conveniance, this setting allows you to easily disable the enforcement that the webapp consists of the packaged files in the docroot used for Mission Portal.</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;classes&quot;: {
+    &quot;mpf_disable_mission_portal_docroot_sync_from_share_gui&quot;: [ &quot;any&quot; ]
+  }
+}
+</code></pre>
+</div>
+<h3 id="append-to-the-main-bundlesequence">Append to the main bundlesequence</h3>
+<p>You can specify bundles which should be run at the end of the default
+bundlesequence by defining <code>control_common_bundlesequence_end</code> in the vars
+of an  <a href="reference-language-concepts-augments.html" title="Augments">augments file</a>.</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="json"><span class="p">{</span>
+  <span class="nt">&quot;vars&quot;</span><span class="p">:{</span>
+    <span class="nt">&quot;control_common_bundlesequence_end&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;mybundle1&quot;</span><span class="p">,</span> <span class="s2">&quot;mybundle2&quot;</span> <span class="p">]</span>
+  <span class="p">}</span>
+
+  <span class="s2">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;services/mybundles.cf&quot;</span> <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li>The order in which bundles are actuates is not guaranteed.</li>
+<li>The agent will error if a named bundle is not part of inputs.</li>
+</ul>
+
+<p><strong>History</strong>: Added in 3.10.0</p>
+<h3 id="configure-files_single_copy-via-augments">Configure <a href="reference-components-cf-agent.html#files_single_copy" title="cf-agent - files_single_copy"><code>files_single_copy</code></a> via augments</h3>
+<p>Specify a list of regular expressions that when matched will prevent the agent
+from performing subsequent copy operations on the same promiser.</p>
+
+<p>For example, to only allow any file to be copied a single time:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;vars&quot;:{
+    &quot;control_agent_files_single_copy&quot;: [ &quot;.*&quot; ]
+  }
+
+}
+</code></pre>
+</div>
+
+<p><strong>History</strong>: Added in 3.11.0, 3.10.2</p>
+<h3 id="configure-default-repository-for-file-backups">Configure default repository for file backups</h3>
+<p>By default the agent creates a backup of a file before it is edited in the same
+directory as the edited file. Defining the
+<code>mpf_control_agent_default_repository</code> class will cause these backups to be
+placed in <code>$(sys.workdir)/backups</code>. Customize the backup directory by setting
+<code>def.control_agent_default_backup</code>.</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;classes&quot;: {
+    &quot;mpf_control_agent_default_repository&quot;: [ &quot;any&quot; ]
+  },
+
+  &quot;vars&quot;: {
+    &quot;control_agent_default_repository&quot;: &quot;/var/cfengine/edit_backups&quot;
+  }
+}
+</code></pre>
+</div>
+
+<p><strong>History</strong>: Added in 3.10.1</p>
+<h3 id="enable-logging-of-enterprise-license-utilization">Enable logging of Enterprise License utilization</h3>
+<p>If the class <code>enable_log_cfengine_enterprise_license_utilization</code> is defined on
+an enterprise hub license utilization will be logged by the hub in
+<code>$(sys.workdir)/log/license_utilization.log</code></p>
+
+<p>Example enabling the class from an <a href="reference-language-concepts-augments.html" title="Augments">augments file</a>:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;classes&quot;: {
+    &quot;enable_log_cfengine_enterprise_license_utilization&quot;: [ &quot;enterprise_edition&quot; ]
+  }
+}
+</code></pre>
+</div>
+
+<p><strong>History</strong>: Added in 3.11, 3.10.2</p>
+<h3 id="enable-external-watchdog">Enable external watchdog</h3>
+<p><strong>Note</strong>: This feature is not enabled by default.</p>
+
+<p>If the class <code>cfe_internal_core_watchdog_enabled</code> is defined, the feature is
+enabled and the watchdog will be active. If the class
+<code>cfe_internal_core_watchdog_disabled</code> is defined, the feature is disabled and
+the watchdog will not be active.</p>
+
+<p>By default if enabled the watchdog tries to remediate the following conditions:</p>
+
+<ul>
+<li>If <a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a> is executable and there is no <a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a> process running, then
+<a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a> will be launched.</li>
+</ul>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>start cf-execd if not running (3.8.0)</li>
+<li>restart if processes not resulting in updated logs (3.12.0)</li>
+</ul>
+<h3 id="modules">Modules</h3>
+<p>Modules executed by the <a href="reference-functions-usemodule.html" title="usemodule"><code>usemodule()</code></a> function are expected to be found in
+<code>$(sys.workdir)/modules</code> the modules are distributed to all remote agents by in
+the default policy.</p>
+<h3 id="templates">Templates</h3>
+<p>For convenience the <code>templates</code> shortcut is provided and by default the path is
+set to <code>$(sys.workdir/templates)</code> unless <code>$(def.template_dir)</code> is overridden via
+<a href="reference-language-concepts-augments.html" title="Augments">augments</a>.</p>
+
+<ul>
+<li><strong>NOTE:</strong> The templates directory is not currently managed by default policy.
+Unlike modules <strong>templates are not distributed to all hosts by default</strong>.</li>
+</ul>
+
+<p>Copy a template from the templates directory:</p>
+<div class="highlight"><pre><code class="cf3">  <span class="kd">files</span><span class="p">:</span>
+
+    <span class="s">&quot;</span><span class="si">$(def.dir_templates)</span><span class="s">/mytemplate.mustache&quot;</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s">&quot;myservice&quot;</span> <span class="p">}</span>
+      <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">remote_dcp</span><span class="p">(</span><span class="s">&quot;templates/mytemplate.mustache&quot;</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="nf">sys</span><span class="err">.</span><span class="nf">policy_server</span><span class="p">)</span> <span class="p">),</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;mytemplate is necessary in order to render myservice configuration file.&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Override the path for <code>$(def.dir_templates)</code> by setting <code>vars.dir_templates</code> in
+the  <a href="reference-language-concepts-augments.html" title="Augments">augments file</a> (<code>def.json</code>):</p>
+<div class="highlight"><pre><code class="json"><span class="p">{</span>
+    <span class="nt">&quot;vars&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;dir_templates&quot;</span><span class="p">:</span> <span class="s2">&quot;/var/cfengine/mytemplates&quot;</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> When overriding the templates directory a change to the <a href="reference-language-concepts-augments.html" title="Augments">augments</a> alone
+will not cause <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> to reload its configuration and update the access
+control lists as necessary. <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> will only automatically reload its
+config when it notices a change in <em>policy</em>.</p>
+
+<p><strong>History</strong>: Added in 3.11.</p>
+<h2 id="recommendations">Recommendations</h2>
+<p>The MPF includes policy that inspects the system and makes recommendations about
+the configuration of the system. When <code>cfengine_recommendations_enabled</code> is
+defined bundles tagged <code>cfengine_recommendation</code> are executed in lexical order.
+<code>cfengine_recommendations_enabled</code> is defined by default when
+<code>cfengine_recommendations_disabled</code> is <strong>not</strong> defined.</p>
+
+<p>To disable cfengine recommendations define <code>cfengine_recommendations_disabled</code>.</p>
+
+<p>This snippet disables recommendations via augments.</p>
+<div class="highlight"><pre><code class="text">{
+    &quot;classes&quot;: [
+        &quot;cfengine_recommendations_disabled&quot;
+    ]
+}
+</code></pre>
+</div>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Recommendations added in 3.12.1</li>
+</ul>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-masterfiles.html">masterfiles</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-mpf.html">mpf</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 11 January 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/masterfiles-policy-framework.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/b04b1f6f002a2f00c34834c7f4e2a3b4111fd67d" target="_blank">b04b1f6f002a2f00c34834c7f4e2a3b4111fd67d</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.13/assets/footer-dfbb901e0ce1de822a7bc04bca20268e.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

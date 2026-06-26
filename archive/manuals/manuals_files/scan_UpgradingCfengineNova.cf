@@ -1,0 +1,54 @@
+
+bundle knowledge UpgradingCfengineNova
+
+{
+topics:
+
+"UpgradingCfengineNova";
+Special_Topics_Guide::
+    "How do Nova policies update if I already have my own policy?"  association => a("discusses","Licenses","is discussed in");
+Special_Topics_Guide::
+    "What if I have multiple operating system platforms?"  association => a("discusses","Licenses","is discussed in");
+Special_Topics_Guide::
+    "How can I do phased deployment?"  association => a("discusses","Licenses","is discussed in");
+Special_Topics_Guide::
+    "How does upgrading work?"  association => a("discusses","Licenses","is discussed in");
+Special_Topics_Guide::
+    "Why do I need to upgrade?"  association => a("discusses","Licenses","is discussed in");
+Special_Topics_Guide::
+    "What does upgrading mean?"  association => a("discusses","Licenses","is discussed in");
+Special_Topics_Guide::
+    "CFEngine-Tutorial"  association => a("discusses","Licenses","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/UpgradingCfengineNova.html"
+  represents => { "Official CFEngine document"},  about_topics => { "licenses" };
+ "/knowledge/docs/UpgradingCfengineNova.html"
+  represents => { "Special Topics Guide"},  about_topics => { "licenses" };
+ "/knowledge/docs/UpgradingCfengineNova.html#Top"
+  represents => { "Text section" }, about_topics => { "cfengine-tutorial" };
+ "/knowledge/docs/UpgradingCfengineNova.html#Top"
+  represents => { "Text section" }, about_topics => { "what does upgrading mean?" };
+ "/knowledge/docs/UpgradingCfengineNova.html#Top"
+  represents => { "Text section" }, about_topics => { "why do i need to upgrade?" };
+ "/knowledge/docs/UpgradingCfengineNova.html#Top"
+  represents => { "Text section" }, about_topics => { "how does upgrading work?" };
+examples:: "/knowledge/docs/UpgradingCfengineNova.html#Top"
+ about_topics => { "How does upgrading work?" },
+  represents => { "code example" };
+ "/knowledge/docs/UpgradingCfengineNova.html#Top"
+  represents => { "Text section" }, about_topics => { "how can i do phased deployment?" };
+ "/knowledge/docs/UpgradingCfengineNova.html#Top"
+  represents => { "Text section" }, about_topics => { "what if i have multiple operating system platforms?" };
+examples:: "/knowledge/docs/UpgradingCfengineNova.html#Top"
+ about_topics => { "What if I have multiple operating system platforms?" },
+  represents => { "code example" };
+ "/knowledge/docs/UpgradingCfengineNova.html#Top"
+  represents => { "Text section" }, about_topics => { "how do nova policies update if i already have my own policy?" };
+examples:: "/knowledge/docs/UpgradingCfengineNova.html#Top"
+ about_topics => { "How do Nova policies update if I already have my own policy?" },
+  represents => { "code example" };
+}
+

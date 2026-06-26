@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.10  Documentation - Enterprise API interaction with Design Center</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.10/assets/global-9291732ba4137970d6f84f199dc9b48d.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Enterprise API interaction with Design Center";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/" selected>Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:v9zopcogc1m" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a></li><li><a href="examples-tutorials.html">Tutorials</a></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a><ul class="level2"><li><a href="examples-enterprise-api-examples-checking-status.html">Checking Status</a></li><li><a class="active" href="examples-enterprise-api-examples-dc-interaction.html">Enterprise API interaction with Design Center</a></li><li><a href="examples-enterprise-api-examples-managing-settings.html">Managing Settings</a></li><li><a href="examples-enterprise-api-examples-managing-users-and-roles.html">Managing Users and Roles</a></li><li><a href="examples-enterprise-api-examples-browsing-host-information.html">Browsing Host Information</a></li><li><a href="examples-enterprise-api-examples-changes-api-usage.html">Tracking changes</a></li><li><a href="examples-enterprise-api-examples-sql-queries.html">SQL Query Examples</a></li></ul></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-enterprise-api-examples.html">Enterprise API Examples</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Enterprise API interaction with Design Center
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>This is a simple walkthrough of a System::motd sketch activation
+against CFEngine Enterprise Hub 192.168.33.2. There are several steps.
+The most important step is where we define the sketch parameters.
+Those are exactly what the Mission Portal <strong>Design Center App</strong>
+generates through the GUI.</p>
+<h2 id="sample-api-call-to-install-sketch">Sample API call to Install sketch</h2>
+<ul>
+<li><strong>Action</strong>: <code>PUT</code></li>
+<li><strong>URL</strong>: <a href="http://192.168.33.2/api/dc/sketch/System::motd">http://192.168.33.2/api/dc/sketch/System::motd</a></li>
+<li><strong>HTTP return code</strong>: 200</li>
+<li><strong>RESULT</strong>:</li>
+</ul>
+<div class="highlight"><pre><code class="text">{
+    &quot;System::motd&quot;:
+    {
+        &quot;params\/debian_squeeze.json&quot;:&quot;sketches\/system\/motd\/params\/debian_squeeze.json&quot;,
+        &quot;README.md&quot;:&quot;sketches\/system\/motd\/README.md&quot;,
+        &quot;params\/example.json&quot;:&quot;sketches\/system\/motd\/params\/example.json&quot;,
+        &quot;sketch.json&quot;:&quot;sketches\/system\/motd\/sketch.json&quot;,
+        &quot;params\/debian_wheezy.json&quot;:&quot;sketches\/system\/motd\/params\/debian_wheezy.json&quot;,
+        &quot;main.cf&quot;:&quot;sketches\/system\/motd\/main.cf&quot;,
+        &quot;params\/simple.json&quot;:&quot;sketches\/system\/motd\/params\/simple.json&quot;
+    },
+    &quot;sketches&quot;:{&quot;System::motd&quot;:1}
+}
+</code></pre>
+</div>
+<h2 id="sample-api-call-to-define-sketch-parameters">Sample API call to Define sketch parameters</h2>
+<ul>
+<li><strong>Action</strong>: <code>PUT</code></li>
+<li><strong>URL</strong>: <a href="http://192.168.33.2/api/dc/definition/myfirstsketchdefinition">http://192.168.33.2/api/dc/definition/myfirstsketchdefinition</a></li>
+<li><strong>HTTP return code</strong>: 200</li>
+<li><strong>POST data</strong>:</li>
+</ul>
+<div class="highlight"><pre><code class="text">{
+    &#39;params&#39;: {&#39;prepend_command&#39;: &#39;/bin/uname -snrvm&#39;, &#39;motd_path&#39;: &#39;/etc/motd&#39;, &#39;motd&#39;: &#39;hello dude2&#39;},
+    &#39;sketchName&#39;: &#39;System::motd&#39;
+}
+</code></pre>
+</div>
+
+<ul>
+<li><strong>RESULT</strong>: <code>{&quot;myfirstsketchdefinition&quot;:1}</code></li>
+</ul>
+<h2 id="sample-api-call-to-define-environment">Sample API call to Define environment</h2>
+<ul>
+<li><strong>Action</strong>: <code>PUT</code></li>
+<li><strong>URL</strong>: <a href="http://192.168.33.2/api/dc/environment/mymotdenvironment">http://192.168.33.2/api/dc/environment/mymotdenvironment</a></li>
+<li><strong>HTTP return code</strong>: 200</li>
+<li><strong>POST data</strong>: <code>{&#39;environment&#39;: [&#39;linux&#39;]}</code></li>
+<li><strong>RESULT</strong>: <code>{&quot;mymotdenvironment&quot;:1}</code></li>
+</ul>
+<h2 id="sample-api-call-to-activate-sketch">Sample API call to Activate sketch</h2>
+<ul>
+<li><strong>Action</strong>: <code>PUT</code></li>
+<li><strong>URL</strong>: <a href="http://192.168.33.2/api/dc/activation/myfirstsketchActivation/System::motd">http://192.168.33.2/api/dc/activation/myfirstsketchActivation/System::motd</a></li>
+<li><p><strong>HTTP return code</strong>: 200</p></li>
+<li><p><strong>POST data</strong>:</p></li>
+</ul>
+<div class="highlight"><pre><code class="text">{
+  &#39;environmentName&#39;: &#39;mymotdenvironment&#39;,
+  &#39;bundleName&#39;: &#39;entry&#39;,
+  &#39;paramName&#39;: &#39;myfirstsketchdefinition&#39;,
+  &#39;sketchName&#39;: &#39;System::motd&#39;
+}
+</code></pre>
+</div>
+
+<ul>
+<li><strong>RESULT</strong>:</li>
+</ul>
+<div class="highlight"><pre><code class="text">{
+  &quot;System::motd&quot;:
+  {
+    &quot;hash&quot;:&quot;6cefdfedd0de3933c2ecac420b8d2aad&quot;,
+    &quot;params&quot;:[&quot;myfirstsketchdefinition&quot;],
+    &quot;environment&quot;:&quot;mymotdenvironment&quot;,
+    &quot;identifier&quot;:&quot;myfirstsketchActivation&quot;,
+    &quot;target&quot;:&quot;sketches&quot;,
+    &quot;bundle&quot;:&quot;entry&quot;,
+    &quot;metadata&quot;:{&quot;identifier&quot;:&quot;myfirstsketchActivation&quot;,&quot;timestamp&quot;:1402657585}
+  }
+}
+</code></pre>
+</div>
+<h2 id="sample-api-call-to-commit-changes">Sample API call to Commit changes</h2>
+<ul>
+<li><strong>Action</strong>: <code>POST</code></li>
+<li><strong>URL</strong>: <a href="http://192.168.33.2/api/dc/workspace/commit">http://192.168.33.2/api/dc/workspace/commit</a></li>
+<li><strong>HTTP return code</strong>: 200</li>
+<li><strong>POST data</strong>: <code>{&#39;message&#39;: &#39;First-dc-api-commit&#39;, &#39;userEmail&#39;: &#39;test@test.com&#39;}</code></li>
+<li><strong>RESULT</strong>: <code>null</code></li>
+</ul>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-examples.html">examples</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-enterprise.html">enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-rest.html">rest</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-api.html">api</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-design.html">design</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-center.html">center</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-sketches.html">sketches</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 17 March 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/examples/enterprise-api-examples/dc-interaction.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/ae7435d3d24d30077bfbf18438f2444c629f8c69" target="_blank">ae7435d3d24d30077bfbf18438f2444c629f8c69</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.10/assets/footer-4c28dbe187e7b2a3c1504ff564f1b523.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

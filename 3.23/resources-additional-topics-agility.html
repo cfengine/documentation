@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Agility - CFEngine 3.23  Docs</title>
+        <link rel="icon" type="image/svg+xml" href="./media/images/favicon.svg">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/resources/additional-topics/agility.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-resources-additional-topics-agility.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website">
+        <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Agility - CFEngine 3.23 Docs">
+        <meta prefix="og: http://ogp.me/ns#" property="og:description" content="">
+        <meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://docs.cfengine.com/docs/master/media/images/logo_wide_opengraph.png">
+        <meta prefix="og: http://ogp.me/ns#" property="og:url" content="docs.cfengine.com">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="docs.cfengine.com">
+        <meta name="twitter:title" content="Agility - CFEngine 3.23  Docs">
+        <meta name="twitter:description" content="">
+        <meta name="twitter:image" content="https://docs.cfengine.com/docs/master/media/images/agent_white_background.png">
+
+        <link rel="canonical" href="https://docs.cfengine.com/latest/resources-additional-topics-agility.html">
+        <link href='assets/global-8b5f7ba5ceb6b047ec80e1d5b42501d8.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+    </head>
+
+<body>
+<header>
+    <div class="top_menu">
+        <div class="container">
+            <div id="logo">
+                <a href="./"><img src="media/images/docs-logo.svg" alt="CFEngine documentation homepage"></a>
+            </div>
+
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" autocomplete="off" placeholder="Search" />
+                        <input type="submit" value="" />
+                    </div>
+                </form>
+            </div>
+
+            <ul>
+                <li><a target="_blank" href="https://cfengine.com/product-overview/">Product</a></li>
+                <li><a target="_blank" href="https://cfengine.com/blog/">Blog</a></li>
+                <li class="top_menu-versions">
+                    <div class="top_menu-versions-title">
+                        <div>Docs versions</div>
+                        <span>Version <span></span></span>
+                    </div>
+                    <div class="top_menu-versions-list">
+                        <a onclick="selectVersion('/docs/master/')" href="#">master</a>
+<a onclick="selectVersion('javascript:void(0);')" href="#" selected="selected">3.23 (non-LTS)</a>
+<a onclick="selectVersion('/docs/3.21/')" href="#">3.21 (LTS)</a>
+<a onclick="selectVersion('/docs/3.18/')" href="#">3.18 (LTS)</a>
+<a href="./versions.html">view all versions</a>
+
+                    </div>
+                </li>
+                <li><a class="btn btn-orange" href="https://cfengine.com/download/" target="_blank">Try for free</a></li>
+            </ul>
+            <div onclick="openMenuHandler(this)" class="collapse center-align relative">
+                <i class="vertical-middle centered collapse-open bi bi-list"></i>
+                <i class="vertical-middle centered collapse-close bi bi-x"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="main_wrapper container pages-wrapper">
+    <article>
+        
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul itemscope="" itemtype="http://schema.org/BreadcrumbList">
+            
+                
+                
+                    
+                
+                
+                    
+                        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                            <a
+                                    itemid="resources.html"
+                                    itemprop="item" itemscope=""
+                                    itemtype="http://schema.org/Thing"
+                                    href="resources.html">
+                                <span itemprop="name">Resources</span>
+                            </a>
+                        </li>
+                        <li>/</li>
+                    
+                
+            
+                
+                    
+                    
+                
+                
+                    
+                        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                            <a
+                                    itemid="resources-additional-topics.html"
+                                    itemprop="item" itemscope=""
+                                    itemtype="http://schema.org/Thing"
+                                    href="resources-additional-topics.html">
+                                <span itemprop="name">Additional topics</span>
+                            </a>
+                        </li>
+                        <li>/</li>
+                    
+                
+            
+                
+                    
+                    
+                
+                
+                    
+                
+            
+            <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                <a itemid="resources-additional-topics-agility.html" itemprop="item" itemscope="" itemtype="http://schema.org/Thing" href="resources-additional-topics-agility.html">
+                    <span itemprop="name">Agility</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+        <div class="article">
+            
+            <div class="article_title">
+                <h1 id="top">
+                    Agility
+                </h1>
+                <div class="suggestChanges">
+                    <a class="btn btn-transparent btn-bordered"
+                       href='https://github.com/cfengine/documentation/edit/3.23/resources/additional-topics/agility.markdown'
+                       target="_blank">
+                        <i class="bi bi-github"></i> Suggest changes
+                    </a>
+                </div>
+            </div>
+            
+            
+            <div class="table-of-contents">
+                <div class="TOC closed" id="TOCbox_wrapper">
+                    <div class="TOC-title">Table of contents</div>
+                    <span id="TOCbox">
+                        <div id="TOCbox_list"></div>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h2 id="understanding-agility">Understanding agility</h2>
+<p>We intuitively recognize agility as the capability to respond rapidly enough and
+flexibly enough to a difficult challenge. If we imagine an animal surviving in
+the wild, a climber on a rock-face or a wrestler engaged in combat, we identify
+the skills of anticipation, speed of response and the ability to adapt or bend
+without breaking to meet the challenges.</p>
+
+<ul>
+<li>Anticipate.</li>
+<li>Act.</li>
+<li>Adapt.</li>
+</ul>
+
+<p>In infrastructure management, agility represents the need to handle changing
+demand for service, to repair an absence of service, and to improve and deploy
+new services in response to changes from users and market requirements. It is
+tied to economic, business or work-related imperatives by the need to maintain a
+competitive lead.</p>
+
+<p>The compelling event that our system must respond to might represent danger, or
+merely a self-imposed deadline. In either case, there is generally a penalty
+associated with a lack of agility: a blow, a fall or a loss.</p>
+
+<ul>
+<li>What make agility possible?</li>
+<li>The capacity of a system</li>
+<li>Speed</li>
+<li>Precision</li>
+<li>Comprehension</li>
+<li>Efficiency</li>
+</ul>
+<h3 id="what-make-agility-possible">What make agility possible?</h3>
+<p>To understand agility, we have to understand time and the capacity for change.
+Agility is a relative concept: it&#39;s about adapting quickly enough, in the right
+context, with the right measure and in the right way. Below, we&#39;ll try to gain
+an engineering perspective on agility to see what enables it and what throttles
+it.</p>
+
+<p>To respond to a challenge there are four stages that need attention:</p>
+
+<ul>
+<li>To comprehend the challenge.</li>
+<li>To solve the challenge.</li>
+<li>To respond to the challenge.</li>
+<li>To confirm or verify the response.</li>
+</ul>
+
+<p>Each of these phases takes actual clock-time and requires a certain flexibility.
+Our goal is to keep these phases simple and therefore cheap for the long-term.
+Affording the time and flexibility needed is the key to being agile. Technology
+can help with this, if we adopt sound practices.</p>
+
+<p>Intuitively, we understand agility to be related to our capacity to respond to a
+situation. Let&#39;s try to pin this idea down more precisely.</p>
+<h3 id="the-capacity-of-a-system">The capacity of a system</h3>
+<p>The capacity of a system is defined to be its maximum rate of change. Most
+often, this refers to speed of the system response to a single request1.</p>
+
+<p>In engineering, capacity is measured in changes per second, so it represents the
+maximum speed of a system within a single thread of activity2.</p>
+<h3 id="speed">Speed</h3>
+<p>Speed is the rate at which change takes place. For a configuration tool like
+CFEngine, speed can be measured either as</p>
+
+<ul>
+<li><p>Clock speed</p>
+
+<p>The actual elapsed wall-clock time-rate at which work gets done, including
+any breaks and pauses in the schedule.</p>
+
+<p>This depends on how often checks are made, or the interval between them,
+e.g. in CFEngine, the default schedule is to verify promises every five
+minutes.</p></li>
+<li><p>System speed</p>
+
+<p>The average speed of the system when it is actually busy working on a
+problem, excluding breaks and pauses. For example, once CFEngine has been
+scheduled at the end of a five minute interval, it might take a few seconds
+to make necessary changes.</p></li>
+</ul>
+
+<p>Engineers can try to define an engineering scale of agility as the ratio of
+available speed to required speed and ratio of number ways a system can be
+changed to the number of ways imperatives require us to change.</p>
+
+<p>Agility is proportional to both how much speed we can muster compared to what is
+required, and the number of change-capabilities we possess, compared to what we
+need to meet a challenge. In other words: how well equipped are we? As
+engineers, we could write something like this:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>            Available speed under control        Changes available
+Agility =~  -----------------------------  *  -----------------------
+                  Required speed                 Changes Required
+</code></pre></div>
+</div>
+
+<p>Although such a scale might be hard to measure and follow in practice, the
+definition makes simple engineering sense3, and brings some insight into what we
+need to think about. What it suggests is that agility is a combination of speed
+and precision.</p>
+
+<p>What is required speed? It is is the rate of change we have to be able to enact
+in order to achieve and maintain a state (keep a promise) that is aligned with
+our intent. This requires a dependence on technology and human processes.</p>
+
+<p>The weakest link in any chain of dependencies limits the speed. The weakest link
+might be a human who doesn&#39;t understand what to do, or a broken wire or a
+misconfigured switch, so there are many possible failure modes for agility. An
+organization is an information rich society with complex interplays between Man
+and Machine; agility challenges us to think about these weakest links and try to
+bolster them with CFEngine&#39;s technology.</p>
+
+<p>For example:</p>
+
+<ul>
+<li><p>If we think in terms of services, it is the Service Level you have to achieve
+in order to comply with a Service Level Agreement.</p></li>
+<li><p>If we think of a support ticket, it is the speed we have to work at in order
+to keep the impact of an unpredicted change within acceptable levels.</p></li>
+</ul>
+
+<p>What we call /acceptable/ is a subjective judgement, i.e. a matter for policy to
+decide. So there are many uncertainties and relativisms in such definitions. It
+would be inconceivable to claim any kind of industry standard for these.</p>
+
+<p><img src="./agility.png" alt="How agility depends on technology measures"></p>
+
+<p>We can write some scaling laws for the dependencies of agility to see where the
+failure modes might arise.</p>
+
+<p>The speed available to meet a challenge is (on average) the maximum speed we can
+reliably maintain over time divided by the number of challenges we have to share
+between.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>                            Expected capacity * reliability
+Average available speed =~  -------------------------------
+                                Consumers or challenges
+</code></pre></div>
+</div>
+
+<p>This expression says that the rate at which we get work done on average depends
+no only on how we share maximum capacity amongst a number of different
+consumers, clients, processes, etc, but also on how much of the time this
+capacity is fully available, perhaps because systems are down or unavailable.</p>
+
+<p>The appearance of reliability in this expression therefore tells us that
+maintenance of the system, and anticipation of failure will play a key role in
+agility. Remarkably this is usually unexpected for most practitioners, and most
+of system planning goes into first time deployment, rather than maintaining
+operational state.</p>
+<h3 id="precision">Precision</h3>
+<p>Acting quickly is not enough: we also need to be accurate in responding to
+change[<sup>4].</sup> We need to be able to:</p>
+
+<ul>
+<li><p>Model the desired outcome accurately in terms of universal policy coordinates:
+<strong>Why</strong>, <strong>When</strong>, <strong>Where</strong>, <strong>What</strong>, <strong>How</strong>.</p></li>
+<li><p>Maximize the chance that the promised outcome will be achieved.</p></li>
+</ul>
+
+<p>Precision is maximized when:</p>
+
+<ul>
+<li><p>Changes are <em>precise</em>, i.e. they can be made at a highly granular level,
+without disturbing areas that are not relevant (few side-effects).</p></li>
+<li><p>Policy is able to model or describe the desired state accurately, i.e. within
+the relevant area, the state is within acceptable tolerances.</p></li>
+<li><p>If any assumptions are hidden, they are describable in terms of the model, not
+determined by the limitations of the software5.</p></li>
+<li><p>The agent executes the details of the model quickly and verifiably, in a
+partially unpredictable environment, i.e. it should be fault tolerant.</p></li>
+<li><p>If the model cannot be implemented, it is possible to determine why and decide
+whether the problem lies in an incorrect assumption or a flaw in the
+implementation.</p></li>
+</ul>
+
+<p>CFEngine is a fault tolerant system - it continues to work on what it can even
+when some parts of its model don&#39;t work out as expected[<sup>6].</sup></p>
+
+<p>Next: Efficiency, Previous: Precision, Up: Understanding agility
+1.5 Comprehension</p>
+
+<p>The next challenge is concerns a human limitation. One of the greatest challenges in any organization lies in comprehending the system.</p>
+
+<p>Comprehensibility increases if something is predictable, or steady in its behaviour, but it decreases in proportion to the number of things we need to think about - which includes the many different contexts such as environments, or groups of machines with different purposes or profiles.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>                    Predictability (Reliability)    Predictability
+</code></pre></div>
+</div>
+
+<p>Comprehensibility =~  ---------------------------- = ----------------
+                                 Contexts                 Diversity</p>
+
+<p>Our ability to comprehend behaviour depends on how predictable it is, i.e. how well it meets our expectations. For technology, we expect behaviour to be as close as possible on our intentions. CFEngine&#39;s maintenance of promises ensures that this is done with best possible effort and a rapid cycle of checking.</p>
+
+<p>To keep the number of contexts to a minimum, CFEngine avoids mixing up what policy is being expressed with how the promises are kept. It uses a declarative language to separate the what from the how. This allows ordinary users to see what was intended without having to know the meaning of how, as was the case when scripting was used to configure systems.</p>
+
+<p>Previous: Comprehension, Up: Understanding agility
+1.6 Efficiency</p>
+
+<p>Finally, if we think about the efficiency of a configuration, which is another way of estimating its simplicity, we are interested in how much work it takes to represent our intentions. There are two ways we can think about efficiency: the efficiency of the automated process and the human efficiency in deploying it.</p>
+
+<p>If the technology has a high overhead, the cost of maintaining change is high and efficiency is low:</p>
+
+<p>The efficiency of the technology decreases with the more resources it uses, e.g. like memory and CPU. Resources used to run the technology itself are pure overhead and take away from the real work of your system.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>                                  Resources used
+     Resource Efficiency =~  1 -  ---------------
+                                  Total resources
+</code></pre></div>
+</div>
+
+<p>It is a design goal of CFEngine to maintain minimal overhead in all situations. The second aspect of efficiency is how much planning or rule-making is needed to manage the relevant issues.</p>
+
+<p>The efficiency of a model decreases when you put more effort into managing a certain number of things. If you can manage a large number of things with a few simple constraints, that is efficient.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>                          Number of objects affected
+  Model Efficiency =~  -------------------------------
+                       Number of rules and constraints
+</code></pre></div>
+</div>
+
+<p>General patterns play a role too in simplifying, because the reduce the number of special rules and constraints down to fewer more generic rules. If we make good use of patterns, we can make few rules that cover many cases. If there are no discernible patterns, every special case is a costly exception. This affects not just the technology cost, but also the cognitive cost (i.e. the comprehensibility).</p>
+
+<p>Efficiency therefore plays a role in agility, because it affects the cost of change. Greater efficiency generally means greater speed, and more greater likelihood for precision.</p>
+
+<p>Next: Agility in your work, Previous: Understanding agility, Up: Top
+2 Aspects of CFEngine that bring agility</p>
+
+<p>We can now summarize some qualities of CFEngine that favour agility:</p>
+
+<ul>
+<li><p>Ability to express clear intentions about desired outcome (comprehension).</p></li>
+<li><p>Availability of insight into system performance and state (comprehension).</p></li>
+<li><p>Ability to manage large numbers of hosts and resources with a few generic
+patterns (efficiency).</p></li>
+<li><p>Ability to bundle related details into simple containers (comprehension
+without loss of adaptability).</p></li>
+<li><p>Ability to accurately customize policy down to a low level without programming
+(adaptability).</p></li>
+<li><p>Ability to recover quickly from faults and failures. The default, parallelized
+execution framework verifies promises every 5 minutes for rapid fault
+detection and change deployment (clock speed)7 .</p></li>
+<li><p>A quick system monitoring/sampling rate - every 2.5 minutes (Nyquist
+frequency), for automated hands-free response to errors.</p></li>
+<li><p>Ability to recover cheaply. The lightweight resource footprint of CFEngine
+that consumes few system resources required for actual business (system speed</p>
+
+<ul>
+<li>low overhead, maximum capacity).</li>
+</ul></li>
+<li><p>Ability to increase number of clients without significant penalty (scalability
+and easy increase of capacity).</p></li>
+<li><p>A single framework for all devices and operating systems (ease of migrating
+from one platform to another).</p></li>
+<li><p>What agility means in different environments</p></li>
+<li><p>Separating What from How</p></li>
+<li><p>Packaging limits agility</p></li>
+<li><p>How abstraction improves agility</p></li>
+<li><p>Increasing system capacity - by scaling</p></li>
+</ul>
+<h3 id="what-agility-means-in-different-environments">What agility means in different environments</h3>
+<p>Let&#39;s examine some example cases where agility plays a role. Agility only has
+meaning relative to an environment, so in the following sections, we cite the
+remarks of CFEngine users (in quotes), and their example environments.</p>
+
+<p>Users&#39; expectations for agility can differ dramatically in the present; but if
+we think just a few years down the line, and follow the trends, it seems clear
+that limber systems must prevail in IT&#39;s evolutionary jungle.</p>
+
+<ul>
+<li>Desktop management</li>
+<li>Web shops</li>
+<li>Cloud providers</li>
+<li>High performance computing</li>
+<li>Government</li>
+<li>Finance</li>
+<li>Manufacturing</li>
+</ul>
+<h4 id="desktop-management">Desktop management</h4>
+<p>&quot;The desktop space can be a very volatile environment, with multiple platforms.&quot;</p>
+
+<p>Speed:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>Speed is essential when there is a need to respond to a security threat that
+affects all of the desktop systems; e.g. when dealing with malware that
+requires the distribution of updated virus.dat files, etc. CFEngine can be
+very helpful by automating the process of distributing and restarting the
+application responsible for virus detection and mitigation. Systems that
+have been breached, need to be returned to known and secure state quickly to
+avoid loss. CFEngine can quickly detect and correct host based intrusions
+using file-scanning techniques and can secure hosts for examination, or just
+repair them quickly.
+
+Another case for agility lies in user request processing. For example, when
+a new user joins a workplace and needs resources such as desktop, laptop,
+phone, Internet connection, VPN connection, VM instances, etc. Speed is of
+the essence to minimize employee downtime.
+</code></pre></div>
+</div>
+
+<p>Precision:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>Desktop environments can involve many different platforms: Windows, multiple
+flavours of Linux and Macintosh, etc. A uniform low-cost way of
+_provisioning_ and maintaining all of these, as well as responding to common
+threats is of significant value.
+
+Precision is important to ensure that the resources made available are
+indeed the correct ones. Inaccuracy can be a potential security issue, or
+merely a productivity question.
+
+Precision also comes into play when an enterprise rolls out new patches or
+productivity upgrades. These upgrades need to be uniformly and precisely
+distributed to all of the desktop systems during a given change window. By
+design, desktop clients running CFEngine automatically check for changes in
+system state and can precisely propagate desired state. In the case of
+system restoration due to corruption or hardware failure, CFEngine can
+greatly reduce the time needed to return to the most current enterprise
+build.
+</code></pre></div>
+</div>
+<h4 id="web-shops">Web shops</h4>
+<p>Modern web-based companies often base their entire financial operations around
+an active web site. Down-time of the web service is mission critical.</p>
+
+<p>Speed:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>The frequency of maintenance is not usually critical in web shops, since
+configuration changes can be planned to occur over hours rather than
+minutes. During software updates and system repairs, however, speed and
+orchestration are issues, as time lost during upgrades is often revenue
+lost, and a lack of coordination of multiple parts could cause effective
+downtime.
+
+It is therefore easy to scale the management of a web service, as change is
+rarely considered to be time-critical.
+
+Resource availability for the web service is an issue on busy web servers,
+however web services are typically quite slow already and it is easy to load
+balance a web service, so resource efficiency of the management software is
+not usually considered a high priority, until the possible savings become
+significant with thousands of hosts.
+
+Credit card information is subject to PCI-DSS regulation and requires a
+continuous verification for auditing purposes, but these systems are often
+separated from the main web service. Speed of execution can be seen as an
+advantage by some auditors where repairs to security matters and detection
+of breaches are carefully monitored.
+</code></pre></div>
+</div>
+
+<p>Precision:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>The level of customization in a web shop could be quite high, as there is a
+stack of interdependent services including databases and name services that
+have to work seamlessly, and the rate of deployment of new versions of the
+software might be relatively high.
+
+Customization and individuality is a large part of a website&#39;s business
+competitiveness. Maintaining precise
+</code></pre></div>
+</div>
+<h4 id="cloud-providers">Cloud providers</h4>
+<p>Speed:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>The cloud was designed for shorter time-scales, and relatively quick
+turnover of needs. That suggests that configuration will change quite often.
+For Infrastructure-as-a-Service providers and consumers, set up and
+tear-down rates are quite high so efficient and speedy configuration is
+imperative.
+</code></pre></div>
+</div>
+
+<p>Precision:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>For Software and Platform as a service providers, stability, high
+performance and regulation are key issues, and scaling up and down for
+demand is probably the fastest rate of change.
+</code></pre></div>
+</div>
+<h4 id="high-performance-computing">High performance computing</h4>
+<p>High Performance clusters are typically found in the oil and gas industry, in
+movie, financial, weather and aviation industries, and any other modelling
+applications where raw computation is used to crunch numbers.</p>
+
+<p>Speed:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>The lightweight footprint of CFEngine is a major benefit here, as every CPU
+cycle and megabyte of memory is precious, so workflow is not disrupted.
+
+&quot;A single node in the compute grid being out of sync with the others can
+cause the entire grid to cause failed jobs or otherwise introduce
+unpredictability into the environment, as it may produce results that differ
+from its peers. Thus it is imperative that repairs to an incorrect state
+happen as soon as possible, to minimize the impact of these issues.&quot;
+</code></pre></div>
+</div>
+
+<p>Precision:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>&quot;Precision is exquisitely important in an HPC grid. When making a
+configuration change, due to the homogeneity of the environment, small
+changes can have enormous impacts due to the quantity of affected systems. I
+liken this to the &quot;monoculture&quot; problem in replanted forests - everything is
+the same, so what would ordinarily be a small, easily-contained problem like
+a fungus outbreak, quickly spreads into an uncontrollable disaster. Thus,
+with HPC systems it is imperative that any changes deployed are precise, to
+ensure that no unintended consequences will occur. This is clearly directly
+related to comprehensibility of the environment - it is difficult or
+impossible to make a precise change when you don&#39;t fully comprehend the
+environment.&quot;
+</code></pre></div>
+</div>
+<h4 id="government">Government</h4>
+<p>Speed:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>Government is not known for speed.
+</code></pre></div>
+</div>
+
+<p>Precision:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>&quot;Government systems are reviewed and audited under FISMA and so one has
+often thought in terms of the ability to reduce complexity to make the
+problem manageable. Government typically wants the one-size-fits-all
+solution to system management and could benefit from something that can
+manage complexity and diversity while providing some central control (I bet
+you hate that word). The only thing we might have in common with finance is
+auditing but I&#39;m sure the methods and goals are completely different.
+Finance is big money trying to make more big money. Government is focused
+more on compliance with its own regulations.&quot;
+</code></pre></div>
+</div>
+<h4 id="finance">Finance</h4>
+<p>Speed:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>One of the key factors in finance is liability. Fear of error, has led to
+very slow processing of change.
+
+High availability in CFEngine is used for continuous auditing and security.
+Passing regulatory frameworks like SOX, SAS-70, ISO 20k, etc can depend on
+this non-intrusive availability. Liability is a major concern and
+significant levels of approval are generally required to make changes, with
+tracking of individual responsibility. Out-of-hours change windows are
+common for making upgrades and making intended changes. Scalability of
+reporting is a key here, but change happens slowly.
+</code></pre></div>
+</div>
+
+<p>Precision:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>Security and hence tight control of approved software are major challenges
+in government regulated institutions. Agility has been a low priority in the
+past, but this will have to change as the rest of the world&#39;s IT services
+accelerate.
+</code></pre></div>
+</div>
+<h4 id="manufacturing">Manufacturing</h4>
+<p>SCADA (supervisory control and data acquisition) generally refers to industrial
+control systems (ICS): computer systems that monitor and control industrial,
+infrastructure, or facility-based processes, as described below.</p>
+
+<p>Speed:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>Manufacturing is a curious mix of all the mention areas and more. In
+addition to the above, there is an tool component. The tools can design,
+build, test, track, and ship a physical unit. Downtime of any component is
+measured in missed revenue, so speed of detection and repair is crucial.
+</code></pre></div>
+</div>
+
+<p>Precision:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>&quot;We need to ensure agility and accuracy of reporting. We need to know what
+is going on at any microsecond of the day. One faulty tool can throw a
+wrench in the whole works. The digital equivalent of the steam whistle to
+stop the line.
+
+From there, all the tool information is fed upstream to servers, from there
+to databases, then reports, that statistical analysis, and so on. Each piece
+needs to move with the product and incorporate it. It is a steady chain of
+events where are all information is liquid and relevant.
+
+Not only do you have the security requirements, from virus updates to top
+secret classification, but these tools need to never stop, ever. Also, these
+tools need constant reconfiguration depending on the product they are
+working on: e.g. you can&#39;t use the same set of procedures on XBox chip as a
+cellphone memory module. And all the tools are different too: one may be a
+probe to detect microscopic fractures in the layers, one tool may just track
+it&#39;s position in line. Supply and demand, cost and revenue.&quot;
+</code></pre></div>
+</div>
+<h3 id="separating-what-from-how-devops">Separating what from how (DevOps)</h3>
+<p>If you have to designs a programmatic solution to a challenge, it will cost you
+highly in terms of cognitive investment, testing and clarity of purpose to
+future users. Thinkingprocess(how) instead ofknowledge(what) is a classic
+carry-over from the era of 2nd Wave industrialization8.</p>
+
+<p>Think of CFEngine as an active knowledge management system, rather than as a
+relatively passive programming framework.</p>
+
+<p>For <em>DevOps</em>: programming is for your application, consider its deployment to be
+part of the documentation.</p>
+
+<p>Many programmatic systems and <em>APIs</em> force you to explain how something will be
+accomplished and the statement about <em>what</em> the outcome will be is left to an
+implicit assumption. Such systems are called imperative systems.</p>
+
+<p>CFEngine is a declarative system. In a declarative system, the reverse is true.
+You begin by writing down What you are trying to accomplish and the How is more
+implicit. The way this is done is by separating data from algorithm in the
+model. CFEngine encourages this with its language, but you can go even further
+by using the tools optimally.</p>
+
+<p>CFEngine allows you to represent raw data as variables, or as strings within
+your policy. For example:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>bundle agent name
+{
+  vars:
+
+    &quot;main_server&quot; string =&gt; &quot;abc.123.com&quot;;
+
+    &quot;package_source[ubuntu]&quot; string =&gt; &quot;repository.ubuntu.com&quot;;
+    &quot;package_source[suse]&quot;   string =&gt; &quot;repository.suse.com&quot;;
+
+ # Promises that use these data
+ #
+ # packages:
+ # processes:
+ # files:
+ # services: , etc
+}
+</code></pre></div>
+</div>
+
+<p>By separating <em>what</em> data like this out of the details of how they are used, it
+becomes easier to comprehend and locate, and it becomes fast to change, and the
+accuracy of the change is easily perceived. Moreover, CFEngine can track the
+impact of such a change by seeing where the data are used.</p>
+
+<p>CFEngine&#39;s knowledge management can tell you which system promises depend on
+which data in a clear manner, so you will know the impact of a change to the
+data.</p>
+
+<p>You can also keep data outside your policy in databases, or sources like:</p>
+
+<ul>
+<li>LDAP</li>
+<li>NIS</li>
+<li>DNS</li>
+<li>System files</li>
+</ul>
+
+<p>For example, reading in data from a system file is very convenient. This is what
+Unix-like system do for passwords and user management.</p>
+
+<p>What you might lose when making an input matrix is the why. Is there an
+explanation that fits all these cases, or does each case need a special
+explanation? We recommend that you include as much information as possible about
+<em>why</em>.</p>
+<h2 id="packaging-limits-agility">Packaging limits agility</h2>
+<p>Atomicity enables agility. Atomicity, or the avoidance of dependency, is a key
+approach to simplicity. Today this is often used to argue to packaging of
+software.</p>
+
+<p>Handling software and system configuration as packages of data makes certain
+processes appear superficially easy, because you get a single object to deal
+with, that has a name and a version number. However, to maintain flexibility we
+should not bundle too many features into a package.</p>
+
+<p>A tin of soup or a microwave meal might be a superficially easy way to make
+dinner, for many scenarios, but the day you get a visitor with special dietary
+requirements (vegetarian or allergic etc) then the prepackaging is a major
+obstacle to adapting: the recipe cannot be changed and repackaged without going
+back to the factory that made it. Thus oversimplification generally tends to end
+up sending up back to work around the technology.</p>
+
+<p>CFEngine&#39;s modelling language gives you control over the smallest ingredients,
+but also allows you to package your own containers or work with other suppliers&#39;
+packages. This ensures that adaptability is not sacrificed for superficial ease.</p>
+
+<p>For example: your system&#39;s package model can cooperate with CFEngine make asking
+CFEngine to promise to work with the package manager:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">example</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">packages</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;apache2&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;php5&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;opera&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+
+<p>If you need to change what happens under the covers, it is very simple to do
+this in CFEngine. You can copy the details of the existing methods, because the
+details are not hard-coded, and you can make your own custom version quickly.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">example</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">packages</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;apache2&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">package_method</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">my_special_package_manager_interface</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+<h3 id="how-abstraction-improves-agility">How abstraction improves agility</h3>
+<p>Abstraction allows us to turn special cases into general patterns. This leads to
+a compression of information, as we can make defaults for the general patterns,
+which do not have to be repeated each time.</p>
+
+<p>Service promises are good example of this9, for example:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>bundle agent example
+{
+  services:
+    &quot;wwww&quot;;
+}
+</code></pre></div>
+</div>
+
+<p>In this promise, all of the details of what happens to turn on the web service
+have been hidden behind this simple identifier &#39;www&#39;. This looks easy, but is it
+simple?</p>
+
+<p>In this case, it is both easy and simple. Let&#39;s check why. We have to ask the
+question: how does this abstraction improve speed and precision in the long run?</p>
+
+<p>Obviously, it provides short term ease by allowing many complex operations to
+take place with the utterance of just a single word10. But any software can pull
+that smoke and mirrors trick. To be agile, it must be possible to understand and
+change the details of what happens when this services is promised. Some tools
+hard-code processes for this kind of statement, requiring an understanding of
+programming in a development language to alter the result. In CFEngine, the
+definitions underlying this are written in the high-level declarative CFEngine
+language, using the same paradigm, and can therefore be altered by the users who
+need the promise, with only a small amount of work.</p>
+
+<p>Thus, simplicity is assured by having consistency of interface and low cost
+barrier to changing the meaning of the definition.</p>
+<h3 id="increasing-system-capacity-by-scaling">Increasing system capacity (by scaling)</h3>
+<p>Capacity in IT infrastructure is increased by increasing machine power. Today,
+at the limit of hardware capacity, this typically means increasing the number of
+machines serving a task. Cloud services have increased the speed agility with
+which resources can be deployed - whether public or private cloud - but they do
+not usually provide any customization tools. This is where CFEngine brings
+significant value.</p>
+
+<p>The rapid deployment of new services is assisted by:</p>
+
+<ul>
+<li><p>Virtualization hypervisor control or private cloud management (libvirt
+integration).</p></li>
+<li><p>Rapid, massively-parallelized custom configuration.</p></li>
+<li><p>Avoidance of network dependencies.</p></li>
+</ul>
+
+<p>Related to capacity is the issue of scaling services for massive available
+capacity.</p>
+
+<p>By scalability we mean the intrinsic capacity of a system to handle growth.
+Growth in a system can occur in three ways: by the volume of input the system
+must handle, in the total size of its infrastructure, and by the complexity of
+the processes within it.</p>
+
+<p>For a system to be called scalable, growth should proceed unhindered, i.e. the
+size and volume of processing may expand without significantly affecting the
+average service level per node.</p>
+
+<p>Although most of us have an intuitive notion of what scalability means, a full
+understanding of it is a very complex issue, mainly because there are so many
+factors to take into account. One factor that is often forgotten in considering
+scalability, is the human ability to comprehend the system as it grows.
+Limitations of comprehension often lead to over-simplification and
+lowest-common-denominator standardization.</p>
+
+<p>Scalability is addressed in a separate document: Scale and Scalability, so we
+shall not discuss it further here.</p>
+<h2 id="agility-in-your-work">Agility in your work</h2>
+<ul>
+<li>Easy versus simple</li>
+<li>How does complexity affect agility?</li>
+<li>An effective understanding helps agility</li>
+<li>Maximizing business imperatives</li>
+<li>What does agility cost?</li>
+<li>Who is responsible for agility?</li>
+</ul>
+<h3 id="easy-versus-simple">Easy versus simple</h3>
+<p>Just as we separate goals from actions, and strategy from tactics, so we can
+separate what is easy from what is simple. Easy brings short-term gratification,
+but simple makes the future cost less.</p>
+
+<p>Easyis about barriers to adoption. If there is a cost associated with moving
+ahead that makes it hard:</p>
+
+<ul>
+<li>A psychological cost</li>
+<li>A cognitive cost</li>
+<li>It takes too long</li>
+<li>It costs too much money</li>
+</ul>
+
+<p>Simple is about what happens next. Once you have started, what happens if you
+want to change something?</p>
+
+<p>Total cost of ownership is reduced if a design is simple, as there are only a
+few things to learn in total. Even if those things are hard to learn, it is a
+one-off investment and everything that follows will be easy.</p>
+
+<p>Unlike some tools, with CFEngine, you do not need to program <em>how</em> to do things,
+only what you want to happen. This is always done by using the same kinds of
+declarations, based on the same model. You don&#39;t need to learn new principles
+and ideas, just more of the same.</p>
+<h3 id="how-does-complexity-affect-agility">How does complexity affect agility?</h3>
+<p>In the past[<sup>11],</sup> it was common to manage change by making everything the same.
+Today, the individualized custom experience is what today&#39;s information-society
+craves. Being forced into a single mold is a hindrance to adaptability and
+therefore to agility. To put it another way, in the modern world of commerce,
+consumers rule the roost, and agility is competitive edge in a market of many
+more players than before.</p>
+
+<p>Of course, it is not quite that simple. Today, we live in a culture of <em>ease</em>,
+and we focus on what can be done easily (low initial investment) rather than
+worrying about long term simplicity (Total Cost of Ownership).</p>
+
+<p>At CFEngine, we believe that <em>easy</em> answers often suffer from the sin of
+over-simplification, and can lead to risky practices. After all, anyone can make
+something appear superficially easy by papering over a mess, or applying raw
+effort, but this will not necessarily scale up cheaply over time. Moreover,
+making a risky process <em>too easy</em> can encourage haste and carelessness.</p>
+
+<p>Any problem has an intrinsic complexity, which can be measured by the smallest
+amount of information required to manage it, without loss of control.</p>
+
+<ul>
+<li><p>Ease is the absence of a barrier or cost to action.</p></li>
+<li><p>Simplicity is a strategy for minimizing Total Cost of Ownership.</p></li>
+</ul>
+
+<p>Making something truly simple is a very hard problem, but it is an investment in
+future change. What is easy today might be expensive to make easy tomorrow. But
+if something is truly simple, then the work is all up front in learning the
+basics, and does not come as an unexpected surprise down the line.</p>
+
+<p>At CFEngine, we believe in agility through simplicity, and so we invest
+continuous research into making our technology genuinely simple for trained
+users. We know that a novice user will not necessarily find CFEngine easy, but
+after a small amount of training, CFEngine will be a tool for life, not just a
+hurried deployment.</p>
+
+<p>Simplicity in CFEngine is addressed in the following ways:</p>
+
+<ul>
+<li><p>The software has few dependencies that complicate installation and upgrading.</p></li>
+<li><p>Changes made are atomic and minimize dependencies.</p></li>
+<li><p>Each host works as an independent entity, reducing communication fragility.</p></li>
+<li><p>The configuration model is based on Promise Theory - a very consistent and
+simple approach to modelling autonomous cooperative systems.</p></li>
+<li><p>All hosts run the same software agents on all operating platforms (from mobile
+phones to mainframes), and understand a single common language of intent,
+which they can translate into native system calls. So there are few exceptions
+to deal with.</p></li>
+<li><p>Comprehensive facilities are allowed for making use of patterns and other
+total-information-reducing tactics.</p></li>
+</ul>
+
+<p>A certain level of complexity might be necessary and desirable - complexity is
+relative. Some organizations still try to remain agile by avoiding complexity.
+However, the ability to respond to complex scenarios often requires us to dabble
+with diversity. Avoiding it merely creates a lack of agility, as one is held
+back by the need to over-simplify.</p>
+<h3 id="an-effective-understanding-helps-agility">An effective understanding helps agility</h3>
+<p>All configuration issues, including fitness for purpose, boil down to three
+things: why, what and how. Knowing why we do something is the most important way
+of avoiding error and risk of failure. Simplicity then comes from keeping the
+<em>what</em> and the <em>how</em> separate, and reducing the how to a predictable, repairable
+transaction. This is what CFEngine&#39;sconvergent promisetechnology does.</p>
+
+<p>Knowledge is an antidote to uncertainty. Insight into patterns, brings
+simplicity to the information management, and insight into behaviour allows us
+to estimate impact of change, thus avoiding the risk associated with agility.</p>
+
+<p>In configuration <em>what</em> represents transitory knowledge, while <em>how</em> is often
+more lasting and can be absorbed into the infrastructure. The consistency and
+repairability of <em>how</em> makes it simpler to change what without risk.</p>
+<h3 id="maximizing-business-imperatives">Maximizing business imperatives</h3>
+<p>Agility allows companies and public services to compete and address the needs of
+continuous service improvement. This requires insight into IT operations from
+business and vice versa. Recently, the <em>DevOps</em> movement in web arenas has
+emphasized the need for a more streamlined approach to integrating
+business-driven change and IT operations. Whatever we choose to call this, and
+in whatever arena, <em>connecting the dots between business and IT</em> is a major
+enabler for agility to business imperatives.</p>
+
+<p>Some business issues are inherently complex, e.g. software customization and
+security, because they introduce multifaceted conflicts of interest that need to
+resolved with clear documentation about why.</p>
+
+<p>Be careful about choosing a solution because it has a low initial outlay cost.
+Look to the long term cost, or the Total Cost of Ownership over the next 5
+years.</p>
+
+<p>Many businesses have used the argument: everything is getting cheaper so it
+doesn&#39;t matter if my software is inefficient - I can brute force it in a year&#39;s
+time with more memory and a faster CPU. The flaw in this argument is that
+complexity and scale are also increasing, and you will need those savings down
+the line even more than you do now.</p>
+
+<p>The ability to model our intentions in a clearly understandable way enables
+insight and understanding; this, in turn, allows us to anticipate and comprehend
+challenges. CFEngine&#39;s knowledge management features help to make the
+configuration itself a part of the documentation of the system. Instead of
+relying on command line tools to interact, the user documents intentions (as
+<em>promises to be kept</em>). These promises, and how well they have been kept, can be
+examined either from the original specification or in the Mission Portal.</p>
+
+<p>In the industrial age, the strategy was to supply sufficient force to a small
+problem in order to <em>control</em> it by brute force. In systems today the scale and
+complexity are such that no such brute force approach can seriously be expected
+to work. Thus one is reduced to a more even state of affairs: learning to work
+with the environment <em>as is</em>, with clear expectations of what is possible and
+controlling only certain parts on which crucial things depend.</p>
+<h3 id="what-does-agility-cost">What does agility cost?</h3>
+<p>CFEngine is designed to have a low Total Cost of Ownership, by being
+exceptionally lightweight and conceptually simple. The investment in CFEngine is
+a <em>learning curve</em> that some find daunting. Indeed, at CFEngine, we work on
+reducing this initial learning curve all the time - but what really saves you in
+the end is simplicity without over-simplification.</p>
+
+<p>At a deployment in the banking sector, CFEngine replaced an incumbent software
+solution where 200 machines were required to make the management infrastructure
+scale to the task.</p>
+
+<p>CFEngine replaced this with 3 machines, and a reduced workforce. After the
+replacement the clock-time required for system updates went from 45 minutes to
+16 seconds.</p>
+
+<p>The total cost of providing for agility can be costly or it can be cheap. By
+design, CFEngine aims to make scale and agility inexpensive in the long run.</p>
+<h3 id="who-is-responsible-for-agility">Who is responsible for agility?</h3>
+<p>The bottom line is: you are! Diversity and customization are basic freedoms that
+user-driven services demand in today&#39;s world, and having the agility to meet
+changing desires is going to be an increasingly important and prominent feature
+of IT, as we delve further into the information-based society.</p>
+
+<p>Competitive edge, response to demands, in both private sector and research,
+makes agility the actual product of a not-too-distant tomorrow.</p>
+
+<p>Who or what makes agility a reality? The simple answer to this question is
+everyone and everything. Change is a chain of dependent activities and the
+weakest link in the chain is the limiting factor. Often, that is human
+knowledge, since it is the part of the chain that we take most for granted.</p>
+
+<p>CFEngine has been carefully designed to support agile operations for the long
+term, by investing in knowledge management, speed and efficiency.</p>
+
+<p>Footnotes</p>
+
+<p>[<sup>1]:</sup> Capacity is often loosely referred to as <em>bandwidth</em> because of its
+    connection to signal propagation in communication science, but this is not
+    strictly correct, as bandwidth refers to parallel channels.</p>
+
+<p>[<sup>2]:</sup> For example, for a single coding frequency, the capacity of a
+    communications channel is measured in bits per second, and the bandwidth is
+    the number multiplied by the number of parallel frequencies.</p>
+
+<p>[<sup>3]:</sup> If available speed matches need, and we have the capability to make all
+    required changes, then we can claim exactly 100% agility. If we have less
+    than required, then we get a smaller number, and if we have excess speed or
+    changeability then we can even claim a super-efficiency.</p>
+
+<p>[<sup>4]:</sup> In the 20th century, science learned that there is no such thing as
+    determinism - the idea that you can guarantee an outcome absolutely. If you
+    still think in such terms, you will be quickly disappointed. The best we can
+    accomplish is to maximize the likelihood of a predictable result, relative
+    to the kind of environment in which we work.</p>
+
+<p>[<sup>5]:</sup> In some other configuration software, assumptions are hard-coded into the
+    tools themselves, making the outcome undocumented.</p>
+
+<p>[<sup>6]:</sup> Other systems that claim to be deterministic simply stop with error
+    messages. What is the correct behaviour? Clearly, this is a subjective
+    choice. The important thing is that your system for change behaves in a
+    predictable way.</p>
+
+<p>[<sup>7]:</sup> Two related concepts that are frequently referred to are the classic
+    reliability measures: Mean Time Before Failure (MTBF) or proactive health
+    and Mean Time To Repair (MTTR), speed of recovery: (i) If we are proactive
+    or quick at recovering from minor problems, larger outages can be avoided.
+    Recovery agility plays a role in avoiding cascade failure. (ii) If the time
+    to repair is long, or the repair is inaccurate, this could result if more
+    widespread problems. Inaccurate change or repair often leads to attempts to
+    <em>roll-back</em>, causing further problems.</p>
+
+<p>[<sup>8]:</sup> See <a href="http://www.cfengine.com/blog/sysadmin-3.0-and-the-third-wave">http://www.cfengine.com/blog/sysadmin-3.0-and-the-third-wave</a></p>
+
+<p>[<sup>9]:</sup> Service promises, as described here, were introduced into version 3.3.0 of
+    CFEngine in 2012.</p>
+
+<p>[<sup>10]:</sup> All good magic stories begin like this.</p>
+
+<p>[<sup>11]:</sup> Perhaps not just in the past. We are emerging from an industrial era of
+    management where mass producing everything the same was the cheapest
+    approach to scaling up services. However, today personal freedom demands
+    variety and will not tolerate such oversimplification.</p>
+
+            </div>
+        </div>
+        
+        <div class="footer-top">
+            <div>
+                <h3>Still need help? </h3>
+                <a href="https://web.libera.chat/?channel=#cfengine" target="_blank"><img src="./media/images/chat-square-dots-fill.svg"/> Chat</a>
+                <a href="https://github.com/cfengine/core/discussions" target="_blank"><img src="./media/images/people-fill.svg"/> Ask a question on Github</a>
+                <a href="https://groups.google.com/forum/#!forum/dev-cfengine" target="_blank"><img src="./media/images/mail.svg"/> Mailing list</a>
+            </div>
+        </div>
+    </article>
+    <aside>
+    <button onclick="openNavigationHandler()" class="btn navigation-btn">
+        <i class="bi bi-list-ul"></i> Navigation table
+    </button>
+    <div class="select versions-dropdown">
+        <label>Version</label>
+        <div class="dropdown-select">
+            <span>Version&nbsp;<div></div></span>
+            <div class="dropdown-select_options">
+                <a onclick="selectVersion('/docs/master/')" href="#">master</a>
+<a onclick="selectVersion('javascript:void(0);')" href="#" selected="selected">3.23 (non-LTS)</a>
+<a onclick="selectVersion('/docs/3.21/')" href="#">3.21 (LTS)</a>
+<a onclick="selectVersion('/docs/3.18/')" href="#">3.18 (LTS)</a>
+<a href="./versions.html">view all versions</a>
+
+            </div>
+        </div>
+    </div>
+    <div class="left-menu">
+        <div class="left-menu-top">
+            <i class="bi menu-back bi-arrow-left-short"></i>
+            <i class="bi menu-close bi-x"></i>
+        </div>
+        <ul class="left-menu-breadcrumbs"></ul>
+        <div class="selectedMenu"></div>
+        <ul class='mainMenu'><li class="parent level-1" data-url="overview.html"><i></i><a href="overview.html">Overview</a><ul><li class=" level-2" data-url="overview-what-is-cfengine-and-why.html"><i></i><a href="overview-what-is-cfengine-and-why.html">What is CFEngine and why?</a></li><li class=" level-2" data-url="overview-how-cfengine-works.html"><i></i><a href="overview-how-cfengine-works.html">How CFEngine works</a></li><li class=" level-2" data-url="overview-directory-structure.html"><i></i><a href="overview-directory-structure.html">CFEngine directory structure</a></li><li class=" level-2" data-url="overview-client-server-communication.html"><i></i><a href="overview-client-server-communication.html">Client server communication</a></li><li class=" level-2" data-url="overview-glossary.html"><i></i><a href="overview-glossary.html">Glossary</a></li></ul></li><li class="parent level-1" data-url="getting-started.html"><i></i><a href="getting-started.html">Getting started</a><ul><li class="parent level-2" data-url="getting-started-installation.html"><i></i><a href="getting-started-installation.html">Installation</a><ul><li class="parent level-3" data-url="getting-started-installation-pre-installation-checklist.html"><i></i><a href="getting-started-installation-pre-installation-checklist.html">Pre-installation checklist</a><ul><li class=" level-4" data-url="getting-started-installation-pre-installation-checklist-vi-quick-start-guide.html"><i></i><a href="getting-started-installation-pre-installation-checklist-vi-quick-start-guide.html">Quick-Start guide to using vi</a></li><li class=" level-4" data-url="getting-started-installation-pre-installation-checklist-putty-quick-start-guide.html"><i></i><a href="getting-started-installation-pre-installation-checklist-putty-quick-start-guide.html">Quick-Start guide to using PuTTY</a></li><li class=" level-4" data-url="getting-started-installation-pre-installation-checklist-verify-signatures.html"><i></i><a href="getting-started-installation-pre-installation-checklist-verify-signatures.html">Verifying package signatures</a></li></ul></li><li class=" level-3" data-url="getting-started-installation-local-virtual-machine.html"><i></i><a href="getting-started-installation-local-virtual-machine.html">Local virtual machine</a></li><li class="parent level-3" data-url="getting-started-installation-general-installation.html"><i></i><a href="getting-started-installation-general-installation.html">General installation</a><ul><li class=" level-4" data-url="getting-started-installation-general-installation-installation-enterprise-free-aws-rhel.html"><i></i><a href="getting-started-installation-general-installation-installation-enterprise-free-aws-rhel.html">Using Amazon Web Services</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-enterprise-free.html"><i></i><a href="getting-started-installation-general-installation-installation-enterprise-free.html">Installing Enterprise 25 Free</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-enterprise-vagrant.html"><i></i><a href="getting-started-installation-general-installation-installation-enterprise-vagrant.html">Using Vagrant</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-enterprise.html"><i></i><a href="getting-started-installation-general-installation-installation-enterprise.html">Installing Enterprise for production</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-coreos.html"><i></i><a href="getting-started-installation-general-installation-installation-coreos.html">Installing Enterprise on CoreOS</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-community.html"><i></i><a href="getting-started-installation-general-installation-installation-community.html">Installing Community</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-enterprise-generic-tarball.html"><i></i><a href="getting-started-installation-general-installation-installation-enterprise-generic-tarball.html">Installing from binary tarball</a></li></ul></li><li class=" level-3" data-url="getting-started-installation-secure-bootstrap.html"><i></i><a href="getting-started-installation-secure-bootstrap.html">Secure bootstrap</a></li><li class=" level-3" data-url="getting-started-installation-installation-overview.html"><i></i><a href="getting-started-installation-installation-overview.html">Installation overview</a></li><li class=" level-3" data-url="getting-started-installation-upgrading.html"><i></i><a href="getting-started-installation-upgrading.html">Upgrading</a></li><li class=" level-3" data-url="getting-started-installation-version-control.html"><i></i><a href="getting-started-installation-version-control.html">Version control</a></li></ul></li><li class=" level-2" data-url="getting-started-modules-from-cfengine-build.html"><i></i><a href="getting-started-modules-from-cfengine-build.html">Modules from CFEngine Build</a></li><li class=" level-2" data-url="getting-started-reporting-and-web-ui.html"><i></i><a href="getting-started-reporting-and-web-ui.html">Reporting and web UI</a></li><li class=" level-2" data-url="getting-started-writing-policy.html"><i></i><a href="getting-started-writing-policy.html">Writing policy</a></li><li class=" level-2" data-url="getting-started-developing-modules.html"><i></i><a href="getting-started-developing-modules.html">Developing modules</a></li></ul></li><li class="parent level-1" data-url="release-notes.html"><i></i><a href="release-notes.html">Release notes</a><ul><li class="parent level-2" data-url="release-notes-whatsnew.html"><i></i><a href="release-notes-whatsnew.html">New in CFEngine</a><ul><li class=" level-3" data-url="release-notes-whatsnew-changelog-core.html"><i></i><a href="release-notes-whatsnew-changelog-core.html">Changelog</a></li><li class=" level-3" data-url="release-notes-whatsnew-changelog-masterfiles-policy-framework.html"><i></i><a href="release-notes-whatsnew-changelog-masterfiles-policy-framework.html">Masterfiles changelog</a></li><li class=" level-3" data-url="release-notes-whatsnew-changelog-enterprise.html"><i></i><a href="release-notes-whatsnew-changelog-enterprise.html">Enterprise changelog</a></li></ul></li><li class=" level-2" data-url="release-notes-supported-platforms.html"><i></i><a href="release-notes-supported-platforms.html">Supported platforms and versions</a></li><li class=" level-2" data-url="release-notes-known-issues.html"><i></i><a href="release-notes-known-issues.html">Known issues</a></li></ul></li><li class="parent level-1" data-url="web-ui.html"><i></i><a href="web-ui.html">Web UI</a><ul><li class=" level-2" data-url="web-ui-settings.html"><i></i><a href="web-ui-settings.html">Settings</a></li><li class=" level-2" data-url="web-ui-health.html"><i></i><a href="web-ui-health.html">Health</a></li><li class=" level-2" data-url="web-ui-hosts.html"><i></i><a href="web-ui-hosts.html">Hosts</a></li><li class=" level-2" data-url="web-ui-alerts-and-notifications.html"><i></i><a href="web-ui-alerts-and-notifications.html">Alerts and notifications</a></li><li class=" level-2" data-url="web-ui-custom-actions-for-alerts.html"><i></i><a href="web-ui-custom-actions-for-alerts.html">Custom actions for alerts</a></li><li class="parent level-2" data-url="web-ui-enterprise-reporting.html"><i></i><a href="web-ui-enterprise-reporting.html">Enterprise reporting</a><ul><li class=" level-3" data-url="web-ui-enterprise-reporting-reporting-architecture.html"><i></i><a href="web-ui-enterprise-reporting-reporting-architecture.html">Reporting architecture</a></li><li class=" level-3" data-url="web-ui-enterprise-reporting-sql-queries-enterprise-api.html"><i></i><a href="web-ui-enterprise-reporting-sql-queries-enterprise-api.html">SQL queries using the Enterprise API</a></li><li class=" level-3" data-url="web-ui-enterprise-reporting-reporting_ui.html"><i></i><a href="web-ui-enterprise-reporting-reporting_ui.html">Reporting UI</a></li><li class=" level-3" data-url="web-ui-enterprise-reporting-client-initiated-reporting.html"><i></i><a href="web-ui-enterprise-reporting-client-initiated-reporting.html">Client initiated reporting / call collect</a></li></ul></li><li class=" level-2" data-url="web-ui-federated-reporting.html"><i></i><a href="web-ui-federated-reporting.html">Federated reporting</a></li><li class=" level-2" data-url="web-ui-measurements.html"><i></i><a href="web-ui-measurements.html">Measurements app</a></li><li class="parent level-2" data-url="web-ui-hub_administration.html"><i></i><a href="web-ui-hub_administration.html">Hub administration</a><ul><li class=" level-3" data-url="web-ui-hub_administration-decommissioning-hosts.html"><i></i><a href="web-ui-hub_administration-decommissioning-hosts.html">Decommissioning hosts</a></li><li class=" level-3" data-url="web-ui-hub_administration-extending-mission-portal.html"><i></i><a href="web-ui-hub_administration-extending-mission-portal.html">Extending Mission Portal</a></li><li class=" level-3" data-url="web-ui-hub_administration-extending-query-builder.html"><i></i><a href="web-ui-hub_administration-extending-query-builder.html">Extending query builder in Mission Portal</a></li><li class=" level-3" data-url="web-ui-hub_administration-adjusting-schedules.html"><i></i><a href="web-ui-hub_administration-adjusting-schedules.html">Adjusting schedules</a></li><li class=" level-3" data-url="web-ui-hub_administration-backup-and-restore.html"><i></i><a href="web-ui-hub_administration-backup-and-restore.html">Backup and restore</a></li><li class=" level-3" data-url="web-ui-hub_administration-custom-ldap-port.html"><i></i><a href="web-ui-hub_administration-custom-ldap-port.html">Configure a custom LDAP port</a></li><li class=" level-3" data-url="web-ui-hub_administration-custom-ldaps-certificate.html"><i></i><a href="web-ui-hub_administration-custom-ldaps-certificate.html">Custom LDAPs certificate</a></li><li class=" level-3" data-url="web-ui-hub_administration-custom-https-certificate.html"><i></i><a href="web-ui-hub_administration-custom-https-certificate.html">Custom SSL certificate</a></li><li class=" level-3" data-url="web-ui-hub_administration-enable-plain-http.html"><i></i><a href="web-ui-hub_administration-enable-plain-http.html">Enable plain http</a></li><li class=" level-3" data-url="web-ui-hub_administration-lookup-license-info.html"><i></i><a href="web-ui-hub_administration-lookup-license-info.html">Lookup license info</a></li><li class=" level-3" data-url="web-ui-hub_administration-policy-deployment.html"><i></i><a href="web-ui-hub_administration-policy-deployment.html">Policy deployment</a></li><li class=" level-3" data-url="web-ui-hub_administration-public-key-distribution.html"><i></i><a href="web-ui-hub_administration-public-key-distribution.html">Public key distribution</a></li><li class=" level-3" data-url="web-ui-hub_administration-reinstall.html"><i></i><a href="web-ui-hub_administration-reinstall.html">Re-installing Enterprise hub</a></li><li class=" level-3" data-url="web-ui-hub_administration-regenerate-self-signed-cert.html"><i></i><a href="web-ui-hub_administration-regenerate-self-signed-cert.html">Regenerate self signed SSL certificate</a></li><li class=" level-3" data-url="web-ui-hub_administration-reset-admin-creds.html"><i></i><a href="web-ui-hub_administration-reset-admin-creds.html">Reset administrative credentials</a></li></ul></li><li class=" level-2" data-url="web-ui-debugging-mission-portal.html"><i></i><a href="web-ui-debugging-mission-portal.html">Debugging Mission Portal</a></li></ul></li><li class="parent level-1" data-url="api.html"><i></i><a href="api.html">API</a><ul><li class="parent level-2" data-url="api-enterprise-api-examples.html"><i></i><a href="api-enterprise-api-examples.html">Enterprise API examples</a><ul><li class=" level-3" data-url="api-enterprise-api-examples-checking-status.html"><i></i><a href="api-enterprise-api-examples-checking-status.html">Checking status</a></li><li class=" level-3" data-url="api-enterprise-api-examples-managing-settings.html"><i></i><a href="api-enterprise-api-examples-managing-settings.html">Managing settings</a></li><li class=" level-3" data-url="api-enterprise-api-examples-managing-users-and-roles.html"><i></i><a href="api-enterprise-api-examples-managing-users-and-roles.html">Managing users and roles</a></li><li class=" level-3" data-url="api-enterprise-api-examples-browsing-host-information.html"><i></i><a href="api-enterprise-api-examples-browsing-host-information.html">Browsing host information</a></li><li class=" level-3" data-url="api-enterprise-api-examples-changes-api-usage.html"><i></i><a href="api-enterprise-api-examples-changes-api-usage.html">Tracking changes</a></li><li class=" level-3" data-url="api-enterprise-api-examples-sql-queries.html"><i></i><a href="api-enterprise-api-examples-sql-queries.html">SQL query examples</a></li></ul></li><li class="parent level-2" data-url="api-enterprise-api-ref.html"><i></i><a href="api-enterprise-api-ref.html">Enterprise API reference</a><ul><li class=" level-3" data-url="api-enterprise-api-ref-actions-api.html"><i></i><a href="api-enterprise-api-ref-actions-api.html">Actions API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-build-api.html"><i></i><a href="api-enterprise-api-ref-build-api.html">Build API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-cmdb-api.html"><i></i><a href="api-enterprise-api-ref-cmdb-api.html">CMDB API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-changes.html"><i></i><a href="api-enterprise-api-ref-changes.html">Changes REST API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-federated-reporting-api.html"><i></i><a href="api-enterprise-api-ref-federated-reporting-api.html">Federated reporting configuration API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-file-changes.html"><i></i><a href="api-enterprise-api-ref-file-changes.html">File changes API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-health-diagnostic.html"><i></i><a href="api-enterprise-api-ref-health-diagnostic.html">Health diagnostic API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-host.html"><i></i><a href="api-enterprise-api-ref-host.html">Host REST API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-export-import-api.html"><i></i><a href="api-enterprise-api-ref-export-import-api.html">Import & export API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-export-import-compliance-report-api.html"><i></i><a href="api-enterprise-api-ref-export-import-compliance-report-api.html">Import & export compliance report API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-inventory.html"><i></i><a href="api-enterprise-api-ref-inventory.html">Inventory API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-ldap-api.html"><i></i><a href="api-enterprise-api-ref-ldap-api.html">LDAP authentication API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-personal-groups.html"><i></i><a href="api-enterprise-api-ref-personal-groups.html">Personal groups API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-query.html"><i></i><a href="api-enterprise-api-ref-query.html">Query REST API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-sql-schema.html"><i></i><a href="api-enterprise-api-ref-sql-schema.html">SQL schema</a></li><li class=" level-3" data-url="api-enterprise-api-ref-ssh-keys-api.html"><i></i><a href="api-enterprise-api-ref-ssh-keys-api.html">SSH keys API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-shared-groups.html"><i></i><a href="api-enterprise-api-ref-shared-groups.html">Shared groups API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-status-settings.html"><i></i><a href="api-enterprise-api-ref-status-settings.html">Status and settings REST API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-users-rbac.html"><i></i><a href="api-enterprise-api-ref-users-rbac.html">Users and access-control REST API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-vcs-settings.html"><i></i><a href="api-enterprise-api-ref-vcs-settings.html">VCS settings API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-web-rbac.html"><i></i><a href="api-enterprise-api-ref-web-rbac.html">Web RBAC API</a></li></ul></li></ul></li><li class="parent level-1" data-url="examples.html"><i></i><a href="examples.html">Examples and tutorials</a><ul><li class="parent level-2" data-url="examples-example-snippets.html"><i></i><a href="examples-example-snippets.html">Example snippets</a><ul><li class=" level-3" data-url="examples-example-snippets-general.html"><i></i><a href="examples-example-snippets-general.html">General examples</a></li><li class=" level-3" data-url="examples-example-snippets-cfengine-administration.html"><i></i><a href="examples-example-snippets-cfengine-administration.html">Administration examples</a></li><li class="parent level-3" data-url="examples-example-snippets-promise-patterns.html"><i></i><a href="examples-example-snippets-promise-patterns.html">Common promise patterns</a><ul><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_aborting_execution.html"><i></i><a href="examples-example-snippets-promise-patterns-example_aborting_execution.html">Aborting execution</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_change_detection.html"><i></i><a href="examples-example-snippets-promise-patterns-example_change_detection.html">Change detection</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_diskfree.html"><i></i><a href="examples-example-snippets-promise-patterns-example_diskfree.html">Check filesystem space</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_copy_single_files.html"><i></i><a href="examples-example-snippets-promise-patterns-example_copy_single_files.html">Copy single files</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_create_filedir.html"><i></i><a href="examples-example-snippets-promise-patterns-example_create_filedir.html">Create files and directories</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_edit_motd.html"><i></i><a href="examples-example-snippets-promise-patterns-example_edit_motd.html">Customize message of the day</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_ssh_keys.html"><i></i><a href="examples-example-snippets-promise-patterns-example_ssh_keys.html">Distribute ssh keys</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_process_kill.html"><i></i><a href="examples-example-snippets-promise-patterns-example_process_kill.html">Ensure a process is not running</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_enable_service.html"><i></i><a href="examples-example-snippets-promise-patterns-example_enable_service.html">Ensure a service is enabled and running</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_find_mac_addr.html"><i></i><a href="examples-example-snippets-promise-patterns-example_find_mac_addr.html">Find the MAC address</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_install_package.html"><i></i><a href="examples-example-snippets-promise-patterns-example_install_package.html">Install packages</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_mount_nfs.html"><i></i><a href="examples-example-snippets-promise-patterns-example_mount_nfs.html">Mount NFS filesystem</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_process_restart.html"><i></i><a href="examples-example-snippets-promise-patterns-example_process_restart.html">Restart a process</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_edit_name_resolution.html"><i></i><a href="examples-example-snippets-promise-patterns-example_edit_name_resolution.html">Set up name resolution with DNS</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_sudoers.html"><i></i><a href="examples-example-snippets-promise-patterns-example_sudoers.html">Set up sudo</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_ntp.html"><i></i><a href="examples-example-snippets-promise-patterns-example_ntp.html">Set up time management through NTP</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_updating_from_central_hub.html"><i></i><a href="examples-example-snippets-promise-patterns-example_updating_from_central_hub.html">Updating from a central policy server</a></li></ul></li><li class=" level-3" data-url="examples-example-snippets-timing-counting-measuring.html"><i></i><a href="examples-example-snippets-timing-counting-measuring.html">Measuring examples</a></li><li class=" level-3" data-url="examples-example-snippets-software-adminstration.html"><i></i><a href="examples-example-snippets-software-adminstration.html">Software administration examples</a></li><li class=" level-3" data-url="examples-example-snippets-commands-scripts-execution.html"><i></i><a href="examples-example-snippets-commands-scripts-execution.html">Commands, scripts, and execution examples</a></li><li class=" level-3" data-url="examples-example-snippets-basic-file-directory.html"><i></i><a href="examples-example-snippets-basic-file-directory.html">File and directory examples</a></li><li class=" level-3" data-url="examples-example-snippets-file-template.html"><i></i><a href="examples-example-snippets-file-template.html">File template examples</a></li><li class=" level-3" data-url="examples-example-snippets-active_directory.html"><i></i><a href="examples-example-snippets-active_directory.html">Interacting with directory services</a></li><li class=" level-3" data-url="examples-example-snippets-database.html"><i></i><a href="examples-example-snippets-database.html">Database examples</a></li><li class=" level-3" data-url="examples-example-snippets-network.html"><i></i><a href="examples-example-snippets-network.html">Network examples</a></li><li class=" level-3" data-url="examples-example-snippets-system-security.html"><i></i><a href="examples-example-snippets-system-security.html">System security examples</a></li><li class=" level-3" data-url="examples-example-snippets-system-information.html"><i></i><a href="examples-example-snippets-system-information.html">System information examples</a></li><li class=" level-3" data-url="examples-example-snippets-system-administration.html"><i></i><a href="examples-example-snippets-system-administration.html">System administration examples</a></li><li class=" level-3" data-url="examples-example-snippets-system-file.html"><i></i><a href="examples-example-snippets-system-file.html">System file examples</a></li><li class=" level-3" data-url="examples-example-snippets-windows-registry.html"><i></i><a href="examples-example-snippets-windows-registry.html">Windows registry examples</a></li><li class=" level-3" data-url="examples-example-snippets-file_permissions.html"><i></i><a href="examples-example-snippets-file_permissions.html">File permissions</a></li><li class=" level-3" data-url="examples-example-snippets-user-management.html"><i></i><a href="examples-example-snippets-user-management.html">User management examples</a></li></ul></li><li class="parent level-2" data-url="examples-tutorials.html"><i></i><a href="examples-tutorials.html">Tutorials</a><ul><li class=" level-3" data-url="examples-tutorials-json-yaml-support-in-cfengine.html"><i></i><a href="examples-tutorials-json-yaml-support-in-cfengine.html">JSON and YAML support in CFEngine</a></li><li class=" level-3" data-url="examples-tutorials-installing-cfengine-enterprise-agent.html"><i></i><a href="examples-tutorials-installing-cfengine-enterprise-agent.html">Installing CFEngine Enterprise agent</a></li><li class=" level-3" data-url="examples-tutorials-manage-local-users.html"><i></i><a href="examples-tutorials-manage-local-users.html">Managing local users</a></li><li class=" level-3" data-url="examples-tutorials-manage-ntp.html"><i></i><a href="examples-tutorials-manage-ntp.html">Managing network time protocol</a></li><li class=" level-3" data-url="examples-tutorials-manage-processes-and-services.html"><i></i><a href="examples-tutorials-manage-processes-and-services.html">Managing processes and services</a></li><li class=" level-3" data-url="examples-tutorials-manage-packages.html"><i></i><a href="examples-tutorials-manage-packages.html">Package management</a></li><li class=" level-3" data-url="examples-tutorials-write-cfengine-policy.html"><i></i><a href="examples-tutorials-write-cfengine-policy.html">Writing CFEngine policy</a></li><li class=" level-3" data-url="examples-tutorials-distribute-files-from-a-central-location.html"><i></i><a href="examples-tutorials-distribute-files-from-a-central-location.html">Distributing files from a central location</a></li><li class=" level-3" data-url="examples-tutorials-files-tutorial.html"><i></i><a href="examples-tutorials-files-tutorial.html">File editing</a></li><li class=" level-3" data-url="examples-tutorials-report_inventory_remediate_sec_vulnerabilities.html"><i></i><a href="examples-tutorials-report_inventory_remediate_sec_vulnerabilities.html">Reporting and remediation of security vulnerabilities</a></li><li class=" level-3" data-url="examples-tutorials-masterfiles_policy_framework_upgrade.html"><i></i><a href="examples-tutorials-masterfiles_policy_framework_upgrade.html">Masterfiles Policy Framework upgrade</a></li><li class=" level-3" data-url="examples-tutorials-tags.html"><i></i><a href="examples-tutorials-tags.html">Tags for variables, classes, and bundles</a></li><li class=" level-3" data-url="examples-tutorials-custom_inventory.html"><i></i><a href="examples-tutorials-custom_inventory.html">Custom inventory</a></li><li class=" level-3" data-url="examples-tutorials-dashboard-alerts.html"><i></i><a href="examples-tutorials-dashboard-alerts.html">Dashboard alerts</a></li><li class=" level-3" data-url="examples-tutorials-integrating-alerts-with-pager-duty.html"><i></i><a href="examples-tutorials-integrating-alerts-with-pager-duty.html">Integrating alerts with PagerDuty</a></li><li class=" level-3" data-url="examples-tutorials-integrating-alerts-with-ticketing-systems.html"><i></i><a href="examples-tutorials-integrating-alerts-with-ticketing-systems.html">Integrating alerts with ticketing systems</a></li><li class=" level-3" data-url="examples-tutorials-integrating-with-sumo-logic.html"><i></i><a href="examples-tutorials-integrating-with-sumo-logic.html">Integrating with Sumo Logic</a></li><li class=" level-3" data-url="examples-tutorials-render-files-with-mustache-templates.html"><i></i><a href="examples-tutorials-render-files-with-mustache-templates.html">Rendering files with Mustache templates</a></li><li class="parent level-3" data-url="examples-tutorials-reporting.html"><i></i><a href="examples-tutorials-reporting.html">Reporting</a><ul><li class=" level-4" data-url="examples-tutorials-reporting-monitoring-reporting.html"><i></i><a href="examples-tutorials-reporting-monitoring-reporting.html">Monitoring and reporting</a></li><li class=" level-4" data-url="examples-tutorials-reporting-command-line-reports.html"><i></i><a href="examples-tutorials-reporting-command-line-reports.html">Command-Line reports</a></li></ul></li><li class=" level-3" data-url="examples-tutorials-file_comparison.html"><i></i><a href="examples-tutorials-file_comparison.html">File comparison</a></li><li class="parent level-3" data-url="examples-tutorials-high-availability.html"><i></i><a href="examples-tutorials-high-availability.html">High availability</a><ul><li class=" level-4" data-url="examples-tutorials-high-availability-installation-guide.html"><i></i><a href="examples-tutorials-high-availability-installation-guide.html">Installation guide</a></li></ul></li><li class="parent level-3" data-url="examples-tutorials-writing-and-serving-policy.html"><i></i><a href="examples-tutorials-writing-and-serving-policy.html">Writing and serving policy</a><ul><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-policy-layers-abstraction.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-policy-layers-abstraction.html">Layers of abstraction in policy</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-promises-available-in-cfengine.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-promises-available-in-cfengine.html">Promises available in CFEngine</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-authoring-policy-tools-and-workflow.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-authoring-policy-tools-and-workflow.html">Authoring policy tools & workflow</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-editors.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-editors.html">Editors</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-policy-style.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-policy-style.html">Policy style guide</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-bundles-best-practices.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-bundles-best-practices.html">Bundles best practices</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-external_data.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-external_data.html">External data</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-testing-policies.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-testing-policies.html">Testing policies</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-controlling-frequency.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-controlling-frequency.html">Controlling frequency</a></li></ul></li></ul></li></ul></li><li class="parent level-1" data-url="reference.html"><i></i><a href="reference.html">Reference</a><ul><li class="parent level-2" data-url="reference-components.html"><i></i><a href="reference-components.html">Components</a><ul><li class=" level-3" data-url="reference-components-cf-agent.html"><i></i><a href="reference-components-cf-agent.html">cf-agent</a></li><li class=" level-3" data-url="reference-components-cf-secret.html"><i></i><a href="reference-components-cf-secret.html">cf-secret</a></li><li class=" level-3" data-url="reference-components-cf-support.html"><i></i><a href="reference-components-cf-support.html">cf-support</a></li><li class=" level-3" data-url="reference-components-cf-serverd.html"><i></i><a href="reference-components-cf-serverd.html">cf-serverd</a></li><li class=" level-3" data-url="reference-components-cf-execd.html"><i></i><a href="reference-components-cf-execd.html">cf-execd</a></li><li class=" level-3" data-url="reference-components-cf-promises.html"><i></i><a href="reference-components-cf-promises.html">cf-promises</a></li><li class=" level-3" data-url="reference-components-cf-monitord.html"><i></i><a href="reference-components-cf-monitord.html">cf-monitord</a></li><li class=" level-3" data-url="reference-components-cf-key.html"><i></i><a href="reference-components-cf-key.html">cf-key</a></li><li class=" level-3" data-url="reference-components-cf-runagent.html"><i></i><a href="reference-components-cf-runagent.html">cf-runagent</a></li><li class=" level-3" data-url="reference-components-cf-check.html"><i></i><a href="reference-components-cf-check.html">cf-check</a></li><li class=" level-3" data-url="reference-components-cf-hub.html"><i></i><a href="reference-components-cf-hub.html">cf-hub</a></li><li class=" level-3" data-url="reference-components-cf-net.html"><i></i><a href="reference-components-cf-net.html">cf-net</a></li><li class=" level-3" data-url="reference-components-cf-reactor.html"><i></i><a href="reference-components-cf-reactor.html">cf-reactor</a></li><li class=" level-3" data-url="reference-components-file_control_promises.html"><i></i><a href="reference-components-file_control_promises.html">file control</a></li></ul></li><li class="parent level-2" data-url="reference-promise-types.html"><i></i><a href="reference-promise-types.html">Promise types</a><ul><li class=" level-3" data-url="reference-promise-types-access.html"><i></i><a href="reference-promise-types-access.html">access</a></li><li class=" level-3" data-url="reference-promise-types-classes.html"><i></i><a href="reference-promise-types-classes.html">classes</a></li><li class=" level-3" data-url="reference-promise-types-commands.html"><i></i><a href="reference-promise-types-commands.html">commands</a></li><li class=" level-3" data-url="reference-promise-types-custom.html"><i></i><a href="reference-promise-types-custom.html">custom</a></li><li class=" level-3" data-url="reference-promise-types-defaults.html"><i></i><a href="reference-promise-types-defaults.html">defaults</a></li><li class="parent level-3" data-url="reference-promise-types-files.html"><i></i><a href="reference-promise-types-files.html">files</a><ul><li class="parent level-4" data-url="reference-promise-types-files-edit_line.html"><i></i><a href="reference-promise-types-files-edit_line.html">edit_line</a><ul><li class=" level-5" data-url="reference-promise-types-files-edit_line-delete_lines.html"><i></i><a href="reference-promise-types-files-edit_line-delete_lines.html">delete_lines</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_line-field_edits.html"><i></i><a href="reference-promise-types-files-edit_line-field_edits.html">field_edits</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_line-insert_lines.html"><i></i><a href="reference-promise-types-files-edit_line-insert_lines.html">insert_lines</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_line-replace_patterns.html"><i></i><a href="reference-promise-types-files-edit_line-replace_patterns.html">replace_patterns</a></li></ul></li><li class="parent level-4" data-url="reference-promise-types-files-edit_xml.html"><i></i><a href="reference-promise-types-files-edit_xml.html">edit_xml</a><ul><li class=" level-5" data-url="reference-promise-types-files-edit_xml-build_xpath.html"><i></i><a href="reference-promise-types-files-edit_xml-build_xpath.html">build_xpath</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-delete_attribute.html"><i></i><a href="reference-promise-types-files-edit_xml-delete_attribute.html">delete_attribute</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-delete_text.html"><i></i><a href="reference-promise-types-files-edit_xml-delete_text.html">delete_text</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-delete_tree.html"><i></i><a href="reference-promise-types-files-edit_xml-delete_tree.html">delete_tree</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-insert_text.html"><i></i><a href="reference-promise-types-files-edit_xml-insert_text.html">insert_text</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-insert_tree.html"><i></i><a href="reference-promise-types-files-edit_xml-insert_tree.html">insert_tree</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-set_attribute.html"><i></i><a href="reference-promise-types-files-edit_xml-set_attribute.html">set_attribute</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-set_text.html"><i></i><a href="reference-promise-types-files-edit_xml-set_text.html">set_text</a></li></ul></li></ul></li><li class=" level-3" data-url="reference-promise-types-measurements.html"><i></i><a href="reference-promise-types-measurements.html">measurements</a></li><li class=" level-3" data-url="reference-promise-types-meta.html"><i></i><a href="reference-promise-types-meta.html">meta</a></li><li class=" level-3" data-url="reference-promise-types-methods.html"><i></i><a href="reference-promise-types-methods.html">methods</a></li><li class=" level-3" data-url="reference-promise-types-packages.html"><i></i><a href="reference-promise-types-packages.html">packages</a></li><li class=" level-3" data-url="reference-promise-types-packages-deprecated.html"><i></i><a href="reference-promise-types-packages-deprecated.html">packages (deprecated)</a></li><li class=" level-3" data-url="reference-promise-types-processes.html"><i></i><a href="reference-promise-types-processes.html">processes</a></li><li class=" level-3" data-url="reference-promise-types-reports.html"><i></i><a href="reference-promise-types-reports.html">reports</a></li><li class=" level-3" data-url="reference-promise-types-roles.html"><i></i><a href="reference-promise-types-roles.html">roles</a></li><li class=" level-3" data-url="reference-promise-types-services.html"><i></i><a href="reference-promise-types-services.html">services</a></li><li class=" level-3" data-url="reference-promise-types-storage.html"><i></i><a href="reference-promise-types-storage.html">storage</a></li><li class=" level-3" data-url="reference-promise-types-users.html"><i></i><a href="reference-promise-types-users.html">users</a></li><li class=" level-3" data-url="reference-promise-types-vars.html"><i></i><a href="reference-promise-types-vars.html">vars</a></li><li class=" level-3" data-url="reference-promise-types-databases.html"><i></i><a href="reference-promise-types-databases.html">databases</a></li><li class=" level-3" data-url="reference-promise-types-guest_environments.html"><i></i><a href="reference-promise-types-guest_environments.html">guest_environments</a></li></ul></li><li class="parent level-2" data-url="reference-functions.html"><i></i><a href="reference-functions.html">Functions</a><ul><li class=" level-3" data-url="reference-functions-accessedbefore.html"><i></i><a href="reference-functions-accessedbefore.html">accessedbefore</a></li><li class=" level-3" data-url="reference-functions-accumulated.html"><i></i><a href="reference-functions-accumulated.html">accumulated</a></li><li class=" level-3" data-url="reference-functions-ago.html"><i></i><a href="reference-functions-ago.html">ago</a></li><li class=" level-3" data-url="reference-functions-and.html"><i></i><a href="reference-functions-and.html">and</a></li><li class=" level-3" data-url="reference-functions-basename.html"><i></i><a href="reference-functions-basename.html">basename</a></li><li class=" level-3" data-url="reference-functions-bundlesmatching.html"><i></i><a href="reference-functions-bundlesmatching.html">bundlesmatching</a></li><li class=" level-3" data-url="reference-functions-bundlestate.html"><i></i><a href="reference-functions-bundlestate.html">bundlestate</a></li><li class=" level-3" data-url="reference-functions-callstack_callers.html"><i></i><a href="reference-functions-callstack_callers.html">callstack_callers</a></li><li class=" level-3" data-url="reference-functions-callstack_promisers.html"><i></i><a href="reference-functions-callstack_promisers.html">callstack_promisers</a></li><li class=" level-3" data-url="reference-functions-canonify.html"><i></i><a href="reference-functions-canonify.html">canonify</a></li><li class=" level-3" data-url="reference-functions-canonifyuniquely.html"><i></i><a href="reference-functions-canonifyuniquely.html">canonifyuniquely</a></li><li class=" level-3" data-url="reference-functions-cf_version_after.html"><i></i><a href="reference-functions-cf_version_after.html">cf_version_after</a></li><li class=" level-3" data-url="reference-functions-cf_version_at.html"><i></i><a href="reference-functions-cf_version_at.html">cf_version_at</a></li><li class=" level-3" data-url="reference-functions-cf_version_before.html"><i></i><a href="reference-functions-cf_version_before.html">cf_version_before</a></li><li class=" level-3" data-url="reference-functions-cf_version_between.html"><i></i><a href="reference-functions-cf_version_between.html">cf_version_between</a></li><li class=" level-3" data-url="reference-functions-cf_version_maximum.html"><i></i><a href="reference-functions-cf_version_maximum.html">cf_version_maximum</a></li><li class=" level-3" data-url="reference-functions-cf_version_minimum.html"><i></i><a href="reference-functions-cf_version_minimum.html">cf_version_minimum</a></li><li class=" level-3" data-url="reference-functions-changedbefore.html"><i></i><a href="reference-functions-changedbefore.html">changedbefore</a></li><li class=" level-3" data-url="reference-functions-classesmatching.html"><i></i><a href="reference-functions-classesmatching.html">classesmatching</a></li><li class=" level-3" data-url="reference-functions-classfiltercsv.html"><i></i><a href="reference-functions-classfiltercsv.html">classfiltercsv</a></li><li class=" level-3" data-url="reference-functions-classify.html"><i></i><a href="reference-functions-classify.html">classify</a></li><li class=" level-3" data-url="reference-functions-classmatch.html"><i></i><a href="reference-functions-classmatch.html">classmatch</a></li><li class=" level-3" data-url="reference-functions-concat.html"><i></i><a href="reference-functions-concat.html">concat</a></li><li class=" level-3" data-url="reference-functions-countclassesmatching.html"><i></i><a href="reference-functions-countclassesmatching.html">countclassesmatching</a></li><li class=" level-3" data-url="reference-functions-countlinesmatching.html"><i></i><a href="reference-functions-countlinesmatching.html">countlinesmatching</a></li><li class=" level-3" data-url="reference-functions-data_expand.html"><i></i><a href="reference-functions-data_expand.html">data_expand</a></li><li class=" level-3" data-url="reference-functions-data_readstringarray.html"><i></i><a href="reference-functions-data_readstringarray.html">data_readstringarray</a></li><li class=" level-3" data-url="reference-functions-data_readstringarrayidx.html"><i></i><a href="reference-functions-data_readstringarrayidx.html">data_readstringarrayidx</a></li><li class=" level-3" data-url="reference-functions-data_regextract.html"><i></i><a href="reference-functions-data_regextract.html">data_regextract</a></li><li class=" level-3" data-url="reference-functions-data_sysctlvalues.html"><i></i><a href="reference-functions-data_sysctlvalues.html">data_sysctlvalues</a></li><li class=" level-3" data-url="reference-functions-datastate.html"><i></i><a href="reference-functions-datastate.html">datastate</a></li><li class=" level-3" data-url="reference-functions-difference.html"><i></i><a href="reference-functions-difference.html">difference</a></li><li class=" level-3" data-url="reference-functions-dirname.html"><i></i><a href="reference-functions-dirname.html">dirname</a></li><li class=" level-3" data-url="reference-functions-diskfree.html"><i></i><a href="reference-functions-diskfree.html">diskfree</a></li><li class=" level-3" data-url="reference-functions-escape.html"><i></i><a href="reference-functions-escape.html">escape</a></li><li class=" level-3" data-url="reference-functions-eval.html"><i></i><a href="reference-functions-eval.html">eval</a></li><li class=" level-3" data-url="reference-functions-every.html"><i></i><a href="reference-functions-every.html">every</a></li><li class=" level-3" data-url="reference-functions-execresult.html"><i></i><a href="reference-functions-execresult.html">execresult</a></li><li class=" level-3" data-url="reference-functions-execresult_as_data.html"><i></i><a href="reference-functions-execresult_as_data.html">execresult_as_data</a></li><li class=" level-3" data-url="reference-functions-expandrange.html"><i></i><a href="reference-functions-expandrange.html">expandrange</a></li><li class=" level-3" data-url="reference-functions-file_hash.html"><i></i><a href="reference-functions-file_hash.html">file_hash</a></li><li class=" level-3" data-url="reference-functions-fileexists.html"><i></i><a href="reference-functions-fileexists.html">fileexists</a></li><li class=" level-3" data-url="reference-functions-filesexist.html"><i></i><a href="reference-functions-filesexist.html">filesexist</a></li><li class=" level-3" data-url="reference-functions-filesize.html"><i></i><a href="reference-functions-filesize.html">filesize</a></li><li class=" level-3" data-url="reference-functions-filestat.html"><i></i><a href="reference-functions-filestat.html">filestat</a></li><li class=" level-3" data-url="reference-functions-filter.html"><i></i><a href="reference-functions-filter.html">filter</a></li><li class=" level-3" data-url="reference-functions-findfiles.html"><i></i><a href="reference-functions-findfiles.html">findfiles</a></li><li class=" level-3" data-url="reference-functions-findfiles_up.html"><i></i><a href="reference-functions-findfiles_up.html">findfiles_up</a></li><li class=" level-3" data-url="reference-functions-findprocesses.html"><i></i><a href="reference-functions-findprocesses.html">findprocesses</a></li><li class=" level-3" data-url="reference-functions-format.html"><i></i><a href="reference-functions-format.html">format</a></li><li class=" level-3" data-url="reference-functions-getclassmetatags.html"><i></i><a href="reference-functions-getclassmetatags.html">getclassmetatags</a></li><li class=" level-3" data-url="reference-functions-getenv.html"><i></i><a href="reference-functions-getenv.html">getenv</a></li><li class=" level-3" data-url="reference-functions-getfields.html"><i></i><a href="reference-functions-getfields.html">getfields</a></li><li class=" level-3" data-url="reference-functions-getgid.html"><i></i><a href="reference-functions-getgid.html">getgid</a></li><li class=" level-3" data-url="reference-functions-getindices.html"><i></i><a href="reference-functions-getindices.html">getindices</a></li><li class=" level-3" data-url="reference-functions-getuid.html"><i></i><a href="reference-functions-getuid.html">getuid</a></li><li class=" level-3" data-url="reference-functions-getuserinfo.html"><i></i><a href="reference-functions-getuserinfo.html">getuserinfo</a></li><li class=" level-3" data-url="reference-functions-getusers.html"><i></i><a href="reference-functions-getusers.html">getusers</a></li><li class=" level-3" data-url="reference-functions-getvalues.html"><i></i><a href="reference-functions-getvalues.html">getvalues</a></li><li class=" level-3" data-url="reference-functions-getvariablemetatags.html"><i></i><a href="reference-functions-getvariablemetatags.html">getvariablemetatags</a></li><li class=" level-3" data-url="reference-functions-grep.html"><i></i><a href="reference-functions-grep.html">grep</a></li><li class=" level-3" data-url="reference-functions-groupexists.html"><i></i><a href="reference-functions-groupexists.html">groupexists</a></li><li class=" level-3" data-url="reference-functions-hash.html"><i></i><a href="reference-functions-hash.html">hash</a></li><li class=" level-3" data-url="reference-functions-hash_to_int.html"><i></i><a href="reference-functions-hash_to_int.html">hash_to_int</a></li><li class=" level-3" data-url="reference-functions-hashmatch.html"><i></i><a href="reference-functions-hashmatch.html">hashmatch</a></li><li class=" level-3" data-url="reference-functions-host2ip.html"><i></i><a href="reference-functions-host2ip.html">host2ip</a></li><li class=" level-3" data-url="reference-functions-hostinnetgroup.html"><i></i><a href="reference-functions-hostinnetgroup.html">hostinnetgroup</a></li><li class=" level-3" data-url="reference-functions-hostrange.html"><i></i><a href="reference-functions-hostrange.html">hostrange</a></li><li class=" level-3" data-url="reference-functions-hostsseen.html"><i></i><a href="reference-functions-hostsseen.html">hostsseen</a></li><li class=" level-3" data-url="reference-functions-hostswithclass.html"><i></i><a href="reference-functions-hostswithclass.html">hostswithclass</a></li><li class=" level-3" data-url="reference-functions-hubknowledge.html"><i></i><a href="reference-functions-hubknowledge.html">hubknowledge</a></li><li class=" level-3" data-url="reference-functions-ifelse.html"><i></i><a href="reference-functions-ifelse.html">ifelse</a></li><li class=" level-3" data-url="reference-functions-int.html"><i></i><a href="reference-functions-int.html">int</a></li><li class=" level-3" data-url="reference-functions-intersection.html"><i></i><a href="reference-functions-intersection.html">intersection</a></li><li class=" level-3" data-url="reference-functions-ip2host.html"><i></i><a href="reference-functions-ip2host.html">ip2host</a></li><li class=" level-3" data-url="reference-functions-iprange.html"><i></i><a href="reference-functions-iprange.html">iprange</a></li><li class=" level-3" data-url="reference-functions-irange.html"><i></i><a href="reference-functions-irange.html">irange</a></li><li class=" level-3" data-url="reference-functions-isdir.html"><i></i><a href="reference-functions-isdir.html">isdir</a></li><li class=" level-3" data-url="reference-functions-isexecutable.html"><i></i><a href="reference-functions-isexecutable.html">isexecutable</a></li><li class=" level-3" data-url="reference-functions-isgreaterthan.html"><i></i><a href="reference-functions-isgreaterthan.html">isgreaterthan</a></li><li class=" level-3" data-url="reference-functions-isipinsubnet.html"><i></i><a href="reference-functions-isipinsubnet.html">isipinsubnet</a></li><li class=" level-3" data-url="reference-functions-islessthan.html"><i></i><a href="reference-functions-islessthan.html">islessthan</a></li><li class=" level-3" data-url="reference-functions-islink.html"><i></i><a href="reference-functions-islink.html">islink</a></li><li class=" level-3" data-url="reference-functions-isnewerthan.html"><i></i><a href="reference-functions-isnewerthan.html">isnewerthan</a></li><li class=" level-3" data-url="reference-functions-isplain.html"><i></i><a href="reference-functions-isplain.html">isplain</a></li><li class=" level-3" data-url="reference-functions-isreadable.html"><i></i><a href="reference-functions-isreadable.html">isreadable</a></li><li class=" level-3" data-url="reference-functions-isvariable.html"><i></i><a href="reference-functions-isvariable.html">isvariable</a></li><li class=" level-3" data-url="reference-functions-join.html"><i></i><a href="reference-functions-join.html">join</a></li><li class=" level-3" data-url="reference-functions-lastnode.html"><i></i><a href="reference-functions-lastnode.html">lastnode</a></li><li class=" level-3" data-url="reference-functions-laterthan.html"><i></i><a href="reference-functions-laterthan.html">laterthan</a></li><li class=" level-3" data-url="reference-functions-ldaparray.html"><i></i><a href="reference-functions-ldaparray.html">ldaparray</a></li><li class=" level-3" data-url="reference-functions-ldaplist.html"><i></i><a href="reference-functions-ldaplist.html">ldaplist</a></li><li class=" level-3" data-url="reference-functions-ldapvalue.html"><i></i><a href="reference-functions-ldapvalue.html">ldapvalue</a></li><li class=" level-3" data-url="reference-functions-length.html"><i></i><a href="reference-functions-length.html">length</a></li><li class=" level-3" data-url="reference-functions-lsdir.html"><i></i><a href="reference-functions-lsdir.html">lsdir</a></li><li class=" level-3" data-url="reference-functions-makerule.html"><i></i><a href="reference-functions-makerule.html">makerule</a></li><li class=" level-3" data-url="reference-functions-maparray.html"><i></i><a href="reference-functions-maparray.html">maparray</a></li><li class=" level-3" data-url="reference-functions-mapdata.html"><i></i><a href="reference-functions-mapdata.html">mapdata</a></li><li class=" level-3" data-url="reference-functions-maplist.html"><i></i><a href="reference-functions-maplist.html">maplist</a></li><li class=" level-3" data-url="reference-functions-max.html"><i></i><a href="reference-functions-max.html">max</a></li><li class=" level-3" data-url="reference-functions-mean.html"><i></i><a href="reference-functions-mean.html">mean</a></li><li class=" level-3" data-url="reference-functions-mergedata.html"><i></i><a href="reference-functions-mergedata.html">mergedata</a></li><li class=" level-3" data-url="reference-functions-min.html"><i></i><a href="reference-functions-min.html">min</a></li><li class=" level-3" data-url="reference-functions-network_connections.html"><i></i><a href="reference-functions-network_connections.html">network_connections</a></li><li class=" level-3" data-url="reference-functions-none.html"><i></i><a href="reference-functions-none.html">none</a></li><li class=" level-3" data-url="reference-functions-not.html"><i></i><a href="reference-functions-not.html">not</a></li><li class=" level-3" data-url="reference-functions-now.html"><i></i><a href="reference-functions-now.html">now</a></li><li class=" level-3" data-url="reference-functions-nth.html"><i></i><a href="reference-functions-nth.html">nth</a></li><li class=" level-3" data-url="reference-functions-on.html"><i></i><a href="reference-functions-on.html">on</a></li><li class=" level-3" data-url="reference-functions-or.html"><i></i><a href="reference-functions-or.html">or</a></li><li class=" level-3" data-url="reference-functions-packagesmatching.html"><i></i><a href="reference-functions-packagesmatching.html">packagesmatching</a></li><li class=" level-3" data-url="reference-functions-packageupdatesmatching.html"><i></i><a href="reference-functions-packageupdatesmatching.html">packageupdatesmatching</a></li><li class=" level-3" data-url="reference-functions-parseintarray.html"><i></i><a href="reference-functions-parseintarray.html">parseintarray</a></li><li class=" level-3" data-url="reference-functions-parsejson.html"><i></i><a href="reference-functions-parsejson.html">parsejson</a></li><li class=" level-3" data-url="reference-functions-parserealarray.html"><i></i><a href="reference-functions-parserealarray.html">parserealarray</a></li><li class=" level-3" data-url="reference-functions-parsestringarray.html"><i></i><a href="reference-functions-parsestringarray.html">parsestringarray</a></li><li class=" level-3" data-url="reference-functions-parsestringarrayidx.html"><i></i><a href="reference-functions-parsestringarrayidx.html">parsestringarrayidx</a></li><li class=" level-3" data-url="reference-functions-parseyaml.html"><i></i><a href="reference-functions-parseyaml.html">parseyaml</a></li><li class=" level-3" data-url="reference-functions-peerleader.html"><i></i><a href="reference-functions-peerleader.html">peerleader</a></li><li class=" level-3" data-url="reference-functions-peerleaders.html"><i></i><a href="reference-functions-peerleaders.html">peerleaders</a></li><li class=" level-3" data-url="reference-functions-peers.html"><i></i><a href="reference-functions-peers.html">peers</a></li><li class=" level-3" data-url="reference-functions-processexists.html"><i></i><a href="reference-functions-processexists.html">processexists</a></li><li class=" level-3" data-url="reference-functions-product.html"><i></i><a href="reference-functions-product.html">product</a></li><li class=" level-3" data-url="reference-functions-randomint.html"><i></i><a href="reference-functions-randomint.html">randomint</a></li><li class=" level-3" data-url="reference-functions-read_module_protocol.html"><i></i><a href="reference-functions-read_module_protocol.html">read_module_protocol</a></li><li class=" level-3" data-url="reference-functions-readcsv.html"><i></i><a href="reference-functions-readcsv.html">readcsv</a></li><li class=" level-3" data-url="reference-functions-readdata.html"><i></i><a href="reference-functions-readdata.html">readdata</a></li><li class=" level-3" data-url="reference-functions-readenvfile.html"><i></i><a href="reference-functions-readenvfile.html">readenvfile</a></li><li class=" level-3" data-url="reference-functions-readfile.html"><i></i><a href="reference-functions-readfile.html">readfile</a></li><li class=" level-3" data-url="reference-functions-readintarray.html"><i></i><a href="reference-functions-readintarray.html">readintarray</a></li><li class=" level-3" data-url="reference-functions-readintlist.html"><i></i><a href="reference-functions-readintlist.html">readintlist</a></li><li class=" level-3" data-url="reference-functions-readjson.html"><i></i><a href="reference-functions-readjson.html">readjson</a></li><li class=" level-3" data-url="reference-functions-readrealarray.html"><i></i><a href="reference-functions-readrealarray.html">readrealarray</a></li><li class=" level-3" data-url="reference-functions-readreallist.html"><i></i><a href="reference-functions-readreallist.html">readreallist</a></li><li class=" level-3" data-url="reference-functions-readstringarray.html"><i></i><a href="reference-functions-readstringarray.html">readstringarray</a></li><li class=" level-3" data-url="reference-functions-readstringarrayidx.html"><i></i><a href="reference-functions-readstringarrayidx.html">readstringarrayidx</a></li><li class=" level-3" data-url="reference-functions-readstringlist.html"><i></i><a href="reference-functions-readstringlist.html">readstringlist</a></li><li class=" level-3" data-url="reference-functions-readtcp.html"><i></i><a href="reference-functions-readtcp.html">readtcp</a></li><li class=" level-3" data-url="reference-functions-readyaml.html"><i></i><a href="reference-functions-readyaml.html">readyaml</a></li><li class=" level-3" data-url="reference-functions-regarray.html"><i></i><a href="reference-functions-regarray.html">regarray</a></li><li class=" level-3" data-url="reference-functions-regcmp.html"><i></i><a href="reference-functions-regcmp.html">regcmp</a></li><li class=" level-3" data-url="reference-functions-regex_replace.html"><i></i><a href="reference-functions-regex_replace.html">regex_replace</a></li><li class=" level-3" data-url="reference-functions-regextract.html"><i></i><a href="reference-functions-regextract.html">regextract</a></li><li class=" level-3" data-url="reference-functions-registryvalue.html"><i></i><a href="reference-functions-registryvalue.html">registryvalue</a></li><li class=" level-3" data-url="reference-functions-regldap.html"><i></i><a href="reference-functions-regldap.html">regldap</a></li><li class=" level-3" data-url="reference-functions-regline.html"><i></i><a href="reference-functions-regline.html">regline</a></li><li class=" level-3" data-url="reference-functions-reglist.html"><i></i><a href="reference-functions-reglist.html">reglist</a></li><li class=" level-3" data-url="reference-functions-remoteclassesmatching.html"><i></i><a href="reference-functions-remoteclassesmatching.html">remoteclassesmatching</a></li><li class=" level-3" data-url="reference-functions-remotescalar.html"><i></i><a href="reference-functions-remotescalar.html">remotescalar</a></li><li class=" level-3" data-url="reference-functions-returnszero.html"><i></i><a href="reference-functions-returnszero.html">returnszero</a></li><li class=" level-3" data-url="reference-functions-reverse.html"><i></i><a href="reference-functions-reverse.html">reverse</a></li><li class=" level-3" data-url="reference-functions-rrange.html"><i></i><a href="reference-functions-rrange.html">rrange</a></li><li class=" level-3" data-url="reference-functions-selectservers.html"><i></i><a href="reference-functions-selectservers.html">selectservers</a></li><li class=" level-3" data-url="reference-functions-shuffle.html"><i></i><a href="reference-functions-shuffle.html">shuffle</a></li><li class=" level-3" data-url="reference-functions-some.html"><i></i><a href="reference-functions-some.html">some</a></li><li class=" level-3" data-url="reference-functions-sort.html"><i></i><a href="reference-functions-sort.html">sort</a></li><li class=" level-3" data-url="reference-functions-splayclass.html"><i></i><a href="reference-functions-splayclass.html">splayclass</a></li><li class=" level-3" data-url="reference-functions-splitstring.html"><i></i><a href="reference-functions-splitstring.html">splitstring</a></li><li class=" level-3" data-url="reference-functions-storejson.html"><i></i><a href="reference-functions-storejson.html">storejson</a></li><li class=" level-3" data-url="reference-functions-strcmp.html"><i></i><a href="reference-functions-strcmp.html">strcmp</a></li><li class=" level-3" data-url="reference-functions-strftime.html"><i></i><a href="reference-functions-strftime.html">strftime</a></li><li class=" level-3" data-url="reference-functions-string.html"><i></i><a href="reference-functions-string.html">string</a></li><li class=" level-3" data-url="reference-functions-string_downcase.html"><i></i><a href="reference-functions-string_downcase.html">string_downcase</a></li><li class=" level-3" data-url="reference-functions-string_head.html"><i></i><a href="reference-functions-string_head.html">string_head</a></li><li class=" level-3" data-url="reference-functions-string_length.html"><i></i><a href="reference-functions-string_length.html">string_length</a></li><li class=" level-3" data-url="reference-functions-string_mustache.html"><i></i><a href="reference-functions-string_mustache.html">string_mustache</a></li><li class=" level-3" data-url="reference-functions-string_replace.html"><i></i><a href="reference-functions-string_replace.html">string_replace</a></li><li class=" level-3" data-url="reference-functions-string_reverse.html"><i></i><a href="reference-functions-string_reverse.html">string_reverse</a></li><li class=" level-3" data-url="reference-functions-string_split.html"><i></i><a href="reference-functions-string_split.html">string_split</a></li><li class=" level-3" data-url="reference-functions-string_tail.html"><i></i><a href="reference-functions-string_tail.html">string_tail</a></li><li class=" level-3" data-url="reference-functions-string_trim.html"><i></i><a href="reference-functions-string_trim.html">string_trim</a></li><li class=" level-3" data-url="reference-functions-string_upcase.html"><i></i><a href="reference-functions-string_upcase.html">string_upcase</a></li><li class=" level-3" data-url="reference-functions-sublist.html"><i></i><a href="reference-functions-sublist.html">sublist</a></li><li class=" level-3" data-url="reference-functions-sum.html"><i></i><a href="reference-functions-sum.html">sum</a></li><li class=" level-3" data-url="reference-functions-sysctlvalue.html"><i></i><a href="reference-functions-sysctlvalue.html">sysctlvalue</a></li><li class=" level-3" data-url="reference-functions-translatepath.html"><i></i><a href="reference-functions-translatepath.html">translatepath</a></li><li class=" level-3" data-url="reference-functions-type.html"><i></i><a href="reference-functions-type.html">type</a></li><li class=" level-3" data-url="reference-functions-unique.html"><i></i><a href="reference-functions-unique.html">unique</a></li><li class=" level-3" data-url="reference-functions-url_get.html"><i></i><a href="reference-functions-url_get.html">url_get</a></li><li class=" level-3" data-url="reference-functions-usemodule.html"><i></i><a href="reference-functions-usemodule.html">usemodule</a></li><li class=" level-3" data-url="reference-functions-userexists.html"><i></i><a href="reference-functions-userexists.html">userexists</a></li><li class=" level-3" data-url="reference-functions-validdata.html"><i></i><a href="reference-functions-validdata.html">validdata</a></li><li class=" level-3" data-url="reference-functions-validjson.html"><i></i><a href="reference-functions-validjson.html">validjson</a></li><li class=" level-3" data-url="reference-functions-variablesmatching.html"><i></i><a href="reference-functions-variablesmatching.html">variablesmatching</a></li><li class=" level-3" data-url="reference-functions-variablesmatching_as_data.html"><i></i><a href="reference-functions-variablesmatching_as_data.html">variablesmatching_as_data</a></li><li class=" level-3" data-url="reference-functions-variance.html"><i></i><a href="reference-functions-variance.html">variance</a></li><li class=" level-3" data-url="reference-functions-version_compare.html"><i></i><a href="reference-functions-version_compare.html">version_compare</a></li></ul></li><li class="parent level-2" data-url="reference-language-concepts.html"><i></i><a href="reference-language-concepts.html">Language concepts</a><ul><li class=" level-3" data-url="reference-language-concepts-bundles.html"><i></i><a href="reference-language-concepts-bundles.html">Bundles</a></li><li class=" level-3" data-url="reference-language-concepts-bodies.html"><i></i><a href="reference-language-concepts-bodies.html">Bodies</a></li><li class=" level-3" data-url="reference-language-concepts-promises.html"><i></i><a href="reference-language-concepts-promises.html">Promises</a></li><li class=" level-3" data-url="reference-language-concepts-normal-ordering.html"><i></i><a href="reference-language-concepts-normal-ordering.html">Normal ordering</a></li><li class=" level-3" data-url="reference-language-concepts-classes.html"><i></i><a href="reference-language-concepts-classes.html">Classes and decisions</a></li><li class=" level-3" data-url="reference-language-concepts-variables.html"><i></i><a href="reference-language-concepts-variables.html">Variables</a></li><li class=" level-3" data-url="reference-language-concepts-augments.html"><i></i><a href="reference-language-concepts-augments.html">Augments</a></li><li class=" level-3" data-url="reference-language-concepts-loops.html"><i></i><a href="reference-language-concepts-loops.html">Loops</a></li><li class=" level-3" data-url="reference-language-concepts-pattern-matching-and-referencing.html"><i></i><a href="reference-language-concepts-pattern-matching-and-referencing.html">Pattern matching and referencing</a></li><li class="parent level-3" data-url="reference-language-concepts-modules.html"><i></i><a href="reference-language-concepts-modules.html">Modules</a><ul><li class=" level-4" data-url="reference-language-concepts-modules-package-module-api.html"><i></i><a href="reference-language-concepts-modules-package-module-api.html">Package modules</a></li></ul></li><li class=" level-3" data-url="reference-language-concepts-namespaces.html"><i></i><a href="reference-language-concepts-namespaces.html">Namespaces</a></li></ul></li><li class="parent level-2" data-url="reference-special-variables.html"><i></i><a href="reference-special-variables.html">Special variables</a><ul><li class=" level-3" data-url="reference-special-variables-connection.html"><i></i><a href="reference-special-variables-connection.html">connection</a></li><li class=" level-3" data-url="reference-special-variables-const.html"><i></i><a href="reference-special-variables-const.html">const</a></li><li class=" level-3" data-url="reference-special-variables-def.html"><i></i><a href="reference-special-variables-def.html">def</a></li><li class=" level-3" data-url="reference-special-variables-edit.html"><i></i><a href="reference-special-variables-edit.html">edit</a></li><li class=" level-3" data-url="reference-special-variables-match.html"><i></i><a href="reference-special-variables-match.html">match</a></li><li class=" level-3" data-url="reference-special-variables-mon.html"><i></i><a href="reference-special-variables-mon.html">mon</a></li><li class=" level-3" data-url="reference-special-variables-sys.html"><i></i><a href="reference-special-variables-sys.html">sys</a></li><li class=" level-3" data-url="reference-special-variables-this.html"><i></i><a href="reference-special-variables-this.html">this</a></li></ul></li><li class="parent level-2" data-url="reference-masterfiles-policy-framework.html"><i></i><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a><ul><li class=" level-3" data-url="reference-masterfiles-policy-framework-promises.html"><i></i><a href="reference-masterfiles-policy-framework-promises.html">promises.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-no-distrib.html"><i></i><a href="reference-masterfiles-policy-framework-no-distrib.html">.no-distrib/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-update.html"><i></i><a href="reference-masterfiles-policy-framework-update.html">update.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-standalone_self_upgrade.html"><i></i><a href="reference-masterfiles-policy-framework-standalone_self_upgrade.html">standalone_self_upgrade.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal.html">cfe_internal/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-cfe_cfengine.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-cfe_cfengine.html">cfe_internal/CFE_cfengine.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-core.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-core.html">cfe_internal/core/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-core-watchdog.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-core-watchdog.html">cfe_internal/core/watchdog</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-core-watchdog-watchdog.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-core-watchdog-watchdog.html">cfe_internal/core/watchdog/watchdog.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-enterprise.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise.html">cfe_internal/enterprise/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation.html">cfe_internal/enterprise/federation/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation-federation.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation-federation.html">cfe_internal/enterprise/federation/federation.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-recommendations.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-recommendations.html">cfe_internal/recommendations.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update.html">cfe_internal/update/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_dc_workflow.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_dc_workflow.html">cfe_internal/update/cfe_internal_dc_workflow.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_update_from_repository.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_update_from_repository.html">cfe_internal/update/cfe_internal_update_from_repository.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-lib.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-lib.html">cfe_internal/update/lib.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-systemd_units.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-systemd_units.html">cfe_internal/update/systemd_units.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-update_bins.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_bins.html">cfe_internal/update/update_bins.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-update_policy.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_policy.html">cfe_internal/update/update_policy.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-update_processes.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_processes.html">cfe_internal/update/update_processes.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls.html"><i></i><a href="reference-masterfiles-policy-framework-controls.html">controls/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf_agent.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf_agent.html">controls/cf_agent.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf_execd.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf_execd.html">controls/cf_execd.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf-hub.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf-hub.html">controls/cf_hub.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf_monitord.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf_monitord.html">controls/cf_monitord.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf_runagent.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf_runagent.html">controls/cf_runagent.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf_serverd.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf_serverd.html">controls/cf_serverd.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-def.html"><i></i><a href="reference-masterfiles-policy-framework-controls-def.html">controls/def.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-def_inputs.html"><i></i><a href="reference-masterfiles-policy-framework-controls-def_inputs.html">controls/def_inputs.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-reports.html"><i></i><a href="reference-masterfiles-policy-framework-controls-reports.html">controls/reports.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-update_def.html"><i></i><a href="reference-masterfiles-policy-framework-controls-update_def.html">controls/update_def.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-update_def_inputs.html"><i></i><a href="reference-masterfiles-policy-framework-controls-update_def_inputs.html">controls/update_def_inputs.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory.html"><i></i><a href="reference-masterfiles-policy-framework-inventory.html">inventory/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-any.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-any.html">inventory/any.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-debian.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-debian.html">inventory/debian.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-freebsd.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-freebsd.html">inventory/freebsd.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-generic.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-generic.html">inventory/generic.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-linux.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-linux.html">inventory/linux.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-lsb.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-lsb.html">inventory/lsb.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-macos.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-macos.html">inventory/macos.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-os.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-os.html">inventory/os.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-redhat.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-redhat.html">inventory/redhat.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-suse.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-suse.html">inventory/suse.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-windows.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-windows.html">inventory/windows.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib.html"><i></i><a href="reference-masterfiles-policy-framework-lib.html">lib/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-autorun.html"><i></i><a href="reference-masterfiles-policy-framework-lib-autorun.html">lib/autorun.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-bundles.html"><i></i><a href="reference-masterfiles-policy-framework-lib-bundles.html">lib/bundles.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-cfe_internal.html"><i></i><a href="reference-masterfiles-policy-framework-lib-cfe_internal.html">lib/cfe_internal.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-cfe_internal_hub.html"><i></i><a href="reference-masterfiles-policy-framework-lib-cfe_internal_hub.html">lib/cfe_internal_hub.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-cfengine_enterprise_hub_ha.html"><i></i><a href="reference-masterfiles-policy-framework-lib-cfengine_enterprise_hub_ha.html">lib/cfengine_enterprise_hub_ha.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-commands.html"><i></i><a href="reference-masterfiles-policy-framework-lib-commands.html">lib/commands.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-common.html"><i></i><a href="reference-masterfiles-policy-framework-lib-common.html">lib/common.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-databases.html"><i></i><a href="reference-masterfiles-policy-framework-lib-databases.html">lib/databases.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-edit_xml.html"><i></i><a href="reference-masterfiles-policy-framework-lib-edit_xml.html">lib/edit_xml.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-event.html"><i></i><a href="reference-masterfiles-policy-framework-lib-event.html">lib/event.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-examples.html"><i></i><a href="reference-masterfiles-policy-framework-lib-examples.html">lib/examples.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-feature.html"><i></i><a href="reference-masterfiles-policy-framework-lib-feature.html">lib/feature.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-files.html"><i></i><a href="reference-masterfiles-policy-framework-lib-files.html">lib/files.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-guest_environments.html"><i></i><a href="reference-masterfiles-policy-framework-lib-guest_environments.html">lib/guest_environments.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-monitor.html"><i></i><a href="reference-masterfiles-policy-framework-lib-monitor.html">lib/monitor.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-packages.html"><i></i><a href="reference-masterfiles-policy-framework-lib-packages.html">lib/packages.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-paths.html"><i></i><a href="reference-masterfiles-policy-framework-lib-paths.html">lib/paths.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-processes.html"><i></i><a href="reference-masterfiles-policy-framework-lib-processes.html">lib/processes.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-reports.html"><i></i><a href="reference-masterfiles-policy-framework-lib-reports.html">lib/reports.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-services.html"><i></i><a href="reference-masterfiles-policy-framework-lib-services.html">lib/services.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-stdlib.html"><i></i><a href="reference-masterfiles-policy-framework-lib-stdlib.html">lib/stdlib.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-storage.html"><i></i><a href="reference-masterfiles-policy-framework-lib-storage.html">lib/storage.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-testing.html"><i></i><a href="reference-masterfiles-policy-framework-lib-testing.html">lib/testing.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-users.html"><i></i><a href="reference-masterfiles-policy-framework-lib-users.html">lib/users.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-vcs.html"><i></i><a href="reference-masterfiles-policy-framework-lib-vcs.html">lib/vcs.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules.html"><i></i><a href="reference-masterfiles-policy-framework-modules.html">modules/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-mustache.html"><i></i><a href="reference-masterfiles-policy-framework-modules-mustache.html">modules/mustache/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-packages.html"><i></i><a href="reference-masterfiles-policy-framework-modules-packages.html">modules/packages/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-packages-vendored.html"><i></i><a href="reference-masterfiles-policy-framework-modules-packages-vendored.html">modules/packages/vendored/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-promises.html"><i></i><a href="reference-masterfiles-policy-framework-modules-promises.html">modules/promises/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-promises-cfengine.py.html"><i></i><a href="reference-masterfiles-policy-framework-modules-promises-cfengine.py.html">modules/promises/cfengine.py</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-promises-cfengine.sh.html"><i></i><a href="reference-masterfiles-policy-framework-modules-promises-cfengine.sh.html">modules/promises/cfengine.sh</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-services.html"><i></i><a href="reference-masterfiles-policy-framework-services.html">services/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-services-autorun.html"><i></i><a href="reference-masterfiles-policy-framework-services-autorun.html">services/autorun/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-services-main.html"><i></i><a href="reference-masterfiles-policy-framework-services-main.html">services/main.cf</a></li></ul></li><li class=" level-2" data-url="reference-macros.html"><i></i><a href="reference-macros.html">Macros</a></li><li class=" level-2" data-url="reference-all-types.html"><i></i><a href="reference-all-types.html">All promise and body types</a></li></ul></li><li class="parent level-1" data-url="resources.html"><i></i><a href="resources.html">Resources</a><ul><li class="parent level-2" data-url="resources-faq.html"><i></i><a href="resources-faq.html">FAQ</a><ul><li class=" level-3" data-url="resources-faq-why-knowledge-management.html"><i></i><a href="resources-faq-why-knowledge-management.html">Why knowledge management?</a></li><li class=" level-3" data-url="resources-faq-enterprise-license.html"><i></i><a href="resources-faq-enterprise-license.html">Requesting a CFEngine Enterprise License</a></li><li class=" level-3" data-url="resources-faq-uninstall-reinstall.html"><i></i><a href="resources-faq-uninstall-reinstall.html">Uninstalling / reinstalling</a></li><li class=" level-3" data-url="resources-faq-output-email.html"><i></i><a href="resources-faq-output-email.html">Agent output email</a></li><li class=" level-3" data-url="resources-faq-debugging-slow-queries.html"><i></i><a href="resources-faq-debugging-slow-queries.html">Debugging slow queries</a></li><li class=" level-3" data-url="resources-faq-enterprise-report-filtering.html"><i></i><a href="resources-faq-enterprise-report-filtering.html">Enterprise Report Filtering</a></li><li class=" level-3" data-url="resources-faq-enterprise-report-collection.html"><i></i><a href="resources-faq-enterprise-report-collection.html">Enterprise report collection</a></li><li class=" level-3" data-url="resources-faq-enterprise.html"><i></i><a href="resources-faq-enterprise.html">Enterprise reporting database</a></li><li class=" level-3" data-url="resources-faq-show-classes-and-vars.html"><i></i><a href="resources-faq-show-classes-and-vars.html">How can I tell what classes and variables are defined?</a></li><li class=" level-3" data-url="resources-faq-find-public-key-for-host-sha.html"><i></i><a href="resources-faq-find-public-key-for-host-sha.html">How do I find the public key for a given host</a></li><li class=" level-3" data-url="resources-faq-fix-trust-after-ip-change.html"><i></i><a href="resources-faq-fix-trust-after-ip-change.html">How do I fix trust after an IP change?</a></li><li class=" level-3" data-url="resources-faq-fix-undefined-body-error.html"><i></i><a href="resources-faq-fix-undefined-body-error.html">How do I fix undefined body errors?</a></li><li class=" level-3" data-url="resources-faq-integrate-custom-policy.html"><i></i><a href="resources-faq-integrate-custom-policy.html">How do I integrate custom policy?</a></li><li class=" level-3" data-url="resources-faq-variables.html"><i></i><a href="resources-faq-variables.html">How do I pass a data type variable?</a></li><li class=" level-3" data-url="resources-faq-manual-execution.html"><i></i><a href="resources-faq-manual-execution.html">Manual execution</a></li><li class=" level-3" data-url="resources-faq-mustache-templating.html"><i></i><a href="resources-faq-mustache-templating.html">Mustache templating</a></li><li class=" level-3" data-url="resources-faq-unable-to-log-in-mission-portal.html"><i></i><a href="resources-faq-unable-to-log-in-mission-portal.html">Unable to log into Mission Portal</a></li><li class=" level-3" data-url="resources-faq-users.html"><i></i><a href="resources-faq-users.html">Users</a></li><li class=" level-3" data-url="resources-faq-what-is-promise-locking.html"><i></i><a href="resources-faq-what-is-promise-locking.html">What is promise locking?</a></li><li class=" level-3" data-url="resources-faq-why-are-remote-agents-not-updating.html"><i></i><a href="resources-faq-why-are-remote-agents-not-updating.html">Why are remote agents not updating?</a></li><li class=" level-3" data-url="resources-faq-why-are-files-not-being-distributed.html"><i></i><a href="resources-faq-why-are-files-not-being-distributed.html">Why are some files inside masterfiles not being updated/distributed?</a></li><li class=" level-3" data-url="resources-faq-fhs.html"><i></i><a href="resources-faq-fhs.html">Why does CFEngine install into /var/cfengine instead of following the FHS?</a></li><li class=" level-3" data-url="resources-faq-bootstrap-failed.html"><i></i><a href="resources-faq-bootstrap-failed.html">Bootstrapping</a></li><li class=" level-3" data-url="resources-faq-tuning-postgresql.html"><i></i><a href="resources-faq-tuning-postgresql.html">Tuning PostgreSQL</a></li><li class=" level-3" data-url="resources-faq-what-did-cfengine-change.html"><i></i><a href="resources-faq-what-did-cfengine-change.html">What did CFEngine do?</a></li></ul></li><li class="parent level-2" data-url="resources-additional-topics.html"><i></i><a href="resources-additional-topics.html">Additional topics</a><ul><li class=" level-3" data-url="resources-additional-topics-agility.html"><i></i><a href="resources-additional-topics-agility.html">Agility</a></li><li class=" level-3" data-url="resources-additional-topics-application-management.html"><i></i><a href="resources-additional-topics-application-management.html">Application management</a></li><li class=" level-3" data-url="resources-additional-topics-build-deploy-manage-audit.html"><i></i><a href="resources-additional-topics-build-deploy-manage-audit.html">Build Deploy Manage Audit</a></li><li class=" level-3" data-url="resources-additional-topics-change-management.html"><i></i><a href="resources-additional-topics-change-management.html">Change management</a></li><li class=" level-3" data-url="resources-additional-topics-cloud-computing.html"><i></i><a href="resources-additional-topics-cloud-computing.html">Cloud computing</a></li><li class=" level-3" data-url="resources-additional-topics-content-driven-policy.html"><i></i><a href="resources-additional-topics-content-driven-policy.html">Content driven policy</a></li><li class=" level-3" data-url="resources-additional-topics-devops.html"><i></i><a href="resources-additional-topics-devops.html">DevOps</a></li><li class=" level-3" data-url="resources-additional-topics-distributed-scheduling.html"><i></i><a href="resources-additional-topics-distributed-scheduling.html">Distributed scheduling</a></li><li class=" level-3" data-url="resources-additional-topics-file-content.html"><i></i><a href="resources-additional-topics-file-content.html">File content</a></li><li class=" level-3" data-url="resources-additional-topics-hierarchies.html"><i></i><a href="resources-additional-topics-hierarchies.html">Hierarchies</a></li><li class=" level-3" data-url="resources-additional-topics-itil.html"><i></i><a href="resources-additional-topics-itil.html">ITIL</a></li><li class=" level-3" data-url="resources-additional-topics-iteration.html"><i></i><a href="resources-additional-topics-iteration.html">Iteration (Loops)</a></li><li class=" level-3" data-url="resources-additional-topics-modularity.html"><i></i><a href="resources-additional-topics-modularity.html">Modularity and orchestrating system policy</a></li><li class=" level-3" data-url="resources-additional-topics-orchestration.html"><i></i><a href="resources-additional-topics-orchestration.html">Orchestration</a></li><li class=" level-3" data-url="resources-additional-topics-stigs.html"><i></i><a href="resources-additional-topics-stigs.html">STIGs</a></li><li class=" level-3" data-url="resources-additional-topics-security.html"><i></i><a href="resources-additional-topics-security.html">Security</a></li><li class=" level-3" data-url="resources-additional-topics-teamwork.html"><i></i><a href="resources-additional-topics-teamwork.html">Teamwork</a></li><li class=" level-3" data-url="resources-additional-topics-open-nebula.html"><i></i><a href="resources-additional-topics-open-nebula.html">Using CFEngine with Open Nebula</a></li></ul></li><li class=" level-2" data-url="resources-external-resources.html"><i></i><a href="resources-external-resources.html">External resources</a></li><li class=" level-2" data-url="resources-best-practices.html"><i></i><a href="resources-best-practices.html">Best practices</a></li></ul></li></ul>
+    </div>
+</aside>
+
+<div id="top_form" class="group">
+    <div class="float-right">
+        <div id="top_version_wrapper"></div>
+    </div>
+</div>
+
+</main>
+<div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer class="footer">
+    <div class="container">
+        <ul>
+            <li><a target="_blank" href="https://cfengine.com"><img  alt="CFEngine homepage"src="./media/images/cfengine-logo-white.svg" /></a></li>
+            <li><a href="legal.html">Legal and licenses</a></li>
+            <li><a target="_blank" href="https://cfengine.com/contact/">Contact us</a></li>
+            <li>Last update on 06 December 2023</li>
+        </ul>
+    </div>
+</footer>
+<div id="overlay"></div>
+<script src='assets/footer-e54c90786835c0ba09c9b49b1231c13b.js' type='text/javascript'></script>
+
+
+</body>
+</html>

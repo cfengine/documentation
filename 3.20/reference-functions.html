@@ -1,0 +1,1773 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.20  Documentation - Functions</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/reference/functions.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-reference-functions.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-functions.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='assets/global-2492ce7571245ef106dbe85ec06e4908.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Functions";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/" selected>Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="96c0f638b03564284" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components</a></li><li><a href="reference-promise-types.html">Promise Types</a></li><li><a class="active" href="reference-functions.html">Functions</a><ul class="level2"><li><a href="reference-functions-accessedbefore.html">accessedbefore</a></li><li><a href="reference-functions-accumulated.html">accumulated</a></li><li><a href="reference-functions-ago.html">ago</a></li><li><a href="reference-functions-and.html">and</a></li><li><a href="reference-functions-basename.html">basename</a></li><li><a href="reference-functions-bundlesmatching.html">bundlesmatching</a></li><li><a href="reference-functions-bundlestate.html">bundlestate</a></li><li><a href="reference-functions-callstack_callers.html">callstack_callers</a></li><li><a href="reference-functions-callstack_promisers.html">callstack_promisers</a></li><li><a href="reference-functions-canonify.html">canonify</a></li><li><a href="reference-functions-canonifyuniquely.html">canonifyuniquely</a></li><li><a href="reference-functions-cf_version_after.html">cf_version_after</a></li><li><a href="reference-functions-cf_version_at.html">cf_version_at</a></li><li><a href="reference-functions-cf_version_before.html">cf_version_before</a></li><li><a href="reference-functions-cf_version_between.html">cf_version_between</a></li><li><a href="reference-functions-cf_version_maximum.html">cf_version_maximum</a></li><li><a href="reference-functions-cf_version_minimum.html">cf_version_minimum</a></li><li><a href="reference-functions-changedbefore.html">changedbefore</a></li><li><a href="reference-functions-classesmatching.html">classesmatching</a></li><li><a href="reference-functions-classfiltercsv.html">classfiltercsv</a></li><li><a href="reference-functions-classify.html">classify</a></li><li><a href="reference-functions-classmatch.html">classmatch</a></li><li><a href="reference-functions-concat.html">concat</a></li><li><a href="reference-functions-countclassesmatching.html">countclassesmatching</a></li><li><a href="reference-functions-countlinesmatching.html">countlinesmatching</a></li><li><a href="reference-functions-data_expand.html">data_expand</a></li><li><a href="reference-functions-data_readstringarray.html">data_readstringarray</a></li><li><a href="reference-functions-data_readstringarrayidx.html">data_readstringarrayidx</a></li><li><a href="reference-functions-data_regextract.html">data_regextract</a></li><li><a href="reference-functions-data_sysctlvalues.html">data_sysctlvalues</a></li><li><a href="reference-functions-datastate.html">datastate</a></li><li><a href="reference-functions-difference.html">difference</a></li><li><a href="reference-functions-dirname.html">dirname</a></li><li><a href="reference-functions-diskfree.html">diskfree</a></li><li><a href="reference-functions-escape.html">escape</a></li><li><a href="reference-functions-eval.html">eval</a></li><li><a href="reference-functions-every.html">every</a></li><li><a href="reference-functions-execresult.html">execresult</a></li><li><a href="reference-functions-execresult_as_data.html">execresult_as_data</a></li><li><a href="reference-functions-expandrange.html">expandrange</a></li><li><a href="reference-functions-file_hash.html">file_hash</a></li><li><a href="reference-functions-fileexists.html">fileexists</a></li><li><a href="reference-functions-filesexist.html">filesexist</a></li><li><a href="reference-functions-filesize.html">filesize</a></li><li><a href="reference-functions-filestat.html">filestat</a></li><li><a href="reference-functions-filter.html">filter</a></li><li><a href="reference-functions-findfiles.html">findfiles</a></li><li><a href="reference-functions-findfiles_up.html">findfiles_up</a></li><li><a href="reference-functions-findprocesses.html">findprocesses</a></li><li><a href="reference-functions-format.html">format</a></li><li><a href="reference-functions-getclassmetatags.html">getclassmetatags</a></li><li><a href="reference-functions-getenv.html">getenv</a></li><li><a href="reference-functions-getfields.html">getfields</a></li><li><a href="reference-functions-getgid.html">getgid</a></li><li><a href="reference-functions-getindices.html">getindices</a></li><li><a href="reference-functions-getuid.html">getuid</a></li><li><a href="reference-functions-getuserinfo.html">getuserinfo</a></li><li><a href="reference-functions-getusers.html">getusers</a></li><li><a href="reference-functions-getvalues.html">getvalues</a></li><li><a href="reference-functions-getvariablemetatags.html">getvariablemetatags</a></li><li><a href="reference-functions-grep.html">grep</a></li><li><a href="reference-functions-groupexists.html">groupexists</a></li><li><a href="reference-functions-hash.html">hash</a></li><li><a href="reference-functions-hash_to_int.html">hash_to_int</a></li><li><a href="reference-functions-hashmatch.html">hashmatch</a></li><li><a href="reference-functions-host2ip.html">host2ip</a></li><li><a href="reference-functions-hostinnetgroup.html">hostinnetgroup</a></li><li><a href="reference-functions-hostrange.html">hostrange</a></li><li><a href="reference-functions-hostsseen.html">hostsseen</a></li><li><a href="reference-functions-hostswithclass.html">hostswithclass</a></li><li><a href="reference-functions-hubknowledge.html">hubknowledge</a></li><li><a href="reference-functions-ifelse.html">ifelse</a></li><li><a href="reference-functions-int.html">int</a></li><li><a href="reference-functions-intersection.html">intersection</a></li><li><a href="reference-functions-ip2host.html">ip2host</a></li><li><a href="reference-functions-iprange.html">iprange</a></li><li><a href="reference-functions-irange.html">irange</a></li><li><a href="reference-functions-isdir.html">isdir</a></li><li><a href="reference-functions-isexecutable.html">isexecutable</a></li><li><a href="reference-functions-isgreaterthan.html">isgreaterthan</a></li><li><a href="reference-functions-isipinsubnet.html">isipinsubnet</a></li><li><a href="reference-functions-islessthan.html">islessthan</a></li><li><a href="reference-functions-islink.html">islink</a></li><li><a href="reference-functions-isnewerthan.html">isnewerthan</a></li><li><a href="reference-functions-isplain.html">isplain</a></li><li><a href="reference-functions-isvariable.html">isvariable</a></li><li><a href="reference-functions-join.html">join</a></li><li><a href="reference-functions-lastnode.html">lastnode</a></li><li><a href="reference-functions-laterthan.html">laterthan</a></li><li><a href="reference-functions-ldaparray.html">ldaparray</a></li><li><a href="reference-functions-ldaplist.html">ldaplist</a></li><li><a href="reference-functions-ldapvalue.html">ldapvalue</a></li><li><a href="reference-functions-length.html">length</a></li><li><a href="reference-functions-lsdir.html">lsdir</a></li><li><a href="reference-functions-makerule.html">makerule</a></li><li><a href="reference-functions-maparray.html">maparray</a></li><li><a href="reference-functions-mapdata.html">mapdata</a></li><li><a href="reference-functions-maplist.html">maplist</a></li><li><a href="reference-functions-max.html">max</a></li><li><a href="reference-functions-mean.html">mean</a></li><li><a href="reference-functions-mergedata.html">mergedata</a></li><li><a href="reference-functions-min.html">min</a></li><li><a href="reference-functions-network_connections.html">network_connections</a></li><li><a href="reference-functions-none.html">none</a></li><li><a href="reference-functions-not.html">not</a></li><li><a href="reference-functions-now.html">now</a></li><li><a href="reference-functions-nth.html">nth</a></li><li><a href="reference-functions-on.html">on</a></li><li><a href="reference-functions-or.html">or</a></li><li><a href="reference-functions-packagesmatching.html">packagesmatching</a></li><li><a href="reference-functions-packageupdatesmatching.html">packageupdatesmatching</a></li><li><a href="reference-functions-parseintarray.html">parseintarray</a></li><li><a href="reference-functions-parsejson.html">parsejson</a></li><li><a href="reference-functions-parserealarray.html">parserealarray</a></li><li><a href="reference-functions-parsestringarray.html">parsestringarray</a></li><li><a href="reference-functions-parsestringarrayidx.html">parsestringarrayidx</a></li><li><a href="reference-functions-parseyaml.html">parseyaml</a></li><li><a href="reference-functions-peerleader.html">peerleader</a></li><li><a href="reference-functions-peerleaders.html">peerleaders</a></li><li><a href="reference-functions-peers.html">peers</a></li><li><a href="reference-functions-processexists.html">processexists</a></li><li><a href="reference-functions-product.html">product</a></li><li><a href="reference-functions-randomint.html">randomint</a></li><li><a href="reference-functions-read_module_protocol.html">read_module_protocol</a></li><li><a href="reference-functions-readcsv.html">readcsv</a></li><li><a href="reference-functions-readdata.html">readdata</a></li><li><a href="reference-functions-readenvfile.html">readenvfile</a></li><li><a href="reference-functions-readfile.html">readfile</a></li><li><a href="reference-functions-readintarray.html">readintarray</a></li><li><a href="reference-functions-readintlist.html">readintlist</a></li><li><a href="reference-functions-readjson.html">readjson</a></li><li><a href="reference-functions-readrealarray.html">readrealarray</a></li><li><a href="reference-functions-readreallist.html">readreallist</a></li><li><a href="reference-functions-readstringarray.html">readstringarray</a></li><li><a href="reference-functions-readstringarrayidx.html">readstringarrayidx</a></li><li><a href="reference-functions-readstringlist.html">readstringlist</a></li><li><a href="reference-functions-readtcp.html">readtcp</a></li><li><a href="reference-functions-readyaml.html">readyaml</a></li><li><a href="reference-functions-regarray.html">regarray</a></li><li><a href="reference-functions-regcmp.html">regcmp</a></li><li><a href="reference-functions-regex_replace.html">regex_replace</a></li><li><a href="reference-functions-regextract.html">regextract</a></li><li><a href="reference-functions-registryvalue.html">registryvalue</a></li><li><a href="reference-functions-regldap.html">regldap</a></li><li><a href="reference-functions-regline.html">regline</a></li><li><a href="reference-functions-reglist.html">reglist</a></li><li><a href="reference-functions-remoteclassesmatching.html">remoteclassesmatching</a></li><li><a href="reference-functions-remotescalar.html">remotescalar</a></li><li><a href="reference-functions-returnszero.html">returnszero</a></li><li><a href="reference-functions-reverse.html">reverse</a></li><li><a href="reference-functions-rrange.html">rrange</a></li><li><a href="reference-functions-selectservers.html">selectservers</a></li><li><a href="reference-functions-shuffle.html">shuffle</a></li><li><a href="reference-functions-some.html">some</a></li><li><a href="reference-functions-sort.html">sort</a></li><li><a href="reference-functions-splayclass.html">splayclass</a></li><li><a href="reference-functions-splitstring.html">splitstring</a></li><li><a href="reference-functions-storejson.html">storejson</a></li><li><a href="reference-functions-strcmp.html">strcmp</a></li><li><a href="reference-functions-strftime.html">strftime</a></li><li><a href="reference-functions-string.html">string</a></li><li><a href="reference-functions-string_downcase.html">string_downcase</a></li><li><a href="reference-functions-string_head.html">string_head</a></li><li><a href="reference-functions-string_length.html">string_length</a></li><li><a href="reference-functions-string_mustache.html">string_mustache</a></li><li><a href="reference-functions-string_replace.html">string_replace</a></li><li><a href="reference-functions-string_reverse.html">string_reverse</a></li><li><a href="reference-functions-string_split.html">string_split</a></li><li><a href="reference-functions-string_tail.html">string_tail</a></li><li><a href="reference-functions-string_trim.html">string_trim</a></li><li><a href="reference-functions-string_upcase.html">string_upcase</a></li><li><a href="reference-functions-sublist.html">sublist</a></li><li><a href="reference-functions-sum.html">sum</a></li><li><a href="reference-functions-sysctlvalue.html">sysctlvalue</a></li><li><a href="reference-functions-translatepath.html">translatepath</a></li><li><a href="reference-functions-type.html">type</a></li><li><a href="reference-functions-unique.html">unique</a></li><li><a href="reference-functions-url_get.html">url_get</a></li><li><a href="reference-functions-usemodule.html">usemodule</a></li><li><a href="reference-functions-userexists.html">userexists</a></li><li><a href="reference-functions-validdata.html">validdata</a></li><li><a href="reference-functions-validjson.html">validjson</a></li><li><a href="reference-functions-variablesmatching.html">variablesmatching</a></li><li><a href="reference-functions-variablesmatching_as_data.html">variablesmatching_as_data</a></li><li><a href="reference-functions-variance.html">variance</a></li></ul></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Functions
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Functions take zero or more values as arguments and return a value.
+Argument values need to be of the type and range as documented for each
+function. Some functions are documented with a <code>...</code>, in which case they
+take an arbitrary amount of arguments.</p>
+
+<p>They can return scalar (string|int|real|bool), list (slist, ilist, rlist) and data values:</p>
+<div class="highlight"><pre><code class="text"><span></span>printf &quot;one\ntwo\nthree\n&quot; &gt; /tmp/list.txt
+printf &quot;1\n2\n3\n&quot;        &gt;&gt; /tmp/list.txt
+printf &quot;1.0\n2.0\n3.0&quot;    &gt;&gt; /tmp/list.txt
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">example_function_return_types</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">classes</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;this_file_exists&quot;</span><span class="w"> </span><span class="kr">expression</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="w"> </span><span class="err">$</span><span class="p">(</span><span class="nf">this</span><span class="err">.</span><span class="nf">promise_filename</span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">my_string</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">concat</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;Promises you cannot keep&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                    </span><span class="s">&quot; are no better than lies&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">my_list_of_strings</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">readstringlist</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;/tmp/list.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="c"># File to read</span>
+<span class="w">                                 </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w">               </span><span class="c"># Don&#39;t ignore any lines</span>
+<span class="w">                                 </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w">             </span><span class="c"># Split on newlines</span>
+<span class="w">                                 </span><span class="nf">inf</span><span class="p">,</span><span class="w">              </span><span class="c"># Extract as many entries as possible</span>
+<span class="w">                                 </span><span class="nf">inf</span><span class="p">);</span><span class="w">             </span><span class="c"># Read in as much data as possible</span>
+
+<span class="w">      </span><span class="s">&quot;my_list_of_integers&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">ilist</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">readintlist</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;/tmp/list.txt&quot;</span><span class="p">,</span><span class="w">     </span><span class="c"># File to read</span>
+<span class="w">                              </span><span class="s">&quot;^(</span><span class="se">\D</span><span class="s">+)|(</span><span class="se">\d</span><span class="s">+[^</span><span class="se">\n</span><span class="s">]+)&quot;</span><span class="p">,</span><span class="w"> </span><span class="c"># Ignore any lines that are not integers</span>
+<span class="w">                              </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w">                 </span><span class="c"># Split on newlines</span>
+<span class="w">                              </span><span class="nf">inf</span><span class="p">,</span><span class="w">                  </span><span class="c"># Maximum number of entries</span>
+<span class="w">                              </span><span class="nf">inf</span><span class="p">);</span><span class="w">                 </span><span class="c"># Maximum number of bytes to read</span>
+
+<span class="w">      </span><span class="s">&quot;my_list_of_reals&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">rlist</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">readreallist</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;/tmp/list.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="c"># File to read</span>
+<span class="w">                              </span><span class="s">&quot;^(</span><span class="se">\D</span><span class="s">+)&quot;</span><span class="p">,</span><span class="w">          </span><span class="c"># Ignore any lines that are not digits</span>
+<span class="w">                              </span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w">              </span><span class="c"># Split on newlines</span>
+<span class="w">                              </span><span class="nf">inf</span><span class="p">,</span><span class="w">               </span><span class="c"># Maximum number of entries</span>
+<span class="w">                              </span><span class="nf">inf</span><span class="p">);</span><span class="w">              </span><span class="c"># Maximum number of bytes to read</span>
+
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">my_integer</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">string_length</span><span class="p">(</span><span class="w"> </span><span class="err">$</span><span class="p">(</span><span class="nf">my_string</span><span class="p">)</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">my_real</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">real</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="w"> </span><span class="nf">my_list_of_integers</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;my_data&quot;</span><span class="w"> </span><span class="kr">data</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span><span class="w"> </span><span class="err">&#39;</span><span class="p">{</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;world!&quot;</span><span class="w"> </span><span class="p">}</span><span class="err">&#39;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;my_string: &#39;</span><span class="si">$(my_string)</span><span class="s">&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;my_list_of_strings includes &#39;</span><span class="si">$(my_list_of_strings)</span><span class="s">&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;my_list_of_integers includes &#39;</span><span class="si">$(my_list_of_integers)</span><span class="s">&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;my_list_of_reals includes &#39;</span><span class="si">$(my_list_of_reals)</span><span class="s">&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;my_integer: &#39;</span><span class="si">$(my_integer)</span><span class="s">&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;my_real: &#39;</span><span class="si">$(my_real)</span><span class="s">&#39;&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;my_data: &#39;</span><span class="si">$(with)</span><span class="s">&#39;&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">with</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">string_mustache</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">my_data</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">this_file_exists</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;This file exists.&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">__main__</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">methods</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example_function_return_types&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text"><span></span>R: my_string: &#39;Promises you cannot keep are no better than lies&#39;
+R: my_list_of_strings includes &#39;one&#39;
+R: my_list_of_strings includes &#39;two&#39;
+R: my_list_of_strings includes &#39;three&#39;
+R: my_list_of_strings includes &#39;1&#39;
+R: my_list_of_strings includes &#39;2&#39;
+R: my_list_of_strings includes &#39;3&#39;
+R: my_list_of_strings includes &#39;1.0&#39;
+R: my_list_of_strings includes &#39;2.0&#39;
+R: my_list_of_strings includes &#39;3.0&#39;
+R: my_list_of_integers includes &#39;1&#39;
+R: my_list_of_integers includes &#39;2&#39;
+R: my_list_of_integers includes &#39;3&#39;
+R: my_list_of_reals includes &#39;1&#39;
+R: my_list_of_reals includes &#39;2&#39;
+R: my_list_of_reals includes &#39;3&#39;
+R: my_list_of_reals includes &#39;1.0&#39;
+R: my_list_of_reals includes &#39;2.0&#39;
+R: my_list_of_reals includes &#39;3.0&#39;
+R: my_integer: &#39;48&#39;
+R: my_real: &#39;6.000000&#39;
+R: my_data: &#39;{
+  &quot;Hello&quot;: &quot;world!&quot;
+}&#39;
+R: This file exists.
+</code></pre>
+</div>
+
+<p>This policy can be found in
+<code>/var/cfengine/share/doc/examples/function-return-types.cf</code>
+and downloaded directly from
+<a href="https://raw.github.com/cfengine/core/master/examples/function-return-types.cf" target="_blank">github</a>.</p>
+<h3 id="boolean-return-type">Boolean return type</h3>
+<p>Functions which return <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a>, technically return a string <code>any</code> or <code>!any</code>.
+This is for compatibility with other functions and promise attributes which
+expect class expressions.</p>
+
+<p>Normally, you don&#39;t need to worry about this, you use the function call to
+define classes, and use classes instead of boolean values:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">main</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">five</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;5&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kd">classes</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;is_var&quot;</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;five&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nc">is_var</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Success!&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>There is no boolean data type for <a href="reference-promise-types-vars.html" title="vars"><code>vars</code></a> promises.
+If you want to store or print the class expression, you can use <a href="reference-functions-concat.html" title="concat"><code>concat()</code></a>:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">main</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">five</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;5&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">expression</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">concat</span><span class="p">(</span><span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;five&quot;</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="kd">classes</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;is_var&quot;</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(expression)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"> </span><span class="c"># Will be expanded and evaluated</span>
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nc">is_var</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Success: expression expanded to &#39;</span><span class="si">$(expression)</span><span class="s">&#39; and evaluated to true!&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> the truth of a class expression or the result of a function call may
+change during evaluation, but typically, a class, once defined, will stay defined.</p>
+
+<p><strong>See also:</strong> <a href="reference-language-concepts-classes.html#persistence" title="Classes and Decisions - Persistence">persistence in classes and decisions</a></p>
+<h3 id="promise-attributes-and-function-calls">Promise attributes and function calls</h3>
+<p>Promise attributes which use a class expression (string) as input, like <a href="reference-promise-types.html#if" title="Promise Types - if"><code>if</code></a>
+and <a href="reference-promise-types.html#unless" title="Promise Types - unless"><code>unless</code></a>, can take a function call which returns string or boolean as well.</p>
+
+<ul>
+<li>A boolean function will be resolved to <code>any</code>, which is always true, or <code>!any</code>
+which is always false.</li>
+<li>A string function will be resolved, and the returned string will be
+evaluated as a class expression.</li>
+</ul>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">main</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">five</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;5&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">is_var_class_expression</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">concat</span><span class="p">(</span><span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(five)</span><span class="s">&quot;</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="kd">classes</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;five_less_than_seven&quot;</span><span class="w"> </span><span class="kr">expression</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">islessthan</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(five)</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;five_is_variable&quot;</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(is_var_class_expression)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nc">any</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;five: </span><span class="si">$(five)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;is_var_class_expression: </span><span class="si">$(is_var_class_expression)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="nc">five_less_than_seven</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;</span><span class="si">$(five)</span><span class="s"> is smaller than 7&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h3 id="function-caching">Function caching</h3>
+<p>During convergence, CFEngine&#39;s evaluation model will evaluate
+functions multiple times, which can be a performance concern.</p>
+
+<p>Some <em>system</em> functions are particularly expensive:</p>
+
+<ul>
+<li><a href="reference-functions-execresult.html" title="execresult"><code>execresult()</code></a> and <a href="reference-functions-returnszero.html" title="returnszero"><code>returnszero()</code></a> for shell execution</li>
+<li><a href="reference-functions-regldap.html" title="regldap"><code>regldap()</code></a>, <a href="reference-functions-ldapvalue.html" title="ldapvalue"><code>ldapvalue()</code></a>, and <a href="reference-functions-ldaplist.html" title="ldaplist"><code>ldaplist()</code></a> for LDAP queries</li>
+<li><a href="reference-functions-findprocesses.html" title="findprocesses"><code>findprocesses()</code></a>, and <a href="reference-functions-processexists.html" title="processexists"><code>processexists()</code></a> for querying processes.</li>
+<li><a href="reference-functions-host2ip.html" title="host2ip"><code>host2ip()</code></a> and <a href="reference-functions-ip2host.html" title="ip2host"><code>ip2host()</code></a> for DNS queries</li>
+<li><a href="reference-functions-readtcp.html" title="readtcp"><code>readtcp()</code></a> for TCP interactions</li>
+<li><a href="reference-functions-hubknowledge.html" title="hubknowledge"><code>hubknowledge()</code></a>, and <a href="reference-functions-remotescalar.html" title="remotescalar"><code>remotescalar()</code></a> for hub queries</li>
+</ul>
+
+<p>When enabled
+<a href="https://docs.cfengine.com/docs/3.20/search.html?q=The+return+value+is+cached">cached functions</a>
+are <strong>not executed on every pass of convergence</strong>. Instead, the function will
+only be executed once during the
+<a href="reference-language-concepts-normal-ordering.html#agent-evaluation-step" title="Normal Ordering - Agent evaluation step">agent evaluation step</a>
+and its result will be cached until the end of that agent execution.</p>
+
+<p><strong>Note:</strong> Cached functions are executed multiple times during
+<a href="reference-language-concepts-normal-ordering.html#cf-promises-policy-validation-step" title="Normal Ordering - cf-promises policy validation step">policy validation and pre-evaluation</a>.
+Function caching is <em>per-process</em>, so results will not be cached between
+separate components e.g. <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>, <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> and <a href="reference-components-cf-promises.html" title="cf-promises"><code>cf-promises</code></a>.
+Additionally functions are cached by hashing the function arguments. If you have
+the exact same function call in two different promises (it does not matter if
+they are in the same bundle or not) only the first executed function will be
+cached. That cached result will be re-used for other identical function
+occurrences.</p>
+
+<p>Function caching can be globally disabled by setting <a href="reference-components.html#cache_system_functions" title="Components - cache_system_functions"><code>cache_system_functions</code></a> in
+body common control to <code>false</code> or locally for a specific promise by using
+<code>ifelapsed =&gt; &quot;0&quot;</code> in the <a href="reference-promise-types.html#ifelapsed" title="Promise Types - ifelapsed">action body</a>
+of the promise.</p>
+<h2 id="function-skipping">Function Skipping</h2>
+<p>If a variable passed to a function is unable to be resolved the function will
+be skipped. The function will be evaluated during a later pass when all
+variables passed as arguments are able to be resolved. The function will never
+be evaluated if any argument contains a variable that never resolves.</p>
+<h3 id="collecting-functions">Collecting Functions</h3>
+<p>Some function arguments are marked as <em>collecting</em> which means they
+can &quot;collect&quot; an argument from various sources. The data is normalized
+into the JSON format internally, so all of the following data types
+have consistent behavior.</p>
+
+<ul>
+<li><p>If a key inside a data container is specified (<code>mycontainer[key]</code>),
+the value under that key is collected. The key can be a string for
+JSON objects or a number for JSON arrays.</p></li>
+<li><p>If a single data container, CFEngine array, or slist is specified
+(<code>mycontainer</code> or <code>myarray</code> or <code>myslist</code>), the contents of it are
+collected.</p></li>
+<li><p>If a single data container, CFEngine array, or slist is specified
+with <code>@()</code> around it (<code>@(mycontainer)</code> or <code>@(myarray)</code> or
+<code>@(myslist)</code>), the contents of it are collected.</p></li>
+<li><p>If a function call that returns a data container or slist is
+specified, that function call is evaluated and the results are
+inserted, so you can say for instance <code>sort(data_expand(...), &quot;lex&quot;)</code>
+to expand a data container then sort it.</p></li>
+<li><p>If a list (slist, ilist, or rlist) is named, its entries are collected.</p></li>
+<li><p>If any CFEngine &quot;classic&quot; array (<code>array[key]</code>) is named, it&#39;s first
+converted to a JSON key-value map, then collected.</p></li>
+<li><p>If a literal JSON string like <code>[ 1,2,3 ]</code> or <code>{ &quot;x&quot;: 500 }</code> is
+provided, it will be parsed and used.</p></li>
+<li><p>If any of the above-mentioned ways to reference variables are used
+<strong>inside</strong> a literal JSON string they will be expanded (or the
+function call will fail). This is similar to the behavior of
+Javascript, for instance.  For example, <code>mergedata(&#39;[ thing, { &quot;mykey&quot;: otherthing[123] } ]&#39;)</code>
+will wrap the <code>thing</code> in a JSON array; then the contents of
+<code>otherthing[123]</code> will be wrapped in a JSON map which will also go in
+the array.</p></li>
+</ul>
+<h3 id="delayed-evaluation-functions">Delayed Evaluation Functions</h3>
+<p>Since CFEngine 3.10, some functions are marked as <em>delayed evaluation</em> which
+means they can evaluate a function call across every element of a collection.
+This makes intuitive sense for the collection traversing functions <a href="reference-functions-maparray.html" title="maparray"><code>maparray()</code></a>,
+<a href="reference-functions-maplist.html" title="maplist"><code>maplist()</code></a>, and <a href="reference-functions-mapdata.html" title="mapdata"><code>mapdata()</code></a>.</p>
+
+<p>The practical use is for instance <code>maplist(format(&quot;%03d&quot;, $(this)), mylist)</code>
+which will evaluate that <a href="reference-functions-format.html" title="format"><code>format()</code></a> call once for every element of <code>mylist</code>.</p>
+
+<p>Before 3.10, the same call would have resulted in running the <a href="reference-functions-format.html" title="format"><code>format()</code></a>
+function <strong>before</strong> the list is traversed, which is almost never what the user
+wants.</p>
+<h2 id="list-of-all-functions">List of all functions</h2>
+<p>There are a large number of functions built into CFEngine. The following
+tables might make it easier for you to find the function you need.</p>
+<h3 id="functions-by-category">Functions by Category</h3><div class="tableOverflow"><table><thead><tr>
+<th><code>communication</code></th>
+<th><a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a></th>
+<th><a href="reference-promise-types-files.html" title="files"><code>files</code></a></th>
+<th><code>internal</code></th>
+<th><code>io</code></th>
+<th><code>system</code></th>
+<th><code>utils</code></th>
+</tr>
+</thead><tbody><tr>
+<td><a href="reference-functions-host2ip.html" title="host2ip"><code>host2ip()</code></a></td>
+<td><a href="reference-functions-accumulated.html" title="accumulated"><code>accumulated()</code></a></td>
+<td><a href="reference-functions-accessedbefore.html" title="accessedbefore"><code>accessedbefore()</code></a></td>
+<td><a href="reference-functions-callstack_callers.html" title="callstack_callers"><code>callstack_callers()</code></a></td>
+<td><a href="reference-functions-classfiltercsv.html" title="classfiltercsv"><code>classfiltercsv()</code></a></td>
+<td><a href="reference-functions-data_sysctlvalues.html" title="data_sysctlvalues"><code>data_sysctlvalues()</code></a></td>
+<td><a href="reference-functions-bundlestate.html" title="bundlestate"><code>bundlestate()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-hostrange.html" title="hostrange"><code>hostrange()</code></a></td>
+<td><a href="reference-functions-ago.html" title="ago"><code>ago()</code></a></td>
+<td><a href="reference-functions-changedbefore.html" title="changedbefore"><code>changedbefore()</code></a></td>
+<td><a href="reference-functions-callstack_promisers.html" title="callstack_promisers"><code>callstack_promisers()</code></a></td>
+<td><a href="reference-functions-countlinesmatching.html" title="countlinesmatching"><code>countlinesmatching()</code></a></td>
+<td><a href="reference-functions-findprocesses.html" title="findprocesses"><code>findprocesses()</code></a></td>
+<td><a href="reference-functions-cf_version_after.html" title="cf_version_after"><code>cf_version_after()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-hostsseen.html" title="hostsseen"><code>hostsseen()</code></a></td>
+<td><a href="reference-functions-and.html" title="and"><code>and()</code></a></td>
+<td><a href="reference-functions-dirname.html" title="dirname"><code>dirname()</code></a></td>
+<td></td>
+<td><a href="reference-functions-data_readstringarray.html" title="data_readstringarray"><code>data_readstringarray()</code></a></td>
+<td><a href="reference-functions-getenv.html" title="getenv"><code>getenv()</code></a></td>
+<td><a href="reference-functions-cf_version_at.html" title="cf_version_at"><code>cf_version_at()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-hostswithclass.html" title="hostswithclass"><code>hostswithclass()</code></a></td>
+<td><a href="reference-functions-basename.html" title="basename"><code>basename()</code></a></td>
+<td><a href="reference-functions-diskfree.html" title="diskfree"><code>diskfree()</code></a></td>
+<td></td>
+<td><a href="reference-functions-data_readstringarrayidx.html" title="data_readstringarrayidx"><code>data_readstringarrayidx()</code></a></td>
+<td><a href="reference-functions-getuid.html" title="getuid"><code>getuid()</code></a></td>
+<td><a href="reference-functions-cf_version_before.html" title="cf_version_before"><code>cf_version_before()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-hubknowledge.html" title="hubknowledge"><code>hubknowledge()</code></a></td>
+<td><a href="reference-functions-bundlesmatching.html" title="bundlesmatching"><code>bundlesmatching()</code></a></td>
+<td><a href="reference-functions-file_hash.html" title="file_hash"><code>file_hash()</code></a></td>
+<td></td>
+<td><a href="reference-functions-parseintarray.html" title="parseintarray"><code>parseintarray()</code></a></td>
+<td><a href="reference-functions-getuserinfo.html" title="getuserinfo"><code>getuserinfo()</code></a></td>
+<td><a href="reference-functions-cf_version_between.html" title="cf_version_between"><code>cf_version_between()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-ip2host.html" title="ip2host"><code>ip2host()</code></a></td>
+<td><a href="reference-functions-canonify.html" title="canonify"><code>canonify()</code></a></td>
+<td><a href="reference-functions-fileexists.html" title="fileexists"><code>fileexists()</code></a></td>
+<td></td>
+<td><a href="reference-functions-parsejson.html" title="parsejson"><code>parsejson()</code></a></td>
+<td><a href="reference-functions-getusers.html" title="getusers"><code>getusers()</code></a></td>
+<td><a href="reference-functions-cf_version_maximum.html" title="cf_version_maximum"><code>cf_version_maximum()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-iprange.html" title="iprange"><code>iprange()</code></a></td>
+<td><a href="reference-functions-canonifyuniquely.html" title="canonifyuniquely"><code>canonifyuniquely()</code></a></td>
+<td><a href="reference-functions-filesexist.html" title="filesexist"><code>filesexist()</code></a></td>
+<td></td>
+<td><a href="reference-functions-parserealarray.html" title="parserealarray"><code>parserealarray()</code></a></td>
+<td><a href="reference-functions-groupexists.html" title="groupexists"><code>groupexists()</code></a></td>
+<td><a href="reference-functions-cf_version_minimum.html" title="cf_version_minimum"><code>cf_version_minimum()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-isipinsubnet.html" title="isipinsubnet"><code>isipinsubnet()</code></a></td>
+<td><a href="reference-functions-classify.html" title="classify"><code>classify()</code></a></td>
+<td><a href="reference-functions-filesize.html" title="filesize"><code>filesize()</code></a></td>
+<td></td>
+<td><a href="reference-functions-parsestringarray.html" title="parsestringarray"><code>parsestringarray()</code></a></td>
+<td><a href="reference-functions-hostinnetgroup.html" title="hostinnetgroup"><code>hostinnetgroup()</code></a></td>
+<td><a href="reference-functions-classesmatching.html" title="classesmatching"><code>classesmatching()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-ldaparray.html" title="ldaparray"><code>ldaparray()</code></a></td>
+<td><a href="reference-functions-concat.html" title="concat"><code>concat()</code></a></td>
+<td><a href="reference-functions-filestat.html" title="filestat"><code>filestat()</code></a></td>
+<td></td>
+<td><a href="reference-functions-parsestringarrayidx.html" title="parsestringarrayidx"><code>parsestringarrayidx()</code></a></td>
+<td><a href="reference-functions-now.html" title="now"><code>now()</code></a></td>
+<td><a href="reference-functions-classmatch.html" title="classmatch"><code>classmatch()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-ldaplist.html" title="ldaplist"><code>ldaplist()</code></a></td>
+<td><a href="reference-functions-data_expand.html" title="data_expand"><code>data_expand()</code></a></td>
+<td><a href="reference-functions-findfiles.html" title="findfiles"><code>findfiles()</code></a></td>
+<td></td>
+<td><a href="reference-functions-parseyaml.html" title="parseyaml"><code>parseyaml()</code></a></td>
+<td><a href="reference-functions-packagesmatching.html" title="packagesmatching"><code>packagesmatching()</code></a></td>
+<td><a href="reference-functions-countclassesmatching.html" title="countclassesmatching"><code>countclassesmatching()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-ldapvalue.html" title="ldapvalue"><code>ldapvalue()</code></a></td>
+<td><a href="reference-functions-data_regextract.html" title="data_regextract"><code>data_regextract()</code></a></td>
+<td><a href="reference-functions-findfiles_up.html" title="findfiles_up"><code>findfiles_up()</code></a></td>
+<td></td>
+<td><a href="reference-functions-read_module_protocol.html" title="read_module_protocol"><code>read_module_protocol()</code></a></td>
+<td><a href="reference-functions-packageupdatesmatching.html" title="packageupdatesmatching"><code>packageupdatesmatching()</code></a></td>
+<td><a href="reference-functions-datastate.html" title="datastate"><code>datastate()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-network_connections.html" title="network_connections"><code>network_connections()</code></a></td>
+<td><a href="reference-functions-difference.html" title="difference"><code>difference()</code></a></td>
+<td><a href="reference-functions-isdir.html" title="isdir"><code>isdir()</code></a></td>
+<td></td>
+<td><a href="reference-functions-readcsv.html" title="readcsv"><code>readcsv()</code></a></td>
+<td><a href="reference-functions-processexists.html" title="processexists"><code>processexists()</code></a></td>
+<td><a href="reference-functions-execresult.html" title="execresult"><code>execresult()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-peerleader.html" title="peerleader"><code>peerleader()</code></a></td>
+<td><a href="reference-functions-escape.html" title="escape"><code>escape()</code></a></td>
+<td><a href="reference-functions-isexecutable.html" title="isexecutable"><code>isexecutable()</code></a></td>
+<td></td>
+<td><a href="reference-functions-readdata.html" title="readdata"><code>readdata()</code></a></td>
+<td><a href="reference-functions-registryvalue.html" title="registryvalue"><code>registryvalue()</code></a></td>
+<td><a href="reference-functions-execresult_as_data.html" title="execresult_as_data"><code>execresult_as_data()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-peerleaders.html" title="peerleaders"><code>peerleaders()</code></a></td>
+<td><a href="reference-functions-eval.html" title="eval"><code>eval()</code></a></td>
+<td><a href="reference-functions-islink.html" title="islink"><code>islink()</code></a></td>
+<td></td>
+<td><a href="reference-functions-readenvfile.html" title="readenvfile"><code>readenvfile()</code></a></td>
+<td><a href="reference-functions-sysctlvalue.html" title="sysctlvalue"><code>sysctlvalue()</code></a></td>
+<td><a href="reference-functions-getclassmetatags.html" title="getclassmetatags"><code>getclassmetatags()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-peers.html" title="peers"><code>peers()</code></a></td>
+<td><a href="reference-functions-every.html" title="every"><code>every()</code></a></td>
+<td><a href="reference-functions-isnewerthan.html" title="isnewerthan"><code>isnewerthan()</code></a></td>
+<td></td>
+<td><a href="reference-functions-readfile.html" title="readfile"><code>readfile()</code></a></td>
+<td><a href="reference-functions-userexists.html" title="userexists"><code>userexists()</code></a></td>
+<td><a href="reference-functions-getvariablemetatags.html" title="getvariablemetatags"><code>getvariablemetatags()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-readtcp.html" title="readtcp"><code>readtcp()</code></a></td>
+<td><a href="reference-functions-expandrange.html" title="expandrange"><code>expandrange()</code></a></td>
+<td><a href="reference-functions-isplain.html" title="isplain"><code>isplain()</code></a></td>
+<td></td>
+<td><a href="reference-functions-readintarray.html" title="readintarray"><code>readintarray()</code></a></td>
+<td></td>
+<td><a href="reference-functions-isvariable.html" title="isvariable"><code>isvariable()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-regldap.html" title="regldap"><code>regldap()</code></a></td>
+<td><a href="reference-functions-filter.html" title="filter"><code>filter()</code></a></td>
+<td><a href="reference-functions-laterthan.html" title="laterthan"><code>laterthan()</code></a></td>
+<td></td>
+<td><a href="reference-functions-readintlist.html" title="readintlist"><code>readintlist()</code></a></td>
+<td></td>
+<td><a href="reference-functions-returnszero.html" title="returnszero"><code>returnszero()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-remoteclassesmatching.html" title="remoteclassesmatching"><code>remoteclassesmatching()</code></a></td>
+<td><a href="reference-functions-format.html" title="format"><code>format()</code></a></td>
+<td><a href="reference-functions-lsdir.html" title="lsdir"><code>lsdir()</code></a></td>
+<td></td>
+<td><a href="reference-functions-readjson.html" title="readjson"><code>readjson()</code></a></td>
+<td></td>
+<td><a href="reference-functions-splayclass.html" title="splayclass"><code>splayclass()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-remotescalar.html" title="remotescalar"><code>remotescalar()</code></a></td>
+<td><a href="reference-functions-getfields.html" title="getfields"><code>getfields()</code></a></td>
+<td><code>search_up()</code></td>
+<td></td>
+<td><a href="reference-functions-readrealarray.html" title="readrealarray"><code>readrealarray()</code></a></td>
+<td></td>
+<td><a href="reference-functions-usemodule.html" title="usemodule"><code>usemodule()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-selectservers.html" title="selectservers"><code>selectservers()</code></a></td>
+<td><a href="reference-functions-getgid.html" title="getgid"><code>getgid()</code></a></td>
+<td><a href="reference-functions-translatepath.html" title="translatepath"><code>translatepath()</code></a></td>
+<td></td>
+<td><a href="reference-functions-readreallist.html" title="readreallist"><code>readreallist()</code></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="reference-functions-url_get.html" title="url_get"><code>url_get()</code></a></td>
+<td><a href="reference-functions-getindices.html" title="getindices"><code>getindices()</code></a></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-readstringarray.html" title="readstringarray"><code>readstringarray()</code></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-getvalues.html" title="getvalues"><code>getvalues()</code></a></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-readstringarrayidx.html" title="readstringarrayidx"><code>readstringarrayidx()</code></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-grep.html" title="grep"><code>grep()</code></a></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-readstringlist.html" title="readstringlist"><code>readstringlist()</code></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-hash.html" title="hash"><code>hash()</code></a></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-readyaml.html" title="readyaml"><code>readyaml()</code></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-hash_to_int.html" title="hash_to_int"><code>hash_to_int()</code></a></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-regline.html" title="regline"><code>regline()</code></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-hashmatch.html" title="hashmatch"><code>hashmatch()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-ifelse.html" title="ifelse"><code>ifelse()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-int.html" title="int"><code>int()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-intersection.html" title="intersection"><code>intersection()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-irange.html" title="irange"><code>irange()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-isgreaterthan.html" title="isgreaterthan"><code>isgreaterthan()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-islessthan.html" title="islessthan"><code>islessthan()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-join.html" title="join"><code>join()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-lastnode.html" title="lastnode"><code>lastnode()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-length.html" title="length"><code>length()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-makerule.html" title="makerule"><code>makerule()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-maparray.html" title="maparray"><code>maparray()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-mapdata.html" title="mapdata"><code>mapdata()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-maplist.html" title="maplist"><code>maplist()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-max.html" title="max"><code>max()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-mean.html" title="mean"><code>mean()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-mergedata.html" title="mergedata"><code>mergedata()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-min.html" title="min"><code>min()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-none.html" title="none"><code>none()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-not.html" title="not"><code>not()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-nth.html" title="nth"><code>nth()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-on.html" title="on"><code>on()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-or.html" title="or"><code>or()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-product.html" title="product"><code>product()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-randomint.html" title="randomint"><code>randomint()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-regarray.html" title="regarray"><code>regarray()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-regcmp.html" title="regcmp"><code>regcmp()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-regex_replace.html" title="regex_replace"><code>regex_replace()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-regextract.html" title="regextract"><code>regextract()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-reglist.html" title="reglist"><code>reglist()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-reverse.html" title="reverse"><code>reverse()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-rrange.html" title="rrange"><code>rrange()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-shuffle.html" title="shuffle"><code>shuffle()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-some.html" title="some"><code>some()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-sort.html" title="sort"><code>sort()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-splitstring.html" title="splitstring"><code>splitstring()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-storejson.html" title="storejson"><code>storejson()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-strcmp.html" title="strcmp"><code>strcmp()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-strftime.html" title="strftime"><code>strftime()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-string.html" title="string"><code>string()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-string_downcase.html" title="string_downcase"><code>string_downcase()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-string_head.html" title="string_head"><code>string_head()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-string_length.html" title="string_length"><code>string_length()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-string_mustache.html" title="string_mustache"><code>string_mustache()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-string_replace.html" title="string_replace"><code>string_replace()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-string_reverse.html" title="string_reverse"><code>string_reverse()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-string_split.html" title="string_split"><code>string_split()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-string_tail.html" title="string_tail"><code>string_tail()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-string_trim.html" title="string_trim"><code>string_trim()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-string_upcase.html" title="string_upcase"><code>string_upcase()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-sublist.html" title="sublist"><code>sublist()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-sum.html" title="sum"><code>sum()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-type.html"><code>type()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-unique.html" title="unique"><code>unique()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-validdata.html" title="validdata"><code>validdata()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-validjson.html" title="validjson"><code>validjson()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-variablesmatching.html" title="variablesmatching"><code>variablesmatching()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-variablesmatching_as_data.html" title="variablesmatching_as_data"><code>variablesmatching_as_data()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-variance.html" title="variance"><code>variance()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></div><h3 id="functions-by-return-type">Functions by Return Type</h3><div class="tableOverflow"><table><thead><tr>
+<th><code>(i,r)range</code></th>
+<th><code>(i,r,s)list</code></th>
+<th><code>class</code></th>
+<th><a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a></th>
+<th><a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></th>
+<th><a href="reference-promise-types-vars.html#real" title="vars - real"><code>real</code></a></th>
+<th><a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></th>
+</tr>
+</thead><tbody><tr>
+<td><a href="reference-functions-irange.html" title="irange"><code>irange()</code></a></td>
+<td><a href="reference-functions-bundlesmatching.html" title="bundlesmatching"><code>bundlesmatching()</code></a></td>
+<td><a href="reference-functions-accessedbefore.html" title="accessedbefore"><code>accessedbefore()</code></a></td>
+<td><a href="reference-functions-bundlestate.html" title="bundlestate"><code>bundlestate()</code></a></td>
+<td><a href="reference-functions-accumulated.html" title="accumulated"><code>accumulated()</code></a></td>
+<td><a href="reference-functions-mean.html" title="mean"><code>mean()</code></a></td>
+<td><a href="reference-functions-basename.html" title="basename"><code>basename()</code></a></td>
+</tr>
+<tr>
+<td><a href="reference-functions-rrange.html" title="rrange"><code>rrange()</code></a></td>
+<td><a href="reference-functions-callstack_promisers.html" title="callstack_promisers"><code>callstack_promisers()</code></a></td>
+<td><a href="reference-functions-and.html" title="and"><code>and()</code></a></td>
+<td><a href="reference-functions-callstack_callers.html" title="callstack_callers"><code>callstack_callers()</code></a></td>
+<td><a href="reference-functions-ago.html" title="ago"><code>ago()</code></a></td>
+<td><a href="reference-functions-product.html" title="product"><code>product()</code></a></td>
+<td><a href="reference-functions-canonify.html" title="canonify"><code>canonify()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-classesmatching.html" title="classesmatching"><code>classesmatching()</code></a></td>
+<td><a href="reference-functions-cf_version_after.html" title="cf_version_after"><code>cf_version_after()</code></a></td>
+<td><a href="reference-functions-classfiltercsv.html" title="classfiltercsv"><code>classfiltercsv()</code></a></td>
+<td><a href="reference-functions-countclassesmatching.html" title="countclassesmatching"><code>countclassesmatching()</code></a></td>
+<td><a href="reference-functions-sum.html" title="sum"><code>sum()</code></a></td>
+<td><a href="reference-functions-canonifyuniquely.html" title="canonifyuniquely"><code>canonifyuniquely()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-difference.html" title="difference"><code>difference()</code></a></td>
+<td><a href="reference-functions-cf_version_at.html" title="cf_version_at"><code>cf_version_at()</code></a></td>
+<td><a href="reference-functions-data_expand.html" title="data_expand"><code>data_expand()</code></a></td>
+<td><a href="reference-functions-countlinesmatching.html" title="countlinesmatching"><code>countlinesmatching()</code></a></td>
+<td><a href="reference-functions-variance.html" title="variance"><code>variance()</code></a></td>
+<td><a href="reference-functions-concat.html" title="concat"><code>concat()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-expandrange.html" title="expandrange"><code>expandrange()</code></a></td>
+<td><a href="reference-functions-cf_version_before.html" title="cf_version_before"><code>cf_version_before()</code></a></td>
+<td><a href="reference-functions-data_readstringarray.html" title="data_readstringarray"><code>data_readstringarray()</code></a></td>
+<td><a href="reference-functions-diskfree.html" title="diskfree"><code>diskfree()</code></a></td>
+<td></td>
+<td><a href="reference-functions-dirname.html" title="dirname"><code>dirname()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-filter.html" title="filter"><code>filter()</code></a></td>
+<td><a href="reference-functions-cf_version_between.html" title="cf_version_between"><code>cf_version_between()</code></a></td>
+<td><a href="reference-functions-data_readstringarrayidx.html" title="data_readstringarrayidx"><code>data_readstringarrayidx()</code></a></td>
+<td><a href="reference-functions-filesize.html" title="filesize"><code>filesize()</code></a></td>
+<td></td>
+<td><a href="reference-functions-escape.html" title="escape"><code>escape()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-findfiles.html" title="findfiles"><code>findfiles()</code></a></td>
+<td><a href="reference-functions-cf_version_maximum.html" title="cf_version_maximum"><code>cf_version_maximum()</code></a></td>
+<td><a href="reference-functions-data_regextract.html" title="data_regextract"><code>data_regextract()</code></a></td>
+<td><a href="reference-functions-getfields.html" title="getfields"><code>getfields()</code></a></td>
+<td></td>
+<td><a href="reference-functions-eval.html" title="eval"><code>eval()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-getclassmetatags.html" title="getclassmetatags"><code>getclassmetatags()</code></a></td>
+<td><a href="reference-functions-cf_version_minimum.html" title="cf_version_minimum"><code>cf_version_minimum()</code></a></td>
+<td><a href="reference-functions-data_sysctlvalues.html" title="data_sysctlvalues"><code>data_sysctlvalues()</code></a></td>
+<td><a href="reference-functions-getgid.html" title="getgid"><code>getgid()</code></a></td>
+<td></td>
+<td><a href="reference-functions-execresult.html" title="execresult"><code>execresult()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-getindices.html" title="getindices"><code>getindices()</code></a></td>
+<td><a href="reference-functions-changedbefore.html" title="changedbefore"><code>changedbefore()</code></a></td>
+<td><a href="reference-functions-datastate.html" title="datastate"><code>datastate()</code></a></td>
+<td><a href="reference-functions-getuid.html" title="getuid"><code>getuid()</code></a></td>
+<td></td>
+<td><a href="reference-functions-file_hash.html" title="file_hash"><code>file_hash()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-getusers.html" title="getusers"><code>getusers()</code></a></td>
+<td><a href="reference-functions-classify.html" title="classify"><code>classify()</code></a></td>
+<td><a href="reference-functions-execresult_as_data.html" title="execresult_as_data"><code>execresult_as_data()</code></a></td>
+<td><a href="reference-functions-hash_to_int.html" title="hash_to_int"><code>hash_to_int()</code></a></td>
+<td></td>
+<td><a href="reference-functions-filestat.html" title="filestat"><code>filestat()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-getvalues.html" title="getvalues"><code>getvalues()</code></a></td>
+<td><a href="reference-functions-classmatch.html" title="classmatch"><code>classmatch()</code></a></td>
+<td><a href="reference-functions-findfiles_up.html" title="findfiles_up"><code>findfiles_up()</code></a></td>
+<td><a href="reference-functions-int.html" title="int"><code>int()</code></a></td>
+<td></td>
+<td><a href="reference-functions-format.html" title="format"><code>format()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-getvariablemetatags.html" title="getvariablemetatags"><code>getvariablemetatags()</code></a></td>
+<td><a href="reference-functions-every.html" title="every"><code>every()</code></a></td>
+<td><a href="reference-functions-findprocesses.html" title="findprocesses"><code>findprocesses()</code></a></td>
+<td><a href="reference-functions-length.html" title="length"><code>length()</code></a></td>
+<td></td>
+<td><a href="reference-functions-getenv.html" title="getenv"><code>getenv()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-grep.html" title="grep"><code>grep()</code></a></td>
+<td><a href="reference-functions-fileexists.html" title="fileexists"><code>fileexists()</code></a></td>
+<td><a href="reference-functions-getuserinfo.html" title="getuserinfo"><code>getuserinfo()</code></a></td>
+<td><a href="reference-functions-now.html" title="now"><code>now()</code></a></td>
+<td></td>
+<td><a href="reference-functions-hash.html" title="hash"><code>hash()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-hostsseen.html" title="hostsseen"><code>hostsseen()</code></a></td>
+<td><a href="reference-functions-filesexist.html" title="filesexist"><code>filesexist()</code></a></td>
+<td><a href="reference-functions-mapdata.html" title="mapdata"><code>mapdata()</code></a></td>
+<td><a href="reference-functions-on.html" title="on"><code>on()</code></a></td>
+<td></td>
+<td><a href="reference-functions-host2ip.html" title="host2ip"><code>host2ip()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-hostswithclass.html" title="hostswithclass"><code>hostswithclass()</code></a></td>
+<td><a href="reference-functions-groupexists.html" title="groupexists"><code>groupexists()</code></a></td>
+<td><a href="reference-functions-mergedata.html" title="mergedata"><code>mergedata()</code></a></td>
+<td><a href="reference-functions-parseintarray.html" title="parseintarray"><code>parseintarray()</code></a></td>
+<td></td>
+<td><a href="reference-functions-hubknowledge.html" title="hubknowledge"><code>hubknowledge()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-intersection.html" title="intersection"><code>intersection()</code></a></td>
+<td><a href="reference-functions-hashmatch.html" title="hashmatch"><code>hashmatch()</code></a></td>
+<td><a href="reference-functions-network_connections.html" title="network_connections"><code>network_connections()</code></a></td>
+<td><a href="reference-functions-parserealarray.html" title="parserealarray"><code>parserealarray()</code></a></td>
+<td></td>
+<td><a href="reference-functions-ifelse.html" title="ifelse"><code>ifelse()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-ldaplist.html" title="ldaplist"><code>ldaplist()</code></a></td>
+<td><a href="reference-functions-hostinnetgroup.html" title="hostinnetgroup"><code>hostinnetgroup()</code></a></td>
+<td><a href="reference-functions-packagesmatching.html" title="packagesmatching"><code>packagesmatching()</code></a></td>
+<td><a href="reference-functions-parsestringarray.html" title="parsestringarray"><code>parsestringarray()</code></a></td>
+<td></td>
+<td><a href="reference-functions-ip2host.html" title="ip2host"><code>ip2host()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-lsdir.html" title="lsdir"><code>lsdir()</code></a></td>
+<td><a href="reference-functions-hostrange.html" title="hostrange"><code>hostrange()</code></a></td>
+<td><a href="reference-functions-packageupdatesmatching.html" title="packageupdatesmatching"><code>packageupdatesmatching()</code></a></td>
+<td><a href="reference-functions-parsestringarrayidx.html" title="parsestringarrayidx"><code>parsestringarrayidx()</code></a></td>
+<td></td>
+<td><a href="reference-functions-join.html" title="join"><code>join()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-maparray.html" title="maparray"><code>maparray()</code></a></td>
+<td><a href="reference-functions-iprange.html" title="iprange"><code>iprange()</code></a></td>
+<td><a href="reference-functions-parsejson.html" title="parsejson"><code>parsejson()</code></a></td>
+<td><a href="reference-functions-randomint.html" title="randomint"><code>randomint()</code></a></td>
+<td></td>
+<td><a href="reference-functions-lastnode.html" title="lastnode"><code>lastnode()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-maplist.html" title="maplist"><code>maplist()</code></a></td>
+<td><a href="reference-functions-isdir.html" title="isdir"><code>isdir()</code></a></td>
+<td><a href="reference-functions-parseyaml.html" title="parseyaml"><code>parseyaml()</code></a></td>
+<td><a href="reference-functions-readintarray.html" title="readintarray"><code>readintarray()</code></a></td>
+<td></td>
+<td><a href="reference-functions-ldapvalue.html" title="ldapvalue"><code>ldapvalue()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-peerleaders.html" title="peerleaders"><code>peerleaders()</code></a></td>
+<td><a href="reference-functions-isexecutable.html" title="isexecutable"><code>isexecutable()</code></a></td>
+<td><a href="reference-functions-readcsv.html" title="readcsv"><code>readcsv()</code></a></td>
+<td><a href="reference-functions-readrealarray.html" title="readrealarray"><code>readrealarray()</code></a></td>
+<td></td>
+<td><a href="reference-functions-makerule.html" title="makerule"><code>makerule()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-peers.html" title="peers"><code>peers()</code></a></td>
+<td><a href="reference-functions-isgreaterthan.html" title="isgreaterthan"><code>isgreaterthan()</code></a></td>
+<td><a href="reference-functions-readdata.html" title="readdata"><code>readdata()</code></a></td>
+<td><a href="reference-functions-readstringarray.html" title="readstringarray"><code>readstringarray()</code></a></td>
+<td></td>
+<td><a href="reference-functions-max.html" title="max"><code>max()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-readintlist.html" title="readintlist"><code>readintlist()</code></a></td>
+<td><a href="reference-functions-isipinsubnet.html" title="isipinsubnet"><code>isipinsubnet()</code></a></td>
+<td><a href="reference-functions-readenvfile.html" title="readenvfile"><code>readenvfile()</code></a></td>
+<td><a href="reference-functions-readstringarrayidx.html" title="readstringarrayidx"><code>readstringarrayidx()</code></a></td>
+<td></td>
+<td><a href="reference-functions-min.html" title="min"><code>min()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-readreallist.html" title="readreallist"><code>readreallist()</code></a></td>
+<td><a href="reference-functions-islessthan.html" title="islessthan"><code>islessthan()</code></a></td>
+<td><a href="reference-functions-readjson.html" title="readjson"><code>readjson()</code></a></td>
+<td><a href="reference-functions-selectservers.html" title="selectservers"><code>selectservers()</code></a></td>
+<td></td>
+<td><a href="reference-functions-nth.html" title="nth"><code>nth()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-readstringlist.html" title="readstringlist"><code>readstringlist()</code></a></td>
+<td><a href="reference-functions-islink.html" title="islink"><code>islink()</code></a></td>
+<td><a href="reference-functions-readyaml.html" title="readyaml"><code>readyaml()</code></a></td>
+<td><a href="reference-functions-string_length.html" title="string_length"><code>string_length()</code></a></td>
+<td></td>
+<td><a href="reference-functions-peerleader.html" title="peerleader"><code>peerleader()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-reverse.html" title="reverse"><code>reverse()</code></a></td>
+<td><a href="reference-functions-isnewerthan.html" title="isnewerthan"><code>isnewerthan()</code></a></td>
+<td><code>search_up()</code></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-readfile.html" title="readfile"><code>readfile()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-shuffle.html" title="shuffle"><code>shuffle()</code></a></td>
+<td><a href="reference-functions-isplain.html" title="isplain"><code>isplain()</code></a></td>
+<td><a href="reference-functions-url_get.html" title="url_get"><code>url_get()</code></a></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-readtcp.html" title="readtcp"><code>readtcp()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-sort.html" title="sort"><code>sort()</code></a></td>
+<td><a href="reference-functions-isvariable.html" title="isvariable"><code>isvariable()</code></a></td>
+<td><a href="reference-functions-variablesmatching_as_data.html" title="variablesmatching_as_data"><code>variablesmatching_as_data()</code></a></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-regex_replace.html" title="regex_replace"><code>regex_replace()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-splitstring.html" title="splitstring"><code>splitstring()</code></a></td>
+<td><a href="reference-functions-laterthan.html" title="laterthan"><code>laterthan()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-registryvalue.html" title="registryvalue"><code>registryvalue()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-string_split.html" title="string_split"><code>string_split()</code></a></td>
+<td><a href="reference-functions-ldaparray.html" title="ldaparray"><code>ldaparray()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-remotescalar.html" title="remotescalar"><code>remotescalar()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-sublist.html" title="sublist"><code>sublist()</code></a></td>
+<td><a href="reference-functions-none.html" title="none"><code>none()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-storejson.html" title="storejson"><code>storejson()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-unique.html" title="unique"><code>unique()</code></a></td>
+<td><a href="reference-functions-not.html" title="not"><code>not()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-strftime.html" title="strftime"><code>strftime()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="reference-functions-variablesmatching.html" title="variablesmatching"><code>variablesmatching()</code></a></td>
+<td><a href="reference-functions-or.html" title="or"><code>or()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-string.html" title="string"><code>string()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="reference-functions-processexists.html" title="processexists"><code>processexists()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-string_downcase.html" title="string_downcase"><code>string_downcase()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="reference-functions-read_module_protocol.html" title="read_module_protocol"><code>read_module_protocol()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-string_head.html" title="string_head"><code>string_head()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="reference-functions-regarray.html" title="regarray"><code>regarray()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-string_mustache.html" title="string_mustache"><code>string_mustache()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="reference-functions-regcmp.html" title="regcmp"><code>regcmp()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-string_replace.html" title="string_replace"><code>string_replace()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="reference-functions-regextract.html" title="regextract"><code>regextract()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-string_reverse.html" title="string_reverse"><code>string_reverse()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="reference-functions-regldap.html" title="regldap"><code>regldap()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-string_tail.html" title="string_tail"><code>string_tail()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="reference-functions-regline.html" title="regline"><code>regline()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-string_trim.html" title="string_trim"><code>string_trim()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="reference-functions-reglist.html" title="reglist"><code>reglist()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-string_upcase.html" title="string_upcase"><code>string_upcase()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="reference-functions-remoteclassesmatching.html" title="remoteclassesmatching"><code>remoteclassesmatching()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-sysctlvalue.html" title="sysctlvalue"><code>sysctlvalue()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="reference-functions-returnszero.html" title="returnszero"><code>returnszero()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-translatepath.html" title="translatepath"><code>translatepath()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="reference-functions-some.html" title="some"><code>some()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="reference-functions-type.html"><code>type()</code></a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="reference-functions-splayclass.html" title="splayclass"><code>splayclass()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="reference-functions-strcmp.html" title="strcmp"><code>strcmp()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="reference-functions-usemodule.html" title="usemodule"><code>usemodule()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="reference-functions-userexists.html" title="userexists"><code>userexists()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="reference-functions-validdata.html" title="validdata"><code>validdata()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td><a href="reference-functions-validjson.html" title="validjson"><code>validjson()</code></a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table></div>
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-functions.html">functions</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 03 October 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.20/generator/pages/reference/functions.markdown/reference/functions.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-e4781e211c818162ced38e083ca9577f.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

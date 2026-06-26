@@ -1,0 +1,67 @@
+
+bundle knowledge cf_QuickRef2
+
+{
+topics:
+
+"cf-QuickRef2";
+Command_reference::
+    "cfkey" ;
+Command_reference::
+    "cfshow" ;
+Command_reference::
+    "cfenvgraph" ;
+Command_reference::
+    "cfrun command options" ;
+Command_reference::
+    "cfenvd command options" ;
+Command_reference::
+    "cfexecd command options" ;
+Command_reference::
+    "cfservd command options" ;
+Command_reference::
+    "cfagent command options" ;
+Command_reference::
+    "Command reference" ;
+
+
+occurrences:
+
+Command_reference::
+ "/inside/manuals/cf-QuickRef2#Command-reference"
+  represents => { "chapter" };
+cfagent_command_options::
+ "/inside/manuals/cf-QuickRef2#Cfagent-command-options"
+  represents => { "cfagent command options" };
+cfagent_command_options::
+ "/inside/manuals/cf-QuickRef2#index-Internal-classes_002c-switching-off-1"
+  represents => { "example" };
+cfagent_command_options::
+ "/inside/manuals/cf-QuickRef2#index-Internal-classes_002c-switching-off-1"
+  represents => { "example" };
+cfservd_command_options::
+ "/inside/manuals/cf-QuickRef2#Cfservd-command-options"
+  represents => { "cfservd command options" };
+cfexecd_command_options::
+ "/inside/manuals/cf-QuickRef2#Cfexecd-command-options"
+  represents => { "cfexecd command options" };
+cfenvd_command_options::
+ "/inside/manuals/cf-QuickRef2#Cfenvd-command-options"
+  represents => { "cfenvd command options" };
+cfrun_command_options::
+ "/inside/manuals/cf-QuickRef2#Cfrun-command-options"
+  represents => { "cfrun command options" };
+cfrun_command_options::
+ "/inside/manuals/cf-QuickRef2#Cfrun-command-options"
+  represents => { "example" };
+cfenvgraph::
+ "/inside/manuals/cf-QuickRef2#cfenvgraph"
+  represents => { "cfenvgraph" };
+cfshow::
+ "/inside/manuals/cf-QuickRef2#cfshow"
+  represents => { "cfshow" };
+cfkey::
+ "/inside/manuals/cf-QuickRef2#cfkey"
+  represents => { "cfkey" };
+}
+

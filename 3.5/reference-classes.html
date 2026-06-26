@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - Hard and Soft Classes</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html"  class="navselected" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="index.html">CFEngine 3.5</a></li><li><a href="getting-started.html">Getting Started</a></li><li><a href="whats-new.html">New in CFEngine</a></li><li><a href="manuals.html">CFEngine Manuals</a></li><li><a href="reference.html">CFEngine Reference</a></li><li><a href="examples.html">CFEngine Examples</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li class="selected"><span>Hard and Soft Classes</span></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-enterprise-api.html">Enterprise  API Reference</a></li><li><a href="reference-syntax.html">Syntax, identifiers and names</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>Hard and Soft Classes</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/reference.html">reference</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/hard-classes.html">hard classes</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/soft-classes.html">soft classes</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/classes.html">classes</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>Hard and Soft Classes</h1>
+                    <p><a href="manuals-language-concepts-classes.html" title="Classes and Decisions">Classes</a> fall into <strong>hard</strong>
+(discovered) and <strong>soft</strong> (defined) types. This reference documents the hard 
+classes that might be set by CFEngine, and soft classes used by CFEngine&#39;s 
+default policy.</p>
+<h2 id="listing-classes">Listing Classes</h2>
+<p>To see all of the classes defined on a particular host, run</p>
+<div class="highlight"><pre><code class="text">$ cf-promises -v
+</code></pre>
+</div>
+
+<p>as a privileged user. Note that some of the classes are set only if a trusted 
+link can be established with 
+<a href="reference-components-cfmonitord.html" title="cf-monitord"><code>cf-monitord</code></a>, i.e. if both are 
+running  with privilege, and the <code>/var/cfengine/state/env_data</code> file is 
+secure.</p>
+
+<p>You can use
+<a href="https://github.com/cfengine/design-center/tree/master/tools/hcgrep">https://github.com/cfengine/design-center/tree/master/tools/hcgrep</a> to
+obtain this list in a format suitable for other tools like <code>grep</code> (one
+class per line).</p>
+
+<p>You can also use the built-in <code>classesmatching</code> function to get a list
+of all the defined classes in a list, inside CFEngine policy itself.</p>
+<h2 id="hard-classes">Hard Classes</h2>
+<ul>
+<li>Operating System Classes
+
+<ul>
+<li>Operating System Architecture - <code>ultrix, sun4</code>, etc.</li>
+<li><strong>See also:</strong> <a href="reference-special-variables-context-sys.html#sys-arch" title="sys - sys.arch"><code>sys.arch</code></a>, <a href="reference-special-variables-context-sys.html#sys-class" title="sys - sys.class"><code>sys.class</code></a>, <code>sys.flavor</code>, <a href="reference-special-variables-context-sys.html#sys-os" title="sys - sys.os"><code>sys.os</code></a>, <a href="reference-special-variables-context-sys.html#sys-ostype" title="sys - sys.ostype"><code>sys.ostype</code></a>.</li>
+</ul></li>
+<li>Network Classes
+
+<ul>
+<li>Unqualified Name of Host. CFEngine truncates it at the first dot. 
+Note: <code>www.sales.company.com</code> and <code>www.research.company.com</code> have the
+same unqualified name – <code>www</code></li>
+<li>The IP address octets of any active interface (in the form
+<code>ipv4_192_0_0_1</code>, <code>ipv4_192_0_0</code>, <code>ipv4_192_0</code>, <code>ipv4_192</code>)</li>
+<li>User-defined Group of Hosts</li>
+<li><strong>See also:</strong> <a href="reference-special-variables-context-sys.html#sys-domain" title="sys - sys.domain"><code>sys.domain</code></a>, <a href="reference-special-variables-context-sys.html#sys-hardware_addresses" title="sys - sys.hardware_addresses"><code>sys.hardware_addresses</code></a>, <code>sys.sys.host</code>, <a href="reference-special-variables-context-sys.html#sys-interface" title="sys - sys.interface"><code>sys.interface</code></a>, <a href="reference-special-variables-context-sys.html#sys-interfaces" title="sys - sys.interfaces"><code>sys.interfaces</code></a>, <a href="reference-special-variables-context-sys.html#sys-interface_flags" title="sys - sys.interface_flags"><code>sys.interface_flags</code></a>, <a href="reference-special-variables-context-sys.html#sys-ipv4" title="sys - sys.ipv4"><code>sys.ipv4</code></a>, <a href="reference-special-variables-context-sys.html#sys-ip_addresses" title="sys - sys.ip_addresses"><code>sys.ip_addresses</code></a>, <a href="reference-special-variables-context-sys.html#sys-fqhost" title="sys - sys.fqhost"><code>sys.fqhost</code></a>, <a href="reference-special-variables-context-sys.html#sys-uqhost" title="sys - sys.uqhost"><code>sys.uqhost</code></a>.</li>
+</ul></li>
+<li><p>Time Classes</p>
+
+<ul>
+<li>note ALL of these have a local and a GMT version.  The GMT classes are consistent the world over, in case you need global change coordination.</li>
+<li>Day of the Week - <code>Monday, Tuesday, Wednesday,...GMT_Monday, GMT_Tuesday, GMT_Wednesday,...</code></li>
+<li>Hour of the Day in Current Time Zone - <code>Hr00, Hr01,... Hr23</code> and <code>Hr0, Hr1,... Hr23</code></li>
+<li>Hour of the Day in GMT - <code>GMT_Hr00, GMT_Hr01, ...GMT_Hr23</code> and <code>GMT_Hr0, GMT_Hr1, ...GMT_Hr23</code>.</li>
+<li>Minutes of the Hour - <code>Min00, Min17,... Min45,...</code> and <code>GMT_Min00, GMT_Min17,... GMT_Min45,...</code></li>
+<li>Five Minute Interval of the Hour - <code>Min00_05, Min05_10,... Min55_00</code> and <code>GMT_Min00_05, GMT_Min05_10,... GMT_Min55_00</code>.  Note the second number indicates <em>up to</em> what minute the interval extends and does not include that minute.</li>
+<li>Quarter of the Hour - <code>Q1, Q2, Q3, Q4</code> and <code>GMT_Q1, GMT_Q2, GMT_Q3, GMT_Q4</code></li>
+<li>An expression of the current quarter hour - <code>Hr12_Q3</code> and <code>GMT_Hr12_Q3</code></li>
+<li>Day of the Month - <code>Day1, Day2,... Day31</code> and <code>GMT_Day1, GMT_Day2,... GMT_Day31</code></li>
+<li>Month - <code>January, February,... December</code> and <code>GMT_January, GMT_February,... GMT_December</code></li>
+<li>Year - <code>Yr1997, Yr2004</code> and <code>GMT_Yr1997, GMT_Yr2004</code></li>
+<li>Period of the Day - <code>Night, Morning, Afternoon, Evening</code> and <code>GMT_Night, GMT_Morning, GMT_Afternoon, GMT_Evening</code> (six hour blocks starting at 00:00 hours).</li>
+<li>Lifecycle Index - <code>Lcycle_0, Lcycle_1, Lcycle_2</code> and <code>GMT_Lcycle_0, GMT_Lcycle_1, GMT_Lcycle_2</code> (the year number modulo 3, used in long term resource memory).</li>
+<li><strong>See also:</strong> <a href="reference-special-variables-context-sys.html#sys-cdate" title="sys - sys.cdate"><code>sys.cdate</code></a>, <a href="reference-special-variables-context-sys.html#sys-date" title="sys - sys.date"><code>sys.date</code></a>.</li>
+</ul></li>
+<li><p>The unqualified name of a particular host (e.g., <code>www</code>). If
+your system returns a fully qualified domain name for your host
+(e.g., <code>www.iu.hio.no</code>), CFEngine will also define a hard class for
+the fully qualified name, as well as the partially-qualified
+component names <code>iu.hio.no</code>, <code>hio.no</code>, and <code>no</code>.</p>
+
+<ul>
+<li><strong>See also:</strong> <a href="reference-special-variables-context-sys.html#sys-fqhost" title="sys - sys.fqhost"><code>sys.fqhost</code></a>, <a href="reference-special-variables-context-sys.html#sys-uqhost" title="sys - sys.uqhost"><code>sys.uqhost</code></a>.</li>
+</ul></li>
+<li><p>An arbitrary user-defined string (as specified in the <code>-D</code>
+command line option, or defined in a <a href="reference-promise-types-classes.html" title="classes"><code>classes</code></a> promise or body,
+<a href="reference-promise-types-processes.html#restart_class" title="processes - restart_class"><code>restart_class</code></a> in a <a href="reference-promise-types-processes.html" title="processes"><code>processes</code></a> promise, etc).</p></li>
+<li><p>The IP address octets of any active interface (in the form
+<code>ipv4_192_0_0_1&lt;!-- /@w --&gt;</code>, <code>ipv4_192_0_0&lt;!-- /@w --&gt;</code>,
+<code>ipv4_192_0&lt;!-- /@w --&gt;</code>, <code>ipv4_192&lt;!-- /@w --&gt;</code>), provided they
+are not excluded by a regular expression in the file
+<code>WORKDIR/inputs/ignore_interfaces.rx</code>.</p></li>
+<li><p>The names of the active interfaces (in the form
+<code>net_iface_xl0</code>, <code>net_iface_vr0</code>).</p></li>
+<li><p>System status and entropy information reported by
+<a href="reference-components-cfmonitord.html" title="cf-monitord"><code>cf-monitord</code></a>.</p></li>
+<li><p>On Solaris-10 systems, the zone name (in the form
+<code>zone_global, zone_foo, zone_baz</code>).</p></li>
+</ul>
+<h2 id="soft-classes">Soft Classes</h2>
+<p>The following classes can be set via </p>
+<div class="highlight"><pre><code class="text">$ cf-agent -Dclass
+</code></pre>
+</div>
+
+<p>or</p>
+<div class="highlight"><pre><code class="text">$ cf-runagent -Dclass
+</code></pre>
+</div>
+
+<p>to change the behavior of CFEngine without having to edit the policy.</p>
+<h3 id="persistent_disable_-daemon">persistent_disable_*DAEMON*</h3>
+<p><strong>Description:</strong> Disable a CFEngine Enterprise daemon component persistently.</p>
+
+<p><code>DAEMON</code> can be one of <code>cf_execd</code>, <code>cf_monitord</code> or <code>cf_serverd</code>.</p>
+
+<p>This will stop the AGENT from starting automatically.</p>
+<h3 id="clear_persistent_disable_-daemon">clear_persistent_disable_*DAEMON*</h3>
+<p><strong>Description:</strong> Re-enable a previously disabled CFEngine Enterprise daemon 
+component.</p>
+
+<p><code>DAEMON</code> can be one of <code>cf_execd</code>, <code>cf_monitord</code> or <code>cf_serverd</code>.</p>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/reference/classes.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

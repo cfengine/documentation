@@ -1,0 +1,356 @@
+
+bundle knowledge cf2_Modularize
+
+{
+topics:
+
+"cf2-Modularize";
+Cfengine_Methods::
+    "Method self-test questions" ;
+Cfengine_Methods::
+    "Remote method examples" ;
+Method_example__DNS_server_setup::
+    "PopulateDNS" ;
+Method_example__DNS_server_setup::
+    "EditDNS" ;
+Cfengine_Methods::
+    "Method example: DNS server setup" ;
+Method_example__SSH_key_distribution::
+    "Allow ssh root login" ;
+Method_example__SSH_key_distribution::
+    "From an authorized cache directory to different locations" ;
+Cfengine_Methods::
+    "Method example: SSH key distribution" ;
+Local_method_examples::
+    "Tar package installation" ;
+Local_method_examples::
+    "User passwords" ;
+Local_method_examples::
+    "Setting up users" ;
+Cfengine_Methods::
+    "Local method examples" ;
+Cfengine_Methods::
+    "Cfengine Methods" ;
+Cfengine_plugin_modules::
+    "Module self-test questions" ;
+Cfengine_plugin_modules::
+    "Examples of modules" ;
+Cfengine_plugin_modules::
+    "Options related to modules" ;
+Cfengine_plugin_modules::
+    "Preparatory Modules" ;
+Writing_plugin_modules::
+    "Using the class environment in plugins" ;
+Writing_plugin_modules::
+    "The plugin itself" ;
+Cfengine_plugin_modules::
+    "Writing plugin modules" ;
+Cfengine_plugin_modules::
+    "Storing modules and methods" ;
+Other_reasons_for_modules::
+    "The moduledirectory" ;
+Cfengine_plugin_modules::
+    "Other reasons for modules" ;
+Cfengine_plugin_modules::
+    "Modules can define classes" ;
+Cfengine_plugin_modules::
+    "Why cfengine modules?" ;
+Cfengine_plugin_modules::
+    "Cfengine plugin modules" ;
+Modularization::
+    "Modularization self-test questions" ;
+Methodology_to_organize_systems::
+    "Bottom up" ;
+Methodology_to_organize_systems::
+    "Top down" ;
+Modularization::
+    "Methodology to organize systems" ;
+Modularization::
+    "Role based access control" ;
+Modularization::
+    "Delegation" ;
+Modularization::
+    "Aspect orientation" ;
+Modularization::
+    "Organizing the files into classes" ;
+Object_orientation::
+    "Overriding a policy file" ;
+Object_orientation::
+    "Overriding" ;
+Object_orientation::
+    "Inheritance" ;
+Modularization::
+    "Object orientation" ;
+Modularization::
+    "User experiences on organizing policy" ;
+Modularization::
+    "Reminder about classes" ;
+Modularization::
+    "Modularization" ;
+
+
+occurrences:
+
+Modularization::
+ "/inside/manuals/cf2-Modularize#Modularization"
+  represents => { "chapter" };
+Reminder_about_classes::
+ "/inside/manuals/cf2-Modularize#Reminder-about-classes"
+  represents => { "Reminder about classes" };
+User_experiences_on_organizing_policy::
+ "/inside/manuals/cf2-Modularize#User-experiences-on-organizing-policy"
+  represents => { "User experiences on organizing policy" };
+User_experiences_on_organizing_policy::
+ "/inside/manuals/cf2-Modularize#User-experiences-on-organizing-policy"
+  represents => { "example" };
+User_experiences_on_organizing_policy::
+ "/inside/manuals/cf2-Modularize#User-experiences-on-organizing-policy"
+  represents => { "example" };
+Object_orientation::
+ "/inside/manuals/cf2-Modularize#Object-orientation"
+  represents => { "Object orientation" };
+Inheritance::
+ "/inside/manuals/cf2-Modularize#Inheritance"
+  represents => { "subsection" };
+Inheritance::
+ "/inside/manuals/cf2-Modularize#Inheritance"
+  represents => { "example" };
+Inheritance::
+ "/inside/manuals/cf2-Modularize#Inheritance"
+  represents => { "example" };
+Overriding::
+ "/inside/manuals/cf2-Modularize#Overriding"
+  represents => { "subsection" };
+Overriding::
+ "/inside/manuals/cf2-Modularize#Overriding"
+  represents => { "example" };
+Overriding::
+ "/inside/manuals/cf2-Modularize#Overriding"
+  represents => { "example" };
+Overriding::
+ "/inside/manuals/cf2-Modularize#Overriding"
+  represents => { "example" };
+Overriding::
+ "/inside/manuals/cf2-Modularize#Overriding"
+  represents => { "example" };
+Overriding_a_policy_file::
+ "/inside/manuals/cf2-Modularize#Overriding-a-policy-file"
+  represents => { "subsection" };
+Overriding_a_policy_file::
+ "/inside/manuals/cf2-Modularize#Overriding-a-policy-file"
+  represents => { "example" };
+Organizing_the_files_into_classes::
+ "/inside/manuals/cf2-Modularize#Organizing-the-files-into-classes"
+  represents => { "Organizing the files into classes" };
+Organizing_the_files_into_classes::
+ "/inside/manuals/cf2-Modularize#Organizing-the-files-into-classes"
+  represents => { "example" };
+Aspect_orientation::
+ "/inside/manuals/cf2-Modularize#Aspect-orientation"
+  represents => { "Aspect orientation" };
+Aspect_orientation::
+ "/inside/manuals/cf2-Modularize#Aspect-orientation"
+  represents => { "example" };
+Delegation::
+ "/inside/manuals/cf2-Modularize#Delegation"
+  represents => { "Delegation" };
+Role_based_access_control::
+ "/inside/manuals/cf2-Modularize#Role-based-access-control"
+  represents => { "Role based access control" };
+Role_based_access_control::
+ "/inside/manuals/cf2-Modularize#Role-based-access-control"
+  represents => { "example" };
+Role_based_access_control::
+ "/inside/manuals/cf2-Modularize#Role-based-access-control"
+  represents => { "example" };
+Methodology_to_organize_systems::
+ "/inside/manuals/cf2-Modularize#Methodology-to-organize-systems"
+  represents => { "Methodology to organize systems" };
+Top_down::
+ "/inside/manuals/cf2-Modularize#Top-down"
+  represents => { "subsection" };
+Bottom_up::
+ "/inside/manuals/cf2-Modularize#Bottom-up"
+  represents => { "subsection" };
+Modularization_self_test_questions::
+ "/inside/manuals/cf2-Modularize#Modularization-self_002dtest-questions"
+  represents => { "Modularization self-test questions" };
+Cfengine_plugin_modules::
+ "/inside/manuals/cf2-Modularize#Cfengine-plugin-modules"
+  represents => { "chapter" };
+Why_cfengine_modules_::
+ "/inside/manuals/cf2-Modularize#Why-cfengine-modules_003f"
+  represents => { "Why cfengine modules?" };
+Modules_can_define_classes::
+ "/inside/manuals/cf2-Modularize#Modules-can-define-classes"
+  represents => { "Modules can define classes" };
+Modules_can_define_classes::
+ "/inside/manuals/cf2-Modularize#Modules-can-define-classes"
+  represents => { "example" };
+Other_reasons_for_modules::
+ "/inside/manuals/cf2-Modularize#Other-reasons-for-modules"
+  represents => { "Other reasons for modules" };
+The_moduledirectory::
+ "/inside/manuals/cf2-Modularize#moduledirectory"
+  represents => { "subsection" };
+Storing_modules_and_methods::
+ "/inside/manuals/cf2-Modularize#Storing-modules-and-methods"
+  represents => { "Storing modules and methods" };
+Storing_modules_and_methods::
+ "/inside/manuals/cf2-Modularize#Storing-modules-and-methods"
+  represents => { "example" };
+Writing_plugin_modules::
+ "/inside/manuals/cf2-Modularize#Writing-plugin-modules"
+  represents => { "Writing plugin modules" };
+Writing_plugin_modules::
+ "/inside/manuals/cf2-Modularize#index-moduledirectory-6"
+  represents => { "example" };
+The_plugin_itself::
+ "/inside/manuals/cf2-Modularize#The-plugin-itself"
+  represents => { "subsection" };
+The_plugin_itself::
+ "/inside/manuals/cf2-Modularize#The-plugin-itself"
+  represents => { "example" };
+The_plugin_itself::
+ "/inside/manuals/cf2-Modularize#The-plugin-itself"
+  represents => { "example" };
+Using_the_class_environment_in_plugins::
+ "/inside/manuals/cf2-Modularize#Using-the-class-environment-in-plugins"
+  represents => { "subsection" };
+Using_the_class_environment_in_plugins::
+ "/inside/manuals/cf2-Modularize#Using-the-class-environment-in-plugins"
+  represents => { "example" };
+Using_the_class_environment_in_plugins::
+ "/inside/manuals/cf2-Modularize#Using-the-class-environment-in-plugins"
+  represents => { "example" };
+Preparatory_Modules::
+ "/inside/manuals/cf2-Modularize#Preparatory-modules"
+  represents => { "Preparatory Modules" };
+Preparatory_Modules::
+ "/inside/manuals/cf2-Modularize#Preparatory-modules"
+  represents => { "example" };
+Preparatory_Modules::
+ "/inside/manuals/cf2-Modularize#Preparatory-modules"
+  represents => { "example" };
+Options_related_to_modules::
+ "/inside/manuals/cf2-Modularize#Options-related-to-modules"
+  represents => { "Options related to modules" };
+Examples_of_modules::
+ "/inside/manuals/cf2-Modularize#Examples-of-modules"
+  represents => { "Examples of modules" };
+Examples_of_modules::
+ "/inside/manuals/cf2-Modularize#Examples-of-modules"
+  represents => { "example" };
+Module_self_test_questions::
+ "/inside/manuals/cf2-Modularize#Module-self_002dtest-questions"
+  represents => { "Module self-test questions" };
+Cfengine_Methods::
+ "/inside/manuals/cf2-Modularize#Cfengine-Methods"
+  represents => { "chapter" };
+Cfengine_Methods::
+ "/inside/manuals/cf2-Modularize#index-Methods-11"
+  represents => { "example" };
+Cfengine_Methods::
+ "/inside/manuals/cf2-Modularize#index-none-in-server-14"
+  represents => { "example" };
+Cfengine_Methods::
+ "/inside/manuals/cf2-Modularize#index-none-in-server-14"
+  represents => { "example" };
+Local_method_examples::
+ "/inside/manuals/cf2-Modularize#local-method-examples"
+  represents => { "Local method examples" };
+Setting_up_users::
+ "/inside/manuals/cf2-Modularize#Setting-up-users"
+  represents => { "subsection" };
+Setting_up_users::
+ "/inside/manuals/cf2-Modularize#Setting-up-users"
+  represents => { "example" };
+Setting_up_users::
+ "/inside/manuals/cf2-Modularize#Setting-up-users"
+  represents => { "example" };
+Setting_up_users::
+ "/inside/manuals/cf2-Modularize#Setting-up-users"
+  represents => { "example" };
+User_passwords::
+ "/inside/manuals/cf2-Modularize#User-passwords"
+  represents => { "subsection" };
+User_passwords::
+ "/inside/manuals/cf2-Modularize#User-passwords"
+  represents => { "example" };
+Tar_package_installation::
+ "/inside/manuals/cf2-Modularize#Tar-package-installation"
+  represents => { "subsection" };
+Tar_package_installation::
+ "/inside/manuals/cf2-Modularize#Tar-package-installation"
+  represents => { "example" };
+Tar_package_installation::
+ "/inside/manuals/cf2-Modularize#Tar-package-installation"
+  represents => { "example" };
+Tar_package_installation::
+ "/inside/manuals/cf2-Modularize#Tar-package-installation"
+  represents => { "example" };
+Tar_package_installation::
+ "/inside/manuals/cf2-Modularize#Tar-package-installation"
+  represents => { "example" };
+Tar_package_installation::
+ "/inside/manuals/cf2-Modularize#Tar-package-installation"
+  represents => { "example" };
+Tar_package_installation::
+ "/inside/manuals/cf2-Modularize#Tar-package-installation"
+  represents => { "example" };
+Tar_package_installation::
+ "/inside/manuals/cf2-Modularize#Tar-package-installation"
+  represents => { "example" };
+Method_example__SSH_key_distribution::
+ "/inside/manuals/cf2-Modularize#method-examples"
+  represents => { "Method example: SSH key distribution" };
+From_an_authorized_cache_directory_to_different_locations::
+ "/inside/manuals/cf2-Modularize#From-an-authorized-cache-directory-to-different-locations"
+  represents => { "subsection" };
+From_an_authorized_cache_directory_to_different_locations::
+ "/inside/manuals/cf2-Modularize#From-an-authorized-cache-directory-to-different-locations"
+  represents => { "example" };
+From_an_authorized_cache_directory_to_different_locations::
+ "/inside/manuals/cf2-Modularize#From-an-authorized-cache-directory-to-different-locations"
+  represents => { "example" };
+Allow_ssh_root_login::
+ "/inside/manuals/cf2-Modularize#Allow-ssh-root-login"
+  represents => { "subsection" };
+Allow_ssh_root_login::
+ "/inside/manuals/cf2-Modularize#Allow-ssh-root-login"
+  represents => { "example" };
+Allow_ssh_root_login::
+ "/inside/manuals/cf2-Modularize#Allow-ssh-root-login"
+  represents => { "example" };
+Method_example__DNS_server_setup::
+ "/inside/manuals/cf2-Modularize#Method-example-DNS-server-setup"
+  represents => { "Method example: DNS server setup" };
+Method_example__DNS_server_setup::
+ "/inside/manuals/cf2-Modularize#Method-example-DNS-server-setup"
+  represents => { "example" };
+EditDNS::
+ "/inside/manuals/cf2-Modularize#EditDNS"
+  represents => { "subsection" };
+EditDNS::
+ "/inside/manuals/cf2-Modularize#EditDNS"
+  represents => { "example" };
+PopulateDNS::
+ "/inside/manuals/cf2-Modularize#PopulateDNS"
+  represents => { "subsection" };
+PopulateDNS::
+ "/inside/manuals/cf2-Modularize#PopulateDNS"
+  represents => { "example" };
+Remote_method_examples::
+ "/inside/manuals/cf2-Modularize#remote-method-examples"
+  represents => { "Remote method examples" };
+Remote_method_examples::
+ "/inside/manuals/cf2-Modularize#remote-method-examples"
+  represents => { "example" };
+Remote_method_examples::
+ "/inside/manuals/cf2-Modularize#remote-method-examples"
+  represents => { "example" };
+Method_self_test_questions::
+ "/inside/manuals/cf2-Modularize#Method-self_002dtest-questions"
+  represents => { "Method self-test questions" };
+}
+

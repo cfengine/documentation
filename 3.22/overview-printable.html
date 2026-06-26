@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>The Complete Overview - CFEngine 3.22  Docs</title>
+        <link rel="icon" type="image/svg+xml" href="./media/images/favicon.svg">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/overview-printable.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-overview-printable.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website">
+        <meta prefix="og: http://ogp.me/ns#" property="og:title" content="The Complete Overview - CFEngine 3.22 Docs">
+        <meta prefix="og: http://ogp.me/ns#" property="og:description" content="">
+        <meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://docs.cfengine.com/docs/master/media/images/logo_wide_opengraph.png">
+        <meta prefix="og: http://ogp.me/ns#" property="og:url" content="docs.cfengine.com">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="docs.cfengine.com">
+        <meta name="twitter:title" content="The Complete Overview - CFEngine 3.22  Docs">
+        <meta name="twitter:description" content="">
+        <meta name="twitter:image" content="https://docs.cfengine.com/docs/master/media/images/agent_white_background.png">
+
+        <link rel="canonical" href="https://docs.cfengine.com/latest/overview-printable.html">
+        <link href='assets/global-f5d8de095c7c25ce3959db2907bfde23.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+    </head>
+
+<body>
+    <div class="wrapper">
+        <div id="content_col" style="margin:0; padding:0">
+            <article>
+                <h1 id="top">The Complete Overview</h1>
+                    <h1 id="table-of-content">Table of Content</h1>
+<ul>
+<li><a href="overview-printable.html#what-is-cfengine-and-why?">What is CFEngine and why?</a></li>
+<li><a href="overview-printable.html#how-cfengine-works">How CFEngine works</a></li>
+<li><a href="overview-printable.html#cfengine-directory-structure">CFEngine directory structure</a></li>
+<li><a href="overview-printable.html#client-server-communication">Client server communication</a></li>
+<li><a href="overview-printable.html#glossary">Glossary</a></li>
+</ul>
+
+<!--- Begin include: `/nt/documentation/overview.markdown` -->
+
+<p>CFEngine is a distributed system for managing and monitoring computers across an IT network. Machines on the network that have CFEngine installed, and have registered themselves with a policy server (see <a href="getting-started-installation.html" title="Installation">Installation</a>), will each be running a set of CFEngine component applications that manage and interpret textual files called policies. Policy files themselves contain sets of instructions to ensure machines on the network are in full compliance with a defined state. At the atomic level are sets, or <em>bundles</em>, of what are known in the CFEngine world as <a href="reference-language-concepts-promises.html" title="Promises">Promises</a>. <em>Promises</em> are at the heart of Promise Theory, which is in turn what CFEngine is all about.</p>
+<h6 id="policy-language-and-compliance">Policy language and compliance</h6>
+<p>For many users, CFEngine is simply a configuration tool - i.e. software for deploying and patching systems according to a policy. Policy is described using promises. Every statement in CFEngine 3 is a promise to be kept at some time or location. More than this, however, CFEngine is not like other automation tools that &quot;roll out&quot; an image of some software once and hope for the best. Every promise that you make in CFEngine is continuously verified and maintained. It is not a one-off operation, but a self-repairing process should anything deviate from the policy.</p>
+
+<p>CFEngine ensures that the actual state of a system is in compliance with the predefined model of desired state for the system. If it is not in compliance CFEngine will bring it into compliance.  This is known as <em>convergence</em>.</p>
+
+<p>That model is represented by one or more policies that have been written using the declarative CFEngine policy language. The policy language has been designed with a vocabulary that is intuitive, yet at the same time can still support the design of highly complex IT systems.</p>
+
+<p>Those policies are distributed across all hosts within the system via download from the policy server. Every host will then interpret and execute each of the instructions it has been given in a predetermined order.</p>
+
+<p>CFEngine continually monitors all of the hosts in real-time, and should the system&#39;s current state begin to drift away from the intended state then CFEngine will automatically take corrective action to bring everything back into compliance.</p>
+
+<p>See also: <a href="reference-language-concepts.html" title="Language concepts">Language concepts</a>, <a href="examples-tutorials-writing-and-serving-policy.html" title="Writing and serving policy">Writing and serving policy</a></p>
+<h6 id="cfengine-policy-servers-and-hosts">CFEngine policy servers and hosts</h6>
+<p>There are basically two categories of machines in a CFEngine environment: policy servers and their client hosts. Policy servers are responsible for making policy files available to each of the client hosts that have registered with it (a.k.a. bootstrapped), including itself. Hosts on the other hand are responsible for ensuring they continuously pull in the latest policies, or changes to policies, from the policy server. They are additionally responsible for ensuring they remain fully compliant with the instructions contained within the policy files, at all times.</p>
+
+<p>The role of a particular machine where CFEngine is deployed determines which of the components will be installed and running at any given moment.</p>
+
+<p>See also: <a href="examples-tutorials-writing-and-serving-policy.html" title="Writing and serving policy">Writing and serving policy</a></p>
+<h6 id="cfengine-component-applications-and-daemons">CFEngine component applications and daemons</h6>
+<p>There are a number of components in CFEngine, with each component performing a
+unique function: components responsible for implementing promises, components
+responsible for organizing large networks of agents, and other components
+responsible for providing the infrastructure of CFEngine.</p>
+
+<p>These components form the basis of automation with CFEngine. They are
+independent software agents running on the various systems that make up your
+infrastructure. They communicate with one another as shown in the following
+figure, using a protocol that allows each host to distribute promises, act
+upon them, and report status to a central server.</p>
+
+<p>All CFEngine software components exist in <a href="overview-directory-structure.html#var-cfengine-bin" title="CFEngine directory structure - /var/cfengine/bin"><code>/var/cfengine/bin</code></a>.</p>
+
+<p><img src="components-overview.png" alt="Components overview"></p>
+
+<ul>
+<li><a href="overview.html#daemons" title="Overview - Daemons">Daemons</a></li>
+<li><a href="overview.html#other-component-applications" title="Overview - Other component applications">Other Applications</a></li>
+</ul>
+<h6 id="daemons">Daemons</h6>
+<p>All machines, whether they are policy servers or hosts, will have these three important daemons running at all times:</p>
+
+<ul>
+<li><a href="overview.html#cf-execd" title="Overview - cf-execd">/var/cfengine/bin/cf-execd</a></li>
+<li><a href="overview.html#cf-serverd" title="Overview - cf-serverd">/var/cfengine/bin/cf-serverd</a></li>
+<li><a href="overview.html#cf-monitord" title="Overview - cf-monitord">/var/cfengine/bin/cf-monitord</a></li>
+</ul>
+<h6 id="cf-execd">cf-execd</h6>
+<p><code>cf-execd</code> is the scheduling daemon for <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>, similar to cron. It executes and collects the output of <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> and
+e-mails any output to the configured e-mail address.</p>
+
+<p><code>cf-execd</code> runs <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> locally according to a schedule specified in policy code (executor control body). After a <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> run is completed, <code>cf-execd</code> gathers output from <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>, and may be configured to email the output to a specified address. It may also be configured to <code>splay</code> (randomize) the execution schedule to prevent synchronized <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> runs across a network.</p>
+
+<p><code>cf-execd</code> keeps the promises made in common bundles, and is affected by common and executor control bodies.</p>
+
+<p>See also: <a href="reference-components-cf-execd.html" title="cf-execd">cf-execd</a> reference documentation.</p>
+<h6 id="cf-serverd">cf-serverd</h6>
+<p><code>cf-serverd</code> is a socket listening daemon providing two services: it acts as a file server for remote file copying and it allows an authorized <a href="reference-components-cf-runagent.html" title="cf-runagent"><code>cf-runagent</code></a> to start a <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> run. <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> typically connects to a <code>cf-serverd</code> instance to request updated policy code, but may also request additional files for download. <code>cf-serverd</code> employs role based access control (defined in policy code) to authorize requests.</p>
+
+<p><code>cf-serverd</code> keeps the promises made in <code>common</code> and <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>server</code></a> bundles, and is affected by <code>common</code> and <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>server</code></a> control bodies.</p>
+
+<p>By starting this daemon you can set up a line of communication between hosts.
+The server is able to share files and receive requests to execute existing
+policy on an individual machine. It is not possible to send (push) new
+information to CFEngine from outside.</p>
+
+<p>This daemon authenticates requests from the network and processes them
+according to rules specified in the
+<a href="reference-components-cf-serverd.html#control-promises" title="cf-serverd - Control promises">server control body</a> and server bundles
+containing <a href="reference-promise-types-access.html" title="access">access promises</a>.</p>
+
+<p>See also: <a href="reference-components-cf-serverd.html" title="cf-serverd">cf-serverd</a> reference documentation.</p>
+<h6 id="cf-monitord">cf-monitord</h6>
+<p><code>cf-monitord</code> is the monitoring daemon for CFEngine. It samples probes defined in policy using measurements type promises and attempts to learn the normal system state based on current and past observations. Current estimates are made available as special variables (e.g. $(mon.av_cpu)) to <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>, which may use them to inform policy decisions.</p>
+
+<p><code>cf-monitord</code> keeps the promises made in <code>common</code> and <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>monitor</code></a> bundles, and is affected by <code>common</code> and <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>monitor</code></a> control bodies.</p>
+
+<p>See also: <a href="reference-components-cf-monitord.html" title="cf-monitord">cf-monitord</a> reference documentation.</p>
+<h6 id="other-component-applications">Other component applications</h6>
+<ul>
+<li><a href="overview.html#cf-agent" title="Overview - cf-agent">/var/cfengine/bin/cf-agent</a></li>
+<li><a href="overview.html#cf-key" title="Overview - cf-key">/var/cfengine/bin/cf-key</a></li>
+<li><a href="overview.html#cf-promises" title="Overview - cf-promises">/var/cfengine/bin/cf-promises</a></li>
+<li><a href="overview.html#cf-runagent" title="Overview - cf-runagent">/var/cfengine/bin/cf-runagent</a></li>
+</ul>
+<h6 id="cf-agent">cf-agent</h6>
+<p><code>cf-agent</code> evaluates policy code and makes changes to the system. Policy bundles are evaluated in the order of the provided <a href="reference-components.html#bundlesequence" title="Components - bundlesequence"><code>bundlesequence</code></a> (this is normally specified in the common control body and defaults to just the <code>main</code> bundle if unspecified). For each bundle, cf-agent groups promise statements according to their type. Promise types are then evaluated in a preset order to ensure fast system convergence to policy.</p>
+
+<p><code>cf-agent</code> keeps the promises made in <code>common</code> and <a href="reference-components-cf-agent.html" title="cf-agent"><code>agent</code></a> bundles, and is affected by <code>common</code> and <a href="reference-components-cf-agent.html" title="cf-agent"><code>agent</code></a> control bodies.</p>
+
+<p><code>cf-agent</code> is the instigator of change. Everything that happens on a client machine
+happens because of <code>cf-agent</code>. The agent is the part of CFEngine that
+manipulates system resources.</p>
+
+<p><code>cf-agent</code>&#39;s only contact with the network is via remote copy requests. It
+does not and cannot grant any access to a system from the network. It is only
+able to request access to files from the server component.</p>
+
+<p>See also: <a href="reference-components-cf-agent.html" title="cf-agent">cf-agent</a> reference documentation.</p>
+<h6 id="cf-key">cf-key</h6>
+<p>The CFEngine key generator makes key pairs for remote authentication.</p>
+
+<p>See also: <a href="reference-components-cf-key.html" title="cf-key">cf-key</a> reference documentation.</p>
+<h6 id="cf-promises">cf-promises</h6>
+<p><code>cf-promises</code> is CFEngine&#39;s promise verifier. It is used to run a &quot;pre-check&quot; of
+policy code before <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> attempts to execute.</p>
+
+<p><code>cf-promises</code> operates by first parsing policy code checking for syntax errors. Second, it validates the integrity of policy consisting of multiple files. Third, it checks for semantic errors, e.g. specific attribute set rules. Finally, <code>cf-promises</code> attempts to expose errors by partially evaluating the policy, resolving as many variable and classes promise statements as possible. At no point does <code>cf-promises</code> make any changes to the system.</p>
+
+<p>In 3.6.0 and later, <code>cf-promises</code> will not evaluate function calls either. This may affect customers who use execresult for instance. Use the new --eval-functions yes command-line option (default is no) to retain the old behavior from 3.5.x and earlier.</p>
+
+<p>See also: <a href="reference-components-cf-promises.html" title="cf-promises">cf-promises</a> reference documentation.</p>
+<h6 id="cf-runagent">cf-runagent</h6>
+<p><code>cf-runagent</code> is a helper program that can be used to run <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> on a number of remote
+hosts. It cannot be used to tell <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> what to do, it can only ask
+<a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> on the remote host to run the <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> with its existing
+policy. It can thus be used to trigger an immediate deployment of new policy,
+if their existing policy includes that they check for updates.</p>
+
+<p>Privileges can be granted to users to provide a kind of Role Based Access
+Control (RBAC) to certain parts of the existing policy.</p>
+
+<p><code>cf-runagent</code> connects to a list of running instances of <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a>. It allows foregoing the usual <a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a> schedule to activate <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>. Additionally, a user may send classes to be defined on the remote host. Two kinds of classes may be sent: classes to decide on which hosts <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> will be started, and classes that the user requests <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> should define on execution. The latter type is regulated by <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a>&#39;s role based access control.</p>
+
+<p>See also: <a href="reference-components-cf-runagent.html" title="cf-runagent">cf-runagent</a> reference documentation.</p>
+
+<!--- End include: `/nt/documentation/overview.markdown` -->
+
+<hr>
+<h2 id="what-is-cfengine-and-why">What is CFEngine and why?</h2>
+<!--- Begin include: `/nt/documentation/overview/what-is-cfengine-and-why.markdown` -->
+<h6 id="what-is-cfengine">What is CFEngine?</h6>
+<p>CFEngine is a software solution that helps system administrators and other stakeholders in the IT organization become more agile and respond faster to business requirements while ensuring SLAs and regulatory compliance, through automation.</p>
+
+<p>CFEngine allows users, in code using the domain specific language of CFEngine, to define desired states of the IT infrastructure. Lightweight CFEngine agents continuously ensures that the actual states are converging toward the desired states, while reporting the outcome of each run. The solution is heavily researched and built upon <a href="https://en.wikipedia.org/wiki/Promise_theory">Promise Theory</a>.</p>
+
+<p>Written in C, CFEngine runs on multiple platforms and architectures, from the smallest embedded devices, on servers, in the cloud to mainframes, easily handling tens and hundreds of thousands of hosts.</p>
+
+<p>The solution comes in a free open source Community Edition and paid commercial Enterprise Edition.</p>
+
+<p>Being a general purpose automation solution, CFEngine is used in a wide variety of ways, from building servers, deploying and patching software to configuration management tasks like scheduling, local user-management, process-management, security hardening, inventory and compliance management.</p>
+
+<p>Many DevOps organizations use CFEngine to ensure consistency across different staging environments and automated application deployment. Due to its strong security track-record CFEngine is widely used in heavily regulated industries like financial services, telecom, health care and governmental agencies.</p>
+<h6 id="why-cfengine">Why CFEngine?</h6>
+<iframe width="821" height="462" src="https://www.youtube.com/embed/HLZ7EeqNdLs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p>Mark Burgess, Founder and author of CFEngine talks about the reasons CFEngine is a Configuration Management system for the century.</p>
+
+<!--- End include: `/nt/documentation/overview/what-is-cfengine-and-why.markdown` -->
+
+<hr>
+<h2 id="how-cfengine-works">How CFEngine works</h2>
+<!--- Begin include: `/nt/documentation/overview/how-cfengine-works.markdown` -->
+
+<p>CFEngine is a fully distributed system that allows you to define desired states
+of everything from very large-scale infrastructures to small devices. The
+lightweight C-based <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> runs locally on each resource and persistently
+tries to converge towards the defined desired state. The actual states of
+managed resources are available in logs and an enterprise database for
+compliance and easy reporting. Using CFEngine, can be described in the following
+3 simple steps.</p>
+<h6 id="1-define-desired-state">1. Define desired state</h6>
+<p>As an end-user you can use the CFEngine Domain Specific Language (DSL) to define
+desired states. CFEngine allows you to define a variety of states ranging from
+process management to software deployment and file integrity. You can check out
+CFEngine Promise types to get an idea of the most common states you can define.</p>
+
+<p>Normally, all desired states are stored in <code>.cf</code> text-files in the
+<a href="overview-directory-structure.html#var-cfengine-masterfiles" title="CFEngine directory structure - /var/cfengine/masterfiles"><code>/var/cfengine/masterfiles</code></a> directory on one or more central distribution points,
+referred to as CFEngine Policy Hubs.</p>
+<h6 id="2-ensure-actual-state">2. Ensure actual state</h6>
+<p>CFEngine typically runs locally on each managed resource. A resource can be
+anything from a server, network switch, raspberry pi, or any other computational
+device. CF-agent, the execution engine, is autonomous which means all the
+evaluations occur on the local node.</p>
+
+<p>Before each run, which by default is every 5 minutes, the agent tries to connect
+to one of the Policy Hubs to check if there has been any policy updates. Upon
+policy updates, <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> will download the latest policy to its own
+<a href="overview-directory-structure.html#var-cfengine-inputs" title="CFEngine directory structure - /var/cfengine/inputs"><code>/var/cfengine/inputs</code></a> directory, run a syntax check and upon success start to
+execute.</p>
+<h6 id="3-verify-actual-state">3. Verify actual state</h6>
+<p>Whenever the agent runs, it creates a log of local inventory, system states and
+execution results. The logs are stored in <a href="overview-directory-structure.html#var-cfengine-outputs" title="CFEngine directory structure - /var/cfengine/outputs"><code>/var/cfengine/outputs</code></a>. For enterprise
+customers, all data is also stored in a local database. CFEngine also stores a
+large number of asset information like software installed, CPU, memory, disk,
+network activity, etc. As for execution results, CFEngine can have 3 states:</p>
+
+<ul>
+<li><p><strong>Promise Kept</strong>: Actual state was equal to Desired State</p></li>
+<li><p><strong>Promise Repaired</strong>: Actual state was not equal to Desired State, but the
+agent was able to repair the state into compliance</p></li>
+<li><p><strong>Promise not Kept</strong>: Actual state was not equal to Desired state and the
+agent was not able to restore into compliance</p></li>
+</ul>
+<h6 id="graphical-illustration-of-cfengine-process">Graphical illustration of CFEngine process</h6>
+<p><img src="how-does-cfengine-work-process.png" alt="Define -&gt; Ensure -&gt; Verify"></p>
+
+<p>End-user and CFEngine agents workflow</p>
+
+<p><img src="how-does-cfengine-work-agent-workflow.png" alt="Define -&gt; Ensure -&gt; Verify workflow"></p>
+
+<p>Thanks to the autonomous nature of CFEngine, systems will be continuously
+maintained even if the Server is down. CFEngine agents on the hosts will
+opportunistically try to connect to the server. If it fails, last successful
+policy will apply, and since all evaluation is local, it doesn&#39;t matter if the
+characteristics of the host changes and needs to be reconfigured. CFEngine will
+figure it out and ensure compliance. CFEngine has been reported to run on many
+different platforms in many different environments including traditional
+servers, workstations and laptops, network gear (routers/switches), bus and tram
+systems, point of sales systems, smart displays/signs, and even submarines.</p>
+<h6 id="adopting-cfengine">Adopting CFEngine</h6><h6 id="what-does-adoption-involve">What does adoption involve?</h6>
+<p>CFEngine is a framework and a methodology with far reaching implications for the
+way you do IT management. The CFEngine approach asks you to think in terms
+of promises and cooperation between parts; it automates repair and maintenance
+processes and provides simple integrated Knowledge Management.</p>
+
+<p>To use CFEngine effectively, you should spend a little time learning about the
+approach to management, as this will save you a lot of time and effort in the
+long run.</p>
+<h6 id="the-mission-plan">The Mission plan</h6>
+<p>At CFEngine, we refer to the management of your datacentre as <em>The Mission</em>. The
+diagram below shows the main steps in preparing mission control. Some training
+is recommended, and as much planning as you can manage in advance. Once a
+mission is underway, you should expect to work by making small corrections to
+the mission plan, rather than large risky changes.</p>
+
+<p><img src="./adopting-cfengine-mission-plan.png" alt="Mission Plan"></p>
+
+<p>Planning does not mean sitting around a table, or in front of a whiteboard.
+Successful planning is a dialogue between theory and practice. It should include
+test pilots and proof-of-concept implementations.</p>
+<h6 id="commercial-or-free">Commercial or free?</h6>
+<p>The first decision you should make is whether you will choose a route of
+commercial assistance or manage entirely on your own. You can choose different
+levels of assistance, from just training, to consulting, to commercial versions
+of the software that simplify certain processes and offer extended features.</p>
+
+<p>At the very minimum, we recommend that you take a training course on CFEngine.
+Users who don&#39;t train often end up using only a fraction of the software&#39;s
+potential, and in a sub-optimal way. Think of this as an investment in your
+future.</p>
+
+<p>The advantages of the commercial products include greatly simplified set up
+procedures, continuous monitoring and automatic knowledge integration. See the
+CFEngine Nova Supplement for more information.</p>
+<h6 id="installation-or-pilot">Installation or pilot</h6>
+<p>You are free to download Community Editions of CFEngine at any time to test the
+software. There is a considerable amount of documentation and example policy
+available on the cfengine.com web-site to try some simple examples of system
+management.</p>
+
+<p>If you intend to purchase a significant number of commercial licenses for
+CFEngine software, you can request a pilot process, during which a specialist
+will install and demonstrate the commercial edition on site.</p>
+<h6 id="identifying-the-team">Identifying the team</h6>
+<p>CFEngine will become a core discipline in your organization, taking you from
+reactive fire-fighting to proactive and strategic practices. You should invest
+in a team that embraces its methods. The CFEngine team will become the enabler
+of business agility, security, reliability and standardization.</p>
+
+<p>The CFEngine team needs to have administrator or super-user access to systems,
+and it needs the <em>headroom</em> or <em>slack</em> to think strategically. It needs to build
+up processes and workflows that address quality assurance and minimize the risk
+of change.</p>
+
+<p>All teams are important centres for knowledge, and you should provide incentives
+to keep the core team strong and in constant dialogue with your organization&#39;s
+strategic leadership. Treat your CFEngine team as a trusted partner in business.</p>
+<h6 id="training-and-certification">Training and certification</h6>
+<p>Once you have tried the simplest examples using CFEngine, we recommend at least
+three days of in-depth training. We can also arrange more in-depth training to
+qualify as a CFEngine Mission Specialist.</p>
+<h6 id="mission-goal-and-knowledge-management">Mission goal and knowledge management</h6>
+<p>The main aim of Knowledge Management is to learn from experience, and use the
+accumulated learning to improve the predictability of workflow processes. During
+every mission, there will be unexpected events, and an effective team will use
+knowledge of past and present to respond to these unpredictable changes with
+confidence</p>
+
+<p>The goal of an IT mission is a predictable operational state that lives up to
+specific policy-determined promises. You need to work out what this desired
+state should be before you can achieve it. No one knows this exactly in advance,
+and most organizations will change course over time. However, with good planning
+and understanding of the mission, such adjustments to policy can be small and
+regular.</p>
+
+<p>Many small changes are less risky than few large changes, and the culture of
+agility keeps everyone on their toes. Using CFEngine to run your mission, you
+will learn to work pro-actively, adjusting the system by refining the mission
+goal rather than reacting to unexpected events.</p>
+
+<p>To work consistently and predictably, even when understaffed, requires a
+strategy for describing system resources, policy and state. CFEngine can help
+with all of these. See the Special Topics Guide on Knowledge Management.</p>
+
+<p>A major component of a successful mission, is documenting intentions. What is
+the goal, and how does it break down into concrete, achievable states? CFEngine
+can help you in this process, with training and Professional Services, but you
+must establish a culture of commitment to the mission and learn how to express
+these commitments in terms of CFEngine promises.</p>
+<h6 id="build-deploy-manage-audit">Build, deploy, manage, audit</h6>
+<p>The four mission phases are sometimes referred to as</p>
+
+<ul>
+<li><p>Build</p>
+
+<p>A mission is based on decisions and resources that need to be put assembled or
+<code>built</code> before they can be applied. This is the planning phase.</p>
+
+<p>In CFEngine, what you build is a template of proposed promises for the
+machines in an organization such that, if the machines all make and keep these
+promises, the system will function seamlessly as planned. This is how it works
+in a human organization, and this is how is works for computers too.</p></li>
+<li><p>Deploy</p>
+
+<p>Deploying really means launching the policy into production. In CFEngine you
+simply publish your policy (in CFEngine parlance these are <code>promise
+proposals</code>) and the machines see the new proposals and can adjust
+accordingly. Each machine runs an agent that is capable of keeping the
+system on course and maintaining it over time without further assistance.</p></li>
+<li><p>Manage</p>
+
+<p>Once a decision is made, unplanned events will occur. Such incidents
+traditionally set off alarms and humans rush to make new transactions to
+repair them. Under CFEngine guidance, the autonomous agent manages the
+system, and humans only manage knowledge and have to deal with rare events
+that cannot be dealt with automatically.</p></li>
+<li><p>Audit</p>
+
+<p>CFEngine performs continuous analysis and correction, and commercial
+editions generate explicit reports on mission status. Users can sit back and
+examine these reports to check mission progress, or examine the current
+state in relation to the knowledge map for the mission.</p></li>
+</ul>
+
+<p><a href="https://cfengine.com/contact">Contact CFEngine</a></p>
+<h6 id="cfengine-architecture-and-design">CFEngine architecture and design</h6>
+<p>CFEngine operates autonomously in a network, under your guidance. While
+CFEngine supports anything from 1 servers to 100,000+ servers, the essence of
+any CFEngine deployment is the same.</p>
+
+<p>CFEngine supports networks of any size, from a handful of nodes to
+hundreds of thousands of computers. It is built to scale. If your site
+is very large (many thousands of servers) you should spend some time
+discussing your requirements with CFEngine experts. They will know
+how to tune promises and configurations to your environment as scale
+requires you to have more infrastructure, and a potentially more
+complicated configuration. No matter the scale, the essence of any
+CFEngine deployment is the same, but with great power comes great
+responsibility (a.k.a. don&#39;t break things before the weekend, on the
+weekend, or in fact on any other day).</p>
+
+<p>CFEngine was designed to enable scalable configuration management in
+any kind of environment, with an emphasis on supporting large, Unix-like
+systems that are connected via TCP/IP.</p>
+
+<p>CFEngine doesn&#39;t depend on or assume the presence of reliable
+infrastructure. It works opportunistically in any environment, using
+the fewest possible resources, and it has a limited set of software
+dependencies. It can run anywhere and this lean approach to
+CFEngine&#39;s architecture makes it possible to support both traditional
+server-based approaches to configuration as well as more novel
+platforms for configuration including embedded and mobile systems.</p>
+
+<p>CFEngine&#39;s design allows you to create fault-tolerant, available systems
+which are independent of external requirements. CFEngine works in all
+the places you think it should, and all the new places you haven&#39;t even
+thought of yet.</p>
+<h6 id="managing-expectations-with-promises">Managing expectations with promises</h6>
+<p>CFEngine works on a simple notion of <strong>promises</strong>. A promise is the
+documentation of an intention to act or behave in some manner. When you make a
+promise, it is an effort to improve trust. Trust is an economic time-saver. If
+you can&#39;t trust you have to verify everything, and that is expensive.</p>
+
+<p>Everything in CFEngine can be thought of as a promise to be kept by different
+resources in the system. In a system that delivers a web site with Apache
+<code>httpd</code>, an important promise may be to make sure that the <code>httpd</code> or <code>apache</code> package is installed,
+running, and accessible on port 80. In a system which needs to satisfy mid-day
+traffic on a busy web site, a promise may be to ensure that there are 200
+application servers running during normal business hours.</p>
+
+<p>These promises are not top-down directives for a central authority to push
+through the system. A large organization can&#39;t run on top-down authority
+alone. A group of people can&#39;t be managed without empowering and trusting them to
+make independent decisions.</p>
+
+<p>CFEngine is a system that emphasizes the promises a client makes to the
+overall CFEngine network. They are the rules which clients are responsible for
+implementing. We can create large systems of scale because we don&#39;t create a
+bulky centralized authority. There should be no single point-of-failure when
+managing machines and people.</p>
+
+<p>Combining promises with patterns to describe where and when promises should
+apply is what CFEngine is all about.</p>
+<h6 id="automation-with-cfengine">Automation with CFEngine</h6>
+<p>Users are good at researching solutions and making design decisions, but awful
+at repeated execution. Machines are pitiful at making decisions, but very good
+at reliable implementation at very large scale. It makes sense to let each
+side do the job that they are good at. With CFEngine, users make decisions and
+write promises for machines to implement and satisfy.</p>
+
+<p>A CFEngine user will declare a promise in CFEngine, and CFEngine will then
+translate this promise into a series of actions to implement. For the most
+part, CFEngine understands how to deliver on promises, and they don&#39;t need to
+be given explicit instructions for completing tasks. It is your job to make
+decisions about the systems you are managing and to describe those in suitable
+promises. It is CFEngine&#39;s job to automate and deliver a promise.</p>
+
+<p>CFEngine is a distributed solution that is completely independent of host
+operating systems, network topology or system processes. You describe the
+ideal state of a given system by creating promises and the CFEngine agents
+ensures that the necessary steps are taken to achieve this state. Automation
+in CFEngine is executed through a series of
+<a href="overview.html#cfengine-component-applications-and-daemons" title="Overview - CFEngine component applications and daemons">components</a> that run locally on hosts.</p>
+<h6 id="phases-of-system-management">Phases of system management</h6>
+<p>There are four commonly cited phases in managing systems with CFEngine: Build,
+Deploy, Manage, and Audit.</p>
+<h6 id="build">Build</h6>
+<p>A system is based on a number of decisions and resources that need to be
+<code>built</code> before they can be implemented. You don&#39;t need to decide every detail,
+just enough to build trust and predictability into your system. In CFEngine,
+what you build is a template of proposed promises for the machines being
+managed. If the machines in a system all make and keep these promises, the
+system will function seamlessly as planned.</p>
+<h6 id="deploy">Deploy</h6>
+<p>Deploying really means implementing the policy that was already decided. In
+transaction systems, one tries to push out changes one-by-one, hence
+<code>deploying</code> the decision. In CFEngine you simply publish your policy (in
+CFEngine parlance these are &quot;promise proposals&quot;) and the machines see the new
+proposals and can adjust accordingly. Each machine runs an agent that is
+capable of implementing policies and maintaining them over time without
+further assistance.</p>
+<h6 id="manage">Manage</h6>
+<p>Once a decision is made, unplanned events will occur. Such incidents
+traditionally set off alarms and humans rush to make new transactions to
+repair them. In CFEngine, the autonomous agent manages the system, and you
+only have to deal with rare events that cannot be dealt with automatically.
+This is the key difference of CFEngine, a focus on autonomy and creating
+agents that are smart enough to adapt to changing situations.</p>
+<h6 id="audit">Audit</h6>
+<p>In traditional configuration systems, the outcome is far from clear after a
+one-shot transaction, so one audits the system to determine what actually
+happened. In CFEngine, changes are not just initiated once, but locally
+audited and maintained. Decision outcomes are assured by design in CFEngine
+and maintained automatically, so the main worry is managing conflicting. Users
+can sit back and examine regular reports of compliance generated by the
+agents, without having to arrange for new transactions to roll-out changes.</p>
+
+<p>You should not think of CFEngine as a roll-out system, i.e. one that attempts
+to force out absolute changes and perhaps reverse them in case of error.
+Roll-out and roll-back are theoretically flawed concepts that only sometimes
+work in practice. With CFEngine, you publish a sequence of policy revisions,
+always moving forward (because like it or not, time only goes in one
+direction). All of the desired-state changes are managed locally by each
+individual host, and continuously repaired to ensure on-going compliance
+with policy.</p>
+
+<p>See also: <a href="overview-client-server-communication.html" title="Client server communication">Client server communication</a></p>
+
+<!--- End include: `/nt/documentation/overview/how-cfengine-works.markdown` -->
+
+<hr>
+<h2 id="cfengine-directory-structure">CFEngine directory structure</h2>
+<!--- Begin include: `/nt/documentation/overview/directory-structure.markdown` -->
+
+<p>The CFEngine application is fully contained within the /var/cfengine directory tree. Here is a quick breakdown of the directory structure and some of the files and functions associated with each subdirectory.</p>
+<h6 id="var-cfengine-bin">/var/cfengine/bin</h6><h6 id="agents">Agents</h6>
+<ul>
+<li><a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>: Executes the promises.cf file; ensures that all promises are being kept</li>
+<li><a href="reference-components-cf-key.html" title="cf-key"><code>cf-key</code></a></li>
+<li><a href="reference-components-cf-promises.html" title="cf-promises"><code>cf-promises</code></a>: Verifies CFEngine&#39;s configuration syntax</li>
+<li><a href="reference-components-cf-runagent.html" title="cf-runagent"><code>cf-runagent</code></a>: Contacts a remote system to run cf-agent</li>
+</ul>
+<h6 id="daemons">Daemons</h6>
+<ul>
+<li><a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a>: Starts the cf-agent process at a specified time interval.</li>
+<li><a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a>: Collects system statistics</li>
+<li><a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a>: Provides network services; used to distribute policy and data files</li>
+<li><code>runalerts.sh</code>: Updates Mission Portal status and activates alert actions (Enterprise only)</li>
+<li><a href="reference-components-cf-check.html" title="cf-check"><code>cf-hub</code></a>: Responsible for collecting reports from remote agents. (CFEngine Enterprise only)</li>
+</ul>
+
+<p>See also: <a href="overview.html#cfengine-component-applications-and-daemons" title="Overview - CFEngine component applications and daemons">CFEngine component applications and daemons</a></p>
+<h6 id="directories-for-policy-files">Directories for policy files</h6><h6 id="var-cfengine-modules">/var/cfengine/modules</h6>
+<p>Location of scripts used in <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a> promises.</p>
+<h6 id="var-cfengine-inputs">/var/cfengine/inputs</h6>
+<p>Cached policy repository on each CFEngine client. When <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> is
+invoked by <a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a>, it reads only from this directory.</p>
+<h6 id="var-cfengine-masterfiles">/var/cfengine/masterfiles</h6>
+<p>Policy repository which grants access to local or bootstrapped CFEngine
+clients when they need to update their policies. Policies obtained from
+<code>/var/cfengine/masterfiles</code> are then cached in <a href="overview-directory-structure.html#var-cfengine-inputs" title="CFEngine directory structure - /var/cfengine/inputs"><code>/var/cfengine/inputs</code></a> for
+local policy execution. The <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> executable does not execute policies
+directly from this repository.</p>
+<h6 id="output-directories">Output directories</h6><h6 id="var-cfengine-outputs">/var/cfengine/outputs</h6>
+<p>Directory where <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> creates its output files. The outputs directory is
+a record of spooled run-reports. These are often mailed to the administrator
+by <a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a>, or can be copied to another central location and viewed in an
+alternative browser. However, not all hosts have an email capability or are
+online, so the reports are kept here.</p>
+<h6 id="var-cfengine-reports">/var/cfengine/reports</h6>
+<p>Directory used to store reports. Reports are not tidied automatically, so you
+should delete these files after a time to avoid a build up.</p>
+<h6 id="var-cfengine-state">/var/cfengine/state</h6>
+<p>State data such as current process identifiers of running processes,
+persistent classes and other cached data.</p>
+<h6 id="var-cfengine-lastseen">/var/cfengine/lastseen</h6>
+<p>Log data for incoming and outgoing connections.</p>
+<h6 id="var-cfengine-cfapache">/var/cfengine/cfapache</h6><h6 id="var-cfengine-config">/var/cfengine/config</h6><h6 id="var-cfengine-httpd">/var/cfengine/httpd</h6><h6 id="var-cfengine-lib">/var/cfengine/lib</h6>
+<p>Directory to store shared objects and dependencies that are in the bundled packages.</p>
+<h6 id="var-cfengine-master_software_updates">/var/cfengine/master_software_updates</h6><h6 id="var-cfengine-plugins">/var/cfengine/plugins</h6><h6 id="var-cfengine-ppkeys">/var/cfengine/ppkeys</h6>
+<p>Directory used to store encrypted public/private keys for CFEngine
+client/server network communications.</p>
+<h6 id="var-cfengine-share">/var/cfengine/share</h6><h6 id="var-cfengine-software_updates">/var/cfengine/software_updates</h6><h6 id="var-cfengine-ssl">/var/cfengine/ssl</h6><h6 id="log-files-in-var-cfengine">Log Files in /var/cfengine</h6>
+<p>On hosts, CFEngine writes numerous logs and records to its private workspace.</p>
+
+<p><a href="https://cfengine.com/product-overview/">CFEngine Enterprise</a> provides solutions
+for centralization and network-wide reporting at an arbitrary scale.</p>
+
+<ul>
+<li><code>cf3.[hostname].runlog</code></li>
+</ul>
+
+<p>A time-stamped log of when each lock was released. This shows the last
+time each individual promise was verified.</p>
+
+<ul>
+<li><code>cfagent.[hostname].log</code></li>
+</ul>
+
+<p>Although ambiguously named (for historical reasons) this log contains
+the current list of setuid/setgid programs observed on the system.
+CFEngine warns about new additions to this list. This log has been
+deprecated.</p>
+
+<ul>
+<li><code>cf_notkept.log</code></li>
+</ul>
+
+<p>In CFEngine Enterprise, a list of promises, with handles and comments, that
+were not kept.</p>
+
+<ul>
+<li><code>cf_repair.log</code></li>
+</ul>
+
+<p>In CFEngine Enterprise, a list of promises, with handles and comments, that were repaired.</p>
+
+<ul>
+<li><code>promise_summary.log</code></li>
+</ul>
+
+<p>A time-stamped log of the percentage fraction of promises kept after
+each run.</p>
+<h6 id="database-files-in-var-cfengine">Database files in /var/cfengine</h6>
+<ul>
+<li>bundles.lmdb</li>
+<li><code>cf_classes.lmdb</code></li>
+</ul>
+
+<p>A database of classes that have been defined on the current host,
+including their relative frequencies, scaled like a probability.</p>
+
+<ul>
+<li><code>cf_lastseen.lmdb</code></li>
+</ul>
+
+<p>A database of hosts that last contacted this host, or were contacted by
+this host, and includes the times at which they were last observed.</p>
+
+<ul>
+<li><code>cf_changes.lmdb</code></li>
+</ul>
+
+<p>The database of hash values used in CFEngine&#39;s change management
+functions.</p>
+
+<ul>
+<li><code>nova_agent_execution.lmdb</code></li>
+<li><code>nova_track.lmdb</code></li>
+<li><code>performance.lmdb</code></li>
+</ul>
+
+<p>A database of last, average and deviation times of jobs recorded by
+<a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>. Most promises take an immeasurably short time to check, but
+longer tasks such as command execution and file copying are measured by
+default. Other checks can be instrumented by setting a
+<a href="reference-promise-types.html#measurement_class" title="Promise types - measurement_class"><code>measurement_class</code></a> in the <a href="reference-promise-types.html#action" title="Promise types - action"><code>action</code></a> body of a promise.</p>
+<h6 id="process-aka-pid-files-in-var-cfengine">Process (AKA PID) files in /var/cfengine</h6>
+<p>The CFEngine components keep their current process identifier number in
+`pid files&#39; in the work directory.</p>
+
+<ul>
+<li><code>cf-execd.pid</code></li>
+<li><code>cf-hub.pid</code></li>
+<li><code>cf-monitord.pid</code></li>
+<li><code>cf-serverd.pid</code></li>
+</ul>
+<h6 id="sockets-in-var-cfengine">Sockets in /var/cfengine</h6>
+<ul>
+<li><code>cf-hub-local</code></li>
+</ul>
+<h6 id="datafiles-in-var-cfengine">Datafiles in /var/cfengine</h6>
+<ul>
+<li><code>policy_server.dat</code></li>
+</ul>
+
+<p>IP address of the policy server</p>
+<h6 id="binary-files-in-var-cfengine">Binary files in /var/cfengine</h6>
+<ul>
+<li><code>randseed</code></li>
+</ul>
+<h6 id="git-in-var-cfengine-bin">git in /var/cfengine/bin</h6>
+<ul>
+<li><code>bin/git</code></li>
+<li><code>bin/git-cvsserver</code></li>
+<li><code>bin/gitk</code></li>
+<li><code>bin/git-receive-pack</code></li>
+<li><code>bin/git-shell</code></li>
+<li><code>bin/git-upload-archive</code></li>
+<li><code>bin/git-upload-pack</code></li>
+</ul>
+<h6 id="misc-in-var-cfengine-bin">Misc. in /var/cfengine/bin</h6>
+<ul>
+<li><code>bin/curl</code></li>
+<li><code>bin/lmdump</code></li>
+<li><code>bin/openssl</code></li>
+<li><code>bin/rpmvercmp</code></li>
+<li><code>bin/rsync</code></li>
+<li><code>bin/runalerts.sh</code></li>
+</ul>
+<h6 id="postgres-in-var-cfengine-bin">Postgres in /var/cfengine/bin</h6>
+<ul>
+<li><code>bin/clusterdb</code></li>
+<li><code>bin/createdb</code></li>
+<li><code>bin/createlang</code></li>
+<li><code>bin/createuser</code></li>
+<li><code>bin/dropdb</code></li>
+<li><code>bin/droplang</code></li>
+<li><code>bin/dropuser</code></li>
+<li><code>bin/initdb</code></li>
+<li><code>bin/pg_basebackup</code></li>
+<li><code>bin/pg_config</code></li>
+<li><code>bin/pg_controldata</code></li>
+<li><code>bin/pg_ctl</code></li>
+<li><code>bin/pg_dump</code></li>
+<li><code>bin/pg_dumpall</code></li>
+<li><code>bin/pg_isready</code></li>
+<li><code>bin/pg_receivexlog</code></li>
+<li><code>bin/pg_resetxlog</code></li>
+<li><code>bin/pg_restore</code></li>
+<li><code>bin/postgres</code></li>
+<li><code>bin/postmaster</code></li>
+<li><code>bin/psql</code></li>
+<li><code>bin/reindexdb</code></li>
+<li><code>bin/vacuumdb</code></li>
+</ul>
+<h6 id="not-verified">Not verified</h6>
+<ul>
+<li><code>state/cf_lock.lmdb</code></li>
+</ul>
+
+<p>A database of active and inactive locks and their expiry times. Deleting
+this database will reset all lock protections in CFEngine.</p>
+
+<ul>
+<li><code>state/history.lmdb</code></li>
+</ul>
+
+<p>CFEngine Enterprise maintains this long-term trend database.</p>
+
+<ul>
+<li><code>state/cf_observations.lmdb</code></li>
+</ul>
+
+<p>This database contains the current state of the observational history of
+the host as recorded by <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a>.</p>
+
+<ul>
+<li><code>state/cf_state.lmdb</code></li>
+</ul>
+
+<p>A database of persistent classes active on this current host.</p>
+
+<ul>
+<li><code>state/nova_measures.lmdb</code></li>
+</ul>
+
+<p>CFEngine Enterprise database of custom measurements.</p>
+
+<ul>
+<li><code>state/nova_static.lmdb</code></li>
+</ul>
+
+<p>CFEngine Enterprise database of static system discovery data.</p>
+
+<ul>
+<li><p><code>state/cf_procs</code>
+A cache of the process table. This is useful for <code>measurement</code> promises about processes.</p></li>
+<li><p><code>state/cf_rootprocs</code>
+A cache of the process table of processes owned by the root user. This is useful for <code>measurement</code> promises about processes.</p></li>
+<li><p><code>state/cf_otherprocs</code>
+A cache of the process table for processes not owned by the root user. This is useful for <code>measurement</code> promises about processes.</p></li>
+<li><p><code>state/file_changes.log</code></p></li>
+</ul>
+
+<p>A time-stamped log of which files have experienced content changes since
+the last observation, as determined by the hashing algorithms in
+CFEngine.</p>
+
+<ul>
+<li><code>state/*_measure.log</code></li>
+</ul>
+
+<p>CFEngine Enterprise maintains user-defined logs based on specifically
+promised observations of the system.</p>
+
+<ul>
+<li><code>state/env_data</code></li>
+</ul>
+
+<p>This file contains a list of currently discovered classes and variable
+values that characterize the anomaly alert environment. They are altered
+by the monitor daemon.</p>
+
+<ul>
+<li><code>/var/logs/CFEngine-Install.log</code></li>
+</ul>
+
+<p>This file contains logs related to the CFEngine package installation.</p>
+
+<!--- End include: `/nt/documentation/overview/directory-structure.markdown` -->
+
+<hr>
+<h2 id="client-server-communication">Client server communication</h2>
+<!--- Begin include: `/nt/documentation/overview/client-server-communication.markdown` -->
+
+<p>Starting <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> sets up a line of communication between
+hosts. This daemon authenticates requests from the network and processes them
+according to rules specified in the
+<a href="reference-components-cf-serverd.html#control-promises" title="cf-serverd - Control promises"><code>server control</code></a> body and server bundles
+containing <a href="reference-promise-types-access.html" title="access"><code>access</code></a> promises.</p>
+
+<p>The server can allow the network to access files or to execute CFEngine:</p>
+
+<ul>
+<li><p>The only contact <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> makes to the server is via remote copy
+requests. It does not and cannot grant any access to a system from the
+network. It is only able to request access to files on the remote server.</p></li>
+<li><p><a href="reference-components-cf-runagent.html" title="cf-runagent"><code>cf-runagent</code></a> can be used to run <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> on a number
+of remote hosts.</p></li>
+</ul>
+
+<p>Unlike other approaches to automation, CFEngine does not rely on SSH key
+authentication and configuring trust, the communication between hosts is very
+structured and also able to react to availability issues. This means that you
+don&#39;t have to arrange login credentials to get CFEngine to work. If large
+portions of your network stop working, then CFEngine on each individual host
+understands how to keep on running and delivering promises.</p>
+
+<p>In particular, if the network is not working,
+CFEngine agents skip downloading new promises and continue
+with what they already have. CFEngine was specifically designed to be resilient
+against connectivity issues network failure may be in question. CFEngine is
+fault tolerant and opportunistic.</p>
+<h6 id="connecting-to-server">Connecting to server</h6>
+<p>In order to connect to the CFEngine server you need:</p>
+
+<ul>
+<li><strong>A public-private key pair</strong>. It is automatically generated during package
+installation or during bootstrap. To manually create a key pair,
+run <a href="reference-components-cf-key.html" title="cf-key"><code>cf-key</code></a>.</li>
+<li><strong>Network connectivity</strong> with an IPv4 or IPv6 address.</li>
+<li><strong>Permission to connect</strong> to the server.
+The <a href="reference-components-cf-serverd.html#control-promises" title="cf-serverd - Control promises"><code>server control</code></a> body must grant access
+to your computer and public key by name or IP address, by listing it in
+the appropriate access lists (see below).</li>
+<li><strong>Mutual key trust</strong>.
+Your public key must be trusted by the server, and you must trust the server&#39;s
+public key. The first part is established by having the
+<a href="reference-components-cf-serverd.html#trustkeysfrom" title="cf-serverd - trustkeysfrom"><code>trustkeysfrom</code></a> setting open on the server for the first
+connection of the agent. It should be closed later to avoid trusting new agents.
+The second part is established by bootstrapping the agent to the hub, or by
+executing a <a href="reference-promise-types-files.html#copy_from" title="files - copy_from"><code>copy_from</code></a> files promise using <code>trustkey=&gt;&quot;true&quot;</code>.</li>
+<li><strong>Permission to access something</strong>.
+Your host name or IP address must be mentioned in an <a href="reference-promise-types-access.html" title="access"><code>access</code></a> promise
+inside a server bundle, made by the file that you are trying to access.</li>
+</ul>
+
+<p>If all of the above criteria are met, connection will be established and data
+will be transferred between client and server. The client can only send short
+requests, following the CFEngine protocol. The server can return data in a
+variety of forms, usually files, but sometimes console output.</p>
+<h6 id="bootstrapping">Bootstrapping</h6>
+<p><a href="getting-started-installation-general-installation.html#bootstrap" title="General installation - Bootstrap">Bootstrap</a> is the manual first run of cf-agent that establishes
+communication with the policy server.
+Bootstrapping executes the <code>failsafe.cf</code> policy that connects to
+the server, establishes trust to the server&#39;s key, and that starts the
+CFEngine daemon processes <a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a>, <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> and <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a>.
+The host that other hosts are bootstrapped to
+automatically assumes the role of policy server.</p>
+
+<p>You should bootstrap the policy server first to itself:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>$ /var/cfengine/bin/cf-agent --bootstrap [public IP of localhost]
+</code></pre></div>
+</div>
+
+<p>Then execute the same step (using the exact same IP)
+on all hosts that should pull policy from that server.
+CFEngine will create keys if there are none present, and exchange
+those to establish trust.</p>
+
+<p>CFEngine will output diagnostic information upon bootstrap. In case of error,
+investigate the <a href="reference-promise-types-access.html" title="access"><code>access</code></a> promises the server is making (run <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> in
+verbose mode on the policy hub for more informative messages). Note that
+by default, CFEngine&#39;s server daemon <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> trusts incoming connections
+from hosts within the same <code>/16</code> subnet.</p>
+
+<p>After a host has been bootstrapped, the text file <code>policy_server.dat</code> in
+the CFEngine installation contains the IP address of the policy server.</p>
+<h6 id="key-exchange">Key exchange</h6>
+<p>The key exchange model used by CFEngine is based on that used by OpenSSH. It
+is a peer to peer exchange model, not a central certificate authority model.
+This means that there are no scalability bottlenecks (at least by design,
+though you might introduce your own if you go for an overly centralized
+architecture).</p>
+
+<p>Key exchange is handled automatically by CFEngine and all you need to do is to
+decide which keys to trust. The server (<a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a>) trusts new keys only
+from addresses in <a href="reference-components-cf-serverd.html#trustkeysfrom" title="cf-serverd - trustkeysfrom"><code>trustkeysfrom</code></a>. Once a key has been
+accepted you should close down <a href="reference-components-cf-serverd.html#trustkeysfrom" title="cf-serverd - trustkeysfrom"><code>trustkeysfrom</code></a> list. Then, even if a malicious peer
+is spoofing an allowed IP address, its unknown key will be denied.</p>
+
+<p>Once you have arranged for the right to connect to the server, you must decide
+which hosts will have access to which files. This is done with <a href="reference-promise-types-access.html" title="access"><code>access</code></a> promises.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">server</span><span class="w"> </span><span class="nf">my_access_rules</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">access</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;/path/file&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">admit</span><span class="w">   </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;127.0.0.2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;127.0.0.3&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="kr">deny</span><span class="w">    </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;192.168.0.0/8&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+
+<p>On the client side, i.e. <a href="reference-components-cf-runagent.html" title="cf-runagent"><code>cf-runagent</code></a> and <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>, there are three issues:</p>
+
+<ol>
+<li> Choosing which server to connect to.</li>
+<li> Trusting the key of any previously unknown servers</li>
+<li> Choosing whether data transfers should be encrypted (with
+<a href="reference-promise-types-files.html#encrypt" title="files - encrypt"><code>encrypt</code></a>) - not applicable if you are using new <a href="reference-components.html#protocol_version" title="Components - protocol_version"><code>protocol_version</code></a>.</li>
+</ol>
+
+<p>There are two ways of managing trust of server keys by a client. One is an
+automated option, setting the option <a href="reference-promise-types-files.html#trustkey" title="files - trustkey"><code>trustkey</code></a> in a <a href="reference-promise-types-files.html#copy_from" title="files - copy_from"><code>copy_from</code></a> files promise, e.g.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="cf3"><span></span><span class="k">body</span><span class="w"> </span><span class="k">copy_from</span><span class="w"> </span><span class="nf">example</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c"># .. other settings ..</span>
+<span class="w">  </span><span class="kr">trustkey</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div>
+
+<p>Another way is to run <a href="reference-components-cf-runagent.html" title="cf-runagent"><code>cf-runagent</code></a> in interactive mode. When you run
+<a href="reference-components-cf-runagent.html" title="cf-runagent"><code>cf-runagent</code></a>, unknown server keys are offered to you interactively (as with
+<code>ssh</code>) for you to accept or deny manually:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span> $ WARNING - You do not have a public key from host ubik.iu.hio.no = 128.39.74.25
+ $ Do you want to accept one on trust? (yes/no)
+ --&gt;
+</code></pre></div>
+</div>
+
+<p>Once public keys have been exchanged from client to server and from server to
+client, the issue of trust is solved according to public key authentication
+schemes. You only need to worry about trust when one side of a connection has
+never seen the other side before.</p>
+<h6 id="time-windows-races">Time windows (races)</h6>
+<p>All security is based on a moment of trust that is granted by a user at some
+point in time - and is assumed thereafter (once given, hard to rescind).
+Cryptographic key methods only remove the need for a repeat of the trust
+decision. After the first exchange, trust is no longer needed, because the
+keys allow identity to be actually verified.</p>
+
+<p>Even if you leave the trust options switched on, you are not blindly trusting
+the hosts you know about. The only potential insecurity lies in any new keys
+that you have not thought about. If you use wildcards or IP prefixes in the
+trust rules, then other hosts might be able to spoof their way in on trust
+because you have left open a hole for them to exploit. That is why it is
+recommended to set the system to the state of zero trust
+immediately after key transfer, by commenting or emptying out the trust options
+(<a href="reference-components-cf-serverd.html#trustkeysfrom" title="cf-serverd - trustkeysfrom"><code>trustkeysfrom</code></a> on the server).</p>
+
+<p>It is possible, though somewhat laborious, to transfer the keys out of band,
+by copying <code>/var/cfengine/ppkeys/localhost.pub</code> to
+<code>/var/cfengine/ppkeys/user-aaa.bbb.ccc.mmm</code> (assuming IPv4) on another host.
+e.g.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>     localhost.pub -&gt; root-128.39.74.71.pub
+</code></pre></div>
+</div>
+
+<!--**TODO: update with new key file name format** -->
+<h6 id="other-users-than-root">Other users than root</h6>
+<p>CFEngine normally runs as user &quot;root&quot; (except on Windows which does
+not normally have a root user), i.e. a privileged administrator. If
+other users are to be granted access to the system, they must also
+generate a key and go through the same process. In addition, the
+users must be added to the server configuration file.</p>
+<h6 id="encryption">Encryption</h6>
+<p>CFEngine has 2 communication protocols. <code>classic</code> or <code>1</code> and <code>2</code> or <code>latest</code>.
+Each protocol provides different encryption options for keeping file contents
+private during transfer.</p>
+
+<p>However, the main role of encryption in configuration management is for
+authentication. Secrets should not be transferred through policy, encrypted or
+not. Policy files should be considered public, and any leakage should not
+reveal secret information.</p>
+
+<p><strong>Note:</strong> Connections from the <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> are cached as described in the
+documentation for body <a href="reference-promise-types-files.html#copy_from" title="files - copy_from"><code>copy_from</code></a>.</p>
+<h6 id="protocol-classic">Protocol Classic</h6>
+<p>Encryption for Enterprise is symmetric AES 256 bit in CBC mode, using
+a session key exchanged during the RSA handshake.</p>
+
+<p>In core/community as <strong>outgoing</strong> outlined in the
+<a href="reference-promise-types-files.html#encrypt" title="files - encrypt">body copy_from <code>encrypt</code></a> documentation the initial
+connection is encrypted using the public/private keys for the client
+and server hosts. After the initial connection is established
+subsequent connections and data transfer is encrypted by a randomly
+generated Blowfish key that is refreshed each session.</p>
+
+<p>With the classic protocol <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> has the ability to enforce that a
+file transfer be encrypted by setting the
+<a href="reference-promise-types-access.html#ifencrypted" title="access - ifencrypted"><code>ifencrypted</code> access attribute</a>. When ACLs that
+require encryption have unencrypted access attempts <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> logs an
+error message indicating the file requires encryption. Access to files
+that <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> requires to be encrypted can be logged by setting the
+<a href="reference-components-cf-serverd.html#logencryptedtransfers" title="cf-serverd - logencryptedtransfers">body server control <code>logencryptedtransfers</code> attribute</a>.</p>
+<h6 id="protocol-2">Protocol 2</h6>
+<p>3.6 introduced a new protocol option for communication with
+<a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a>. <a href="reference-components.html#protocol_version" title="Components - protocol_version">Protocol 2</a>
+is the default in 3.7+ and uses a TLS session for encryption.</p>
+
+<p><strong>Note:</strong> When protocol 2 is in use legacy encryption attributes are <strong>noop</strong>.</p>
+
+<p>The following attributes are affected:</p>
+
+<ul>
+<li><a href="reference-promise-types-files.html#encrypt" title="files - encrypt"><code>encrypt</code></a> in copy from bodies</li>
+<li><a href="reference-promise-types-access.html#ifencrypted" title="access - ifencrypted"><code>ifencrypted</code></a> in in access promises</li>
+<li><a href="reference-components-cf-serverd.html#logencryptedtransfers" title="cf-serverd - logencryptedtransfers"><code>logencryptedtransfers</code></a> in body common
+control</li>
+</ul>
+
+<p>The specific encryption algorithm used depends on the cipher
+negotiated between the client and the server. You can control which
+ciphers are allowed by <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> for both <strong>incoming</strong> and <strong>outgoing</strong> (in the case of client initiated reporting in CFEngine Enterprise) connections by
+setting the
+<a href="reference-components-cf-serverd.html#allowciphers" title="cf-serverd - allowciphers">body server control <code>allowciphers</code> attribute</a>. Controlling
+which ciphers are allowed to be used by <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> is
+done by setting
+<a href="reference-components.html#tls_ciphers" title="Components - tls_ciphers">body common control <code>tls_ciphers</code></a>.</p>
+
+<p>Additionally the minimum version of TLS required for <strong>incoming</strong> and <strong>outgoing</strong> (in the case of client initiated reporting in CFEngine Enterprise)
+connections can be set in
+<a href="reference-components-cf-serverd.html#allowtlsversion" title="cf-serverd - allowtlsversion">body server control <code>allowtlsversion</code></a>
+and the minimum version of TLS required for connections
+from <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> can be set in
+<a href="reference-components.html#tls_min_version" title="Components - tls_min_version">body common control <code>tls_min_version</code></a>.</p>
+
+<p>There are debug and verbose level logs produced by <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> to
+indicate when TLS is in use.</p>
+
+<p>The following was captured by running the agent update policy in debug
+mode.</p>
+
+<p><code>/var/cfenigne/bin/cf-agent -Kdf update.cf</code></p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>verbose: Connected to host 192.168.56.2 address 192.168.56.2 port 5308
+  debug: TLSVerifyCallback: no ssl-&gt;peer_cert
+  debug: TLSVerifyCallback: no conn_info-&gt;key
+  debug: This must be the initial TLS handshake, accepting
+verbose: TLS version negotiated:  TLSv1.2; Cipher: AES256-GCM-SHA384,TLSv1/SSLv3
+verbose: TLS session established, checking trust...
+verbose: Received public key compares equal to the one we have stored
+verbose: Server is TRUSTED, received key &#39;SHA=5d20c01e4230aa53863eb36686eaa882094cdbddf53545616dfd588f00cc0659&#39; MATCHES stored one.
+  debug: TLSRecvLines(): CFE_v2 cf-serverd 3.7.1.
+  debug: TLSRecvLines(): OK WELCOME USERNAME=root
+</code></pre></div>
+</div>
+
+<p><a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> emits verbose and debug log messages indicating when TLS is in use.</p>
+
+<p>The following was captured by starting <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> in the foreground
+with debug mode.</p>
+
+<p><code>/var/cfenigne/bin/cf-serverd -Fd</code></p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>verbose: New connection (from 192.168.56.3, sd 7), spawning new thread...
+verbose: CollectCallHasPending: false
+  debug: Waiting at incoming select...
+   info: 192.168.56.3&gt; Accepting connection
+verbose: 192.168.56.3&gt; Setting socket timeout to 600 seconds.
+verbose: 192.168.56.3&gt; Peeked nothing important in TCP stream, considering the protocol as TLS
+  debug: 192.168.56.3&gt; Peeked data: ....2......ak.
+  debug: 192.168.56.3&gt; TLSVerifyCallback: no ssl-&gt;peer_cert
+  debug: 192.168.56.3&gt; TLSVerifyCallback: no conn_info-&gt;key
+  debug: 192.168.56.3&gt; This must be the initial TLS handshake, accepting
+verbose: 192.168.56.3&gt; TLS version negotiated:  TLSv1.2; Cipher: AES256-GCM-SHA384,TLSv1/SSLv3
+verbose: 192.168.56.3&gt; TLS session established, checking trust...
+  debug: 192.168.56.3&gt; TLSRecvLines(): CFE_v2 cf-agent 3.7.1.
+  debug: 192.168.56.3&gt; TLSRecvLines(): IDENTITY USERNAME=root.
+verbose: 192.168.56.3&gt; Setting IDENTITY: USERNAME=root
+verbose: 192.168.56.3&gt; Received public key compares equal to the one we have stored
+verbose: 192.168.56.3&gt; SHA=4f25279831eeaf579d2e3451345854a93fdefc856ad741bd59515b859fb84dea: Client is TRUSTED, public key MATCHES stored one.
+</code></pre></div>
+</div>
+<h6 id="troubleshooting">Troubleshooting</h6>
+<p>When setting up <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a>, you might see the error message</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>  Unspecified server refusal
+</code></pre></div>
+</div>
+
+<p>This means that <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> is unable or is unwilling to authenticate the
+connection from your client machine. The message is deliberately non-specific
+so that anyone attempting to attack or exploit the service will not be given
+information which might be useful to them.</p>
+
+<!-- **TODO: how/where to check the server log?** -->
+
+<p>There is a simple checklist for curing this problem:</p>
+
+<ol>
+<li>Make sure that you have granted access to the client&#39;s address in the
+<a href="reference-components-cf-serverd.html#control-promises" title="cf-serverd - Control promises"><code>server control</code></a> body.</li>
+<li>Make sure the connecting client is granted access to the requested resources
+(files usually) in the <code>access_rules</code> promise bundle.</li>
+<li>See the verbose log of the server for the exact error message, since the
+client always gets the &quot;Unspecified server refusal&quot; reply from the server.
+To run the server in verbose, kill cf-serverd on the policy hub and run:
+$ cf-serverd -v
+and then manually run <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> on the client.</li>
+<li>In the unlikely case that you still get no indication of the denial, try
+increasing the agent run verbosity. <code>cf-agent -I</code> for info-level messages
+or even <code>cf-agent -v</code> for verbose.</li>
+</ol>
+
+<!--- End include: `/nt/documentation/overview/client-server-communication.markdown` -->
+
+<hr>
+<h2 id="glossary">Glossary</h2>
+<!--- Begin include: `/nt/documentation/overview/glossary.markdown` -->
+<h6 id="agent">Agent</h6>
+<p>A program that runs independently and automatically to carry out a task (think software robot).
+In CFEngine, the agent is called <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> and is responsible for making changes to computers.</p>
+
+<p>(Originally, the word <em>robot</em>, meaning &quot;servile worker,&quot; was coined for the influential Czech writer Karel Čapek&#39;s play R.U.R by his brother.
+The characters in that play are capable of fairly independent thought, so the original sense of the word is apt to describe CFEngine&#39;s agents as well.)</p>
+<h6 id="authentication">Authentication</h6><h6 id="body">Body</h6>
+<p>A promise body is the description of exactly what is promised (as opposed to what/who is making the promise).
+The term <code>body</code> is used in the CFEngine syntax to mean a small template that can be used to contribute as part of a larger promise body.</p>
+<h6 id="bootstrap">Bootstrap</h6><h6 id="bundles-for-knowledge">Bundles for knowledge</h6><h6 id="bundle">Bundle</h6>
+<p>In CFEngine, a bundle refers to a collection of promises that has a name.</p>
+<h6 id="call-collect">Call collect</h6><h6 id="class">Class</h6>
+<p>Classes are used to classify a system (or the state of it) and to make decisions in CFEngine policy.
+Classes are sometimes referred to as contexts.</p>
+<h6 id="class-expressions">Class expressions</h6>
+<p>Multiple classes separated by operators (and, or) to make more complex decisions.</p>
+<h6 id="class-guards">Class guards</h6>
+<p>Used to restrict when / where promises are evaluated.
+Appear in front of promises in CFEngine policy, consisting of a class expression followed by two colons.
+Class guards are sometimes called context class expressions.</p>
+<h6 id="cmdb">CMDB</h6>
+<p>A Configuration Management Database.
+A term coined as part of the IT Infrastructure Library (ITIL) as an outgrowth of an inventory database.</p>
+<h6 id="commands">Commands</h6><h6 id="common-control">Common control</h6><h6 id="components">Components</h6>
+<p>Standalone applications include <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>, <a href="reference-components-cf-promises.html" title="cf-promises"><code>cf-promises</code></a>, <a href="reference-components-cf-runagent.html" title="cf-runagent"><code>cf-runagent</code></a>, <code>cf-know</code>, <code>cf-report</code>, <a href="reference-components-cf-check.html" title="cf-check"><code>cf-hub</code></a></p>
+
+<p>Daemons include <a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a>, <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a>, and <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a></p>
+<h6 id="datatypes">Datatypes</h6>
+<p>CFEngine&#39;s data types describe what a variable can contain.
+A variable can&#39;t be assigned a different type once it&#39;s been set.
+The commonly used data types are <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a>, <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a>, <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a>, <a href="reference-promise-types-vars.html#real" title="vars - real"><code>real</code></a>, and <a href="reference-promise-types-users.html#data" title="users - data"><code>data</code></a>.</p>
+<h6 id="directories">Directories</h6><h6 id="distribution">Distribution</h6><h6 id="enterprise-api">Enterprise API</h6><h6 id="enterprise-reporting">Enterprise reporting</h6><h6 id="file-structure">File structure</h6><h6 id="frequency">Frequency</h6><h6 id="functions">Functions</h6><h6 id="host">Host</h6>
+<p>Unix terminology for a computer that runs &quot;guest programs.&quot;
+In practice, &quot;host&quot; is a synonym for &quot;computer.&quot;</p>
+<h6 id="hub">Hub</h6>
+<p>A software component in CFEngine Enterprise that acts as a single point of management in a local &quot;star-network.&quot;
+The term &quot;hub&quot; is sometimes used to mean policy distribution server, but more commonly a running <a href="reference-components-cf-check.html" title="cf-check"><code>cf-hub</code></a> process that does report collection from all CFEngine managed hosts.
+The term hub means the centre of a wheel, from which multiple spokes emerge.</p>
+<h6 id="logs">Logs</h6><h6 id="loops">Loops</h6><h6 id="menus">Menus</h6><h6 id="mission-portal">Mission Portal</h6><h6 id="monitoring">Monitoring</h6><h6 id="namespaces">Namespaces</h6><h6 id="networking">Networking</h6><h6 id="normal-ordering">Normal ordering</h6><h6 id="operators">Operators</h6><h6 id="pattern-matching">Pattern matching</h6><h6 id="pci-compliance">PCI compliance</h6>
+<p>Payment Card Industry Data Security Standard (PCI DSS) is a set of requirements designed to ensure that ALL companies that process, store or transmit credit card information maintain a secure environment.</p>
+<h6 id="policy-levels">Policy levels</h6><h6 id="policy-server">Policy server</h6>
+<p>The special server that others consult for the latest policies is called the <em>policy server</em>.</p>
+
+<p>Typically the policy server is set by the bootstrapping process.</p>
+<h6 id="policy-writing">Policy writing</h6><h6 id="policy">Policy</h6>
+<p>A policy is a set of intentions about the system, coded as a list of promises.
+A policy is not a standard, but the result of specific organizational management decisions.</p>
+<h6 id="precedence">Precedence</h6><h6 id="promise-attributes">Promise attributes</h6><h6 id="promise-types">Promise types</h6><h6 id="promise">Promise</h6>
+<p>The CFEngine software manages every intended system outcome as &quot;promises&quot; to be kept.
+A CFEngine Promise corresponds roughly to a rule in other software products, but importantly promises are always things that can be kept and repaired continuously, on a real time basis, not just once at install-time.</p>
+
+<p>Promises are idempotent, meaning they can be executed many times with the same outcome.</p>
+
+<p>They are also convergent, meaning they can only nudge the system closer to a steady state, never destabilize it.
+While there are ways a user could override this, it&#39;s almost never a good idea to do so.</p>
+<h6 id="referencing">Referencing</h6><h6 id="report-collector">Report collector</h6><h6 id="reporting">Reporting</h6><h6 id="reports">Reports</h6><h6 id="role-based-access-control-rbac">Role-Based Access Control (RBAC)</h6><h6 id="scope">Scope</h6><h6 id="server">Server</h6>
+<p>For historical reasons, certain computers are referred to as servers, especially when kept in data centers because such computers often run services.</p>
+
+<p>In CFEngine, <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> is a software component that serves files from one computer to another.
+All computers are recommended to run <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a>, making all computers CFEngine servers, whether they are laptops, phones, or data center computers.</p>
+
+<p>The special server that others consult for the latest policies is called the Policy Server.</p>
+<h6 id="special-variables">Special variables</h6><h6 id="standard-library">Standard library</h6>
+<p>The standard library lives in a <code>masterfiles/lib</code> subdirectory.
+It&#39;s a collection of useful bundles and bodies you can use.</p>
+<h6 id="syntax">Syntax</h6><h6 id="variables">Variables</h6><h6 id="version-control">Version control</h6>
+<!--- End include: `/nt/documentation/overview/glossary.markdown` -->
+
+<hr>
+
+            </article>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.15  Documentation - lib/cfe_internal_hub.cf</title>
+        <link rel="icon" type="image/svg+xml" href="./media/images/favicon.svg">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-masterfiles-policy-framework-lib-cfe_internal_hub.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+        <link href='assets/global-d4bd60bd0125f13532b30d7a739a8f45.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "lib/cfe_internal_hub.cf";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/">Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/" selected>Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="012826289311752768906:zdz4ud6t2xf" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components</a></li><li><a href="reference-promise-types.html">Promise Types</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a><ul class="level2"><li><a href="reference-masterfiles-policy-framework-update.html">update.cf</a></li><li><a href="reference-masterfiles-policy-framework-promises.html">promises.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls.html">controls/</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_agent.html">controls/cf_agent.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_execd.html">controls/cf_execd.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf-hub.html">controls/cf_hub.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_monitord.html">controls/cf_monitord.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_runagent.html">controls/cf_runagent.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_serverd.html">controls/cf_serverd.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-def.html">controls/def.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-def_inputs.html">controls/def_inputs.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-reports.html">controls/reports.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-update_def.html">controls/update_def.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-update_def_inputs.html">controls/update_def_inputs.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal.html">cfe_internal/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-cfe_cfengine.html">cfe_internal/CFE_cfengine.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update.html">cfe_internal/update/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_dc_workflow.html">cfe_internal/update/cfe_internal_dc_workflow.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_update_from_repository.html">cfe_internal/update/cfe_internal_update_from_repository.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-lib.html">cfe_internal/update/lib.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-systemd_units.html">cfe_internal/update/systemd_units.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_bins.html">cfe_internal/update/update_bins.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_policy.html">cfe_internal/update/update_policy.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_processes.html">cfe_internal/update/update_processes.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-core.html">cfe_internal/core/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-core-watchdog.html">cfe_internal/core/watchdog</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-core-watchdog-watchdog.html">cfe_internal/core/watchdog/watchdog.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation.html">cfe_internal/enterprise/federation/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation-federation.html">cfe_internal/enterprise/federation/federation.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise.html">cfe_internal/enterprise/</a></li><li><a href="reference-masterfiles-policy-framework-inventory.html">inventory/</a></li><li><a href="reference-masterfiles-policy-framework-inventory-any.html">inventory/any.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-debian.html">inventory/debian.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-freebsd.html">inventory/freebsd.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-generic.html">inventory/generic.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-linux.html">inventory/linux.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-lsb.html">inventory/lsb.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-macos.html">inventory/macos.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-os.html">inventory/os.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-redhat.html">inventory/redhat.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-suse.html">inventory/suse.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-windows.html">inventory/windows.cf</a></li><li><a href="reference-masterfiles-policy-framework-services.html">services/</a></li><li><a href="reference-masterfiles-policy-framework-services-autorun.html">services/autorun/</a></li><li><a href="reference-masterfiles-policy-framework-services-main.html">services/main.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib.html">lib/</a></li><li><a href="reference-masterfiles-policy-framework-standalone_self_upgrade.html">standalone_self_upgrade.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-autorun.html">lib/autorun.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-bundles.html">lib/bundles.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfe_internal.html">lib/cfe_internal.cf</a></li><li><a class="active" href="reference-masterfiles-policy-framework-lib-cfe_internal_hub.html">lib/cfe_internal_hub.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfengine_enterprise_hub_ha.html">lib/cfengine_enterprise_hub_ha.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-commands.html">lib/commands.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-common.html">lib/common.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-databases.html">lib/databases.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-edit_xml.html">lib/edit_xml.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-event.html">lib/event.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-examples.html">lib/examples.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-feature.html">lib/feature.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-files.html">lib/files.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-guest_environments.html">lib/guest_environments.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-monitor.html">lib/monitor.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-packages.html">lib/packages.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-paths.html">lib/paths.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-processes.html">lib/processes.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-reports.html">lib/reports.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-services.html">lib/services.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-stdlib.html">lib/stdlib.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-storage.html">lib/storage.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-testing.html">lib/testing.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-users.html">lib/users.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-vcs.html">lib/vcs.cf</a></li></ul></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    lib/cfe_internal_hub.cf
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h3 id="file-bodies"><a href="guide-language-concepts-namespaces.html">file</a> bodies</h3><h4 id="control">control</h4>
+<p><strong>Prototype:</strong> <code>control</code></p>
+
+<p><strong>Description:</strong> Include policy files used by this policy file as part of inputs</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span><span class="w"> </span><span class="k">file</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="kr">inputs</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="nv">@(cfe_internal_hub_common.inputs)</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h3 id="match_value-bodies"><a href="reference-promise-types-measurements.html#match_value" title="measurements - match_value">match_value</a> bodies</h3><h4 id="acquired_lock">acquired_lock</h4>
+<p><strong>Prototype:</strong> <code>acquired_lock</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span><span class="w"> </span><span class="k">match_value</span><span class="w"> </span><span class="nf">acquired_lock</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c"># Example log line</span>
+<span class="w">  </span><span class="c"># 2019-06-11 18:49:39 GMT LOG: process 10427 acquired AccessShareLock on relation 17949 of database 16384 after 1122</span>
+
+<span class="w">  </span><span class="kr">select_line_matching</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;.*acquired.*Lock.*&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kr">extraction_regex</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;.*after (</span><span class="se">\d</span><span class="s">+)&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kr">track_growing_file</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kr">select_multiline_policy</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;average&quot;</span><span class="p">;</span><span class="w"> </span><span class="c"># average, sum, first, last</span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h3 id="common-bodies"><a href="reference-components.html#common-control">common</a> bodies</h3><h4 id="cfe_internal_hub_common">cfe_internal_hub_common</h4>
+<p><strong>Prototype:</strong> <code>cfe_internal_hub_common</code></p>
+
+<p><strong>Description:</strong> Enumerate policy files used by this policy file for inclusion to inputs</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">common</span><span class="w"> </span><span class="nf">cfe_internal_hub_common</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">inputs</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$(this.promise_dirname)</span><span class="s">/common.cf&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                          </span><span class="s">&quot;</span><span class="si">$(this.promise_dirname)</span><span class="s">/commands.cf&quot;</span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h3 id="agent-bundles"><a href="reference-components-cf-agent.html" title="cf-agent">agent</a> bundles</h3><h4 id="cfe_internal_hub_maintain">cfe_internal_hub_maintain</h4>
+<p><strong>Prototype:</strong> <code>cfe_internal_hub_maintain</code></p>
+
+<p><strong>Description:</strong> Executes reporting database maintenance process
+By default database clean up interval is 24 hours.
+Length of log history in database is controlled
+by modifying &quot;history_length_days&quot; key in report_settings
+variable.</p>
+
+<p>Intervals less than 6 hours must be used with caution
+as maintenance process could take a considerable time</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">cfe_internal_hub_maintain</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;report_settings&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">data</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;[</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;report&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;contexts&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;table&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;__ContextsLog&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;history_length_days&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;time_key&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;ChangeTimeStamp&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;report&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;variables&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;table&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;__VariablesLog&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;history_length_days&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;time_key&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;ChangeTimeStamp&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;report&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;software&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;table&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;__SoftwareLog&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;history_length_days&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;time_key&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;ChangeTimeStamp&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;report&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;software_updates&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;table&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;__SoftwareUpdatesLog&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;history_length_days&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;time_key&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;ChangeTimeStamp&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;report&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;filechanges&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;table&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;__FileChangesLog&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;history_length_days&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">365</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;time_key&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;ChangeTimeStamp&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;report&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;benchmarks&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;table&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;__BenchmarksLog&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;history_length_days&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;time_key&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;CheckTimeStamp&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;report&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;promise_executions&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;table&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;__PromiseExecutionsLog&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;history_length_days&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;time_key&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;ChangeTimeStamp&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="err">]&#39;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;diagnostics_settings&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">data</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;[</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;report&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;hub_connection_errors&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;table&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;__HubConnectionErrors&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;history_length_days&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;time_key&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;CheckTimeStamp&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;report&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;diagnostics&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;table&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;Diagnostics&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;history_length_days&quot;</span><span class="err">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;time_key&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;TimeStamp&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="err">]&#39;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">classes</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;enable_cfe_internal_reporting_database_purge_old_history&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;postgres&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CFEngine Enterprise&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="kr">expression</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;enterprise_edition.Hr00&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;enable_cfe_internal_parition_creation_job&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;postgres&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CFEngine Enterprise&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="kr">expression</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;enterprise_edition.Hr00&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">methods</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nc">enable_cfe_internal_reporting_database_purge_old_history</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Remove old report history&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">cfe_internal_database_cleanup_reports</span><span class="p">(</span><span class="nv">@(report_settings)</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="kr">action</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">if_elapsed_day</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;Remove cf-consumer history&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">cfe_internal_database_cleanup_consumer_status</span><span class="p">(</span><span class="s">&quot;3&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="kr">action</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">if_elapsed_day</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;Remove diagnostics history&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">cfe_internal_database_cleanup_diagnostics</span><span class="p">(</span><span class="nv">@(diagnostics_settings)</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="kr">action</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">if_elapsed_day</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;Remove promise log history&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">cfe_internal_database_cleanup_promise_log</span><span class="p">(</span><span class="s">&quot;7&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="kr">action</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">if_elapsed_day</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">enable_cfe_internal_parition_creation_job</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;Create new partitions for partitioned tables&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">usebundle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">cfe_internal_database_partitioning</span><span class="p">(),</span><span class="w"></span>
+<span class="w">      </span><span class="kr">action</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">if_elapsed_day</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h4 id="cfe_internal_database_cleanup_reports">cfe_internal_database_cleanup_reports</h4>
+<p><strong>Prototype:</strong> <code>cfe_internal_database_cleanup_reports(settings)</code></p>
+
+<p><strong>Description:</strong> clean up the reporting tables</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>settings</code> of <a href="reference-promise-types-vars.html" title="vars"><code>vars</code></a> promiser <em>index</em> of <a href="reference-promise-types-vars.html" title="vars"><code>vars</code></a> promiser <em>remove_query_$(settings[$(index)][report])</em> of <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a> promiser <em>$(sys.bindir)/psql cfdb -c &quot;$(remove_query_$(settings[$(index)][report]))&quot;</em></li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">cfe_internal_database_cleanup_reports</span><span class="w"> </span><span class="p">(</span><span class="nf">settings</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">index</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">getindices</span><span class="p">(</span><span class="nf">settings</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;remove_query_</span><span class="si">$(settings[$(index)][report])</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;This query will delete rows that have a changetimestamp</span>
+<span class="s">                    </span><span class="si">$(settings[$(index)][history_length_days])</span><span class="s"> older than the</span>
+<span class="s">                    hosts most recent changetimestamp in the table.&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">string</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;WITH z AS</span>
+<span class="s">(</span>
+<span class="s">         SELECT   hostkey,</span>
+<span class="s">                  Max(</span><span class="si">$(settings[$(index)][time_key])</span><span class="s">) AS latest</span>
+<span class="s">         FROM     </span><span class="si">$(settings[$(index)][table])</span><span class="s"></span>
+<span class="s">         GROUP BY hostkey)</span>
+<span class="s">DELETE</span>
+<span class="s">FROM   </span><span class="si">$(settings[$(index)][table])</span><span class="s"> t</span>
+<span class="s">using  z</span>
+<span class="s">WHERE  z.hostkey = t.hostkey</span>
+<span class="s">AND    t.</span><span class="si">$(settings[$(index)][time_key])</span><span class="s"> &lt;= (z.latest - &#39;</span><span class="si">$(settings[$(index)][history_length_days])</span><span class="s"> day&#39;::interval);&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">commands</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">/psql cfdb -c </span><span class="se">\&quot;</span><span class="si">$(remove_query_$(settings[$(index)][report]))</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="w"></span>
+<span class="err">@</span><span class="nf">if</span><span class="w"> </span><span class="nf">minimum_version</span><span class="p">(</span><span class="mf">3.15</span><span class="err">.</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="kr">inform</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="err">@</span><span class="nf">endif</span><span class="w"></span>
+<span class="w">        </span><span class="kr">contain</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">silent</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">handle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;cf_database_maintain_report_</span><span class="si">$(settings[$(index)][report])</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h4 id="cfe_internal_database_cleanup_consumer_status">cfe_internal_database_cleanup_consumer_status</h4>
+<p><strong>Prototype:</strong> <code>cfe_internal_database_cleanup_consumer_status(row_count)</code></p>
+
+<p><strong>Description:</strong> keep up to row_count entries in the database</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>row_count</code> of <a href="reference-promise-types-classes.html" title="classes"><code>classes</code></a> promiser <em>has_sql_function_cleanup_historical_data</em> of <a href="reference-promise-types-classes.html" title="classes"><code>classes</code></a> promiser <em>has_sql_table___status</em> of <a href="reference-promise-types-vars.html" title="vars"><code>vars</code></a> promiser <em>status_table_name</em> of <a href="reference-promise-types-vars.html" title="vars"><code>vars</code></a> promiser <em>remove_query</em> of <a href="reference-promise-types-vars.html" title="vars"><code>vars</code></a> promiser <em>delete_future_ts_query</em>: string, used in the value of attribute <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> of <a href="reference-promise-types-vars.html" title="vars"><code>vars</code></a> promiser <em>remove_query</em> of <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a> promiser <em>$(sys.bindir)/psql cfdb -c &quot;$(remove_query)&quot;</em> of <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a> promiser <em>$(sys.bindir)/psql cfdb -c &quot;$(delete_future_ts_query)&quot;</em></li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">cfe_internal_database_cleanup_consumer_status</span><span class="w"> </span><span class="p">(</span><span class="nf">row_count</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">classes</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">      </span><span class="c"># We probe the database to see if the function is defined</span>
+
+<span class="w">      </span><span class="s">&quot;has_sql_function_cleanup_historical_data&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">expression</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">returnszero</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">/psql cfdb -c </span><span class="se">\&quot;</span><span class="s">SELECT &#39;cleanup_historical_data&#39;::regproc;</span><span class="se">\&quot;</span><span class="s"> &gt; /dev/null 2&gt;&amp;1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">useshell</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">isexecutable</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">/psql&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;has_sql_table___status&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;ENT-4331&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="kr">expression</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">returnszero</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">/psql cfdb -c </span><span class="se">\&quot;</span><span class="s">SELECT &#39;public.__status&#39;::regclass;</span><span class="se">\&quot;</span><span class="s"> &gt; /dev/null 2&gt;&amp;1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">useshell</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">isexecutable</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">/psql&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">any</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">      </span><span class="c"># The status table changed it&#39;s name for 3.12.2 and 3.10.6, this handles</span>
+<span class="w">      </span><span class="c"># using the proper table name in the cleanup query</span>
+
+<span class="w">      </span><span class="s">&quot;status_table_name&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;ENT-4331&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="kr">string</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">ifelse</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;has_sql_table___status&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;__status&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;status&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">any</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="c"># This is the fallback query to use in case the cleanup_historical_data</span>
+<span class="w">      </span><span class="c"># function is not present.</span>
+<span class="w">      </span><span class="s">&quot;remove_query&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;ENT-4365&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="kr">string</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;DELETE FROM </span><span class="si">$(status_table_name)</span><span class="s"> WHERE ts IN (SELECT ts FROM </span><span class="si">$(status_table_name)</span><span class="s"> ORDER BY ts DESC OFFSET 50000);&quot;</span><span class="p">;</span><span class="w"></span>
+
+
+<span class="w">      </span><span class="s">&quot;delete_future_ts_query&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;ENT-4362&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ENT-4992&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="kr">string</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;DELETE FROM </span><span class="si">$(status_table_name)</span><span class="s"> WHERE to_timestamp(ts::bigint) &gt; (now() + interval &#39;2 days&#39;)::timestamp;&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">has_sql_function_cleanup_historical_data</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">remove_query</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;SELECT * FROM cleanup_historical_data(&#39;</span><span class="si">$(status_table_name)</span><span class="s">&#39;, &#39;ts&#39;, </span><span class="si">$(row_count)</span><span class="s">, &#39;host&#39;);&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">commands</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">/psql cfdb -c </span><span class="se">\&quot;</span><span class="si">$(remove_query)</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="w"></span>
+<span class="err">@</span><span class="nf">if</span><span class="w"> </span><span class="nf">minimum_version</span><span class="p">(</span><span class="mf">3.15</span><span class="err">.</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="kr">inform</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="err">@</span><span class="nf">endif</span><span class="w"></span>
+<span class="w">        </span><span class="kr">contain</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">silent</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">handle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;cf_database_maintain_consumer_status&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">/psql cfdb -c </span><span class="se">\&quot;</span><span class="si">$(delete_future_ts_query)</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;ENT-4362&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="err">@</span><span class="nf">if</span><span class="w"> </span><span class="nf">minimum_version</span><span class="p">(</span><span class="mf">3.15</span><span class="err">.</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="kr">inform</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="err">@</span><span class="nf">endif</span><span class="w"></span>
+<span class="w">        </span><span class="kr">contain</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">silent</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">handle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;cf_database_maintain_consumer_status_no_future_timestamps&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h4 id="cfe_internal_database_cleanup_diagnostics">cfe_internal_database_cleanup_diagnostics</h4>
+<p><strong>Prototype:</strong> <code>cfe_internal_database_cleanup_diagnostics(settings)</code></p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>settings</code> of <a href="reference-promise-types-vars.html" title="vars"><code>vars</code></a> promiser <em>index</em> of <a href="reference-promise-types-vars.html" title="vars"><code>vars</code></a> promiser <em>remove_query_$(settings[$(index)][report])</em> of <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a> promiser <em>$(sys.bindir)/psql cfdb -c &quot;$(remove_query_$(settings[$(index)][report]))&quot;</em></li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">cfe_internal_database_cleanup_diagnostics</span><span class="w"> </span><span class="p">(</span><span class="nf">settings</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">index</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">getindices</span><span class="p">(</span><span class="s">&quot;settings&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">remove_query_$(settings[$(index)][report])</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;DELETE FROM </span><span class="si">$(settings[$(index)][table])</span><span class="s"> WHERE </span><span class="si">$(settings[$(index)][time_key])</span><span class="s"> &lt; (CURRENT_TIMESTAMP - INTERVAL &#39;</span><span class="si">$(settings[$(index)][history_length_days])</span><span class="s"> day&#39;);&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">commands</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">/psql cfdb -c </span><span class="se">\&quot;</span><span class="si">$(remove_query_$(settings[$(index)][report]))</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="w"></span>
+<span class="err">@</span><span class="nf">if</span><span class="w"> </span><span class="nf">minimum_version</span><span class="p">(</span><span class="mf">3.15</span><span class="err">.</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="kr">inform</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="err">@</span><span class="nf">endif</span><span class="w"></span>
+<span class="w">        </span><span class="kr">contain</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">silent</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">handle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;cf_database_maintain_diagnostics_</span><span class="si">$(settings[$(index)][report])</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h4 id="cfe_internal_database_cleanup_promise_log">cfe_internal_database_cleanup_promise_log</h4>
+<p><strong>Prototype:</strong> <code>cfe_internal_database_cleanup_promise_log(history_length_days)</code></p>
+
+<p><strong>Description:</strong> clean up promise log files older than <code>history_length_days</code></p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>history_length_days</code>: Number of days after which promise logs should be deleted</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">cfe_internal_database_cleanup_promise_log</span><span class="w"> </span><span class="p">(</span><span class="nf">history_length_days</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p">&quot;</span><span class="nv">cleanup_query_repaired</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;SELECT promise_log_partition_cleanup(&#39;REPAIRED&#39;, &#39;</span><span class="si">$(history_length_days)</span><span class="s"> day&#39;);&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="p">&quot;</span><span class="nv">cleanup_query_notkept</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;SELECT promise_log_partition_cleanup(&#39;NOTKEPT&#39;, &#39;</span><span class="si">$(history_length_days)</span><span class="s"> day&#39;);&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">commands</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">/psql cfdb -c </span><span class="se">\&quot;</span><span class="si">$(cleanup_query_repaired)</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="w"></span>
+<span class="err">@</span><span class="nf">if</span><span class="w"> </span><span class="nf">minimum_version</span><span class="p">(</span><span class="mf">3.15</span><span class="err">.</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="kr">inform</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="err">@</span><span class="nf">endif</span><span class="w"></span>
+<span class="w">        </span><span class="kr">contain</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">silent</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">handle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;cf_database_maintain_promise_log_repaired&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">/psql cfdb -c </span><span class="se">\&quot;</span><span class="si">$(cleanup_query_notkept)</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="w"></span>
+<span class="err">@</span><span class="nf">if</span><span class="w"> </span><span class="nf">minimum_version</span><span class="p">(</span><span class="mf">3.15</span><span class="err">.</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="kr">inform</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="err">@</span><span class="nf">endif</span><span class="w"></span>
+<span class="w">        </span><span class="kr">contain</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">silent</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">handle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;cf_database_maintain_promise_log_notkept&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h4 id="cfe_internal_database_partitioning">cfe_internal_database_partitioning</h4>
+<p><strong>Prototype:</strong> <code>cfe_internal_database_partitioning</code></p>
+
+<p><strong>Description:</strong> create any nesesary table partitions for database</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">cfe_internal_database_partitioning</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p">&quot;</span><span class="nv">promise_outcome</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;REPAIRED&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;NOTKEPT&quot;</span><span class="p">};</span><span class="w"></span>
+
+<span class="w">    </span><span class="p">&quot;</span><span class="nv">query_create_promise_log_$(promise_outcome)</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;SELECT promise_log_partition_create(NOW() - INTERVAL &#39;7 day&#39;, 7 + 3, &#39;</span><span class="si">$(promise_outcome)</span><span class="s">&#39;);&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">commands</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">/psql cfdb -c </span><span class="se">\&quot;</span><span class="si">$(query_create_promise_log_$(promise_outcome))</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="w"></span>
+<span class="err">@</span><span class="nf">if</span><span class="w"> </span><span class="nf">minimum_version</span><span class="p">(</span><span class="mf">3.15</span><span class="err">.</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="kr">inform</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="err">@</span><span class="nf">endif</span><span class="w"></span>
+<span class="w">        </span><span class="kr">contain</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">silent</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">handle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;cf_database_create_partition_promise_log_</span><span class="si">$(promise_outcome)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h4 id="cfe_internal_postgresql_maintenance">cfe_internal_postgresql_maintenance</h4>
+<p><strong>Prototype:</strong> <code>cfe_internal_postgresql_maintenance</code></p>
+
+<p><strong>Description:</strong> Vacuum Full PostgreSQL for maintenance</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">cfe_internal_postgresql_maintenance</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">vacuum_cfdb_cmd</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">/vacuumdb --full --dbname=cfdb&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Vacuum Full PostgreSQL (database: cfdb)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">handle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_postgresql_maintenance_vacuum_full&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">policy_server.enterprise.cfconsumer_in_enterprise</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="c"># TODO Remove after 3.12 EOL</span>
+
+<span class="w">      </span><span class="s">&quot;cf_consumer_pid&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;ENT-2797&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="kr">string</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">readfile</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/cf-consumer.pid&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="kr">ifvarclass</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/cf-consumer.pid&quot;</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Read cf-consumer.pid for the main cf-consumer PID&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">classes</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">cfconsumer_in_enterprise</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="c"># TODO Remove after 3.12 EOL</span>
+<span class="w">      </span><span class="s">&quot;cf_consumer_pid_correct&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;ENT-2972&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="kr">expression</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;cf_consumer_pid&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Check if cf-consumer pid is correctly defined&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">processes</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">any</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;cf-hub&quot;</span><span class="w">      </span><span class="kr">signals</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;term&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Terminate cf-hub while doing PostgreSQL maintenance&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">handle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_postgresql_maintenance_processes_term_cf_hub&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">cf_consumer_pid_correct.cfconsumer_in_enterprise</span><span class="p">::</span><span class="w"></span>
+<span class="w">      </span><span class="c"># TODO Remove from MPF after 3.12 EOL</span>
+
+<span class="w">      </span><span class="s">&quot;cf-consumer&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;ENT-2797&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="kr">signals</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;kill&quot;</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="kr">process_select</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">by_pid</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(cf_consumer_pid)</span><span class="s">&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Kill cf-consumer while doing PostgreSQL maintenance&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">handle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_postgresql_maintenance_processes_kill_cf_consumer&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">commands</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">any</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">      </span><span class="s">&quot;</span><span class="si">$(vacuum_cfdb_cmd)</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Run vacuum db full command (database: cfdb)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">kept_successful_command</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">handle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_postgresql_maintenance_commands_run_vacuumdb_cmd_full&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h4 id="cfe_internal_postgresql_vacuum">cfe_internal_postgresql_vacuum</h4>
+<p><strong>Prototype:</strong> <code>cfe_internal_postgresql_vacuum</code></p>
+
+<p><strong>Description:</strong> Vacuum (with analyze) over cfdb database.</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">cfe_internal_postgresql_vacuum</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">vacuum_cfdb_cmd</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">/vacuumdb --analyze --quiet --dbname=cfdb&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Vacuum command with update statistics enabled&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">commands</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;</span><span class="si">$(vacuum_cfdb_cmd)</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Run vacuum db command (database: cfdb)&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">handle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_postgresql_maintenance_commands_run_vacuumdb&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h3 id="monitor-bundles"><a href="reference-components-cf-monitord.html" title="cf-monitord">monitor</a> bundles</h3><h4 id="measure_psql">measure_psql</h4>
+<p><strong>Prototype:</strong> <code>measure_psql</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">monitor</span><span class="w"> </span><span class="nf">measure_psql</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">measurements</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nc">policy_server|am_policy_hub</span><span class="p">::</span><span class="w"></span>
+
+<span class="w">      </span><span class="c"># We average the time for all entries in /var/log/postgresql.log that</span>
+<span class="w">      </span><span class="c"># PostgreSQL waited before acquiring a lock and measure that over time.</span>
+
+<span class="w">      </span><span class="s">&quot;/var/log/postgresql.log&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;/var/log/postgresql.log&quot;</span><span class="p">),</span><span class="w"></span>
+<span class="w">        </span><span class="kr">handle</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;psql_lock_wait_before_acquisition&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">stream_type</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;file&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">data_type</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;real&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">history_type</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;weekly&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">units</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;ms&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">match_value</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">acquired_lock</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="kr">comment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;Approximate length of time PostgreSQL waits before acquiring lock&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-controls.html">controls</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-mpf.html">mpf</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 02 December 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.15/generator/pages/reference/masterfiles-policy-framework/lib-cfe_internal_hub.markdown/reference/masterfiles-policy-framework/lib-cfe_internal_hub.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-42a0b4e53c8c8a1d3df73e4c74e62399.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

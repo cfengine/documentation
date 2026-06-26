@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.19  Documentation - How can I tell what Classes and Variables are defined?</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/guide/faq/show-classes-and-vars.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-guide-faq-show-classes-and-vars.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <link rel="canonical" href="https://docs.cfengine.com/latest/guide-faq-show-classes-and-vars.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='assets/global-6a0b9da22cb0d4bd16e0e337e3484c43.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "How can I tell what Classes and Variables are defined?";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/">Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/" selected>Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a></li><li><a href="guide-faq.html">FAQ</a><ul class="level2"><li><a href="guide-faq-why-cfengine.html">Why CFEngine?</a></li><li><a href="guide-faq-what-is-cfengine.html">What is CFEngine?</a></li><li><a href="guide-faq-how-does-cfengine-work.html">How does CFEngine work?</a></li><li><a href="guide-faq-why-knowledge-management.html">Why knowledge management?</a></li><li><a href="guide-faq-enterprise-license.html">Requesting a CFEngine Enterprise License</a></li><li><a href="guide-faq-uninstall-reinstall.html">Uninstalling/Reinstalling</a></li><li><a href="guide-faq-output-email.html">Agent output email</a></li><li><a href="guide-faq-enterprise.html">CFEngine Enterprise</a></li><li><a href="guide-faq-debugging-mission-portal.html">Debugging Mission Portal</a></li><li><a href="guide-faq-debugging-slow-queries.html">Debugging Slow Queries</a></li><li><a href="guide-faq-enterprise-report-filtering.html">Enterprise Report Filtering</a></li><li><a href="guide-faq-enterprise-report-collection.html">Enterprise report collection</a></li><li><a class="active" href="guide-faq-show-classes-and-vars.html">How can I tell what Classes and Variables are defined?</a></li><li><a href="guide-faq-fix-trust-after-ip-change.html">How do I fix trust after an IP change?</a></li><li><a href="guide-faq-fix-undefined-body-error.html">How do I fix undefined body errors?</a></li><li><a href="guide-faq-integrate-custom-policy.html">How do I integrate custom policy?</a></li><li><a href="guide-faq-find-public-key-for-host-sha.html">How to find the public key for a given host SHA</a></li><li><a href="guide-faq-manual-execution.html">Manual Execution</a></li><li><a href="guide-faq-mustache-templating.html">Mustache templating</a></li><li><a href="guide-faq-unable-to-log-in-mission-portal.html">Unable to log into Mission Portal</a></li><li><a href="guide-faq-users.html">Users</a></li><li><a href="guide-faq-variables.html">Variables</a></li><li><a href="guide-faq-what-is-promise-locking.html">What is promise locking?</a></li><li><a href="guide-faq-why-are-remote-agents-not-updating.html">Why are remote agents not updating?</a></li><li><a href="guide-faq-why-are-files-not-being-distributed.html">Why are some files inside masterfiles not being updated/distributed?</a></li><li><a href="guide-faq-fhs.html">Why does cfengine install into /var/cfengine instead of following the FHS?</a></li><li><a href="guide-faq-what-did-cfengine-change.html">What did cfengine do?</a></li></ul></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-faq.html">FAQ</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    How can I tell what Classes and Variables are defined?
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>You can see a high level overview of the first order classes and variables using
+<code>cf-promises --show-classes</code> and <code>cf-promises --show-vars</code>.</p>
+
+<p>Both of those commands will take an optional regular expression you can use to
+filter the classes or variables. For example <code>cf-promises --show-classes=MT</code>
+will show all the classes that contain <code>MT</code> like <code>GMT_July</code>.</p>
+
+<p>You can see the variables and namespace scoped classes defined at the end of an
+agent execution by using the <code>--show-evaluated-vars</code> or
+<code>--show-evaluated-classes</code> options to <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>. In addition to the
+variables and classes shown by <code>cf-promsies --show-classes</code> or <code>cf-promises
+--show-vars</code> this will show variables and namespace scoped classes that get
+defined during a full agent run where the system may be modified and more policy
+is evaluated.</p>
+<h1 id="show-first-order-classes-with-cf-promises">Show first order classes with cf-promises</h1><div class="highlight"><pre><code class="console"><span class="go">cf-promises --show-classes</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">Class name                                                   Meta tags                                Comment                                 
+10_0_2_100                                                   inventory,attribute_name=none,source=agent,hardclass                                         
+127_0_0_1                                                    inventory,attribute_name=none,source=agent,hardclass                                         
+64_bit                                                       source=agent,hardclass                                                           
+6_cpus                                                       source=agent,derived-from=sys.cpus,hardclass                                         
+7363bce9906b                                                 inventory,attribute_name=none,source=agent,derived-from=sys.fqhost,hardclass                                         
+Day6                                                         time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Day6                                                     time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Hr08                                                     time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Hr08_Q4                                                  time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Hr8                                                      time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_July                                                     time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Lcycle_0                                                 time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Min50                                                    time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Min50_55                                                 time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Morning                                                  time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Q4                                                       time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Wednesday                                                time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Yr2022                                                   time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Hr08                                                         time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Hr08_Q4                                                      time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Hr8                                                          time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+July                                                         time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Lcycle_0                                                     time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Min50                                                        time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Min50_55                                                     time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Morning                                                      time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Q4                                                           time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Wednesday                                                    time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Yr2022                                                       time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+__os_release_id_                                             source=promise                                                                   
+__os_release_id____os_release_version_                       source=promise                                                                   
+_have_bin_journalctl                                         source=promise                                                                   
+_have_bin_systemctl                                          source=promise                                                                   
+_have_control_agent_files_single_copy                        source=promise                                                                   
+_stdlib_has_path_apt_cache                                   source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_apt_config                                  source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_apt_get                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_apt_key                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_aptitude                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_awk                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_bc                                          source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_cat                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_chkconfig                                   source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_cksum                                       source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_createrepo                                  source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_crontab                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_crontabs                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_curl                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_cut                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_dc                                          source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_df                                          source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_diff                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_dig                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_dmidecode                                   source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_domainname                                  source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_dpkg                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_dpkg_divert                                 source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_echo                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_egrep                                       source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_env                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_ethtool                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_false                                       source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_find                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_free                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_getenforce                                  source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_getent                                      source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_getfacl                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_git                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_grep                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_groupadd                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_groupdel                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_groupmod                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_hostname                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_ifconfig                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_init                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_ip                                          source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_iptables                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_iptables_save                               source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_journalctl                                  source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_logger                                      source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_ls                                          source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_lsattr                                      source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_lsmod                                       source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_lsof                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_mailx                                       source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_netstat                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_nologin                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_npm                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_perl                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_pgrep                                       source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_ping                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_pip                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_printf                                      source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_realpath                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_restorecon                                  source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_sed                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_semanage                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_service                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_setfacl                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_shadow                                      source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_sort                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_svc                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_sysctl                                      source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_systemctl                                   source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_tar                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_test                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_timedatectl                                 source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_tr                                          source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_true                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_update_alternatives                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_update_rc_d                                 source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_useradd                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_userdel                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_usermod                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_virtualenv                                  source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_wc                                          source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_wget                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_path_exists_apt_cache                                source=promise                           It&#39;s useful to know if apt_cache exists on the filesystem as defined
+_stdlib_path_exists_apt_config                               source=promise                           It&#39;s useful to know if apt_config exists on the filesystem as defined
+_stdlib_path_exists_apt_get                                  source=promise                           It&#39;s useful to know if apt_get exists on the filesystem as defined
+_stdlib_path_exists_apt_key                                  source=promise                           It&#39;s useful to know if apt_key exists on the filesystem as defined
+_stdlib_path_exists_awk                                      source=promise                           It&#39;s useful to know if awk exists on the filesystem as defined
+_stdlib_path_exists_cat                                      source=promise                           It&#39;s useful to know if cat exists on the filesystem as defined
+_stdlib_path_exists_cksum                                    source=promise                           It&#39;s useful to know if cksum exists on the filesystem as defined
+_stdlib_path_exists_curl                                     source=promise                           It&#39;s useful to know if curl exists on the filesystem as defined
+_stdlib_path_exists_cut                                      source=promise                           It&#39;s useful to know if cut exists on the filesystem as defined
+_stdlib_path_exists_df                                       source=promise                           It&#39;s useful to know if df exists on the filesystem as defined
+_stdlib_path_exists_diff                                     source=promise                           It&#39;s useful to know if diff exists on the filesystem as defined
+_stdlib_path_exists_domainname                               source=promise                           It&#39;s useful to know if domainname exists on the filesystem as defined
+_stdlib_path_exists_dpkg                                     source=promise                           It&#39;s useful to know if dpkg exists on the filesystem as defined
+_stdlib_path_exists_dpkg_divert                              source=promise                           It&#39;s useful to know if dpkg_divert exists on the filesystem as defined
+_stdlib_path_exists_echo                                     source=promise                           It&#39;s useful to know if echo exists on the filesystem as defined
+_stdlib_path_exists_egrep                                    source=promise                           It&#39;s useful to know if egrep exists on the filesystem as defined
+_stdlib_path_exists_env                                      source=promise                           It&#39;s useful to know if env exists on the filesystem as defined
+_stdlib_path_exists_false                                    source=promise                           It&#39;s useful to know if false exists on the filesystem as defined
+_stdlib_path_exists_find                                     source=promise                           It&#39;s useful to know if find exists on the filesystem as defined
+_stdlib_path_exists_free                                     source=promise                           It&#39;s useful to know if free exists on the filesystem as defined
+_stdlib_path_exists_getent                                   source=promise                           It&#39;s useful to know if getent exists on the filesystem as defined
+_stdlib_path_exists_git                                      source=promise                           It&#39;s useful to know if git exists on the filesystem as defined
+_stdlib_path_exists_grep                                     source=promise                           It&#39;s useful to know if grep exists on the filesystem as defined
+_stdlib_path_exists_groupadd                                 source=promise                           It&#39;s useful to know if groupadd exists on the filesystem as defined
+_stdlib_path_exists_groupdel                                 source=promise                           It&#39;s useful to know if groupdel exists on the filesystem as defined
+_stdlib_path_exists_groupmod                                 source=promise                           It&#39;s useful to know if groupmod exists on the filesystem as defined
+_stdlib_path_exists_hostname                                 source=promise                           It&#39;s useful to know if hostname exists on the filesystem as defined
+_stdlib_path_exists_init                                     source=promise                           It&#39;s useful to know if init exists on the filesystem as defined
+_stdlib_path_exists_ip                                       source=promise                           It&#39;s useful to know if ip exists on the filesystem as defined
+_stdlib_path_exists_journalctl                               source=promise                           It&#39;s useful to know if journalctl exists on the filesystem as defined
+_stdlib_path_exists_logger                                   source=promise                           It&#39;s useful to know if logger exists on the filesystem as defined
+_stdlib_path_exists_ls                                       source=promise                           It&#39;s useful to know if ls exists on the filesystem as defined
+_stdlib_path_exists_lsattr                                   source=promise                           It&#39;s useful to know if lsattr exists on the filesystem as defined
+_stdlib_path_exists_nologin                                  source=promise                           It&#39;s useful to know if nologin exists on the filesystem as defined
+_stdlib_path_exists_perl                                     source=promise                           It&#39;s useful to know if perl exists on the filesystem as defined
+_stdlib_path_exists_pgrep                                    source=promise                           It&#39;s useful to know if pgrep exists on the filesystem as defined
+_stdlib_path_exists_printf                                   source=promise                           It&#39;s useful to know if printf exists on the filesystem as defined
+_stdlib_path_exists_realpath                                 source=promise                           It&#39;s useful to know if realpath exists on the filesystem as defined
+_stdlib_path_exists_sed                                      source=promise                           It&#39;s useful to know if sed exists on the filesystem as defined
+_stdlib_path_exists_service                                  source=promise                           It&#39;s useful to know if service exists on the filesystem as defined
+_stdlib_path_exists_shadow                                   source=promise                           It&#39;s useful to know if shadow exists on the filesystem as defined
+_stdlib_path_exists_sort                                     source=promise                           It&#39;s useful to know if sort exists on the filesystem as defined
+_stdlib_path_exists_svc                                      source=promise                           It&#39;s useful to know if svc exists on the filesystem as defined
+_stdlib_path_exists_sysctl                                   source=promise                           It&#39;s useful to know if sysctl exists on the filesystem as defined
+_stdlib_path_exists_systemctl                                source=promise                           It&#39;s useful to know if systemctl exists on the filesystem as defined
+_stdlib_path_exists_tar                                      source=promise                           It&#39;s useful to know if tar exists on the filesystem as defined
+_stdlib_path_exists_test                                     source=promise                           It&#39;s useful to know if test exists on the filesystem as defined
+_stdlib_path_exists_timedatectl                              source=promise                           It&#39;s useful to know if timedatectl exists on the filesystem as defined
+_stdlib_path_exists_tr                                       source=promise                           It&#39;s useful to know if tr exists on the filesystem as defined
+_stdlib_path_exists_true                                     source=promise                           It&#39;s useful to know if true exists on the filesystem as defined
+_stdlib_path_exists_update_alternatives                      source=promise                           It&#39;s useful to know if update_alternatives exists on the filesystem as defined
+_stdlib_path_exists_update_rc_d                              source=promise                           It&#39;s useful to know if update_rc_d exists on the filesystem as defined
+_stdlib_path_exists_useradd                                  source=promise                           It&#39;s useful to know if useradd exists on the filesystem as defined
+_stdlib_path_exists_userdel                                  source=promise                           It&#39;s useful to know if userdel exists on the filesystem as defined
+_stdlib_path_exists_usermod                                  source=promise                           It&#39;s useful to know if usermod exists on the filesystem as defined
+_stdlib_path_exists_wc                                       source=promise                           It&#39;s useful to know if wc exists on the filesystem as defined
+_stdlib_path_exists_wget                                     source=promise                           It&#39;s useful to know if wget exists on the filesystem as defined
+any                                                          source=agent,hardclass                                                           
+cfengine                                                     inventory,attribute_name=none,source=agent,hardclass                                         
+cfengine_3                                                   inventory,attribute_name=none,source=agent,hardclass                                         
+cfengine_3_19                                                inventory,attribute_name=none,source=agent,hardclass                                         
+cfengine_3_19_0                                              inventory,attribute_name=none,source=agent,hardclass                                         
+cfengine_internal_agent_email                                source=promise                                                                   
+cfengine_internal_rotate_logs                                source=promise                                                                   
+cfengine_recommendations_enabled                             source=promise                                                                   
+common                                                       cfe_internal,source=agent,hardclass                                              
+compiled_on_linux_gnu                                        source=agent,hardclass                                                           
+debian                                                       inventory,attribute_name=none,source=agent,derived-from-file=/etc/debian_version,hardclass                                         
+debian_derived                                               source=promise,inventory,attribute_name=none derived from Debian                     
+debian_stretch                                               inventory,attribute_name=none,source=agent,derived-from-file=/etc/debian_version,hardclass                                         
+disable_inventory_LLDP                                       source=promise                                                                   
+disable_inventory_dmidecode                                  source=promise                                                                   
+disable_inventory_lsb                                        source=promise                                                                   
+enable_cfe_internal_cleanup_agent_reports                    source=promise                           If reports are not collected for an extended period of time
+                    the disk may fill up or cause additional collection
+                    issues.
+enterprise                                                   inventory,attribute_name=none,source=agent,hardclass                                         
+enterprise_3                                                 inventory,attribute_name=none,source=agent,hardclass                                         
+enterprise_3_19                                              inventory,attribute_name=none,source=agent,hardclass                                         
+enterprise_3_19_0                                            inventory,attribute_name=none,source=agent,hardclass                                         
+enterprise_edition                                           inventory,attribute_name=none,source=agent,hardclass                                         
+feature                                                      source=agent,hardclass                                                           
+feature_curl                                                 source=agent,hardclass                                                           
+feature_def                                                  source=agent,hardclass                                                           
+feature_def_json                                             source=agent,hardclass                                                           
+feature_def_json_preparse                                    source=agent,hardclass                                                           
+feature_host                                                 source=agent,hardclass                                                           
+feature_host_specific                                        source=agent,hardclass                                                           
+feature_host_specific_data                                   source=agent,hardclass                                                           
+feature_host_specific_data_load                              source=agent,hardclass                                                           
+feature_tls                                                  source=agent,hardclass                                                           
+feature_tls_1                                                source=agent,hardclass                                                           
+feature_tls_1_0                                              source=agent,hardclass                                                           
+feature_tls_1_1                                              source=agent,hardclass                                                           
+feature_tls_1_2                                              source=agent,hardclass                                                           
+feature_tls_1_3                                              source=agent,hardclass                                                           
+feature_xml                                                  source=agent,hardclass                                                           
+feature_yaml                                                 source=agent,hardclass                                                           
+has_lsb_release                                              source=promise                           Check if we can get more info from /etc/lsb-release
+has_os_release                                               source=promise                           Check if we can get more info from /etc/os-release
+has_proc_1_cmdline                                           source=promise                           Check if we can read /proc/1/cmdline    
+ipv4_10                                                      inventory,attribute_name=none,source=agent,hardclass                                         
+ipv4_10_0                                                    inventory,attribute_name=none,source=agent,hardclass                                         
+ipv4_10_0_2                                                  inventory,attribute_name=none,source=agent,hardclass                                         
+ipv4_10_0_2_100                                              inventory,attribute_name=none,source=agent,hardclass                                         
+ipv4_127                                                     inventory,attribute_name=none,source=agent,hardclass                                         
+ipv4_127_0                                                   inventory,attribute_name=none,source=agent,hardclass                                         
+ipv4_127_0_0                                                 inventory,attribute_name=none,source=agent,hardclass                                         
+ipv4_127_0_0_1                                               inventory,attribute_name=none,source=agent,hardclass                                         
+linux                                                        inventory,attribute_name=none,source=agent,derived-from=sys.class,hardclass                                         
+linux_4_18_0_372_9_1_el8_x86_64                              inventory,attribute_name=none,source=agent,derived-from=sys.sysname,derived-from=sys.release,hardclass                                         
+linux_x86_64                                                 source=agent,derived-from=sys.sysname,derived-from=sys.machine,hardclass                                         
+linux_x86_64_4_18_0_372_9_1_el8_x86_64                       source=agent,derived-from=sys.sysname,derived-from=sys.machine,derived-from=sys.release,hardclass                                         
+linux_x86_64_4_18_0_372_9_1_el8_x86_64__1_SMP_Fri_Apr_15_22_12_19_EDT_2022 source=agent,derived-from=sys.long_arch,hardclass                                         
+mac_92_39_aa_1a_44_a6                                        inventory,attribute_name=none,source=agent,hardclass                                         
+mpf_stdlib_use_posix_utils                                   source=promise                                                                   
+net_iface_lo                                                 source=agent,hardclass                                                           
+net_iface_tap0                                               source=agent,hardclass                                                           
+nova                                                         inventory,attribute_name=none,source=agent,hardclass                                         
+nova_3                                                       inventory,attribute_name=none,source=agent,hardclass                                         
+nova_3_19                                                    inventory,attribute_name=none,source=agent,hardclass                                         
+nova_3_19_0                                                  inventory,attribute_name=none,source=agent,hardclass                                         
+nova_edition                                                 source=agent,hardclass                                                           
+os_release_has_id                                            source=promise                           Extract ID= line from os-release to id_array
+os_release_has_version                                       source=promise                           Extract VERSION_ID= line from os-release to version_array
+specific_linux_os                                            source=promise                                                                   
+ubuntu                                                       inventory,attribute_name=none,source=agent,derived-from-file=/etc/os-release,hardclass                                         
+ubuntu_16                                                    inventory,attribute_name=none,source=agent,derived-from=sys.flavor,hardclass                                         
+ubuntu_16_04                                                 inventory,attribute_name=none,source=agent,derived-from-file=/etc/os-release,hardclass                                         
+x86_64                                                       source=agent,derived-from=sys.machine,hardclass                                         
+</code></pre>
+</div>
+<h1 id="show-first-order-variables-with-cf-promises">Show first order variables with cf-promises</h1><div class="highlight"><pre><code class="console"><span class="go">cf-promises --show-vars</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">Class name                                                   Meta tags                                Comment                                 
+10_0_2_100                                                   inventory,attribute_name=none,source=agent,hardclass                                         
+127_0_0_1                                                    inventory,attribute_name=none,source=agent,hardclass                                         
+64_bit                                                       source=agent,hardclass                                                           
+6_cpus                                                       source=agent,derived-from=sys.cpus,hardclass                                         
+7363bce9906b                                                 inventory,attribute_name=none,source=agent,derived-from=sys.fqhost,hardclass                                         
+Day6                                                         time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Day6                                                     time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Hr08                                                     time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Hr08_Q4                                                  time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Hr8                                                      time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_July                                                     time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Lcycle_0                                                 time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Min50                                                    time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Min50_55                                                 time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Morning                                                  time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Q4                                                       time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Wednesday                                                time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+GMT_Yr2022                                                   time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Hr08                                                         time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Hr08_Q4                                                      time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Hr8                                                          time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+July                                                         time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Lcycle_0                                                     time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Min50                                                        time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Min50_55                                                     time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Morning                                                      time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Q4                                                           time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Wednesday                                                    time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+Yr2022                                                       time_based,cfengine_internal_time_based_autoremove,source=agent,hardclass                                         
+__os_release_id_                                             source=promise                                                                   
+__os_release_id____os_release_version_                       source=promise                                                                   
+_have_bin_journalctl                                         source=promise                                                                   
+_have_bin_systemctl                                          source=promise                                                                   
+_have_control_agent_files_single_copy                        source=promise                                                                   
+_stdlib_has_path_apt_cache                                   source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_apt_config                                  source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_apt_get                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_apt_key                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_aptitude                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_awk                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_bc                                          source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_cat                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_chkconfig                                   source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_cksum                                       source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_createrepo                                  source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_crontab                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_crontabs                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_curl                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_cut                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_dc                                          source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_df                                          source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_diff                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_dig                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_dmidecode                                   source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_domainname                                  source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_dpkg                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_dpkg_divert                                 source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_echo                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_egrep                                       source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_env                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_ethtool                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_false                                       source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_find                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_free                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_getenforce                                  source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_getent                                      source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_getfacl                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_git                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_grep                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_groupadd                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_groupdel                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_groupmod                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_hostname                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_ifconfig                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_init                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_ip                                          source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_iptables                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_iptables_save                               source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_journalctl                                  source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_logger                                      source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_ls                                          source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_lsattr                                      source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_lsmod                                       source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_lsof                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_mailx                                       source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_netstat                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_nologin                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_npm                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_perl                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_pgrep                                       source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_ping                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_pip                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_printf                                      source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_realpath                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_restorecon                                  source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_sed                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_semanage                                    source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_service                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_setfacl                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_shadow                                      source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_sort                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_svc                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_sysctl                                      source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_systemctl                                   source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_tar                                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_test                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_timedatectl                                 source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_tr                                          source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_true                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_update_alternatives                         source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_update_rc_d                                 source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_useradd                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_userdel                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_usermod                                     source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_virtualenv                                  source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_wc                                          source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_has_path_wget                                        source=promise                           It&#39;s useful to know if a given path is defined
+_stdlib_path_exists_apt_cache                                source=promise                           It&#39;s useful to know if apt_cache exists on the filesystem as defined
+_stdlib_path_exists_apt_config                               source=promise                           It&#39;s useful to know if apt_config exists on the filesystem as defined
+_stdlib_path_exists_apt_get                                  source=promise                           It&#39;s useful to know if apt_get exists on the filesystem as defined
+_stdlib_path_exists_apt_key                                  source=promise                           It&#39;s useful to know if apt_key exists on the filesystem as defined
+_stdlib_path_exists_awk                                      source=promise                           It&#39;s useful to know if awk exists on the filesystem as defined
+_stdlib_path_exists_cat                                      source=promise                           It&#39;s useful to know if cat exists on the filesystem as defined
+_stdlib_path_exists_cksum                                    source=promise                           It&#39;s useful to know if cksum exists on the filesystem as defined
+_stdlib_path_exists_curl                                     source=promise                           It&#39;s useful to know if curl exists on the filesystem as defined
+_stdlib_path_exists_cut                                      source=promise                           It&#39;s useful to know if cut exists on the filesystem as defined
+_stdlib_path_exists_df                                       source=promise                           It&#39;s useful to know if df exists on the filesystem as defined
+_stdlib_path_exists_diff                                     source=promise                           It&#39;s useful to know if diff exists on the filesystem as defined
+_stdlib_path_exists_domainname                               source=promise                           It&#39;s useful to know if domainname exists on the filesystem as defined
+_stdlib_path_exists_dpkg                                     source=promise                           It&#39;s useful to know if dpkg exists on the filesystem as defined
+_stdlib_path_exists_dpkg_divert                              source=promise                           It&#39;s useful to know if dpkg_divert exists on the filesystem as defined
+_stdlib_path_exists_echo                                     source=promise                           It&#39;s useful to know if echo exists on the filesystem as defined
+_stdlib_path_exists_egrep                                    source=promise                           It&#39;s useful to know if egrep exists on the filesystem as defined
+_stdlib_path_exists_env                                      source=promise                           It&#39;s useful to know if env exists on the filesystem as defined
+_stdlib_path_exists_false                                    source=promise                           It&#39;s useful to know if false exists on the filesystem as defined
+_stdlib_path_exists_find                                     source=promise                           It&#39;s useful to know if find exists on the filesystem as defined
+_stdlib_path_exists_free                                     source=promise                           It&#39;s useful to know if free exists on the filesystem as defined
+_stdlib_path_exists_getent                                   source=promise                           It&#39;s useful to know if getent exists on the filesystem as defined
+_stdlib_path_exists_git                                      source=promise                           It&#39;s useful to know if git exists on the filesystem as defined
+_stdlib_path_exists_grep                                     source=promise                           It&#39;s useful to know if grep exists on the filesystem as defined
+_stdlib_path_exists_groupadd                                 source=promise                           It&#39;s useful to know if groupadd exists on the filesystem as defined
+_stdlib_path_exists_groupdel                                 source=promise                           It&#39;s useful to know if groupdel exists on the filesystem as defined
+_stdlib_path_exists_groupmod                                 source=promise                           It&#39;s useful to know if groupmod exists on the filesystem as defined
+_stdlib_path_exists_hostname                                 source=promise                           It&#39;s useful to know if hostname exists on the filesystem as defined
+_stdlib_path_exists_init                                     source=promise                           It&#39;s useful to know if init exists on the filesystem as defined
+_stdlib_path_exists_ip                                       source=promise                           It&#39;s useful to know if ip exists on the filesystem as defined
+_stdlib_path_exists_journalctl                               source=promise                           It&#39;s useful to know if journalctl exists on the filesystem as defined
+_stdlib_path_exists_logger                                   source=promise                           It&#39;s useful to know if logger exists on the filesystem as defined
+_stdlib_path_exists_ls                                       source=promise                           It&#39;s useful to know if ls exists on the filesystem as defined
+_stdlib_path_exists_lsattr                                   source=promise                           It&#39;s useful to know if lsattr exists on the filesystem as defined
+_stdlib_path_exists_nologin                                  source=promise                           It&#39;s useful to know if nologin exists on the filesystem as defined
+_stdlib_path_exists_perl                                     source=promise                           It&#39;s useful to know if perl exists on the filesystem as defined
+_stdlib_path_exists_pgrep                                    source=promise                           It&#39;s useful to know if pgrep exists on the filesystem as defined
+_stdlib_path_exists_printf                                   source=promise                           It&#39;s useful to know if printf exists on the filesystem as defined
+_stdlib_path_exists_realpath                                 source=promise                           It&#39;s useful to know if realpath exists on the filesystem as defined
+_stdlib_path_exists_sed                                      source=promise                           It&#39;s useful to know if sed exists on the filesystem as defined
+_stdlib_path_exists_service                                  source=promise                           It&#39;s useful to know if service exists on the filesystem as defined
+_stdlib_path_exists_shadow                                   source=promise                           It&#39;s useful to know if shadow exists on the filesystem as defined
+_stdlib_path_exists_sort                                     source=promise                           It&#39;s useful to know if sort exists on the filesystem as defined
+_stdlib_path_exists_svc                                      source=promise                           It&#39;s useful to know if svc exists on the filesystem as defined
+_stdlib_path_exists_sysctl                                   source=promise                           It&#39;s useful to know if sysctl exists on the filesystem as defined
+_stdlib_path_exists_systemctl                                source=promise                           It&#39;s useful to know if systemctl exists on the filesystem as defined
+_stdlib_path_exists_tar                                      source=promise                           It&#39;s useful to know if tar exists on the filesystem as defined
+_stdlib_path_exists_test                                     source=promise                           It&#39;s useful to know if test exists on the filesystem as defined
+_stdlib_path_exists_timedatectl                              source=promise                           It&#39;s useful to know if timedatectl exists on the filesystem as defined
+_stdlib_path_exists_tr                                       source=promise                           It&#39;s useful to know if tr exists on the filesystem as defined
+_stdlib_path_exists_true                                     source=promise                           It&#39;s useful to know if true exists on the filesystem as defined
+_stdlib_path_exists_update_alternatives                      source=promise                           It&#39;s useful to know if update_alternatives exists on the filesystem as defined
+_stdlib_path_exists_update_rc_d                              source=promise                           It&#39;s useful to know if update_rc_d exists on the filesystem as defined
+_stdlib_path_exists_useradd                                  source=promise                           It&#39;s useful to know if useradd exists on the filesystem as defined
+_stdlib_path_exists_userdel                                  source=promise                           It&#39;s useful to know if userdel exists on the filesystem as defined
+_stdlib_path_exists_usermod                                  source=promise                           It&#39;s useful to know if usermod exists on the filesystem as defined
+_stdlib_path_exists_wc                                       source=promise                           It&#39;s useful to know if wc exists on the filesystem as defined
+_stdlib_path_exists_wget                                     source=promise                           It&#39;s useful to know if wget exists on the filesystem as defined
+any                                                          source=agent,hardclass                                                           
+cfengine                                                     inventory,attribute_name=none,source=agent,hardclass                                         
+cfengine_3                                                   inventory,attribute_name=none,source=agent,hardclass                                         
+cfengine_3_19                                                inventory,attribute_name=none,source=agent,hardclass                                         
+cfengine_3_19_0                                              inventory,attribute_name=none,source=agent,hardclass                                         
+cfengine_internal_agent_email                                source=promise                                                                   
+cfengine_internal_rotate_logs                                source=promise                                                                   
+cfengine_recommendations_enabled                             source=promise                                                                   
+common                                                       cfe_internal,source=agent,hardclass                                              
+compiled_on_linux_gnu                                        source=agent,hardclass                                                           
+debian                                                       inventory,attribute_name=none,source=agent,derived-from-file=/etc/debian_version,hardclass                                         
+debian_derived                                               source=promise,inventory,attribute_name=none derived from Debian                     
+debian_stretch                                               inventory,attribute_name=none,source=agent,derived-from-file=/etc/debian_version,hardclass                                         
+disable_inventory_LLDP                                       source=promise                                                                   
+disable_inventory_dmidecode                                  source=promise                                                                   
+disable_inventory_lsb                                        source=promise                                                                   
+enable_cfe_internal_cleanup_agent_reports                    source=promise                           If reports are not collected for an extended period of time
+                    the disk may fill up or cause additional collection
+                    issues.
+enterprise                                                   inventory,attribute_name=none,source=agent,hardclass                                         
+enterprise_3                                                 inventory,attribute_name=none,source=agent,hardclass                                         
+enterprise_3_19                                              inventory,attribute_name=none,source=agent,hardclass                                         
+enterprise_3_19_0                                            inventory,attribute_name=none,source=agent,hardclass                                         
+enterprise_edition                                           inventory,attribute_name=none,source=agent,hardclass                                         
+feature                                                      source=agent,hardclass                                                           
+feature_curl                                                 source=agent,hardclass                                                           
+feature_def                                                  source=agent,hardclass                                                           
+feature_def_json                                             source=agent,hardclass                                                           
+feature_def_json_preparse                                    source=agent,hardclass                                                           
+feature_host                                                 source=agent,hardclass                                                           
+feature_host_specific                                        source=agent,hardclass                                                           
+feature_host_specific_data                                   source=agent,hardclass                                                           
+feature_host_specific_data_load                              source=agent,hardclass                                                           
+feature_tls                                                  source=agent,hardclass                                                           
+feature_tls_1                                                source=agent,hardclass                                                           
+feature_tls_1_0                                              source=agent,hardclass                                                           
+feature_tls_1_1                                              source=agent,hardclass                                                           
+feature_tls_1_2                                              source=agent,hardclass                                                           
+feature_tls_1_3                                              source=agent,hardclass                                                           
+feature_xml                                                  source=agent,hardclass                                                           
+feature_yaml                                                 source=agent,hardclass                                                           
+has_lsb_release                                              source=promise                           Check if we can get more info from /etc/lsb-release
+has_os_release                                               source=promise                           Check if we can get more info from /etc/os-release
+has_proc_1_cmdline                                           source=promise                           Check if we can read /proc/1/cmdline    
+ipv4_10                                                      inventory,attribute_name=none,source=agent,hardclass                                         
+ipv4_10_0                                                    inventory,attribute_name=none,source=agent,hardclass                                         
+ipv4_10_0_2                                                  inventory,attribute_name=none,source=agent,hardclass                                         
+ipv4_10_0_2_100                                              inventory,attribute_name=none,source=agent,hardclass                                         
+ipv4_127                                                     inventory,attribute_name=none,source=agent,hardclass                                         
+ipv4_127_0                                                   inventory,attribute_name=none,source=agent,hardclass                                         
+ipv4_127_0_0                                                 inventory,attribute_name=none,source=agent,hardclass                                         
+ipv4_127_0_0_1                                               inventory,attribute_name=none,source=agent,hardclass                                         
+linux                                                        inventory,attribute_name=none,source=agent,derived-from=sys.class,hardclass                                         
+linux_4_18_0_372_9_1_el8_x86_64                              inventory,attribute_name=none,source=agent,derived-from=sys.sysname,derived-from=sys.release,hardclass                                         
+linux_x86_64                                                 source=agent,derived-from=sys.sysname,derived-from=sys.machine,hardclass                                         
+linux_x86_64_4_18_0_372_9_1_el8_x86_64                       source=agent,derived-from=sys.sysname,derived-from=sys.machine,derived-from=sys.release,hardclass                                         
+linux_x86_64_4_18_0_372_9_1_el8_x86_64__1_SMP_Fri_Apr_15_22_12_19_EDT_2022 source=agent,derived-from=sys.long_arch,hardclass                                         
+mac_92_39_aa_1a_44_a6                                        inventory,attribute_name=none,source=agent,hardclass                                         
+mpf_stdlib_use_posix_utils                                   source=promise                                                                   
+net_iface_lo                                                 source=agent,hardclass                                                           
+net_iface_tap0                                               source=agent,hardclass                                                           
+nova                                                         inventory,attribute_name=none,source=agent,hardclass                                         
+nova_3                                                       inventory,attribute_name=none,source=agent,hardclass                                         
+nova_3_19                                                    inventory,attribute_name=none,source=agent,hardclass                                         
+nova_3_19_0                                                  inventory,attribute_name=none,source=agent,hardclass                                         
+nova_edition                                                 source=agent,hardclass                                                           
+os_release_has_id                                            source=promise                           Extract ID= line from os-release to id_array
+os_release_has_version                                       source=promise                           Extract VERSION_ID= line from os-release to version_array
+specific_linux_os                                            source=promise                                                                   
+ubuntu                                                       inventory,attribute_name=none,source=agent,derived-from-file=/etc/os-release,hardclass                                         
+ubuntu_16                                                    inventory,attribute_name=none,source=agent,derived-from=sys.flavor,hardclass                                         
+ubuntu_16_04                                                 inventory,attribute_name=none,source=agent,derived-from-file=/etc/os-release,hardclass                                         
+x86_64                                                       source=agent,derived-from=sys.machine,hardclass                                         
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-getting-started.html">getting started</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-installation.html">installation</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-faq.html">faq</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 06 July 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/guide/faq/show-classes-and-vars.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-38e3fd0081b106f885a95356ca1249c5.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

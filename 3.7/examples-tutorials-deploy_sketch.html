@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.7  Documentation - Configure and Deploy a Policy Using Sketches</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.7/assets/global-fd19e55abf031add992b4d4a2d9bb344.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Configure and Deploy a Policy Using Sketches";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.13/">Version 3.13 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/" selected>Version 3.7 (EOL)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:skcdq5u4lcc" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a></li><li><a href="examples-tutorials.html">Tutorials</a><ul class="level2"><li><a href="examples-tutorials-json-yaml-support-in-cfengine.html">JSON and YAML Support in CFEngine</a></li><li><a href="examples-tutorials-files-tutorial.html">Create, Modify, and Delete Files</a></li><li><a href="examples-tutorials-distribute-files-from-a-central-location.html">Distribute files from a central location</a></li><li><a href="examples-tutorials-report_inventory_remediate_sec_vulnerabilities.html">Reporting and Remediation of Security Vulnerabilities</a></li><li><a href="examples-tutorials-tags.html">Tags for variables, classes, and bundles</a></li><li><a href="examples-tutorials-custom_inventory.html">Custom Inventory</a></li><li><a class="active" href="examples-tutorials-deploy_sketch.html">Configure and Deploy a Policy Using Sketches</a></li><li><a href="examples-tutorials-file_comparison.html">File Comparison</a></li></ul></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-tutorials.html">Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Configure and Deploy a Policy Using Sketches
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p><strong>Note:</strong> This tutorial is for Enterprise users who have access to the Mission Portal
+application. CFEngine must be up and running in order to complete this
+tutorial.</p>
+<h2 id="overview">Overview</h2>
+<p>In this tutorial, we want to implement the following policy: The <strong>iscsi-initatior-utils</strong> software package
+should be present/installed on all hosts. Since CFEngine has a sketch that can generate this
+policy, we will use it to deploy our policy. (Note that you may use an alternate package from your
+system&#39;s package repository.)</p>
+
+<p>A <strong>sketch</strong> defines configurable and reusable policy. You can use sketches to implement,
+activate, or enforce policy. Sketches are written in the CFEngine
+policy language; you can use them simply by installing them, configuring them
+using the appropriate parameters and environments, and deploying them on your infrastructure.</p>
+
+<p>This tutorial provides instructions for the following:</p>
+
+<ul>
+<li><p><a href="examples-tutorials-deploy_sketch.html#configure-and-deploy-a-policy-using-sketches-in-the-design-center" title="Configure and Deploy a Policy Using Sketches - Configure and deploy a policy using sketches in the Design Center">Configure and deploy a policy using sketches in the Design Center</a></p></li>
+<li><p><a href="examples-tutorials-deploy_sketch.html#verify-sketch-deployment-using-reports-in-the-mission-portal" title="Configure and Deploy a Policy Using Sketches - Verify sketch deployment using Reports in the Mission Portal">Verify sketch deployment using Reports in the Mission Portal</a></p></li>
+<li><p><a href="examples-tutorials-deploy_sketch.html#create-a-query-to-narrow-results-using-report-builder-in-the-mission-portal" title="Configure and Deploy a Policy Using Sketches - Create a query to narrow results using Report Builder in the Mission Portal">Create a query to narrow results using Report Builder in the Mission Portal</a></p></li>
+</ul>
+<h2 id="configure-and-deploy-a-policy-using-sketches-in-the-design-center">Configure and deploy a policy using sketches in the Design Center</h2>
+<p>We will activate the <strong>Packages</strong> sketch which allows you to install selected software
+packages on specific hosts. A sketch must include a <strong>parameter set</strong> and an <strong>environment(s)</strong>, both of which
+we will set in the example below. Make certain that the packages you select are included in the
+package repository. (The package in our example below is available in the Centos package repository. You
+can select any package that is available through your operating system&#39;s package repository.)</p>
+
+<ol>
+<li><p>Log in to the Mission Portal. Select <strong>Design Center</strong> from the left sidebar.</p></li>
+<li><p>Select the <strong>Packages::installed</strong> sketch. Use the following values:</p>
+
+<p>a. <strong>Descriptive name:</strong> Enter <strong>Install iSCSI</strong>. This allows you to recognize the activation
+(and its goal) later, as the Design Center uses this name when it commits changes to Git.</p>
+
+<p>b. <strong>Packages that should be installed:</strong> Fill in the name of the package that must be installed.
+For this example, use <strong>iscsi-initiator-utils</strong>. This is the <strong>parameter set</strong>.</p>
+
+<p>c. <strong>Hosts to activate on:</strong> Click <strong>Select category</strong> to display host options. Select <strong>All hosts</strong>
+for our example. All host names appear. This is the <strong>environment</strong> in which the sketch
+must be activate.</p>
+
+<p>Here is an example:</p>
+
+<p><img src="Sketch.png" alt="Sketch Configuration"></p></li>
+<li><p>Click <strong>Activate</strong>. This deploys the sketch to all hosts.</p></li>
+<li><p>Enter a description in the <strong>Commit your changes</strong> window that appears. The Design Center
+uses this comment for version control when it commits changes to Git.
+Click <strong>Commit</strong> to complete the change.</p></li>
+</ol>
+
+<p><strong>When a sketch is activated, the following occurs:</strong></p>
+
+<ul>
+<li><p>The policy that is generated when the sketch is activated gets committed to your Git repository.
+This allows you to keep track of who has made what changes, and when, and why.</p></li>
+<li><p>The <strong>policy server</strong> is typically configured to check the Git repository every five minutes to ensure
+that it is running the latest version of available policies. This process can be handled manually as well.</p></li>
+<li><p>The <strong>hosts</strong> check with the policy server for updated policy. They also work on default intervals of five minutes.</p></li>
+<li><p>The policy server collects information from the agents on the hosts to obtain insight
+into the progress with executing the sketch. The information it collects is used to update
+the information in the Design Center.</p></li>
+</ul>
+
+<p>In total, this process might take a few minutes to converge to the correct state for all hosts.
+The process is very scalable, so even if it takes a few minutes for the two servers in this
+example to be updated, it does not take much longer to update 2,000 servers.
+If you check back with the Packages sketch in the middle of the activation process, you will
+see a message that reads <strong>Status: Being Activated</strong>. Upon successful completion, the window
+should look like this:</p>
+
+<p><img src="Activated-sketch.png" alt="Activated Sketch"></p>
+
+<p>Now that the sketch is deployed, CFEngine continuously verifies that it is maintained. It checks
+365 days per year, 24 hours per day, 12 times per hour to make certain this package is on all of the hosts.
+If the package is removed, it is added within five minutes, and CFEngine creates reports that it
+made a <em>repair</em>. Thus, the state of the overall system is known and stable and system drift is avoided.
+This works for 2, 20, 200, 2,000 or 20,000 servers.</p>
+
+<p><a href="examples-tutorials-deploy_sketch.html#overview" title="Configure and Deploy a Policy Using Sketches - Overview">Back to top of page.</a></p>
+<h2 id="verify-sketch-deployment-using-reports-in-the-mission-portal">Verify sketch deployment using Reports in the Mission Portal</h2>
+<p>The Mission Portal contains standard Reports to facilite systems monitoring and management. We
+will use the <strong>Software installed</strong> Report to verify that the Packages sketch we just activated
+has been deployed.</p>
+
+<ol>
+<li><p>Log in to the Mission Portal. Select <strong>Reports</strong> from the left sidebar.</p></li>
+<li><p>Select the <strong>Software installed</strong> report from the list of reports that appear.</p></li>
+<li><p>Scroll through the <strong>Software installed</strong> report to find the <strong>iscsi-initiator-utils</strong> software. To hasten your search,
+click the <strong>SoftwareName</strong> column in order to alphabetize the results. Another option is to
+create a query in the Report Builder, which is described below.</p></li>
+<li><p>The table shows that the <strong>iscsi-initiator-utils</strong> software is installed on both hosts:</p></li>
+</ol>
+
+<p><img src="Report.png" alt="Sketch Deployment Report"></p>
+
+<p><a href="examples-tutorials-deploy_sketch.html#overview" title="Configure and Deploy a Policy Using Sketches - Overview">Back to top of page.</a></p>
+<h2 id="create-a-query-to-narrow-results-using-report-builder-in-the-mission-portal">Create a query to narrow results using Report Builder in the Mission Portal</h2>
+<p>Use the Report builder to create queries. In our example, we will create a query to verify that the
+Packages sketch we just activated was deployed and that our software was installed.</p>
+
+<ol>
+<li><p>Log in to the Mission Portal. Select <strong>Reports</strong> from the left sidebar.</p></li>
+<li><p>Click <strong>New report</strong> to open the Report builder.</p></li>
+<li><p>Under <strong>Tables</strong>, select <strong>Hosts</strong> and then <strong>Software</strong>.</p></li>
+<li><p>Enter the following <strong>Field</strong> values for the Hosts and Software tables:</p>
+
+<p>a. For <strong>Hosts</strong> <strong>Fields</strong>, select <strong>Host name</strong>.</p>
+
+<p>b. For <strong>Software</strong> <strong>Fields</strong>, select, and in the order shown: <strong>Software name</strong>,
+<strong>Software version</strong>, <strong>Software architecture</strong>. Note that the Mission Portal creates <strong>Fields</strong> in
+the order that you select them.</p></li>
+<li><p>Under <strong>Filters</strong>, click <strong>Add</strong>. Under <strong>Software</strong>, select <strong>Software name</strong>.
+For the <strong>Software name</strong> filter, select equals = and then enter <strong>iscsi-initiator-utils</strong>.</p></li>
+<li><p>Click <strong>Show Query</strong> to view the SQL query that is generated from your selection.</p></li>
+</ol>
+
+<p>Your completed query should look similar to this example:</p>
+
+<p><img src="Report-builder.png" alt="Report Builder"></p>
+
+<p>Click <strong>Run</strong>. The Results reveal that the policy was generated when the sketch was deployed and activated on both hosts.</p>
+
+<p><img src="Report-builder-results.png" alt="Report Builder Results"></p>
+
+<p><a href="examples-tutorials-deploy_sketch.html#overview" title="Configure and Deploy a Policy Using Sketches - Overview">Back to top of page.</a></p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-examples.html">examples</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-tutorials.html">tutorials</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-sketch.html">sketch</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 12 April 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/examples/tutorials/deploy_sketch.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/34a63926eaa48e77d433eef63e7fec91c25bf534" target="_blank">34a63926eaa48e77d433eef63e7fec91c25bf534</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.7/assets/footer-a434e55eb3b9456e270479ce96049098.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

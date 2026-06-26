@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - Install packages</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="/docs/3.5/" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html"  class="navselected" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="examples-enterprise-api.html">Enterprise API</a></li><li><a href="examples-policy.html">Policy</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li><a href="examples-policy-aborting-execution.html">Aborting execution</a></li><li><a href="examples-policy-change-detection.html">Change detection</a></li><li><a href="examples-policy-check-filesystem-space.html">Check filesystem space</a></li><li><a href="examples-policy-copy-single-files.html">Copy single files</a></li><li><a href="examples-policy-create-files-and-directories.html">Create files and directories</a></li><li><a href="examples-policy-customize-message-of-the-day.html">Customize Message of the Day</a></li><li><a href="examples-policy-distribute-ssh-keys.html">Distribute ssh keys</a></li><li><a href="examples-policy-ensure-process-not-running.html">Ensure a process is not running</a></li><li><a href="examples-policy-ensure-service-is-enabled-and-running.html">Ensure a service is enabled and running</a></li><li><a href="examples-policy-find-the-mac-address.html">Find the MAC address</a></li><li class="selected"><span>Install packages</span></li><li><a href="examples-policy-mount-nfs-filesystem.html">Mount NFS filesystem</a></li><li><a href="examples-policy-restart-a-process.html">Restart a Process</a></li><li><a href="examples-policy-setup-time-management-through-ntp.html">Set up time management through NTP</a></li><li><a href="examples-policy-setup-sudo.html">Set up sudo</a></li><li><a href="examples-policy-setup-name-resolution-dns.html">Set up name resolution with DNS</a></li><li><a href="examples-policy-updating-from-a-central-policy-server.html">Updating from a central policy server</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="examples.html">CFEngine Examples</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="examples-policy.html">Policy</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>Install packages</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/examples.html">examples</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/policy.html">policy</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/packages.html">packages</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>Install packages</h1>
+                    <p>Install desired packages.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+<span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;install_packages&quot;</span> <span class="p">};</span>
+<span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;libraries/cfengine_stdlib.cf&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">install_packages</span>
+<span class="p">{</span>
+
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">desired_packages</span><span class="p">&quot;</span>
+        <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>        <span class="c"># list of packages we want</span>
+                  <span class="s">&quot;ntp&quot;</span><span class="p">,</span>
+                  <span class="s">&quot;lynx&quot;</span>
+                 <span class="p">};</span>
+
+<span class="kd">packages</span><span class="p">:</span>
+
+    <span class="s">&quot;</span><span class="si">$(desired_packages)</span><span class="s">&quot;</span>  <span class="c"># operate on listed packages</span>
+
+         <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>     <span class="c"># What to do with packages: install them.</span>
+         <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">generic</span><span class="p">;</span>   <span class="c"># Infer package manager (e.g. apt, yum) from the OS.</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Caution: package management is a dirty business. If things don&#39;t go smoothly
+using the generic method, you may have to use a method specific to your package
+manager and get to your elbows in the details. But try <code>generic</code> first. You
+may get lucky.</p>
+
+<p>Mind package names can differ OS to OS.  For example, Apache httpd
+is &quot;httpd&quot; on Red Hat, and &quot;apache2&quot; on Debian.  </p>
+
+<p>Version comparison can be tricky when involving multipart version
+identifiers with numbers and letters.</p>
+
+<p>CFEngine downloads the necessary packages from the default repositories if they are not present on the local machine, then installs them if they are not already installed.</p>
+
+<p>Example run:</p>
+<div class="highlight"><pre><code class="text"># dpkg -r lynx ntp # remove packages so CFEngine has something to repair
+(Reading database ... 234887 files and directories currently installed.)
+Removing lynx ...
+Removing ntp ...
+ * Stopping NTP server ntpd                                                                                                                     [ OK ] 
+Processing triggers for ureadahead ...
+Processing triggers for man-db ...
+# cf-agent -f install_packages.cf # install packages
+# dpkg -l lynx ntp # show installed packages
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name                            Version              Architecture         Description
++++-===============================-====================-====================-====================================================================
+ii  lynx                            2.8.8dev.12-2ubuntu0 all                  Text-mode WWW Browser (transitional package)
+ii  ntp                             1:4.2.6.p3+dfsg-1ubu amd64                Network Time Protocol daemon and utility programs
+# 
+</code></pre>
+</div>
+
+<p>There are examples in <code>/var/cfengine/share/doc/examples/</code> of installing packages using specific package managers:
+- Red Hat (unit_package_yum.cf)
+- Debian (unit_package_apt.cf)
+- MSI for Windows (unit_package_msi_file.cf)
+- Solaris (unit_package_solaris.cf)
+- SuSE Linux (unit_package_zypper.cf)</p>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 15 August 2013
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/examples/policy/example_install_package.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/69edf549c8563afb14805006ad54b8d511ece055" target="_blank">69edf549c8563afb14805006ad54b8d511ece055</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-591fbb9e0d3142e997fd5ed5574fd3c3.js' type='text/javascript'></script>
+
+
+
+
+</body>
+</html>

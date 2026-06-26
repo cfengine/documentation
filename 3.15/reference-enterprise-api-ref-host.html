@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.15  Documentation - Host REST API</title>
+        <link rel="icon" type="image/svg+xml" href="./media/images/favicon.svg">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-enterprise-api-ref-host.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+        <link href='assets/global-d4bd60bd0125f13532b30d7a739a8f45.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Host REST API";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/">Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/" selected>Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="012826289311752768906:zdz4ud6t2xf" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components</a></li><li><a href="reference-promise-types.html">Promise Types</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a><ul class="level2"><li><a href="reference-enterprise-api-ref-changes.html">Changes REST API</a></li><li><a href="reference-enterprise-api-ref-federated-reporting-api.html">Federated reporting configuration API</a></li><li><a href="reference-enterprise-api-ref-file-changes.html">File Changes API</a></li><li><a href="reference-enterprise-api-ref-health-diagnostic.html">Health diagnostic API</a></li><li><a class="active" href="reference-enterprise-api-ref-host.html">Host REST API</a></li><li><a href="reference-enterprise-api-ref-export-import-api.html">Import & Export API</a></li><li><a href="reference-enterprise-api-ref-inventory.html">Inventory API</a></li><li><a href="reference-enterprise-api-ref-ldap-api.html">LDAP authentication API</a></li><li><a href="reference-enterprise-api-ref-query.html">Query REST API</a></li><li><a href="reference-enterprise-api-ref-sql-schema.html">SQL Schema</a></li><li><a href="reference-enterprise-api-ref-status-settings.html">Status and Settings REST API</a></li><li><a href="reference-enterprise-api-ref-users-rbac.html">Users and Access-Control REST API</a></li><li><a href="reference-enterprise-api-ref-vcs-settings.html">VCS settings API</a></li><li><a href="reference-enterprise-api-ref-web-rbac.html">Web RBAC API</a></li></ul></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-enterprise-api-ref.html">Enterprise API Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Host REST API
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Host API allows to access host specific information.</p>
+<h2 id="list-hosts">List hosts</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/host">https://hub.cfengine.com/api/host</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>context-include</strong> <em>(comma delimited string of regular expression
+strings)</em>
+Includes hosts having context matching the expression.</li>
+<li><strong>context-exclude</strong> <em>(comma delimited string of regular expression
+strings)</em>
+Excludes hosts having context matching the expression.</li>
+<li><strong>page</strong> <em>(integer)</em>
+Number of the page with results. By default 1.</li>
+<li><strong>count</strong> <em>(integer)</em>
+Size of the page. By default 50 results.</li>
+</ul>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 2,
+    &quot;total&quot;: 2,
+    &quot;timestamp&quot;: 1437142156
+  },
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;SHA=27b88b8a92f1b10b1839ac5b26d022c98d48629bd761c4324d1f1fb0f04f17ba&quot;,
+      &quot;hostname&quot;: &quot;host001&quot;,
+      &quot;ip&quot;: &quot;192.168.33.151&quot;,
+      &quot;lastreport&quot;: &quot;1437141907&quot;,
+      &quot;firstseen&quot;: &quot;1437138906&quot;
+    },
+    {
+      &quot;id&quot;: &quot;SHA=4a18877bbb7b79f4dde4b03d3ba05bcd66346124cbcd9373590416a90177fcaa&quot;,
+      &quot;hostname&quot;: &quot;hub&quot;,
+      &quot;ip&quot;: &quot;192.168.33.65&quot;,
+      &quot;lastreport&quot;: &quot;1437141907&quot;,
+      &quot;firstseen&quot;: &quot;1437138666&quot;
+    }
+  ]
+}
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+
+<ul>
+<li><strong>id</strong>
+Unique host identifier.</li>
+<li><strong>hostname</strong>
+Host name. Can be reconfigured globally to represent variable set in the policy using <strong>hostIdentifier</strong> <a href="reference-enterprise-api-ref-status-settings.html#update-settings" title="Status and Settings REST API - Update settings">setting</a>.</li>
+<li><strong>ip</strong>
+IP address of the host. If host have multiple network interfaces, IP belongs to the interface that is used to communicate with policy server.</li>
+<li><strong>lastreport</strong>
+Time of receiving last report from the client, successfully. Represented as UNIX TIMESTAMP.</li>
+<li><strong>firstseen</strong>
+Time of receiving the first status report from the client. It is equivalent to the time when the client have been bootstrapped to the server for the first time. Represented as UNIX TIMESTAMP.</li>
+</ul>
+
+<p><strong>Example usage:</strong> <a href="examples-enterprise-api-examples-browsing-host-information.html#example-listing-hosts-with-a-given-context" title="Browsing Host Information - Example: Listing Hosts With A Given Context"><code>Example: Listing Hosts With A Given Context</code></a>, <a href="examples-enterprise-api-examples-browsing-host-information.html#example-looking-up-hosts-by-hostname" title="Browsing Host Information - Example: Looking Up Hosts By Hostname"><code>Example: Looking Up Hosts By Hostname</code></a>, <a href="examples-enterprise-api-examples-browsing-host-information.html#example-looking-up-hosts-by-ip" title="Browsing Host Information - Example: Looking Up Hosts By IP"><code>Example: Looking Up Hosts By IP</code></a></p>
+<h2 id="host-details">Host Details</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/host/:host-id">https://hub.cfengine.com/api/host/:host-id</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 1,
+    &quot;total&quot;: 1,
+    &quot;timestamp&quot;: 1437144171
+  },
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;SHA=27b88b8a92f1b10b1839ac5b26d022c98d48629bd&quot;,
+      &quot;hostname&quot;: &quot;host001&quot;,
+      &quot;ip&quot;: &quot;192.168.33.151&quot;,
+      &quot;lastreport&quot;: &quot;1437144007&quot;,
+      &quot;firstseen&quot;: &quot;1437138906&quot;
+    }
+  ]
+}
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+
+<ul>
+<li><strong>id</strong>
+Unique host identifier.</li>
+<li><strong>hostname</strong>
+Host name. Can be reconfigured globally to represent variable set in the policy using <strong>hostIdentifier</strong> <a href="reference-enterprise-api-ref-status-settings.html#update-settings" title="Status and Settings REST API - Update settings">setting</a>.</li>
+<li><strong>ip</strong>
+IP address of the host. If host have multiple network interfaces, IP belongs to the interface that is used to communicate with policy server.</li>
+<li><strong>lastreport</strong>
+Time of receiving last report from the client, successfully. Represented as UNIX TIMESTAMP.</li>
+<li><strong>firstseen</strong>
+Time of receiving the first status report from the client. It is equivalent to the time when the client have been bootstrapped to the server for the first time. Represented as UNIX TIMESTAMP.</li>
+</ul>
+<h2 id="remove-host-from-the-hub">Remove host from the hub</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/host/:host-id">https://hub.cfengine.com/api/host/:host-id</a></p>
+
+<p><strong>Method:</strong> DELETE</p>
+
+<p>Remove data about the host from reporting database and stop collecting reports from the host.
+This should be done when the host is no longer active, activities such as a new bootstrap can cause the host to reappear.</p>
+
+<p>If host is found and scheduled for deletion, status code <code>202 ACCEPTED</code> is returned.
+If host is not found, status code <code>404 NOT FOUND</code> is returned.
+Other response codes are also possible (access denied, server error, etc.).
+Only users with the admin role are allowed to delete hosts.</p>
+
+<p>Reporting data associated with the host is immediately purged.
+This includes SQL tables like <code>agentstatus</code>,  <a href="reference-components-cf-runagent.html#hosts" title="cf-runagent - hosts"><code>hosts</code></a>, <code>contexts</code>, <code>variables</code>, etc.
+In order to completely delete the host, a deletion job is scheduled by adding the host to the internal table <code>KeysPendingForDeletion</code>.
+To see what hosts are pending deletion, run the query <code>SELECT HostKey FROM KeysPendingForDeletion;</code> against the <code>cfsettings</code> database.</p>
+
+<p>After 5-10 minutes (one reporting iteration based on the <a href="reference-components-cf-hub.html#hub_schedule" title="cf-hub - hub_schedule">hub schedule</a>), the main thread of cf-hub will pick up the deletion job.
+The hostkey is then removed from:</p>
+
+<ul>
+<li>&quot;Last seen&quot; database, which contains network connection info (<code>/var/cfengine/state/cf_lastseen.lmdb</code>).</li>
+<li>Public key directory, containing cryptographic keys exchaned during bootstrap (<code>/var/cfengine/ppkeys</code>).</li>
+<li>The previously mentioned <code>KeysPendingForDeletion</code> table.</li>
+</ul>
+
+<p><a href="reference-masterfiles-policy-framework.html#trustkeysfrom" title="Masterfiles Policy Framework - trustkeysfrom">Depending on the configuration</a>
+of <a href="reference-components-cf-serverd.html#trustkeysfrom" title="cf-serverd - trustkeysfrom"><code>trustkeysfrom</code></a> for the hub hosts may re-appear
+and resume being collected from after being deleted.</p>
+
+<p><strong>See also:</strong> <a href="examples-enterprise-api-examples-browsing-host-information.html#example-removing-host-data" title="Browsing Host Information - Example: Removing Host Data">Example removing host data</a></p>
+<h2 id="hosts-list-grouped-by-hard-classes">Hosts list grouped by hard classes</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/hosts/by-class">https://hub.cfengine.com/api/hosts/by-class</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>context-include</strong> <em>(comma delimited string of regular expression strings)</em></li>
+<li><strong>format</strong> <em>(string)</em>
+Output format. Default value is <code>json</code>. Allowed values: <code>json</code>, <code>yaml</code>.</li>
+<li><strong>withInventory</strong> <em>(boolean)</em>
+Include inventory data to the API response. Default value is <code>false</code>. Allowed values: <code>true</code>, <code>false</code><br></li>
+</ul>
+
+<p><strong>CURL unfiltered request example</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class
+</code></pre>
+</div>
+
+<p><strong>Example response:</strong>    </p>
+<div class="highlight"><pre><code class="text"><span></span>{
+    &quot;10_0_2_15&quot;: {
+            &quot;hosts&quot;: [
+                &quot;ubuntu-xenial&quot;
+            ]
+    },
+    &quot;127_0_0_1&quot;: {
+            &quot;hosts&quot;: [
+                &quot;ubuntu-xenial&quot;
+            ]
+    },
+    &quot;ubuntu_16&quot;: {
+            &quot;hosts&quot;: [
+                &quot;ubuntu-xenial&quot;
+            ]
+    }
+}
+</code></pre>
+</div>
+
+<p><strong>CURL request with inventory data example</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>curl -k --user admin:admin -X GET https://hub.example.com/api/hosts/by-class?withInventory=true
+</code></pre>
+</div>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>{
+    &quot;_meta&quot;: {
+        &quot;hostvars&quot;: {
+            &quot;ubuntu-xenial&quot;: {
+                &quot;CFEngine Inventory&quot;: {
+                    &quot;OS&quot;: &quot;Ubuntu 16.04.6 LTS&quot;,
+                    &quot;OS type&quot;: &quot;linux&quot;,
+                    &quot;Timezone&quot;: &quot;UTC&quot;
+                }
+            }
+        }
+    },
+    &quot;10_0_2_15&quot;: {
+            &quot;hosts&quot;: [
+                &quot;ubuntu-xenial&quot;
+            ]
+    },
+    &quot;127_0_0_1&quot;: {
+            &quot;hosts&quot;: [
+                &quot;ubuntu-xenial&quot;
+            ]
+    },
+    &quot;ubuntu_16&quot;: {
+            &quot;hosts&quot;: [
+                &quot;ubuntu-xenial&quot;
+            ]
+    }
+}
+</code></pre>
+</div>
+<h2 id="list-monitoring-attributes-for-host">List monitoring attributes for host</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/host/:host-id/vital">https://hub.cfengine.com/api/host/:host-id/vital</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p>List all available vital attributes monitored by CFEngine on the client.</p>
+
+<p>Note: Collecting monitoring data by default is disabled.</p>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 24,
+    &quot;total&quot;: 24,
+    &quot;timestamp&quot;: 1437144887
+  },
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;mem_free&quot;,
+      &quot;timestamp&quot;: 1437144300,
+      &quot;description&quot;: &quot;Free system memory&quot;,
+      &quot;units&quot;: &quot;megabytes&quot;
+    },
+    {
+      &quot;id&quot;: &quot;mem_total&quot;,
+      &quot;timestamp&quot;: 1437144300,
+      &quot;description&quot;: &quot;Total system memory&quot;,
+      &quot;units&quot;: &quot;megabytes&quot;
+    },
+    {
+      &quot;id&quot;: &quot;loadavg&quot;,
+      &quot;timestamp&quot;: 1437144300,
+      &quot;description&quot;: &quot;Kernel load average utilization&quot;,
+      &quot;units&quot;: &quot;jobs&quot;
+    },
+    {
+      &quot;id&quot;: &quot;diskfree&quot;,
+      &quot;timestamp&quot;: 1437144300,
+      &quot;description&quot;: &quot;Free disk on / partition&quot;,
+      &quot;units&quot;: &quot;percent&quot;
+    }
+  ]
+}
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+
+<ul>
+<li><strong>id</strong>
+Unique vital identifier.</li>
+<li><strong>timestamp</strong>
+Last measurement time. Represented as UNIX TIMESTAMP.</li>
+<li><strong>description</strong>
+Vital short description.</li>
+<li><strong>units</strong>
+Units for the samples.</li>
+</ul>
+
+<p><strong>Example usage:</strong> <a href="examples-enterprise-api-examples-browsing-host-information.html#example-listing-available-vital-signs-for-a-host" title="Browsing Host Information - Example: Listing Available Vital Signs For A Host"><code>Example: Listing Available Vital Signs For A Host</code></a></p>
+<h2 id="get-samples-from-vital">Get samples from vital</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/host/:host-id/vital/:vital-id">https://hub.cfengine.com/api/host/:host-id/vital/:vital-id</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>from</strong> <em>(integer)</em>
+Timestamp marking the start of the interval for which to fetch data. Data is only available going back one week.</li>
+<li><strong>to</strong> <em>(integer)</em>
+End of data interval to be fetched.</li>
+</ul>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 1,
+    &quot;total&quot;: 1,
+    &quot;timestamp&quot;: 1437146605
+  },
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;mem_free&quot;,
+      &quot;description&quot;: &quot;Free system memory&quot;,
+      &quot;units&quot;: &quot;megabytes&quot;,
+      &quot;timestamp&quot;: 1437146100,
+      &quot;values&quot;: [
+        [
+          1437140700,
+          1229.8600
+        ],
+        [
+          1437141000,
+          1216.4500
+        ],
+        [
+          1437141300,
+          1218.3800
+        ]
+      ]
+    }
+  ]
+}
+</code></pre>
+</div>
+
+<p><strong>Output</strong>:</p>
+
+<ul>
+<li> <strong>id</strong>
+ID of vital sign.</li>
+<li>  <strong>description</strong>
+Description of vital sign.</li>
+<li>  <strong>units</strong>
+Measurement unit of vital sign.</li>
+<li>  <strong>timestamp</strong>
+Timestamp of the last received data point.</li>
+<li>  <strong>values</strong>
+Vital sign data. <em>(array of [ t, y ], where t is the sample timestamp)</em></li>
+</ul>
+
+<p><strong>Example usage:</strong> <a href="examples-enterprise-api-examples-browsing-host-information.html#example-retrieving-vital-sign-data" title="Browsing Host Information - Example: Retrieving Vital Sign Data"><code>Example: Retrieving Vital Sign Data</code></a></p>
+<h2 id="get-count-of-bootstrapped-hosts-by-date-range">Get count of bootstrapped hosts by date range</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/host-count">https://hub.cfengine.com/api/host-count</a></p>
+
+<p><strong>Method:</strong> POST</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>from</strong> <em>(string)</em>
+Timestamp marking the start of the interval for which to fetch data. <code>Emp: 2017-11-28</code></li>
+<li><strong>to</strong> <em>(string)</em>
+End of data interval to be fetched. <code>Emp: 2017-12-28</code></li>
+<li><strong>period</strong> <em>(string)</em>
+Group data by period. Allowed values: <code>day, week, month, year</code>.</li>
+</ul>
+
+<p><strong>Example request (curl):</strong>
+<code>
+curl -k --user admin:admin -X POST https://hub.cfengine.com/api/host-count  -H &#39;content-type: application/json&#39;   -d &#39;{&quot;period&quot;: &quot;month&quot;, &quot;from&quot;: &quot;2017-11-28&quot;, &quot;to&quot; : &quot;2017-12-06&quot;}&#39;
+</code>
+<strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 200 Ok
+{
+    &quot;period&quot;: &quot;month&quot;,
+    &quot;data&quot;: [
+        {
+            &quot;date&quot;: &quot;Nov 2017&quot;,
+            &quot;count&quot;: 0
+        },
+        {
+            &quot;date&quot;: &quot;Dec 2017&quot;,
+            &quot;count&quot;: 15
+        }
+    ]
+}
+</code></pre>
+</div>
+
+<p><strong>Output</strong>:</p>
+
+<ul>
+<li> <strong>period</strong>
+Period of grouping the data. Allowed values: <code>day, week, month, year</code>.</li>
+<li>  <strong>date</strong>
+The date of statistic.</li>
+<li>  <strong>count</strong>
+The bootstrapped hosts to the hub count.</li>
+</ul>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-enterprise.html">enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-rest.html">rest</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-api.html">api</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-reporting.html">reporting</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-host.html">host</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-monitoring.html">monitoring</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 02 December 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.15/generator/pages/reference/enterprise-api-ref/host.markdown/reference/enterprise-api-ref/host.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-42a0b4e53c8c8a1d3df73e4c74e62399.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,556 @@
+
+bundle knowledge CfengineStdLibrary
+
+{
+topics:
+
+"CfengineStdLibrary";
+The_Purpose_Of_This_Handbook::
+    "bundle edit_line warn_lines_matching" ;
+The_Purpose_Of_This_Handbook::
+    "bundle edit_line uncomment_lines_matching" ;
+The_Purpose_Of_This_Handbook::
+    "bundle edit_line uncomment_lines_containing" ;
+The_Purpose_Of_This_Handbook::
+    "bundle edit_line set_variable_values2" ;
+The_Purpose_Of_This_Handbook::
+    "bundle edit_line set_variable_values" ;
+The_Purpose_Of_This_Handbook::
+    "bundle edit_line set_user_field" ;
+The_Purpose_Of_This_Handbook::
+    "bundle edit_line insert_lines" ;
+The_Purpose_Of_This_Handbook::
+    "bundle edit_line expand_template" ;
+The_Purpose_Of_This_Handbook::
+    "bundle edit_line delete_lines_matching" ;
+The_Purpose_Of_This_Handbook::
+    "bundle edit_line comment_lines_matching" ;
+The_Purpose_Of_This_Handbook::
+    "bundle edit_line comment_lines_containing" ;
+The_Purpose_Of_This_Handbook::
+    "bundle edit_line append_users_starting" ;
+The_Purpose_Of_This_Handbook::
+    "bundle edit_line append_user_field" ;
+The_Purpose_Of_This_Handbook::
+    "bundle edit_line append_if_no_lines" ;
+The_Purpose_Of_This_Handbook::
+    "bundle edit_line append_if_no_line" ;
+The_Purpose_Of_This_Handbook::
+    "bundle edit_line append_groups_starting" ;
+The_Purpose_Of_This_Handbook::
+    "bundle agent cronjob" ;
+The_Purpose_Of_This_Handbook::
+    "body volume min_free_space" ;
+The_Purpose_Of_This_Handbook::
+    "body service_method force_deps" ;
+The_Purpose_Of_This_Handbook::
+    "body service_method bootstart" ;
+The_Purpose_Of_This_Handbook::
+    "body select_region INI_section" ;
+The_Purpose_Of_This_Handbook::
+    "body replace_with value" ;
+The_Purpose_Of_This_Handbook::
+    "body replace_with uncomment" ;
+The_Purpose_Of_This_Handbook::
+    "body replace_with comment" ;
+The_Purpose_Of_This_Handbook::
+    "body rename to" ;
+The_Purpose_Of_This_Handbook::
+    "body rename rotate" ;
+The_Purpose_Of_This_Handbook::
+    "body rename disable" ;
+The_Purpose_Of_This_Handbook::
+    "body process_select exclude_procs" ;
+The_Purpose_Of_This_Handbook::
+    "body process_count check_range" ;
+The_Purpose_Of_This_Handbook::
+    "body perms owner" ;
+The_Purpose_Of_This_Handbook::
+    "body perms og" ;
+The_Purpose_Of_This_Handbook::
+    "body perms mog" ;
+The_Purpose_Of_This_Handbook::
+    "body perms mo" ;
+The_Purpose_Of_This_Handbook::
+    "body perms m" ;
+The_Purpose_Of_This_Handbook::
+    "body package_method zypper" ;
+The_Purpose_Of_This_Handbook::
+    "body package_method yum_rpm" ;
+The_Purpose_Of_This_Handbook::
+    "body package_method yum" ;
+The_Purpose_Of_This_Handbook::
+    "body package_method solaris" ;
+The_Purpose_Of_This_Handbook::
+    "body package_method rpm_version" ;
+The_Purpose_Of_This_Handbook::
+    "body package_method msi_implicit" ;
+The_Purpose_Of_This_Handbook::
+    "body package_method msi_explicit" ;
+The_Purpose_Of_This_Handbook::
+    "body package_method generic" ;
+The_Purpose_Of_This_Handbook::
+    "body package_method freebsd" ;
+The_Purpose_Of_This_Handbook::
+    "body package_method apt" ;
+The_Purpose_Of_This_Handbook::
+    "body mount unmount" ;
+The_Purpose_Of_This_Handbook::
+    "body mount nfs_p" ;
+The_Purpose_Of_This_Handbook::
+    "body mount nfs" ;
+The_Purpose_Of_This_Handbook::
+    "body match_value scan_log" ;
+The_Purpose_Of_This_Handbook::
+    "body location start" ;
+The_Purpose_Of_This_Handbook::
+    "body location after" ;
+The_Purpose_Of_This_Handbook::
+    "body link_from ln_s" ;
+The_Purpose_Of_This_Handbook::
+    "body link_from linkchildren" ;
+The_Purpose_Of_This_Handbook::
+    "body file_select size_range" ;
+The_Purpose_Of_This_Handbook::
+    "body file_select plain" ;
+The_Purpose_Of_This_Handbook::
+    "body file_select name_age" ;
+The_Purpose_Of_This_Handbook::
+    "body file_select exclude" ;
+The_Purpose_Of_This_Handbook::
+    "body file_select ex_list" ;
+The_Purpose_Of_This_Handbook::
+    "body file_select dirs" ;
+The_Purpose_Of_This_Handbook::
+    "body file_select days_old" ;
+The_Purpose_Of_This_Handbook::
+    "body file_select by_name" ;
+The_Purpose_Of_This_Handbook::
+    "body edit_field quoted_var" ;
+The_Purpose_Of_This_Handbook::
+    "body edit_field col" ;
+The_Purpose_Of_This_Handbook::
+    "body edit_defaults std_defs" ;
+The_Purpose_Of_This_Handbook::
+    "body edit_defaults empty" ;
+The_Purpose_Of_This_Handbook::
+    "body depth_search recurse_ignore" ;
+The_Purpose_Of_This_Handbook::
+    "body depth_search recurse" ;
+The_Purpose_Of_This_Handbook::
+    "body delete tidy" ;
+The_Purpose_Of_This_Handbook::
+    "body copy_from sync_cp" ;
+The_Purpose_Of_This_Handbook::
+    "body copy_from seed_cp" ;
+The_Purpose_Of_This_Handbook::
+    "body copy_from secure_cp" ;
+The_Purpose_Of_This_Handbook::
+    "body copy_from remote_cp" ;
+The_Purpose_Of_This_Handbook::
+    "body copy_from perms_cp" ;
+The_Purpose_Of_This_Handbook::
+    "body copy_from no_backup_rcp" ;
+The_Purpose_Of_This_Handbook::
+    "body copy_from no_backup_cp" ;
+The_Purpose_Of_This_Handbook::
+    "body copy_from local_cp" ;
+The_Purpose_Of_This_Handbook::
+    "body contain silent_in_dir" ;
+The_Purpose_Of_This_Handbook::
+    "body contain silent" ;
+The_Purpose_Of_This_Handbook::
+    "body contain setuidgid_sh" ;
+The_Purpose_Of_This_Handbook::
+    "body contain setuid_sh" ;
+The_Purpose_Of_This_Handbook::
+    "body contain setuid" ;
+The_Purpose_Of_This_Handbook::
+    "body contain jail" ;
+The_Purpose_Of_This_Handbook::
+    "body contain in_shell" ;
+The_Purpose_Of_This_Handbook::
+    "body contain in_dir_shell" ;
+The_Purpose_Of_This_Handbook::
+    "body contain in_dir" ;
+The_Purpose_Of_This_Handbook::
+    "body classes state_repaired" ;
+The_Purpose_Of_This_Handbook::
+    "body classes if_repaired" ;
+The_Purpose_Of_This_Handbook::
+    "body classes if_ok" ;
+The_Purpose_Of_This_Handbook::
+    "body classes if_notkept" ;
+The_Purpose_Of_This_Handbook::
+    "body classes if_else" ;
+The_Purpose_Of_This_Handbook::
+    "body classes enumerate" ;
+The_Purpose_Of_This_Handbook::
+    "body classes cf2_if_else" ;
+The_Purpose_Of_This_Handbook::
+    "body changes noupdate" ;
+The_Purpose_Of_This_Handbook::
+    "body changes diff" ;
+The_Purpose_Of_This_Handbook::
+    "body changes detect_content" ;
+The_Purpose_Of_This_Handbook::
+    "body changes detect_all_change" ;
+The_Purpose_Of_This_Handbook::
+    "body action warn_only" ;
+The_Purpose_Of_This_Handbook::
+    "body action sample_rate" ;
+The_Purpose_Of_This_Handbook::
+    "body action policy" ;
+The_Purpose_Of_This_Handbook::
+    "body action measure_performance" ;
+The_Purpose_Of_This_Handbook::
+    "body action log_repaired" ;
+The_Purpose_Of_This_Handbook::
+    "body action immediate" ;
+The_Purpose_Of_This_Handbook::
+    "body action ifwin_bg" ;
+The_Purpose_Of_This_Handbook::
+    "body action if_elapsed" ;
+The_Purpose_Of_This_Handbook::
+    "body action bg" ;
+The_Purpose_Of_This_Handbook::
+    "body acl strict" ;
+The_Purpose_Of_This_Handbook::
+    "body acl access_generic" ;
+The_Purpose_Of_This_Handbook::
+    "The Purpose Of This Handbook" ;
+Special_Topics_Guide::
+    "Cfengine-Open-Promise-Body-Library"  association => a("discussed in","Cfengine-Open-Promise-Body-Library","discusses");
+
+
+occurrences:
+
+manuals::
+ "/docs/CfengineStdLibrary.html"
+  represents => { "Community Open Promise Body Library" };
+Cfengine_Open_Promise_Body_Library::
+ "/docs/CfengineStdLibrary.html#Top"
+  represents => { "Text section" };
+The_Purpose_Of_This_Handbook::
+ "/docs/CfengineStdLibrary.html#The-Purpose-Of-This-Handbook"
+  represents => { "manual chapter" };
+body_acl_access_generic::
+ "/docs/CfengineStdLibrary.html#body-acl-access_005fgeneric"
+  represents => { "manual section body acl access_generic" };
+body_acl_strict::
+ "/docs/CfengineStdLibrary.html#body-acl-strict"
+  represents => { "manual section body acl strict" };
+body_action_bg::
+ "/docs/CfengineStdLibrary.html#body-action-bg"
+  represents => { "manual section body action bg" };
+body_action_if_elapsed::
+ "/docs/CfengineStdLibrary.html#body-action-if_005felapsed"
+  represents => { "manual section body action if_elapsed" };
+body_action_ifwin_bg::
+ "/docs/CfengineStdLibrary.html#body-action-ifwin_005fbg"
+  represents => { "manual section body action ifwin_bg" };
+body_action_immediate::
+ "/docs/CfengineStdLibrary.html#body-action-immediate"
+  represents => { "manual section body action immediate" };
+body_action_log_repaired::
+ "/docs/CfengineStdLibrary.html#body-action-log_005frepaired"
+  represents => { "manual section body action log_repaired" };
+body_action_measure_performance::
+ "/docs/CfengineStdLibrary.html#body-action-measure_005fperformance"
+  represents => { "manual section body action measure_performance" };
+body_action_policy::
+ "/docs/CfengineStdLibrary.html#body-action-policy"
+  represents => { "manual section body action policy" };
+body_action_sample_rate::
+ "/docs/CfengineStdLibrary.html#body-action-sample_005frate"
+  represents => { "manual section body action sample_rate" };
+body_action_warn_only::
+ "/docs/CfengineStdLibrary.html#body-action-warn_005fonly"
+  represents => { "manual section body action warn_only" };
+body_changes_detect_all_change::
+ "/docs/CfengineStdLibrary.html#body-changes-detect_005fall_005fchange"
+  represents => { "manual section body changes detect_all_change" };
+body_changes_detect_content::
+ "/docs/CfengineStdLibrary.html#body-changes-detect_005fcontent"
+  represents => { "manual section body changes detect_content" };
+body_changes_diff::
+ "/docs/CfengineStdLibrary.html#body-changes-diff"
+  represents => { "manual section body changes diff" };
+body_changes_noupdate::
+ "/docs/CfengineStdLibrary.html#body-changes-noupdate"
+  represents => { "manual section body changes noupdate" };
+body_classes_cf2_if_else::
+ "/docs/CfengineStdLibrary.html#body-classes-cf2_005fif_005felse"
+  represents => { "manual section body classes cf2_if_else" };
+body_classes_enumerate::
+ "/docs/CfengineStdLibrary.html#body-classes-enumerate"
+  represents => { "manual section body classes enumerate" };
+body_classes_if_else::
+ "/docs/CfengineStdLibrary.html#body-classes-if_005felse"
+  represents => { "manual section body classes if_else" };
+body_classes_if_notkept::
+ "/docs/CfengineStdLibrary.html#body-classes-if_005fnotkept"
+  represents => { "manual section body classes if_notkept" };
+body_classes_if_ok::
+ "/docs/CfengineStdLibrary.html#body-classes-if_005fok"
+  represents => { "manual section body classes if_ok" };
+body_classes_if_repaired::
+ "/docs/CfengineStdLibrary.html#body-classes-if_005frepaired"
+  represents => { "manual section body classes if_repaired" };
+body_classes_state_repaired::
+ "/docs/CfengineStdLibrary.html#body-classes-state_005frepaired"
+  represents => { "manual section body classes state_repaired" };
+body_contain_in_dir::
+ "/docs/CfengineStdLibrary.html#body-contain-in_005fdir"
+  represents => { "manual section body contain in_dir" };
+body_contain_in_dir_shell::
+ "/docs/CfengineStdLibrary.html#body-contain-in_005fdir_005fshell"
+  represents => { "manual section body contain in_dir_shell" };
+body_contain_in_shell::
+ "/docs/CfengineStdLibrary.html#body-contain-in_005fshell"
+  represents => { "manual section body contain in_shell" };
+body_contain_jail::
+ "/docs/CfengineStdLibrary.html#body-contain-jail"
+  represents => { "manual section body contain jail" };
+body_contain_setuid::
+ "/docs/CfengineStdLibrary.html#body-contain-setuid"
+  represents => { "manual section body contain setuid" };
+body_contain_setuid_sh::
+ "/docs/CfengineStdLibrary.html#body-contain-setuid_005fsh"
+  represents => { "manual section body contain setuid_sh" };
+body_contain_setuidgid_sh::
+ "/docs/CfengineStdLibrary.html#body-contain-setuidgid_005fsh"
+  represents => { "manual section body contain setuidgid_sh" };
+body_contain_silent::
+ "/docs/CfengineStdLibrary.html#body-contain-silent"
+  represents => { "manual section body contain silent" };
+body_contain_silent_in_dir::
+ "/docs/CfengineStdLibrary.html#body-contain-silent_005fin_005fdir"
+  represents => { "manual section body contain silent_in_dir" };
+body_copy_from_local_cp::
+ "/docs/CfengineStdLibrary.html#body-copy_005ffrom-local_005fcp"
+  represents => { "manual section body copy_from local_cp" };
+body_copy_from_no_backup_cp::
+ "/docs/CfengineStdLibrary.html#body-copy_005ffrom-no_005fbackup_005fcp"
+  represents => { "manual section body copy_from no_backup_cp" };
+body_copy_from_no_backup_rcp::
+ "/docs/CfengineStdLibrary.html#body-copy_005ffrom-no_005fbackup_005frcp"
+  represents => { "manual section body copy_from no_backup_rcp" };
+body_copy_from_perms_cp::
+ "/docs/CfengineStdLibrary.html#body-copy_005ffrom-perms_005fcp"
+  represents => { "manual section body copy_from perms_cp" };
+body_copy_from_remote_cp::
+ "/docs/CfengineStdLibrary.html#body-copy_005ffrom-remote_005fcp"
+  represents => { "manual section body copy_from remote_cp" };
+body_copy_from_secure_cp::
+ "/docs/CfengineStdLibrary.html#body-copy_005ffrom-secure_005fcp"
+  represents => { "manual section body copy_from secure_cp" };
+body_copy_from_seed_cp::
+ "/docs/CfengineStdLibrary.html#body-copy_005ffrom-seed_005fcp"
+  represents => { "manual section body copy_from seed_cp" };
+body_copy_from_sync_cp::
+ "/docs/CfengineStdLibrary.html#body-copy_005ffrom-sync_005fcp"
+  represents => { "manual section body copy_from sync_cp" };
+body_delete_tidy::
+ "/docs/CfengineStdLibrary.html#body-delete-tidy"
+  represents => { "manual section body delete tidy" };
+body_depth_search_recurse::
+ "/docs/CfengineStdLibrary.html#body-depth_005fsearch-recurse"
+  represents => { "manual section body depth_search recurse" };
+body_depth_search_recurse_ignore::
+ "/docs/CfengineStdLibrary.html#body-depth_005fsearch-recurse_005fignore"
+  represents => { "manual section body depth_search recurse_ignore" };
+body_edit_defaults_empty::
+ "/docs/CfengineStdLibrary.html#body-edit_005fdefaults-empty"
+  represents => { "manual section body edit_defaults empty" };
+body_edit_defaults_std_defs::
+ "/docs/CfengineStdLibrary.html#body-edit_005fdefaults-std_005fdefs"
+  represents => { "manual section body edit_defaults std_defs" };
+body_edit_field_col::
+ "/docs/CfengineStdLibrary.html#body-edit_005ffield-col"
+  represents => { "manual section body edit_field col" };
+body_edit_field_quoted_var::
+ "/docs/CfengineStdLibrary.html#body-edit_005ffield-quoted_005fvar"
+  represents => { "manual section body edit_field quoted_var" };
+body_file_select_by_name::
+ "/docs/CfengineStdLibrary.html#body-file_005fselect-by_005fname"
+  represents => { "manual section body file_select by_name" };
+body_file_select_days_old::
+ "/docs/CfengineStdLibrary.html#body-file_005fselect-days_005fold"
+  represents => { "manual section body file_select days_old" };
+body_file_select_dirs::
+ "/docs/CfengineStdLibrary.html#body-file_005fselect-dirs"
+  represents => { "manual section body file_select dirs" };
+body_file_select_ex_list::
+ "/docs/CfengineStdLibrary.html#body-file_005fselect-ex_005flist"
+  represents => { "manual section body file_select ex_list" };
+body_file_select_exclude::
+ "/docs/CfengineStdLibrary.html#body-file_005fselect-exclude"
+  represents => { "manual section body file_select exclude" };
+body_file_select_name_age::
+ "/docs/CfengineStdLibrary.html#body-file_005fselect-name_005fage"
+  represents => { "manual section body file_select name_age" };
+body_file_select_plain::
+ "/docs/CfengineStdLibrary.html#body-file_005fselect-plain"
+  represents => { "manual section body file_select plain" };
+body_file_select_size_range::
+ "/docs/CfengineStdLibrary.html#body-file_005fselect-size_005frange"
+  represents => { "manual section body file_select size_range" };
+body_link_from_linkchildren::
+ "/docs/CfengineStdLibrary.html#body-link_005ffrom-linkchildren"
+  represents => { "manual section body link_from linkchildren" };
+body_link_from_ln_s::
+ "/docs/CfengineStdLibrary.html#body-link_005ffrom-ln_005fs"
+  represents => { "manual section body link_from ln_s" };
+body_location_after::
+ "/docs/CfengineStdLibrary.html#body-location-after"
+  represents => { "manual section body location after" };
+body_location_start::
+ "/docs/CfengineStdLibrary.html#body-location-start"
+  represents => { "manual section body location start" };
+body_match_value_scan_log::
+ "/docs/CfengineStdLibrary.html#body-match_005fvalue-scan_005flog"
+  represents => { "manual section body match_value scan_log" };
+body_mount_nfs::
+ "/docs/CfengineStdLibrary.html#body-mount-nfs"
+  represents => { "manual section body mount nfs" };
+body_mount_nfs_p::
+ "/docs/CfengineStdLibrary.html#body-mount-nfs_005fp"
+  represents => { "manual section body mount nfs_p" };
+body_mount_unmount::
+ "/docs/CfengineStdLibrary.html#body-mount-unmount"
+  represents => { "manual section body mount unmount" };
+body_package_method_apt::
+ "/docs/CfengineStdLibrary.html#body-package_005fmethod-apt"
+  represents => { "manual section body package_method apt" };
+body_package_method_freebsd::
+ "/docs/CfengineStdLibrary.html#body-package_005fmethod-freebsd"
+  represents => { "manual section body package_method freebsd" };
+body_package_method_generic::
+ "/docs/CfengineStdLibrary.html#body-package_005fmethod-generic"
+  represents => { "manual section body package_method generic" };
+body_package_method_msi_explicit::
+ "/docs/CfengineStdLibrary.html#body-package_005fmethod-msi_005fexplicit"
+  represents => { "manual section body package_method msi_explicit" };
+body_package_method_msi_implicit::
+ "/docs/CfengineStdLibrary.html#body-package_005fmethod-msi_005fimplicit"
+  represents => { "manual section body package_method msi_implicit" };
+body_package_method_rpm_version::
+ "/docs/CfengineStdLibrary.html#body-package_005fmethod-rpm_005fversion"
+  represents => { "manual section body package_method rpm_version" };
+body_package_method_solaris::
+ "/docs/CfengineStdLibrary.html#body-package_005fmethod-solaris"
+  represents => { "manual section body package_method solaris" };
+body_package_method_yum::
+ "/docs/CfengineStdLibrary.html#body-package_005fmethod-yum"
+  represents => { "manual section body package_method yum" };
+body_package_method_yum_rpm::
+ "/docs/CfengineStdLibrary.html#body-package_005fmethod-yum_005frpm"
+  represents => { "manual section body package_method yum_rpm" };
+body_package_method_zypper::
+ "/docs/CfengineStdLibrary.html#body-package_005fmethod-zypper"
+  represents => { "manual section body package_method zypper" };
+body_perms_m::
+ "/docs/CfengineStdLibrary.html#body-perms-m"
+  represents => { "manual section body perms m" };
+body_perms_mo::
+ "/docs/CfengineStdLibrary.html#body-perms-mo"
+  represents => { "manual section body perms mo" };
+body_perms_mog::
+ "/docs/CfengineStdLibrary.html#body-perms-mog"
+  represents => { "manual section body perms mog" };
+body_perms_og::
+ "/docs/CfengineStdLibrary.html#body-perms-og"
+  represents => { "manual section body perms og" };
+body_perms_owner::
+ "/docs/CfengineStdLibrary.html#body-perms-owner"
+  represents => { "manual section body perms owner" };
+body_process_count_check_range::
+ "/docs/CfengineStdLibrary.html#body-process_005fcount-check_005frange"
+  represents => { "manual section body process_count check_range" };
+body_process_select_exclude_procs::
+ "/docs/CfengineStdLibrary.html#body-process_005fselect-exclude_005fprocs"
+  represents => { "manual section body process_select exclude_procs" };
+body_rename_disable::
+ "/docs/CfengineStdLibrary.html#body-rename-disable"
+  represents => { "manual section body rename disable" };
+body_rename_rotate::
+ "/docs/CfengineStdLibrary.html#body-rename-rotate"
+  represents => { "manual section body rename rotate" };
+body_rename_to::
+ "/docs/CfengineStdLibrary.html#body-rename-to"
+  represents => { "manual section body rename to" };
+body_replace_with_comment::
+ "/docs/CfengineStdLibrary.html#body-replace_005fwith-comment"
+  represents => { "manual section body replace_with comment" };
+body_replace_with_uncomment::
+ "/docs/CfengineStdLibrary.html#body-replace_005fwith-uncomment"
+  represents => { "manual section body replace_with uncomment" };
+body_replace_with_value::
+ "/docs/CfengineStdLibrary.html#body-replace_005fwith-value"
+  represents => { "manual section body replace_with value" };
+body_select_region_INI_section::
+ "/docs/CfengineStdLibrary.html#body-select_005fregion-INI_005fsection"
+  represents => { "manual section body select_region INI_section" };
+body_service_method_bootstart::
+ "/docs/CfengineStdLibrary.html#body-service_005fmethod-bootstart"
+  represents => { "manual section body service_method bootstart" };
+body_service_method_force_deps::
+ "/docs/CfengineStdLibrary.html#body-service_005fmethod-force_005fdeps"
+  represents => { "manual section body service_method force_deps" };
+body_volume_min_free_space::
+ "/docs/CfengineStdLibrary.html#body-volume-min_005ffree_005fspace"
+  represents => { "manual section body volume min_free_space" };
+bundle_agent_cronjob::
+ "/docs/CfengineStdLibrary.html#bundle-agent-cronjob"
+  represents => { "manual section bundle agent cronjob" };
+bundle_edit_line_append_groups_starting::
+ "/docs/CfengineStdLibrary.html#bundle-edit_005fline-append_005fgroups_005fstarting"
+  represents => { "manual section bundle edit_line append_groups_starting" };
+bundle_edit_line_append_if_no_line::
+ "/docs/CfengineStdLibrary.html#bundle-edit_005fline-append_005fif_005fno_005fline"
+  represents => { "manual section bundle edit_line append_if_no_line" };
+bundle_edit_line_append_if_no_lines::
+ "/docs/CfengineStdLibrary.html#bundle-edit_005fline-append_005fif_005fno_005flines"
+  represents => { "manual section bundle edit_line append_if_no_lines" };
+bundle_edit_line_append_user_field::
+ "/docs/CfengineStdLibrary.html#bundle-edit_005fline-append_005fuser_005ffield"
+  represents => { "manual section bundle edit_line append_user_field" };
+bundle_edit_line_append_users_starting::
+ "/docs/CfengineStdLibrary.html#bundle-edit_005fline-append_005fusers_005fstarting"
+  represents => { "manual section bundle edit_line append_users_starting" };
+bundle_edit_line_comment_lines_containing::
+ "/docs/CfengineStdLibrary.html#bundle-edit_005fline-comment_005flines_005fcontaining"
+  represents => { "manual section bundle edit_line comment_lines_containing" };
+bundle_edit_line_comment_lines_matching::
+ "/docs/CfengineStdLibrary.html#bundle-edit_005fline-comment_005flines_005fmatching"
+  represents => { "manual section bundle edit_line comment_lines_matching" };
+bundle_edit_line_delete_lines_matching::
+ "/docs/CfengineStdLibrary.html#bundle-edit_005fline-delete_005flines_005fmatching"
+  represents => { "manual section bundle edit_line delete_lines_matching" };
+bundle_edit_line_expand_template::
+ "/docs/CfengineStdLibrary.html#bundle-edit_005fline-expand_005ftemplate"
+  represents => { "manual section bundle edit_line expand_template" };
+bundle_edit_line_insert_lines::
+ "/docs/CfengineStdLibrary.html#bundle-edit_005fline-insert_005flines"
+  represents => { "manual section bundle edit_line insert_lines" };
+bundle_edit_line_set_user_field::
+ "/docs/CfengineStdLibrary.html#bundle-edit_005fline-set_005fuser_005ffield"
+  represents => { "manual section bundle edit_line set_user_field" };
+bundle_edit_line_set_variable_values::
+ "/docs/CfengineStdLibrary.html#bundle-edit_005fline-set_005fvariable_005fvalues"
+  represents => { "manual section bundle edit_line set_variable_values" };
+bundle_edit_line_set_variable_values2::
+ "/docs/CfengineStdLibrary.html#bundle-edit_005fline-set_005fvariable_005fvalues2"
+  represents => { "manual section bundle edit_line set_variable_values2" };
+bundle_edit_line_uncomment_lines_containing::
+ "/docs/CfengineStdLibrary.html#bundle-edit_005fline-uncomment_005flines_005fcontaining"
+  represents => { "manual section bundle edit_line uncomment_lines_containing" };
+bundle_edit_line_uncomment_lines_matching::
+ "/docs/CfengineStdLibrary.html#bundle-edit_005fline-uncomment_005flines_005fmatching"
+  represents => { "manual section bundle edit_line uncomment_lines_matching" };
+bundle_edit_line_warn_lines_matching::
+ "/docs/CfengineStdLibrary.html#bundle-edit_005fline-warn_005flines_005fmatching"
+  represents => { "manual section bundle edit_line warn_lines_matching" };
+}
+

@@ -1,0 +1,1584 @@
+<html>  <head>    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />    <title>      CfKnowledge Operational Ontology    </title>    <link rel="stylesheet" href="/copernicus/css/copernicus.css" type="text/css" media="screen" />  </head>  <body>
+  <div id="main">
+   <div id="logo"></div>
+    <div id="menubar">
+      <ul id="menu">
+        <li><a href="/inside/Copernicus/copernicus.php" title="Start"><h3><font color=lightgrey>COPERNICUS</font><br></h3></a></li>
+        <li><a href="/inside/cf2docs/cf-QuickRef.php" title="cf2 quick">cf2 quick</a></li>
+        <li><a href="/inside/cf2docs/cf-QuickRef3.php" title="cf3 quick">cf3 quick</a></li>
+        <li><a href="/inside/cf2docs/cf-help.php" title="Copernicus">HELP</a></li>
+        <li><a class="current" href="/inside/welcome.php" title="Back to cfengine.com">Home</a></li>
+      </ul>
+      <div id="search">
+        <form method="post" action="https://www.cfengine.com/inside/Copernicus/copernicus.php">
+           Search
+          <p><input class="searchfield" type="text" name="regex" /></p>
+        </form>
+      </div>
+    </div>
+    <div id="wholebody">
+      <div class="sidebar">
+        <div class="sidebaritem">
+
+        <!-- rounded corners - top **** -->
+        <div class="rtop"><div class="r1"></div><div class="r2"></div><div class="r3"></div><div class="r4"></div></div>
+          <h3>Documents</h3>
+          <ul>
+                     <li><a href="cf-ontology.php"> Master ontology</a></li>
+                     <li><a href="../cf2docs/cf-QuickRef3.php"> Quick Reference v3</a></li>
+                     <li><a href="../cf2docs/cf3-reference.php"> Reference v3</a></li>
+                     <li><a href="../cf2docs/cf3-solutions.php"> CFEngine 3 solutions</a></li>
+                     <li><a href="../cf2docs/cf-QuickRef.php"> Quick Reference v2</a></li>
+                     <li><a href="../cf2docs/cfengine-Tutorial.php"> Tutorial v2</a></li>
+                     <li><a href="../cf2docs/cfengine-Reference.php"> Reference v2</a></li>
+                     <li><a href="../cf2docs/cfengine-Anomalies.php"> Monitoring v2</a></li>
+                     <li><a href="../cf2docs/cf-anomaly.php"> Anomalies v2</a></li>
+                     <li><a href="../cf2docs/cf-Modularize.php"> Modularization v2</a></li>
+                     <li><a href="../cf2docs/cf-remotecomm.php"> Remote communication</a></li>
+                     <li><a href="../cf2docs/cf-Filters.php"> Searching v2</a></li>
+                     <li><a href="../cf2docs/cf-Packages.php"> Packages v2</a></li>
+                     <li><a href="../cf2docs/cf-begin-linux.php"> Beginner Unix v2</a></li>
+                     <li><a href="../cf2docs/cf-begin-windows.php"> Beginner Windows v2</a></li>
+                     <li><a href="../cf2docs/cf-enterprise.php"> Enterprise integration</a></li>
+
+                  </ul>
+        <!-- rounded corners - bottom **** -->
+        <div class="rbottom"><div class="r4"></div><div class="r3"></div><div class="r2"></div><div class="r1"></div></div>
+        </div>
+        <div class="sidebaritem">
+
+        <!-- rounded corners - top **** -->
+        <div class="rtop"><div class="r1"></div><div class="r2"></div><div class="r3"></div><div class="r4"></div></div>
+
+          <h3>Shortcuts</h3>
+          <ul>
+                     <li><a href="/inside/cf2docs/cf-QuickRef.php#Cfagent-command-options">cfagent v2</a></li>
+                     <li><a href="/inside/cf2docs/cf-QuickRef.php#Cfservd-command-options">cfservd v2</a></li>
+                     <li><a href="/inside/cf2docs/cf-QuickRef.php#Cfexecd-command-options">cfexecd v2</a></li>
+                     <li><a href="/inside/cf2docs/cf-QuickRef.php#Cfenvd-command-options">cfenvd v2</a></li>
+                     <li><a href="/inside/cf2docs/cf-QuickRef.php#cfenvgraph">cfenvgraph v2</a></li>
+                     <li><a href="/inside/cf2docs/cf-QuickRef.php#Cfrun-command-options">cfrun v2</a></li>
+                     <li><a href="/inside/cf2docs/cf-QuickRef.php#cfshow">cfshow v2</a></li>
+
+          </ul>
+        <!-- rounded corners - bottom **** -->
+
+        <div class="rbottom"><div class="r4"></div><div class="r3"></div><div class="r2"></div><div class="r1"></div></div>
+        </div>
+      </div>
+      <div id="pagebody">
+       <div class="rtop"><div class="r1"></div><div class="r2"></div><div class="r3"></div><div class="r4"></div></div><div id="content">
+          
+<h1>CfKnowledge Operational Ontology</h1><h2>Types</h2><p>
+<table>
+<tr><td><a href="/copernicus/?next=::Application_services">Application_services</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Book">Book</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Cfengine_2_reference">Cfengine_2_reference</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Cfengine_3">Cfengine_3</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Cfengine_components">Cfengine_components</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Cfengine_reference">Cfengine_reference</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Chapter">Chapter</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Chapter_section">Chapter_section</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Commands_and_Tools">Commands_and_Tools</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Concepts">Concepts</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Contact_Information">Contact_Information</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Convergent_operators">Convergent_operators</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Documents">Documents</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Environment">Environment</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Files">Files</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Guidelines_for_compliance">Guidelines_for_compliance</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Management_Issues">Management_Issues</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Management_terminology">Management_terminology</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Miscellaneous_concepts">Miscellaneous_concepts</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Models_of_knowledge">Models_of_knowledge</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Models_of_organization">Models_of_organization</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Models_of_system_administration">Models_of_system_administration</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Network_services">Network_services</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Networking">Networking</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Operating_systems">Operating_systems</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Pattern_Matching">Pattern_Matching</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Persons">Persons</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Procedures">Procedures</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Promise_Theory">Promise_Theory</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Research">Research</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Security">Security</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Start">Start</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Topic_maps">Topic_maps</a></td></tr>
+<tr><td><a href="/copernicus/?next=::Troubleshooting">Troubleshooting</a></td></tr>
+<tr><td><a href="/copernicus/?next=::any">any</a></td></tr>
+<tr><td><a href="/copernicus/?next=::body_constraint">body_constraint</a></td></tr>
+<tr><td><a href="/copernicus/?next=::services">services</a></td></tr>
+</table>
+<h2>Associations</h2><p>
+<table>
+<tr><td><a href="/copernicus/?next=::$(impl[b])">$(impl[b])</a>/$(impl[f])</td></tr>
+<tr><td><a href="/copernicus/?next=::$(impl[f])">$(impl[f])</a>/$(impl[b])</td></tr>
+<tr><td><a href="/copernicus/?next=::$(inst[f])">$(inst[f])</a>/$(inst[b])</td></tr>
+<tr><td><a href="/copernicus/?next=::are a basis for">are a basis for</a>/may be based on</td></tr>
+<tr><td><a href="/copernicus/?next=::are a form of">are a form of</a>/includes</td></tr>
+<tr><td><a href="/copernicus/?next=::are also called">are also called</a>/might be called</td></tr>
+<tr><td><a href="/copernicus/?next=::are classified into disjoint">are classified into disjoint</a>/are disjoint classes of</td></tr>
+<tr><td><a href="/copernicus/?next=::are collections of">are collections of</a>/combine to form</td></tr>
+<tr><td><a href="/copernicus/?next=::are completed by">are completed by</a>/complete</td></tr>
+<tr><td><a href="/copernicus/?next=::are formed by associating">are formed by associating</a>/can be combined into</td></tr>
+<tr><td><a href="/copernicus/?next=::are formed by associating">are formed by associating</a>/combine into</td></tr>
+<tr><td><a href="/copernicus/?next=::are identified in">are identified in</a>/play different</td></tr>
+<tr><td><a href="/copernicus/?next=::are realizations of">are realizations of</a>/are discussed in</td></tr>
+<tr><td><a href="/copernicus/?next=::are recurring patterns of">are recurring patterns of</a>/define</td></tr>
+<tr><td><a href="/copernicus/?next=::are simply called">are simply called</a>/might be called</td></tr>
+<tr><td><a href="/copernicus/?next=::can be classified into disjoint">can be classified into disjoint</a>/are disjoint classes of</td></tr>
+<tr><td><a href="/copernicus/?next=::can be combined into">can be combined into</a>/can be broken down into</td></tr>
+<tr><td><a href="/copernicus/?next=::can be made about">can be made about</a>/can be the subject of</td></tr>
+<tr><td><a href="/copernicus/?next=::can be the subject of">can be the subject of</a>/can talk about</td></tr>
+<tr><td><a href="/copernicus/?next=::can talk about">can talk about</a>/can be represented as</td></tr>
+<tr><td><a href="/copernicus/?next=::can talk about">can talk about</a>/can be the subject of</td></tr>
+<tr><td><a href="/copernicus/?next=::computes">computes</a>/is computed by</td></tr>
+<tr><td><a href="/copernicus/?next=::corresponds to">corresponds to</a>/corresponds to</td></tr>
+<tr><td><a href="/copernicus/?next=::describes the extent (or quantity) of a">describes the extent (or quantity) of a</a>/is quantified by its</td></tr>
+<tr><td><a href="/copernicus/?next=::describes the nature (or quality) of a">describes the nature (or quality) of a</a>/is qualified by its</td></tr>
+<tr><td><a href="/copernicus/?next=::describes the subject (nature or quality) of a">describes the subject (nature or quality) of a</a>/is qualified by its</td></tr>
+<tr><td><a href="/copernicus/?next=::designed">designed</a>/was designed by</td></tr>
+<tr><td><a href="/copernicus/?next=::discussed in">discussed in</a>/discusses</td></tr>
+<tr><td><a href="/copernicus/?next=::form networks of">form networks of</a>/are inter-related through</td></tr>
+<tr><td><a href="/copernicus/?next=::has attribute">has attribute</a>/is an attribute of</td></tr>
+<tr><td><a href="/copernicus/?next=::has instances">has instances</a>/is an instance of</td></tr>
+<tr><td><a href="/copernicus/?next=::implements">implements</a>/is implemented by</td></tr>
+<tr><td><a href="/copernicus/?next=::improves">improves</a>/is improved by</td></tr>
+<tr><td><a href="/copernicus/?next=::install">install</a>/are installed by</td></tr>
+<tr><td><a href="/copernicus/?next=::involves">involves</a>/is a principal component of</td></tr>
+<tr><td><a href="/copernicus/?next=::is a bilateral bundle of">is a bilateral bundle of</a>/can be combined into a</td></tr>
+<tr><td><a href="/copernicus/?next=::is a component of">is a component of</a>/has component</td></tr>
+<tr><td><a href="/copernicus/?next=::is a current name for">is a current name for</a>/is recently called</td></tr>
+<tr><td><a href="/copernicus/?next=::is a list of">is a list of</a>/has list type</td></tr>
+<tr><td><a href="/copernicus/?next=::is a packaging of">is a packaging of</a>/is packaged as a</td></tr>
+<tr><td><a href="/copernicus/?next=::is a promise type in">is a promise type in</a>/has promise types</td></tr>
+<tr><td><a href="/copernicus/?next=::is a variant of">is a variant of</a>/is a variant of</td></tr>
+<tr><td><a href="/copernicus/?next=::is a version of">is a version of</a>/has version</td></tr>
+<tr><td><a href="/copernicus/?next=::is an aspect of">is an aspect of</a>/in ITIL is called</td></tr>
+<tr><td><a href="/copernicus/?next=::is an example of">is an example of</a>/has exemplar</td></tr>
+<tr><td><a href="/copernicus/?next=::is another term for">is another term for</a>/may be described as</td></tr>
+<tr><td><a href="/copernicus/?next=::is distro of">is distro of</a>/has distro</td></tr>
+<tr><td><a href="/copernicus/?next=::is implemented by">is implemented by</a>/implements</td></tr>
+<tr><td><a href="/copernicus/?next=::is implemented in">is implemented in</a>/is the reference implementation of</td></tr>
+<tr><td><a href="/copernicus/?next=::is improved by">is improved by</a>/improves</td></tr>
+<tr><td><a href="/copernicus/?next=::is one of the contributors to">is one of the contributors to</a>/was partially developed by</td></tr>
+<tr><td><a href="/copernicus/?next=::is package manager for">is package manager for</a>/has package manager</td></tr>
+<tr><td><a href="/copernicus/?next=::is related to">is related to</a>/is related to</td></tr>
+<tr><td><a href="/copernicus/?next=::is solved with cfengine 2 by">is solved with cfengine 2 by</a>/2 solves</td></tr>
+<tr><td><a href="/copernicus/?next=::is solved with cfengine 3 by">is solved with cfengine 3 by</a>/3 solves</td></tr>
+<tr><td><a href="/copernicus/?next=::is the ITIL name for">is the ITIL name for</a>/in ITIL is called</td></tr>
+<tr><td><a href="/copernicus/?next=::is the cfengine 2 section for handling">is the cfengine 2 section for handling</a>/are handled by</td></tr>
+<tr><td><a href="/copernicus/?next=::is the recipient of">is the recipient of</a>/is made to a</td></tr>
+<tr><td><a href="/copernicus/?next=::label variations in">label variations in</a>/vary according to</td></tr>
+<tr><td><a href="/copernicus/?next=::makes a">makes a</a>/is made by a</td></tr>
+<tr><td><a href="/copernicus/?next=::may be used for">may be used for</a>/makes use of</td></tr>
+<tr><td><a href="/copernicus/?next=::originated the idea of">originated the idea of</a>/was originated by</td></tr>
+<tr><td><a href="/copernicus/?next=::points towards the following">points towards the following</a>/Back home to</td></tr>
+<tr><td><a href="/copernicus/?next=::possibly caused by">possibly caused by</a>/possibly caused by</td></tr>
+<tr><td><a href="/copernicus/?next=::puts into context">puts into context</a>/contextualized by</td></tr>
+<tr><td><a href="/copernicus/?next=::represent">represent</a>/can be represented as</td></tr>
+<tr><td><a href="/copernicus/?next=::result in">result in</a>/require the use of</td></tr>
+<tr><td><a href="/copernicus/?next=::reveal">reveal</a>/are revealed in the form of</td></tr>
+<tr><td><a href="/copernicus/?next=::takes as input">takes as input</a>/are processed by</td></tr>
+<tr><td><a href="/copernicus/?next=::turns .c into">turns .c into</a>/are built from .c by</td></tr>
+<tr><td><a href="/copernicus/?next=::turns .l into">turns .l into</a>/are built from .l by</td></tr>
+<tr><td><a href="/copernicus/?next=::turns .o into">turns .o into</a>/are built from .o by</td></tr>
+<tr><td><a href="/copernicus/?next=::turns .y into">turns .y into</a>/are built from .y by</td></tr>
+<tr><td><a href="/copernicus/?next=::verifies">verifies</a>/generic verification tool</td></tr>
+<tr><td><a href="/copernicus/?next=::was edited by">was edited by</a>/edited</td></tr>
+<tr><td><a href="/copernicus/?next=::was written by">was written by</a>/is the author of</td></tr>
+</table>
+<h2>Topics</h2><p>
+<table>
+<tr><td><a href="/copernicus/?next=Application_services::Backup">Backup</a></td></tr>
+<tr><td><a href="/copernicus/?next=Application_services::Email">Email</a></td></tr>
+<tr><td><a href="/copernicus/?next=Application_services::Web Services">Web Services</a></td></tr>
+<tr><td><a href="/copernicus/?next=Application_services::Web server">Web server</a></td></tr>
+<tr><td><a href="/copernicus/?next=Application_services::Webserver">Webserver</a></td></tr>
+<tr><td><a href="/copernicus/?next=Book::Analytical Network and System Administration">Analytical Network and System Administration</a></td></tr>
+<tr><td><a href="/copernicus/?next=Book::Handbook of Network and System Administration">Handbook of Network and System Administration</a></td></tr>
+<tr><td><a href="/copernicus/?next=Book::Principles of Network and System Administration">Principles of Network and System Administration</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_2_reference::Setting variables with functions">Setting variables with functions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::acl">acl</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::alerts">alerts</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::binservers">binservers</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::broadcast">broadcast</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::commands">commands</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::copy">copy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::defaultroute">defaultroute</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::directories">directories</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::disable">disable</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::disks">disks</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::editfiles">editfiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::files">files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::filters">filters</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::groups">groups</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::homeservers">homeservers</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::ignore">ignore</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::ilist">ilist</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::import">import</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::int">int</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::interfaces">interfaces</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::links">links</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::mailserver">mailserver</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::methods">methods</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::miscmounts">miscmounts</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::mountables">mountables</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::occurrences">occurrences</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::packages">packages</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::processes">processes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::real">real</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::rename">rename</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::reports">reports</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::required">required</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::resolve">resolve</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::rlist">rlist</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::scli">scli</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::shellcommands">shellcommands</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::slist">slist</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::storage">storage</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::strategies">strategies</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::string">string</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::tidy">tidy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::topics">topics</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::unmount">unmount</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_3::vars">vars</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cf-agent">cf-agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cf-execd">cf-execd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cf-know">cf-know</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cf-monitord">cf-monitord</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cf-promises">cf-promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cf-report">cf-report</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cf-runagent">cf-runagent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cf-serverd">cf-serverd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cfagent">cfagent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cfd">cfd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cfengine 1">cfengine 1</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cfengine 2">cfengine 2</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cfengine 3">cfengine 3</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cfenvd">cfenvd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cfenvgraph">cfenvgraph</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cfexecd">cfexecd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cfrun">cfrun</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cfservd">cfservd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_components::cfshow">cfshow</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::CFEngine 2 reference">CFEngine 2 reference</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::CFEngine 3 reference">CFEngine 3 reference</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::DeleteNonUserFiles">DeleteNonUserFiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::DeleteNonUserMail">DeleteNonUserMail</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::WarnNonUserFiles">WarnNonUserFiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::WarnNonUserMail">WarnNonUserMail</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::acl">acl</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::alerts">alerts</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::binservers">binservers</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::broadcast">broadcast</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::copy">copy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::defaultroute">defaultroute</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::directories">directories</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::disable">disable</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::disks">disks</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::editfiles">editfiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::files">files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::filters">filters</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::groups">groups</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::homeservers">homeservers</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::ignore">ignore</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::import">import</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::interfaces">interfaces</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::links">links</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::mailserver">mailserver</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::methods">methods</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::miscmounts">miscmounts</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::mountables">mountables</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::packages">packages</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::processes">processes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::rename">rename</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::required">required</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::resolve">resolve</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::scli">scli</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::shellcommands">shellcommands</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::strategies">strategies</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::tidy">tidy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Cfengine_reference::unmount">unmount</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::A complete configuration">A complete configuration</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::A simple crash course in concepts">A simple crash course in concepts</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Anomaly Detection">Anomaly Detection</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Authentication">Authentication</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Best practice">Best practice</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Bundles of agent">Bundles of agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Bundles of common">Bundles of common</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Bundles of knowledge">Bundles of knowledge</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Bundles of monitor">Bundles of monitor</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Bundles of server">Bundles of server</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Cfagent reference">Cfagent reference</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::CFEngine 3.0.1b4  Getting started">CFEngine 3.0.1b4  Getting started</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::CFEngine Methods">CFEngine Methods</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::CFEngine past and present">CFEngine past and present</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::CFEngine plugin modules">CFEngine plugin modules</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Cfengines package interface">Cfengines package interface</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Cfexecd reference">Cfexecd reference</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Cfkey reference">Cfkey reference</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Cfservd and cfrun reference">Cfservd and cfrun reference</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Cfshow reference">Cfshow reference</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Command reference">Command reference</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Common issues">Common issues</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Communication Overview">Communication Overview</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Control promises">Control promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Debugging tips">Debugging tips</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Encryption">Encryption</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Enterprise Integration">Enterprise Integration</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Example configuration files">Example configuration files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::How to run cfengine 3 examples">How to run cfengine 3 examples</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::ITIL and cfengine comparison">ITIL and cfengine comparison</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::ITIL glossary">ITIL glossary</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::ITIL past and present">ITIL past and present</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Introduction to reference manual">Introduction to reference manual</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Introduction">Introduction</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Iteration">Iteration</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Logs and records">Logs and records</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Modularization">Modularization</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Monitoring with cfengine">Monitoring with cfengine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Problem solving">Problem solving</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Searching for files">Searching for files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Searching for processes">Searching for processes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Searching for text inside files">Searching for text inside files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Security Implications of using cfengine">Security Implications of using cfengine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Special Variables">Special Variables</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Special functions">Special functions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Starting with cfrun">Starting with cfrun</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Summary">Summary</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Troubleshooting Filters">Troubleshooting Filters</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter::Using cfengine to implement ITIL objectives">Using cfengine to implement ITIL objectives</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::* promises in agent">* promises in agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::* promises in edit_line">* promises in edit_line</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::A renewed cfengine">A renewed cfengine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::A theory for ITIL">A theory for ITIL</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Abandon Autonomy?">Abandon Autonomy?</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AbortAtLineMatching">AbortAtLineMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AbortClasses">AbortClasses</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::About Promises">About Promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Access Example">Access Example</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Access control entries">Access control entries</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AccessedBefore">AccessedBefore</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Active Monitoring">Active Monitoring</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AddClasses">AddClasses</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AddInstallable">AddInstallable</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Alert">Alert</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Allow ssh root login">Allow ssh root login</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AllowConnectionsFrom">AllowConnectionsFrom</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AllowMultipleConnectionsFrom">AllowMultipleConnectionsFrom</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AllowRedefinitionOf">AllowRedefinitionOf</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AllowUsers">AllowUsers</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Append">Append</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AppendIfNoLineMatching">AppendIfNoLineMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AppendIfNoSuchLine">AppendIfNoSuchLine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AppendIfNoSuchLinesFromFile">AppendIfNoSuchLinesFromFile</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AppendToLineIfNotContains">AppendToLineIfNotContains</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Arrays in cfengine 3">Arrays in cfengine 3</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Aspect orientation">Aspect orientation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Audit in editfiles">Audit in editfiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Audit">Audit</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Auditing">Auditing</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AutoCreate">AutoCreate</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AutoDefine">AutoDefine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AutoExecCommand">AutoExecCommand</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AutoExecInterval">AutoExecInterval</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::AutomountDirectResources">AutomountDirectResources</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Availability and Capacity Management">Availability and Capacity Management</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Availability">Availability</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Backup in editfiles">Backup in editfiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Baseline">Baseline</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Basic promise definitions">Basic promise definitions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::BeginGroupIfDefined">BeginGroupIfDefined</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::BeginGroupIfFileExists">BeginGroupIfFileExists</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::BeginGroupIfFileIsNewer">BeginGroupIfFileIsNewer</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::BeginGroupIfLineContaining">BeginGroupIfLineContaining</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::BeginGroupIfLineMatching">BeginGroupIfLineMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::BeginGroupIfMatch">BeginGroupIfMatch</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::BeginGroupIfNoLineContaining">BeginGroupIfNoLineContaining</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::BeginGroupIfNoLineMatching">BeginGroupIfNoLineMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::BeginGroupIfNoMatch">BeginGroupIfNoMatch</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::BeginGroupIfNoSuchLine">BeginGroupIfNoSuchLine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::BeginGroupIfNotDefined">BeginGroupIfNotDefined</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Benchmark">Benchmark</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::BinaryPaddingChar">BinaryPaddingChar</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::BindToInterface in cfagent">BindToInterface in cfagent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::BindToInterface in cfservd">BindToInterface in cfservd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Bottom up">Bottom up</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::BreakIfLineMatches">BreakIfLineMatches</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Build a web farm">Build a web farm</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Build an HPC cluster">Build an HPC cluster</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Business alignment">Business alignment</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Business processes and goals">Business processes and goals</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::CMDB Asset Management">CMDB Asset Management</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Capability">Capability</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::CatchAbort">CatchAbort</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Cfagent collected data">Cfagent collected data</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Cfagent intro">Cfagent intro</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Cfagent runtime options">Cfagent runtime options</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::CFEngine Components">CFEngine Components</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::CFEngine and Firewalls">CFEngine and Firewalls</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::CFEngine classes">CFEngine classes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::CFEngine hard classes">CFEngine hard classes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::CFEngine in ITIL clothes?">CFEngine in ITIL clothes?</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::CFEngine trust model">CFEngine trust model</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Cfenvd, a learning agent">Cfenvd, a learning agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Change Detection">Change Detection</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Change Management in ITIL">Change Management in ITIL</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Change detection">Change detection</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Change management in the enterprise">Change management in the enterprise</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Change management vs convergence">Change management vs convergence</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Change record">Change record</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ChangedBefore">ChangedBefore</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ChecksumDatabase in cfagent">ChecksumDatabase in cfagent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ChecksumDatabase in cfservd">ChecksumDatabase in cfservd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ChecksumPurge">ChecksumPurge</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ChecksumUpdates">ChecksumUpdates</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Checksums and change management">Checksums and change management</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ChildLibPath">ChildLibPath</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Chronological Analysis">Chronological Analysis</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ClassMatch">ClassMatch</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::CommentLinesMatching">CommentLinesMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::CommentLinesStarting">CommentLinesStarting</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::CommentNLines">CommentNLines</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::CommentToLineMatching">CommentToLineMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Communication example 1">Communication example 1</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Communication example 10">Communication example 10</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Communication example 11">Communication example 11</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Communication example 12">Communication example 12</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Communication example 2">Communication example 2</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Communication example 3">Communication example 3</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Communication example 4">Communication example 4</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Communication example 5">Communication example 5</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Communication example 6">Communication example 6</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Communication example 7">Communication example 7</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Communication example 8">Communication example 8</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Communication example 9">Communication example 9</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Complete filter examples">Complete filter examples</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::CompressCommand">CompressCommand</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Computing hashes or digests">Computing hashes or digests</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Computing hashes">Computing hashes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Configuration Item (CI)">Configuration Item (CI)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Configuration Management Database (CMDB)">Configuration Management Database (CMDB)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Configuration">Configuration</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Containers">Containers</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Continual Service Improvement">Continual Service Improvement</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Controlling Directory Tree Traversal">Controlling Directory Tree Traversal</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Convergence">Convergence</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::CopyLinks">CopyLinks</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Cryptographic checksums">Cryptographic checksums</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Customize by constant/fixed gold overlay">Customize by constant/fixed gold overlay</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DFS ACLs">DFS ACLs</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DHCP and Dynamic Addresses">DHCP and Dynamic Addresses</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DPKGInstallCommand">DPKGInstallCommand</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Debugging with signals">Debugging with signals</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DefaultCopyType">DefaultCopyType</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DefaultPkgMgr">DefaultPkgMgr</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DefineClasses">DefineClasses</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DefineInGroup">DefineInGroup</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Delegating responsibility">Delegating responsibility</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Delegation">Delegation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DeleteLinesAfterThisMatching">DeleteLinesAfterThisMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DeleteLinesContaining/DeleteLinesNotContaining">DeleteLinesContaining/DeleteLinesNotContaining</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DeleteLinesMatching/DeleteLinesNotMatching">DeleteLinesMatching/DeleteLinesNotMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DeleteLinesNotContainingFileItems">DeleteLinesNotContainingFileItems</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DeleteLinesNotMatchingFileItems">DeleteLinesNotMatchingFileItems</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DeleteLinesNotStartingFileItems">DeleteLinesNotStartingFileItems</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DeleteLinesStarting">DeleteLinesStarting</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DeleteNLines">DeleteNLines</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DeleteNonOwnerFiles">DeleteNonOwnerFiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DeleteNonOwnerMail">DeleteNonOwnerMail</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DeleteNonUserFiles">DeleteNonUserFiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DeleteNonUserMail">DeleteNonUserMail</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DeleteToLineMatching">DeleteToLineMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DenyBadClocks">DenyBadClocks</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DenyConnectionsFrom">DenyConnectionsFrom</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Developer structures">Developer structures</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Direct customization by cfengine">Direct customization by cfengine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Directory permissions">Directory permissions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Disk scans">Disk scans</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Distribute root passwords">Distribute root passwords</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Distributed discovery">Distributed discovery</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Document">Document</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DryRun">DryRun</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::DynamicAddresses">DynamicAddresses</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::EditDNS">EditDNS</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::EditMode and binary editing">EditMode and binary editing</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::EditSplit">EditSplit</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Editfiles on Binary Files">Editfiles on Binary Files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Editing files">Editing files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Editing self-test questions">Editing self-test questions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Editing tabular files">Editing tabular files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ElseDefineClasses">ElseDefineClasses</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Embedded Databases">Embedded Databases</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Emergency Change">Emergency Change</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::EmptyEntireFilePlease">EmptyEntireFilePlease</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::EmptyResolvConf">EmptyResolvConf</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Encryption">Encryption</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::EndGroup">EndGroup</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::EndLoop">EndLoop</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Entropy and its interpretation">Entropy and its interpretation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Error">Error</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Event">Event</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Example file filter - by magic number">Example file filter - by magic number</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Example file filter - compress files">Example file filter - compress files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Example file filter - custom scanner">Example file filter - custom scanner</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Example file filter - find files changed">Example file filter - find files changed</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Example file filter - setuid">Example file filter - setuid</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Example file filter - tidy junk">Example file filter - tidy junk</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Example file filter by link destination">Example file filter by link destination</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Example file filter combined parameters">Example file filter combined parameters</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Example of packages">Example of packages</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Example process filter - started recently">Example process filter - started recently</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Example process filter by accumulated time">Example process filter by accumulated time</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Examples of modules">Examples of modules</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Examples of text matching in editfiles">Examples of text matching in editfiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Examples setting classes">Examples setting classes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Exception, Failure, Event, Summary">Exception, Failure, Event, Summary</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Exclamation">Exclamation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ExcludeCopy">ExcludeCopy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ExcludeLink">ExcludeLink</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ExpandVariables">ExpandVariables</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ExpireAfter editfiles">ExpireAfter editfiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ExpireAfter">ExpireAfter</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Failure">Failure</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Familiarizing yourself">Familiarizing yourself</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::File Filter Parameters">File Filter Parameters</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::File Filters">File Filters</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::FileExists">FileExists</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::FileExtensions">FileExtensions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Filenames and paths">Filenames and paths</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Files linkchildren">Files linkchildren</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Filter">Filter</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Firewalls and NATs">Firewalls and NATs</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::FixEndOfLine">FixEndOfLine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Fluctuation profiles">Fluctuation profiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ForEachLineIn quoted-filename">ForEachLineIn quoted-filename</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::FreeBSDInstallCommand">FreeBSDInstallCommand</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::FreeBSDRemoveCommand">FreeBSDRemoveCommand</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::FriendIgnoreRegex">FriendIgnoreRegex</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::From an authorized cache directory to different locations">From an authorized cache directory to different locations</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::FullEncryption">FullEncryption</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function accessedbefore">Function accessedbefore</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function accumulated">Function accumulated</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function ago">Function ago</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function canonify">Function canonify</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function changedbefore">Function changedbefore</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function classify">Function classify</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function classmatch">Function classmatch</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function execresult">Function execresult</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function fileexists">Function fileexists</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function getgid">Function getgid</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function getindices">Function getindices</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function getuid">Function getuid</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function groupexists">Function groupexists</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function hash">Function hash</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function hostinnetgroup">Function hostinnetgroup</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function hostrange">Function hostrange</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function iprange">Function iprange</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function irange">Function irange</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function isdir">Function isdir</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function isgreaterthan">Function isgreaterthan</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function islessthan">Function islessthan</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function islink">Function islink</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function isnewerthan">Function isnewerthan</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function isplain">Function isplain</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function isvariable">Function isvariable</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function now">Function now</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function on">Function on</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function randomint">Function randomint</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function readfile">Function readfile</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function readintarray">Function readintarray</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function readintlist">Function readintlist</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function readrealarray">Function readrealarray</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function readreallist">Function readreallist</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function readstringarray">Function readstringarray</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function readstringlist">Function readstringlist</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function readtcp">Function readtcp</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function regarray">Function regarray</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function regcmp">Function regcmp</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function regline">Function regline</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function reglist">Function reglist</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function returnszero">Function returnszero</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function rrange">Function rrange</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function selectservers">Function selectservers</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function splitstring">Function splitstring</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function strcmp">Function strcmp</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function usemodule">Function usemodule</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Function userexists">Function userexists</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Fundamental CFEngine Concepts">Fundamental CFEngine Concepts</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Garbage collection">Garbage collection</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Global and local classes">Global and local classes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Global criteria (per promise rule)">Global criteria (per promise rule)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::GotoLastLine">GotoLastLine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::GroupExists">GroupExists</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Hard Links">Hard Links</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Hard links in copying">Hard links in copying</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::HashCommentLinesContaining">HashCommentLinesContaining</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::HashCommentLinesMatching">HashCommentLinesMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::HashCommentLinesStarting">HashCommentLinesStarting</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Hashes and Message Digests">Hashes and Message Digests</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Hashes or Digests">Hashes or Digests</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::HomePattern">HomePattern</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::HostRange">HostRange</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::HostnameKeys in cfagent">HostnameKeys in cfagent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::HostnameKeys in cfservd">HostnameKeys in cfservd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::How can cfengine or promises help an enterprise">How can cfengine or promises help an enterprise</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::How we wrote this document, Promise concepts voluntary cooperation, Summary, Summary">How we wrote this document, Promise concepts voluntary cooperation, Summary, Summary</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::IP address ranges">IP address ranges</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::IPRange">IPRange</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ITIL Configuration Management (CM)">ITIL Configuration Management (CM)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ITIL and its versions">ITIL and its versions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ITIL concepts for authoring, Promise concepts voluntary cooperation, Summary, Summary">ITIL concepts for authoring, Promise concepts voluntary cooperation, Summary, Summary</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ITIL introduced">ITIL introduced</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ITIL processes">ITIL processes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ITIL terminology">ITIL terminology</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ITILv2 Service Support and Service Delivery">ITILv2 Service Support and Service Delivery</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ITILv3 Management from the Service Life Cycle Perspective">ITILv3 Management from the Service Life Cycle Perspective</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::IfElapsed in cfagent">IfElapsed in cfagent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::IfElapsed in cfservd">IfElapsed in cfservd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::IfElapsed">IfElapsed</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::IgnoreInterfaceRegex">IgnoreInterfaceRegex</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Incident Management vs Maintenance">Incident Management vs Maintenance</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Incident and problem management">Incident and problem management</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Incident">Incident</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Inclusion and Exclusion Patterns">Inclusion and Exclusion Patterns</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::IncrementPointer quoted-number">IncrementPointer quoted-number</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Inform editfiles">Inform editfiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Inform">Inform</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Infrastructure or management?">Infrastructure or management?</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Inheritance">Inheritance</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::InsertFile">InsertFile</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::InsertLine">InsertLine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Installation">Installation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Integrate cfengine with jumpstart/kickstart">Integrate cfengine with jumpstart/kickstart</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::InterfaceName">InterfaceName</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Intermittency times">Intermittency times</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Interpreting anomalies">Interpreting anomalies</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Intrusion detection">Intrusion detection</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Is automation worthwhile?">Is automation worthwhile?</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::IsDefined">IsDefined</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::IsDir">IsDir</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::IsGreaterThan">IsGreaterThan</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::IsLessThan">IsLessThan</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::IsLink">IsLink</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::IsNewerThan">IsNewerThan</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::IsPlain">IsPlain</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Iteration over lists as a pattern">Iteration over lists as a pattern</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Iteration over lists">Iteration over lists</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Key exchange">Key exchange</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Laptop support configuration">Laptop support configuration</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Last seen database">Last seen database</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::LastSeen">LastSeen</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::LastSeenExpireAfter">LastSeenExpireAfter</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Line based editing patterns">Line based editing patterns</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Link Children">Link Children</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::LinkCopies">LinkCopies</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::List variable substitution and expansion">List variable substitution and expansion</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Local criteria (per promise rule)">Local criteria (per promise rule)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Local method examples">Local method examples</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Localhost examples">Localhost examples</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::LocateLineMatching">LocateLineMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Log rotation">Log rotation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::LogAllConnections">LogAllConnections</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::LogDirectory">LogDirectory</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::LogEncryptedTransfers">LogEncryptedTransfers</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::LogTidyHomeFiles">LogTidyHomeFiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Loops and lists in cfengine 3">Loops and lists in cfengine 3</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::MaxConnections">MaxConnections</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Method self-test questions">Method self-test questions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Methodology to organize systems">Methodology to organize systems</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Modelling policy">Modelling policy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Modularization self-test questions">Modularization self-test questions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Module self-test questions">Module self-test questions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Modules can define classes">Modules can define classes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Monitoring features">Monitoring features</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Monitoring file changes">Monitoring file changes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Monitoring">Monitoring</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Mount NFS filesystem">Mount NFS filesystem</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Multiple Links">Multiple Links</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::NT ACLs">NT ACLs</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Neighbourhood watch and tampering">Neighbourhood watch and tampering</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Neighbourhood watch">Neighbourhood watch</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::NonAlphaNumFiles">NonAlphaNumFiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Normal ordering">Normal ordering</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Object orientation">Object orientation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::One or Many Hosts">One or Many Hosts</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Options related to modules">Options related to modules</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Ordering promises">Ordering promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Organizing the files into classes">Organizing the files into classes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Other reasons for modules">Other reasons for modules</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Other users than root">Other users than root</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Overlay an expandable template with cfengine">Overlay an expandable template with cfengine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Overriding a policy file">Overriding a policy file</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Overriding">Overriding</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Owner and group wildcards">Owner and group wildcards</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Package upgrade or install?">Package upgrade or install?</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Packages">Packages</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Passive Monitoring">Passive Monitoring</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Patterns self-test questions">Patterns self-test questions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::PercentCommentLinesContaining">PercentCommentLinesContaining</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::PercentCommentLinesMatching">PercentCommentLinesMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::PercentCommentLinesStarting">PercentCommentLinesStarting</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Performance">Performance</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Policy Mirror in the DMZ">Policy Mirror in the DMZ</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Policy">Policy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::PopulateDNS">PopulateDNS</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::PortageInstallCommand">PortageInstallCommand</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Posix ACL Example">Posix ACL Example</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Postfix mail configuration">Postfix mail configuration</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::PrepModule">PrepModule</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Preparatory Modules">Preparatory Modules</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Prepend">Prepend</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::PrependIfNoLineMatching">PrependIfNoLineMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::PrependIfNoSuchLine">PrependIfNoSuchLine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Proactive Monitoring, Problem, Policy, Summary">Proactive Monitoring, Problem, Policy, Summary</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Problem">Problem</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Promise, Reactive Monitoring, Problem, Summary">Promise, Reactive Monitoring, Problem, Summary</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Promises, Actions and Operations">Promises, Actions and Operations</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Promising voluntary cooperation, Road-map for adoption, Summary, Summary">Promising voluntary cooperation, Road-map for adoption, Summary, Summary</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Public Key Exchange Issues">Public Key Exchange Issues</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Pulling through a wormhole">Pulling through a wormhole</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::RPMInstallCommand">RPMInstallCommand</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::RPMcommand">RPMcommand</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Reactive Monitoring">Reactive Monitoring</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Record">Record</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Recovery from errors in the configuration">Recovery from errors in the configuration</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Recovery from errors in the software">Recovery from errors in the software</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Recovery">Recovery</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Recurse">Recurse</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Recursion">Recursion</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Regcmp">Regcmp</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Regular expressions">Regular expressions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Relative and absolute links">Relative and absolute links</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Release Management in ITIL">Release Management in ITIL</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Release management">Release management</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Release, Request for Change, Repair, Summary">Release, Request for Change, Repair, Summary</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Remediation">Remediation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Reminder about classes">Reminder about classes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Remote access troubleshooting">Remote access troubleshooting</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Remote host examples">Remote host examples</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Remote method examples">Remote method examples</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::RepChar">RepChar</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Repair">Repair</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ReplaceAll/With">ReplaceAll/With</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ReplaceFirst/With">ReplaceFirst/With</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ReplaceLineWith">ReplaceLineWith</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ReplaceLinesMatchingField">ReplaceLinesMatchingField</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Replacing Text fragments">Replacing Text fragments</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Replacing fields in tabular files">Replacing fields in tabular files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Reports in outputs">Reports in outputs</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Repository editfiles">Repository editfiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Repository">Repository</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Request for Change">Request for Change</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ResetSearch">ResetSearch</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Resilience">Resilience</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Restoration">Restoration</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ReturnsZero">ReturnsZero</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ReturnsZeroShell">ReturnsZeroShell</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Road-map for adoption">Road-map for adoption</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Role based access control">Role based access control</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Role">Role</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Rollback or remediation">Rollback or remediation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Rollout and installation">Rollout and installation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Rules are promises">Rules are promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::RunScript">RunScript</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::RunScriptIfLineMatching">RunScriptIfLineMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::RunScriptIfNoLineMatching">RunScriptIfNoLineMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SUNInstallCommand">SUNInstallCommand</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Scalability">Scalability</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Scalar variable expansion">Scalar variable expansion</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Scenario 1">Scenario 1</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Scenario 2">Scenario 2</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Scenario 3">Scenario 3</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Schedule">Schedule</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SecureInput">SecureInput</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Security of pulling files">Security of pulling files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SensibleCount">SensibleCount</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SensibleSize">SensibleSize</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Server connection">Server connection</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Service Design">Service Design</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Service Level Agreement">Service Level Agreement</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Service Level Management (SLM)">Service Level Management (SLM)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Service Management">Service Management</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Service Operation">Service Operation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Service Strategy">Service Strategy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Service desk">Service desk</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Service orientation and ITIL">Service orientation and ITIL</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Set up a DNS server">Set up a DNS server</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Set up a PXE boot server">Set up a PXE boot server</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Set up a web server">Set up a web server</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Set up name resolution">Set up name resolution</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SetCommentEnd">SetCommentEnd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SetCommentStart">SetCommentStart</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SetLine">SetLine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SetScript">SetScript</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Setting classes with special functions">Setting classes with special functions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Setting up users">Setting up users</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Setting variables with functions">Setting variables with functions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ShowActions">ShowActions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Single links">Single links</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SingleCopy">SingleCopy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SkipIdentify">SkipIdentify</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SkipVerify">SkipVerify</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SlashCommentLinesContaining">SlashCommentLinesContaining</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SlashCommentLinesMatching">SlashCommentLinesMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SlashCommentLinesStarting">SlashCommentLinesStarting</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Software packaging in ITIL">Software packaging in ITIL</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Solaris ACLs">Solaris ACLs</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Special variables">Special variables</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SplayTime">SplayTime</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Split">Split</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SplitOn">SplitOn</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SpoolDirectories">SpoolDirectories</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Starting with anomaly detection">Starting with anomaly detection</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::State information">State information</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Storing modules and methods">Storing modules and methods</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Strcmp">Strcmp</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Syntax of packages">Syntax of packages</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Syntax">Syntax</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Syslog editfiles">Syslog editfiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Syslog">Syslog</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::SyslogFacility">SyslogFacility</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::System Auditing">System Auditing</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Tamperproof data and distributed monitoring">Tamperproof data and distributed monitoring</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Tamperproof data">Tamperproof data</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Tar package installation">Tar package installation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Teams and collaboration">Teams and collaboration</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Testing as a non-privilieged user">Testing as a non-privilieged user</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Text editing self-test questions">Text editing self-test questions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Text logs">Text logs</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::The bear necessities of a cfengine 3">The bear necessities of a cfengine 3</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::The file cfagent.conf">The file cfagent.conf</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::The moduledirectory">The moduledirectory</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::The plugin itself">The plugin itself</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::The work directory">The work directory</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Tidying garbage files">Tidying garbage files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Time windows (races)">Time windows (races)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::TimeOut">TimeOut</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Too many open files">Too many open files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Tool Support">Tool Support</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Top down">Top down</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Traditional IT Management">Traditional IT Management</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::TrustKeysFrom">TrustKeysFrom</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Types in cfengine 3">Types in cfengine 3</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Umask">Umask</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::UnCommentLinesContaining">UnCommentLinesContaining</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::UnCommentLinesMatching">UnCommentLinesMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::UnCommentNLines">UnCommentNLines</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::UnCommentToLineMatching">UnCommentToLineMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Uniformity">Uniformity</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Unmount NFS filesystem">Unmount NFS filesystem</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::UnsetAbort">UnsetAbort</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Upgrading from cfengine 2">Upgrading from cfengine 2</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::UseShell">UseShell</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::User experiences on organizing policy">User experiences on organizing policy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::User passwords">User passwords</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::UserExists">UserExists</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Using cfenvgraph">Using cfenvgraph</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Using the cfrun command">Using the cfrun command</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Using the class environment in plugins">Using the class environment in plugins</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable const.dollar">Variable const.dollar</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable const.endl">Variable const.endl</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable const.n">Variable const.n</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable const.r">Variable const.r</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable context const">Variable context const</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable context sys">Variable context sys</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable expansion and contexts">Variable expansion and contexts</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable expansion in cfengine 3">Variable expansion in cfengine 3</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.arch">Variable sys.arch</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.cdate">Variable sys.cdate</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.class">Variable sys.class</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.date">Variable sys.date</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.domain">Variable sys.domain</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.fqhost">Variable sys.fqhost</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.fstab">Variable sys.fstab</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.host">Variable sys.host</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.interface">Variable sys.interface</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.ipv4">Variable sys.ipv4</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.ipv4[wlan0]">Variable sys.ipv4[wlan0]</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.ipv4_1[wlan0]">Variable sys.ipv4_1[wlan0]</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.ipv4_2[wlan0]">Variable sys.ipv4_2[wlan0]</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.ipv4_3[wlan0]">Variable sys.ipv4_3[wlan0]</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.long_arch">Variable sys.long_arch</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.maildir">Variable sys.maildir</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.os">Variable sys.os</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.ostype">Variable sys.ostype</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.release">Variable sys.release</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.resolv">Variable sys.resolv</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.uqhost">Variable sys.uqhost</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Variable sys.workdir">Variable sys.workdir</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Verbose">Verbose</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Version control and rollback">Version control and rollback</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Voluntary Cooperation">Voluntary Cooperation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::WarnIfFileMissing">WarnIfFileMissing</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::WarnIfLineContaining">WarnIfLineContaining</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::WarnIfLineMatching">WarnIfLineMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::WarnIfLineStarting">WarnIfLineStarting</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::WarnIfNoLineContaining">WarnIfNoLineContaining</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::WarnIfNoLineMatching">WarnIfNoLineMatching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::WarnIfNoLineStarting">WarnIfNoLineStarting</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::WarnIfNoSuchLine">WarnIfNoSuchLine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::WarnNonOwnerFiles">WarnNonOwnerFiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::WarnNonOwnerMail">WarnNonOwnerMail</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::WarnNonUserFiles">WarnNonUserFiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::WarnNonUserMail">WarnNonUserMail</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Warning">Warning</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Warnings">Warnings</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Web server modules">Web server modules</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::What is maintenance?">What is maintenance?</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::What should a failsafe and update file contain?">What should a failsafe and update file contain?</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::When and where are promises made?">When and where are promises made?</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Which ITIL processes apply to cfengine?">Which ITIL processes apply to cfengine?</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Why cfengine modules?">Why cfengine modules?</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Wildcards and Regular expressions">Wildcards and Regular expressions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Windows ACL Example">Windows ACL Example</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Work directory">Work directory</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::Writing plugin modules">Writing plugin modules</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::abortbundleclasses">abortbundleclasses</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::abortclasses">abortclasses</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::access promises in server">access promises in server</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::access">access</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::acl (compound body)">acl (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::acl">acl</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::action (compound body)">action (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::actionsequence">actionsequence</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::addclasses">addclasses</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::admit">admit</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::admit, grant and deny">admit, grant and deny</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::agent control promises">agent control promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::agentaccess">agentaccess</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::agentfacility">agentfacility</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::alerts">alerts</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::allowallconnects">allowallconnects</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::allowconnects">allowconnects</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::allowusers">allowusers</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::and">and</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::args">args</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::association (compound body)">association (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::auditing">auditing</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::authorize">authorize</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::auto_scaling">auto_scaling</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::background_children">background_children</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::binarypaddingchar">binarypaddingchar</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::bindtointerface">bindtointerface</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::binservers">binservers</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::broadcast">broadcast</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::build_directory">build_directory</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::builds_on">builds_on</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::bundlesequence">bundlesequence</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cf-agent - cfengines change agent">cf-agent - cfengines change agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cf-execd - cfengines execution agent">cf-execd - cfengines execution agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cf-know - cfengines knowledge agent">cf-know - cfengines knowledge agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cf-monitord - cfengines monitoring agent">cf-monitord - cfengines monitoring agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cf-promises - cfengines promise analyzer">cf-promises - cfengines promise analyzer</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cf-report - cfengines reporting agent">cf-report - cfengines reporting agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cf-runagent - Run agent">cf-runagent - Run agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cf-serverd - cfengines server agent">cf-serverd - cfengines server agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cf.freebsd / cf.netbsd">cf.freebsd / cf.netbsd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cf.groups">cf.groups</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cf.linux">cf.linux</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cf.main">cf.main</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cf.motd">cf.motd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cf.preconf bootstrap file">cf.preconf bootstrap file</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cf.site">cf.site</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cf.solaris">cf.solaris</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cf.users">cf.users</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cfagent command options">cfagent command options</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cfagent.conf">cfagent.conf</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cfbrain">cfbrain</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cfenvd command options">cfenvd command options</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cfenvgraph">cfenvgraph</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cfexecd command options">cfexecd command options</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cfkey">cfkey</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cfrc resource file">cfrc resource file</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cfrun command options">cfrun command options</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cfrun">cfrun</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cfrunCommand">cfrunCommand</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cfruncommand">cfruncommand</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cfservd command options">cfservd command options</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cfservd.conf tutorial">cfservd.conf tutorial</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::cfshow">cfshow</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::changes (compound body)">changes (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::childlibpath">childlibpath</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::classes (compound body)">classes (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::classes promises">classes promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::classes">classes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::commands promises in agent">commands promises in agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::comment">comment</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::common control promises">common control promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::contain (compound body)">contain (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::control cfservd">control cfservd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::control">control</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::copy example">copy example</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::copy">copy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::copy_from (compound body)">copy_from (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::create">create</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::data_type">data_type</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::default_repository">default_repository</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::default_timeout">default_timeout</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::defaultcopytype">defaultcopytype</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::defaultroute">defaultroute</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::delete (compound body)">delete (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::delete_lines promises in edit_line">delete_lines promises in edit_line</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::delete_select (compound body)">delete_select (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::deny">deny</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::denybadclocks">denybadclocks</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::denyconnects">denyconnects</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::depth_search (compound body)">depth_search (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::directories">directories</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::disable">disable</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::disks">disks</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::dist">dist</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::domain">domain</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::dryrun">dryrun</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::dynamicaddresses">dynamicaddresses</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::edit_defaults (compound body)">edit_defaults (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::edit_field (compound body)">edit_field (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::edit_line">edit_line</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::edit_xml">edit_xml</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::editbinaryfilesize">editbinaryfilesize</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::editfiles">editfiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::editfilesize">editfilesize</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::encrypt">encrypt</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::encrypt=true">encrypt=true</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::environment">environment</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::error_bars">error_bars</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::exclamation">exclamation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::exec_command">exec_command</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::executor control promises">executor control promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::executorfacility">executorfacility</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::expand_scalars">expand_scalars</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::expireafter">expireafter</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::expression">expression</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::failsafe.cf">failsafe.cf</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::field_edits promises in edit_line">field_edits promises in edit_line</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::file_select (compound body)">file_select (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::files promises in agent">files promises in agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::files">files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::files_auto_define">files_auto_define</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::files_single_copy">files_single_copy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::filters">filters</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::force_ipv4">force_ipv4</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::forgetrate">forgetrate</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::friend_pattern">friend_pattern</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::fullencryption">fullencryption</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::generate_manual">generate_manual</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::graph_directory">graph_directory</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::graph_output">graph_output</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::groups/classes">groups/classes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::handle">handle</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::hashupdates">hashupdates</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::histograms">histograms</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::history_type">history_type</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::home directive">home directive</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::homeservers">homeservers</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::hostnamekeys">hostnamekeys</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::hosts">hosts</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::html_banner">html_banner</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::html_embed">html_embed</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::html_footer">html_footer</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::id_prefix">id_prefix</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ifelapsed">ifelapsed</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ifencrypted">ifencrypted</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ifvarclass">ifvarclass</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ignore">ignore</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::ilist">ilist</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::import">import</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::inform">inform</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::inputs">inputs</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::insert_lines promises in edit_line">insert_lines promises in edit_line</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::insert_select (compound body)">insert_select (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::insert_type">insert_type</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::int">int</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::interfaces promises in agent">interfaces promises in agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::interfaces">interfaces</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::intermittency">intermittency</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::knowledge control promises">knowledge control promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::lastseen">lastseen</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::lastseenexpireafter">lastseenexpireafter</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::link_from (compound body)">link_from (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::links">links</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::location (compound body)">location (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::logallconnections">logallconnections</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::logencryptedtransfers">logencryptedtransfers</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::mailfrom">mailfrom</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::mailmaxlines">mailmaxlines</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::mailserver">mailserver</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::mailto">mailto</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::manual_source_directory">manual_source_directory</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::maproot">maproot</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::match_value (compound body)">match_value (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::max_children">max_children</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::maxconnections">maxconnections</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::measurements promises in monitor">measurements promises in monitor</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::methods promises in agent">methods promises in agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::methods">methods</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::miscmounts">miscmounts</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::module">module</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::moduledirectory">moduledirectory</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::monitor control promises">monitor control promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::monitorfacility">monitorfacility</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::mount (compound body)">mount (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::mountables">mountables</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::mountfilesystems">mountfilesystems</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::mountpattern">mountpattern</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::move_obstructions">move_obstructions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::netmask">netmask</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::nfstype">nfstype</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::nonalphanumfiles">nonalphanumfiles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::not">not</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::not_matching">not_matching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::occurrences promises in knowledge">occurrences promises in knowledge</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::or">or</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::output_prefix">output_prefix</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::output_to_file">output_to_file</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::package_architectures">package_architectures</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::package_method (compound body)">package_method (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::package_policy">package_policy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::package_select">package_select</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::package_version">package_version</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::packages promises in agent">packages promises in agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::pathtype">pathtype</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::perms (compound body)">perms (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::policy">policy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::port">port</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::printfile (compound body)">printfile (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::process_count (compound body)">process_count (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::process_select (compound body)">process_select (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::process_stop">process_stop</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::processes promises in agent">processes promises in agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::processes">processes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::promises.cf">promises.cf</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::query_engine">query_engine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::query_output">query_output</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::real">real</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::rename (compound body)">rename (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::rename">rename</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::repchar">repchar</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::replace_patterns promises in edit_line">replace_patterns promises in edit_line</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::replace_with (compound body)">replace_with (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::report_output">report_output</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::reporter control promises">reporter control promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::reports promises">reports promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::reports">reports</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::repository">repository</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::representation">representation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::represents">represents</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::required">required</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::resolve">resolve</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::restart_class">restart_class</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::rlist">rlist</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::roles promises in server">roles promises in server</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::root=">root=</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::runagent control promises">runagent control promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::schedule">schedule</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::scli">scli</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::secureinput">secureinput</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::select_region (compound body)">select_region (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::sensiblecount">sensiblecount</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::sensiblesize">sensiblesize</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::server control promises">server control promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::serverfacility">serverfacility</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::shellcommands">shellcommands</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::showstate">showstate</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::signals">signals</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::site.cf">site.cf</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::site/faculty">site/faculty</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::skipidentify">skipidentify</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::skipverify">skipverify</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::slist">slist</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::smtpserver">smtpserver</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::splaytime">splaytime</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::sql_database">sql_database</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::sql_owner">sql_owner</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::sql_passwd">sql_passwd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::sql_server">sql_server</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::sql_type">sql_type</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::storage promises in agent">storage promises in agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::strategies">strategies</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::stream_type">stream_type</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::string">string</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::style_sheet">style_sheet</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::suspiciousnames">suspiciousnames</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::sysadm">sysadm</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::syslog">syslog</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::tcp_ip (compound body)">tcp_ip (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::tcpdump">tcpdump</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::tcpdumpcommand">tcpdumpcommand</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::tidy">tidy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::time_stamps">time_stamps</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::timezone">timezone</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::topics promises in knowledge">topics promises in knowledge</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::touch">touch</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::transformer">transformer</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::trustkey">trustkey</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::trustkeysfrom">trustkeysfrom</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::units">units</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::unmount">unmount</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::update.cf">update.cf</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::usebundle">usebundle</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::vars promises">vars promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::verbose">verbose</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::version">version</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::volume (compound body)">volume (compound body)</a></td></tr>
+<tr><td><a href="/copernicus/?next=Chapter_section::xor">xor</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::CFEngine components">CFEngine components</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::Copernicus">Copernicus</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::The Omnigator">The Omnigator</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::apt-get">apt-get</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::bash">bash</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::bison">bison</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::cfengine">cfengine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::csh">csh</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::dpkg">dpkg</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::emerge">emerge</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::flex">flex</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::gcc">gcc</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::ksh">ksh</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::ldd">ldd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::lex">lex</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::pkg_add">pkg_add</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::pkgadd">pkgadd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::portage">portage</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::rpm">rpm</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::tcsh">tcsh</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::yast">yast</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::yum">yum</a></td></tr>
+<tr><td><a href="/copernicus/?next=Commands_and_Tools::zypper">zypper</a></td></tr>
+<tr><td><a href="/copernicus/?next=Concepts::Authentication">Authentication</a></td></tr>
+<tr><td><a href="/copernicus/?next=Concepts::Variable">Variable</a></td></tr>
+<tr><td><a href="/copernicus/?next=Contact_Information::Email Address">Email Address</a></td></tr>
+<tr><td><a href="/copernicus/?next=Contact_Information::Home Page">Home Page</a></td></tr>
+<tr><td><a href="/copernicus/?next=Contact_Information::Phone number mobile">Phone number mobile</a></td></tr>
+<tr><td><a href="/copernicus/?next=Contact_Information::Phone number office">Phone number office</a></td></tr>
+<tr><td><a href="/copernicus/?next=Contact_Information::Website">Website</a></td></tr>
+<tr><td><a href="/copernicus/?next=Convergent_operators::Convergence">Convergence</a></td></tr>
+<tr><td><a href="/copernicus/?next=Convergent_operators::Idempotence">Idempotence</a></td></tr>
+<tr><td><a href="/copernicus/?next=Documents::Book">Book</a></td></tr>
+<tr><td><a href="/copernicus/?next=Documents::CFEngine reference">CFEngine reference</a></td></tr>
+<tr><td><a href="/copernicus/?next=Documents::Chapter section">Chapter section</a></td></tr>
+<tr><td><a href="/copernicus/?next=Documents::Chapter">Chapter</a></td></tr>
+<tr><td><a href="/copernicus/?next=Documents::Definitions">Definitions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Documents::Example">Example</a></td></tr>
+<tr><td><a href="/copernicus/?next=Documents::Hints">Hints</a></td></tr>
+<tr><td><a href="/copernicus/?next=Documents::Introduction">Introduction</a></td></tr>
+<tr><td><a href="/copernicus/?next=Documents::Paper">Paper</a></td></tr>
+<tr><td><a href="/copernicus/?next=Documents::Topic Maps">Topic Maps</a></td></tr>
+<tr><td><a href="/copernicus/?next=Documents::Tutorial">Tutorial</a></td></tr>
+<tr><td><a href="/copernicus/?next=Documents::Wikipedia">Wikipedia</a></td></tr>
+<tr><td><a href="/copernicus/?next=Environment::Hard classes">Hard classes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Environment::Monitoring">Monitoring</a></td></tr>
+<tr><td><a href="/copernicus/?next=Environment::Persistent classes">Persistent classes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Environment::Soft classes">Soft classes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::.a files">.a files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::.c files">.c files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::.l files">.l files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::.o files">.o files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::.so files">.so files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::.y files">.y files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::/etc/filesystems">/etc/filesystems</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::/etc/fstab">/etc/fstab</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::/etc/hosts.allow">/etc/hosts.allow</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::/etc/hosts.deny">/etc/hosts.deny</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::/etc/ldso.conf">/etc/ldso.conf</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::/etc/passwd">/etc/passwd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::/etc/printers.conf">/etc/printers.conf</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::/etc/resolv.conf">/etc/resolv.conf</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::/etc/shadow">/etc/shadow</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::/etc/vfstab">/etc/vfstab</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::Executable files">Executable files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::Setgid files">Setgid files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::Setuid files">Setuid files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Files::a.out">a.out</a></td></tr>
+<tr><td><a href="/copernicus/?next=Guidelines_for_compliance::Auditing">Auditing</a></td></tr>
+<tr><td><a href="/copernicus/?next=Guidelines_for_compliance::ITIL">ITIL</a></td></tr>
+<tr><td><a href="/copernicus/?next=Guidelines_for_compliance::eTOM">eTOM</a></td></tr>
+<tr><td><a href="/copernicus/?next=ITIL: Important Foundations">ITIL: Important Foundations</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_Issues::Business Value">Business Value</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_Issues::Capacity Planning">Capacity Planning</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_Issues::Change Management">Change Management</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_Issues::Guidelines for compliance">Guidelines for compliance</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_Issues::Identity Management">Identity Management</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_Issues::Incident Management">Incident Management</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_Issues::Knowledge Management">Knowledge Management</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_Issues::Maintenance Paradigms">Maintenance Paradigms</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_Issues::Management terminology">Management terminology</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_Issues::Organization">Organization</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_Issues::Storage Management">Storage Management</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_Issues::Team work">Team work</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::Adoption of cfengine">Adoption of cfengine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::Agreement">Agreement</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::Authoring">Authoring</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::Budget">Budget</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::Business Process">Business Process</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::CM">CM</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::Configuration Management">Configuration Management</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::Contract">Contract</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::Departments">Departments</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::Enterprise">Enterprise</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::FCAPS">FCAPS</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::Gold server">Gold server</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::Operations">Operations</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::Road map">Road map</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::Teams">Teams</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::Teamwork">Teamwork</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::Terminology">Terminology</a></td></tr>
+<tr><td><a href="/copernicus/?next=Management_terminology::Version Control">Version Control</a></td></tr>
+<tr><td><a href="/copernicus/?next=Method example: DNS server setup">Method example: DNS server setup</a></td></tr>
+<tr><td><a href="/copernicus/?next=Method example: SSH key distribution">Method example: SSH key distribution</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Anomalies detection">Anomalies detection</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Applications">Applications</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Automation">Automation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Availability">Availability</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Budget">Budget</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Crises and fire fighting">Crises and fire fighting</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Distributed System">Distributed System</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Entropy">Entropy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Features">Features</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Friend status">Friend status</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Function">Function</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Installation and major changes">Installation and major changes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Instrumentation">Instrumentation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Intermittency">Intermittency</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Iteration over lists">Iteration over lists</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Last_seen">Last_seen</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::List">List</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Loops in cfengine">Loops in cfengine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Modules">Modules</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Naming">Naming</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Normal operational behaviour">Normal operational behaviour</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Other Tools">Other Tools</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Packaging">Packaging</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Pattern Matching">Pattern Matching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Planning">Planning</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Process Filters">Process Filters</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Redundancy">Redundancy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Regular expression matching">Regular expression matching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Release management">Release management</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Reliability">Reliability</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Remediation">Remediation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Resources">Resources</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Revision Control">Revision Control</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Rollback">Rollback</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Scenarios">Scenarios</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Searching">Searching</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Security">Security</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Software">Software</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Symptoms">Symptoms</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::System Installation">System Installation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Tamperproof system">Tamperproof system</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Template">Template</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Unusual operational behaviour">Unusual operational behaviour</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Variable">Variable</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Wildcards in directory names">Wildcards in directory names</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::Wildcards">Wildcards</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::cfenvd">cfenvd</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::data type">data type</a></td></tr>
+<tr><td><a href="/copernicus/?next=Miscellaneous_concepts::versions">versions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Models_of_knowledge::Topic maps">Topic maps</a></td></tr>
+<tr><td><a href="/copernicus/?next=Models_of_organization::Aspect Paradigm">Aspect Paradigm</a></td></tr>
+<tr><td><a href="/copernicus/?next=Models_of_organization::Cascading">Cascading</a></td></tr>
+<tr><td><a href="/copernicus/?next=Models_of_organization::Heterogeneous System">Heterogeneous System</a></td></tr>
+<tr><td><a href="/copernicus/?next=Models_of_organization::Hierarchical Structure">Hierarchical Structure</a></td></tr>
+<tr><td><a href="/copernicus/?next=Models_of_organization::Homogeneous System">Homogeneous System</a></td></tr>
+<tr><td><a href="/copernicus/?next=Models_of_organization::Object Paradigm">Object Paradigm</a></td></tr>
+<tr><td><a href="/copernicus/?next=Models_of_organization::Overlapping Sets">Overlapping Sets</a></td></tr>
+<tr><td><a href="/copernicus/?next=Models_of_organization::Peer To Peer Network">Peer To Peer Network</a></td></tr>
+<tr><td><a href="/copernicus/?next=Models_of_organization::Service Orientation">Service Orientation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Models_of_system_administration::Autonomics">Autonomics</a></td></tr>
+<tr><td><a href="/copernicus/?next=Models_of_system_administration::Computer Immunology">Computer Immunology</a></td></tr>
+<tr><td><a href="/copernicus/?next=Models_of_system_administration::Convergent operators">Convergent operators</a></td></tr>
+<tr><td><a href="/copernicus/?next=Models_of_system_administration::Promise Theory">Promise Theory</a></td></tr>
+<tr><td><a href="/copernicus/?next=Models_of_system_administration::Self-Healing">Self-Healing</a></td></tr>
+<tr><td><a href="/copernicus/?next=Network_services::BIND">BIND</a></td></tr>
+<tr><td><a href="/copernicus/?next=Network_services::DHCP">DHCP</a></td></tr>
+<tr><td><a href="/copernicus/?next=Networking::Default route">Default route</a></td></tr>
+<tr><td><a href="/copernicus/?next=Networking::Dynamic addresses">Dynamic addresses</a></td></tr>
+<tr><td><a href="/copernicus/?next=Networking::IP address">IP address</a></td></tr>
+<tr><td><a href="/copernicus/?next=Networking::IP chains">IP chains</a></td></tr>
+<tr><td><a href="/copernicus/?next=Networking::IP tables">IP tables</a></td></tr>
+<tr><td><a href="/copernicus/?next=Networking::Routing">Routing</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::AIX">AIX</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::CrayOS">CrayOS</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::Filesystem">Filesystem</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::FreeBSD">FreeBSD</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::GNU/Linux">GNU/Linux</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::Irix">Irix</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::Linux">Linux</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::MacOS X">MacOS X</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::NetBSD">NetBSD</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::OpenBSD">OpenBSD</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::Package managers">Package managers</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::Shells">Shells</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::Solaris">Solaris</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::SunOS">SunOS</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::System Files">System Files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::System Packages">System Packages</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::System Processes">System Processes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::Ultrix">Ultrix</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::Virtualization">Virtualization</a></td></tr>
+<tr><td><a href="/copernicus/?next=Operating_systems::distro">distro</a></td></tr>
+<tr><td><a href="/copernicus/?next=Pattern_Matching::Wildcards">Wildcards</a></td></tr>
+<tr><td><a href="/copernicus/?next=Persons::Alva Couch">Alva Couch</a></td></tr>
+<tr><td><a href="/copernicus/?next=Persons::Jan Bergstra">Jan Bergstra</a></td></tr>
+<tr><td><a href="/copernicus/?next=Persons::Mark Burgess">Mark Burgess</a></td></tr>
+<tr><td><a href="/copernicus/?next=Persons::Steve Pepper">Steve Pepper</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Adding users">Adding users</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Build a web farm">Build a web farm</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Build an HPC cluster">Build an HPC cluster</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Build solaris zones">Build solaris zones</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Build virtual machines">Build virtual machines</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Build workstation environments">Build workstation environments</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Change detection scans">Change detection scans</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Changing passwords">Changing passwords</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Creating network roles">Creating network roles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Dealing with a firewall">Dealing with a firewall</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Distribute root passwords">Distribute root passwords</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Editing Files">Editing Files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Editing tabular files">Editing tabular files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Garbage Collection">Garbage Collection</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Generate root passwords">Generate root passwords</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Host network configuration">Host network configuration</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::How to setup Mail Transfer Agent">How to setup Mail Transfer Agent</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Integrate cfengine with jumpstart/kickstart">Integrate cfengine with jumpstart/kickstart</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Log rotation">Log rotation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Remote access">Remote access</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Removing users">Removing users</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::SSH key distribution">SSH key distribution</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Set up DNS server">Set up DNS server</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Set up a PXE boot server">Set up a PXE boot server</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Set up a web server">Set up a web server</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Set up name resolution">Set up name resolution</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Set up resolv.conf">Set up resolv.conf</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Setup">Setup</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Troubleshooting">Troubleshooting</a></td></tr>
+<tr><td><a href="/copernicus/?next=Procedures::Trust">Trust</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::actions">actions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::agents">agents</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::announcements">announcements</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::associations">associations</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::behaviours">behaviours</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::body-constraint">body-constraint</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::body-type">body-type</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::bundles">bundles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::causative relationships">causative relationships</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::communicated information">communicated information</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::conceptual relationships">conceptual relationships</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::conditional promises">conditional promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::dependencies">dependencies</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::facts">facts</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::intentions">intentions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::location relationships">location relationships</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::occurrence-types">occurrence-types</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::occurrences">occurrences</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::promise body">promise body</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::promise proposals">promise proposals</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::promise-type">promise-type</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::promisee">promisee</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::promiser">promiser</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::promises">promises</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::roles">roles</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::services">services</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::stories">stories</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::structural relationships">structural relationships</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::topic-instances">topic-instances</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::topic-types">topic-types</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::topics">topics</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::type-instances">type-instances</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::versions">versions</a></td></tr>
+<tr><td><a href="/copernicus/?next=Promise_Theory::workflows">workflows</a></td></tr>
+<tr><td><a href="/copernicus/?next=Research::Models of knowledge">Models of knowledge</a></td></tr>
+<tr><td><a href="/copernicus/?next=Research::Models of organization">Models of organization</a></td></tr>
+<tr><td><a href="/copernicus/?next=Research::Models of system administration">Models of system administration</a></td></tr>
+<tr><td><a href="/copernicus/?next=Security::Access Control">Access Control</a></td></tr>
+<tr><td><a href="/copernicus/?next=Security::Authentication">Authentication</a></td></tr>
+<tr><td><a href="/copernicus/?next=Security::Checksums">Checksums</a></td></tr>
+<tr><td><a href="/copernicus/?next=Security::DMZ">DMZ</a></td></tr>
+<tr><td><a href="/copernicus/?next=Security::Digest">Digest</a></td></tr>
+<tr><td><a href="/copernicus/?next=Security::Digests">Digests</a></td></tr>
+<tr><td><a href="/copernicus/?next=Security::Encryption">Encryption</a></td></tr>
+<tr><td><a href="/copernicus/?next=Security::Firewalls">Firewalls</a></td></tr>
+<tr><td><a href="/copernicus/?next=Security::Hash">Hash</a></td></tr>
+<tr><td><a href="/copernicus/?next=Security::Hashes">Hashes</a></td></tr>
+<tr><td><a href="/copernicus/?next=Security::Key exchange">Key exchange</a></td></tr>
+<tr><td><a href="/copernicus/?next=Security::Permission">Permission</a></td></tr>
+<tr><td><a href="/copernicus/?next=Security::Privacy">Privacy</a></td></tr>
+<tr><td><a href="/copernicus/?next=Security::Public private keys">Public private keys</a></td></tr>
+<tr><td><a href="/copernicus/?next=Security::Role based access control">Role based access control</a></td></tr>
+<tr><td><a href="/copernicus/?next=Security::Trust in cfengine">Trust in cfengine</a></td></tr>
+<tr><td><a href="/copernicus/?next=Security::Trusted third party">Trusted third party</a></td></tr>
+<tr><td><a href="/copernicus/?next=Start::CFEngine reference">CFEngine reference</a></td></tr>
+<tr><td><a href="/copernicus/?next=Start::Commands and Tools">Commands and Tools</a></td></tr>
+<tr><td><a href="/copernicus/?next=Start::Documents">Documents</a></td></tr>
+<tr><td><a href="/copernicus/?next=Start::Files">Files</a></td></tr>
+<tr><td><a href="/copernicus/?next=Start::Management Issues">Management Issues</a></td></tr>
+<tr><td><a href="/copernicus/?next=Start::Miscellaneous concepts">Miscellaneous concepts</a></td></tr>
+<tr><td><a href="/copernicus/?next=Start::Networking">Networking</a></td></tr>
+<tr><td><a href="/copernicus/?next=Start::Operating systems">Operating systems</a></td></tr>
+<tr><td><a href="/copernicus/?next=Start::Persons">Persons</a></td></tr>
+<tr><td><a href="/copernicus/?next=Start::Procedures">Procedures</a></td></tr>
+<tr><td><a href="/copernicus/?next=Start::Research">Research</a></td></tr>
+<tr><td><a href="/copernicus/?next=Start::Troubleshooting">Troubleshooting</a></td></tr>
+<tr><td><a href="/copernicus/?next=Topic_maps::Linear Topic Map Notation">Linear Topic Map Notation</a></td></tr>
+<tr><td><a href="/copernicus/?next=Troubleshooting::Access to file not granted">Access to file not granted</a></td></tr>
+<tr><td><a href="/copernicus/?next=Troubleshooting::AllowConnectionsFrom not set">AllowConnectionsFrom not set</a></td></tr>
+<tr><td><a href="/copernicus/?next=Troubleshooting::AllowMultipleConnectionsFrom not set">AllowMultipleConnectionsFrom not set</a></td></tr>
+<tr><td><a href="/copernicus/?next=Troubleshooting::Bad memory reference">Bad memory reference</a></td></tr>
+<tr><td><a href="/copernicus/?next=Troubleshooting::Print server not running">Print server not running</a></td></tr>
+<tr><td><a href="/copernicus/?next=Troubleshooting::Remote connection problem">Remote connection problem</a></td></tr>
+<tr><td><a href="/copernicus/?next=Troubleshooting::Segmentation fault">Segmentation fault</a></td></tr>
+<tr><td><a href="/copernicus/?next=Troubleshooting::TrustKeysFrom not set">TrustKeysFrom not set</a></td></tr>
+<tr><td><a href="/copernicus/?next=Troubleshooting::Web server not running">Web server not running</a></td></tr>
+<tr><td><a href="/copernicus/?next=any::cf-Filters">cf-Filters</a></td></tr>
+<tr><td><a href="/copernicus/?next=any::cf-Modularize">cf-Modularize</a></td></tr>
+<tr><td><a href="/copernicus/?next=any::cf-Packages">cf-Packages</a></td></tr>
+<tr><td><a href="/copernicus/?next=any::cf-QuickRef">cf-QuickRef</a></td></tr>
+<tr><td><a href="/copernicus/?next=any::cf-QuickRef3">cf-QuickRef3</a></td></tr>
+<tr><td><a href="/copernicus/?next=any::cf-anomaly">cf-anomaly</a></td></tr>
+<tr><td><a href="/copernicus/?next=any::cf-enterprise">cf-enterprise</a></td></tr>
+<tr><td><a href="/copernicus/?next=any::cf-remotecomm">cf-remotecomm</a></td></tr>
+<tr><td><a href="/copernicus/?next=any::cf3-reference">cf3-reference</a></td></tr>
+<tr><td><a href="/copernicus/?next=any::cf3-solutions">cf3-solutions</a></td></tr>
+<tr><td><a href="/copernicus/?next=any::cfengine-Reference">cfengine-Reference</a></td></tr>
+<tr><td><a href="/copernicus/?next=body_constraint::lvalue">lvalue</a></td></tr>
+<tr><td><a href="/copernicus/?next=body_constraint::rvalue">rvalue</a></td></tr>
+<tr><td><a href="/copernicus/?next=services::Application services">Application services</a></td></tr>
+<tr><td><a href="/copernicus/?next=services::Network services">Network services</a></td></tr>
+<tr><td>Business Driven IT Management (<a href="/copernicus/?next=Management_terminology::BDIM">BDIM</a>)</td></tr>
+<tr><td>CFEngine - the configuration engine (<a href="/copernicus/?next=Commands_and_Tools::Cfengine">Cfengine</a>)</td></tr>
+<tr><td>CFEngine version (<a href="/copernicus/?next=Cfengine_components::cfengine-2.2.8">cfengine-2.2.8</a>)</td></tr>
+<tr><td>CFEngine version (<a href="/copernicus/?next=Cfengine_components::cfengine-3.0.0">cfengine-3.0.0</a>)</td></tr>
+<tr><td>Creating a tripwire for unauthorized changes (<a href="/copernicus/?next=Procedures::Create tripwire">Create tripwire</a>)</td></tr>
+<tr><td>High Performance Computing (<a href="/copernicus/?next=Miscellaneous_concepts::HPC">HPC</a>)</td></tr>
+<tr><td>Implement redundant change detection (<a href="/copernicus/?next=Procedures::Set up a neighbourhood watch">Set up a neighbourhood watch</a>)</td></tr>
+<tr><td>Linux distro debian (<a href="/copernicus/?next=Operating_systems::debian">debian</a>)</td></tr>
+<tr><td>Linux distro fedora (<a href="/copernicus/?next=Operating_systems::fedora">fedora</a>)</td></tr>
+<tr><td>Linux distro gentoo (<a href="/copernicus/?next=Operating_systems::gentoo">gentoo</a>)</td></tr>
+<tr><td>Linux distro redhat (<a href="/copernicus/?next=Operating_systems::redhat">redhat</a>)</td></tr>
+<tr><td>Linux distro slackware (<a href="/copernicus/?next=Operating_systems::slackware">slackware</a>)</td></tr>
+<tr><td>Linux distro suse (<a href="/copernicus/?next=Operating_systems::suse">suse</a>)</td></tr>
+<tr><td>Linux distro ubuntu (<a href="/copernicus/?next=Operating_systems::ubuntu">ubuntu</a>)</td></tr>
+<tr><td>Managing legacy systems with cfengine (<a href="/copernicus/?next=Procedures::Legacy systems">Legacy systems</a>)</td></tr>
+<tr><td>Network Address Translation (<a href="/copernicus/?next=Network_services::NAT">NAT</a>)</td></tr>
+<tr><td>Network File System (<a href="/copernicus/?next=Network_services::NFS">NFS</a>)</td></tr>
+<tr><td>Service Level Agreement (<a href="/copernicus/?next=Management_terminology::SLA">SLA</a>)</td></tr>
+<tr><td>Storage as a concept (<a href="/copernicus/?next=Application_services::Storage">Storage</a>)</td></tr>
+<tr><td>The 8th EU data directive (<a href="/copernicus/?next=Guidelines_for_compliance::EUROSOX">EUROSOX</a>)</td></tr>
+<tr><td>The Domain Name Service (<a href="/copernicus/?next=Network_services::DNS">DNS</a>)</td></tr>
+<tr><td>The Sarbanes-Oxley Act (<a href="/copernicus/?next=Guidelines_for_compliance::SOX">SOX</a>)</td></tr>
+<tr><td>The start of the topic map (<a href="/copernicus/?next=any::Start">Start</a>)</td></tr>
+<tr><td>Topics, Associations and Occurrences (<a href="/copernicus/?next=Topic_maps::The TAO">The TAO</a>)</td></tr>
+<tr><td>configuration management database (<a href="/copernicus/?next=Guidelines_for_compliance::CMDB">CMDB</a>)</td></tr>
+</table>
+
+              </div>
+       <div class="rbottom"><div class="r4"></div><div class="r3"></div>
+       <div class="r2"></div><div class="r1"></div></div>
+       </div>
+       </div>
+       <div id="footer">
+       Copyright &copy; CFEngine AS | based on a design by www.dcarter.co.uk
+       </div>
+       </div>
+       </div></body></html>
