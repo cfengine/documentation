@@ -735,6 +735,10 @@ def include_snippet(parameters, config):
             if line.find("#[%-%]") == 0:
                 skip_block = True
                 continue
+            # org-mode src markers are just delimiters, not content. Skip them so they
+            # don't trip the in_documentation toggle below and open an empty code block.
+            if line.startswith("#+begin_src") or line.startswith("#+end_src"):
+                continue
             # #@ interrupts code block, interpret documentation in example code
             if line.find("#@ ") == 0:
                 line = line[3:]
