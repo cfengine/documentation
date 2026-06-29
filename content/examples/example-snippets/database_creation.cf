@@ -8,6 +8,7 @@ body knowledge control
   #sql_database => "postgres";
   sql_owner => "postgres";
   sql_passwd => "";
+
   # No passwd
   sql_type => "postgres";
 }

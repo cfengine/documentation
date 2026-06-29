@@ -17,6 +17,7 @@ body mount nfs(server, source)
   mount_type => "nfs";
   mount_source => "$(source)";
   mount_server => "$(server)";
+
   #mount_options => { "rw" };
   edit_fstab => "true";
   unmount => "true";

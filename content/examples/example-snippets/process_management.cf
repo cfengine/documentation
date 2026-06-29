@@ -28,6 +28,7 @@ bundle agent testbundle
 body process_count up(s)
 {
   match_range => "5,10";
+
   # or irange("1","10");
   out_of_range_define => { "$(s)_out_of_control" };
 }
@@ -49,6 +50,7 @@ bundle agent testbundle
 body process_count up(s)
 {
   match_range => "1,10";
+
   # or irange("1","10");
   out_of_range_define => { "$(s)_out_of_control" };
 }
@@ -76,6 +78,7 @@ bundle agent testbundle
 body process_count up(s)
 {
   match_range => "1,10";
+
   # or irange("1","10");
   out_of_range_define => { "$(s)_out_of_control" };
 }
@@ -145,6 +148,7 @@ bundle agent testbundle
 body process_count up(s)
 {
   match_range => "1,10";
+
   # or irange("1","10");
   out_of_range_define => { "$(s)_out_of_control" };
 }
