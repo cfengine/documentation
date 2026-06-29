@@ -25,6 +25,7 @@ body link_from linkdetails(tofile)
 {
   source => "$(tofile)";
   link_type => "symlink";
+
   # kill:
   when_no_source => "force";
 }
@@ -33,6 +34,7 @@ body link_from linkchildren(tofile)
 {
   source => "$(tofile)";
   link_type => "symlink";
+
   # kill:
   when_no_source => "force";
   link_children => "true";

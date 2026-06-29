@@ -51,6 +51,7 @@ body copy_from mycopy(from, server)
   compare => "digest";
   verify => "true";
   copy_backup => "true";
+
   #/false/timestamp
   purge => "false";
   type_check => "true";
