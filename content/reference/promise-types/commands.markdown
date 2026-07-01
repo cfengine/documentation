@@ -29,17 +29,13 @@ commands-promise in a very flexible way. See the `kept_returncodes`,
 
 ```cf3
 bundle agent example
-
 {
-commands:
+  commands:
+    "/bin/sleep 10" action => background;
 
-  "/bin/sleep 10"
-     action  => background;
-
-  "/bin/sleep"
-     args => "20",
-     action  => background;
-
+    "/bin/sleep"
+      args => "20",
+      action => background;
 }
 ```
 
@@ -72,8 +68,7 @@ bundle agent example
     "/usr/bin/env MY_ENVIRONMENT_VARIABLE=something_special /tmp/cmd";
 
     # Or equivalent
-    "/usr/bin/env"
-      args => "ME=something_special /tmp/cmd";
+    "/usr/bin/env" args => "ME=something_special /tmp/cmd";
 }
 ```
 
@@ -182,13 +177,13 @@ as a non-privileged user inside an isolated directory tree.
 ```cf3
 body contain example
 {
-    useshell => "noshell";
-       umask => "077";
+  useshell => "noshell";
+  umask => "077";
   exec_owner => "mysql_user";
   exec_group => "nogroup";
-exec_timeout => "60";
-       chdir => "/working/path";
-      chroot => "/private/path";
+  exec_timeout => "60";
+  chdir => "/working/path";
+  chroot => "/private/path";
 }
 ```
 
@@ -229,7 +224,7 @@ For compatibility, the boolean values are also supported, and map to
 ```cf3
 body contain example
 {
-useshell => "useshell";
+  useshell => "useshell";
 }
 ```
 
@@ -262,7 +257,7 @@ thus ignored by Windows versions of CFEngine.
 ```cf3
 body contain example
 {
-umask => "077";
+  umask => "077";
 }
 ```
 
@@ -287,7 +282,7 @@ CFEngine.
 ```cf3
 body contain example
 {
-exec_owner => "mysql_user";
+  exec_owner => "mysql_user";
 }
 ```
 
@@ -309,7 +304,7 @@ them.
 ```cf3
 body contain example
 {
-exec_group => "nogroup";
+  exec_group => "nogroup";
 }
 ```
 
@@ -329,7 +324,7 @@ case of failure.
 ```cf3
 body contain example
 {
-exec_timeout => "30";
+  exec_timeout => "30";
 }
 ```
 
@@ -351,9 +346,8 @@ it works like the cd shell command.
 
 ```cf3
 body contain example
-
 {
-chdir => "/containment/directory";
+  chdir => "/containment/directory";
 }
 ```
 
@@ -374,9 +368,8 @@ process. Windows does not support this feature.
 
 ```cf3
 body contain example
-
 {
-chroot => "/private/path";
+  chroot => "/private/path";
 }
 ```
 
@@ -400,7 +393,7 @@ checks to user defined scripts.
 ```cf3
 body contain example
 {
-preview => "true";
+  preview => "true";
 }
 ```
 
@@ -420,7 +413,7 @@ error to `/dev/null`.
 ```cf3
 body contain example
 {
-no_output => "true";
+  no_output => "true";
 }
 ```
 
@@ -510,35 +503,28 @@ And here is an example using it:
 ```cf3
 body common control
 {
-bundlesequence  => { def, modtest };
+  bundlesequence => { def, modtest };
 }
 
 bundle agent def
 {
-commands:
+  commands:
+    "$(sys.workdir)/modules/module_name" module => "true";
 
-  "$(sys.workdir)/modules/module_name"
-    module => "true";
-
-reports:
-
-  # Each module forms a private context with its name as id
-  module_class::
-
-    "Module set variable $(module_name.myscalar)";
+  reports:
+    # Each module forms a private context with its name as id
+    module_class::
+      "Module set variable $(module_name.myscalar)";
 }
 
 bundle agent modtest
 {
-vars:
+  vars:
+    "mylist" slist => { @(module_name.mylist) };
 
-  "mylist" slist => { @(module_name.mylist) };
-
-reports:
-
-  module_class::
-
-    "Module set variable $(mylist)";
+  reports:
+    module_class::
+      "Module set variable $(mylist)";
 }
 ```
 
@@ -568,30 +554,29 @@ execution of a command):
 ```cf3
 bundle agent sendmail
 {
-commands:
-  # This next module checks a specific failure mode of dcc, namely
-  # more than 3 error states since the last time we ran cf-agent
-  is_mailhost::
-        "/bin/test `/usr/bin/tail -100 /var/log/maillog | /usr/bin/grep 'Milter (dcc): to error state' | /usr/bin/wc -l` -gt 3  echo '+start_dccm' || echo
+  commands:
+    # This next module checks a specific failure mode of dcc, namely
+    # more than 3 error states since the last time we ran cf-agent
+    is_mailhost::
+      "/bin/test `/usr/bin/tail -100 /var/log/maillog | /usr/bin/grep 'Milter (dcc): to error state' | /usr/bin/wc -l` -gt 3  echo '+start_dccm' || echo
 ''"
-    contain => shell_command,
-    module => "true";
+        contain => shell_command,
+        module => "true";
 
     start_dccm::
-      "/var/dcc/libexec/start-dccm"
-          contain => not_paranoid;
+      "/var/dcc/libexec/start-dccm" contain => not_paranoid;
 }
 
 body contain shell_command
 {
-    useshell    => "useshell";
+  useshell => "useshell";
 }
 
 body contain not_paranoid
 {
-    useshell    => "no";
-    exec_owner  => "root";
-    umask       => "22";
+  useshell => "no";
+  exec_owner => "root";
+  umask => "22";
 }
 ```
 

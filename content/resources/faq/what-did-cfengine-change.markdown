@@ -19,13 +19,11 @@ Example Policy (`/tmp/example.cf`):
 ```cf3
 bundle agent main
 {
-
   files:
-
-      "/tmp/example"
-        handle => "example_file_exists_and_contains_date",
-        create => "true",
-        edit_line => lines_present( $(sys.date) );
+    "/tmp/example"
+      handle => "example_file_exists_and_contains_date",
+      create => "true",
+      edit_line => lines_present($(sys.date));
 }
 
 bundle edit_line lines_present(lines)
@@ -48,9 +46,7 @@ bundle edit_line lines_present(lines)
 #     }
 {
   insert_lines:
-
-      "$(lines)"
-        comment => "Append lines if they don't exist";
+    "$(lines)" comment => "Append lines if they don't exist";
 }
 ```
 
@@ -148,18 +144,16 @@ body file control
 bundle agent main
 {
   commands:
-      "/bin/true"
-        action => log_my_repairs( '/tmp/repaired.log' );
+    "/bin/true" action => log_my_repairs('/tmp/repaired.log');
 
   reports:
-      "/tmp/repaired.log"
-        printfile => cat( $(this.promiser) );
+    "/tmp/repaired.log" printfile => cat($(this.promiser));
 }
 
-body action log_my_repairs( file )
+body action log_my_repairs(file)
 {
-      log_repaired => "$(file)";
-      log_string => "$(sys.date) REPAIRED $(this.promiser)";
+  log_repaired => "$(file)";
+  log_string => "$(sys.date) REPAIRED $(this.promiser)";
 }
 ```
 

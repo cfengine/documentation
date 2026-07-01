@@ -14,16 +14,13 @@ CFEngine Enterprise variable reports.
 ```cf3
 bundle agent example
 {
-meta:
+  meta:
+    "bundle_version" string => "1.2.3";
+    "works_with_cfengine" slist => { "3.4.0", "3.5.0" };
 
-  "bundle_version" string => "1.2.3";
-  "works_with_cfengine" slist => { "3.4.0", "3.5.0" };
-
-reports:
-
-  "Not a local variable: $(bundle_version)";
-  "Meta data (variable): $(example_meta.bundle_version)";
-
+  reports:
+    "Not a local variable: $(bundle_version)";
+    "Meta data (variable): $(example_meta.bundle_version)";
 }
 ```
 

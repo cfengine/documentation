@@ -12,12 +12,10 @@ default.
 ```cf3
 bundle common g
 {
-classes:
-
-  "one" expression => "any"; # always defined
-  "two"; # always defined
-
-  "client_network" expression => iprange("128.39.89.0/24");
+  classes:
+    "one" expression => "any"; # always defined
+    "two"; # always defined
+    "client_network" expression => iprange("128.39.89.0/24");
 }
 ```
 
@@ -46,8 +44,7 @@ For example, the following promise defines the class `web` when a file exists:
 bundle agent example
 {
   classes:
-      "web"
-        if => fileexists("/etc/httpd/httpd.conf");
+    "web" if => fileexists("/etc/httpd/httpd.conf");
 }
 ```
 
@@ -287,16 +284,14 @@ The value specifies time in minutes.
 ```cf3
 bundle common setclasses
 {
-classes:
+  classes:
+    "cached_classes"
+      or => { "any" },
+      persistence => "1";
 
-  "cached_classes"
-                or => { "any" },
-       persistence => "1";
-
-  "cached_class"
-       expression => "any",
-       persistence => "1";
-
+    "cached_class"
+      expression => "any",
+      persistence => "1";
 }
 ```
 
@@ -314,28 +309,26 @@ put them into a separate bundle in a file `classes.cf`.
 
 ```cf3
 # promises.cf
-
 body common control
 {
-persistent_classes::
-  bundlesequence => { "test" };
+  persistent_classes::
+    bundlesequence => { "test" };
 
-!persistent_classes::
-  bundlesequence => {  "setclasses", "test" };
+  !persistent_classes::
+    bundlesequence => { "setclasses", "test" };
 
-!persistent_classes::
-  inputs => { "classes.cf" };
+  !persistent_classes::
+    inputs => { "classes.cf" };
 }
 
 bundle agent test
 {
-reports:
+  reports:
+    !my_persistent_class::
+      "no persistent class";
 
-  !my_persistent_class::
-   "no persistent class";
-
-  my_persistent_class::
-    "persistent class defined";
+    my_persistent_class::
+      "persistent class defined";
 }
 ```
 
@@ -440,16 +433,18 @@ CFEngine.
 ```cf3
 bundle common g
 {
-classes:
-  "selection" select_class => { "one", "two" };
+  classes:
+    "selection" select_class => { "one", "two" };
 
-reports:
-  one::
-    "One was selected";
-  two::
-    "Two was selected";
-  selection::
-     "A selection was made";
+  reports:
+    one::
+      "One was selected";
+
+    two::
+      "Two was selected";
+
+    selection::
+      "A selection was made";
 }
 ```
 

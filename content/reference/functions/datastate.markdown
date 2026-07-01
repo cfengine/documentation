@@ -47,7 +47,7 @@ bundle agent main
   vars:
     "_state"
       data => datastate(),
-      unless => isvariable( $(this.promiser) );
+      unless => isvariable($(this.promiser));
 }
 ```
 

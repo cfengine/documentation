@@ -14,10 +14,8 @@ with `not_matching`).
 ```cf3
 bundle edit_line example
 {
-delete_lines:
-
-  "olduser:.*";
-
+  delete_lines:
+    "olduser:.*";
 }
 ```
 
@@ -64,14 +62,13 @@ selection).
 ```cf3
 bundle edit_line alpha
 {
-delete_lines:
-    ".*alpha.*"
-   delete_select => starters;
+  delete_lines:
+    ".*alpha.*" delete_select => starters;
 }
 
 body delete_select starters
 {
-    delete_if_startwith_from_list => { "begin", "start", "init" };
+  delete_if_startwith_from_list => { "begin", "start", "init" };
 }
 ```
 
@@ -109,7 +106,7 @@ selection.
 ```cf3
 body delete_select example(s)
 {
-delete_if_not_startwith_from_list => { @(s) };
+  delete_if_not_startwith_from_list => { @(s) };
 }
 ```
 
@@ -129,7 +126,7 @@ initial selection, and the match determination is made only on promised lines.
 ```cf3
 body delete_select example(s)
 {
-delete_if_match_from_list => { @(s) };
+  delete_if_match_from_list => { @(s) };
 }
 ```
 
@@ -149,7 +146,7 @@ initial selection, and the match determination is made only on promised lines.
 ```cf3
 body delete_select example(s)
 {
-delete_if_not_match_from_list => { @(s) };
+  delete_if_not_match_from_list => { @(s) };
 }
 ```
 
@@ -170,7 +167,7 @@ initial selection, and the match determination is made only on promised lines.
 ```cf3
 body delete_select example(s)
 {
-delete_if_contains_from_list => { @(s) };
+  delete_if_contains_from_list => { @(s) };
 }
 ```
 
@@ -191,7 +188,7 @@ promised lines.
 ```cf3
 body delete_select discard(s)
 {
-delete_if_not_contains_from_list => { "substring1", "substring2" };
+  delete_if_not_contains_from_list => { "substring1", "substring2" };
 }
 ```
 

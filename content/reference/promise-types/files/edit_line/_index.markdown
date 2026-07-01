@@ -24,43 +24,39 @@ A typical file editing stanza has the elements in the following example:
 body common control
 {
   version => "1.2.3";
-  bundlesequence  => { "outerbundle"  };
+  bundlesequence => { "outerbundle" };
 }
 
 bundle agent outerbundle
 {
-files:
-
-  "/home/mark/tmp/cf3_test"
-       create    => "true",     # Like autocreate in cf2
-       edit_line => inner_bundle;
+  files:
+    "/home/mark/tmp/cf3_test"
+      create => "true", # Like autocreate in cf2
+      edit_line => inner_bundle;
 }
 
 bundle edit_line inner_bundle
 {
   vars:
-
     "who" string => "SysAdmin John"; # private variable in bundle
-
   insert_lines:
     "/* This file is maintained by CFEngine (see $(who) for details) */",
-    location => first_line;
+      location => first_line;
 
   replace_patterns:
-   # replace shell comments with C comments
-
-   "#(.*)"
+    # replace shell comments with C comments
+    "#(.*)"
       replace_with => C_comment,
-     select_region => MySection("New section");
+      select_region => MySection("New section");
 
   reports:
-      "This is file $(edit.filename)";
+    "This is file $(edit.filename)";
 }
 
 body replace_with C_comment
 {
   replace_value => "/* $(match.1) */"; # backreference
-  occurrences => "all";          # first, last all
+  occurrences => "all"; # first, last all
 }
 
 body select_region MySection(x)
@@ -143,20 +139,18 @@ changes were.
 ```cf3
 bundle agent example
 {
-files:
-
-  "/home/mark/tmp" -> "Security team"
-
-       changes      => lay_a_tripwire,
-       depth_search => recurse("inf"),
-       action       => background;
+  files:
+    "/home/mark/tmp" -> "Security team"
+      changes => lay_a_tripwire,
+      depth_search => recurse("inf"),
+      action => background;
 }
 
 body changes lay_a_tripwire
 {
-  hash           => "md5";
+  hash => "md5";
   report_changes => "content";
-  update         => "yes";
+  update => "yes";
 }
 ```
 
@@ -204,11 +198,11 @@ look at the following code example:
 ```cf3
 bundle agent init
 {
-vars:
+  vars:
     "states" slist => { "actual", "expected" };
 
-    "actual" string =>
-"header
+    "actual"
+      string => "header
 header
 BEGIN
 One potato
@@ -219,8 +213,8 @@ END
 trailer
 trailer";
 
-    "expected" string =>
-"header
+    "expected"
+      string => "header
 header
 One potato
 Two potato
@@ -228,7 +222,7 @@ Four
 trailer
 trailer";
 
-files:
+  files:
     "testfile.$(states)"
       create => "true",
       edit_line => init_insert("$(init.$(states))"),
@@ -237,7 +231,7 @@ files:
 
 bundle edit_line init_insert(str)
 {
-insert_lines:
+  insert_lines:
     "$(str)";
 }
 
@@ -247,22 +241,19 @@ body edit_defaults init_empty
 }
 
 #######################################################
-
 bundle agent test
 {
-vars:
+  vars:
     "tstr" slist => { "BEGIN", "    Three potatoe", "END" };
 
-files:
-    "testfile.actual"
-      edit_line => test_delete("$(test.tstr)");
+  files:
+    "testfile.actual" edit_line => test_delete("$(test.tstr)");
 }
 
 bundle edit_line test_delete(str)
 {
-delete_lines:
-    "$(str)"
-      select_region => test_select;
+  delete_lines:
+    "$(str)" select_region => test_select;
 }
 
 body select_region test_select
@@ -315,9 +306,9 @@ editing. Setting this option to true makes it included.
 ```cf3
 body select_region BracketSection(x)
 {
-select_start => "$(x) \{";
-select_end => "}";
-include_end_delimiter => "true";
+  select_start => "$(x) \{";
+  select_end => "}";
+  include_end_delimiter => "true";
 }
 ```
 
@@ -407,8 +398,8 @@ unaffected by any `delete_lines` promises. See the next section on
 ```cf3
 body select_region example(x)
 {
-select_start => "\[$(x)\]";
-select_end => "\[.*\]";
+  select_start => "\[$(x)\]";
+  select_end => "\[.*\]";
 }
 ```
 
@@ -440,9 +431,9 @@ the file no matter what the value of `select_end_match_eof` is set to.
 ```cf3
 body select_region example(x)
 {
-select_start => "\[$(x)\]";
-select_end => "\[.*\]";
-select_end_match_eof => "true";
+  select_start => "\[$(x)\]";
+  select_end => "\[.*\]";
+  select_end_match_eof => "true";
 }
 ```
 

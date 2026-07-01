@@ -76,11 +76,9 @@ body file control
 ```cf3
 bundle common example_file_control
 {
-   vars:
-     "policy[stdlib]"
-       string => "$(this.policy_dirname)/../my_other_policy.cf";
-
-     "inputs" slist => getvalues( policy );
+  vars:
+    "policy[stdlib]" string => "$(this.policy_dirname)/../my_other_policy.cf";
+    "inputs" slist => getvalues(policy);
 }
 
 body file control

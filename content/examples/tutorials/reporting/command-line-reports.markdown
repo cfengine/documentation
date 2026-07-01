@@ -58,19 +58,14 @@ example of this is shown below.
 ```cf3
 body common control
 {
-bundlesequence => { "test" };
+  bundlesequence => { "test" };
 }
-
-#
 
 bundle agent test
 {
-reports:
-
-  cfengine_3::
-
-   "$(sys.date),This is a report"
-     report_to_file => "/tmp/test_log";
+  reports:
+    cfengine_3::
+      "$(sys.date),This is a report" report_to_file => "/tmp/test_log";
 }
 ```
 
@@ -81,50 +76,36 @@ existing software:
 ```cf3
 body common control
 {
-bundlesequence => { "test" };
+  bundlesequence => { "test" };
 }
-
-#
 
 bundle agent test
 {
-vars:
+  vars:
+    "software" slist => { "gpg", "zip", "rsync" };
 
- "software" slist => { "gpg", "zip", "rsync" };
+  classes:
+    "no_report" expression => fileexists("/tmp/report.html");
+    "have_$(software)" expression => fileexists("/usr/bin/$(software)");
 
-classes:
-
- "no_report"        expression => fileexists("/tmp/report.html");
- "have_$(software)" expression => fileexists("/usr/bin/$(software)");
-
-reports:
-
-  no_report::
-
+  reports:
+    no_report::
       "
       <html>
       Name of this host is: $(sys.host)<br>
       Type of this host is: $(sys.os)<br>
       "
-
-         report_to_file => "/tmp/report.html";
-
-      #
+        report_to_file => "/tmp/report.html";
 
       "
       Host has software $(software)<br>
       "
-
-        if             => "have_$(software)",
+        if => "have_$(software)",
         report_to_file => "/tmp/report.html";
-
-      #
 
       "
       </html>
-      "
-         report_to_file => "/tmp/report.html";
-
+      " report_to_file => "/tmp/report.html";
 }
 ```
 
@@ -155,24 +136,17 @@ For example, the agent `cf-agent` interfaces with the local light-weight monitor
 
 ```cf3
 body common control
-
 {
-bundlesequence  => { "report" };
+  bundlesequence => { "report" };
 }
 
 ###########################################################
-
 bundle agent report
-
 {
-reports:
-
-  linux::
-
-   "/etc/passwd except $(const.n)"
-
-     showstate => { "otherprocs", "rootprocs" };
-
+  reports:
+    linux::
+      "/etc/passwd except $(const.n)"
+        showstate => { "otherprocs", "rootprocs" };
 }
 ```
 
@@ -221,33 +195,23 @@ Finally, you can quote lines from files in your data for convenience:
 
 ```cf3
 body common control
-
 {
-bundlesequence  => { "report" };
+  bundlesequence => { "report" };
 }
 
 ###########################################################
-
 bundle agent report
-
 {
-reports:
-
-  linux::
-
-   "/etc/passwd except $(const.n)"
-
-     printfile => pr("/etc/passwd","5");
-
+  reports:
+    linux::
+      "/etc/passwd except $(const.n)" printfile => pr("/etc/passwd", "5");
 }
 
 ######################################################################
-
-body printfile pr(file,lines)
-
+body printfile pr(file, lines)
 {
-file_to_print => "$(file)";
-number_of_lines => "$(lines)";
+  file_to_print => "$(file)";
+  number_of_lines => "$(lines)";
 }
 ```
 
@@ -273,12 +237,10 @@ handle. `vars` and `classes` type promises can be excluded using its handle
 bundle agent main
 {
   files:
-
     linux::
-
-     "/var/log/noisy.log"
-       handle => "noreport_noisy_log_rotation",
-       rename => rotate(5);
+      "/var/log/noisy.log"
+        handle => "noreport_noisy_log_rotation",
+        rename => rotate(5);
 }
 
 body report_data_select default_data_select_policy_hub
@@ -288,17 +250,17 @@ body report_data_select default_data_select_policy_hub
 # reporting value) should be prefixed with an underscore. By default the policy
 # framework explicitly excludes these variables and classes from collection.
 {
- # Collect all classes or vars tagged with `inventory` or `report`
-      metatags_include => { "inventory", "report" };
+  # Collect all classes or vars tagged with `inventory` or `report`
+  metatags_include => { "inventory", "report" };
 
- # Exclude any classes or vars tagged with `noreport`
-      metatags_exclude => { "noreport" };
+  # Exclude any classes or vars tagged with `noreport`
+  metatags_exclude => { "noreport" };
 
- # Exclude any promise with handle matching `noreport_.*` from report collection.
-      promise_handle_exclude => { "noreport_.*" };
+  # Exclude any promise with handle matching `noreport_.*` from report collection.
+  promise_handle_exclude => { "noreport_.*" };
 
- # Include all metrics from cf-monitord
-      monitoring_include => { ".*" };
+  # Include all metrics from cf-monitord
+  monitoring_include => { ".*" };
 }
 ```
 
@@ -311,20 +273,15 @@ in the Unix/C standard manner:
 ```cf3
 bundle agent test
 {
-commands:
-
-  "/tmp/myjob",
-
-     action => logme("executor");
-
+  commands:
+    "/tmp/myjob" action => logme("executor");
 }
 
 ############################################
-
 body action logme(x)
 {
-log_repaired => "stdout";
-log_string => " -> Started the $(x) (success)";
+  log_repaired => "stdout";
+  log_string => " -> Started the $(x) (success)";
 }
 ```
 
@@ -334,32 +291,26 @@ In the following example, a file creation promise logs different outcomes
 ```cf3
 body common control
 {
-bundlesequence => { "test" };
+  bundlesequence => { "test" };
 }
 
 bundle agent test
 {
-vars:
+  vars:
+    "software" slist => { "/root/xyz", "/tmp/xyz" };
 
-  "software" slist => { "/root/xyz", "/tmp/xyz" };
-
-files:
-
-  "$(software)"
-
-    create => "true",
-     action => logme("$(software)");
-
+  files:
+    "$(software)"
+      create => "true",
+      action => logme("$(software)");
 }
-
-#
 
 body action logme(x)
 {
-log_kept => "/tmp/private_keptlog.log";
-log_failed => "/tmp/private_faillog.log";
-log_repaired => "/tmp/private_replog.log";
-log_string => "$(sys.date) $(x) promise status";
+  log_kept => "/tmp/private_keptlog.log";
+  log_failed => "/tmp/private_faillog.log";
+  log_repaired => "/tmp/private_replog.log";
+  log_string => "$(sys.date) $(x) promise status";
 }
 ```
 
@@ -384,22 +335,20 @@ system logger on a per-promise basis:
 ```cf3
 body common control
 {
-bundlesequence => { "one" };
+  bundlesequence => { "one" };
 }
 
 bundle agent one
 {
-files:
-
-  "/tmp/xyz"
-
-       create => "true",
-       action => log;
+  files:
+    "/tmp/xyz"
+      create => "true",
+      action => log;
 }
 
 body action log
 {
-log_level => "inform";
+  log_level => "inform";
 }
 ```
 
@@ -414,31 +363,27 @@ To make a change tripwire, use a files promise, as shown below:
 ```cf3
 body common control
 {
-bundlesequence  => { "testbundle"  };
+  bundlesequence => { "testbundle" };
 }
-#
 
 bundle agent testbundle
-
 {
-files:
-
-  "/home/mark/tmp" -> "me"
-       changes      => scan_files,
-       depth_search => recurse("inf");
+  files:
+    "/home/mark/tmp" -> "me"
+      changes => scan_files,
+      depth_search => recurse("inf");
 }
 
 # library code ...
-
 body changes scan_files
 {
-report_changes => "all";
-update_hashes  => "true";
+  report_changes => "all";
+  update_hashes => "true";
 }
 
 body depth_search recurse(d)
 {
-depth        => "$(d)";
+  depth => "$(d)";
 }
 ```
 
