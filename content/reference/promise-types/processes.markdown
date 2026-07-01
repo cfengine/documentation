@@ -538,32 +538,18 @@ commands:
 **Description:** A list of names of signals to be sent to a process or sleeps
 between signals.
 
-Signals from the given list are sent to the process in a sequence. Special
-strings of the form `Ns` or just `N` where `N` is a positive integer can be used
-to add sleeps between the signals. On Windows, only the kill signal is
-supported, which terminates the process.
+Signals from the given list are sent to the process in a sequence. Signal
+names are matched case-insensitively, so `TERM`, `term`, and `Term` are all
+equivalent. Special strings of the form `Ns` or just `N` where `N` is a
+positive integer can be used to add sleeps between the signals. On Windows,
+only the kill signal is supported, which terminates the process.
 
 **Type:** (`slist`)
 
 **Allowed input range:**
 
 ```
-hup
-int
-trap
-kill
-pipe
-cont
-abrt
-stop
-quit
-term
-child
-usr1
-usr2
-bus
-segv
-[0-9]+s?
+((?i:hup|int|trap|kill|pipe|cont|abrt|stop|quit|term|child|usr1|usr2|bus|segv)|[0-9]+s?)
 ```
 
 **Example:**
@@ -583,8 +569,17 @@ processes:
    "snmpd"
 
         signals         => { "term" , "5s" , "kill" };
+
+# Signal names are case-insensitive; these are equivalent to the above:
+ any::
+
+   "cfservd"
+
+        signals         => { "TERM" , "5S" , "KILL" };
 ```
 
 **History:**
 
-- 3.18.2, 3.20.0 Added ability to sleep between signals using `Ns`
+- 3.18.2, 3.20.0 Added ability to sleep between signals using `Ns`.
+- 3.28.0 Signal names are now matched case-insensitively (e.g. `TERM`,
+  `term`, and `Term` are all equivalent).
