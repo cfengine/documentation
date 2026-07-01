@@ -312,7 +312,7 @@ commands:
 
   start_me::
 
-    "/path/to/software"
+    "/path/to/software";
 
          # ... many security options, etc
 }
