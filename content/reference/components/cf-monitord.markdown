@@ -167,11 +167,10 @@ to developing the integrated monitoring capabilities of CFEngine.
 ```cf3
 body monitor control
 {
-    #version => "1.2.3.4";
-
-    forgetrate => "0.7";
-    tcpdump => "false";
-    tcpdumpcommand => "/usr/sbin/tcpdump -i eth1 -n -t -v";
+  #version => "1.2.3.4";
+  forgetrate => "0.7";
+  tcpdump => "false";
+  tcpdumpcommand => "/usr/sbin/tcpdump -i eth1 -n -t -v";
 }
 ```
 
@@ -196,7 +195,7 @@ rate) how quickly CFEngine forgets its previous history.
 ```cf3
 body monitor control
 {
-forgetrate => "0.7";
+  forgetrate => "0.7";
 }
 ```
 
@@ -222,7 +221,7 @@ fluctuations about the mean.
 ```cf3
 body monitor control
 {
-histograms => "true";
+  histograms => "true";
 }
 ```
 
@@ -293,7 +292,7 @@ stream and monitor generic package categories for anomalies.
 ```cf3
 body monitor control
 {
-tcpdumpcommand => "/usr/sbin/tcpdump -i eth1";
+  tcpdumpcommand => "/usr/sbin/tcpdump -i eth1";
 }
 ```
 

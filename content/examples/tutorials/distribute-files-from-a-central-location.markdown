@@ -103,10 +103,10 @@ bundle agent sync_from_policyserver(source_path, dest_path)
 {
   files:
     "$(dest_path)/."
-      handle       => "sync_from_policy_server_files_dest_path_copy_from_source_path_sys_policy_hub",
-      copy_from    => sync_cp("$(source_path)", "$(sys.policy_hub)"),
+      handle => "sync_from_policy_server_files_dest_path_copy_from_source_path_sys_policy_hub",
+      copy_from => sync_cp("$(source_path)", "$(sys.policy_hub)"),
       depth_search => recurse("inf"),
-      comment      => "Ensure files from $(sys.policy_hub):$(source_path) exist in $(dest_path)";
+      comment => "Ensure files from $(sys.policy_hub):$(source_path) exist in $(dest_path)";
 }
 ```
 
@@ -122,20 +122,17 @@ Create `services/patching.cf` with the following content:
 
 ```cf3 {file="patching.cf"}
 # Patching Policy
-
 bundle agent patching
 # @brief Ensure various aspects of patching are handeled
-
 # We can break down the various parts of patching into separate bundles. This
 # allows us to become less overwhelmed by details if numerous specifics
 # exist in one or more aspect for different host classifications.
 {
   methods:
-
     "Patch Distribution"
-      handle    => "patching_methods_patch_distribution",
+      handle => "patching_methods_patch_distribution",
       usebundle => "patch_distribution",
-      comment   => "Ensure patches are properly distributed";
+      comment => "Ensure patches are properly distributed";
 }
 
 bundle agent patch_distribution
@@ -143,17 +140,18 @@ bundle agent patch_distribution
 {
   files:
     "$(def.dir_patch_deploy)/."
-      handle  => "patch_distribution_files_def_dir_patch_deploy_exists",
-      create  => "true",
+      handle => "patch_distribution_files_def_dir_patch_deploy_exists",
+      create => "true",
       comment => "If the destination directory does not exist, we have no place
                   to which to copy the patches.";
 
   methods:
-
     "Patches"
-      handle    => "patch_distribution_methods_patches_from_policyserver_def_dir_patch_store_to_def_dir_patch_deploy",
-      usebundle => sync_from_policyserver("$(def.dir_patch_store)", "$(def.dir_patch_deploy)"),
-      comment   => "Patches need to be present on host systems so that we can use
+      handle => "patch_distribution_methods_patches_from_policyserver_def_dir_patch_store_to_def_dir_patch_deploy",
+      usebundle => sync_from_policyserver(
+        "$(def.dir_patch_store)", "$(def.dir_patch_deploy)"
+      ),
+      comment => "Patches need to be present on host systems so that we can use
                    them. By convention we use the policy server as the central
                    distribution point.";
 }

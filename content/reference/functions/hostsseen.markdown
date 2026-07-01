@@ -22,12 +22,11 @@ connected within the specified time.
 ```cf3
 bundle agent test
 {
-vars:
+  vars:
+    "myhosts" slist => { hostsseen("inf", "lastseen", "address") };
 
-  "myhosts" slist => { hostsseen("inf","lastseen","address") };
-
-reports:
-  "Found client/peer: $(myhosts)";
+  reports:
+    "Found client/peer: $(myhosts)";
 }
 ```
 

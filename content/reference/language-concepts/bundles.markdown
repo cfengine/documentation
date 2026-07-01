@@ -64,13 +64,11 @@ definitions.
 ```cf3
 bundle common globals
 {
-vars:
+  vars:
+    "global_var" string => "value";
 
-  "global_var" string => "value";
-
-classes:
-
-  "global_class" expression => "value";
+  classes:
+    "global_class" expression => "value";
 }
 ```
 
@@ -152,7 +150,7 @@ from it that correspond to the second evaluation. In other words, if you have:
 bundle agent mybundle(x)
 {
   vars:
-  "y" string => $(x);
+    "y" string => $(x);
 }
 ```
 

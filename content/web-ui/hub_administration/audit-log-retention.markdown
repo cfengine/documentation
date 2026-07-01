@@ -55,16 +55,16 @@ bundle agent audit_log_retention
 # @brief Prune Mission Portal audit_log entries older than $(days) days
 {
   vars:
-      "days" string => "365";
+    "days" string => "365";
 
   commands:
     policy_server::
       "$(sys.bindir)/psql"
-        args     => "cfsettings -c \"DELETE FROM audit_log WHERE time < NOW() - INTERVAL '$(days) day';\"",
-        contain  => in_shell_and_silent,
-        action   => if_elapsed_day,
-        handle   => "audit_log_retention_prune",
-        comment  => "Prune Mission Portal audit_log entries older than $(days) days";
+        args => "cfsettings -c \"DELETE FROM audit_log WHERE time < NOW() - INTERVAL '$(days) day';\"",
+        contain => in_shell_and_silent,
+        action => if_elapsed_day,
+        handle => "audit_log_retention_prune",
+        comment => "Prune Mission Portal audit_log entries older than $(days) days";
 }
 ```
 

@@ -111,17 +111,17 @@ git remote -v
 
 ```cf3 {file="vcs_update.cf"}
 bundle agent vcs_update
-    {
-    commands:
-      "/usr/bin/git"
-        args => "pull --ff-only upstream master",
-        contain => masterfiles_contain;
-    }
+{
+  commands:
+    "/usr/bin/git"
+      args => "pull --ff-only upstream master",
+      contain => masterfiles_contain;
+}
 
 body contain masterfiles_contain
-    {
-      chdir => "/var/cfengine/masterfiles";
-    }
+{
+  chdir => "/var/cfengine/masterfiles";
+}
 ```
 
 3. Save the file.

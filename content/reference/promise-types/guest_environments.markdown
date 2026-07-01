@@ -110,17 +110,14 @@ time.
 ```cf3
 body environment_interface vnet(primary)
 {
-env_name      => "$(this.promiser)";
-env_addresses => { "$(primary)" };
+  env_name => "$(this.promiser)";
+  env_addresses => { "$(primary)" };
 
-host1::
+  host1::
+    env_network => "default_vnet1";
 
-  env_network => "default_vnet1";
-
-host2::
-
-  env_network => "default_vnet2";
-
+  host2::
+    env_network => "default_vnet2";
 }
 ```
 
@@ -140,14 +137,14 @@ identifier used as 'promiser' by the virtualization manager.
 ```cf3
 body environment_interface vnet(primary)
 {
-env_name      => "$(this.promiser)";
-env_addresses => { "$(primary)" };
+  env_name => "$(this.promiser)";
+  env_addresses => { "$(primary)" };
 
-host1::
-  env_network => "default_vnet1";
+  host1::
+    env_network => "default_vnet1";
 
-host2::
-  env_network => "default_vnet2";
+  host2::
+    env_network => "default_vnet2";
 }
 ```
 
@@ -164,14 +161,14 @@ host2::
 ```cf3
 body environment_interface vnet(primary)
 {
-env_name      => "$(this.promiser)";
-env_addresses => { "$(primary)" };
+  env_name => "$(this.promiser)";
+  env_addresses => { "$(primary)" };
 
-host1::
-  env_network => "default_vnet1";
+  host1::
+    env_network => "default_vnet1";
 
-host2::
-  env_network => "default_vnet2";
+  host2::
+    env_network => "default_vnet2";
 }
 ```
 
@@ -198,9 +195,9 @@ will set a natural limit on this value.
 ```cf3
 body environment_resources my_environment
 {
-env_cpus => "2";
-env_memory => "512"; # in KB
-env_disk => "1024";  # in MB
+  env_cpus => "2";
+  env_memory => "512"; # in KB
+  env_disk => "1024"; # in MB
 }
 ```
 
@@ -224,9 +221,9 @@ natural limit on this value.
 ```cf3
 body environment_resources my_environment
 {
-env_cpus => "2";
-env_memory => "512"; # in KB
-env_disk => "1024";  # in MB
+  env_cpus => "2";
+  env_memory => "512"; # in KB
+  env_disk => "1024"; # in MB
 }
 ```
 
@@ -249,9 +246,9 @@ This parameter is currently unsupported, for future extension.
 ```cf3
 body environment_resources my_environment
 {
-env_cpus => "2";
-env_memory => "512"; # in KB
-env_disk => "1024";  # in MB
+  env_cpus => "2";
+  env_memory => "512"; # in KB
+  env_disk => "1024"; # in MB
 }
 ```
 
@@ -295,9 +292,7 @@ creation; in other words, when `environment_state` is create.
 ```cf3
 body environment_resources virt_xml(host)
 {
-env_spec =>
-
-"<domain type='xen'>
+  env_spec => "<domain type='xen'>
   <name>$(host)/name>
   <os>
     <type>linux/type>

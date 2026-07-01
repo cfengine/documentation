@@ -131,6 +131,7 @@ bundle agent example
     "affected object"
       # ...details....
       ;
+
   processes:
     "affected object"
       # ...details....
@@ -148,8 +149,9 @@ bundle agent some_user_defined_name
     "affected object/promiser"
       # attributes of the promise/details
       ;
+
     # More promises...
-  # More promise types...
+    # More promise types...
 }
 ```
 
@@ -166,6 +168,7 @@ bundle agent some_user_defined_name
   type_of_promise:
     property::
       "make one promise...";
+
     !property::
       "make a different promise...";
 }
@@ -182,11 +185,9 @@ like, as separate promises.
 ```cf3
 bundle agent some_user_defined_name
 {
- classes:
-
-   "cached_result" expression => fileexists("/some/file");
-   "bigger"        and => { isgreaterthan("1","0"), "cached_result" };
-
+  classes:
+    "cached_result" expression => fileexists("/some/file");
+    "bigger" and => { isgreaterthan("1", "0"), "cached_result" };
 }
 ```
 
@@ -202,19 +203,17 @@ classes as booleans:
 bundle agent some_user_defined_name
 {
   classes:
-
-     "cached_result" expression => fileexists("/some/file");
-     "bigger"        and => { isgreaterthan("1","0"), "cached_result" };
+    "cached_result" expression => fileexists("/some/file");
+    "bigger" and => { isgreaterthan("1", "0"), "cached_result" };
 
   reports:
-
     bigger::
       "Bigger is true....";
 
     cached_result&!bigger::
       "Mathematics seems to be awry...";
 
-    # may also be written cached_result.!bigger::
+      # may also be written cached_result.!bigger::
 }
 ```
 
@@ -242,11 +241,10 @@ over each case.
 bundle agent example
 {
   vars:
-     "my_list" slist => { "one", "two", "three" };
+    "my_list" slist => { "one", "two", "three" };
 
   files:
-     "/tmp/file_$(my_list)"
-               create => "true";
+    "/tmp/file_$(my_list)" create => "true";
 }
 ```
 
@@ -256,16 +254,10 @@ The above evaluates to three promises:
 bundle agent example
 {
   files:
-
-     "/tmp/file_one"
-               create => "true";
-
-     "/tmp/file_two"
-               create => "true";
-
-     "/tmp/file_three"
-               create => "true";
- }
+    "/tmp/file_one" create => "true";
+    "/tmp/file_two" create => "true";
+    "/tmp/file_three" create => "true";
+}
 ```
 
 Similarly the following
@@ -274,14 +266,14 @@ Similarly the following
 bundle agent x
 {
   vars:
-     "hi"   string => "Hello";
-     "list1" slist => { "a", "b", "c" };
-     "list2" slist => { "1", "2", "3", "4" };
-     "list3" slist => { "x", "y", "z" };
+    "hi" string => "Hello";
+    "list1" slist => { "a", "b", "c" };
+    "list2" slist => { "1", "2", "3", "4" };
+    "list3" slist => { "x", "y", "z" };
 
   reports:
-     !silly_non_existent_context::
-       "$(hi) $(list1) $(list2) $(list3)";
+    !silly_non_existent_context::
+      "$(hi) $(list1) $(list2) $(list3)";
 }
 ```
 
@@ -338,27 +330,25 @@ calling bundle.
 ```cf3
 body common control
 {
-# Master execution list
-bundlesequence  => { "testbundle"  };
+  # Master execution list
+  bundlesequence => { "testbundle" };
 }
 
 ###########################################
-
 bundle agent testbundle
 {
-vars:
- "userlist" slist => { "one", "two", "three" };
+  vars:
+    "userlist" slist => { "one", "two", "three" };
 
-methods:
- "any" usebundle => subtest("$(userlist)");
+  methods:
+    "any" usebundle => subtest("$(userlist)");
 }
 
 ###########################################
-
 bundle agent subtest(user)
 {
-commands:
-  "/bin/echo Fix $(user)";
+  commands:
+    "/bin/echo Fix $(user)";
 }
 ```
 

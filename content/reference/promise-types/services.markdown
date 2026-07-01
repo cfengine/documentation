@@ -39,12 +39,11 @@ passed to services that are started by CFEngine.
 ```cf3
 bundle agent example
 {
-services:
-
-  "Dhcp"
-    service_policy => "start",
-    service_dependencies => { "Alerter", "W32Time" },
-    service_method => winmethod;
+  services:
+    "Dhcp"
+      service_policy => "start",
+      service_dependencies => { "Alerter", "W32Time" },
+      service_method => winmethod;
 }
 
 body service_method winmethod
@@ -77,9 +76,9 @@ systems and are merely a convenient front-end to `processes` and
 reserved agent bundle called
 
 ```cf3
-bundle agent standard_services(service,state)
+bundle agent standard_services(service, state)
 {
-# ...
+  # ...
 }
 ```
 
@@ -96,31 +95,31 @@ The standard bundle can be replaced with another, as follows:
 ```cf3
 bundle agent test
 {
-vars:
+  vars:
+    "mail" slist => { "spamassassin", "postfix" };
 
- "mail" slist => { "spamassassin", "postfix" };
+  services:
+    "www"
+      service_policy => "start",
+      service_method => service_test;
 
-services:
-
-  "www" service_policy => "start",
-        service_method => service_test;
-
-  "$(mail)" service_policy => "stop",
-            service_method => service_test;
+    "$(mail)"
+      service_policy => "stop",
+      service_method => service_test;
 }
 
 body service_method service_test
 {
-  service_bundle => non_standard_services("$(this.promiser)","$(this.service_policy)");
+  service_bundle => non_standard_services(
+    "$(this.promiser)", "$(this.service_policy)"
+  );
 }
 
-bundle agent non_standard_services(service,state)
+bundle agent non_standard_services(service, state)
 {
-reports:
-
-  !done::
-
-    "Test service promise for \"$(service)\" -> $(state)";
+  reports:
+    !done::
+      "Test service promise for \"$(service)\" -> $(state)";
 }
 ```
 
@@ -171,79 +170,76 @@ standard library.
 bundle agent example
 {
   services:
-
     redhat|centos::
-
       # Manage a service using the standard_services implementation from the
       # standard library.
-
-      "httpd"
-        service_policy => "disable";
+      "httpd" service_policy => "disable";
 
     any::
-
       # Manage a custom service using custom service_method
-
       "myservice"
         service_policy => "my_custom_state",
         service_method => "my_custom_service_method";
 
     windows::
-
-        "AdobeARMservice"
-          service_policy => "stop",
-          comment => "Ensure the Adobe Acrobat Update Service is not running. It
+      "AdobeARMservice"
+        service_policy => "stop",
+        comment => "Ensure the Adobe Acrobat Update Service is not running. It
                       may or may not be automatically started on the next boot
                       depending on the configuration.";
 
-        "CfengineNovaExec"
-          service_policy => "enable",
-          service_method => bootstart, # Ref stdlib
-          comment => "Ensure cf-execd is running and configured to start on
+      "CfengineNovaExec"
+        service_policy => "enable",
+        service_method => bootstart, # Ref stdlib
+        comment => "Ensure cf-execd is running and configured to start on
                       boot.";
 
-        "VBoxService"
-          service_policy => "start",
-          service_method => bootstart, # Ref stdlib
-          comment => "Ensure VirtualBox Guest Additions Service is running and
+      "VBoxService"
+        service_policy => "start",
+        service_method => bootstart, # Ref stdlib
+        comment => "Ensure VirtualBox Guest Additions Service is running and
                       configured to start on boot.";
 
-        "Spooler"
-          service_policy => "disable",
-          comment => "Ensure the Print Spooler is not running and will not start
+      "Spooler"
+        service_policy => "disable",
+        comment => "Ensure the Print Spooler is not running and will not start
                       automatically on boot. We do not want to kill any trees.";
 
-        "tzautoupdate"
-          service_policy => "start",
-          comment => "Ensure that the Auto Time Zone Updated is running, and set
+      "tzautoupdate"
+        service_policy => "start",
+        comment => "Ensure that the Auto Time Zone Updated is running, and set
                       Startup Type to Manual.";
-
 }
 
 body service_method my_custom_service_method
 {
-
   windows::
-    service_bundle => my_custom_service_method_windows( $(this.promiser), $(this.service_policy) );
+    service_bundle => my_custom_service_method_windows(
+      $(this.promiser), $(this.service_policy)
+    );
 
   redhat|centos::
-    service_bundle => my_custom_service_method_rhel( $(this.promiser), $(this.service_policy) );
+    service_bundle => my_custom_service_method_rhel(
+      $(this.promiser), $(this.service_policy)
+    );
 
   debian|ubuntu::
-    service_bundle => my_custom_service_method_deb( $(this.promiser), $(this.service_policy) );
+    service_bundle => my_custom_service_method_deb(
+      $(this.promiser), $(this.service_policy)
+    );
 }
 
-bundle agent my_custom_service_method_windows( service_identifier, desired_service_state )
+bundle agent my_custom_service_method_windows(service_identifier, desired_service_state)
 {
   # Specific windows implementation
 }
 
-bundle agent my_custom_service_method_rhel( service_identifier, desired_service_state )
+bundle agent my_custom_service_method_rhel(service_identifier, desired_service_state)
 {
   # Specific Redhat|Centos implementation
 }
 
-bundle agent my_custom_service_method_deb( service_identifier, desired_service_state )
+bundle agent my_custom_service_method_deb(service_identifier, desired_service_state)
 {
   # Specific Debian|Ubuntu implementation
 }

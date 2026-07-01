@@ -57,13 +57,7 @@ reports:
 bundle agent iteration1
 {
   vars:
-    "monvars"
-      slist => {
-       "rootprocs",
-       "otherprocs",
-       "diskfree",
-       "loadavg"
-     };
+    "monvars" slist => { "rootprocs", "otherprocs", "diskfree", "loadavg" };
 
   reports:
     cfengine_3::
@@ -100,15 +94,8 @@ The answer is simply to do another iteration:
 bundle agent iteration2
 {
   vars:
-    "stats"
-      slist => { "value", "av", "dev" };
-    "monvars"
-      slist => {
-        "rootprocs",
-        "otherprocs",
-        "diskfree",
-        "loadavg"
-      };
+    "stats" slist => { "value", "av", "dev" };
+    "monvars" slist => { "rootprocs", "otherprocs", "diskfree", "loadavg" };
 
   reports:
     cfengine_3::
@@ -139,15 +126,17 @@ bundle agent iteration3a
   vars:
     "stats" slist => { "value", "av", "dev" };
     "inout" slist => { "in", "out" };
-    "monvars" slist => {
-      "rootprocs",
-      "otherprocs",
-      "diskfree",
-      "loadavg",
-      "smtp_$(inout)",  #
-      "www_$(inout)",   # look here
-      "wwws_$(inout)"   #
-    };
+
+    "monvars"
+      slist => {
+        "rootprocs",
+        "otherprocs",
+        "diskfree",
+        "loadavg",
+        "smtp_$(inout)", #
+        "www_$(inout)", # look here
+        "wwws_$(inout)", #
+      };
 
   reports:
     cfengine_3::
@@ -174,8 +163,7 @@ example above is exactly the same as if we had said the following:
 bundle agent iteration3b
 {
   vars:
-    "stats"
-      slist => { "value", "av", "dev" };
+    "stats" slist => { "value", "av", "dev" };
 
     "monvars"
       slist => {
@@ -185,7 +173,7 @@ bundle agent iteration3b
         "loadavg",
         "smtp_in",
         "www_in",
-        "wwws_in"
+        "wwws_in",
       };
 
     "monvars"
@@ -196,7 +184,7 @@ bundle agent iteration3b
         "loadavg",
         "smtp_out",
         "www_out",
-        "wwws_out"
+        "wwws_out",
       };
 
   reports:
@@ -218,22 +206,20 @@ the reports are the second definition of the monvars list.
 bundle agent iteration3c
 {
   vars:
-    "stats"
-      slist => { "value", "av", "dev" };
-    "inout"
-      slist => { "in", "out" };
+    "stats" slist => { "value", "av", "dev" };
+    "inout" slist => { "in", "out" };
 
     "monvars_$(inout)"
       slist => {
-        "smtp_$(inout)",  #
-        "www_$(inout)",   # look here
-        "wwws_$(inout)"   #
+        "smtp_$(inout)", #
+        "www_$(inout)", # look here
+        "wwws_$(inout)", #
       };
 
-reports:
-  cfengine_3::
-    "mon.$(stats)_$(monvars_in)  is $(mon.$(stats)_$(monvars_in))";
-    "mon.$(stats)_$(monvars_out) is $(mon.$(stats)_$(monvars_out))";
+  reports:
+    cfengine_3::
+      "mon.$(stats)_$(monvars_in)  is $(mon.$(stats)_$(monvars_in))";
+      "mon.$(stats)_$(monvars_out) is $(mon.$(stats)_$(monvars_out))";
 }
 ```
 
@@ -261,12 +247,12 @@ left-hand side, and the symbols list is only referenced in the left-hand side:
 ```cf3
 bundle agent iteration4a
 {
-vars:
+  vars:
     "letters" slist => { "a", "b" };
-    "digits"  slist => { "1", "2" };
+    "digits" slist => { "1", "2" };
     "symbols" slist => { "@", "#" };
 
-commands:
+  commands:
     "/bin/echo ${letters}, ${digits}+${digits}, "
       args => "${letters} and ${symbols}'";
 }
@@ -310,21 +296,14 @@ solve the problem of listing the input and output packet counts:
 bundle agent iteration5a
 {
   vars:
-    "stats"
-      slist => { "value", "av", "dev" };
-    "inout"
-      slist => { "in", "out" };
-    "io_names"
-      slist => { "smtp", "www", "wwws" };
-    "io_vars[$(io_names)_$(inout)]"
-      int => "0";
+    "stats" slist => { "value", "av", "dev" };
+    "inout" slist => { "in", "out" };
+    "io_names" slist => { "smtp", "www", "wwws" };
+    "io_vars[$(io_names)_$(inout)]" int => "0";
+
     "monvars"
       slist => {
-        "rootprocs",
-        "otherprocs",
-        "diskfree",
-        "loadavg",
-        getindices("io_vars")
+        "rootprocs", "otherprocs", "diskfree", "loadavg", getindices("io_vars")
       };
 
   reports:
@@ -385,22 +364,13 @@ following:
 bundle agent iteration5b
 {
   vars:
-    "stats"
-      slist => { "value", "av", "dev" };
-    "inout"
-      slist => { "in", "out" };
-    "io_names"
-      slist => { "smtp", "www", "wwws" };
-    "io_vars[$(io_names)_$(inout)]"
-      string => "$(io_names)_$(inout)";
+    "stats" slist => { "value", "av", "dev" };
+    "inout" slist => { "in", "out" };
+    "io_names" slist => { "smtp", "www", "wwws" };
+    "io_vars[$(io_names)_$(inout)]" string => "$(io_names)_$(inout)";
+
     "monvars"
-      slist => {
-        "rootprocs",
-        "otherprocs",
-        "diskfree",
-        "loadavg",
-        @(io_vars)
-      };
+      slist => { "rootprocs", "otherprocs", "diskfree", "loadavg", @(io_vars) };
 
   reports:
     cfengine_3::
@@ -421,10 +391,9 @@ monitoring variables available to us in CFEngine:
 bundle agent iteration6
 {
   vars:
-    "stats"
-      slist => {"value", "av", "dev"};
-    "inout"
-      slist => {"in", "out"};
+    "stats" slist => { "value", "av", "dev" };
+    "inout" slist => { "in", "out" };
+
     "io_names"
       slist => {
         "netbiosns",
@@ -444,19 +413,14 @@ bundle agent iteration6
         "tcpsyn",
         "tcpack",
         "tcpfin",
-        "tcpmisc"
+        "tcpmisc",
       };
-    "io_vars[$(io_names)_$(inout)]"
-      string => "$(io_names)_$(inout)";
-    "n"
-      slist => {"0", "1", "2", "3"};
-    "n_names"
-      slist => {
-        "temp",
-        "cpu"
-      };
-    "n_vars[$(n_names)$(n)]"
-      string => "$(n_names)$(n)";
+
+    "io_vars[$(io_names)_$(inout)]" string => "$(io_names)_$(inout)";
+    "n" slist => { "0", "1", "2", "3" };
+    "n_names" slist => { "temp", "cpu" };
+    "n_vars[$(n_names)$(n)]" string => "$(n_names)$(n)";
+
     "monvars"
       slist => {
         "rootprocs",
@@ -468,12 +432,12 @@ bundle agent iteration6
         "syslog",
         "messages",
         getindices("io_vars"),
-        getindices("n_vars")
+        getindices("n_vars"),
       };
 
-reports:
-  cfengine_3::
-    "mon.$(stats)_$(monvars) is $(mon.$(stats)_$(monvars))";
+  reports:
+    cfengine_3::
+      "mon.$(stats)_$(monvars) is $(mon.$(stats)_$(monvars))";
 }
 ```
 

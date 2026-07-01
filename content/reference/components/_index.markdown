@@ -27,24 +27,13 @@ affect the behavior of all the components.
 
 ```cf3
 body common control
-
 {
-inputs  => {
-           "update.cf",
-           "library.cf"
-           };
-
-bundlesequence  => {
-                   update("policy_host.domain.tld"),
-                   "main",
-                   "cfengine2"
-                   };
-
-goal_categories => { "goals", "targets", "milestones" };
-goal_patterns   => { "goal_.*", "target.*" };
-
-output_prefix => "cfengine>";
-version => "1.2.3";
+  inputs => { "update.cf", "library.cf" };
+  bundlesequence => { update("policy_host.domain.tld"), "main", "cfengine2" };
+  goal_categories => { "goals", "targets", "milestones" };
+  goal_patterns => { "goal_.*", "target.*" };
+  output_prefix => "cfengine>";
+  version => "1.2.3";
 }
 ```
 
@@ -70,13 +59,8 @@ A `bundlesequence` may also be specified using the `-b` or
 
 ```cf3
 body common control
-
 {
-bundlesequence  => {
-                   update("policy_host.domain.tld"),
-                   "main",
-                   "cfengine2"
-                   };
+  bundlesequence => { update("policy_host.domain.tld"), "main", "cfengine2" };
 }
 ```
 
@@ -108,21 +92,17 @@ use global variable lists to do this:
 ```cf3
 body common control
 {
-webservers::
+  webservers::
+    bundlesequence => { @(g.bs), "web" };
 
-  bundlesequence => { @(g.bs), "web" };
-
-others::
-
-  bundlesequence => { @(g.bs), "otherstuff" };
-
+  others::
+    bundlesequence => { @(g.bs), "otherstuff" };
 }
 
 bundle common g
 {
-vars:
-
-  "bs" slist => { "main", "basic_stuff" };
+  vars:
+    "bs" slist => { "main", "basic_stuff" };
 }
 ```
 
@@ -156,7 +136,6 @@ facilities.
 
 ```cf3
 body common control
-
 {
   bwlimit => "10M";
 }
@@ -216,7 +195,7 @@ discovery and name-lookup.
 ```cf3
 body common control
 {
-domain => "example.org";
+  domain => "example.org";
 }
 ```
 
@@ -269,7 +248,7 @@ business goals in promises.
 ```cf3
 body common control
 {
-goal_patterns => { "goal_.*", "target.*" };
+  goal_patterns => { "goal_.*", "target.*" };
 }
 ```
 
@@ -350,10 +329,7 @@ as the file which references them (this is usually
 ```cf3
 body common control
 {
-inputs  => {
-           "update.cf",
-           "library.cf"
-           };
+  inputs => { "update.cf", "library.cf" };
 }
 ```
 
@@ -395,7 +371,7 @@ after which last-seen entries are purged. It is an **enterprise-only** feature.
 ```cf3
 body common control
 {
-lastseenexpireafter => "72";
+  lastseenexpireafter => "72";
 }
 ```
 
@@ -416,7 +392,7 @@ lastseenexpireafter => "72";
 ```cf3
 body common control
 {
-output_prefix => "my_cf3";
+  output_prefix => "my_cf3";
 }
 ```
 
@@ -442,7 +418,7 @@ Enterprise inventory reporting.
 ```cf3
 body common control
 {
-    package_inventory => { "apt_get" };
+  package_inventory => { "apt_get" };
 }
 ```
 
@@ -462,7 +438,7 @@ if none is specified in the promise.
 ```cf3
 body common control
 {
-    package_module => "apt_get";
+  package_module => "apt_get";
 }
 ```
 
@@ -502,11 +478,9 @@ promises.
 
 ```cf3
 body common control
-
 {
-common::
-
-require_comments => "true";
+  common::
+    require_comments => "true";
 }
 ```
 
@@ -534,7 +508,7 @@ Each string is expected to be a class.
 ```cf3
 body common control
 {
-site_classes => { "datacenters","datacentres"  }; # locations is by default
+  site_classes => { "datacenters", "datacentres" }; # locations is by default
 }
 ```
 
@@ -559,8 +533,8 @@ CFEngine's components may promise to send data.
 ```cf3
 body common control
 {
-syslog_host => "syslog.example.org";
-syslog_port => "514";
+  syslog_host => "syslog.example.org";
+  syslog_port => "514";
 }
 ```
 
@@ -583,8 +557,8 @@ components may promise to send data.
 ```cf3
 body common control
 {
-syslog_host => "syslog.example.org";
-syslog_port => "514";
+  syslog_host => "syslog.example.org";
+  syslog_port => "514";
 }
 ```
 
@@ -608,6 +582,7 @@ body common control
 @if minimum_version(3.18.1)
   windows::
     system_log_level => "critical";
+
   cfengine::
 @endif
 }
@@ -632,8 +607,8 @@ For a list of possible ciphers, see man page for "openssl ciphers".
 ```cf3
 body common control
 {
-    # Use one of these ciphers when making outbound connections
-    tls_ciphers => "AES128-SHA";
+  # Use one of these ciphers when making outbound connections
+  tls_ciphers => "AES128-SHA";
 }
 ```
 
@@ -650,8 +625,8 @@ body common control
 ```cf3
 body common control
 {
-    # Allow only TLSv1.1 or higher for outgoing connections
-    tls_min_version => "1.1";
+  # Allow only TLSv1.1 or higher for outgoing connections
+  tls_min_version => "1.1";
 }
 ```
 
@@ -679,7 +654,7 @@ restriction might be lifted later.
 ```cf3
 body common control
 {
-version => "1.2.3";
+  version => "1.2.3";
 }
 ```
 

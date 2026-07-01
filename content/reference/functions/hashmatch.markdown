@@ -21,15 +21,14 @@ version of a binary file (e.g. software patch).
 ```cf3
 bundle agent example
 {
-classes:
+  classes:
+    "matches"
+      expression => hashmatch(
+        "/etc/passwd", "md5", "c5068b7c2b1707f8939b283a2758a691"
+      );
 
-  "matches" expression => hashmatch("/etc/passwd","md5","c5068b7c2b1707f8939b283a2758a691");
-
-reports:
-
-  matches::
-
-    "File has correct version";
-
+  reports:
+    matches::
+      "File has correct version";
 }
 ```
