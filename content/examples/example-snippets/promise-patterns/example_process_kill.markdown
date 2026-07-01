@@ -19,8 +19,9 @@ body common control
 bundle agent process_kill
 {
   processes:
-    "sleep" signals => { "term", "kill" }; #Signals are presented as an ordered list to the process.
-      #On Windows, only the kill signal is supported, which terminates the process.
+    # Signals are presented as an ordered list to the process.
+    # On Windows, only the kill signal is supported, which terminates the process.
+    "sleep" signals => { "term", "kill" };
 }
 ```
 
