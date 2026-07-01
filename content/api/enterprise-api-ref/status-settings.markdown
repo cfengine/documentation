@@ -147,6 +147,27 @@ administrator.
 - **passwordExpirationAfterResetHours** _(integer)_
   Specifies the number of hours after which a password must expire following a reset.
   Default value: `48`
+- **disableAI** _(boolean)_
+  Disables all AI features, including the [AI chat][AI chat API] endpoint.
+  Default value: `false`
+- **allowLlmViewAccessToAttributesNames** _(boolean)_
+  Allows the LLM used by the [AI chat][AI chat API] to receive the names of inventory attributes when generating SQL queries. When `false`, the AI chat operates without knowledge of attribute names defined on the hub.
+  Default value: `false`
+- **deletedHostsCleanup** _(object)_
+  Configuration for the deleted-hosts stage of the [Host cleanup API][Host cleanup API]. Object shape: `{ "enabled": boolean, "days": integer }`. Deleted hosts older than `days` are permanently removed when enabled.
+  Default value: `{ "enabled": false, "days": 90 }`
+- **duplicateHostnameHostsCleanup** _(object)_
+  Configuration for the duplicate-hostname stage of the [Host cleanup API][Host cleanup API]. Object shape: `{ "enabled": boolean, "completelyClear": boolean }`. When `completelyClear` is `true`, deleted duplicates are also permanently removed in the same run.
+  Default value: `{ "enabled": false, "completelyClear": false }`
+- **duplicateIpHostsCleanup** _(object)_
+  Configuration for the duplicate-IP stage of the [Host cleanup API][Host cleanup API]. Object shape: `{ "enabled": boolean, "completelyClear": boolean }`. When `completelyClear` is `true`, deleted duplicates are also permanently removed in the same run.
+  Default value: `{ "enabled": false, "completelyClear": false }`
+- **groupHostsCleanup** _(object)_
+  Configuration for the group stage of the [Host cleanup API][Host cleanup API]. Object shape: `{ "enabled": boolean, "groupId": integer, "completelyClear": boolean }`. Every host in the given shared group is deleted when enabled. When `completelyClear` is `true`, deleted hosts are also permanently removed in the same run.
+  Default value: `{ "enabled": false, "groupId": "", "completelyClear": false }`
+- **inactiveHostsCleanup** _(object)_
+  Configuration for the inactivity stage of the [Host cleanup API][Host cleanup API]. Object shape: `{ "enabled": boolean, "days": integer, "completelyClear": boolean }`. Hosts that have not reported for `days` days are deleted when enabled. When `completelyClear` is `true`, deleted hosts are also permanently removed in the same run.
+  Default value: `{ "enabled": false, "days": 30, "completelyClear": false }`
 
 **Example Request Body:**
 
@@ -161,7 +182,14 @@ administrator.
   "minPasswordLength": 12,
   "passwordComplexity": 4,
   "passwordExpirationAfterResetHours": 24,
-  "enforce2FA": true
+  "enforce2FA": true,
+  "disableAI": false,
+  "allowLlmViewAccessToAttributesNames": true,
+  "deletedHostsCleanup": { "enabled": true, "days": 90 },
+  "duplicateHostnameHostsCleanup": { "enabled": true, "completelyClear": false },
+  "duplicateIpHostsCleanup": { "enabled": false, "completelyClear": false },
+  "groupHostsCleanup": { "enabled": false, "groupId": 12, "completelyClear": false },
+  "inactiveHostsCleanup": { "enabled": true, "days": 30, "completelyClear": true }
 }
 ```
 
