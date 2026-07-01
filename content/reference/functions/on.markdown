@@ -18,7 +18,7 @@ The specified date/time is an absolute date in the local timezone.
 ```cf3
 body file_select zero_age
 {
-  mtime       => irange(on(2000,1,1,0,0,0),now);
+  mtime => irange(on(2000, 1, 1, 0, 0, 0), now);
   file_result => "mtime";
 }
 ```

@@ -14,10 +14,9 @@ body-attributes. The promise object referred to is a literal string of text.
 ```cf3
 bundle edit_xml example
 {
-delete_text:
-
-  "text content to match, as a substring, of text to be deleted from specified node"
-    select_xpath => "/Server/Service/Engine/Host/Alias";
+  delete_text:
+    "text content to match, as a substring, of text to be deleted from specified node"
+      select_xpath => "/Server/Service/Engine/Host/Alias";
 }
 ```
 

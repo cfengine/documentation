@@ -20,12 +20,12 @@ Note that, unlike some other functions, the month argument is 1-based (i.e. 1 co
 ```cf3
 bundle agent example
 {
-    classes:
+  classes:
+    "after_deadline" expression => laterthan(2000, 1, 1, 0, 0, 0);
 
-      "after_deadline" expression => laterthan(2000,1,1,0,0,0);
-    reports:
-      after_deadline::
-        "deadline has passed";
+  reports:
+    after_deadline::
+      "deadline has passed";
 }
 ```
 

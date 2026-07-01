@@ -21,14 +21,11 @@ directory, `WORKDIR/modules`.
 bundle agent test
 {
   classes:
-
-      # returns $(user)
-
-      "done" expression => usemodule("getusers","");
+    # returns $(user)
+    "done" expression => usemodule("getusers", "");
 
   commands:
-
-      "/bin/echo" args => "test $(user)";
+    "/bin/echo" args => "test $(user)";
 }
 ```
 

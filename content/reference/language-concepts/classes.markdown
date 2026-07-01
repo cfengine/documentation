@@ -255,18 +255,18 @@ This example defines a few soft classes local to the `myclasses` bundle.
 ```cf3
 bundle agent myclasses
 {
-classes:
-  "always";
-  "always2" expression => "any";
-  "solinux" expression => "linux||solaris";
-  "alt_class" or => { "linux", "solaris", fileexists("/etc/fstab") };
-  "oth_class" and => { fileexists("/etc/shadow"), fileexists("/etc/passwd") };
+  classes:
+    "always";
+    "always2" expression => "any";
+    "solinux" expression => "linux||solaris";
+    "alt_class" or => { "linux", "solaris", fileexists("/etc/fstab") };
+    "oth_class" and => { fileexists("/etc/shadow"), fileexists("/etc/passwd") };
 
-reports:
-  alt_class::
-    # This will only report "Boo!" on linux, solaris, or any system
-    # on which the file /etc/fstab exists
-    "Boo!";
+  reports:
+    alt_class::
+      # This will only report "Boo!" on linux, solaris, or any system
+      # on which the file /etc/fstab exists
+      "Boo!";
 }
 ```
 
@@ -314,14 +314,14 @@ bundle agent greetings
     Evening::
       "Good evening!";
 
-      "! any"::
+    "! any"::
       "This report won't ever be seen.";
 
-      # whitespace allowed only in 3.8 and later
-      Friday . Evening::
+    # whitespace allowed only in 3.8 and later
+    Friday . Evening::
       "It's Friday evening, TGIF!";
 
-      "Monday . Evening"::
+    "Monday . Evening"::
       "It's Monday evening.";
 }
 ```
@@ -355,16 +355,16 @@ variables:
 ```cf3
 bundle agent greetings
 {
- vars:
-  "myclassname" string => "Evening";
+  vars:
+    "myclassname" string => "Evening";
 
   reports:
-   "$(myclassname)"::
-     "Good evening!";
-     "What a wonderful sunset";
+    "$(myclassname)"::
+      "Good evening!";
+      "What a wonderful sunset";
 
-   any::
-     "Good evening too!" if => "$(myclassname)";
+    any::
+      "Good evening too!" if => "$(myclassname)";
 }
 ```
 
@@ -378,42 +378,39 @@ as the resulting expansion is a legal class expression.
 bundle agent example
 {
   vars:
-          "french_cities"  slist => { "toulouse", "paris" };
-          "german_cities"  slist => { "berlin" };
-          "italian_cities" slist => { "milan" };
-          "usa_cities"     slist => { "lawrence" };
+    "french_cities" slist => { "toulouse", "paris" };
+    "german_cities" slist => { "berlin" };
+    "italian_cities" slist => { "milan" };
+    "usa_cities" slist => { "lawrence" };
 
-          "all_cities" slist => { @(french_cities), @(german_cities), @(italian_cities), @(usa_cities) };
+    "all_cities"
+      slist => {
+        @(french_cities), @(german_cities), @(italian_cities), @(usa_cities)
+      };
 
   classes:
-      "italy"   or => { @(italian_cities) };
-      "germany" or => { @(german_cities) };
-      "france"  or => { @(french_cities) };
+    "italy" or => { @(italian_cities) };
+    "germany" or => { @(german_cities) };
+    "france" or => { @(french_cities) };
 
   reports:
     "It's $(sys.date) here";
 
     Morning.italy::
-      "Good morning from Italy",
-        if => "$(all_cities)";
+      "Good morning from Italy" if => "$(all_cities)";
 
     Afternoon.germany::
-      "Good afternoon from Germany",
-        if => "$(all_cities)";
+      "Good afternoon from Germany" if => "$(all_cities)";
 
     france::
-      "Hello from France",
-        if => "$(all_cities)";
+      "Hello from France" if => "$(all_cities)";
 
     france::
-      "IMPOSSSIBLE!  THIS WILL NOT PRINT!!!",
-        unless => "france";
+      "IMPOSSSIBLE!  THIS WILL NOT PRINT!!!" unless => "france";
 
     "$(all_cities)"::
       "Hello from $(all_cities)";
-
-    "Hello from $(all_cities), if edition",
-      if => "$(all_cities)";
+      "Hello from $(all_cities), if edition" if => "$(all_cities)";
 }
 ```
 
@@ -544,27 +541,32 @@ containers to be used in context expressions:
 ```cf3
 bundle agent main
 {
-    vars:
-      "checks" data => '[true, false]';
-      # find all classes named
-      "classes_named_true" slist => classesmatching('true');
+  vars:
+    "checks" data => '[true, false]';
+
+    # find all classes named
+    "classes_named_true" slist => classesmatching('true');
 
   classes:
-      # always defined
-      "first_check" expression => "$(checks[0])";
-      # never defined
-      "second_check" expression => "$(checks[1])";
+    # always defined
+    "first_check" expression => "$(checks[0])";
+
+    # never defined
+    "second_check" expression => "$(checks[1])";
 
   reports:
-      # prints nothing, there are no classes named 'true'
-      "Classes named 'true': $(classes_named_true)";
+    # prints nothing, there are no classes named 'true'
+    "Classes named 'true': $(classes_named_true)";
 
     first_check::
       "The class was defined from '$(checks[0])'";
+
     !first_check::
       "The class was NOT defined from '$(checks[0])'";
+
     second_check::
       "The class was defined from '$(checks[1])'";
+
     !second_check::
       "The class was NOT defined from '$(checks[1])'";
 }
@@ -640,42 +642,39 @@ Finally, `restart_class` classes in `processes` are global.
 ```cf3
 body common control
 {
-    bundlesequence => { "global","local_one", "local_two" };
+  bundlesequence => { "global", "local_one", "local_two" };
 }
 
 #################################
-
 bundle common global
 {
-    classes:
-        # The soft class "zero" is always satisfied,
-        # and is global in scope
-        "zero" expression => "any";
+  classes:
+    # The soft class "zero" is always satisfied,
+    # and is global in scope
+    "zero" expression => "any";
 }
 
 #################################
-
 bundle agent local_one
 {
-    classes:
-        # The soft class "one" is always satisfied,
-        # and is local in scope to local_one
-        "one" expression => "any";
+  classes:
+    # The soft class "one" is always satisfied,
+    # and is local in scope to local_one
+    "one" expression => "any";
 }
 
 #################################
-
 bundle agent local_two
 {
-    classes:
-        # The soft class "two" is always satisfied,
-        # and is local in scope to ls_2
-        "two" expression => "any";
+  classes:
+    # The soft class "two" is always satisfied,
+    # and is local in scope to ls_2
+    "two" expression => "any";
 
-    reports:
-        zero.!one.two::
-            # This report will be generated
-            "Success";
+  reports:
+    zero.!one.two::
+      # This report will be generated
+      "Success";
 }
 ```
 

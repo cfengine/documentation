@@ -61,11 +61,12 @@ Create a file called `/tmp/editconfig.cf` with the following content:
 bundle agent myapp_confs
 {
   files:
-      "/tmp/myapp.conf"
+    "/tmp/myapp.conf"
       create => "true",
       edit_template => "/tmp/myapp.conf.template",
       template_method => "mustache",
-      template_data => parsejson('
+      template_data => parsejson(
+        '
          {
             "port": 3508,
             "protocol": 2,
@@ -78,8 +79,10 @@ bundle agent myapp_confs
                 {"user": "malin", "level": "guest"}
                ]
           }
-    ');
+    '
+      );
 }
+
 bundle agent __main__
 {
   methods:

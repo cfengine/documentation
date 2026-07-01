@@ -34,17 +34,17 @@ bundle agent file_integrity
 {
   files:
     any::
-      "/tmp/test-integrity" -> {"PCI-DSS-2", "SOX-nightmare"}
+      "/tmp/test-integrity" -> { "PCI-DSS-2", "SOX-nightmare" }
         handle => "ensure-test-file-integrity",
         changes => change_detection;
 }
 
 body changes change_detection
 {
- hash => "md5";
- update_hashes => "true";
- report_changes => "all";
- report_diffs => "true";
+  hash => "md5";
+  update_hashes => "true";
+  report_changes => "all";
+  report_diffs => "true";
 }
 ```
 

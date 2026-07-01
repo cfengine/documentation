@@ -42,15 +42,12 @@ by the `splayclass` is a time when you have told CFEngine _not_ to run).
 ```cf3
 bundle agent example
 {
-classes:
+  classes:
+    "my_turn" expression => splayclass("$(sys.host)$(sys.ipv4)", "daily");
 
-  "my_turn" expression => splayclass("$(sys.host)$(sys.ipv4)","daily");
-
-reports:
-
-  my_turn::
-
-    "Load balanced class activated";
+  reports:
+    my_turn::
+      "Load balanced class activated";
 }
 ```
 

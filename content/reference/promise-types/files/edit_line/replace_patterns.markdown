@@ -24,14 +24,13 @@ match a line fragment, that is, it is [unanchored][unanchored].
 bundle edit_line upgrade_cfexecd
 {
   replace_patterns:
-
     "cfexecd" replace_with => value("cf-execd");
 }
 
-body replace_with value(x)  # defined in cfengine_stdlib.cf
+body replace_with value(x) # defined in cfengine_stdlib.cf
 {
-replace_value => "$(x)";
-occurrences => "all";
+  replace_value => "$(x)";
+  occurrences => "all";
 }
 ```
 
@@ -79,7 +78,7 @@ Replace only the first occurrence. Note: this is non-convergent.
 ```cf3
 body replace_with example
 {
-occurrences => "first";        # Warning! Using "first" is non-convergent
+  occurrences => "first"; # Warning! Using "first" is non-convergent
 }
 ```
 
@@ -96,7 +95,7 @@ occurrences => "first";        # Warning! Using "first" is non-convergent
 ```cf3
 body replace_with example(s)
 {
-replace_value => "$(s)";
+  replace_value => "$(s)";
 }
 ```
 

@@ -49,22 +49,20 @@ Seconds of runtime
 bundle agent testbundle
 {
   processes:
-
-   ".*"
-
-      process_count   => anyprocs,
-      process_select  => proc_finder;
+    ".*"
+      process_count => anyprocs,
+      process_select => proc_finder;
 
   reports:
-
-   any_procs::
-
-     "Found processes in range";
+    any_procs::
+      "Found processes in range";
 }
 
 body process_select proc_finder
 {
-  ttime_range => irange(accumulated(0,0,0,0,2,0),accumulated(0,0,0,0,20,0));
+  ttime_range => irange(
+    accumulated(0, 0, 0, 0, 2, 0), accumulated(0, 0, 0, 0, 20, 0)
+  );
   process_result => "ttime";
 }
 

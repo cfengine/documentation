@@ -40,21 +40,23 @@ body common control
 bundle agent main
 {
   vars:
-  "users" slist => { "adam", "eva" };
+    "users" slist => { "adam", "eva" };
+
   users:
     "$(users)"
-    policy => "present",
-    home_dir => "/home/$(users)",
-    group_primary => "users",
-    groups_secondary => { "security", "webadmin" },
-    shell => "/bin/bash/",
-    home_bundle => setup_home_dir("$(users)");
+      policy => "present",
+      home_dir => "/home/$(users)",
+      group_primary => "users",
+      groups_secondary => { "security", "webadmin" },
+      shell => "/bin/bash/",
+      home_bundle => setup_home_dir("$(users)");
 }
 
 bundle agent setup_home_dir(user)
 {
   vars:
     "keys" slist => { "id_rsa", "id_rsa.pub" };
+
   files:
     "/home/$(user)/." create => "true";
     "/home/$(user)/.ssh/." create => "true";
