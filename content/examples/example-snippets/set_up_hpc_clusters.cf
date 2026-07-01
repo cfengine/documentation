@@ -4,6 +4,7 @@ body executor control
   mailto => "cfengine@example.com";
   smtpserver => "localhost";
   mailmaxlines => "30";
+
   # Once per hour, on the hour
   schedule => { "Min00" };
 }

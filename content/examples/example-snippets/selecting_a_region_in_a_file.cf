@@ -28,8 +28,10 @@ bundle edit_line myedit(parameter)
 body replace_with comment
 {
   replace_value => "# $(match.1)";
+
   # backreference 0
   occurrences => "all";
+
   # first, last all
 }
 

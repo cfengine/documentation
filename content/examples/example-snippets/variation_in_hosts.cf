@@ -39,6 +39,7 @@ body server control
   allowconnects => { "127.0.0.1", "::1", "10.20.30.0/24" };
   allowallconnects => { "127.0.0.1", "::1", "10.20.30.0/24" };
   trustkeysfrom => { "127.0.0.1", "::1", "10.20.30.0/24" };
+
   # allowusers
 }
 
