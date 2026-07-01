@@ -252,10 +252,9 @@ bundle agent example(param1)
         "Obi-Wan Kenobi",
         "Luke Skywalker",
         "Yoda",
-        "Darth Vader", # He used to be a Jedi, and since he
-        # tossed the emperor into the Death
-        # Star's reactor shaft we are including
-        # him.
+        # He used to be a Jedi, and since he tossed the emperor into the
+        # Death Star's reactor shaft we are including him.
+        "Darth Vader",
       };
 
   classes:

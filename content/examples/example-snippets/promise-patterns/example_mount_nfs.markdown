@@ -18,9 +18,9 @@ body common control
 bundle agent mounts
 {
   storage:
-    "/mnt" mount => nfs("fileserver", "/home"); # "/mnt" is the local moint point
-      # "fileserver" is the remote fileserver
-      # "/home" is the path to the remote file system
+    # "/mnt" is the local mount point, "fileserver" is the remote fileserver,
+    # and "/home" is the path to the remote file system.
+    "/mnt" mount => nfs("fileserver", "/home");
 }
 
 body mount nfs(server, source)

@@ -22,8 +22,8 @@ bundle agent edit_name_resolution
       comment => "Add lines to the resolver configuration",
       create => "true", # Make sure the file exists, create it if not
       edit_line => resolver, # Call the resolver bundle defined below to do the editing
-      edit_defaults => empty; # Baseline memory model of file to empty before processing
-      # bundle edit_line resolver
+      # Baseline memory model of file to empty before processing bundle edit_line resolver
+      edit_defaults => empty;
 }
 
 bundle edit_line resolver
@@ -33,8 +33,9 @@ bundle edit_line resolver
       # Class/context where you use the below nameservers. Change to appropriate class
       # for your system (if not any::, for example server_group::, ubuntu::, etc.)
       # insert the search domain or name servers we want
-      "search mydomain.tld" location => start; # Replace mydomain.tld with your domain name
-      # The search line will always be at the start of the file
+      # Replace mydomain.tld with your domain name.
+      # The search line will always be at the start of the file.
+      "search mydomain.tld" location => start;
       "nameserver 128.39.89.8";
       "nameserver 128.39.74.66";
 }
