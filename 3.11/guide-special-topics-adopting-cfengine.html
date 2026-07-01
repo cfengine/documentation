@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.11  Documentation - Adopting CFEngine</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.11/assets/global-c9fa8b1b7e63e1fde6776a47cdcd90c6.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Adopting CFEngine";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                        <option value="/docs/3.12/index.html">Version 3.12 (LTS)</option>
+                        <option value="/docs/master/index.html" selected>Version 3.11 (non-LTS)</option>
+                        <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                        <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+                        <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                        <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                        <option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+                        <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                        <option value="/docs/archive/">Version 3.0 (archive)</option>
+                        <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:2riuky-1ece" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-design-center.html">Design Center Overview</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a><ul class="level2"><li><a class="active" href="guide-special-topics-adopting-cfengine.html">Adopting CFEngine</a></li><li><a href="guide-special-topics-agility.html">Agility</a></li><li><a href="guide-special-topics-application-management.html">Application Management</a></li><li><a href="guide-special-topics-build-deploy-manage-audit.html">Build Deploy Manage Audit</a></li><li><a href="guide-special-topics-change-management.html">Change Management</a></li><li><a href="guide-special-topics-cloud-computing.html">Cloud Computing</a></li><li><a href="guide-special-topics-content-driven-policy.html">Content Driven Policy</a></li><li><a href="guide-special-topics-devops.html">Devops</a></li><li><a href="guide-special-topics-distributed-scheduling.html">Distributed Scheduling</a></li><li><a href="guide-special-topics-file-content.html">File Content</a></li><li><a href="guide-special-topics-glossary.html">Glossary</a></li><li><a href="guide-special-topics-hierarchies.html">Hierarchies</a></li><li><a href="guide-special-topics-itil.html">ITIL</a></li><li><a href="guide-special-topics-iteration.html">Iteration (Loops)</a></li><li><a href="guide-special-topics-modularity.html">Modularity and Orchestrating System Policy</a></li><li><a href="guide-special-topics-orchestration.html">Orchestration</a></li><li><a href="guide-special-topics-stigs.html">STIGs</a></li><li><a href="guide-special-topics-teamwork.html">Teamwork</a></li><li><a href="guide-special-topics-open-nebula.html">Using CFEngine with Open Nebula</a></li></ul></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-special-topics.html">Special Topics</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Adopting CFEngine
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h1 id="what-does-adoption-involve">What does adoption involve?</h1>
+<p>CFEngine is a framework and a methodology with far reaching implications for the
+way you do IT management. The CFEngine approach asks you to think in terms
+ofpromisesandcooperationbetween parts; it automates repair and maintenance
+processes and provides simple integrated Knowledge Management.</p>
+
+<p>To use CFEngine effectively, you should spend a little time learning about the
+approach to management, as this will save you a lot of time and effort in the
+long run.</p>
+<h1 id="the-mission-plan">The Mission Plan</h1>
+<p>At CFEngine, we refer to the management of your datacentre as <em>The Mission</em>. The
+diagram below shows the main steps in preparing mission control. Some training
+is recommended, and as much planning as you can manage in advance. Once a
+mission is underway, you should expect to work by making small corrections to
+the mission plan, rather than large risky changes.</p>
+
+<p><img src="./adopting-cfengine-mission-plan.png" alt="Mission Plan"></p>
+
+<p>Planning does not mean sitting around a table, or in front of a whiteboard.
+Successful planning is a dialogue between theory and practice. It should include
+test pilots and proof-of-concept implementations.</p>
+<h1 id="commercial-or-free">Commercial or Free?</h1>
+<p>The first decision you should make is whether you will choose a route of
+commercial assistance or manage entirely on your own. You can choose different
+levels of assistance, from just training, to consulting, to commercial versions
+of the software that simplify certain processes and offer extended features.</p>
+
+<p>At the very minimum, we recommend that you take a training course on CFEngine.
+Users who don&#39;t train often end up using only a fraction of the software&#39;s
+potential, and in a sub-optimal way. Think of this as an investment in your
+future.</p>
+
+<p>The advantages of the commercial products include greatly simplified set up
+procedures, continuous monitoring and automatic knowledge integration. See the
+CFEngine Nova Supplement for more information.</p>
+<h1 id="installation-or-pilot">Installation or Pilot</h1>
+<p>You are free to download Community Editions of CFEngine at any time to test the
+software. There is a considerable amount of documentation and example policy
+available on the cfengine.com web-site to try some simple examples of system
+management.</p>
+
+<p>If you intend to purchase a significant number of commercial licenses for
+CFEngine software, you can request a pilot process, during which a specialist
+will install and demonstrate the commercial edition on site.</p>
+<h1 id="identifying-the-team">Identifying the Team</h1>
+<p>CFEngine will become a core discipline in your organization, taking you from
+reactive fire-fighting to proactive and strategic practices. You should invest
+in a team that embraces its methods. The CFEngine team will become the enabler
+of business agility, security, reliability and standardization.</p>
+
+<p>The CFEngine team needs to have administrator or super-user access to systems,
+and it needs the <em>headroom</em> or <em>slack</em> to think strategically. It needs to build
+up processes and workflows that address quality assurance and minimize the risk
+of change.</p>
+
+<p>All teams are important centres for knowledge, and you should provide incentives
+to keep the core team strong and in constant dialogue with your organization&#39;s
+strategic leadership. Treat your CFEngine team as a trusted partner in business.</p>
+<h1 id="training-and-certification">Training and Certification</h1>
+<p>Once you have tried the simplest examples using CFEngine, we recommend at least
+three days of in-depth training. We can also arrange more in-depth training to
+qualify as a CFEngine Mission Specialist.</p>
+<h1 id="mission-goal-and-knowledge-management">Mission Goal and Knowledge Management</h1>
+<p>The main aim of Knowledge Management is to learn from experience, and use the
+accumulated learning to improve the predictability of workflow processes. During
+every mission, there will be unexpected events, and an effective team will use
+knowledge of past and present to respond to these unpredictable changes with
+confidence</p>
+
+<p>The goal of an IT mission is a predictable operational state that lives up to
+specific policy-determined promises. You need to work out what this desired
+state should be before you can achieve it. No one knows this exactly in advance,
+and most organizations will change course over time. However, with good planning
+and understanding of the mission, such adjustments to policy can be small and
+regular.</p>
+
+<p>Many small changes are less risky than few large changes, and the culture of
+agility keeps everyone on their toes. Using CFEngine to run your mission, you
+will learn to work pro-actively, adjusting the system by refining the mission
+goal rather than reacting to unexpected events.</p>
+
+<p>To work consistently and predictably, even when understaffed, requires a
+strategy for describing system resources, policy and state. CFEngine can help
+with all of these. See the Special Topics Guide on Knowledge Management.</p>
+
+<p>A major component of a successful mission, is documenting intentions. What is
+the goal, and how does it break down into concrete, achievable states? CFEngine
+can help you in this process, with training and Professional Services, but you
+must establish a culture of commitment to the mission and learn how to express
+these commitments in terms of CFEngine promises.</p>
+<h1 id="build-deploy-manage-audit">Build, Deploy, Manage, Audit</h1>
+<p>The four mission phases are sometimes referred to as</p>
+
+<ul>
+<li><p>Build</p>
+
+<p>A mission is based on decisions and resources that need to be put assembled or
+`built&#39; before they can be applied. This is the planning phase.</p>
+
+<p>In CFEngine, what you build is a template of proposed promises for the
+machines in an organization such that, if the machines all make and keep these
+promises, the system will function seamlessly as planned. This is how it works
+in a human organization, and this is how is works for computers too.</p></li>
+<li><p>Deploy</p>
+
+<p>Deploying really means launching the policy into production. In CFEngine you
+simply publish your policy (in CFEngine parlance these are `promise
+proposals&#39;) and the machines see the new proposals and can adjust
+accordingly. Each machine runs an agent that is capable of keeping the
+system on course and maintaining it over time without further assistance.</p></li>
+<li><p>Manage</p>
+
+<p>Once a decision is made, unplanned events will occur. Such incidents
+traditionally set off alarms and humans rush to make new transactions to
+repair them. Under CFEngine guidance, the autonomous agent manages the
+system, and humans only manage knowledge and have to deal with rare events
+that cannot be dealt with automatically.</p></li>
+<li><p>Audit</p>
+
+<p>CFEngine performs continuous analysis and correction, and commercial
+editions generate explicit reports on mission status. Users can sit back and
+examine these reports to check mission progress, or examine the current
+state in relation to the knowledge map for the mission.</p></li>
+</ul>
+
+<p><a href="mailto:contact@cfengine.com">Contact CFEngine</a></p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-special-topics.html">special topics</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-guide.html">guide</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 21 May 2018
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/special-topics/adopting-cfengine.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/30c92a9bfe995194b9ead5ef2ff3a45a84cd5af8" target="_blank">30c92a9bfe995194b9ead5ef2ff3a45a84cd5af8</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.11/assets/footer-3d92ada135d5c86c6f2a89bc3a15252b.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

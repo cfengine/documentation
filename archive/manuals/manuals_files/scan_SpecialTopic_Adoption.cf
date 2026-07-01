@@ -1,0 +1,57 @@
+
+bundle knowledge SpecialTopic_Adoption
+
+{
+topics:
+
+"SpecialTopic_Adoption";
+Special_Topics_Guide::
+    "Contact CFEngine"  association => a("discusses","Adopting Cfengine in Your Organization","is discussed in");
+Special_Topics_Guide::
+    "Build, Deploy, Manage, Audit"  association => a("discusses","Adopting Cfengine in Your Organization","is discussed in");
+Special_Topics_Guide::
+    "Mission Goal and Knowledge Management"  association => a("discusses","Adopting Cfengine in Your Organization","is discussed in");
+Special_Topics_Guide::
+    "Training and Certification"  association => a("discusses","Adopting Cfengine in Your Organization","is discussed in");
+Special_Topics_Guide::
+    "Identifying the Team"  association => a("discusses","Adopting Cfengine in Your Organization","is discussed in");
+Special_Topics_Guide::
+    "Installation or Pilot"  association => a("discusses","Adopting Cfengine in Your Organization","is discussed in");
+Special_Topics_Guide::
+    "Commercial or Free?"  association => a("discusses","Adopting Cfengine in Your Organization","is discussed in");
+Special_Topics_Guide::
+    "The Mission Plan"  association => a("discusses","Adopting Cfengine in Your Organization","is discussed in");
+Special_Topics_Guide::
+    "What does adoption involve?"  association => a("discusses","Adopting Cfengine in Your Organization","is discussed in");
+Special_Topics_Guide::
+    "Adoption"  association => a("discusses","Adopting Cfengine in Your Organization","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Adoption.html"
+  represents => { "Official CFEngine document"},  about_topics => { "adopting cfengine in your organization" };
+ "/knowledge/docs/SpecialTopic_Adoption.html"
+  represents => { "Special Topics Guide"},  about_topics => { "adopting cfengine in your organization" };
+ "/knowledge/docs/SpecialTopic_Adoption.html#Top"
+  represents => { "Text section" }, about_topics => { "adoption" };
+ "/knowledge/docs/SpecialTopic_Adoption.html#What-does-adoption-involve_003f"
+  represents => { "Text section" }, about_topics => { "what does adoption involve?" };
+ "/knowledge/docs/SpecialTopic_Adoption.html#The-Mission-Plan"
+  represents => { "Text section" }, about_topics => { "the mission plan" };
+ "/knowledge/docs/SpecialTopic_Adoption.html#Commercial-or-Free_003f"
+  represents => { "Text section" }, about_topics => { "commercial or free?" };
+ "/knowledge/docs/SpecialTopic_Adoption.html#Installation-or-Pilot"
+  represents => { "Text section" }, about_topics => { "installation or pilot" };
+ "/knowledge/docs/SpecialTopic_Adoption.html#Identifying-the-Team"
+  represents => { "Text section" }, about_topics => { "identifying the team" };
+ "/knowledge/docs/SpecialTopic_Adoption.html#Training-and-Certification"
+  represents => { "Text section" }, about_topics => { "training and certification" };
+ "/knowledge/docs/SpecialTopic_Adoption.html#Mission-Goal-and-Knowledge-Management"
+  represents => { "Text section" }, about_topics => { "mission goal and knowledge management" };
+ "/knowledge/docs/SpecialTopic_Adoption.html#Build"
+  represents => { "Text section" }, about_topics => { "build, deploy, manage, audit" };
+ "/knowledge/docs/SpecialTopic_Adoption.html#Contact-CFEngine"
+  represents => { "Text section" }, about_topics => { "contact cfengine" };
+}
+

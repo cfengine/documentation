@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.20  Documentation - Modules from CFEngine Build</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/guide/getting-started-with-cfengine-build/modules-from-cfengine-build.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-guide-getting-started-with-cfengine-build-modules-from-cfengine-build.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <link rel="canonical" href="https://docs.cfengine.com/latest/guide-getting-started-with-cfengine-build-modules-from-cfengine-build.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='assets/global-2492ce7571245ef106dbe85ec06e4908.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Modules from CFEngine Build";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/" selected>Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="96c0f638b03564284" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-getting-started-with-cfengine-build.html">Getting Started with CFEngine Build</a><ul class="level2"><li><a href="guide-getting-started-with-cfengine-build-installation.html">Installation</a></li><li><a class="active" href="guide-getting-started-with-cfengine-build-modules-from-cfengine-build.html">Modules from CFEngine Build</a></li><li><a href="guide-getting-started-with-cfengine-build-reporting-and-web-ui.html">Reporting and Web UI</a></li><li><a href="guide-getting-started-with-cfengine-build-writing-policy.html">Writing policy</a></li><li><a href="guide-getting-started-with-cfengine-build-developing-modules.html">Developing modules</a></li></ul></li><li><a href="guide-additional-resources.html">External resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-getting-started-with-cfengine-build.html">Getting Started with CFEngine Build</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Modules from CFEngine Build
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Now that you&#39;ve installed CFEngine and the tools we need, we can start working with modules from CFEngine Build.
+The workflow will look like this:</p>
+
+<p><img src="workflow.png" alt=""></p>
+<h2 id="video">Video</h2>
+<p>There is a video version of this tutorial available on YouTube:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/m2vHvJ7_iug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h2 id="step-0-creating-a-new-project">Step 0: Creating a new project</h2>
+<p>Create a folder for you project, for example in your home directory:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ mkdir -p ~/cfengine_project
+</code></pre>
+</div>
+
+<p>Initialize it:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ cd ~/cfengine_project
+$ cfbs init
+</code></pre>
+</div>
+<h2 id="step-1-explore-and-add-modules">Step 1: Explore and add modules</h2>
+<p>The first module you should add is <code>masterfiles</code>.
+This is the default policy which is included in the CFEngine packages, so it is already running on your hub.
+Use this command to add it to your project:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ cfbs add masterfiles
+</code></pre>
+</div>
+
+<p>At this point, you can go to <a href="https://build.cfengine.com">build.cfengine.com</a> and find modules you would like to use.
+The command to add them is the same as you just ran to add <code>masterfiles</code>.
+For the purposes of this tutorial, let&#39;s add the git module so we can work with git repositories later:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ cfbs add git
+</code></pre>
+</div>
+
+<p>Additionally, let&#39;s add a module to make CFEngine run policy and report collection every minute instead of the default 5 minute interval:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ cfbs add every-minute
+</code></pre>
+</div>
+
+<p>Finally, let&#39;s add a report for whether the OS is supported by the OS vendor:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ cfbs add compliance-report-os-is-vendor-supported
+</code></pre>
+</div>
+<h2 id="step-2-build">Step 2: Build</h2>
+<p>Once we are done adding modules, it is time to build them, combining it all into the policy set which will be deployed to our hub:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ cfbs build
+
+Modules:
+001 masterfiles                              @ f3a8f65e77428a6ab9d62c34057a7ace6ae54ce9 (Downloaded)
+002 library-for-promise-types-in-python      @ c3b7329b240cf7ad062a0a64ee8b607af2cb912a (Downloaded)
+003 promise-type-git                         @ c3b7329b240cf7ad062a0a64ee8b607af2cb912a (Downloaded)
+004 every-minute                             @ 05bf5e5b1c014018a7b93a524e035c1a21bcffa4 (Downloaded)
+005 compliance-report-imports                @ 9d4a1cb1f919454a49baf22469ebc0b1606ae904 (Downloaded)
+006 autorun                                  @ c3b7329b240cf7ad062a0a64ee8b607af2cb912a (Downloaded)
+007 compliance-report-os-is-vendor-supported @ d9e0aad225535b2b16ba2126e8302f8ffc5e7d38 (Downloaded)
+
+Steps:
+001 masterfiles                              : run &#39;./prepare.sh -y&#39;
+001 masterfiles                              : copy &#39;./&#39; &#39;masterfiles/&#39;
+002 library-for-promise-types-in-python      : copy &#39;cfengine.py&#39; &#39;masterfiles/modules/promises/&#39;
+003 promise-type-git                         : copy &#39;git.py&#39; &#39;masterfiles/modules/promises/&#39;
+003 promise-type-git                         : append &#39;enable.cf&#39; &#39;masterfiles/services/init.cf&#39;
+004 every-minute                             : json &#39;def.json&#39; &#39;masterfiles/def.json&#39;
+005 compliance-report-imports                : copy &#39;./compliance-report-imports.cf&#39; &#39;masterfiles/services/autorun/&#39;
+006 autorun                                  : json &#39;def.json&#39; &#39;masterfiles/def.json&#39;
+007 compliance-report-os-is-vendor-supported : copy &#39;./os-is-vendor-supported.json&#39; &#39;masterfiles/.no-distrib/compliance-report-definitions/os-is-vendor-supported.json&#39;
+
+Generating tarball...
+
+Build complete, ready to deploy 🐿
+ -&gt; Directory: out/masterfiles
+ -&gt; Tarball:   out/masterfiles.tgz
+
+To install on this machine: sudo cfbs install
+To deploy on remote hub(s): cf-remote deploy
+</code></pre>
+</div>
+
+<p>Importantly, we see that our policy was built successfully, from 7 different modules.
+4 of those are modules we added, and the 3 others were added as dependencies.
+The output of the build, the policy set, is available in the <code>out/</code> directory.
+Feel free to look at some of the files in <code>out/masterfiles/</code>, if you want to understand how these modules work.</p>
+<h2 id="step-3-deploy">Step 3: Deploy</h2>
+<p>Now, let&#39;s deploy what we built to the hub:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ cf-remote deploy
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> This assumes your hub is saved in <code>cf-remote</code>, with the group name <em>hub</em>.
+We did this in the first part of the series, while installing CFEngine, but if you haven&#39;t you can do it like this:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ cf-remote save -H root@192.168.56.2 --role hub --name hub
+</code></pre>
+</div>
+
+<p>(Replace SSH username and IP with what works on your hub).</p>
+<h2 id="step-4-observe">Step 4: Observe</h2>
+<p>Open your web browser and enter the IP address of your hub in the address bar to go the Mission Portal web UI.
+For example:</p>
+
+<p><a href="https://192.168.56.2/">https://192.168.56.2/</a></p>
+
+<p>(Log in with username <code>admin</code> and password <code>admin</code>, or whatever you changed it to when you first logged into your hub).</p>
+
+<p>By clicking on <em>Reports</em> and <em>Compliance</em> we can see the report we added, <em>OS is vendor supported</em>:</p>
+
+<p><img src="os-is-vendor-supported.gif" alt=""></p>
+
+<p>(Reports in CFEngine Mission Portal can be saved as PDF or CSV or scheduled to be sent to your email periodically).</p>
+<h2 id="what-s-next">What&#39;s next</h2>
+<p>Now that you&#39;ve successfully added modules and seen the results in Mission Portal, you&#39;re ready to look for more modules, or explore Mission Portal further.
+Here are some examples of modules you might be interested in:</p>
+
+<ul>
+<li><a href="https://build.cfengine.com/modules/cve-2021-44228-log4j/">Scan and report on potentially vulnerable log4j installations</a></li>
+<li><a href="https://build.cfengine.com/modules/inventory-sudoers/">Inventory (reporting) data of who can use sudo on each host</a></li>
+<li><a href="https://build.cfengine.com/modules/promise-type-http/">Promise type to perform HTTP requests</a></li>
+</ul>
+
+<p>To add more modules, just repeat the commands from steps 1-3, for example:</p>
+<div class="highlight"><pre><code class="text"><span></span>$ cfbs add inventory-sudoers
+$ cfbs build
+$ cf-remote deploy
+</code></pre>
+</div>
+
+<p>In the next tutorial we will look more at the reporting and Web UI, called Mission Portal:</p>
+
+<p><a href="guide-getting-started-with-cfengine-build-reporting-and-web-ui.html" title="Reporting and Web UI">Reporting and Web UI</a></p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-guide.html">guide</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-getting-started.html">getting started</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-modules.html">modules</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 03 October 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.20/generator/pages/guide/getting-started-with-cfengine-build/modules-from-cfengine-build.markdown/guide/getting-started-with-cfengine-build/modules-from-cfengine-build.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-e4781e211c818162ced38e083ca9577f.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,294 @@
+
+bundle knowledge cf3_bestpractice
+
+{
+topics:
+
+"cf3-bestpractice";
+Quality_Assurance_around_CFEngine::
+    "Delegating responsibility" ;
+Quality_Assurance_around_CFEngine::
+    "Version control and rollback" ;
+Quality_Assurance_around_CFEngine::
+    "The policy decision flow" ;
+Quality_Assurance_around_CFEngine::
+    "Policy changes" ;
+Quality_Assurance_around_CFEngine::
+    "Quality Assurance around CFEngine" ;
+Common_Workflows::
+    "Software Management" ;
+Common_Workflows::
+    "Security" ;
+Common_Workflows::
+    "Services" ;
+Common_Workflows::
+    "Policy Distribution" ;
+Common_Workflows::
+    "Name Service" ;
+Common_Workflows::
+    "Knowledge Updating" ;
+Common_Workflows::
+    "Garbage Collection" ;
+Common_Workflows::
+    "Batch Jobs" ;
+Common_Workflows::
+    "Anomaly Monitoring" ;
+Common_Workflows::
+    "Common Workflows" ;
+Always_do::
+    "Always use variables as pointers to paths and servers" ;
+Always_do::
+    "Always use the system variables for system resources" ;
+Always_do::
+    "Always use existing templates" ;
+Always_do::
+    "Always use lists to make the same promise about multiple objects" ;
+Always_do::
+    "Always keep coding to a minimum" ;
+Always_do::
+    "Always document promises" ;
+Policy_Dos_and_Donts::
+    "Always do" ;
+Recommended::
+    "Try to make many small changes" ;
+Recommended::
+    "Try to combine tests and operations during file searches" ;
+Policy_Dos_and_Donts::
+    "Recommended" ;
+Avoid::
+    "avoid running CFEngine without lock protection" ;
+Avoid::
+    "Avoid writing custom scripts" ;
+Policy_Dos_and_Donts::
+    "Avoid" ;
+Never_do::
+    "Never manage more than one cron job" ;
+Never_do::
+    "Never embed simple shell commands" ;
+Never_do::
+    "Never change system policy when humans are absent" ;
+Policy_Dos_and_Donts::
+    "Never do" ;
+Policy_Dos_and_Donts::
+    "Policy Dos and Donts" ;
+Policy_Style_Guide::
+    "When should variables be in local bundles?" ;
+Policy_Style_Guide::
+    "When should variables be in common bundles?" ;
+Policy_Style_Guide::
+    "When should classes be in common bundles?" ;
+Policy_Style_Guide::
+    "When to use a paramaterized bundle or method" ;
+Policy_Style_Guide::
+    "How to decide when to make a bundle" ;
+Policy_Style_Guide::
+    "How to choose and name bundles" ;
+Policy_Style_Guide::
+    "Where to define variables and classes" ;
+Policy_Style_Guide::
+    "Arranging files" ;
+Policy_Style_Guide::
+    "Policy Style Guide" ;
+Special_Topics_Guide::
+    "CFEngine-Best-Practices"  association => a("discussed in","CFEngine-Best-Practices","discusses");
+
+
+occurrences:
+
+manuals::
+ "/docs/cf3-bestpractice.html"
+  represents => { "CFEngine 3 Best Practices" };
+CFEngine_Best_Practices::
+ "/docs/cf3-bestpractice.html#Top"
+  represents => { "Text section" };
+Policy_Style_Guide::
+ "/docs/cf3-bestpractice.html#Policy-Style-Guide"
+  represents => { "manual chapter" };
+Arranging_files::
+ "/docs/cf3-bestpractice.html#Arranging-files"
+  represents => { "manual section Arranging files" };
+Where_to_define_variables_and_classes::
+ "/docs/cf3-bestpractice.html#Where-to-define-variables-and-classes"
+  represents => { "manual section Where to define variables and classes" };
+How_to_choose_and_name_bundles::
+ "/docs/cf3-bestpractice.html#How-to-choose-and-name-bundles"
+  represents => { "manual section How to choose and name bundles" };
+How_to_decide_when_to_make_a_bundle::
+ "/docs/cf3-bestpractice.html#How-to-decide-when-to-make-a-bundle"
+  represents => { "manual section How to decide when to make a bundle" };
+When_to_use_a_paramaterized_bundle_or_method::
+ "/docs/cf3-bestpractice.html#When-to-use-a-paramaterized-bundle-or-method"
+  represents => { "manual section When to use a paramaterized bundle or method" };
+When_to_use_a_paramaterized_bundle_or_method::
+ "/docs/cf3-bestpractice.html#When-to-use-a-paramaterized-bundle-or-method"
+  represents => { "code example" };
+When_should_classes_be_in_common_bundles_::
+ "/docs/cf3-bestpractice.html#When-should-classes-be-in-common-bundles"
+  represents => { "manual section When should classes be in common bundles?" };
+When_should_variables_be_in_common_bundles_::
+ "/docs/cf3-bestpractice.html#When-should-variables-be-in-common-bundles"
+  represents => { "manual section When should variables be in common bundles?" };
+When_should_variables_be_in_local_bundles_::
+ "/docs/cf3-bestpractice.html#When-should-variables-be-in-local-bundles"
+  represents => { "manual section When should variables be in local bundles?" };
+Policy_Dos_and_Donts::
+ "/docs/cf3-bestpractice.html#Policy-Dos-and-Don_0027ts"
+  represents => { "manual chapter" };
+Never_do::
+ "/docs/cf3-bestpractice.html#Never-do"
+  represents => { "manual section Never do" };
+Never_change_system_policy_when_humans_are_absent::
+ "/docs/cf3-bestpractice.html#Never-change-system-policy-when-humans-are-absent"
+  represents => { "manual subsection" };
+Never_embed_simple_shell_commands::
+ "/docs/cf3-bestpractice.html#Never-embed-simple-shell-commands"
+  represents => { "manual subsection" };
+Never_embed_simple_shell_commands::
+ "/docs/cf3-bestpractice.html#Never-embed-simple-shell-commands"
+  represents => { "code example" };
+Never_manage_more_than_one_cron_job::
+ "/docs/cf3-bestpractice.html#Never-manage-more-than-one-cron-job"
+  represents => { "manual subsection" };
+Avoid::
+ "/docs/cf3-bestpractice.html#Avoid"
+  represents => { "manual section Avoid" };
+Avoid_writing_custom_scripts::
+ "/docs/cf3-bestpractice.html#Avoid-writing-custom-scripts"
+  represents => { "manual subsection" };
+avoid_running_CFEngine_without_lock_protection::
+ "/docs/cf3-bestpractice.html#Avoid-running-CFEngine-without-lock-protection"
+  represents => { "manual subsection" };
+Recommended::
+ "/docs/cf3-bestpractice.html#Recommended"
+  represents => { "manual section Recommended" };
+Try_to_combine_tests_and_operations_during_file_searches::
+ "/docs/cf3-bestpractice.html#Try-to-combine-tests-and-operations-during-file-searches"
+  represents => { "manual subsection" };
+Try_to_combine_tests_and_operations_during_file_searches::
+ "/docs/cf3-bestpractice.html#Try-to-combine-tests-and-operations-during-file-searches"
+  represents => { "code example" };
+Try_to_make_many_small_changes::
+ "/docs/cf3-bestpractice.html#Try-to-make-many-small-changes"
+  represents => { "manual subsection" };
+Always_do::
+ "/docs/cf3-bestpractice.html#Always-do"
+  represents => { "manual section Always do" };
+Always_document_promises::
+ "/docs/cf3-bestpractice.html#Always-document-promises"
+  represents => { "manual subsection" };
+Always_document_promises::
+ "/docs/cf3-bestpractice.html#Always-document-promises"
+  represents => { "code example" };
+Always_document_promises::
+ "/docs/cf3-bestpractice.html#Always-document-promises"
+  represents => { "code example" };
+Always_document_promises::
+ "/docs/cf3-bestpractice.html#Always-document-promises"
+  represents => { "code example" };
+Always_keep_coding_to_a_minimum::
+ "/docs/cf3-bestpractice.html#Always-keep-coding-to-a-minimum"
+  represents => { "manual subsection" };
+Always_use_lists_to_make_the_same_promise_about_multiple_objects::
+ "/docs/cf3-bestpractice.html#Always-use-lists-to-make-the-same-promise-about-multiple-objects"
+  represents => { "manual subsection" };
+Always_use_lists_to_make_the_same_promise_about_multiple_objects::
+ "/docs/cf3-bestpractice.html#Always-use-lists-to-make-the-same-promise-about-multiple-objects"
+  represents => { "code example" };
+Always_use_existing_templates::
+ "/docs/cf3-bestpractice.html#Always-use-existing-templates"
+  represents => { "manual subsection" };
+Always_use_existing_templates::
+ "/docs/cf3-bestpractice.html#Always-use-existing-templates"
+  represents => { "code example" };
+Always_use_existing_templates::
+ "/docs/cf3-bestpractice.html#Always-use-existing-templates"
+  represents => { "code example" };
+Always_use_the_system_variables_for_system_resources::
+ "/docs/cf3-bestpractice.html#Always-use-the-system-variables-for-system-resources"
+  represents => { "manual subsection" };
+Always_use_the_system_variables_for_system_resources::
+ "/docs/cf3-bestpractice.html#Always-use-the-system-variables-for-system-resources"
+  represents => { "code example" };
+Always_use_variables_as_pointers_to_paths_and_servers::
+ "/docs/cf3-bestpractice.html#Always-use-variables-as-pointers-to-paths-and-servers"
+  represents => { "manual subsection" };
+Always_use_variables_as_pointers_to_paths_and_servers::
+ "/docs/cf3-bestpractice.html#Always-use-variables-as-pointers-to-paths-and-servers"
+  represents => { "code example" };
+Common_Workflows::
+ "/docs/cf3-bestpractice.html#Common-Workflows"
+  represents => { "manual chapter" };
+Anomaly_Monitoring::
+ "/docs/cf3-bestpractice.html#Anomaly-Monitoring"
+  represents => { "manual section Anomaly Monitoring" };
+Anomaly_Monitoring::
+ "/docs/cf3-bestpractice.html#Anomaly-Monitoring"
+  represents => { "code example" };
+Batch_Jobs::
+ "/docs/cf3-bestpractice.html#Batch-Jobs"
+  represents => { "manual section Batch Jobs" };
+Batch_Jobs::
+ "/docs/cf3-bestpractice.html#Batch-Jobs"
+  represents => { "code example" };
+Garbage_Collection::
+ "/docs/cf3-bestpractice.html#Garbage-Collection"
+  represents => { "manual section Garbage Collection" };
+Garbage_Collection::
+ "/docs/cf3-bestpractice.html#Garbage-Collection"
+  represents => { "code example" };
+Knowledge_Updating::
+ "/docs/cf3-bestpractice.html#Knowledge-Updating"
+  represents => { "manual section Knowledge Updating" };
+Name_Service::
+ "/docs/cf3-bestpractice.html#Name-Service"
+  represents => { "manual section Name Service" };
+Name_Service::
+ "/docs/cf3-bestpractice.html#Name-Service"
+  represents => { "code example" };
+Policy_Distribution::
+ "/docs/cf3-bestpractice.html#Policy-Distribution"
+  represents => { "manual section Policy Distribution" };
+Policy_Distribution::
+ "/docs/cf3-bestpractice.html#Policy-Distribution"
+  represents => { "code example" };
+Services::
+ "/docs/cf3-bestpractice.html#Services"
+  represents => { "manual section Services" };
+Services::
+ "/docs/cf3-bestpractice.html#Services"
+  represents => { "code example" };
+Security::
+ "/docs/cf3-bestpractice.html#Security"
+  represents => { "manual section Security" };
+Security::
+ "/docs/cf3-bestpractice.html#Security"
+  represents => { "code example" };
+Software_Management::
+ "/docs/cf3-bestpractice.html#Software-Management"
+  represents => { "manual section Software Management" };
+Software_Management::
+ "/docs/cf3-bestpractice.html#Software-Management"
+  represents => { "code example" };
+Quality_Assurance_around_CFEngine::
+ "/docs/cf3-bestpractice.html#Quality-Assurance-around-CFEngine"
+  represents => { "manual chapter" };
+Policy_changes::
+ "/docs/cf3-bestpractice.html#Policy-changes"
+  represents => { "manual section Policy changes" };
+The_policy_decision_flow::
+ "/docs/cf3-bestpractice.html#The-policy-decision-flow"
+  represents => { "manual section The policy decision flow" };
+Version_control_and_rollback::
+ "/docs/cf3-bestpractice.html#Configuration-version-control-and-rollback"
+  represents => { "manual section Version control and rollback" };
+Version_control_and_rollback::
+ "/docs/cf3-bestpractice.html#Configuration-version-control-and-rollback"
+  represents => { "code example" };
+Version_control_and_rollback::
+ "/docs/cf3-bestpractice.html#Configuration-version-control-and-rollback"
+  represents => { "code example" };
+Delegating_responsibility::
+ "/docs/cf3-bestpractice.html#Delegating-responsibility"
+  represents => { "manual section Delegating responsibility" };
+}
+

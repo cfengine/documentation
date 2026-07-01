@@ -1,0 +1,73 @@
+
+bundle knowledge SpecialTopic_Federation
+
+{
+topics:
+
+"SpecialTopic_Federation";
+Special_Topics_Guide::
+    "The benefits of federated management"  association => a("discusses","Orchestration","is discussed in");
+Special_Topics_Guide::
+    "Why federation does not reduce predictabilty"  association => a("discusses","Orchestration","is discussed in");
+Special_Topics_Guide::
+    "Merging and dividing enterprises"  association => a("discusses","Orchestration","is discussed in");
+Special_Topics_Guide::
+    "Global assurance"  association => a("discusses","Orchestration","is discussed in");
+Special_Topics_Guide::
+    "Handling multiple sources"  association => a("discusses","Orchestration","is discussed in");
+Special_Topics_Guide::
+    "Disconnected parts inheriting a single baseline"  association => a("discusses","Orchestration","is discussed in");
+Special_Topics_Guide::
+    "Each part disconnected, providing services"  association => a("discusses","Orchestration","is discussed in");
+Special_Topics_Guide::
+    "Service oriented federation"  association => a("discusses","Orchestration","is discussed in");
+Special_Topics_Guide::
+    "The social contract"  association => a("discusses","Orchestration","is discussed in");
+Special_Topics_Guide::
+    "The Authority Paradox"  association => a("discusses","Orchestration","is discussed in");
+Special_Topics_Guide::
+    "Coordination, hierarchy and centralization"  association => a("discusses","Orchestration","is discussed in");
+Special_Topics_Guide::
+    "What is federation?"  association => a("discusses","Orchestration","is discussed in");
+Special_Topics_Guide::
+    "What is organizational complexity?"  association => a("discusses","Orchestration","is discussed in");
+Special_Topics_Guide::
+    "Federation"  association => a("discusses","Orchestration","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Federation.html"
+  represents => { "Official CFEngine document"},  about_topics => { "orchestration" };
+ "/knowledge/docs/SpecialTopic_Federation.html"
+  represents => { "Special Topics Guide"},  about_topics => { "orchestration" };
+ "/knowledge/docs/SpecialTopic_Federation.html#Top"
+  represents => { "Text section" }, about_topics => { "federation" };
+ "/knowledge/docs/SpecialTopic_Federation.html#What-is-organizational-complexity_003f"
+  represents => { "Text section" }, about_topics => { "what is organizational complexity?" };
+ "/knowledge/docs/SpecialTopic_Federation.html#What-is-federation_003f"
+  represents => { "Text section" }, about_topics => { "what is federation?" };
+ "/knowledge/docs/SpecialTopic_Federation.html#Coordination"
+  represents => { "Text section" }, about_topics => { "coordination, hierarchy and centralization" };
+ "/knowledge/docs/SpecialTopic_Federation.html#The-Authority-Paradox"
+  represents => { "Text section" }, about_topics => { "the authority paradox" };
+ "/knowledge/docs/SpecialTopic_Federation.html#The-social-contract"
+  represents => { "Text section" }, about_topics => { "the social contract" };
+ "/knowledge/docs/SpecialTopic_Federation.html#Service-oriented-federation"
+  represents => { "Text section" }, about_topics => { "service oriented federation" };
+ "/knowledge/docs/SpecialTopic_Federation.html#Each-part-disconnected-providing-services"
+  represents => { "Text section" }, about_topics => { "each part disconnected, providing services" };
+ "/knowledge/docs/SpecialTopic_Federation.html#Disconnected-parts-inheriting-a-single-baseline"
+  represents => { "Text section" }, about_topics => { "disconnected parts inheriting a single baseline" };
+ "/knowledge/docs/SpecialTopic_Federation.html#Handling-multiple-sources"
+  represents => { "Text section" }, about_topics => { "handling multiple sources" };
+ "/knowledge/docs/SpecialTopic_Federation.html#Global-assurance"
+  represents => { "Text section" }, about_topics => { "global assurance" };
+ "/knowledge/docs/SpecialTopic_Federation.html#Merging-and-dividing-enterprises"
+  represents => { "Text section" }, about_topics => { "merging and dividing enterprises" };
+ "/knowledge/docs/SpecialTopic_Federation.html#Why-federation-does-not-reduce-predictabilty"
+  represents => { "Text section" }, about_topics => { "why federation does not reduce predictabilty" };
+ "/knowledge/docs/SpecialTopic_Federation.html#The-benefits-of-federated-management"
+  represents => { "Text section" }, about_topics => { "the benefits of federated management" };
+}
+

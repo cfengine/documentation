@@ -1,0 +1,66 @@
+
+bundle knowledge st_virt
+
+{
+topics:
+
+"st-virt";
+Virtualization::
+    "Virtual network example" ;
+Virtualization::
+    "Virtualized host examples" ;
+Virtualization::
+    "Example deployment" ;
+Virtualization::
+    "Distinct states" ;
+Virtualization::
+    "Virtualization types supported" ;
+Virtualization::
+    "Environments promises" ;
+Virtualization::
+    "What can CFEngine do with virtual machines?" ;
+Virtualization::
+    "Why build virtualization support into CFEngine?" ;
+Virtualization::
+    "What are virtualization and cloud computing?" ;
+Special_Topics_Guide::
+    "Virtualization"  association => a("discussed in","Virtualization","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-virt.html"
+  represents => { "Virtualization and Cloud Support in CFEngine" };
+Virtualization::
+ "/docs/st-virt.html#Top"
+  represents => { "Text section" };
+What_are_virtualization_and_cloud_computing_::
+ "/docs/st-virt.html#What-are-virtualization-and-cloud-computing_003f"
+  represents => { "Text section" };
+Why_build_virtualization_support_into_CFEngine_::
+ "/docs/st-virt.html#Why-build-virtualization-support-into-CFEngine_003f"
+  represents => { "Text section" };
+What_can_CFEngine_do_with_virtual_machines_::
+ "/docs/st-virt.html#What-can-CFEngine-do-with-virtual-machines_003f"
+  represents => { "Text section" };
+Environments_promises::
+ "/docs/st-virt.html#Environments-promises"
+  represents => { "Text section" };
+Virtualization_types_supported::
+ "/docs/st-virt.html#Virtualization-types-supported"
+  represents => { "Text section" };
+Distinct_states::
+ "/docs/st-virt.html#Distinct-states"
+  represents => { "Text section" };
+Example_deployment::
+ "/docs/st-virt.html#Example-deployment"
+  represents => { "Text section" };
+Virtualized_host_examples::
+ "/docs/st-virt.html#Virtualized-host-examples"
+  represents => { "Text section" };
+Virtual_network_example::
+ "/docs/st-virt.html#Virtual-network-example"
+  represents => { "Text section" };
+}
+

@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <base href="https://cfengine.com/tmp_docs/" />
+		<meta charset=utf-8 />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>CFEngine documentation - Multi-Site Queries</title>
+        <link href='/tmp_docs/assets/global-665ee266c696655a376386c831e86ca9.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/tmp_docs/assets/global-239de50c4666a47e3cb4e8773af9b0a3.js' type='text/javascript'></script>
+
+	</head>
+
+<body>
+    <header>
+	<div class="wrapper">
+		<div id="logo">
+			<a href="https://cfengine.com/tmp_docs/"><img src="media/images/logo.png" width="245" height="54" alt=""></a>
+		</div>
+		<!-- <div id="top_form">
+			<select>
+				<option value="2.0">Version 2.0</option>
+				<option value="3.0">Version 3.0</option>
+			</select>
+			<input id="top_search" type="text" placeholder="Search with CFEngine.com">
+		</div> -->
+	</div>
+</header>
+<nav id="top_nav">
+	<div class="wrapper">
+		<ul>
+			<li>
+				<a href="https://cfengine.com/tmp_docs/getting-started.html">Getting Started</a>
+			</li>
+			<li>
+				<a href="https://cfengine.com/tmp_docs/whats-new.html">New in CFEngine</a>
+			</li>
+			<li>
+				<a href="https://cfengine.com/tmp_docs/manuals.html">Manuals</a>
+			</li>
+			<li>
+				<a href="https://cfengine.com/tmp_docs/reference.html">Reference</a>
+			</li>
+			<li>
+				<a href="https://cfengine.com/tmp_docs/examples.html">Examples</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+    <!-- https://github.com/cf-gary/md-documents/settings/collaboration -->
+    <div class="wrapper">
+        <div id="left_col">
+            <div id="resizable_zone">
+                <div id="nav_level1_wrapper" class="scroll-pane">
+                    <ul id="nav_level1"><li><a href="#"  class="examples">Examples</a></li><li><a href="#"  class="getting-started">Getting Started</a></li><li><a href="#"  class="manuals">Manuals</a></li><li><a href="#"  class="reference">Reference</a></li><li><a href="#"  class="what-s-new">What's New</a></li></ul>
+                </div>
+            </div>
+            
+            <div id="examples" class="level2">
+                <ul>
+  <li><a href="examples-aborting-execution.html">Aborting execution</a>
+  </li>
+  <li><a href="examples-change-detection.html">Change detection</a>
+  </li>
+  <li><a href="examples-check-filesystem-space.html">Check filesystem space</a>
+  </li>
+  <li><a href="examples-copy-single-files.html">Copy single files</a>
+  </li>
+  <li><a href="examples-create-files-and-directories.html">Create files and directories</a>
+  </li>
+  <li><a href="examples-customize-message-of-the-day.html">Customize Message of the Day</a>
+  </li>
+  <li><a href="examples-distribute-ssh-keys.html">Distribute ssh keys</a>
+  </li>
+  <li><a href="examples-ensure-process-not-running.html">Ensure a process is not running</a>
+  </li>
+  <li><a href="examples-find-the-mac-address.html">Find the MAC address</a>
+  </li>
+  <li><a href="examples-mount-nfs-filesystem.html">Mount NFS filesystem</a>
+  </li>
+  <li><a href="examples-restart-a-process.html">Restart a Process</a>
+  </li>
+  <li><a href="examples-setup-name-resolution-dns.html">Set up name resolution with DNS</a>
+  </li>
+  <li><a href="examples-setup-sudo.html">Set up sudo</a>
+  </li>
+  <li><a href="examples-setup-time-management-through-ntp.html">Set up time management through NTP</a>
+  </li>
+  <li><a href="examples-software-and-patch-installation.html">Software and Patch Installation</a>
+  </li>
+  <li><a href="examples-updating-from-a-central-policy-server.html">Updating from a central policy server</a>
+  </li>
+</ul>
+
+            </div>
+            
+            <div id="getting-started" class="level2">
+                <ul>
+  <li><a href="getting-started-installation.html">Installing CFEngine</a>
+  </li>
+  <li><a href="getting-started-known-issues.html">Known Issues</a>
+  </li>
+  <li><a href="getting-started-support-and-community.html">Support and Community</a>
+  </li>
+  <li><a href="getting-started-supported-platforms.html">Supported Platforms and Versions</a>
+  </li>
+  <li><a href="getting-started-upgrade.html">Upgrade Instructions</a>
+  </li>
+</ul>
+
+            </div>
+            
+            <div id="manuals" class="level2">
+                <ul>
+  <li><a href="manuals-architecture.html">Architecture</a>
+  <ul>
+    <li><a href="manuals-architecture-distributed-discovery.html">Distributed Discovery</a>
+    </li>
+    <li><a href="manuals-architecture-networking.html">Networking</a>
+    </li>
+    <li><a href="manuals-architecture-policy-workflow.html">Policy Workflow</a>
+    </li>
+  </ul>
+  </li>
+  <li><a href="manuals-components.html">The CFEngine Components</a>
+  </li>
+  <li><a href="manuals-design.html">CFEngine Design</a>
+  </li>
+  <li><a href="manuals-design-center.html">Design Center</a>
+  <ul>
+    <li><a href="manuals-design-center-enterprise-sketch-flow.html">Sketch Flow in CFEngine Enterprise</a>
+    </li>
+    <li><a href="reference-design-center-integrating-with-git.html">Integrating Mission Portal with git</a>
+    </li>
+  </ul>
+  </li>
+  <li><a href="manuals-enterprise-api.html">Enterprise API</a>
+  <ul>
+    <li><a href="manuals-enterprise-api-browsing-host-information.html">Browsing Host Information</a>
+    </li>
+    <li><a href="manuals-enterprise-api-checking-status.html">Checking Status</a>
+    </li>
+    <li><a href="manuals-enterprise-api-managing-settings.html">Managing Settings</a>
+    </li>
+    <li><a href="manuals-enterprise-api-managing-users-and-roles.html">Managing Users and Roles</a>
+    </li>
+    <li><a href="manuals-enterprise-api-multi-site-queries.html">Multi-Site Queries</a>
+    </li>
+    <li><a href="manuals-enterprise-api-porting-guide.html">Porting Guide</a>
+    </li>
+    <li><a href="manuals-enterprise-api-sql-queries.html">SQL Queries</a>
+    </li>
+  </ul>
+  </li>
+  <li><a href="manuals-enterprise-reporting.html">Enterprise Reporting</a>
+  <ul>
+    <li><a href="manuals-enterprise-reporting-architecture.html">Reporting Architecture</a>
+    </li>
+  </ul>
+  </li>
+  <li><a href="manuals-language-concepts.html">Language Concepts</a>
+  <ul>
+    <li><a href="manuals-language-concepts-bodies.html">Bodies</a>
+    </li>
+    <li><a href="manuals-language-concepts-bundles.html">Bundles</a>
+    </li>
+    <li><a href="manuals-language-concepts-classes.html">Classes</a>
+    </li>
+    <li><a href="manuals-language-concepts-loops.html">Loops</a>
+    </li>
+    <li><a href="manuals-language-concepts-namespaces.html">Namespaces</a>
+    </li>
+    <li><a href="manuals-language-concepts-normal-ordering.html">Normal Ordering</a>
+    </li>
+    <li><a href="manuals-language-concepts-pattern-matching-and-referencing.html">Pattern Matching and Referencing</a>
+    </li>
+    <li><a href="manuals-language-concepts-promises.html">Promises</a>
+    </li>
+    <li><a href="manuals-language-concepts-variables.html">Variables</a>
+    </li>
+  </ul>
+  </li>
+  <li><a href="manuals-writing-policy.html">Writing Policy</a>
+  <ul>
+    <li><a href="manuals-writing-policy-configuration-file-structure.html">Default Configuration File Structure</a>
+    </li>
+    <li><a href="manuals-writing-policy-controlling-frequency.html">Controlling Frequency</a>
+    </li>
+    <li><a href="manuals-writing-policy-policy-style-guide.html">Policy Style Guide</a>
+    </li>
+    <li><a href="manuals-writing-policy-testing-policies.html">Testing Policies</a>
+    </li>
+  </ul>
+  </li>
+</ul>
+
+            </div>
+            
+            <div id="reference" class="level2">
+                <ul>
+  <li><a href="reference-classes.html">Classes</a>
+  </li>
+  <li><a href="reference-components.html">Components and Common Control</a>
+  <ul>
+    <li><a href="reference-components-cfagent.html">cf-agent</a>
+    </li>
+    <li><a href="reference-components-cfexecd.html">cf-execd</a>
+    </li>
+    <li><a href="reference-components-cfhub.html">cf-hub</a>
+    </li>
+    <li><a href="reference-components-cfkey.html">cf-key</a>
+    </li>
+    <li><a href="reference-components-cfmonitord.html">cf-monitord</a>
+    </li>
+    <li><a href="reference-components-cfpromises.html">cf-promises</a>
+    </li>
+    <li><a href="reference-components-cfrunagent.html">cf-runagent</a>
+    </li>
+    <li><a href="reference-components-cfserver.html">cf-serverd</a>
+    </li>
+    <li><a href="reference-components-file-control.html">file control</a>
+    </li>
+  </ul>
+  </li>
+  <li>Design Center
+  <ul>
+    <li><a href="reference-design-center-api.html">The Design Center API</a>
+    </li>
+    <li><a href="reference-design-center-sketch-structure.html">Sketch Structure</a>
+    </li>
+  </ul>
+  </li>
+  <li><a href="reference-enterprise-api.html">Enterprise  API Reference</a>
+  </li>
+  <li><a href="reference-functions.html">Functions</a>
+  <ul>
+    <li><a href="reference-functions-accessedbefore.html">accessedbefore</a>
+    </li>
+    <li><a href="reference-functions-accumulated.html">accumulated</a>
+    </li>
+    <li><a href="reference-functions-ago.html">ago</a>
+    </li>
+    <li><a href="reference-functions-and.html">and</a>
+    </li>
+    <li><a href="reference-functions-canonify.html">canonify</a>
+    </li>
+    <li><a href="reference-functions-changedbefore.html">changedbefore</a>
+    </li>
+    <li><a href="reference-functions-classesmatching.html">classesmatching</a>
+    </li>
+    <li><a href="reference-functions-classify.html">classify</a>
+    </li>
+    <li><a href="reference-functions-classmatch.html">classmatch</a>
+    </li>
+    <li><a href="reference-functions-concat.html">concat</a>
+    </li>
+    <li><a href="reference-functions-countclassesmatching.html">countclassesmatching</a>
+    </li>
+    <li><a href="reference-functions-countlinesmatching.html">countlinesmatching</a>
+    </li>
+    <li><a href="reference-functions-difference.html">difference</a>
+    </li>
+    <li><a href="reference-functions-dirname.html">dirname</a>
+    </li>
+    <li><a href="reference-functions-diskfree.html">diskfree</a>
+    </li>
+    <li><a href="reference-functions-escape.html">escape</a>
+    </li>
+    <li><a href="reference-functions-every.html">every</a>
+    </li>
+    <li><a href="reference-functions-execresult.html">execresult</a>
+    </li>
+    <li><a href="reference-functions-fileexists.html">fileexists</a>
+    </li>
+    <li><a href="reference-functions-filesexist.html">filesexist</a>
+    </li>
+    <li><a href="reference-functions-filesize.html">filesize</a>
+    </li>
+    <li><a href="reference-functions-filestat.html">filestat</a>
+    </li>
+    <li><a href="reference-functions-filter.html">filter</a>
+    </li>
+    <li><a href="reference-functions-format.html">format</a>
+    </li>
+    <li><a href="reference-functions-getenv.html">getenv</a>
+    </li>
+    <li><a href="reference-functions-getfields.html">getfields</a>
+    </li>
+    <li><a href="reference-functions-getgid.html">getgid</a>
+    </li>
+    <li><a href="reference-functions-getindices.html">getindices</a>
+    </li>
+    <li><a href="reference-functions-getuid.html">getuid</a>
+    </li>
+    <li><a href="reference-functions-getusers.html">getusers</a>
+    </li>
+    <li><a href="reference-functions-getvalues.html">getvalues</a>
+    </li>
+    <li><a href="reference-functions-grep.html">grep</a>
+    </li>
+    <li><a href="reference-functions-groupexists.html">groupexists</a>
+    </li>
+    <li><a href="reference-functions-hash.html">hash</a>
+    </li>
+    <li><a href="reference-functions-hashmatch.html">hashmatch</a>
+    </li>
+    <li><a href="reference-functions-host2ip.html">host2ip</a>
+    </li>
+    <li><a href="reference-functions-hostinnetgroup.html">hostinnetgroup</a>
+    </li>
+    <li><a href="reference-functions-hostrange.html">hostrange</a>
+    </li>
+    <li><a href="reference-functions-hostsseen.html">hostsseen</a>
+    </li>
+    <li><a href="reference-functions-hostswithclass.html">hostswithclass</a>
+    </li>
+    <li><a href="reference-functions-hubknowledge.html">hubknowledge</a>
+    </li>
+    <li><a href="reference-functions-ifelse.html">ifelse</a>
+    </li>
+    <li><a href="reference-functions-intersection.html">intersection</a>
+    </li>
+    <li><a href="reference-functions-ip2host.html">ip2host</a>
+    </li>
+    <li><a href="reference-functions-iprange.html">iprange</a>
+    </li>
+    <li><a href="reference-functions-irange.html">irange</a>
+    </li>
+    <li><a href="reference-functions-isdir.html">isdir</a>
+    </li>
+    <li><a href="reference-functions-isexecutable.html">isexecutable</a>
+    </li>
+    <li><a href="reference-functions-isgreaterthan.html">isgreaterthan</a>
+    </li>
+    <li><a href="reference-functions-islessthan.html">islessthan</a>
+    </li>
+    <li><a href="reference-functions-islink.html">islink</a>
+    </li>
+    <li><a href="reference-functions-isnewerthan.html">isnewerthan</a>
+    </li>
+    <li><a href="reference-functions-isplain.html">isplain</a>
+    </li>
+    <li><a href="reference-functions-isvariable.html">isvariable</a>
+    </li>
+    <li><a href="reference-functions-join.html">join</a>
+    </li>
+    <li><a href="reference-functions-lastnode.html">lastnode</a>
+    </li>
+    <li><a href="reference-functions-laterthan.html">laterthan</a>
+    </li>
+    <li><a href="reference-functions-ldaparray.html">ldaparray</a>
+    </li>
+    <li><a href="reference-functions-ldaplist.html">ldaplist</a>
+    </li>
+    <li><a href="reference-functions-ldapvalue.html">ldapvalue</a>
+    </li>
+    <li><a href="reference-functions-length.html">length</a>
+    </li>
+    <li><a href="reference-functions-lsdir.html">lsdir</a>
+    </li>
+    <li><a href="reference-functions-maparray.html">maparray</a>
+    </li>
+    <li><a href="reference-functions-maplist.html">maplist</a>
+    </li>
+    <li><a href="reference-functions-none.html">none</a>
+    </li>
+    <li><a href="reference-functions-not.html">not</a>
+    </li>
+    <li><a href="reference-functions-now.html">now</a>
+    </li>
+    <li><a href="reference-functions-nth.html">nth</a>
+    </li>
+    <li><a href="reference-functions-on.html">on</a>
+    </li>
+    <li><a href="reference-functions-or.html">or</a>
+    </li>
+    <li><a href="reference-functions-parseintrealstringarray.html">parse[int|real|string]array</a>
+    </li>
+    <li><a href="reference-functions-parsestringarrayidx.html">parsestringarrayidx</a>
+    </li>
+    <li><a href="reference-functions-peerleader.html">peerleader</a>
+    </li>
+    <li><a href="reference-functions-peerleaders.html">peerleaders</a>
+    </li>
+    <li><a href="reference-functions-peers.html">peers</a>
+    </li>
+    <li><a href="reference-functions-product.html">product</a>
+    </li>
+    <li><a href="reference-functions-randomint.html">randomint</a>
+    </li>
+    <li><a href="reference-functions-readintrealstringarray.html">read[int|real|string]array</a>
+    </li>
+    <li><a href="reference-functions-readintrealstringlist.html">read[int|real|string]list</a>
+    </li>
+    <li><a href="reference-functions-readfile.html">readfile</a>
+    </li>
+    <li><a href="reference-functions-readstringarrayidx.html">readstringarrayidx</a>
+    </li>
+    <li><a href="reference-functions-readtcp.html">readtcp</a>
+    </li>
+    <li><a href="reference-functions-regarray.html">regarray</a>
+    </li>
+    <li><a href="reference-functions-regcmp.html">regcmp</a>
+    </li>
+    <li><a href="reference-functions-regextract.html">regextract</a>
+    </li>
+    <li><a href="reference-functions-registryvalue.html">registryvalue</a>
+    </li>
+    <li><a href="reference-functions-regldap.html">regldap</a>
+    </li>
+    <li><a href="reference-functions-regline.html">regline</a>
+    </li>
+    <li><a href="reference-functions-reglist.html">reglist</a>
+    </li>
+    <li><a href="reference-functions-remoteclassesmatching.html">remoteclassesmatching</a>
+    </li>
+    <li><a href="reference-functions-remotescalar.html">remotescalar</a>
+    </li>
+    <li><a href="reference-functions-returnszero.html">returnszero</a>
+    </li>
+    <li><a href="reference-functions-selectservers.html">selectservers</a>
+    </li>
+    <li><a href="reference-functions-shuffle.html">shuffle</a>
+    </li>
+    <li><a href="reference-functions-some.html">some</a>
+    </li>
+    <li><a href="reference-functions-sort.html">sort</a>
+    </li>
+    <li><a href="reference-functions-splayclass.html">splayclass</a>
+    </li>
+    <li><a href="reference-functions-splitstring.html">splitstring</a>
+    </li>
+    <li><a href="reference-functions-strcmp.html">strcmp</a>
+    </li>
+    <li><a href="reference-functions-strftime.html">strftime</a>
+    </li>
+    <li><a href="reference-functions-sublist.html">sublist</a>
+    </li>
+    <li><a href="reference-functions-sum.html">sum</a>
+    </li>
+    <li><a href="reference-functions-translatepath.html">translatepath</a>
+    </li>
+    <li><a href="reference-functions-unique.html">unique</a>
+    </li>
+    <li><a href="reference-functions-usemodule.html">usemodule</a>
+    </li>
+    <li><a href="reference-functions-userexists.html">userexists</a>
+    </li>
+  </ul>
+  </li>
+  <li><a href="reference-logs-and-records.html">Logs and Records</a>
+  <ul>
+    <li><a href="reference-logs-and-records-embedded-databases.html">Embedded Databases</a>
+    </li>
+    <li><a href="reference-logs-and-records-state-information.html">State information</a>
+    </li>
+    <li><a href="reference-logs-and-records-Text-logs.html">Text logs</a>
+    </li>
+  </ul>
+  </li>
+  <li><a href="reference-promise-types.html">Promise Types and Attributes</a>
+  <ul>
+    <li><a href="reference-promise-types-access.html">access</a>
+    </li>
+    <li><a href="reference-promise-types-classes.html">classes</a>
+    </li>
+    <li><a href="reference-promise-types-commands.html">commands</a>
+    </li>
+    <li><a href="reference-promise-types-databases.html">databases</a>
+    </li>
+    <li><a href="reference-promise-types-defaults.html">defaults</a>
+    </li>
+    <li><a href="reference-promise-types-files.html">files</a>
+    <ul>
+      <li><a href="reference-promise-types-files-edit_line.html">bundle edit_line</a>
+      <ul>
+        <li><a href="reference-promise-types-files-edit_line-delete_lines.html">delete_lines</a>
+        </li>
+        <li><a href="reference-promise-types-files-edit_line-field_edits.html">field_edits</a>
+        </li>
+        <li><a href="reference-promise-types-files-edit_line-insert_lines.html">insert_lines</a>
+        </li>
+        <li><a href="reference-promise-types-files-edit_line-replace_patterns.html">replace_patterns</a>
+        </li>
+      </ul>
+      </li>
+      <li><a href="reference-promise-types-edit_xml.html">bundle edit_xml</a>
+      <ul>
+        <li><a href="reference-promise-types-files-edit_xml-build_xpath.html">build_xpath</a>
+        </li>
+        <li><a href="reference-promise-types-files-edit_xml-delete_attribute.html">delete_attribute</a>
+        </li>
+        <li><a href="reference-promise-types-files-edit_xml-delete_text.html">delete_text</a>
+        </li>
+        <li><a href="reference-promise-types-files-edit_xml-delete_tree.html">delete_tree</a>
+        </li>
+        <li><a href="reference-promise-types-files-edit_xml-insert_text.html">insert_text</a>
+        </li>
+        <li><a href="reference-promise-types-files-edit_xml-insert_tree.html">insert_tree</a>
+        </li>
+        <li><a href="reference-promise-types-files-edit_xml-set_attribute.html">set_attribute</a>
+        </li>
+        <li><a href="reference-promise-types-files-edit_xml-set_text.html">set_text</a>
+        </li>
+      </ul>
+      </li>
+    </ul>
+    </li>
+    <li><a href="reference-promise-types-guest_environments.html">guest_environments</a>
+    </li>
+    <li><a href="reference-promise-types-measurements.html">measurements</a>
+    </li>
+    <li><a href="reference-promise-types-meta.html">meta</a>
+    </li>
+    <li><a href="reference-promise-types-methods.html">methods</a>
+    </li>
+    <li><a href="reference-promise-types-packages.html">packages</a>
+    </li>
+    <li><a href="reference-promise-types-processes.html">processes</a>
+    </li>
+    <li><a href="reference-promise-types-reports.html">reports</a>
+    </li>
+    <li><a href="reference-promise-types-roles.html">roles</a>
+    </li>
+    <li><a href="reference-promise-types-services.html">services</a>
+    </li>
+    <li><a href="reference-promise-types-storage.html">storage</a>
+    </li>
+    <li><a href="reference-promise-types-vars.html">vars</a>
+    </li>
+  </ul>
+  </li>
+  <li><a href="reference-special-variables.html">Special Variables</a>
+  <ul>
+    <li><a href="reference-special-Variables-Variable-context-const.html">Variable context const</a>
+    </li>
+    <li><a href="reference-special-Variables-Variable-context-edit.html">Variable context edit</a>
+    </li>
+    <li><a href="reference-special-Variables-Variable-context-match.html">Variable context match</a>
+    </li>
+    <li><a href="reference-special-variables-variable-context-mon.html">Variable context mon</a>
+    </li>
+    <li><a href="reference-special-variables-variable-context-sys.html">Variable context sys</a>
+    </li>
+    <li><a href="reference-special-variables-variable-context-this.html">Variable context this</a>
+    </li>
+  </ul>
+  </li>
+  <li><a href="reference-syntax.html">Syntax, identifiers and names</a>
+  <ul>
+    <li><a href="reference-syntax-filenames-and-paths.html">Filenames and Paths</a>
+    </li>
+  </ul>
+  </li>
+</ul>
+
+            </div>
+            
+            <div id="what-s-new" class="level2">
+                <ul>
+  <li><a href="whats-new-release-notes.html">Release Notes</a>
+  </li>
+</ul>
+
+            </div>
+            
+
+            <div id="nav_show_category">
+                Show all in category
+            </div>
+        </div>
+        <div id="content_col">
+            <div>
+                <div id="breadcrumbs">
+                    
+                    <ul>
+                        
+                        <li>
+                            
+                            <a href="manuals.html">CFEngine Manuals</a>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                        
+                        </li>
+                        
+                    </ul>
+                    
+                    <ul>
+                        
+                        <li>
+                            
+                            <a href="reference-enterprise-api.html">Enterprise  API Reference</a>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                        
+                        </li>
+                        
+                    </ul>
+                    
+                    <ul>
+                        
+                        <li>
+                            
+                        <span>Multi-Site Queries</span>
+                        
+                        </li>
+                        
+                    </ul>
+                    
+                </div>
+
+                <!-- <button id="jump_to">
+                    Jump to
+                </button> -->
+                <div class="clear"></div>
+            </div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="https://cfengine.com/tmp_docs/tags/manuals.html">manuals</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://cfengine.com/tmp_docs/tags/enterprise.html">enterprise</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://cfengine.com/tmp_docs/tags/rest.html">rest</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://cfengine.com/tmp_docs/tags/api.html">api</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://cfengine.com/tmp_docs/tags/reporting.html">reporting</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://cfengine.com/tmp_docs/tags/sql.html">sql</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://cfengine.com/tmp_docs/tags/queries.html">queries</a>
+                        </li>
+                        
+                        <li>
+                            <a href="https://cfengine.com/tmp_docs/tags/multi-site.html">multi-site</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>Multi-Site Queries</h1>
+                <p>A CFEngine site can be viewed as an independent group of machines/devices 
+managed and maintained by CFEngine. Distribution and execution of policies and 
+report collection happen within a site.</p>
+
+<p>Policy distribution is handled by the policy-server, <code>cf-serverd</code>. CFEngine 
+agents (<code>cf-agent</code>) &quot;pull&quot; the policies made available by the policy-server 
+and apply them to the clients. CFEngine&#39;s report collector (<code>cf-hub</code>) gathers 
+reports from all the available agents and stores them into a centralized 
+reporting database. These reports can then be accessed through the CFEngine 
+Mission Portal or the CFEngine Enterprise API (introduced in v3.0). An 
+organization can maintain multiple sites. Until CFEngine Enterprise v3.0.x, 
+the reports collected in one site could not be easily compared/co-related with 
+another site.</p>
+
+<p>In 3.5, with enhancements to the Enterprise API, querying multiple sites with 
+a single command is possible. SQL queries can be executed on different sites 
+transparently with multi-site query tool, thus making it is easier for users 
+get a high level overview of their systems. The same queries that was being 
+used to find answers about a particular site can be used on multiple sites. 
+E.g.,</p>
+<div class="highlight"><pre><code class="text">SELECT count(*) as total_count FROM Hosts;
+</code></pre>
+</div>
+
+<p>when executed with the multi-query tool gives the total number of hosts 
+bootstrapped to &quot;all&quot; the sites.</p>
+
+<p>The following diagram shows an overview of how multi-query reporting tool 
+works.</p>
+
+<p><img src="multisite_query_simplified.png" alt=""></p>
+
+<h3 id="toc_68">Definition</h3>
+
+<ul>
+<li>Aggregator</li>
+</ul>
+
+<p>A python script <code>multidb-query.py</code> that distributes the queries to available 
+CFEngine Database Servers and aggregates the result.</p>
+
+<ul>
+<li>Aggregated database interface</li>
+</ul>
+
+<p>Combines all the sqlite3 result files and presents an interface for the 
+aggregator to send the aggregation query. This is implemented internally with 
+the use of sqlite&#39;s ATTACH DATABASE command.</p>
+
+<ul>
+<li>Replica detection</li>
+</ul>
+
+<p>The <a href="manuals-enterprise-api-checking-status.html">Enterprise API</a> returns the 
+available replica set to redirect the query.
+<strong>TODO: make sure to update API reference accordingly</strong></p>
+
+<ul>
+<li>sqlite3 export</li>
+</ul>
+
+<p>A part of reporting engine that converts the result-set into a sqlite3 db file 
+for transfer to the aggregator.
+<strong>TODO: if official part of REST API, document there; otherwise, skip as implementation detail</strong></p>
+
+<h3 id="toc_69">Installation</h3>
+
+<p>Ubuntu 12.04 (precise):</p>
+<div class="highlight"><pre><code class="text">    $ sudo apt-get install gdebi-core
+    $ sudo gdebi cfengine-multihub_1.0.0_all.deb (installs dependencies too)
+    $ sudo apt-get install python-pip (might need to upgrade requests see Troubleshooting)
+    $ sudo pip install requests --upgrade
+</code></pre>
+</div>
+
+<h3 id="toc_70">Common use cases</h3>
+
+<ol>
+<li>Simple query (SELECT * FROM Hosts;)</li>
+</ol>
+<div class="highlight"><pre><code class="text">    ./multidb-query.py -u&quot;admin&quot; -p&quot;admin&quot; -H&#39;[[&quot;192.168.0.2&quot;, &quot;192.168.0.3&quot;, &quot;192.168.0.4&quot;],[&quot;192.168.0.5&quot;],[&quot;192.168.0.6&quot;]]&#39; -q&quot;SELECT * FROM Hosts;&quot; -s&quot;http&quot; -c
+    HostKey                                 HostName    IPAddress   ReportTimeStamp FirstReportTimeStamp
+    20ecdd8da8aacd89fe1317dbfd399cf69a011bcdd7919fac753a11f9db46ceb7    192.168.0.6 192.168.0.6 1370294146  1370282434
+    0821cf714637e2446df0d445fd4a25b587df3f00bd6eb408e6a90f0bf67342e8    master      192.168.0.2 1370294127  1370281540
+    5252d3cdbcdcd61bedc0b4e49f890a54a75693848ab50f8e1276d426a5d235d5    192.168.0.5 192.168.0.5 1370294140  1370282119
+</code></pre>
+</div>
+
+<ol>
+<li>Joins between multiple tables</li>
+</ol>
+
+<p>Find all RedHat hosts:
+<code>
+    ./multidb-query.py -u&quot;admin&quot; -p&quot;admin&quot; -s&quot;http&quot; -c -H&#39;[[&quot;192.168.0.2&quot;, &quot;192.168.0.3&quot;, &quot;192.168.0.4&quot;],[&quot;192.168.0.5&quot;],[&quot;192.168.0.6&quot;]]&#39; -q&quot;SELECT h.HostName AS hname, v.VariableValue AS vvalue FROM Hosts AS h INNER JOIN Variables AS v ON h.HostKey=v.HostKey where v.VariableName=\&quot;flavour\&quot; AND v.VariableValue REGEXP(\&quot;redhat.*\&quot;);&quot;    
+    hname       vvalue
+    192.168.0.6 redhat_5
+    master      redhat_5
+    192.168.0.5 redhat_5    
+</code></p>
+
+<p>Important: It is recommended for column names / table names to be aliased 
+during JOIN queries. <code>SELECT *</code> on a JOIN query may result in errors, because 
+different tables can have columns with the same name, eg. HostKey is common in 
+most tables. The Enterprise API (server) will not be able to create 
+intermediate(results) database for transfer to the client.</p>
+
+<ol>
+<li>Count &amp; Aggregation queries</li>
+</ol>
+
+<p>Count the number of RedHat hosts:</p>
+<div class="highlight"><pre><code class="bash">    ./multidb-query.py -u<span class="s2">&quot;admin&quot;</span> -p<span class="s2">&quot;admin&quot;</span> -s<span class="s2">&quot;http&quot;</span> -c -H<span class="s1">&#39;[[&quot;192.168.0.2&quot;, &quot;192.168.0.3&quot;, &quot;192.168.0.4&quot;],[&quot;192.168.0.5&quot;],[&quot;192.168.0.6&quot;]]&#39;</span> -q<span class="s2">&quot;SELECT count(h.HostName) as redhat_hosts_count FROM Hosts AS h INNER JOIN Variables AS v ON h.HostKey=v.HostKey where v.VariableName=\&quot;flavour\&quot; AND v.VariableValue REGEXP(\&quot;redhat.*\&quot;);&quot;</span>
+    redhat_hosts_count
+    3
+</code></pre>
+</div>
+
+<ol>
+<li>Sorting and Grouping</li>
+</ol>
+<div class="highlight"><pre><code class="text">    ./multidb-query.py -u&quot;admin&quot; -p&quot;admin&quot; -H&#39;[[&quot;192.168.0.2&quot;, &quot;192.168.0.3&quot;, &quot;192.168.0.4&quot;],[&quot;192.168.0.5&quot;],[&quot;192.168.0.6&quot;]]&#39; -q&quot;SELECT * FROM Variables ORDER BY VariableType LIMIT 4;&quot; -s&quot;http&quot; -c
+    HostKey                              NameSpace  Bundle      VariableName    VariableValue   VariableType
+    20ecdd8da8aacd89fe1317dbfd399cf69a011bcdd7919fac753a11f9db46ceb7 sys    workdir /var/cfengine   string
+    20ecdd8da8aacd89fe1317dbfd399cf69a011bcdd7919fac753a11f9db46ceb7 sys    winsysdir   /dev/null   string
+    20ecdd8da8aacd89fe1317dbfd399cf69a011bcdd7919fac753a11f9db46ceb7 sys    winprogdir86    /dev/null   string
+    20ecdd8da8aacd89fe1317dbfd399cf69a011bcdd7919fac753a11f9db46ceb7 sys    winprogdir  /dev/null   string
+</code></pre>
+</div>
+
+<h3 id="toc_71">Interface</h3>
+
+<ul>
+<li>Input</li>
+</ul>
+
+<p>SQL query, CFEngine Enterprise Servers with replica set defined e.g. <code>[[cfdb1,cfdb2,cfdb3], [cfdb4,cfdb5,cfdb6]]</code>, username/password</p>
+
+<ul>
+<li>Output</li>
+</ul>
+
+<p>Query result table printed to the terminal (tab separated)</p>
+
+<ul>
+<li>Errors</li>
+</ul>
+
+<p>Displayed in the format - &quot;ERROR:[host IP]:Error message&quot;</p>
+
+<ul>
+<li>Debugging and trouble shooting</li>
+</ul>
+
+<p>Various output levels (--info, --debug) available</p>
+
+<h4 id="toc_72">Command line interface:</h4>
+<div class="highlight"><pre><code class="text">optional arguments:  
+-h, --help
+  show this help message and exit  
+-d, --debug
+  Enable debugging output  
+-i, --inform
+  Output details about the current operation. Similar to &#39;verbose&#39; mode  
+-t TIMEOUT, --timeout TIMEOUT  
+  Maximum time to wait for a hub to respond
+-c, --cleanup
+  Remove intermediate files  
+-e, --continue-on-error  
+  Continue on error. Reports will be generated if report collection from 
+  at least one hub is succesful  
+-s URL_SCHEME_NAME, --url-scheme-name URL_SCHEME_NAME  
+  Url scheme name. eg. https(default), http  
+
+Required arguments:  
+ -u USER, --user USER
+   Username that has permissions to query all the hubs  
+ -p PASSWORD, --password PASSWORD  
+   Password for user  
+ -H HUBS, --hubs HUBS  2D array of hub ips. eg.  
+   &quot;[[&#39;10.0.0.5&#39;,&#39;10.0.0.6&#39;],[&#39;10.0.0.7&#39;]]&quot;  
+ -q SQL, --sql SQL
+   SQL query string  
+</code></pre>
+</div>
+
+<h3 id="toc_73">Limitations:</h3>
+
+<ol>
+<li>Embedded SQL is not supported at the moment eg. you will not be able to do: </li>
+</ol>
+<div class="highlight"><pre><code class="text">    SELECT count(SELECT DISTINCT HostName From Hosts) from Hosts
+</code></pre>
+</div>
+
+<h3 id="toc_74">Recommendations and best practices:</h3>
+
+<p>Always use aliases for operations involving multiple tables eg. instead of 
+this:</p>
+<div class="highlight"><pre><code class="text">SELECT Hosts.HostKey, PromiseLogs.HostKey FROM Hosts INNER JOIN 
+    PromiseLogs ON Hosts.HostKey=PromiseLogs.HostKey;
+</code></pre>
+</div>
+
+<p>use:</p>
+<div class="highlight"><pre><code class="text">SELECT Hosts.HostKey AS hkey, PromiseLogs.HostKey AS pkey FROM Hosts INNER 
+    JOIN PromiseLogs ON hkey=pkey;
+</code></pre>
+</div>
+
+<p>or even better:</p>
+<div class="highlight"><pre><code class="text">SELECT h.HostKey AS hkey, p.HostKey AS pkey FROM Hosts AS h INNER JOIN 
+    PromiseLogs AS p ON hkey=pkey;
+</code></pre>
+</div>
+
+<p>Always use aliases for functions</p>
+<div class="highlight"><pre><code class="text">eg. SELECT count(*) as column_count from Hosts
+</code></pre>
+</div>
+
+<p>Use LIMIT with ORDER BY whenever possible</p>
+
+<p>Instead of:</p>
+<div class="highlight"><pre><code class="text">SELECT Hosts.HostName AS Name FROM Hosts
+    LIMIT 10
+</code></pre>
+</div>
+
+<p>(This might return data that come from a single CFDB)</p>
+
+<p>Use:</p>
+<div class="highlight"><pre><code class="text">SELECT Hosts.HostName AS Name FROM Hosts
+    ORDER BY Hosts.ReportTimeStampLIMIT 10
+</code></pre>
+</div>
+
+<h3 id="toc_75">Troubleshooting:</h3>
+
+<h4 id="toc_76">Error in status query</h4>
+
+<p>Always check the syslog in the corresponding  CFEngine Database Server if the error output at the 
+multi-site client is not sufficient. The ip address for the machine where the 
+error occurred is prefixed with every error message. There are --inform(-i) 
+and --debug(-d) options available that provide detail about the individual 
+steps on the operation.</p>
+<div class="highlight"><pre><code class="text">ERROR:root:[10.100.100.130] Error exporting results to sqlite3 database file
+ERROR:root:Error in status query
+</code></pre>
+</div>
+
+<p>Something went wrong while executing the SQL query at the server. Check the syslog in [10.100.100.130]. If you see something like the following, it means that the Enterprise API received the exact same query:</p>
+<div class="highlight"><pre><code class="text">Error executing query - message: database is locked, sql: &quot;CREATE TABLE results
+</code></pre>
+</div>
+
+<p>Same query from multiple requests at the same time is not supported currently. A simple example would be - trying to query the same  CFEngine Database Server in a multi-site query:</p>
+<div class="highlight"><pre><code class="text">$ python multidb-query.py -u admin -p admin
+    -H &#39;[[&quot;10.100.100.130&quot;], [&quot;10.100.100.130&quot;]]&#39; -s&quot;http&quot;
+    -q&quot;SELECT HostName, Count(1) as HostCount FROM Hosts GROUP BY HostName LIMIT 100&quot;.
+</code></pre>
+</div>
+
+<h4 id="toc_77">No hubs available to query</h4>
+<div class="highlight"><pre><code class="text">ERROR:root:Error: No hubs available to query, cannot continue
+</code></pre>
+</div>
+
+<p>If one of the hubs in the query cannot be contacted, the query cannot continue 
+by default. To override this behavior use the <code>-e, --continue-on-error</code> 
+option.</p>
+
+<p>If you still get this error with <code>-e</code>, then there is probably a problem with 
+network connectivity.</p>
+
+<h4 id="toc_78">No hubs available to query for a group</h4>
+<div class="highlight"><pre><code class="text">WARNING:root:No hubs available to query for group: [u&#39;10.100.100.10&#39;, u&#39;10.100.100.11&#39;]
+</code></pre>
+</div>
+
+<p>This warning is displayed when run with <em>-e, --continue-on-error</em> option.
+This means that none of the members in the replica set could be contacted.</p>
+
+<h4 id="toc_79">Invalid response code</h4>
+
+<p>This is the HTTP response code received from the server. Currently only 200 
+(success) is regarded as valid</p>
+
+<p>Check if CFEngine enterprise api is running and responding correctly on the site.
+eg. curl admin:admin <a href="http://10.100.100.130/api">http://10.100.100.130/api</a></p>
+
+<h4 id="toc_80">Connection Error</h4>
+
+<p>Connection errors can be caused due to various reasons. A stack trace is 
+printed in case of a connection error.</p>
+
+<ul>
+<li>Use of incorrect URL Scheme name</li>
+</ul>
+
+<p>Multi-Site reporting uses &quot;HTTPS&quot; by default. If you are hosting CFEngine 
+Enterprise API under a different URL Scheme name, you would get</p>
+<div class="highlight"><pre><code class="text">ConnectionError: HTTPSConnectionPool(host=&#39;10.100.100.177&#39;, port=443): Max retries exceeded with url: /api (Caused by &lt;class &#39;socket.error&#39;&gt;: [Errno 111] Connection refused)
+INFO 2013-05-13 15:23:15,168 [10.100.100.177] Hub NOT available for report query
+</code></pre>
+</div>
+
+<p>You can specify a different scheme name with the option:</p>
+<div class="highlight"><pre><code class="text">-s URL_SCHEME_NAME, --url-scheme-name URL_SCHEME_NAME
+                        Url scheme name. eg. https(default), http
+
+
+$ ./multidb-query.py -u&quot;admin&quot; -p&quot;admin&quot;
+  -H&#39;[[&quot;10.100.100.177&quot;],[&quot;10.100.100.179&quot;]]&#39; -q&quot;SELECT * from hosts;&quot;
+  -s&quot;http&quot; -i
+</code></pre>
+</div>
+
+<h4 id="toc_81">Invalid input IP addresses list</h4>
+
+<p>If you do not supply a proper JSON array with correctly formatted IP addresses, you might get an error such as the following:</p>
+<div class="highlight"><pre><code class="text">ERROR 2013-05-29 14:50:02,158 Invalid hub IP addresses list. No JSON object could be decoded
+</code></pre>
+</div>
+
+<p>or,</p>
+<div class="highlight"><pre><code class="text">ERROR 2013-05-29 14:55:40,419 Invalid hub IP addresses list. Expecting , delimiter: line 1 column 8 (char 8)
+</code></pre>
+</div>
+
+<p>Please make sure that the IP address list supplied is properly formatted.  </p>
+<div class="highlight"><pre><code class="text">-H&quot;[&#39;10.100.100.130&#39;],[&#39;10.100.100.131&#39;]&quot;
+</code></pre>
+</div>
+
+<p>Incorrect - a proper JSON array needs to be enclosed in an outer square 
+brackets <code>[]</code></p>
+<div class="highlight"><pre><code class="text">-H&quot;[[&#39;10.100.100.130&#39;],[&#39;10.100.100.131&#39;]]&quot;
+</code></pre>
+</div>
+
+<p>Incorrect, notice the outer double quotes, and inner single quotes.</p>
+<div class="highlight"><pre><code class="text">-H&#39;[[&quot;10.100.100.130&quot;],[&quot;10.100.100.131&quot;]]&#39;
+</code></pre>
+</div>
+
+<p>Correct.</p>
+
+<p>To supply replica set groups:  </p>
+<div class="highlight"><pre><code class="text">-H&#39;[[&quot;10.100.100.130&quot;, &quot;10.100.100.132&quot;, &quot;10.100.100.133&quot;],[&quot;10.100.100.131&quot;, &quot;10.100.100.135&quot;]]&#39;
+</code></pre>
+</div>
+
+<h4 id="toc_82">Outdated python-requests version</h4>
+
+<p>The api for python-requests has been changed v1.0.0 (<a href="https://github.com/kennethreitz/requests/blob/master/HISTORY.rst">https://github.com/kennethreitz/requests/blob/master/HISTORY.rst</a>)<br>
+Sample errors:</p>
+<div class="highlight"><pre><code class="text">AttributeError: &#39;Response&#39; object has no attribute &#39;json&#39;
+AttributeError: &#39;Response&#39; object has no attribute &#39;text&#39;
+</code></pre>
+</div>
+
+<p>To upgrade python-requests:</p>
+<div class="highlight"><pre><code class="bash">sudo pip install requests --upgrade
+</code></pre>
+</div>
+
+            </article>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+    <div id="moveTop">
+        <a href="#top"><span>&uarr;</span></a>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            /* toggle visibility of second level navigation */
+            $('#nav_level1 li a').click(function(e) {
+                var level2_div = $(this).attr('class');
+                if (level2_div) {
+                    level2_div = "#" + level2_div;
+                    $("#left_col .level2").not(level2_div).hide();
+                    $(level2_div).toggle();
+                }
+                e.preventDefault()
+            });
+
+            /* Resize for first level menu */
+            $("#resizable_zone").resizable({
+                handles : 's',
+                containment : '#left_col',
+                alsoResize : '#nav_level1_wrapper',
+                resize : function(event, ui) {
+                    resizePane(100);
+                },
+                stop : function(event, ui) {
+                    resizePane()
+                }
+            });
+            
+
+            // if resize request was made - set to true
+            var scheduleResize = false;
+            // if we should resize - set to true
+            var doResize = false;
+
+            function resizePane(interval) {
+                if (interval) {
+                    scheduleResize = true;
+                    lazyScPaneInit(interval);
+                } else {
+                    initScrollpane();
+                }
+            }
+            /* Do not recalculate jspane for each pixel */
+            function lazyScPaneInit(interval) {
+                // skip if we have scheduled resize and have't finished it yet
+                if (doResize && scheduleResize) {
+                    scheduleResize = false;
+                    return;
+                }
+                // we have scheduled update, and it came from setTimeout
+                if (scheduleResize && !doResize) {
+                    initScrollpane();
+                    doResize = false;
+                } else {
+                    scheduleResize = true;
+                    doResize = false;
+                    setTimeout('lazyScPaneInit()', interval);
+                }
+            }
+            
+            /*delayed scrollpane initialization/recalculation*/
+            function initScrollpane() {
+                var pane = $(".scroll-pane").each(function() {
+                    var paneObj = $(this).data('jsp');
+                    if (!paneObj) {
+                        setTimeout(initScrollpane, 100);
+                        return;
+                    }
+                    paneObj.reinitialise({
+                        verticalGutter : 0
+                    });
+                });
+            }
+
+            /*Scroll pane initialization*/
+            $('.scroll-pane').jScrollPane({
+                //autoReinitialise: true,
+                showArrows : false,
+                verticalArrowPositions : "split",
+                horizontalArrowPositions : "split"
+            });
+
+            /* Resize drag pointer for left nav */
+            function resizeDragPointer() {
+                var $resizePoiner = $(".ui-resizable-s");
+                $resizePoiner.css({
+                    'width' : $resizePoiner.parent().width() + "px"
+                });
+            }
+
+            /*Left navigation resize*/
+            $(window).resize(function() {
+                resizeDragPointer();
+            });
+
+            resizeDragPointer();
+
+            /*show/hide moveTop link */
+            var showMoveTop = false;
+            $("#moveTop a").click(function(e) {
+                $(window).scrollTop($('#top_nav').offset().top);
+                showMoveTop = false;
+                e.preventDefault();
+            });
+           
+            $(window).scroll(function() {
+                if ($(window).scrollTop() > 380 && showMoveTop===false) {
+                    $("#moveTop").show();
+                    showMoveTop = true;
+                } else if($(window).scrollTop()<380 && showMoveTop === true ) {
+                    $("#moveTop").hide();
+                    showMoveTop = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

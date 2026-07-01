@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.10  Documentation - Known Issues</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.10/assets/global-9291732ba4137970d6f84f199dc9b48d.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Known Issues";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/" selected>Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:v9zopcogc1m" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a><ul class="level2"><li><a href="guide-latest-release-whatsnew.html">New in CFEngine</a></li><li><a href="guide-latest-release-supported-platforms.html">Supported Platforms and Versions</a></li><li><a class="active" href="guide-latest-release-known-issues.html">Known Issues</a></li></ul></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-design-center.html">Design Center Overview</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-latest-release.html">Latest Release</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Known Issues
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>CFEngine defects are managed in our <a href="http://tracker.mender.io/projects/CFE/issues" title="Bug Tracker">bug tracker</a>. Please report
+bugs or unexpected behavior there, following the documented guideline for new
+bug reports.</p>
+
+<ul>
+<li>Core Issues affecting <a href="https://tracker.mender.io/secure/QuickSearch.jspa?searchString=v:3.10*">3.10</a></li>
+</ul>
+
+<p>The items below highlight issues that require additional awareness when starting
+with CFEngine or when upgrading from a previous version.</p>
+<h3 id="cf-agent--n-or-cf-agent---negate-is-not-working"><code>cf-agent -N</code> or <code>cf-agent --negate</code> is not working</h3>
+<p>As reported in <a href="https://tracker.mender.io/browse/CFE-1589">CFE-1589</a> the
+functionality of negating persistent classes on the command line, was
+removed sometime before 3.5, commit
+cf63db27945f0628caa5bf45338f7709d5d12b21. The ticket is open until the
+functionality is reinstated.</p>
+<h3 id="hp-ux-specific">HP-UX specific</h3>
+<ul>
+<li><a href="reference-promise-types-packages.html" title="packages">Package promises</a> do not have out-of-the-box support for the HP-UX
+specific package manager. The workaround is to call the package manager
+directly using <a href="reference-promise-types-commands.html" title="commands">commands promises</a>.</li>
+<li>Some important system information is missing from the HP-UX inventory report,
+as well as from CFEngine hard classes and system variables. The workaround is
+to use system tools to obtain the required information and set classes based
+on this.
+    * Disk free
+    * Memory size
+    * Several OS and architecture specific attributes
+            * System version
+            * System serial number
+            * System manufacturer
+            * CPU model
+            * BIOS version
+            * BIOS vendor</li>
+<li><a href="reference-promise-types-processes.html" title="processes">Process promises</a> depend on the <code>ps</code> native tool, which by
+default truncates lines at 128 columns on HP-UX. It is recommended to edit
+the file <code>/etc/default/ps</code> and increase the <code>DEFAULT_CMD_LINE_WIDTH</code> setting
+to 1024 to guarantee that process promises will work smoothly on the
+platform.</li>
+<li>Upgrading CFEngine on HP-UX is not supported by the out-of-the-box policy.
+There is a <a href="https://cfengine.zendesk.com/hc/en-us/articles/205454908">support article</a>
+with a workaround.</li>
+</ul>
+<h3 id="enterprise-emails-sent-for-alert-noticies-come-from-admin-organization-com">Enterprise emails sent for alert noticies come from &#39;<a href="mailto:admin@organization.com">admin@organization.com</a>&#39;.</h3>
+<p>There is currently no setting in Mission Portal to configure the sender email
+address. This issue is tracked in <a href="https://tracker.mender.io/browse/ENT-695">ENT-695</a>
+and will be addressed in a future release.</p>
+
+<p>To change the setting you must edit the from email address in
+<code>/var/cfengine/share/GUI/application/config/appsettings.php</code>. Policy in the
+Masterfiles Policy Framework will take care of updating the running config
+during the next policy run.</p>
+<div class="highlight"><pre><code class="text">// Default FROM email address
+$config[&#39;appemail&#39;] = &#39;admin@organisation.com&#39;;
+</code></pre>
+</div>
+<h3 id="enterprise-monitoring-graphs">Enterprise monitoring graphs</h3>
+<p>Monitoring graphs are disabled by default in CFEngine Enterprise 3.6 and later
+versions. To enable them, change monitoring_include in
+<code>masterfiles/controls/reports.cf</code> to e.g. &quot;.*&quot;. Note that this can have
+significant impact on the resource consumption of your hub.</p>
+
+<p>Monitoring graphs are not supported on all platforms, currently AIX, HP-UX and
+Windows do not have this data.</p>
+<h3 id="enterprise-inventory-csv-report-is-empty-0-bytes">Enterprise inventory CSV report is empty (0 bytes)</h3>
+<p>Exporting a CSV-based inventory report can result in a 0-byte length file
+if the CFEngine Server is accessed over https and the certificate&#39;s CN
+mismatches with the URL you use to export the report. To verify this is the
+problem, check the Mission Portal application logs (currently at
+/var/cfengine/httpd/htdocs/application/logs) on the CFEngine Server. If you
+see lines like the following you affected by this issue.</p>
+<div class="highlight"><pre><code class="text">ERROR - 2016-06-15 07:24:15 --&gt; Severity: Warning --&gt; readfile(): Peer certificate CN=`myhostname.example.com&#39; did not match expected CN=`myhostname&#39; /var/cfengine/httpd/htdocs/application/helpers/cf_util_helper.php 612
+ERROR - 2016-06-15 07:24:15 --&gt; Severity: Warning --&gt; readfile(): Failed to enable crypto /var/cfengine/httpd/htdocs/application/helpers/cf_util_helper.php 612
+ERROR - 2016-06-15 07:24:15 --&gt; Severity: Warning --&gt; readfile(https://myhostname/api/static/e39cfd50f95a853fb103a89477b46eb8.csv): failed to open stream: operation failed /var/cfengine/httpd/htdocs/application/helpers/cf_util_helper.php 612
+</code></pre>
+</div>
+
+<p>The solution is to generate a new certificate with the correct CN,
+i.e. the one you use to access the CFEngine Server. To see how to do
+this, look at the documentation for using a <a href="enterprise-cfengine-guide-hub_administration-custom-https-certificate.html" title="Custom SSL Certificate">Custom SSL certificate</a>.</p>
+<h3 id="enterprise-software-inventory-is-not-out-of-the-box">Enterprise software inventory is not out-of-the-box</h3>
+<p>Software inventory is not out-of-the-box for reporting from the hub on other
+platforms than Debian, Ubuntu and Red Hat/CentOS.</p>
+
+<p>In order to add software inventory for other platforms,
+please contact support for a custom policy.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-releases.html">releases</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-latest-release.html">latest release</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-platforms.html">platforms</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-versions.html">versions</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-known-issues.html">known issues</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 17 March 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/latest-release/known-issues.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/ae7435d3d24d30077bfbf18438f2444c629f8c69" target="_blank">ae7435d3d24d30077bfbf18438f2444c629f8c69</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.10/assets/footer-4c28dbe187e7b2a3c1504ff564f1b523.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

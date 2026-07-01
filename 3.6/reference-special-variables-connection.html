@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.6  Documentation - connection</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.6/assets/global-ac3885a0674bd3c9117d62800be1608f.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "connection";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                 <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html" selected>Version 3.6 (EOL)</option>
+			                 <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:bm0uhfq8ykk" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-special-variables.html">Special Variables</a><ul class="level2"><li><a href="reference-special-variables-const.html">const</a></li><li><a class="active" href="reference-special-variables-connection.html">connection</a></li><li><a href="reference-special-variables-edit.html">edit</a></li><li><a href="reference-special-variables-match.html">match</a></li><li><a href="reference-special-variables-mon.html">mon</a></li><li><a href="reference-special-variables-sys.html">sys</a></li><li><a href="reference-special-variables-this.html">this</a></li></ul></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-standard-library.html">Standard Library</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-special-variables.html">Special Variables</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    connection
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>The context <code>connection</code> is used by the <a href="reference-promise-types-access.html#shortcut" title="access - shortcut"><code>shortcut</code></a> attribute in <a href="reference-promise-types-access.html" title="access"><code>access</code></a>
+promises to access information about the remote agent requesting access.</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">access</span><span class="p">:</span>
+    <span class="s">&quot;/var/cfengine/cmdb/</span><span class="si">$(connection.key)</span><span class="s">.json&quot;</span>
+      <span class="kr">shortcut</span>   <span class="o">=&gt;</span> <span class="s">&quot;me.json&quot;</span><span class="p">,</span>
+      <span class="kr">admit_keys</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(connection.key)</span><span class="s">&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> The usage of the <code>connection</code> variables is strictly limited to
+literal strings within the <code>promiser</code> and admit/deny lists of <a href="reference-promise-types-access.html" title="access"><code>access</code></a> promise
+types; they cannot be passed into functions or stored in other variables. These
+variables can only be used with incoming connections that use
+<a href="reference-components.html#protocol_version" title="Components and Common Control - protocol_version"><code>protocol_version</code></a> &gt;=2 ( or &quot;latest&quot; ).</p>
+<h3 id="connection-key">connection.key</h3>
+<p>This variable contains the public key sha of the connecting client in the form &#39;SHA=...&#39;.</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">access</span><span class="p">:</span>
+    <span class="s">&quot;/var/cfengine/cmdb/</span><span class="si">$(connection.key)</span><span class="s">.json&quot;</span>
+      <span class="kr">shortcut</span>   <span class="o">=&gt;</span> <span class="s">&quot;me.json&quot;</span><span class="p">,</span>
+      <span class="kr">admit_keys</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(connection.key)</span><span class="s">&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+<h3 id="connection-ip">connection.ip</h3>
+<p>This variable contains the IP address of the connecting remote agent.</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">access</span><span class="p">:</span>
+    <span class="s">&quot;/var/cfengine/cmdb/</span><span class="si">$(connection.ip)</span><span class="s">.json&quot;</span>
+      <span class="kr">shortcut</span>   <span class="o">=&gt;</span> <span class="s">&quot;myip.json&quot;</span><span class="p">,</span>
+      <span class="kr">admit_keys</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(connection.key)</span><span class="s">&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+<h3 id="connection-hostname">connection.hostname</h3>
+<p>This variable contains the hostname of the connecting client as determined by a
+reverse DNS lookup from <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a>.</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">access</span><span class="p">:</span>
+    <span class="s">&quot;/var/cfengine/cmdb/</span><span class="si">$(connection.hostname)</span><span class="s">.json&quot;</span>
+      <span class="kr">shortcut</span>   <span class="o">=&gt;</span> <span class="s">&quot;myhostname.json&quot;</span><span class="p">,</span>
+      <span class="kr">admit_keys</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(connection.key)</span><span class="s">&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> Reverse lookups are only performed when necessary. To avoid the
+performance impact of reverse dns lookups for each connection avoid using
+<a href="reference-promise-types-access.html#admit_hostnames" title="access - admit_hostnames"><code>admit_hostnames</code></a>, using hostnames in your <a href="reference-promise-types-access.html#admit" title="access - admit"><code>admit</code></a> rules, and these
+<a href="reference-special-variables-connection.html" title="connection"><code>connection</code></a> variables.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-variables.html">variables</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-connection.html">connection</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/special-variables/connection.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/13cbf18729a5bf43d836f72e30aab3b2b0bdee7f" target="_blank">13cbf18729a5bf43d836f72e30aab3b2b0bdee7f</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.6/assets/footer-1ca6436dd462ed6a69ad3f2dba0774f0.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

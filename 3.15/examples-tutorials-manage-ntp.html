@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.15  Documentation - Manage Network Time Protocol</title>
+        <link rel="icon" type="image/svg+xml" href="./media/images/favicon.svg">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/examples-tutorials-manage-ntp.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+        <link href='assets/global-d4bd60bd0125f13532b30d7a739a8f45.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Manage Network Time Protocol";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/">Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/" selected>Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="012826289311752768906:zdz4ud6t2xf" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a></li><li><a href="examples-tutorials.html">Tutorials</a><ul class="level2"><li><a href="examples-tutorials-json-yaml-support-in-cfengine.html">JSON and YAML Support in CFEngine</a></li><li><a href="examples-tutorials-installing-cfengine-enterprise-agent.html">Installing CFEngine Enterprise Agent</a></li><li><a class="active" href="examples-tutorials-manage-ntp.html">Manage Network Time Protocol</a></li><li><a href="examples-tutorials-manage-local-users.html">Manage local users</a></li><li><a href="examples-tutorials-manage-packages.html">Manage packages</a></li><li><a href="examples-tutorials-manage-processes-and-services.html">Manage processes and services</a></li><li><a href="examples-tutorials-write-cfengine-policy.html">Write cfengine policy</a></li><li><a href="examples-tutorials-files-tutorial.html">Create, Modify, and Delete Files</a></li><li><a href="examples-tutorials-distribute-files-from-a-central-location.html">Distribute files from a central location</a></li><li><a href="examples-tutorials-report_inventory_remediate_sec_vulnerabilities.html">Reporting and Remediation of Security Vulnerabilities</a></li><li><a href="examples-tutorials-masterfiles_policy_framework_upgrade.html">Masterfiles Policy Framework Upgrade</a></li><li><a href="examples-tutorials-tags.html">Tags for variables, classes, and bundles</a></li><li><a href="examples-tutorials-custom_inventory.html">Custom Inventory</a></li><li><a href="examples-tutorials-dashboard-alerts.html">Dashboard Alerts</a></li><li><a href="examples-tutorials-integrating-alerts-with-pager-duty.html">Integrating alerts with PagerDuty</a></li><li><a href="examples-tutorials-integrating-alerts-with-ticketing-systems.html">Integrating alerts with ticketing systems</a></li><li><a href="examples-tutorials-integrating-with-sumo-logic.html">Integrating with Sumo Logic</a></li><li><a href="examples-tutorials-render-files-with-mustache-templates.html">Render files with Mustache templates</a></li><li><a href="examples-tutorials-file_comparison.html">File Comparison</a></li></ul></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-tutorials.html">Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Manage Network Time Protocol
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>In this tutorial we will write a simple policy to ensure that the latest version of the NTP service is installed on your system. Once the NTP software is installed, we will extend the policy to manage the service state as well as the software configuration.</p>
+
+<p>Note: For simplicity, in this tutorial we will work directly on top of the Masterfiles Policy Framework (MPF) in <code>/var/cfengine/masterfiles</code> (*masterfiles*) and we will not use version control.</p>
+<h2 id="ensuring-the-ntp-package-is-installed">Ensuring the NTP package is installed</h2><div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">ntp</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">ntp_package_name</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;ntp&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="kd">packages</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;</span><span class="si">$(ntp_package_name)</span><span class="s">&quot;</span><span class="w">   </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;StandardsDoc 3.2.1&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>
+<span class="w">       </span><span class="kr">policy</span><span class="w">          </span><span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="kr">handle</span><span class="w">          </span><span class="o">=&gt;</span> <span class="s">&quot;ntp_packages_</span><span class="si">$(ntp_package_name)</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="kr">classes</span><span class="w">         </span><span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="s">&quot;bundle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntp_package&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>What does this policy do?</p>
+
+<p>Let&#39;s walk through the different sections of the code do see how it works.</p>
+<h3 id="bundle-agent-ntp">bundle agent ntp</h3>
+<p>You can think of bundles as a collection of desired states. You can have as many bundles as you would like, and also reference them from within themselves. In fact, they are somewhat similar to function calls in other programming languages. Let&#39;s dive deeper into the code in the ntp bundle.</p>
+<h4 id="vars">vars</h4><div class="highlight"><pre><code class="cf3"><span></span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p><code>vars</code> is a promise type that ensures the presence of variables that hold specific values. <code>vars:</code> starts a promise type block which ends when the next promise type block is declared.</p>
+<h5 id="ntp_package_name">ntp_package_name</h5><div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="p">&quot;</span><span class="nv">ntp_package_name</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;ntp&quot;</span><span class="p">;</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>A variable with the name <code>ntp_package_name</code> is declared and it is assigned a value, <code>ntp</code>. This string variable will be referenced in the other sections of the bundle.</p>
+<h4 id="packages">packages</h4><div class="highlight"><pre><code class="cf3"><span></span><span class="w">   </span><span class="kd">packages</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;</span><span class="si">$(ntp_package_name)</span><span class="s">&quot;</span><span class="w">   </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;StandardsDoc 3.2.1&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>
+<span class="w">         </span><span class="kr">policy</span><span class="w">          </span><span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="kr">handle</span><span class="w">          </span><span class="o">=&gt;</span> <span class="s">&quot;ntp_packages_</span><span class="si">$(ntp_package_name)</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="kr">classes</span><span class="w">         </span><span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="s">&quot;bundle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntp_package&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p><code>packages</code> is a promise type that ensures the presence or absence of a package on a system.</p>
+<h5 id="ntp_package_name">$(ntp_package_name)</h5><div class="highlight"><pre><code class="text"><span></span>       &quot;$(ntp_package_name)&quot;   -&gt; { &quot;StandardsDoc 3.2.1&quot; } 
+</code></pre>
+</div>
+
+<p>Notice the <a href="examples-tutorials-manage-ntp.html#ntp_package_name" title="Manage Network Time Protocol - ntp_package_name"><code>ntp_package_name</code></a> variable is referenced here, which evaluates to <code>ntp</code> as the promiser. You can also associate a stakeholder aka promisee to this promiser. The stakeholder association is optional, but is particularly useful in when you wish to provide some structure in your policy to tie it to a business rule. In this example, what we are stating is this – &quot;Make sure NTP is installed as it is described in StandardsDoc 3.2.1&quot;.</p>
+
+<p>This promiser has a number of additional attributes defined:</p>
+<h6 id="policy">policy</h6><div class="highlight"><pre><code class="cf3"><span></span><span class="w">       </span><span class="kr">policy</span><span class="w">          </span><span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span><span class="w"></span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text"><span></span>The package_policy attribute describes what you want to do the package. In this case you want to ensure that it is present on the system. Other valid values of this attribute include delete, update, patch, reinstall, addupdate, and verify. Because of the self-healing capabilities of CFEngine, the agents will continuously check to make sure the package is installed. If it is not installed, CFEngine will try to install it according to its policy.
+</code></pre>
+</div>
+<h6 id="handle">handle</h6><div class="highlight"><pre><code class="cf3"><span></span><span class="w">       </span><span class="kr">handle</span><span class="w">          </span><span class="o">=&gt;</span> <span class="s">&quot;ntp_packages_</span><span class="si">$(ntp_package_name)</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The handle uniquely identifies a promise within a policy. A recommended naming scheme for the handle is <code>bundle_name_promise_type_class_restriction_promiser</code>. It is often used for documentation and compliance purposes. As shown in this example, you can easily substitute values of variables for the handle.</p>
+<h6 id="classes">classes</h6><div class="highlight"><pre><code class="cf3"><span></span><span class="w">       </span><span class="kr">classes</span><span class="w">         </span><span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="s">&quot;bundle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntp_package_&quot;</span><span class="p">);</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p><code>classes</code> provide context which can help drive the logic in your policies. In this example, classes for each promise outcome are defined prefixed with <code>ntp_package_</code>, for details check out the implementation of <code>body classes results</code> in the stdlib. For example, <code>ntp_package_repaired</code> will be defined if cf-agent did not have the ntp package installed and had to install it. <code>ntp_package_kept</code> would be defined if the ntp package is already installed and <code>ntp_package_notkept</code> would be defined. </p>
+
+<p>On your hub create <code>services/ntp.cf</code> inside <em>masterfiles</em> with the following content:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">ntp</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">ntp_package_name</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;ntp&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="kd">packages</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;</span><span class="si">$(ntp_package_name)</span><span class="s">&quot;</span><span class="w">   </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;StandardsDoc 3.2.1&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>
+<span class="w">         </span><span class="kr">policy</span><span class="w">          </span><span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="kr">handle</span><span class="w">          </span><span class="o">=&gt;</span> <span class="s">&quot;ntp_packages_</span><span class="si">$(ntp_package_name)</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="kr">classes</span><span class="w">         </span><span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="s">&quot;bundle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntp_package&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Now, check the syntax, it&#39;s always a good idea any time you edit policy.</p>
+<div class="highlight"><pre><code class="text"><span></span>[root@hub masterfiles]# cf-promises -f ./services/ntp.cf 
+[root@hub masterfiles]# echo $?
+0
+</code></pre>
+</div>
+
+<p>Now, we need to make sure the agent knows it should use this policy file and bundle. Create <code>def.json</code> an Augments file with the following content: </p>
+<div class="highlight"><pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;inputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;services/ntp.cf&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;vars&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;control_common_bundlesequence_end&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;ntp&quot;</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Validate it.</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">[root@hub masterfiles]# </span>python -m json.tool &lt; def.json
+<span class="go">{</span>
+<span class="go">    &quot;inputs&quot;: [</span>
+<span class="go">        &quot;services/ntp.cf&quot;</span>
+<span class="go">    ],</span>
+<span class="go">    &quot;vars&quot;: {</span>
+<span class="go">        &quot;control_common_bundlesequence_end&quot;: [</span>
+<span class="go">            &quot;ntp&quot;</span>
+<span class="go">        ]</span>
+<span class="go">    }</span>
+<span class="go">}</span>
+</code></pre>
+</div>
+
+<p>Force a policy update. Remember, CFEngine is running in the background, so it&#39;s possible that by the time you force a policy update and run the agent may have already done it and your output may differ.</p>
+<div class="highlight"><pre><code class="text"><span></span>cf-agent -KIf update.cf
+</code></pre>
+</div>
+
+<p>In the output, you should see something like:</p>
+<div class="highlight"><pre><code class="text"><span></span>info: Updated &#39;/var/cfengine/inputs/services/ntp.cf&#39; from source &#39;/var/cfengine/masterfiles/services/ntp.cf&#39; on &#39;localhost&#39;
+</code></pre>
+</div>
+
+<p>Now force a policy run.</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">[root@hub masterfiles]# </span>cf-agent -KI
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text"><span></span>info: Successfully installed package &#39;ntp&#39;
+</code></pre>
+</div>
+
+<p>Now that we have successfully promised the package, let&#39;s move on to the <em>service</em>.</p>
+<h2 id="manage-ntp-service">Manage NTP service</h2>
+<p>Now we will extend the policy to ensure that the NTP service is running.</p>
+
+<p>Now that the NTP service has been installed on the system, we need to make sure that it is running.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">ntp</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">ntp_package_name</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;ntp&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">     </span><span class="nc">redhat</span><span class="p">::</span><span class="w"></span>
+<span class="w">         </span><span class="p">&quot;</span><span class="nv">ntp_service_name</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;ntpd&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">     </span><span class="nc">debian</span><span class="p">::</span><span class="w"></span>
+<span class="w">         </span><span class="p">&quot;</span><span class="nv">ntp_service_name</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;ntp&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="kd">packages</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;</span><span class="si">$(ntp_package_name)</span><span class="s">&quot;</span><span class="w">   </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;StandardsDoc 3.2.1&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>
+<span class="w">         </span><span class="kr">policy</span><span class="w">          </span><span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="kr">handle</span><span class="w">          </span><span class="o">=&gt;</span> <span class="s">&quot;ntp_packages_</span><span class="si">$(ntp_package_name)</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="kr">classes</span><span class="w">         </span><span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="s">&quot;bundle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntp_package&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">services</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="s">&quot;</span><span class="si">$(ntp_service_name)</span><span class="s">&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;StandardsDoc 3.2.2&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>
+<span class="w">       </span><span class="kr">service_policy</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;start&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;bundle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntp_service&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">   </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nc">ntp_service_repaired.inform_mode</span><span class="p">::</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;NTP service repaired&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h3 id="what-does-this-policy-do">What does this policy do?</h3>
+<p>Let&#39;s dissect this policy and review the differences in the policy.</p>
+<h4 id="vars">vars</h4><div class="highlight"><pre><code class="cf3"><span></span><span class="w">   </span><span class="nc">redhat</span><span class="p">::</span><span class="w"></span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">ntp_service_name</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;ntpd&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="nc">debian</span><span class="p">::</span><span class="w"></span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">ntp_service_name</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;ntp&quot;</span><span class="p">;</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The first thing that you will notice is that the variable declarations section has been expanded. Recall that you completed part 1 of this tutorial by creating packages promises that works across Debian and redhat. While the package name for NTP is the same between Debian and Red Hat, the service names are actually different. Therefore, classes introduced here to distinguish the service name for NTP between these two environments. The CFEngine agents automatically discover environment properties and defines <a href="reference-language-concepts-classes.html#hard-classes.html" title="Language Concepts -&gt; Classes and Decisions: Hard classes"><em>hard classes</em></a> that can be used – this includes classes such as <code>debian</code> and <code>redhat</code> that define the host&#39;s operating system.</p>
+<h4 id="reports">reports</h4><div class="highlight"><pre><code class="cf3"><span></span><span class="w">   </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nc">ntp_service_repaired.inform_mode</span><span class="p">::</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;NTP service repaired&quot;</span><span class="p">;</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The reports promise type emits information from the agent. Most commonly and by default, information is emitted to standard out. Reports are useful when tracking or reporting on the progress of the policy execution.</p>
+<div class="highlight"><pre><code class="text"><span></span>ntp_service_repaired.inform_mode::
+</code></pre>
+</div>
+
+<p>This line restricts the context for the promises that follow to hosts that have <code>ntp_service_repaired</code> and <code>inform_mode</code> defined. Note: <code>inform_mode</code> is defined when information level logging is requested, e.g.  the <code>-I</code>, <code>--inform</code>, or <code>--log-level inform</code> options are given to <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> defined.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">       </span><span class="s">&quot;NTP service repaired&quot;</span><span class="p">;</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>This defines the line that should be emitted by the <code>reports</code> promise type.</p>
+
+<p>Messages printed to standard out from reports promises are prefixed with the letter <code>R</code> to distinguish them from other output.</p>
+<div class="highlight"><pre><code class="text"><span></span>R: NTP service repaired
+</code></pre>
+</div>
+<h3 id="modify-and-run-the-policy">Modify and run the policy</h3>
+<p>On your hub modify <code>services/ntp.cf</code> introducing the new promises as described previously.</p>
+
+<p>After making changes it&#39;s always a good idea to validate the policy file you modified, as well as the full policy set:</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">[root@hub masterfiles]# </span>cf-promises -KI -f ./services/ntp.cf
+<span class="gp">[root@hub masterfiles]# </span>cf-promises -KI -f ./promises.cf
+</code></pre>
+</div>
+
+<p>If the code has no syntax error, you should see no output.</p>
+
+<p>Perform a manual policy run and review the output to ensure that the policy executed successfully. Upon a successful run you should expect to see an output similar to this (depending on the init system your OS is using):</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">[root@hub masterfiles]# </span>cf-agent -KIf update.cf<span class="p">;</span>
+<span class="go">    info: Copied file &#39;/var/cfengine/masterfiles/services/ntp.cf&#39; to &#39;/var/cfengine/inputs/services/ntp.cf.cfnew&#39; (mode &#39;600&#39;)</span>
+
+<span class="gp">[root@hub masterfiles]# </span>cf-agent -KI
+<span class="go">    info: Executing &#39;no timeout&#39; ... &#39;/sbin/chkconfig ntpd on&#39;</span>
+<span class="go">    info: Command related to promiser &#39;/sbin/chkconfig ntpd on&#39; returned code defined as promise kept 0</span>
+<span class="go">    info: Completed execution of &#39;/sbin/chkconfig ntpd on&#39;</span>
+<span class="go">    info: Executing &#39;no timeout&#39; ... &#39;/etc/init.d/ntpd start&#39;</span>
+<span class="go">    info: Completed execution of &#39;/etc/init.d/ntpd start&#39;</span>
+<span class="go">R: NTP service repaired</span>
+</code></pre>
+</div>
+
+<p>You have now written a complete policy to ensure that the NTP package is installed, and that the service is up and running.</p>
+<h2 id="manage-ntp-configuration">Manage NTP configuration</h2>
+<p>Now we will manage the configuration file using the built-in mustache templating engine, set up appropriate file permissions, and restart the service when necessary.</p>
+
+<p>By default, the NTP service leverages configuration properties specified in /etc/ntp.conf. In this tutorial, we introduce the concept of the files promise type. With this promise type, you can create, delete, and edit files using CFEngine policies. The example policy below illustrates the use of the files promise.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">ntp</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nc">linux</span><span class="p">::</span><span class="w"></span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">ntp_package_name</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;ntp&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">config_file</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;/etc/ntp.conf&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">driftfile</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;/var/lib/ntp/drift&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">servers</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;time.nist.gov&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">      </span><span class="c"># For brevity, and since the template is small, we define it in-line</span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">config_template_string</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;# NTP Config managed by CFEngine</span>
+<span class="s">driftfile }</span>
+<span class="s">restrict default kod nomodify notrap nopeer noquery</span>
+<span class="s">restrict -6 default kod nomodify notrap nopeer noquery</span>
+<span class="s">restrict 127.0.0.1</span>
+<span class="s">restrict -6 ::1</span>
+
+<span class="s">server } iburst</span>
+
+<span class="s">includefile /etc/ntp/crypto/pw</span>
+<span class="s">keys /etc/ntp/keys</span>
+<span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">     </span><span class="nc">redhat</span><span class="p">::</span><span class="w"></span>
+<span class="w">         </span><span class="p">&quot;</span><span class="nv">ntp_service_name</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;ntpd&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">     </span><span class="nc">debian</span><span class="p">::</span><span class="w"></span>
+<span class="w">         </span><span class="p">&quot;</span><span class="nv">ntp_service_name</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;ntp&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="kd">packages</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;</span><span class="si">$(ntp_package_name)</span><span class="s">&quot;</span><span class="w">   </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;StandardsDoc 3.2.1&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>
+<span class="w">         </span><span class="kr">policy</span><span class="w">          </span><span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="kr">handle</span><span class="w">          </span><span class="o">=&gt;</span> <span class="s">&quot;ntp_packages_</span><span class="si">$(ntp_package_name)</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="kr">classes</span><span class="w">         </span><span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="s">&quot;bundle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntp_package&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="kd">files</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;</span><span class="si">$(config_file)</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">create</span><span class="w">                </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">handle</span><span class="w">                </span><span class="o">=&gt;</span> <span class="s">&quot;ntp_files_conf&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">perms</span><span class="w">                 </span><span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;644&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="kr">template_method</span><span class="w">       </span><span class="o">=&gt;</span> <span class="s">&quot;inline_mustache&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">edit_template_string</span><span class="w">  </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(config_template_string)</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">template_data</span><span class="w">         </span><span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span><span class="w"> </span><span class="err">&#39;</span><span class="p">{</span><span class="w"> </span><span class="s">&quot;driftfile&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$(driftfile)</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;servers&quot;</span><span class="err">:</span><span class="w"> </span><span class="nf">servers</span><span class="w"> </span><span class="p">}</span><span class="err">&#39;</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="kr">classes</span><span class="w">               </span><span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;bundle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntp_config&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="kd">services</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="s">&quot;</span><span class="si">$(ntp_service_name)</span><span class="s">&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;StandardsDoc 3.2.2&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>
+<span class="w">       </span><span class="kr">service_policy</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;start&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;bundle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntp_service_running&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">ntp_config_repaired</span><span class="p">::</span><span class="w"></span>
+<span class="w">     </span><span class="s">&quot;</span><span class="si">$(ntp_service_name)</span><span class="s">&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;StandardsDoc 3.2.2&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>
+<span class="w">       </span><span class="kr">service_policy</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;restart&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;bundle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntp_service_config_change&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+
+<span class="w">   </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nc">ntp_service_running_repaired.inform_mode</span><span class="p">::</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;NTP service started&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">     </span><span class="nc">ntp_service_config_change_repaired.inform_mode</span><span class="p">::</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;NTP service restarted after configuration change&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>What does this policy do?</p>
+
+<p>Let&#39;s review the different sections of the code, starting with the variable declarations which makes use of operating system environment for classification of the time servers.</p>
+<h4 id="vars">vars</h4><div class="highlight"><pre><code class="cf3"><span></span><span class="w">   </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nc">linux</span><span class="p">::</span><span class="w"></span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">ntp_package_name</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;ntp&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">config_file</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;/etc/ntp.conf&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">driftfile</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;/var/lib/ntp/drift&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">servers</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;utcnist.colorado.edu&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;utcnist2.colorado.edu&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">      </span><span class="c"># For brevity, and since the template is small, we define it in-line</span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">config_template_string</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;# NTP Config managed by CFEngine</span>
+<span class="s">driftfile }</span>
+<span class="s">restrict default kod nomodify notrap nopeer noquery</span>
+<span class="s">restrict -6 default kod nomodify notrap nopeer noquery</span>
+<span class="s">restrict 127.0.0.1</span>
+<span class="s">restrict -6 ::1</span>
+
+<span class="s">server } iburst</span>
+
+<span class="s">includefile /etc/ntp/crypto/pw</span>
+<span class="s">keys /etc/ntp/keys</span>
+<span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>A few new variables are defined. The variables <a href="examples-tutorials-manage-ntp.html#ntp_package_name" title="Manage Network Time Protocol - ntp_package_name"><code>ntp_package_name</code></a>, <code>config_file</code>, <code>driftfile</code>, <a href="reference-promise-types-files.html#servers" title="files - servers"><code>servers</code></a>, and <code>config_template_string</code> are defined under the <code>linux</code> context (so only linux hosts will define them). <code>config_file</code> is the path to the ntp configuration file, <code>driftfile</code> and <a href="reference-promise-types-files.html#servers" title="files - servers"><code>servers</code></a> are both variables that will be used when rendering the configuration file and <code>config_template_string</code> is the template that will be used to render the configuration file. While both <code>driftfile</code> and <a href="reference-promise-types-files.html#servers" title="files - servers"><code>servers</code></a> are set the same for all linux hosts, those variables could easily be set to different values under different contexts.</p>
+<h4 id="files">files</h4>
+<p>Now let&#39;s walk through the files promise in detail.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">   </span><span class="kd">files</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;</span><span class="si">$(config_file)</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">create</span><span class="w">                </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">handle</span><span class="w">                </span><span class="o">=&gt;</span> <span class="s">&quot;ntp_files_conf&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">perms</span><span class="w">                 </span><span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;644&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="kr">template_method</span><span class="w">       </span><span class="o">=&gt;</span> <span class="s">&quot;inline_mustache&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">edit_template_string</span><span class="w">  </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(config_template_string)</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">template_data</span><span class="w">         </span><span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span><span class="w"> </span><span class="err">&#39;</span><span class="p">{</span><span class="w"> </span><span class="s">&quot;driftfile&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$(driftfile)</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;servers&quot;</span><span class="err">:</span><span class="w"> </span><span class="nf">servers</span><span class="w"> </span><span class="p">}</span><span class="err">&#39;</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="kr">classes</span><span class="w">               </span><span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;bundle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntp_config&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The promiser here is referenced by the <code>config_file</code> variable. In this case, it is the configuration file for the NTP service. There are a number of additional attributes that describe this promise.</p>
+<h5 id="create">create</h5><div class="highlight"><pre><code class="cf3"><span></span><span class="w">      </span><span class="kr">create</span><span class="w">                </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Valid values for this attribute are <code>true</code> or <code>false</code> to instruct the agent whether or not to create the file. In other words, the file must exist. If it does not exist, it will be created.</p>
+<h5 id="perms">perms</h5><div class="highlight"><pre><code class="cf3"><span></span><span class="w">      </span><span class="kr">perms</span><span class="w">                 </span><span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;644&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>This attribute sets the permissions and ownership of the file. <a href="reference-masterfiles-policy-framework-lib-files.html#mog"><code>mog()</code></a> is a <code>perms</code> body in the CFEngine standard library that sets the <code>mode</code>, <code>owner</code>, and <code>group</code> of the file. In this example, the permissions for the NTP configuration file are set to <code>644</code> with <em>owner</em> and <em>group</em> both assigned to <code>root</code>.</p>
+<h5 id="handle">handle</h5><div class="highlight"><pre><code class="cf3"><span></span><span class="w">      </span><span class="kr">handle</span><span class="w">                </span><span class="o">=&gt;</span> <span class="s">&quot;ntp_files_conf&quot;</span><span class="p">,</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>A handle uniquely identifies a promise within a policy set. The <a href="guide-writing-and-serving-policy-policy-style.html#promise-handles" title="Policy Style Guide - Promise Handles">policy style guide</a> recommends a naming scheme for the handles e.g. <code>bundle_name_promise_type_class_restriction_promiser</code>. Handles are optional, but can be very useful when reviewing logs and can also be used to influence promise ordering with <a href="reference-promise-types.html#depends_on" title="Promise Types - depends_on"><code>depends_on</code></a>.</p>
+<h5 id="classes">classes</h5><div class="highlight"><pre><code class="cf3"><span></span><span class="w">      </span><span class="kr">classes</span><span class="w">               </span><span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;bundle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntp_config&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The classes attribute here uses the <a href="reference-masterfiles-policy-framework-lib-common.html#results" title="lib/common.cf - results "><code>results()</code></a> classes body from the standard library. The <a href="reference-masterfiles-policy-framework-lib-common.html#results"><code>results()</code></a> body defines classes for every outcome a promise has. Every time this promise is executed classes will be defined bundle scoped classes prefixed with <code>ntp_config</code>. If the promise changes the file content or permissions the class <code>ntp_config_repaired</code> will be set.</p>
+<h5 id="template_method">template_method</h5><div class="highlight"><pre><code class="cf3"><span></span><span class="w">      </span><span class="kr">template_method</span><span class="w">       </span><span class="o">=&gt;</span> <span class="s">&quot;inline_mustache&quot;</span><span class="p">,</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>CFEngine supports multiple templating engines, the <a href="reference-promise-types-files.html#template_method" title="files - template_method">template_method</a> attribute specifies how the promised file content will be resolved. The value <code>inline_mustache</code> indicates that we will use the mustache templating engine and specify the template in-line, instead of in an external file.</p>
+<h5 id="edit_template_string">edit_template_string</h5><div class="highlight"><pre><code class="cf3"><span></span><span class="w">      </span><span class="kr">edit_template_string</span><span class="w">  </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(config_template_string)</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The <code>edit_template_string</code> attribute is set to <code>$(config_template_string)</code> which holds the mustache template used to render the file content.</p>
+<h5 id="template_data">template_data</h5><div class="highlight"><pre><code class="cf3"><span></span><span class="w">      </span><span class="kr">template_data</span><span class="w">         </span><span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span><span class="w"> </span><span class="err">&#39;</span><span class="p">{</span><span class="w"> </span><span class="s">&quot;driftfile&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$(driftfile)</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;servers&quot;</span><span class="err">:</span><span class="w"> </span><span class="nf">servers</span><span class="w"> </span><span class="p">}</span><span class="err">&#39;</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p><code>template_data</code> is assigned a data container that is in this case constructed by <a href="reference-functions-mergedata.html" title="mergedata"><code>mergedata()</code></a> so that only the necessary data is provided to the template. If <code>template_data</code> is not explicitly provided, CFEngine uses <a href="reference-functions-datastate.html" title="datastate"><code>datastate()</code></a> by default. It is considered best practice to provide explicit data as this makes it easier to delegate responsibility of the template and that data to different entities where neither are required to know anything about CFEngine itself and it&#39;s <em>much</em> more efficient to send the templating engine only the data the template actually uses.</p>
+
+<p>Note, <a href="reference-functions-mergedata.html" title="mergedata"><code>mergedata()</code></a> tries to expand bare values from CFEngine variables, so <a href="reference-promise-types-files.html#servers" title="files - servers"><code>servers</code></a> will expand to the entire list of servers. The result of <a href="reference-functions-mergedata.html" title="mergedata"><code>mergedata()</code></a> in the example is equivalent to this json:</p>
+<div class="highlight"><pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;driftfile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/var/lib/ntp/drift&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;servers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;time.nist.gov&quot;</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Now that we have dissected the policy, let&#39;s go ahead and give it a whirl.</p>
+<h3 id="modify-and-run-the-policy">Modify and run the policy</h3><div class="highlight"><pre><code class="console"><span></span><span class="gp">[root@hub masterfiles]# </span>cf-agent -KIf update.cf<span class="p">;</span>
+<span class="go">    info: Copied file &#39;/var/cfengine/masterfiles/services/ntp.cf&#39; to &#39;/var/cfengine/inputs/services/ntp.cf.cfnew&#39; (mode &#39;600&#39;)</span>
+
+<span class="gp">[root@hub masterfiles]# </span>cf-agent -KI
+<span class="go">    info: Updated rendering of &#39;/etc/ntp.conf&#39; from mustache template &#39;inline&#39;</span>
+<span class="go">    info: files promise &#39;/etc/ntp.conf&#39; repaired</span>
+<span class="go">    info: Executing &#39;no timeout&#39; ... &#39;/etc/init.d/ntpd restart&#39;</span>
+<span class="go">    info: Completed execution of &#39;/etc/init.d/ntpd restart&#39;</span>
+<span class="go">R: NTP service restarted after configuration change</span>
+</code></pre>
+</div>
+
+<p>More interestingly, if you examine the configuration file <code>/etc/ntp.conf</code>, you will notice that it has been updated with the time <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>server</code></a>(s) and <code>driftfile</code> you had specified in the policy, for that specific operating system environment. This is the configuration that the NTP service has been restarted with.</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">[root@hub masterfiles]# </span>grep -P <span class="s2">&quot;^(driftfile|server)&quot;</span> /etc/ntp.conf
+<span class="go">driftfile /var/lib/ntp/drift</span>
+<span class="go">server time.nist.gov iburst</span>
+</code></pre>
+</div>
+
+<p>Mission Accomplished!</p>
+<h2 id="instrumenting-for-tunability-via-augments">Instrumenting for tunability via Augments</h2>
+<p>Next we will augment file/template management with data sourced from a JSON data file. This is a simple extension of what we have done previously illustrating how tunables in policy can be exposed and leveraged from a data feed.</p>
+
+<p>CFEngine offers out-of-the-box support for reading and writing JSON data structures. In this tutorial, we will default the NTP configuration properties in policy, but provide a path for the properties to be overridden from Augments.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">ntp</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nc">linux</span><span class="p">::</span><span class="w"></span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">ntp_package_name</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;ntp&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">config_file</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;/etc/ntp.conf&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">       </span><span class="c"># Set the default value for driftfile</span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">driftfile</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;/var/lib/ntp/drift&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">       </span><span class="c"># Overwrite driftfile with value defined from Augments if it&#39;s provided</span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">driftfile</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$(def.ntp[config][driftfile])</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;def.ntp[config][driftfile]&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">       </span><span class="c"># Set the default value for servers</span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">servers</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;time.nist.gov&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">       </span><span class="c"># Overwrite servers with value defined from Augments if it&#39;s provided</span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">servers</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">getvalues</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;def.ntp[config][servers]&quot;</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+<span class="w">         </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;def.ntp[config][servers]&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">      </span><span class="c"># For brevity, and since the template is small, we define it in-line</span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">config_template_string</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;# NTP Config managed by CFEngine</span>
+<span class="s">driftfile }</span>
+<span class="s">restrict default kod nomodify notrap nopeer noquery</span>
+<span class="s">restrict -6 default kod nomodify notrap nopeer noquery</span>
+<span class="s">restrict 127.0.0.1</span>
+<span class="s">restrict -6 ::1</span>
+
+<span class="s">server } iburst</span>
+
+<span class="s">includefile /etc/ntp/crypto/pw</span>
+<span class="s">keys /etc/ntp/keys</span>
+<span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">     </span><span class="nc">redhat</span><span class="p">::</span><span class="w"></span>
+<span class="w">         </span><span class="p">&quot;</span><span class="nv">ntp_service_name</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;ntpd&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">     </span><span class="nc">debian</span><span class="p">::</span><span class="w"></span>
+<span class="w">         </span><span class="p">&quot;</span><span class="nv">ntp_service_name</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;ntp&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">   </span><span class="kd">packages</span><span class="p">:</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;</span><span class="si">$(ntp_package_name)</span><span class="s">&quot;</span><span class="w">   </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;StandardsDoc 3.2.1&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>
+<span class="w">         </span><span class="kr">policy</span><span class="w">          </span><span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="kr">handle</span><span class="w">          </span><span class="o">=&gt;</span> <span class="s">&quot;ntp_packages_</span><span class="si">$(ntp_package_name)</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="kr">classes</span><span class="w">         </span><span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="s">&quot;bundle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntp_package&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="kd">files</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="s">&quot;</span><span class="si">$(config_file)</span><span class="s">&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">create</span><span class="w">                </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">handle</span><span class="w">                </span><span class="o">=&gt;</span> <span class="s">&quot;ntp_files_conf&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">perms</span><span class="w">                 </span><span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;644&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="kr">template_method</span><span class="w">       </span><span class="o">=&gt;</span> <span class="s">&quot;inline_mustache&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">edit_template_string</span><span class="w">  </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(config_template_string)</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">      </span><span class="kr">template_data</span><span class="w">         </span><span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span><span class="w"> </span><span class="err">&#39;</span><span class="p">{</span><span class="w"> </span><span class="s">&quot;driftfile&quot;</span><span class="err">:</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$(driftfile)</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;servers&quot;</span><span class="err">:</span><span class="w"> </span><span class="nf">servers</span><span class="w"> </span><span class="p">}</span><span class="err">&#39;</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+<span class="w">      </span><span class="kr">classes</span><span class="w">               </span><span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;bundle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntp_config&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">   </span><span class="kd">services</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="s">&quot;</span><span class="si">$(ntp_service_name)</span><span class="s">&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;StandardsDoc 3.2.2&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>
+<span class="w">       </span><span class="kr">service_policy</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;start&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;bundle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntp_service_running&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="nc">ntp_config_repaired</span><span class="p">::</span><span class="w"></span>
+<span class="w">     </span><span class="s">&quot;</span><span class="si">$(ntp_service_name)</span><span class="s">&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;StandardsDoc 3.2.2&quot;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span>
+<span class="w">       </span><span class="kr">service_policy</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;restart&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="kr">classes</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;bundle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ntp_service_config_change&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+
+<span class="w">   </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nc">ntp_service_running_repaired.inform_mode</span><span class="p">::</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;NTP service started&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">     </span><span class="nc">ntp_service_config_change_repaired.inform_mode</span><span class="p">::</span><span class="w"></span>
+<span class="w">       </span><span class="s">&quot;NTP service restarted after configuration change&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>What does this policy do?</p>
+
+<p>Let&#39;s review the changes to the vars promises as they were the only changes made.</p>
+<h4 id="vars">vars</h4><div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">ntp</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">     </span><span class="nc">linux</span><span class="p">::</span><span class="w"></span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">ntp_package_name</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;ntp&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">config_file</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;/etc/ntp.conf&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">       </span><span class="c"># Set the default value for driftfile</span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">driftfile</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;/var/lib/ntp/drift&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">       </span><span class="c"># Overwrite driftfile with value defined from Augments if it&#39;s provided</span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">driftfile</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;</span><span class="si">$(def.ntp[config][driftfile])</span><span class="s">&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;def.ntp[config][driftfile]&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+
+<span class="w">       </span><span class="c"># Set the default value for servers</span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">servers</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;time.nist.gov&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">       </span><span class="c"># Overwrite servers with value defined from Augments if it&#39;s provided</span>
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">servers</span><span class="p">&quot;</span><span class="w"></span>
+<span class="w">         </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">getvalues</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;def.ntp[config][servers]&quot;</span><span class="w"> </span><span class="p">),</span><span class="w"></span>
+<span class="w">         </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="w"> </span><span class="s">&quot;def.ntp[config][servers]&quot;</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Notice two promises were introduced, one setting <code>driftfile</code> to the value of <code>$(def.ntp[config][driftfile])</code> if it is defined and one setting servers to the list of values for <code>def.ntp[config][servers]</code> if it is defined. <a href="reference-language-concepts-augments.html" title="Augments">Augments</a> allows for variables to be set in the <em>def</em> bundle scope very early before policy is evaluated.</p>
+<h3 id="modify-and-run-the-policy">Modify and run the policy</h3>
+<p>First modify <code>services/ntp.cf</code> as shown previously (don&#39;t forget to check syntax with <a href="reference-components-cf-promises.html" title="cf-promises"><code>cf-promises</code></a> after modification), then run the policy.</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">[root@hub masterfiles]# </span>cf-agent -KIf update.cf
+<span class="go">    info: Copied file &#39;/var/cfengine/masterfiles/services/ntp.cf&#39; to &#39;/var/cfengine/inputs/services/ntp.cf.cfnew&#39; (mode &#39;600&#39;)</span>
+<span class="go">    info: Copied file &#39;/var/cfengine/masterfiles/def.json&#39; to &#39;/var/cfengine/inputs/def.json.cfnew&#39; (mode &#39;600&#39;)</span>
+
+<span class="gp">[root@hub masterfiles]# </span>cf-agent -KI
+</code></pre>
+</div>
+
+<p>We do not expect to see the ntp configuration file modified or the service to be restarted since we have only instrumented the policy so far.</p>
+
+<p>Now, let&#39;s modify <code>def.json</code> (in the root of masterfiles) and define some different values for <code>driftfile</code> and <a href="reference-promise-types-files.html#servers" title="files - servers"><code>servers</code></a>.
+Modify <code>def.json</code> so that it looks like this:</p>
+<div class="highlight"><pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;inputs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;services/ntp.cf&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;vars&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;control_common_bundlesequence_end&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;ntp&quot;</span><span class="w"> </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;ntp&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;driftfile&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/tmp/drift&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;servers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;0.north-america.pool.ntp.org&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;1.north-america.pool.ntp.org&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                     </span><span class="s2">&quot;2.north-america.pool.ntp.org&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;3.north-america.pool.ntp.org&quot;</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Now, let&#39;s validate the JSON and force a policy run and inspect the result.</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">[root@hub masterfiles]# </span>python -m json.tool &lt; def.json
+<span class="go">{</span>
+<span class="go">    &quot;inputs&quot;: [</span>
+<span class="go">        &quot;services/ntp.cf&quot;</span>
+<span class="go">    ], </span>
+<span class="go">    &quot;vars&quot;: {</span>
+<span class="go">        &quot;control_common_bundlesequence_end&quot;: [</span>
+<span class="go">            &quot;ntp&quot;</span>
+<span class="go">        ], </span>
+<span class="go">        &quot;ntp&quot;: {</span>
+<span class="go">            &quot;config&quot;: {</span>
+<span class="go">                &quot;driftfile&quot;: &quot;/tmp/drift&quot;, </span>
+<span class="go">                &quot;servers&quot;: [</span>
+<span class="go">                    &quot;0.north-america.pool.ntp.org&quot;, </span>
+<span class="go">                    &quot;1.north-america.pool.ntp.org&quot;, </span>
+<span class="go">                    &quot;2.north-america.pool.ntp.org&quot;, </span>
+<span class="go">                    &quot;3.north-america.pool.ntp.org&quot;</span>
+<span class="go">                ]</span>
+<span class="go">            }</span>
+<span class="go">        }</span>
+<span class="go">    }</span>
+<span class="go">}</span>
+
+<span class="gp">[root@hub masterfiles]# </span>cf-agent -KI
+<span class="go">    info: Updated rendering of &#39;/etc/ntp.conf&#39; from mustache template &#39;inline&#39;</span>
+<span class="go">    info: files promise &#39;/etc/ntp.conf&#39; repaired</span>
+<span class="go">    info: Executing &#39;no timeout&#39; ... &#39;/etc/init.d/ntpd restart&#39;</span>
+<span class="go">    info: Completed execution of &#39;/etc/init.d/ntpd restart&#39;</span>
+<span class="go">R: NTP service restarted after configuration change</span>
+<span class="go">    info: Can not acquire lock for &#39;ntp&#39; package promise. Skipping promise evaluation</span>
+<span class="go">    info: Can not acquire lock for &#39;ntp&#39; package promise. Skipping promise evaluation</span>
+
+<span class="gp">[root@hub masterfiles]# </span>grep -P <span class="s2">&quot;^(driftfile|server)&quot;</span> /etc/ntp.conf
+<span class="go">driftfile /tmp/drift</span>
+<span class="go">server 0.north-america.pool.ntp.org iburst</span>
+<span class="go">server 1.north-america.pool.ntp.org iburst</span>
+<span class="go">server 2.north-america.pool.ntp.org iburst</span>
+<span class="go">server 3.north-america.pool.ntp.org iburst</span>
+</code></pre>
+</div>
+
+<p>Mission Accomplished!</p>
+
+<p>You have successfully completed this tutorial that showed you how to write a simple policy to ensure that NTP is installed, running and configured appropriately.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-getting-started.html">getting started</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-tutorial.html">tutorial</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 02 December 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.15/examples/tutorials/manage-ntp.markdown/generator/pages/examples/tutorials/manage-ntp.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-42a0b4e53c8c8a1d3df73e4c74e62399.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

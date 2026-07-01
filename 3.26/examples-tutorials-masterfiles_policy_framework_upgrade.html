@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Masterfiles Policy Framework upgrade - CFEngine 3.26  Docs</title>
+        <link rel="icon" type="image/svg+xml" href="./media/images/favicon.svg">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/examples/tutorials/masterfiles_policy_framework_upgrade.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-examples-tutorials-masterfiles_policy_framework_upgrade.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website">
+        <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Masterfiles Policy Framework upgrade - CFEngine 3.26 Docs">
+        <meta prefix="og: http://ogp.me/ns#" property="og:description" content="">
+        <meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://docs.cfengine.com/docs/master/media/images/logo_wide_opengraph.png">
+        <meta prefix="og: http://ogp.me/ns#" property="og:url" content="docs.cfengine.com">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="docs.cfengine.com">
+        <meta name="twitter:title" content="Masterfiles Policy Framework upgrade - CFEngine 3.26  Docs">
+        <meta name="twitter:description" content="">
+        <meta name="twitter:image" content="https://docs.cfengine.com/docs/master/media/images/agent_white_background.png">
+
+        <link rel="canonical" href="https://docs.cfengine.com/latest/examples-tutorials-masterfiles_policy_framework_upgrade.html">
+        <link href='assets/styles.min.css?v=2025-09-08T15:14:15+00:00' rel='stylesheet' type='text/css' media='screen,print' />
+    </head>
+
+<body>
+<header>
+    <div class="top_menu">
+        <div class="container">
+            <div id="logo">
+                <a href="./"><img src="media/images/docs-logo.svg" alt="CFEngine documentation homepage"></a>
+            </div>
+
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" autocomplete="off" placeholder="Search" />
+                        <input type="submit" value="" />
+                    </div>
+                </form>
+            </div>
+
+            <ul>
+                <li><a target="_blank" href="https://cfengine.com/product-overview/">Product</a></li>
+                <li><a target="_blank" href="https://cfengine.com/blog/">Blog</a></li>
+                <li class="top_menu-versions">
+                    <div class="top_menu-versions-title">
+                        <div>Docs versions</div>
+                        <span>Version <span></span></span>
+                    </div>
+                    <div class="top_menu-versions-list">
+                        <a onclick="selectVersion('/docs/master/')" href="#">master</a>
+<a onclick="selectVersion('javascript:void(0);')" href="#" selected="selected">3.26 (non-LTS)</a>
+<a onclick="selectVersion('/docs/3.24/')" href="#">3.24 (LTS)</a>
+<a onclick="selectVersion('/docs/3.21/')" href="#">3.21 (LTS)</a>
+<a href="./versions.html">view all versions</a>
+
+                    </div>
+                </li>
+                <li><a class="btn btn-orange" href="https://cfengine.com/download/" target="_blank">Try for free</a></li>
+            </ul>
+            <div onclick="openMenuHandler(this)" class="collapse center-align relative">
+                <i class="vertical-middle centered collapse-open bi bi-list"></i>
+                <i class="vertical-middle centered collapse-close bi bi-x"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="main_wrapper container pages-wrapper">
+    <article>
+        
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul itemscope="" itemtype="http://schema.org/BreadcrumbList">
+            
+                
+                
+                    
+                
+                
+                    
+                        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                            <a
+                                    itemid="examples.html"
+                                    itemprop="item" itemscope=""
+                                    itemtype="http://schema.org/Thing"
+                                    href="examples.html">
+                                <span itemprop="name">Examples and tutorials</span>
+                            </a>
+                        </li>
+                        <li>/</li>
+                    
+                
+            
+                
+                    
+                    
+                
+                
+                    
+                        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                            <a
+                                    itemid="examples-tutorials.html"
+                                    itemprop="item" itemscope=""
+                                    itemtype="http://schema.org/Thing"
+                                    href="examples-tutorials.html">
+                                <span itemprop="name">Tutorials</span>
+                            </a>
+                        </li>
+                        <li>/</li>
+                    
+                
+            
+                
+                    
+                    
+                
+                
+                    
+                
+            
+            <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                <a itemid="examples-tutorials-masterfiles_policy_framework_upgrade.html" itemprop="item" itemscope="" itemtype="http://schema.org/Thing" href="examples-tutorials-masterfiles_policy_framework_upgrade.html">
+                    <span itemprop="name">Masterfiles Policy Framework upgrade</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+        <div class="article">
+            
+            <div class="article_title">
+                <h1 id="top">
+                    Masterfiles Policy Framework upgrade
+                </h1>
+                <div class="suggestChanges">
+                    <a class="btn btn-transparent btn-bordered"
+                       href='https://github.com/cfengine/documentation/edit/3.26/examples/tutorials/masterfiles_policy_framework_upgrade.markdown'
+                       target="_blank">
+                        <i class="bi bi-github"></i> Suggest changes
+                    </a>
+                </div>
+            </div>
+            
+            
+            <div class="table-of-contents">
+                <div class="TOC closed" id="TOCbox_wrapper">
+                    <div class="TOC-title">Table of contents</div>
+                    <span id="TOCbox">
+                        <div id="TOCbox_list"></div>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <p>Upgrading the Masterfiles Policy Framework (MPF) is the first step in upgrading CFEngine from one version to another. The MPF should always be the same version or newer than the binary versions running.</p>
+
+<p>Upgrading the MPF is not an exact process as the details highly depend on the specifics of the changes made to the default policy. This example leverages <code>git</code> and shows an example of upgrading a simple policy set based on <code>3.18.0</code> to <code>3.21.2</code> and can be used as a reference for upgrading your own policy sets.</p>
+<h1 id="prepare-a-git-clone-of-your-working-masterfiles">Prepare a Git clone of your working masterfiles</h1>
+<p>We will perform the integration work in <code>/tmp/MPF-upgrade/integration</code>. <code>masterfiles</code> should exist in the integration directory and is expected to be both the root of your policy set and a <code>git</code> repository.</p>
+<h2 id="validating-expectations">Validating expectations</h2>
+<p>From <code>/tmp/MPF-upgrade/integration/masterfiles</code>. Let&#39;s inspect what we expect.</p>
+
+<p>Is it the root of a policy set? <a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a> will be present if so.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="bash"><span></span><span class="nb">export</span> <span class="nv">INTEGRATION_ROOT</span><span class="o">=</span><span class="s2">&quot;/tmp/MPF-upgrade/integration&quot;</span>
+    <span class="nb">cd</span> <span class="nv">$INTEGRATION_ROOT</span>/masterfiles
+<span class="k">if</span> <span class="o">[</span> -e <span class="s2">&quot;promises.cf&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&quot;promise.cf exists, it&#39;s likely the root of a policy set&quot;</span>
+<span class="k">else</span>
+    <span class="nb">echo</span> <span class="s2">&quot;promises.cf is missing, </span><span class="nv">$INTEGRATION_ROOT</span><span class="s2">/masterfiles does not seem like the root of a policy set&quot;</span>
+<span class="k">fi</span>
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>promise.cf exists, it&#39;s likely the root of a policy set
+</code></pre></div>
+</div>
+
+<p>Let&#39;s see what version of the MPF we are starting from by looking at <a href="reference-promise-types-packages.html#version" title="packages - version"><code>version</code></a> in <code>body common control</code> of <a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a>.</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>grep -P &quot;\s+version\s+=&gt;&quot; $INTEGRATION_ROOT/masterfiles/promises.cf 2&gt;&amp;1 \
+    || echo &quot;promises.cf is missing, $INTEGRATION_ROOT/masterfiles does not seem to be the root of a policy set&quot;
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>version =&gt; &quot;CFEngine Promises.cf 3.18.0&quot;;
+</code></pre></div>
+</div>
+
+<p>And finally, is it a git repository, what is the last commit?</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>git status \
+      || echo &quot;$INTEGRATION_ROOT/masterfiles does not appear to be a git repository!&quot; \
+      &amp;&amp; git log -1
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>On branch master
+nothing to commit, working tree clean
+commit f4c0e120b0b45bcb9ede01ed8fb465f40b4b1e6f
+Author: Nick Anderson &lt;nick@cmdln.org&gt;
+Date:   Wed Jul 26 18:43:06 2023 -0500
+
+    CFEngine Policy set prior to upgrade
+</code></pre></div>
+</div>
+<h1 id="merge-upstream-changes-from-the-mpf-into-your-policy">Merge upstream changes from the MPF into your policy</h1><h2 id="remove-everything-except-the-git-directory">Remove everything except the <code>.git</code> directory</h2>
+<p>By first removing everything we will easily be able so see which files are <strong>new</strong>, <strong>changed</strong>, <strong>moved</strong> or <strong>removed</strong> upstream.</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>rm -rf *
+</code></pre></div>
+</div>
+
+<p>Check <code>git status</code> to see that all the files have been deleted and are not staged for commit.</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>git status
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>On branch master
+Changes not staged for commit:
+  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+    deleted:    cfe_internal/CFE_cfengine.cf
+    deleted:    cfe_internal/core/deprecated/cfengine_processes.cf
+    deleted:    cfe_internal/core/host_info_report.cf
+    deleted:    cfe_internal/core/limit_robot_agents.cf
+    deleted:    cfe_internal/core/log_rotation.cf
+    deleted:    cfe_internal/core/main.cf
+    deleted:    cfe_internal/core/watchdog/templates/watchdog-windows.ps1.mustache
+    deleted:    cfe_internal/core/watchdog/templates/watchdog.mustache
+    deleted:    cfe_internal/core/watchdog/watchdog.cf
+    deleted:    cfe_internal/enterprise/CFE_hub_specific.cf
+    deleted:    cfe_internal/enterprise/CFE_knowledge.cf
+    deleted:    cfe_internal/enterprise/federation/federation.cf
+    deleted:    cfe_internal/enterprise/file_change.cf
+    deleted:    cfe_internal/enterprise/ha/ha.cf
+    deleted:    cfe_internal/enterprise/ha/ha_def.cf
+    deleted:    cfe_internal/enterprise/ha/ha_update.cf
+    deleted:    cfe_internal/enterprise/main.cf
+    deleted:    cfe_internal/enterprise/mission_portal.cf
+    deleted:    cfe_internal/enterprise/templates/httpd.conf.mustache
+    deleted:    cfe_internal/enterprise/templates/runalerts.php.mustache
+    deleted:    cfe_internal/enterprise/templates/runalerts.sh.mustache
+    deleted:    cfe_internal/recommendations.cf
+    deleted:    cfe_internal/update/cfe_internal_dc_workflow.cf
+    deleted:    cfe_internal/update/cfe_internal_update_from_repository.cf
+    deleted:    cfe_internal/update/lib.cf
+    deleted:    cfe_internal/update/systemd_units.cf
+    deleted:    cfe_internal/update/update_bins.cf
+    deleted:    cfe_internal/update/update_policy.cf
+    deleted:    cfe_internal/update/update_processes.cf
+    deleted:    cfe_internal/update/windows_unattended_upgrade.cf
+    deleted:    controls/cf_agent.cf
+    deleted:    controls/cf_execd.cf
+    deleted:    controls/cf_hub.cf
+    deleted:    controls/cf_monitord.cf
+    deleted:    controls/cf_runagent.cf
+    deleted:    controls/cf_serverd.cf
+    deleted:    controls/def.cf
+    deleted:    controls/def_inputs.cf
+    deleted:    controls/reports.cf
+    deleted:    controls/update_def.cf
+    deleted:    controls/update_def_inputs.cf
+    deleted:    custom-2.cf
+    deleted:    def.json
+    deleted:    inventory/aix.cf
+    deleted:    inventory/any.cf
+    deleted:    inventory/debian.cf
+    deleted:    inventory/freebsd.cf
+    deleted:    inventory/generic.cf
+    deleted:    inventory/linux.cf
+    deleted:    inventory/lsb.cf
+    deleted:    inventory/macos.cf
+    deleted:    inventory/os.cf
+    deleted:    inventory/redhat.cf
+    deleted:    inventory/suse.cf
+    deleted:    inventory/windows.cf
+    deleted:    lib/autorun.cf
+    deleted:    lib/bundles.cf
+    deleted:    lib/cfe_internal.cf
+    deleted:    lib/cfe_internal_hub.cf
+    deleted:    lib/cfengine_enterprise_hub_ha.cf
+    deleted:    lib/commands.cf
+    deleted:    lib/common.cf
+    deleted:    lib/databases.cf
+    deleted:    lib/deprecated-upstream.cf
+    deleted:    lib/edit_xml.cf
+    deleted:    lib/event.cf
+    deleted:    lib/examples.cf
+    deleted:    lib/feature.cf
+    deleted:    lib/files.cf
+    deleted:    lib/guest_environments.cf
+    deleted:    lib/monitor.cf
+    deleted:    lib/packages-ENT-3719.cf
+    deleted:    lib/packages.cf
+    deleted:    lib/paths.cf
+    deleted:    lib/processes.cf
+    deleted:    lib/reports.cf
+    deleted:    lib/services.cf
+    deleted:    lib/stdlib.cf
+    deleted:    lib/storage.cf
+    deleted:    lib/testing.cf
+    deleted:    lib/users.cf
+    deleted:    lib/vcs.cf
+    deleted:    modules/packages/vendored/WiRunSQL.vbs.mustache
+    deleted:    modules/packages/vendored/apk.mustache
+    deleted:    modules/packages/vendored/apt_get.mustache
+    deleted:    modules/packages/vendored/freebsd_ports.mustache
+    deleted:    modules/packages/vendored/msiexec-list.vbs.mustache
+    deleted:    modules/packages/vendored/msiexec.bat.mustache
+    deleted:    modules/packages/vendored/nimclient.mustache
+    deleted:    modules/packages/vendored/pkg.mustache
+    deleted:    modules/packages/vendored/pkgsrc.mustache
+    deleted:    modules/packages/vendored/slackpkg.mustache
+    deleted:    modules/packages/vendored/snap.mustache
+    deleted:    modules/packages/vendored/yum.mustache
+    deleted:    modules/packages/vendored/zypper.mustache
+    deleted:    promises.cf
+    deleted:    services/autorun/custom-1.cf
+    deleted:    services/autorun/hello.cf
+    deleted:    services/custom-3.cf
+    deleted:    services/init.cf
+    deleted:    services/main.cf
+    deleted:    standalone_self_upgrade.cf
+    deleted:    templates/cf-apache.service.mustache
+    deleted:    templates/cf-execd.service.mustache
+    deleted:    templates/cf-hub.service.mustache
+    deleted:    templates/cf-monitord.service.mustache
+    deleted:    templates/cf-postgres.service.mustache
+    deleted:    templates/cf-runalerts.service.mustache
+    deleted:    templates/cf-serverd.service.mustache
+    deleted:    templates/cfengine3.service.mustache
+    deleted:    templates/cfengine_watchdog.mustache
+    deleted:    templates/federated_reporting/10-base_filter.sed
+    deleted:    templates/federated_reporting/50-merge_inserts.awk
+    deleted:    templates/federated_reporting/config.sh.mustache
+    deleted:    templates/federated_reporting/dump.sh
+    deleted:    templates/federated_reporting/import.sh
+    deleted:    templates/federated_reporting/import_file.sh
+    deleted:    templates/federated_reporting/log.sh.mustache
+    deleted:    templates/federated_reporting/parallel.sh
+    deleted:    templates/federated_reporting/psql_wrapper.sh.mustache
+    deleted:    templates/federated_reporting/pull_dumps_from.sh
+    deleted:    templates/federated_reporting/transport.sh
+    deleted:    templates/host_info_report.mustache
+    deleted:    templates/json_multiline.mustache
+    deleted:    templates/json_serial.mustache
+    deleted:    templates/vercmp.ps1
+    deleted:    update.cf
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre></div>
+</div>
+<h2 id="install-the-new-version-of-the-mpf">Install the new version of the MPF</h2><h3 id="installing-from-git">Installing from Git</h3>
+<p>First, clone the desired version of the MPF source.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="bash"><span></span><span class="nb">export</span> <span class="nv">MPF_VERSION</span><span class="o">=</span><span class="s2">&quot;3.21.2&quot;</span>
+git clone -b <span class="nv">$MPF_VERSION</span> https://github.com/cfengine/masterfiles <span class="nv">$INTEGRATION_ROOT</span>/masterfiles-source-<span class="nv">$MPF_VERSION</span>
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>Cloning into &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2&#39;...
+Note: switching to &#39;f495603285f9bd90d5d36df4fec4870aeee751e8&#39;.
+
+You are in &#39;detached HEAD&#39; state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c &lt;new-branch-name&gt;
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+</code></pre></div>
+</div>
+
+<p>Then build and install targeting the integration root directory. When installed from source masterfiles installs into the <code>masterfiles</code> directory.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="bash"><span></span><span class="nb">cd</span> <span class="nv">$INTEGRATION_ROOT</span>/masterfiles-source-<span class="nv">$MPF_VERSION</span>
+<span class="nb">export</span> <span class="nv">EXPLICIT_VERSION</span><span class="o">=</span><span class="nv">$MPF_VERSION</span>
+
+./autogen.sh
+make
+make install <span class="nv">prefix</span><span class="o">=</span><span class="nv">$INTEGRATION_ROOT</span>/
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>./autogen.sh: Running determine-version.sh ...
+./autogen.sh: Running determine-release.sh ...
+All tags pointing to current commit:
+3.21.2
+3.21.2-build4
+Latest version: 3.21.2
+Could not parse it, using default release number 1
+./autogen.sh: Running autoreconf ...
+configure.ac:40: installing &#39;./config.guess&#39;
+configure.ac:40: installing &#39;./config.sub&#39;
+configure.ac:43: installing &#39;./install-sh&#39;
+configure.ac:43: installing &#39;./missing&#39;
+parallel-tests: installing &#39;./test-driver&#39;
+/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking target system type... x86_64-pc-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether UID &#39;1000&#39; is supported by ustar format... yes
+checking whether GID &#39;1000&#39; is supported by ustar format... yes
+checking how to create a ustar tar archive... gnutar
+checking if GNU tar supports --hard-dereference... yes
+checking whether to enable maintainer-specific portions of Makefiles... yes
+checking whether make supports nested variables... (cached) yes
+checking for pkg_install... no
+checking for shunit2... no
+
+Summary:
+Version              -&gt; 3.21.2
+Release              -&gt; 1
+Core directory       -&gt; not set - tests are disabled
+Enterprise directory -&gt; not set - some tests are disabled
+Install prefix       -&gt; /var/cfengine
+bindir               -&gt; /var/cfengine/bin
+
+configure: generating makefile targets
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating controls/update_def.cf
+config.status: creating promises.cf
+config.status: creating standalone_self_upgrade.cf
+config.status: creating tests/Makefile
+config.status: creating tests/acceptance/Makefile
+config.status: creating tests/unit/Makefile
+
+DONE: Configuration done. Run &quot;make install&quot; to install CFEngine Masterfiles.
+
+Making all in tests/
+make[1]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2/tests&#39;
+Making all in .
+make[2]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2/tests&#39;
+make[2]: Nothing to be done for &#39;all-am&#39;.
+make[2]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2/tests&#39;
+Making all in unit
+make[2]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2/tests/unit&#39;
+make[2]: Nothing to be done for &#39;all&#39;.
+make[2]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2/tests/unit&#39;
+make[1]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2/tests&#39;
+make[1]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2&#39;
+make[1]: Nothing to be done for &#39;all-am&#39;.
+make[1]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2&#39;
+Making install in tests/
+make[1]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2/tests&#39;
+Making install in .
+make[2]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2/tests&#39;
+make[3]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2/tests&#39;
+make[3]: Nothing to be done for &#39;install-exec-am&#39;.
+make[3]: Nothing to be done for &#39;install-data-am&#39;.
+make[3]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2/tests&#39;
+make[2]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2/tests&#39;
+Making install in unit
+make[2]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2/tests/unit&#39;
+make[3]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2/tests/unit&#39;
+make[3]: Nothing to be done for &#39;install-exec-am&#39;.
+make[3]: Nothing to be done for &#39;install-data-am&#39;.
+make[3]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2/tests/unit&#39;
+make[2]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2/tests/unit&#39;
+make[1]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2/tests&#39;
+make[1]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2&#39;
+make[2]: Entering directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2&#39;
+make[2]: Nothing to be done for &#39;install-exec-am&#39;.
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/core/host_info_report.cf ./cfe_internal/core/log_rotation.cf ./cfe_internal/core/main.cf ./cfe_internal/core/limit_robot_agents.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/templates&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/enterprise/templates/runalerts.sh.mustache ./cfe_internal/enterprise/templates/httpd.conf.mustache ./cfe_internal/enterprise/templates/apachectl.mustache ./cfe_internal/enterprise/templates/runalerts.php.mustache &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/templates&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/inventory&#39;
+ /usr/bin/install -c -m 644  ./inventory/windows.cf ./inventory/suse.cf ./inventory/macos.cf ./inventory/lsb.cf ./inventory/any.cf ./inventory/os.cf ./inventory/freebsd.cf ./inventory/generic.cf ./inventory/debian.cf ./inventory/linux.cf ./inventory/redhat.cf ./inventory/aix.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/inventory&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/federation&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/enterprise/federation/federation.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/federation&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/deprecated&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/core/deprecated/cfengine_processes.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/deprecated&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/lib/templates&#39;
+ /usr/bin/install -c -m 644  ./lib/templates/tap.mustache ./lib/templates/junit.mustache &#39;/tmp/MPF-upgrade/integration//masterfiles/lib/templates&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/services/autorun&#39;
+ /usr/bin/install -c -m 644  ./services/autorun/hello.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/services/autorun&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/lib&#39;
+ /usr/bin/install -c -m 644  ./lib/testing.cf ./lib/examples.cf ./lib/packages.cf ./lib/common.cf ./lib/users.cf ./lib/guest_environments.cf ./lib/cfengine_enterprise_hub_ha.cf ./lib/edit_xml.cf ./lib/files.cf ./lib/bundles.cf ./lib/reports.cf ./lib/event.cf ./lib/storage.cf ./lib/paths.cf ./lib/vcs.cf ./lib/stdlib.cf ./lib/autorun.cf ./lib/databases.cf ./lib/feature.cf ./lib/cfe_internal_hub.cf ./lib/monitor.cf ./lib/services.cf ./lib/packages-ENT-3719.cf ./lib/commands.cf ./lib/processes.cf ./lib/cfe_internal.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/lib&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/update&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/update/cfe_internal_dc_workflow.cf ./cfe_internal/update/lib.cf ./cfe_internal/update/update_processes.cf ./cfe_internal/update/windows_unattended_upgrade.cf ./cfe_internal/update/systemd_units.cf ./cfe_internal/update/update_policy.cf ./cfe_internal/update/update_bins.cf ./cfe_internal/update/cfe_internal_update_from_repository.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/update&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/controls&#39;
+ /usr/bin/install -c -m 644  ./controls/cf_agent.cf ./controls/cf_runagent.cf ./controls/cf_execd.cf ./controls/def_inputs.cf ./controls/cf_monitord.cf ./controls/def.cf ./controls/reports.cf ./controls/update_def_inputs.cf ./controls/cf_serverd.cf ./controls/cf_hub.cf ./controls/update_def.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/controls&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/ha&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/enterprise/ha/ha_def.cf ./cfe_internal/enterprise/ha/ha.cf ./cfe_internal/enterprise/ha/ha_update.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise/ha&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/modules/packages/vendored&#39;
+ /usr/bin/install -c -m 644  ./modules/packages/vendored/apk.mustache ./modules/packages/vendored/msiexec.bat.mustache ./modules/packages/vendored/nimclient.mustache ./modules/packages/vendored/snap.mustache ./modules/packages/vendored/yum.mustache ./modules/packages/vendored/msiexec-list.vbs.mustache ./modules/packages/vendored/apt_get.mustache ./modules/packages/vendored/slackpkg.mustache ./modules/packages/vendored/pkgsrc.mustache ./modules/packages/vendored/pkg.mustache ./modules/packages/vendored/freebsd_ports.mustache ./modules/packages/vendored/zypper.mustache ./modules/packages/vendored/WiRunSQL.vbs.mustache &#39;/tmp/MPF-upgrade/integration//masterfiles/modules/packages/vendored&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/recommendations.cf ./cfe_internal/CFE_cfengine.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal&#39;
+ /usr/bin/install -c -m 644  ./update.cf ./promises.cf ./standalone_self_upgrade.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/.&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/watchdog&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/core/watchdog/watchdog.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/watchdog&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/watchdog/templates&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/core/watchdog/templates/watchdog-windows.ps1.mustache ./cfe_internal/core/watchdog/templates/watchdog.mustache &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/core/watchdog/templates&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/templates&#39;
+ /usr/bin/install -c -m 644  ./templates/cf-execd.service.mustache ./templates/cf-apache.service.mustache ./templates/host_info_report.mustache ./templates/cf-monitord.service.mustache ./templates/json_serial.mustache ./templates/json_multiline.mustache ./templates/cf-hub.service.mustache ./templates/cfengine3.service.mustache ./templates/cf-postgres.service.mustache ./templates/cfengine_watchdog.mustache ./templates/vercmp.ps1 ./templates/cf-runalerts.service.mustache ./templates/cf-serverd.service.mustache ./templates/cf-reactor.service.mustache &#39;/tmp/MPF-upgrade/integration//masterfiles/templates&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise&#39;
+ /usr/bin/install -c -m 644  ./cfe_internal/enterprise/CFE_knowledge.cf ./cfe_internal/enterprise/file_change.cf ./cfe_internal/enterprise/CFE_hub_specific.cf ./cfe_internal/enterprise/mission_portal.cf ./cfe_internal/enterprise/main.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/cfe_internal/enterprise&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/templates/federated_reporting&#39;
+ /usr/bin/install -c -m 644  ./templates/federated_reporting/cfsecret.py ./templates/federated_reporting/import_file.sh ./templates/federated_reporting/psql_wrapper.sh.mustache ./templates/federated_reporting/import.sh ./templates/federated_reporting/transfer_distributed_cleanup_items.sh ./templates/federated_reporting/config.sh.mustache ./templates/federated_reporting/distributed_cleanup.py ./templates/federated_reporting/transport.sh ./templates/federated_reporting/log.sh.mustache ./templates/federated_reporting/dump.sh ./templates/federated_reporting/10-base_filter.sed ./templates/federated_reporting/nova_api.py ./templates/federated_reporting/pull_dumps_from.sh ./templates/federated_reporting/50-merge_inserts.awk ./templates/federated_reporting/parallel.sh &#39;/tmp/MPF-upgrade/integration//masterfiles/templates/federated_reporting&#39;
+ /usr/bin/mkdir -p &#39;/tmp/MPF-upgrade/integration//masterfiles/services&#39;
+ /usr/bin/install -c -m 644  ./services/init.cf ./services/main.cf &#39;/tmp/MPF-upgrade/integration//masterfiles/services&#39;
+make[2]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2&#39;
+make[1]: Leaving directory &#39;/tmp/MPF-upgrade/integration/masterfiles-source-3.21.2&#39;
+</code></pre></div>
+</div>
+
+<p>We no longer need the source, we can clean it up.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="bash"><span></span><span class="nb">cd</span> <span class="nv">$INTEGRATION_ROOT</span>/
+rm -rf <span class="nv">$INTEGRATION_ROOT</span>/masterfiles-source-<span class="nv">$MPF_VERSION</span>
+</code></pre></div>
+</div>
+<h2 id="merge-differences">Merge differences</h2>
+<p>Now we can use <code>git status</code> to see an overview of the changes to the repository between our starting point and the new MPF.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="bash"><span></span><span class="nb">cd</span> <span class="nv">$INTEGRATION_ROOT</span>/masterfiles
+git status
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>On branch master
+Changes not staged for commit:
+  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+    modified:   cfe_internal/core/watchdog/templates/watchdog.mustache
+    modified:   cfe_internal/enterprise/CFE_hub_specific.cf
+    modified:   cfe_internal/enterprise/CFE_knowledge.cf
+    modified:   cfe_internal/enterprise/federation/federation.cf
+    modified:   cfe_internal/enterprise/file_change.cf
+    modified:   cfe_internal/enterprise/main.cf
+    modified:   cfe_internal/enterprise/mission_portal.cf
+    modified:   cfe_internal/enterprise/templates/httpd.conf.mustache
+    modified:   cfe_internal/update/cfe_internal_dc_workflow.cf
+    modified:   cfe_internal/update/cfe_internal_update_from_repository.cf
+    modified:   cfe_internal/update/lib.cf
+    modified:   cfe_internal/update/update_bins.cf
+    modified:   cfe_internal/update/update_policy.cf
+    modified:   cfe_internal/update/update_processes.cf
+    modified:   cfe_internal/update/windows_unattended_upgrade.cf
+    modified:   controls/cf_agent.cf
+    modified:   controls/cf_execd.cf
+    modified:   controls/cf_serverd.cf
+    modified:   controls/def.cf
+    modified:   controls/reports.cf
+    modified:   controls/update_def.cf
+    deleted:    custom-2.cf
+    deleted:    def.json
+    modified:   inventory/any.cf
+    modified:   inventory/debian.cf
+    modified:   inventory/linux.cf
+    modified:   inventory/os.cf
+    modified:   inventory/redhat.cf
+    modified:   lib/autorun.cf
+    modified:   lib/bundles.cf
+    modified:   lib/cfe_internal_hub.cf
+    deleted:    lib/deprecated-upstream.cf
+    modified:   lib/files.cf
+    modified:   lib/packages.cf
+    modified:   lib/paths.cf
+    modified:   lib/services.cf
+    modified:   modules/packages/vendored/apt_get.mustache
+    modified:   modules/packages/vendored/msiexec-list.vbs.mustache
+    modified:   modules/packages/vendored/nimclient.mustache
+    modified:   modules/packages/vendored/pkg.mustache
+    modified:   modules/packages/vendored/zypper.mustache
+    modified:   promises.cf
+    deleted:    services/autorun/custom-1.cf
+    deleted:    services/custom-3.cf
+    modified:   services/main.cf
+    modified:   standalone_self_upgrade.cf
+    modified:   templates/cf-apache.service.mustache
+    modified:   templates/cf-execd.service.mustache
+    modified:   templates/cf-hub.service.mustache
+    modified:   templates/cf-monitord.service.mustache
+    modified:   templates/cf-postgres.service.mustache
+    modified:   templates/cf-runalerts.service.mustache
+    modified:   templates/cf-serverd.service.mustache
+    modified:   templates/federated_reporting/config.sh.mustache
+    modified:   templates/federated_reporting/dump.sh
+    modified:   templates/federated_reporting/import.sh
+    modified:   templates/federated_reporting/psql_wrapper.sh.mustache
+    modified:   templates/federated_reporting/pull_dumps_from.sh
+    modified:   update.cf
+
+Untracked files:
+  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+    cfe_internal/enterprise/templates/apachectl.mustache
+    lib/templates/
+    templates/cf-reactor.service.mustache
+    templates/federated_reporting/cfsecret.py
+    templates/federated_reporting/distributed_cleanup.py
+    templates/federated_reporting/nova_api.py
+    templates/federated_reporting/transfer_distributed_cleanup_items.sh
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre></div>
+</div>
+
+<p>All of the <strong>Untracked files</strong> are new additions from upstream so they should be safe to take.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="bash"><span></span>git add cfe_internal/enterprise/templates/apachectl.mustache
+git add lib/templates/junit.mustache
+git add lib/templates/tap.mustache
+git add templates/cf-reactor.service.mustache
+git add templates/federated_reporting/cfsecret.py
+git add templates/federated_reporting/distributed_cleanup.py
+git add templates/federated_reporting/nova_api.py
+git add templates/federated_reporting/transfer_distributed_cleanup_items.sh
+</code></pre></div>
+</div>
+
+<p>We can run git status again to see the current overview:</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>git status
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>On branch master
+Changes to be committed:
+  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)
+    new file:   cfe_internal/enterprise/templates/apachectl.mustache
+    new file:   lib/templates/junit.mustache
+    new file:   lib/templates/tap.mustache
+    new file:   templates/cf-reactor.service.mustache
+    new file:   templates/federated_reporting/cfsecret.py
+    new file:   templates/federated_reporting/distributed_cleanup.py
+    new file:   templates/federated_reporting/nova_api.py
+    new file:   templates/federated_reporting/transfer_distributed_cleanup_items.sh
+
+Changes not staged for commit:
+  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+    modified:   cfe_internal/core/watchdog/templates/watchdog.mustache
+    modified:   cfe_internal/enterprise/CFE_hub_specific.cf
+    modified:   cfe_internal/enterprise/CFE_knowledge.cf
+    modified:   cfe_internal/enterprise/federation/federation.cf
+    modified:   cfe_internal/enterprise/file_change.cf
+    modified:   cfe_internal/enterprise/main.cf
+    modified:   cfe_internal/enterprise/mission_portal.cf
+    modified:   cfe_internal/enterprise/templates/httpd.conf.mustache
+    modified:   cfe_internal/update/cfe_internal_dc_workflow.cf
+    modified:   cfe_internal/update/cfe_internal_update_from_repository.cf
+    modified:   cfe_internal/update/lib.cf
+    modified:   cfe_internal/update/update_bins.cf
+    modified:   cfe_internal/update/update_policy.cf
+    modified:   cfe_internal/update/update_processes.cf
+    modified:   cfe_internal/update/windows_unattended_upgrade.cf
+    modified:   controls/cf_agent.cf
+    modified:   controls/cf_execd.cf
+    modified:   controls/cf_serverd.cf
+    modified:   controls/def.cf
+    modified:   controls/reports.cf
+    modified:   controls/update_def.cf
+    deleted:    custom-2.cf
+    deleted:    def.json
+    modified:   inventory/any.cf
+    modified:   inventory/debian.cf
+    modified:   inventory/linux.cf
+    modified:   inventory/os.cf
+    modified:   inventory/redhat.cf
+    modified:   lib/autorun.cf
+    modified:   lib/bundles.cf
+    modified:   lib/cfe_internal_hub.cf
+    deleted:    lib/deprecated-upstream.cf
+    modified:   lib/files.cf
+    modified:   lib/packages.cf
+    modified:   lib/paths.cf
+    modified:   lib/services.cf
+    modified:   modules/packages/vendored/apt_get.mustache
+    modified:   modules/packages/vendored/msiexec-list.vbs.mustache
+    modified:   modules/packages/vendored/nimclient.mustache
+    modified:   modules/packages/vendored/pkg.mustache
+    modified:   modules/packages/vendored/zypper.mustache
+    modified:   promises.cf
+    deleted:    services/autorun/custom-1.cf
+    deleted:    services/custom-3.cf
+    modified:   services/main.cf
+    modified:   standalone_self_upgrade.cf
+    modified:   templates/cf-apache.service.mustache
+    modified:   templates/cf-execd.service.mustache
+    modified:   templates/cf-hub.service.mustache
+    modified:   templates/cf-monitord.service.mustache
+    modified:   templates/cf-postgres.service.mustache
+    modified:   templates/cf-runalerts.service.mustache
+    modified:   templates/cf-serverd.service.mustache
+    modified:   templates/federated_reporting/config.sh.mustache
+    modified:   templates/federated_reporting/dump.sh
+    modified:   templates/federated_reporting/import.sh
+    modified:   templates/federated_reporting/psql_wrapper.sh.mustache
+    modified:   templates/federated_reporting/pull_dumps_from.sh
+    modified:   update.cf
+</code></pre></div>
+</div>
+
+<p>Next we want to bring back any of our custom files. Look through the <strong>deleted</strong> files, identify your custom files and restore them with <code>git checkout</code>.</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>git ls-files --deleted
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>custom-2.cf
+def.json
+lib/deprecated-upstream.cf
+services/autorun/custom-1.cf
+services/custom-3.cf
+</code></pre></div>
+</div>
+
+<p>Keeping your polices organized together helps to make this process easy. The custom policy files in the example policy set are <a href="reference-language-concepts-augments.html#def-json" title="Augments - def.json"><code>def.json</code></a>, <code>services/autorun/custom-1.cf</code>, <code>custom-2.cf</code>, and <code>services/custom-3.cf</code>.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="bash"><span></span>git checkout custom-2.cf
+git checkout def.json
+git checkout services/autorun/custom-1.cf
+git checkout services/custom-3.cf
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>Updated 1 path from the index
+Updated 1 path from the index
+Updated 1 path from the index
+Updated 1 path from the index
+</code></pre></div>
+</div>
+
+<p>Other deleted files from the upstream framework like <code>lib/deprecated-upstream.cf</code> should be deleted with <code>git rm</code>.</p>
+
+<p><strong>Note:</strong> It is uncommon for any files to be moved or deleted between patch releases (e.g. <code>3.18.0</code> -&gt; <code>3.18.5</code>) like <code>lib/deprecated-upstream.cf</code> in this example.</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>git rm lib/deprecated-upstream.cf
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>rm &#39;lib/deprecated-upstream.cf&#39;
+</code></pre></div>
+</div>
+
+<p>The files marked as <strong>modified</strong> in the <code>git status</code> output are files that have changed upstream.</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>git status
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>On branch master
+Changes to be committed:
+  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)
+    new file:   cfe_internal/enterprise/templates/apachectl.mustache
+    deleted:    lib/deprecated-upstream.cf
+    new file:   lib/templates/junit.mustache
+    new file:   lib/templates/tap.mustache
+    new file:   templates/cf-reactor.service.mustache
+    new file:   templates/federated_reporting/cfsecret.py
+    new file:   templates/federated_reporting/distributed_cleanup.py
+    new file:   templates/federated_reporting/nova_api.py
+    new file:   templates/federated_reporting/transfer_distributed_cleanup_items.sh
+
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+    modified:   cfe_internal/core/watchdog/templates/watchdog.mustache
+    modified:   cfe_internal/enterprise/CFE_hub_specific.cf
+    modified:   cfe_internal/enterprise/CFE_knowledge.cf
+    modified:   cfe_internal/enterprise/federation/federation.cf
+    modified:   cfe_internal/enterprise/file_change.cf
+    modified:   cfe_internal/enterprise/main.cf
+    modified:   cfe_internal/enterprise/mission_portal.cf
+    modified:   cfe_internal/enterprise/templates/httpd.conf.mustache
+    modified:   cfe_internal/update/cfe_internal_dc_workflow.cf
+    modified:   cfe_internal/update/cfe_internal_update_from_repository.cf
+    modified:   cfe_internal/update/lib.cf
+    modified:   cfe_internal/update/update_bins.cf
+    modified:   cfe_internal/update/update_policy.cf
+    modified:   cfe_internal/update/update_processes.cf
+    modified:   cfe_internal/update/windows_unattended_upgrade.cf
+    modified:   controls/cf_agent.cf
+    modified:   controls/cf_execd.cf
+    modified:   controls/cf_serverd.cf
+    modified:   controls/def.cf
+    modified:   controls/reports.cf
+    modified:   controls/update_def.cf
+    modified:   inventory/any.cf
+    modified:   inventory/debian.cf
+    modified:   inventory/linux.cf
+    modified:   inventory/os.cf
+    modified:   inventory/redhat.cf
+    modified:   lib/autorun.cf
+    modified:   lib/bundles.cf
+    modified:   lib/cfe_internal_hub.cf
+    modified:   lib/files.cf
+    modified:   lib/packages.cf
+    modified:   lib/paths.cf
+    modified:   lib/services.cf
+    modified:   modules/packages/vendored/apt_get.mustache
+    modified:   modules/packages/vendored/msiexec-list.vbs.mustache
+    modified:   modules/packages/vendored/nimclient.mustache
+    modified:   modules/packages/vendored/pkg.mustache
+    modified:   modules/packages/vendored/zypper.mustache
+    modified:   promises.cf
+    modified:   services/main.cf
+    modified:   standalone_self_upgrade.cf
+    modified:   templates/cf-apache.service.mustache
+    modified:   templates/cf-execd.service.mustache
+    modified:   templates/cf-hub.service.mustache
+    modified:   templates/cf-monitord.service.mustache
+    modified:   templates/cf-postgres.service.mustache
+    modified:   templates/cf-runalerts.service.mustache
+    modified:   templates/cf-serverd.service.mustache
+    modified:   templates/federated_reporting/config.sh.mustache
+    modified:   templates/federated_reporting/dump.sh
+    modified:   templates/federated_reporting/import.sh
+    modified:   templates/federated_reporting/psql_wrapper.sh.mustache
+    modified:   templates/federated_reporting/pull_dumps_from.sh
+    modified:   update.cf
+</code></pre></div>
+</div>
+
+<p>It&#39;s best to review the diff of <strong>each</strong> modified file to understand the upstream changes as well as identify any local modifications that need to be retained. You should always keep a good record of any modifications made to vendored files to ensure that nothing is lost during future framework upgrades.</p>
+
+<p>For example, here the diff for <a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a> shows upstream changes but also highlights where the vendored policy had been customized to integrate a custom policy.</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>git diff promises.cf
+</code></pre></div>
+</div>
+
+<p>Output:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="diff"><span></span><span class="gh">diff --git a/promises.cf b/promises.cf</span><span class="w"></span>
+<span class="gh">index 15c0c40..4611098 100644</span><span class="w"></span>
+<span class="gd">--- a/promises.cf</span><span class="w"></span>
+<span class="gi">+++ b/promises.cf</span><span class="w"></span>
+<span class="gu">@@ -5,7 +5,7 @@</span><span class="w"></span>
+<span class="w"> </span># MIT Public License<span class="w"></span>
+<span class="w"> </span># http://www.opensource.org/licenses/MIT<span class="w"></span>
+
+<span class="gd">-# Copyright 2021 Northern.tech AS</span><span class="w"></span>
+<span class="gi">+# Copyright 2022 Northern.tech AS</span><span class="w"></span>
+
+<span class="w"> </span># Permission is hereby granted, free of charge, to any person obtaining a copy of<span class="w"></span>
+<span class="w"> </span># this software and associated documentation files (the &quot;Software&quot;), to deal in<span class="w"></span>
+<span class="gu">@@ -56,10 +56,9 @@ body common control</span><span class="w"></span>
+
+<span class="w"> </span>                         # Agent bundle<span class="w"></span>
+<span class="w"> </span>                          cfe_internal_management,   # See cfe_internal/CFE_cfengine.cf<span class="w"></span>
+<span class="gd">-                          main,</span><span class="w"></span>
+<span class="gi">+                          mpf_main,</span><span class="w"></span>
+<span class="w"> </span>                          @(cfengine_enterprise_hub_ha.management_bundles),<span class="w"></span>
+<span class="w"> </span>                          @(def.bundlesequence_end),<span class="w"></span>
+<span class="gd">-custom_2,</span><span class="w"></span>
+
+<span class="w"> </span>      };<span class="w"></span>
+
+<span class="gu">@@ -86,35 +85,24 @@ custom_2,</span><span class="w"></span>
+<span class="w"> </span>                  @(services_autorun.inputs),<span class="w"></span>
+
+<span class="w"> </span>                  &quot;services/main.cf&quot;,<span class="w"></span>
+<span class="gd">-&quot;custom-2.cf&quot;,</span><span class="w"></span>
+<span class="w"> </span>      };<span class="w"></span>
+
+<span class="gd">-      version =&gt; &quot;CFEngine Promises.cf 3.18.0&quot;;</span><span class="w"></span>
+<span class="gi">+      version =&gt; &quot;CFEngine Promises.cf 3.21.2&quot;;</span><span class="w"></span>
+
+<span class="w"> </span>      # From 3.7 onwards there is a new package promise implementation using package<span class="w"></span>
+<span class="w"> </span>      # modules in which you MUST provide package modules used to generate<span class="w"></span>
+<span class="w"> </span>      # software inventory reports. You can also provide global default package module<span class="w"></span>
+<span class="w"> </span>      # instead of specifying it in all package promises.<span class="w"></span>
+<span class="gd">-    (debian).!disable_inventory_package_refresh::</span><span class="w"></span>
+<span class="gi">+    (debian|redhat|centos|suse|sles|opensuse|amazon_linux).cfe_python_for_package_modules_supported.!disable_inventory_package_refresh::</span><span class="w"></span>
+<span class="w"> </span>          package_inventory =&gt; { $(package_module_knowledge.platform_default) };<span class="w"></span>
+
+<span class="gd">-      # We only define pacakge_invetory on redhat like systems that have a</span><span class="w"></span>
+<span class="gd">-      # python version that works with the package module.</span><span class="w"></span>
+<span class="gd">-    (redhat|centos|suse|sles|opensuse|amazon_linux).cfe_yum_package_module_supported.!disable_inventory_package_refresh::</span><span class="w"></span>
+<span class="gd">-        package_inventory =&gt; { $(package_module_knowledge.platform_default) };</span><span class="w"></span>
+<span class="gd">-</span><span class="w"></span>
+<span class="w"> </span>    (debian|redhat|suse|sles|opensuse|amazon_linux)::<span class="w"></span>
+<span class="w"> </span>          package_module =&gt; $(package_module_knowledge.platform_default);<span class="w"></span>
+
+<span class="gd">-      # CFEngine 3.12.2+ and 3.14+ have new package module on Windows</span><span class="w"></span>
+<span class="gd">-    windows.cfengine_3_12.!(cfengine_3_12_0|cfengine_3_12_1)::</span><span class="w"></span>
+<span class="gd">-          package_inventory =&gt; { $(package_module_knowledge.platform_default) };</span><span class="w"></span>
+<span class="gd">-          package_module =&gt; $(package_module_knowledge.platform_default);</span><span class="w"></span>
+<span class="gd">-@if minimum_version(3.14)</span><span class="w"></span>
+<span class="w"> </span>    windows::<span class="w"></span>
+<span class="w"> </span>          package_inventory =&gt; { $(package_module_knowledge.platform_default) };<span class="w"></span>
+<span class="w"> </span>          package_module =&gt; $(package_module_knowledge.platform_default);<span class="w"></span>
+<span class="gd">-@endif</span><span class="w"></span>
+<span class="gi">+</span><span class="w"></span>
+<span class="w"> </span>    termux::<span class="w"></span>
+<span class="w"> </span>          package_module =&gt; $(package_module_knowledge.platform_default);<span class="w"></span>
+
+<span class="gu">@@ -127,6 +115,12 @@ custom_2,</span><span class="w"></span>
+<span class="w"> </span>        ignore_missing_inputs =&gt; &quot;$(def.control_common_ignore_missing_inputs)&quot;;<span class="w"></span>
+
+
+<span class="gi">+    control_common_tls_min_version_defined::</span><span class="w"></span>
+<span class="gi">+        tls_min_version =&gt; &quot;$(default:def.control_common_tls_min_version)&quot;; # See also: allowtlsversion in body server control</span><span class="w"></span>
+<span class="gi">+</span><span class="w"></span>
+<span class="gi">+    control_common_tls_ciphers_defined::</span><span class="w"></span>
+<span class="gi">+        tls_ciphers =&gt; &quot;$(default:def.control_common_tls_ciphers)&quot;; # See also: allowciphers in body server control</span><span class="w"></span>
+<span class="gi">+</span><span class="w"></span>
+<span class="w"> </span>}<span class="w"></span>
+
+<span class="w"> </span>bundle common inventory<span class="w"></span>
+<span class="gu">@@ -136,8 +130,6 @@ bundle common inventory</span><span class="w"></span>
+<span class="w"> </span>#<span class="w"></span>
+<span class="w"> </span># Inventory bundles are simply common bundles loaded before anything<span class="w"></span>
+<span class="w"> </span># else in promises.cf<span class="w"></span>
+<span class="gd">-#</span><span class="w"></span>
+<span class="gd">-# Tested to work properly against 3.5.x</span><span class="w"></span>
+<span class="w"> </span>{<span class="w"></span>
+<span class="w"> </span>  classes:<span class="w"></span>
+<span class="w"> </span>      &quot;other_unix_os&quot; expression =&gt; &quot;!(windows|macos|linux|freebsd|aix)&quot;;<span class="w"></span>
+<span class="gu">@@ -341,9 +333,7 @@ bundle common services_autorun</span><span class="w"></span>
+<span class="w"> </span># added to inputs automatically.<span class="w"></span>
+<span class="w"> </span>{<span class="w"></span>
+<span class="w"> </span>  vars:<span class="w"></span>
+<span class="gd">-    services_autorun::</span><span class="w"></span>
+<span class="gd">-      &quot;inputs&quot; slist =&gt; { &quot;$(sys.local_libdir)/autorun.cf&quot; };</span><span class="w"></span>
+<span class="gd">-</span><span class="w"></span>
+<span class="gi">+    services_autorun|services_autorun_inputs::</span><span class="w"></span>
+<span class="w"> </span>      &quot;_default_autorun_input_dir&quot;<span class="w"></span>
+<span class="w"> </span>        string =&gt; &quot;$(this.promise_dirname)/services/autorun&quot;;<span class="w"></span>
+<span class="w"> </span>      &quot;_default_autorun_inputs&quot;<span class="w"></span>
+<span class="gu">@@ -360,23 +350,34 @@ bundle common services_autorun</span><span class="w"></span>
+<span class="w"> </span>      &quot;found_inputs&quot; slist =&gt; { @(_default_autorun_inputs),<span class="w"></span>
+<span class="w"> </span>                                sort( getvalues(_extra_autorun_inputs), &quot;lex&quot;) };<span class="w"></span>
+
+<span class="gd">-      &quot;bundles&quot; slist =&gt; { &quot;autorun&quot; }; # run loaded bundles</span><span class="w"></span>
+<span class="gd">-</span><span class="w"></span>
+<span class="gd">-    !services_autorun::</span><span class="w"></span>
+<span class="gi">+    !(services_autorun|services_autorun_inputs|services_autorun_bundles)::</span><span class="w"></span>
+<span class="w"> </span>      # If services_autorun is not enabled, then we should not extend inputs<span class="w"></span>
+<span class="w"> </span>      # automatically.<span class="w"></span>
+<span class="w"> </span>      &quot;inputs&quot; slist =&gt; { };<span class="w"></span>
+<span class="w"> </span>      &quot;found_inputs&quot; slist =&gt; {};<span class="w"></span>
+<span class="w"> </span>      &quot;bundles&quot; slist =&gt; { &quot;services_autorun&quot; }; # run self<span class="w"></span>
+
+<span class="gi">+    services_autorun|services_autorun_inputs|services_autorun_bundles::</span><span class="w"></span>
+<span class="gi">+      &quot;inputs&quot; slist =&gt; { &quot;$(sys.local_libdir)/autorun.cf&quot; };</span><span class="w"></span>
+<span class="gi">+      &quot;bundles&quot; slist =&gt; { &quot;autorun&quot; }; # run loaded bundles</span><span class="w"></span>
+<span class="gi">+</span><span class="w"></span>
+<span class="w"> </span>  reports:<span class="w"></span>
+<span class="w"> </span>    DEBUG|DEBUG_services_autorun::<span class="w"></span>
+<span class="w"> </span>      &quot;DEBUG $(this.bundle): Services Autorun Disabled&quot;<span class="w"></span>
+<span class="gd">-        if =&gt; &quot;!services_autorun&quot;;</span><span class="w"></span>
+<span class="gi">+        if =&gt; &quot;!(services_autorun|services_autorun_bundles|services_autorun_inputs)&quot;;</span><span class="w"></span>
+
+<span class="w"> </span>      &quot;DEBUG $(this.bundle): Services Autorun Enabled&quot;<span class="w"></span>
+<span class="w"> </span>        if =&gt; &quot;services_autorun&quot;;<span class="w"></span>
+
+<span class="gi">+      &quot;DEBUG $(this.bundle): Services Autorun Bundles Enabled&quot;</span><span class="w"></span>
+<span class="gi">+        if =&gt; &quot;services_autorun_bundles&quot;;</span><span class="w"></span>
+<span class="gi">+</span><span class="w"></span>
+<span class="gi">+      &quot;DEBUG $(this.bundle): Services Autorun Inputs Enabled&quot;</span><span class="w"></span>
+<span class="gi">+        if =&gt; &quot;services_autorun_inputs&quot;;</span><span class="w"></span>
+<span class="gi">+</span><span class="w"></span>
+<span class="gi">+      &quot;DEBUG $(this.bundle): Services Autorun (Bundles &amp; Inputs) Enabled&quot;</span><span class="w"></span>
+<span class="gi">+        if =&gt; &quot;services_autorun_inputs.services_autorun_bundles&quot;;</span><span class="w"></span>
+<span class="gi">+</span><span class="w"></span>
+<span class="w"> </span>      &quot;DEBUG $(this.bundle): adding input=&#39;$(inputs)&#39;&quot;<span class="w"></span>
+<span class="w"> </span>        if =&gt; isvariable(&quot;inputs&quot;);<span class="w"></span>
+</code></pre></div>
+</div>
+
+<p>Carefully review the diffs and merge or re-integrate your custom changes on top of the upstream files. If you identify changes to the vendored files consider re-integrating those changes in a way that does not modify vendored files, here for example we have migrated the integration of the custom policy to Augments (<a href="reference-language-concepts-augments.html#def-json" title="Augments - def.json"><code>def.json</code></a>).</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>git diff def.json
+</code></pre></div>
+</div>
+
+<p>Output:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="diff"><span></span><span class="gh">diff --git a/def.json b/def.json</span><span class="w"></span>
+<span class="gh">index a7b98e6..60a0ce1 100644</span><span class="w"></span>
+<span class="gd">--- a/def.json</span><span class="w"></span>
+<span class="gi">+++ b/def.json</span><span class="w"></span>
+<span class="gu">@@ -1,8 +1,11 @@</span><span class="w"></span>
+<span class="w"> </span>{<span class="w"></span>
+<span class="gd">-  &quot;inputs&quot;: [ &quot;services/custom-3.cf&quot; ],</span><span class="w"></span>
+<span class="gi">+  &quot;inputs&quot;: [ &quot;custom-2.cf&quot;, &quot;services/custom-3.cf&quot; ],</span><span class="w"></span>
+<span class="w"> </span>  &quot;classes&quot;: {<span class="w"></span>
+<span class="w"> </span>    &quot;default:services_autorun&quot;: {<span class="w"></span>
+<span class="w"> </span>      &quot;class_expressions&quot;: [ &quot;any::&quot; ],<span class="w"></span>
+<span class="w"> </span>      &quot;comment&quot;: &quot;We want to use the autorun functionality because it is convenient.&quot;<span class="w"></span>
+<span class="gd">-    }</span><span class="w"></span>
+<span class="gi">+    },</span><span class="w"></span>
+<span class="gi">+  &quot;vars&quot;:{</span><span class="w"></span>
+<span class="gi">+    &quot;control_common_bundlesequence_end&quot;: [ &quot;custom_2&quot; ]</span><span class="w"></span>
+<span class="gi">+  }</span><span class="w"></span>
+<span class="w"> </span>}<span class="w"></span>
+<span class="w">\ No newline at end of file</span>
+</code></pre></div>
+</div>
+
+<p>So, we now want to accept all the changes to <a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a> and <a href="reference-language-concepts-augments.html#def-json" title="Augments - def.json"><code>def.json</code></a>.</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>git add promises.cf def.json
+</code></pre></div>
+</div>
+
+<p>If you are unsure if or how to integrate customizations without modifying vendored policy reach out to support for help. For any modified files that you have not customized simply stage them for commit with <code>git add</code>.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="bash"><span></span>git add cfe_internal/core/watchdog/templates/watchdog.mustache
+git add cfe_internal/enterprise/CFE_hub_specific.cf
+git add cfe_internal/enterprise/CFE_knowledge.cf
+git add cfe_internal/enterprise/federation/federation.cf
+git add cfe_internal/enterprise/file_change.cf
+git add cfe_internal/enterprise/main.cf
+git add cfe_internal/enterprise/mission_portal.cf
+git add cfe_internal/enterprise/templates/httpd.conf.mustache
+git add cfe_internal/update/cfe_internal_dc_workflow.cf
+git add cfe_internal/update/cfe_internal_update_from_repository.cf
+git add cfe_internal/update/lib.cf
+git add cfe_internal/update/update_bins.cf
+git add cfe_internal/update/update_policy.cf
+git add cfe_internal/update/update_processes.cf
+git add cfe_internal/update/windows_unattended_upgrade.cf
+git add controls/cf_agent.cf
+git add controls/cf_execd.cf
+git add controls/cf_serverd.cf
+git add controls/def.cf
+git add controls/reports.cf
+git add controls/update_def.cf
+git add def.json
+git add inventory/any.cf
+git add inventory/debian.cf
+git add inventory/linux.cf
+git add inventory/os.cf
+git add inventory/redhat.cf
+git add lib/autorun.cf
+git add lib/bundles.cf
+git add lib/cfe_internal_hub.cf
+git add lib/files.cf
+git add lib/packages.cf
+git add lib/paths.cf
+git add lib/services.cf
+git add modules/packages/vendored/apt_get.mustache
+git add modules/packages/vendored/msiexec-list.vbs.mustache
+git add modules/packages/vendored/nimclient.mustache
+git add modules/packages/vendored/pkg.mustache
+git add modules/packages/vendored/zypper.mustache
+git add promises.cf
+git add services/main.cf
+git add standalone_self_upgrade.cf
+git add templates/cf-apache.service.mustache
+git add templates/cf-execd.service.mustache
+git add templates/cf-hub.service.mustache
+git add templates/cf-monitord.service.mustache
+git add templates/cf-postgres.service.mustache
+git add templates/cf-runalerts.service.mustache
+git add templates/cf-serverd.service.mustache
+git add templates/federated_reporting/config.sh.mustache
+git add templates/federated_reporting/dump.sh
+git add templates/federated_reporting/import.sh
+git add templates/federated_reporting/psql_wrapper.sh.mustache
+git add templates/federated_reporting/pull_dumps_from.sh
+git add update.cf
+</code></pre></div>
+</div>
+
+<p>Review <code>git status</code> one more time to make sure the changes are as expected.</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>git status
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>On branch master
+Changes to be committed:
+  (use &quot;git restore --staged &lt;file&gt;...&quot; to unstage)
+    modified:   cfe_internal/core/watchdog/templates/watchdog.mustache
+    modified:   cfe_internal/enterprise/CFE_hub_specific.cf
+    modified:   cfe_internal/enterprise/CFE_knowledge.cf
+    modified:   cfe_internal/enterprise/federation/federation.cf
+    modified:   cfe_internal/enterprise/file_change.cf
+    modified:   cfe_internal/enterprise/main.cf
+    modified:   cfe_internal/enterprise/mission_portal.cf
+    new file:   cfe_internal/enterprise/templates/apachectl.mustache
+    modified:   cfe_internal/enterprise/templates/httpd.conf.mustache
+    modified:   cfe_internal/update/cfe_internal_dc_workflow.cf
+    modified:   cfe_internal/update/cfe_internal_update_from_repository.cf
+    modified:   cfe_internal/update/lib.cf
+    modified:   cfe_internal/update/update_bins.cf
+    modified:   cfe_internal/update/update_policy.cf
+    modified:   cfe_internal/update/update_processes.cf
+    modified:   cfe_internal/update/windows_unattended_upgrade.cf
+    modified:   controls/cf_agent.cf
+    modified:   controls/cf_execd.cf
+    modified:   controls/cf_serverd.cf
+    modified:   controls/def.cf
+    modified:   controls/reports.cf
+    modified:   controls/update_def.cf
+    modified:   def.json
+    modified:   inventory/any.cf
+    modified:   inventory/debian.cf
+    modified:   inventory/linux.cf
+    modified:   inventory/os.cf
+    modified:   inventory/redhat.cf
+    modified:   lib/autorun.cf
+    modified:   lib/bundles.cf
+    modified:   lib/cfe_internal_hub.cf
+    deleted:    lib/deprecated-upstream.cf
+    modified:   lib/files.cf
+    modified:   lib/packages.cf
+    modified:   lib/paths.cf
+    modified:   lib/services.cf
+    new file:   lib/templates/junit.mustache
+    new file:   lib/templates/tap.mustache
+    modified:   modules/packages/vendored/apt_get.mustache
+    modified:   modules/packages/vendored/msiexec-list.vbs.mustache
+    modified:   modules/packages/vendored/nimclient.mustache
+    modified:   modules/packages/vendored/pkg.mustache
+    modified:   modules/packages/vendored/zypper.mustache
+    modified:   promises.cf
+    modified:   services/main.cf
+    modified:   standalone_self_upgrade.cf
+    modified:   templates/cf-apache.service.mustache
+    modified:   templates/cf-execd.service.mustache
+    modified:   templates/cf-hub.service.mustache
+    modified:   templates/cf-monitord.service.mustache
+    modified:   templates/cf-postgres.service.mustache
+    new file:   templates/cf-reactor.service.mustache
+    modified:   templates/cf-runalerts.service.mustache
+    modified:   templates/cf-serverd.service.mustache
+    new file:   templates/federated_reporting/cfsecret.py
+    modified:   templates/federated_reporting/config.sh.mustache
+    new file:   templates/federated_reporting/distributed_cleanup.py
+    modified:   templates/federated_reporting/dump.sh
+    modified:   templates/federated_reporting/import.sh
+    new file:   templates/federated_reporting/nova_api.py
+    modified:   templates/federated_reporting/psql_wrapper.sh.mustache
+    modified:   templates/federated_reporting/pull_dumps_from.sh
+    new file:   templates/federated_reporting/transfer_distributed_cleanup_items.sh
+    modified:   update.cf
+</code></pre></div>
+</div>
+
+<p>Make sure the policy validates and commit your changes.</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>git commit -m &quot;Upgraded MPF from 3.18.0 to 3.21.2&quot;
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>[master a5d512c] Upgraded MPF from 3.18.0 to 3.21.2
+ 64 files changed, 2599 insertions(+), 728 deletions(-)
+ create mode 100644 cfe_internal/enterprise/templates/apachectl.mustache
+ rewrite inventory/redhat.cf (63%)
+ delete mode 100644 lib/deprecated-upstream.cf
+ create mode 100644 lib/templates/junit.mustache
+ create mode 100644 lib/templates/tap.mustache
+ create mode 100644 templates/cf-reactor.service.mustache
+ create mode 100644 templates/federated_reporting/cfsecret.py
+ create mode 100644 templates/federated_reporting/distributed_cleanup.py
+ create mode 100644 templates/federated_reporting/nova_api.py
+ create mode 100644 templates/federated_reporting/transfer_distributed_cleanup_items.sh
+</code></pre></div>
+</div>
+
+<p>Now your Masterfiles Policy Framework is upgraded and ready to be tested.</p>
+
+            </div>
+        </div>
+        
+        <div class="footer-top">
+            <div>
+                <h3>Still need help? </h3>
+                <a href="https://matrix.to/#/#CFEngine:matrix.org" target="_blank"><img src="./media/images/chat-square-dots-fill.svg"/> Chat</a>
+                <a href="https://github.com/cfengine/core/discussions" target="_blank"><img src="./media/images/people-fill.svg"/> Ask a question on Github</a>
+                <a href="https://groups.google.com/forum/#!forum/dev-cfengine" target="_blank"><img src="./media/images/mail.svg"/> Mailing list</a>
+            </div>
+        </div>
+    </article>
+    <aside>
+    <button onclick="openNavigationHandler()" class="btn navigation-btn">
+        <i class="bi bi-list-ul"></i> Navigation table
+    </button>
+    <div class="select versions-dropdown">
+        <label>Version</label>
+        <div class="dropdown-select">
+            <span>Version&nbsp;<div></div></span>
+            <div class="dropdown-select_options">
+                <a onclick="selectVersion('/docs/master/')" href="#">master</a>
+<a onclick="selectVersion('javascript:void(0);')" href="#" selected="selected">3.26 (non-LTS)</a>
+<a onclick="selectVersion('/docs/3.24/')" href="#">3.24 (LTS)</a>
+<a onclick="selectVersion('/docs/3.21/')" href="#">3.21 (LTS)</a>
+<a href="./versions.html">view all versions</a>
+
+            </div>
+        </div>
+    </div>
+    <div class="left-menu">
+        <div class="left-menu-top">
+            <i class="bi menu-back bi-arrow-left-short"></i>
+            <i class="bi menu-close bi-x"></i>
+        </div>
+        <ul class="left-menu-breadcrumbs"></ul>
+        <div class="selectedMenu"></div>
+        <ul class='mainMenu'><li class="parent level-1" data-url="overview.html"><i></i><a href="overview.html">Overview</a><ul><li class=" level-2" data-url="overview-what-is-cfengine-and-why.html"><i></i><a href="overview-what-is-cfengine-and-why.html">What is CFEngine and why?</a></li><li class=" level-2" data-url="overview-how-cfengine-works.html"><i></i><a href="overview-how-cfengine-works.html">How CFEngine works</a></li><li class=" level-2" data-url="overview-directory-structure.html"><i></i><a href="overview-directory-structure.html">CFEngine directory structure</a></li><li class=" level-2" data-url="overview-client-server-communication.html"><i></i><a href="overview-client-server-communication.html">Client server communication</a></li><li class=" level-2" data-url="overview-glossary.html"><i></i><a href="overview-glossary.html">Glossary</a></li></ul></li><li class="parent level-1" data-url="getting-started.html"><i></i><a href="getting-started.html">Getting started</a><ul><li class="parent level-2" data-url="getting-started-installation.html"><i></i><a href="getting-started-installation.html">Installation</a><ul><li class=" level-3" data-url="getting-started-installation-local-virtual-machine.html"><i></i><a href="getting-started-installation-local-virtual-machine.html">Local virtual machine</a></li><li class=" level-3" data-url="getting-started-installation-secure-bootstrap.html"><i></i><a href="getting-started-installation-secure-bootstrap.html">Secure bootstrap</a></li><li class=" level-3" data-url="getting-started-installation-installation-overview.html"><i></i><a href="getting-started-installation-installation-overview.html">Installation overview</a></li><li class=" level-3" data-url="getting-started-installation-upgrading.html"><i></i><a href="getting-started-installation-upgrading.html">Upgrading</a></li><li class="parent level-3" data-url="getting-started-installation-pre-installation-checklist.html"><i></i><a href="getting-started-installation-pre-installation-checklist.html">Pre-installation checklist</a><ul><li class=" level-4" data-url="getting-started-installation-pre-installation-checklist-vi-quick-start-guide.html"><i></i><a href="getting-started-installation-pre-installation-checklist-vi-quick-start-guide.html">Quick-Start guide to using vi</a></li><li class=" level-4" data-url="getting-started-installation-pre-installation-checklist-putty-quick-start-guide.html"><i></i><a href="getting-started-installation-pre-installation-checklist-putty-quick-start-guide.html">Quick-Start guide to using PuTTY</a></li><li class=" level-4" data-url="getting-started-installation-pre-installation-checklist-verify-signatures.html"><i></i><a href="getting-started-installation-pre-installation-checklist-verify-signatures.html">Verifying package signatures</a></li></ul></li><li class="parent level-3" data-url="getting-started-installation-general-installation.html"><i></i><a href="getting-started-installation-general-installation.html">General installation</a><ul><li class=" level-4" data-url="getting-started-installation-general-installation-installation-enterprise-free-aws-rhel.html"><i></i><a href="getting-started-installation-general-installation-installation-enterprise-free-aws-rhel.html">Using Amazon Web Services</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-enterprise-free.html"><i></i><a href="getting-started-installation-general-installation-installation-enterprise-free.html">Installing Enterprise 25 Free</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-enterprise-vagrant.html"><i></i><a href="getting-started-installation-general-installation-installation-enterprise-vagrant.html">Using Vagrant</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-enterprise.html"><i></i><a href="getting-started-installation-general-installation-installation-enterprise.html">Installing Enterprise for production</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-coreos.html"><i></i><a href="getting-started-installation-general-installation-installation-coreos.html">Installing Enterprise on CoreOS</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-community.html"><i></i><a href="getting-started-installation-general-installation-installation-community.html">Installing Community</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-enterprise-generic-tarball.html"><i></i><a href="getting-started-installation-general-installation-installation-enterprise-generic-tarball.html">Installing from binary tarball</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-community-containerized.html"><i></i><a href="getting-started-installation-general-installation-installation-community-containerized.html">Installing Community Using Containers</a></li></ul></li><li class=" level-3" data-url="getting-started-installation-version-control.html"><i></i><a href="getting-started-installation-version-control.html">Version control</a></li></ul></li><li class=" level-2" data-url="getting-started-modules-from-cfengine-build.html"><i></i><a href="getting-started-modules-from-cfengine-build.html">Modules from CFEngine Build</a></li><li class=" level-2" data-url="getting-started-reporting-and-web-ui.html"><i></i><a href="getting-started-reporting-and-web-ui.html">Reporting and web UI</a></li><li class=" level-2" data-url="getting-started-writing-policy.html"><i></i><a href="getting-started-writing-policy.html">Writing policy</a></li><li class=" level-2" data-url="getting-started-developing-modules.html"><i></i><a href="getting-started-developing-modules.html">Developing modules</a></li></ul></li><li class="parent level-1" data-url="reference.html"><i></i><a href="reference.html">Reference</a><ul><li class="parent level-2" data-url="reference-components.html"><i></i><a href="reference-components.html">Components</a><ul><li class=" level-3" data-url="reference-components-cf-agent.html"><i></i><a href="reference-components-cf-agent.html">cf-agent</a></li><li class=" level-3" data-url="reference-components-cf-secret.html"><i></i><a href="reference-components-cf-secret.html">cf-secret</a></li><li class=" level-3" data-url="reference-components-cf-support.html"><i></i><a href="reference-components-cf-support.html">cf-support</a></li><li class=" level-3" data-url="reference-components-cf-serverd.html"><i></i><a href="reference-components-cf-serverd.html">cf-serverd</a></li><li class=" level-3" data-url="reference-components-cf-execd.html"><i></i><a href="reference-components-cf-execd.html">cf-execd</a></li><li class=" level-3" data-url="reference-components-cf-promises.html"><i></i><a href="reference-components-cf-promises.html">cf-promises</a></li><li class=" level-3" data-url="reference-components-cf-monitord.html"><i></i><a href="reference-components-cf-monitord.html">cf-monitord</a></li><li class=" level-3" data-url="reference-components-cf-key.html"><i></i><a href="reference-components-cf-key.html">cf-key</a></li><li class=" level-3" data-url="reference-components-cf-runagent.html"><i></i><a href="reference-components-cf-runagent.html">cf-runagent</a></li><li class=" level-3" data-url="reference-components-cf-check.html"><i></i><a href="reference-components-cf-check.html">cf-check</a></li><li class=" level-3" data-url="reference-components-cf-hub.html"><i></i><a href="reference-components-cf-hub.html">cf-hub</a></li><li class=" level-3" data-url="reference-components-cf-net.html"><i></i><a href="reference-components-cf-net.html">cf-net</a></li><li class=" level-3" data-url="reference-components-cf-reactor.html"><i></i><a href="reference-components-cf-reactor.html">cf-reactor</a></li><li class=" level-3" data-url="reference-components-file_control_promises.html"><i></i><a href="reference-components-file_control_promises.html">file control</a></li></ul></li><li class="parent level-2" data-url="reference-functions.html"><i></i><a href="reference-functions.html">Functions</a><ul><li class=" level-3" data-url="reference-functions-accessedbefore.html"><i></i><a href="reference-functions-accessedbefore.html">accessedbefore</a></li><li class=" level-3" data-url="reference-functions-accumulated.html"><i></i><a href="reference-functions-accumulated.html">accumulated</a></li><li class=" level-3" data-url="reference-functions-ago.html"><i></i><a href="reference-functions-ago.html">ago</a></li><li class=" level-3" data-url="reference-functions-and.html"><i></i><a href="reference-functions-and.html">and</a></li><li class=" level-3" data-url="reference-functions-basename.html"><i></i><a href="reference-functions-basename.html">basename</a></li><li class=" level-3" data-url="reference-functions-bundlesmatching.html"><i></i><a href="reference-functions-bundlesmatching.html">bundlesmatching</a></li><li class=" level-3" data-url="reference-functions-bundlestate.html"><i></i><a href="reference-functions-bundlestate.html">bundlestate</a></li><li class=" level-3" data-url="reference-functions-callstack_callers.html"><i></i><a href="reference-functions-callstack_callers.html">callstack_callers</a></li><li class=" level-3" data-url="reference-functions-callstack_promisers.html"><i></i><a href="reference-functions-callstack_promisers.html">callstack_promisers</a></li><li class=" level-3" data-url="reference-functions-canonify.html"><i></i><a href="reference-functions-canonify.html">canonify</a></li><li class=" level-3" data-url="reference-functions-canonifyuniquely.html"><i></i><a href="reference-functions-canonifyuniquely.html">canonifyuniquely</a></li><li class=" level-3" data-url="reference-functions-cf_version_after.html"><i></i><a href="reference-functions-cf_version_after.html">cf_version_after</a></li><li class=" level-3" data-url="reference-functions-cf_version_at.html"><i></i><a href="reference-functions-cf_version_at.html">cf_version_at</a></li><li class=" level-3" data-url="reference-functions-cf_version_before.html"><i></i><a href="reference-functions-cf_version_before.html">cf_version_before</a></li><li class=" level-3" data-url="reference-functions-cf_version_between.html"><i></i><a href="reference-functions-cf_version_between.html">cf_version_between</a></li><li class=" level-3" data-url="reference-functions-cf_version_maximum.html"><i></i><a href="reference-functions-cf_version_maximum.html">cf_version_maximum</a></li><li class=" level-3" data-url="reference-functions-cf_version_minimum.html"><i></i><a href="reference-functions-cf_version_minimum.html">cf_version_minimum</a></li><li class=" level-3" data-url="reference-functions-changedbefore.html"><i></i><a href="reference-functions-changedbefore.html">changedbefore</a></li><li class=" level-3" data-url="reference-functions-classesmatching.html"><i></i><a href="reference-functions-classesmatching.html">classesmatching</a></li><li class=" level-3" data-url="reference-functions-classfiltercsv.html"><i></i><a href="reference-functions-classfiltercsv.html">classfiltercsv</a></li><li class=" level-3" data-url="reference-functions-classify.html"><i></i><a href="reference-functions-classify.html">classify</a></li><li class=" level-3" data-url="reference-functions-classmatch.html"><i></i><a href="reference-functions-classmatch.html">classmatch</a></li><li class=" level-3" data-url="reference-functions-concat.html"><i></i><a href="reference-functions-concat.html">concat</a></li><li class=" level-3" data-url="reference-functions-countclassesmatching.html"><i></i><a href="reference-functions-countclassesmatching.html">countclassesmatching</a></li><li class=" level-3" data-url="reference-functions-countlinesmatching.html"><i></i><a href="reference-functions-countlinesmatching.html">countlinesmatching</a></li><li class=" level-3" data-url="reference-functions-data_expand.html"><i></i><a href="reference-functions-data_expand.html">data_expand</a></li><li class=" level-3" data-url="reference-functions-data_readstringarray.html"><i></i><a href="reference-functions-data_readstringarray.html">data_readstringarray</a></li><li class=" level-3" data-url="reference-functions-data_readstringarrayidx.html"><i></i><a href="reference-functions-data_readstringarrayidx.html">data_readstringarrayidx</a></li><li class=" level-3" data-url="reference-functions-data_regextract.html"><i></i><a href="reference-functions-data_regextract.html">data_regextract</a></li><li class=" level-3" data-url="reference-functions-data_sysctlvalues.html"><i></i><a href="reference-functions-data_sysctlvalues.html">data_sysctlvalues</a></li><li class=" level-3" data-url="reference-functions-datastate.html"><i></i><a href="reference-functions-datastate.html">datastate</a></li><li class=" level-3" data-url="reference-functions-difference.html"><i></i><a href="reference-functions-difference.html">difference</a></li><li class=" level-3" data-url="reference-functions-dirname.html"><i></i><a href="reference-functions-dirname.html">dirname</a></li><li class=" level-3" data-url="reference-functions-diskfree.html"><i></i><a href="reference-functions-diskfree.html">diskfree</a></li><li class=" level-3" data-url="reference-functions-escape.html"><i></i><a href="reference-functions-escape.html">escape</a></li><li class=" level-3" data-url="reference-functions-eval.html"><i></i><a href="reference-functions-eval.html">eval</a></li><li class=" level-3" data-url="reference-functions-every.html"><i></i><a href="reference-functions-every.html">every</a></li><li class=" level-3" data-url="reference-functions-execresult.html"><i></i><a href="reference-functions-execresult.html">execresult</a></li><li class=" level-3" data-url="reference-functions-execresult_as_data.html"><i></i><a href="reference-functions-execresult_as_data.html">execresult_as_data</a></li><li class=" level-3" data-url="reference-functions-expandrange.html"><i></i><a href="reference-functions-expandrange.html">expandrange</a></li><li class=" level-3" data-url="reference-functions-file_hash.html"><i></i><a href="reference-functions-file_hash.html">file_hash</a></li><li class=" level-3" data-url="reference-functions-fileexists.html"><i></i><a href="reference-functions-fileexists.html">fileexists</a></li><li class=" level-3" data-url="reference-functions-filesexist.html"><i></i><a href="reference-functions-filesexist.html">filesexist</a></li><li class=" level-3" data-url="reference-functions-filesize.html"><i></i><a href="reference-functions-filesize.html">filesize</a></li><li class=" level-3" data-url="reference-functions-filestat.html"><i></i><a href="reference-functions-filestat.html">filestat</a></li><li class=" level-3" data-url="reference-functions-filter.html"><i></i><a href="reference-functions-filter.html">filter</a></li><li class=" level-3" data-url="reference-functions-findfiles.html"><i></i><a href="reference-functions-findfiles.html">findfiles</a></li><li class=" level-3" data-url="reference-functions-findfiles_up.html"><i></i><a href="reference-functions-findfiles_up.html">findfiles_up</a></li><li class=" level-3" data-url="reference-functions-findlocalusers.html"><i></i><a href="reference-functions-findlocalusers.html">findlocalusers</a></li><li class=" level-3" data-url="reference-functions-findprocesses.html"><i></i><a href="reference-functions-findprocesses.html">findprocesses</a></li><li class=" level-3" data-url="reference-functions-format.html"><i></i><a href="reference-functions-format.html">format</a></li><li class=" level-3" data-url="reference-functions-getbundlemetatags.html"><i></i><a href="reference-functions-getbundlemetatags.html">getbundlemetatags</a></li><li class=" level-3" data-url="reference-functions-getclassmetatags.html"><i></i><a href="reference-functions-getclassmetatags.html">getclassmetatags</a></li><li class=" level-3" data-url="reference-functions-getenv.html"><i></i><a href="reference-functions-getenv.html">getenv</a></li><li class=" level-3" data-url="reference-functions-getfields.html"><i></i><a href="reference-functions-getfields.html">getfields</a></li><li class=" level-3" data-url="reference-functions-getgid.html"><i></i><a href="reference-functions-getgid.html">getgid</a></li><li class=" level-3" data-url="reference-functions-getindices.html"><i></i><a href="reference-functions-getindices.html">getindices</a></li><li class=" level-3" data-url="reference-functions-getuid.html"><i></i><a href="reference-functions-getuid.html">getuid</a></li><li class=" level-3" data-url="reference-functions-getuserinfo.html"><i></i><a href="reference-functions-getuserinfo.html">getuserinfo</a></li><li class=" level-3" data-url="reference-functions-getusers.html"><i></i><a href="reference-functions-getusers.html">getusers</a></li><li class=" level-3" data-url="reference-functions-getvalues.html"><i></i><a href="reference-functions-getvalues.html">getvalues</a></li><li class=" level-3" data-url="reference-functions-getvariablemetatags.html"><i></i><a href="reference-functions-getvariablemetatags.html">getvariablemetatags</a></li><li class=" level-3" data-url="reference-functions-grep.html"><i></i><a href="reference-functions-grep.html">grep</a></li><li class=" level-3" data-url="reference-functions-groupexists.html"><i></i><a href="reference-functions-groupexists.html">groupexists</a></li><li class=" level-3" data-url="reference-functions-hash.html"><i></i><a href="reference-functions-hash.html">hash</a></li><li class=" level-3" data-url="reference-functions-hash_to_int.html"><i></i><a href="reference-functions-hash_to_int.html">hash_to_int</a></li><li class=" level-3" data-url="reference-functions-hashmatch.html"><i></i><a href="reference-functions-hashmatch.html">hashmatch</a></li><li class=" level-3" data-url="reference-functions-host2ip.html"><i></i><a href="reference-functions-host2ip.html">host2ip</a></li><li class=" level-3" data-url="reference-functions-hostinnetgroup.html"><i></i><a href="reference-functions-hostinnetgroup.html">hostinnetgroup</a></li><li class=" level-3" data-url="reference-functions-hostrange.html"><i></i><a href="reference-functions-hostrange.html">hostrange</a></li><li class=" level-3" data-url="reference-functions-hostsseen.html"><i></i><a href="reference-functions-hostsseen.html">hostsseen</a></li><li class=" level-3" data-url="reference-functions-hostswithclass.html"><i></i><a href="reference-functions-hostswithclass.html">hostswithclass</a></li><li class=" level-3" data-url="reference-functions-hostswithgroup.html"><i></i><a href="reference-functions-hostswithgroup.html">hostswithgroup</a></li><li class=" level-3" data-url="reference-functions-hubknowledge.html"><i></i><a href="reference-functions-hubknowledge.html">hubknowledge</a></li><li class=" level-3" data-url="reference-functions-ifelse.html"><i></i><a href="reference-functions-ifelse.html">ifelse</a></li><li class=" level-3" data-url="reference-functions-int.html"><i></i><a href="reference-functions-int.html">int</a></li><li class=" level-3" data-url="reference-functions-intersection.html"><i></i><a href="reference-functions-intersection.html">intersection</a></li><li class=" level-3" data-url="reference-functions-ip2host.html"><i></i><a href="reference-functions-ip2host.html">ip2host</a></li><li class=" level-3" data-url="reference-functions-iprange.html"><i></i><a href="reference-functions-iprange.html">iprange</a></li><li class=" level-3" data-url="reference-functions-irange.html"><i></i><a href="reference-functions-irange.html">irange</a></li><li class=" level-3" data-url="reference-functions-is_type.html"><i></i><a href="reference-functions-is_type.html">is_type</a></li><li class=" level-3" data-url="reference-functions-isconnectable.html"><i></i><a href="reference-functions-isconnectable.html">isconnectable</a></li><li class=" level-3" data-url="reference-functions-isdir.html"><i></i><a href="reference-functions-isdir.html">isdir</a></li><li class=" level-3" data-url="reference-functions-isexecutable.html"><i></i><a href="reference-functions-isexecutable.html">isexecutable</a></li><li class=" level-3" data-url="reference-functions-isgreaterthan.html"><i></i><a href="reference-functions-isgreaterthan.html">isgreaterthan</a></li><li class=" level-3" data-url="reference-functions-isipinsubnet.html"><i></i><a href="reference-functions-isipinsubnet.html">isipinsubnet</a></li><li class=" level-3" data-url="reference-functions-islessthan.html"><i></i><a href="reference-functions-islessthan.html">islessthan</a></li><li class=" level-3" data-url="reference-functions-islink.html"><i></i><a href="reference-functions-islink.html">islink</a></li><li class=" level-3" data-url="reference-functions-isnewerthan.html"><i></i><a href="reference-functions-isnewerthan.html">isnewerthan</a></li><li class=" level-3" data-url="reference-functions-isplain.html"><i></i><a href="reference-functions-isplain.html">isplain</a></li><li class=" level-3" data-url="reference-functions-isreadable.html"><i></i><a href="reference-functions-isreadable.html">isreadable</a></li><li class=" level-3" data-url="reference-functions-isvariable.html"><i></i><a href="reference-functions-isvariable.html">isvariable</a></li><li class=" level-3" data-url="reference-functions-join.html"><i></i><a href="reference-functions-join.html">join</a></li><li class=" level-3" data-url="reference-functions-lastnode.html"><i></i><a href="reference-functions-lastnode.html">lastnode</a></li><li class=" level-3" data-url="reference-functions-laterthan.html"><i></i><a href="reference-functions-laterthan.html">laterthan</a></li><li class=" level-3" data-url="reference-functions-ldaparray.html"><i></i><a href="reference-functions-ldaparray.html">ldaparray</a></li><li class=" level-3" data-url="reference-functions-ldaplist.html"><i></i><a href="reference-functions-ldaplist.html">ldaplist</a></li><li class=" level-3" data-url="reference-functions-ldapvalue.html"><i></i><a href="reference-functions-ldapvalue.html">ldapvalue</a></li><li class=" level-3" data-url="reference-functions-length.html"><i></i><a href="reference-functions-length.html">length</a></li><li class=" level-3" data-url="reference-functions-lsdir.html"><i></i><a href="reference-functions-lsdir.html">lsdir</a></li><li class=" level-3" data-url="reference-functions-makerule.html"><i></i><a href="reference-functions-makerule.html">makerule</a></li><li class=" level-3" data-url="reference-functions-maparray.html"><i></i><a href="reference-functions-maparray.html">maparray</a></li><li class=" level-3" data-url="reference-functions-mapdata.html"><i></i><a href="reference-functions-mapdata.html">mapdata</a></li><li class=" level-3" data-url="reference-functions-maplist.html"><i></i><a href="reference-functions-maplist.html">maplist</a></li><li class=" level-3" data-url="reference-functions-max.html"><i></i><a href="reference-functions-max.html">max</a></li><li class=" level-3" data-url="reference-functions-mean.html"><i></i><a href="reference-functions-mean.html">mean</a></li><li class=" level-3" data-url="reference-functions-mergedata.html"><i></i><a href="reference-functions-mergedata.html">mergedata</a></li><li class=" level-3" data-url="reference-functions-min.html"><i></i><a href="reference-functions-min.html">min</a></li><li class=" level-3" data-url="reference-functions-network_connections.html"><i></i><a href="reference-functions-network_connections.html">network_connections</a></li><li class=" level-3" data-url="reference-functions-none.html"><i></i><a href="reference-functions-none.html">none</a></li><li class=" level-3" data-url="reference-functions-not.html"><i></i><a href="reference-functions-not.html">not</a></li><li class=" level-3" data-url="reference-functions-now.html"><i></i><a href="reference-functions-now.html">now</a></li><li class=" level-3" data-url="reference-functions-nth.html"><i></i><a href="reference-functions-nth.html">nth</a></li><li class=" level-3" data-url="reference-functions-on.html"><i></i><a href="reference-functions-on.html">on</a></li><li class=" level-3" data-url="reference-functions-or.html"><i></i><a href="reference-functions-or.html">or</a></li><li class=" level-3" data-url="reference-functions-packagesmatching.html"><i></i><a href="reference-functions-packagesmatching.html">packagesmatching</a></li><li class=" level-3" data-url="reference-functions-packageupdatesmatching.html"><i></i><a href="reference-functions-packageupdatesmatching.html">packageupdatesmatching</a></li><li class=" level-3" data-url="reference-functions-parseintarray.html"><i></i><a href="reference-functions-parseintarray.html">parseintarray</a></li><li class=" level-3" data-url="reference-functions-parsejson.html"><i></i><a href="reference-functions-parsejson.html">parsejson</a></li><li class=" level-3" data-url="reference-functions-parserealarray.html"><i></i><a href="reference-functions-parserealarray.html">parserealarray</a></li><li class=" level-3" data-url="reference-functions-parsestringarray.html"><i></i><a href="reference-functions-parsestringarray.html">parsestringarray</a></li><li class=" level-3" data-url="reference-functions-parsestringarrayidx.html"><i></i><a href="reference-functions-parsestringarrayidx.html">parsestringarrayidx</a></li><li class=" level-3" data-url="reference-functions-parseyaml.html"><i></i><a href="reference-functions-parseyaml.html">parseyaml</a></li><li class=" level-3" data-url="reference-functions-peerleader.html"><i></i><a href="reference-functions-peerleader.html">peerleader</a></li><li class=" level-3" data-url="reference-functions-peerleaders.html"><i></i><a href="reference-functions-peerleaders.html">peerleaders</a></li><li class=" level-3" data-url="reference-functions-peers.html"><i></i><a href="reference-functions-peers.html">peers</a></li><li class=" level-3" data-url="reference-functions-processexists.html"><i></i><a href="reference-functions-processexists.html">processexists</a></li><li class=" level-3" data-url="reference-functions-product.html"><i></i><a href="reference-functions-product.html">product</a></li><li class=" level-3" data-url="reference-functions-randomint.html"><i></i><a href="reference-functions-randomint.html">randomint</a></li><li class=" level-3" data-url="reference-functions-read_module_protocol.html"><i></i><a href="reference-functions-read_module_protocol.html">read_module_protocol</a></li><li class=" level-3" data-url="reference-functions-readcsv.html"><i></i><a href="reference-functions-readcsv.html">readcsv</a></li><li class=" level-3" data-url="reference-functions-readdata.html"><i></i><a href="reference-functions-readdata.html">readdata</a></li><li class=" level-3" data-url="reference-functions-readenvfile.html"><i></i><a href="reference-functions-readenvfile.html">readenvfile</a></li><li class=" level-3" data-url="reference-functions-readfile.html"><i></i><a href="reference-functions-readfile.html">readfile</a></li><li class=" level-3" data-url="reference-functions-readintarray.html"><i></i><a href="reference-functions-readintarray.html">readintarray</a></li><li class=" level-3" data-url="reference-functions-readintlist.html"><i></i><a href="reference-functions-readintlist.html">readintlist</a></li><li class=" level-3" data-url="reference-functions-readjson.html"><i></i><a href="reference-functions-readjson.html">readjson</a></li><li class=" level-3" data-url="reference-functions-readrealarray.html"><i></i><a href="reference-functions-readrealarray.html">readrealarray</a></li><li class=" level-3" data-url="reference-functions-readreallist.html"><i></i><a href="reference-functions-readreallist.html">readreallist</a></li><li class=" level-3" data-url="reference-functions-readstringarray.html"><i></i><a href="reference-functions-readstringarray.html">readstringarray</a></li><li class=" level-3" data-url="reference-functions-readstringarrayidx.html"><i></i><a href="reference-functions-readstringarrayidx.html">readstringarrayidx</a></li><li class=" level-3" data-url="reference-functions-readstringlist.html"><i></i><a href="reference-functions-readstringlist.html">readstringlist</a></li><li class=" level-3" data-url="reference-functions-readtcp.html"><i></i><a href="reference-functions-readtcp.html">readtcp</a></li><li class=" level-3" data-url="reference-functions-readyaml.html"><i></i><a href="reference-functions-readyaml.html">readyaml</a></li><li class=" level-3" data-url="reference-functions-regarray.html"><i></i><a href="reference-functions-regarray.html">regarray</a></li><li class=" level-3" data-url="reference-functions-regcmp.html"><i></i><a href="reference-functions-regcmp.html">regcmp</a></li><li class=" level-3" data-url="reference-functions-regex_replace.html"><i></i><a href="reference-functions-regex_replace.html">regex_replace</a></li><li class=" level-3" data-url="reference-functions-regextract.html"><i></i><a href="reference-functions-regextract.html">regextract</a></li><li class=" level-3" data-url="reference-functions-registryvalue.html"><i></i><a href="reference-functions-registryvalue.html">registryvalue</a></li><li class=" level-3" data-url="reference-functions-regldap.html"><i></i><a href="reference-functions-regldap.html">regldap</a></li><li class=" level-3" data-url="reference-functions-regline.html"><i></i><a href="reference-functions-regline.html">regline</a></li><li class=" level-3" data-url="reference-functions-reglist.html"><i></i><a href="reference-functions-reglist.html">reglist</a></li><li class=" level-3" data-url="reference-functions-remoteclassesmatching.html"><i></i><a href="reference-functions-remoteclassesmatching.html">remoteclassesmatching</a></li><li class=" level-3" data-url="reference-functions-remotescalar.html"><i></i><a href="reference-functions-remotescalar.html">remotescalar</a></li><li class=" level-3" data-url="reference-functions-returnszero.html"><i></i><a href="reference-functions-returnszero.html">returnszero</a></li><li class=" level-3" data-url="reference-functions-reverse.html"><i></i><a href="reference-functions-reverse.html">reverse</a></li><li class=" level-3" data-url="reference-functions-rrange.html"><i></i><a href="reference-functions-rrange.html">rrange</a></li><li class=" level-3" data-url="reference-functions-selectservers.html"><i></i><a href="reference-functions-selectservers.html">selectservers</a></li><li class=" level-3" data-url="reference-functions-shuffle.html"><i></i><a href="reference-functions-shuffle.html">shuffle</a></li><li class=" level-3" data-url="reference-functions-some.html"><i></i><a href="reference-functions-some.html">some</a></li><li class=" level-3" data-url="reference-functions-sort.html"><i></i><a href="reference-functions-sort.html">sort</a></li><li class=" level-3" data-url="reference-functions-splayclass.html"><i></i><a href="reference-functions-splayclass.html">splayclass</a></li><li class=" level-3" data-url="reference-functions-splitstring.html"><i></i><a href="reference-functions-splitstring.html">splitstring</a></li><li class=" level-3" data-url="reference-functions-storejson.html"><i></i><a href="reference-functions-storejson.html">storejson</a></li><li class=" level-3" data-url="reference-functions-strcmp.html"><i></i><a href="reference-functions-strcmp.html">strcmp</a></li><li class=" level-3" data-url="reference-functions-strftime.html"><i></i><a href="reference-functions-strftime.html">strftime</a></li><li class=" level-3" data-url="reference-functions-string.html"><i></i><a href="reference-functions-string.html">string</a></li><li class=" level-3" data-url="reference-functions-string_downcase.html"><i></i><a href="reference-functions-string_downcase.html">string_downcase</a></li><li class=" level-3" data-url="reference-functions-string_head.html"><i></i><a href="reference-functions-string_head.html">string_head</a></li><li class=" level-3" data-url="reference-functions-string_length.html"><i></i><a href="reference-functions-string_length.html">string_length</a></li><li class=" level-3" data-url="reference-functions-string_mustache.html"><i></i><a href="reference-functions-string_mustache.html">string_mustache</a></li><li class=" level-3" data-url="reference-functions-string_replace.html"><i></i><a href="reference-functions-string_replace.html">string_replace</a></li><li class=" level-3" data-url="reference-functions-string_reverse.html"><i></i><a href="reference-functions-string_reverse.html">string_reverse</a></li><li class=" level-3" data-url="reference-functions-string_split.html"><i></i><a href="reference-functions-string_split.html">string_split</a></li><li class=" level-3" data-url="reference-functions-string_tail.html"><i></i><a href="reference-functions-string_tail.html">string_tail</a></li><li class=" level-3" data-url="reference-functions-string_trim.html"><i></i><a href="reference-functions-string_trim.html">string_trim</a></li><li class=" level-3" data-url="reference-functions-string_upcase.html"><i></i><a href="reference-functions-string_upcase.html">string_upcase</a></li><li class=" level-3" data-url="reference-functions-sublist.html"><i></i><a href="reference-functions-sublist.html">sublist</a></li><li class=" level-3" data-url="reference-functions-sum.html"><i></i><a href="reference-functions-sum.html">sum</a></li><li class=" level-3" data-url="reference-functions-sysctlvalue.html"><i></i><a href="reference-functions-sysctlvalue.html">sysctlvalue</a></li><li class=" level-3" data-url="reference-functions-translatepath.html"><i></i><a href="reference-functions-translatepath.html">translatepath</a></li><li class=" level-3" data-url="reference-functions-type.html"><i></i><a href="reference-functions-type.html">type</a></li><li class=" level-3" data-url="reference-functions-unique.html"><i></i><a href="reference-functions-unique.html">unique</a></li><li class=" level-3" data-url="reference-functions-url_get.html"><i></i><a href="reference-functions-url_get.html">url_get</a></li><li class=" level-3" data-url="reference-functions-usemodule.html"><i></i><a href="reference-functions-usemodule.html">usemodule</a></li><li class=" level-3" data-url="reference-functions-userexists.html"><i></i><a href="reference-functions-userexists.html">userexists</a></li><li class=" level-3" data-url="reference-functions-useringroup.html"><i></i><a href="reference-functions-useringroup.html">useringroup</a></li><li class=" level-3" data-url="reference-functions-validdata.html"><i></i><a href="reference-functions-validdata.html">validdata</a></li><li class=" level-3" data-url="reference-functions-validjson.html"><i></i><a href="reference-functions-validjson.html">validjson</a></li><li class=" level-3" data-url="reference-functions-variablesmatching.html"><i></i><a href="reference-functions-variablesmatching.html">variablesmatching</a></li><li class=" level-3" data-url="reference-functions-variablesmatching_as_data.html"><i></i><a href="reference-functions-variablesmatching_as_data.html">variablesmatching_as_data</a></li><li class=" level-3" data-url="reference-functions-variance.html"><i></i><a href="reference-functions-variance.html">variance</a></li><li class=" level-3" data-url="reference-functions-version_compare.html"><i></i><a href="reference-functions-version_compare.html">version_compare</a></li></ul></li><li class="parent level-2" data-url="reference-language-concepts.html"><i></i><a href="reference-language-concepts.html">Language concepts</a><ul><li class=" level-3" data-url="reference-language-concepts-bundles.html"><i></i><a href="reference-language-concepts-bundles.html">Bundles</a></li><li class=" level-3" data-url="reference-language-concepts-bodies.html"><i></i><a href="reference-language-concepts-bodies.html">Bodies</a></li><li class=" level-3" data-url="reference-language-concepts-promises.html"><i></i><a href="reference-language-concepts-promises.html">Promises</a></li><li class=" level-3" data-url="reference-language-concepts-policy-evaluation.html"><i></i><a href="reference-language-concepts-policy-evaluation.html">Policy evaluation</a></li><li class=" level-3" data-url="reference-language-concepts-classes.html"><i></i><a href="reference-language-concepts-classes.html">Classes and decisions</a></li><li class=" level-3" data-url="reference-language-concepts-variables.html"><i></i><a href="reference-language-concepts-variables.html">Variables</a></li><li class=" level-3" data-url="reference-language-concepts-augments.html"><i></i><a href="reference-language-concepts-augments.html">Augments</a></li><li class=" level-3" data-url="reference-language-concepts-loops.html"><i></i><a href="reference-language-concepts-loops.html">Loops</a></li><li class=" level-3" data-url="reference-language-concepts-pattern-matching-and-referencing.html"><i></i><a href="reference-language-concepts-pattern-matching-and-referencing.html">Pattern matching and referencing</a></li><li class="parent level-3" data-url="reference-language-concepts-modules.html"><i></i><a href="reference-language-concepts-modules.html">Modules</a><ul><li class=" level-4" data-url="reference-language-concepts-modules-package-module-api.html"><i></i><a href="reference-language-concepts-modules-package-module-api.html">Package modules</a></li></ul></li><li class=" level-3" data-url="reference-language-concepts-namespaces.html"><i></i><a href="reference-language-concepts-namespaces.html">Namespaces</a></li></ul></li><li class="parent level-2" data-url="reference-masterfiles-policy-framework.html"><i></i><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a><ul><li class=" level-3" data-url="reference-masterfiles-policy-framework-promises.html"><i></i><a href="reference-masterfiles-policy-framework-promises.html">promises.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-no-distrib.html"><i></i><a href="reference-masterfiles-policy-framework-no-distrib.html">.no-distrib/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-update.html"><i></i><a href="reference-masterfiles-policy-framework-update.html">update.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-standalone_self_upgrade.html"><i></i><a href="reference-masterfiles-policy-framework-standalone_self_upgrade.html">standalone_self_upgrade.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal.html">cfe_internal/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-cfe_cfengine.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-cfe_cfengine.html">cfe_internal/CFE_cfengine.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-core.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-core.html">cfe_internal/core/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-core-watchdog.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-core-watchdog.html">cfe_internal/core/watchdog</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-core-watchdog-watchdog.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-core-watchdog-watchdog.html">cfe_internal/core/watchdog/watchdog.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-enterprise.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise.html">cfe_internal/enterprise/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation.html">cfe_internal/enterprise/federation/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation-federation.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation-federation.html">cfe_internal/enterprise/federation/federation.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-recommendations.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-recommendations.html">cfe_internal/recommendations.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update.html">cfe_internal/update/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_dc_workflow.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_dc_workflow.html">cfe_internal/update/cfe_internal_dc_workflow.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_update_from_repository.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_update_from_repository.html">cfe_internal/update/cfe_internal_update_from_repository.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-lib.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-lib.html">cfe_internal/update/lib.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-systemd_units.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-systemd_units.html">cfe_internal/update/systemd_units.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-update_bins.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_bins.html">cfe_internal/update/update_bins.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-update_policy.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_policy.html">cfe_internal/update/update_policy.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-update_processes.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_processes.html">cfe_internal/update/update_processes.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls.html"><i></i><a href="reference-masterfiles-policy-framework-controls.html">controls/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf_agent.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf_agent.html">controls/cf_agent.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf_execd.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf_execd.html">controls/cf_execd.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf-hub.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf-hub.html">controls/cf_hub.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf_monitord.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf_monitord.html">controls/cf_monitord.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf_runagent.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf_runagent.html">controls/cf_runagent.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf_serverd.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf_serverd.html">controls/cf_serverd.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-def.html"><i></i><a href="reference-masterfiles-policy-framework-controls-def.html">controls/def.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-def_inputs.html"><i></i><a href="reference-masterfiles-policy-framework-controls-def_inputs.html">controls/def_inputs.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-reports.html"><i></i><a href="reference-masterfiles-policy-framework-controls-reports.html">controls/reports.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-update_def.html"><i></i><a href="reference-masterfiles-policy-framework-controls-update_def.html">controls/update_def.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-update_def_inputs.html"><i></i><a href="reference-masterfiles-policy-framework-controls-update_def_inputs.html">controls/update_def_inputs.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory.html"><i></i><a href="reference-masterfiles-policy-framework-inventory.html">inventory/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-any.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-any.html">inventory/any.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-debian.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-debian.html">inventory/debian.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-freebsd.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-freebsd.html">inventory/freebsd.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-generic.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-generic.html">inventory/generic.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-linux.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-linux.html">inventory/linux.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-lsb.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-lsb.html">inventory/lsb.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-macos.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-macos.html">inventory/macos.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-os.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-os.html">inventory/os.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-redhat.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-redhat.html">inventory/redhat.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-suse.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-suse.html">inventory/suse.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-windows.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-windows.html">inventory/windows.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib.html"><i></i><a href="reference-masterfiles-policy-framework-lib.html">lib/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-autorun.html"><i></i><a href="reference-masterfiles-policy-framework-lib-autorun.html">lib/autorun.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-bundles.html"><i></i><a href="reference-masterfiles-policy-framework-lib-bundles.html">lib/bundles.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-cfe_internal.html"><i></i><a href="reference-masterfiles-policy-framework-lib-cfe_internal.html">lib/cfe_internal.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-cfe_internal_hub.html"><i></i><a href="reference-masterfiles-policy-framework-lib-cfe_internal_hub.html">lib/cfe_internal_hub.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-cfengine_enterprise_hub_ha.html"><i></i><a href="reference-masterfiles-policy-framework-lib-cfengine_enterprise_hub_ha.html">lib/cfengine_enterprise_hub_ha.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-commands.html"><i></i><a href="reference-masterfiles-policy-framework-lib-commands.html">lib/commands.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-common.html"><i></i><a href="reference-masterfiles-policy-framework-lib-common.html">lib/common.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-databases.html"><i></i><a href="reference-masterfiles-policy-framework-lib-databases.html">lib/databases.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-edit_xml.html"><i></i><a href="reference-masterfiles-policy-framework-lib-edit_xml.html">lib/edit_xml.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-event.html"><i></i><a href="reference-masterfiles-policy-framework-lib-event.html">lib/event.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-examples.html"><i></i><a href="reference-masterfiles-policy-framework-lib-examples.html">lib/examples.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-feature.html"><i></i><a href="reference-masterfiles-policy-framework-lib-feature.html">lib/feature.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-files.html"><i></i><a href="reference-masterfiles-policy-framework-lib-files.html">lib/files.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-guest_environments.html"><i></i><a href="reference-masterfiles-policy-framework-lib-guest_environments.html">lib/guest_environments.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-monitor.html"><i></i><a href="reference-masterfiles-policy-framework-lib-monitor.html">lib/monitor.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-packages.html"><i></i><a href="reference-masterfiles-policy-framework-lib-packages.html">lib/packages.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-paths.html"><i></i><a href="reference-masterfiles-policy-framework-lib-paths.html">lib/paths.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-processes.html"><i></i><a href="reference-masterfiles-policy-framework-lib-processes.html">lib/processes.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-reports.html"><i></i><a href="reference-masterfiles-policy-framework-lib-reports.html">lib/reports.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-services.html"><i></i><a href="reference-masterfiles-policy-framework-lib-services.html">lib/services.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-stdlib.html"><i></i><a href="reference-masterfiles-policy-framework-lib-stdlib.html">lib/stdlib.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-storage.html"><i></i><a href="reference-masterfiles-policy-framework-lib-storage.html">lib/storage.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-testing.html"><i></i><a href="reference-masterfiles-policy-framework-lib-testing.html">lib/testing.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-users.html"><i></i><a href="reference-masterfiles-policy-framework-lib-users.html">lib/users.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-vcs.html"><i></i><a href="reference-masterfiles-policy-framework-lib-vcs.html">lib/vcs.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules.html"><i></i><a href="reference-masterfiles-policy-framework-modules.html">modules/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-mustache.html"><i></i><a href="reference-masterfiles-policy-framework-modules-mustache.html">modules/mustache/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-packages.html"><i></i><a href="reference-masterfiles-policy-framework-modules-packages.html">modules/packages/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-packages-vendored.html"><i></i><a href="reference-masterfiles-policy-framework-modules-packages-vendored.html">modules/packages/vendored/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-promises.html"><i></i><a href="reference-masterfiles-policy-framework-modules-promises.html">modules/promises/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-promises-cfengine.py.html"><i></i><a href="reference-masterfiles-policy-framework-modules-promises-cfengine.py.html">modules/promises/cfengine.py</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-promises-cfengine.sh.html"><i></i><a href="reference-masterfiles-policy-framework-modules-promises-cfengine.sh.html">modules/promises/cfengine.sh</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-services.html"><i></i><a href="reference-masterfiles-policy-framework-services.html">services/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-services-autorun.html"><i></i><a href="reference-masterfiles-policy-framework-services-autorun.html">services/autorun/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-services-main.html"><i></i><a href="reference-masterfiles-policy-framework-services-main.html">services/main.cf</a></li></ul></li><li class=" level-2" data-url="reference-macros.html"><i></i><a href="reference-macros.html">Macros</a></li><li class="parent level-2" data-url="reference-promise-types.html"><i></i><a href="reference-promise-types.html">Promise types</a><ul><li class=" level-3" data-url="reference-promise-types-access.html"><i></i><a href="reference-promise-types-access.html">access</a></li><li class=" level-3" data-url="reference-promise-types-classes.html"><i></i><a href="reference-promise-types-classes.html">classes</a></li><li class=" level-3" data-url="reference-promise-types-commands.html"><i></i><a href="reference-promise-types-commands.html">commands</a></li><li class=" level-3" data-url="reference-promise-types-custom.html"><i></i><a href="reference-promise-types-custom.html">custom</a></li><li class=" level-3" data-url="reference-promise-types-defaults.html"><i></i><a href="reference-promise-types-defaults.html">defaults</a></li><li class="parent level-3" data-url="reference-promise-types-files.html"><i></i><a href="reference-promise-types-files.html">files</a><ul><li class="parent level-4" data-url="reference-promise-types-files-edit_line.html"><i></i><a href="reference-promise-types-files-edit_line.html">edit_line</a><ul><li class=" level-5" data-url="reference-promise-types-files-edit_line-delete_lines.html"><i></i><a href="reference-promise-types-files-edit_line-delete_lines.html">delete_lines</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_line-field_edits.html"><i></i><a href="reference-promise-types-files-edit_line-field_edits.html">field_edits</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_line-insert_lines.html"><i></i><a href="reference-promise-types-files-edit_line-insert_lines.html">insert_lines</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_line-replace_patterns.html"><i></i><a href="reference-promise-types-files-edit_line-replace_patterns.html">replace_patterns</a></li></ul></li><li class="parent level-4" data-url="reference-promise-types-files-edit_xml.html"><i></i><a href="reference-promise-types-files-edit_xml.html">edit_xml</a><ul><li class=" level-5" data-url="reference-promise-types-files-edit_xml-build_xpath.html"><i></i><a href="reference-promise-types-files-edit_xml-build_xpath.html">build_xpath</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-delete_attribute.html"><i></i><a href="reference-promise-types-files-edit_xml-delete_attribute.html">delete_attribute</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-delete_text.html"><i></i><a href="reference-promise-types-files-edit_xml-delete_text.html">delete_text</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-delete_tree.html"><i></i><a href="reference-promise-types-files-edit_xml-delete_tree.html">delete_tree</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-insert_text.html"><i></i><a href="reference-promise-types-files-edit_xml-insert_text.html">insert_text</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-insert_tree.html"><i></i><a href="reference-promise-types-files-edit_xml-insert_tree.html">insert_tree</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-set_attribute.html"><i></i><a href="reference-promise-types-files-edit_xml-set_attribute.html">set_attribute</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-set_text.html"><i></i><a href="reference-promise-types-files-edit_xml-set_text.html">set_text</a></li></ul></li></ul></li><li class=" level-3" data-url="reference-promise-types-measurements.html"><i></i><a href="reference-promise-types-measurements.html">measurements</a></li><li class=" level-3" data-url="reference-promise-types-meta.html"><i></i><a href="reference-promise-types-meta.html">meta</a></li><li class=" level-3" data-url="reference-promise-types-methods.html"><i></i><a href="reference-promise-types-methods.html">methods</a></li><li class=" level-3" data-url="reference-promise-types-packages.html"><i></i><a href="reference-promise-types-packages.html">packages</a></li><li class=" level-3" data-url="reference-promise-types-packages-deprecated.html"><i></i><a href="reference-promise-types-packages-deprecated.html">packages (deprecated)</a></li><li class=" level-3" data-url="reference-promise-types-processes.html"><i></i><a href="reference-promise-types-processes.html">processes</a></li><li class=" level-3" data-url="reference-promise-types-reports.html"><i></i><a href="reference-promise-types-reports.html">reports</a></li><li class=" level-3" data-url="reference-promise-types-roles.html"><i></i><a href="reference-promise-types-roles.html">roles</a></li><li class=" level-3" data-url="reference-promise-types-services.html"><i></i><a href="reference-promise-types-services.html">services</a></li><li class=" level-3" data-url="reference-promise-types-storage.html"><i></i><a href="reference-promise-types-storage.html">storage</a></li><li class=" level-3" data-url="reference-promise-types-users.html"><i></i><a href="reference-promise-types-users.html">users</a></li><li class=" level-3" data-url="reference-promise-types-vars.html"><i></i><a href="reference-promise-types-vars.html">vars</a></li><li class=" level-3" data-url="reference-promise-types-databases.html"><i></i><a href="reference-promise-types-databases.html">databases</a></li><li class=" level-3" data-url="reference-promise-types-guest_environments.html"><i></i><a href="reference-promise-types-guest_environments.html">guest_environments</a></li></ul></li><li class="parent level-2" data-url="reference-special-variables.html"><i></i><a href="reference-special-variables.html">Special variables</a><ul><li class=" level-3" data-url="reference-special-variables-connection.html"><i></i><a href="reference-special-variables-connection.html">connection</a></li><li class=" level-3" data-url="reference-special-variables-const.html"><i></i><a href="reference-special-variables-const.html">const</a></li><li class=" level-3" data-url="reference-special-variables-def.html"><i></i><a href="reference-special-variables-def.html">def</a></li><li class=" level-3" data-url="reference-special-variables-edit.html"><i></i><a href="reference-special-variables-edit.html">edit</a></li><li class=" level-3" data-url="reference-special-variables-match.html"><i></i><a href="reference-special-variables-match.html">match</a></li><li class=" level-3" data-url="reference-special-variables-mon.html"><i></i><a href="reference-special-variables-mon.html">mon</a></li><li class=" level-3" data-url="reference-special-variables-sys.html"><i></i><a href="reference-special-variables-sys.html">sys</a></li><li class=" level-3" data-url="reference-special-variables-this.html"><i></i><a href="reference-special-variables-this.html">this</a></li></ul></li><li class=" level-2" data-url="reference-all-types.html"><i></i><a href="reference-all-types.html">All promise and body types</a></li></ul></li><li class="parent level-1" data-url="release-notes.html"><i></i><a href="release-notes.html">Release notes</a><ul><li class="parent level-2" data-url="release-notes-whatsnew.html"><i></i><a href="release-notes-whatsnew.html">New in CFEngine</a><ul><li class=" level-3" data-url="release-notes-whatsnew-changelog-core.html"><i></i><a href="release-notes-whatsnew-changelog-core.html">Changelog</a></li><li class=" level-3" data-url="release-notes-whatsnew-changelog-masterfiles-policy-framework.html"><i></i><a href="release-notes-whatsnew-changelog-masterfiles-policy-framework.html">Masterfiles changelog</a></li><li class=" level-3" data-url="release-notes-whatsnew-changelog-enterprise.html"><i></i><a href="release-notes-whatsnew-changelog-enterprise.html">Enterprise changelog</a></li></ul></li><li class=" level-2" data-url="release-notes-supported-platforms.html"><i></i><a href="release-notes-supported-platforms.html">Supported platforms and versions</a></li><li class=" level-2" data-url="release-notes-known-issues.html"><i></i><a href="release-notes-known-issues.html">Known issues</a></li><li class=" level-2" data-url="release-notes-legal-and-licenses.html"><i></i><a href="release-notes-legal-and-licenses.html">Legal and licenses</a></li></ul></li><li class="parent level-1" data-url="web-ui.html"><i></i><a href="web-ui.html">Web UI</a><ul><li class=" level-2" data-url="web-ui-settings.html"><i></i><a href="web-ui-settings.html">Settings</a></li><li class=" level-2" data-url="web-ui-health.html"><i></i><a href="web-ui-health.html">Health</a></li><li class=" level-2" data-url="web-ui-hosts.html"><i></i><a href="web-ui-hosts.html">Hosts</a></li><li class=" level-2" data-url="web-ui-alerts-and-notifications.html"><i></i><a href="web-ui-alerts-and-notifications.html">Alerts and notifications</a></li><li class=" level-2" data-url="web-ui-custom-actions-for-alerts.html"><i></i><a href="web-ui-custom-actions-for-alerts.html">Custom actions for alerts</a></li><li class="parent level-2" data-url="web-ui-enterprise-reporting.html"><i></i><a href="web-ui-enterprise-reporting.html">Enterprise reporting</a><ul><li class=" level-3" data-url="web-ui-enterprise-reporting-reporting-architecture.html"><i></i><a href="web-ui-enterprise-reporting-reporting-architecture.html">Reporting architecture</a></li><li class=" level-3" data-url="web-ui-enterprise-reporting-sql-queries-enterprise-api.html"><i></i><a href="web-ui-enterprise-reporting-sql-queries-enterprise-api.html">SQL queries using the Enterprise API</a></li><li class=" level-3" data-url="web-ui-enterprise-reporting-reporting_ui.html"><i></i><a href="web-ui-enterprise-reporting-reporting_ui.html">Reporting UI</a></li><li class=" level-3" data-url="web-ui-enterprise-reporting-client-initiated-reporting.html"><i></i><a href="web-ui-enterprise-reporting-client-initiated-reporting.html">Client initiated reporting / call collect</a></li></ul></li><li class=" level-2" data-url="web-ui-federated-reporting.html"><i></i><a href="web-ui-federated-reporting.html">Federated reporting</a></li><li class=" level-2" data-url="web-ui-measurements.html"><i></i><a href="web-ui-measurements.html">Measurements app</a></li><li class="parent level-2" data-url="web-ui-hub_administration.html"><i></i><a href="web-ui-hub_administration.html">Hub administration</a><ul><li class=" level-3" data-url="web-ui-hub_administration-decommissioning-hosts.html"><i></i><a href="web-ui-hub_administration-decommissioning-hosts.html">Decommissioning hosts</a></li><li class=" level-3" data-url="web-ui-hub_administration-extending-mission-portal.html"><i></i><a href="web-ui-hub_administration-extending-mission-portal.html">Extending Mission Portal</a></li><li class=" level-3" data-url="web-ui-hub_administration-extending-query-builder.html"><i></i><a href="web-ui-hub_administration-extending-query-builder.html">Extending query builder in Mission Portal</a></li><li class=" level-3" data-url="web-ui-hub_administration-adjusting-schedules.html"><i></i><a href="web-ui-hub_administration-adjusting-schedules.html">Adjusting schedules</a></li><li class=" level-3" data-url="web-ui-hub_administration-backup-and-restore.html"><i></i><a href="web-ui-hub_administration-backup-and-restore.html">Backup and restore</a></li><li class=" level-3" data-url="web-ui-hub_administration-custom-ldap-port.html"><i></i><a href="web-ui-hub_administration-custom-ldap-port.html">Configure a custom LDAP port</a></li><li class=" level-3" data-url="web-ui-hub_administration-custom-ldaps-certificate.html"><i></i><a href="web-ui-hub_administration-custom-ldaps-certificate.html">Custom LDAPs certificate</a></li><li class=" level-3" data-url="web-ui-hub_administration-custom-https-certificate.html"><i></i><a href="web-ui-hub_administration-custom-https-certificate.html">Custom SSL certificate</a></li><li class=" level-3" data-url="web-ui-hub_administration-enable-plain-http.html"><i></i><a href="web-ui-hub_administration-enable-plain-http.html">Enable plain http</a></li><li class=" level-3" data-url="web-ui-hub_administration-lookup-license-info.html"><i></i><a href="web-ui-hub_administration-lookup-license-info.html">Lookup license info</a></li><li class=" level-3" data-url="web-ui-hub_administration-policy-deployment.html"><i></i><a href="web-ui-hub_administration-policy-deployment.html">Policy deployment</a></li><li class=" level-3" data-url="web-ui-hub_administration-public-key-distribution.html"><i></i><a href="web-ui-hub_administration-public-key-distribution.html">Public key distribution</a></li><li class=" level-3" data-url="web-ui-hub_administration-reinstall.html"><i></i><a href="web-ui-hub_administration-reinstall.html">Re-installing Enterprise hub</a></li><li class=" level-3" data-url="web-ui-hub_administration-regenerate-self-signed-cert.html"><i></i><a href="web-ui-hub_administration-regenerate-self-signed-cert.html">Regenerate self signed SSL certificate</a></li><li class=" level-3" data-url="web-ui-hub_administration-reset-admin-creds.html"><i></i><a href="web-ui-hub_administration-reset-admin-creds.html">Reset administrative credentials</a></li></ul></li><li class=" level-2" data-url="web-ui-debugging-mission-portal.html"><i></i><a href="web-ui-debugging-mission-portal.html">Debugging Mission Portal</a></li><li class=" level-2" data-url="web-ui-license.html"><i></i><a href="web-ui-license.html">License</a></li></ul></li><li class="parent level-1" data-url="examples.html"><i></i><a href="examples.html">Examples and tutorials</a><ul><li class="parent level-2" data-url="examples-example-snippets.html"><i></i><a href="examples-example-snippets.html">Example snippets</a><ul><li class=" level-3" data-url="examples-example-snippets-general.html"><i></i><a href="examples-example-snippets-general.html">General examples</a></li><li class=" level-3" data-url="examples-example-snippets-cfengine-administration.html"><i></i><a href="examples-example-snippets-cfengine-administration.html">Administration examples</a></li><li class=" level-3" data-url="examples-example-snippets-timing-counting-measuring.html"><i></i><a href="examples-example-snippets-timing-counting-measuring.html">Measuring examples</a></li><li class=" level-3" data-url="examples-example-snippets-software-adminstration.html"><i></i><a href="examples-example-snippets-software-adminstration.html">Software administration examples</a></li><li class=" level-3" data-url="examples-example-snippets-commands-scripts-execution.html"><i></i><a href="examples-example-snippets-commands-scripts-execution.html">Commands, scripts, and execution examples</a></li><li class=" level-3" data-url="examples-example-snippets-basic-file-directory.html"><i></i><a href="examples-example-snippets-basic-file-directory.html">File and directory examples</a></li><li class=" level-3" data-url="examples-example-snippets-file-template.html"><i></i><a href="examples-example-snippets-file-template.html">File template examples</a></li><li class=" level-3" data-url="examples-example-snippets-active_directory.html"><i></i><a href="examples-example-snippets-active_directory.html">Interacting with directory services</a></li><li class=" level-3" data-url="examples-example-snippets-database.html"><i></i><a href="examples-example-snippets-database.html">Database examples</a></li><li class=" level-3" data-url="examples-example-snippets-network.html"><i></i><a href="examples-example-snippets-network.html">Network examples</a></li><li class=" level-3" data-url="examples-example-snippets-system-security.html"><i></i><a href="examples-example-snippets-system-security.html">System security examples</a></li><li class=" level-3" data-url="examples-example-snippets-system-information.html"><i></i><a href="examples-example-snippets-system-information.html">System information examples</a></li><li class=" level-3" data-url="examples-example-snippets-system-administration.html"><i></i><a href="examples-example-snippets-system-administration.html">System administration examples</a></li><li class=" level-3" data-url="examples-example-snippets-system-file.html"><i></i><a href="examples-example-snippets-system-file.html">System file examples</a></li><li class=" level-3" data-url="examples-example-snippets-windows-registry.html"><i></i><a href="examples-example-snippets-windows-registry.html">Windows registry examples</a></li><li class=" level-3" data-url="examples-example-snippets-file_permissions.html"><i></i><a href="examples-example-snippets-file_permissions.html">File permissions</a></li><li class=" level-3" data-url="examples-example-snippets-user-management.html"><i></i><a href="examples-example-snippets-user-management.html">User management examples</a></li><li class="parent level-3" data-url="examples-example-snippets-promise-patterns.html"><i></i><a href="examples-example-snippets-promise-patterns.html">Common promise patterns</a><ul><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_aborting_execution.html"><i></i><a href="examples-example-snippets-promise-patterns-example_aborting_execution.html">Aborting execution</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_change_detection.html"><i></i><a href="examples-example-snippets-promise-patterns-example_change_detection.html">Change detection</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_diskfree.html"><i></i><a href="examples-example-snippets-promise-patterns-example_diskfree.html">Check filesystem space</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_copy_single_files.html"><i></i><a href="examples-example-snippets-promise-patterns-example_copy_single_files.html">Copy single files</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_create_filedir.html"><i></i><a href="examples-example-snippets-promise-patterns-example_create_filedir.html">Create files and directories</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_edit_motd.html"><i></i><a href="examples-example-snippets-promise-patterns-example_edit_motd.html">Customize message of the day</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_ssh_keys.html"><i></i><a href="examples-example-snippets-promise-patterns-example_ssh_keys.html">Distribute ssh keys</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_process_kill.html"><i></i><a href="examples-example-snippets-promise-patterns-example_process_kill.html">Ensure a process is not running</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_enable_service.html"><i></i><a href="examples-example-snippets-promise-patterns-example_enable_service.html">Ensure a service is enabled and running</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_find_mac_addr.html"><i></i><a href="examples-example-snippets-promise-patterns-example_find_mac_addr.html">Find the MAC address</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_install_package.html"><i></i><a href="examples-example-snippets-promise-patterns-example_install_package.html">Install packages</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_mount_nfs.html"><i></i><a href="examples-example-snippets-promise-patterns-example_mount_nfs.html">Mount NFS filesystem</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_process_restart.html"><i></i><a href="examples-example-snippets-promise-patterns-example_process_restart.html">Restart a process</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_edit_name_resolution.html"><i></i><a href="examples-example-snippets-promise-patterns-example_edit_name_resolution.html">Set up name resolution with DNS</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_sudoers.html"><i></i><a href="examples-example-snippets-promise-patterns-example_sudoers.html">Set up sudo</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_ntp.html"><i></i><a href="examples-example-snippets-promise-patterns-example_ntp.html">Set up time management through NTP</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_updating_from_central_hub.html"><i></i><a href="examples-example-snippets-promise-patterns-example_updating_from_central_hub.html">Updating from a central policy server</a></li></ul></li></ul></li><li class="parent level-2" data-url="examples-tutorials.html"><i></i><a href="examples-tutorials.html">Tutorials</a><ul><li class=" level-3" data-url="examples-tutorials-json-yaml-support-in-cfengine.html"><i></i><a href="examples-tutorials-json-yaml-support-in-cfengine.html">JSON and YAML support in CFEngine</a></li><li class=" level-3" data-url="examples-tutorials-installing-cfengine-enterprise-agent.html"><i></i><a href="examples-tutorials-installing-cfengine-enterprise-agent.html">Installing CFEngine Enterprise agent</a></li><li class=" level-3" data-url="examples-tutorials-manage-local-users.html"><i></i><a href="examples-tutorials-manage-local-users.html">Managing local users</a></li><li class=" level-3" data-url="examples-tutorials-manage-ntp.html"><i></i><a href="examples-tutorials-manage-ntp.html">Managing network time protocol</a></li><li class=" level-3" data-url="examples-tutorials-manage-processes-and-services.html"><i></i><a href="examples-tutorials-manage-processes-and-services.html">Managing processes and services</a></li><li class=" level-3" data-url="examples-tutorials-manage-packages.html"><i></i><a href="examples-tutorials-manage-packages.html">Package management</a></li><li class=" level-3" data-url="examples-tutorials-write-cfengine-policy.html"><i></i><a href="examples-tutorials-write-cfengine-policy.html">Writing CFEngine policy</a></li><li class=" level-3" data-url="examples-tutorials-distribute-files-from-a-central-location.html"><i></i><a href="examples-tutorials-distribute-files-from-a-central-location.html">Distributing files from a central location</a></li><li class=" level-3" data-url="examples-tutorials-files-tutorial.html"><i></i><a href="examples-tutorials-files-tutorial.html">File editing</a></li><li class=" level-3" data-url="examples-tutorials-report_inventory_remediate_sec_vulnerabilities.html"><i></i><a href="examples-tutorials-report_inventory_remediate_sec_vulnerabilities.html">Reporting and remediation of security vulnerabilities</a></li><li class=" level-3" data-url="examples-tutorials-masterfiles_policy_framework_upgrade.html"><i></i><a href="examples-tutorials-masterfiles_policy_framework_upgrade.html">Masterfiles Policy Framework upgrade</a></li><li class=" level-3" data-url="examples-tutorials-tags.html"><i></i><a href="examples-tutorials-tags.html">Tags for variables, classes, and bundles</a></li><li class=" level-3" data-url="examples-tutorials-custom_inventory.html"><i></i><a href="examples-tutorials-custom_inventory.html">Custom inventory</a></li><li class=" level-3" data-url="examples-tutorials-dashboard-alerts.html"><i></i><a href="examples-tutorials-dashboard-alerts.html">Dashboard alerts</a></li><li class=" level-3" data-url="examples-tutorials-integrating-alerts-with-pager-duty.html"><i></i><a href="examples-tutorials-integrating-alerts-with-pager-duty.html">Integrating alerts with PagerDuty</a></li><li class=" level-3" data-url="examples-tutorials-integrating-alerts-with-ticketing-systems.html"><i></i><a href="examples-tutorials-integrating-alerts-with-ticketing-systems.html">Integrating alerts with ticketing systems</a></li><li class=" level-3" data-url="examples-tutorials-integrating-with-sumo-logic.html"><i></i><a href="examples-tutorials-integrating-with-sumo-logic.html">Integrating with Sumo Logic</a></li><li class=" level-3" data-url="examples-tutorials-render-files-with-mustache-templates.html"><i></i><a href="examples-tutorials-render-files-with-mustache-templates.html">Rendering files with Mustache templates</a></li><li class="parent level-3" data-url="examples-tutorials-reporting.html"><i></i><a href="examples-tutorials-reporting.html">Reporting</a><ul><li class=" level-4" data-url="examples-tutorials-reporting-monitoring-reporting.html"><i></i><a href="examples-tutorials-reporting-monitoring-reporting.html">Monitoring and reporting</a></li><li class=" level-4" data-url="examples-tutorials-reporting-command-line-reports.html"><i></i><a href="examples-tutorials-reporting-command-line-reports.html">Command-Line reports</a></li></ul></li><li class=" level-3" data-url="examples-tutorials-file_comparison.html"><i></i><a href="examples-tutorials-file_comparison.html">File comparison</a></li><li class="parent level-3" data-url="examples-tutorials-high-availability.html"><i></i><a href="examples-tutorials-high-availability.html">High availability</a><ul><li class=" level-4" data-url="examples-tutorials-high-availability-installation-guide.html"><i></i><a href="examples-tutorials-high-availability-installation-guide.html">Installation guide</a></li></ul></li><li class="parent level-3" data-url="examples-tutorials-writing-and-serving-policy.html"><i></i><a href="examples-tutorials-writing-and-serving-policy.html">Writing and serving policy</a><ul><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-policy-layers-abstraction.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-policy-layers-abstraction.html">Layers of abstraction in policy</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-promises-available-in-cfengine.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-promises-available-in-cfengine.html">Promises available in CFEngine</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-authoring-policy-tools-and-workflow.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-authoring-policy-tools-and-workflow.html">Authoring policy tools & workflow</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-editors.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-editors.html">Editors</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-policy-style.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-policy-style.html">Policy style guide</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-bundles-best-practices.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-bundles-best-practices.html">Bundles best practices</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-external_data.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-external_data.html">External data</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-testing-policies.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-testing-policies.html">Testing policies</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-controlling-frequency.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-controlling-frequency.html">Controlling frequency</a></li></ul></li></ul></li></ul></li><li class="parent level-1" data-url="resources.html"><i></i><a href="resources.html">Resources</a><ul><li class="parent level-2" data-url="resources-faq.html"><i></i><a href="resources-faq.html">FAQ</a><ul><li class=" level-3" data-url="resources-faq-why-knowledge-management.html"><i></i><a href="resources-faq-why-knowledge-management.html">Why knowledge management?</a></li><li class=" level-3" data-url="resources-faq-enterprise-license.html"><i></i><a href="resources-faq-enterprise-license.html">Requesting a CFEngine Enterprise License</a></li><li class=" level-3" data-url="resources-faq-uninstall-reinstall.html"><i></i><a href="resources-faq-uninstall-reinstall.html">Uninstalling / reinstalling</a></li><li class=" level-3" data-url="resources-faq-output-email.html"><i></i><a href="resources-faq-output-email.html">Agent output email</a></li><li class=" level-3" data-url="resources-faq-debugging-slow-queries.html"><i></i><a href="resources-faq-debugging-slow-queries.html">Debugging slow queries</a></li><li class=" level-3" data-url="resources-faq-enterprise-report-filtering.html"><i></i><a href="resources-faq-enterprise-report-filtering.html">Enterprise Report Filtering</a></li><li class=" level-3" data-url="resources-faq-enterprise-report-collection.html"><i></i><a href="resources-faq-enterprise-report-collection.html">Enterprise report collection</a></li><li class=" level-3" data-url="resources-faq-enterprise.html"><i></i><a href="resources-faq-enterprise.html">Enterprise reporting database</a></li><li class=" level-3" data-url="resources-faq-show-classes-and-vars.html"><i></i><a href="resources-faq-show-classes-and-vars.html">How can I tell what classes and variables are defined?</a></li><li class=" level-3" data-url="resources-faq-find-public-key-for-host-sha.html"><i></i><a href="resources-faq-find-public-key-for-host-sha.html">How do I find the public key for a given host</a></li><li class=" level-3" data-url="resources-faq-fix-trust-after-ip-change.html"><i></i><a href="resources-faq-fix-trust-after-ip-change.html">How do I fix trust after an IP change?</a></li><li class=" level-3" data-url="resources-faq-fix-undefined-body-error.html"><i></i><a href="resources-faq-fix-undefined-body-error.html">How do I fix undefined body errors?</a></li><li class=" level-3" data-url="resources-faq-integrate-custom-policy.html"><i></i><a href="resources-faq-integrate-custom-policy.html">How do I integrate custom policy?</a></li><li class=" level-3" data-url="resources-faq-variables.html"><i></i><a href="resources-faq-variables.html">How do I pass a data type variable?</a></li><li class=" level-3" data-url="resources-faq-manual-execution.html"><i></i><a href="resources-faq-manual-execution.html">Manual execution</a></li><li class=" level-3" data-url="resources-faq-mustache-templating.html"><i></i><a href="resources-faq-mustache-templating.html">Mustache templating</a></li><li class=" level-3" data-url="resources-faq-unable-to-log-in-mission-portal.html"><i></i><a href="resources-faq-unable-to-log-in-mission-portal.html">Unable to log into Mission Portal</a></li><li class=" level-3" data-url="resources-faq-users.html"><i></i><a href="resources-faq-users.html">Users</a></li><li class=" level-3" data-url="resources-faq-what-is-promise-locking.html"><i></i><a href="resources-faq-what-is-promise-locking.html">What is promise locking?</a></li><li class=" level-3" data-url="resources-faq-why-are-remote-agents-not-updating.html"><i></i><a href="resources-faq-why-are-remote-agents-not-updating.html">Why are remote agents not updating?</a></li><li class=" level-3" data-url="resources-faq-why-are-files-not-being-distributed.html"><i></i><a href="resources-faq-why-are-files-not-being-distributed.html">Why are some files inside masterfiles not being updated/distributed?</a></li><li class=" level-3" data-url="resources-faq-fhs.html"><i></i><a href="resources-faq-fhs.html">Why does CFEngine install into /var/cfengine instead of following the FHS?</a></li><li class=" level-3" data-url="resources-faq-bootstrap-failed.html"><i></i><a href="resources-faq-bootstrap-failed.html">Bootstrapping</a></li><li class=" level-3" data-url="resources-faq-tuning-postgresql.html"><i></i><a href="resources-faq-tuning-postgresql.html">Tuning PostgreSQL</a></li><li class=" level-3" data-url="resources-faq-what-did-cfengine-change.html"><i></i><a href="resources-faq-what-did-cfengine-change.html">What did CFEngine do?</a></li></ul></li><li class=" level-2" data-url="resources-external-resources.html"><i></i><a href="resources-external-resources.html">External resources</a></li><li class="parent level-2" data-url="resources-additional-topics.html"><i></i><a href="resources-additional-topics.html">Additional topics</a><ul><li class=" level-3" data-url="resources-additional-topics-agility.html"><i></i><a href="resources-additional-topics-agility.html">Agility</a></li><li class=" level-3" data-url="resources-additional-topics-application-management.html"><i></i><a href="resources-additional-topics-application-management.html">Application management</a></li><li class=" level-3" data-url="resources-additional-topics-build-deploy-manage-audit.html"><i></i><a href="resources-additional-topics-build-deploy-manage-audit.html">Build Deploy Manage Audit</a></li><li class=" level-3" data-url="resources-additional-topics-change-management.html"><i></i><a href="resources-additional-topics-change-management.html">Change management</a></li><li class=" level-3" data-url="resources-additional-topics-cloud-computing.html"><i></i><a href="resources-additional-topics-cloud-computing.html">Cloud computing</a></li><li class=" level-3" data-url="resources-additional-topics-content-driven-policy.html"><i></i><a href="resources-additional-topics-content-driven-policy.html">Content driven policy</a></li><li class=" level-3" data-url="resources-additional-topics-devops.html"><i></i><a href="resources-additional-topics-devops.html">DevOps</a></li><li class=" level-3" data-url="resources-additional-topics-distributed-scheduling.html"><i></i><a href="resources-additional-topics-distributed-scheduling.html">Distributed scheduling</a></li><li class=" level-3" data-url="resources-additional-topics-file-content.html"><i></i><a href="resources-additional-topics-file-content.html">File content</a></li><li class=" level-3" data-url="resources-additional-topics-hierarchies.html"><i></i><a href="resources-additional-topics-hierarchies.html">Hierarchies</a></li><li class=" level-3" data-url="resources-additional-topics-itil.html"><i></i><a href="resources-additional-topics-itil.html">ITIL</a></li><li class=" level-3" data-url="resources-additional-topics-iteration.html"><i></i><a href="resources-additional-topics-iteration.html">Iteration (Loops)</a></li><li class=" level-3" data-url="resources-additional-topics-modularity.html"><i></i><a href="resources-additional-topics-modularity.html">Modularity and orchestrating system policy</a></li><li class=" level-3" data-url="resources-additional-topics-orchestration.html"><i></i><a href="resources-additional-topics-orchestration.html">Orchestration</a></li><li class=" level-3" data-url="resources-additional-topics-stigs.html"><i></i><a href="resources-additional-topics-stigs.html">STIGs</a></li><li class=" level-3" data-url="resources-additional-topics-security.html"><i></i><a href="resources-additional-topics-security.html">Security</a></li><li class=" level-3" data-url="resources-additional-topics-teamwork.html"><i></i><a href="resources-additional-topics-teamwork.html">Teamwork</a></li><li class=" level-3" data-url="resources-additional-topics-open-nebula.html"><i></i><a href="resources-additional-topics-open-nebula.html">Using CFEngine with Open Nebula</a></li></ul></li><li class=" level-2" data-url="resources-best-practices.html"><i></i><a href="resources-best-practices.html">Best practices</a></li></ul></li><li class="parent level-1" data-url="api.html"><i></i><a href="api.html">API</a><ul><li class="parent level-2" data-url="api-enterprise-api-examples.html"><i></i><a href="api-enterprise-api-examples.html">Enterprise API examples</a><ul><li class=" level-3" data-url="api-enterprise-api-examples-checking-status.html"><i></i><a href="api-enterprise-api-examples-checking-status.html">Checking status</a></li><li class=" level-3" data-url="api-enterprise-api-examples-managing-settings.html"><i></i><a href="api-enterprise-api-examples-managing-settings.html">Managing settings</a></li><li class=" level-3" data-url="api-enterprise-api-examples-managing-users-and-roles.html"><i></i><a href="api-enterprise-api-examples-managing-users-and-roles.html">Managing users and roles</a></li><li class=" level-3" data-url="api-enterprise-api-examples-browsing-host-information.html"><i></i><a href="api-enterprise-api-examples-browsing-host-information.html">Browsing host information</a></li><li class=" level-3" data-url="api-enterprise-api-examples-changes-api-usage.html"><i></i><a href="api-enterprise-api-examples-changes-api-usage.html">Tracking changes</a></li><li class=" level-3" data-url="api-enterprise-api-examples-sql-queries.html"><i></i><a href="api-enterprise-api-examples-sql-queries.html">SQL query examples</a></li></ul></li><li class="parent level-2" data-url="api-enterprise-api-ref.html"><i></i><a href="api-enterprise-api-ref.html">Enterprise API reference</a><ul><li class=" level-3" data-url="api-enterprise-api-ref-actions-api.html"><i></i><a href="api-enterprise-api-ref-actions-api.html">Actions API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-audit-logs-api.html"><i></i><a href="api-enterprise-api-ref-audit-logs-api.html">Audit log API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-build-api.html"><i></i><a href="api-enterprise-api-ref-build-api.html">Build API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-cmdb-api.html"><i></i><a href="api-enterprise-api-ref-cmdb-api.html">CMDB API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-changes.html"><i></i><a href="api-enterprise-api-ref-changes.html">Changes REST API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-federated-reporting-api.html"><i></i><a href="api-enterprise-api-ref-federated-reporting-api.html">Federated reporting configuration API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-file-changes.html"><i></i><a href="api-enterprise-api-ref-file-changes.html">File changes API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-first-time-setup.html"><i></i><a href="api-enterprise-api-ref-first-time-setup.html">Fist time setup API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-health-diagnostic.html"><i></i><a href="api-enterprise-api-ref-health-diagnostic.html">Health diagnostic API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-host.html"><i></i><a href="api-enterprise-api-ref-host.html">Host REST API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-export-import-api.html"><i></i><a href="api-enterprise-api-ref-export-import-api.html">Import & export API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-export-import-compliance-report-api.html"><i></i><a href="api-enterprise-api-ref-export-import-compliance-report-api.html">Import & export compliance report API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-inventory.html"><i></i><a href="api-enterprise-api-ref-inventory.html">Inventory API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-ldap-api.html"><i></i><a href="api-enterprise-api-ref-ldap-api.html">LDAP authentication API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-personal-groups.html"><i></i><a href="api-enterprise-api-ref-personal-groups.html">Personal groups API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-query.html"><i></i><a href="api-enterprise-api-ref-query.html">Query REST API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-reset-password.html"><i></i><a href="api-enterprise-api-ref-reset-password.html">Reset password API</a></li><li class="parent level-3" data-url="api-enterprise-api-ref-sql-schema.html"><i></i><a href="api-enterprise-api-ref-sql-schema.html">SQL schema</a><ul><li class=" level-4" data-url="api-enterprise-api-ref-sql-schema-cfdb.html"><i></i><a href="api-enterprise-api-ref-sql-schema-cfdb.html">cfdb</a></li><li class=" level-4" data-url="api-enterprise-api-ref-sql-schema-cfmp.html"><i></i><a href="api-enterprise-api-ref-sql-schema-cfmp.html">cfmp</a></li><li class=" level-4" data-url="api-enterprise-api-ref-sql-schema-cfsettings.html"><i></i><a href="api-enterprise-api-ref-sql-schema-cfsettings.html">cfsettings</a></li></ul></li><li class=" level-3" data-url="api-enterprise-api-ref-ssh-keys-api.html"><i></i><a href="api-enterprise-api-ref-ssh-keys-api.html">SSH keys API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-shared-groups.html"><i></i><a href="api-enterprise-api-ref-shared-groups.html">Shared groups API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-status-settings.html"><i></i><a href="api-enterprise-api-ref-status-settings.html">Status and settings REST API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-two-factor-authentication.html"><i></i><a href="api-enterprise-api-ref-two-factor-authentication.html">Two-factor authentication API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-users-rbac.html"><i></i><a href="api-enterprise-api-ref-users-rbac.html">Users and access-control REST API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-vcs-settings.html"><i></i><a href="api-enterprise-api-ref-vcs-settings.html">VCS settings API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-web-rbac.html"><i></i><a href="api-enterprise-api-ref-web-rbac.html">Web RBAC API</a></li></ul></li></ul></li></ul>
+    </div>
+</aside>
+
+<div id="top_form" class="group">
+    <div class="float-right">
+        <div id="top_version_wrapper"></div>
+    </div>
+</div>
+
+</main>
+<div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer class="footer">
+    <div class="container">
+        <ul>
+            <li><a target="_blank" href="https://cfengine.com"><img  alt="CFEngine homepage"src="./media/images/cfengine-logo-white.svg" /></a></li>
+            <li><a href="release-notes-legal-and-licenses.html">Legal and licenses</a></li>
+            <li><a target="_blank" href="https://cfengine.com/contact/">Contact us</a></li>
+            <li>Last update on 08 September 2025</li>
+        </ul>
+    </div>
+</footer>
+<div id="overlay"></div>
+<button id="scrollToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"><i class="bi bi-chevron-up"></i></button>
+<script src="assets/bundle.min.js?v=2025-09-08T15:14:15+00:00" type="text/javascript"></script>
+
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.14  Documentation - High Availability</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.14/assets/global-87598b50cf828dc4e1c1ad7f860740dc.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "High Availability";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.14/" selected>Version 3.14 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="012826289311752768906:kp0fmjlfqyu" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html"  class="navselected" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="enterprise-cfengine-guide-install-get-started.html">Install and Get Started</a></li><li><a href="enterprise-cfengine-guide-user-interface.html">User Interface</a></li><li><a href="enterprise-cfengine-guide-settings.html">Settings</a></li><li><a href="enterprise-cfengine-guide-hosts-health.html">Hosts and Health</a></li><li><a href="enterprise-cfengine-guide-alerts-notifications.html">Alerts and Notifications</a></li><li><a href="enterprise-cfengine-guide-alerts-custom-actions.html">Custom actions for Alerts</a></li><li><a href="enterprise-cfengine-guide-reporting.html">Enterprise Reporting</a></li><li><a href="enterprise-cfengine-guide-federated-reporting.html">Federated Reporting</a></li><li><a href="enterprise-cfengine-guide-monitoring.html">Monitoring</a></li><li><a href="enterprise-cfengine-guide-enterprise-api.html">Enterprise API</a></li><li><a href="enterprise-cfengine-guide-best-practices.html">Best Practices</a></li><li><a class="active" href="enterprise-cfengine-guide-high-availability.html">High Availability</a><ul class="level2"><li><a href="enterprise-cfengine-guide-high-availability-installation-guide.html">Installation Guide</a></li></ul></li><li><a href="enterprise-cfengine-guide-hub_administration.html">Hub Administration</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="enterprise-cfengine-guide.html">CFEngine Enterprise</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    High Availability
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h1 id="overview">Overview</h1>
+<p>Although CFEngine is a distributed system, with decisions made by autonomous agents running on each
+node, the hub can be viewed as a single point of failure. In order to be able to play both roles
+that hub is responsible for - policy serving and report collection - High Availability feature was
+introduced in 3.6.2.  Essentially it is based on well known and broadly used cluster resource
+management tools - <a href="https://corosync.github.io/corosync/">corosync</a> and
+<a href="https://clusterlabs.org/pacemaker/">pacemaker</a> as well as PostgreSQL streaming replication feature.</p>
+<h1 id="design">Design</h1>
+<p>CFEngine High Availability is based on redundancy of all components, most importantly the PostgreSQL
+database. Active-passive PostgreSQL database configuration is the essential part of High
+Availability feature. While PostgreSQL supports different replication methods and active-passive
+configuration schemes, it doesn&#39;t provide out-of-the-box database failover-failback mechanism. To
+support that the well established cluster resources management solution based on the Linux-HA
+project was selected.</p>
+
+<p>Overview of CFEngine High Availability is shown in the diagram below.</p>
+
+<p><img src="ha_3.6.png" alt="HASetup"></p>
+
+<p>One hub is the active hub, while the other serves the role of a passive hub and is a fully redundant
+instance of the active one. If the passive host determines the active host is down, it will be
+promoted to active and will start serving the Mission Portal, collect reports and serve policy.</p>
+<h3 id="corosync-and-pacemaker">Corosync and pacemaker</h3>
+<p>Corosync and pacemaker are well known and broadly used mechanisms supporting cluster resource
+management. For CFEngine hub needs those are configured so they are managing PostgreSQL database and
+one or more IP addresses shared over the nodes in the cluster. In the ideal configuration one link
+managed by corosync/pacemaker is dedicated for PostgreSQL streaming replication and one for
+accessing Mission Portal so that once failover happens the change of active-passive roles and
+failover transition is transparent for end user. They can still use the same shared IP address to
+log in to the Mission Portal or use against API queries.</p>
+<h3 id="postgresql">PostgreSQL</h3>
+<p>For best performance, PostgreSQL streaming replication was selected as the database replication
+mode. It provides capability of shipping Write Ahead Log (WAL) entries from active server to all
+standby database servers. This is a PostgreSQL 9.0 and above feature allowing continuous recovery
+and almost immediate visibility of data inserted to primary server by the standby. For more
+information about PostgreSQL streaming replication please see <a href="https://wiki.postgresql.org/wiki/Streaming_Replication">PostgreSQL
+documentation</a>.</p>
+<h1 id="cfengine">CFEngine</h1>
+<p>In a High Availability setup all the clients are aware of existence of more than one hub. Current
+active hub is selected as a policy server and policy fetching and report collection is done by the
+active hub. One of the differences comparing to single-hub installation is that instead of having
+one policy server, clients have a list of hubs where they should fetch policy and initiate report
+collection if using call collect. Also after bootstrapping to either active or passive hub clients
+are implicitly redirected to the active one. After that trust is established between the client and
+both active and passive hub so that all clients are capable to communicate with both. This allows
+transparent transition to the passive hub once fail-over is happening, as all the clients have
+already established trust with the passive hub as well.</p>
+<h3 id="mission-portal">Mission Portal</h3>
+<p>Mission Portal since 3.6.2 has a new indicator whitch shows the status of the High Availability
+configuration.</p>
+
+<p><img src="ha_health_OK.png" alt="HAHealth"></p>
+
+<p>High Availability status is constantly monitored so that once some malfunction is discovered the
+user is notified about the degraded state of the system. Besides simple visualization of High
+Availability, the user is able to get detailed information regarding the reason for a degraded
+state, as well as when data was last reported from each hub. This gives quite comprehensive
+knowledge and overview of the whole setup.</p>
+
+<p><img src="ha_degraded_indicator.png" alt="HADegraded"></p>
+
+<p><img src="ha_degraded_details.png" alt="HADegradedDetails"></p>
+<h3 id="inventory">Inventory</h3>
+<p>There are also new Mission Portal inventory variables indicating the IP address of the active hub
+instance and status of the High Availability installation on each of the hubs. Looking at inventory
+reports is especially helpful to diagnose any problems when High Availability is reported as
+<em>degraded</em>.</p>
+
+<p><img src="ha_inventory.png" alt="HAInventory"></p>
+<h2 id="cfengine-high-availability-installation">CFEngine High Availability installation</h2>
+<p>Existing CFEngine Enterprise installations can upgrade their single-node hub to a High Availability
+system in versions 3.6.2 and newer. Detailed instructions how to upgrade from single hub to High
+Availability or how to install CFEngine High Availability from scratch can be found in the
+<a href="enterprise-cfengine-guide-high-availability-installation-guide.html" title="Installation Guide">Installation Guide</a>.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-cfengine-enterprise.html">cfengine enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-high-availability.html">high availability</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 10 July 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/enterprise-cfengine-guide/high-availability.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/d99dd1f07cf37da07fbd675717c47f3201990891" target="_blank">d99dd1f07cf37da07fbd675717c47f3201990891</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.14/assets/footer-0ce0c884995cf0be0e878ec70c137005.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

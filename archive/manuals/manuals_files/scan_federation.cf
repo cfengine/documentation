@@ -1,0 +1,86 @@
+
+bundle knowledge st_federation
+
+{
+topics:
+
+"st-federation";
+Federation::
+    "The benefits of federated management" ;
+Federation::
+    "Why federation does not reduce predictabilty" ;
+Federation::
+    "Merging and dividing enterprises" ;
+Federation::
+    "Global assurance" ;
+Federation::
+    "Handling multiple sources" ;
+Federation::
+    "Disconnected parts inheriting a single baseline" ;
+Federation::
+    "Each part disconnected, providing services" ;
+Federation::
+    "Service oriented federation" ;
+Federation::
+    "The social contract" ;
+Federation::
+    "The Authority Paradox" ;
+Federation::
+    "Coordination, hierarchy and centralization" ;
+Federation::
+    "What is federation?" ;
+Federation::
+    "What is organizational complexity?" ;
+Special_Topics_Guide::
+    "Federation"  association => a("discussed in","Federation","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-federation.html"
+  represents => { "Orchestration" };
+Federation::
+ "/docs/st-federation.html#Top"
+  represents => { "Text section" };
+What_is_organizational_complexity_::
+ "/docs/st-federation.html#What-is-organizational-complexity_003f"
+  represents => { "Text section" };
+What_is_federation_::
+ "/docs/st-federation.html#What-is-federation_003f"
+  represents => { "Text section" };
+Coordination__hierarchy_and_centralization::
+ "/docs/st-federation.html#Coordination"
+  represents => { "Text section" };
+The_Authority_Paradox::
+ "/docs/st-federation.html#The-Authority-Paradox"
+  represents => { "Text section" };
+The_social_contract::
+ "/docs/st-federation.html#The-social-contract"
+  represents => { "Text section" };
+Service_oriented_federation::
+ "/docs/st-federation.html#Service-oriented-federation"
+  represents => { "Text section" };
+Each_part_disconnected__providing_services::
+ "/docs/st-federation.html#Each-part-disconnected-providing-services"
+  represents => { "Text section" };
+Disconnected_parts_inheriting_a_single_baseline::
+ "/docs/st-federation.html#Disconnected-parts-inheriting-a-single-baseline"
+  represents => { "Text section" };
+Handling_multiple_sources::
+ "/docs/st-federation.html#Handling-multiple-sources"
+  represents => { "Text section" };
+Global_assurance::
+ "/docs/st-federation.html#Global-assurance"
+  represents => { "Text section" };
+Merging_and_dividing_enterprises::
+ "/docs/st-federation.html#Merging-and-dividing-enterprises"
+  represents => { "Text section" };
+Why_federation_does_not_reduce_predictabilty::
+ "/docs/st-federation.html#Why-federation-does-not-reduce-predictabilty"
+  represents => { "Text section" };
+The_benefits_of_federated_management::
+ "/docs/st-federation.html#The-benefits-of-federated-management"
+  represents => { "Text section" };
+}
+

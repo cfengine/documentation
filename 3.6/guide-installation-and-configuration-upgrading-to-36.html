@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.6  Documentation - Upgrading to 3.6</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.6/assets/global-ac3885a0674bd3c9117d62800be1608f.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Upgrading to 3.6";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                 <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html" selected>Version 3.6 (EOL)</option>
+			                 <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:bm0uhfq8ykk" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a><ul class="level2"><li><a href="guide-installation-and-configuration-pre-installation-checklist.html">Pre-Installation Checklist</a></li><li><a href="guide-installation-and-configuration-secure-bootstrap.html">Secure Bootstrap</a></li><li><a href="guide-installation-and-configuration-general-installation.html">General Installation</a></li><li><a class="active" href="guide-installation-and-configuration-upgrading-to-36.html">Upgrading to 3.6</a></li><li><a href="guide-installation-and-configuration-version-control.html">Version Control</a></li></ul></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-language-concepts.html">Language Concepts</a></li><li><a href="guide-design-center.html">Design Center Overview</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-installation-and-configuration.html">Installation and Configuration</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Upgrading to 3.6
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>This guide documents our recommendation on how to upgrade an existing installation of CFEngine Community 3.4/3.5 and CFEngine Enterprise 3.0/3.5 to CFEngine 3.6.1, as well as upgrades from 3.6.</p>
+
+<p>Our recommendation is to upgrade the Policy Server first. The rationale is that it is normally a dedicated machine with no business-relevant duties, so the risk is lower.</p>
+<h2 id="upgrade-masterfiles-and-policy-server-3-6-x-to-3-6-x-1">Upgrade masterfiles and Policy Server (3.6.X to 3.6.X+1)</h2>
+<p>If you are doing a minor-minor 3.6 upgrade (e.g. from 3.6.5 to 3.6.6), the upgrade is easier.
+We would however still recommend to perform a masterfiles upgrade (ideally in a test environment first) to get all the enhancements and fixes.
+The masterfiles are available in the hub package and separately on the <a href="http://cfengine.com/community/download/">download page</a> (Community and Enterprise editions share masterfiles as of 3.6).</p>
+
+<p>Normally these new files did not exist in the preivous version or can be completely replaced by the old ones, the only ones that are likely changed by you are <em>def.cf</em> and <em>promises.cf</em>.
+For these two files, we would need to do a diff between your version and the new version and integrade the diff instead of replacing the whole file.</p>
+
+<p>When the new masterfiles have been created and <em>cf-promises promises.cf</em> and <em>cf-promises update.cf</em> succeeds, you are ready to upgrade the Policy Server. That entails to</p>
+
+<ul>
+<li>stop the CFEngine services</li>
+<li>upgrade the hub package</li>
+<li>replace /var/cfengine/masterfiles with your new integrated masterfiles</li>
+<li>replace (or merge with your changes) <em>/var/cfengine/state/pg/data/postgresql.conf</em> with <em>/var/cfengine/share/postgresql/postgresql.conf.cfengine</em> to update your database configuration.</li>
+<li>start the CFEngine services</li>
+</ul>
+
+<p>Check the version with <em>/var/cfengine/bin/cf-promises -V</em>, and if you are running Enterprise, the Mission Portal About page.</p>
+
+<p>If your clients get promise failures (not kept) similar to &quot;Can&#39;t stat file &#39;/var/cfengine/master_software_updates/cf-upgrade/linux.x86_64/cf-upgrade&#39; on &#39;<SERVER-IP>&#39; in files.copy_from promise&quot; you can download and unpack <a href="http://cfengine.package-repos.s3.amazonaws.com/tools/cf-upgrade-for-linux.tar.gz">cf-upgrade.tar.gz</a> on your Policy Server. This is caused by a known issue where some host packages lacked this utility, which is resolved in recent versions.</p>
+
+<p>If everything looks good, you are ready to upgrade the clients, please skip to Prepare Client upgrade (all versions) followed by Complete Client upgrade (all versions) below.</p>
+<h2 id="prepare-masterfiles-and-the-policy-server-for-upgrade-3-5-to-3-6">Prepare masterfiles and the Policy Server for upgrade (3.5 to 3.6)</h2>
+<ol>
+<li>Merge your masterfiles with the CFEngine 3.6 policy framework on an infrastructure separate from your existing CFEngine installation.
+
+<ul>
+<li>Identify existing modifications to the masterfiles directory.  If patches from version control are unavailable or require verification, a copy of /var/cfengine/masterfiles from a clean installation of your previous version can help identify changes which will need to be applied to a new 3.6 install.</li>
+<li>The 3.6 masterfiles can be found in a clean installation of CFEngine (hub package on Enterprise), under /var/cfengine/masterfiles.  Apply any customizations against a copy of the 3.6 masterfiles in a well-known location, e.g. <code>/root/3.6/masterfiles</code>.</li>
+<li>Use <a href="reference-components-cf-promises.html" title="cf-promises"><code>cf-promises</code></a> to verify that the policy runs with 3.6, by running <code>cf-promises /root/3.6/masterfiles/promises.cf</code> and <code>cf-promises /root/3.6/masterfiles/update.cf</code>.</li>
+<li>Use <a href="reference-components-cf-promises.html" title="cf-promises"><code>cf-promises</code></a> to verify that the policy runs with you previous version of CFEngine (e.g. 3.5), by running the same commands as above on a node with that CFEngine version.</li>
+<li>The merged masterfiles should now be based on the 3.6 framework, include your policies and work on both the version you are upgrading from and with 3.6.</li>
+</ul></li>
+<li><p>Set <a href="reference-components-cf-serverd.html#trustkeysfrom" title="cf-serverd - trustkeysfrom"><code>trustkeysfrom</code></a> to trust all hosts, or at least the Policy Server,
+in the merged masterfiles policy, e.g. /root/3.6/masterfiles/update/update_policy.cf`.</p>
+
+<p>CFEngine 3.6 uses LMDB for local databases, whereas older versions of CFEngine typically use TokyoCabinet or QDBM. The classic networking protocol uses the <code>lastseen</code> database to verify that the mapping between a peer&#39;s IP address and the corresponding hostkey is not changed. Since the 3.6 installation will not have any mappings in the lastseen database, hosts won&#39;t trust the IP address of the policy server without that setting.</p></li>
+<li><p>Optional, Enterprise only: Export the data from your existing Enterprise MongoDB.</p>
+
+<ul>
+<li>Download the <a href="http://cfengine.package-repos.s3.amazonaws.com/tools/cfmigrate"><code>cfmigrate</code></a> binary.</li>
+<li>This binary will export user/role settings as well as long-living file-changes data from MongoDB.</li>
+<li>No other data will be exported, as it would either way expire after
+one week. If you need continued access to 3.5 compliance data,
+keep the 3.5 MongoDB available.</li>
+<li>The <code>cfmigrate</code> tool uses <code>mongoexport</code>, which is available from <a href="http://www.mongodb.org/downloads">mongodb.org</a> (it is included in the hub package of CFEngine 3.5).</li>
+</ul></li>
+<li><p>On your existing Policy Server, stop the CFEngine services.</p>
+
+<ul>
+<li><code>service cfengine3 stop</code></li>
+<li>Verify that the output of <code>ps -e | grep cf</code> is empty.</li>
+</ul>
+
+<p>Clients will continue to execute the policy that they have.</p></li>
+<li><p>Make a backup of the Policy Server, a full backup of <code>/var/cfengine</code> (or your <code>WORKDIR</code> equivalent) is recommended.</p>
+
+<ul>
+<li><code>cp -r /var/cfengine/ppkeys/ /root/3.5/ppkeys</code></li>
+<li><code>tar cvzf /root/3.5/cfengine.tar.gz /var/cfengine</code></li>
+</ul></li>
+<li><p>Save the list of hosts currently connecting to the Policy Server.</p>
+
+<ul>
+<li><code>cf-key -s &gt; /root/3.5/hosts</code></li>
+</ul></li>
+</ol>
+<h2 id="perform-the-upgrade-of-the-policy-server-3-5-to-3-6">Perform the upgrade of the Policy Server (3.5 to 3.6)</h2>
+<ol>
+<li>Ensure the CFEngine services are still stopped (only on the Policy Server).
+
+<ul>
+<li>Verify that the output of <code>ps -e | grep cf</code> is empty.</li>
+</ul></li>
+<li><p>Uninstall the previous CFEngine package to start fresh (you may need to adjust the package name based on the CFEngine edition).</p>
+
+<ul>
+<li>Red Hat based distributions:</li>
+</ul>
+<div class="highlight"><pre><code class="console"><span class="go">rpm -e cfengine-nova-hub</span>
+<span class="go">rm -rf /var/cfengine</span>
+</code></pre>
+</div>
+
+<ul>
+<li>Debian based distributions:</li>
+</ul>
+<div class="highlight"><pre><code class="console"><span class="go">dpkg -p cfengine-nova-hub</span>
+<span class="go">rm -rf /var/cfengine</span>
+</code></pre>
+</div></li>
+<li><p>Install the new CFEngine Policy Server package (you may need to adjust the package name based on CFEngine edition, version and distribution).</p>
+
+<ul>
+<li>Red Hat based distributions:</li>
+</ul>
+<div class="highlight"><pre><code class="console"><span class="go">rpm -i cfengine-nova-hub-3.6.1.x86_64.rpm</span>
+</code></pre>
+</div>
+
+<ul>
+<li>Debian based distributions:</li>
+</ul>
+<div class="highlight"><pre><code class="console"><span class="go">dpkg --install cfengine-nova-hub_3.6.1-1_amd64.deb</span>
+</code></pre>
+</div></li>
+<li><p>Restore ppkeys and any Enterprise license file (default location is /var/cfengine/masterfiles/license.dat) from backup.</p>
+<div class="highlight"><pre><code class="console"><span class="go">cp /root/3.5/ppkeys/* /var/cfengine/ppkeys/</span>
+</code></pre>
+</div></li>
+<li><p>Copy the merged masterfiles from the perparation you did above.</p>
+<div class="highlight"><pre><code class="console"><span class="go">rm -rf /var/cfengine/masterfiles/*</span>
+<span class="go">cp /root/3.6/masterfiles/* /var/cfengine/masterfiles/</span>
+</code></pre>
+</div></li>
+<li><p>Bootstrap the Policy Server to itself.</p>
+<div class="highlight"><pre><code class="console"><span class="go">/var/cfengine/bin/cf-agent -B &lt;POLICY-SERVER-IP&gt;</span>
+</code></pre>
+</div>
+
+<p>Any  error messages regarding processes can be corrected by running</p>
+<div class="highlight"><pre><code class="console"><span class="go">cf-agent -f update.cf -IK</span>
+</code></pre>
+</div></li>
+<li><p>Optional: Import data previously exported from MongoDB using the <a href="http://cfengine.package-repos.s3.amazonaws.com/tools/cfmigrate"><code>cfmigrate</code></a> binary.</p>
+
+<ul>
+<li>Verify that users can log into Mission Portal.</li>
+</ul></li>
+<li><p>Take the Policy Server online.</p>
+
+<ul>
+<li>Verify with <code>cf-key -s</code> that connections from all clients have been established within 5-10 minutes.</li>
+<li>Select some clients to confirm that they have received the new policy and are running it without error.</li>
+</ul></li>
+</ol>
+<h2 id="prepare-client-upgrade-all-versions">Prepare Client upgrade (all versions)</h2>
+<ol>
+<li>Make client packages available on the Policy Server in <code>/var/cfengine/master_software_updates</code>, under the appropriate directories for the OS distributions you use.</li>
+<li>Turn on the auto-upgrade policy by setting class <code>trigger_upgrade</code> in <a href="guide-writing-and-serving-policy-policy-framework.html#update-cf" title="The Policy Framework - update.cf"><code>update.cf</code></a> for a small set of clients, i.e. change <code>!any</code> to an appropriate class like an IP network (e.g. <code>ipv4_10_10_1|ipv4_10_10_2</code>).</li>
+<li><p>Verify that the selected hosts are upgrading successfully.</p>
+
+<p>As an Enterprise user, confirm that the hosts start appearing in Mission Portal after 5-10 minutes. Otherwise, log manually into a set of hosts to confirm the successful upgrade.</p></li>
+</ol>
+<h2 id="complete-client-upgrade-all-versions">Complete Client upgrade (all versions)</h2>
+<ol>
+<li>Widen the group of hosts on which the <code>trigger_upgrade</code> class is set.</li>
+<li>Continue to verify from <code>cf-key -s</code> or in the Enterprise Mission Portal that hosts are upgraded correctly and start reporting in.</li>
+<li>Verify that the list of hosts you captured before the upgrade, e.g. in <code>/root/3.5/hosts</code> correspond to what you see is now reporting in.</li>
+</ol>
+<h2 id="finalize-3-5-to-3-6">Finalize (3.5 to 3.6)</h2>
+<ol>
+<li>Reset the <a href="reference-components-cf-serverd.html#trustkeysfrom" title="cf-serverd - trustkeysfrom"><code>trustkeysfrom</code></a> configuration to the previous value, typically an empty list.</li>
+<li>Optional: Switch to the new 3.6 networking protocol to benefit from TLS encryption and
+improved control attributes in <a href="reference-promise-types-access.html" title="access"><code>access</code></a> promises.</li>
+<li><p>Optional: Recursively purge <code>*.tcdb</code> and <code>*.tcdb.lock</code> files from <code>/var/cfengine</code></p>
+
+<p>See <a href="reference-components.html#protocol_version" title="Components and Common Control - protocol_version"><code>protocol_version</code></a> in
+<a href="reference-components.html" title="Components and Common Control">Components and Common Control</a> and <a href="reference-components-cf-serverd.html#allowlegacyconnects" title="cf-serverd - allowlegacyconnects"><code>allowlegacyconnects</code></a> in
+<a href="reference-components-cf-serverd.html#control-promises" title="cf-serverd - Control Promises"><code>body server control</code></a>.</p></li>
+</ol>
+
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/installation-and-configuration/upgrading-to-36.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/13cbf18729a5bf43d836f72e30aab3b2b0bdee7f" target="_blank">13cbf18729a5bf43d836f72e30aab3b2b0bdee7f</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.6/assets/footer-1ca6436dd462ed6a69ad3f2dba0774f0.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

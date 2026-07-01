@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.8  Documentation - Write a new Sketch</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.8/assets/global-8212aa494575341d9a306dae12291eb2.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Write a new Sketch";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       	<option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       	<option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                  <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       	<option value="/docs/3.8/index.html" selected>Version 3.8 (EOL)</option>
+                       	<option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+			                  <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       	<option value="/docs/archive/">Version 3.0 (archive)</option>
+                        <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:v5wte9vybsa" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-design-center.html">Design Center Overview</a><ul class="level2"><li><a href="guide-design-center-configure-sketches-community.html">Command Line Sketches</a></li><li><a class="active" href="guide-design-center-design-center-write-sketch.html">Write a new Sketch</a></li><li><a href="guide-design-center-design-center-write-sketch-advanced.html">sketchify - Write A New Sketch From An Existing Bundle</a></li></ul></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-design-center.html">Design Center Overview</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Write a new Sketch
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h3 id="enterprise-and-community-users-can-write-sketches">Enterprise and Community Users can Write Sketches</h3><h2 id="overview">Overview</h2>
+<p>This page describes how to create a Design Center sketch from a basic
+CFEngine agent bundle. In effect the sketch is a wrapper, taking
+parameters from the Design Center API or the CFEngine Enterprise
+Mission Portal, and passing them down to the agent bundle.</p>
+<h2 id="the-bundle">The Bundle</h2>
+<p>The bundle we will wrap with a sketch is a simple use of the <a href="reference-promise-types-users.html" title="users"><code>users</code></a>
+promise type:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">ensure_users</span><span class="p">(</span><span class="nv">users</span><span class="p">,</span> <span class="nv">group</span><span class="p">,</span> <span class="nv">homedir</span><span class="p">,</span> <span class="nv">shell</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">users</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(users)</span><span class="s">&quot;</span> <span class="err">-&gt;</span> <span class="p">{</span><span class="s">&quot;PCI-DSS-2&quot;</span><span class="p">,</span> <span class="s">&quot;Baseline_developers_2_3&quot;</span><span class="p">}</span>
+      <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span>
+      <span class="kr">home_dir</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(homedir)</span><span class="s">/</span><span class="si">$(users)</span><span class="s">&quot;</span><span class="p">,</span>
+      <span class="kr">group_primary</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="p">(</span><span class="nf">group</span><span class="p">),</span>
+      <span class="kr">shell</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="p">(</span><span class="nf">shell</span><span class="p">),</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;ensure_user_setup&quot;</span><span class="p">,</span>
+      <span class="kr">home_bundle</span> <span class="o">=&gt;</span> <span class="nf">setup_home_dir</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">users</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">homedir</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">setup_home_dir</span><span class="p">(</span><span class="nv">user</span><span class="p">,</span> <span class="nv">group</span><span class="p">,</span> <span class="nv">homedir</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(homedir)</span><span class="s">/</span><span class="si">$(user)</span><span class="s">/.&quot;</span> <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>If you don&#39;t understand what it does, please look at
+<a href="examples-tutorials.html" title="Tutorials">Tutorials</a> and the CFEngine <a href="guide.html" title="Guide">Guide</a> to learn
+more about CFEngine&#39;s policy language, syntax, and operation. We will
+not worry about the internals except to apply namespaces and testing
+guards.</p>
+<h2 id="the-sketch-json-metadata">The sketch.json Metadata</h2>
+<p>The first step is to define the sketch metadata. This is the annoying
+administrivia that makes a package system such as Design Center
+useful. Simply take an existing <a href="reference-design-center-sketch.html#sketch-json" title="Sketch Structure - sketch.json"><code>sketch.json</code></a> file such as the one below and modify it:</p>
+<div class="highlight"><pre><code class="text">{
+    manifest:
+    {
+        &quot;main.cf&quot;: { description: &quot;main file&quot; },
+        &quot;README.md&quot;: { documentation: true },
+    },
+
+    metadata:
+    {
+        name: &quot;System::Users&quot;,
+        description: &quot;Configure users with parameters&quot;,
+        version: &quot;1.00&quot;,
+        license: &quot;MIT&quot;,
+        tags: [ &quot;cfdc&quot;, &quot;users&quot;, &quot;enterprise_compatible&quot;, &quot;enterprise_3_6&quot; ],
+        authors: [ &quot;Ted Zlatanov &lt;tzz@lifelogs.com&gt;&quot; ],
+        depends: { &quot;CFEngine::sketch_template&quot;: {}, cfengine: { version: &quot;3.6.0&quot; }, os: [{ &quot;linux&quot;: &quot;Linux&quot;, &quot;solaris&quot;: &quot;Solaris&quot;, &quot;aix&quot;: &quot;AIX&quot;, &quot;windows&quot;: &quot;Windows&quot; }] }
+    },
+
+    api:
+    {
+        // this is the name of the bundle!
+        ensure_users:
+        [
+            { type: &quot;bundle_options&quot;, name: &quot;Ensure the users exist as specified&quot; },
+            { type: &quot;environment&quot;, name: &quot;runenv&quot;, },
+            { type: &quot;metadata&quot;, name: &quot;mymetadata&quot;, },
+            { type: &quot;list&quot;, name: &quot;users&quot;, validation: &quot;LIST_OF_STRING_NONEMPTY&quot;, description: &quot;User names to add (separate by commas)&quot; },
+            { type: &quot;string&quot;, name: &quot;group&quot;, validation: &quot;STRING_NONEMPTY&quot;, description: &quot;Primary user group&quot; },
+            { type: &quot;string&quot;, name: &quot;homedir&quot;, default: &quot;/home&quot;, validation: &quot;PATH_ABSOLUTE_UNIX_OR_WINDOWS&quot;, description: &quot;Location of the user&#39;s home directory&quot; },
+            { type: &quot;string&quot;, name: &quot;shell&quot;, default: &quot;/bin/bash&quot;, choice: [ &quot;/bin/sh&quot;, &quot;/bin/bash&quot;, &quot;/bin/csh&quot;, &quot;/bin/tcsh&quot;, &quot;/bin/zsh&quot; ], description: &quot;User shell&quot; },
+        ],
+    },
+
+    namespace: &quot;cfdc_users&quot;,
+
+    interface: [ &quot;main.cf&quot; ],
+}
+</code></pre>
+</div>
+
+<ul>
+<li>add any files you distribute with the sketch to the <code>manifest</code></li>
+<li>set the <code>authors</code>, <code>tags</code>, <code>name</code>, <a href="reference-promise-types-users.html#description" title="users - description"><code>description</code></a>, etc. metadata</li>
+<li>define an API, which mirrors the bundle we have.  Here we do a few things extra:
+
+<ul>
+<li>add <code>bundle_options</code> with the name of the bundle we want to show</li>
+<li>add <a href="reference-components-cf-agent.html#environment" title="cf-agent - environment"><code>environment</code></a> and <code>metadata</code> parameters, which carry the &quot;glue&quot; between Design Center and CFEngine</li>
+<li>bring in the <a href="reference-promise-types-users.html" title="users"><code>users</code></a>, <code>group</code>, <code>homedir</code>, and <a href="reference-promise-types-users.html#shell" title="users - shell"><code>shell</code></a> parameters with a <code>type</code>, a <code>default</code> if needed, a <code>validation</code> or a <code>choice</code> as needed, and a <a href="reference-promise-types-users.html#description" title="users - description"><code>description</code></a></li>
+</ul></li>
+<li>set the <a href="reference-components-file_control_promises.html#namespace" title="file control - namespace"><code>namespace</code></a> as shown to ensure this bundle won&#39;t conflict with others</li>
+<li>set the <code>interface</code> to the list of files that have to be included by CFEngine for the sketch to work, normally just <code>main.cf</code></li>
+</ul>
+<h2 id="main-cf-the-converted-bundle">main.cf: The Converted Bundle</h2>
+<p>Now <code>main.cf</code> will start with the original bundle, but we&#39;ll modify it.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">file</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">namespace</span> <span class="o">=&gt;</span> <span class="s">&quot;cfdc_users&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">ensure_users</span><span class="p">(</span><span class="nv">runenv</span><span class="p">,</span> <span class="nv">metadata</span><span class="p">,</span> <span class="nv">users</span><span class="p">,</span> <span class="nv">group</span><span class="p">,</span> <span class="nv">homedir</span><span class="p">,</span> <span class="nv">shell</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="c">#@include &quot;REPO/sketch_template/standard.inc&quot;</span>
+  <span class="kd">users</span><span class="p">:</span>
+    <span class="nc">!dc_test</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(users)</span><span class="s">&quot;</span> <span class="err">-&gt;</span> <span class="p">{</span><span class="s">&quot;PCI-DSS-2&quot;</span><span class="p">,</span> <span class="s">&quot;Baseline_developers_2_3&quot;</span><span class="p">}</span>
+      <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span>
+      <span class="kr">home_dir</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(homedir)</span><span class="s">/</span><span class="si">$(users)</span><span class="s">&quot;</span><span class="p">,</span>
+      <span class="kr">group_primary</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="p">(</span><span class="nf">group</span><span class="p">),</span>
+      <span class="kr">shell</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="p">(</span><span class="nf">shell</span><span class="p">),</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;ensure_user_setup&quot;</span><span class="p">,</span>
+      <span class="kr">home_bundle</span> <span class="o">=&gt;</span> <span class="nf">setup_home_dir</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">users</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">homedir</span><span class="p">));</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">dc_verbose.dc_test</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(dcbundle)</span><span class="s">: simulating user = </span><span class="si">$(users)</span><span class="s"> with group </span><span class="si">$(group)</span><span class="s">, home dir </span><span class="si">$(homedir)</span><span class="s"> and shell </span><span class="si">$(shell)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="nc">dc_verbose.!dc_test</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(dcbundle)</span><span class="s">: ensuring user = </span><span class="si">$(users)</span><span class="s"> with group </span><span class="si">$(group)</span><span class="s">, home dir </span><span class="si">$(homedir)</span><span class="s"> and shell </span><span class="si">$(shell)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">setup_home_dir</span><span class="p">(</span><span class="nv">user</span><span class="p">,</span> <span class="nv">group</span><span class="p">,</span> <span class="nv">homedir</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(homedir)</span><span class="s">/</span><span class="si">$(user)</span><span class="s">/.&quot;</span> <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<ul>
+<li>add a <a href="reference-components-file_control_promises.html#namespace" title="file control - namespace"><code>namespace</code></a> matching <a href="reference-design-center-sketch.html#sketch-json" title="Sketch Structure - sketch.json"><code>sketch.json</code></a></li>
+<li>add the <code>#@include</code> statement which sets up the Design Center machinery</li>
+<li>add the <code>runenv</code> and <code>metadata</code> parameters (note you don&#39;t use them!)</li>
+<li>report on what you&#39;ll do, using the classes <code>dc_verbose</code> and <code>dc_test</code> which mean &quot;you&#39;re in verbose mode&quot; and &quot;you&#39;re in test mode&quot; respectively</li>
+<li>only make the users if not in <code>dc_test</code> mode</li>
+</ul>
+<h2 id="package-the-sketch">Package The Sketch</h2>
+<p>This part is really too easy.  We should make it harder so you have something to complain about!</p>
+
+<p>There are two steps:</p>
+
+<ul>
+<li>put your files in a directory (say <code>/my/repo/sketches/xyz</code> if your sketches will live under <code>/my/repo</code> and the one you made is called <code>xyz</code>). This is just the files from the manifest:
+
+<ul>
+<li><code>README.md</code>, which you could cut from the manifest or auto-generate, is just a README file</li>
+<li><code>main.cf</code> which you just saw above</li>
+<li>plus <a href="reference-design-center-sketch.html#sketch-json" title="Sketch Structure - sketch.json"><code>sketch.json</code></a> as shown above</li>
+</ul></li>
+<li>regenerate the sketch index for <code>/my/repo</code> and install your sketch into <code>/var/cfengine/design-center/sketches</code> (the &quot;live&quot; repository of sketches).  Run the following commands:</li>
+</ul>
+<div class="highlight"><pre><code class="text">cp -rp /var/cfengine/share/*Base/sketches/sketch_template /my/repo/sketches/
+/var/cfengine/design-center/bin/cf-sketch --make_cfsketches --inputs /my/repo --is=/my/repo/sketches/cfsketches.json
+/var/cfengine/design-center/bin/cf-sketch --make_readme --is=/my/repo/sketches/cfsketches.json
+/var/cfengine/design-center/bin/cf-sketch --install-all --is=/my/repo/sketches/cfsketches.json --inputs=/var/cfengine/design-center
+</code></pre>
+</div>
+
+<p>See
+<a href="reference-design-center-maintain-own-dc-repo.html" title="Maintaining your own sketch repository">Maintaining your own sketch repository</a>
+for these exact commands to run, with a longer explanation for each
+one.</p>
+<h2 id="you-re-done">You&#39;re Done!</h2>
+<p>That&#39;s all there is to writing a sketch. You should now look at
+<a href="guide-design-center-design-center-write-sketch-advanced.html" title="sketchify - Write A New Sketch From An Existing Bundle">sketchify - Write A New Sketch From An Existing Bundle</a>
+for a guide to using the <code>sketchify</code> tool. See
+<a href="reference-design-center-maintain-own-dc-repo.html" title="Maintaining your own sketch repository">Maintaining your own sketch repository</a>
+to find out how to create your own sketch repository and install sketches from it.</p>
+
+<p>Your users can then use the sketch you&#39;ve written as described in
+<a href="enterprise-cfengine-guide-design-center-design-center-deploy-sketch.html" title="Deploy your first Policy">Deploy your first Policy</a>.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-design-center.html">design center</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-write-sketches.html">write sketches</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/design-center/design-center-write-sketch.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/5b2bc459512b94c59b897836ae3071bcd5f777f6" target="_blank">5b2bc459512b94c59b897836ae3071bcd5f777f6</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.8/assets/footer-08442c0761064b6ca280223e9ebacccc.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

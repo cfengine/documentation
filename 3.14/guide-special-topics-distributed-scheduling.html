@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.14  Documentation - Distributed Scheduling</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.14/assets/global-87598b50cf828dc4e1c1ad7f860740dc.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Distributed Scheduling";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.14/" selected>Version 3.14 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="012826289311752768906:kp0fmjlfqyu" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a><ul class="level2"><li><a href="guide-special-topics-adopting-cfengine.html">Adopting CFEngine</a></li><li><a href="guide-special-topics-agility.html">Agility</a></li><li><a href="guide-special-topics-application-management.html">Application Management</a></li><li><a href="guide-special-topics-build-deploy-manage-audit.html">Build Deploy Manage Audit</a></li><li><a href="guide-special-topics-change-management.html">Change Management</a></li><li><a href="guide-special-topics-cloud-computing.html">Cloud Computing</a></li><li><a href="guide-special-topics-content-driven-policy.html">Content Driven Policy</a></li><li><a href="guide-special-topics-devops.html">Devops</a></li><li><a class="active" href="guide-special-topics-distributed-scheduling.html">Distributed Scheduling</a></li><li><a href="guide-special-topics-file-content.html">File Content</a></li><li><a href="guide-special-topics-glossary.html">Glossary</a></li><li><a href="guide-special-topics-hierarchies.html">Hierarchies</a></li><li><a href="guide-special-topics-itil.html">ITIL</a></li><li><a href="guide-special-topics-iteration.html">Iteration (Loops)</a></li><li><a href="guide-special-topics-modularity.html">Modularity and Orchestrating System Policy</a></li><li><a href="guide-special-topics-orchestration.html">Orchestration</a></li><li><a href="guide-special-topics-stigs.html">STIGs</a></li><li><a href="guide-special-topics-teamwork.html">Teamwork</a></li><li><a href="guide-special-topics-open-nebula.html">Using CFEngine with Open Nebula</a></li></ul></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-special-topics.html">Special Topics</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Distributed Scheduling
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h1 id="what-is-distributed-scheduling">What is distributed scheduling?</h1>
+<p>Scheduling refers to the execution of non-interactive processes or tasks
+(usually called `jobs&#39;) at designated times and places around a network of
+computers (see the Special Topics Guide on Scheduling). Distributed Scheduling
+refers to the chaining of different jobs into a coordinated workflow that spans
+several computers. For example, you schedule a processing job
+on machine1 and machine2, and when these are finished you need to schedule a job
+on machine3. This is distributed scheduling.</p>
+<h1 id="coordinating-dispatch">Coordinating dispatch</h1>
+<p>Dispatch is the term used for starting actually the execution of a job that has
+been scheduled. There are two ways to achieve distributed job scheduling:</p>
+
+<ul>
+<li><p>Centralized dispatch of jobs.</p></li>
+<li><p>Peer to peer signalling with local dispatch of jobs.</p></li>
+</ul>
+
+<p>There are pros and cons to centralization. Centralization makes consistency easy
+to determine, but it creates bottlenecks in processing and allows one machine to
+see all information. Decentralization provides an automatic and natural
+load-balancing of job dispatch, and it allows machines to reveal information on
+a `need to know&#39; basis.</p>
+
+<p>CFEngine is a naturally decentralized system, and only policy definition is
+usually centralized, but you can set up practically any architecture you like,
+in a secure fashion.</p>
+<h1 id="job-scheduling-and-periodic-maintenance">Job scheduling and periodic maintenance</h1>
+<p>You promise to execute tasks or keep promises at distributed places and times:</p>
+
+<ul>
+<li><p>You tell CFEngine what and how with the details of a promise.</p></li>
+<li><p>You tell CFEngine where and when promises should be kept, using classes.</p></li>
+</ul>
+
+<p>CFEngine is designed principally to maintain desired state on a continuous
+basis. There are three cases for job scheduling:</p>
+
+<ul>
+<li><p>Unique jobs run once and only once.</p></li>
+<li><p>Standard jobs run sporadically on demand.</p></li>
+<li><p>Standard jobs run on a regular schedule.</p></li>
+</ul>
+
+<p>This list transfers to workflow processes too. If one job needs to follow after
+another (because it depends on it for something), we can ask if this workflow is
+a standard and regular occurrence, or a one-off phenomenon.</p>
+<h2 id="one-off-workflows">One-off workflows</h2>
+<p>In CFEngine, you code a one-off workflow by specifying the space-time
+coordinates of the event that starts it. For example, if you want a job to be
+run a 16:45 on Monday 24th January 2012, you would make a class corresponding to
+this time, and place the promise of a job (or jobs) in this class. Let&#39;s look at
+some examples of this, in which host1 executes a command called my_job, and
+host2 follows up with a bundle of promises afterwards.</p>
+
+<p>The simplest case is to schedule the exact times.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">workflow_one</span>
+<span class="p">{</span>
+<span class="kd">methods</span><span class="p">:</span>
+
+  <span class="nc">Host2.Day24.January.Year2012.Hr16.Min50_55</span><span class="p">::</span>
+
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">do_my_job_bundle</span><span class="p">;</span>
+
+<span class="kd">commands</span><span class="p">:</span>
+
+  <span class="nc">Host1.Day24.January.Year2012.Hr16.Min45_50</span><span class="p">::</span>
+
+    <span class="s">&quot;/usr/local/bin/my_job&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Host1 runs its task at 16:45, and Host2 excutes its part in the workflow five
+minutes later. The advantage of this approach is that no direct communication is
+required between Host1 and Host2. The disadvantage is that you, as the
+orchestrator, have to guess how long the jobs will take. Moreover Host2 doesn&#39;t
+know for certain whether host1 succeeded in carrying out its job, so it might be
+a fruitless act.</p>
+
+<p>We can change this by signalling between the processes. Whether not you consider
+this an improvement or not depends on what you value highest: avoidance of
+communication or certainty of outcome. In this version, we increase the
+certainty of control by asking the predecessor or upstream host for confirmation
+of success if the job was carried out.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">workflow_one</span>
+<span class="p">{</span>
+<span class="kd">classes</span><span class="p">:</span>
+
+  <span class="nc">Host2</span><span class="p">::</span>
+
+     <span class="s">&quot;succeeded&quot;</span>     <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">remoteclassesmatching</span>
+                                           <span class="p">(</span>
+                                           <span class="s">&quot;did.*&quot;</span><span class="p">,</span>    <span class="c"># get classes matching</span>
+                                           <span class="s">&quot;Host1&quot;</span><span class="p">,</span>    <span class="c"># from this server</span>
+                                           <span class="s">&quot;no&quot;</span><span class="p">,</span>       <span class="c"># encrypt comms?</span>
+                                           <span class="s">&quot;hostX&quot;</span>     <span class="c"># prefix</span>
+                                           <span class="p">);</span>
+<span class="kd">methods</span><span class="p">:</span>
+
+  <span class="nf">Host2</span><span class="err">.</span><span class="nf">hostX_did_my_job</span>
+
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">do_my_job_bundle</span><span class="p">;</span>
+
+<span class="kd">commands</span><span class="p">:</span>
+
+  <span class="nc">Host1.Day24.January.Year2012.Hr16.Min45_50</span><span class="p">::</span>
+
+    <span class="s">&quot;/usr/local/bin/my_job&quot;</span><span class="p">,</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">state_repaired</span><span class="p">(</span><span class="s">&quot;did_my_job&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In this example, the methods promise runs on Host2 and the commands promise runs
+one Host1 as before. Now, host 1 sets a signal class ‘did_my_job’ when it
+carries out the job, and Host2 collects it by contacting the cf-serverd on Host1.
+Assuming that Host1 has agreed to let Host2 know this information, by granting
+access to it, Host2 can inherit this class, with a prefix of its own choosing.
+Thus is transforms the class ‘did_my_job’ on Host1 into ‘hostX_did_my_job’ on
+Host2.</p>
+
+<p>The advantage of this method is that the second job will only be started if the
+first completed, and we don&#39;t have to know how long the job took. The
+disadvantage of this is that we have to exchange some network information, and
+this has a small network cost, and requires some extra configuration on the
+server side to grant access to this context information:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">server</span> <span class="nf">access_rules</span>
+<span class="p">{</span>
+<span class="kd">access</span><span class="p">:</span>
+
+  <span class="s">&quot;did_my_job&quot;</span>
+
+  <span class="kr">resource_type</span> <span class="o">=&gt;</span> <span class="s">&quot;context&quot;</span><span class="p">,</span>
+        <span class="kr">admit</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;Host2&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="regular-workflows">Regular workflows</h2>
+<p>To make a job happen at a specific time, we used a very specific time classifier
+‘Day24.January.Year2012.Hr16.Min45_50’. If we now want to make this workflow
+into a regular occurrence, repeating at some interval we have two options:</p>
+
+<ul>
+<li><p>We repeat this at the same time each week, day, hour, etc.</p></li>
+<li><p>We don&#39;t care about the precise time, we only care about the interval between
+executions.</p></li>
+</ul>
+
+<p>The checking of promises in CFEngine is controlled by classes and by ifelapsed
+locks, which may be used for these two cases respectively. If nothing else is
+specified, CFEngine runs every 5 minutes and reconsiders the state of all its
+active promises. To be specific about the time, we just alter which promises are
+active at different times. Classes (as used already) allow us to anchor a
+promise to a particular region of time and space. Locks, on the other hand,
+allow us to say that a promise will only be rechecked if a certain time has
+elapsed since the last time.</p>
+
+<p>So, to make a promise repeat, we simply have to be less specific about the time.
+Let us make the promise on Host1 apply every day between 16:00:00 (4 pm) and
+16:59:59, and add an ifelapsed lock saying that we do not want to consider
+rechecking more often than once every 100 minutes (more than 1 hour). Now we have
+a workflow process that starts at 16:00 hours each day and runs only once each
+day.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">workflow_one</span>
+<span class="p">{</span>
+<span class="kd">classes</span><span class="p">:</span>
+
+  <span class="nc">Host2</span><span class="p">::</span>
+
+     <span class="s">&quot;succeeded&quot;</span>     <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">remoteclassesmatching</span><span class="p">(</span>
+                                                        <span class="s">&quot;did.*&quot;</span><span class="p">,</span>
+                                                        <span class="s">&quot;Host1&quot;</span><span class="p">,</span>
+                                                        <span class="s">&quot;no&quot;</span><span class="p">,</span>
+                                                        <span class="s">&quot;hostX&quot;</span>
+                                                        <span class="p">);</span>
+<span class="kd">methods</span><span class="p">:</span>
+
+  <span class="nf">Host2</span><span class="err">.</span><span class="nf">hostX_did_my_job</span>
+
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">do_my_job_bundle</span><span class="p">;</span>
+
+<span class="kd">commands</span><span class="p">:</span>
+
+  <span class="nc">Host1.Hr16</span><span class="p">::</span>
+
+    <span class="s">&quot;/usr/local/bin/my_job&quot;</span><span class="p">,</span>
+         <span class="kr">action</span> <span class="o">=&gt;</span> <span class="nf">if_elapsed</span><span class="p">(</span><span class="s">&quot;100&quot;</span><span class="p">),</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">state_repaired</span><span class="p">(</span><span class="s">&quot;did_my_job&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+<h1 id="fancy-distributed-encapsulation">Fancy distributed encapsulation</h1>
+<p>We could try to be fancy about distributed scheduling, packaging it into a
+reusable structure. This may or may not be a good idea, depending on your
+aesthetics. The following example, from the community unit tests, shows how we
+might proceed.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+
+<span class="p">{</span>
+<span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">job_chain</span><span class="p">(</span><span class="s">&quot;Hr16.Min10_15&quot;</span><span class="p">)</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c">########################################################</span>
+
+<span class="k">bundle</span> <span class="k">common</span> <span class="nf">g</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+
+ <span class="c"># Define the name of the signal passed between hosts</span>
+
+ <span class="p">&quot;</span><span class="nv">signal</span><span class="p">&quot;</span>   <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;pack_a_name&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">########################################################</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">job_chain</span><span class="p">(</span><span class="nv">time</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+
+    <span class="c"># Define the names of the two parties</span>
+
+    <span class="p">&quot;</span><span class="nv">client</span><span class="p">&quot;</span>   <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;downstream.exampe.org&quot;</span><span class="p">;</span>
+    <span class="p">&quot;</span><span class="nv">server</span><span class="p">&quot;</span>   <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;upstream.example.org&quot;</span><span class="p">;</span>
+
+<span class="kd">classes</span><span class="p">:</span>
+
+    <span class="c"># derive some classes from the names defined in variables</span>
+
+    <span class="s">&quot;client_primed&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">classmatch</span><span class="p">(</span><span class="nf">canonify</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(client)</span><span class="s">&quot;</span><span class="p">)),</span>
+                    <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(time)</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="s">&quot;server_primed&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">classmatch</span><span class="p">(</span><span class="nf">canonify</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(server)</span><span class="s">&quot;</span><span class="p">)),</span>
+                    <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(time)</span><span class="s">&quot;</span><span class="p">;</span>
+
+ <span class="nc">client_primed</span><span class="p">::</span>
+
+     <span class="s">&quot;succeeded&quot;</span>     <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">remoteclassesmatching</span><span class="p">(</span>
+                                                        <span class="s">&quot;</span><span class="si">$(g.signal)</span><span class="s">&quot;</span><span class="p">,</span>
+                                                        <span class="s">&quot;</span><span class="si">$(server)</span><span class="s">&quot;</span><span class="p">,</span>
+                                                        <span class="s">&quot;yes&quot;</span><span class="p">,</span>
+                                                        <span class="s">&quot;hostX&quot;</span>
+                                                        <span class="p">);</span>
+<span class="kd">methods</span><span class="p">:</span>
+
+ <span class="nc">client_primed</span><span class="p">::</span>
+
+    <span class="s">&quot;downstream&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">do_job</span><span class="p">(</span><span class="s">&quot;Starting local follow-up job&quot;</span><span class="p">),</span>
+                    <span class="kr">action</span> <span class="o">=&gt;</span> <span class="nf">if_elapsed</span><span class="p">(</span><span class="s">&quot;5&quot;</span><span class="p">),</span>
+                <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;hostX_</span><span class="si">$(g.signal)</span><span class="s">&quot;</span><span class="p">;</span>
+
+ <span class="nc">server_primed</span><span class="p">::</span>
+
+    <span class="s">&quot;upstream&quot;</span>   <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">do_job</span><span class="p">(</span><span class="s">&quot;Starting remote job&quot;</span><span class="p">),</span>
+                    <span class="kr">action</span> <span class="o">=&gt;</span> <span class="nf">if_elapsed</span><span class="p">(</span><span class="s">&quot;5&quot;</span><span class="p">),</span>
+                   <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">state_repaired</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(g.signal)</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="kd">reports</span><span class="p">:</span>
+
+  <span class="nc">!succeeded</span><span class="p">::</span>
+
+    <span class="s">&quot;Server communication failed&quot;</span><span class="p">,</span>
+
+                 <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(time)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">#########################################################</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">do_job</span><span class="p">(</span><span class="nv">job</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="kd">commands</span><span class="p">:</span>
+
+   <span class="c"># do whatever...</span>
+
+   <span class="s">&quot;/bin/echo </span><span class="si">$(job)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">#########################################################</span>
+<span class="c"># Server config</span>
+<span class="c">#########################################################</span>
+
+<span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+<span class="p">{</span>
+<span class="kr">allowconnects</span>         <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">,</span> <span class="s">&quot;::1&quot;</span> <span class="p">};</span>
+<span class="kr">allowallconnects</span>      <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">,</span> <span class="s">&quot;::1&quot;</span> <span class="p">};</span>
+<span class="kr">trustkeysfrom</span>         <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">,</span> <span class="s">&quot;::1&quot;</span> <span class="p">};</span>
+<span class="kr">allowusers</span>            <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;mark&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c">#########################################################</span>
+
+<span class="k">bundle</span> <span class="k">server</span> <span class="nf">access_rules</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="kd">access</span><span class="p">:</span>
+
+  <span class="s">&quot;</span><span class="si">$(g.signal)</span><span class="s">&quot;</span>
+
+  <span class="kr">resource_type</span> <span class="o">=&gt;</span> <span class="s">&quot;context&quot;</span><span class="p">,</span>
+        <span class="kr">admit</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h1 id="more-links-in-the-chain">More links in the chain</h1>
+<p>In the examples above, we only had two hosts cooperating about jobs. In general,
+it is not a good idea to link together many different hosts unless there is a
+good reason for doing so. In HPC or Grid environments, where distributed jobs
+are more common and results are combined from many sub-tasks, one typically uses
+some more specialized middleware to accomplish this kind of cooperation. Such
+software makes compromises of its own, but is generally better suited to the
+specialized task for which it was written than a tool like CFEngine (whose main
+design criteria are to be secure and generic).</p>
+
+<p>Nevertheless, there are some tricks left in CFEngine for distributed scheduling
+if we want to trigger a number of follow-ups from a single job, or aggregate a
+number of jobs to drive a single follow-up.</p>
+
+<p><img src="./scheduleing-patterns.png" alt="Scheduling Patterns"></p>
+<h2 id="aggregation-of-multiple-jobs">Aggregation of multiple jobs</h2>
+<p>When aggregating jobs, we must combine their exit status using AND or OR. The
+most common case it that we require all the prerequisites in place in order to
+generate the final result, i.e. trigger the followup only if all of the
+prerequisites succeeded.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">workflow_one</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+
+  <span class="p">&quot;</span><span class="nv">n</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span><span class="p">,</span> <span class="s">&quot;4&quot;</span> <span class="p">};</span>
+
+<span class="kd">classes</span><span class="p">:</span>
+
+     <span class="s">&quot;succeeded</span><span class="si">$(n)</span><span class="s">&quot;</span>     <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">remoteclassesmatching</span><span class="p">(</span>
+                                                        <span class="s">&quot;did.*&quot;</span><span class="p">,</span>
+                                                        <span class="s">&quot;Host</span><span class="si">$(n)</span><span class="s">&quot;</span><span class="p">,</span>
+                                                        <span class="s">&quot;no&quot;</span><span class="p">,</span>
+                                                        <span class="s">&quot;hostX&quot;</span>
+                                                        <span class="p">),</span>
+                         <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;Host</span><span class="si">$(n)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="kd">methods</span><span class="p">:</span>
+
+  <span class="nf">Host2</span><span class="err">.</span><span class="nf">Host3</span><span class="err">.</span><span class="nf">Host4</span><span class="err">.</span><span class="nf">hostX_did_my_job</span>
+
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">do_my_job_bundle</span><span class="p">;</span>
+
+<span class="kd">commands</span><span class="p">:</span>
+
+  <span class="nc">Host1.Hr16</span><span class="p">::</span>
+
+    <span class="s">&quot;/usr/local/bin/my_job&quot;</span><span class="p">,</span>
+         <span class="kr">action</span> <span class="o">=&gt;</span> <span class="nf">if_elapsed</span><span class="p">(</span><span class="s">&quot;100&quot;</span><span class="p">),</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">state_repaired</span><span class="p">(</span><span class="s">&quot;did_my_job&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This example shows an all-or-nothing result. The follow-up job will only be
+executed if all three jobs finish within the same 5 minute time-frame. There is
+no error handling or recovery except to schedule the whole thing again.</p>
+
+<p>Triggering from one or more predecessors, i.e. combining with OR, looks similar,
+we just have to change the class expression:</p>
+<div class="highlight"><pre><code class="text"><span></span>bundle agent example
+{
+  methods:
+
+    (Host2|Host3|Host4).hostX_did_my_job
+
+      &quot;any&quot; usebundle =&gt; do_my_job_bundle;
+}
+</code></pre>
+</div>
+<h2 id="triggering-multiple-follow-ups">Triggering multiple follow-ups</h2>
+<p>The converse scenario is to trigger a number of jobs from a single
+pre-requisite. This is simply a case of listing the jobs under the trigger
+classes.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">workflow_one</span>
+<span class="p">{</span>
+<span class="kd">classes</span><span class="p">:</span>
+
+  <span class="nc">Host2</span><span class="p">::</span>
+
+     <span class="s">&quot;succeeded&quot;</span>     <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">remoteclassesmatching</span><span class="p">(</span>
+                                                        <span class="s">&quot;did.*&quot;</span><span class="p">,</span>
+                                                        <span class="s">&quot;Host1&quot;</span><span class="p">,</span>
+                                                        <span class="s">&quot;no&quot;</span><span class="p">,</span>
+                                                        <span class="s">&quot;hostX&quot;</span>
+                                                        <span class="p">);</span>
+<span class="kd">methods</span><span class="p">:</span>
+
+  <span class="nf">Host2</span><span class="err">.</span><span class="nf">hostX_did_my_job</span>
+
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">do_my_job_bundle1</span><span class="p">;</span>
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">do_my_job_bundle2</span><span class="p">;</span>
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">do_my_job_bundle3</span><span class="p">;</span>
+
+<span class="kd">commands</span><span class="p">:</span>
+
+  <span class="nc">Host1.Hr16</span><span class="p">::</span>
+
+    <span class="s">&quot;/usr/local/bin/my_job&quot;</span><span class="p">,</span>
+         <span class="kr">action</span> <span class="o">=&gt;</span> <span class="nf">if_elapsed</span><span class="p">(</span><span class="s">&quot;100&quot;</span><span class="p">),</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">state_repaired</span><span class="p">(</span><span class="s">&quot;did_my_job&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+<h1 id="self-healing-workflows">Self-healing workflows</h1>
+<p>To apply CFEngine&#39;s self-healing concepts to workflow scheduling, we can imagine
+the concept of a convergent workflow, i.e. one that, if we repeat everything a
+sufficient number of times, will eventually lead to the result. The outcome of
+the chained sequence of jobs must have an outcome that is repeatably achievable
+and which will eventually be achieved if we try a sufficient number of times.
+Using CFEngine this is a natural outcome – however, most system designers do not
+think in terms of repeatable sustainable outcomes and fault-tolerance.</p>
+
+<p>Beware however, one-off jobs cannot be made convergent, because they only have a single chance to succeed. It is a question of business process design whether you design workflows to be sustainable and repeatable, or whether you trust the outcome of a single shot process. Using the persistent classes in CFEngine together with the if-elapsed locks to send signals between hosts, it is simple and automatic to make convergent self-healing workflows.</p>
+<h1 id="long-workflow-chains">Long workflow chains</h1>
+<p>Long workflow chains are those which involve more than one trigger. These can be
+created by repeating the pattern above several times. Note however, that each
+link in the chain introduces a new level of uncertainty and potential failure.
+In general, we would not recommend creating workflows with long chains.</p>
+<h1 id="summary-of-distributed-scheduling">Summary of Distributed Scheduling</h1>
+<p>Distributed scheduling is about tying together jobs to create a workflow across
+multiple machines. It introduces a level of fragility into system automation.
+Using CFEngine promises, we can create self-healing workflows, but we recommend
+minimizing dependencies. This document shows how to build workflows using
+CFEngine primitives.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-special-topics.html">special topics</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-guide.html">guide</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 10 July 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/special-topics/distributed-scheduling.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/d99dd1f07cf37da07fbd675717c47f3201990891" target="_blank">d99dd1f07cf37da07fbd675717c47f3201990891</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.14/assets/footer-0ce0c884995cf0be0e878ec70c137005.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

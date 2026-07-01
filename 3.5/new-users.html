@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - Up and Running</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html"  class="navselected" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="index.html">CFEngine 3.5</a></li><li><a href="getting-started.html">Getting Started</a></li><li><a href="whats-new.html">New in CFEngine</a></li><li><a href="manuals.html">CFEngine Manuals</a></li><li><a href="reference.html">CFEngine Reference</a></li><li><a href="examples.html">CFEngine Examples</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li class="selected"><span>Tutorials</span></li><li><a href="examples-enterprise-api.html">Enterprise API</a></li><li><a href="examples-policy.html">Policy</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="examples.html">CFEngine Examples</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="examples-tutorials.html">Tutorials</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/examples.html">examples</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/tutorials.html">tutorials</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/community.html">community</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>Up and Running</h1>
+                    <h2 id="get-up-and-running-quickly-with-cfengine-3-5-community-edition">Get Up and Running Quickly with CFEngine 3.5 Community Edition</h2>
+<p>by <a href="http://www.linkedin.com/pub/erik-schwartz/7/257/ba9">Erik Schwartz</a>, CFEngine Contributor</p>
+
+<p>v0.1, 2013-10</p>
+
+<p><em>This information is reprinted with Erik&#39;s permission and thanks. Content and formatting modifications have been made where necessary.</em></p>
+<h2 id="overview">Overview</h2>
+<p>This document includes the following:</p>
+
+<p><a href="new-users.html#cfengine-basics" title="Up and Running - CFEngine basics">CFEngine Basics</a></p>
+
+<p><a href="new-users.html#install-and-configure-the-cfengine-server" title="Up and Running - Install and configure the CFEngine server">Install and configure the CFEngine server</a></p>
+
+<p><a href="new-users.html#set-up-your-promise-management-files" title="Up and Running - Set up your promise management files">Set up your promise management files</a></p>
+
+<p><a href="new-users.html#set-up-your-first-promise" title="Up and Running - Set up your first promise">Set up your first promise</a></p>
+
+<p><a href="new-users.html#start-your-cfengine-server" title="Up and Running - Start your CFEngine server">Start your CFEngine server</a></p>
+
+<p><a href="new-users.html#install-and-configure-cfengine-agent-systems" title="Up and Running - Install and configure CFEngine agent systems">Install and configure CFEngine agent systems</a></p>
+
+<p><a href="new-users.html#dissect-the-hello-world-promise" title="Up and Running - Dissect the &quot;hello world&quot; promise">Dissect the &quot;hello world&quot; promise</a></p>
+
+<p><a href="new-users.html#set-up-a-global-classes-promise" title="Up and Running - Set up a global classes promise">Set up a global classes promise</a></p>
+
+<p><a href="new-users.html#add-some-more-useful-promises" title="Up and Running - Add some more useful promises">Add some more useful promises</a></p>
+
+<p><a href="new-users.html#commands-for-controlling-cfengine" title="Up and Running - Commands for controlling CFEngine">Commands for controlling CFEngine</a></p>
+
+<p><a href="new-users.html#cfengine-official-resources" title="Up and Running - CFEngine official resources">CFEngine official resources</a></p>
+<h2 id="preface">Preface</h2>
+<p>This document assumes the following:</p>
+
+<ul>
+<li>You are a competent sysadmin, well-versed in administrating GNU/Linux.</li>
+<li>You are running RHEL or Debian (or perhaps a close derivative).</li>
+<li>You are brand new to CFEngine.</li>
+</ul>
+
+<p><strong>Note:</strong> Perform due diligence with testing and tinkering, and in a proper test environment, before deploying anything to production. This document assumes no responsibility if you use (or misuse) the advice here, and it causes data loss, service problems, or other system mayhem.</p>
+<h2 id="cfengine-basics">CFEngine basics</h2>
+<p>CFEngine is a configuration management system. That means, roughly, it&#39;s a collection of applications that is used to get your host (or group of hosts) configured to a desired state. You--the sysadmin--describe that state, and CFEngine makes it happen, and in an automated fashion.</p>
+
+<p>For a more detailed overview:</p>
+
+<ul>
+<li><a href="http://cfengine.com/what-is-cfengine">http://cfengine.com/what-is-cfengine</a></li>
+<li><a href="http://en.wikipedia.org/wiki/CFEngine">http://en.wikipedia.org/wiki/CFEngine</a></li>
+</ul>
+<h4 id="useful-terms">Useful Terms</h4>
+<ul>
+<li><strong>promise:</strong> One or more descriptions (written by you, the sysadmin) of a system state you wish to get to.</li>
+<li><strong>bundle:</strong> A collection of promises, usually contained within a single file.</li>
+<li><strong>convergent:</strong> Describes a promise that may be executed in a several-step, sequential fashion. CFEngine may make several passes at completing a single promise, performing a few of the steps each pass.</li>
+<li><strong>agent:</strong> A CFEngine instance that a) retrieves its promises from a <strong>server</strong> over TCP; b) validates and executes those promises, configuring itself to the desired state.</li>
+<li><strong>server:</strong> A CFEngine instance that a) contains promises that get deployed to agents; and b) listens on a TCP socket for agent connections. A <strong>server</strong> is also known as a <strong>policy hub</strong> (for the purposes of this primer).</li>
+</ul>
+
+<p><a href="new-users.html#overview" title="Up and Running - Overview">Back to top of page.</a> </p>
+<h2 id="install-and-configure-the-cfengine-server">Install and configure the CFEngine server</h2><h3 id="download-and-install">Download and install</h3>
+<p>Download the latest CFEngine 3.5 Community Edition packages from: <a href="http://cfengine.com/community">http://cfengine.com/community</a></p>
+
+<p>Decide on a RHEL or Debian system that will act as your CFEngine <strong>server</strong>, and install the package using <strong>rpm(8)</strong>, <strong>dpkg(1)</strong>, or whatever method you prefer.</p>
+
+<p><strong>Note</strong>: The same package is used for both <strong>server</strong> and <strong>agent</strong> installs.</p>
+
+<p><strong>IMPORTANT!</strong>
+You will likely see a message that reads:</p>
+
+<p><em>Policy is not found in /var/cfengine/inputs, not starting CFEngine</em></p>
+
+<p>This is fine. No worries for the time being.</p>
+<h3 id="set-up-master-directories">Set up master directories</h3>
+<p>Navigate to <strong>/var/cfengine/masterfiles</strong>. This directory is where your CFEngine server keeps everything it will be sharing with agents. In other words, the changes we make here will ultimately be made on the agents as well.</p>
+<div class="highlight"><pre><code class="text">cd /var/cfengine/masterfiles
+</code></pre>
+</div>
+
+<p>Within /var/cfengine/masterfiles, create two new directories. These directories will contain your promise files, and your configuration templates, respectively.</p>
+<div class="highlight"><pre><code class="text">mkdir myPromises
+
+mkdir myTemplates
+</code></pre>
+</div>
+
+<p>Here is (for the purposes of this primer) how the propagation of promise changes happen from the CFEngine server to the CFEngine agent:</p>
+
+<ul>
+<li>You make a change within <strong>/var/cfengine/masterfiles</strong> or its subdirectories</li>
+<li>Agent systems connect to the server, and copy <strong>/var/cfengine/masterfiles</strong> into their local <strong>/var/cfengine/inputs</strong> directory</li>
+</ul>
+<h3 id="customize-your-server-configuration">Customize your server configuration</h3><h4 id="def-cf">def.cf</h4>
+<p>Configure <strong>/var/cfengine/masterfiles/def.cf</strong>: This contains two variables of interest: <strong>domain</strong> and <strong>acl</strong>. </p>
+
+<p>These variables allow us to manage access control, so what we specify here determines which agents have access. Set <strong>domain</strong> to your organization&#39;s domain; when an agent attempts to connect to the server, the server does a reverse DNS lookup. For the connection to proceed, the agent&#39;s domain should match what you specify here.</p>
+
+<p><strong>Tip</strong>: If your agent hostnames are <strong>web.me.local</strong> and <strong>mongo.me.local</strong>, then you should set <strong>domain</strong> to <strong>me.local</strong>.</p>
+
+<p>Set <strong>acl</strong> to a comma-separated, quoted (see the example below) list of subnets your agents will be connecting from. Same idea: for the connection to proceed, the agent must be on one of those subnets.</p>
+
+<p><strong>def.cf</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="c"># This is just a snippet from def.cf. Search for and</span>
+<span class="c"># modify the appropriate sections.</span>
+
+
+<span class="kd">vars</span><span class="p">:</span>
+
+    <span class="p">&quot;</span><span class="nv">domain</span><span class="p">&quot;</span>  <span class="kt">string</span>    <span class="o">=&gt;</span> <span class="s">&quot;your.domain.here&quot;</span><span class="p">,</span>
+
+<span class="c"># ...</span>
+
+   <span class="p">&quot;</span><span class="nv">acl</span><span class="p">&quot;</span> <span class="kt">slist</span>          <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="s">&quot;172.16.31.0/24&quot;</span><span class="p">,</span> 
+        <span class="s">&quot;10.5.28.0/24&quot;</span><span class="p">,</span>
+   <span class="p">},</span>
+</code></pre>
+</div>
+<h4 id="controls-cf_execd-cf">controls/cf_execd.cf</h4>
+<p>Configure <strong>/var/cfengine/masterfiles/controls/cf_execd.cf</strong>: This tells the CFEngine server what email address to notify about certain events and about reports designed by you, the sysadmin.</p>
+
+<p>Set <strong>mailto</strong> to an email address that you will read and monitor. Set <strong>mailfrom</strong> as shown below. Set <strong>smtpserver</strong> as appropriate for your environment.</p>
+
+<p><strong>Tip:</strong> Most RHEL and Debian servers have an SMTP service listening on localhost by default. If your agent systems do not, consult with your mail administrator about what to specify here.</p>
+
+<p><strong>controls/cf_execd.cf</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="c"># This is just a snippet from controls/cf_execd.cf. Search for and</span>
+<span class="c"># modify the appropriate sections.</span>
+
+<span class="k">body</span> <span class="k">executor</span> <span class="k">control</span>
+<span class="p">{</span>
+
+ <span class="nc">any</span><span class="p">::</span>
+
+  <span class="kr">splaytime</span>             <span class="o">=&gt;</span> <span class="s">&quot;1&quot;</span><span class="p">;</span>
+  <span class="kr">mailto</span>                <span class="o">=&gt;</span> <span class="s">&quot;some-admin-list@me.local&quot;</span><span class="p">;</span>
+  <span class="kr">mailfrom</span>              <span class="o">=&gt;</span> <span class="s">&quot;root@</span><span class="si">$(sys.fqhost)</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="kr">smtpserver</span>            <span class="o">=&gt;</span> <span class="s">&quot;localhost&quot;</span><span class="p">;</span>
+
+<span class="c"># ...</span>
+</code></pre>
+</div>
+<h4 id="update-cf">update.cf</h4>
+<p>Configure <strong>/var/cfengine/masterfiles/update.cf</strong>: This file controls what files the agents receive from the server. Before changing it, create your <strong>failsafe.cf</strong> from it:</p>
+<div class="highlight"><pre><code class="text">  # cd /var/cfengine/masterfiles
+  # cp update.cf failsafe.cf
+</code></pre>
+</div>
+
+<p><strong>Tip:</strong> failsafe.cf is a safety mechanism: If <strong>update.cf</strong> somehow becomes damaged, CFEngine agents know to fall back to failsafe.cf. After you fix update.cf, CFEngine then begins working from update.cf again.</p>
+
+<p>Two separate sections will be updated in update.cf: <strong>body file&#95;select u&#95;input&#95;files</strong> and <strong>body copy&#95;from u&#95;rcp()</strong>. Take extra care to edit the correct sections, and pay close attention to quotes, commas, brackets, and semicolons. </p>
+
+<p><strong>update.cf</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="c"># This is just a snippet from update.cf. Search for and</span>
+<span class="c"># modify the appropriate sections.</span>
+
+<span class="c"># .. add values to the leaf_name key</span>
+
+<span class="k">body</span> <span class="k">file_select</span> <span class="nf">u_input_files</span>
+<span class="p">{</span>
+
+<span class="kr">leaf_name</span>               <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;.*.cf&quot;</span><span class="p">,</span><span class="s">&quot;.*.dat&quot;</span><span class="p">,</span><span class="s">&quot;.*.txt&quot;</span><span class="p">,</span><span class="s">&quot;.*.conf&quot;</span> <span class="p">};</span>
+<span class="kr">file_result</span>             <span class="o">=&gt;</span> <span class="s">&quot;leaf_name&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="c"># ..</span>
+
+<span class="c"># .. add the purge key, with value of &quot;true&quot;</span>
+
+<span class="k">body</span> <span class="k">copy_from</span> <span class="nf">u_rcp</span><span class="p">(</span><span class="nv">from</span><span class="p">,</span><span class="nv">server</span><span class="p">)</span>
+<span class="p">{</span>
+
+<span class="kr">source</span>                  <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(from)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="kr">compare</span>                 <span class="o">=&gt;</span> <span class="s">&quot;digest&quot;</span><span class="p">;</span>
+<span class="kr">trustkey</span>                <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">;</span>
+<span class="kr">purge</span>                   <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span> <span class="p">;</span>
+
+<span class="c"># ..</span>
+</code></pre>
+</div>
+<h4 id="promises-cf">promises.cf</h4>
+<p>Configure <strong>/var/cfengine/masterfiles/promises.cf</strong>: This file drives the agent promise execution. In other words, the agent reads this file to figure out what instructions you have for it.</p>
+
+<p>Under <strong>body common control</strong>, add the lines that follow to <strong>bundlesequence</strong>. Take care to add the lines just before the closing bracket.</p>
+
+<p>Add the lines that follow to inputs. (Same caveat about respecting the closing bracket.)</p>
+
+<p><strong>promises.cf</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="c"># .. snippet from the promises.cf config file</span>
+
+<span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+
+<span class="kr">bundlesequence</span>          <span class="o">=&gt;</span> <span class="p">{</span>
+
+<span class="c"># ..</span>
+
+        <span class="c"># Agent bundles from here</span>
+        <span class="s">&quot;main&quot;</span><span class="p">,</span>
+
+
+<span class="c"># .. just adding the next three content lines; not removing anything!</span>
+
+        <span class="c"># MY org&#39;s stuff</span>
+        <span class="s">&quot;z01_promise_setup&quot;</span><span class="p">,</span>
+        <span class="nv">@(z01_promise_setup.bundles)</span><span class="p">,</span>
+
+    <span class="p">};</span>
+
+    <span class="kr">inputs</span>              <span class="o">=&gt;</span> <span class="p">{</span>
+
+<span class="c"># ..</span>
+
+        <span class="c"># User services from here</span>
+        <span class="s">&quot;services/init_msg.cf&quot;</span><span class="p">,</span>
+
+
+<span class="c"># .. just adding the next three content lines; not removing anything!</span>
+
+        <span class="c"># MY org&#39;s stuff</span>
+        <span class="s">&quot;myPromises/z01PromiseSetup.cf&quot;</span><span class="p">,</span>
+        <span class="nv">@(z01_promise_setup.promise_files)</span><span class="p">,</span>
+
+    <span class="p">};</span>
+</code></pre>
+</div>
+
+<p><a href="new-users.html#overview" title="Up and Running - Overview">Back to top of page.</a> </p>
+<h2 id="set-up-your-promise-management-files">Set up your promise management files</h2>
+<p>Within the <strong>/var/cfengine/masterfiles/myPromises</strong> directory, create a skeleton promise file, and name it <strong>z01PromiseSetup.cf</strong>. (Doing so will make adding new promises in the future a lot easier.)</p>
+
+<p><strong>myPromises/z01PromiseSetup.cf</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">common</span> <span class="nf">z01_promise_setup</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">bundles</span><span class="p">&quot;</span> <span class="kt">slist</span>     <span class="o">=&gt;</span> <span class="p">{</span>
+                             <span class="s">&quot;&quot;</span><span class="p">,</span>
+    <span class="p">}</span> <span class="p">;</span>
+
+    <span class="p">&quot;</span><span class="nv">promise_files</span><span class="p">&quot;</span> <span class="kt">slist</span>
+                        <span class="o">=&gt;</span> <span class="p">{</span>
+                             <span class="s">&quot;&quot;</span><span class="p">,</span>
+    <span class="p">}</span> <span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>The bottom line:</strong> From this point forward, we will edit this file (and not <strong>promises.cf</strong>) to add new promises.</p>
+
+<p><a href="new-users.html#overview" title="Up and Running - Overview">Back to top of page.</a> </p>
+<h2 id="set-up-your-first-promise">Set up your first promise</h2><h3 id="create-a-hello-world-promise-file">Create a &quot;hello world&quot; promise file</h3>
+<p>Within the <strong>/var/cfengine/masterfiles/myPromises</strong> directory, create a file called <strong>a01SayHello.cf</strong>, with the following contents:</p>
+<h4 id="a01sayhello-cf">a01SayHello.cf</h4><div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">a01_say_hello</span>
+<span class="p">{</span>
+
+<span class="kd">methods</span><span class="p">:</span>
+    <span class="s">&quot;a01sayhello&quot;</span> <span class="kr">usebundle</span>
+                        <span class="o">=&gt;</span> <span class="nf">a01_run</span> <span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">a01_run</span>
+<span class="p">{</span>
+
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">myfile</span><span class="p">&quot;</span> <span class="kt">string</span>     <span class="o">=&gt;</span> <span class="s">&quot;/tmp/helloFromCfengine.txt&quot;</span> <span class="p">;</span>
+
+<span class="kd">files</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(myfile)</span><span class="s">&quot;</span>
+    <span class="kr">edit_line</span>           <span class="o">=&gt;</span> <span class="nf">a01_edit</span><span class="p">,</span>
+    <span class="kr">edit_defaults</span>       <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">,</span>
+    <span class="kr">perms</span>               <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">),</span>
+    <span class="kr">create</span>              <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span> 
+    <span class="kr">classes</span>             <span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;make_some_noise&quot;</span><span class="p">)</span> <span class="p">;</span>
+
+<span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">make_some_noise</span><span class="p">::</span>
+    <span class="s">&quot;Heads up - the </span><span class="si">$(this.promise_filename)</span><span class="s"> promise did its thing.&quot;</span> <span class="p">;</span>
+
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">a01_edit</span>
+<span class="p">{</span>
+
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">hello</span><span class="p">&quot;</span> <span class="kt">string</span>           <span class="o">=&gt;</span>
+<span class="s">&quot;If you are reading this, your promise worked on </span><span class="si">$(sys.fqhost)</span><span class="s"></span>
+<span class="s">Nice going!&quot;</span> <span class="p">;</span>
+
+<span class="kd">insert_lines</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(hello)</span><span class="s">&quot;</span> <span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="make-cfengine-aware-of-the-new-promise">Make CFEngine aware of the new promise</h3>
+<p>Now edit <strong>/var/cfengine/masterfiles/myPromises/z01PromiseSetup.cf</strong> as follows.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">common</span> <span class="nf">z01_promise_setup</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">bundles</span><span class="p">&quot;</span> <span class="kt">slist</span>     <span class="o">=&gt;</span> <span class="p">{</span>
+                             <span class="s">&quot;a01_say_hello&quot;</span><span class="p">,</span>
+    <span class="p">}</span> <span class="p">;</span>
+
+    <span class="p">&quot;</span><span class="nv">promise_files</span><span class="p">&quot;</span> <span class="kt">slist</span>
+                        <span class="o">=&gt;</span> <span class="p">{</span>
+                             <span class="s">&quot;myPromises/a01SayHello.cf&quot;</span><span class="p">,</span>
+    <span class="p">}</span> <span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><a href="new-users.html#overview" title="Up and Running - Overview">Back to top of page.</a> </p>
+<h2 id="start-your-cfengine-server">Start your CFEngine server</h2><h4 id="do-a-quick-syntax-check">Do a quick syntax check</h4>
+<p>Make sure you don&#39;t have any typos up to this point.</p>
+<div class="highlight"><pre><code class="text">  # cf-promises -f /var/cfengine/masterfiles/promises.cf
+</code></pre>
+</div>
+
+<p>If you see any error output, carefully review the messages for line numbers that are causing the problem. Reread earlier steps in this primer, and try to fix them.</p>
+<h4 id="fire-up-your-newly-configured-cfengine-server">Fire up your newly configured CFEngine server</h4>
+<p>The server is configured and ready to start. We will step through a couple one-time commands to get it going.</p>
+<div class="highlight"><pre><code class="text">  # cp -fr /var/cfengine/masterfiles/* /var/cfengine/inputs/
+
+  # /etc/init.d/cfengine3 start
+</code></pre>
+</div>
+
+<p><strong>TIPS</strong></p>
+
+<ul>
+<li>Don&#39;t forget to poke a hole in your firewall (and/or router ACL), so that any agents you add can reach the CFEngine server.</li>
+<li>CFEngine server listens for TCP connections on port 5308.</li>
+</ul>
+<h4 id="fire-up-an-agent-on-the-cfengine-server">Fire up an agent on the CFEngine server</h4>
+<p>Assuming you wish for the CFEngine server to manage itself (i.e. by running a CFEngine agent daemon, in addition to the server daemon), also run the following command.</p>
+<div class="highlight"><pre><code class="text">  # cf-agent --bootstrap cfmaster.me.local
+</code></pre>
+</div>
+
+<p>(Of course, replace <strong>cfmaster.me.local</strong> with your CFEngine server hostname. You are bootstrapping the server to itself.)</p>
+
+<p>You now have both a CFEngine server and a CFEngine agent running on your server system.</p>
+
+<ul>
+<li>CFEngine server files live in /var/cfengine/masterfiles</li>
+<li>CFEngine agent files live in /var/cfengine/inputs</li>
+</ul>
+
+<p><a href="new-users.html#overview" title="Up and Running - Overview">Back to top of page.</a> </p>
+<h2 id="install-and-configure-cfengine-agent-systems">Install and configure CFEngine agent systems</h2><h4 id="download-and-install">Download and install</h4>
+<p>Download the latest CFEngine 3.5 Community Edition packages from: <a href="http://cfengine.com/community">http://cfengine.com/community</a></p>
+
+<p>On each of your agent systems (the systems you want managed by CFEngine), install the appropriate RHEL or Debian package using <strong>rpm(8)</strong>, <strong>dpkg(1)</strong>, or whatever method you prefer.</p>
+
+<p><strong>Note:</strong> The same package is used for both <strong>server</strong> and <strong>agent</strong> installs. Use the same CFEngine version on the agents that you installed on the server.</p>
+<h4 id="start-the-agent">Start the agent</h4>
+<p>Getting the agent started is easy! We&#39;ve already done most of the work on the server. The agent will get everything it needs from the server&#39;s <strong>masterfiles</strong>, and keep them locally in <strong>/var/cfengine/inputs</strong>. Run the following on the agent system:</p>
+<div class="highlight"><pre><code class="text">  # cf-agent --bootstrap cfmaster.me.local
+</code></pre>
+</div>
+
+<p>(Of course, replace <strong>cfmaster.me.local</strong> with your CFEngine <em>server</em> hostname.)</p>
+
+<p>That&#39;s it! Your agent will soon begin executing the promises it receives from the server.</p>
+
+<p><a href="new-users.html#overview" title="Up and Running - Overview">Back to top of page.</a> </p>
+<h2 id="dissect-the-hello-world-promise">Dissect the &quot;hello world&quot; promise</h2>
+<p>Before continuing with further promise examples, let&#39;s back up a step and walk through notable lines in our first promise.</p>
+
+<p><strong>a01SayHello.cf</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">a01_say_hello</span>                                     <span class="c"># &lt;1&gt;</span>
+<span class="p">{</span>
+
+<span class="kd">methods</span><span class="p">:</span>                                                       <span class="c"># &lt;2&gt;</span>
+    <span class="s">&quot;a01sayhello&quot;</span> <span class="kr">usebundle</span>
+                        <span class="o">=&gt;</span> <span class="nf">a01_run</span> <span class="p">;</span>                           <span class="c"># &lt;3&gt;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">a01_run</span>
+<span class="p">{</span>
+
+<span class="kd">vars</span><span class="p">:</span>                                                          <span class="c"># &lt;4&gt;</span>
+    <span class="p">&quot;</span><span class="nv">myfile</span><span class="p">&quot;</span> <span class="kt">string</span>     <span class="o">=&gt;</span> <span class="s">&quot;/tmp/helloFromCfengine.txt&quot;</span> <span class="p">;</span>
+
+<span class="kd">files</span><span class="p">:</span>                                                         <span class="c"># &lt;5&gt;</span>
+    <span class="s">&quot;</span><span class="si">$(myfile)</span><span class="s">&quot;</span>                                                <span class="c"># &lt;6&gt;</span>
+    <span class="kr">edit_line</span>           <span class="o">=&gt;</span> <span class="nf">a01_edit</span><span class="p">,</span>                           <span class="c"># &lt;7&gt;</span>
+    <span class="kr">edit_defaults</span>       <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">,</span>                              <span class="c"># &lt;8&gt;</span>
+    <span class="kr">perms</span>               <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;644&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">),</span>           <span class="c"># &lt;9&gt;</span>
+    <span class="kr">create</span>              <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>                             <span class="c"># &lt;10&gt;</span>
+    <span class="kr">classes</span>             <span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;make_some_noise&quot;</span><span class="p">)</span> <span class="p">;</span>    <span class="c"># &lt;11&gt;</span>
+
+<span class="kd">reports</span><span class="p">:</span>                                                       <span class="c"># &lt;12&gt;</span>
+    <span class="nc">make_some_noise</span><span class="p">::</span>                                          <span class="c"># &lt;13&gt;</span>
+    <span class="s">&quot;Heads up - the </span><span class="si">$(this.promise_filename)</span><span class="s"> promise ran.&quot;</span> <span class="p">;</span>   <span class="c"># &lt;14&gt;</span>
+
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">a01_edit</span>                                      <span class="c"># &lt;15&gt;</span>
+<span class="p">{</span>
+
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">hello</span><span class="p">&quot;</span> <span class="kt">string</span>           <span class="o">=&gt;</span>                                <span class="c"># &lt;16&gt;</span>
+<span class="s">&quot;If you are reading this, your promise worked on </span><span class="si">$(sys.fqhost)</span><span class="s"></span>
+<span class="s">Nice going!&quot;</span>
+
+<span class="kd">insert_lines</span><span class="p">:</span>                                                  <span class="c"># &lt;17&gt;</span>
+    <span class="s">&quot;</span><span class="si">$(hello)</span><span class="s">&quot;</span> <span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Point by Point:</strong></p>
+
+<p><1> The <strong>a01&#95;say&#95;hello</strong> bundle is called by <strong>promises.cf</strong>, by way of the <strong>z01PromiseSetup.cf</strong> file we created. Recall that we specified <strong>a01&#95;say&#95;hello</strong> within the <strong>z01&#95;promise&#95;setup</strong> bundle.</p>
+
+<p><2> CFEngine bundles can have a <strong>methods</strong> section. It is used to call other bundles.</p>
+
+<p><3> Here we call the <strong>a01_run</strong> bundle, which is defined a few lines below.</p>
+
+<p><4> CFEngine bundles can have a <strong>vars</strong> section. It defines variables of type <strong>string</strong> or <strong>slist</strong> (roughly, string type and array type, respectively).</p>
+
+<p><5> CFEngine bundles can have a <strong>files</strong> section for specifying files and describing how they must be changed.</p>
+
+<p><6> The expanded value of <strong>$(myfile)</strong> is <strong>/tmp/helloFromCfengine.txt</strong>. This is the file we will be editing.</p>
+
+<p><7> The <code>[`edit_line`][files#edit_line]</code> directive says to call bundle <strong>a01_edit</strong>.</p>
+
+<p><8> This directive says to empty the file before editing it.</p>
+
+<p><9> The <strong>perms</strong> directive sets the file (m)ode to 644, the file (o)wner to root, and the file (g)roup owner to root.</p>
+
+<p><10> This directive says to create the file if it does not already exist.</p>
+
+<p><11> This directive says to set a <strong>class</strong> called <strong>make_some_noise</strong> to the value true, <em>if</em> CFEngine discovers that the file is not in the state it expected and therefore needs to edit it (either its content or its permissions). We will get to more examples of <strong>classes</strong> later, and they are further enumerated by URL references at the end of this primer.</p>
+
+<p><12> Remember when we set up a mailto address in the <strong>controls/cf_execd.cf</strong> server configuration? The <strong>reports</strong> section utilizes that address to send an email on anything we report about here. (It also logs a message, via syslog.)</p>
+
+<p><13> We are checking the <strong>make&#95;some&#95;noise</strong> class. If it&#39;s set to <strong>true</strong>, we generate the report (which gets emailed and logged). If it&#39;s set to <strong>false</strong>, we don&#39;t.</p>
+
+<p><14> This value is the message we report. The <strong>$(this.promise&#95;filename)</strong> is a special CFEngine variable. The <strong>$(this)</strong> variables are enumerated by a URL at the end of this primer.</p>
+
+<p><15> Another bundle, this time of type <strong>edit&#95;line</strong>.</p>
+
+<p><16> We define a variable, and assign it some text, including a special CFEngine variable called <strong>$(sys.fqhost)</strong>, which contains the system&#39;s fully-qualified hostname. The <strong>$(sys)</strong> variables are enumerated by a URL at the end of this primer.</p>
+
+<p><17> The <strong>edit&#95;line</strong> bundles can have an <strong>insert&#95;lines</strong> section. As you can probably guess, they insert into the file the text we specify.</p>
+
+<p><a href="new-users.html#overview" title="Up and Running - Overview">Back to top of page.</a> </p>
+<h2 id="set-up-a-global-classes-promise">Set up a global classes promise</h2>
+<p>To add flexibility to our promise files, we are going to set up a promise that provides <strong>global</strong> classes to our CFEngine environment. That means we can group hosts together arbitrarily, as needed.</p>
+
+<p>Within <strong>/var/cfengine/masterfiles/myPromises</strong>, create the <strong>z02GlobalClasses.cf</strong> file.</p>
+
+<p><strong>.z02GlobalClasses.cf</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">common</span> <span class="nf">z02_global_classes</span>
+<span class="p">{</span>
+
+<span class="kd">classes</span><span class="p">:</span>
+
+    <span class="c"># Define a single host using &#39;expression&#39;.</span>
+    <span class="c">#</span>
+    <span class="s">&quot;my_loghost&quot;</span> <span class="kr">expression</span>
+                        <span class="o">=&gt;</span> <span class="s">&quot;zeus&quot;</span> <span class="p">;</span>
+
+    <span class="c"># Define multiple hosts using &#39;or&#39;.</span>
+    <span class="c">#</span>
+    <span class="s">&quot;my_mongo_hosts&quot;</span> <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> 
+                              <span class="s">&quot;hypnos&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;athena&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;ares&quot;</span><span class="p">,</span>
+    <span class="p">}</span> <span class="p">;</span>
+
+    <span class="s">&quot;my_web_hosts&quot;</span> <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> 
+                              <span class="s">&quot;pluto&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;nyx&quot;</span><span class="p">,</span>
+    <span class="p">}</span> <span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="make-cfengine-aware-of-the-new-promise">Make CFEngine aware of the new promise</h4>
+<p>Update <strong>/var/cfengine/masterfiles/myPromises/z01PromiseSetup.cf</strong> as shown.</p>
+
+<p><strong>.z01PromiseSetup.cf</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">common</span> <span class="nf">z01_promise_setup</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">bundles</span><span class="p">&quot;</span> <span class="kt">slist</span>     <span class="o">=&gt;</span> <span class="p">{</span>
+                             <span class="s">&quot;z02_global_classes&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;a01_say_hello&quot;</span><span class="p">,</span>
+    <span class="p">}</span> <span class="p">;</span>
+
+    <span class="p">&quot;</span><span class="nv">promise_files</span><span class="p">&quot;</span> <span class="kt">slist</span>
+                        <span class="o">=&gt;</span> <span class="p">{</span>
+                             <span class="s">&quot;myPromises/z02GlobalClasses.cf&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;myPromises/a01SayHello.cf&quot;</span><span class="p">,</span>
+    <span class="p">}</span> <span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><a href="new-users.html#overview" title="Up and Running - Overview">Back to top of page.</a> </p>
+<h2 id="add-some-more-useful-promises">Add some more useful promises</h2>
+<p>Let&#39;s get serious now. You are probably loosely, incompletely familiar with the anatomy of a promise file at this point. If you think the way I do, you&#39;re ready for a lot more examples to pore over and learn from.</p>
+
+<p>Read through the promise files in this section, and then create them as they&#39;re labeled here, all within <strong>var/cfengine/masterfiles/myPromises</strong> on your CFEngine server.</p>
+
+<p><strong>Tip:</strong> Leave the <strong>/var/cfengine/masterfiles</strong> directory alone on agent systems. Only the server uses <strong>masterfiles</strong>. Agents read and execute promises from <strong>/var/cfengine/inputs</strong>.</p>
+<h4 id="install-packages-based-on-os">Install packages, based on OS</h4>
+<p>As always, create the new promise file in <strong>/var/cfengine/masterfiles/myPromises</strong>.</p>
+
+<p><strong>.b01BaselinePackages.cf</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">b01_baseline_packages</span>
+<span class="p">{</span>
+
+<span class="kd">methods</span><span class="p">:</span>
+    <span class="nc">redhat_6|debian_6|debian_7</span><span class="p">::</span>                       <span class="c"># &lt;1&gt;</span>
+    <span class="s">&quot;b01basepackages&quot;</span> <span class="kr">usebundle</span>
+                        <span class="o">=&gt;</span> <span class="nf">b01_run</span> <span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">b01_run</span>
+<span class="p">{</span>
+
+<span class="kd">vars</span><span class="p">:</span>
+
+    <span class="nc">redhat_6</span><span class="p">::</span>
+    <span class="p">&quot;</span><span class="nv">desired_packages</span><span class="p">&quot;</span> <span class="kt">slist</span>
+                        <span class="o">=&gt;</span> <span class="p">{</span>
+                             <span class="s">&quot;nc&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;rcs&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;sysstat&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;dump&quot;</span><span class="p">,</span>
+    <span class="p">}</span> <span class="p">;</span>
+
+    <span class="nc">debian_6|debian_7</span><span class="p">::</span>
+    <span class="p">&quot;</span><span class="nv">desired_packages</span><span class="p">&quot;</span> <span class="kt">slist</span>
+                        <span class="o">=&gt;</span> <span class="p">{</span>
+                             <span class="s">&quot;ntp&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;netcat&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;tcpdump&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;rcs&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;sysstat&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;sudo&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;dump&quot;</span><span class="p">,</span>
+    <span class="p">}</span> <span class="p">;</span>
+
+<span class="kd">packages</span><span class="p">:</span>                                             <span class="c"># &lt;2&gt;</span>
+
+    <span class="nc">redhat</span><span class="p">::</span>                                          <span class="c"># &lt;3&gt;</span>
+    <span class="s">&quot;</span><span class="si">$(desired_packages)</span><span class="s">&quot;</span>
+    <span class="kr">package_policy</span>      <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+    <span class="kr">package_method</span>      <span class="o">=&gt;</span> <span class="nf">generic</span> <span class="p">;</span>                  <span class="c"># &lt;4&gt;</span>
+
+    <span class="nc">debian</span><span class="p">::</span>                                          <span class="c"># &lt;5&gt;</span>
+    <span class="s">&quot;</span><span class="si">$(desired_packages)</span><span class="s">&quot;</span>
+    <span class="kr">package_policy</span>      <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+    <span class="kr">package_method</span>      <span class="o">=&gt;</span> <span class="nf">apt</span> <span class="p">;</span>                      <span class="c"># &lt;6&gt;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Point by Point:</strong></p>
+
+<p><1> Our next taste of CFEngine <strong>classes</strong>, and checking for true or false value. In this case, we are testing: Is this a RHEL 6 system, or a Debian 6 system, or a Debian 7 system? (The pipe &#39;|&#39; operator means OR in this context.) If it&#39;s one of those operating systems, we call the <strong>b01_run</strong> bundle.</p>
+
+<p><2> CFEngine bundles can have a <strong>packages</strong> section for managing packages.</p>
+
+<p><3> Another <strong>class</strong> test. This time, we are testing: Is this a RHEL system (of any major/minor version)? If so, we install the packages defined in <strong>$(desired_packages)</strong>.</p>
+
+<p><4> This directive chooses a suitable package installation method for us. Don&#39;t worry about it until you are ready to dig deeper into CFEngine.</p>
+
+<p><5> Another <strong>class</strong> test. Is this a Debian system (of any major/minor version)? If so, install the packages.</p>
+
+<p><6> This directive says to use <strong>apt(8)</strong>.</p>
+<h4 id="make-cfengine-aware-of-the-new-promise">Make CFEngine aware of the new promise</h4>
+<p>Update <strong>/var/cfengine/masterfiles/myPromises/z01PromiseSetup.cf</strong> as shown.</p>
+
+<p><strong>.z01PromiseSetup.cf</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">common</span> <span class="nf">z01_promise_setup</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">bundles</span><span class="p">&quot;</span> <span class="kt">slist</span>     <span class="o">=&gt;</span> <span class="p">{</span>
+                             <span class="s">&quot;z02_global_classes&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;a01_say_hello&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;b01_baseline_packages&quot;</span><span class="p">,</span>
+    <span class="p">}</span> <span class="p">;</span>
+
+    <span class="p">&quot;</span><span class="nv">promise_files</span><span class="p">&quot;</span> <span class="kt">slist</span>
+                        <span class="o">=&gt;</span> <span class="p">{</span>
+                             <span class="s">&quot;myPromises/z02GlobalClasses.cf&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;myPromises/a01SayHello.cf&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;myPromises/b01BaselinePackages.cf&quot;</span><span class="p">,</span>
+    <span class="p">}</span> <span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="manage-a-config-file-based-on-a-template">Manage a config file, based on a template</h4>
+<p>Before creating this next promise in <strong>/var/cfengine/masterfiles/myPromises</strong>, create a <strong>/var/cfengine/masterfiles/myTemplates/motd.txt</strong> file, with the text <strong>Hey, this is a template</strong> inside.</p>
+
+<p><strong>.b21ManageConfig.cf</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">b21_manage_config</span>
+<span class="p">{</span>
+
+<span class="kd">methods</span><span class="p">:</span>
+    <span class="nc">my_mongo_hosts</span><span class="p">::</span>                                              <span class="c"># &lt;1&gt;</span>
+    <span class="s">&quot;b21manageconf&quot;</span> <span class="kr">usebundle</span>
+                        <span class="o">=&gt;</span> <span class="nf">b21_run</span> <span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">b21_run</span>
+<span class="p">{</span>
+
+<span class="kd">vars</span><span class="p">:</span>
+
+    <span class="p">&quot;</span><span class="nv">source_dir</span><span class="p">&quot;</span> <span class="kt">string</span>
+                        <span class="o">=&gt;</span> <span class="s">&quot;/var/cfengine/inputs/myTemplates&quot;</span> <span class="p">;</span>   <span class="c"># &lt;2&gt;</span>
+
+    <span class="p">&quot;</span><span class="nv">source_file</span><span class="p">&quot;</span> <span class="kt">string</span>
+                        <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(source_dir)</span><span class="s">/motd.txt&quot;</span> <span class="p">;</span>
+
+
+<span class="kd">files</span><span class="p">:</span>
+
+    <span class="s">&quot;/tmp/motd&quot;</span>
+    <span class="kr">perms</span>               <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;640&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">),</span>
+    <span class="kr">create</span>              <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+    <span class="kr">edit_defaults</span>       <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">,</span>
+    <span class="kr">edit_line</span>           <span class="o">=&gt;</span> <span class="nf">expand_template</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(source_file)</span><span class="s">&quot;</span><span class="p">)</span> <span class="p">;</span>    <span class="c"># &lt;3&gt;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Point by Point:</strong></p>
+
+<p><1> This test utilizes the <strong>my_mongo_hosts</strong> class, which we defined earlier in <strong>z02GlobalClasses.cf</strong>.</p>
+
+<p><2> Notice how we have specified a path under the <strong>inputs</strong> directory? This is because agents use the <strong>/var/cfengine/inputs</strong> directory, NOT <strong>/var/cfengine/masterfiles</strong>!</p>
+
+<p><3> Here is something new and significant. This is how we are going to manage almost all configuration files in this primer. We create a template within <strong>myTemplates</strong>, and we use the <strong>edit&#95;line</strong> and <strong>expand&#95;template</strong> directive to populate it on agent systems. In this case, <strong>/var/cfengine/inputs/myTemplates/motd.txt</strong> will be created as <strong>/tmp/motd</strong> on agent systems.</p>
+
+<p><strong>Remember:</strong> We create CFEngine server promise files within <strong>/var/cfengine/masterfiles</strong>. The CFEngine agents consume those files within <strong>/var/cfengine/inputs</strong>.</p>
+<h4 id="make-cfengine-aware-of-the-new-promise">Make CFEngine aware of the new promise</h4>
+<p>Update <strong>/var/cfengine/masterfiles/myPromises/z01PromiseSetup.cf</strong> as shown.</p>
+
+<p><strong>.z01PromiseSetup.cf</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">common</span> <span class="nf">z01_promise_setup</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">bundles</span><span class="p">&quot;</span> <span class="kt">slist</span>     <span class="o">=&gt;</span> <span class="p">{</span>
+                             <span class="s">&quot;z02_global_classes&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;a01_say_hello&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;b01_baseline_packages&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;b21_manage_config&quot;</span><span class="p">,</span>
+    <span class="p">}</span> <span class="p">;</span>
+
+    <span class="p">&quot;</span><span class="nv">promise_files</span><span class="p">&quot;</span> <span class="kt">slist</span>
+                        <span class="o">=&gt;</span> <span class="p">{</span>
+                             <span class="s">&quot;myPromises/z02GlobalClasses.cf&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;myPromises/a01SayHello.cf&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;myPromises/b01BaselinePackages.cf&quot;</span><span class="p">,</span>
+                             <span class="s">&quot;myPromises/b21ManageConfig.cf&quot;</span><span class="p">,</span>
+    <span class="p">}</span> <span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>You understand how we&#39;re using <strong>z01PromiseSetup.cf</strong> now, right? For every promise we want to make CFEngine aware of, we need to:</p>
+
+<ul>
+<li>Add the bundle name to the <strong>bundles</strong> slist.</li>
+<li>Add the promise file name to the <strong>promise_files</strong> slist.</li>
+</ul>
+<h4 id="manage-a-config-file-on-a-per-host-basis">Manage a config file, on a per-host basis</h4>
+<p>Before creating this next promise in <strong>/var/cfengine/masterfiles/myPromises</strong>, create a <strong>/var/cfengine/masterfiles/myTemplates/motd.HOSTNAME.txt</strong> file, with the text <strong>Hey, this is a per-host template</strong> inside.</p>
+
+<p>Replace <strong>HOSTNAME</strong> in the file path with your agent&#39;s unqualified hostname. (So <strong>pluto.me.local</strong> has an unqualified hostname of <strong>pluto</strong>.)</p>
+
+<p><strong>.b22ManageConfigByHostname.cf</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">b22_manage_config_by_hostname</span>
+<span class="p">{</span>
+
+<span class="kd">methods</span><span class="p">:</span>
+    <span class="nc">my_mongo_hosts</span><span class="p">::</span>
+    <span class="s">&quot;b22manageconfbyhost&quot;</span> <span class="kr">usebundle</span>
+                        <span class="o">=&gt;</span> <span class="nf">b22_run</span> <span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">b22_run</span>
+<span class="p">{</span>
+
+<span class="kd">vars</span><span class="p">:</span>
+
+    <span class="p">&quot;</span><span class="nv">source_dir</span><span class="p">&quot;</span> <span class="kt">string</span>
+                        <span class="o">=&gt;</span> <span class="s">&quot;/var/cfengine/inputs/myTemplates&quot;</span> <span class="p">;</span>
+
+    <span class="p">&quot;</span><span class="nv">source_file</span><span class="p">&quot;</span> <span class="kt">string</span>
+       <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(source_dir}</span><span class="s">/motd.</span><span class="si">$(sys.uqhost)</span><span class="s">.txt&quot;</span> <span class="p">;</span>              <span class="c"># &lt;1&gt;</span>
+
+
+<span class="kd">files</span><span class="p">:</span>
+
+    <span class="s">&quot;/tmp/motd_again&quot;</span>
+    <span class="kr">perms</span>               <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;640&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">),</span>
+    <span class="kr">create</span>              <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+    <span class="kr">edit_defaults</span>       <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">,</span>
+    <span class="kr">edit_line</span>           <span class="o">=&gt;</span> <span class="nf">expand_template</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(source_file)</span><span class="s">&quot;</span><span class="p">)</span> <span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Point by Point:</strong></p>
+
+<p><1> Another special CFEngine variable example. The <strong>$(sys.uqhost)</strong> variable expands to the agent&#39;s unqualified hostname. This is a good strategy for customizing configurations on a per-host basis. For instance, the <strong>iris.me.local</strong> host (unqualified name <strong>iris</strong>) would look for the file <strong>/var/cfengine/inputs/myTemplates/motd.iris.txt</strong>.</p>
+
+<p><strong>Note:</strong> Update <strong>myPromises/z01PromiseSetup.cf</strong> to include this promise.</p>
+<h4 id="manage-a-config-file-and-restart-a-service">Manage a config file, and restart a service</h4>
+<p>As always, create the new promise file in <strong>/var/cfengine/masterfiles/myPromises</strong>.</p>
+
+<p><strong>.b23ManageConfigAndServiceRestart.cf</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">b23_manage_config_and_restart_service</span>
+<span class="p">{</span>
+
+<span class="kd">methods</span><span class="p">:</span>
+    <span class="nc">my_mongo_hosts</span><span class="p">::</span>
+    <span class="s">&quot;b23manageconfrestart&quot;</span> <span class="kr">usebundle</span>
+                        <span class="o">=&gt;</span> <span class="nf">b23_run</span> <span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">b23_run</span>
+<span class="p">{</span>
+
+<span class="kd">vars</span><span class="p">:</span>
+
+    <span class="p">&quot;</span><span class="nv">source_dir</span><span class="p">&quot;</span> <span class="kt">string</span>
+                        <span class="o">=&gt;</span> <span class="s">&quot;/var/cfengine/inputs/myTemplates&quot;</span> <span class="p">;</span>
+
+    <span class="p">&quot;</span><span class="nv">source_file</span><span class="p">&quot;</span> <span class="kt">string</span>
+                        <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(source_dir}</span><span class="s">/baz_service.txt&quot;</span> <span class="p">;</span>        <span class="c"># &lt;1&gt;</span>
+
+
+<span class="kd">files</span><span class="p">:</span>
+
+   <span class="s">&quot;/etc/baz/.&quot;</span>                                                     <span class="c"># &lt;2&gt;</span>
+    <span class="kr">handle</span>              <span class="o">=&gt;</span> <span class="s">&quot;b23_create_bazdir&quot;</span><span class="p">,</span>                     <span class="c"># &lt;3&gt;</span>
+    <span class="kr">create</span>              <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+    <span class="kr">perms</span>               <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;0750&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">,</span><span class="s">&quot;bazgroup&quot;</span><span class="p">)</span> <span class="p">;</span>
+
+    <span class="s">&quot;/etc/baz/main.conf&quot;</span>
+    <span class="kr">depends_on</span>          <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;b23_create_bazdir&quot;</span> <span class="p">},</span>                 <span class="c"># &lt;4&gt;</span>
+    <span class="kr">perms</span>               <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;640&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">,</span><span class="s">&quot;bazgroup&quot;</span><span class="p">),</span>
+    <span class="kr">create</span>              <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+    <span class="kr">edit_defaults</span>       <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">,</span>
+    <span class="kr">edit_line</span>           <span class="o">=&gt;</span> <span class="nf">expand_template</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(source_file)</span><span class="s">&quot;</span><span class="p">),</span>       <span class="c"># &lt;5&gt;</span>
+    <span class="kr">classes</span>      <span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;restart_baz_service&quot;</span><span class="p">)</span> <span class="p">;</span>
+
+<span class="kd">commands</span><span class="p">:</span>                                                           <span class="c"># &lt;6&gt;</span>
+
+    <span class="nc">restart_baz_service</span><span class="p">::</span>
+    <span class="s">&quot;/etc/init.d/baz restart&quot;</span> <span class="p">;</span>
+
+<span class="kd">reports</span><span class="p">:</span>
+
+    <span class="nc">restart_baz_service</span><span class="p">::</span>
+    <span class="s">&quot;baz was configured and restarted&quot;</span> <span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Point by Point:</strong></p>
+
+<p><1> The config file template. Again, notice that it&#39;s looking in the <strong>inputs</strong> directory, because that is where agents look!</p>
+
+<p><2> Directories need a dot (.) at the end. They just do.</p>
+
+<p><3> The <strong>handle</strong> directive is used to identify this part of the promise to later parts of the promise. We can handle flow control this way.</p>
+
+<p><4> The <strong>depends&#95;on</strong> directive works hand-in-hand with the earlier <strong>handle</strong> directive. It means that this part of the promise will only run if <strong>b23&#95;create&#95;bazdir</strong> has already successfully completed. The convergent nature of CFEngine means this may take several passes of the promise file for it to complete.</p>
+
+<p><5> Our <strong>edit&#95;line</strong> and <strong>expand&#95;template</strong> combo again. Manage your config files this way. It is reliable and easy to understand from a sysadmin perspective.</p>
+
+<p><6> CFEngine bundles can have a <strong>commands</strong> section which can issue commands directly to the system&#39;s shell. In CFEngine culture, these are to be used sparingly. But a service restart is a good candidate for appropriate use.</p>
+
+<p><strong>Note:</strong> Update <strong>myPromises/z01PromiseSetup.cf</strong> to include this promise.</p>
+<h4 id="add-a-group-to-etc-group">Add a group to /etc/group</h4>
+<p>As always, create the new promise file in <strong>/var/cfengine/masterfiles/myPromises</strong>.</p>
+
+<p><strong>.b31AddGroup.cf</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">b31_add_group</span>
+<span class="p">{</span>
+
+<span class="kd">methods</span><span class="p">:</span>
+    <span class="nc">debian.my_mongo_hosts</span><span class="p">::</span>                             <span class="c"># &lt;1&gt;</span>
+    <span class="s">&quot;b31addgroup&quot;</span> <span class="kr">usebundle</span>
+                        <span class="o">=&gt;</span> <span class="nf">b31_run</span> <span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">b31_run</span>
+<span class="p">{</span>
+
+<span class="kd">vars</span><span class="p">:</span>
+
+    <span class="s">&quot;group[dbas]&quot;</span> <span class="nf">string</span>                                <span class="c"># &lt;2&gt;</span>
+                        <span class="o">=&gt;</span> <span class="s">&quot;dbas:x:15101:&quot;</span> <span class="p">;</span>            <span class="c"># &lt;3&gt;</span>
+
+    <span class="p">&quot;</span><span class="nv">group[nodedevs]</span><span class="p">&quot;</span> <span class="kt">string</span>
+                        <span class="o">=&gt;</span> <span class="s">&quot;devs:x:16101:&quot;</span> <span class="p">;</span>            <span class="c"># &lt;4&gt;</span>
+
+
+<span class="kd">files</span><span class="p">:</span>
+
+    <span class="s">&quot;/etc/group&quot;</span>
+    <span class="kr">edit_line</span>
+      <span class="o">=&gt;</span> <span class="nf">append_groups_starting</span><span class="p">(</span><span class="s">&quot;b31_run.group&quot;</span><span class="p">)</span> <span class="p">;</span>      <span class="c"># &lt;5&gt;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Point by Point:</strong></p>
+
+<p><1> Another nice <strong>classes</strong> example. Here, we are testing whether the agent system is a Debian (of any version) OS, and is also in the <strong>my&#95;mongo&#95;hosts</strong> class we defined in <strong>z02GlobalClasses.cf</strong>. The dot &#39;.&#39; operator means AND in this context.</p>
+
+<p><2> This is a different type of variable naming than we are accustomed to seeing. Suffice it to say, it allows us to add multiple name/value pairs to the <strong>$(group)</strong> variable. It acts like an associative array, or hash.</p>
+
+<p><3> This string of text is formatted exactly the way we want it to appear in <strong>/etc/group</strong>.</p>
+
+<p><4> Another string of text we want to appear in <strong>/etc/group</strong>.</p>
+
+<p><5> Insert the group[] entries into <strong>/etc/group</strong>.</p>
+
+<p><strong>Tip:</strong> We specify <strong>b31&#95;run.group</strong>, and not <strong>$(b31&#95;run.group)</strong>. That&#39;s not a typo; it&#39;s just the way we qualify this type of variable. Try to not think about it too hard (until you are ready to dig deeper into CFEngine).</p>
+
+<p><strong>Note:</strong> Update <strong>myPromises/z01PromiseSetup.cf</strong> to include this promise.</p>
+<h4 id="add-a-shell-user">Add a shell user</h4>
+<p>As always, create the new promise file in <strong>/var/cfengine/masterfiles/myPromises</strong>.</p>
+
+<p><strong>.b32AddShellUser.cf</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">b32_add_shell_user</span>
+<span class="p">{</span>
+
+<span class="kd">methods</span><span class="p">:</span>
+    <span class="nc">nyx|iris|pluto</span><span class="p">::</span>                                             <span class="c"># &lt;1&gt;</span>
+    <span class="s">&quot;b32addshelluser&quot;</span> <span class="kr">usebundle</span>
+                        <span class="o">=&gt;</span> <span class="nf">b32_run</span> <span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">b32_run</span>
+<span class="p">{</span>
+
+<span class="kd">vars</span><span class="p">:</span>
+
+    <span class="p">&quot;</span><span class="nv">pwd[qing]</span><span class="p">&quot;</span> <span class="kt">string</span>
+       <span class="o">=&gt;</span> <span class="s">&quot;qing:x:18055:15101::/home/qing:/bin/bash&quot;</span> <span class="p">;</span>           <span class="c"># &lt;2&gt;</span>
+
+    <span class="p">&quot;</span><span class="nv">pwd[liu]</span><span class="p">&quot;</span> <span class="kt">string</span>
+       <span class="o">=&gt;</span> <span class="s">&quot;liu:x:18056:15101::/home/liu:/bin/bash&quot;</span> <span class="p">;</span>
+
+    <span class="c"># --------</span>
+
+    <span class="p">&quot;</span><span class="nv">shadow[qing]</span><span class="p">&quot;</span> <span class="kt">string</span>
+       <span class="o">=&gt;</span> <span class="s">&quot;qing:$6$VyKJ5BZv$bfOvuqigJEB:15904:0:99999:7:::&quot;</span> <span class="p">;</span>    <span class="c"># &lt;3&gt;</span>
+
+    <span class="p">&quot;</span><span class="nv">shadow[liu]</span><span class="p">&quot;</span> <span class="kt">string</span>
+       <span class="o">=&gt;</span> <span class="s">&quot;liu:$6$kNtT24lu$RtfPROpqbaw:15904:0:99999:7:::&quot;</span> <span class="p">;</span>
+
+<span class="kd">files</span><span class="p">:</span>
+
+    <span class="s">&quot;/home/qing/.&quot;</span>
+    <span class="kr">create</span>              <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+    <span class="kr">perms</span>               <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;0755&quot;</span><span class="p">,</span><span class="s">&quot;18055&quot;</span><span class="p">,</span><span class="s">&quot;15101&quot;</span><span class="p">)</span> <span class="p">;</span>
+
+    <span class="s">&quot;/home/liu/.&quot;</span>
+    <span class="kr">create</span>              <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+    <span class="kr">perms</span>               <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;0755&quot;</span><span class="p">,</span><span class="s">&quot;18056&quot;</span><span class="p">,</span><span class="s">&quot;15101&quot;</span><span class="p">)</span> <span class="p">;</span>
+
+    <span class="s">&quot;/etc/shadow&quot;</span>
+    <span class="kr">handle</span>              <span class="o">=&gt;</span> <span class="s">&quot;b32_create_shadow_entry&quot;</span><span class="p">,</span>            <span class="c"># &lt;4&gt;</span>
+    <span class="kr">edit_line</span>
+      <span class="o">=&gt;</span> <span class="nf">append_users_starting</span><span class="p">(</span><span class="s">&quot;b32_run.shadow&quot;</span><span class="p">)</span> <span class="p">;</span>               <span class="c"># &lt;5&gt;</span>
+
+    <span class="s">&quot;/etc/passwd&quot;</span>
+    <span class="kr">depends_on</span>      <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;b32_create_shadow_entry&quot;</span> <span class="p">},</span>            <span class="c"># &lt;6&gt;</span>
+    <span class="kr">edit_line</span>       <span class="o">=&gt;</span> <span class="nf">append_users_starting</span><span class="p">(</span><span class="s">&quot;b32_run.pwd&quot;</span><span class="p">)</span> <span class="p">;</span>    <span class="c"># &lt;7&gt;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Point by Point:</strong></p>
+
+<p><1> Another classes example. This is testing the unqualified hostname, and evaluating to true if hostname is <strong>iris</strong> or <strong>nyx</strong> or <strong>pluto</strong>.</p>
+
+<p><2> A string that&#39;s formatted exactly the way we want it to appear in <strong>/etc/passwd</strong>.</p>
+
+<p><3> A string that&#39;s formatted the way we want it to appear in <strong>/etc/shadow</strong>. (The salted password digest has been truncated for the sake of brevity!)</p>
+
+<p><4> Another handle example. It will allow this part of the promise to be identified by later promise parts that run.</p>
+
+<p><5> Insert the shadow[] entries into <strong>/etc/shadow</strong>.</p>
+
+<p><6> Only run this part of the promise after <strong>b32&#95;create&#95;shadow&#95;entry</strong> has already completed.</p>
+
+<p><7> Insert pwd[] entries into <strong>/etc/passwd</strong>.</p>
+
+<p><strong>Note:</strong> Update <strong>myPromises/z01PromiseSetup.cf</strong> to include this promise.</p>
+<h4 id="report-on-existence-of-files-and-users">Report on existence of files and users</h4>
+<p>As always, create the new promise file in <strong>/var/cfengine/masterfiles/myPromises</strong>.</p>
+
+<p><strong>.b41ReportOnExistence.cf</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">b41_report_on_existence</span>
+<span class="p">{</span>
+
+<span class="kd">methods</span><span class="p">:</span>
+
+    <span class="p">(</span><span class="nf">my_mongo_hosts</span><span class="err">|</span><span class="nf">my_web_hosts</span><span class="p">)</span><span class="nc">.!debian</span><span class="p">::</span>                       <span class="c"># &lt;1&gt;</span>
+    <span class="s">&quot;b41report&quot;</span> <span class="kr">usebundle</span>
+                        <span class="o">=&gt;</span> <span class="nf">b41_run</span> <span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">b41_run</span>
+<span class="p">{</span>
+
+<span class="kd">vars</span><span class="p">:</span>
+
+    <span class="p">&quot;</span><span class="nv">important_dir</span><span class="p">&quot;</span> <span class="kt">string</span>
+                        <span class="o">=&gt;</span> <span class="s">&quot;/usr/local/etc/my_stuff&quot;</span> <span class="p">;</span>
+
+    <span class="p">&quot;</span><span class="nv">annoying_file</span><span class="p">&quot;</span> <span class="kt">string</span>
+                        <span class="o">=&gt;</span> <span class="s">&quot;/tmp/large_nonsense_data&quot;</span> <span class="p">;</span>
+
+    <span class="p">&quot;</span><span class="nv">banned_user</span><span class="p">&quot;</span> <span class="kt">string</span>
+                        <span class="o">=&gt;</span> <span class="s">&quot;george&quot;</span> <span class="p">;</span>
+
+<span class="kd">classes</span><span class="p">:</span>
+
+    <span class="s">&quot;dir_test01&quot;</span> <span class="kr">expression</span>
+                        <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(important_dir)</span><span class="s">/.&quot;</span><span class="p">)</span> <span class="p">;</span>     <span class="c"># &lt;2&gt;</span>
+
+    <span class="s">&quot;file_test01&quot;</span> <span class="kr">expression</span>
+                        <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(annoying_file)</span><span class="s">&quot;</span><span class="p">)</span> <span class="p">;</span>
+
+    <span class="s">&quot;user_test01&quot;</span> <span class="kr">expression</span>
+                        <span class="o">=&gt;</span> <span class="nf">userexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(banned_user)</span><span class="s">&quot;</span><span class="p">)</span> <span class="p">;</span>         <span class="c"># &lt;3&gt;</span>
+
+<span class="kd">reports</span><span class="p">:</span>
+
+    <span class="nc">!dir_test01</span><span class="p">::</span>                                                 <span class="c"># &lt;4&gt;</span>
+    <span class="s">&quot;</span><span class="si">$(important_dir)</span><span class="s"> does not exist on </span><span class="si">$(sys.fqhost)</span><span class="s">!&quot;</span> <span class="p">;</span>
+
+    <span class="nc">file_test01</span><span class="p">::</span>
+    <span class="s">&quot;Please clean up </span><span class="si">$(file_test01)</span><span class="s">&quot;</span> <span class="p">;</span>
+
+    <span class="nc">user_test01</span><span class="p">::</span>
+    <span class="s">&quot;</span><span class="si">$(banned_user)</span><span class="s"> needs to be removed from </span><span class="si">$(sys.fqhost)</span><span class="s">&quot;</span> <span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Point by Point:</strong></p>
+
+<p><1> A more advances <strong>classes</strong> test from which to learn. In this case, we logically group &#39;()&#39; two classes together, and utilize the negation &#39;!&#39; operator. So, if the agent is in our defined <strong>my&#95;mongo&#95;hosts</strong> OR in our defined <strong>my&#95;web&#95;hosts</strong> AND it&#39;s not a Debian host, it evaluates to true, and we run the <strong>b41&#95;run</strong> bundle.</p>
+
+<p><2> The <strong>fileexists()</strong> function, as you can probably deduce, checks for the presence of a file on the filesystem. There are a number of CFEngine built-in functions which are enumerated in a URL in this primer&#39;s appendix.</p>
+
+<p><3> Another function. This one tests for the existence of a shell user.</p>
+
+<p><4> Another example of using a negation operator on a class. If <strong>dir_test01</strong> is false, then we run this report.</p>
+
+<p><strong>Note:</strong> Update <strong>myPromises/z01PromiseSetup.cf</strong> to include this promise.</p>
+
+<p><a href="new-users.html#overview" title="Up and Running - Overview">Back to top of page.</a> </p>
+<h2 id="commands-for-controlling-cfengine">Commands for controlling CFEngine</h2><h3 id="useful-server-commands">Useful server commands</h3>
+<p>So you&#39;ve just updated your promises, and you want to make them immediately available to your agents? (In your test environment. Because we test before deploying anywhere important.) You can wait for CFEngine to run through its normal procedures (in which case it can take five, ten, or fifteen minutes before the agents execute the promises, for reasons beyond the scope of this primer). Or you can speed things up a bit.</p>
+<h4 id="validate-your-promise-changes">Validate your promise changes</h4><div class="highlight"><pre><code class="text">  # cf-promises -f /var/cfengine/masterfiles/promises.cf
+</code></pre>
+</div>
+
+<p>If there is a syntactical problem with your promises, CFEngine will complain here and point you to a file and line number. Do not proceed until you&#39;ve fixed any problems.</p>
+<h4 id="update-what-s-available-for-your-agents-to-pull">Update what&#39;s available for your agents to pull</h4><div class="highlight"><pre><code class="text">  # cf-agent -IKf /var/cfengine/masterfiles/update.cf
+</code></pre>
+</div>
+
+<p>That&#39;s that. Now observe one of your agents, or speed things up there too..</p>
+<h3 id="useful-agent-commands">Useful agent commands</h3><h4 id="immediately-pull-the-latest-promise-updates-from-the-server">Immediately pull the latest promise updates from the server</h4><div class="highlight"><pre><code class="text">  # cf-agent -IKf /var/cfengine/inputs/update.cf
+</code></pre>
+</div>
+
+<p>Remember, this is only if you wish to speed things up and not wait for CFEngine to take care of it naturally via its daemon processes. Notice how we are using the <strong>inputs</strong> directory here. Agents care only about <strong>inputs</strong>, not <strong>masterfiles</strong>.</p>
+<h4 id="immediately-execute-promises">Immediately execute promises</h4><div class="highlight"><pre><code class="text">  # cf-agent -IKf /var/cfengine/inputs/promises.cf
+</code></pre>
+</div>
+
+<p>That&#39;s that.</p>
+<h3 id="more-useful-agent-commands">More useful agent commands</h3><h4 id="query-the-status-of-a-single-promise-bundle">Query the status of a single promise bundle</h4><div class="highlight"><pre><code class="text">  # cf-agent -vnb *b21_manage_config*
+</code></pre>
+</div>
+<h4 id="print-the-percentage-of-promises-currently-kept">Print the percentage of promises currently kept</h4><div class="highlight"><pre><code class="text">  # cf-agent -vn
+</code></pre>
+</div>
+
+<p>The percentage of currently-kept promises gives us the percentage of promises that have successfully executed, the percentage that will be fixed on the next CFEngine run, and the percentage that were unable to execute. (You may be able to drill down on details by carefully reviewing the output from this command.)</p>
+<h4 id="print-only-promises-that-are-currently-unable-to-execute">Print only promises that are currently unable to execute</h4><div class="highlight"><pre><code class="text">  # cf-agent -n
+</code></pre>
+</div>
+
+<p><a href="new-users.html#overview" title="Up and Running - Overview">Back to top of page.</a> </p>
+
+<hr>
+<h2 id="cfengine-official-resources">CFEngine official resources</h2><h3 id="special-variables">Special variables</h3>
+<ul>
+<li>$(sys): <a href="https://cfengine.com/docs/3.5/reference-special-variables-context-sys.html">https://cfengine.com/docs/3.5/reference-special-variables-context-sys.html</a></li>
+<li>$(this): <a href="https://cfengine.com/docs/3.5/reference-special-variables-context-this.html">https://cfengine.com/docs/3.5/reference-special-variables-context-this.html</a></li>
+</ul>
+<h3 id="classes-functions-and-files">Classes, functions, and files</h3>
+<ul>
+<li>Hard and soft classes: <a href="https://cfengine.com/docs/3.5/reference-classes.html">https://cfengine.com/docs/3.5/reference-classes.html</a></li>
+<li>Date and time classes: <a href="https://cfengine.com/archive/manuals/st-schedule">https://cfengine.com/archive/manuals/st-schedule</a></li>
+<li>Functions: <a href="https://cfengine.com/docs/3.5/tags/functions.html">https://cfengine.com/docs/3.5/tags/functions.html</a></li>
+<li>Files: <a href="https://cfengine.com/docs/3.5/reference-promise-types-files.html">https://cfengine.com/docs/3.5/reference-promise-types-files.html</a></li>
+</ul>
+<h3 id="community">Community</h3>
+<ul>
+<li>CFEngine Google Group: <a href="https://groups.google.com/forum/#!forum/help-cfengine">https://groups.google.com/forum/#!forum/help-cfengine</a></li>
+</ul>
+
+<hr>
+<h2 id="license">License</h2>
+<p><strong>Get Up and Running Quickly with CFEngine 3.5 Community Edition</strong> by Erik Schwartz is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/">http://creativecommons.org/licenses/by-sa/3.0/</a>.</p>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/examples/tutorials/new-users.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

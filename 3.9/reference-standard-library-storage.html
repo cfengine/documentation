@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.9  Documentation - Storage Bundles and Bodies</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.9/assets/global-bbcdf8cb2135dbef89c4d6d19c9604bb.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Storage Bundles and Bodies";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+                       <option value="/docs/3.9/index.html" selected>Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+                       <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:eahkid3txr8" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-standard-library.html">Standard Library</a><ul class="level2"><li><a href="reference-standard-library-common.html">Common Bodies and Bundles</a></li><li><a href="reference-standard-library-commands.html">Commands Bundles and Bodies</a></li><li><a href="reference-standard-library-databases.html">Databases Bundles and Bodies</a></li><li><a href="reference-standard-library-files.html">Files Bundles and Bodies</a></li><li><a href="reference-standard-library-monitor.html">Monitor Bundles and Bodies</a></li><li><a href="reference-standard-library-package_modules.html">Package Modules</a></li><li><a href="reference-standard-library-packages.html">Packages Bundles and Bodies</a></li><li><a href="reference-standard-library-processes.html">Processes Bundles and Bodies</a></li><li><a href="reference-standard-library-users.html">Users Bundles and Bodies</a></li><li><a href="reference-standard-library-services.html">Services Bundles and Bodies</a></li><li><a class="active" href="reference-standard-library-storage.html">Storage Bundles and Bodies</a></li><li><a href="reference-standard-library-vcs.html">Version Control Bodies and Bundles</a></li></ul></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-standard-library.html">Standard Library</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Storage Bundles and Bodies
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>See the <a href="reference-promise-types-storage.html" title="storage"><code>storage</code> promises</a> documentation for a
+comprehensive reference on the body types and attributes used here.</p>
+
+<p>To use these bodies, add the following to your policy:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">file</span> <span class="k">control</span>
+<span class="p">{</span>
+    <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;storage.cf&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="volume-bodies"><a href="reference-promise-types-storage.html#volume" title="storage - volume">volume</a> bodies</h3><h4 id="min_free_space">min_free_space</h4>
+<p><strong>Prototype:</strong> <code>min_free_space(free)</code></p>
+
+<p><strong>Description:</strong> Warn if the storage doesn&#39;t have at least <code>free</code> free space.</p>
+
+<p>A warnings is also generated if the storage is smaller than 10K or as
+less than 2 file entries.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>free</code>: Absolute or percentage minimum disk space that should be
+available before warning</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">volume</span> <span class="nf">min_free_space</span><span class="p">(</span><span class="nv">free</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">check_foreign</span>  <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">;</span>
+      <span class="kr">freespace</span>      <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(free)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">sensible_size</span>  <span class="o">=&gt;</span> <span class="s">&quot;10000&quot;</span><span class="p">;</span>
+      <span class="kr">sensible_count</span> <span class="o">=&gt;</span> <span class="s">&quot;2&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="mount-bodies"><a href="reference-promise-types-storage.html#mount" title="storage - mount">mount</a> bodies</h3><h4 id="nfs">nfs</h4>
+<p><strong>Prototype:</strong> <code>nfs(server, source)</code></p>
+
+<p><strong>Description:</strong> Mounts the storage at <a href="reference-promise-types-files.html#source" title="files - source"><code>source</code></a> on <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>server</code></a> via nfs protocol.</p>
+
+<p>Also modifies the file system table.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>server</code>: Hostname or IP of remote server</li>
+<li><code>source</code>: Path of remote file system to mount</li>
+</ul>
+
+<p><strong>See also:</strong> <a href="reference-standard-library-storage.html#nfs_p"><code>nfs_p()</code></a>, <a href="reference-standard-library-storage.html#unmount"><code>unmount()</code></a></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">mount</span> <span class="nf">nfs</span><span class="p">(</span><span class="nv">server</span><span class="p">,</span><span class="nv">source</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">mount_type</span> <span class="o">=&gt;</span> <span class="s">&quot;nfs&quot;</span><span class="p">;</span>
+      <span class="kr">mount_source</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(source)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">mount_server</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(server)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">edit_fstab</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="nfs_p">nfs_p</h4>
+<p><strong>Prototype:</strong> <code>nfs_p(server, source, perm)</code></p>
+
+<p><strong>Description:</strong> Mounts the storage via nfs, with <code>perm</code> passed as options to mount.</p>
+
+<p>Also modifies the file system table.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>server</code>: Hostname or IP of remote server</li>
+<li><code>source</code>: Path of remote file system to mount</li>
+<li><code>perm</code>: A list of options that&#39;s passed to the mount command</li>
+</ul>
+
+<p><strong>See also:</strong> <code>nfs</code>, <a href="reference-standard-library-storage.html#unmount"><code>unmount()</code></a></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">mount</span> <span class="nf">nfs_p</span><span class="p">(</span><span class="nv">server</span><span class="p">,</span><span class="nv">source</span><span class="p">,</span><span class="nv">perm</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">mount_type</span> <span class="o">=&gt;</span> <span class="s">&quot;nfs&quot;</span><span class="p">;</span>
+      <span class="kr">mount_source</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(source)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">mount_server</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(server)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">mount_options</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;</span><span class="si">$(perm)</span><span class="s">&quot;</span><span class="p">};</span>
+      <span class="kr">edit_fstab</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="unmount">unmount</h4>
+<p><strong>Prototype:</strong> <code>unmount</code></p>
+
+<p><strong>Description:</strong> Unmounts the nfs storage.</p>
+
+<p>Also modifies the file system table.</p>
+
+<p><strong>See also:</strong> <a href="reference-standard-library-storage.html#nfs"><code>nfs()</code></a>, <a href="reference-standard-library-storage.html#nfs_p"><code>nfs_p()</code></a></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">mount</span> <span class="nf">unmount</span>
+<span class="p">{</span>
+      <span class="kr">mount_type</span> <span class="o">=&gt;</span> <span class="s">&quot;nfs&quot;</span><span class="p">;</span>
+      <span class="kr">edit_fstab</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+      <span class="kr">unmount</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-standard-library.html">standard library</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 02 March 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/standard-library/storage.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/04ad849bd97ab6da773794babca26d9dd8806039" target="_blank">04ad849bd97ab6da773794babca26d9dd8806039</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.9/assets/footer-e9812654bffc243fc0dd77cc1c8e348e.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

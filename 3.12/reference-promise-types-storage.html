@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.12  Documentation - storage</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-promise-types-storage.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='/docs/3.12/assets/global-2ea8d2fcc0dbfebdbe7d10e6eca6a3b3.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "storage";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/" selected>Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a><ul class="level2"><li><a href="reference-promise-types-access.html">access</a></li><li><a href="reference-promise-types-edit_line.html">bundle edit_line</a></li><li><a href="reference-promise-types-edit_xml.html">bundle edit_xml</a></li><li><a href="reference-promise-types-databases.html">databases</a></li><li><a href="reference-promise-types-guest_environments.html">guest_environments</a></li><li><a href="reference-promise-types-classes.html">classes</a></li><li><a href="reference-promise-types-commands.html">commands</a></li><li><a href="reference-promise-types-defaults.html">defaults</a></li><li><a href="reference-promise-types-files.html">files</a></li><li><a href="reference-promise-types-measurements.html">measurements</a></li><li><a href="reference-promise-types-meta.html">meta</a></li><li><a href="reference-promise-types-methods.html">methods</a></li><li><a href="reference-promise-types-packages.html">packages</a></li><li><a href="reference-promise-types-packages-deprecated.html">packages (deprecated)</a></li><li><a href="reference-promise-types-processes.html">processes</a></li><li><a href="reference-promise-types-reports.html">reports</a></li><li><a href="reference-promise-types-roles.html">roles</a></li><li><a href="reference-promise-types-services.html">services</a></li><li><a class="active" href="reference-promise-types-storage.html">storage</a></li><li><a href="reference-promise-types-users.html">users</a></li><li><a href="reference-promise-types-vars.html">vars</a></li></ul></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    storage
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Storage promises refer to disks and filesystem properties.</p>
+<div class="highlight"><pre><code class="cf3">      <span class="kd">storage</span><span class="p">:</span>
+
+         <span class="s">&quot;/disk volume or mountpoint&quot;</span>
+
+           <span class="kr">volume</span> <span class="o">=&gt;</span> <span class="nf">volume_body</span><span class="p">,</span>
+           <span class="err">...</span><span class="p">;</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">storage</span>
+    <span class="p">{</span>
+      <span class="kd">storage</span><span class="p">:</span>
+
+        <span class="s">&quot;/usr&quot;</span> <span class="kr">volume</span>  <span class="o">=&gt;</span> <span class="nf">mycheck</span><span class="p">(</span><span class="s">&quot;10%&quot;</span><span class="p">);</span>
+        <span class="s">&quot;/mnt&quot;</span> <span class="kr">mount</span>   <span class="o">=&gt;</span> <span class="nf">nfs</span><span class="p">(</span><span class="s">&quot;nfsserv.example.org&quot;</span><span class="p">,</span><span class="s">&quot;/home&quot;</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="k">body</span> <span class="k">volume</span> <span class="nf">mycheck</span><span class="p">(</span><span class="nv">free</span><span class="p">)</span>   <span class="c"># reusable template</span>
+
+    <span class="p">{</span>
+      <span class="kr">check_foreign</span>  <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">;</span>
+      <span class="kr">freespace</span>      <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(free)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">sensible_size</span>  <span class="o">=&gt;</span> <span class="s">&quot;10000&quot;</span><span class="p">;</span>
+      <span class="kr">sensible_count</span> <span class="o">=&gt;</span> <span class="s">&quot;2&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">body</span> <span class="k">mount</span> <span class="nf">nfs</span><span class="p">(</span><span class="nv">server</span><span class="p">,</span><span class="nv">source</span><span class="p">)</span>
+
+    <span class="p">{</span>
+      <span class="kr">mount_type</span> <span class="o">=&gt;</span> <span class="s">&quot;nfs&quot;</span><span class="p">;</span>
+      <span class="kr">mount_source</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(source)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">mount_server</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(server)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">edit_fstab</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<hr>
+<h2 id="attributes">Attributes</h2><h3 id="common-attributes">Common Attributes</h3>
+<p>Common attributes are available to all promise types. Full details for common
+attributes can be found in the <a href="reference-promise-types.html#common-attributes" title="Promise Types and Attributes - Common Attributes">Common Attributes section</a> of
+the <a href="reference-promise-types.html" title="Promise Types and Attributes">Promise Types and Attributes</a> page. The common attributes are as follows:</p>
+<h4 id="action"><a href="reference-promise-types.html#action" title="Promise Types and Attributes - action">action</a></h4><h4 id="classes"><a href="reference-promise-types.html#classes" title="Promise Types and Attributes - classes">classes</a></h4><h4 id="comment"><a href="reference-promise-types.html#comment" title="Promise Types and Attributes - comment">comment</a></h4><h4 id="depends_on"><a href="reference-promise-types.html#depends_on" title="Promise Types and Attributes - depends_on">depends_on</a></h4><h4 id="handle"><a href="reference-promise-types.html#handle" title="Promise Types and Attributes - handle">handle</a></h4><h4 id="ifvarclass"><a href="reference-promise-types.html#ifvarclass" title="Promise Types and Attributes - ifvarclass">ifvarclass</a></h4><h4 id="meta"><a href="reference-promise-types.html#meta" title="Promise Types and Attributes - meta">meta</a></h4><h4 id="with"><a href="reference-promise-types.html#with" title="Promise Types and Attributes - with">with</a></h4>
+<hr>
+<h3 id="mount">mount</h3>
+<p><strong>Type:</strong> <code>body mount</code></p>
+
+<p><strong>See also:</strong> <a href="reference-promise-types.html#common-body-attributes" title="Promise Types and Attributes - Common Body Attributes">Common Body Attributes</a></p>
+<h4 id="edit_fstab">edit_fstab</h4>
+<p><strong>Description:</strong> true/false add or remove entries to the file system table
+(&quot;fstab&quot;)</p>
+
+<p>The default behavior is to not place edits in the file system table.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">mount</span> <span class="nf">example</span>
+     <span class="p">{</span>
+       <span class="kr">edit_fstab</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="mount_type">mount_type</h4>
+<p><strong>Description:</strong> Protocol type of remote file system</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">    nfs
+    nfs2
+    nfs3
+    nfs4
+</code></pre>
+</div>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">mount</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">mount_type</span> <span class="o">=&gt;</span> <span class="s">&quot;nfs3&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>
+This field is mainly for future extensions.</p>
+<h4 id="mount_source">mount_source</h4>
+<p><strong>Description:</strong> Path of remote file system to mount.</p>
+
+<p>This is the location on the remote device, server, SAN etc.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>&quot;?(/.*)</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">mount</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="nf">mount_source</span> <span class="s">&quot;/location/disk/directory&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="mount_server">mount_server</h4>
+<p><strong>Description:</strong> Hostname or IP or remote file system server.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">mount</span> <span class="nf">example</span>
+     <span class="p">{</span>
+       <span class="kr">mount_server</span> <span class="o">=&gt;</span> <span class="s">&quot;nfs_host.example.org&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="mount_options">mount_options</h4>
+<p><strong>Description:</strong> List of option strings to add to the file system table
+(&quot;fstab&quot;).</p>
+
+<p>This list is concatenated in a form appropriate for the filesystem. The
+options must be legal options for the system mount commands.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">mount</span> <span class="nf">example</span>
+     <span class="p">{</span>
+       <span class="kr">mount_options</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;rw&quot;</span><span class="p">,</span> <span class="s">&quot;acls&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="unmount">unmount</h4>
+<p><strong>Description:</strong> true/false unmount a previously mounted filesystem</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">mount</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">unmount</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="volume">volume</h3>
+<p><strong>Type:</strong> <code>body volume</code></p>
+
+<p><strong>See also:</strong> <a href="reference-promise-types.html#common-body-attributes" title="Promise Types and Attributes - Common Body Attributes">Common Body Attributes</a></p>
+<h4 id="check_foreign">check_foreign</h4>
+<p><strong>Description:</strong> If true, verify storage that is mounted from a foreign
+system on this host.</p>
+
+<p>CFEngine will not normally perform sanity checks on filesystems that are
+not local to the host. If <code>true</code> it will ignore a partition&#39;s network
+location and ask the current host to verify storage located physically
+on other systems.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">volume</span> <span class="nf">example</span>
+     <span class="p">{</span>
+       <span class="kr">check_foreign</span>  <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="freespace">freespace</h4>
+<p><strong>Description:</strong> Absolute or percentage minimum disk space that should be
+available before warning</p>
+
+<p>The amount of free space that is promised on a storage device. Once this
+promise is found not to be kept (that is, if the free space falls below
+the promised value), warnings are generated. You may also want to use
+the results of this promise to control other promises.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[0-9]+[MBkKgGmb%]</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">volume</span> <span class="nf">example1</span>
+     <span class="p">{</span>
+     <span class="kr">freespace</span> <span class="o">=&gt;</span> <span class="s">&quot;10%&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="k">body</span> <span class="k">volume</span> <span class="nf">example2</span>
+     <span class="p">{</span>
+     <span class="kr">freespace</span> <span class="o">=&gt;</span> <span class="s">&quot;50M&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="sensible_size">sensible_size</h4>
+<p><strong>Description:</strong> Minimum size in bytes that should be used on a
+sensible-looking storage device</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">volume</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">sensible_size</span> <span class="o">=&gt;</span> <span class="s">&quot;20K&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="sensible_count">sensible_count</h4>
+<p><strong>Description:</strong> Minimum number of files that should be defined on a
+sensible-looking storage device.</p>
+
+<p>Files must be readable by the agent. In other words, it is assumed that
+the agent has privileges on volumes being checked.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">volume</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">sensible_count</span> <span class="o">=&gt;</span> <span class="s">&quot;20&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="scan_arrivals">scan_arrivals</h4>
+<p><strong>Description:</strong> If true, generate pseudo-periodic disk change arrival
+distribution.</p>
+
+<p>This operation should not be left &#39;on&#39; for more than a single run
+(maximum once per week). It causes CFEngine to perform an extensive disk
+scan noting the schedule of changes between files. This can be used for
+a number of analyses including optimum backup schedule computation.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">volume</span> <span class="nf">example</span>
+     <span class="p">{</span>
+       <span class="kr">scan_arrivals</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-bundle-agent.html">bundle agent</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-storage.html">storage</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-storage-promises.html">storage promises</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-mount.html">mount</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-filesystem.html">filesystem</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-disks.html">disks</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 27 October 2021
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/promise-types/storage.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/3d161b229c7df44b99d8cd6c71640ab53c94fcbd" target="_blank">3d161b229c7df44b99d8cd6c71640ab53c94fcbd</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.12/assets/footer-135fa20640bb1a2bbe772d22c46414cb.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

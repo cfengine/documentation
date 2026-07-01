@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.16  Documentation - insert_lines</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.16/assets/global-78ca1ff06c068c806dddb47b0cb1ea40.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "insert_lines";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.16/" selected>Version 3.16 (non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><li><a href="reference-promise-types-files-edit_line.html">edit_line</a><ul class="level2"><li><a href="reference-promise-types-files-edit_line-delete_lines.html">delete_lines</a></li><li><a href="reference-promise-types-files-edit_line-field_edits.html">field_edits</a></li><li><a class="active" href="reference-promise-types-files-edit_line-insert_lines.html">insert_lines</a></li><li><a href="reference-promise-types-files-edit_line-replace_patterns.html">replace_patterns</a></li></ul></li><li><a href="reference-promise-types-files-edit_xml.html">edit_xml</a></li></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types-files.html">files</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types-files-edit_line.html">edit_line</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    insert_lines
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>This promise type is part of the line-editing model. It inserts lines into
+the file at a specified location. The location is determined by
+body-attributes. The promise object referred to can be a literal line or
+a file-reference from which to read lines.</p>
+<div class="highlight"><pre><code class="cf3">      <span class="kd">insert_lines</span><span class="p">:</span>
+
+        <span class="s">&quot;literal line or file reference&quot;</span>
+
+           <span class="kr">location</span> <span class="o">=&gt;</span> <span class="nf">location_body</span><span class="p">,</span>
+           <span class="err">...</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>By parameterizing the editing bundle, one can make generic and reusable
+editing bundles.</p>
+
+<p>Note: When inserting multiple lines <a href="reference-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">anchored</a> to a particular place in a
+file, be careful with your intuition. If your intention is to insert a
+set of lines in a given order after a marker, then the following is
+incorrect:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">x</span>
+    <span class="p">{</span>
+    <span class="kd">insert_lines</span><span class="p">:</span>
+
+      <span class="s">&quot;line one&quot;</span> <span class="kr">location</span> <span class="o">=&gt;</span> <span class="nf">myloc</span><span class="p">;</span>
+      <span class="s">&quot;line two&quot;</span> <span class="kr">location</span> <span class="o">=&gt;</span> <span class="nf">myloc</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">body</span> <span class="k">location</span> <span class="nf">myloc</span>
+    <span class="p">{</span>
+      <span class="kr">select_line_matching</span> <span class="o">=&gt;</span> <span class="s">&quot;# Right here.*&quot;</span><span class="p">;</span>
+      <span class="kr">before_after</span> <span class="o">=&gt;</span> <span class="s">&quot;after&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This will reverse the order of the lines and will not converge, since
+the anchoring after the marker applies independently for each new line.
+This is not a bug in CFEngine, but an error of logic in the policy itself.</p>
+
+<p>To add multiple ordered lines after the marker, a single correlated promise
+should be used:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">x</span>
+    <span class="p">{</span>
+    <span class="kd">insert_lines</span><span class="p">:</span>
+
+     <span class="s">&quot;line one</span><span class="si">$(const.n)</span><span class="s">line two&quot;</span> <span class="kr">location</span> <span class="o">=&gt;</span> <span class="nf">myloc</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Or:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">x</span>
+    <span class="p">{</span>
+    <span class="kd">insert_lines</span><span class="p">:</span>
+
+      <span class="s">&quot;line one</span>
+<span class="s">    line two&quot;</span>
+      <span class="kr">location</span> <span class="o">=&gt;</span> <span class="nf">myloc</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<hr>
+<h2 id="attributes">Attributes</h2><h3 id="expand_scalars">expand_scalars</h3>
+<p><strong>Description:</strong> Expand any unexpanded variables</p>
+
+<p>This is a way of incorporating templates with variable expansion into file
+operations. Variables should be named and scoped appropriately for the
+bundle in which this promise is made. In other words, you should qualify
+the variables with the bundle in which they are defined. For example:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="err">$</span><span class="p">(</span><span class="nf">bundle</span><span class="err">.</span><span class="nf">variable</span><span class="p">)</span>
+    <span class="err">$</span><span class="p">(</span><span class="nf">sys</span><span class="err">.</span><span class="nf">host</span><span class="p">)</span>
+    <span class="err">$</span><span class="p">(</span><span class="nf">mon</span><span class="err">.</span><span class="nf">www_in</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">testbundle</span>
+<span class="p">{</span>
+<span class="kd">files</span><span class="p">:</span>
+
+  <span class="s">&quot;/home/mark/tmp/file_based_on_template&quot;</span>
+
+       <span class="kr">create</span>    <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+       <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">ExpandMeFrom</span><span class="p">(</span><span class="s">&quot;/tmp/source_template&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">ExpandMeFrom</span><span class="p">(</span><span class="nv">template</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="kd">insert_lines</span><span class="p">:</span>
+   <span class="s">&quot;</span><span class="si">$(template)</span><span class="s">&quot;</span>
+
+          <span class="kr">insert_type</span> <span class="o">=&gt;</span> <span class="s">&quot;file&quot;</span><span class="p">,</span>
+       <span class="kr">expand_scalars</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="insert_type">insert_type</h3>
+<p><strong>Description:</strong> Type of object the promiser string refers to</p>
+
+<p>The default is to treat the promiser as a literal string of convergent
+lines.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+
+<ul>
+<li><code>literal</code> or <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></li>
+</ul>
+
+<p>Treat the promiser as a literal string of convergent lines.</p>
+
+<ul>
+<li>file</li>
+</ul>
+
+<p>The string should be interpreted as a filename from which to import lines.</p>
+
+<ul>
+<li><code>preserve_block</code></li>
+</ul>
+
+<p>The default behavior assumes that multi-line entries are not ordered
+specifically. They should be treated as a collection of lines of text,
+and not as a single unbroken object.</p>
+
+<p>If the option <code>preserve_block</code> is used, then CFEngine will not break up
+multiple lines into individual, non-ordered objects, so that the block
+of text will be preserved. Even if some of the lines in the block
+already exist, they will be added again as a coherent block. Thus if you
+suspect that some stray / conflicting lines might be present they should
+be cleaned up with <a href="reference-promise-types-files-edit_line-delete_lines.html" title="delete_lines"><code>delete_lines</code></a> first.</p>
+
+<ul>
+<li><code>preserve_all_lines</code></li>
+</ul>
+
+<p>Disables idempotency during the insertion of a block of text so that
+multiple identical lines may be inserted.</p>
+
+<p>This means that the text will be inserted to the file even if it is already
+present. To avoid that the file grows, use this together with
+<a href="reference-promise-types-files.html#empty_file_before_editing" title="files - empty_file_before_editing"><code>empty_file_before_editing</code></a>.</p>
+
+<ul>
+<li><code>file_preserve_block</code></li>
+</ul>
+
+<p>Interpret the string as a filename, and assume <code>preserve_block</code> semantics.
+This was added in CFEngine 3.5.x.</p>
+
+<p><strong>Default value:</strong> literal</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">lynryd_skynyrd</span>
+    <span class="p">{</span>
+     <span class="kd">vars</span><span class="p">:</span>
+        <span class="p">&quot;</span><span class="nv">keepers</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;Won&#39;t you give me&quot;</span><span class="p">,</span> <span class="s">&quot;Gimme three steps&quot;</span> <span class="p">};</span>
+
+     <span class="kd">insert_lines</span><span class="p">:</span>
+
+         <span class="s">&quot;And you&#39;ll never see me no more&quot;</span>
+           <span class="kr">insert_type</span> <span class="o">=&gt;</span> <span class="s">&quot;literal&quot;</span><span class="p">;</span>    <span class="c"># the default</span>
+
+         <span class="s">&quot;/song/lyrics&quot;</span>
+           <span class="kr">insert_type</span> <span class="o">=&gt;</span> <span class="s">&quot;file&quot;</span><span class="p">,</span>  <span class="c"># read selected lines from /song/lyrics</span>
+           <span class="kr">insert_select</span> <span class="o">=&gt;</span> <span class="nf">keep</span><span class="p">(</span><span class="s">&quot;@{keepers}&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">body</span> <span class="k">insert_select</span> <span class="nf">keep</span><span class="p">(</span><span class="nv">s</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="kr">insert_if_startwith_from_list</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;@(s)&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This will ensure that the following lines are inserted into the promised
+file:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="nf">And</span> <span class="nf">you</span><span class="err">&#39;</span><span class="nf">ll</span> <span class="nf">never</span> <span class="nf">see</span> <span class="nf">me</span> <span class="nf">no</span> <span class="nf">more</span>
+    <span class="nf">Gimme</span> <span class="nf">three</span> <span class="nf">steps</span><span class="p">,</span> <span class="nf">Mister</span>
+    <span class="nf">Gimme</span> <span class="nf">three</span> <span class="nf">steps</span> <span class="nf">towards</span> <span class="nf">the</span> <span class="nf">door</span>
+    <span class="nf">Gimme</span> <span class="nf">three</span> <span class="nf">steps</span>
+</code></pre>
+</div>
+<h3 id="insert_select">insert_select</h3>
+<p><strong>Type:</strong> <code>body insert_select</code></p>
+
+<p><strong>See also:</strong> <a href="reference-promise-types.html#common-body-attributes" title="Promise Types and Attributes - Common Body Attributes">Common Body Attributes</a></p>
+<h4 id="insert_if_startwith_from_list">insert_if_startwith_from_list</h4>
+<p><strong>Description:</strong> Insert line if it starts with a string in the list</p>
+
+<p>The list contains literal strings to search for in the secondary file
+(the file being read via the <a href="reference-promise-types-files-edit_line-insert_lines.html#insert_type" title="insert_lines - insert_type"><code>insert_type</code></a> attribute, not the main file
+being edited). If a string with matching starting characters is found,
+then that line from the secondary file will be inserted at the present
+location in the primary file.</p>
+
+<p><code>insert_if_startswith_from_list</code> is ignored unless <a href="reference-promise-types-files-edit_line-insert_lines.html#insert_type" title="insert_lines - insert_type"><code>insert_type</code></a> is
+<code>file</code>, or the promiser is a multi-line block.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">insert_select</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">insert_if_startwith_from_list</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;find_me_1&quot;</span><span class="p">,</span> <span class="s">&quot;find_me_2&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="insert_if_not_startwith_from_list">insert_if_not_startwith_from_list</h4>
+<p><strong>Description:</strong> Insert line if it DOES NOT start with a string in the list</p>
+
+<p>The complement of <a href="reference-promise-types-files-edit_line-insert_lines.html#insert_if_startwith_from_list" title="insert_lines - insert_if_startwith_from_list"><code>insert_if_startwith_from_list</code></a>. If the start of a
+line does <em>not</em> match one of the strings, that line is inserted into the
+file being edited.</p>
+
+<p><code>insert_if_not_startswith_from_list</code> is ignored unless <a href="reference-promise-types-files-edit_line-insert_lines.html#insert_type" title="insert_lines - insert_type"><code>insert_type</code></a> is
+<code>file</code> or the promiser is a multi-line block.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">insert_select</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">insert_if_not_startwith_from_list</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;find_me_1&quot;</span><span class="p">,</span> <span class="s">&quot;find_me_2&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="insert_if_match_from_list">insert_if_match_from_list</h4>
+<p><strong>Description:</strong> Insert line if it fully matches a regex in the list</p>
+
+<p>The list contains literal strings to search for in the secondary file
+(the file being read via the <a href="reference-promise-types-files-edit_line-insert_lines.html#insert_type" title="insert_lines - insert_type"><code>insert_type</code></a> attribute, not the main file
+being edited). If the regex matches a <em>complete</em> line of the file, that
+line from the secondary file will be inserted at the present location in
+the primary file. That is, the regex&#39;s in the list are <a href="reference-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">anchored</a>.</p>
+
+<p><code>insert_if_match_from_list</code> is ignored unless <a href="reference-promise-types-files-edit_line-insert_lines.html#insert_type" title="insert_lines - insert_type"><code>insert_type</code></a> is <code>file</code>,
+or the promiser is a multi-line block.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">insert_select</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">insert_if_match_from_list</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;.*find_.*_1.*&quot;</span><span class="p">,</span> <span class="s">&quot;.*find_.*_2.*&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="insert_if_not_match_from_list">insert_if_not_match_from_list</h4>
+<p><strong>Description:</strong> Insert line if it DOES NOT fully match a regex in the list</p>
+
+<p>The complement of <a href="reference-promise-types-files-edit_line-insert_lines.html#insert_if_match_from_list" title="insert_lines - insert_if_match_from_list"><code>insert_if_match_from_list</code></a>. If the line does <em>not</em>
+match a line in the secondary file, it is inserted into the file being
+edited.</p>
+
+<p><code>insert_if_not_match_from_list</code> is ignored unless <a href="reference-promise-types-files-edit_line-insert_lines.html#insert_type" title="insert_lines - insert_type"><code>insert_type</code></a> is
+<code>file</code>, or the promiser is a multi-line block.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">insert_select</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">insert_if_not_match_from_list</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;.*find_.*_1.*&quot;</span><span class="p">,</span> <span class="s">&quot;.*find_.*_2.*&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="insert_if_contains_from_list">insert_if_contains_from_list</h4>
+<p><strong>Description:</strong> Insert line if a regex in the list match a line fragment.</p>
+
+<p>The list contains literal strings to search for in the secondary file;
+in other words, the file being read via the <a href="reference-promise-types-files-edit_line-insert_lines.html#insert_type" title="insert_lines - insert_type"><code>insert_type</code></a> attribute, not
+the main file being edited. If the string is found in a line of the
+file, that line from the secondary file will be inserted at the present
+location in the primary file.</p>
+
+<p><code>insert_if_contains_from_list</code> is ignored unless <a href="reference-promise-types-files-edit_line-insert_lines.html#insert_type" title="insert_lines - insert_type"><code>insert_type</code></a> is
+<code>file</code>, or the promiser is a multi-line block.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">insert_select</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">insert_if_contains_from_list</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;find_me_1&quot;</span><span class="p">,</span> <span class="s">&quot;find_me_2&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="insert_if_not_contains_from_list">insert_if_not_contains_from_list</h4>
+<p><strong>Description:</strong> Insert line if a regex in the list DOES NOT match a line
+fragment.</p>
+
+<p>The complement of <a href="reference-promise-types-files-edit_line-insert_lines.html#insert_if_contains_from_list" title="insert_lines - insert_if_contains_from_list"><code>insert_if_contains_from_list</code></a>. If the line is <em>not</em>
+found in the secondary file, it is inserted into the file being edited.</p>
+
+<p><code>insert_if_not_contains_from_list</code> is ignored unless <a href="reference-promise-types-files-edit_line-insert_lines.html#insert_type" title="insert_lines - insert_type"><code>insert_type</code></a> is
+<code>file</code>, or the promiser is a multi-line block.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">insert_select</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">insert_if_not_contains_from_list</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;find_me_1&quot;</span><span class="p">,</span> <span class="s">&quot;find_me_2&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="location">location</h3>
+<p><strong>Type:</strong> <code>body location</code></p>
+
+<p><strong>See also:</strong> <a href="reference-promise-types.html#common-body-attributes" title="Promise Types and Attributes - Common Body Attributes">Common Body Attributes</a>, <a href="reference-standard-library-files.html#location-bodies"><code>location</code> bodies in the standard library</a>, <a href="reference-standard-library-files.html#location-bodies"><code>start</code> location body in the standard library</a>, <a href="reference-standard-library-files.html#before"><code>before(srt)</code> location body in the standard library</a>, <a href="reference-standard-library-files.html#after"><code>after(srt)</code> location body in the standard library</a></p>
+<h4 id="before_after">before_after</h4>
+<p><strong>Description:</strong> Menu option, point cursor before of after matched line</p>
+
+<p>Determines whether an edit will occur before or after the currently
+matched line.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">    before
+    after
+</code></pre>
+</div>
+
+<p><strong>Default value:</strong> after</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">location</span> <span class="nf">append</span>
+     <span class="p">{</span>
+     <span class="kr">before_after</span> <span class="o">=&gt;</span> <span class="s">&quot;before&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="first_last">first_last</h4>
+<p><strong>Description:</strong> Choose first or last occurrence of match in file.</p>
+
+<p>In multiple matches, decide whether the first or last occurrence of the
+matching pattern in the case affected by the change. In principle this
+could be generalized to more cases but this seems like a fragile quality
+to evaluate, and only these two cases are deemed of reproducible
+significance.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">    first
+    last
+</code></pre>
+</div>
+
+<p><strong>Default value:</strong> last</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">location</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">first_last</span> <span class="o">=&gt;</span> <span class="s">&quot;last&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="select_line_matching">select_line_matching</h4>
+<p><strong>Description:</strong> Regular expression for matching file line location</p>
+
+<p>The expression must match a whole line, not a fragment within a line;
+that is, it is <a href="reference-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">anchored</a>.</p>
+
+<p>This attribute is mutually exclusive of <a href="reference-promise-types-measurements.html#select_line_number" title="measurements - select_line_number"><code>select_line_number</code></a>.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="c"># Editing</span>
+
+     <span class="k">body</span> <span class="k">location</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">select_line_matching</span> <span class="o">=&gt;</span> <span class="s">&quot;Expression match.* whole line&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="c"># Measurement promises</span>
+     <span class="k">body</span> <span class="k">match_value</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">select_line_matching</span> <span class="o">=&gt;</span> <span class="s">&quot;Expression match.* whole line&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="select_region">select_region</h3>
+<p><strong>Description:</strong> Constrains <a href="reference-promise-types-files-edit_line.html" title="edit_line"><code>edit_line</code></a> operations to region identified by matching regular expressions.</p>
+
+<p>This body applies to all promise types within <a href="reference-promise-types-files-edit_line.html" title="edit_line"><code>edit_line</code></a> bundles.</p>
+
+<p><strong>See Also:</strong> <a href="reference-promise-types-files-edit_line.html#select_region" title="edit_line - select_region"><code>select_region</code> with <code>edit_line</code> operations</a>, <a href="reference-promise-types-files-edit_line-delete_lines.html#select_region" title="delete_lines - select_region"><code>select_region</code> in <code>delete_lines</code></a>, <a href="reference-promise-types-files-edit_line-field_edits.html#select_region" title="field_edits - select_region"><code>select_region</code> in <code>field_edits</code></a>, <a href="reference-promise-types-files-edit_line-replace_patterns.html#select_region" title="replace_patterns - select_region"><code>select_region</code> in <code>replace_patterns</code></a></p>
+<h3 id="whitespace_policy">whitespace_policy</h3>
+<p><strong>Description:</strong> Criteria for matching and recognizing existing lines</p>
+
+<p>The white space matching policy applies only to <a href="reference-promise-types-files-edit_line-insert_lines.html" title="insert_lines"><code>insert_lines</code></a>, as a
+convenience. It works by rewriting the insert string as a regular
+expression when <em>matching</em> lines (that is, when determining if the line
+is already in the file), but leaving the string as specified when
+actually inserting it.</p>
+
+<p>Simply put, the &#39;does this line exist&#39; test will be changed to a regexp
+match. The line being tested will optionally have <code>\s*</code> prepended or
+appended if <code>ignore_leading</code> or <code>ignore_trailing</code> is specified, and if
+<code>ignore_imbedded</code> is used then all embedded white spaces are replaced
+with <code>\s+</code>. Since <code>whitespace_policy</code> is additive you may specify more
+than one.</p>
+
+<p>Any regular expression meta-characters that exist in your input line
+will be escaped. In this way, it is possible to safely insert a line
+such as <code>authpriv.* /var/log/something</code> into a syslog config file.</p>
+
+<p><strong>Type:</strong> (option list)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="nf">ignore_leading</span>
+    <span class="nf">ignore_trailing</span>
+    <span class="nf">ignore_embedded</span>
+    <span class="nf">exact_match</span>
+</code></pre>
+</div>
+
+<p><strong>Default value:</strong> <code>exact_match</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">Insert</span><span class="p">(</span><span class="nv">service</span><span class="p">,</span> <span class="nv">filename</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="kd">insert_lines</span><span class="p">:</span>
+
+  <span class="s">&quot;</span><span class="si">$(service)</span><span class="s">.* </span><span class="si">$(filename)</span><span class="s">&quot;</span>
+
+      <span class="kr">whitespace_policy</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;ignore_trailing&quot;</span><span class="p">,</span> <span class="s">&quot;ignore_embedded&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> This attribute was introduced in CFEngine version 3.0.5
+(2010)</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-bundle-agent.html">bundle agent</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-edit_line.html">edit_line</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-files-promises.html">files promises</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-file-editing.html">file editing</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-insert_lines.html">insert_lines</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 24 June 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/promise-types/files/edit_line/insert_lines.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/4e9e6860aa094f25a21afcdd2087a240dbb1ba7d" target="_blank">4e9e6860aa094f25a21afcdd2087a240dbb1ba7d</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.16/assets/footer-ae31e033a1a936d598cf1c40b94021b9.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

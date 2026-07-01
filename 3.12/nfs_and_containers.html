@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.12  Documentation - NFS and LXC</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/examples-tutorials-nfs_and_containers.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='/docs/3.12/assets/global-2ea8d2fcc0dbfebdbe7d10e6eca6a3b3.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "NFS and LXC";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/" selected>Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    NFS and LXC
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <ol>
+<li>Downloaded <a href="nfs_and_containers.cf">nfs_and_containers.cf</a>). Place it in /var/cfengine/masterfiles/nfs_and_containers.cf.</li>
+<li><p>Run the following commands as root on the command line:</p>
+<div class="highlight"><pre><code class="console">
+</code></pre>
+</div>
+
+<p>The policy has some notes in reports for several of the bundles used in the bundle sequence. The information will also be shown as output when running the policy using cf-agent as described above.</p></li>
+</ol>
+<h2 id="full-policy">Full Policy</h2><div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span> <span class="p">{</span>
+
+    <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span>
+       <span class="s">&quot;/var/cfengine/masterfiles/lib/3.6/stdlib.cf&quot;</span><span class="p">,</span>
+    <span class="p">};</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">common</span> <span class="nf">global_vars</span>
+<span class="p">{</span>
+    <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">host_ip</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;10.100.100.129&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">lxc_network</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;192.168.122&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">gateway_ip</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(lxc_network)</span><span class="s">.1&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">container_ip</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(lxc_network)</span><span class="s">.101&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">container_name</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe-centos-2&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">remove_existing_items</span>
+<span class="p">{</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="s">&quot;/usr/bin/lxc-stop -n </span><span class="si">$(globar_vars.container_name)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/bin/rm -fr /root/3514296&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/bin/rm -fr /root/epel-release-6-8.noarch.rpm&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/bin/rm -fr /root/remi-release-6.rpm&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/bin/rm -fr /root/quick-install-cfengine-enterprise.sh&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/bin/rm -fr /var/lib/lxc/</span><span class="si">$(globar_vars.container_name)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/bin/rm -fr /usr/share/lxc/templates/lxc-centos&quot;</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;This bundle ensures we are starting fresh. The command lines could be replaced by native CFEngine functionality.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">change_service_state</span><span class="p">(</span><span class="nv">service</span><span class="p">,</span> <span class="nv">state</span><span class="p">)</span>
+<span class="p">{</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="s">&quot;/sbin/service </span><span class="si">$(service)</span><span class="s"> </span><span class="si">$(state)</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">install_wget</span>
+<span class="p">{</span>
+
+  <span class="c"># Shouldn&#39;t be necessary, but just in case</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">match_package</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="s">&quot;wget&quot;</span>
+      <span class="p">};</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">yum</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;Installing the wget package is done here using CFEngine&#39;s &#39;packages&#39; promise type. The installation of wget may not be necessary in many cases, as it might already be installed.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">get_cfe_script</span>
+<span class="p">{</span>
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="s">&quot;/usr/bin/wget -nc -P /root https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterprise.sh&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">install_ssh_server_and_client</span>
+<span class="p">{</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">match_package</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="s">&quot;openssh-server&quot;</span><span class="p">,</span>
+        <span class="s">&quot;openssh-clients&quot;</span>
+      <span class="p">};</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">yum</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">install_lxc</span>
+<span class="p">{</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="s">&quot;/usr/bin/wget -nc -P /root http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/usr/bin/wget -nc -P /root http://rpms.famillecollet.com/enterprise/remi-release-6.rpm&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/bin/rpm -Uvh /root/remi-release-6*.rpm /root/epel-release-6*.rpm&quot;</span><span class="p">;</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">match_package</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="s">&quot;lxc&quot;</span>
+      <span class="p">};</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">yum</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">install_git</span><span class="p">{</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">match_package</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="s">&quot;git&quot;</span>
+      <span class="p">};</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">yum</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">get_lxc_centos_template</span>
+<span class="p">{</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="s">&quot;/usr/bin/git clone https://gist.github.com/3514296.git /root/3514296&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/bin/cp /root/3514296/lxc-centos /usr/share/lxc/templates/&quot;</span><span class="p">;</span> <span class="c">#This could be done with CFEngine native functionality as well</span>
+    <span class="s">&quot;/bin/chmod a+rx /usr/share/lxc/templates/lxc-centos&quot;</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;Clone, copy, and change the permissions on the centos template that lxc will use.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">edit_lxc_centos_template</span>
+<span class="p">{</span>
+    <span class="kd">files</span><span class="p">:</span>
+
+       <span class="s">&quot;/usr/share/lxc/templates/lxc-centos&quot;</span>
+       <span class="kr">create</span>    <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">,</span>
+       <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">replace_release_url</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;The release url probably needs modification, to change 10 to 11.1 (at the time of writing). This bundle makes the appropriate change, with some help from other bundles (replace_release_url and new_release_url).&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">replace_release_url</span>
+<span class="p">{</span>
+   <span class="kd">replace_patterns</span><span class="p">:</span>
+
+   <span class="s">&quot;RELEASE_URL=</span><span class="se">\&quot;</span><span class="s">$MIRROR_URL/Packages/centos-release-$release-$releaseminor.el6.centos.10.$arch.rpm</span><span class="se">\&quot;</span><span class="s">.*&quot;</span>
+      <span class="kr">replace_with</span> <span class="o">=&gt;</span> <span class="nf">new_release_url</span><span class="p">;</span>
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;Trying to find the current release url line&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">replace_with</span> <span class="nf">new_release_url</span>
+<span class="p">{</span>
+   <span class="kr">replace_value</span> <span class="o">=&gt;</span> <span class="s">&quot;RELEASE_URL=</span><span class="se">\&quot;</span><span class="s">$MIRROR_URL/Packages/centos-release-$release-$releaseminor.el6.centos.11.1.$arch.rpm</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">;</span>
+   <span class="kr">occurrences</span> <span class="o">=&gt;</span> <span class="s">&quot;all&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">create_centos_container</span>
+<span class="p">{</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="s">&quot;/usr/bin/lxc-create -n </span><span class="si">$(global_vars.container_name)</span><span class="s"> -t centos -- m 5&quot;</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;This bundle uses a command to create the container using the centos template that was downloaded earlier&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">configure_centos_container</span>
+<span class="p">{</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+
+    <span class="s">&quot;/var/lib/lxc/</span><span class="si">$(global_vars.container_name)</span><span class="s">/rootfs/etc/sysconfig/network-scripts/ifcfg-eth0&quot;</span>
+       <span class="kr">create</span>    <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">,</span>
+       <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">modify_ifcfg</span><span class="p">;</span>
+
+    <span class="s">&quot;/var/lib/lxc/</span><span class="si">$(global_vars.container_name)</span><span class="s">/rootfs/etc/sysconfig/network&quot;</span>
+       <span class="kr">create</span>    <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">,</span>
+       <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">add_gateway_line</span><span class="p">;</span>
+
+    <span class="s">&quot;/var/lib/lxc/</span><span class="si">$(global_vars.container_name)</span><span class="s">/rootfs/etc/resolv.conf&quot;</span>
+       <span class="kr">create</span>    <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+       <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">add_nameserver</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;The default configuration of the container requires some modification to define a static IP address. This bundle modifies the appropriate files and also adds some information for DNS to resolv.conf.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">modify_ifcfg</span>
+<span class="p">{</span>
+   <span class="kd">replace_patterns</span><span class="p">:</span>
+
+   <span class="s">&quot;BOOTPROTO=dhcp&quot;</span>
+      <span class="kr">replace_with</span> <span class="o">=&gt;</span> <span class="nf">change_bootproto</span><span class="p">;</span>
+
+  <span class="kd">insert_lines</span><span class="p">:</span>
+    <span class="s">&quot;IPADDR=</span><span class="si">$(global_vars.container_ip)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;NETMASK=255.255.255.0&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">replace_with</span> <span class="nf">change_bootproto</span>
+<span class="p">{</span>
+   <span class="kr">replace_value</span> <span class="o">=&gt;</span> <span class="s">&quot;BOOTPROTO=static&quot;</span><span class="p">;</span>
+   <span class="kr">occurrences</span> <span class="o">=&gt;</span> <span class="s">&quot;all&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">add_gateway_line</span>
+<span class="p">{</span>
+
+  <span class="kd">insert_lines</span><span class="p">:</span>
+    <span class="s">&quot;GATEWAY=</span><span class="si">$(global_vars.gateway_ip)</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">add_nameserver</span>
+<span class="p">{</span>
+
+  <span class="kd">insert_lines</span><span class="p">:</span>
+    <span class="s">&quot;nameserver </span><span class="si">$(global_vars.gateway_ip)</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">start_centos_container</span>
+<span class="p">{</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="s">&quot;/bin/rm /var/lib/lxc/cfe-centos-2/rootfs/etc/sysconfig/network-scripts/ifcfg-eth0.cf-before-edit&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/usr/bin/lxc-start -d -n </span><span class="si">$(global_vars.container_name)</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;This bundle starts the container that was defined earlier, using a command.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">install_nfs</span>
+<span class="p">{</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">match_package</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="s">&quot;nfs-utils&quot;</span>
+      <span class="p">};</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">yum</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">configure_nfs</span>
+<span class="p">{</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+
+    <span class="s">&quot;/var/lib/lxc/</span><span class="si">$(global_vars.container_name)</span><span class="s">/rootfs/etc/exports&quot;</span>
+       <span class="kr">create</span>    <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+       <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">add_export_line</span><span class="p">;</span>
+    <span class="s">&quot;/var/cfengine/masterfiles/def.cf&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">,</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">modify_def</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;NFS and CFEngine require some modifications to support the network bridge and container.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">add_export_line</span>
+<span class="p">{</span>
+
+  <span class="kd">insert_lines</span><span class="p">:</span>
+    <span class="s">&quot;/home   </span><span class="si">$(global_vars.host_ip)</span><span class="s">(rw,sync,no_root_squash,no_subtree_check)&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">modify_def</span>
+<span class="p">{</span>
+   <span class="kd">replace_patterns</span><span class="p">:</span>
+
+   <span class="s">&quot;</span><span class="se">\&quot;</span><span class="si">$(sys.policy_hub)</span><span class="s">/16</span><span class="se">\&quot;</span><span class="s">.*&quot;</span>
+      <span class="kr">replace_with</span> <span class="o">=&gt;</span> <span class="nf">change_acl</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">replace_with</span> <span class="nf">change_acl</span>
+<span class="p">{</span>
+   <span class="kr">replace_value</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="si">$(sys.policy_hub)</span><span class="s">/16</span><span class="se">\&quot;</span><span class="s">,</span><span class="se">\&quot;</span><span class="s">192.168.122.*</span><span class="se">\&quot;</span><span class="s">,&quot;</span><span class="p">;</span>
+   <span class="kr">occurrences</span> <span class="o">=&gt;</span> <span class="s">&quot;all&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">start_nfs</span>
+<span class="p">{</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+
+      <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">change_service_state</span><span class="p">(</span><span class="s">&quot;rpcbind&quot;</span><span class="p">,</span><span class="s">&quot;restart&quot;</span><span class="p">);</span>
+      <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">change_service_state</span><span class="p">(</span><span class="s">&quot;nfs&quot;</span><span class="p">,</span><span class="s">&quot;restart&quot;</span><span class="p">);</span>
+      <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">change_service_state</span><span class="p">(</span><span class="s">&quot;nfslock&quot;</span><span class="p">,</span><span class="s">&quot;restart&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;This bundle starts NFS and related services. It uses restart rather than start just in case the services were already running and modifications made earlier need to be recognized.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">setup_ssh_connection_to_container</span>
+<span class="p">{</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+
+    <span class="s">&quot;/usr/bin/sshpass -p </span><span class="se">\&quot;</span><span class="s">password</span><span class="se">\&quot;</span><span class="s"> /usr/bin/ssh -o StrictHostKeyChecking=no root@</span><span class="si">$(global_vars.container_ip)</span><span class="s"> /usr/bin/yum -y install openssh-server openssh-clients&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/usr/bin/sshpass -p </span><span class="se">\&quot;</span><span class="s">password</span><span class="se">\&quot;</span><span class="s"> /usr/bin/ssh-copy-id -i /root/.ssh/id_rsa.pub root@</span><span class="si">$(global_vars.container_ip)</span><span class="s">&quot;</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;Setting up an ssh connection to the container will be used to pass commands from the host machine.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">setup_nfs_on_container</span>
+<span class="p">{</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="s">&quot;/usr/bin/ssh </span><span class="si">$(global_vars.container_ip)</span><span class="s"> /usr/bin/yum -y install nfs-utils&quot;</span><span class="p">;</span>
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;NFS needs to be installed onto the container. This bundle does this using a command call to ssh, and in turn to the yum installer on the container.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">mount_shared_folder_on_container</span>
+<span class="p">{</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="s">&quot;/usr/bin/ssh </span><span class="si">$(global_vars.container_ip)</span><span class="s"> /bin/mount </span><span class="si">$(global_vars.container_ip)</span><span class="s">:/root /root/mount&quot;</span><span class="p">;</span>
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;After NFS is installed on the container, the shared directory between the two machines can be mounted.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">install_cfengine_on_container</span>
+<span class="p">{</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="s">&quot;/usr/bin/ssh </span><span class="si">$(global_vars.container_ip)</span><span class="s"> /bin/chmod a+x /root/mount/quick-install-cfengine-cfengine-enterprise.sh&quot;</span><span class="p">;</span>
+    <span class="s">&quot;/usr/bin/ssh </span><span class="si">$(global_vars.container_ip)</span><span class="s"> /root/mount/quick-install-cfengine-cfengine-enterprise.sh agent&quot;</span><span class="p">;</span>
+   <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;After the shared folder is mounted, a call to the CFEngine script install can be made from the host via ssh to the container&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">bootstrap_cfengine_on_container</span>
+<span class="p">{</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="s">&quot;/usr/bin/ssh </span><span class="si">$(global_vars.container_ip)</span><span class="s"> /var/cfengine/bin/cf-agent --bootstrap </span><span class="si">$(global_vars.gateway_ip)</span><span class="s">&quot;</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+   <span class="s">&quot;CFEngine should now be installed, and this bundle will boostrap it to the host machine that is running hub.&quot;</span><span class="p">;</span>
+  <span class="s">&quot;Note: changes may need to be made to /var/cfengine/masterfiles/controls/cf_serverd.cf on the hub to properly use the container as a CFEngine host across a network bridge (in this tutorial via the 192.168.122.1 gateway). Look for the section &#39;!am_policy_hub.enterprise::&#39; and change all three lines that state &#39;admit =&gt; { </span><span class="se">\&quot;</span><span class="si">$(sys.policy_hub)</span><span class="se">\&quot;</span><span class="s">};&#39; to read &#39;admit =&gt; { </span><span class="se">\&quot;</span><span class="si">$(sys.policy_hub)</span><span class="se">\&quot;</span><span class="s">,</span><span class="se">\&quot;</span><span class="s">192.168.122.1</span><span class="se">\&quot;</span><span class="s"> };&#39;.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-examples.html">examples</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-tutorials.html">tutorials</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-nfs.html">nfs</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-lxc.html">lxc</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-containers.html">containers</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 27 October 2021
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/3d161b229c7df44b99d8cd6c71640ab53c94fcbd" target="_blank">3d161b229c7df44b99d8cd6c71640ab53c94fcbd</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.12/assets/footer-135fa20640bb1a2bbe772d22c46414cb.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

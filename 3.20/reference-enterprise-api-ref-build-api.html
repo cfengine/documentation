@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.20  Documentation - Build API</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/reference/enterprise-api-ref/build-api.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-reference-enterprise-api-ref-build-api.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-enterprise-api-ref-build-api.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='assets/global-2492ce7571245ef106dbe85ec06e4908.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Build API";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/" selected>Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="96c0f638b03564284" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components</a></li><li><a href="reference-promise-types.html">Promise Types</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a><ul class="level2"><li><a href="reference-enterprise-api-ref-actions-api.html">Actions API</a></li><li><a class="active" href="reference-enterprise-api-ref-build-api.html">Build API</a></li><li><a href="reference-enterprise-api-ref-cmdb-api.html">CMDB API</a></li><li><a href="reference-enterprise-api-ref-changes.html">Changes REST API</a></li><li><a href="reference-enterprise-api-ref-federated-reporting-api.html">Federated reporting configuration API</a></li><li><a href="reference-enterprise-api-ref-file-changes.html">File Changes API</a></li><li><a href="reference-enterprise-api-ref-health-diagnostic.html">Health diagnostic API</a></li><li><a href="reference-enterprise-api-ref-host.html">Host REST API</a></li><li><a href="reference-enterprise-api-ref-export-import-api.html">Import & Export API</a></li><li><a href="reference-enterprise-api-ref-export-import-compliance-report-api.html">Import & Export Compliance Report API</a></li><li><a href="reference-enterprise-api-ref-inventory.html">Inventory API</a></li><li><a href="reference-enterprise-api-ref-ldap-api.html">LDAP authentication API</a></li><li><a href="reference-enterprise-api-ref-query.html">Query REST API</a></li><li><a href="reference-enterprise-api-ref-sql-schema.html">SQL Schema</a></li><li><a href="reference-enterprise-api-ref-ssh-keys-api.html">SSH keys API</a></li><li><a href="reference-enterprise-api-ref-status-settings.html">Status and Settings REST API</a></li><li><a href="reference-enterprise-api-ref-users-rbac.html">Users and Access-Control REST API</a></li><li><a href="reference-enterprise-api-ref-vcs-settings.html">VCS settings API</a></li><li><a href="reference-enterprise-api-ref-web-rbac.html">Web RBAC API</a></li></ul></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-enterprise-api-ref.html">Enterprise API Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Build API
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>The Build API enables you to easily manage policy projects and their respective CFEngine Build modules.</p>
+<h1 id="projects-api">Projects API</h1>
+<p>A project is a set of CFEngine Build modules and custom files/json/policy files.</p>
+<h2 id="create-project">Create project</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/build/projects">https://hub.cfengine.com/api/build/projects</a></p>
+
+<p><strong>Method:</strong> POST</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><p><strong>repositoryUrl</strong> <em>(string)</em>
+Git repository URL. Project will be synchronized with this repository. Supported protocols: <code>http</code>, <code>https</code>, <code>ssh</code>
+, <code>git</code>. Required. Git repository URL example: <a href="https://github.com/username/repository.git">https://github.com/username/repository.git</a></p></li>
+<li><p><strong>branch</strong> <em>(string)</em>
+Repository branch. Required.</p></li>
+<li><p><strong>name</strong> <em>(string)</em>
+Project name. Required.</p></li>
+<li><p><strong>authenticationType</strong> <em>(string)</em>
+Authentication type that will be used to get access to the repository. Allowed values: <a href="reference-promise-types-users.html#password" title="users - password"><code>password</code></a>, <code>ssh_key</code>.
+Required.</p></li>
+<li><p><strong>username</strong> <em>(string)</em>
+Username for authentication to the repository. Required when authentication type is <a href="reference-promise-types-users.html#password" title="users - password"><code>password</code></a>.</p></li>
+<li><p><strong>password</strong> <em>(string)</em>
+Password for authentication to the repository. Required when authentication type is <a href="reference-promise-types-users.html#password" title="users - password"><code>password</code></a>.</p></li>
+<li><p><strong>sshPrivateKey</strong> <em>(string)</em>
+SSH private key for authentication to the repository. Required when authentication type is <code>ssh_key</code> and <code>sshKeyId</code> is
+not set.</p></li>
+<li><p><strong>sshKeyId</strong> <em>(integer)</em>
+Generated SSH private key ID by <a href="reference-enterprise-api-ref-ssh-keys-api.html#generate-ssh-key" title="SSH keys API - Generate SSH key">SSH keys API</a> for authentication to the repository.
+Required when authentication type is <code>ssh_key</code> and <code>sshPrivateKey</code> is not set.</p></li>
+</ul>
+
+<p><strong>Note:</strong> the SSH key is expected to be in openssh(rfc4716) format as generated by <a href="reference-enterprise-api-ref-ssh-keys-api.html#generate-ssh-key" title="SSH keys API - Generate SSH key">SSH Keys API</a> or a command line like:</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">ssh-keygen -t rsa-sha2-512 -b 4096 -f test -m rfc4716</span>
+</code></pre>
+</div>
+
+<p><strong>Example request (curl):</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">curl --user &lt;username&gt;:&lt;password&gt; \</span>
+<span class="go">  -X POST \</span>
+<span class="go">  https://hub.cfengine.com/api/build/projects \</span>
+<span class="go">  -H &#39;content-type: application/json&#39; \</span>
+<span class="go">  -d &#39;</span>
+<span class="go">  {</span>
+<span class="go">  &quot;repositoryUrl&quot;: &quot;https://github.com/username/repository.git&quot;,</span>
+<span class="go">  &quot;branch&quot;: &quot;master&quot;,</span>
+<span class="go">  &quot;authenticationType&quot;: &quot;password&quot;,</span>
+<span class="go">  &quot;password&quot; : &quot;git_token_or_password&quot;,</span>
+<span class="go">  &quot;username&quot; : &quot;git_username&quot;,</span>
+<span class="go">  &quot;name&quot;: &quot;Production&quot;</span>
+<span class="go">  }&#39;</span>
+</code></pre>
+</div>
+
+<p><strong>Successful response example:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 200 Ok
+{
+    &quot;id&quot;: &quot;8&quot;
+}
+</code></pre>
+</div>
+
+<p><strong>Responses:</strong></p>
+<div class="tableOverflow"><table><thead><tr>
+<th>HTTP response code</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>200 OK</td>
+<td>Project successfully created</td>
+</tr>
+<tr>
+<td>422 Unprocessable entity</td>
+<td>Validation error occurred</td>
+</tr>
+<tr>
+<td>500 Internal server error</td>
+<td>Internal server error</td>
+</tr>
+</tbody></table></div><h2 id="update-project">Update project</h2>
+<p>By changing the repository url or branch you will initialize a new project and the current one will be removed from the
+file system and any un-pushed/un-deployed(terminology in Mission Portal UI) changes will be lost.</p>
+
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/build/projects/:id">https://hub.cfengine.com/api/build/projects/:id</a></p>
+
+<p><strong>Method:</strong> PATCH</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><p><strong>id</strong> <em>(integer)</em>
+Project&#39;s ID. Required.</p></li>
+<li><p><strong>repositoryUrl</strong> <em>(string)</em>
+Git repository URL. Project will be synchronized with this repository. Supported protocols: <code>http</code>, <code>https</code>, <code>ssh</code>
+, <code>git</code>. Required. Git repository URL example: <a href="https://github.com/username/repository.git">https://github.com/username/repository.git</a></p></li>
+<li><p><strong>branch</strong> <em>(string)</em>
+Repository branch.</p></li>
+<li><p><strong>name</strong> <em>(string)</em>
+Project name.</p></li>
+<li><p><strong>authenticationType</strong> <em>(string)</em>
+Authentication type that will be used to get access to the repository. Allowed values: <a href="reference-promise-types-users.html#password" title="users - password"><code>password</code></a>, <code>ssh_key</code>.</p></li>
+<li><p><strong>username</strong> <em>(string)</em>
+Username for authentication to the repository. Required when authentication type is <a href="reference-promise-types-users.html#password" title="users - password"><code>password</code></a>.</p></li>
+<li><p><strong>password</strong> <em>(string)</em>
+Password for authentication to the repository. Required when authentication type is <a href="reference-promise-types-users.html#password" title="users - password"><code>password</code></a>.</p></li>
+<li><p><strong>sshPrivateKey</strong> <em>(string)</em>
+SSH private key for authentication to the repository. Required when authentication type is <code>ssh_key</code> and <code>sshKeyId</code> 
+is not set.</p></li>
+<li><p><strong>sshKeyId</strong> <em>(integer)</em>
+Generated SSH private key ID by <a href="reference-enterprise-api-ref-ssh-keys-api.html#generate-ssh-key" title="SSH keys API - Generate SSH key">SSH keys API</a> for authentication to the repository.
+Required when authentication type is <code>ssh_key</code> and <code>sshPrivateKey</code> is not set.</p></li>
+</ul>
+
+<p><strong>Example request (curl):</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">curl --user &lt;username&gt;:&lt;password&gt; \</span>
+<span class="go">  -X PATCH \</span>
+<span class="go">  https://hub.cfengine.com/api/build/projects/2 \</span>
+<span class="go">  -H &#39;content-type: application/json&#39; \</span>
+<span class="go">  -d &#39;</span>
+<span class="go">  {</span>
+<span class="go">  &quot;branch&quot;: &quot;staging&quot;,</span>
+<span class="go">  }&#39;</span>
+</code></pre>
+</div>
+
+<p><strong>Successful response example:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 200 OK
+{
+    &quot;id&quot;: &quot;4&quot;
+}
+</code></pre>
+</div>
+
+<p><strong>Responses:</strong></p>
+<div class="tableOverflow"><table><thead><tr>
+<th>HTTP response code</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>204 No content</td>
+<td>Project successfully updated</td>
+</tr>
+<tr>
+<td>404 Not found</td>
+<td>Project not found</td>
+</tr>
+<tr>
+<td>422 Unprocessable entity</td>
+<td>Validation error occurred</td>
+</tr>
+<tr>
+<td>500 Internal server error</td>
+<td>Internal server error</td>
+</tr>
+</tbody></table></div><h2 id="get-project">Get project</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/build/projects/:id">https://hub.cfengine.com/api/build/projects/:id</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>id</strong> <em>(integer)</em>
+Project&#39;s ID. Required.</li>
+</ul>
+
+<p><strong>Example request (curl):</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">curl --user &lt;username&gt;:&lt;password&gt; \</span>
+<span class="go">  -X GET \</span>
+<span class="go">  https://hub.cfengine.com/api/build/projects/2 </span>
+</code></pre>
+</div>
+
+<p><strong>Successful response example:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 200 OK
+{
+    &quot;id&quot;: 2,
+    &quot;repository_url&quot;: &quot;https://github.com/username/repository.git&quot;,
+    &quot;branch&quot;: &quot;master&quot;,
+    &quot;name&quot;: &quot;Production&quot;,
+    &quot;authentication_type&quot;: &quot;password&quot;,
+    &quot;username&quot;: &quot;admin&quot;,
+    &quot;is_empty&quot;: false,
+    &quot;created_at&quot;: &quot;2022-03-17 14:01:56.23852+00&quot;,
+    &quot;pushed_at&quot;: null,
+    &quot;ssh_key_id&quot;: null,
+    &quot;password&quot;: &quot;set&quot;,
+    &quot;ssh_private_key&quot;: &quot;not set&quot;
+}
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> The API does not return password or ssh private key, but returns <code>set</code> or <code>not set</code>.</p>
+
+<p><strong>Responses:</strong></p>
+<div class="tableOverflow"><table><thead><tr>
+<th>HTTP response code</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>200 Ok</td>
+<td>Successful response</td>
+</tr>
+<tr>
+<td>404 Not found</td>
+<td>Project not found</td>
+</tr>
+<tr>
+<td>500 Internal server error</td>
+<td>Internal server error</td>
+</tr>
+</tbody></table></div><h2 id="get-projects-list">Get projects list</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/build/projects">https://hub.cfengine.com/api/build/projects</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>skip</strong> <em>(integer)</em>
+Number of results to skip for the processed query. The Mission Portal uses this for pagination. Optional parameter.</li>
+<li><strong>limit</strong>  <em>(integer)</em>
+Limit the number of results in the query. Optional parameter.</li>
+</ul>
+
+<p><strong>Example request (curl):</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">curl --user &lt;username&gt;:&lt;password&gt; \</span>
+<span class="go">  -X GET \</span>
+<span class="go">  https://hub.cfengine.com/api/build/projects</span>
+</code></pre>
+</div>
+
+<p><strong>Successful response example:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 200 OK
+{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 3,
+            &quot;repository_url&quot;: &quot;https://github.com/build/modules.git&quot;,
+            &quot;branch&quot;: &quot;master&quot;,
+            &quot;name&quot;: null,
+            &quot;authentication_type&quot;: &quot;password&quot;,
+            &quot;username&quot;: &quot;admin&quot;,
+            &quot;is_empty&quot;: false,
+            &quot;created_at&quot;: &quot;2022-03-17 13:13:21.107899+00&quot;,
+            &quot;password&quot;: &quot;set&quot;,
+            &quot;ssh_private_key&quot;: &quot;not set&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;repository_url&quot;: &quot;https://github.com/build/modules.git&quot;,
+            &quot;branch&quot;: &quot;production&quot;,
+            &quot;name&quot;: null,
+            &quot;authentication_type&quot;: &quot;password&quot;,
+            &quot;username&quot;: &quot;admin&quot;,
+            &quot;is_empty&quot;: false,
+            &quot;created_at&quot;: &quot;2022-03-17 13:13:23.333539+00&quot;,
+            &quot;password&quot;: &quot;set&quot;,
+            &quot;ssh_private_key&quot;: &quot;not set&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;count&quot;: 2,
+        &quot;page&quot;: 1,
+        &quot;timestamp&quot;: 1647596804,
+        &quot;total&quot;: 2
+    }
+}
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> The API does not return password or ssh private key, but returns <code>set</code> or <code>not set</code>.</p>
+
+<p><strong>Responses:</strong></p>
+<div class="tableOverflow"><table><thead><tr>
+<th>HTTP response code</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>200 Ok</td>
+<td>Successful response</td>
+</tr>
+<tr>
+<td>404 Not found</td>
+<td>Project not found</td>
+</tr>
+<tr>
+<td>500 Internal server error</td>
+<td>Internal server error</td>
+</tr>
+</tbody></table></div><h2 id="delete-project">Delete project</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/build/projects/:id">https://hub.cfengine.com/api/build/projects/:id</a></p>
+
+<p><strong>Method:</strong> DELETE</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>id</strong> <em>(integer)</em>
+Project&#39;s ID. Required.</li>
+</ul>
+
+<p><strong>Example request (curl):</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">curl --user &lt;username&gt;:&lt;password&gt; \</span>
+<span class="go">  -X DELETE \</span>
+<span class="go">  https://hub.cfengine.com/api/build/projects/2 </span>
+</code></pre>
+</div>
+
+<p><strong>Successful response example:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 204 No content
+</code></pre>
+</div>
+
+<p><strong>Responses:</strong></p>
+<div class="tableOverflow"><table><thead><tr>
+<th>HTTP response code</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>204 No content</td>
+<td>Project successfully deleted</td>
+</tr>
+<tr>
+<td>404 Not found</td>
+<td>Project not found</td>
+</tr>
+<tr>
+<td>500 Internal server error</td>
+<td>Internal server error</td>
+</tr>
+</tbody></table></div><h2 id="sync-project">Sync project</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/build/projects/:id/sync">https://hub.cfengine.com/build/projects/:id/sync</a></p>
+
+<p><strong>Method:</strong> POST</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>id</strong> <em>(integer)</em>
+Project&#39;s ID. Required.</li>
+<li><strong>action</strong> <em>(string)</em>
+Action. Allowed actions: 
+
+<ul>
+<li><code>push</code> - pushes local changes to the upstream repository</li>
+<li><code>rebase</code> - rebases local changes from the upstream</li>
+<li><code>force-pull</code> - overwrites local project files from upstream repository </li>
+<li><code>force-rebase</code> - force rebases local changes from the upstream</li>
+</ul></li>
+</ul>
+
+<p><strong>Example request (curl):</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">curl --user &lt;username&gt;:&lt;password&gt; \</span>
+<span class="go">  -X POST \</span>
+<span class="go">  https://hub.cfengine.com/api/build/projects/2 \</span>
+<span class="go">  -d &#39;</span>
+<span class="go">  {</span>
+<span class="go">  &quot;action&quot;: &quot;push&quot;,</span>
+<span class="go">  }&#39;</span>
+</code></pre>
+</div>
+
+<p><strong>Successful response example:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 204 No content
+</code></pre>
+</div>
+
+<p><strong>Responses:</strong></p>
+<div class="tableOverflow"><table><thead><tr>
+<th>HTTP response code</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>204 No content</td>
+<td>Project successfully synced</td>
+</tr>
+<tr>
+<td>404 Not found</td>
+<td>Project not found</td>
+</tr>
+<tr>
+<td>500 Internal server error</td>
+<td>Internal server error</td>
+</tr>
+</tbody></table></div><h2 id="refresh-project">Refresh project</h2>
+<p>Fetch upstream repository and return the current state.</p>
+
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/build/projects/:id/refresh">https://hub.cfengine.com/build/projects/:id/refresh</a></p>
+
+<p><strong>Method:</strong> POST</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>id</strong> <em>(integer)</em>
+Project&#39;s ID. Required.</li>
+</ul>
+
+<p><strong>Example request (curl):</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">curl --user &lt;username&gt;:&lt;password&gt; \</span>
+<span class="go">  -X POST \</span>
+<span class="go">  https://hub.cfengine.com/api/build/projects/2/refresh</span>
+</code></pre>
+</div>
+
+<p><strong>Successful response example:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 200 OK
+{
+    &quot;status&quot;: &quot;ahead&quot;,
+    &quot;details&quot;: [
+        &quot;Refreshed repository for project 4 with &#39;git fetch&#39;&quot;
+    ]
+}
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+
+<ul>
+<li><strong>status</strong>
+Project&#39;s status. Possible values: 
+
+<ul>
+<li><code>ok</code> - project is up-to-date</li>
+<li><code>behind</code> - there are changes in upstream which are not pulled</li>
+<li><code>ahead</code> - there are changes in the local project which are not pushed</li>
+<li><code>diverged</code> - there are changes which are not pushed and not pulled at the same time </li>
+</ul></li>
+</ul>
+
+<p><strong>Responses:</strong></p>
+<div class="tableOverflow"><table><thead><tr>
+<th>HTTP response code</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>200 Ok</td>
+<td>Successful response</td>
+</tr>
+<tr>
+<td>404 Not found</td>
+<td>Project not found</td>
+</tr>
+<tr>
+<td>500 Internal server error</td>
+<td>Internal server error</td>
+</tr>
+</tbody></table></div><h2 id="list-of-cfengine-build-modules-added-to-project">List of CFEngine Build modules added to project</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/build/projects/:id/modules">https://hub.cfengine.com/api/build/projects/:id/modules</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>id</strong> <em>(integer)</em>
+Project&#39;s ID. Required.</li>
+</ul>
+
+<p><strong>Example request (curl):</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">curl --user &lt;username&gt;:&lt;password&gt; \</span>
+<span class="go">  -X GET \</span>
+<span class="go">  https://hub.cfengine.com/api/build/projects/5/modules</span>
+</code></pre>
+</div>
+
+<p><strong>Successful response example:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 200 OK
+[
+    {
+        &quot;name&quot;: &quot;masterfiles&quot;,
+        &quot;description&quot;: &quot;Official CFEngine Masterfiles Policy Framework (MPF)&quot;,
+        &quot;tags&quot;: [
+            &quot;supported&quot;,
+            &quot;base&quot;
+        ],
+        &quot;repo&quot;: &quot;https://github.com/cfengine/masterfiles&quot;,
+        &quot;by&quot;: &quot;https://github.com/cfengine&quot;,
+        &quot;version&quot;: &quot;3.18.1-1&quot;,
+        &quot;commit&quot;: &quot;b6e9eacc65c797f4c2b4a59056293636c320d0c9&quot;,
+        &quot;added_by&quot;: &quot;cfbs add&quot;,
+        &quot;steps&quot;: [
+            &quot;run ./prepare.sh -y&quot;,
+            &quot;copy ./ ./&quot;
+        ],
+        &quot;subdirectory&quot;: &quot;&quot;,
+        &quot;isExternal&quot;: false,
+        &quot;availableVersion&quot;: &quot;3.18.2&quot;
+    },
+    {
+        &quot;name&quot;: &quot;autorun&quot;,
+        &quot;version&quot;: &quot;1.0.1&quot;,
+        &quot;description&quot;: &quot;Enable autorun functionality&quot;,
+        &quot;tags&quot;: [
+            &quot;supported&quot;,
+            &quot;management&quot;
+        ],
+        &quot;repo&quot;: &quot;https://github.com/cfengine/modules&quot;,
+        &quot;by&quot;: &quot;https://github.com/olehermanse&quot;,
+        &quot;commit&quot;: &quot;c3b7329b240cf7ad062a0a64ee8b607af2cb912a&quot;,
+        &quot;subdirectory&quot;: &quot;management/autorun&quot;,
+        &quot;added_by&quot;: &quot;cfbs add&quot;,
+        &quot;steps&quot;: [
+            &quot;json def.json def.json&quot;
+        ],
+        &quot;isExternal&quot;: false,
+        &quot;availableVersion&quot;: &quot;1.0.1&quot;
+    }
+]
+</code></pre>
+</div>
+
+<p><strong>Responses:</strong></p>
+<div class="tableOverflow"><table><thead><tr>
+<th>HTTP response code</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>200 Ok</td>
+<td>Successful response</td>
+</tr>
+<tr>
+<td>404 Not found</td>
+<td>Project not found</td>
+</tr>
+<tr>
+<td>500 Internal server error</td>
+<td>Internal server error</td>
+</tr>
+</tbody></table></div><h2 id="add-cfengine-build-module-to-project">Add CFEngine Build module to project</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/build/projects/:id/modules/:module">https://hub.cfengine.com/api/build/projects/:id/modules/:module</a></p>
+
+<p><strong>Method:</strong> POST</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>id</strong> <em>(integer)</em>
+Project&#39;s ID. Required.</li>
+<li><strong>module</strong> <em>(string)</em>
+Module&#39;s name. Required.</li>
+<li><strong>version</strong> <em>(string)</em>
+Module&#39;s version. Required.</li>
+</ul>
+
+<p><strong>Example request (curl):</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">curl --user &lt;username&gt;:&lt;password&gt; \</span>
+<span class="go">  -X POST \</span>
+<span class="go">  https://hub.cfengine.com/api/build/projects/1/modules/autorun \</span>
+<span class="go">  -H &#39;content-type: application/json&#39; \</span>
+<span class="go">  -d &#39;</span>
+<span class="go">  {</span>
+<span class="go">  &quot;version&quot;: &quot;1.0.1&quot;</span>
+<span class="go">  }&#39;</span>
+</code></pre>
+</div>
+
+<p><strong>Successful response example:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 201 Created
+</code></pre>
+</div>
+
+<p><strong>Responses:</strong></p>
+<div class="tableOverflow"><table><thead><tr>
+<th>HTTP response code</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>201 Created</td>
+<td>Module successfully added</td>
+</tr>
+<tr>
+<td>404 Not found</td>
+<td>Project not found</td>
+</tr>
+<tr>
+<td>422 Unprocessable entity</td>
+<td>Validation error occurred</td>
+</tr>
+<tr>
+<td>500 Internal server error</td>
+<td>Internal server error</td>
+</tr>
+</tbody></table></div><h2 id="delete-cfengine-build-module-from-project">Delete CFEngine Build module from project</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/build/projects/:id/modules/:module">https://hub.cfengine.com/api/build/projects/:id/modules/:module</a></p>
+
+<p><strong>Method:</strong> DELETE</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>id</strong> <em>(integer)</em>
+Project&#39;s ID. Required.</li>
+<li><strong>module</strong> <em>(string)</em>
+Module&#39;s name. Required.</li>
+</ul>
+
+<p><strong>Example request (curl):</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">curl --user &lt;username&gt;:&lt;password&gt; \</span>
+<span class="go">  -X DELETE \</span>
+<span class="go">  https://hub.cfengine.com/api/build/projects/1/modules/autorun </span>
+</code></pre>
+</div>
+
+<p><strong>Successful response example:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 204 No content
+</code></pre>
+</div>
+
+<p><strong>Responses:</strong></p>
+<div class="tableOverflow"><table><thead><tr>
+<th>HTTP response code</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>204 No content</td>
+<td>Module successfully deleted from project</td>
+</tr>
+<tr>
+<td>404 Not found</td>
+<td>Project not found</td>
+</tr>
+<tr>
+<td>500 Internal server error</td>
+<td>Internal server error</td>
+</tr>
+</tbody></table></div><h2 id="update-cfengine-build-module-version">Update CFEngine Build module version</h2>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/build/projects/:id/modules/:module">https://hub.cfengine.com/api/build/projects/:id/modules/:module</a></p>
+
+<p><strong>Method:</strong> PATCH</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>id</strong> <em>(integer)</em>
+Project&#39;s ID. Required.</li>
+<li><strong>module</strong> <em>(string)</em>
+Module&#39;s name. Required.</li>
+<li><strong>version</strong> <em>(string)</em>
+Module&#39;s version. Required.</li>
+</ul>
+
+<p><strong>Example request (curl):</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">curl --user &lt;username&gt;:&lt;password&gt; \</span>
+<span class="go">  -X PATCH \</span>
+<span class="go">  https://hub.cfengine.com/api/build/projects/1/modules/autorun \</span>
+<span class="go">  -H &#39;content-type: application/json&#39; \</span>
+<span class="go">  -d &#39;</span>
+<span class="go">  {</span>
+<span class="go">  &quot;version&quot;: &quot;1.0.2&quot;</span>
+<span class="go">  }&#39;</span>
+</code></pre>
+</div>
+
+<p><strong>Successful response example:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP No content
+</code></pre>
+</div>
+
+<p><strong>Responses:</strong></p>
+<div class="tableOverflow"><table><thead><tr>
+<th>HTTP response code</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>204 No content</td>
+<td>Module successfully updated</td>
+</tr>
+<tr>
+<td>404 Not found</td>
+<td>Project not found</td>
+</tr>
+<tr>
+<td>422 Unprocessable entity</td>
+<td>Validation error occurred</td>
+</tr>
+<tr>
+<td>500 Internal server error</td>
+<td>Internal server error</td>
+</tr>
+</tbody></table></div><h1 id="get-list-of-available-cfengine-build-modules">Get list of available CFEngine Build modules</h1>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/build/modules">https://hub.cfengine.com/api/build/modules</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>sortColumn</strong> <em>(string)</em>
+Column name on which to sort results. Default value: <code>name</code>. Optional parameter.</li>
+<li><strong>sortDescending</strong> <em>(boolean)</em>
+Sorting order. Optional parameter. Default value: <code>false</code>. Optional parameter.</li>
+<li><strong>searchQuery</strong> <em>(string)</em>
+Search query for a full-text search based on modules name and description. Optional parameter.</li>
+<li><strong>tag</strong> <em>(string)</em>
+Filter modules by tag. Optional parameter.</li>
+<li><strong>skip</strong> <em>(integer)</em>
+Number of results to skip for the processed query. The Mission Portal uses this for pagination. Optional parameter.</li>
+<li><strong>limit</strong>  <em>(integer)</em>
+Limit the number of results in the query. Optional parameter.</li>
+</ul>
+
+<p><strong>Example request (curl):</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">curl --user &lt;username&gt;:&lt;password&gt; \</span>
+<span class="go">  -X GET \</span>
+<span class="go">  https://hub.cfengine.com/api/build/modules/?searchQuery=autorun</span>
+</code></pre>
+</div>
+
+<p><strong>Successful response example:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 200 OK
+{
+    &quot;data&quot;: [
+        {
+            &quot;name&quot;: &quot;autorun&quot;,
+            &quot;readme&quot;: &quot;&lt;h1 id=\&quot;enable-autorun\&quot;&gt;Enable autorun&lt;/h1&gt;\n&lt;p&gt;Simple module to enable autorun functionality, using def.json.&lt;/p&gt;\n&quot;,
+            &quot;description&quot;: &quot;Enable autorun functionality&quot;,
+            &quot;version&quot;: &quot;1.0.1&quot;,
+            &quot;author&quot;: {
+                &quot;url&quot;: &quot;https://github.com/olehermanse&quot;,
+                &quot;name&quot;: &quot;Ole Herman Schumacher Elgesem&quot;,
+                &quot;image&quot;: &quot;https://avatars.githubusercontent.com/u/4048546?v=4&quot;
+            },
+            &quot;updated&quot;: &quot;2021-11-03 00:00:00+00&quot;,
+            &quot;downloads&quot;: 1837,
+            &quot;repo&quot;: &quot;https://github.com/cfengine/modules&quot;,
+            &quot;documentation&quot;: null,
+            &quot;website&quot;: null,
+            &quot;subdirectory&quot;: &quot;management/autorun&quot;,
+            &quot;commit&quot;: &quot;c3b7329b240cf7ad062a0a64ee8b607af2cb912a&quot;,
+            &quot;dependencies&quot;: &quot;[]&quot;,
+            &quot;tags&quot;: &quot;[\&quot;supported\&quot;, \&quot;management\&quot;]&quot;,
+            &quot;versions&quot;: {
+                &quot;1.0.0&quot;: {
+                    &quot;date&quot;: &quot;Oct 26, 2021&quot;,
+                    &quot;latest&quot;: false
+                },
+                &quot;1.0.1&quot;: {
+                    &quot;date&quot;: &quot;Nov 1, 2021&quot;,
+                    &quot;latest&quot;: true
+                }
+            },
+            &quot;latest&quot;: true,
+            &quot;ts_vector&quot;: &quot;&#39;autorun&#39;:1A,3B &#39;enable&#39;:2B &#39;functionality&#39;:4B&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;count&quot;: 1,
+        &quot;page&quot;: 1,
+        &quot;timestamp&quot;: 1657097484,
+        &quot;total&quot;: 1
+    }
+}
+</code></pre>
+</div>
+
+<p><strong>Responses:</strong></p>
+<div class="tableOverflow"><table><thead><tr>
+<th>HTTP response code</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>200 Ok</td>
+<td>Successful response</td>
+</tr>
+<tr>
+<td>500 Internal server error</td>
+<td>Internal server error</td>
+</tr>
+</tbody></table></div><h1 id="update-list-of-available-cfengine-build-modules">Update list of available CFEngine Build modules</h1>
+<p>Modules will be received from the official CFEngine Build modules catalogue <a href="https://build.cfengine.com">https://build.cfengine.com</a></p>
+
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/build/modules">https://hub.cfengine.com/api/build/modules</a></p>
+
+<p><strong>Method:</strong> POST</p>
+
+<p><strong>Example request (curl):</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">curl --user &lt;username&gt;:&lt;password&gt; \</span>
+<span class="go">  -X POST \</span>
+<span class="go">  https://hub.cfengine.com/api/build/modules</span>
+</code></pre>
+</div>
+
+<p><strong>Successful response example:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>204 No content
+</code></pre>
+</div>
+
+<p><strong>Responses:</strong></p>
+<div class="tableOverflow"><table><thead><tr>
+<th>HTTP response code</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>204 No content</td>
+<td>Modules list successfully updated</td>
+</tr>
+<tr>
+<td>500 Internal server error</td>
+<td>Internal server error</td>
+</tr>
+</tbody></table></div><h1 id="get-cfengine-build-module-by-name">Get CFEngine build module by name</h1>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/build/modules/:name">https://hub.cfengine.com/api/build/modules/:name</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><strong>name</strong> <em>(string)</em>
+Module name. Default value: <code>name</code>. Required.</li>
+</ul>
+
+<p><strong>Example request (curl):</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">curl --user &lt;username&gt;:&lt;password&gt; \</span>
+<span class="go">  -X GET \</span>
+<span class="go">  https://hub.cfengine.com/api/build/modules/autorun</span>
+</code></pre>
+</div>
+
+<p><strong>Successful response example:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 200 OK
+{
+    &quot;name&quot;: &quot;autorun&quot;,
+    &quot;readme&quot;: &quot;&lt;h1 id=\&quot;enable-autorun\&quot;&gt;Enable autorun&lt;/h1&gt;\n&lt;p&gt;Simple module to enable autorun functionality, using def.json.&lt;/p&gt;\n&quot;,
+    &quot;description&quot;: &quot;Enable autorun functionality&quot;,
+    &quot;version&quot;: &quot;1.0.1&quot;,
+    &quot;author&quot;: {
+        &quot;url&quot;: &quot;https://github.com/olehermanse&quot;,
+        &quot;name&quot;: &quot;Ole Herman Schumacher Elgesem&quot;,
+        &quot;image&quot;: &quot;https://avatars.githubusercontent.com/u/4048546?v=4&quot;
+    },
+    &quot;updated&quot;: &quot;2021-11-03 00:00:00+00&quot;,
+    &quot;downloads&quot;: 1837,
+    &quot;repo&quot;: &quot;https://github.com/cfengine/modules&quot;,
+    &quot;documentation&quot;: null,
+    &quot;website&quot;: null,
+    &quot;subdirectory&quot;: &quot;management/autorun&quot;,
+    &quot;commit&quot;: &quot;c3b7329b240cf7ad062a0a64ee8b607af2cb912a&quot;,
+    &quot;dependencies&quot;: &quot;[]&quot;,
+    &quot;tags&quot;: &quot;[\&quot;supported\&quot;, \&quot;management\&quot;]&quot;,
+    &quot;versions&quot;: {
+        &quot;1.0.0&quot;: {
+            &quot;date&quot;: &quot;Oct 26, 2021&quot;,
+            &quot;latest&quot;: false
+        },
+        &quot;1.0.1&quot;: {
+            &quot;date&quot;: &quot;Nov 1, 2021&quot;,
+            &quot;latest&quot;: true
+        }
+    },
+    &quot;latest&quot;: true
+}
+</code></pre>
+</div>
+
+<p><strong>Responses:</strong></p>
+<div class="tableOverflow"><table><thead><tr>
+<th>HTTP response code</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>200 Ok</td>
+<td>Successful response</td>
+</tr>
+<tr>
+<td>404 Not found</td>
+<td>Module not found</td>
+</tr>
+<tr>
+<td>500 Internal server error</td>
+<td>Internal server error</td>
+</tr>
+</tbody></table></div><h1 id="get-specific-version-of-a-cfengine-build-module-by-name">Get specific version of a CFEngine Build module by name</h1>
+<p><strong>URI:</strong> <a href="https://hub.cfengine.com/api/build/modules/:name/:version/">https://hub.cfengine.com/api/build/modules/:name/:version/</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Parameters:</strong>
+sortColumn searchQuery tag</p>
+
+<ul>
+<li><strong>name</strong> <em>(string)</em>
+Module name. Required.</li>
+<li><strong>version</strong> <em>(string)</em>
+Module version. Required.</li>
+</ul>
+
+<p><strong>Example request (curl):</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">curl --user &lt;username&gt;:&lt;password&gt; \</span>
+<span class="go">  -X GET \</span>
+<span class="go">  https://hub.cfengine.com/api/build/modules/autorun/1.0.0/</span>
+</code></pre>
+</div>
+
+<p><strong>Successful response example:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 200 OK
+{
+    &quot;name&quot;: &quot;autorun&quot;,
+    &quot;readme&quot;: &quot;&lt;h1 id=\&quot;enable-autorun\&quot;&gt;Enable autorun&lt;/h1&gt;\n&lt;p&gt;Simple module to enable autorun functionality, using def.json.&lt;/p&gt;\n&quot;,
+    &quot;description&quot;: &quot;Enable autorun functionality&quot;,
+    &quot;version&quot;: &quot;1.0.0&quot;,
+    &quot;author&quot;: {
+        &quot;url&quot;: &quot;https://github.com/olehermanse&quot;,
+        &quot;name&quot;: &quot;Ole Herman Schumacher Elgesem&quot;,
+        &quot;image&quot;: &quot;https://avatars.githubusercontent.com/u/4048546?v=4&quot;
+    },
+    &quot;updated&quot;: &quot;2021-11-03 00:00:00+00&quot;,
+    &quot;downloads&quot;: 1837,
+    &quot;repo&quot;: &quot;https://github.com/cfengine/modules&quot;,
+    &quot;documentation&quot;: null,
+    &quot;website&quot;: null,
+    &quot;subdirectory&quot;: &quot;management/autorun&quot;,
+    &quot;commit&quot;: &quot;be3bc015f6a19e945bb7a9fa0ed78c97e2cecf61&quot;,
+    &quot;dependencies&quot;: &quot;[]&quot;,
+    &quot;tags&quot;: &quot;[\&quot;supported\&quot;, \&quot;management\&quot;]&quot;,
+    &quot;versions&quot;: {
+        &quot;1.0.0&quot;: {
+            &quot;date&quot;: &quot;Oct 26, 2021&quot;,
+            &quot;latest&quot;: false
+        },
+        &quot;1.0.1&quot;: {
+            &quot;date&quot;: &quot;Nov 1, 2021&quot;,
+            &quot;latest&quot;: true
+        }
+    },
+    &quot;latest&quot;: false
+}
+</code></pre>
+</div>
+
+<p><strong>Responses:</strong></p>
+<div class="tableOverflow"><table><thead><tr>
+<th>HTTP response code</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>200 Ok</td>
+<td>Successful response</td>
+</tr>
+<tr>
+<td>404 Not found</td>
+<td>Module not found</td>
+</tr>
+<tr>
+<td>500 Internal server error</td>
+<td>Internal server error</td>
+</tr>
+</tbody></table></div>
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-enterprise.html">enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-api.html">api</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-build.html">build</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-modules.html">modules</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 03 October 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.20/generator/pages/reference/enterprise-api-ref/build-api.markdown/reference/enterprise-api-ref/build-api.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-e4781e211c818162ced38e083ca9577f.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.16  Documentation - Policy Style Guide</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.16/assets/global-78ca1ff06c068c806dddb47b0cb1ea40.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Policy Style Guide";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.16/" selected>Version 3.16 (non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a><ul class="level2"><li><a href="guide-writing-and-serving-policy-policy-layers-abstraction.html">Layers of Abstraction in Policy</a></li><li><a href="guide-writing-and-serving-policy-promises-available-in-cfengine.html">Promises Available in CFEngine</a></li><li><a href="guide-writing-and-serving-policy-authoring-policy-tools-and-workflow.html">Authoring Policy Tools & Workflow</a></li><li><a class="active" href="guide-writing-and-serving-policy-policy-style.html">Policy Style Guide</a></li><li><a href="guide-writing-and-serving-policy-bundles-best-practices.html">Bundles Best Practices</a></li><li><a href="guide-writing-and-serving-policy-external_data.html">External Data</a></li><li><a href="guide-writing-and-serving-policy-testing-policies.html">Testing Policies</a></li><li><a href="guide-writing-and-serving-policy-controlling-frequency.html">Controlling Frequency</a></li></ul></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Policy Style Guide
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Style is a very personal choice and the contents of this guide should only be
+considered suggestions. We invite you to contribute to the growth of this
+guide.</p>
+<h2 id="style-summary">Style Summary</h2>
+<ul>
+<li>one indent = 2 spaces</li>
+<li>avoid letting line length surpass 80 characters.</li>
+<li>vertically align opening and closing curly braces unless on same line</li>
+<li>promise type = 1 indent</li>
+<li>context class expression = 2 indents</li>
+<li>promiser = 3 indents</li>
+<li>promise attributes = (we suggest 3 or 4 indents)</li>
+</ul>
+<h2 id="promise-ordering">Promise Ordering</h2>
+<p>There are two common styles that are used when writing policy. The
+<a href="reference-language-concepts-normal-ordering.html" title="Normal Ordering">Normal Order</a> style dictates that promises should be
+written in in the Normal Order that the agent evaluates promises
+in. The other is reader optimized where promises are written in the
+order they make sense to the reader. Both styles have their merits,
+but there seems to be a trend toward the reader optimized style.</p>
+
+<p>1) Normal Order</p>
+
+<p>Here is an example of a policy written in the Normal Order. Note how
+<a href="reference-promise-types-packages.html" title="packages"><code>packages</code></a> are listed after <a href="reference-promise-types-files.html" title="files"><code>files</code></a>. This could confuse a novice who
+thinks that it is necessary for the files promise to only be attempted
+after the package promsie is kept. However this style can be useful to
+a policy expert who is familiar with Normal Ordering.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">sshd_config</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/etc/ssh/sshd_config&quot;</span><span class="p">;</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+
+      <span class="s">&quot;</span><span class="si">$(sshd_config)</span><span class="s">&quot;</span>
+        <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">insert_lines</span><span class="p">(</span><span class="s">&quot;PermitRootLogin no&quot;</span><span class="p">),</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="s">&quot;bundle&quot;</span><span class="p">,</span> <span class="s">&quot;sshd_config&quot;</span><span class="p">);</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+
+      <span class="s">&quot;ssh&quot;</span>
+        <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">;</span>
+        <span class="kr">package_module</span> <span class="o">=&gt;</span> <span class="nf">apt_get</span><span class="p">;</span>
+
+  <span class="kd">services</span><span class="p">:</span>
+
+    <span class="nc">sshd_config_repaired</span><span class="p">::</span>
+
+        <span class="s">&quot;ssh&quot;</span>
+          <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;restart&quot;</span><span class="p">,</span>
+          <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;After the sshd config file has been repaired, the</span>
+<span class="s">                      service must be reloaded in order for the new</span>
+<span class="s">                      settings to take effect.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>2) Reader Optimized</p>
+
+<p>Here is an example of a policy written to be optimized for the reader.
+Note how packages are listed before files in the order which users
+think about taking imperitive action. This style can make it
+significantly easier for a novice to understand the desired state, but
+it is important to remember that Normal Ordering still applies and
+that the promises will not be actuated in the order they are written.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">sshd_config</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/etc/ssh/sshd_config&quot;</span><span class="p">;</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+
+      <span class="s">&quot;ssh&quot;</span>
+        <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">;</span>
+        <span class="kr">package_module</span> <span class="o">=&gt;</span> <span class="nf">apt_get</span><span class="p">;</span>
+
+
+  <span class="kd">files</span><span class="p">:</span>
+
+      <span class="s">&quot;</span><span class="si">$(sshd_config)</span><span class="s">&quot;</span>
+        <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">insert_lines</span><span class="p">(</span><span class="s">&quot;PermitRootLogin no&quot;</span><span class="p">),</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="s">&quot;bundle&quot;</span><span class="p">,</span> <span class="s">&quot;sshd_config&quot;</span><span class="p">);</span>
+
+  <span class="kd">services</span><span class="p">:</span>
+
+    <span class="nc">sshd_config_repaired</span><span class="p">::</span>
+
+        <span class="s">&quot;ssh&quot;</span>
+          <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;restart&quot;</span><span class="p">,</span>
+          <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;After the sshd config file has been repaired, the</span>
+<span class="s">                      service must be reloaded in order for the new</span>
+<span class="s">                      settings to take effect.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="whitespace-and-line-length">Whitespace and Line Length</h2>
+<p>Spaces are preferred to tab characters. Lines should not have trailing
+whitespace. Generally line length should not surpass 80 characters.</p>
+<h2 id="curly-brace-alignment">Curly brace alignment</h2>
+<p>Generally if opening and closing braces are not on a single line they should
+be aligned vertically.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+    <span class="p">{</span>
+      <span class="kd">vars</span><span class="p">:</span>
+          <span class="p">&quot;</span><span class="nv">people</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                              <span class="s">&quot;Obi-Wan Kenobi&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;Luke Skywalker&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;Chewbacca&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;Yoda&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;Darth Vader&quot;</span><span class="p">,</span>
+                            <span class="p">};</span>
+
+          <span class="p">&quot;</span><span class="nv">cuddly</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;Chewbacca&quot;</span><span class="p">,</span> <span class="s">&quot;Yoda&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="promise-types">Promise types</h2>
+<p>Promise types should have 1 indent and each promise type after the first
+listed should have a blank line before the next promise type.</p>
+
+<p>This example illustrates the blank line before the &quot;classes&quot; type.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+    <span class="p">{</span>
+      <span class="kd">vars</span><span class="p">:</span>
+          <span class="p">&quot;</span><span class="nv">policyhost</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;MyPolicyServerHostname&quot;</span><span class="p">;</span>
+
+      <span class="kd">classes</span><span class="p">:</span>
+          <span class="s">&quot;EL5&quot;</span> <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;centos_5&quot;</span><span class="p">,</span> <span class="s">&quot;redhat_5&quot;</span> <span class="p">};</span>
+          <span class="s">&quot;EL6&quot;</span> <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;centos_6&quot;</span><span class="p">,</span> <span class="s">&quot;redhat_6&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="context-class-expressions">Context class expressions</h2>
+<p>Context class expressions should have 2 indents and each context class
+expression after the first listed within a given promise type should have a
+blank line preceding it.</p>
+
+<p>This example illustrates the blank line before the second context class
+expression (solaris) in the files type promise section:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+    <span class="p">{</span>
+      <span class="kd">files</span><span class="p">:</span>
+        <span class="nc">any</span><span class="p">::</span>
+          <span class="s">&quot;/var/cfengine/inputs/&quot;</span>
+            <span class="kr">copy_from</span>    <span class="o">=&gt;</span> <span class="nf">update_policy</span><span class="p">(</span> <span class="s">&quot;/var/cfengine/masterfiles&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(policyhost)</span><span class="s">&quot;</span> <span class="p">),</span>
+            <span class="kr">classes</span>      <span class="o">=&gt;</span> <span class="nf">policy_updated</span><span class="p">(</span> <span class="s">&quot;policy_updated&quot;</span> <span class="p">),</span>
+            <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">recurse</span><span class="p">(</span><span class="s">&quot;inf&quot;</span><span class="p">);</span>
+
+        <span class="nc">solaris</span><span class="p">::</span>
+          <span class="s">&quot;/var/cfengine/inputs&quot;</span>
+            <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">update_policy</span><span class="p">(</span> <span class="s">&quot;/var/cfengine/masterfiles&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(policyhost&quot; )</span><span class="s">,</span>
+<span class="s">            classes   =&gt; policy_updated( &quot;</span><span class="nf">policy_updated</span><span class="s">&quot; );</span>
+<span class="s">    }</span>
+</code></pre>
+</div>
+<h2 id="policy-comments">Policy Comments</h2>
+<p>In-line policy comments are useful for debugging and explaining why something
+is done a specific way. We encourage you to document your policy thoroughly.</p>
+
+<p>Comments about general body and bundle behavior and parameters should be
+placed after the body or bundle definition, before the opening curly brace and
+should not be indented. Comments about specific promise behavior should be
+placed before the promise at the same indention level as the promiser or on
+the same line after the attribute.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span><span class="p">(</span><span class="nv">param1</span><span class="p">)</span>
+    <span class="c"># This is an example bundle to illustrate comments</span>
+    <span class="c"># param1 - string -</span>
+    <span class="p">{</span>
+      <span class="kd">vars</span><span class="p">:</span>
+          <span class="p">&quot;</span><span class="nv">copy_of_param1</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(param1)</span><span class="s">&quot;</span><span class="p">;</span>
+
+          <span class="p">&quot;</span><span class="nv">jedi</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                            <span class="s">&quot;Obi-Wan Kenobi&quot;</span><span class="p">,</span>
+                            <span class="s">&quot;Luke Skywalker&quot;</span><span class="p">,</span>
+                            <span class="s">&quot;Yoda&quot;</span><span class="p">,</span>
+                            <span class="s">&quot;Darth Vader&quot;</span><span class="p">,</span> <span class="c"># He used to be a Jedi, and since he</span>
+                                           <span class="c"># tossed the emperor into the Death</span>
+                                           <span class="c"># Star&#39;s reactor shaft we are including</span>
+                                           <span class="c"># him.</span>
+                          <span class="p">};</span>
+      <span class="kd">classes</span><span class="p">:</span>
+          <span class="c"># Most of the time we don&#39;t need differentiation of redhat and centos</span>
+          <span class="s">&quot;EL5&quot;</span> <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;centos_5&quot;</span><span class="p">,</span> <span class="s">&quot;redhat_5&quot;</span> <span class="p">};</span>
+          <span class="s">&quot;EL6&quot;</span> <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;centos_6&quot;</span><span class="p">,</span> <span class="s">&quot;redhat_6&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="policy-reports">Policy Reports</h2>
+<p>It is common and useful to include reports in policy to get detailed
+information about what is going on. During a normal agent run the goal is to
+have 0 output so reports should always be guarded with a class. Carefully
+consider when your policy should generate report output. For policy degbugging
+type information (value of variables, classes that were set or not) the
+following style is recommended:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">DEBUG|DEBUG_example</span><span class="p">::</span>
+      <span class="s">&quot;DEBUG </span><span class="si">$(this.bundle)</span><span class="s">: Desired Report Output&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>As of version 3.7 variables can be used in double colon class expressions. If
+your policy will only be parsed by 3.7 or newer agents the following style is
+recommended:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;DEBUG|DEBUG_</span><span class="si">$(this.bundle)</span><span class="s">&quot;</span><span class="err">::</span>
+      <span class="s">&quot;DEBUG </span><span class="si">$(this.bundle)</span><span class="s">: Desired Report Output&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Following this style keeps policy debug reports from spamming logs. It avoids
+polluting the <code>inform_mode</code> and <code>verbose_mode</code> output, and it allows you to get
+debug output for ALL policy or just a select bundle which is incredibly useful
+when debugging a large policy set.</p>
+<h2 id="promise-handles">Promise Handles</h2>
+<p>Promise handles uniquely identify a promise within a policy. We suggest a simple naming
+scheme of <code>bundle_name_promise_type_class_restriction_promiser</code> to keep handles unique and
+easily identifiable.  Often it may be easier to omit the handle.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="nc">dev</span><span class="p">::</span>
+      <span class="s">&quot;/usr/bin/git&quot;</span>
+        <span class="kr">args</span>    <span class="o">=&gt;</span> <span class="s">&quot;pull&quot;</span><span class="p">,</span>
+        <span class="kr">contain</span> <span class="o">=&gt;</span> <span class="nf">in_dir</span><span class="p">(</span><span class="s">&quot;/var/srv/myrepo&quot;</span><span class="p">),</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;redhat&quot;</span><span class="p">,</span>
+        <span class="kr">handle</span>  <span class="o">=&gt;</span> <span class="s">&quot;example_commands_dev_redhat_git_pull&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="hashrockets-gt">Hashrockets (=&gt;)</h2>
+<p>You may align hash rockets within a promise body scope and for grouped
+single line promises.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+    <span class="p">{</span>
+      <span class="kd">files</span><span class="p">:</span>
+        <span class="nc">any</span><span class="p">::</span>
+          <span class="s">&quot;/var/cfengine/inputs/&quot;</span>
+            <span class="kr">copy_from</span>    <span class="o">=&gt;</span> <span class="nf">update_policy</span><span class="p">(</span> <span class="s">&quot;/var/cfengine/masterfiles&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(policyhost)</span><span class="s">&quot;</span> <span class="p">),</span>
+            <span class="kr">classes</span>      <span class="o">=&gt;</span> <span class="nf">policy_updated</span><span class="p">(</span> <span class="s">&quot;policy_updated&quot;</span> <span class="p">),</span>
+            <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">recurse</span><span class="p">(</span><span class="s">&quot;inf&quot;</span><span class="p">);</span>
+
+          <span class="s">&quot;/var/cfengine/modules&quot;</span>
+            <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">update_policy</span><span class="p">(</span> <span class="s">&quot;/var/cfengine/modules&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(policyhost&quot; )</span><span class="s">,</span>
+<span class="s">            classes   =&gt; policy_updated( &quot;</span><span class="nf">modules_updated</span><span class="s">&quot; );</span>
+
+<span class="s">      classes:</span>
+<span class="s">          &quot;</span><span class="nf">EL5</span><span class="s">&quot; or =&gt; { &quot;</span><span class="nf">centos_5</span><span class="s">&quot;, &quot;</span><span class="nf">redhat_5</span><span class="s">&quot; };</span>
+<span class="s">          &quot;</span><span class="nf">EL6</span><span class="s">&quot; or =&gt; { &quot;</span><span class="nf">centos_6</span><span class="s">&quot;, &quot;</span><span class="nf">redhat_6</span><span class="s">&quot; };</span>
+<span class="s">    }</span>
+</code></pre>
+</div>
+
+<p>You may also simply leave them as they are:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+    <span class="p">{</span>
+      <span class="kd">files</span><span class="p">:</span>
+        <span class="nc">any</span><span class="p">::</span>
+          <span class="s">&quot;/var/cfengine/inputs/&quot;</span>
+            <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">update_policy</span><span class="p">(</span> <span class="s">&quot;/var/cfengine/masterfiles&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(policyhost)</span><span class="s">&quot;</span> <span class="p">),</span>
+            <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">policy_updated</span><span class="p">(</span> <span class="s">&quot;policy_updated&quot;</span> <span class="p">),</span>
+            <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">recurse</span><span class="p">(</span><span class="s">&quot;inf&quot;</span><span class="p">);</span>
+
+          <span class="s">&quot;/var/cfengine/modules&quot;</span>
+            <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">update_policy</span><span class="p">(</span> <span class="s">&quot;/var/cfengine/modules&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(policyhost&quot; )</span><span class="s">,</span>
+<span class="s">            classes =&gt; policy_updated( &quot;</span><span class="nf">modules_updated</span><span class="s">&quot; );</span>
+
+<span class="s">      classes:</span>
+<span class="s">          &quot;</span><span class="nf">EL5</span><span class="s">&quot; or =&gt; { &quot;</span><span class="nf">centos_5</span><span class="s">&quot;, &quot;</span><span class="nf">redhat_5</span><span class="s">&quot; };</span>
+<span class="s">          &quot;</span><span class="nf">EL6</span><span class="s">&quot; or =&gt; { &quot;</span><span class="nf">centos_6</span><span class="s">&quot;, &quot;</span><span class="nf">redhat_6</span><span class="s">&quot; };</span>
+<span class="s">    }</span>
+</code></pre>
+</div>
+
+<p>Which one do you prefer?</p>
+<h2 id="naming-conventions">Naming Conventions</h2><h2 id="classes">Classes</h2>
+<p>Classes are intended to describe an aspect of the system, and they are
+combined in expressions to restrict when and where a promise should be
+actuated. To make this desired state easier to read classes should be
+named to describe the current state, not an action that should take
+place.</p>
+
+<p>For example, here is a policy that uses a class that indicates an
+action that should be taken after having repaired the sshd config.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">sshd_config</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/etc/ssh/sshd_config&quot;</span><span class="p">;</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(sshd_config)</span><span class="s">&quot;</span>
+        <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">insert_lines</span><span class="p">(</span><span class="s">&quot;PermitRootLogin no&quot;</span><span class="p">),</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;restart_sshd&quot;</span><span class="p">);</span>
+
+  <span class="kd">services</span><span class="p">:</span>
+
+    <span class="nc">!windows</span><span class="p">::</span>
+
+      <span class="s">&quot;ssh&quot;</span>
+        <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;start&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;We always want ssh to be running so that we have</span>
+<span class="s">                    administrative access&quot;</span><span class="p">;</span>
+
+    <span class="nc">restart_sshd</span><span class="p">::</span>
+
+      <span class="s">&quot;ssh&quot;</span>
+        <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;restart&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Here it&#39;s kind of hard to tell *why* we are</span>
+<span class="s">                    restarting sshd&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Here is a slightly improved version that shows using classes to describe the
+current state, or what happened as the result of the promise. Note how it&#39;s
+easier to determine <strong>why</strong> the ssh service should be restarted. Using
+the <a href="reference-masterfiles-policy-framework-lib-common.html#results" title="lib/common.cf - results "><code>results</code></a>, <code>scoped_classes_generic</code>, or
+<code>classes_generic</code> classes bodies can help improve class name consistency and are
+highly recommended.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">sshd_config</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/etc/ssh/sshd_config&quot;</span><span class="p">;</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(sshd_config)</span><span class="s">&quot;</span>
+        <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">insert_lines</span><span class="p">(</span><span class="s">&quot;PermitRootLogin no&quot;</span><span class="p">),</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="s">&quot;bundle&quot;</span><span class="p">,</span> <span class="s">&quot;sshd_config&quot;</span><span class="p">);</span>
+
+  <span class="kd">services</span><span class="p">:</span>
+
+    <span class="nc">!windows</span><span class="p">::</span>
+
+      <span class="s">&quot;ssh&quot;</span>
+        <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;start&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;We always want ssh to be running so that we have</span>
+<span class="s">                    administrative access&quot;</span><span class="p">;</span>
+
+    <span class="nc">sshd_config_repaired</span><span class="p">::</span>
+
+      <span class="s">&quot;ssh&quot;</span>
+        <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;restart&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;After the sshd config file has been repaired, the</span>
+<span class="s">                    service must be reloaded in order for the new</span>
+<span class="s">                    settings to take effect.&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="internal-variables-amp-classes">Internal variables &amp; classes</h3>
+<p>Variables and classes that have no centralized reporting value are considered
+&quot;internal&quot;. By convention internal variables and classes should be prefixed with
+an underscore &quot;_&quot;.</p>
+<h2 id="deprecating-bundles">Deprecating Bundles</h2>
+<p>As your policy library changes over time you may want to deprecate various
+bundles in favor of newer implimentations. To indicate that a bundle is
+deprecated we recommend the following style.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">old</span>
+<span class="p">{</span>
+  <span class="kd">meta</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">tags</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                      <span class="s">&quot;deprecated=3.6.0&quot;</span><span class="p">,</span>
+                      <span class="s">&quot;deprecation-reason=More feature rich implimentation&quot;</span><span class="p">,</span>
+                      <span class="s">&quot;replaced-by=newbundle&quot;</span><span class="p">,</span>
+                    <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="automatic-reindentation">Automatic reindentation</h2>
+<p><a href="https://github.com/cfengine/core/blob/master/contrib/reindent.pl"><code>reindent.pl</code></a>
+is available from the core repository. You can run <code>reindent.pl
+FILE1.cf FILE2.c FILE3.h</code> to reindent files, if you don&#39;t want to set
+up Emacs.  It will rewrite them with the new indentation, using Emacs
+in batch mode.</p>
+
+<p>Some <a href="https://cfengine.com/cfengine-code-editors/">editors</a> also have
+support for automatic re-indentation.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-manuals.html">manuals</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-style.html">style</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-policy.html">policy</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 24 June 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/writing-and-serving-policy/policy-style.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/4e9e6860aa094f25a21afcdd2087a240dbb1ba7d" target="_blank">4e9e6860aa094f25a21afcdd2087a240dbb1ba7d</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.16/assets/footer-ae31e033a1a936d598cf1c40b94021b9.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

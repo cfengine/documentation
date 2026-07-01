@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - bundle edit_xml</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html"  class="navselected" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li class="selected"><span>bundle edit_xml</span></li><li><a href="reference-promise-types-files-edit_line.html">bundle edit_line</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li><a href="reference-promise-types-files-edit_xml-build_xpath.html">build_xpath</a></li><li><a href="reference-promise-types-files-edit_xml-delete_attribute.html">delete_attribute</a></li><li><a href="reference-promise-types-files-edit_xml-delete_text.html">delete_text</a></li><li><a href="reference-promise-types-files-edit_xml-delete_tree.html">delete_tree</a></li><li><a href="reference-promise-types-files-edit_xml-insert_text.html">insert_text</a></li><li><a href="reference-promise-types-files-edit_xml-insert_tree.html">insert_tree</a></li><li><a href="reference-promise-types-files-edit_xml-set_attribute.html">set_attribute</a></li><li><a href="reference-promise-types-files-edit_xml-set_text.html">set_text</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types-files.html">files</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>bundle edit_xml</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/reference.html">reference</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/bundle-agent.html">bundle agent</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/bundle-edit_xml.html">bundle edit_xml</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/xml.html">xml</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/files-promises.html">files promises</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/file-editing.html">file editing</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>bundle edit_xml</h1>
+                    <p>The use of XML documents in systems configuration is widespread. XML
+documents represent data that is complex and can be structured in
+various ways. The XML based editing offers a powerful environment for
+editing hierarchical and structured XML datasets.</p>
+
+<hr>
+<h2 id="attributes">Attributes</h2>
+<p>The following attributes are available in all <a href="reference-promise-types-files.html#edit_xml" title="files - edit_xml"><code>edit_xml</code></a> promise types.</p>
+<h3 id="build_xpath">build_xpath</h3>
+<p><strong>Description:</strong> Builds an XPath within the XML file</p>
+
+<p>Please note that when <code>build_xpath</code> is defined as an attribute within
+an <a href="reference-promise-types-files.html#edit_xml" title="files - edit_xml"><code>edit_xml</code></a> promise body, the tree described by the specified XPath
+will be verified and built BEFORE other <a href="reference-promise-types-files.html#edit_xml" title="files - edit_xml"><code>edit_xml</code></a> promises within same
+promise body. Therefore, the file will not be empty during the execution
+of such promises.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+<h3 id="select_xpath">select_xpath</h3>
+<p><strong>Description:</strong> Select the XPath node in the XML file to edit</p>
+
+<p>Edits to the XML document take place within the selected node. This
+attribute is not used when inserting XML content into an empty file.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/reference/promise-types/edit_xml.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

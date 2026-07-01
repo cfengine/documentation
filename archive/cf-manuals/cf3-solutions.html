@@ -1,0 +1,4717 @@
+<html lang="en">
+<head>
+<title>CFEngine Solutions</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CFEngine Solutions">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; }
+  span.sansserif { font-family:sans-serif; font-weight:normal; }
+body {
+	font-family: Verdana, DejaVu, Vera, Geneva, sans-serif;
+	padding: 10px;
+}
+.node
+{
+	text-align: right;
+	padding: 2px;
+	font-size: smaller;
+}
+.node hr {
+	border: 0;
+	width: 100%;
+	color: #CCC;
+	background-color: #CCC;
+	height: 5px;
+}
+.section {
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+h1 {
+	font-weight: bold;
+	color: #666;
+}
+h2 {
+	font-weight: bold;
+	color: #666;
+}
+h3 {
+	margin-top: 3px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+}
+
+.menu
+{
+}
+
+.contents
+{
+	background-color: #CCC;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 10px;
+}
+
+.index-cp
+{
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 70%; }
+
+.tynn {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: smaller;
+        font-style: normal;
+        font-weight: lighter;
+        margin-bottom: 0em;
+     font-size: 11pt;
+        }
+
+.verbatim {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+
+.example {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	width: 100%;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+.smallexample {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	width: 100%;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+.cartouche {
+	background-color: #CCC;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	padding: 5px;
+	font-style: italic;
+        width: 100%;
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }--></style>
+</head>
+<body>
+<h1 class="settitle">CFEngine Solutions</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Introduction">Introduction</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">CFEngine-Solutions</h2>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+
+   <p><h2>Summary of contents</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Introduction">Introduction </a>
+<li><a accesskey="2" href="#Common-high-level-issues">Common high level issues</a>
+<li><a accesskey="3" href="#Common-low-level-issues">Common low level issues</a>
+</ul>
+
+<!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="Introduction"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Common-high-level-issues">Common high level issues</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Introduction</h2>
+
+<p>CFEngine 3 has been redesigned to allow modular solution building in
+terms of a simple, regular language.  This guide explains how to use
+the CFEngine Community Open Promise-Body Library to express some
+simple idioms and approaches for solving common system problems.
+
+   <p>The solutions presented here are necessarily generic and incomplete,
+since local environmental issues always define the boundaries of a
+solution in a real setting.  A solution guide does not present
+finished solutions, but rather hints about how to achieve such
+solutions with standardized idioms.
+
+   <p>CFEngine gives you great freedom to craft specific solutions, without
+the need for low level coding. For most tasks, you will find the
+standardized templates sufficient for your needs, but the possibilties
+do not stop there.
+
+   <p>If you need assistance in formulating specific solutions for your
+system environment, contact CFEngine's Professional Services at
+<code>contact@cfengine.com</code>;
+
+<ul class="menu">
+<li><a accesskey="1" href="#Begin-_002d-Get-started">Begin - Get started</a>
+</ul>
+
+<div class="node">
+<a name="Begin---Get-started"></a>
+<a name="Begin-_002d-Get-started"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Introduction">Introduction</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
+
+</div>
+
+<h3 class="section">1.1 Begin - Get Started</h3>
+
+<p>To get started with CFEngine, you can use the following template for entering examples.
+
+<pre class="verbatim">
+<span class="red">body common control
+</span>{
+<span class="red">bundlesequence </span>=> { "main" };
+<span class="red">inputs </span>=> { "cfengine_stdlib.cf" };
+}
+
+
+<span class="red">bundle agent</span> <span class="blue">main</span>
+{
+<span class="comment"># example
+</span>
+}
+
+</pre>
+Then you enter the cases as below. The general pattern
+of the syntax is like this (red: cfengine word, blue: user-defined word):
+
+<pre class="verbatim"># The general pattern
+
+<span class="red">bundle component</span> <span class="blue">name(parameters)</span>
+{
+<span class="red">what_type:
+</span> where_when::
+
+<span class="comment">  # Traditional comment
+</span>
+<span class="comment">
+</span>
+  "promiser" -> { "promisee1", "promisee2" },
+<span class="red">        comment </span>=><span class="green"> "The intention ...",</span>
+<span class="red">         handle </span>=><span class="green"> "unique_id_label",</span>
+<span class="red">    attribute_1 </span>=><span class="blue"> body_or_value1,</span>
+<span class="red">    attribute_2 </span>=><span class="blue"> body_or_value2;</span>
+}
+
+</pre>
+
+<!-- ...................................... -->
+<ul class="menu">
+<li><a accesskey="1" href="#Creating-files-and-directories">Creating files and directories</a>
+<li><a accesskey="2" href="#Copy-single-files">Copy single files</a>
+<li><a accesskey="3" href="#Copy-directory-trees">Copy directory trees</a>
+<li><a accesskey="4" href="#Editing-password-or-group-files">Editing password or group files</a>
+<li><a accesskey="5" href="#Disabling-and-rotating-files">Disabling and rotating files</a>
+<li><a accesskey="6" href="#Hashing-for-change-detection-_002d-tripwire">Hashing for change detection - tripwire</a>
+<li><a accesskey="7" href="#Command-or-script-execution">Command or script execution</a>
+<li><a accesskey="8" href="#Kill-process">Kill process</a>
+<li><a accesskey="9" href="#Restart-process">Restart process</a>
+<li><a href="#Check-filesystem-space">Check filesystem space</a>
+<li><a href="#Mount-a-filesystem">Mount a filesystem</a>
+<li><a href="#Software-and-patch-installation">Software and patch installation</a>
+</ul>
+
+<div class="node">
+<a name="Creating-files-and-directories"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Copy-single-files">Copy single files</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Begin-_002d-Get-started">Begin - Get started</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Begin-_002d-Get-started">Begin - Get started</a>
+
+</div>
+
+<h4 class="subsection">1.1.1 Creating files and directories</h4>
+
+<pre class="verbatim">
+<span class="red">files:
+</span>
+  "/home/mark/tmp/test_plain"
+<span class="red">     perms </span>=><span class="blue"> mog("644", "root", "wheel"),</span>
+<span class="red">     create </span>=><span class="green"> "true";</span>
+
+
+  "/home/mark/tmp/test_dir/."
+<span class="red">     perms </span>=><span class="blue"> mog("644", "root", "wheel"),  </span>
+<span class="comment">     # will add +x for dirs, see also rxdirs
+</span>
+<span class="red">     create </span>=><span class="green"> "true";</span>
+</pre>
+
+<!-- ...................................... -->
+<div class="node">
+<a name="Copy-single-files"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Copy-directory-trees">Copy directory trees</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Creating-files-and-directories">Creating files and directories</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Begin-_002d-Get-started">Begin - Get started</a>
+
+</div>
+
+<h4 class="subsection">1.1.2 Copy single files</h4>
+
+<pre class="verbatim">
+<span class="red">files:
+</span>
+  "/home/mark/tmp/test_plain"
+
+<span class="red">    copy_from </span>=><span class="blue"> local_cp("$(sys.workdir)\bin\file");</span>
+
+  "/home/mark/tmp/test_dir"
+
+<span class="red">    copy_from </span>=><span class="blue"> </span>
+        secure_cp("$(sys.workdir)/bin","serverhost");
+
+</pre>
+
+<!-- ...................................... -->
+<div class="node">
+<a name="Copy-directory-trees"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Editing-password-or-group-files">Editing password or group files</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Copy-single-files">Copy single files</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Begin-_002d-Get-started">Begin - Get started</a>
+
+</div>
+
+<h4 class="subsection">1.1.3 Copy directory trees</h4>
+
+<pre class="verbatim">
+<span class="red">files:
+</span>
+  "/home/mark/tmp/test_dir"
+
+<span class="red">    copy_from </span>=><span class="blue"> local_cp("$(sys.workdir)\bin\."),</span>
+<span class="red"> depth_search </span>=><span class="blue"> recurse("inf");</span>
+
+
+  "/home/mark/tmp/test_dir"
+
+<span class="red">  copy_from </span>=><span class="blue"> secure_cp("$(sys.workdir)/bin","serverhost"),</span>
+<span class="red"> depth_search </span>=><span class="blue"> recurse("inf");</span>
+
+</pre>
+
+<!-- ...................................... -->
+<div class="node">
+<a name="Editing-password-or-group-files"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Disabling-and-rotating-files">Disabling and rotating files</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Copy-directory-trees">Copy directory trees</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Begin-_002d-Get-started">Begin - Get started</a>
+
+</div>
+
+<h4 class="subsection">1.1.4 Editing password or group files</h4>
+
+<pre class="verbatim">
+<span class="red">vars:
+</span>
+ "userset"<span class="red"> slist </span>=> { "user1", "user2", "user3" };
+
+<span class="red">files:
+</span>
+  "/home/mark/tmp/passwd"
+<span class="red">     edit_line </span>=><span class="blue"> </span>
+        set_user_field("mark","7","/set/this/shell");
+
+  "/home/mark/tmp/group"
+<span class="red">     edit_line </span>=><span class="blue"> </span>
+        append_user_field("root","4","@(main.userset)");
+
+</pre>
+
+<!-- ...................................... -->
+<div class="node">
+<a name="Disabling-and-rotating-files"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Hashing-for-change-detection-_002d-tripwire">Hashing for change detection - tripwire</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Editing-password-or-group-files">Editing password or group files</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Begin-_002d-Get-started">Begin - Get started</a>
+
+</div>
+
+<h4 class="subsection">1.1.5 Disabling and rotating files</h4>
+
+<pre class="verbatim">
+<span class="red">files:
+</span>
+  "/home/mark/tmp/test_create"
+<span class="red">      rename </span>=><span class="blue"> disable;</span>
+
+ "/home/mark/tmp/rotateme"
+<span class="red">      rename </span>=><span class="blue"> rotate("4");</span>
+
+</pre>
+
+<!-- ...................................... -->
+<div class="node">
+<a name="Hashing-for-change-detection---tripwire"></a>
+<a name="Hashing-for-change-detection-_002d-tripwire"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Command-or-script-execution">Command or script execution</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Disabling-and-rotating-files">Disabling and rotating files</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Begin-_002d-Get-started">Begin - Get started</a>
+
+</div>
+
+<h4 class="subsection">1.1.6 Hashing for change detection (tripwire)</h4>
+
+<pre class="verbatim">
+<span class="red">files:
+</span>
+  "/home/mark/tmp" -> "me"
+<span class="red">       changes      </span>=><span class="blue"> detect_all_change,</span>
+<span class="red">       depth_search </span>=><span class="blue"> recurse("inf"),</span>
+<span class="red">       action       </span>=><span class="blue"> background;</span>
+
+  "/home/mark/LapTop/words" -> "you"
+<span class="red">       changes      </span>=><span class="blue"> detect_all_change,</span>
+<span class="red">       depth_search </span>=><span class="blue"> recurse("inf");</span>
+
+</pre>
+
+<!-- ...................................... -->
+<div class="node">
+<a name="Command-or-script-execution"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Kill-process">Kill process</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Hashing-for-change-detection-_002d-tripwire">Hashing for change detection - tripwire</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Begin-_002d-Get-started">Begin - Get started</a>
+
+</div>
+
+<h4 class="subsection">1.1.7 Command or script execution</h4>
+
+<pre class="verbatim">
+<span class="red">commands:
+</span>
+ Sunday.Hr04.Min05_10.myhost::
+
+  "/usr/bin/update_db";
+
+ any::
+
+  "/etc/mysql/start"
+
+<span class="red">      contain </span>=><span class="blue"> setuid("mysql");</span>
+
+</pre>
+
+<!-- ...................................... -->
+<div class="node">
+<a name="Kill-process"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Restart-process">Restart process</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Command-or-script-execution">Command or script execution</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Begin-_002d-Get-started">Begin - Get started</a>
+
+</div>
+
+<h4 class="subsection">1.1.8 Kill process</h4>
+
+<pre class="verbatim">
+<span class="red">processes:
+</span>
+  "snmpd"
+
+<span class="red">     signals </span>=> { "term", "kill" };
+
+</pre>
+
+<!-- ...................................... -->
+<div class="node">
+<a name="Restart-process"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Check-filesystem-space">Check filesystem space</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Kill-process">Kill process</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Begin-_002d-Get-started">Begin - Get started</a>
+
+</div>
+
+<h4 class="subsection">1.1.9 Restart process</h4>
+
+<pre class="verbatim">
+<span class="red">processes:
+</span>
+  "httpd"
+
+<span class="red">     restart_class </span>=><span class="green"> "lift_off";</span>
+
+<span class="red">commands:
+</span>
+ lift_off::
+
+    "/etc/init.d/apache2 restart";
+
+</pre>
+
+<p>Why? Separating this into two parts gives a high level of control
+and conistency to CFEngine. There are many options for command execution, like
+the ability to run commands in a sandbox or as `setuid'. These should not be
+reproduced in <code>processes</code>.
+
+<!-- ...................................... -->
+<div class="node">
+<a name="Check-filesystem-space"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Mount-a-filesystem">Mount a filesystem</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Restart-process">Restart process</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Begin-_002d-Get-started">Begin - Get started</a>
+
+</div>
+
+<h4 class="subsection">1.1.10 Check filesystem space</h4>
+
+<pre class="verbatim">
+<span class="red">storage:
+</span>
+  "/usr"<span class="red"> volume  </span>=><span class="blue"> mycheck("10%");</span>
+
+</pre>
+
+<!-- ...................................... -->
+<div class="node">
+<a name="Mount-a-filesystem"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Software-and-patch-installation">Software and patch installation</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Check-filesystem-space">Check filesystem space</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Begin-_002d-Get-started">Begin - Get started</a>
+
+</div>
+
+<h4 class="subsection">1.1.11 Mount a filesystem</h4>
+
+<pre class="verbatim">
+<span class="red">storage:
+</span>
+ "/home/mark/server_home"
+
+<span class="red">  mount </span>=><span class="blue"> nfs("myserver","/home/mark");</span>
+
+</pre>
+
+<!-- ...................................... -->
+<div class="node">
+<a name="Software-and-patch-installation"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Mount-a-filesystem">Mount a filesystem</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Begin-_002d-Get-started">Begin - Get started</a>
+
+</div>
+
+<h4 class="subsection">1.1.12 Software and patch installation</h4>
+
+<pre class="verbatim">
+<span class="red">packages:
+</span>
+  "apache2"
+
+<span class="red">     package_policy </span>=><span class="green"> "add",</span>
+<span class="red">     package_method </span>=><span class="blue"> generic;</span>
+
+</pre>
+
+<!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="Common-high-level-issues"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Common-low-level-issues">Common low level issues</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Introduction">Introduction</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">2 Common high level issues</h2>
+
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#Centralized-Management">Centralized Management</a>
+<li><a accesskey="2" href="#Change-detection">Change detection</a>
+<li><a accesskey="3" href="#Garbage-collection">Garbage collection</a>
+<li><a accesskey="4" href="#Distribute-root-passwords">Distribute root passwords</a>
+<li><a accesskey="5" href="#Distribute-ssh-keys">Distribute ssh keys</a>
+<li><a accesskey="6" href="#Laptop-support-configuration">Laptop support configuration</a>
+<li><a accesskey="7" href="#Find-MAC-address">Find MAC address</a>
+<li><a accesskey="8" href="#Log-rotation">Log rotation</a>
+<li><a accesskey="9" href="#Manage-a-system-file">Manage a system file</a>
+<li><a href="#Manage-a-system-process">Manage a system process</a>
+<li><a href="#Manage-users">Manage users</a>
+<li><a href="#Postfix-mail-configuration">Postfix mail configuration</a>
+<li><a href="#Set-up-HPC-clusters">Set up HPC clusters</a>
+<li><a href="#Set-up-name-resolution">Set up name resolution</a>
+<li><a href="#Set-up-sudo">Set up sudo</a>
+<li><a href="#Set-up-a-web-server">Set up a web server</a>
+<li><a href="#Templating">Templating</a>
+</ul>
+
+<div class="node">
+<a name="Centralized-Management"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Change-detection">Change detection</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Common-high-level-issues">Common high level issues</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-high-level-issues">Common high level issues</a>
+
+</div>
+
+<h3 class="section">2.1 Centralized Management</h3>
+
+<p>These examples show a simple setup for starting with a central approach to management of
+servers. Centralization of management is a simple approach suitable for small environments
+with few requirements. It is useful for clusters where systems are all alike.
+
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#All-hosts-the-same">All hosts the same</a>
+<li><a accesskey="2" href="#Variation-in-hosts">Variation in hosts</a>
+<li><a accesskey="3" href="#Updating-from-a-central-hub">Updating from a central hub</a>
+</ul>
+
+<div class="node">
+<a name="All-hosts-the-same"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Variation-in-hosts">Variation in hosts</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Centralized-Management">Centralized Management</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Centralized-Management">Centralized Management</a>
+
+</div>
+
+<h4 class="subsection">2.1.1 All hosts the same</h4>
+
+<p>This shows the simplest approach in which all hosts are the same. It is too simple
+for most environments, but it serves as a starting point. Compare it to the next
+section that includes variation.
+
+<pre class="verbatim">
+<span class="red">body common control
+</span>   {
+<span class="red">   bundlesequence  </span>=> { "central" };
+   }
+
+
+<span class="comment">############################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">central</span>
+
+{
+<span class="red">vars:
+</span>
+  "policy_server"<span class="red"> string </span>=><span class="green"> "myhost.domain.tld";</span>
+
+  "mypackages"<span class="red"> slist </span>=> {
+                        "nagios"
+                        "gcc",
+                        "apache2",
+                        "php5"
+                        };
+
+<span class="red">files:
+</span>
+<span class="comment">  # Password management can be very simple if all hosts are identical
+</span>
+<span class="comment">
+</span>
+  "/etc/passwd"
+
+<span class="red">    comment   </span>=><span class="green"> "Distribute a password file",</span>
+<span class="red">    perms     </span>=><span class="blue"> mog("644","root","root"),</span>
+<span class="red">    copy_from </span>=><span class="blue"> secure_cp("/home/mark/LapTop/words/RoadAhead","$(policy_server)");</span>
+
+<span class="red">packages:
+</span>
+  "$(mypackages)"
+
+<span class="red">     package_policy </span>=><span class="green"> "add",</span>
+<span class="red">     package_method </span>=><span class="blue"> generic;</span>
+
+
+<span class="comment"># Add more promises below ...
+</span>
+<span class="comment">
+</span>
+}
+
+
+<span class="comment">#########################################################
+</span>
+<span class="comment"># Server config
+</span>
+<span class="comment">#########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body server</span> <span class="blue">control</span>
+
+{
+<span class="red">allowconnects         </span>=> { "127.0.0.1" , "::1", "10.20.30" };
+<span class="red">allowallconnects      </span>=> { "127.0.0.1" , "::1", "10.20.30" };
+<span class="red">trustkeysfrom         </span>=> { "127.0.0.1" , "::1", "10.20.30" };
+<span class="comment"># allowusers
+</span>
+}
+
+<span class="comment">#########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle server</span> <span class="blue">access_rules()</span>
+
+{
+<span class="red">access:
+</span>
+<span class="comment"> # myhost.domain.tld makes this file available to 10.20.30*
+</span>
+<span class="comment">
+</span>
+ myhost_domain_tld::
+
+  "/etc/passwd"
+
+<span class="red">     admit   </span>=> { "127.0.0.1", "10.20.30" };
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Variation-in-hosts"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Updating-from-a-central-hub">Updating from a central hub</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#All-hosts-the-same">All hosts the same</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Centralized-Management">Centralized Management</a>
+
+</div>
+
+<h4 class="subsection">2.1.2 Variation in hosts</h4>
+
+<pre class="verbatim">
+<span class="red">body common control
+</span>   {
+<span class="red">   bundlesequence  </span>=> { "central" };
+   }
+
+
+<span class="comment">############################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">central</span>
+
+{
+<span class="red">classes:
+</span>
+  "mygroup_1"<span class="red"> or </span>=> { "myhost", "host1", "host2", "host3" };
+  "mygroup_2"<span class="red"> or </span>=> { "host4", "host5", "host6" };
+
+<span class="red">vars:
+</span>
+  "policy_server"<span class="red"> string </span>=><span class="green"> "myhost.domain.tld";</span>
+
+ mygroup_1::
+
+  "mypackages"<span class="red"> slist </span>=> {
+                        "nagios"
+                        "gcc",
+                        "apache2",
+                        "php5"
+                        };
+
+ mygroup_2::
+
+  "mypackages"<span class="red"> slist </span>=> {
+                        "apache"
+                        "mysql",
+                        "php5"
+                        };
+
+
+<span class="red">files:
+</span>
+<span class="comment">  # Password management can be very simple if all hosts are identical
+</span>
+<span class="comment">
+</span>
+  "/etc/passwd"
+
+<span class="red">    comment   </span>=><span class="green"> "Distribute a password file",</span>
+<span class="red">    perms     </span>=><span class="blue"> mog("644","root","root"),</span>
+<span class="red">    copy_from </span>=><span class="blue"> secure_cp("/etc/passwd","$(policy_server)");</span>
+
+<span class="red">packages:
+</span>
+  "$(mypackages)"
+
+<span class="red">     package_policy </span>=><span class="green"> "add",</span>
+<span class="red">     package_method </span>=><span class="blue"> generic;</span>
+
+
+<span class="comment"># Add more promises below ...
+</span>
+<span class="comment">
+</span>
+}
+
+
+<span class="comment">#########################################################
+</span>
+<span class="comment"># Server config
+</span>
+<span class="comment">#########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body server</span> <span class="blue">control</span>
+
+{
+<span class="red">allowconnects         </span>=> { "127.0.0.1" , "::1", "10.20.30" };
+<span class="red">allowallconnects      </span>=> { "127.0.0.1" , "::1", "10.20.30" };
+<span class="red">trustkeysfrom         </span>=> { "127.0.0.1" , "::1", "10.20.30" };
+<span class="comment"># allowusers
+</span>
+}
+
+<span class="comment">#########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle server</span> <span class="blue">access_rules()</span>
+
+{
+<span class="red">access:
+</span>
+<span class="comment"> # myhost.domain.tld makes this file available to 10.20.30*
+</span>
+<span class="comment">
+</span>
+ myhost_domain_tld::
+
+  "/etc/passwd"
+
+<span class="red">     admit   </span>=> { "127.0.0.1", "10.20.30" };
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Updating-from-a-central-hub"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Variation-in-hosts">Variation in hosts</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Centralized-Management">Centralized Management</a>
+
+</div>
+
+<h4 class="subsection">2.1.3 Updating from a central hub</h4>
+
+<p>The configuration bundled with the CFEngine source code contains an
+example of centralized updating of policy that covers more subtleties
+than this example, and handles fault tolerance.  Here is the main idea
+behind it. For simplicity, we assume that all hosts are on network
+10.20.30.* and that the central policy server/hub is 10.20.30.123.
+
+<pre class="verbatim">
+<span class="red">bundle agent</span> <span class="blue">update</span>
+{
+<span class="red">vars:
+</span>
+ "master_location"<span class="red"> string </span>=><span class="green"> "/var/cfengine/masterfiles";</span>
+
+ "policy_server"<span class="red">   string </span>=><span class="green"> "10.20.30.123";</span>
+<span class="red">                   comment </span>=><span class="green"> "IP address to locate your policy host.";</span>
+
+<span class="red">files:
+</span>
+  "$(sys.workdir)/inputs"
+
+<span class="red">    perms </span>=><span class="blue"> system("600"),</span>
+<span class="red">    copy_from </span>=> remote_cp("$(master_location)",$(policy_server)),
+<span class="red">    depth_search </span>=><span class="blue"> recurse("inf");</span>
+
+  "$(sys.workdir)/bin"
+
+<span class="red">    perms </span>=><span class="blue"> system("700"),</span>
+<span class="red">    copy_from </span>=><span class="blue"> remote_cp("/usr/local/sbin","localhost"),</span>
+<span class="red">    depth_search </span>=><span class="blue"> recurse("inf");</span>
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body server</span> <span class="blue">control</span>
+
+{
+<span class="red">allowconnects         </span>=> { "127.0.0.1" , "10.20.30" };
+<span class="red">allowallconnects      </span>=> { "127.0.0.1" , "10.20.30" };
+<span class="red">trustkeysfrom         </span>=> { "127.0.0.1" , "10.20.30" };
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle server</span> <span class="blue">access_rules()</span>
+{
+<span class="red">access:
+</span>
+ 10_20_30_123::
+
+  "/var/cfengine/masterfiles"
+
+<span class="red">    admit   </span>=> { "127.0.0.1", "10.20.30" };
+}
+
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Change-detection"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Garbage-collection">Garbage collection</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Centralized-Management">Centralized Management</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-high-level-issues">Common high level issues</a>
+
+</div>
+
+<h3 class="section">2.2 Change detection</h3>
+
+<pre class="verbatim">
+<span class="red">body common control
+</span>
+{
+<span class="red">bundlesequence  </span>=> { "testbundle"  };
+
+<span class="red">inputs </span>=> { "cfengine_stdlib.cf" };
+}
+
+<span class="comment">########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">testbundle</span>
+
+{
+<span class="red">files:
+</span>
+  "/usr"
+
+<span class="red">       changes      </span>=><span class="blue"> detect_all_change,</span>
+<span class="red">       depth_search </span>=><span class="blue"> recurse("inf"),</span>
+<span class="red">       action       </span>=><span class="blue"> background;</span>
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Garbage-collection"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Distribute-root-passwords">Distribute root passwords</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Change-detection">Change detection</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-high-level-issues">Common high level issues</a>
+
+</div>
+
+<h3 class="section">2.3 Garbage collection</h3>
+
+<pre class="verbatim">
+<span class="red">bundle agent</span> <span class="blue">garbage_collection</span>
+{
+<span class="red">files:
+</span>
+ Sunday::
+
+  "$(sys.workdir)/nova_repair.log"
+
+<span class="red">    comment </span>=><span class="green"> "Rotate the promises repaired logs each week",</span>
+<span class="red">    rename </span>=><span class="blue"> rotate("7"),</span>
+<span class="red">    action </span>=><span class="blue"> if_elapsed("10000");</span>
+
+  "$(sys.workdir)/nova_notkept.log"
+
+<span class="red">    comment </span>=><span class="green"> "Rotate the promises not kept logs each week",</span>
+<span class="red">    rename </span>=><span class="blue"> rotate("7"),</span>
+<span class="red">    action </span>=><span class="blue"> if_elapsed("10000");</span>
+
+  "$(sys.workdir)/promise.log"
+
+<span class="red">    comment </span>=><span class="green"> "Rotate the promises not kept logs each week",</span>
+<span class="red">    rename </span>=><span class="blue"> rotate("7"),</span>
+<span class="red">    action </span>=><span class="blue"> if_elapsed("10000");</span>
+
+ any::
+
+  "$(sys.workdir)/outputs"
+
+<span class="red">    comment </span>=><span class="green"> "Garbage collection of any output files",</span>
+<span class="red">    delete </span>=><span class="blue"> tidy,</span>
+<span class="red">    file_select </span>=><span class="blue"> days_old("3"),</span>
+<span class="red">    depth_search </span>=><span class="blue"> recurse("inf");</span>
+
+  "$(sys.workdir)/"
+
+<span class="red">    comment </span>=><span class="green"> "Garbage collection of any output files",</span>
+<span class="red">    delete </span>=><span class="blue"> tidy,</span>
+<span class="red">    file_select </span>=><span class="blue"> days_old("14"),</span>
+<span class="red">    depth_search </span>=><span class="blue"> recurse("inf");</span>
+
+<span class="comment">  # Other resources
+</span>
+<span class="comment">
+</span>
+  "/tmp"
+
+<span class="red">    comment </span>=><span class="green"> "Garbage collection of any temporary files",</span>
+<span class="red">    delete </span>=><span class="blue"> tidy,</span>
+<span class="red">    file_select </span>=><span class="blue"> days_old("3"),</span>
+<span class="red">    depth_search </span>=><span class="blue"> recurse("inf");</span>
+
+  "/var/log/apache2/.*bz"
+
+<span class="red">    comment </span>=><span class="green"> "Garbage collection of rotated log files",</span>
+<span class="red">    delete </span>=><span class="blue"> tidy,</span>
+<span class="red">    file_select </span>=><span class="blue"> days_old("30"),</span>
+<span class="red">    depth_search </span>=><span class="blue"> recurse("inf");</span>
+
+  "/var/log/apache2/.*gz"
+
+<span class="red">    comment </span>=><span class="green"> "Garbage collection of rotated log files",</span>
+<span class="red">    delete </span>=><span class="blue"> tidy,</span>
+<span class="red">    file_select </span>=><span class="blue"> days_old("30"),</span>
+<span class="red">    depth_search </span>=><span class="blue"> recurse("inf");</span>
+
+  "/var/log/zypper.log"
+
+<span class="red">    comment </span>=><span class="green"> "Prevent the zypper log from choking the disk",</span>
+<span class="red">    rename </span>=><span class="blue"> rotate("0"),</span>
+<span class="red">    action </span>=><span class="blue"> if_elapsed("10000");</span>
+
+}
+
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Distribute-root-passwords"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Distribute-ssh-keys">Distribute ssh keys</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Garbage-collection">Garbage collection</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-high-level-issues">Common high level issues</a>
+
+</div>
+
+<h3 class="section">2.4 Distribute root passwords</h3>
+
+<pre class="verbatim">######################################################################
+<span class="comment">#
+</span>
+<span class="comment"># Root password distribution
+</span>
+<span class="comment">#
+</span>
+<span class="comment">######################################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body common control
+</span>
+{
+<span class="red">version </span>=><span class="green"> "1.2.3";</span>
+<span class="red">bundlesequence  </span>=> { "SetRootPassword" };
+}
+
+<span class="comment">########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle common g
+</span>{
+<span class="red">vars:
+</span>
+  "secret_keys_dir"<span class="red"> string </span>=><span class="green"> "/tmp";</span>
+}
+
+<span class="comment">########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">SetRootPassword</span>
+
+{
+<span class="red">files:
+</span>
+  "/var/cfengine/ppkeys/rootpw.txt"
+
+<span class="red">      copy_from </span>=><span class="blue"> scp("$(sys.fqhost)-root.txt","master_host.example.org");</span>
+
+<span class="comment">      # or $(pw_class)-root.txt
+</span>
+<span class="comment">
+</span>
+<span class="comment">  # Or get variables directly from server woth Nova
+</span>
+<span class="comment">
+</span>
+ "remote-passwd"<span class="red"> string </span>=> remotescalar("rem_password","127.0.0.1","yes");
+
+<span class="comment">  # Test this on a copy
+</span>
+<span class="comment">
+</span>
+  "/tmp/shadow"
+
+<span class="red">       edit_line </span>=><span class="blue"> SetRootPw;</span>
+
+}
+
+<span class="comment">########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle edit_line</span> <span class="blue">SetRootPw</span>
+  {
+<span class="red">  vars:
+</span>
+<span class="comment">   # Assume this file contains a single string of the form root:passwdhash:
+</span>
+<span class="comment">   # with : delimiters to avoid end of line/file problems
+</span>
+<span class="comment">
+</span>
+   "pw"<span class="red"> int </span>=> readstringarray("rpw","$(sys.workdir)/ppkeys/rootpw.txt",
+<span class="red">                                                    "#[^\n]*",":","1","200");
+</span>
+<span class="red">  field_edits:
+</span>
+<span class="red">   "root:.*"
+</span>
+<span class="comment">      # Set field of the file to parameter
+</span>
+<span class="comment">
+</span>
+<span class="red">      edit_field </span>=><span class="blue"> col(":","2","$(rpw[1])","set");</span>
+  }
+
+<span class="comment">########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle server</span> <span class="blue">passwords</span>
+{
+<span class="red">vars:
+</span>
+<span class="comment">  # Read a file of format
+</span>
+<span class="comment">  #
+</span>
+<span class="comment">  # classname: host1,host2,host4,IP-address,regex.*,etc
+</span>
+<span class="comment">  #
+</span>
+<span class="comment">
+</span>
+       "pw_classes"<span class="red"> int </span>=> readstringarray("acl","$(g.secret_keys_dir)/classes.txt",
+<span class="red">                                                       "#[^\n]*",":","100","4000");
+</span>  "each_pw_class"<span class="red"> slist </span>=> getindices("acl");
+
+<span class="red">access:
+</span>
+  "/secret/keys/$(each_pw_class)-root.txt"
+
+<span class="red">        admit   </span>=> splitstring("$(acl[$(each_pw_class)][1])" , ":" , "100"),
+<span class="red">    ifencrypted </span>=><span class="green"> "true";</span>
+
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Distribute-ssh-keys"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Laptop-support-configuration">Laptop support configuration</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Distribute-root-passwords">Distribute root passwords</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-high-level-issues">Common high level issues</a>
+
+</div>
+
+<h3 class="section">2.5 Distribute ssh keys</h3>
+
+<pre class="verbatim"># Assume that we have collected all users' public keys into a single source area
+<span class="comment"># on the server. First copy the ones we need to localhost, and then edit them into
+</span>
+<span class="comment"># the the user's local keyring.
+</span>
+<span class="comment">
+</span>
+<span class="comment">  # vars:
+</span>
+<span class="comment">  #
+</span>
+<span class="comment">  #  "users" slist => { "user1", "user2", ...};
+</span>
+<span class="comment">  #
+</span>
+<span class="comment">  # methods:
+</span>
+<span class="comment">  #
+</span>
+<span class="comment">  #  "any" usebundle => allow_ssh_login_from_authorized_keys(@(users),"sourcehost");
+</span>
+<span class="comment">  #
+</span>
+<span class="comment">
+</span>
+<span class="comment">########################################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">allow_ssh_rootlogin_from_authorized_keys(user,sourcehost)</span>
+{
+<span class="red">vars:
+</span>
+  "local_cache"<span class="red">       string </span>=><span class="green"> "/var/cfengine/ssh_cache"; </span>
+  "authorized_source"<span class="red"> string </span>=><span class="green"> "/master/cfengine/ssh_keys";</span>
+
+<span class="red">files:
+</span>
+   "$(local_cache)/$(user).pub"
+
+<span class="red">         comment </span>=><span class="green"> "Copy public keys from a an authorized cache into a cache on localhost",</span>
+<span class="red">           perms </span>=><span class="blue"> mo("600","root"),</span>
+<span class="red">       copy_from </span>=><span class="blue"> remote_cp("$(authorized_source)/$(user).pub","$(sourcehost)"),</span>
+<span class="red">          action </span>=><span class="blue"> if_elapsed("60");</span>
+
+   "/root/.ssh/authorized_keys"
+
+<span class="red">         comment </span>=><span class="green"> "Edit the authorized keys into the user's personal keyring",</span>
+<span class="red">       edit_line </span>=><span class="blue"> insert_file_if_no_line_matching("$(user)","$(local_cache)/$(user).pub"),</span>
+<span class="red">          action </span>=><span class="blue"> if_elapsed("60");</span>
+}
+
+<span class="comment">########################################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">allow_ssh_login_from_authorized_keys(user,sourcehost)</span>
+{
+<span class="red">vars:
+</span>
+  "local_cache"<span class="red">       string </span>=><span class="green"> "/var/cfengine/ssh_cache"; </span>
+  "authorized_source"<span class="red"> string </span>=><span class="green"> "/master/cfengine/ssh_keys";</span>
+
+<span class="red">files:
+</span>
+   "$(local_cache)/$(user).pub"
+
+<span class="red">         comment </span>=><span class="green"> "Copy public keys from a an authorized cache into a cache on localhost",</span>
+<span class="red">           perms </span>=><span class="blue"> mo("600","root"),</span>
+<span class="red">       copy_from </span>=><span class="blue"> remote_cp("$(authorized_source)/$(user).pub","$(sourcehost)"),</span>
+<span class="red">          action </span>=><span class="blue"> if_elapsed("60");</span>
+
+   "/home/$(user)/.ssh/authorized_keys"
+
+<span class="red">         comment </span>=><span class="green"> "Edit the authorized keys into the user's personal keyring",</span>
+<span class="red">       edit_line </span>=><span class="blue"> insert_file_if_no_line_matching("$(user)","$(local_cache)/$(user).pub"),</span>
+<span class="red">          action </span>=><span class="blue"> if_elapsed("60");</span>
+}
+
+<span class="comment">########################################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle edit_line</span> <span class="blue">insert_file_if_no_line_matching(user,file),</span>
+{
+<span class="red">classes:
+</span>
+<span class="red">  have_user expression </span>=> regline("$(user).*","$(this.promiser)");
+
+<span class="red">insert_lines:
+</span>
+  !have_user::
+
+    "$(file)"
+<span class="red">         insert_type </span>=><span class="green"> "file";</span>
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Laptop-support-configuration"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Find-MAC-address">Find MAC address</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Distribute-ssh-keys">Distribute ssh keys</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-high-level-issues">Common high level issues</a>
+
+</div>
+
+<h3 class="section">2.6 Laptop support configuration</h3>
+
+<p>Laptops do not need a lot of confguration support. IP addresses are
+set by DHCP and conditions are changeable. But you want to set your
+DNS search domains to familiar settings in spite of local DHCP
+configuration, and another useful trick is to keep a regular backup of
+disk changes on the local disk. This won't help against disk
+destruction, but it is a huge advantage when your user accidentally
+deletes files while travelling or offline.
+
+<pre class="verbatim">#######################################################
+<span class="comment">#
+</span>
+<span class="comment"># Laptop
+</span>
+<span class="comment">#
+</span>
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body common control
+</span>
+{
+<span class="red">bundlesequence  </span>=> {
+                   "update",
+                   "garbage_collection",
+                   "main",
+                   "backup",
+                   };
+
+<span class="red">inputs          </span>=> {
+                   "update.cf",
+                   "site.cf",
+                   "library.cf"
+                   };
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body agent</span> <span class="blue">control</span>
+{
+<span class="comment"># if default runtime is 5 mins we need this for long jobs
+</span>
+<span class="red">ifelapsed </span>=><span class="green"> "15";</span>
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body monitor</span> <span class="blue">control</span>
+{
+<span class="red">forgetrate </span>=><span class="green"> "0.7";</span>
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body executor</span> <span class="blue">control</span>
+
+{
+<span class="red">splaytime </span>=><span class="green"> "1";</span>
+<span class="red">mailto </span>=><span class="green"> "mark@iu.hio.no";</span>
+<span class="red">smtpserver </span>=><span class="green"> "localhost";</span>
+<span class="red">mailmaxlines </span>=><span class="green"> "30";</span>
+
+<span class="comment"># Instead of a separate update script, now do this
+</span>
+<span class="comment">
+</span>
+<span class="red">exec_command </span>=><span class="green"> "$(sys.workdir)/bin/cf-agent -f failsafe.cf &amp;&amp; $(sys.workdir)/bin/cf-agent";</span>
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment"># General site issues can be in bundles like this one
+</span>
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">main</span>
+
+{
+<span class="red">vars:
+</span>
+  "component"<span class="red"> slist </span>=> { "cf-monitord", "cf-serverd" };
+
+<span class="comment"> # - - - - - - - - - - - - - - - - - - - - - - - -
+</span>
+<span class="comment">
+</span>
+<span class="red">files:
+</span>
+  "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
+
+<span class="red">     create        </span>=><span class="green"> "true",</span>
+<span class="red">     edit_line     </span>=><span class="blue"> resolver,</span>
+<span class="red">     edit_defaults </span>=><span class="blue"> def;</span>
+
+<span class="red">processes:
+</span>
+  "$(component)"<span class="red"> restart_class </span>=> canonify("start_$(component)");
+
+<span class="comment"> # - - - - - - - - - - - - - - - - - - - - - - - -
+</span>
+<span class="comment">
+</span>
+<span class="red">commands:
+</span>
+   "$(sys.workdir)/bin/$(component)"
+
+<span class="red">       ifvarclass </span>=> canonify("start_$(component)");
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment"># Backup
+</span>
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">backup</span>
+{
+<span class="red">files:
+</span>
+  "/home/backup"
+
+<span class="red">     copy_from </span>=><span class="blue"> cp("/home/mark"),</span>
+<span class="red">  depth_search </span>=><span class="blue"> recurse("inf"),</span>
+<span class="red">   file_select </span>=><span class="blue"> exclude_files,</span>
+<span class="red">        action </span>=> longjob;
+
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment"># Garbage collection issues
+</span>
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">garbage_collection</span>
+{
+<span class="red">files:
+</span>
+  "$(sys.workdir)/outputs"
+
+<span class="red">    delete </span>=><span class="blue"> tidy,</span>
+<span class="red">    file_select </span>=><span class="blue"> days_old("3"),</span>
+<span class="red">    depth_search </span>=><span class="blue"> recurse("inf");</span>
+
+
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Find-MAC-address"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Log-rotation">Log rotation</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Laptop-support-configuration">Laptop support configuration</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-high-level-issues">Common high level issues</a>
+
+</div>
+
+<h3 class="section">2.7 Find the MAC address</h3>
+
+<p>Finding the ethernet address can be hard, but on Linux it is straightforward.
+
+<pre class="verbatim">bundle agent test
+{
+<span class="red">vars:
+</span>
+linux::
+ "interface"<span class="red"> string </span>=> execresult("/sbin/ifconfig eth0","noshell");
+
+solaris::
+ "interface"<span class="red"> string </span>=> execresult("/usr/sbin/ifconfig bge0","noshell");
+
+freebsd::
+ "interface"<span class="red"> string </span>=> execresult("/sbin/ifconfig le0","noshell");
+
+darwin::
+ "interface"<span class="red"> string </span>=> execresult("/sbin/ifconfig en0","noshell");
+
+<span class="red">classes:
+</span>
+ linux::
+
+   "ok"<span class="red"> expression </span>=> regextract(
+                                ".*HWaddr ([^\s]+).*(\n.*)*",
+                                "$(interface)",
+                                "mac"
+                                );
+
+ solaris::
+
+   "ok"<span class="red"> expression </span>=> regextract(
+                                ".*ether ([^\s]+).*(\n.*)*",
+                                "$(interface)",
+                                "mac"
+                                );
+
+ freebsd::
+
+   "ok"<span class="red"> expression </span>=> regextract(
+                                ".*ether ([^\s]+).*(\n.*)*",
+                                "$(interface)",
+                                "mac"
+                                );
+
+ darwin::
+
+   "ok"<span class="red"> expression </span>=> regextract(
+                                "(?s).*ether ([^\s]+).*(\n.*)*",
+                                "$(interface)",
+                                "mac"
+                                );
+
+<span class="red">reports:
+</span>
+ok::
+
+  "MAC address is $(mac[1])";
+
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Log-rotation"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Manage-a-system-file">Manage a system file</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Find-MAC-address">Find MAC address</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-high-level-issues">Common high level issues</a>
+
+</div>
+
+<h3 class="section">2.8 Log rotation</h3>
+
+<pre class="verbatim">
+<span class="red">body common control
+</span>   {
+<span class="red">   bundlesequence  </span>=> { "testbundle" };
+   }
+
+
+<span class="comment">############################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">testbundle</span>
+
+{
+<span class="red">files:
+</span>
+  "/home/mark/tmp/rotateme"
+
+<span class="red">      rename </span>=><span class="blue"> rotate("4");</span>
+}
+
+<span class="comment">############################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body rename</span> <span class="blue">rotate(level)</span>
+
+{
+<span class="red">rotate </span>=><span class="green"> "$(level)";</span>
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Manage-a-system-file"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Manage-a-system-process">Manage a system process</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Log-rotation">Log rotation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-high-level-issues">Common high level issues</a>
+
+</div>
+
+<h3 class="section">2.9 Manage a system file</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Simple-template">Simple template</a>
+<li><a accesskey="2" href="#Simple-versioned-template">Simple versioned template</a>
+<li><a accesskey="3" href="#Macro-template">Macro template</a>
+<li><a accesskey="4" href="#Custom-editing">Custom editing</a>
+</ul>
+
+<div class="node">
+<a name="Simple-template"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Simple-versioned-template">Simple versioned template</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Manage-a-system-file">Manage a system file</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Manage-a-system-file">Manage a system file</a>
+
+</div>
+
+<h4 class="subsection">2.9.1 Simple template</h4>
+
+<pre class="verbatim">bundle agent hand_edited_config_file
+{
+<span class="red">vars:
+</span>
+  "file_template"<span class="red"> string </span>=><span class="green"> "$(level)";</span>
+
+"
+<span class="comment"># Syntax:
+</span>
+<span class="comment">#
+</span>
+<span class="comment"># IP-Address  Full-Qualified-Hostname  Short-Hostname
+</span>
+<span class="comment">#
+</span>
+<span class="comment">
+</span>
+127.0.0.1       localhost
+::1             localhost ipv6-localhost ipv6-loopback
+fe00::0         ipv6-localnet
+ff00::0         ipv6-mcastprefix
+ff02::1         ipv6-allnodes
+ff02::2         ipv6-allrouters
+ff02::3         ipv6-allhosts
+10.0.0.100      host1.domain.tld host1
+10.0.0.101      host2.domain.tld host2
+10.0.0.20       host3.domain.tld host3
+10.0.0.21       host4.domain.tld host4
+";
+
+<span class="comment">##############################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">files:
+</span>
+   "/etc/hosts"
+
+<span class="red">       comment </span>=><span class="green"> "Define the content of all host files from this master source",</span>
+<span class="red">        create </span>=><span class="green"> "true",</span>
+<span class="red">     edit_line </span>=><span class="blue"> append_if_no_lines("$(file_template)"),</span>
+<span class="red"> edit_defaults </span>=><span class="blue"> empty,</span>
+<span class="red">         perms </span>=><span class="blue"> mo("$(mode)","root"),</span>
+<span class="red">        action </span>=><span class="blue"> if_elapsed("60");</span>
+}
+
+</pre>
+
+<div class="node">
+<a name="Simple-versioned-template"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Macro-template">Macro template</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Simple-template">Simple template</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Manage-a-system-file">Manage a system file</a>
+
+</div>
+
+<h4 class="subsection">2.9.2 Simple versioned template</h4>
+
+<p>The simplest approach to managing a file is to maintain a master copy by hand, keeping it
+in a version controlled repository (e.g. svn), and installing this version on the end machine.
+
+   <p>We'll assume that you have a version control repository that is located on some independent server, and has been
+checked out manually once (with authentication) in <samp><span class="file">/mysite/masterfiles</span></samp>.
+
+<pre class="verbatim">bundle agent hand_edited_config_file
+{
+<span class="red">vars:
+</span>
+  "masterfiles"<span class="red">   string </span>=><span class="green"> "/mysite/masterfiles";</span>
+  "policy_server"<span class="red"> string </span>=><span class="green"> "policy_host.domain.tld";</span>
+
+<span class="red">files:
+</span>
+   "/etc/hosts"
+
+<span class="red">        comment </span>=><span class="green"> "Synchronize hosts with a hand-edited template in svn",</span>
+<span class="red">          perms </span>=><span class="blue"> m("644"),</span>
+<span class="red">      copy_from </span>=><span class="blue"> remote_cp("$(masterfiles)/trunk/hosts_master","$(policy_server)");</span>
+
+<span class="red">commands:
+</span>
+
+   "/usr/bin/svn update"
+
+<span class="red">        comment </span>=><span class="green"> "Update the company document repository including manuals to a local copy",</span>
+<span class="red">        contain </span>=><span class="blue"> silent_in_dir("$(masterfiles)/trunk"),</span>
+<span class="red">     ifvarclass </span>=> canonify("$(policy_server)");
+
+}
+
+</pre>
+
+<div class="node">
+<a name="Macro-template"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Custom-editing">Custom editing</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Simple-versioned-template">Simple versioned template</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Manage-a-system-file">Manage a system file</a>
+
+</div>
+
+<h4 class="subsection">2.9.3 Macro template</h4>
+
+<p>The next simplest approach to file management is to add variables to
+the template that will be expanded into local values at the end
+system, e.g. using variables like &lsquo;<samp><span class="samp">$(sys.host)</span></samp>&rsquo; for the name of
+the host within the body of the versioned template.
+
+<pre class="verbatim">bundle agent hand_edited_template
+{
+<span class="red">vars:
+</span>
+  "masterfiles"<span class="red">   string </span>=><span class="green"> "/mysite/masterfiles";</span>
+  "policy_server"<span class="red"> string </span>=><span class="green"> "policy_host.domain.tld";</span>
+
+<span class="red">files:
+</span>
+   "/etc/hosts"
+
+<span class="red">        comment </span>=><span class="green"> "Synchronize hosts with a hand-edited template in svn",</span>
+<span class="red">          perms </span>=><span class="blue"> m("644"),</span>
+<span class="red">        create </span>=><span class="green"> "true",</span>
+<span class="red">     edit_line </span>=><span class="blue"> expand_template("$(masterfiles)/trunk/hosts_master"),</span>
+<span class="red"> edit_defaults </span>=><span class="blue"> empty,</span>
+<span class="red">        action </span>=><span class="blue"> if_elapsed("60");</span>
+
+<span class="red">commands:
+</span>
+
+   "/usr/bin/svn update"
+
+<span class="red">        comment </span>=><span class="green"> "Update the company document repository including manuals to a local copy",</span>
+<span class="red">        contain </span>=><span class="blue"> silent_in_dir("$(masterfiles)/trunk"),</span>
+<span class="red">     ifvarclass </span>=> canonify("$(policy_server)");
+
+}
+
+</pre>
+
+<p class="noindent">The macro template file may contain variables, as below,
+that get expanded by CFEngine.
+
+<pre class="smallexample">     # Syntax:
+     #
+     # IP-Address  Full-Qualified-Hostname  Short-Hostname
+     #
+
+     127.0.0.1       localhost $(sys.host)
+     ::1             localhost ipv6-localhost ipv6-loopback
+     fe00::0         ipv6-localnet
+     ff00::0         ipv6-mcastprefix
+     ff02::1         ipv6-allnodes
+     ff02::2         ipv6-allrouters
+     ff02::3         ipv6-allhosts
+     10.0.0.100      host1.domain.tld host1
+     10.0.0.101      host2.domain.tld host2
+     10.0.0.20       host3.domain.tld host3
+     10.0.0.21       host4.domain.tld host4
+
+     # Add below this line
+
+     $(definitions.more_hosts)
+</pre>
+   <div class="node">
+<a name="Custom-editing"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Macro-template">Macro template</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Manage-a-system-file">Manage a system file</a>
+
+</div>
+
+<h4 class="subsection">2.9.4 Custom editing</h4>
+
+<p>If you do not control the starting state of the file, because it is distributed by
+an operating system vendor for instance, then editing the final state is the best approach.
+That way, you will get changes that are made by the vendor, and will ensure your own
+modifications are kept even when updates arrive.
+
+<pre class="verbatim">bundle agent modifying_managed_file
+{
+<span class="red">vars:
+</span>
+  "data"<span class="red">   slist </span>=> { "10.1.2.3 sirius", "10.1.2.4 ursa-minor", "10.1.2.5 orion"};
+
+<span class="red">files:
+</span>
+   "/etc/hosts"
+
+<span class="red">        comment </span>=><span class="green"> "Append a list of lines to the end of a file if they don't exist",</span>
+<span class="red">          perms </span>=><span class="blue"> m("644"),</span>
+<span class="red">        create </span>=><span class="green"> "true",</span>
+<span class="red">     edit_line </span>=><span class="blue"> append_if_no_lines("modifying_managed_file.data"),</span>
+<span class="red">        action </span>=><span class="blue"> if_elapsed("60");</span>
+
+
+}
+
+</pre>
+
+   <p>Another example shows how to set the values of variables
+using a data-driven approach and methods from the
+standard library.
+<pre class="verbatim">#######################################################
+<span class="comment">#
+</span>
+<span class="comment"># Edit variable = value in a text file
+</span>
+<span class="comment">#
+</span>
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body common control
+</span>
+{
+<span class="red">bundlesequence  </span>=> { "testsetvar" };
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">testsetvar</span>
+
+{
+<span class="red">vars:
+</span>
+  "v[variable_1]"<span class="red"> string </span>=><span class="green"> "value_1";</span>
+  "v[variable_2]"<span class="red"> string </span>=><span class="green"> "value_2";</span>
+
+<span class="red">files:
+</span>
+  "/tmp/test_setvar"
+
+<span class="red">     edit_line </span>=><span class="blue"> set_variable_values("testsetvar.v");</span>
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Manage-a-system-process"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Manage-users">Manage users</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Manage-a-system-file">Manage a system file</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-high-level-issues">Common high level issues</a>
+
+</div>
+
+<h3 class="section">2.10 Manage a system process</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Ensure-running">Ensure running</a>
+<li><a accesskey="2" href="#Ensure-not-running">Ensure not running</a>
+<li><a accesskey="3" href="#Prune-processes">Prune processes</a>
+</ul>
+
+<div class="node">
+<a name="Ensure-running"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Ensure-not-running">Ensure not running</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Manage-a-system-process">Manage a system process</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Manage-a-system-process">Manage a system process</a>
+
+</div>
+
+<h4 class="subsection">2.10.1 Ensure running</h4>
+
+<p>The simplest example might look like this:
+
+<pre class="verbatim">
+<span class="red">bundle agent</span> <span class="blue">restart_process</span>
+{
+<span class="red">processes:
+</span>
+  "httpd"
+
+<span class="red">      comment </span>=><span class="green"> "Make sure apache web server is running",</span>
+<span class="red">      restart_class </span>=><span class="green"> "restart_httpd";</span>
+
+<span class="red">commands:
+</span>
+ restart_httpd::
+
+     "/etc/init.d/apache2 restart";
+
+}
+
+</pre>
+
+   <p>This example shows how the CFEngine components could be started using a pattern.
+<pre class="verbatim">
+<span class="red">bundle agent</span> <span class="blue">cfengine_processes</span>
+{
+<span class="red">vars:
+</span>
+  "components"<span class="red"> slist </span>=> { "cf-execd", "cf-monitord", "cf-serverd", "cf-hub" };
+
+<span class="red">processes:
+</span>
+  "$(components)"
+
+<span class="red">      comment </span>=><span class="green"> "Make sure server parts of cfengine are running",</span>
+<span class="red">      restart_class </span>=> canonify("start_$(component)");
+
+<span class="red">commands:
+</span>
+   "$(sys.workdir)/bin/$(component)"
+
+<span class="red">          comment </span>=><span class="green"> "Make sure server parts of cfengine are running",</span>
+<span class="red">       ifvarclass </span>=> canonify("start_$(components)");
+
+}
+
+</pre>
+
+<div class="node">
+<a name="Ensure-not-running"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Prune-processes">Prune processes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Ensure-running">Ensure running</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Manage-a-system-process">Manage a system process</a>
+
+</div>
+
+<h4 class="subsection">2.10.2 Ensure not running</h4>
+
+<pre class="verbatim">
+<span class="red">bundle agent</span> <span class="blue">restart_process</span>
+{
+<span class="red">vars:
+</span>
+  "killprocs"<span class="red"> slist </span>=> { "snmpd", "gameserverd", "irc", "crack" };
+
+<span class="red">processes:
+</span>
+  "$(killprocs)"
+
+<span class="red">      comment </span>=><span class="green"> "Make processes are not running",</span>
+<span class="red">      signals </span>=> { "term", "kill" };
+;
+}
+
+</pre>
+
+<div class="node">
+<a name="Prune-processes"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Ensure-not-running">Ensure not running</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Manage-a-system-process">Manage a system process</a>
+
+</div>
+
+<h4 class="subsection">2.10.3 Prune processes</h4>
+
+<p>This example kills processes owned by a particular user that have exceeded 100000 bytes of
+resident memory.
+
+<pre class="verbatim">
+<span class="red">body common control
+</span>{
+<span class="red">bundlesequence  </span>=> { "testbundle"  };
+}
+
+<span class="comment">########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">testbundle</span>
+
+{
+<span class="red">processes:
+</span>
+ ".*"
+
+<span class="red">    process_select  </span>=><span class="blue"> big_processes("mark"),</span>
+<span class="red">            signals </span>=> { "term" };
+}
+
+<span class="comment">########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body process_select</span> <span class="blue">big_processes(o)</span>
+
+{
+<span class="red">process_owner </span>=> { "$(o)" };
+<span class="red">rsize </span>=> irange("100000","900000");
+<span class="red">process_result </span>=><span class="green"> "rsize.process_owner";</span>
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Manage-users"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Postfix-mail-configuration">Postfix mail configuration</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Manage-a-system-process">Manage a system process</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-high-level-issues">Common high level issues</a>
+
+</div>
+
+<h3 class="section">2.11 Manage users</h3>
+
+<p>There are many approaches to managing users. You can edit system files like <samp><span class="file">/etc/passwd</span></samp>
+directly, or you can use commands on some systems like &lsquo;<samp><span class="samp">useradd</span></samp>&rsquo; or &lsquo;<samp><span class="samp">adduser</span></samp>&rsquo;.
+In all cases it is desirable to make this a data-driven process.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Add-users">Add users</a>
+<li><a accesskey="2" href="#Remove-users">Remove users</a>
+</ul>
+
+<div class="node">
+<a name="Add-users"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Remove-users">Remove users</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Manage-users">Manage users</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Manage-users">Manage users</a>
+
+</div>
+
+<h4 class="subsection">2.11.1 Add users</h4>
+
+<p>A simple approach which adds new users to the password file, and to a
+group called &lsquo;<samp><span class="samp">users</span></samp>&rsquo; in the group file. Is shown below. This example
+does not edit the shadow file. A simple pattern that can be modified for
+use is shown below.
+
+   <p>Note that, although this is a simple minded approach, it is the most efficient
+of the approaches shown here as all operations can be carried out in a single
+operation for each file.
+<pre class="verbatim">bundle agent addusers
+{
+<span class="red">vars:
+</span>
+<span class="comment">  # Add some users
+</span>
+<span class="comment">
+</span>
+  "pw[mark]"<span class="red"> string </span>=><span class="green"> "mark:x:1000:100:Mark Burgess:/home/mark:/bin/bash";</span>
+  "pw[fred]"<span class="red"> string </span>=><span class="green"> "fred:x:1001:100:Right Said:/home/fred:/bin/bash";</span>
+  "pw[jane]"<span class="red"> string </span>=><span class="green"> "jane:x:1002:100:Jane Doe:/home/jane:/bin/bash";</span>
+
+  "users"<span class="red"> slist </span>=> getindices("pw");
+
+<span class="red">files:
+</span>
+  "/etc/passwd"
+<span class="red">     edit_line </span>=><span class="blue"> append_users_starting("addusers.pw");</span>
+
+<span class="comment">#  "/etc/shadow"
+</span>
+<span class="comment">#     edit_line => append_users_starting("$(users):defaultpasswd:::::::");
+</span>
+<span class="comment">
+</span>
+  "/etc/group"
+<span class="red">       edit_line </span>=><span class="blue"> append_user_field("users","4","@(addusers.users)");</span>
+
+  "/home/$(users)/."
+
+<span class="red">     create </span>=><span class="green"> "true",</span>
+<span class="red">      perms </span>=><span class="blue"> mog("755","$(users)","users");</span>
+}
+
+</pre>
+
+   <p>A second approach is to use the shell commands supplied by some operating systems;
+this assumes that suitable defaults have been set up manually. Also the result
+is not repairable in a simple convergent manner. The command needs to edit multiple
+files for each user, and is quite inefficient.
+
+<pre class="verbatim">bundle agent addusers
+{
+<span class="red">vars:
+</span>
+  "users"<span class="red"> slist </span>=> { "mark", "fred", "jane" };
+
+<span class="red">commands:
+</span>
+   "/usr/sbin/useradd $(users)";
+}
+
+</pre>
+An alternative approach is to use a method to wrap around the handling of a user.
+Although this looks nice, it is less efficient than the first method because it
+must edit the files multiple times.
+<pre class="verbatim">bundle agent addusers
+{
+<span class="red">vars:
+</span>
+<span class="comment">  # Add some users
+</span>
+<span class="comment">
+</span>
+  "pw[mark]"<span class="red"> string </span>=><span class="green"> "mark:x:1000:100:Mark Burgess:/home/mark:/bin/bash";</span>
+  "pw[fred]"<span class="red"> string </span>=><span class="green"> "fred:x:1001:100:Right Said:/home/fred:/bin/bash";</span>
+  "pw[jane]"<span class="red"> string </span>=><span class="green"> "jane:x:1002:100:Jane Doe:/home/jane:/bin/bash";</span>
+
+  "users"<span class="red"> slist </span>=> getindices("pw");
+
+<span class="red">methods:
+</span>
+  "any"<span class="red"> usebundle </span>=><span class="blue"> user_add("$(users)","$(pw[$(users)])");</span>
+
+}
+
+<span class="red">bundle agent</span> <span class="blue">user_add(x,pw)</span>
+{
+<span class="red">files:
+</span>
+  "/etc/passwd"
+<span class="red">     edit_line </span>=><span class="blue"> append_users_starting("addusers.pw");</span>
+
+<span class="comment">#  "/etc/shadow"
+</span>
+<span class="comment">#     edit_line => append_users_starting("$(users):defaultpasswd:::::::");
+</span>
+<span class="comment">
+</span>
+  "/etc/group"
+<span class="red">       edit_line </span>=><span class="blue"> append_user_field("users","4","@(addusers.users)");</span>
+
+  "/home/$(users)/."
+
+<span class="red">     create </span>=><span class="green"> "true",</span>
+<span class="red">      perms </span>=><span class="blue"> mog("755","$(users)","users");</span>
+}
+
+</pre>
+
+<div class="node">
+<a name="Remove-users"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Add-users">Add users</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Manage-users">Manage users</a>
+
+</div>
+
+<h4 class="subsection">2.11.2 Remove users</h4>
+
+<!--  -->
+<div class="node">
+<a name="Postfix-mail-configuration"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Set-up-HPC-clusters">Set up HPC clusters</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Manage-users">Manage users</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-high-level-issues">Common high level issues</a>
+
+</div>
+
+<h3 class="section">2.12 Postfix mail configuration</h3>
+
+<pre class="verbatim">#######################################################
+<span class="comment">#
+</span>
+<span class="comment"># Postfix
+</span>
+<span class="comment">#
+</span>
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body common control
+</span>
+{
+any::
+
+<span class="red">  bundlesequence  </span>=> {
+                     postfix
+                     };
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">postfix</span>
+
+{
+<span class="red">vars:
+</span>
+ "prefix"<span class="red">     string </span>=><span class="green"> "/etc";</span>
+ "smtpserver"<span class="red"> string </span>=><span class="green"> "localhost";</span>
+ "mailrelay"<span class="red">  string </span>=><span class="green"> "mailx.example.org";</span>
+
+<span class="red">files:
+</span>
+  "$(prefix)/main.cf"
+<span class="red">      edit_line </span>=><span class="blue"> prefix_postfix;</span>
+
+  "$(prefix)/sasl-passwd"
+<span class="red">      create    </span>=><span class="green"> "true",</span>
+<span class="red">      perms     </span>=><span class="blue"> mo("0600","root"),</span>
+<span class="red">      edit_line </span>=><span class="blue"> append_if_no_line("$(smtpserver) _$(sys.fqhost):chmsxrcynz4etfrejizhs22");</span>
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment"># For the library
+</span>
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle edit_line</span> <span class="blue">prefix_postfix</span>
+
+{
+<span class="comment">#
+</span>
+<span class="comment"># Value have the form NAME = "quoted space separated list"
+</span>
+<span class="comment">#
+</span>
+<span class="red">vars:
+</span>
+  "ps[relayhost]"<span class="red">                  string </span>=><span class="green"> "[$(postfix.mailrelay)]:587";</span>
+  "ps[mydomain]"<span class="red">                   string </span>=><span class="green"> "iu.hio.no";</span>
+  "ps[smtp_sasl_auth_enable]"<span class="red">      string </span>=><span class="green"> "yes";</span>
+  "ps[smtp_sasl_password_maps]"<span class="red">    string </span>=><span class="green"> "hash:/etc/postfix/sasl-passwd";</span>
+  "ps[smtp_sasl_security_options]"<span class="red"> string </span>=><span class="green"> "";</span>
+  "ps[smtp_use_tls]"<span class="red">               string </span>=><span class="green"> "yes";</span>
+  "ps[default_privs]"<span class="red">              string </span>=><span class="green"> "mailman";</span>
+  "ps[inet_protocols]"<span class="red">             string </span>=><span class="green"> "all";</span>
+  "ps[inet_interfaces]"<span class="red">            string </span>=><span class="green"> "127.0.0.1";</span>
+
+  "parameter_name"<span class="red"> slist </span>=> getindices("ps");
+
+<span class="red">delete_lines:
+</span>
+  "$(parameter_name).*";
+
+<span class="red">insert_lines:
+</span>
+  "$(parameter_name) = $(ps[$(parameter_name)])";
+
+}
+
+<span class="comment">########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle edit_line</span> <span class="blue">AppendIfNSL(parameter)</span>
+  {
+<span class="red">  insert_lines:
+</span>
+    "$(parameter)"; # This is default
+  }
+
+</pre>
+
+<div class="node">
+<a name="Set-up-HPC-clusters"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Set-up-name-resolution">Set up name resolution</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Postfix-mail-configuration">Postfix mail configuration</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-high-level-issues">Common high level issues</a>
+
+</div>
+
+<h3 class="section">2.13 Set up HPC clusters</h3>
+
+<p>HPC cluster machines are usually all identical, so the cfengine
+configuration is very simple. HPC clients value CPU and memory
+resources, so we can shut down unnecessary services to save CPU.
+We can also change the scheduling rate of cfengine to run less frequently,
+and save a little:
+
+<pre class="verbatim">
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body executor</span> <span class="blue">control</span>
+
+{
+<span class="red">splaytime </span>=><span class="green"> "1";</span>
+<span class="red">mailto </span>=><span class="green"> "cfengine@example.com";</span>
+<span class="red">smtpserver </span>=><span class="green"> "localhost";</span>
+<span class="red">mailmaxlines </span>=><span class="green"> "30";</span>
+
+<span class="comment"># Once per hour, on the hour
+</span>
+<span class="comment">
+</span>
+<span class="red">schedule     </span>=> { "Min00_05" };
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">services_disable</span>
+{
+<span class="red">vars:
+</span>
+<span class="comment">   # list all of xinetd services (case sensitive)
+</span>
+<span class="comment">
+</span>
+   "xinetd_services"<span class="red"> slist </span>=> {
+                               "imap",
+                               "imaps",
+                               "ipop2",
+                               "ipop3",
+                               "krb5-telnet",
+                               "klogin",
+                               "kshell",
+                               "ktalk",
+                               "ntalk",
+                               "pop3s",
+
+                              };
+<span class="red">methods:
+</span>
+<span class="comment">   # perform the actual disable all xinetd services according to the list above
+</span>
+<span class="comment">
+</span>
+   "any"<span class="red">  usebundle </span>=><span class="blue"> disable_xinetd("$(xinetd_services)");</span>
+
+<span class="red">processes:
+</span>
+  "$(xinetd_services)"
+
+<span class="red">           signals </span>=> { "kill" };
+
+}
+
+<span class="comment">###############################################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">disable_xinetd(name)</span>
+{
+<span class="red"> vars:
+</span>   "status"<span class="red"> string </span>=> execresult("/sbin/chkconfig --list $(name)", "useshell");
+
+<span class="red"> classes:
+</span>   "on"<span class="red">  expression </span>=> regcmp(".*on.*","$(status)");
+
+<span class="red"> commands:
+</span>   on::
+      "/sbin/chkconfig $(name) off",
+<span class="red">        comment </span>=><span class="green"> "disable $(name) service";</span>
+
+<span class="red"> reports:
+</span>   on::
+      "disable $(name) service.";
+
+}
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Set-up-name-resolution"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Set-up-sudo">Set up sudo</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Set-up-HPC-clusters">Set up HPC clusters</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-high-level-issues">Common high level issues</a>
+
+</div>
+
+<h3 class="section">2.14 Set up name resolution</h3>
+
+<p>There are many ways to do name resolution setup<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a> We write a reusable
+bundle using the editing features.
+
+   <p>A simple and straightforward approach is to maintain
+a separate modular bundle for this task. This avoids
+too many levels of abstraction and keeps all the information
+in one place. We implement this as a simple editing promise
+for the <samp><span class="file">/etc/resolv.conf</span></samp> file.
+<pre class="verbatim">
+<span class="red">bundle agent</span> <span class="blue">system_files</span>
+
+{
+<span class="red">files:
+</span>
+  "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
+
+<span class="red">     comment       </span>=><span class="green"> "Add lines to the resolver configuration",</span>
+<span class="red">     create        </span>=><span class="green"> "true",</span>
+<span class="red">     edit_line     </span>=><span class="blue"> resolver,</span>
+<span class="red">     edit_defaults </span>=><span class="blue"> std_edits;</span>
+
+<span class="comment">   # ...other system files ...
+</span>
+<span class="comment">
+</span>
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle edit_line</span> <span class="blue">resolver</span>
+
+{
+<span class="red">delete_lines:
+</span>
+<span class="comment">  # delete any old name servers or junk we no longer need
+</span>
+<span class="comment">
+</span>
+  "search.*";
+  "nameserver 80.65.58.31";
+  "nameserver 80.65.58.32";
+  "nameserver 82.103.128.146";
+  "nameserver 78.24.145.4";
+  "nameserver 78.24.145.5";
+  "nameserver 128.39.89.10";
+
+<span class="red">insert_lines:
+</span>
+  "search mydomain.tld"<span class="red"> location </span>=><span class="blue"> start;</span>
+
+ special_net::
+
+  "nameserver 128.39.89.8";
+  "nameserver 128.39.74.66";
+
+ !special_net::
+
+  "nameserver 128.38.34.12";
+
+ any::
+
+  "nameserver 212.112.166.18";
+  "nameserver 212.112.166.22";
+}
+
+</pre>
+
+   <p>A second approach is to try to conceal the operational details
+behind a veil of abstraction.
+
+<pre class="verbatim">
+<span class="red">bundle agent</span> <span class="blue">system_files</span>
+{
+<span class="red">vars:
+</span>
+ "searchlist"<span class="red">  string </span>=><span class="green"> "iu.hio.no cfengine.com";</span>
+
+ "nameservers"<span class="red"> slist </span>=> {
+                        "128.39.89.10",
+                        "128.39.74.16",
+                        "192.168.1.103"
+                        };
+<span class="red">files:
+</span>
+  "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
+<span class="red">      create        </span>=><span class="green"> "true",</span>
+<span class="red">      edit_line     </span>=><span class="blue"> doresolv("$(s)","@(this.n)"),</span>
+<span class="red">      edit_defaults </span>=><span class="blue"> empty;</span>
+
+<span class="comment"> # ....
+</span>
+<span class="comment">
+</span>
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle edit_line</span> <span class="blue">doresolv(search,names)</span>
+
+{
+<span class="red">insert_lines:
+</span>  "search $(search)";
+  "nameserver $(names)";
+}
+
+</pre>
+
+<p class="noindent">DNS is not the only name service, of course.
+Unix has its older <samp><span class="file">/etc/hosts</span></samp> file which can also
+be managed using file editing. We simply append this to the
+<code>system_files</code> bundle.
+
+<pre class="verbatim">bundle agent system_files
+{
+
+<span class="comment"># ...
+</span>
+<span class="comment">
+</span>
+<span class="red">files:
+</span>
+   "/etc/hosts"
+
+<span class="red">     comment </span>=><span class="green"> "Add hosts to the /etc/hosts file",</span>
+<span class="red">   edit_line </span>=><span class="blue"> fix_etc_hosts;</span>
+}
+
+<span class="comment">###########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle edit_line</span> <span class="blue">fix_etc_hosts</span>
+{
+<span class="red">vars:
+</span>
+ "names[127.0.0.1]"<span class="red">    string </span>=><span class="green"> "localhost localhost.cfengine.com";</span>
+ "names[128.39.89.12]"<span class="red"> string </span>=><span class="green"> "myhost myhost.cfengine.com";</span>
+ "names[128.39.89.13]"<span class="red"> string </span>=><span class="green"> "otherhost otherhost.cfengine.com";</span>
+
+<span class="comment"> # etc
+</span>
+<span class="comment">
+</span>
+ "i"<span class="red"> slist </span>=> getindices("names");
+
+<span class="red">insert_lines:
+</span>
+ "$(i)     $(names[$(i)])";
+
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Set-up-sudo"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Set-up-a-web-server">Set up a web server</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Set-up-name-resolution">Set up name resolution</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-high-level-issues">Common high level issues</a>
+
+</div>
+
+<h3 class="section">2.15 Set up sudo</h3>
+
+<p>Setting up <code>sudo</code> is straightforward, and is best managed by copying trusted
+files from a repository.
+<pre class="verbatim">bundle agent system_files
+{
+<span class="red">vars:
+</span>
+ "masterfiles"<span class="red"> string </span>=><span class="green"> "/subversion_projects/masterfiles";</span>
+
+<span class="comment"># ...
+</span>
+<span class="comment">
+</span>
+<span class="red">files:
+</span>
+   "/etc/sudoers"
+
+<span class="red">     comment </span>=><span class="green"> "Make sure the sudo configuration is secure and up to date",</span>
+<span class="red">       perms </span>=><span class="blue"> mog("440","root","root"),</span>
+<span class="red">   copy_from </span>=><span class="blue"> secure_cp("$(masterfiles)/sudoers","$(policy_server)");</span>
+
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Set-up-a-web-server"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Templating">Templating</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Set-up-sudo">Set up sudo</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-high-level-issues">Common high level issues</a>
+
+</div>
+
+<h3 class="section">2.16 Set up a web server</h3>
+
+<p>Adapt this template to your operating system by adding multiple
+classes.  Each web server runs something like the present module,
+which is entered into the bundlesequence like this:
+
+<pre class="verbatim">#####################################################
+<span class="comment">#
+</span>
+<span class="comment"># Apache webserver module
+</span>
+<span class="comment">#
+</span>
+<span class="comment">#####################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">web_server(state)</span>
+{
+<span class="red">vars:
+</span>
+  "document_root"<span class="red"> string </span>=><span class="green"> "/";</span>
+
+<span class="comment"> ####################################################
+</span>
+<span class="comment"> # Site specific configuration - put it in this file
+</span>
+<span class="comment"> ####################################################
+</span>
+<span class="comment">
+</span>
+  "site_http_conf"<span class="red"> string </span>=><span class="green"> "/home/mark/cfengine-inputs/httpd.conf";</span>
+
+<span class="comment"> ####################################################
+</span>
+<span class="comment"> # Software base
+</span>
+<span class="comment"> ####################################################
+</span>
+<span class="comment">
+</span>
+  "match_package"<span class="red"> slist </span>=> {
+                           "apache2",
+                           "apache2-mod_php5",
+                           "apache2-prefork",
+                           "php5"
+                           };
+
+<span class="comment"> #########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">processes:
+</span>
+  web_ok.on::
+
+   "apache2"
+
+<span class="red">     restart_class </span>=><span class="green"> "start_apache";</span>
+
+  off::
+
+   "apache2"
+
+<span class="red">     process_stop </span>=><span class="green"> "/etc/init.d/apache2 stop";</span>
+
+
+<span class="comment"> #########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">commands:
+</span>
+ start_apache::
+
+   "/etc/init.d/apache2 start"; # or startssl
+
+<span class="comment"> #########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">packages:
+</span>
+  "$(match_package)"
+
+<span class="red">     package_policy </span>=><span class="green"> "add",</span>
+<span class="red">     package_method </span>=><span class="blue"> zypper,</span>
+<span class="red">     classes </span>=><span class="blue"> if_ok("software_ok");</span>
+
+<span class="comment"> #########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">files:
+</span>
+ software_ok::
+
+  "/etc/sysconfig/apache2"
+
+<span class="red">     edit_line </span>=><span class="blue"> fixapache,</span>
+<span class="red">     classes </span>=><span class="blue"> if_ok("web_ok");</span>
+
+<span class="comment"> #########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">reports:
+</span>
+ !software_ok.on::
+
+    "The web server software could not be installed";
+
+<span class="comment"> #########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">classes:
+</span>
+  "on"<span class="red">  expression </span>=> strcmp("$(state)","on");
+  "off"<span class="red"> expression </span>=> strcmp("$(state)","off");
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment"># For the library
+</span>
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle edit_line</span> <span class="blue">fixapache</span>
+
+{
+<span class="red">vars:
+</span>
+ "add_modules"<span class="red">     slist </span>=> {
+                            "ssl",
+                            "php5"
+                            };
+
+ "del_modules"<span class="red">     slist </span>=> {
+                            "php3",
+                            "php4",
+                            "jk"
+                            };
+
+<span class="red">insert_lines:
+</span>
+ "APACHE_CONF_INCLUDE_FILES=\"$(web_server.site_http_conf)\"";
+
+<span class="red">field_edits:
+</span>
+<span class="comment"> #####################################################################
+</span>
+<span class="comment"> # APACHE_MODULES="actions alias ssl php5 dav_svn authz_default jk" etc..
+</span>
+<span class="comment"> #####################################################################
+</span>
+<span class="comment">
+</span>
+   "APACHE_MODULES=.*"
+
+<span class="comment">      # Insert module "columns" between the quoted RHS
+</span>
+<span class="comment">      # using space separators
+</span>
+<span class="comment">
+</span>
+<span class="red">      edit_field </span>=><span class="blue"> quotedvar("$(add_modules)","append");</span>
+
+   "APACHE_MODULES=.*"
+
+<span class="comment">      # Delete module "columns" between the quoted RHS
+</span>
+<span class="comment">      # using space separators
+</span>
+<span class="comment">
+</span>
+<span class="red">      edit_field </span>=><span class="blue"> quotedvar("$(del_modules)","delete");</span>
+
+<span class="comment">   # if this line already exists, edit it
+</span>
+<span class="comment">
+</span>
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Templating"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Set-up-a-web-server">Set up a web server</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-high-level-issues">Common high level issues</a>
+
+</div>
+
+<h3 class="section">2.17 Templating</h3>
+
+<p>With CFEngine you have a choice between editing `deltas' into files
+or distributing more-or-less finished templates. Which method you
+should choose depends should be made by whatever is easiest.
+
+     <ul>
+<li>If you are managing only part of the file, and something else (e.g. a package manager)
+is managing most of it, then it makes sense to use CFEngine file editing.
+
+     <li>If you are managing everything in the file, then it makes sense to make the edits
+by hand and install them using cfengine. You can use variables within
+source text files and let cfengine expand them locally in situ, so
+that you can make generic templates that apply netwide.
+
+   </ul>
+   Example template:
+
+<pre class="verbatim">#
+<span class="comment"># System file X
+</span>
+<span class="comment">#
+</span>
+<span class="comment">
+</span>
+MYVARIABLE = something or other
+HOSTNAME = $(sys.host)           # CFEngine fills this in
+
+<span class="comment"># ...
+</span>
+<span class="comment">
+</span>
+</pre>
+To copy and expand this template, you can use a pattern like this:
+<pre class="verbatim">
+<span class="red">bundle agent</span> <span class="blue">test</span>
+{
+<span class="red">methods:
+</span>
+ "any"<span class="red"> usebundle </span>=><span class="blue"> get_template("/etc/sudoers","400");</span>
+ "any"<span class="red"> usebundle </span>=><span class="blue"> get_template("/etc/hosts","644");</span>
+
+}
+
+</pre>
+The the following driving code (based on `copy then edit') can be
+placed in a library, after configuring to your environmental
+locations:
+
+<pre class="verbatim">bundle agent get_template(final_destination,mode)
+{
+<span class="red">vars:
+</span>
+<span class="comment"> # This needs to ne preconfigured to your site
+</span>
+<span class="comment">
+</span>
+ "masterfiles"<span class="red">   string </span>=><span class="green"> "/home/mark/tmp";</span>
+ "this_template"<span class="red"> string </span>=> lastnode("$(final_destination)","/");
+
+<span class="red">files:
+</span>
+  "$(final_destination).staging"
+
+<span class="red">       comment </span>=><span class="green"> "Get template and expand variables for this host",</span>
+<span class="red">         perms </span>=><span class="blue"> mo("400","root"),</span>
+<span class="red">     copy_from </span>=><span class="blue"> remote_cp("$(masterfiles)/templates/$(this_template)","$(policy_server)"),</span>
+<span class="red">        action </span>=><span class="blue"> if_elapsed("60");</span>
+
+  "$(final_destination)"
+
+<span class="red">       comment </span>=><span class="green"> "Expand the template",</span>
+<span class="red">        create </span>=><span class="green"> "true",</span>
+<span class="red">     edit_line </span>=> expand_template("$(final_destination).staging"),
+<span class="red"> edit_defaults </span>=><span class="blue"> empty,</span>
+<span class="red">         perms </span>=><span class="blue"> mo("$(mode)","root"),</span>
+<span class="red">        action </span>=><span class="blue"> if_elapsed("60");</span>
+
+}
+
+</pre>
+
+<!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+<div class="node">
+<a name="Common-low-level-issues"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Common-high-level-issues">Common high level issues</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">3 Common low level issues</h2>
+
+<!--  -->
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#Add-lines-to-a-file">Add lines to a file</a>
+<li><a accesskey="2" href="#Add-users-to-passwd-and-group">Add users to passwd and group</a>
+<li><a accesskey="3" href="#Add-software-packages-to-the-system">Add software packages to the system</a>
+<li><a accesskey="4" href="#Add-variable-definitions-to-a-file">Add variable definitions to a file</a>
+<li><a accesskey="5" href="#Check-file-or-directory-permissions">Check file or directory permissions</a>
+<li><a accesskey="6" href="#Copy-files">Copy files</a>
+<li><a accesskey="7" href="#Copy-then-edit">Copy then edit</a>
+<li><a accesskey="8" href="#Editing-files">Editing files</a>
+<li><a accesskey="9" href="#Editing-tabular-files">Editing tabular files</a>
+<li><a href="#Mount-NFS-filesystem">Mount NFS filesystem</a>
+<li><a href="#Ordering-promises">Ordering promises</a>
+<li><a href="#Set-up-a-PXE-boot-server">Set up a PXE boot server</a>
+<li><a href="#Tidying-garbage-files">Tidying garbage files</a>
+<li><a href="#Unmount-NFS-filesystem">Unmount NFS filesystem</a>
+<li><a href="#Web-server-modules">Web server modules</a>
+</ul>
+
+<div class="node">
+<a name="Add-lines-to-a-file"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Add-users-to-passwd-and-group">Add users to passwd and group</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Common-low-level-issues">Common low level issues</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-low-level-issues">Common low level issues</a>
+
+</div>
+
+<h3 class="section">3.1 Add lines to a file</h3>
+
+<p>There are  numerous approaches to adding lines to a file.
+Often the order of a configuration file is unimportant, we just need to ensure
+settings within it. A simple way of adding lines is show below.
+
+<pre class="verbatim">body common control
+
+{
+any::
+
+<span class="red">  bundlesequence  </span>=> { "insert" };
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">insert</span>
+
+{
+<span class="red">vars:
+</span>
+  "lines"<span class="red"> string </span>=><span class="blue"> </span>
+                "
+                One potato
+                Two potato
+                Three potatoe
+                Four
+                ";
+
+<span class="red">files:
+</span>
+  "/tmp/test_insert"
+
+<span class="red">            create </span>=><span class="green"> "true",</span>
+<span class="red">         edit_line </span>=><span class="blue"> append_if_no_line("$(insert.lines)");</span>
+
+}
+
+</pre>
+Also you could write this using a list variable:
+<pre class="verbatim">body common control
+
+{
+any::
+
+<span class="red">  bundlesequence  </span>=> { "insert" };
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">insert</span>
+
+{
+<span class="red">vars:
+</span>
+  "lines"<span class="red"> slist </span>=> { "One potato", "Two potato",
+                "Three potatoe", "Four" };
+
+<span class="red">files:
+</span>
+  "/tmp/test_insert"
+
+<span class="red">            create </span>=><span class="green"> "true",</span>
+<span class="red">         edit_line </span>=><span class="blue"> append_if_no_line("@(insert.lines)");</span>
+
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Add-users-to-passwd-and-group"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Add-software-packages-to-the-system">Add software packages to the system</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Add-lines-to-a-file">Add lines to a file</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-low-level-issues">Common low level issues</a>
+
+</div>
+
+<h3 class="section">3.2 Add users to passwd and group</h3>
+
+<p>Add lines to the password file, and users to group if they are not already there.
+<pre class="verbatim">
+<span class="red">body common control
+</span>{
+<span class="red">bundlesequence </span>=> { "addpasswd" };
+<span class="red">inputs </span>=> { "cf_std_library.cf" };
+}
+
+<span class="red">bundle agent</span> <span class="blue">addpasswd</span>
+{
+<span class="red">vars:
+</span>
+<span class="comment">  # want to set these values by the names of their array keys
+</span>
+<span class="comment">
+</span>
+  "pwd[mark]"<span class="red"> string </span>=><span class="green"> "mark:x:1000:100:Mark Burgess:/home/mark:/bin/bash";</span>
+  "pwd[fred]"<span class="red"> string </span>=><span class="green"> "fred:x:1001:100:Right Said:/home/fred:/bin/bash";</span>
+  "pwd[jane]"<span class="red"> string </span>=><span class="green"> "jane:x:1002:100:Jane Doe:/home/jane:/bin/bash";</span>
+
+  "users"<span class="red"> slist </span>=> getindices("pwd");
+
+<span class="red">files:
+</span>
+  "/etc/passwd"
+
+<span class="red">        create </span>=><span class="green"> "true",</span>
+<span class="red">     edit_line </span>=><span class="blue"> append_users_starting("addpasswd.pwd");</span>
+
+  "/etc/group"
+
+<span class="red">       edit_line </span>=><span class="blue"> append_user_field("users","4","@(addpasswd.users)");</span>
+
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Add-software-packages-to-the-system"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Add-variable-definitions-to-a-file">Add variable definitions to a file</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Add-users-to-passwd-and-group">Add users to passwd and group</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-low-level-issues">Common low level issues</a>
+
+</div>
+
+<h3 class="section">3.3 Add software packages to the system</h3>
+
+<pre class="verbatim">#
+<span class="comment"># Package managment
+</span>
+<span class="comment">#
+</span>
+<span class="comment">
+</span>
+<span class="red">body common control
+</span>{
+<span class="red">bundlesequence </span>=> { "packages" };
+}
+
+<span class="comment">#############################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">packages</span>
+{
+<span class="red">vars:
+</span>
+ "match_package"<span class="red"> slist </span>=> {
+                          "apache2",
+                          "apache2-mod_php5",
+                          "apache2-prefork",
+                          "php5"
+                          };
+<span class="red">packages:
+</span>
+ solaris::
+
+  "$(match_package)"
+
+<span class="red">     package_policy </span>=><span class="green"> "add",</span>
+<span class="red">     package_method </span>=><span class="blue"> solaris;</span>
+
+ redhat|SuSE::
+
+  "$(match_package)"
+
+<span class="red">     package_policy </span>=><span class="green"> "add",</span>
+<span class="red">     package_method </span>=><span class="blue"> yum;</span>
+
+}
+</pre>
+
+<p>Note you can also arrange to hide all the differences between package managers
+on an OS basis, but since some OSs have multiple managers, this might not
+be 100 percent correct.
+
+<!--  -->
+<div class="node">
+<a name="Add-variable-definitions-to-a-file"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Check-file-or-directory-permissions">Check file or directory permissions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Add-software-packages-to-the-system">Add software packages to the system</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-low-level-issues">Common low level issues</a>
+
+</div>
+
+<h3 class="section">3.4 Add variable definitions to a file e.g. <samp><span class="file">/etc/system</span></samp></h3>
+
+<pre class="verbatim">
+<span class="red">body common control
+</span>{
+<span class="red">bundlesequence </span>=> { "setvars" };
+<span class="red">inputs </span>=> { "cf_std_library.cf" };
+}
+
+
+<span class="red">bundle agent</span> <span class="blue">setvars</span>
+{
+<span class="red">vars:
+</span>
+<span class="comment">  # want to set these values by the names of their array keys
+</span>
+<span class="comment">
+</span>
+  "rhs[lhs1]"<span class="red"> string </span>=><span class="green"> " Mary had a little pig";</span>
+  "rhs[lhs2]"<span class="red"> string </span>=><span class="green"> "Whose Fleece was white as snow";</span>
+  "rhs[lhs3]"<span class="red"> string </span>=><span class="green"> "And everywhere that Mary went";</span>
+
+<span class="comment">  # oops, now change pig -> lamb
+</span>
+<span class="comment">
+</span>
+<span class="red">files:
+</span>
+  "/tmp/system"
+
+<span class="red">        create </span>=><span class="green"> "true",</span>
+<span class="red">     edit_line </span>=><span class="blue"> set_variable_values("setvars.rhs");</span>
+
+}
+
+</pre>
+
+<p class="noindent">Results in:
+
+<pre class="verbatim">lhs1= Mary had a little pig
+lhs2=Whose Fleece was white as snow
+lhs3=And everywhere that Mary went
+</pre>
+
+<p class="noindent">An example of this would be to add variables to <samp><span class="file">/etc/sysctl.conf</span></samp> on Linux:
+
+<pre class="verbatim">
+<span class="red">body common control
+</span>{
+<span class="red">bundlesequence </span>=> { "setvars" };
+<span class="red">inputs </span>=> { "cf_std_library.cf" };
+}
+
+
+<span class="red">bundle agent</span> <span class="blue">setvars</span>
+{
+<span class="red">vars:
+</span>
+<span class="comment">  # want to set these values by the names of their array keys
+</span>
+<span class="comment">
+</span>
+  "rhs[net/ipv4/tcp_syncookies]"<span class="red"> string </span>=><span class="green"> "1";</span>
+  "rhs[net/ipv4/icmp_echo_ignore_broadcasts]"<span class="red"> string </span>=><span class="green"> "1";</span>
+  "rhs[net/ipv4/ip_forward]"<span class="red"> string </span>=><span class="green"> "1";</span>
+
+<span class="comment">  # oops, now change pig -> lamb
+</span>
+<span class="comment">
+</span>
+<span class="red">files:
+</span>
+  "/etc/sysctl"
+
+<span class="red">        create </span>=><span class="green"> "true",</span>
+<span class="red">     edit_line </span>=><span class="blue"> set_variable_values("setvars.rhs");</span>
+
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Check-file-or-directory-permissions"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Copy-files">Copy files</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Add-variable-definitions-to-a-file">Add variable definitions to a file</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-low-level-issues">Common low level issues</a>
+
+</div>
+
+<h3 class="section">3.5 Check file or directory permissions</h3>
+
+<pre class="verbatim">
+<span class="red">bundle agent</span> <span class="blue">check_perms</span>
+{
+<span class="red">vars:
+</span>
+  "ns_files"<span class="red"> slist </span>=> {
+                      "/local/iu/logs/admin",
+                      "/local/iu/logs/security",
+                      "/local/iu/logs/updates",
+                      "/local/iu/logs/xfer"
+                      };
+<span class="red">files:
+</span>
+   NameServers::
+
+    "/local/dns/pz"
+
+<span class="red">            perms </span>=><span class="blue"> mo("644","dns")</span>
+<span class="red">     depth_search </span>=><span class="blue"> recurse("1"),</span>
+<span class="red">      file_select </span>=><span class="blue"> exclude("secret_file");</span>
+
+    "/local/iu/dns/pz/FixSerial"
+
+<span class="red">            perms </span>=><span class="blue"> m("755"),</span>
+<span class="red">      file_select </span>=><span class="blue"> plain;</span>
+
+    "$(ns_files)"
+
+<span class="red">            perms </span>=><span class="blue"> mo("644","dns"),</span>
+<span class="red">      file_select </span>=><span class="blue"> plain;</span>
+
+
+    "$(ftp)/pub"
+<span class="red">             perms </span>=><span class="blue"> mog("644","root","other");</span>
+
+    "$(ftp)/pub"
+<span class="red">             perms </span>=><span class="blue"> m("644"),</span>
+<span class="red">      depth_search </span>=><span class="blue"> recurse("inf");</span>
+
+    "$(ftp)/etc"<span class="red">        perms </span>=><span class="blue"> mog("111","root","other");</span>
+    "$(ftp)/usr/bin/ls"<span class="red"> perms </span>=><span class="blue"> mog("111","root","other");</span>
+    "$(ftp)/dev"<span class="red">        perms </span>=><span class="blue"> mog("555","root","other");</span>
+    "$(ftp)/usr"<span class="red">        perms </span>=><span class="blue"> mog("555","root","other");</span>
+}
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Copy-files"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Copy-then-edit">Copy then edit</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Check-file-or-directory-permissions">Check file or directory permissions</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-low-level-issues">Common low level issues</a>
+
+</div>
+
+<h3 class="section">3.6 Copy files</h3>
+
+<pre class="verbatim">files:
+
+  "/var/cfengine/inputs"
+
+<span class="red">    handle </span>=><span class="green"> "update_policy",</span>
+<span class="red">    perms </span>=><span class="blue"> m("600"),</span>
+<span class="red">    copy_from </span>=> u_scp("$(master_location)",@(policy_server)),
+<span class="red">    depth_search </span>=><span class="blue"> recurse("inf"),</span>
+<span class="red">    file_select </span>=><span class="blue"> input_files,</span>
+<span class="red">    action </span>=><span class="blue"> immediate;</span>
+
+  "/var/cfengine/bin"
+
+<span class="red">    perms </span>=><span class="blue"> m("700"),</span>
+<span class="red">    copy_from </span>=><span class="blue"> u_scp("/usr/local/sbin","localhost"),</span>
+<span class="red">    depth_search </span>=><span class="blue"> recurse("inf"),</span>
+<span class="red">    file_select </span>=><span class="blue"> cf3_files,</span>
+<span class="red">    action </span>=><span class="blue"> immediate,</span>
+<span class="red">    classes </span>=> on_change("reload");
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Copy-then-edit"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Editing-files">Editing files</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Copy-files">Copy files</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-low-level-issues">Common low level issues</a>
+
+</div>
+
+<h3 class="section">3.7 Copy then edit a file convergently</h3>
+
+<p>To convergently chain a copy followed by edit, you need a staging file.
+First you copy to the staging file. Then you edit the final file and
+insert the staging file into it as part of the editing. This is convergent
+with respect to both stages of the process.
+
+<pre class="verbatim">bundle agent master
+{
+<span class="red">files:
+</span>
+  "$(final_destination)"
+
+<span class="red">         create </span>=><span class="green"> "true",</span>
+<span class="red">     edit_line </span>=><span class="blue"> fix_file("$(staging_file)"),</span>
+<span class="red"> edit_defaults </span>=><span class="blue"> empty,</span>
+<span class="red">         perms </span>=><span class="blue"> mo("644","root"),</span>
+<span class="red">        action </span>=><span class="blue"> ifelapsed("60");</span>
+}
+
+<span class="comment">#
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle edit_line</span> <span class="blue">fix_file(f)</span>
+{
+<span class="red">insert_lines:
+</span>
+  "$(f)"
+
+<span class="comment">     # insert this into an empty file to reconstruct
+</span>
+<span class="comment">
+</span>
+<span class="red">     insert_type </span>=><span class="green"> "file";</span>
+
+<span class="red">replace_patterns:
+</span>
+    "searchstring"
+
+<span class="red">          replace_with </span>=><span class="blue"> With("replacestring");</span>
+}
+
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Editing-files"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Editing-tabular-files">Editing tabular files</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Copy-then-edit">Copy then edit</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-low-level-issues">Common low level issues</a>
+
+</div>
+
+<h3 class="section">3.8 Editing files</h3>
+
+<p>This is a huge topic. See also See <a href="#Add-lines-to-a-file">Add lines to a file</a>, See <a href="#Editing-tabular-files">Editing tabular files</a>, etc.
+Editing a file can be complex or simple, depending on needs.
+
+   <p>Here is an example of how to comment out lines matching a number of patterns:
+<pre class="verbatim">######################################################################
+<span class="comment">#
+</span>
+<span class="comment"># Comment lines
+</span>
+<span class="comment">#
+</span>
+<span class="comment">######################################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body common control
+</span>
+{
+<span class="red">version         </span>=><span class="green">   "1.2.3";</span>
+<span class="red">bundlesequence  </span>=> { "testbundle"  };
+<span class="red">inputs          </span>=> { "cf_std_library.cf" };
+}
+
+<span class="comment">########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">testbundle</span>
+
+{
+<span class="red">vars:
+</span>
+  "patterns"<span class="red"> slist </span>=> { "finger.*", "echo.*", "exec.*", "rstat.*",
+                                               "uucp.*", "talk.*" };
+
+<span class="red">files:
+</span>
+  "/etc/inetd.conf"
+
+<span class="red">      edit_line </span>=><span class="blue"> comment_lines_matching("@(testbundle.patterns)","#");</span>
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Editing-tabular-files"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Mount-NFS-filesystem">Mount NFS filesystem</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Editing-files">Editing files</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-low-level-issues">Common low level issues</a>
+
+</div>
+
+<h3 class="section">3.9 Editing tabular files</h3>
+
+<pre class="verbatim">
+<span class="comment">######################################################################
+</span>
+<span class="comment">#
+</span>
+<span class="comment"># File editing
+</span>
+<span class="comment">#
+</span>
+<span class="comment"># Normal ordering:
+</span>
+<span class="comment"># - delete
+</span>
+<span class="comment"># - replace | colum_edit
+</span>
+<span class="comment"># - insert
+</span>
+<span class="comment">#
+</span>
+<span class="comment">######################################################################
+</span>
+<span class="comment">
+</span>
+<span class="comment">
+</span>
+<span class="red">body common control
+</span>
+{
+<span class="red">version </span>=><span class="green"> "1.2.3";</span>
+<span class="red">bundlesequence  </span>=> { "testbundle"  };
+}
+
+<span class="comment">########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">testbundle</span>
+
+{
+<span class="red">vars:
+</span>
+ "userset"<span class="red"> slist </span>=> { "one-x", "two-x", "three-x" };
+
+<span class="red">files:
+</span>
+<span class="comment">  # Make a copy of the password file
+</span>
+<span class="comment">
+</span>
+  "/home/mark/tmp/passwd"
+
+<span class="red">       create    </span>=><span class="green"> "true",</span>
+<span class="red">       edit_line </span>=><span class="blue"> SetUserParam("mark","6","/set/this/shell");</span>
+
+  "/home/mark/tmp/group"
+
+<span class="red">       create    </span>=><span class="green"> "true",</span>
+<span class="red">       edit_line </span>=><span class="blue"> AppendUserParam("root","4","@(userset)");</span>
+
+<span class="red">commands:
+</span>
+  "/bin/echo"<span class="red"> args </span>=><span class="green"> "$(userset)";</span>
+
+}
+
+<span class="comment">########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle edit_line</span> <span class="blue">SetUserParam(user,field,val)</span>
+  {
+<span class="red">  field_edits:
+</span>
+<span class="red">   "$(user):.*"
+</span>
+<span class="comment">      # Set field of the file to parameter
+</span>
+<span class="comment">
+</span>
+<span class="red">      edit_field </span>=><span class="blue"> col(":","$(field)","$(val)","set");</span>
+  }
+
+<span class="comment">########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle edit_line</span> <span class="blue">AppendUserParam(user,field,allusers)</span>
+  {
+<span class="red">  vars:
+</span>
+    "val"<span class="red"> slist </span>=> { @(allusers) };
+
+<span class="red">  field_edits:
+</span>
+<span class="red">   "$(user):.*"
+</span>
+<span class="comment">      # Set field of the file to parameter
+</span>
+<span class="comment">
+</span>
+<span class="red">      edit_field </span>=><span class="blue"> col(":","$(field)","$(val)","alphanum");</span>
+
+  }
+
+<span class="comment">########################################
+</span>
+<span class="comment"># Bodies
+</span>
+<span class="comment">########################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body edit_field</span> <span class="blue">col(split,col,newval,method)</span>
+
+{
+<span class="red">field_separator </span>=><span class="green"> "$(split)";</span>
+<span class="red">select_field    </span>=><span class="green"> "$(col)";</span>
+<span class="red">value_separator  </span>=><span class="green"> ",";</span>
+<span class="red">field_value     </span>=><span class="green"> "$(newval)";</span>
+<span class="red">field_operation </span>=><span class="green"> "$(method)";</span>
+<span class="red">extend_fields </span>=><span class="green"> "true";</span>
+}
+
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Mount-NFS-filesystem"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Ordering-promises">Ordering promises</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Editing-tabular-files">Editing tabular files</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-low-level-issues">Common low level issues</a>
+
+</div>
+
+<h3 class="section">3.10 Mount NFS filesystem</h3>
+
+<pre class="verbatim">#####################################################################
+<span class="comment"># Mount NFS
+</span>
+<span class="comment">#####################################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body common control
+</span>
+{
+<span class="red">bundlesequence </span>=> { "mounts" };
+}
+
+<span class="comment">#####################################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">mounts</span>
+
+{
+<span class="red">storage:
+</span>
+<span class="comment">  # Assumes the filesystem has been exported
+</span>
+<span class="comment">
+</span>
+  "/mnt"<span class="red"> mount  </span>=><span class="blue"> nfs("server.example.org","/home");</span>
+}
+
+<span class="comment">######################################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body mount</span> <span class="blue">nfs(server,source)</span>
+
+{
+<span class="red">mount_type </span>=><span class="green"> "nfs";</span>
+<span class="red">mount_source </span>=><span class="green"> "$(source)";</span>
+<span class="red">mount_server </span>=><span class="green"> "$(server)";</span>
+<span class="red">edit_fstab </span>=><span class="green"> "true";</span>
+}
+</pre>
+
+<div class="node">
+<a name="Ordering-promises"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Set-up-a-PXE-boot-server">Set up a PXE boot server</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Mount-NFS-filesystem">Mount NFS filesystem</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-low-level-issues">Common low level issues</a>
+
+</div>
+
+<h3 class="section">3.11 Ordering promises</h3>
+
+<p>This counts to five by default. If we change &lsquo;<samp><span class="samp">/bin/echo one</span></samp>&rsquo;
+to &lsquo;<samp><span class="samp">/bin/echox one</span></samp>&rsquo;, then the command will fail, causing us
+to skip five and go to six instead.
+
+   <p>This shows how dependencies can be chained in spite of the
+order of promises in the bundle.
+
+   <p>Normally the order of promises in a bundle is followed, within each
+promise type, and the types are ordered according to <i>normal
+ordering</i>.
+
+<pre class="verbatim">####################################################
+<span class="comment">#
+</span>
+<span class="comment"># Counting by the numbers...
+</span>
+<span class="comment">#
+</span>
+<span class="comment">####################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body common control
+</span>
+{
+<span class="red">bundlesequence </span>=> { "order" };
+}
+
+<span class="comment">####################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">order</span>
+
+{
+<span class="red">vars:
+</span>
+ "list"<span class="red"> slist </span>=> { "three", "four" };
+
+<span class="red">commands:
+</span>
+ ok_later::
+
+   "/bin/echo five";
+
+ otherthing::
+
+   "/bin/echo six";
+
+ any::
+
+  "/bin/echo one"<span class="red">    classes </span>=><span class="blue"> d("ok_later","otherthing");</span>
+  "/bin/echo two";
+  "/bin/echo $(list)";
+
+ preserved_class::
+
+  "/bin/echo seven";
+
+}
+
+<span class="comment">############################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body classes</span> <span class="blue">d(if,else)</span>
+
+{
+<span class="red">promise_repaired </span>=> { "$(if)" };
+<span class="red">repair_failed </span>=> { "$(else)" };
+<span class="red">persist_time </span>=><span class="green"> "0";</span>
+}
+
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Set-up-a-PXE-boot-server"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Tidying-garbage-files">Tidying garbage files</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Ordering-promises">Ordering promises</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-low-level-issues">Common low level issues</a>
+
+</div>
+
+<h3 class="section">3.12 Set up a PXE boot server</h3>
+
+<p>Use cfengine to set up a PXE boot server.
+
+<pre class="verbatim">#
+<span class="comment"># PXE boot server
+</span>
+<span class="comment">#
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">pxe</span>
+{
+<span class="red">vars:
+</span>
+  "software"<span class="red"> slist </span>=> {
+                      "atftp",
+                      "dhcp-server",
+                      "syslinux",
+                      "apache2"
+                      };
+
+
+   "dirs"<span class="red"> slist </span>=> {
+                   "/tftpboot",
+                   "/tftpboot/cfengine/rpm",
+                   "/tftpboot/cfengine/inputs",
+                   "/tftpboot/pxelinux.cfg",
+                   "/tftpboot/kickstart",
+                   "/srv/www/repos"
+                   };
+
+   "tmp_location"<span class="red">    string </span>=><span class="green"> "/tftpboot/cfengine/inputs";</span>
+
+<span class="comment">   # Distros that we can install
+</span>
+<span class="comment">
+</span>
+   "rh_distros"<span class="red"> slist </span>=> { "4.7", "5.2" };
+   "centos_distros"<span class="red"> slist </span>=> { "5.2" };
+
+<span class="comment">   # File contents of atftp configuration
+</span>
+<span class="comment">
+</span>
+   "atftpd_conf"<span class="red"> string </span>=> { "5.2" };
+       "
+<span class="comment">###########################################
+</span>
+<span class="comment">### This file is protected by cfengine. ###
+</span>
+<span class="comment">### Whatever you do, it will be changed ###
+</span>
+<span class="comment">###     back to a promising state.      ###
+</span>
+<span class="comment">###########################################
+</span>
+<span class="comment">
+</span>
+ATFTPD_OPTIONS=\"--daemon \"
+ATFTPD_USE_INETD=\"no\"
+ATFTPD_DIRECTORY=\"/tftpboot\"
+ATFTPD_BIND_ADDRESSES=\"\"
+       ";
+
+<span class="comment">   # File contents of DHCP configuration
+</span>
+<span class="comment">
+</span>
+   "dhcpd"<span class="red"> string </span>=> { "5.2" };
+       "
+<span class="comment">###########################################
+</span>
+<span class="comment">### This file is protected by cfengine. ###
+</span>
+<span class="comment">### Whatever you do, it will be changed ###
+</span>
+<span class="comment">###     back to a promising state.      ###
+</span>
+<span class="comment">###########################################
+</span>
+<span class="comment">
+</span>
+DHCPD_INTERFACE=\"eth0\"
+DHCPD_RUN_CHROOTED=\"yes\"
+DHCPD_CONF_INCLUDE_FILES=\"\"
+DHCPD_RUN_AS=\"dhcpd\"
+DHCPD_OTHER_ARGS=\"\"
+DHCPD_BINARY=\"\"
+       ";
+
+   "dhcpd_conf"<span class="red"> string </span>=> { "5.2" };
+       "
+<span class="comment">###########################################
+</span>
+<span class="comment">### This file is protected by cfengine. ###
+</span>
+<span class="comment">### Whatever you do, it will be changed ###
+</span>
+<span class="comment">###     back to a promising state.      ###
+</span>
+<span class="comment">###########################################
+</span>
+<span class="comment">
+</span>
+allow booting;
+allow bootp;
+ddns-update-style none; ddns-updates off;
+ subnet 192.168.0.0 netmask 255.255.255.0 {
+   range 192.168.0.20 192.168.0.254;
+   default-lease-time 3600;
+   max-lease-time 4800;
+   option routers 192.168.0.1;
+   option domain-name \"test.cfengine.com\";
+   option domain-name-servers 192.168.0.1;
+   next-server 192.168.0.1;
+   filename \"pxelinux.0\";
+ }
+ group {
+   host node1 {
+<span class="comment">     # Dummy machine
+</span>
+<span class="red">     hardware ethernet 00:0F:1F:94:FE:07;
+</span>     fixed-address 192.168.0.11;
+     option host-name \"node1\";
+   }
+   host node2 {
+<span class="comment">     # Dell Inspiron 1150
+</span>
+<span class="red">     hardware ethernet 00:0F:1F:0E:70:E7;
+</span>     fixed-address 192.168.0.12;
+     option host-name \"node2\";
+   }
+ }
+        ";
+
+<span class="comment">   # File contains of Apache2 HTTP configuration
+</span>
+<span class="comment">
+</span>
+   "httpd_conf"<span class="red"> string </span>=> { "5.2" };
+        "
+<span class="comment"># Repository for RHEL5
+</span>
+&lt;Directory /srv/www/repos>
+Options Indexes
+AllowOverride None
+&lt;/Directory>
+Alias /repos /srv/www/repos
+
+<span class="comment"># PXE boot server
+</span>
+&lt;Directory /tftpboot/distro/RHEL/5.2>
+Options Indexes
+AllowOverride None
+&lt;/Directory>
+Alias /distro/rhel/5.2 /tftpboot/distro/RHEL/5.2
+
+&lt;Directory /tftpboot/distro/RHEL/4.7>
+Options Indexes
+AllowOverride None
+&lt;/Directory>
+Alias /distro/rhel/4.7 /tftpboot/distro/RHEL/4.7
+
+&lt;Directory /tftpboot/distro/CentOS/5.2>
+Options Indexes
+AllowOverride None
+&lt;/Directory>
+Alias /distro/centos/5.2 /tftpboot/distro/CentOS/5.2
+
+&lt;Directory /tftpboot/kickstart>
+Options Indexes
+AllowOverride None
+&lt;/Directory>
+Alias /kickstart /tftpboot/kickstart
+
+&lt;Directory /tftpboot/cfengine>
+Options Indexes
+AllowOverride None
+&lt;/Directory>
+Alias /cfengine /tftpboot/cfengine
+        ";
+
+<span class="comment">   # File contains of Kickstart for RHEL5 configuration
+</span>
+<span class="comment">
+</span>
+   "kickstart_rhel5_conf"<span class="red"> string </span>=> { "5.2" };
+        "
+<span class="comment">###########################################
+</span>
+<span class="comment">### This file is protected by cfengine. ###
+</span>
+<span class="comment">### Whatever you do, it will be changed ###
+</span>
+<span class="comment">###     back to a promissing state.     ###
+</span>
+<span class="comment">###########################################
+</span>
+<span class="comment">
+</span>
+auth  --useshadow  --enablemd5
+bootloader --location=mbr
+clearpart --all --initlabel
+graphical
+firewall --disabled
+firstboot --disable
+key 77244a6377a8044a
+keyboard no
+lang en_US
+logging --level=info
+<span class="red">url --url=http://192.168.0.1/distro/rhel/5.2
+</span>network --bootproto=dhcp --device=eth0 --onboot=on
+reboot
+rootpw --iscrypted $1$eOnXdDPF$279sQ//zry6rnQktkATeM0
+selinux --disabled
+timezone --isUtc Europe/Oslo
+install
+part swap --bytes-per-inode=4096 --fstype=\"swap\" --recommended
+part / --bytes-per-inode=4096 --fstype=\"ext3\" --grow --size=1
+
+%packages
+@core
+@base
+db4-devel
+openssl-devel
+gcc
+flex
+bison
+libacl-devel
+libselinux-devel
+pcre-devel
+<span class="comment">#httpd
+</span>
+device-mapper-multipath
+-sysreport
+
+%post
+cd /root
+<span class="red">rpm -i http://192.168.0.1/cfengine/rpm/cfengine-3.0.1b1-1.el5.i386.rpm
+</span><span class="comment">#/sbin/chkconfig httpd on
+</span>
+cd /etc/yum.repos.d
+<span class="red">wget http://192.168.0.1/repos/RHEL5.Base.repo
+</span>rpm --import /etc/pki/rpm-gpg/*
+yum clean all
+yum update
+mkdir -p /root/cfengine_init
+cd /root/cfengine_init
+<span class="red">wget -nd -r http://192.168.0.1/cfengine/inputs/
+</span>/usr/local/sbin/cf-agent -B
+/usr/local/sbin/cf-agent
+        ";
+
+<span class="comment">   # File contains of PXElinux boot menu
+</span>
+<span class="comment">
+</span>
+   "pxelinux_boot_menu"<span class="red"> string </span>=> { "5.2" };
+        "
+<span class="comment">###########################################
+</span>
+<span class="comment">### This file is protected by cfengine. ###
+</span>
+<span class="comment">### Whatever you do, it will be changed ###
+</span>
+<span class="comment">###     back to a promissing state.     ###
+</span>
+<span class="comment">###########################################
+</span>
+<span class="comment">
+</span>
+<span class="red">boot options:
+</span>     rhel5   - install 32 bit i386 RHEL 5.2             (MANUAL)
+     rhel5w  - install 32 bit i386 RHEL 5.2             (AUTO)
+     rhel4   - install 32 bit i386 RHEL 4.7 AS          (MANUAL)
+     centos5 - install 32 bit i386 CentOS 5.2 (Desktop) (MANUAL)
+        ";
+<span class="comment">   # File contains of PXElinux default configuration
+</span>
+<span class="comment">
+</span>
+   "pxelinux_default"<span class="red"> string </span>=> { "5.2" };
+        "
+<span class="comment">###########################################
+</span>
+<span class="comment">### This file is protected by cfengine. ###
+</span>
+<span class="comment">### Whatever you do, it will be changed ###
+</span>
+<span class="comment">###     back to a promissing state.     ###
+</span>
+<span class="comment">###########################################
+</span>
+<span class="comment">
+</span>
+default rhel5
+timeout 300
+prompt 1
+display pxelinux.cfg/boot.msg
+F1 pxelinux.cfg/boot.msg
+
+<span class="comment"># install i386 RHEL 5.2
+</span>
+label rhel5
+   kernel vmlinuz-RHEL5U2
+<span class="red">   append initrd=initrd-RHEL5U2 load_ramdisk=1 ramdisk_size=16384 install=http://192.168.0.1/distro/rhel/5.2
+</span>
+<span class="comment"># install i386 RHEL 5.2 using Kickstart
+</span>
+label rhel5w
+   kernel vmlinuz-RHEL5U2
+<span class="red">   append initrd=initrd-RHEL5U2 load_ramdisk=1 ramdisk_size=16384 ks=http://192.168.0.1/kickstart/kickstart-RHEL5U2.cfg
+</span>
+<span class="comment"># install i386 RHEL 4.7
+</span>
+label rhel4
+   kernel vmlinuz-RHEL4U7
+<span class="red">   append initrd=initrd-RHEL4U7 load_ramdisk=1 ramdisk_size=16384 install=http://192.168.0.1/distro/rhel/4.7
+</span>
+<span class="comment"># install i386 CentOS 5.2
+</span>
+label centos5
+   kernel vmlinuz-CentOS5.2
+<span class="red">   append initrd=initrd-CentOS5.2 load_ramdisk=1 ramdisk_size=16384 install=http://192.168.0.1/distro/centos/5.2
+</span>        ";
+
+<span class="comment">   # File contains of specified PXElinux default to be a RHEL5 webserver
+</span>
+<span class="comment">
+</span>
+   "pxelinux_rhel5_webserver"<span class="red"> string </span>=> { "5.2" };
+        "
+<span class="comment">###########################################
+</span>
+<span class="comment">### This file is protected by cfengine. ###
+</span>
+<span class="comment">### Whatever you do, it will be changed ###
+</span>
+<span class="comment">###     back to a promissing state.     ###
+</span>
+<span class="comment">###########################################
+</span>
+<span class="comment">
+</span>
+<span class="comment"># install i386 RHEL 5.2 using Kickstart
+</span>
+default rhel5w
+label rhel5w
+   kernel vmlinuz-RHEL5U2
+<span class="red">   append initrd=initrd-RHEL5U2 load_ramdisk=1 ramdisk_size=16384 ks=http://192.168.0.1/kickstart/kickstart-RHEL5U2.cfg
+</span>        ";
+
+<span class="comment">   # File contains of a local repository for RHEL5
+</span>
+<span class="comment">
+</span>
+   "rhel5_base_repo"<span class="red"> string </span>=> { "5.2" };
+        "
+<span class="comment">###########################################
+</span>
+<span class="comment">### This file is protected by cfengine. ###
+</span>
+<span class="comment">### Whatever you do, it will be changed ###
+</span>
+<span class="comment">###     back to a promissing state.     ###
+</span>
+<span class="comment">###########################################
+</span>
+<span class="comment">
+</span>
+<span class="comment"># Local Repository
+</span>
+[Server]
+name=Server
+<span class="red">baseurl=http://192.168.0.1/repos/rhel5/Server/
+</span>enable=1
+[VT]
+name=VT
+<span class="red">baseurl=http://192.168.0.1/repos/rhel5/VT/
+</span>enable=1
+[Cluster]
+name=Cluster
+<span class="red">baseurl=http://192.168.0.1/repos/rhel5/Cluster/
+</span>enable=1
+[ClusterStorage]
+name=Cluster Storage
+<span class="red">baseurl=http://192.168.0.1/repos/rhel5/ClusterStorage/
+</span>enable=1
+        ";
+<span class="comment">#####################################################
+</span>
+<span class="comment">
+</span>
+<span class="comment">
+</span>
+<span class="red">files:
+</span>
+ packages_ok::
+
+<span class="comment">  # Create files/dirs and edit the new files
+</span>
+<span class="comment">
+</span>
+  "/tftpboot/distro/RHEL/$(rh_distros)/."
+<span class="red">       create </span>=><span class="green"> "true";</span>
+
+  "/tftpboot/distro/CentOS/$(centos_distros)/."
+<span class="red">       create </span>=><span class="green"> "true";</span>
+
+  "$(dirs)/."
+<span class="red">       create </span>=><span class="green"> "true";</span>
+
+  "/tftpboot/pxelinux.cfg/boot.msg"
+<span class="red">       create </span>=><span class="green"> "true",</span>
+<span class="red">       perms </span>=><span class="blue"> mo("644","root"),</span>
+<span class="red">       edit_line </span>=><span class="blue"> append_if_no_line("$(pxelinux_boot_menu)"),</span>
+<span class="red">       edit_defaults </span>=><span class="blue"> empty;</span>
+
+  "/tftpboot/pxelinux.cfg/default"
+<span class="red">       create </span>=><span class="green"> "true",</span>
+<span class="red">       perms </span>=><span class="blue"> mo("644","root"),</span>
+<span class="red">       edit_line </span>=><span class="blue"> append_if_no_line("$(pxelinux_default)"),</span>
+<span class="red">       edit_defaults </span>=><span class="blue"> empty;</span>
+
+  "/tftpboot/pxelinux.cfg/default.RHEL5.webserver"
+<span class="red">       create </span>=><span class="green"> "true",</span>
+<span class="red">       perms </span>=><span class="blue"> m("644","root"),</span>
+<span class="red">       edit_line </span>=><span class="blue"> append_if_no_line("$(pxelinux_rhel5_webserver)"),</span>
+<span class="red">       edit_defaults </span>=><span class="blue"> empty;</span>
+
+  "/tftpboot/kickstart/kickstart-RHEL5U2.cfg"
+<span class="red">       create </span>=><span class="green"> "true",</span>
+<span class="red">       perms </span>=><span class="blue"> m("644","root"),</span>
+<span class="red">       edit_line </span>=> append_if_no_line("$(kickstart_rhel5_conf)"),
+<span class="red">       edit_defaults </span>=><span class="blue"> empty;</span>
+
+  "/srv/www/repos/RHEL5.Base.repo"
+<span class="red">       create </span>=><span class="green"> "true",</span>
+<span class="red">       perms </span>=><span class="blue"> m("644","root"),</span>
+<span class="red">       edit_line </span>=><span class="blue"> append_if_no_line("$(rhel5_base_repo)"),</span>
+<span class="red">       edit_defaults </span>=><span class="blue"> empty;</span>
+
+<span class="comment">  # Copy files
+</span>
+<span class="comment">
+</span>
+  "/tftpboot"
+
+<span class="red">    copy_from </span>=><span class="blue"> mycopy_local("/usr/share/syslinux","localhost"),</span>
+<span class="red">    depth_search </span>=><span class="blue"> recurse("inf"),</span>
+<span class="red">    file_select </span>=><span class="blue"> pxelinux_files,</span>
+<span class="red">    action </span>=><span class="blue"> immediate;</span>
+
+  "$(tmp_location)"
+
+<span class="red">    perms </span>=><span class="blue"> m("644"),</span>
+<span class="red">    copy_from </span>=><span class="blue"> mycopy("/var/cfengine/inputs","localhost"),</span>
+<span class="red">    depth_search </span>=><span class="blue"> recurse("inf"),</span>
+<span class="red">    file_select </span>=><span class="blue"> input_files,</span>
+<span class="red">    action </span>=><span class="blue"> immediate;</span>
+
+<span class="comment">  # Edit atftp, dhcp and apache2 configurations
+</span>
+<span class="comment">
+</span>
+  "/etc/sysconfig/atftpd"
+<span class="red">     edit_line </span>=> append_if_no_line("$(atftpd_conf)"),
+<span class="red">     edit_defaults </span>=><span class="blue"> empty,</span>
+<span class="red">     classes </span>=><span class="blue"> satisfied("atftpd_ready");</span>
+
+  "/etc/sysconfig/dhcpd"
+<span class="red">     edit_line </span>=><span class="blue"> append_if_no_line("$(dhcpd)"),</span>
+<span class="red">     edit_defaults </span>=><span class="blue"> empty;</span>
+
+  "/etc/dhcpd.conf"
+<span class="red">     edit_line </span>=> append_if_no_line("$(dhcpd_conf)"),
+<span class="red">     edit_defaults </span>=><span class="blue"> empty,</span>
+<span class="red">     classes </span>=><span class="blue"> satisfied("dhcpd_ready");</span>
+
+  "/etc/apache2/httpd.conf"
+<span class="red">     edit_line </span>=> append_if_no_line("$(httpd_conf)"),
+<span class="red">     edit_defaults </span>=><span class="blue"> def,</span>
+<span class="red">     classes </span>=><span class="blue"> satisfied("apache2_ok");</span>
+
+<span class="comment">  # Make a static link
+</span>
+<span class="comment">
+</span>
+  "/tftpboot/pxelinux.cfg/C0A8000C"
+<span class="red">     link_from </span>=><span class="blue"> mylink("/tftpboot/pxelinux.cfg/default.RHEL5.webserver");</span>
+
+<span class="comment">  # Hash comment some lines for apaches
+</span>
+<span class="comment">
+</span>
+  apache2_ok::
+  "/etc/apache2/httpd.conf"
+<span class="red">     edit_line </span>=><span class="blue"> comment_lines_matching_apache2("#"),</span>
+<span class="red">     classes </span>=><span class="blue"> satisfied("apache2_ready");</span>
+
+<span class="red">commands:
+</span>
+<span class="comment">  # Restart services
+</span>
+  atftpd_ready::
+  "/etc/init.d/atftpd restart";
+
+  dhcpd_ready::
+  "/etc/init.d/dhcpd restart";
+
+  apache2_ready::
+  "/etc/init.d/apache2 restart";
+
+
+<span class="comment">#####################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">packages:
+</span>
+ ipv4_192_168_0_1::
+<span class="comment"> # Only the PXE boot server
+</span>
+<span class="comment">
+</span>
+ "$(software)"
+
+<span class="red">     package_policy </span>=><span class="green"> "add",</span>
+<span class="red">     package_method </span>=><span class="blue"> zypper,</span>
+<span class="red">     classes </span>=><span class="blue"> satisfied("packages_ok");</span>
+
+}
+
+<span class="comment">#####################################################
+</span>
+<span class="comment">########### *** Bodies are here *** #################
+</span>
+<span class="comment">#####################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body file_select</span> <span class="blue">pxelinux_files</span>
+
+{
+<span class="red">leaf_name </span>=> { "pxelinux.0" };
+
+<span class="red">file_result </span>=><span class="green"> "leaf_name";</span>
+}
+
+<span class="comment">#####################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body copy_from</span> <span class="blue">mycopy_local(from,server)</span>
+
+{
+<span class="red">source      </span>=><span class="green"> "$(from)";</span>
+<span class="red">compare     </span>=><span class="green"> "digest";</span>
+}
+
+<span class="comment">#########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body link_from</span> <span class="blue">mylink(x)</span>
+{
+<span class="red">source </span>=><span class="green"> "$(x)";</span>
+<span class="red">link_type </span>=><span class="green"> "symlink";</span>
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body classes</span> <span class="blue">satisfied(new_class)</span>
+
+{
+<span class="red">promise_kept </span>=> { "$(new_class)"};
+<span class="red">promise_repaired </span>=> { "$(new_class)"};
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle edit_line</span> <span class="blue">comment_lines_matching_apache2(comment)</span>
+  {
+
+<span class="red">  vars:
+</span>   "regex"<span class="red"> slist </span>=> { "\s.*Options\sNone", "\s.*AllowOverride\sNone", "\s.*Deny\sfrom\sall" };
+
+<span class="red">  replace_patterns:
+</span>
+   "^($(regex))$"
+<span class="red">      replace_with </span>=><span class="blue"> comment("$(comment)");</span>
+  }
+
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Tidying-garbage-files"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Unmount-NFS-filesystem">Unmount NFS filesystem</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Set-up-a-PXE-boot-server">Set up a PXE boot server</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-low-level-issues">Common low level issues</a>
+
+</div>
+
+<h3 class="section">3.13 Tidying garbage files</h3>
+
+<p>Emulating the `tidy' feature of cfengine 2.
+
+<pre class="verbatim">#######################################################
+<span class="comment">#
+</span>
+<span class="comment"># Deleting files, like cf2 tidy age=0 r=inf
+</span>
+<span class="comment">#
+</span>
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body common control
+</span>
+{
+ any::
+
+<span class="red">  bundlesequence  </span>=> { "testbundle" };
+}
+
+<span class="comment">############################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">testbundle</span>
+
+{
+<span class="red">files:
+</span>
+  "/tmp/test"
+
+<span class="red">    delete </span>=><span class="blue"> tidyfiles,</span>
+<span class="red">    file_select </span>=><span class="blue"> zero_age,</span>
+<span class="red">    depth_search </span>=><span class="blue"> recurse("inf");</span>
+}
+
+<span class="comment">#########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body depth_search</span> <span class="blue">recurse(d)</span>
+
+{
+<span class="comment">#include_basedir => "true";
+</span>
+<span class="red">depth </span>=><span class="green"> "$(d)";</span>
+}
+
+<span class="comment">#########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body delete</span> <span class="blue">tidy</span>
+
+{
+<span class="red">dirlinks </span>=><span class="green"> "delete";</span>
+<span class="red">rmdirs   </span>=><span class="green"> "false"; </span>
+}
+
+<span class="comment">#########################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body file_select</span> <span class="blue">zero_age</span>
+
+<span class="comment">#
+</span>
+<span class="comment"># we can build old "include", "exclude", and "ignore"
+</span>
+<span class="comment"># from these as standard patterns - these bodies can
+</span>
+<span class="comment"># form a library of standard patterns
+</span>
+<span class="comment">#
+</span>
+<span class="comment">
+</span>
+{
+<span class="red">mtime     </span>=> irange(ago(1,0,0,0,0,0),now);
+<span class="red">file_result </span>=><span class="green"> "mtime"; </span>
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Unmount-NFS-filesystem"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Web-server-modules">Web server modules</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Tidying-garbage-files">Tidying garbage files</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-low-level-issues">Common low level issues</a>
+
+</div>
+
+<h3 class="section">3.14 Unmount NFS filesystem</h3>
+
+<pre class="verbatim">#####################################################################
+<span class="comment"># Mount NFS
+</span>
+<span class="comment">#####################################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body common control
+</span>
+{
+<span class="red">bundlesequence </span>=> { "mounts" };
+}
+
+<span class="comment">#####################################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">mounts</span>
+
+{
+<span class="red">storage:
+</span>
+<span class="comment">  # Assumes the filesystem has been exported
+</span>
+<span class="comment">
+</span>
+  "/mnt"<span class="red"> mount  </span>=><span class="blue"> nfs("server.example.org","/home");</span>
+}
+
+<span class="comment">######################################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body mount</span> <span class="blue">nfs(server,source)</span>
+
+{
+<span class="red">mount_type </span>=><span class="green"> "nfs";</span>
+<span class="red">mount_source </span>=><span class="green"> "$(source)";</span>
+<span class="red">mount_server </span>=><span class="green"> "$(server)";</span>
+<span class="red">edit_fstab </span>=><span class="green"> "true";</span>
+<span class="red">unmount </span>=><span class="green"> "true";</span>
+}
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Web-server-modules"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Unmount-NFS-filesystem">Unmount NFS filesystem</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-low-level-issues">Common low level issues</a>
+
+</div>
+
+<h3 class="section">3.15 Web server modules</h3>
+
+<p>The problem of editing the correct modules into the list of standard
+modules for the Apache web server. This example is based on the
+standard configuration deployment of SuSE Linux. Simply provide the
+list of modules you want and another list that you don't want.
+
+<pre class="verbatim">#######################################################
+<span class="comment">#
+</span>
+<span class="comment"># Apache 2 reconfig - modelled on SuSE
+</span>
+<span class="comment">#
+</span>
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">body common control
+</span>
+{
+any::
+
+<span class="red">  bundlesequence  </span>=> {
+                     apache
+                     };
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle agent</span> <span class="blue">apache</span>
+
+{
+<span class="red">files:
+</span>
+ SuSE::
+
+  "/etc/sysconfig/apache2"
+
+<span class="red">     edit_line </span>=><span class="blue"> fixapache;</span>
+}
+
+<span class="comment">#######################################################
+</span>
+<span class="comment"># For the library
+</span>
+<span class="comment">#######################################################
+</span>
+<span class="comment">
+</span>
+<span class="red">bundle edit_line</span> <span class="blue">fixapache</span>
+
+{
+<span class="red">vars:
+</span>
+ "add_modules"<span class="red">     slist </span>=> {
+                            "dav",
+                            "dav_fs",
+                            "ssl",
+                            "php5",
+                            "dav_svn",
+                            "xyz",
+                            "superduper"
+                            };
+
+ "del_modules"<span class="red">     slist </span>=> {
+                            "php3",
+                            "jk",
+                            "userdir",
+                            "imagemap",
+                            "alias"
+                            };
+
+<span class="red">insert_lines:
+</span>
+ "APACHE_CONF_INCLUDE_FILES=\"/site/masterfiles/local-http.conf\"";
+
+<span class="red">field_edits:
+</span>
+<span class="comment"> #####################################################################
+</span>
+<span class="comment"> # APACHE_MODULES="authz_host actions alias ..."
+</span>
+<span class="comment"> #####################################################################
+</span>
+<span class="comment">
+</span>
+<span class="comment">    # Values have the form NAME = "quoted space separated list"
+</span>
+<span class="comment">
+</span>
+   "APACHE_MODULES=.*"
+
+<span class="comment">      # Insert module "columns" between the quoted RHS
+</span>
+<span class="comment">      # using space separators
+</span>
+<span class="comment">
+</span>
+<span class="red">      edit_field </span>=><span class="blue"> quotedvar("$(add_modules)","append");</span>
+
+   "APACHE_MODULES=.*"
+
+<span class="comment">      # Delte module "columns" between the quoted RHS
+</span>
+<span class="comment">      # using space separators
+</span>
+<span class="comment">
+</span>
+<span class="red">      edit_field </span>=><span class="blue"> quotedvar("$(del_modules)","delete");</span>
+
+<span class="comment">   # if this line already exists, edit it
+</span>
+<span class="comment">
+</span>
+}
+
+</pre>
+
+<!-- ========================================================================= -->
+<!-- @node Index,  , CFEngine Methods, Top -->
+<!-- @unnumbered Concept Index -->
+<!-- @printindex cp -->
+<!-- ========================================================================= -->
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">CFEngine-Solutions</a>
+<li><a name="toc_Introduction" href="#Introduction">1 Introduction</a>
+<ul>
+<li><a href="#Begin-_002d-Get-started">1.1 Begin - Get Started</a>
+<ul>
+<li><a href="#Creating-files-and-directories">1.1.1 Creating files and directories</a>
+<li><a href="#Copy-single-files">1.1.2 Copy single files</a>
+<li><a href="#Copy-directory-trees">1.1.3 Copy directory trees</a>
+<li><a href="#Editing-password-or-group-files">1.1.4 Editing password or group files</a>
+<li><a href="#Disabling-and-rotating-files">1.1.5 Disabling and rotating files</a>
+<li><a href="#Hashing-for-change-detection-_002d-tripwire">1.1.6 Hashing for change detection (tripwire)</a>
+<li><a href="#Command-or-script-execution">1.1.7 Command or script execution</a>
+<li><a href="#Kill-process">1.1.8 Kill process</a>
+<li><a href="#Restart-process">1.1.9 Restart process</a>
+<li><a href="#Check-filesystem-space">1.1.10 Check filesystem space</a>
+<li><a href="#Mount-a-filesystem">1.1.11 Mount a filesystem</a>
+<li><a href="#Software-and-patch-installation">1.1.12 Software and patch installation</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Common-high-level-issues" href="#Common-high-level-issues">2 Common high level issues</a>
+<ul>
+<li><a href="#Centralized-Management">2.1 Centralized Management</a>
+<ul>
+<li><a href="#All-hosts-the-same">2.1.1 All hosts the same</a>
+<li><a href="#Variation-in-hosts">2.1.2 Variation in hosts</a>
+<li><a href="#Updating-from-a-central-hub">2.1.3 Updating from a central hub</a>
+</li></ul>
+<li><a href="#Change-detection">2.2 Change detection</a>
+<li><a href="#Garbage-collection">2.3 Garbage collection</a>
+<li><a href="#Distribute-root-passwords">2.4 Distribute root passwords</a>
+<li><a href="#Distribute-ssh-keys">2.5 Distribute ssh keys</a>
+<li><a href="#Laptop-support-configuration">2.6 Laptop support configuration</a>
+<li><a href="#Find-MAC-address">2.7 Find the MAC address</a>
+<li><a href="#Log-rotation">2.8 Log rotation</a>
+<li><a href="#Manage-a-system-file">2.9 Manage a system file</a>
+<ul>
+<li><a href="#Simple-template">2.9.1 Simple template</a>
+<li><a href="#Simple-versioned-template">2.9.2 Simple versioned template</a>
+<li><a href="#Macro-template">2.9.3 Macro template</a>
+<li><a href="#Custom-editing">2.9.4 Custom editing</a>
+</li></ul>
+<li><a href="#Manage-a-system-process">2.10 Manage a system process</a>
+<ul>
+<li><a href="#Ensure-running">2.10.1 Ensure running</a>
+<li><a href="#Ensure-not-running">2.10.2 Ensure not running</a>
+<li><a href="#Prune-processes">2.10.3 Prune processes</a>
+</li></ul>
+<li><a href="#Manage-users">2.11 Manage users</a>
+<ul>
+<li><a href="#Add-users">2.11.1 Add users</a>
+<li><a href="#Remove-users">2.11.2 Remove users</a>
+</li></ul>
+<li><a href="#Postfix-mail-configuration">2.12 Postfix mail configuration</a>
+<li><a href="#Set-up-HPC-clusters">2.13 Set up HPC clusters</a>
+<li><a href="#Set-up-name-resolution">2.14 Set up name resolution</a>
+<li><a href="#Set-up-sudo">2.15 Set up sudo</a>
+<li><a href="#Set-up-a-web-server">2.16 Set up a web server</a>
+<li><a href="#Templating">2.17 Templating</a>
+</li></ul>
+<li><a name="toc_Common-low-level-issues" href="#Common-low-level-issues">3 Common low level issues</a>
+<ul>
+<li><a href="#Add-lines-to-a-file">3.1 Add lines to a file</a>
+<li><a href="#Add-users-to-passwd-and-group">3.2 Add users to passwd and group</a>
+<li><a href="#Add-software-packages-to-the-system">3.3 Add software packages to the system</a>
+<li><a href="#Add-variable-definitions-to-a-file">3.4 Add variable definitions to a file e.g. <samp><span class="file">/etc/system</span></samp></a>
+<li><a href="#Check-file-or-directory-permissions">3.5 Check file or directory permissions</a>
+<li><a href="#Copy-files">3.6 Copy files</a>
+<li><a href="#Copy-then-edit">3.7 Copy then edit a file convergently</a>
+<li><a href="#Editing-files">3.8 Editing files</a>
+<li><a href="#Editing-tabular-files">3.9 Editing tabular files</a>
+<li><a href="#Mount-NFS-filesystem">3.10 Mount NFS filesystem</a>
+<li><a href="#Ordering-promises">3.11 Ordering promises</a>
+<li><a href="#Set-up-a-PXE-boot-server">3.12 Set up a PXE boot server</a>
+<li><a href="#Tidying-garbage-files">3.13 Tidying garbage files</a>
+<li><a href="#Unmount-NFS-filesystem">3.14 Unmount NFS filesystem</a>
+<li><a href="#Web-server-modules">3.15 Web server modules</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+   <div class="footnote">
+<hr>
+<a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> In cfengine 2
+there is a separate action type for configuring the system
+resolver. In cfengine 3 this has been deprecated for this standard
+method using the basic functionality of cfengine.</p>
+
+   <hr></div>
+
+</body></html>
+
+

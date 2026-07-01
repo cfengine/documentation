@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.19  Documentation - set_attribute</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/reference/promise-types/files/edit_xml/set_attribute.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-reference-promise-types-files-edit_xml-set_attribute.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-promise-types-files-edit_xml-set_attribute.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='assets/global-6a0b9da22cb0d4bd16e0e337e3484c43.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "set_attribute";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/">Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/" selected>Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><li><a href="reference-promise-types-files-edit_line.html">edit_line</a></li><li><a href="reference-promise-types-files-edit_xml.html">edit_xml</a><ul class="level2"><li><a href="reference-promise-types-files-edit_xml-build_xpath.html">build_xpath</a></li><li><a href="reference-promise-types-files-edit_xml-delete_attribute.html">delete_attribute</a></li><li><a href="reference-promise-types-files-edit_xml-delete_text.html">delete_text</a></li><li><a href="reference-promise-types-files-edit_xml-delete_tree.html">delete_tree</a></li><li><a href="reference-promise-types-files-edit_xml-insert_text.html">insert_text</a></li><li><a href="reference-promise-types-files-edit_xml-insert_tree.html">insert_tree</a></li><li><a class="active" href="reference-promise-types-files-edit_xml-set_attribute.html">set_attribute</a></li><li><a href="reference-promise-types-files-edit_xml-set_text.html">set_text</a></li></ul></li></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types-files.html">files</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types-files-edit_xml.html">edit_xml</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    set_attribute
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>This promise type assures that an attribute, with the given name and value, will
+be present in the specified node within the XML file. If the attribute is not
+found, the default promise is to insert the attribute, into the specified node.
+If the attribute is already present, the default promise is to insure that the
+attribute value is set to the given value. The specified node and attribute
+value are each determined by body-attributes. The promise object referred to is
+a literal string representation of the name of the attribute to be set.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">edit_xml</span> <span class="nf">example</span>
+    <span class="p">{</span>
+    <span class="kd">set_attribute</span><span class="p">:</span>
+      <span class="s">&quot;name&quot;</span>
+
+        <span class="kr">attribute_value</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_host&quot;</span><span class="p">,</span>
+           <span class="kr">select_xpath</span> <span class="o">=&gt;</span> <span class="s">&quot;/Server/Service/Engine/Host&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Note that typically only a single attribute, within a single selected
+node, is set in each <code>set_attribute</code> promise. You may of course have
+multiple promises that each set an attribute.</p>
+<h2 id="attributes">Attributes</h2><h3 id="attribute_value">attribute_value</h3>
+<p><strong>Description:</strong> Value of the attribute to be inserted into the XPath node
+of the XML file</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-bundle-agent.html">bundle agent</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-edit_xml.html">edit_xml</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-xml.html">xml</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-files-promises.html">files promises</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-file-editing.html">file editing</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 06 July 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/reference/promise-types/files/edit_xml/set_attribute.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-38e3fd0081b106f885a95356ca1249c5.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,2221 @@
+<html lang="en">
+<head>
+<title>CFEngine Enterprise 3.0 API</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CFEngine Enterprise 3.0 API">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('☺'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background: none !important;
+    border: none !important;
+    padding: 5px; 
+
+/*    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;*/
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">CFEngine Enterprise 3.0 API</h1>
+Updated 23. November 2012
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#REST-API">REST API</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">CFEngine Enterprise 3.0 API</h2>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#REST-API">REST API</a>
+</ul>
+
+<!-- ************************************************** -->
+<!-- CHAPTER -->
+<!-- ************************************************** -->
+<div class="node">
+<a name="REST-API"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 REST API</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Basic-Properties-of-the-API">Basic Properties of the API</a>
+<li><a accesskey="2" href="#Differences-between-the-CFEngine-Nova-2_002e2-REST-API-and-the-CFEngine-Enterprise-3_002e0-API">Differences between the CFEngine Nova 2.2 REST API and the CFEngine Enterprise 3.0 API</a>
+<li><a accesskey="3" href="#Checking-Status">Checking Status</a>
+<li><a accesskey="4" href="#Managing-Settings">Managing Settings</a>
+<li><a accesskey="5" href="#Managing-Users-and-Roles">Managing Users and Roles</a>
+<li><a accesskey="6" href="#Browsing-Host-Information">Browsing Host Information</a>
+<li><a accesskey="7" href="#SQL-Queries">SQL Queries</a>
+<li><a accesskey="8" href="#API-Reference">API Reference</a>
+</ul>
+
+<p>The CFEngine Enterprise API allows HTTP clients to interact with the Hub of a CFEngine Enterprise 3.0 installation. With the Enterprise API, you can..
+
+     <ul>
+<li>Check installation status
+<li>Manage users, groups and settings
+<li>Browse host (agent) information and policy
+<li>Issue flexible SQL queries against data collected by the Hub from agents
+<li>Schedule reports for email and later download
+</ul>
+
+   <p>The Enterprise API is a REST API, but a central part of interacting with the API involves using SQL. This is new in 3.0 and was done to provide users with maximal flexibility for crafting custom reports based on the wealth of data residing on the Hub.
+
+<!--  -->
+<div class="node">
+<a name="Basic-Properties-of-the-API"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Differences-between-the-CFEngine-Nova-2_002e2-REST-API-and-the-CFEngine-Enterprise-3_002e0-API">Differences between the CFEngine Nova 2.2 REST API and the CFEngine Enterprise 3.0 API</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#REST-API">REST API</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#REST-API">REST API</a>
+
+</div>
+
+<h3 class="section">1.1 Basic Properties of the API</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#HTTP-_002b-JSON">HTTP + JSON</a>
+<li><a accesskey="2" href="#Requests">Requests</a>
+<li><a accesskey="3" href="#Responses">Responses</a>
+<li><a accesskey="4" href="#Pagination">Pagination</a>
+<li><a accesskey="5" href="#Time">Time</a>
+<li><a accesskey="6" href="#Authentication">Authentication</a>
+<li><a accesskey="7" href="#Authorization">Authorization</a>
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="HTTP-+-JSON"></a>
+<a name="HTTP-_002b-JSON"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Requests">Requests</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Basic-Properties-of-the-API">Basic Properties of the API</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-Properties-of-the-API">Basic Properties of the API</a>
+
+</div>
+
+<h4 class="subsection">1.1.1 HTTP + JSON</h4>
+
+<p>The Enterprise API is a conventional REST API in the sense that it has a number of URI resources that support one or more GET, PUT, POST, or DELETE operations. While reporting is done using SQL, this query is always wrapped in a JSON request.
+
+<!--  -->
+<div class="node">
+<a name="Requests"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Responses">Responses</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#HTTP-_002b-JSON">HTTP + JSON</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-Properties-of-the-API">Basic Properties of the API</a>
+
+</div>
+
+<h4 class="subsection">1.1.2 Requests</h4>
+
+<p><b>GET</b> requests are one of <b>listing</b> or <b>getting</b>. <b>Listing</b> resources means that a number of results will be returned, but each entry may contain limited information. An example of a <b>listing</b> query is <i>/api/user</i> to list users. Notice that URI components are always non-plural. An exception to this is <i>/api/settings</i>, which returns the singleton resource for settings. <b>Getting</b> a resource specifies an individual resource to return, e.g. <i>/api/user/homer</i>. <b>PUT</b> request typically create a new resource, e.g. a user. <b>POST</b> requests typically updates an existing resource. <b>DELETE</b> requests are also supported in some cases.
+
+<!--  -->
+<div class="node">
+<a name="Responses"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Pagination">Pagination</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Requests">Requests</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-Properties-of-the-API">Basic Properties of the API</a>
+
+</div>
+
+<h4 class="subsection">1.1.3 Responses</h4>
+
+<p>Enterprise 3.0 API responses are always of the following format, consisting of a <b>meta</b> object and a <b>data</b> array.
+<pre class="verbatim">{
+  "meta": {
+    "page": 1,
+    "count": 1,
+    "total": 1,
+    "timestamp": 1350922925
+  },
+  "data": [
+     ... 
+  ]
+}
+</pre>
+
+   <p><b>page</b> refers to the current page number of the request. <b>count</b> is the number of results in the current page, equaling the length of the <b>data</b> array. <b>total</b> is the number of results in all available pages combined. <b>timestamp</b> is the time the request was processed by the API. The <b>data</b> array is resource dependent, but will always contain objects. Response objects typically do not contain error codes. If the response is not <i>200 OK</i>, the appropriate HTTP error code returned along with a (possibly non-JSON) payload.
+
+<!--  -->
+<div class="node">
+<a name="Pagination"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Time">Time</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Responses">Responses</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-Properties-of-the-API">Basic Properties of the API</a>
+
+</div>
+
+<h4 class="subsection">1.1.4 Pagination</h4>
+
+<p>Pagination is handled by <b>page</b> and <b>count</b> query parameters to a <b>GET</b> request, e.g. <i>/api/user?page=5&amp;count=30</i> to get the 5th page of pages of 30 entries each. The default <b>page</b> is 1 and the default <b>count</b> is 50 if these are not specified explicitly.
+
+<!--  -->
+<div class="node">
+<a name="Time"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Authentication">Authentication</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Pagination">Pagination</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-Properties-of-the-API">Basic Properties of the API</a>
+
+</div>
+
+<h4 class="subsection">1.1.5 Time</h4>
+
+<p>All timestamps are reported in <i>Unix Time</i>, i.e. seconds since 1970.
+
+<!--  -->
+<div class="node">
+<a name="Authentication"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Authorization">Authorization</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Time">Time</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-Properties-of-the-API">Basic Properties of the API</a>
+
+</div>
+
+<h4 class="subsection">1.1.6 Authentication</h4>
+
+<p>The API supports both internal and external authentication. The internal users table will always be consulted first, followed by an external source specified in the settings. External sources are <i>OpenLDAP</i> or <i>Active Directory</i> servers configurable through <i>POST /api/settings</i>.
+
+<!--  -->
+<div class="node">
+<a name="Authorization"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Authentication">Authentication</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Basic-Properties-of-the-API">Basic Properties of the API</a>
+
+</div>
+
+<h4 class="subsection">1.1.7 Authorization</h4>
+
+<p>Some resources require that the request user is a member of the <i>admin</i> role. Roles are managed with <i>/api/role</i>. Role Based Access Control (RBAC) is configurable through the settings. Users typically have permission to access their own resources, e.g. their own scheduled reports. See the Enterprise 3.0 Owner's Manual for more information on RBAC.
+
+<!--  -->
+<div class="node">
+<a name="Differences-between-the-CFEngine-Nova-2.2-REST-API-and-the-CFEngine-Enterprise-3.0-API"></a>
+<a name="Differences-between-the-CFEngine-Nova-2_002e2-REST-API-and-the-CFEngine-Enterprise-3_002e0-API"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Checking-Status">Checking Status</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Basic-Properties-of-the-API">Basic Properties of the API</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#REST-API">REST API</a>
+
+</div>
+
+<h3 class="section">1.2 Differences between the CFEngine Nova 2.2 REST API and the CFEngine Enterprise 3.0 API</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Read-vs_002e-Read_002fWrite">Read vs. Read/Write</a>
+<li><a accesskey="2" href="#Built_002din-Reports-vs_002e-Reporting-Engine">Built-in Reports vs. Reporting Engine</a>
+<li><a accesskey="3" href="#Content_002dType">Content-Type</a>
+<li><a accesskey="4" href="#New-Users">New Users</a>
+<li><a accesskey="5" href="#Base-Path">Base Path</a>
+<li><a accesskey="6" href="#Still-available">Still available</a>
+<li><a accesskey="7" href="#Mission-Portal">Mission Portal</a>
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="Read-vs.-Read%2fWrite"></a>
+<a name="Read-vs_002e-Read_002fWrite"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Built_002din-Reports-vs_002e-Reporting-Engine">Built-in Reports vs. Reporting Engine</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Differences-between-the-CFEngine-Nova-2_002e2-REST-API-and-the-CFEngine-Enterprise-3_002e0-API">Differences between the CFEngine Nova 2.2 REST API and the CFEngine Enterprise 3.0 API</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Differences-between-the-CFEngine-Nova-2_002e2-REST-API-and-the-CFEngine-Enterprise-3_002e0-API">Differences between the CFEngine Nova 2.2 REST API and the CFEngine Enterprise 3.0 API</a>
+
+</div>
+
+<h4 class="subsection">1.2.1 Read vs. Read/Write</h4>
+
+<p>The 2.2 API was read-only and users, roles and settings was managed by the Mission Portal. By contrast, the 3.0 API is read/write and completely standalone from the Mission Portal. In the CFEngine Enterprise 3.0, users, roles and settings belong in the API, and the Mission Portal uses this to determine access to data. Additionally, some other resources support PUT, POST and DELETE, but most data collected from agents are read-only.
+
+<!--  -->
+<div class="node">
+<a name="Built-in-Reports-vs.-Reporting-Engine"></a>
+<a name="Built_002din-Reports-vs_002e-Reporting-Engine"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Content_002dType">Content-Type</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Read-vs_002e-Read_002fWrite">Read vs. Read/Write</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Differences-between-the-CFEngine-Nova-2_002e2-REST-API-and-the-CFEngine-Enterprise-3_002e0-API">Differences between the CFEngine Nova 2.2 REST API and the CFEngine Enterprise 3.0 API</a>
+
+</div>
+
+<h4 class="subsection">1.2.2 Built-in Reports vs. Reporting Engine</h4>
+
+<p>The 2.2 API provided an almost one-to-one correspondence between the reports in the Mission Portal and the API. One of the big changes in CFEngine Enterprise 3.0 is the advent of SQL reports. This is provided to the Mission Portal through the API, and you can use it too. You may issue both synchronous and asynchronous reporting requests, and optionally schedule reports to be received by email.
+
+<!--  -->
+<div class="node">
+<a name="Content-Type"></a>
+<a name="Content_002dType"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#New-Users">New Users</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Built_002din-Reports-vs_002e-Reporting-Engine">Built-in Reports vs. Reporting Engine</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Differences-between-the-CFEngine-Nova-2_002e2-REST-API-and-the-CFEngine-Enterprise-3_002e0-API">Differences between the CFEngine Nova 2.2 REST API and the CFEngine Enterprise 3.0 API</a>
+
+</div>
+
+<h4 class="subsection">1.2.3 Content-Type</h4>
+
+<p>The 2.2 API has a HTTP content-type <code>application/vnd.cfengine.nova-v1+json</code>. In the 3.0 API the content-type is <code>application/vnd.cfengine.enterprise-v1+json</code>. This reflects a branding change away from Nova to Enterprise.
+
+<!--  -->
+<div class="node">
+<a name="New-Users"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Base-Path">Base Path</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Content_002dType">Content-Type</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Differences-between-the-CFEngine-Nova-2_002e2-REST-API-and-the-CFEngine-Enterprise-3_002e0-API">Differences between the CFEngine Nova 2.2 REST API and the CFEngine Enterprise 3.0 API</a>
+
+</div>
+
+<h4 class="subsection">1.2.4 New Users</h4>
+
+<p>The 2.2 API used credentials from the Mission Portal database to authenticate and authorize users. These users have been moved into the Hub database and security has been strengthened. We are now using salted SHA256 passwords for the user table. Unfortunately, this means that internal users need to be recreated. The Mission Portal now relies on the API for authentication and authorization. This was partially done to support multi-hub installations.
+
+<!--  -->
+<div class="node">
+<a name="Base-Path"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Still-available">Still available</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#New-Users">New Users</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Differences-between-the-CFEngine-Nova-2_002e2-REST-API-and-the-CFEngine-Enterprise-3_002e0-API">Differences between the CFEngine Nova 2.2 REST API and the CFEngine Enterprise 3.0 API</a>
+
+</div>
+
+<h4 class="subsection">1.2.5 Base Path</h4>
+
+<p>The 2.2 API had a base path <code>/rest</code>. In the 3.0 API the base path is <code>/api</code>.
+
+<!--  -->
+<div class="node">
+<a name="Still-available"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Mission-Portal">Mission Portal</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Base-Path">Base Path</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Differences-between-the-CFEngine-Nova-2_002e2-REST-API-and-the-CFEngine-Enterprise-3_002e0-API">Differences between the CFEngine Nova 2.2 REST API and the CFEngine Enterprise 3.0 API</a>
+
+</div>
+
+<h4 class="subsection">1.2.6 Still available</h4>
+
+<p>In 3.0, the old 2.2 API is still available along side the new 3.0 API, so you can keep calling the old API if needed.
+
+<!--  -->
+<div class="node">
+<a name="Mission-Portal"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Still-available">Still available</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Differences-between-the-CFEngine-Nova-2_002e2-REST-API-and-the-CFEngine-Enterprise-3_002e0-API">Differences between the CFEngine Nova 2.2 REST API and the CFEngine Enterprise 3.0 API</a>
+
+</div>
+
+<h4 class="subsection">1.2.7 Mission Portal</h4>
+
+<p>Starting in 3.0, most of the API is exercised by the Mission Portal web-UI.
+
+<!--  -->
+<div class="node">
+<a name="Checking-Status"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Managing-Settings">Managing Settings</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Differences-between-the-CFEngine-Nova-2_002e2-REST-API-and-the-CFEngine-Enterprise-3_002e0-API">Differences between the CFEngine Nova 2.2 REST API and the CFEngine Enterprise 3.0 API</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#REST-API">REST API</a>
+
+</div>
+
+<h3 class="section">1.3 Checking Status</h3>
+
+
+   <p>You can get basic info about the API by issuing <i>GET /api</i>. This status information may also be useful if you contact support, as it gives some basic diagnostics.
+
+   <p><b>Request</b>
+<pre class="verbatim">curl -k --user admin:admin https://test.cfengine.com/api/
+</pre>
+
+   <p><b>Response</b>
+<pre class="verbatim">{
+  "meta": {
+    "page": 1,
+    "count": 1,
+    "total": 1,
+    "timestamp": 1351154889
+  },
+  "data": [
+    {
+      "apiName": "CFEngine Enterprise API",
+      "apiVersion": "v1",
+      "enterpriseVersion": "3.0.0a1.81c0d4c",
+      "coreVersion": "3.5.0a1.f3649b2",
+      "databaseHostname": "127.0.0.1",
+      "databasePort": 27017,
+      "authenticated": "internal",
+      "license": {
+        "expires": 1391036400,
+        "installTime": 1329578143,
+        "owner": "Stage Environment",
+        "granted": 20,
+        "licenseUsage": {
+          "lastMeasured": 1351122120,
+          "samples": 1905,
+          "minObservedLevel": 7,
+          "maxObservedLevel": 30,
+          "meanUsage": 21.9689,
+          "meanCumulativeUtilization": 109.8446,
+          "usedToday": 7
+        }
+      }
+    }
+  ]
+}
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Managing-Settings"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Managing-Users-and-Roles">Managing Users and Roles</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Checking-Status">Checking Status</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#REST-API">REST API</a>
+
+</div>
+
+<h3 class="section">1.4 Managing Settings</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Viewing-settings">Viewing settings</a>
+<li><a accesskey="2" href="#Example-_002d-Configuring-LDAP">Example - Configuring LDAP</a>
+<li><a accesskey="3" href="#Example-_002d-Configuring-Active-Directory">Example - Configuring Active Directory</a>
+<li><a accesskey="4" href="#Example-_002d-Changing-The-Log-Level">Example - Changing The Log Level</a>
+</ul>
+
+<p>Most of the settings configurable in the API relate to LDAP authentication of users. Settings support two operations, <b>GET</b> (view settings) and <b>POST</b> (update settings). When settings are updated, they are sanity checked individually and as a whole. All or no settings will be updated for a request.
+
+<!--  -->
+<div class="node">
+<a name="Viewing-settings"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-_002d-Configuring-LDAP">Example - Configuring LDAP</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Managing-Settings">Managing Settings</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Managing-Settings">Managing Settings</a>
+
+</div>
+
+<h4 class="subsection">1.4.1 Viewing settings</h4>
+
+<p><b>Request</b>
+<pre class="verbatim">curl --user admin:admin http://test.cfengine.com/api/settings
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">{
+  "meta": {
+    "page": 1,
+    "count": 1,
+    "total": 1,
+    "timestamp": 1350992335
+  },
+  "data": [
+    {
+      "rbacEnabled": true,
+      "ldapEnabled": false,
+      "ldapActiveDirectoryDomain": "ad.cfengine.com",
+      "ldapBaseDN": "DC=ad,DC=cfengine,DC=com",
+      "ldapEncryption": "plain",
+      "ldapHost": "ldap-server.cfengine.com",
+      "ldapLoginAttribute": "sAMAccountName",
+      "ldapMode": "activeDirectory",
+      "ldapPassword": "password",
+      "ldapPort": 389,
+      "ldapPortSSL": 636,
+      "ldapUsername": "test",
+      "ldapUsersDirectory": "CN=Users",
+      "blueHostHorizon": 900,
+      "logLevel": "error"
+    }
+  ]
+}
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Example---Configuring-LDAP"></a>
+<a name="Example-_002d-Configuring-LDAP"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-_002d-Configuring-Active-Directory">Example - Configuring Active Directory</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Viewing-settings">Viewing settings</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Managing-Settings">Managing Settings</a>
+
+</div>
+
+<h4 class="subsection">1.4.2 Example: Configuring LDAP</h4>
+
+<p>The setting <b>ldapEnabled</b> turns external authentication on or off. When turned on, the API will check to see that the other LDAP related settings make sense, and attempt to authenticate using the configured credentials. If it is not successful in doing this, no settings will be changed. The API will notify you with a return code an a message describing the error.
+
+   <pre class="sp">
+
+</pre>
+<b>Request</b>
+<pre class="verbatim">curl --user admin:admin http://test.cfengine.com/api/settings -X POST -d
+{
+  "ldapEnabled": true,
+  "ldapActiveDirectoryDomain": "ad.cfengine.com",
+  "ldapBaseDN": "DC=ad,DC=example,DC=com",
+  "ldapEncryption": "ssl",
+  "ldapHost": "ldap-server.cfengine.com",
+  "ldapLoginAttribute": "sAMAccountName",
+  "ldapMode": "standard",
+  "ldapPassword": "password",
+  "ldapUsername": "test",
+  "ldapUsersDirectory": "ou",
+}
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">204 No Content
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Example---Configuring-Active-Directory"></a>
+<a name="Example-_002d-Configuring-Active-Directory"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-_002d-Changing-The-Log-Level">Example - Changing The Log Level</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-_002d-Configuring-LDAP">Example - Configuring LDAP</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Managing-Settings">Managing Settings</a>
+
+</div>
+
+<h4 class="subsection">1.4.3 Example: Configuring Active Directory</h4>
+
+<p>Active Directory is configured in much the same way as OpenLDAP, but the additional field <b>ldapActiveDirectoryDomain</b> is required. <b>ldapMode</b> is also changed from <i>standard</i> to <i>activeDirectory</i>.
+
+   <p><b>Request</b>
+<pre class="verbatim">curl --user admin:admin http://test.cfengine.com/api/settings -X POST -d
+{
+  "ldapEnabled": true,
+  "ldapBaseDN": "DC=example,DC=com",
+  "ldapEncryption": "plain",
+  "ldapHost": "ad-server.cfengine.com",
+  "ldapLoginAttribute": "uid",
+  "ldapMode": "activeDirectory",
+  "ldapPassword": "password",
+  "ldapUsername": "test",
+  "ldapUsersDirectory": "CN=Users",
+}
+</pre>
+
+   <p><b>Response</b>
+<pre class="verbatim">204 No Content
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Example---Changing-The-Log-Level"></a>
+<a name="Example-_002d-Changing-The-Log-Level"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-_002d-Configuring-Active-Directory">Example - Configuring Active Directory</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Managing-Settings">Managing Settings</a>
+
+</div>
+
+<h4 class="subsection">1.4.4 Example: Changing The Log Level</h4>
+
+<p>The API uses standard Unix syslog to log a number of events. Additionally, log events are sent to stderr, which means they may also end up in your Apache log. Log events are filtered based on the log level in settings. Suppose you wanted to have greater visibility into the processing done at the backend. The standard log level is <i>error</i>. Changing it to <i>info</i> is done as follows.
+
+   <pre class="sp">
+
+</pre>
+<b>Request</b>
+<pre class="verbatim">curl --user admin:admin http://test.cfengine.com/api/settings -X POST -d
+{
+  "logLevel": "info"
+}
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">204 No Content
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Managing-Users-and-Roles"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Browsing-Host-Information">Browsing Host Information</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Managing-Settings">Managing Settings</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#REST-API">REST API</a>
+
+</div>
+
+<h3 class="section">1.5 Managing Users and Roles</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Example-_002d-Listing-Users">Example - Listing Users</a>
+<li><a accesskey="2" href="#Example-_002d-Creating-a-New-User">Example - Creating a New User</a>
+<li><a accesskey="3" href="#Example-_002d-Updating-an-Existing-User">Example - Updating an Existing User</a>
+<li><a accesskey="4" href="#Example-_002d-Retrieving-a-User">Example - Retrieving a User</a>
+<li><a accesskey="5" href="#Example-_002d-Adding-a-User-to-a-Role">Example - Adding a User to a Role</a>
+<li><a accesskey="6" href="#Example-_002d-Deleting-a-User">Example - Deleting a User</a>
+<li><a accesskey="7" href="#Example-_002d-Creating-a-New-Role">Example - Creating a New Role</a>
+</ul>
+
+<p>Users and Roles determine who has access to what data from the API. Roles are defined by regular expressions that determine which hosts the user can see, and what policy outcomes are restricted.
+
+<!--  -->
+<div class="node">
+<a name="Example---Listing-Users"></a>
+<a name="Example-_002d-Listing-Users"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-_002d-Creating-a-New-User">Example - Creating a New User</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Managing-Users-and-Roles">Managing Users and Roles</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Managing-Users-and-Roles">Managing Users and Roles</a>
+
+</div>
+
+<h4 class="subsection">1.5.1 Example: Listing Users</h4>
+
+<pre class="sp">
+
+</pre>
+<b>Request</b>
+<pre class="verbatim">curl --user admin:admin http://test.cfengine.com/api/user
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">{
+  "meta": {
+    "page": 1,
+    "count": 2,
+    "total": 2,
+    "timestamp": 1350994249
+  },
+  "data": [
+    {
+      "id": "calvin",
+      "external": true,
+      "roles": [
+        "Huguenots", "Marketing"
+      ]
+    },
+    {
+      "id": "quinester",
+      "name": "Willard Van Orman Quine",
+      "email": "noreply@@aol.com",
+      "external": false,
+      "roles": [
+        "admin"
+      ]
+    }
+  ]
+}
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Example---Creating-a-New-User"></a>
+<a name="Example-_002d-Creating-a-New-User"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-_002d-Updating-an-Existing-User">Example - Updating an Existing User</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-_002d-Listing-Users">Example - Listing Users</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Managing-Users-and-Roles">Managing Users and Roles</a>
+
+</div>
+
+<h4 class="subsection">1.5.2 Example: Creating a New User</h4>
+
+<p>All users will be created for the internal user table. The API will never attempt to write to an external LDAP server.
+
+   <pre class="sp">
+
+</pre>
+<b>Request</b>
+<pre class="verbatim">curl --user admin:admin http://test.cfengine.com/api/user/snookie -X PUT -d
+{
+  "email": "snookie@mtv.com",
+  "roles": [
+    "HR"
+  ]
+}
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">201 Created
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Example---Updating-an-Existing-User"></a>
+<a name="Example-_002d-Updating-an-Existing-User"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-_002d-Retrieving-a-User">Example - Retrieving a User</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-_002d-Creating-a-New-User">Example - Creating a New User</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Managing-Users-and-Roles">Managing Users and Roles</a>
+
+</div>
+
+<h4 class="subsection">1.5.3 Example: Updating an Existing User</h4>
+
+<p>Both internal and external users may be updated. When updating an external users, the API will essentially annotate metadata for the user, it will never write to LDAP. Consequently, passwords may only be updated for internal users. Users may only update their own records, as authenticated by their user credentials.
+
+   <pre class="sp">
+
+</pre>
+<b>Request</b>
+<pre class="verbatim">curl --user admin:admin http://test.cfengine.com/api/user/calvin -X POST -d
+{
+  "name": "Calvin",
+}
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">204 No Content
+}
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Example---Retrieving-a-User"></a>
+<a name="Example-_002d-Retrieving-a-User"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-_002d-Adding-a-User-to-a-Role">Example - Adding a User to a Role</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-_002d-Updating-an-Existing-User">Example - Updating an Existing User</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Managing-Users-and-Roles">Managing Users and Roles</a>
+
+</div>
+
+<h4 class="subsection">1.5.4 Example: Retrieving a User</h4>
+
+<p>It is possible to retrieve data on a single user instead of listing everything. The following query is similar to issuing <i>GET /api/user?id=calvin</i>, with the exception that the previous query accepts a regular expression for <i>id</i>.
+
+   <pre class="sp">
+
+</pre>
+<b>Request</b>
+<pre class="verbatim">curl --user admin:admin http://test.cfengine.com/api/user/calvin
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">{
+  "meta": {
+    "page": 1,
+    "count": 1,
+    "total": 1,
+    "timestamp": 1350994249
+  },
+  "data": [
+    {
+      "id": "calvin",
+      "name": "Calvin",
+      "external": true,
+      "roles": [
+        "Huguenots", "Marketing"
+      ]
+    },
+  ]
+}
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Example---Adding-a-User-to-a-Role"></a>
+<a name="Example-_002d-Adding-a-User-to-a-Role"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-_002d-Deleting-a-User">Example - Deleting a User</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-_002d-Retrieving-a-User">Example - Retrieving a User</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Managing-Users-and-Roles">Managing Users and Roles</a>
+
+</div>
+
+<h4 class="subsection">1.5.5 Example: Adding a User to a Role</h4>
+
+<p>Adding a user to a role is just an update operation on the user. The full role-set is updated, so if you are only appending a role, you may want to fetch the user data first, append the role and then update. The same approach is used to remove a user from a role.
+
+   <pre class="sp">
+
+</pre>
+<b>Request</b>
+<pre class="verbatim">curl --user admin:admin http://test.cfengine.com/api/user/snookie -X POST -d
+{
+  "roles": [
+    "HR", "gcc-contrib"
+  ]
+}
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">204 No Content
+}
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Example---Deleting-a-User"></a>
+<a name="Example-_002d-Deleting-a-User"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-_002d-Creating-a-New-Role">Example - Creating a New Role</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-_002d-Adding-a-User-to-a-Role">Example - Adding a User to a Role</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Managing-Users-and-Roles">Managing Users and Roles</a>
+
+</div>
+
+<h4 class="subsection">1.5.6 Example: Deleting a User</h4>
+
+<p>Users can only be deleted from the internal users table.
+
+   <pre class="sp">
+
+</pre>
+<b>Request</b>
+<pre class="verbatim">curl --user admin:admin http://test.cfengine.com/api/user/snookie -X DELETE
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">204 No Content
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Example---Creating-a-New-Role"></a>
+<a name="Example-_002d-Creating-a-New-Role"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-_002d-Deleting-a-User">Example - Deleting a User</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Managing-Users-and-Roles">Managing Users and Roles</a>
+
+</div>
+
+<h4 class="subsection">1.5.7 Example: Creating a New Role</h4>
+
+<p>Once you've learned how to manage users, managing roles is pretty much the same thing. Roles are defined by four fields that filter host data and policy data: <b>includeContext</b>, <b>excludeContext</b>, <b>includeBundles</b>, <b>excludeBundles</b>. Each field is a comma separated list of regular expressions. See the corresponding section on RBAC for an explanation of these fields. Updating, and deleting roles are similar to updating and deleting users, using POST and DELETE.
+
+   <pre class="sp">
+
+</pre>
+<b>Request</b>
+<pre class="verbatim">curl --user admin:admin http://test.cfengine.com/api/user/solaris-admins -X PUT -d
+{
+  "email": "snookie@mtv.com",
+  "roles": [
+    "description": "Users managing 64-bit Solaris boxes",
+    "includeContext": "solaris,x86_64",
+  ]
+}
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">204 No Content
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Browsing-Host-Information"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#SQL-Queries">SQL Queries</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Managing-Users-and-Roles">Managing Users and Roles</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#REST-API">REST API</a>
+
+</div>
+
+<h3 class="section">1.6 Browsing Host Information</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Example-_002d-Listing-Hosts-With-A-Given-Context">Example - Listing Hosts With A Given Context</a>
+<li><a accesskey="2" href="#Example-_002d-Looking-Up-Hosts-By-Hostname">Example - Looking Up Hosts By Hostname</a>
+<li><a accesskey="3" href="#Example-_002d-Looking-Up-Hosts-By-IP">Example - Looking Up Hosts By IP</a>
+<li><a accesskey="4" href="#Example-_002d-Removing-Host-Data">Example - Removing Host Data</a>
+<li><a accesskey="5" href="#Example-_002d-Listing-Available-Vital-Signs-For-A-Host">Example - Listing Available Vital Signs For A Host</a>
+<li><a accesskey="6" href="#Example-_002d-Retrieving-Vital-Sign-Data">Example - Retrieving Vital Sign Data</a>
+</ul>
+
+<p>A resource <i>/api/host</i> is added as an alternative interface for browsing host information. For full flexibility we recommend using SQL reports via <i>/api/query</i> for this, however, currently vital signs (data gathered from cf-monitord) is not part of the SQL reports data model.
+
+<!--  -->
+<div class="node">
+<a name="Example---Listing-Hosts-With-A-Given-Context"></a>
+<a name="Example-_002d-Listing-Hosts-With-A-Given-Context"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-_002d-Looking-Up-Hosts-By-Hostname">Example - Looking Up Hosts By Hostname</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Browsing-Host-Information">Browsing Host Information</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Browsing-Host-Information">Browsing Host Information</a>
+
+</div>
+
+<h4 class="subsection">1.6.1 Example: Listing Hosts With A Given Context</h4>
+
+<pre class="sp">
+
+</pre>
+<b>Request</b>
+<pre class="verbatim">curl --user admin:admin http://test.cfengine.com/api/host?context-include=windows.*
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">{
+  "meta": {
+    "page": 1,
+    "count": 2,
+    "total": 2,
+    "timestamp": 1350997528
+  },
+  "data": [
+    {
+      "id": "1c8fafe478e05eec60fe08d2934415c81a51d2075aac27c9936e19012d625cb8",
+      "hostname": "windows2008-2.test.cfengine.com",
+      "ip": "172.20.100.43"
+    },
+    {
+      "id": "dddc95486d97e4308f164ddc1fdbbc133825f35254f9cfbd59393a671015ab99",
+      "hostname": "windows2003-2.test.cfengine.com",
+      "ip": "172.20.100.42"
+    }
+  ]
+}
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Example---Looking-Up-Hosts-By-Hostname"></a>
+<a name="Example-_002d-Looking-Up-Hosts-By-Hostname"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-_002d-Looking-Up-Hosts-By-IP">Example - Looking Up Hosts By IP</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-_002d-Listing-Hosts-With-A-Given-Context">Example - Listing Hosts With A Given Context</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Browsing-Host-Information">Browsing Host Information</a>
+
+</div>
+
+<h4 class="subsection">1.6.2 Example: Looking Up Hosts By Hostname</h4>
+
+<p>Contexts are powerful, as you can use them to categorize hosts according to a rich set of tags. For example, each host is automatically tagged with a canonicalized version of its hostname and IP-address. So we could lookup the host with hostname <i>windows2003-2.test.cfengine.com</i> as follows (lines split and indented for presentability).
+
+   <pre class="sp">
+
+</pre>
+<b>Request</b>
+<pre class="verbatim">curl --user admin:admin http://test.cfengine.com/api/host?context-include=
+   windows2003_2_stage_cfengine_com
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">{
+  "meta": {
+    "page": 1,
+    "count": 1,
+    "total": 1,
+    "timestamp": 1350997528
+  },
+  "data": [
+    {
+      "id": "dddc95486d97e4308f164ddc1fdbbc133825f35254f9cfbd59393a671015ab99",
+      "hostname": "windows2003-2.test.cfengine.com",
+      "ip": "172.20.100.42"
+    }
+  ]
+}
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Example---Looking-Up-Hosts-By-IP"></a>
+<a name="Example-_002d-Looking-Up-Hosts-By-IP"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-_002d-Removing-Host-Data">Example - Removing Host Data</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-_002d-Looking-Up-Hosts-By-Hostname">Example - Looking Up Hosts By Hostname</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Browsing-Host-Information">Browsing Host Information</a>
+
+</div>
+
+<h4 class="subsection">1.6.3 Example: Looking Up Hosts By IP</h4>
+
+<p>Similarly we can lookup the host with hostname <i>windows2008-2.test.cfengine.com</i> by IP as follows (lines split and indented for presentability).
+
+   <pre class="sp">
+
+</pre>
+<b>Request</b>
+<pre class="verbatim">curl --user admin:admin http://test.cfengine.com/api/host?
+   context-include=172_20_100_43
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">{
+  "meta": {
+    "page": 1,
+    "count": 1,
+    "total": 1,
+    "timestamp": 1350997528
+  },
+  "data": [
+    {
+      "id": "1c8fafe478e05eec60fe08d2934415c81a51d2075aac27c9936e19012d625cb8",
+      "hostname": "windows2008-2.stage.cfengine.com",
+      "ip": "172.20.100.43"
+    }
+  ]
+}
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Example---Removing-Host-Data"></a>
+<a name="Example-_002d-Removing-Host-Data"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-_002d-Listing-Available-Vital-Signs-For-A-Host">Example - Listing Available Vital Signs For A Host</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-_002d-Looking-Up-Hosts-By-IP">Example - Looking Up Hosts By IP</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Browsing-Host-Information">Browsing Host Information</a>
+
+</div>
+
+<h4 class="subsection">1.6.4 Example: Removing Host Data</h4>
+
+<p>If a host has been decommissioned from a Hub, we can explicitly remove data associated with the host from the Hub, by issuing a DELETE request (lines split and indented for presentability).
+
+   <pre class="sp">
+
+</pre>
+<b>Request</b>
+<pre class="verbatim">curl --user admin:admin http://test.cfengine.com/api/host/
+   1c8fafe478e05eec60fe08d2934415c81a51d2075aac27c9936e19012d625cb8 -X DELETE
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">204 No Content
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Example---Listing-Available-Vital-Signs-For-A-Host"></a>
+<a name="Example-_002d-Listing-Available-Vital-Signs-For-A-Host"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-_002d-Retrieving-Vital-Sign-Data">Example - Retrieving Vital Sign Data</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-_002d-Removing-Host-Data">Example - Removing Host Data</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Browsing-Host-Information">Browsing Host Information</a>
+
+</div>
+
+<h4 class="subsection">1.6.5 Example: Listing Available Vital Signs For A Host</h4>
+
+<p>Each host record on the Hub has a set of vital signs collected by cf-monitord on the agent. We can view the list of vitals signs from as host as follows (lines split and indented for presentability).
+
+   <pre class="sp">
+
+</pre>
+<b>Request</b>
+<pre class="verbatim">curl --user admin:admin http://test.cfengine.com/api/host/
+   4e913e2f5ccf0c572b9573a83c4a992798cee170f5ee3019d489a201bc98a1a/vital
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">{
+  "meta": {
+    "page": 1,
+    "count": 4,
+    "total": 4,
+    "timestamp": 1351001799
+  },
+  "data": [
+    {
+      "id": "messages",
+      "description": "New log entries (messages)",
+      "units": "entries",
+      "timestamp": 1351001400
+    },
+    {
+      "id": "mem_swap",
+      "description": "Total swap size",
+      "units": "megabytes",
+      "timestamp": 1351001400
+    },
+    {
+      "id": "mem_freeswap",
+      "description": "Free swap size",
+      "units": "megabytes",
+      "timestamp": 1351001400
+    },
+    {
+      "id": "mem_free",
+      "description": "Free system memory",
+      "units": "megabytes",
+      "timestamp": 1351001400
+    },
+}
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Example---Retrieving-Vital-Sign-Data"></a>
+<a name="Example-_002d-Retrieving-Vital-Sign-Data"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-_002d-Listing-Available-Vital-Signs-For-A-Host">Example - Listing Available Vital Signs For A Host</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Browsing-Host-Information">Browsing Host Information</a>
+
+</div>
+
+<h4 class="subsection">1.6.6 Example: Retrieving Vital Sign Data</h4>
+
+<p>Each vital sign has a collected time series of values for up to one week. Here we retrieve the time series for the <i>mem_free</i> vital sign at host <i>4e913e2f5ccf0c572b9573a83c4a992798cee170f5ee3019d489a201bc98a1a</i> for October 23rd 2012 12:20pm to 12:45pm GMT (lines split and indented for presentability).
+
+   <pre class="sp">
+
+</pre>
+<b>Request</b>
+<pre class="verbatim">curl --user admin:admin http://test.cfengine.com/api/host/
+   4e913e2f5ccf0c572b9573a83c4a992798cee170f5ee3019d489a201bc98a1a/
+   vital/mem_free?from=1350994800&amp;to=1350996300
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">"meta": {
+    "page": 1,
+    "count": 1,
+    "total": 1,
+    "timestamp": 1351002265
+  },
+  "data": [
+    {
+      "id": "mem_free",
+      "description": "Free system memory",
+      "units": "megabytes",
+      "timestamp": 1351001700,
+      "values": [
+        [
+          1350994800,
+          36.2969
+        ],
+        [
+          1350995100,
+          36.2969
+        ],
+        [
+          1350995400,
+          36.2969
+        ],
+        [
+          1350995700,
+          36.2969
+        ],
+        [
+          1350996000,
+          36.1758
+        ],
+        [
+          1350996300,
+          36.2969
+        ]
+      ]
+    }
+  ]
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="SQL-Queries"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#API-Reference">API Reference</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Browsing-Host-Information">Browsing Host Information</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#REST-API">REST API</a>
+
+</div>
+
+<h3 class="section">1.7 SQL Queries</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Synchronous-Queries">Synchronous Queries</a>
+<li><a accesskey="2" href="#Asynchronous-Queries">Asynchronous Queries</a>
+<li><a accesskey="3" href="#Subscribed-Queries">Subscribed Queries</a>
+</ul>
+
+<p>The standard way of creating reports in CFEngine Enterprise 3.0 is with SQL queries. See the chapter on SQL queries for an explanation. The API has a few ways of creating a report.
+
+     <ul>
+<li>Synchronous query, where we issue a query and wait for the table to be sent back with the response. 
+<li>Asynchronous query, where we get a response immediately with an id that we can later query to download the report. 
+<li>Subscribed query, where we specify a query to be run on a schedule and have the result emailed to someone. 
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="Synchronous-Queries"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Asynchronous-Queries">Asynchronous Queries</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#SQL-Queries">SQL Queries</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#SQL-Queries">SQL Queries</a>
+
+</div>
+
+<h4 class="subsection">1.7.1 Synchronous Queries</h4>
+
+<p>Issuing a synchronous query is the most straight forward way of running an SQL query. We simply issue the query and wait for a result to come back.
+
+<h5 class="subsubsection">1.7.1.1 Example: Listing Hostname and IP for Ubuntu Hosts</h5>
+
+<pre class="sp">
+
+</pre>
+<b>Request</b> (lines split and indented for presentability)
+<pre class="verbatim">curl -k --user admin:admin https://test.cfengine.com/api/query -X POST -d
+{
+  "query": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts JOIN Contexts 
+     ON Hosts.Hostkey = Contexts.HostKey WHERE Contexts.ContextName = \"ubuntu\""
+}
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">{
+  "meta": {
+    "page": 1,
+    "count": 1,
+    "total": 1,
+    "timestamp": 1351003514
+  },
+  "data": [
+    {
+      "query": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts JOIN Contexts ON 
+          Hosts.Hostkey = Contexts.HostKey WHERE Contexts.ContextName = \"ubuntu\"",
+      "header": [
+        "HostName",
+        "IPAddress"
+      ],
+      "rowCount": 3,
+      "rows": [
+        [
+          "ubuntu10-2.stage.cfengine.com",
+          "172.20.100.1"
+        ],
+        [
+          "ubuntu10-3.stage.cfengine.com",
+          "172.20.100.2"
+        ],
+        [
+          "ubuntu10-4.stage.cfengine.com",
+          "172.20.100.3"
+        ]
+      ],
+      "cached": false,
+      "sortDescending": false
+    }
+  ]
+}
+</pre>
+
+   <p>The <b>cached</b> and <b>sortDescending</b> fields here mean that the the result was not retrieved from cache, and that post-processing sorting was not applied. It is also possible to specify <b>skip</b> and <b>limit</b> fields that will be applied to the result set after it is returned by the SQL engine. These fields are mainly used by the Mission Portal to paginate quickly on already processed queries.
+
+<!--  -->
+<div class="node">
+<a name="Asynchronous-Queries"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Subscribed-Queries">Subscribed Queries</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Synchronous-Queries">Synchronous Queries</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#SQL-Queries">SQL Queries</a>
+
+</div>
+
+<h4 class="subsection">1.7.2 Asynchronous Queries</h4>
+
+<p>Because some queries may take some time to compute, it is possible to fire off a query and check the status of it later. This is useful for dumping a lot of data into CSV files for example. The sequence consists of three steps.
+
+     <ol type=1 start=1>
+<li>Issue the asynchronous query and get a job id
+<li>Check status of processing using the id
+<li>When the query is completed, get a download link using the id
+        </ol>
+
+<h5 class="subsubsection">1.7.2.1 Issuing The Query</h5>
+
+<p><b>Request</b>
+<pre class="verbatim">curl -k --user admin:admin https://test.cfengine.com/api/query/async -X POST -d
+{
+  "query": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts JOIN Contexts ON Hosts.Hostkey = Contexts.HostKey WHERE Contexts.ContextName = \"ubuntu\""
+}
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b> (lines split and indented for presentability)
+<pre class="verbatim">{
+  "meta": {
+    "page": 1,
+    "count": 1,
+    "total": 1,
+    "timestamp": 1351003514
+  },
+  "data": [
+    {
+      "id": "32ecb0a73e735477cc9b1ea8641e5552",
+      "query": "SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts JOIN Contexts ON 
+          Hosts.Hostkey = Contexts.HostKey WHERE Contexts.ContextName = \"ubuntu\""
+    }
+  ]
+]
+</pre>
+
+<h5 class="subsubsection">1.7.2.2 Checking Status</h5>
+
+<p><b>Request</b>
+<pre class="verbatim">curl -k --user admin:admin https://test.cfengine.com/api/query/async/:id
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">{
+  "meta": {
+    "page": 1,
+    "count": 1,
+    "total": 1,
+    "timestamp": 1351003514
+  },
+  "data": [
+    {
+      "id": "32ecb0a73e735477cc9b1ea8641e5552",
+      "percentageComplete": 42,
+    ]
+}
+</pre>
+
+<h5 class="subsubsection">1.7.2.3 Getting The Completed Report</h5>
+
+<p>This is the same API call as checking the status. Eventually, the <b>percentageComplete</b> field will reach 100 and there will be a link to the completed report available for downloading.
+
+   <pre class="sp">
+
+</pre>
+<b>Request</b>
+<pre class="verbatim">curl -k --user admin:admin https://test.cfengine.com/api/query/async/:id
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">{
+  "meta": {
+    "page": 1,
+    "count": 1,
+    "total": 1,
+    "timestamp": 1351003514
+  },
+  "data": [
+    {
+      "id": "32ecb0a73e735477cc9b1ea8641e5552",
+      "percentageComplete": 100,
+      "href": "https://test.cfengine.com/api/static/32ecb0a73e735477cc9b1ea8641e5552.csv"
+    }
+  ]
+}
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Subscribed-Queries"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Asynchronous-Queries">Asynchronous Queries</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#SQL-Queries">SQL Queries</a>
+
+</div>
+
+<h4 class="subsection">1.7.3 Subscribed Queries</h4>
+
+<p>Subscribed queries happen in the context of a user. Any user can create a query on a schedule and have it email to someone.
+
+<h5 class="subsubsection">1.7.3.1 Example: Creating A Subscribed Query</h5>
+
+<p>Here we create a new query to count file changes by name and have the result sent to us by email. The schedule field is any CFEngine context expression. The backend polls subscriptions in a loop and checks whether it's time to generate a report and send it out. In the following example, user <i>milton</i> creates a new subscription to a report which he names <i>file-changes-report</i>, which will be sent out every Monday night. His boss will get an email with a link to a PDF version of the report.
+
+   <pre class="sp">
+
+</pre>
+<b>Request</b> (lines split and indented for presentability)
+<pre class="verbatim">curl -k --user admin:admin https://test.cfengine.com/api/user/milton/
+   subscription/query/file-changes-report -X PUT -d
+{
+  "to": "boss@megaco.com",
+  "query": "SELECT Name Count(1) FROM FileChanges GROUP BY Name",
+  "schedule": "Monday.Hr23.Min59",
+  "title": "A very important file changes report"
+  "description": "Text that will be included in email"
+  "outputTypes": [ "pdf" ]
+}
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">204 No Content
+
+</pre>
+
+<h5 class="subsubsection">1.7.3.2 Example: Listing Report Subscriptions</h5>
+
+<p>Milton can list all his current subscriptions by issuing the following.
+
+   <pre class="sp">
+
+</pre>
+<b>Request</b>
+<pre class="verbatim">curl -k --user admin:admin https://test.cfengine.com/api/user/milton/subscription/query
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">{
+  "meta": {
+    "page": 1,
+    "count": 1,
+    "total": 1,
+    "timestamp": 1351003514
+  },
+  "data": [
+    {
+      "id": "file-changes-report"
+      "to": "boss@megaco.com",
+      "query": "SELECT Name Count(1) FROM FileChanges GROUP BY Name",
+      "title": "A very important file changes report"
+      "description": "Text that will be included in email"
+      "schedule": "Monday.Hr23.Min59",
+      "outputTypes": [ "pdf" ]
+    }
+]
+</pre>
+
+<h5 class="subsubsection">1.7.3.3 Example: Removing A Report Subscription</h5>
+
+<p><b>Request</b> (lines split and indented for presentability)
+<pre class="verbatim">curl -k --user admin:admin https://test.cfengine.com/api/user/milton/
+   subscription/query/file-changes-report -X DELETE
+</pre>
+
+   <pre class="sp">
+
+</pre>
+<b>Response</b>
+<pre class="verbatim">204 No Content
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="API-Reference"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#SQL-Queries">SQL Queries</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#REST-API">REST API</a>
+
+</div>
+
+<h3 class="section">1.8 API Reference</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#g_t_002fapi">/api</a>
+<li><a accesskey="2" href="#g_t_002fapi_002fsettings">/api/settings</a>
+<li><a accesskey="3" href="#g_t_002fapi_002fuser">/api/user</a>
+<li><a accesskey="4" href="#g_t_002fapi_002fuser_002fid">/api/user/id</a>
+<li><a accesskey="5" href="#g_t_002fapi_002frole">/api/role</a>
+<li><a accesskey="6" href="#g_t_002fapi_002frole_002fid">/api/role/id</a>
+<li><a accesskey="7" href="#g_t_002fapi_002fhost">/api/host</a>
+<li><a accesskey="8" href="#g_t_002fapi_002fhost_002fhost_002did">/api/host/host-id</a>
+<li><a accesskey="9" href="#g_t_002fapi_002fhost_002fhost_002did_002fcontext">/api/host/host-id/context</a>
+<li><a href="#g_t_002fapi_002fhost_002fhost_002did_002fcontext_002fcontext_002did">/api/host/host-id/context/context-id</a>
+<li><a href="#g_t_002fapi_002fhost_002fhost_002did_002fvital">/api/host/host-id/vital</a>
+<li><a href="#g_t_002fapi_002fpromise">/api/promise</a>
+<li><a href="#g_t_002fapi_002fpromise_002fpromise_002did">/api/promise/promise-id</a>
+<li><a href="#g_t_002fapi_002fquery">/api/query</a>
+<li><a href="#g_t_002fapi_002fquery_002fasync">/api/query/async</a>
+<li><a href="#g_t_002fapi_002fquery_002fasync_002fasync_002dquery_002did">/api/query/async/async-query-id</a>
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="%2fapi"></a>
+<a name="g_t_002fapi"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#g_t_002fapi_002fsettings">/api/settings</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#API-Reference">API Reference</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#API-Reference">API Reference</a>
+
+</div>
+
+<h4 class="subsection">1.8.1 /api</h4>
+
+<p><i>Supported Operations</i>:<br>
+<b>GET</b>
+   <pre class="sp">
+
+</pre>
+<i>Fields</i>:
+     <ul>
+<li><b>apiName</b> <i>(string)</i> Human-friendly API name. 
+<li><b>apiVersion</b> <i>(string)</i> API version string. 
+<li><b>enterpriseVersion</b> <i>(string)</i> Version of the CFEngine Enterprise build. 
+<li><b>coreVersion</b> <i>(string)</i> The version of CFEngine Core (Community) the Enterprise version was built against. 
+<li><b>databaseHostname</b> <i>(string)</i> Hostname (or IP) of the database the API is connected to. 
+<li><b>databasePort</b> <i>(integer)</i> Port number of the database the API is connected to. 
+<li><b>authenticated</b> <i>("internal", "external")</i>, Whether the request was authenticated using the internal users table or an external source. 
+<li><b>license.expires</b> <i>(integer)</i> Time when the license expires. 
+<li><b>license.installTime</b> <i>(integer)</i> Time when the license was installed. 
+<li><b>license.owner</b> <i>(string)</i> The name of the license owner. 
+<li><b>license.granted</b> <i>(integer)</i> Host number capacity granted by the license. 
+<li><b>license.licenseUsage.lastMeasured</b> <i>(integer)</i> Time when license usage was last updated. 
+<li><b>license.licenseUsage.samples</b> <i>(integer)</i> Number of samples collected for license usage. 
+<li><b>license.licenseUsage.minObservedLevel</b> <i>(integer)</i> Minimum number of observed host licenses in use. 
+<li><b>license.licenseUsage.minObservedLevel</b> <i>(integer)</i> Maximum number of observed host licenses in use. 
+<li><b>license.licenseUsage.meanUsage</b> <i>(integer)</i> Average number of observed host licenses in use. 
+<li><b>license.licenseUsage.meanCumulativeUtilization</b> <i>(integer)</i> (not sure)
+<li><b>license.licenseUsage.usedToday</b> <i>(integer)</i> Total number of host licenses observed used today. 
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="%2fapi%2fsettings"></a>
+<a name="g_t_002fapi_002fsettings"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#g_t_002fapi_002fuser">/api/user</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#g_t_002fapi">/api</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#API-Reference">API Reference</a>
+
+</div>
+
+<h4 class="subsection">1.8.2 /api/settings</h4>
+
+<p><i>Supported Operations</i>:<br>
+<b>GET</b>, <b>POST</b>
+   <pre class="sp">
+
+</pre>
+<i>Fields</i>:
+     <ul>
+<li><b>rbacEnabled</b> <i>(boolean)</i> Whether RBAC is applied to requests. 
+<li><b>ldapEnabled</b> <i>(boolean)</i> Whether external authentication is activated. 
+<li><b>activeDirectoryDomain</b> <i>(string)</i> AD domain to use if AD is enabled in <b>ldapMode</b>. 
+<li><b>ldapBaseDN</b> <i>(string)</i> LDAP BaseDN to use for external LDAP requests. 
+<li><b>ldapEncryption</b> <i>("plain", "ssl", "tls")</i> Type of LDAP binding to establish to external LDAP server. (Default: "plain"). 
+<li><b>ldapHost</b> <i>(string)</i> Hostname of external LDAP server. 
+<li><b>ldapMode</b> <i>("standard", "activeDirectory")</i> Type of LDAP server to use. "standard" is effectively OpenLDAP. (Default: "standard"). 
+<li><b>ldapLoginAttribute</b> <i>(string)</i> LDAP attribute to use for usernames. (default: "uid"). 
+<li><b>ldapUsername</b> <i>(string)</i> LDAP username. 
+<li><b>ldapPassword</b> <i>(string)</i> LDAP password. 
+<li><b>ldapUsersDirectory</b> <i>(string)</i> Attribute and value to qualify the directory in which to look up users, e.g. "ou=people". 
+<li><b>ldapPort</b> <i>(integer)</i> Port for external LDAP connections not using SSL. (default 389). 
+<li><b>ldapPort</b> <i>(integer)</i> Port for external LDAP connections using SSL. (default 636). 
+<li><b>blueHostHorizon</b> <i>(integer)</i> Time interval (seconds) for when to consider a host unreachable. (default 900). 
+<li><b>logLevel</b> <i>("emergency", "alert", "critical", "error", "warning", "notice", "info", "debug")</i> Syslog filter specifying the severity level at which messages produced by the API should be emitted to syslog and apache.log. (default: error). 
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="%2fapi%2fuser"></a>
+<a name="g_t_002fapi_002fuser"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#g_t_002fapi_002fuser_002fid">/api/user/id</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#g_t_002fapi_002fsettings">/api/settings</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#API-Reference">API Reference</a>
+
+</div>
+
+<h4 class="subsection">1.8.3 /api/user</h4>
+
+<p><i>Supported Operations</i>:<br>
+<b>GET</b>
+   <pre class="sp">
+
+</pre>
+<i>Query Parameters</i>:
+     <ul>
+<li><b>id</b> <i>(regex string)</i> Regular expression for filtering usernames. 
+<li><b>external</b> <i>("true", "false")</i> Returns only internal users (false) or only external (true), or all if not specified. 
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="%2fapi%2fuser%2fid"></a>
+<a name="g_t_002fapi_002fuser_002fid"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#g_t_002fapi_002frole">/api/role</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#g_t_002fapi_002fuser">/api/user</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#API-Reference">API Reference</a>
+
+</div>
+
+<h4 class="subsection">1.8.4 /api/user/:id</h4>
+
+<p><i>Supported Operations</i>:<br>
+<b>GET</b>, <b>PUT</b>, <b>POST</b>, <b>DELETE</b>
+   <pre class="sp">
+
+</pre>
+<i>Fields</i>:
+     <ul>
+<li><b>id</b> <i>(string)</i> ID of a user. 
+<li><b>password</b> <i>(string)</i> Password of a user. (Never returned from API). 
+<li><b>email</b> <i>(string)</i> Email address associated with user. 
+<li><b>roles</b> <i>(array of strings)</i> Set of IDs of roles a user is in. (Default: empty)
+<li><b>external</b> <i>(boolean)</i> Whether or not the user was found externally (LDAP). 
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="%2fapi%2frole"></a>
+<a name="g_t_002fapi_002frole"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#g_t_002fapi_002frole_002fid">/api/role/id</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#g_t_002fapi_002fuser_002fid">/api/user/id</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#API-Reference">API Reference</a>
+
+</div>
+
+<h4 class="subsection">1.8.5 /api/role</h4>
+
+<p><i>Supported Operations</i>:<br>
+<b>GET</b>
+
+<!--  -->
+<div class="node">
+<a name="%2fapi%2frole%2fid"></a>
+<a name="g_t_002fapi_002frole_002fid"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#g_t_002fapi_002fhost">/api/host</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#g_t_002fapi_002frole">/api/role</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#API-Reference">API Reference</a>
+
+</div>
+
+<h4 class="subsection">1.8.6 /api/role/:id</h4>
+
+<p><i>Supported Operations</i>:<br>
+<b>GET</b>, <b>PUT</b>, <b>POST</b>, <b>DELETE</b>
+   <pre class="sp">
+
+</pre>
+<i>Fields</i>:
+     <ul>
+<li><b>id</b> <i>(string)</i> ID of a role. 
+<li><b>description</b> <i>(string)</i> Arbitrary text describing the role
+<li><b>includeContext</b> <i>(comma delimited string of regular expression strings)</i> Includes hosts visible to the users in the role. 
+<li><b>excludeContext</b> <i>(comma delimited string of regular expression strings)</i> Excludes bundles visible to the users in the role. 
+<li><b>includeBundles</b> <i>(comma delimited string of regular expression strings)</i> Includes bundles visible to the users in the role. 
+<li><b>excludeBundles</b> <i>(comma delimited string of regular expression strings)</i> Excludes bundles visible to the users in the role. 
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="%2fapi%2fhost"></a>
+<a name="g_t_002fapi_002fhost"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#g_t_002fapi_002fhost_002fhost_002did">/api/host/host-id</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#g_t_002fapi_002frole_002fid">/api/role/id</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#API-Reference">API Reference</a>
+
+</div>
+
+<h4 class="subsection">1.8.7 /api/host</h4>
+
+<p><i>Supported Operations</i>:<br>
+<b>GET</b>
+   <pre class="sp">
+
+</pre>
+<i>Query Parameters</i>:
+     <ul>
+<li><b>include-context</b> <i>(comma delimited string of regular expression strings)</i> Includes hosts having context matching the expression. 
+<li><b>exclude-context</b> <i>(comma delimited string of regular expression strings)</i> Excludes hosts having context matching the expression. 
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="%2fapi%2fhost%2fhost-id"></a>
+<a name="g_t_002fapi_002fhost_002fhost_002did"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#g_t_002fapi_002fhost_002fhost_002did_002fcontext">/api/host/host-id/context</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#g_t_002fapi_002fhost">/api/host</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#API-Reference">API Reference</a>
+
+</div>
+
+<h4 class="subsection">1.8.8 /api/host/:host-id</h4>
+
+     <ul>
+<li><b>id</b> <i>(string)</i> ID of a host. 
+<li><b>hostname</b> <i>(string)</i> Hostname of a host. 
+<li><b>ip</b> <i>(string)</i> IP address of a host. 
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="%2fapi%2fhost%2fhost-id%2fcontext"></a>
+<a name="g_t_002fapi_002fhost_002fhost_002did_002fcontext"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#g_t_002fapi_002fhost_002fhost_002did_002fcontext_002fcontext_002did">/api/host/host-id/context/context-id</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#g_t_002fapi_002fhost_002fhost_002did">/api/host/host-id</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#API-Reference">API Reference</a>
+
+</div>
+
+<h4 class="subsection">1.8.9 /api/host/:host-id/context</h4>
+
+<p><i>Supported Operations</i>:<br>
+<b>GET</b>
+
+<!--  -->
+<div class="node">
+<a name="%2fapi%2fhost%2fhost-id%2fcontext%2fcontext-id"></a>
+<a name="g_t_002fapi_002fhost_002fhost_002did_002fcontext_002fcontext_002did"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#g_t_002fapi_002fhost_002fhost_002did_002fvital">/api/host/host-id/vital</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#g_t_002fapi_002fhost_002fhost_002did_002fcontext">/api/host/host-id/context</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#API-Reference">API Reference</a>
+
+</div>
+
+<h4 class="subsection">1.8.10 /api/host/:host-id/context/:context-id</h4>
+
+<p><i>Supported Operations</i>:<br>
+<b>GET</b>
+   <pre class="sp">
+
+</pre>
+<i>Fields</i>:
+     <ul>
+<li><b>id</b> <i>(string)</i> ID of a context (class name)
+<li><b>mean</b> <i>(real)</i> Occurrence probability of the context in an agent run. 
+<li><b>stdv</b> <i>(real)</i> Standard deviation of occurrence probability. 
+<li><b>timestamp</b> <i>(integer</i>) Last time context was activated on agent. 
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="%2fapi%2fhost%2fhost-id%2fvital"></a>
+<a name="g_t_002fapi_002fhost_002fhost_002did_002fvital"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#g_t_002fapi_002fpromise">/api/promise</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#g_t_002fapi_002fhost_002fhost_002did_002fcontext_002fcontext_002did">/api/host/host-id/context/context-id</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#API-Reference">API Reference</a>
+
+</div>
+
+<h4 class="subsection">1.8.11 /api/host/:host-id/vital</h4>
+
+<p><i>Supported Operations</i>:<br>
+<b>GET</b>
+
+<h5 class="subsubsection">1.8.11.1 /api/host/:host-id/vital/:vital-id</h5>
+
+<p><i>Supported Operations</i>:<br>
+<b>GET</b>
+   <pre class="sp">
+
+</pre>
+<i>Query Parameters</i>:
+     <ul>
+<li><b>from</b> <i>(integer)</i> Timestamp marking the start of the interval for which to fetch data. Data is only available going back one week. 
+<li><b>to</b> <i>(integer)</i> End of data interval to be fetched. 
+</ul>
+
+   <pre class="sp">
+
+</pre>
+<i>Fields</i>:
+     <ul>
+<li><b>id</b> <i>(string)</i> ID of vital sign. 
+<li><b>description</b> <i>(string)</i> Description of vital sign. 
+<li><b>units</b> <i>(string)</i> Measurement unit of vital sign. 
+<li><b>timestamp</b> <i>(integer)</i> Timestamp of the last received data point. 
+<li><b>values</b> <i>(array of [ t, y ], where t is the sample timestamp)</i> Vital sign data. 
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="%2fapi%2fpromise"></a>
+<a name="g_t_002fapi_002fpromise"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#g_t_002fapi_002fpromise_002fpromise_002did">/api/promise/promise-id</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#g_t_002fapi_002fhost_002fhost_002did_002fvital">/api/host/host-id/vital</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#API-Reference">API Reference</a>
+
+</div>
+
+<h4 class="subsection">1.8.12 /api/promise</h4>
+
+<p><i>Supported Operations</i>:<br>
+<b>GET</b>
+
+<!--  -->
+<div class="node">
+<a name="%2fapi%2fpromise%2fpromise-id"></a>
+<a name="g_t_002fapi_002fpromise_002fpromise_002did"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#g_t_002fapi_002fquery">/api/query</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#g_t_002fapi_002fpromise">/api/promise</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#API-Reference">API Reference</a>
+
+</div>
+
+<h4 class="subsection">1.8.13 /api/promise/:promise-id</h4>
+
+<p><i>Supported Operations</i>:<br>
+<b>GET</b>
+   <pre class="sp">
+
+</pre>
+<i>Fields</i>:
+     <ul>
+<li><b>id</b> <i>(string)</i> Promise handle. 
+<li><b>type</b> <i>(string)</i> Promise type. 
+<li><b>promiser</b> <i>(string)</i> Promiser of the promise. 
+<li><b>promisees</b> <i>(array of strings)</i> A list of promisees of the promise. 
+<li><b>bundle</b> <i>(string)</i> The bundle this promise belongs to
+<li><b>comment</b> <i>(string)</i> Associated comment for the promise. 
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="%2fapi%2fquery"></a>
+<a name="g_t_002fapi_002fquery"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#g_t_002fapi_002fquery_002fasync">/api/query/async</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#g_t_002fapi_002fpromise_002fpromise_002did">/api/promise/promise-id</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#API-Reference">API Reference</a>
+
+</div>
+
+<h4 class="subsection">1.8.14 /api/query</h4>
+
+<p><i>Supported Operations</i>:<br>
+
+   <b>POST</b>
+
+<p class="noindent"><i>Fields</i>:
+     <ul>
+<li><b>query</b> <i>(string)</i> SQL query string. 
+<li><b>sortColumn</b> <i>(string)</i> Column on which to sort results. This is applied to the result of the SQL query and can be considered post processing. The Mission Portal uses this to sort cached reports. 
+<li><b>sortDescending</b> <i>(bool)</i> Apply post-sorting descendingly. 
+<li><b>skip</b> <i>(integer)</i> Number of results to skip for the processed query. The Mission Portal uses this for pagination on cached results. 
+<li><b>limit</b> <i>(integer)</i> Limit the number of results in the processed query. 
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="%2fapi%2fquery%2fasync"></a>
+<a name="g_t_002fapi_002fquery_002fasync"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#g_t_002fapi_002fquery_002fasync_002fasync_002dquery_002did">/api/query/async/async-query-id</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#g_t_002fapi_002fquery">/api/query</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#API-Reference">API Reference</a>
+
+</div>
+
+<h4 class="subsection">1.8.15 /api/query/async</h4>
+
+<p><i>Supported Operations</i>:<br>
+
+   <b>POST</b>
+
+<p class="noindent"><i>Fields</i>:
+     <ul>
+<li><b>query</b> <i>(string)</i> SQL query string. 
+<li><b>id</b> <i>(string)</i> ID of the query job. 
+<li><b>error</b> <i>(string)</i> Error if anything went wrong. 
+</ul>
+
+<!--  -->
+<div class="node">
+<a name="%2fapi%2fquery%2fasync%2fasync-query-id"></a>
+<a name="g_t_002fapi_002fquery_002fasync_002fasync_002dquery_002did"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#g_t_002fapi_002fquery_002fasync">/api/query/async</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#API-Reference">API Reference</a>
+
+</div>
+
+<h4 class="subsection">1.8.16 /api/query/async/:async-query-id</h4>
+
+<p><i>Supported Operations</i>:<br>
+
+   <b>GET</b>, <b>DELETE</b>
+
+<p class="noindent"><i>Fields</i>:
+     <ul>
+<li><b>id</b> <i>(string)</i> ID of the query job. 
+<li><b>percentageComplete</b> <i>(integer)</i> Processing status for the query. 
+<li><b>href</b> <i>(string)</i> Download link for the finished report. 
+<li><b>error</b> <i>(string)</i> Error if anything went wrong. 
+</ul>
+
+<!-- *********************************************************************** -->
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">CFEngine Enterprise 3.0 API</a>
+<li><a name="toc_REST-API" href="#REST-API">1 REST API</a>
+<ul>
+<li><a href="#Basic-Properties-of-the-API">1.1 Basic Properties of the API</a>
+<ul>
+<li><a href="#HTTP-_002b-JSON">1.1.1 HTTP + JSON</a>
+<li><a href="#Requests">1.1.2 Requests</a>
+<li><a href="#Responses">1.1.3 Responses</a>
+<li><a href="#Pagination">1.1.4 Pagination</a>
+<li><a href="#Time">1.1.5 Time</a>
+<li><a href="#Authentication">1.1.6 Authentication</a>
+<li><a href="#Authorization">1.1.7 Authorization</a>
+</li></ul>
+<li><a href="#Differences-between-the-CFEngine-Nova-2_002e2-REST-API-and-the-CFEngine-Enterprise-3_002e0-API">1.2 Differences between the CFEngine Nova 2.2 REST API and the CFEngine Enterprise 3.0 API</a>
+<ul>
+<li><a href="#Read-vs_002e-Read_002fWrite">1.2.1 Read vs. Read/Write</a>
+<li><a href="#Built_002din-Reports-vs_002e-Reporting-Engine">1.2.2 Built-in Reports vs. Reporting Engine</a>
+<li><a href="#Content_002dType">1.2.3 Content-Type</a>
+<li><a href="#New-Users">1.2.4 New Users</a>
+<li><a href="#Base-Path">1.2.5 Base Path</a>
+<li><a href="#Still-available">1.2.6 Still available</a>
+<li><a href="#Mission-Portal">1.2.7 Mission Portal</a>
+</li></ul>
+<li><a href="#Checking-Status">1.3 Checking Status</a>
+<li><a href="#Managing-Settings">1.4 Managing Settings</a>
+<ul>
+<li><a href="#Viewing-settings">1.4.1 Viewing settings</a>
+<li><a href="#Example-_002d-Configuring-LDAP">1.4.2 Example: Configuring LDAP</a>
+<li><a href="#Example-_002d-Configuring-Active-Directory">1.4.3 Example: Configuring Active Directory</a>
+<li><a href="#Example-_002d-Changing-The-Log-Level">1.4.4 Example: Changing The Log Level</a>
+</li></ul>
+<li><a href="#Managing-Users-and-Roles">1.5 Managing Users and Roles</a>
+<ul>
+<li><a href="#Example-_002d-Listing-Users">1.5.1 Example: Listing Users</a>
+<li><a href="#Example-_002d-Creating-a-New-User">1.5.2 Example: Creating a New User</a>
+<li><a href="#Example-_002d-Updating-an-Existing-User">1.5.3 Example: Updating an Existing User</a>
+<li><a href="#Example-_002d-Retrieving-a-User">1.5.4 Example: Retrieving a User</a>
+<li><a href="#Example-_002d-Adding-a-User-to-a-Role">1.5.5 Example: Adding a User to a Role</a>
+<li><a href="#Example-_002d-Deleting-a-User">1.5.6 Example: Deleting a User</a>
+<li><a href="#Example-_002d-Creating-a-New-Role">1.5.7 Example: Creating a New Role</a>
+</li></ul>
+<li><a href="#Browsing-Host-Information">1.6 Browsing Host Information</a>
+<ul>
+<li><a href="#Example-_002d-Listing-Hosts-With-A-Given-Context">1.6.1 Example: Listing Hosts With A Given Context</a>
+<li><a href="#Example-_002d-Looking-Up-Hosts-By-Hostname">1.6.2 Example: Looking Up Hosts By Hostname</a>
+<li><a href="#Example-_002d-Looking-Up-Hosts-By-IP">1.6.3 Example: Looking Up Hosts By IP</a>
+<li><a href="#Example-_002d-Removing-Host-Data">1.6.4 Example: Removing Host Data</a>
+<li><a href="#Example-_002d-Listing-Available-Vital-Signs-For-A-Host">1.6.5 Example: Listing Available Vital Signs For A Host</a>
+<li><a href="#Example-_002d-Retrieving-Vital-Sign-Data">1.6.6 Example: Retrieving Vital Sign Data</a>
+</li></ul>
+<li><a href="#SQL-Queries">1.7 SQL Queries</a>
+<ul>
+<li><a href="#Synchronous-Queries">1.7.1 Synchronous Queries</a>
+<ul>
+<li><a href="#Synchronous-Queries">1.7.1.1 Example: Listing Hostname and IP for Ubuntu Hosts</a>
+</li></ul>
+<li><a href="#Asynchronous-Queries">1.7.2 Asynchronous Queries</a>
+<ul>
+<li><a href="#Asynchronous-Queries">1.7.2.1 Issuing The Query</a>
+<li><a href="#Asynchronous-Queries">1.7.2.2 Checking Status</a>
+<li><a href="#Asynchronous-Queries">1.7.2.3 Getting The Completed Report</a>
+</li></ul>
+<li><a href="#Subscribed-Queries">1.7.3 Subscribed Queries</a>
+<ul>
+<li><a href="#Subscribed-Queries">1.7.3.1 Example: Creating A Subscribed Query</a>
+<li><a href="#Subscribed-Queries">1.7.3.2 Example: Listing Report Subscriptions</a>
+<li><a href="#Subscribed-Queries">1.7.3.3 Example: Removing A Report Subscription</a>
+</li></ul>
+</li></ul>
+<li><a href="#API-Reference">1.8 API Reference</a>
+<ul>
+<li><a href="#_002fapi">1.8.1 /api</a>
+<li><a href="#_002fapi_002fsettings">1.8.2 /api/settings</a>
+<li><a href="#_002fapi_002fuser">1.8.3 /api/user</a>
+<li><a href="#_002fapi_002fuser_002fid">1.8.4 /api/user/:id</a>
+<li><a href="#_002fapi_002frole">1.8.5 /api/role</a>
+<li><a href="#_002fapi_002frole_002fid">1.8.6 /api/role/:id</a>
+<li><a href="#_002fapi_002fhost">1.8.7 /api/host</a>
+<li><a href="#_002fapi_002fhost_002fhost_002did">1.8.8 /api/host/:host-id</a>
+<li><a href="#_002fapi_002fhost_002fhost_002did_002fcontext">1.8.9 /api/host/:host-id/context</a>
+<li><a href="#_002fapi_002fhost_002fhost_002did_002fcontext_002fcontext_002did">1.8.10 /api/host/:host-id/context/:context-id</a>
+<li><a href="#_002fapi_002fhost_002fhost_002did_002fvital">1.8.11 /api/host/:host-id/vital</a>
+<ul>
+<li><a href="#_002fapi_002fhost_002fhost_002did_002fvital">1.8.11.1 /api/host/:host-id/vital/:vital-id</a>
+</li></ul>
+<li><a href="#_002fapi_002fpromise">1.8.12 /api/promise</a>
+<li><a href="#_002fapi_002fpromise_002fpromise_002did">1.8.13 /api/promise/:promise-id</a>
+<li><a href="#_002fapi_002fquery">1.8.14 /api/query</a>
+<li><a href="#_002fapi_002fquery_002fasync">1.8.15 /api/query/async</a>
+<li><a href="#_002fapi_002fquery_002fasync_002fasync_002dquery_002did">1.8.16 /api/query/async/:async-query-id</a>
+</li></ul>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+<!-- The file is structured like a programming language. Each chapter -->
+<!-- starts with a chapter comment. -->
+<!-- Menus list the subsections so that an online info-reader can parse -->
+<!-- the file hierarchically. -->
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+

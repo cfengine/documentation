@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.14  Documentation - strftime</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.14/assets/global-87598b50cf828dc4e1c1ad7f860740dc.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "strftime";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.14/" selected>Version 3.14 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="012826289311752768906:kp0fmjlfqyu" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a><ul class="level2"><li><a href="reference-functions-accessedbefore.html">accessedbefore</a></li><li><a href="reference-functions-accumulated.html">accumulated</a></li><li><a href="reference-functions-ago.html">ago</a></li><li><a href="reference-functions-and.html">and</a></li><li><a href="reference-functions-bundlesmatching.html">bundlesmatching</a></li><li><a href="reference-functions-bundlestate.html">bundlestate</a></li><li><a href="reference-functions-callstack_callers.html">callstack_callers</a></li><li><a href="reference-functions-callstack_promisers.html">callstack_promisers</a></li><li><a href="reference-functions-canonify.html">canonify</a></li><li><a href="reference-functions-canonifyuniquely.html">canonifyuniquely</a></li><li><a href="reference-functions-changedbefore.html">changedbefore</a></li><li><a href="reference-functions-classesmatching.html">classesmatching</a></li><li><a href="reference-functions-classfiltercsv.html">classfiltercsv</a></li><li><a href="reference-functions-classify.html">classify</a></li><li><a href="reference-functions-classmatch.html">classmatch</a></li><li><a href="reference-functions-concat.html">concat</a></li><li><a href="reference-functions-countclassesmatching.html">countclassesmatching</a></li><li><a href="reference-functions-countlinesmatching.html">countlinesmatching</a></li><li><a href="reference-functions-data_expand.html">data_expand</a></li><li><a href="reference-functions-data_readstringarray.html">data_readstringarray</a></li><li><a href="reference-functions-data_readstringarrayidx.html">data_readstringarrayidx</a></li><li><a href="reference-functions-data_regextract.html">data_regextract</a></li><li><a href="reference-functions-data_sysctlvalues.html">data_sysctlvalues</a></li><li><a href="reference-functions-datastate.html">datastate</a></li><li><a href="reference-functions-difference.html">difference</a></li><li><a href="reference-functions-dirname.html">dirname</a></li><li><a href="reference-functions-diskfree.html">diskfree</a></li><li><a href="reference-functions-escape.html">escape</a></li><li><a href="reference-functions-eval.html">eval</a></li><li><a href="reference-functions-every.html">every</a></li><li><a href="reference-functions-execresult.html">execresult</a></li><li><a href="reference-functions-expandrange.html">expandrange</a></li><li><a href="reference-functions-file_hash.html">file_hash</a></li><li><a href="reference-functions-fileexists.html">fileexists</a></li><li><a href="reference-functions-filesexist.html">filesexist</a></li><li><a href="reference-functions-filesize.html">filesize</a></li><li><a href="reference-functions-filestat.html">filestat</a></li><li><a href="reference-functions-filter.html">filter</a></li><li><a href="reference-functions-findfiles.html">findfiles</a></li><li><a href="reference-functions-findprocesses.html">findprocesses</a></li><li><a href="reference-functions-format.html">format</a></li><li><a href="reference-functions-getclassmetatags.html">getclassmetatags</a></li><li><a href="reference-functions-getenv.html">getenv</a></li><li><a href="reference-functions-getfields.html">getfields</a></li><li><a href="reference-functions-getgid.html">getgid</a></li><li><a href="reference-functions-getindices.html">getindices</a></li><li><a href="reference-functions-getuid.html">getuid</a></li><li><a href="reference-functions-getuserinfo.html">getuserinfo</a></li><li><a href="reference-functions-getusers.html">getusers</a></li><li><a href="reference-functions-getvalues.html">getvalues</a></li><li><a href="reference-functions-getvariablemetatags.html">getvariablemetatags</a></li><li><a href="reference-functions-grep.html">grep</a></li><li><a href="reference-functions-groupexists.html">groupexists</a></li><li><a href="reference-functions-hash.html">hash</a></li><li><a href="reference-functions-hash_to_int.html">hash_to_int</a></li><li><a href="reference-functions-hashmatch.html">hashmatch</a></li><li><a href="reference-functions-host2ip.html">host2ip</a></li><li><a href="reference-functions-hostinnetgroup.html">hostinnetgroup</a></li><li><a href="reference-functions-hostrange.html">hostrange</a></li><li><a href="reference-functions-hostsseen.html">hostsseen</a></li><li><a href="reference-functions-hostswithclass.html">hostswithclass</a></li><li><a href="reference-functions-hubknowledge.html">hubknowledge</a></li><li><a href="reference-functions-ifelse.html">ifelse</a></li><li><a href="reference-functions-intersection.html">intersection</a></li><li><a href="reference-functions-ip2host.html">ip2host</a></li><li><a href="reference-functions-iprange.html">iprange</a></li><li><a href="reference-functions-irange.html">irange</a></li><li><a href="reference-functions-isdir.html">isdir</a></li><li><a href="reference-functions-isexecutable.html">isexecutable</a></li><li><a href="reference-functions-isgreaterthan.html">isgreaterthan</a></li><li><a href="reference-functions-isipinsubnet.html">isipinsubnet</a></li><li><a href="reference-functions-islessthan.html">islessthan</a></li><li><a href="reference-functions-islink.html">islink</a></li><li><a href="reference-functions-isnewerthan.html">isnewerthan</a></li><li><a href="reference-functions-isplain.html">isplain</a></li><li><a href="reference-functions-isvariable.html">isvariable</a></li><li><a href="reference-functions-join.html">join</a></li><li><a href="reference-functions-lastnode.html">lastnode</a></li><li><a href="reference-functions-laterthan.html">laterthan</a></li><li><a href="reference-functions-ldaparray.html">ldaparray</a></li><li><a href="reference-functions-ldaplist.html">ldaplist</a></li><li><a href="reference-functions-ldapvalue.html">ldapvalue</a></li><li><a href="reference-functions-length.html">length</a></li><li><a href="reference-functions-lsdir.html">lsdir</a></li><li><a href="reference-functions-makerule.html">makerule</a></li><li><a href="reference-functions-maparray.html">maparray</a></li><li><a href="reference-functions-mapdata.html">mapdata</a></li><li><a href="reference-functions-maplist.html">maplist</a></li><li><a href="reference-functions-max.html">max</a></li><li><a href="reference-functions-mean.html">mean</a></li><li><a href="reference-functions-mergedata.html">mergedata</a></li><li><a href="reference-functions-min.html">min</a></li><li><a href="reference-functions-network_connections.html">network_connections</a></li><li><a href="reference-functions-none.html">none</a></li><li><a href="reference-functions-not.html">not</a></li><li><a href="reference-functions-now.html">now</a></li><li><a href="reference-functions-nth.html">nth</a></li><li><a href="reference-functions-on.html">on</a></li><li><a href="reference-functions-or.html">or</a></li><li><a href="reference-functions-packagesmatching.html">packagesmatching</a></li><li><a href="reference-functions-packageupdatesmatching.html">packageupdatesmatching</a></li><li><a href="reference-functions-parseintarray.html">parseintarray</a></li><li><a href="reference-functions-parsejson.html">parsejson</a></li><li><a href="reference-functions-parserealarray.html">parserealarray</a></li><li><a href="reference-functions-parsestringarray.html">parsestringarray</a></li><li><a href="reference-functions-parsestringarrayidx.html">parsestringarrayidx</a></li><li><a href="reference-functions-parseyaml.html">parseyaml</a></li><li><a href="reference-functions-peerleader.html">peerleader</a></li><li><a href="reference-functions-peerleaders.html">peerleaders</a></li><li><a href="reference-functions-peers.html">peers</a></li><li><a href="reference-functions-processexists.html">processexists</a></li><li><a href="reference-functions-product.html">product</a></li><li><a href="reference-functions-randomint.html">randomint</a></li><li><a href="reference-functions-readcsv.html">readcsv</a></li><li><a href="reference-functions-readdata.html">readdata</a></li><li><a href="reference-functions-readenvfile.html">readenvfile</a></li><li><a href="reference-functions-readfile.html">readfile</a></li><li><a href="reference-functions-readintarray.html">readintarray</a></li><li><a href="reference-functions-readintlist.html">readintlist</a></li><li><a href="reference-functions-readjson.html">readjson</a></li><li><a href="reference-functions-readrealarray.html">readrealarray</a></li><li><a href="reference-functions-readreallist.html">readreallist</a></li><li><a href="reference-functions-readstringarray.html">readstringarray</a></li><li><a href="reference-functions-readstringarrayidx.html">readstringarrayidx</a></li><li><a href="reference-functions-readstringlist.html">readstringlist</a></li><li><a href="reference-functions-readtcp.html">readtcp</a></li><li><a href="reference-functions-readyaml.html">readyaml</a></li><li><a href="reference-functions-regarray.html">regarray</a></li><li><a href="reference-functions-regcmp.html">regcmp</a></li><li><a href="reference-functions-regex_replace.html">regex_replace</a></li><li><a href="reference-functions-regextract.html">regextract</a></li><li><a href="reference-functions-registryvalue.html">registryvalue</a></li><li><a href="reference-functions-regldap.html">regldap</a></li><li><a href="reference-functions-regline.html">regline</a></li><li><a href="reference-functions-reglist.html">reglist</a></li><li><a href="reference-functions-remoteclassesmatching.html">remoteclassesmatching</a></li><li><a href="reference-functions-remotescalar.html">remotescalar</a></li><li><a href="reference-functions-returnszero.html">returnszero</a></li><li><a href="reference-functions-reverse.html">reverse</a></li><li><a href="reference-functions-rrange.html">rrange</a></li><li><a href="reference-functions-selectservers.html">selectservers</a></li><li><a href="reference-functions-shuffle.html">shuffle</a></li><li><a href="reference-functions-some.html">some</a></li><li><a href="reference-functions-sort.html">sort</a></li><li><a href="reference-functions-splayclass.html">splayclass</a></li><li><a href="reference-functions-splitstring.html">splitstring</a></li><li><a href="reference-functions-storejson.html">storejson</a></li><li><a href="reference-functions-strcmp.html">strcmp</a></li><li><a class="active" href="reference-functions-strftime.html">strftime</a></li><li><a href="reference-functions-string_downcase.html">string_downcase</a></li><li><a href="reference-functions-string_head.html">string_head</a></li><li><a href="reference-functions-string_length.html">string_length</a></li><li><a href="reference-functions-string_mustache.html">string_mustache</a></li><li><a href="reference-functions-string_replace.html">string_replace</a></li><li><a href="reference-functions-string_reverse.html">string_reverse</a></li><li><a href="reference-functions-string_split.html">string_split</a></li><li><a href="reference-functions-string_tail.html">string_tail</a></li><li><a href="reference-functions-string_upcase.html">string_upcase</a></li><li><a href="reference-functions-sublist.html">sublist</a></li><li><a href="reference-functions-sum.html">sum</a></li><li><a href="reference-functions-sysctlvalue.html">sysctlvalue</a></li><li><a href="reference-functions-translatepath.html">translatepath</a></li><li><a href="reference-functions-unique.html">unique</a></li><li><a href="reference-functions-url_get.html">url_get</a></li><li><a href="reference-functions-usemodule.html">usemodule</a></li><li><a href="reference-functions-userexists.html">userexists</a></li><li><a href="reference-functions-variablesmatching.html">variablesmatching</a></li><li><a href="reference-functions-variablesmatching_as_data.html">variablesmatching_as_data</a></li><li><a href="reference-functions-variance.html">variance</a></li></ul></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-functions.html">Functions</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    strftime
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p><strong>Prototype:</strong> <code>strftime(mode, template, time)</code></p>
+
+<p><strong>Return type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Description:</strong> Interprets a time and date format string at a particular
+point in GMT or local time using Unix epoch time.</p>
+
+<p><strong>Arguments:</strong> </p>
+
+<ul>
+<li><code>mode</code>: one of
+
+<ul>
+<li><code>gmtime</code></li>
+<li><code>localtime</code></li>
+</ul></li>
+<li><code>template</code>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a>, in the range: <code>.*</code></li>
+<li><code>time</code>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a>, in the range: <code>0,99999999999</code></li>
+</ul>
+
+<p>The <a href="reference-promise-types-files.html#mode" title="files - mode"><code>mode</code></a> is either <code>gmtime</code> (to get GMT times and dates) or
+<code>localtime</code> (to get times and dates according to the local
+timezone, usually specified by the <code>TZ</code> environment variable).</p>
+
+<p>The conversion specifications that can appear in the format <code>template</code>
+are specialized for printing components of the date and time according to the system locale.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;example&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">time</span><span class="p">&quot;</span> <span class="kt">int</span> <span class="o">=&gt;</span> <span class="s">&quot;1234567890&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">at_time</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">strftime</span><span class="p">(</span><span class="s">&quot;localtime&quot;</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%d %T&quot;</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="nf">time</span><span class="p">));</span>
+      <span class="p">&quot;</span><span class="nv">then</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">strftime</span><span class="p">(</span><span class="s">&quot;localtime&quot;</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%d %T&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">gmt_at_time</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">strftime</span><span class="p">(</span><span class="s">&quot;gmtime&quot;</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%d %T&quot;</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="nf">time</span><span class="p">));</span>
+      <span class="p">&quot;</span><span class="nv">gmt_then</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">strftime</span><span class="p">(</span><span class="s">&quot;gmtime&quot;</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%d %T&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="c"># this will be different depending on your time zone</span>
+      <span class="c"># &quot;time $(time); at_time $(at_time); then $(then)&quot;;</span>
+
+      <span class="c"># this will be the same in every time zone</span>
+      <span class="s">&quot;time </span><span class="si">$(time)</span><span class="s">; GMT at_time </span><span class="si">$(gmt_at_time)</span><span class="s">; GMT then </span><span class="si">$(gmt_then)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>R: time 1234567890; GMT at_time 2009-02-13 23:31:30; GMT then 1970-01-01 00:00:00
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong> Note that <code>strftime</code> is a standard C function and you should
+consult its reference to be sure of the specifiers it allows.  The below
+is from the documentation of the standard <code>strftime</code> implementation
+in the glibc manual at
+<a href="http://www.gnu.org/software/libc/manual/html_node/Formatting-Calendar-Time.html#Formatting-Calendar-Time">http://www.gnu.org/software/libc/manual/html_node/Formatting-Calendar-Time.html#Formatting-Calendar-Time</a></p>
+
+<p>Ordinary characters appearing in the <code>template</code> are copied to the
+output.  Conversion specifiers are introduced by a <code>%</code> character
+and end with a format specifier taken from the following list.  The
+whole <code>%</code> sequence is replaced in the output string as follows:</p>
+
+<ul>
+<li><code>%a</code></li>
+</ul>
+
+<p>The abbreviated weekday name according to the current locale.</p>
+
+<ul>
+<li><code>%A</code></li>
+</ul>
+
+<p>The full weekday name according to the current locale.</p>
+
+<ul>
+<li><code>%b</code></li>
+</ul>
+
+<p>The abbreviated month name according to the current locale.</p>
+
+<ul>
+<li><code>%B</code></li>
+</ul>
+
+<p>The full month name according to the current locale.</p>
+
+<p>Using <code>%B</code> together with <code>%d</code> produces grammatically
+incorrect results for some locales.</p>
+
+<ul>
+<li><code>%c</code></li>
+</ul>
+
+<p>The preferred calendar time representation for the current locale.</p>
+
+<ul>
+<li><code>%C</code></li>
+</ul>
+
+<p>The century of the year.  This is equivalent to the greatest integer not
+greater than the year divided by 100.</p>
+
+<p>This format was first standardized by <em>POSIX.2-1992</em> and by <em>ISO C99</em>.</p>
+
+<ul>
+<li><code>%d</code></li>
+</ul>
+
+<p>The day of the month as a decimal number (range <code>01</code> through <code>31</code>).</p>
+
+<ul>
+<li><code>%D</code></li>
+</ul>
+
+<p>The date using the format <code>%m/%d/%y</code>.</p>
+
+<p>This format was first standardized by <em>POSIX.2-1992</em> and by <em>ISO C99</em>.</p>
+
+<ul>
+<li><code>%e</code></li>
+</ul>
+
+<p>The day of the month like with <code>%d</code>, but padded with blank (range
+<code>1</code> through <code>31</code>).</p>
+
+<p>This format was first standardized by <em>POSIX.2-1992</em> and by <em>ISO C99</em>.</p>
+
+<ul>
+<li><code>%F</code></li>
+</ul>
+
+<p>The date using the format <code>%Y-%m-%d</code>.  This is the form specified
+in the <em>ISO 8601</em> standard and is the preferred form for all uses.</p>
+
+<p>This format was first standardized by <em>ISO C99</em> and by <em>POSIX.1-2001</em>.</p>
+
+<ul>
+<li><code>%g</code></li>
+</ul>
+
+<p>The year corresponding to the ISO week number, but without the century
+(range <code>00</code> through <code>99</code>).  This has the same format and value
+as <code>%y</code>, except that if the ISO week number (see <code>%V</code>) belongs
+to the previous or next year, that year is used instead.</p>
+
+<p>This format was first standardized by <em>ISO C99</em> and by <em>POSIX.1-2001</em>.</p>
+
+<ul>
+<li><code>%G</code></li>
+</ul>
+
+<p>The year corresponding to the ISO week number.  This has the same format
+and value as <code>%Y</code>, except that if the ISO week number (see
+<code>%V</code>) belongs to the previous or next year, that year is used
+instead.</p>
+
+<p>This format was first standardized by <em>ISO C99</em> and by <em>POSIX.1-2001</em>
+but was previously available as a GNU extension.</p>
+
+<ul>
+<li><code>%h</code></li>
+</ul>
+
+<p>The abbreviated month name according to the current locale.  The action
+is the same as for <code>%b</code>.</p>
+
+<p>This format was first standardized by <em>POSIX.2-1992</em> and by <em>ISO C99</em>.</p>
+
+<ul>
+<li><code>%H</code></li>
+</ul>
+
+<p>The hour as a decimal number, using a 24-hour clock (range <code>00</code> through
+<code>23</code>).</p>
+
+<ul>
+<li><code>%I</code></li>
+</ul>
+
+<p>The hour as a decimal number, using a 12-hour clock (range <code>01</code> through
+<code>12</code>).</p>
+
+<ul>
+<li><code>%j</code></li>
+</ul>
+
+<p>The day of the year as a decimal number (range <code>001</code> through <code>366</code>).</p>
+
+<ul>
+<li><code>%k</code></li>
+</ul>
+
+<p>The hour as a decimal number, using a 24-hour clock like <code>%H</code>, but
+padded with blank (range <code>0</code> through <code>23</code>).</p>
+
+<p>This format is a GNU extension.</p>
+
+<ul>
+<li><code>%l</code></li>
+</ul>
+
+<p>The hour as a decimal number, using a 12-hour clock like <code>%I</code>, but
+padded with blank (range <code>1</code> through <code>12</code>).</p>
+
+<p>This format is a GNU extension.</p>
+
+<ul>
+<li><code>%m</code></li>
+</ul>
+
+<p>The month as a decimal number (range <code>01</code> through <code>12</code>).</p>
+
+<ul>
+<li><code>%M</code></li>
+</ul>
+
+<p>The minute as a decimal number (range <code>00</code> through <code>59</code>).</p>
+
+<ul>
+<li><code>%n</code></li>
+</ul>
+
+<p>A single <code>\n</code> (newline) character.</p>
+
+<p>This format was first standardized by <em>POSIX.2-1992</em> and by <em>ISO C99</em>.</p>
+
+<ul>
+<li><code>%p</code></li>
+</ul>
+
+<p>Either <code>AM</code> or <code>PM</code>, according to the given time value; or the
+corresponding strings for the current locale.  Noon is treated as
+<code>PM</code> and midnight as <code>AM</code>.  In most locales
+<code>AM</code>/<code>PM</code> format is not supported, in such cases <code>%p</code>
+yields an empty string.</p>
+
+<ul>
+<li><code>%P</code></li>
+</ul>
+
+<p>Either <code>am</code> or <code>pm</code>, according to the given time value; or the
+corresponding strings for the current locale, printed in lowercase
+characters.  Noon is treated as <code>pm</code> and midnight as <code>am</code>.  In
+most locales <code>AM</code>/<code>PM</code> format is not supported, in such cases
+<code>%P</code> yields an empty string.</p>
+
+<p>This format is a GNU extension.</p>
+
+<ul>
+<li><code>%r</code></li>
+</ul>
+
+<p>The complete calendar time using the AM/PM format of the current locale.</p>
+
+<p>This format was first standardized by <em>POSIX.2-1992</em> and by <em>ISO C99</em>.
+In the POSIX locale, this format is equivalent to <code>%I:%M:%S %p</code>.</p>
+
+<ul>
+<li><code>%R</code></li>
+</ul>
+
+<p>The hour and minute in decimal numbers using the format <code>%H:%M</code>.</p>
+
+<p>This format was first standardized by <em>ISO C99</em> and by <em>POSIX.1-2001</em>
+but was previously available as a GNU extension.</p>
+
+<ul>
+<li><code>%s</code></li>
+</ul>
+
+<p>The number of seconds since the epoch, i.e., since 1970-01-01 00:00:00 UTC.
+Leap seconds are not counted unless leap second support is available.</p>
+
+<p>This format is a GNU extension.</p>
+
+<ul>
+<li><code>%S</code></li>
+</ul>
+
+<p>The seconds as a decimal number (range <code>00</code> through <code>60</code>).</p>
+
+<ul>
+<li><code>%t</code></li>
+</ul>
+
+<p>A single <code>\t</code> (tabulator) character.</p>
+
+<p>This format was first standardized by <em>POSIX.2-1992</em> and by <em>ISO C99</em>.</p>
+
+<ul>
+<li><code>%T</code></li>
+</ul>
+
+<p>The time of day using decimal numbers using the format <code>%H:%M:%S</code>.</p>
+
+<p>This format was first standardized by <em>POSIX.2-1992</em> and by <em>ISO C99</em>.</p>
+
+<ul>
+<li><code>%u</code></li>
+</ul>
+
+<p>The day of the week as a decimal number (range <code>1</code> through
+<code>7</code>), Monday being <code>1</code>.</p>
+
+<p>This format was first standardized by <em>POSIX.2-1992</em> and by <em>ISO C99</em>.</p>
+
+<ul>
+<li><code>%U</code></li>
+</ul>
+
+<p>The week number of the current year as a decimal number (range <code>00</code>
+through <code>53</code>), starting with the first Sunday as the first day of
+the first week.  Days preceding the first Sunday in the year are
+considered to be in week <code>00</code>.</p>
+
+<ul>
+<li><code>%V</code></li>
+</ul>
+
+<p>The <em>ISO 8601:1988</em> week number as a decimal number (range <code>01</code>
+through <code>53</code>).  ISO weeks start with Monday and end with Sunday.
+Week <code>01</code> of a year is the first week which has the majority of its
+days in that year; this is equivalent to the week containing the year&#39;s
+first Thursday, and it is also equivalent to the week containing January
+4.  Week <code>01</code> of a year can contain days from the previous year.
+The week before week <code>01</code> of a year is the last week (<code>52</code> or
+<code>53</code>) of the previous year even if it contains days from the new
+year.</p>
+
+<p>This format was first standardized by <em>POSIX.2-1992</em> and by <em>ISO C99</em>.</p>
+
+<ul>
+<li><code>%w</code></li>
+</ul>
+
+<p>The day of the week as a decimal number (range <code>0</code> through
+<code>6</code>), Sunday being <code>0</code>.</p>
+
+<ul>
+<li><code>%W</code></li>
+</ul>
+
+<p>The week number of the current year as a decimal number (range <code>00</code>
+through <code>53</code>), starting with the first Monday as the first day of
+the first week.  All days preceding the first Monday in the year are
+considered to be in week <code>00</code>.</p>
+
+<ul>
+<li><code>%x</code></li>
+</ul>
+
+<p>The preferred date representation for the current locale.</p>
+
+<ul>
+<li><code>%X</code></li>
+</ul>
+
+<p>The preferred time of day representation for the current locale.</p>
+
+<ul>
+<li><code>%y</code></li>
+</ul>
+
+<p>The year without a century as a decimal number (range <code>00</code> through
+<code>99</code>).  This is equivalent to the year modulo 100.</p>
+
+<ul>
+<li><code>%Y</code></li>
+</ul>
+
+<p>The year as a decimal number, using the Gregorian calendar.  Years
+before the year <code>1</code> are numbered <code>0</code>, <code>-1</code>, and so on.</p>
+
+<ul>
+<li><code>%z</code></li>
+</ul>
+
+<p><em>RFC 822</em>/*ISO 8601:1988* style numeric time zone (e.g.,
+<code>-0600</code> or <code>+0100</code>), or nothing if no time zone is
+determinable.</p>
+
+<p>This format was first standardized by <em>ISO C99</em> and by <em>POSIX.1-2001</em>
+but was previously available as a GNU extension.</p>
+
+<p>In the POSIX locale, a full <em>RFC 822</em> timestamp is generated by the format
+<code>%a, %d %b %Y %H:%M:%S %z</code> (or the equivalent
+<code>%a, %d %b %Y %T %z</code>).</p>
+
+<ul>
+<li><code>%Z</code></li>
+</ul>
+
+<p>The time zone abbreviation (empty if the time zone can&#39;t be determined).</p>
+
+<ul>
+<li><code>%%</code></li>
+</ul>
+
+<p>A literal <code>%</code> character.</p>
+
+<p>According to <em>POSIX.1</em> every call to <code>strftime</code> checks the contents
+of the environment variable <code>TZ</code> before any output is produced.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-data-functions.html">data functions</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-functions.html">functions</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-strftime.html">strftime</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 10 July 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/functions/strftime.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/d99dd1f07cf37da07fbd675717c47f3201990891" target="_blank">d99dd1f07cf37da07fbd675717c47f3201990891</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.14/assets/footer-0ce0c884995cf0be0e878ec70c137005.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

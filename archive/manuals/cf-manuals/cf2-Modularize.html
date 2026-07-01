@@ -1,0 +1,2672 @@
+<html lang="en">
+<head>
+<title>Modularization in cfengine</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Modularization in cfengine">
+<meta name="generator" content="makeinfo 4.12">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; }
+  span.sansserif { font-family:sans-serif; font-weight:normal; }
+h1, h2, a, table.list th
+{
+    color: #1f6e6b;
+}
+
+.node
+{
+background: #ddd url(Logo2-small.png) right no-repeat;
+}
+
+.menu
+{
+background: #eef url(menu.png) right no-repeat;
+}
+
+.contents
+{
+background-color: #e9f4e9;
+}
+
+.index-cp
+{
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+  border-color: #4e8b8c;
+  border-style: solid;
+  border-width: 1px;
+}
+
+BODY {
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-style: normal;
+     font-size: 11pt;
+     background: #FFFFFF;
+     color: #000000;
+     }
+
+P {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  }
+
+FONT.liten {font-size: 70%; }
+
+H1, H2, H3 {
+        font-weight: normal;
+        color: #2c2e70;
+        margin-bottom: 0em;
+        }
+
+TABLE { vertical-align: top; }
+
+H1 { font-size: 140% }
+H2 { font-size: 120% }
+H3 { font-size: 110% }
+H4 { font-style: italic; }
+
+TD, TH, UL {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-style: normal;
+        }
+
+TH { background: #9999FF;
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     color: blue;
+  font-size: 10pt;
+   }
+
+TD { color: #000000;
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-size: 10pt;
+   }
+
+PRE { font-family: "Lucida Typewriter", "Courier", monotype;
+      font-style: normal;
+     font-size: 11pt;
+background-color: #eee;
+    }
+
+.tynn {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: smaller;
+        font-style: normal;
+        font-weight: lighter;
+        margin-bottom: 0em;
+     font-size: 11pt;
+        }
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+--></style>
+</head>
+<body>
+<h1 class="settitle">Modularization in cfengine</h1>
+<div class="node">
+<p><hr>
+<a name="Top"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Modularization">Modularization</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">CFEngine-Modularization</h2>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+
+   <p><h2>Summary of contents</h2>
+
+<!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+<ul class="menu">
+<li><a accesskey="1" href="#Modularization">Modularization</a>
+<li><a accesskey="2" href="#CFEngine-plugin-modules">CFEngine plugin modules</a>
+<li><a accesskey="3" href="#CFEngine-Methods">CFEngine Methods</a>
+</ul>
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+
+   <p>In this module you will learn about
+
+     <ul>
+<li>How to split up a configuration into multiple parts
+<li>How to delegate responsibility for different parts of a configuration.
+<li>How to extend cfengine's functionality with careful scripting.
+<li>How to think about role-based access control using cfengine.
+</ul>
+   </td></tr></table>
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Modularization"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#CFEngine-plugin-modules">CFEngine plugin modules</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Modularization</h2>
+
+<p>Modularization is a way of organizing your policy into parts that can be
+maintained separately. It is about:
+
+     <ul>
+<li>Separation of concerns
+<li>Delegation of reponsibility
+<li>Extending functionality
+</ul>
+
+   <p>It is also about organizing the system you are managing into modular
+parts and matching the management of the system to the organization of the
+policy.
+
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#Reminder-about-classes">Reminder about classes</a>
+<li><a accesskey="2" href="#User-experiences-on-organizing-policy">User experiences on organizing policy</a>
+<li><a accesskey="3" href="#Object-orientation">Object orientation</a>
+<li><a accesskey="4" href="#Organizing-the-files-into-classes">Organizing the files into classes</a>
+<li><a accesskey="5" href="#Aspect-orientation">Aspect orientation</a>
+<li><a accesskey="6" href="#Delegation">Delegation</a>
+<li><a accesskey="7" href="#Role-based-access-control">Role based access control</a>
+<li><a accesskey="8" href="#Methodology-to-organize-systems">Methodology to organize systems</a>
+<li><a accesskey="9" href="#Modularization-self_002dtest-questions">Modularization self-test questions</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Reminder-about-classes"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#User-experiences-on-organizing-policy">User experiences on organizing policy</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Modularization">Modularization</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Modularization">Modularization</a>
+
+</div>
+
+<h3 class="section">1.1 Reminder about classes</h3>
+
+<p>Planning the organization of file resources is one of the many aspects of
+managing (coping) with systems. The files themselves form a system, and
+we usually maintain the files by a different process than the one by which
+we maintain system resources.
+
+     <ul>
+<li>Splitting by file
+<li>CFEngine modules
+<li>CFEngine methods
+</ul>
+
+   <p>In cfengine 3 there are additional, more sophisticated possibilities.
+
+<div class="node">
+<p><hr>
+<a name="User-experiences-on-organizing-policy"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Object-orientation">Object orientation</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Reminder-about-classes">Reminder about classes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Modularization">Modularization</a>
+
+</div>
+
+<h3 class="section">1.2 User experiences on organizing policy</h3>
+
+<p>&ldquo;I manage a very large cfengine site, and as of lately with many
+different sysengs editing the cf.classes class definition file, its
+starting to become somewhat unruly.  I'm going to also need a better
+way to manage the editing of this file (it is already in SVN).&rdquo;
+
+   <p>&ldquo;We use a team-based approach, with a set of common classes (managed by
+a core team), and other teams managing classes files (and other cf
+files) for their own servers, each with their own version control
+repos.  This allows for some separation of influence.  Parsing
+problems etc., other than in the core files, will only affect a teams
+systems, not all systems.  Still as Brendan says, some education and
+cooperation is needed, so there are not class naming or action
+conflicts for example, between team and core managed files.&rdquo;
+
+   <p>&ldquo;This is the "old way" we were defining classes:
+
+<pre class="smallexample">
+     web = ( web01_dev web01_qa web01_stg web01_sd web02_sd
+     web03_sd web04_sd web05_sd web06_sd web07_sd web08_sd web09_sd
+     web10_sd web02_qa )
+
+</pre>
+   <p class="noindent">This is the new way:
+
+<pre class="smallexample">
+         web = ( ClassMatch(^web[0-9]+_.*) )
+
+</pre>
+   <p class="noindent">See... much cleaner! The biggest advantage is if we add any
+new hosts, we don't have to come back and manually add them to the
+class. As long as they adhere to the naming convention the appropriate
+class will get defined.&rdquo;
+
+   <p>&ldquo;That's the same thing we do, though we have a combination of regexp's
+directly in cfengine as well as regexps in modules to catch some of
+the stranger conditions (prepmodule, since we import based on them).
+
+   <p>Hostnames are often the single most important
+configuration setting at sites that use cfengine - it certainly is at
+ours. Using hostname conventions most of us on this list probably have
+cfengine make hundreds or even thousands of different changes to hosts
+(total changes, not every time it runs, think of it more like all the
+changes that would be made when you image a host with only a bare OS).
+
+   <p>So at our site - going from an in-house rdist-based config management
+framework to cfengine meant setting up only new hosts using cfengine,
+and basically leaving older hosts alone (except for core OS things
+like local accounts, resolv.conf, etc). So if web1 and web2 are
+already setup as web servers, but when we setup web3 and web4 using
+cfengine we have hosts that might not be exactly the same, but all of
+them sharing a common hostname convention, and therefore a shared
+class/group in cfengine.
+
+   <p>It mostly gets messy with things like deploying packages - the huge
+list of packages goes only to web3 and web4, but packages that are
+needed after web3 and web4 are deployed go to all hosts, meaning you
+either have to setup a new group NOT based on the convention, but now
+listing hosts manually, or you start adding excludes like
+<code>"web_servers.!(web1|web2)::"</code>. Either way is much messier than what we
+intended by defining groups based on hostname conventions.
+
+   <p>The solution? What I learned the hard way, is that you should feel
+free to invent a new hostname convention when you migrate over to
+configuring your hosts entirely from cfengine. Call your new hosts
+www1 and www2, or something else. Now you have a very clean way to
+tell the old from the new, and at worst you now have two classes to
+define in your packages or files or copy or whatever actions. You can
+still take full advantage of regular expression matching to group
+hosts together. When you have new hosts that aren't exactly the same,
+don't name them the same. It starts out not that ugly, but degrades
+into ugly configs rather quickly.&rdquo;
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Object-orientation"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Organizing-the-files-into-classes">Organizing the files into classes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#User-experiences-on-organizing-policy">User experiences on organizing policy</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Modularization">Modularization</a>
+
+</div>
+
+<h3 class="section">1.3 Object orientation</h3>
+
+<p>Object orientation (OO) is a paradigm that has achieved some dominance in
+computer science. It includes concepts like:
+
+     <ul>
+<li>Objects
+<li>Containers
+<li>Classes
+<li>Relationships
+</ul>
+
+   <p>Classes in OO are data-types that lie in a hierarchy or tree
+structure. OO-classes are usually mutually exclusive, i.e. you must be
+either in one class or a other &ndash; classes cannot overlap. Classes in
+OO are designed based on requirements or inherited from libraries that
+others have designed.
+
+   <p>Classes in cfengine are not compound data-types, they are labels for
+the characteristics of hosts. Hosts are classified by a number of
+identifiers, and these are called classs. CFEngine classes form a
+possibly overlapping collections of environmental attributes; they are
+observed (not planned) from the context which cfengine runs.
+
+   <p>What OO and cfengine
+classes share in common is the tacit assumption that classes model a
+particular <i>context</i> in which certain rules or methods apply.
+
+   <p>OO classes are used to divide and conquer programming tasks, by the
+separation of concerns. CFEngine classes are used to specify
+patches of the resource landscape in which certain promises are made.
+Different classes of machine can make different promises.
+
+   <p>A key feature of OO relationships which is apparently useful in
+configuration management is <i>inheritance</i>: the ability to set
+defaults that apply in a given set of contexts (a base class), and
+extend the basic defaults in a context dependent way.
+We speak of child-classes or derived classes, and imagine that they
+inherit attributes from their parents. Inheritance actually means
+two separate things:
+
+     <ul>
+<li><b>Extend</b>: the ability to add to basic defaults for a given context.
+<li><b>Override</b>: the ability to replace basic defaults for a given context.
+</ul>
+
+   <p>All management paradigms require you to create a `model'
+for your system. A model is just an abstract plan.
+
+<!-- ......................................................... -->
+<ul class="menu">
+<li><a accesskey="1" href="#Inheritance">Inheritance</a>
+<li><a accesskey="2" href="#Overriding">Overriding</a>
+<li><a accesskey="3" href="#Overriding-a-policy-file">Overriding a policy file</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Inheritance"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Overriding">Overriding</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Object-orientation">Object orientation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Object-orientation">Object orientation</a>
+
+</div>
+
+<h4 class="subsection">1.3.1 Inheritance</h4>
+
+<p>Inheritance is a mechanism for defining default characteristics which apply for a
+broad set of contexts, which can also be used partially or completely in
+a specific subset.
+
+   <p>In OO you create the parent class first &ndash; i.e. you make the default
+case first.  This works well if you are designing from scratch and
+trying to make everything basically the same, with only a few
+exceptions.
+It can be less successful if you are trying to make sense of an
+existing system which did not take into account the model
+
+   <p>Let's look at some examples of class inheritance in pseudocode.
+
+<pre class="smallexample">     class Unix  # Base class
+       begin
+         # inside the Unix container
+         set base_resource to "default value"
+       end
+
+     class Solaris extends_or_inherits Unix
+       begin
+         # inside the Solaris container, which is inside the Unix container
+         set solar_resource to "special value"
+       end
+
+     class Freebsd overrides Unix
+       begin
+         # inside the Freebsd container, which exclusively replaces Unix
+         set resource1 to "override value"
+       end
+</pre>
+   <p>In cfengine, you are not encouraged especially to think in these terms.
+Nevertheless we can reproduce some aspects of this.
+In cfengine, we would implement the above pseudo-code something like this.
+
+<pre class="smallexample">         * Extend or inherit base class:
+
+             # Using files as containers
+
+             import:
+
+              baseclass::           # parent context
+
+                cf.basedefaults
+
+              baseclass.solaris::   # child 1 of parent
+
+                cf.base-solaris
+
+              baseclass.linux::     # child 2 of parent
+
+                cf.base-linux
+
+</pre>
+   <p>By writing <code>baseclass.solaris</code>, for instance, it looks as though
+solaris is a sub-class of a parent class Unix. CFEngine couldn't care less about this
+observation and there is no automatic connection between the classes.
+However, it might be helpful to think in these terms.
+
+   <p>The advantages of this kind of construction are:
+
+     <ul>
+<li>The complete path through the organizational hierarchy is visible.
+<li>A naming convention assists the
+</ul>
+
+   <p>The disadvantages of this kind of construction are:
+
+     <ul>
+<li>What if the organization is not hierarchical?
+<li>The names are cumbersome.
+</ul>
+
+   <p>Unlike OO, the child classes <code>baseclass.solaris</code> and <code>baseclass.linux</code> do not have to be mutually
+exclusive. In this case they are, but we could have classes <code>domain1.host1</code>, <code>domain2.host1</code>
+in which <code>host1</code> is the same host. This is because most real networks are not usually cleanly
+separated in an OO way.
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Overriding"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Overriding-a-policy-file">Overriding a policy file</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Inheritance">Inheritance</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Object-orientation">Object orientation</a>
+
+</div>
+
+<h4 class="subsection">1.3.2 Overriding</h4>
+
+<p>We sometimes want sub-classes to override locally the decisions made
+in a parent class.  Overriding means <i>replacing</i> part of base class.
+Overriding/replacement
+is not transparently checked and handled in cfengine as it is in OO
+languages. CFEngine forces you to make it explicit. Consider the
+following examples, where italicized "rules" are pseudo-code:
+
+<pre class="smallexample">
+      include:
+
+             baseclass::
+
+                "base_policy.cf"
+</pre>
+   <p class="noindent">Later if we make a rule
+
+<pre class="smallexample">             baseclass.solaris::
+
+               "solaris_policy.cf"
+</pre>
+   <p class="noindent">this will overlap with the old rule and could lead to an inconsistency
+if the files contain rules for the same things.
+To make the rulses mutually exclusive we must write:
+
+<pre class="smallexample">             baseclass.!solaris::
+
+               "base_policy.cf"
+
+             baseclass.solaris::
+
+                "solaris_policy.cf"
+
+</pre>
+   <p class="noindent">or if there are multiple "subclasses":
+<pre class="smallexample">             classes:
+
+               subclasses = ( solaris linux darwin hpux )
+
+             rule:
+
+              baseclass.!subclasses::
+
+                "common_policy.cf"
+
+              baseclass.solaris::
+
+                "solaris_policy.cf"
+
+              baseclass.linux::
+
+                "linux_policy.cf"
+
+</pre>
+   <p>You could do the same thing with departments, domains,
+or any other organizational separation, whether physical
+or virtual. This is the power of cfengine's flexible class
+model.
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Overriding-a-policy-file"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Overriding">Overriding</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Object-orientation">Object orientation</a>
+
+</div>
+
+<h4 class="subsection">1.3.3 Overriding a policy file</h4>
+
+<p>A simple way to override a policy is this.
+
+<pre class="smallexample">
+      control:
+
+        override = ( FileExists(/var/cfengine/inputs/overridepolicy.cf) )
+
+      import:
+
+        override::
+
+          "overridepolicy.cf"
+
+        !override::
+
+          "defaultpolicy.cf"
+
+</pre>
+   <p><b>SECURITY</b>: You must decide whether this approach is secure enough
+for your site. Consider who is allowed to write the override
+script. As long as the override file is placed in the secure cfengine
+inputs directory, it can only be generated by authorized persons.
+Note that the `parent' policy voluntarily adopts the override policy.
+An override policy cannot force its way into the configuration.
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Organizing-the-files-into-classes"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Aspect-orientation">Aspect orientation</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Object-orientation">Object orientation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Modularization">Modularization</a>
+
+</div>
+
+<h3 class="section">1.4 Organizing the files into classes</h3>
+
+<p>There are no real containers for these bundles of definitions in
+cfengine as classes are only labels &ndash; they do not have the
+concept of mutual exclusion.
+OO languages often ask you to group
+everything for a given class in a single block:
+
+<pre class="smallexample">
+     // Not cfengine code
+
+     class myclass
+        {
+        # everything to do with myclass
+        }
+
+</pre>
+   <p>CFEngine does not force you to do this. If, on the other hand, you
+want to organize in this fashion, then the simplest thing is to put
+the different mutually exclusive classes into separate files using the
+import example above.
+
+   <p>The problem with distinct OO containers The basic assumption of OO is
+that classes are a mutually exclusive breakdown of a context into
+different types. And this is where classic OO thinking runs into
+trouble. The world is rarely this simple &ndash; and this is why cfengine
+allows you to make any kind of class combination, and does not force a
+grouping of rules for a given class into a single container. The fact
+of the matter is that most real-world objects fall between two chairs,
+or wear two hats at the same time. Classifications are not mutually
+exclusive. They overlap.
+
+   <p>This is the strength of cfengine's classification model. The trouble
+with great power is that is can lead to a mess.
+You therefore need a policy for organizing your files.
+
+   <p><i>CFEngine 3.0 adds a new level of container which is called a
+promise bundle which greatly extends the flexibility of containers. It
+also has parameterized templates for promise values which can be
+class-context dependent.</i>
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Aspect-orientation"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Delegation">Delegation</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Organizing-the-files-into-classes">Organizing the files into classes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Modularization">Modularization</a>
+
+</div>
+
+<h3 class="section">1.5 Aspect orientation</h3>
+
+<p>Aspect orientation is about `cross-cutting concerns', or code that
+you want to apply in every class, or a set of classes. For instance,
+you might want to add auditing code to very different, unrelated
+classes and have the same code for all cases. This cannot be done
+in a strict OO scheme.
+
+   <p>Aspect orientation is an artifice required in strict object
+orientation, because we have been `too quick' (in some sense) in
+separating issues into exclusive containers that share nothing. So we
+have to trick common-code back in at multiple places in the class
+hierarchy. C++ has the mechanism for making `friends', for example.
+
+   <p>In cfengine there is no problem at all here, because cfengine classes
+are not hierarchical. The class model allows any kind of overlapping
+set to be a class. If we want to break out of a specific class and
+address all the classes, we just change context:
+
+<pre class="smallexample">
+       # Start in a special context
+
+       baseclass.subclass::
+
+         "some specialist rules..."
+
+       # Cancel the specificity
+
+       any::
+
+         "This rule cuts across all other classes"
+
+       # Now sub-region
+
+       linux::
+
+         "This rule cuts across only the sub-classes of linux"
+
+</pre>
+   <!--  -->
+<div class="node">
+<p><hr>
+<a name="Delegation"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Role-based-access-control">Role based access control</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Aspect-orientation">Aspect orientation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Modularization">Modularization</a>
+
+</div>
+
+<h3 class="section">1.6 Delegation</h3>
+
+<p>Cfengine's principle model is that of voluntary cooperation.
+Because pushing data onto others is not allowed, delegation
+is a matter of voluntary acceptance of contributions from many
+sources. Just as overriding is voluntary, delegation also cannot be
+forced. A single cfengine instance must voluntarily be willing
+to accept input from delegates and unify them.
+
+   <p>CFEngine has no meta-access control mechanism which can decide who may
+write policy rules, but we can select from which sources rules are
+collected.
+
+   <p>To create such a mechanism, there would have to be a
+monitor which could identify users, and an authority mechanism that
+would disallow certain users to write rules of certain types about
+certain objects on certain hosts. Clearly it is <em>possible</em> to
+create such a system, but it would be both technically difficult, very
+cumbersome to use and would add a whole new level of complexity to
+policy and potential error to the configuration process.
+
+   <p>To keep matters as simple as possible, cfengine avoids this and
+proposes a different approach. Promise theory allows us to model the
+security implications of this and its bow-tie
+structure (see figure below). A simple method of delegating is the following.
+
+     <ol type=1 start=1>
+<li>Delegate responsibility for different issues to admin teams 1,2,3, etc.
+<li>Make each of these teams responsible for version control of their own
+configuration rules.
+<li>Make an intermediate agent responsible for collating and vetting the rules, checking for
+irregularities and conflicts. This agent must promise to disallow rules by
+one team that are the responsibility of another team. The agent could be a
+layer of software, but a cheaper and more manageable solution is the make this
+another group of one or more humans.
+<li>Make the resulting collated configuration version controlled. Publish
+approved promises for all hosts to download from a trusted source.
+
+        </ol>
+
+   <p>A review procedure for policy promises is a good
+solution if you want to delegate responsibility for different parts of
+a policy to different sources. Human judgement is irreplaceable, and tools
+can be added to make conflicts easier to detect.
+
+   <p>Promise theory (the theory which have been developed in order to
+understand cfengine's voluntary cooperation approach) underlines that, if a
+host of computing device accepts policy from any source, then it is
+alone and entirely responsible for this decision. The ultimate
+responsibility for the published version policy is the vetting
+agent. This creates a shallow hierarchy, but there is no reason why
+this formal body could not be comprised of representatives from the
+multiple teams.
+
+   <div class="block-image"><img src="/img/outside/delegate.png" alt="Delegation's bow-tie funnel"></div>
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Role-based-access-control"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Methodology-to-organize-systems">Methodology to organize systems</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Delegation">Delegation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Modularization">Modularization</a>
+
+</div>
+
+<h3 class="section">1.7 Role based access control</h3>
+
+<p>Fom delegation we essentially have role-based access control.
+Role based access control means allowing one or more users (who define
+a group) to have the `right' or authorization to perform one or more
+tasks (which define a role).
+
+   <p>The feature that enables role based access control to take place is
+the ability to measure identity of users and computers using
+public-private key authentication.  Thus all of the usual warnings
+about public keys, and trust apply here.
+
+   <p>The voluntary cooperation model is a strong security model. No server
+is obliged to do anything an external party asks of it.
+
+   <p>In cfengine 2, role based access control is limited. We can define different
+roles by using classes.
+
+   <p>Create a new class that cannot be defined without an explicit instruction
+to switch it on.
+
+   <p>Granting access to cfengine on a local system is not possible without
+special operating-system mechanisms. If you have a privileged account,
+you can do anything you want. If you don't have a privileged account,
+you cannot run cfengine with privilege (we'll disregard <code>sudo</code> here).
+
+<pre class="smallexample">
+     cfrun serverhost -- -- -Dmy_role
+
+     cfrun serverhost --  -- linux -Dmy_role
+
+</pre>
+   <p>The ability to connect to the server is moderated by user-key access control.
+Individual users are authenaticated by their public keys.
+In the <samp><span class="file">cfservd.conf</span></samp> configuration file
+
+<pre class="smallexample">
+     control:
+
+            AllowUsers = ( mark systemuser )
+
+</pre>
+   <p>In future releases of cfengine 3, roles access mechanisms will be extended to
+allow you to accept only certain classes from certain users.
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Methodology-to-organize-systems"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Modularization-self_002dtest-questions">Modularization self-test questions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Role-based-access-control">Role based access control</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Modularization">Modularization</a>
+
+</div>
+
+<h3 class="section">1.8 Methodology to organize systems</h3>
+
+<p>Although cfengine offers tools of sufficient generality to cope with any
+kind of organizational model, certain experiences are worth capturing
+to avoid falling into traps.
+
+   <p>One of the classic questions of organization is whether to build a structure
+from the top down or from the bottom up. Top down thinking, it turns out, has
+several classic pitfalls.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Top-down">Top down</a>
+<li><a accesskey="2" href="#Bottom-up">Bottom up</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Top-down"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Bottom-up">Bottom up</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Methodology-to-organize-systems">Methodology to organize systems</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Methodology-to-organize-systems">Methodology to organize systems</a>
+
+</div>
+
+<h4 class="subsection">1.8.1 Top down</h4>
+
+<p>In top down analysis, you start by setting requirements and breaking
+them down by subdividing the problem into smaller and smaller pieces.
+This works only if the distance between your intentions and the
+actual low level operations is short.
+
+   <p>The pitfall of top down analysis is to fall into a kind of Zeno's
+paradox of endless subdivisions &ndash; constantly taking classes and
+subdividing them into sub-classes in a process that never seems to
+end. Often what one finds is that, after this process, items that we
+want to belong together have been separated into quite different
+classes, and this causes problems, as described above under the
+heading of aspect orientation. Short of reconnecting them with
+artificial relationships like `friend' (adding further to the
+complexity), there is no way to capture those similarities.
+
+   <p>A top-down analysis will tend to lead to too many small categories
+that are artificially disconnected. This can lead to logical and
+practical problems.
+
+<div class="node">
+<p><hr>
+<a name="Bottom-up"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top-down">Top down</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Methodology-to-organize-systems">Methodology to organize systems</a>
+
+</div>
+
+<h4 class="subsection">1.8.2 Bottom up</h4>
+
+<p>In bottom up analysis, we have a methodology that fits promise theory
+very well.  Every component in a system has certain properties, which
+it promises.  A higher level observer can then look down on these and
+group similar items into categories. This process of aggregation tends
+to be greedy so we end up with fewer categories than we get with a
+zealous de-construction. A bottom up analysis will naturally lead
+to a few broad categories, in which you learn to live with a natural
+level of approximation.
+
+   <p>We recommend bottom up thinking because
+
+     <ul>
+<li>It is places focus on construction rather than deconstruction.
+<li>It is a way to adopt legacy systems and gain `control' over existing messes
+<li>It leads to a result that is relatively cheap to maintain.
+</ul>
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Modularization-self-test-questions"></a>
+<a name="Modularization-self_002dtest-questions"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Methodology-to-organize-systems">Methodology to organize systems</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Modularization">Modularization</a>
+
+</div>
+
+<h3 class="section">1.9 Modularization self-test questions</h3>
+
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+     <ol type=1 start=1>
+<li>How can I separate a configuration into many parts?
+
+     <li>Can I make object oriented configurations?
+
+     <li>How can I override one file with another?
+
+     <li>How can I delegate responsibility for parts of the configuration to various individuals?
+
+     <li>What does role based access control mean for cfengine.
+
+        </ol>
+</td></tr></table>
+
+<!-- ================================================================== -->
+<div class="node">
+<p><hr>
+<a name="CFEngine-plugin-modules"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#CFEngine-Methods">CFEngine Methods</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Modularization">Modularization</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">2 CFEngine plugin modules</h2>
+
+<!-- ................................................................. -->
+<ul class="menu">
+<li><a accesskey="1" href="#Why-cfengine-modules_003f">Why cfengine modules?</a>
+<li><a accesskey="2" href="#Modules-can-define-classes">Modules can define classes</a>
+<li><a accesskey="3" href="#Other-reasons-for-modules">Other reasons for modules</a>
+<li><a accesskey="4" href="#Storing-modules-and-methods">Storing modules and methods</a>
+<li><a accesskey="5" href="#Writing-plugin-modules">Writing plugin modules</a>
+<li><a accesskey="6" href="#Preparatory-modules">Preparatory modules</a>
+<li><a accesskey="7" href="#Options-related-to-modules">Options related to modules</a>
+<li><a accesskey="8" href="#Examples-of-modules">Examples of modules</a>
+<li><a accesskey="9" href="#Module-self_002dtest-questions">Module self-test questions</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Why-cfengine-modules%3f"></a>
+<a name="Why-cfengine-modules_003f"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Modules-can-define-classes">Modules can define classes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CFEngine-plugin-modules">CFEngine plugin modules</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CFEngine-plugin-modules">CFEngine plugin modules</a>
+
+</div>
+
+<h3 class="section">2.1 Why cfengine modules?</h3>
+
+<p>CFEngine provides flexible tools for fundamental issues in system management.
+It does not offer a solution to every need. For that reason there are simple
+ways of extending it.
+
+   <p>Modules are not meant for large-scale programming tasks. They were intended
+mainly to allow users to detect and define additional classes. But of course,
+the only real limitation is your imagination.
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Modules-can-define-classes"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Other-reasons-for-modules">Other reasons for modules</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Why-cfengine-modules_003f">Why cfengine modules?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CFEngine-plugin-modules">CFEngine plugin modules</a>
+
+</div>
+
+<h3 class="section">2.2 Modules can define classes</h3>
+
+<p>Normally cfengine's ability to detect the system's condition is limited
+to what it is able to determine while excuting predefined
+actions. Classes may be switched on as a result of actions cfengine
+takes to correct a problem. To increase the flexibility of cfengine, a
+mechanism has been introduced in version 1.5 which allows you to include
+a module of your own making in order to define or undefine a number of classes.
+The syntax
+
+<pre class="smallexample">       module:mytests
+
+       "module:mytests arg1 arg2 .."
+</pre>
+   <p>declares a user defined module which can potentially set the classes
+<var>class1</var> etc. Classes returned by the module must be declared so
+that cfengine knows to pay attention to rules which use these classes
+when parsing; this is done using <code>AddInstallable</code>. If
+arguments are passed to the module, the whole string must be quoted like
+a shellcommand.  See <a href="cfengine-Tutorial.html#Writing-plugin-modules">Writing plugin modules</a>.  Whether or not these
+classes become set or not depends on the behaviour of your module. The
+classes continue to apply for all actions which occur after the module's
+execution. The module must be owned by the user executing cfengine or
+root (for security reasons), it must be named
+<samp><span class="file">module:</span><var>module-name</var></samp> and must lie in a special directory,
+See <a href="#moduledirectory">moduledirectory</a>.
+
+   <p>CFEngine communicates with itself and its environment by passing
+messages in the form of classes. When a class becomes switched on or
+off, cfengine's program effectively becomes modified. There are
+several ways in which you can switch on and off classes. Learning
+these fully will take some time, and only then will you harness the
+full power of cfengine.
+
+     <ul>
+<li>Classes may be defined manually from the command line.
+
+     <li>Classes may be defined locally in the actionsequence in order to
+execute only some of the actions within a special category.
+
+     <li>Classes may become defined if cfengine actually needs to carry out an action to
+repair the system's configuration.
+
+     <li>Classes are defined by functions that examine the environment, e.g. FileExists(),
+PrepModule().
+
+     <li>Classes may be defined by user-defined plug-in modules.
+<a name="index-Plug_002din-modules-1"></a><a name="index-Modules_002c-user-defined-plug_002dins-2"></a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Other-reasons-for-modules"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Storing-modules-and-methods">Storing modules and methods</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Modules-can-define-classes">Modules can define classes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CFEngine-plugin-modules">CFEngine plugin modules</a>
+
+</div>
+
+<h3 class="section">2.3 Other reasons for modules</h3>
+
+<p>Some people use modules through laziness, to avoid having to &ldquo;think cfengine&rdquo;.
+Others use them legitimately as a way to extend the functionality of cfengine.
+We recommend the latter.
+
+<!-- ..................................................... -->
+<!-- SUBSECTION -->
+<!-- ..................................................... -->
+<ul class="menu">
+<li><a accesskey="1" href="#moduledirectory">moduledirectory</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="moduledirectory"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Other-reasons-for-modules">Other reasons for modules</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Other-reasons-for-modules">Other reasons for modules</a>
+
+</div>
+
+<h4 class="subsection">2.3.1 The moduledirectory</h4>
+
+<p><a name="index-Module-directory-3"></a><a name="index-Directory-for-cfengine-modules-4"></a><a name="index-moduledirectory-5"></a>
+
+<pre class="example">        moduledirectory  = ( <var>directory for plugin modules</var> )
+</pre>
+   <p>This is the directory where cfengine will look for plug-in modules
+for the actionsequence. Plugin modules
+may be used to activate classes using special algorithms.
+
+   <p>This variable defaults to <samp><span class="file">/var/cfengine/modules</span></samp> for privileged users and
+to <samp><span class="file">$HOME)/.cfengine/modules</span></samp> for non-privileged users.
+
+<!-- ................................................................. -->
+<div class="node">
+<p><hr>
+<a name="Storing-modules-and-methods"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Writing-plugin-modules">Writing plugin modules</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Other-reasons-for-modules">Other reasons for modules</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CFEngine-plugin-modules">CFEngine plugin modules</a>
+
+</div>
+
+<h3 class="section">2.4 Storing modules and methods</h3>
+
+<p>For security cfengine only executes modules that are authorized by being
+in a special protected directory.
+
+   <p>When methods were introduced, it was decided not to increase the number of special places but rather to
+put methods together with modules in the modules directory.
+
+   <p>Thus modules and methods are normally kept together in a separate directory than inputs
+files are kept in, because they require a directory with special authorizations
+whe executing. This is good practice
+ As long as the <samp><span class="file">update.conf</span></samp> places the master versions
+in the correct location (usually <samp><span class="file">/var/cfengine/modules</span></samp>) on the local host,
+all will be okay.
+
+   <p>You should not try to copy files directly from a version controlled repository,
+as you might end up sending out an incomplete or partially tested version of the
+files to all your hosts.
+
+<pre class="smallexample">
+     # Example update.conf
+
+     control:
+
+        master_cfinput  = ( /usr/local/masterfiles/cfengine/inputs )
+        workdir         = ( /var/cfengine )
+
+     copy:
+
+        # Copy from bullet 2 to bullet 3
+
+          $(master_cfinput)            dest=$(workdir)/inputs
+                                       r=inf
+                                       mode=700
+                                       type=binary
+                                       exclude=*.lst
+                                       exclude=*~
+                                       exclude=#*
+                                       server=$(policyhost)
+                                       trustkey=true
+
+          $(master_modules)            dest=$(workdir)/modules
+                                       r=inf
+                                       mode=700
+                                       type=binary
+                                       exclude=*.lst
+                                       exclude=*~
+                                       exclude=#*
+                                       server=$(policyhost)
+                                       trustkey=true
+
+</pre>
+   <!-- ==================================================================== -->
+<div class="node">
+<p><hr>
+<a name="Writing-plugin-modules"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Preparatory-modules">Preparatory modules</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Storing-modules-and-methods">Storing modules and methods</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CFEngine-plugin-modules">CFEngine plugin modules</a>
+
+</div>
+
+<h3 class="section">2.5 Writing plugin modules</h3>
+
+<p>Modules must lie in a special directory defined by the variable
+<code>moduledirectory</code>.
+<a name="index-moduledirectory-6"></a><a name="index-moduledirectory-7"></a>They must have a name of the form <samp><span class="file">module:</span><var>mymodule</var></samp> and they
+must follow a simple protocol.
+
+   <p>Cfagent will only execute a module which is owned either by root or
+the user who is running cfagent, if it lies in the special directory
+and has the special name.
+
+   <p>A plug-in module may be written in any language, it can return any
+output you like, but lines which begin with a &lsquo;<samp><span class="samp">+</span></samp>&rsquo; sign are
+treated as classes to be defined (like <samp><span class="option">-D</span></samp>), while lines which
+begin with a &lsquo;<samp><span class="samp">-</span></samp>&rsquo; sign are treated as classes to be undefined
+(like <samp><span class="option">-N</span></samp>).  Lines starting with &lsquo;<samp><span class="samp">=</span></samp>&rsquo; are variables/macros
+to be defined.  Any other lines of output are cited by cfagent, so you
+should normally make your module completely silent.  Here is an
+example module written in perl. First we define the module in the
+cfagent program:
+
+<pre class="smallexample">
+      control:
+
+        moduledirectory = ( /local/cfagent/modules )
+
+        actionsequence = (
+                         files
+                         module:myplugin
+                         "module:argplugin arg1 arg2"
+                         copy
+                         )
+      ...
+        AddInstallables = ( specialclass )
+
+      classes:
+
+        ok = ( PrepModule("module:other",noargs) )
+
+</pre>
+   <p class="noindent">Note that the class definitions for all action-sequence modules
+<em>must</em> also be defined in as <code>AddInstallables</code> to declare the
+classes before using them in the cfagent configuration, or else those
+actions will be ignored.
+
+<ul class="menu">
+<li><a accesskey="1" href="#The-plugin-itself">The plugin itself</a>
+<li><a accesskey="2" href="#Using-the-class-environment-in-plugins">Using the class environment in plugins</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="The-plugin-itself"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Using-the-class-environment-in-plugins">Using the class environment in plugins</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Writing-plugin-modules">Writing plugin modules</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Writing-plugin-modules">Writing plugin modules</a>
+
+</div>
+
+<h4 class="subsection">2.5.1 The plugin itself</h4>
+
+<p>Next we write the plugin itself.
+
+<pre class="smallexample">     #!/usr/bin/perl
+     #
+     # module:myplugin
+     #
+
+       # lots of computation....
+
+     if (<var>special-condition</var>)
+        {
+        print "+specialclass";
+        }
+
+</pre>
+   <p>Modules inherit the environment variables from cfagent and accept arguments, just
+as a regular shellcommand does.
+
+<pre class="smallexample">     #!/bin/sh
+     #
+     # module:myplugin
+     #
+
+     /bin/echo $*
+
+</pre>
+   <div class="node">
+<p><hr>
+<a name="Using-the-class-environment-in-plugins"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#The-plugin-itself">The plugin itself</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Writing-plugin-modules">Writing plugin modules</a>
+
+</div>
+
+<h4 class="subsection">2.5.2 Using the class environment in plugins</h4>
+
+<p>Cfagent defines the classes as an environment variable so that programs
+have access to these. E.g. try the following module:
+
+<pre class="smallexample">     #!/usr/bin/perl
+
+     print "Decoding $ENV{CFALLCLASSES}\n";
+
+     @allclasses = split (":","$ENV{CFALLCLASSES}");
+
+     while ($c=shift(@allclasses))
+       {
+       $classes{$c} = 1;
+       print "$c is set\n";
+       }
+
+</pre>
+   <p>Modules can define macros in cfagent by outputting strings of the form
+
+<pre class="smallexample">
+     =<var>variablename</var>=<var>value</var>
+
+</pre>
+   <p>When the <code>$(allclasses)</code> variable becomes too large to manipulate conveniently,
+you can access the complete list of currently defined classes in the file
+<samp><span class="file">/var/cfengine/state/allclasses</span></samp>.
+
+<!-- ............................................................... -->
+<ul class="menu">
+<li><a accesskey="1" href="#Preparatory-modules">Preparatory modules</a>
+<li><a accesskey="2" href="#Options-related-to-modules">Options related to modules</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Preparatory-modules"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Options-related-to-modules">Options related to modules</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Writing-plugin-modules">Writing plugin modules</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CFEngine-plugin-modules">CFEngine plugin modules</a>
+
+</div>
+
+<h3 class="section">2.6 Preparatory Modules</h3>
+
+<p>The problem with actionsequence modules is that they are executed after parsing has finished.
+But what if we want the outcome of a module to influence the outcome of the
+decisions in the <samp><span class="file">cfagent.conf</span></samp>? For this we use preparatory modules. These prepare
+the system for parsing. You can use these to set classes, e.g. to include certain files:
+
+<pre class="smallexample">
+     classes:
+
+       result = ( PrepModule("module:setmoreclasses","$(host)") )
+
+       # sets class myclass
+
+     import:
+
+       myclass::
+
+          "my_special_stuff.cf"
+
+</pre>
+   <p class="noindent"><code>PrepModule</code> is treated as a special function.  You should place
+it in <samp><span class="file">cfagent.conf</span></samp> right at the start of the configuration.
+The syntax of the command is as follows:
+
+<pre class="smallexample">
+     classes:
+
+       class = ( PrepModule(<var>module</var>,<var>arg1 arg2...</var>) )
+
+</pre>
+   <p>True if the named module exists and can be executed. The module is assumed to
+follow the standard programming interface for modules (see Writing plugin modules in tutorial).
+Unlike actionsequence modules, these modules are evaluated immediately on parsing.
+Note that the module should be specified relative to the authorized module directory.
+<a name="index-Module-directory-8"></a><a name="index-PrepModule-9"></a><a name="index-Modules-executed-immediately-10"></a>
+
+<!-- ................................................................. -->
+<div class="node">
+<p><hr>
+<a name="Options-related-to-modules"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Examples-of-modules">Examples of modules</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Preparatory-modules">Preparatory modules</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CFEngine-plugin-modules">CFEngine plugin modules</a>
+
+</div>
+
+<h3 class="section">2.7 Options related to modules</h3>
+
+     <ul>
+<li>-M
+(<code>--no-modules</code>)
+Ignore modules in actionsequence.
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Examples-of-modules"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Module-self_002dtest-questions">Module self-test questions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Options-related-to-modules">Options related to modules</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CFEngine-plugin-modules">CFEngine plugin modules</a>
+
+</div>
+
+<h3 class="section">2.8 Examples of modules</h3>
+
+<p>Get a list of names from a database. This example uses MySQL, but this
+could be LDAP or some other source at your option.
+
+<pre class="smallexample">     #!/bin/sh
+
+     # Get a list of names from a MYSQL database
+
+     list=`echo "use userdb; select name from users where department='mydepartment'" | mysql`
+     echo `echo $list | sed s/\ /:/g`
+
+     # outputs a ':' separated list
+</pre>
+   <div class="node">
+<p><hr>
+<a name="Module-self-test-questions"></a>
+<a name="Module-self_002dtest-questions"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Examples-of-modules">Examples of modules</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CFEngine-plugin-modules">CFEngine plugin modules</a>
+
+</div>
+
+<h3 class="section">2.9 Module self-test questions</h3>
+
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+
+     <ol type=1 start=1>
+<li>What language must you use to write modules
+
+     <li>What is the difference between an actionsequence module and a prep-module?
+
+     <li>How do you get a module to set a class?
+
+     <li>How do you get a module to set a variable?
+
+     <li>Can a module return a list?
+
+     <li>How can you access cfengine's classes in your module?
+
+        </ol>
+
+</td></tr></table>
+
+<!-- ================================================================== -->
+<div class="node">
+<p><hr>
+<a name="CFEngine-Methods"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CFEngine-plugin-modules">CFEngine plugin modules</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">3 CFEngine Methods</h2>
+
+<p><a name="index-Methods-11"></a><a name="index-Private-modules-12"></a><a name="index-methods-13"></a>
+From version 2.1.0, cfagent provided for the execution of closed
+functions or "methods". Methods are modular cfengine sub-programs.
+They are written in cfengine's own language.
+
+   <p>Methods allow you to call an independent cfengine program, pass it
+arguments and classes, and collect the results for use in your main
+program. It thus introduces parent-child semantics into cfengine
+"imports".  If a single method fails, other methods can still be
+executed, so it also adds a level of encapsulation.
+
+   <p>A method is more than an import however.  (Import is analagous to a C
+<code>#include</code>, while a method is like a C function.)  Communication is peer
+to peer, by mutual consent. There is no "method server" that executes
+methods on remote hosts. Hosts exchange information by invitation
+only. This is an unreliable service (in the sense of UDP).
+
+   <p>The order of method exeuction is not guaranteed. This results from the
+decoupling between client request and service provision.
+
+<pre class="smallexample">
+       methods:
+
+          <var>class</var>::
+
+           <var>function_name</var>(<var>parameters or none</var>)
+
+           action=<samp><span class="file">filename</span></samp>
+
+           sendclasses=<var>comma separated class list</var>
+
+           returnvars=<var>comma separated variable list or void</var>
+           returnclasses=<var>comma separated class list</var>
+
+           server=<var>ip-host/localhost/none</var>
+
+           forcereplyto=<var>ip address</var>
+
+           owner=<var>setuid</var>
+           group=<var>setgid</var>
+           chdir=<var>cd for child</var>
+           chroot=<var>sandbox directory</var>
+
+</pre>
+   <p>Most of these functions will be familiar from other cfengine
+commands. Some special ones are noted below:
+
+     <dl>
+<dt><code>action</code><dd>The name of the method file that should be defined in the modules
+directory of the server host.
+<br><dt><code>forcereplyto</code><dd>Sometimes nameservice problems (especially with remote devices) can lead
+to confusion about where a method should be sent. The caller can
+therefore declare to the server which address it wants the reply to be
+marked for.
+<br><dt><code>returnvars</code><dd>Returns the values of the variables to the parent process. This acts as
+an access control list for variable names transmitted by the child
+process. The names returned by the child must match this list.
+<br><dt><code>returnclasses</code><dd>Returns the classes to the parent process, if and only if they are
+defined at the end of the current method. This acts as an access control
+list for class names transmitted by the child process. The names
+returned by the child must match this list.
+
+     <br><dt><code>sendclasses</code><dd>Transmits the current status of the named classes to the child
+process. In other words, if the listed classes are defined, they become
+defined in the child process, else they remain undefined. The class may
+still be defined in the child by independent local definitions.
+</dl>
+
+   <p>If the server is set to <code>localhost</code>, the method will be
+evaluated on the local machine. If the server is set of <code>none</code>,
+the method will not be executed at all.
+<a name="index-none-in-server-14"></a><a name="index-none-15"></a>
+The function arguments may not be empty, but a null value can be
+transmitted with a dummy value, e.g. <code>Function(null)</code> or
+<code>function(void)</code>.  Here is an example method call.
+
+<pre class="smallexample">
+      # cfagent.conf
+
+     control:
+
+        actionsequence = ( methods )
+
+     #################################################
+
+     methods:
+
+      any::
+
+        SimpleMethod(null)
+
+           action=cf.simple
+           returnvars=null
+           returnclasses=null
+           server=localhost
+
+
+</pre>
+   <p>With method file (located in the ModulesDirectory),
+
+<pre class="smallexample">
+      # cf.simple
+
+       control:
+
+         MethodName       = ( SimpleMethod )
+         MethodParameters = ( null )
+         actionsequence   = ( timezone )
+
+
+       classes:
+
+          dummy = ( any )
+
+     ####################################################
+
+     alerts:
+
+      dummy::
+
+       "This simple method does nothing"
+
+       ReturnVariables(void)
+       ReturnClasses(void)
+
+</pre>
+   <p>On executing this example, the output is:
+<pre class="example">     nexus$ ./cfagent -f ./cftest
+     cfengine:myhost:SimpleMethod: cfengine:nexus: This simple method does nothing
+
+</pre>
+   <p>If the server name is a wildcard, e.g. <code>*</code> then this acts as a multicast or broadcast.
+
+<!-- ........................................... -->
+<!-- SUBSECTION -->
+<!-- ........................................... -->
+<ul class="menu">
+<li><a accesskey="1" href="#local-method-examples">local method examples</a>
+<li><a accesskey="2" href="#method-examples">method examples</a>
+<li><a accesskey="3" href="#Method-example-DNS-server-setup">Method example DNS server setup</a>
+<li><a accesskey="4" href="#remote-method-examples">remote method examples</a>
+<li><a accesskey="5" href="#Method-self_002dtest-questions">Method self-test questions</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="local-method-examples"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#method-examples">method examples</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CFEngine-Methods">CFEngine Methods</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CFEngine-Methods">CFEngine Methods</a>
+
+</div>
+
+<h3 class="section">3.1 Local method examples</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Setting-up-users">Setting up users</a>
+<li><a accesskey="2" href="#User-passwords">User passwords</a>
+<li><a accesskey="3" href="#Tar-package-installation">Tar package installation</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Setting-up-users"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#User-passwords">User passwords</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#local-method-examples">local method examples</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#local-method-examples">local method examples</a>
+
+</div>
+
+<h4 class="subsection">3.1.1 Setting up users</h4>
+
+<pre class="smallexample">     #
+     # The calling cfagent.conf file
+     #
+
+     control:
+
+      actionsequence = (  shellcommands methods )
+
+      Split = ( ";" )
+
+     classes:
+
+      ok = ( PrepModule("module:getusers","") )
+
+     shellcommands:
+
+      "/bin/echo got $(user)"
+
+     methods:
+
+       FixUser("$(user)")
+        action=fixuser.cf
+        server=localhost
+
+</pre>
+   <p>This uses a module to get a list of users (e.g. from a database), and
+the calls a method.
+
+<pre class="smallexample">     #!/usr/bin/perl
+     #
+     # The method code
+     #
+
+     print "=user=mark;fred;sally\n";
+
+</pre>
+   <pre class="smallexample">     #
+     # The method code
+     #
+
+     control:
+
+       MethodName = ( FixUser )
+       MethodParameters = ( user )
+
+       actionsequence = ( directories editfiles )
+
+     directories:
+
+       /home/$(user)/.ssh mode=700
+
+     editfiles:
+
+
+      { /home/$(user)/.bashrc
+
+      AppendIfNoSuchLine "alias passwd=\"echo Do not change your password here\""
+      }
+
+</pre>
+   <div class="node">
+<p><hr>
+<a name="User-passwords"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Tar-package-installation">Tar package installation</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Setting-up-users">Setting up users</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#local-method-examples">local method examples</a>
+
+</div>
+
+<h4 class="subsection">3.1.2 User passwords</h4>
+
+<p>Extract a restricted subset of password and shadow files from a master
+source for other hosts.  Suppose you have a group of machines where
+you only want a limited number of users to be able to log on.  Suppose
+that the master password and shadow files are located at some server,
+then we begin by copying them to a private location &lt;pre&gt;
+
+<pre class="smallexample">
+     control:
+
+        actionsequence = ( module:getuserlistfile copy editfiles )
+
+        srcserver     = ( master.domain.tla )
+        realsrcpasswd = ( /etc/passwdsrc )
+        realsrcshadow = ( /etc/shadowsrc )
+
+        realpasswd = ( /tmp/passwd )
+        realshadow = ( /tmp/shadow )
+
+        temppasswd = ( /tmp/workfile1 )
+        tempshadow = ( /tmp/workfile2 )
+
+        # Module generates this list from db?
+        listfile = ( /masterdir/userlist )
+
+        editfilesize = ( 0 )
+
+     copy:
+
+        # First make a copy of the complete passwd file as tmp
+
+        $(realsrcpasswd) dest=$(temppasswd) mode=600 server=$(srcserver)
+        $(realsrcshadow) dest=$(tempshadow) mode=600 server=$(srcserver)
+
+     #######################################################
+
+     editfiles:
+
+     specialhosts.do:: # Add special users
+
+       { $(temppasswd)
+
+       # $(listfile) contains a list of users whom we want to
+       # have accounts on this subset of machines
+       # So get rid of all the accounts that are not in our
+       # special list
+
+       DeleteLinesNotStartingFileItems "$(listfile)"
+       }
+
+       { $(tempshadow)
+
+       # Same for the shadow file....
+
+       DeleteLinesNotStartingFileItems "$(listfile)"
+       }
+
+
+       { $(realpasswd)
+
+       # Add the restricted list to the password file, if the user does
+       # not already exist there...
+
+       DeleteLinesStartingFileItems "$(listfile)"
+       AppendIfNoSuchLinesFromFile  "$(temppasswd)"
+       }
+
+       { $(realshadow)
+
+       DeleteLinesStartingFileItems "$(listfile)"
+       AppendIfNoSuchLinesFromFile  "$(tempshadow)"
+       }
+
+      #######################################################
+
+     specialhosts.undo:: # Remove special users
+
+       { $(realpasswd)
+
+       DeleteLinesStartingFileItems "$(listfile)"
+       }
+
+       { $(realshadow)
+
+       DeleteLinesStartingFileItems "$(listfile)"
+       }
+
+</pre>
+   <div class="node">
+<p><hr>
+<a name="Tar-package-installation"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#User-passwords">User passwords</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#local-method-examples">local method examples</a>
+
+</div>
+
+<h4 class="subsection">3.1.3 Tar package installation</h4>
+
+<p>The following example
+collects the tar file, unpacks it,
+configures and compiles it, then tidies its files.
+
+<pre class="smallexample">     ####################################################
+     #
+     # This is a cfengine file that calls a method.
+     # It should be in the usual place for cfinputs
+     #
+     ####################################################
+
+     control:
+
+        actionsequence = ( methods )
+
+     #####################################################
+
+     methods:
+
+        InstallTar(cfengine-2.1.0b7,/local/gnu)
+
+           action=cf.install
+           returnvars=null
+           returnclasses=null
+           server=localhost
+
+</pre>
+   <p>We must install the method in the trusted modules directory
+(normally <samp><span class="file">/var/cfengine/modules</span></samp>, or
+<samp><span class="file">~/.cfagent/modules</span></samp> for non-privileged users i.e. WORKDIR/modules).
+
+<pre class="smallexample">     ####################################################
+     #
+     # This is an example method file, that needs to be
+     # in the module directory /var/cfengine/modules
+     # since this is the trusted directory
+     #
+     # e.g. InstallFromTar(cfengine-2.2.8,/usr/local/gnu)
+     #
+     ####################################################
+
+     control:
+
+
+      MethodName       = ( InstallTar )
+      MethodParameters = ( filename gnuprefix )
+
+      path = ( /usr/local/gnu/bin )
+
+
+      TrustedWorkDir = ( /tmp )
+
+      TrustedSources = ( /iu/nexus/ud/mark/tmp )
+      TrustedSourceServer = ( localhost )
+
+      actionsequence = ( copy editfiles shellcommands tidy )
+
+     ####################################################
+
+     classes:
+
+       Force = ( any )
+
+     ####################################################
+
+     copy:
+
+      $(TrustedSources)/$(filename).tar.gz
+
+         dest=$(TrustedWorkDir)/$(filename).tar.gz
+         server=$(TrustedSourceServer)
+
+     ####################################################
+
+     shellcommands:
+
+      "$(path)/tar zxf $(filename).tar.gz"
+
+          chdir=$(TrustedWorkDir)
+
+      "$(TrustedWorkDir)/$(filename)/configure --prefix=$(gnuprefix)"
+
+         chdir=$(TrustedWorkDir)/$(filename)
+         define=okay
+
+      okay::
+
+      "$(path)/make"
+
+          chdir=$(TrustedWorkDir)/$(filename)
+
+     ####################################################
+
+     tidy:
+
+       $(TrustedWorkDir) pattern=$(filename) r=inf rmdirs=true age=0
+
+
+     ####################################################
+
+     alerts:
+
+      Force::
+
+       ReturnVariables(none)
+       ReturnClasses(success)
+
+</pre>
+   <p>A more complex example is given below:
+
+<pre class="smallexample">       GetAnalysis("${parent1}",param2,ReadFile("/etc/passwd",300))
+
+         # The name of the method that is in modulesdir
+
+         action=cf.methodtest
+
+         # The variables that we get back should be called these names
+         # with method name prefix
+
+         returnvars=a,b,c,d
+
+         # This is an access list for returned classes. Classes will
+         # only be handed back if they are included here
+
+         returnclasses=define1,define2,class1
+
+         # The host(s) that should execute the method
+
+         server=localhost
+
+         # Only localhost can decide these - not a remote caller
+         #    owner=25
+         #    group=root
+         #    chdir=/var/cfengine
+         #    chroot=/tmp
+
+</pre>
+   <p>Here the function being called is the cfengine program <samp><span class="file">cf.methodtest</span></samp>.
+It is passed three arguments: the contents of variable <var>parent1</var>, the literal
+string "param2" and the first 300 bytes of the file <samp><span class="file">/etc/passwd</span></samp>.
+On return, if the method gets executed, the values will be placed in the four
+variables:
+
+<pre class="smallexample">     $(GetAnalysis.a) $(GetAnalysis.b) $(GetAnalysis.c) $(GetAnalysis.d)
+</pre>
+   <p>If the classes <code>define1</code> etc, are returned by the method, then we
+set them also in the main program as
+<pre class="smallexample">     GetAnalysis_define::
+</pre>
+   <p>In other words, the class name is also prefixed with the method name to distinguish it.
+(<code>returnclasses</code> works like an access
+control list for setting classes, deciding whether or not the main
+script should accept the results from the child method.). The remaining options are as those
+for executing shell commands, and apply only on the host that executes
+the function.
+
+   <p>Both the client and server hosts must have a copy of the same method
+declaration. The client should have a non-empty <code>server=</code> declaration.
+The server side should have no <code>server=</code> declaration unless it is sending
+the request on recursively to other hosts.
+At present only requests to localhost are allowed, so only there is automatic
+access to the rule.
+
+   <p>The cfagent file that contains the method code must have the following
+declarations:
+
+<pre class="smallexample">       control:
+
+         MethodName       = ( <var>identifier</var> )
+         MethodParameters = ( <var>spaced list of recipient variables or files</var> )
+
+        # ....
+
+       alerts:
+
+        # Return variables are alerts to parent
+
+         ReturnVariables(<var>comma separated list of variables or functions or void</var>)
+         ReturnClasses(<var>comma separated list of classes</var>)
+
+</pre>
+   <p>e.g.
+
+<pre class="smallexample">     control:
+
+      MethodName       = ( GetAnalysis )
+      MethodParameters = ( value1 value2 /tmp/file1 )
+
+      # ....
+
+     alerts:
+
+       # Return variables are alerts to parent
+
+       ReturnVariables("${var1}","${var2}","var3",literal_value)
+       ReturnClasses(class1,class2)
+
+</pre>
+   <p>The parameters transmitted by the parent are read into the formal
+parameters <code>value1</code>, <code>value2</code> and the the file excerpt is
+placed in the temporary file <samp><span class="file">/tmp/file1</span></samp>.
+
+   <p>The return classes are passed in their current state to the parent;
+i.e. if class1 is defined then it is offered to the parent, but if it
+is not defined in the method, it is not passed on. The parent can then
+choose to accept or ignore the value.
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="method-examples"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Method-example-DNS-server-setup">Method example DNS server setup</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#local-method-examples">local method examples</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CFEngine-Methods">CFEngine Methods</a>
+
+</div>
+
+<h3 class="section">3.2 Method example: SSH key distribution</h3>
+
+<p>Collecting user ssh keys for adding to an authorized key file (e.g. for
+delegating root login) can be automated.
+
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#From-an-authorized-cache-directory-to-different-locations">From an authorized cache directory to different locations</a>
+<li><a accesskey="2" href="#Allow-ssh-root-login">Allow ssh root login</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="From-an-authorized-cache-directory-to-different-locations"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Allow-ssh-root-login">Allow ssh root login</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#method-examples">method examples</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#method-examples">method examples</a>
+
+</div>
+
+<h4 class="subsection">3.2.1 From an authorized cache directory to different locations</h4>
+
+<div class="block-image"><img src="/img/outside/authdir.png" alt="From an authorized directory to users"></div>
+
+<pre class="smallexample">     #This master configuration calls a `cf.copykey' method
+
+     control:
+
+        actionsequence = ( methods )
+
+        user  = ( user1:user2 )       # list of users on the servers
+        myip  = ( host1:host2  )      # servers with the public keys
+
+     methods:
+
+       CopyKey($(user),$(myip))
+
+         action=cf.copykey
+
+</pre>
+   <p>This assumes that we have collected together authorized keys into a
+known directory on a list of hosts, and named them with the name of
+the user. The method copies these keys from all the remote hosts and
+adds these to the authorized key files of the named users.
+
+<pre class="smallexample">     # file cf.copykey
+     # this method should be in modules directory
+
+      control:
+
+        actionsequence = ( copy editfiles )
+
+        domain = ( example.org )
+
+        MethodName       = ( CopyKey )
+        MethodParameters = ( username ip )
+
+        user        = ( $(username) )
+        sourcehost  = ( $(ip) )
+
+       # put username.pub in a known place
+
+       path  = ( /master/cfengine/inputs/$(username).pub )
+       cfdir = ( /master/cfengine/ssh )
+
+     # pull public key to the local host
+
+     copy:
+
+      # Collect from directories where public keys have been
+      # placed and leave them at dest
+
+        $(cfdir)/id_dsa.pub
+
+              dest=$(path)
+              server=$(sourcehost)
+
+     editfiles:
+
+       { /home/$(user)/.ssh/authorized_keys
+
+       # Must use BeginGroup to make convergent
+       # or use EmptyEntireFilePlease to reset
+
+       BeginGroupIfNoLineContaining "$(user)"
+         InsertFile "$(path)"
+       EndGroup
+       }
+
+</pre>
+   <div class="node">
+<p><hr>
+<a name="Allow-ssh-root-login"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#From-an-authorized-cache-directory-to-different-locations">From an authorized cache directory to different locations</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#method-examples">method examples</a>
+
+</div>
+
+<h4 class="subsection">3.2.2 Allow ssh root login</h4>
+
+<div class="block-image"><img src="/img/outside/user2root.png" alt="From authorized users to root"></div>
+
+<pre class="smallexample">     # Master configuration
+
+     control:
+
+       actionsequence  = ( methods )
+       authuserlist    = ( user1:user2:user3:user4 )
+
+     methods:
+
+      CopyKey("$(userlist)")
+         action=cf.sshkey
+
+</pre>
+   <p>For each user, we add the ssh key into their
+
+<pre class="smallexample">     #This is a module &amp; should be in the modules directory
+
+     control:
+
+       actionsequence = ( editfiles  )
+
+        MethodName = ( CopyKey )
+        MethodParameters = ( user )
+
+        source = ( "/home/$(user)/id_dsa.pub" )
+
+     editfiles:
+
+       { /root/.ssh/authorized_keys
+
+       AutoCreate
+
+       BeginGroupIfNoLineContaining "$(user)"
+         InsertFile "$(source)"
+       EndGroup
+       }
+</pre>
+   <!-- ........................................... -->
+<!-- SECTION -->
+<!-- ........................................... -->
+<div class="node">
+<p><hr>
+<a name="Method-example-DNS-server-setup"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#remote-method-examples">remote method examples</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#method-examples">method examples</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CFEngine-Methods">CFEngine Methods</a>
+
+</div>
+
+<h3 class="section">3.3 Method example: DNS server setup</h3>
+
+<p>This shows three files: a calling script and two method files.
+On three flavours of Linux the script creates and edits the necessary
+files to set up a domain.
+
+   <p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+
+   <p>EXERCISE: rewrite this example to simplify the input using
+<code>InsertFile</code> and <code>ExpandVariables</code>, etc.
+
+   </td></tr></table>
+
+<pre class="smallexample">
+     #
+     # WORKDIR/inputs/dnscall.cf
+     #
+
+     control:
+
+      actionsequence = ( methods )
+
+      hostname = ( oslo:accra:london:zurich )
+      ip       = ( 192.168.189.136:192.168.189.129:192.168.189.138:192.168.189.133 )
+      hostid   = ( 136:129:138:133 )
+
+      testprefix     = ( /home/mark/tmp/DNSTEST )
+      AddInstallable = ( EditDNS_created )
+
+     methods:
+
+      EditDNS("mycfengine.com","mycentos","189.168.192",8600,20212008,68000,3000,2000,1000,"192.168.189.134",134,"localhost","$(testprefix)")
+        action=dns.conf
+       #
+
+      PopulateDNS("mycfengine.com","$(hostname)","$(ip)","$(hostid)","$(testprefix)")
+         action=dnspopulate.conf
+
+</pre>
+   <ul class="menu">
+<li><a accesskey="1" href="#EditDNS">EditDNS</a>
+<li><a accesskey="2" href="#PopulateDNS">PopulateDNS</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="EditDNS"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#PopulateDNS">PopulateDNS</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Method-example-DNS-server-setup">Method example DNS server setup</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Method-example-DNS-server-setup">Method example DNS server setup</a>
+
+</div>
+
+<h4 class="subsection">3.3.1 EditDNS</h4>
+
+<pre class="smallexample">
+     control:
+
+      actionsequence = ( files editfiles )
+
+      MethodName = ( EditDNS )
+
+      #dname - domain name - e.g mycfengine.com
+      #dnshost - the host name of the dns server - e.g localhost
+      #revnetworkip - reversing ip  - 10.168.192
+      #ttl - time to live leave for the dns -e.g 8600
+      #serial - serial number  - e.g 20202008
+      #refresh - refresh time  -e.g  1000
+      #retry - retry time      -e.g 1000
+      #expire - dns expire time - e.g 2000
+      #min1 - minimum time       - e.g 1000
+      #hostid - of the dns server -e.g  2
+      #ip - of the dns server     - e.g 192.168.10.2
+      #zonenameserver - the name of the server you want to use for your name server- e.g localhost
+
+      MethodParameters = ( dname dnshost revnetworkip ttl serial refresh retry expire min1 ip hostid zonenameserver prefix )
+
+
+     ###################################################################################################
+     # Debian
+     ###################################################################################################
+
+     files:
+
+      debian::
+
+        $(prefix)/etc/bind/zones/$(dname)     mode=644 action=touch
+        $(prefix)/etc/bind/zones/$(dname).rev mode=644 action=touch
+        $(prefix)/etc/named.conf              mode=644 action=touch
+
+     editfiles:
+
+      debian::
+
+       { $(prefix)/etc/bind/named.conf
+
+         AppendIfNoSuchLine
+
+         #begin cfline
+         "zone \"$(dname)\" {
+         type master;
+         file \"/etc/bind/zones/$(dname)\";
+         };
+
+         zone \"$(revnetworkip).in-addr.arpa\" {
+         type master;
+         file \"/etc/bind/zones/$(dname).rev\";
+         };
+         "
+         #end cfline
+       }
+
+
+       { $(prefix)/etc/bind/zones/$(dname)
+
+       AppendIfNoSuchLine
+
+         #begin cfline
+         "$(dollar)TTL $(ttl)				; - lifetime for cached mappings
+            IN      SOA     $(dname). root.$(dname). (
+                             $(serial)        ; serial - the zone file version
+                             $(refresh)           ; refresh - slaves check for update this often
+                             $(retry)            ; retry - retry a failed update after this long
+                             $(expire)          ; expire - discard zone data if master down this long
+                             $(min1)            ; minimum - cache lifetime for negative answers
+     )
+
+
+                            	IN      NS      $(zonenameserver).		;the zone use nameserver localhost
+
+     $(dnshost).$(dname).  	IN      A       $(ip)              ; specify IP address to the domain name
+         "
+         #end cfline
+       }
+
+       #
+
+       { $(prefix)/etc/bind/zones/$(dname).rev
+
+        AppendIfNoSuchLine
+
+         #begin cfline
+         "$(dollar)TTL $(ttl)
+            IN      SOA     $(dname). root.$(dname). (
+                              $(serial)        ; serial - the zone file version
+                             $(refresh)           ; refresh - slaves check for update this often
+                             $(retry)            ; retry - retry a failed update after this long
+                             $(expire)          ; expire - discard zone data if master down this long
+                             $(min1)            ; minimum - cache lifetime for negative answers
+
+     )
+
+                                    IN      NS      $(zonenameserver).		;the zone use nameserver localhost
+
+     $(hostid)                             IN      PTR     $(dnshost).$(dname).
+         "
+         #end cfline
+        }
+
+
+     #touch domain files suse
+
+     ###################################################################################################
+     # SuSE
+     ###################################################################################################
+
+     files:
+
+      SuSE::
+
+       $(prefix)/var/lib/named/master/$(dname)     mode=644  action=touch
+       $(prefix)/var/lib/named/master/$(dname).rev mode=644  action=touch
+       $(prefix)/etc/named.conf                    mode=644  action=touch
+
+     editfiles:
+
+      SuSE::
+
+       { $(prefix)/etc/named.conf
+
+       AutoCreate
+       AppendIfNoSuchLine
+
+         #begin cfline
+         "
+         zone \"$(dname)\" in {
+         type master;
+         file \"/var/lib/named/master/$(dname)\";
+         };
+
+         zone \"$(revnetworkip).in-addr.arpa\" in {
+         type master;
+         file \"/var/lib/named/master/$(dname).rev\";
+         };
+         "
+         #end cfline
+       }
+
+      ################################################################################
+
+      { $(prefix)/var/lib/named/master/$(dname)
+
+      AutoCreate
+      AppendIfNoSuchLine
+
+         #begin cfline
+        "$(dollar)TTL $(ttl)				; - lifetime for cached mappings
+            IN      SOA     $(dname). root.$(dname). (
+                             $(serial)        ; serial - the zone file version
+                             $(refresh)           ; refresh - slaves check for update this often
+                             $(retry)            ; retry - retry a failed update after this long
+                             $(expire)          ; expire - discard zone data if master down this long
+                             $(min1)            ; minimum - cache lifetime for negative answers
+     )
+
+
+                            	IN      NS      $(zonenameserver).		;the zone use nameserver localhost
+
+     $(dnshost).$(dname).  	IN      A       $(ip)              ; specify IP address to the domain name
+         "
+         #end cfline
+       }
+
+      ################################################################################
+
+       { $(prefix)/var/lib/named/master/$(dname).rev
+
+       AutoCreate
+       AppendIfNoSuchLine
+
+         #begin cfline
+         "$(dollar)TTL $(ttl)
+            IN      SOA     $(dname). root.$(dname). (
+                              $(serial)        ; serial - the zone file version
+                             $(refresh)           ; refresh - slaves check for update this often
+                             $(retry)            ; retry - retry a failed update after this long
+                             $(expire)          ; expire - discard zone data if master down this long
+                             $(min1)            ; minimum - cache lifetime for negative answers
+
+     )
+
+                                    IN      NS      $(zonenameserver).		;the zone use nameserver localhost
+
+     $(hostid)                             IN      PTR     $(dnshost).$(dname)."
+         #end cfline
+       }
+
+
+     ###################################################################################################
+     # Redhat
+     ###################################################################################################
+
+     files:
+
+      redhat::
+
+        $(prefix)/var/named/zones/$(dname)     mode=644 action=touch
+        $(prefix)/var/named/zones/$(dname).rev mode=644 action=touch
+        $(prefix)/etc/named.conf               mode=644 action=touch
+
+     editfiles:
+
+      redhat::
+
+       { $(prefix)/etc/named.conf
+
+       AutoCreate
+       AppendIfNoSuchLine
+
+         #begin cfline
+         "zone \"$(dname)\" {
+         type master;
+         file \"/var/named/zones/$(dname)\";
+         };
+
+         zone \"$(revnetworkip).in-addr.arpa\" {
+         type master;
+         file \"/var/named/zones/$(dname).rev\";
+         };
+        "
+         #end cfline
+
+       }
+
+     ################################################################################
+
+       { $(prefix)/var/named/zones/$(dname)
+
+       AutoCreate
+       AppendIfNoSuchLine
+
+         #begin cfline
+         "$(dollar)TTL $(ttl)				; - lifetime for cached mappings
+            IN      SOA     $(dname). root.$(dname). (
+                             $(serial)        ; serial - the zone file version
+                             $(refresh)           ; refresh - slaves check for update this often
+                             $(retry)            ; retry - retry a failed update after this long
+                             $(expire)          ; expire - discard zone data if master down this long
+                             $(min1)            ; minimum - cache lifetime for negative answers
+     )
+
+
+                            	IN      NS      $(zonenameserver).		;the zone use nameserver localhost
+
+     $(dnshost).$(dname).  	IN      A       $(ip)              ; specify IP address to the domain name
+         "
+         #end cfline
+       }
+
+
+      ################################################################################
+
+       { $(prefix)/var/named/zones/$(dname).rev
+
+       AutoCreate
+       AppendIfNoSuchLine
+
+         #begin cfline
+         "$(dollar)TTL $(ttl)
+            IN      SOA     $(dname). root.$(dname). (
+                              $(serial)        ; serial - the zone file version
+                             $(refresh)           ; refresh - slaves check for update this often
+                             $(retry)            ; retry - retry a failed update after this long
+                             $(expire)          ; expire - discard zone data if master down this long
+                             $(min1)            ; minimum - cache lifetime for negative answers
+
+     )
+
+                                    IN      NS      $(zonenameserver).		;the zone use nameserver localhost
+
+     $(hostid)                             IN      PTR     $(dnshost).$(dname).
+         "
+         #end cfline
+
+       }
+
+
+</pre>
+<div class="node">
+<p><hr>
+<a name="PopulateDNS"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#EditDNS">EditDNS</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Method-example-DNS-server-setup">Method example DNS server setup</a>
+
+</div>
+
+<h4 class="subsection">3.3.2 PopulateDNS</h4>
+
+<pre class="smallexample">
+     control:
+
+      actionsequence = ( editfiles )
+
+      MethodName = ( PopulateDNS )
+
+      #dname - domain name - mycfengine.com
+      #hostname -the host name or machine - e.g eternity
+      #ip - the list of ip address - e.g. 192.168.10.3,192.168.10.4
+      #hostip - the host ip - e.g. 3,4
+
+      MethodParameters = ( dname hostname ip hostip prefix )
+
+     #############################################################################################
+
+     editfiles:
+
+      debian::
+
+       { $(prefix)/etc/bind/zones/$(dname)
+
+       AutoCreate
+       AppendIfNoSuchLine "$(hostname).$(dname).  	IN      A       $(ip)"
+       }
+
+       #
+
+       { $(prefix)/etc/bind/zones/$(dname).rev
+
+       AutoCreate
+       AppendIfNoSuchLine "$(hostip)                   IN      PTR     $(hostname).$(dname)."
+       }
+
+     #############################################################################################
+
+      SuSE::
+
+       { $(prefix)/var/lib/named/master/$(dname)
+
+       AutoCreate
+       AppendIfNoSuchLine "$(hostname).$(dname).  	IN      A       $(ip)"
+       }
+
+       { $(prefix)/var/lib/named/master/$(dname).rev
+
+       AutoCreate
+       AppendIfNoSuchLine "$(hostip)                   IN      PTR     $(hostname).$(dname)."
+       }
+
+     ###############################################################################################
+
+      redhat::
+
+       { $(prefix)/var/named/zones/$(dname)
+
+       AutoCreate
+       AppendIfNoSuchLine "$(hostname).$(dname).  	IN      A       $(ip)"
+       }
+
+       { $(prefix)/var/named/zones/$(dname).rev
+
+       AutoCreate
+       AppendIfNoSuchLine "$(hostip)                 IN      PTR     $(hostname).$(dname)."
+       }
+
+
+</pre>
+<!-- ........................................... -->
+<!-- SECTION -->
+<!-- ........................................... -->
+<div class="node">
+<p><hr>
+<a name="remote-method-examples"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Method-self_002dtest-questions">Method self-test questions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Method-example-DNS-server-setup">Method example DNS server setup</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CFEngine-Methods">CFEngine Methods</a>
+
+</div>
+
+<h3 class="section">3.4 Remote method examples</h3>
+
+<p>Methods can also be scheduled for execution on remote hosts.
+     <ul>
+<li>Both hosts must have an identical copy of the method stanza
+<li>Public keys must be exchanged between the cooperating hosts
+<li>Access must be granted to <samp><span class="file">/var/cfengine/rpc_out</span></samp> in cfservd.
+</ul>
+
+   <p>Remote method execution is the same as local method execution except for
+some additional requirements. A list of collaborating peers must be added
+to the control section of <samp><span class="file">update.conf</span></samp>.
+In order the the requests to be collected automatically, you must have <code>copy</code>
+in the action sequence of the <samp><span class="file">update.conf</span></samp> file.
+
+<pre class="smallexample">     control:
+
+      MethodPeers = ( <var>hostname list</var> ) # Must have copy in actionsequence
+
+</pre>
+   <p>This list tells the agent which remote hosts to collaborate with, i.e.
+whom should we contact to look for work that we have promised to perform?
+In order the the requests to be collected automatically, you must have <code>copy</code>
+in the action sequence of the <samp><span class="file">update.conf</span></samp> file.
+
+   <p>For example, to make two hosts collaborate:
+
+<pre class="smallexample">     methods:
+
+      host1|host2::
+
+       MethodTest("my test!")
+
+       action=cf.methodtest
+       server=host2.iu.hio.no
+       returnclasses=null
+       returnvars=retval
+       ifelapsed=120
+</pre>
+   <p>Note that an important aspect of remote method invocation is that there is only
+voluntary cooperation between the parties. A reply bundle from a finished method
+can collected from a server by the client many times, causing the classes
+and variables associated with it to be defined at regular intervals, controlled
+by the ifelapsed time. To avoid multiple actions, you should lock methods or
+their follow-up actions with long ifelapsed times. This is a fundamental `feature'
+of voluntary cooperation: each party must take responsibilty for the sense of what
+it receives from the other. This feature will not be to everyone's taste, and it
+is unconventional. However, voluntary cooperation provides a way of collaborating
+without trust in a framework that forces us to confront the security issues directly.
+As such, it is a successful experiment.
+
+<div class="node">
+<p><hr>
+<a name="Method-self-test-questions"></a>
+<a name="Method-self_002dtest-questions"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#remote-method-examples">remote method examples</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#CFEngine-Methods">CFEngine Methods</a>
+
+</div>
+
+<h3 class="section">3.5 Method self-test questions</h3>
+
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+     <ol type=1 start=1>
+
+     <li>What language can I write methods in?
+<li>Where do I put the method code?
+<li>How do I send a variable to a method?
+<li>How do I send a class to a method?
+<li>How do I get variables and classes back from methods?
+
+        </ol>
+</td></tr></table>
+
+<!-- ========================================================================= -->
+<!-- @node Index,  , CFEngine Methods, Top -->
+<!-- @unnumbered Concept Index -->
+<!-- @printindex cp -->
+<!-- ========================================================================= -->
+   <p><a name="Contents">
+
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">CFEngine-Modularization</a>
+<li><a name="toc_Modularization" href="#Modularization">1 Modularization</a>
+<ul>
+<li><a href="#Reminder-about-classes">1.1 Reminder about classes</a>
+<li><a href="#User-experiences-on-organizing-policy">1.2 User experiences on organizing policy</a>
+<li><a href="#Object-orientation">1.3 Object orientation</a>
+<ul>
+<li><a href="#Inheritance">1.3.1 Inheritance</a>
+<li><a href="#Overriding">1.3.2 Overriding</a>
+<li><a href="#Overriding-a-policy-file">1.3.3 Overriding a policy file</a>
+</li></ul>
+<li><a href="#Organizing-the-files-into-classes">1.4 Organizing the files into classes</a>
+<li><a href="#Aspect-orientation">1.5 Aspect orientation</a>
+<li><a href="#Delegation">1.6 Delegation</a>
+<li><a href="#Role-based-access-control">1.7 Role based access control</a>
+<li><a href="#Methodology-to-organize-systems">1.8 Methodology to organize systems</a>
+<ul>
+<li><a href="#Top-down">1.8.1 Top down</a>
+<li><a href="#Bottom-up">1.8.2 Bottom up</a>
+</li></ul>
+<li><a href="#Modularization-self_002dtest-questions">1.9 Modularization self-test questions</a>
+</li></ul>
+<li><a name="toc_CFEngine-plugin-modules" href="#CFEngine-plugin-modules">2 CFEngine plugin modules</a>
+<ul>
+<li><a href="#Why-cfengine-modules_003f">2.1 Why cfengine modules?</a>
+<li><a href="#Modules-can-define-classes">2.2 Modules can define classes</a>
+<li><a href="#Other-reasons-for-modules">2.3 Other reasons for modules</a>
+<ul>
+<li><a href="#moduledirectory">2.3.1 The moduledirectory</a>
+</li></ul>
+<li><a href="#Storing-modules-and-methods">2.4 Storing modules and methods</a>
+<li><a href="#Writing-plugin-modules">2.5 Writing plugin modules</a>
+<ul>
+<li><a href="#The-plugin-itself">2.5.1 The plugin itself</a>
+<li><a href="#Using-the-class-environment-in-plugins">2.5.2 Using the class environment in plugins</a>
+</li></ul>
+<li><a href="#Preparatory-modules">2.6 Preparatory Modules</a>
+<li><a href="#Options-related-to-modules">2.7 Options related to modules</a>
+<li><a href="#Examples-of-modules">2.8 Examples of modules</a>
+<li><a href="#Module-self_002dtest-questions">2.9 Module self-test questions</a>
+</li></ul>
+<li><a name="toc_CFEngine-Methods" href="#CFEngine-Methods">3 CFEngine Methods</a>
+<ul>
+<li><a href="#local-method-examples">3.1 Local method examples</a>
+<ul>
+<li><a href="#Setting-up-users">3.1.1 Setting up users</a>
+<li><a href="#User-passwords">3.1.2 User passwords</a>
+<li><a href="#Tar-package-installation">3.1.3 Tar package installation</a>
+</li></ul>
+<li><a href="#method-examples">3.2 Method example: SSH key distribution</a>
+<ul>
+<li><a href="#From-an-authorized-cache-directory-to-different-locations">3.2.1 From an authorized cache directory to different locations</a>
+<li><a href="#Allow-ssh-root-login">3.2.2 Allow ssh root login</a>
+</li></ul>
+<li><a href="#Method-example-DNS-server-setup">3.3 Method example: DNS server setup</a>
+<ul>
+<li><a href="#EditDNS">3.3.1 EditDNS</a>
+<li><a href="#PopulateDNS">3.3.2 PopulateDNS</a>
+</li></ul>
+<li><a href="#remote-method-examples">3.4 Remote method examples</a>
+<li><a href="#Method-self_002dtest-questions">3.5 Method self-test questions</a>
+</li></ul>
+</li></ul>
+</div>
+
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+

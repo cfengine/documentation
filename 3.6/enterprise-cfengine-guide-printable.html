@@ -1,0 +1,2073 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.6  Documentation - The Complete CFEngine Enterprise</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.6/assets/global-ac3885a0674bd3c9117d62800be1608f.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "The Complete CFEngine Enterprise";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div class="wrapper">
+        <div id="content_col" style="margin:0; padding:0">
+            <article>
+                <h1 id="top">The Complete CFEngine Enterprise</h1>
+                    <h1 id="table-of-content">Table of Content</h1>
+<ul>
+<li><a href="enterprise-cfengine-guide-printable.html#hub-administration">Hub Administration</a></li>
+<li><a href="enterprise-cfengine-guide-printable.html#high-availability">High Availability</a>
+
+<ul>
+<li><a href="enterprise-cfengine-guide-printable.html#installation-guide">Installation Guide</a></li>
+</ul></li>
+<li><a href="enterprise-cfengine-guide-printable.html#install-and-get-started">Install and Get Started</a></li>
+<li><a href="enterprise-cfengine-guide-printable.html#user-interface">User Interface</a></li>
+<li><a href="enterprise-cfengine-guide-printable.html#settings">Settings</a></li>
+<li><a href="enterprise-cfengine-guide-printable.html#hosts-and-health">Hosts and Health</a></li>
+<li><a href="enterprise-cfengine-guide-printable.html#alerts-and-notifications">Alerts and Notifications</a></li>
+<li><a href="enterprise-cfengine-guide-printable.html#custom-actions-for-alerts">Custom actions for Alerts</a></li>
+<li><a href="enterprise-cfengine-guide-printable.html#reporting-ui">Reporting UI</a>
+
+<ul>
+<li><a href="enterprise-cfengine-guide-printable.html#reporting-architecture">Reporting Architecture</a></li>
+<li><a href="enterprise-cfengine-guide-printable.html#sql-queries-using-the-enterprise-api">SQL Queries Using the Enterprise API</a></li>
+</ul></li>
+<li><a href="enterprise-cfengine-guide-printable.html#monitoring">Monitoring</a></li>
+<li><a href="enterprise-cfengine-guide-printable.html#design-center-ui">Design Center UI</a>
+
+<ul>
+<li><a href="enterprise-cfengine-guide-printable.html#deploy-your-first-policy">Deploy your first Policy</a></li>
+<li><a href="enterprise-cfengine-guide-printable.html#enterprise-sketches">Enterprise Sketches</a>
+
+<ul>
+<li><a href="enterprise-cfengine-guide-printable.html#integrating-mission-portal-with-git">Integrating Mission Portal with git</a></li>
+<li><a href="enterprise-cfengine-guide-printable.html#design-center-access-control">Design Center Access Control</a></li>
+<li><a href="enterprise-cfengine-guide-printable.html#sketch-flow-in-cfengine-enterprise">Sketch Flow in CFEngine Enterprise</a></li>
+</ul></li>
+</ul></li>
+<li><a href="enterprise-cfengine-guide-printable.html#enterprise-api">Enterprise API</a></li>
+<li><a href="enterprise-cfengine-guide-printable.html#best-practices">Best Practices</a></li>
+</ul>
+
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide.markdown` -->
+
+<p>CFEngine Enterprise is an IT automation platform that uses a model-based approach to manage your infrastructure, and applications at WebScale while providing best-in-class scalability, security, enterprise-wide visibility and control.</p>
+<h6 id="webscale-it-automation">WebScale IT Automation</h6>
+<p>CFEngine Enterprise provides a secure and stable platform for building and managing both physical and virtual infrastructure. Its distributed architecture, minimal dependencies, and lightweight autonomous agents enable you to manage 5,000 nodes from a single policy server.</p>
+
+<p>WebScale does not just imply large server deployments. The speed at which changes are conceived and committed across infrastructure and applications is equally important. Due to execution times measurable in seconds, and one of the most efficient verification mechanisms, CFEngine reduces exposure to unwarranted changes, and prevents extreme delays for planned changes that need to be applied urgently at scale.</p>
+<h6 id="intelligent-automation-of-infrastructure">Intelligent Automation of Infrastructure</h6>
+<p>Automate your infrastructure with self-service capabilities. CFEngine Enterprise enables you to take advantage of agile, secure, and scalable infrastructure automation that makes repairs using a policy-based approach.       </p>
+<h6 id="policy-based-application-deployment">Policy-Based Application Deployment</h6>
+<p>Achieve repeatable, error-free and automated deployment of middleware and application components to datacenter or cloud-based infrastructure. Along with infrastructure, automated application deployment provides a standardized platform.         </p>
+<h6 id="self-healing-continuous-operations">Self-Healing Continuous Operations</h6>
+<p>Gain visibility into your infrastructure and applications, and be alerted to issues immediately. CFEngine Enterprise contains built-in inventory and reporting modules that automate troubleshooting and compliance checks, as well as remediate in a self-healing fashion.</p>
+<h6 id="cfengine-enterprise-features">CFEngine Enterprise Features</h6><h6 id="user-interface">User Interface</h6>
+<p>The CFEngine Enterprise Mission Portal provides a central dashboard for real-time monitoring, search, and reporting for immediate visibility into your environment’s actual vs desired state. You can also use Mission Portal to set individual and group alerts and track system events that make you aware of specific infrastructure changes.</p>
+
+<p><img src="Dashboard.png" alt="Dashboard"></p>
+<h6 id="scalability">Scalability</h6>
+<p>CFEngine Enterprise has a simple distributed architecture that scales with minimal resource consumption. Its pull-based system eliminates the need for server-side processing, which means that a single policy server can concurrently serve up to 5,000 nodes doing 5 minute runs with minimal hardware requirements.</p>
+<h6 id="configurable-data-feeds">Configurable Data Feeds</h6>
+<p>The CFEngine Enterprise <code>Mission Portal</code> provides System Administrators and Infrastructure Engineers with detailed information about the actual state of the IT infrastructure and how that compares with the desired state.</p>
+<h6 id="federation-and-sql-reporting">Federation and SQL Reporting</h6>
+<p>CFEngine Enterprise has the ability to create federated structures, in which parts of organizations can have their own configuration policies, while at the same time the central IT organization may impose some policies that are more global in nature.</p>
+<h6 id="monitoring-and-reporting">Monitoring and reporting</h6>
+<p>The CFEngine Enterprise Mission Portal contains continual reporting that details compliance with policies, repairs and any failures of hosts to match their desired state.</p>
+<h6 id="role-based-access-control">Role-based access control</h6>
+<p>Users can be assigned roles that limit their access levels throughout the Mission Portal.</p>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide.markdown` -->
+
+<hr>
+<h2 id="hub-administration">Hub Administration</h2>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/hub_administration.markdown` -->
+<h5 id="reset-administrative-credentials">Reset administrative credentials</h5>
+<p>The default <code>admin</code> user can be reset to defaults using the following SQL</p>
+
+<p>cfsettings-setadminpassword.sql:</p>
+<div class="highlight"><pre><code class="sql"><span class="k">UPDATE</span> <span class="ss">&quot;users&quot;</span>
+    <span class="k">SET</span> <span class="n">password</span><span class="o">=</span><span class="s1">&#39;SHA=aa459b45ecf9816d472c2252af0b6c104f92a6faf2844547a03338e42e426f52&#39;</span><span class="p">,</span>
+        <span class="n">salt</span><span class="o">=</span><span class="s1">&#39;eWAbKQmxNP&#39;</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="s1">&#39;admin&#39;</span><span class="p">,</span>
+        <span class="n">email</span><span class="o">=</span><span class="s1">&#39;admin@organisation.com&#39;</span><span class="p">,</span>
+        <span class="n">active</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span>
+        <span class="n">roles</span><span class="o">=</span><span class="s1">&#39;{admin,cf_remoteagent}&#39;</span><span class="p">,</span>
+            <span class="n">changetimestamp</span> <span class="o">=</span> <span class="n">now</span><span class="p">()</span>
+    <span class="k">WHERE</span> <span class="n">username</span><span class="o">=</span><span class="s1">&#39;admin&#39;</span><span class="p">;</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="ss">&quot;users&quot;</span> <span class="p">(</span><span class="ss">&quot;username&quot;</span><span class="p">,</span> <span class="ss">&quot;password&quot;</span><span class="p">,</span> <span class="ss">&quot;salt&quot;</span><span class="p">,</span> <span class="ss">&quot;name&quot;</span><span class="p">,</span> <span class="ss">&quot;email&quot;</span><span class="p">,</span> <span class="ss">&quot;external&quot;</span><span class="p">,</span> <span class="ss">&quot;active&quot;</span><span class="p">,</span> <span class="ss">&quot;roles&quot;</span><span class="p">,</span> <span class="ss">&quot;changetimestamp&quot;</span><span class="p">)</span>
+       <span class="k">SELECT</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="s1">&#39;SHA=aa459b45ecf9816d472c2252af0b6c104f92a6faf2844547a03338e42e426f52&#39;</span><span class="p">,</span> <span class="s1">&#39;eWAbKQmxNP&#39;</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span>  <span class="s1">&#39;admin@organisation.com&#39;</span><span class="p">,</span> <span class="k">false</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>  <span class="s1">&#39;{admin,cf_remoteagent}&#39;</span><span class="p">,</span> <span class="n">now</span><span class="p">()</span>
+       <span class="k">WHERE</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="p">(</span><span class="k">SELECT</span> <span class="mi">1</span> <span class="k">FROM</span> <span class="n">users</span> <span class="k">WHERE</span> <span class="n">username</span><span class="o">=</span><span class="s1">&#39;admin&#39;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>To reset the CFEngine admin user run the following sql as root on your hub</p>
+<div class="highlight"><pre><code class="console"><span class="gp">root@hub:~#</span> psql cfsettings &lt; cfsettings-setadminpassword.sql
+</code></pre>
+</div>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/hub_administration.markdown` -->
+
+<hr>
+<h2 id="high-availability">High Availability</h2>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/high-availability.markdown` -->
+<h5 id="overview">Overview</h5>
+<p>Although CFEngine is a distributed system, with decisions made by autonomous agents running on each node, the hub can be viewed as a single point of failure. In order to be able to play both roles that hub is responsible for - policy serving and report collection - High Availability feature was introduced in 3.6.2.
+Essentially it is based on well known and broadly used cluster resource management tools - <a href="http://corosync.github.io/corosync/">corosync</a> and <a href="http://clusterlabs.org/">pacemaker</a> as well as PostgreSQL streaming replication feature.</p>
+<h5 id="design">Design</h5>
+<p>CFEngine High Availability is based on redundancy of all components, most importantly the PostgreSQL database. Active-passive PostgreSQL database configuration is the essential part of High Availability feature. As PostgreSQL supports different replication methods and active-passive configuration schemes, it doesn&#39;t provide out-of-the-box database failover-failback mechanism. To support the latter one well known cluster resources management solution based on Linux-HA project has been selected.</p>
+
+<p>Overview of CFEngine High Availability is shown in the diagram below.</p>
+
+<p><img src="ha_3.6.png" alt="HASetup"></p>
+
+<p>One hub is the active hub, while the other serves the role of a passive hub and is a fully redundant instance of the active one. If the passive host determines the active host is down, it will be promoted to active and will start serving the Mission Portal, collect reports and serve policy.</p>
+<h6 id="corosync-and-pacemaker">Corosync and pacemaker</h6>
+<p>Corosync and pacemaker are well known and broadly used mechanisms supporting cluster resource management. For CFEngine hub needs those are configured so that are managing PostgreSQL database and one or more IP addresses shared over the nodes in the cluster. In the ideal configuration one link managed by corosync/pacemaker is dedicated for PostgreSQL streaming replication and one for accessing Mission Portal so that once failover happens the change of active-passive roles and failover transition is transparent for end user. He can still use the same shared IP address to log in to the Mission Portal or use against API queries.</p>
+<h6 id="postgresql">PostgreSQL</h6>
+<p>For best performance, PostgreSQL streaming replication has been selected as database replication mode. It provides capability of shipping WAL files from active server to all standby database servers. This is a PostgreSQL 9.0 and above feature allowing continuous recovery and almost immediate visibility of data inserted to primary server by the standby. For more information about PostgreSQL streaming replication please see <a href="https://wiki.postgresql.org/wiki/Streaming_Replication">this</a>.</p>
+<h5 id="cfengine">CFEngine</h5>
+<p>In a High Availability setup all the clients are aware of existence of more than one hub. Current active hub is selected as a policy server and policy fetching and report collection is done by the active hub. One of the differences comparing to single-hub installation is that instead of having one policy server, clients have a list of hubs where they should fetch policy and initiate report collection if using call collect. Also after bootstrapping to either active or passive hub clients are implicitly redirected to active one. After that trust is established between the client and both active and passive hub so that all clients are capable to communicate with both. This allows transparent transition to passive hub once fail-over is happening, as all the clients have already established trust with passive hub as well.</p>
+<h6 id="mission-portal">Mission Portal</h6>
+<p>Mission Portal in 3.6.2 has a new indicator whitch shows the status of the High Availability configuration.</p>
+
+<p><img src="ha_health_OK.png" alt="HAHealth"></p>
+
+<p>High Availability status is constantly monitored so that once some malfunction is discovered the user is notified about the degraded state of the system. Besides simple visualization of High Availability, the user is able to get detailed information regarding the reason for a degraded state, as well as when data was last reported from each hub. This gives quite comprehensive knowledge and overview of the whole setup.</p>
+
+<p><img src="ha_degraded_indicator.png" alt="HADegraded"></p>
+
+<p><img src="ha_degraded_details.png" alt="HADegradedDetails"></p>
+<h6 id="inventory">Inventory</h6>
+<p>There are also new Mission Portal inventory variables indicating the IP address of the active hub instance and status of High Availability installation on each of hubs. Looking at inventory reports is especially helpful to diagnose any problems when High Availability is reported as <em>degraded</em>.</p>
+
+<p><img src="ha_inventory.png" alt="HAInventory"></p>
+<h6 id="cfengine-high-availability-installation">CFEngine High Availability installation</h6>
+<p>Existing CFEngine Enterprise installations can upgrade their single-node hub to a High Availability system in version 3.6.2. Detailed instruction how to upgrade from single hub to High Availability or how to install CFEngine High Availability from scratch can be found <a href="enterprise-cfengine-guide-high-availability-installation-guide.html" title="Installation Guide">here</a>.</p>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/high-availability.markdown` -->
+
+<hr>
+<h3 id="installation-guide">Installation Guide</h3>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/high-availability/installation-guide.markdown` -->
+<h6 id="overview">Overview</h6>
+<p>This is tutorial describing installation steps of <strong>CFEngine High Availability</strong> feature. It is suitable for both upgrading existing CFEngine installations to HA and for installing HA from scratch.
+Before starting installation we strongly recommend reading CFEngine High Availability overview. More detailed information can be found <a href="enterprise-cfengine-guide-high-availability.html" title="High Availability">here</a>.</p>
+<h6 id="installation-procedure">Installation procedure</h6>
+<p>As with most High Availability systems, setting it up requires carefully following a series of steps with dependencies on network components. The setup can therefore be error-prone, so if you are a CFEngine Enterprise customer we recommend that you contact support for assistance if you do not feel 100% comfortable of doing this on your own.</p>
+
+<p>Please also make sure you are having valid HA licenses for passive hub so that it will be able to handle all your CFEngine clients in case of failover.</p>
+<h6 id="hardware-configuration-and-os-pre-configuration-steps">Hardware configuration and OS pre-configuration steps</h6>
+<ul>
+<li>CFEngine 3.6.2 hub package for RHEL6 or CentOS6.</li>
+<li>We recommend selecting dedicated interface used for PostgreSQL replication and optionally one for heartbeat.</li>
+<li>We recommend having one shared IP address assigned for interface where MP is accessible (optionally) and one where PostgreSQL replication is configured (mandatory).</li>
+<li>Both active and passive hub machines must be configured so that host names are different.</li>
+<li>Basic hostname resolution works (hub names can be placed in <em>/etc/hosts</em> or DNS configured).</li>
+</ul>
+<h6 id="example-configuration-used-in-this-tutorial">Example configuration used in this tutorial</h6>
+<p>In this tutorial we are using following network configuration:</p>
+
+<ul>
+<li>Two nodes acting as active and passive where active node name is node1 and passive node name is node2.</li>
+<li>Each node having three NICs so that eth0 is used for heartbeat, eth1 is used for PostgreSQL replication and eth2 is used for MP and bootstrapping clients.</li>
+<li>IP addresses configured as follows:</li>
+</ul>
+<div class="tableOverflow"><table><thead><tr>
+<th>Node</th>
+<th align="left">eth0</th>
+<th align="left">eth1</th>
+<th align="left">eth2</th>
+</tr>
+</thead><tbody><tr>
+<td>node1</td>
+<td align="left">192.168.0.10</td>
+<td align="left">192.168.10.10</td>
+<td align="left">192.168.100.10</td>
+</tr>
+<tr>
+<td>node2</td>
+<td align="left">192.168.0.11</td>
+<td align="left">192.168.10.11</td>
+<td align="left">192.168.100.11</td>
+</tr>
+<tr>
+<td>cluster shared</td>
+<td align="left">---</td>
+<td align="left">192.168.10.13</td>
+<td align="left">192.168.100.13</td>
+</tr>
+</tbody></table></div>
+<p>Detailed network configuration is shown on the picture below:</p>
+
+<p><img src="ha_network_setup.png" alt="HAGuideNetworkSetup"></p>
+<h6 id="installing-cluster-management-tools">Installing cluster management tools</h6>
+<p>Before you begin you should have corosync (version 1.4.1 or higher) and pacemaker (version 1.1.10-14.el6_5.3 or higher) installed on both nodes. For your convenience we also recommend having crmsh installed. Detailed instructions how to install and set up all components are accessible <a href="http://clusterlabs.org/">here</a> and <a href="http://corosync.github.io/corosync/">here</a>.</p>
+
+<p>Once pacemaker and corosync are successfully installed on both nodes please follow steps below to set up it as needed by CFEngine High Availability.</p>
+
+<p><strong>IMPORTANT:</strong> please carefully follow the indicators describing if given step should be performed on active, passive or both nodes.</p>
+
+<ol>
+<li><p>Configure corosync ( <strong>active and passive</strong> ):</p>
+<div class="highlight"><pre><code class="bash"><span class="nb">echo</span> <span class="s2">&quot;START=yes&quot;</span> &gt; /etc/default/corosync
+</code></pre>
+</div></li>
+<li><p>Add pacemaker support ( <strong>active and passive</strong> ):</p>
+<div class="highlight"><pre><code class="bash"><span class="nb">echo</span> <span class="s2">&quot;service {</span>
+<span class="s2"># Load the Pacemaker Cluster Resource Manager</span>
+<span class="s2">ver: 1</span>
+<span class="s2">name: pacemaker</span>
+<span class="s2">}&quot;</span> &gt; /etc/corosync/service.d/pacemaker
+</code></pre>
+</div></li>
+<li><p>Create corosync cluster configuration ( <strong>active and passive</strong> ):</p>
+
+<ol>
+<li><code>cp /etc/corosync/corosync.conf.example /etc/corosync/corosync.conf</code></li>
+<li>Find line with <code>bindnetaddr:</code> and set to network address of interface used for cluster heartbeat (e.g. <code>bindnetaddr: 192.168.1.0</code>).</li>
+<li>Configure <code>mcastaddr:</code> and <code>mcastport:</code> if defaults are conflicting with other components placed in your network.</li>
+</ol>
+
+<p><strong>NOTE:</strong> If for some reason multicast is not supported by your network configuration (most times you need multicast broadcasting to be explicitly switched on) it is possible to use unicast configuration. For more details please refer <a href="http://corosync.github.io/corosync/">corosync configuration guide</a>.</p></li>
+<li><p>Modify content of <em>/usr/lib/ocf/resource.d/heartbeat/pgsql</em> to contain CFEngine related configuration ( <strong>active and passive</strong> ):</p>
+<div class="highlight"><pre><code class="text"># Defaults
+OCF_RESKEY_pgctl_default=/var/cfengine/bin/pg_ctl
+OCF_RESKEY_psql_default=/var/cfengine/bin/psql
+OCF_RESKEY_pgdata_default=/var/cfengine/state/pg/data
+OCF_RESKEY_pgdba_default=cfpostgres
+OCF_RESKEY_pghost_default=&quot;&quot;
+OCF_RESKEY_pgport_default=5432
+OCF_RESKEY_start_opt_default=&quot;&quot;
+OCF_RESKEY_pgdb_default=template1
+OCF_RESKEY_logfile_default=/dev/null
+OCF_RESKEY_stop_escalate_default=30
+OCF_RESKEY_monitor_user_default=&quot;&quot;
+OCF_RESKEY_monitor_password_default=&quot;&quot;
+OCF_RESKEY_monitor_sql_default=&quot;select now();&quot;
+OCF_RESKEY_check_wal_receiver_default=&quot;false&quot;
+# Defaults for replication
+OCF_RESKEY_rep_mode_default=none
+OCF_RESKEY_node_list_default=&quot;&quot;
+OCF_RESKEY_restore_command_default=&quot;&quot;
+OCF_RESKEY_archive_cleanup_command_default=&quot;&quot;
+OCF_RESKEY_recovery_end_command_default=&quot;&quot;
+OCF_RESKEY_master_ip_default=&quot;&quot;
+OCF_RESKEY_repuser_default=&quot;cfpostgres&quot;
+OCF_RESKEY_primary_conninfo_opt_default=&quot;&quot;
+OCF_RESKEY_restart_on_promote_default=&quot;false&quot;
+OCF_RESKEY_tmpdir_default=&quot;/var/cfengine/state/pg/tmp&quot;
+OCF_RESKEY_xlog_check_count_default=&quot;3&quot;
+OCF_RESKEY_crm_attr_timeout_default=&quot;5&quot;
+OCF_RESKEY_stop_escalate_in_slave_default=30
+</code></pre>
+</div></li>
+<li><p>Run corosyn and pacemaker to check if both cluster nodes are seen each other ( <strong>active and passive</strong> ):</p>
+<div class="highlight"><pre><code class="bash">/etc/init.d/corosync start
+/etc/init.d/pacemaker start
+crm_mon -Afr1
+</code></pre>
+</div>
+
+<p>As a result of running above command you should see output similar to one below:</p>
+<div class="highlight"><pre><code class="text">Last updated: Wed Aug 20 15:47:47 2014
+Stack: classic openais (with plugin)
+Current DC: node1 - partition with quorum
+Version: 1.1.10-14.el6_5.3-368c726
+2 Nodes configured, 2 expected votes
+4 Resources configured
+
+Online: [ node1 node2 ]
+</code></pre>
+</div></li>
+<li><p>Once corosync and pacemaker is running configure pacemaker to be able to manage PostgreSQL and needed shared IP addressees ( <strong>master only</strong> ):</p>
+<div class="highlight"><pre><code class="text">property \
+no-quorum-policy=&quot;ignore&quot; \
+stonith-enabled=&quot;false&quot; \
+crmd-transition-delay=&quot;0s&quot;
+
+rsc_defaults \
+resource-stickiness=&quot;INFINITY&quot; \
+migration-threshold=&quot;1&quot;
+
+primitive ip-cluster ocf:heartbeat:IPaddr2 \
+params \
+ip=&quot;192.168.100.13&quot; \                        &lt;&lt;== modify this to be your shared cluster address (accessible by MP)
+nic=&quot;eth2&quot; \                            &lt;&lt;== modify this to be your interface where MP should be accessed
+cidr_netmask=&quot;24&quot; \                        &lt;&lt;== modify this if needed
+op start timeout=&quot;60s&quot; interval=&quot;0s&quot; on-fail=&quot;stop&quot; \
+op monitor timeout=&quot;60s&quot; interval=&quot;10s&quot; on-fail=&quot;restart&quot; \
+op stop timeout=&quot;60s&quot; interval=&quot;0s&quot; on-fail=&quot;block&quot;
+
+primitive ip-rep ocf:heartbeat:IPaddr2 \
+params \
+ip=&quot;192.168.10.13&quot; \                        &lt;&lt;== modify this to be your shared address for PostgreSQL replication
+nic=&quot;eth1&quot; \                             &lt;&lt;== modify this to be interface PostgreSQL will use for replication
+cidr_netmask=&quot;24&quot; \                        &lt;&lt;== modify this if needed
+meta \
+migration-threshold=&quot;0&quot; \
+op start timeout=&quot;60s&quot; interval=&quot;0s&quot; on-fail=&quot;restart&quot; \
+op monitor timeout=&quot;60s&quot; interval=&quot;10s&quot; on-fail=&quot;restart&quot; \
+op stop timeout=&quot;60s&quot; interval=&quot;0s&quot; on-fail=&quot;block&quot;
+
+primitive pgsql ocf:heartbeat:pgsql \
+params \
+pgctl=&quot;/var/cfengine/bin/pg_ctl&quot; \
+psql=&quot;/var/cfengine/bin/psql&quot; \
+tmpdir=&quot;/var/cfengine/state/pg/tmp&quot; \
+pgdata=&quot;/var/cfengine/state/pg/data/&quot; \
+rep_mode=&quot;async&quot; \
+node_list=&quot;node1 node2&quot; \                    &lt;&lt;== modify this to point to host-names of MASTER and SLAVE respectivelly
+primary_conninfo_opt=&quot;keepalives_idle=60 keepalives_interval=5 keepalives_count=5&quot; \
+master_ip=&quot;192.168.10.13&quot; \                    &lt;&lt;== modify this to point to the shared address of PostgreSQL replication
+restart_on_promote=&quot;true&quot; \
+op start timeout=&quot;120s&quot; interval=&quot;0s&quot; on-fail=&quot;restart&quot; \
+op monitor timeout=&quot;60s&quot; interval=&quot;4s&quot; on-fail=&quot;restart&quot; \
+op monitor timeout=&quot;60s&quot; interval=&quot;3s&quot; on-fail=&quot;restart&quot; role=&quot;Master&quot; \
+op promote timeout=&quot;120s&quot; interval=&quot;0s&quot; on-fail=&quot;restart&quot; \
+op demote timeout=&quot;120s&quot; interval=&quot;0s&quot; on-fail=&quot;stop&quot; \
+op stop timeout=&quot;120s&quot; interval=&quot;0s&quot; on-fail=&quot;block&quot; \
+op notify timeout=&quot;90s&quot; interval=&quot;0s&quot;
+
+ms pgsql-ms pgsql \
+meta \
+master-max=&quot;1&quot; \
+master-node-max=&quot;1&quot; \
+clone-max=&quot;2&quot; \
+clone-node-max=&quot;1&quot; \
+notify=&quot;true&quot;
+
+group ip-group \
+ip-cluster \
+ip-rep
+
+colocation rsc_colocation-1 inf: ip-group pgsql-ms:Master
+order rsc_order-1 0: pgsql-ms:promote ip-group:start symmetrical=false
+order rsc_order-2 0: pgsql-ms:demote ip-group:stop symmetrical=false
+</code></pre>
+</div>
+
+<p>To apply above configuration create temporary file (*/tmp/cfengine.cib*) and run <code>crm configure &lt; /tmp/cfengine.cib</code>.</p></li>
+<li><p>Stop pacemaker and then corosync on both active and passive node.</p></li>
+</ol>
+
+<p><strong>NOTE:</strong> Don&#39;t worry if at this point you are seeing some pacemaker or corosync errors.</p>
+<h6 id="postgresql-configuration">PostgreSQL configuration</h6>
+<p><strong>Before starting this make sure that both corosync and pacemaker are not running.</strong></p>
+
+<ol>
+<li>Install CFEngine hub package on both active and passive node.</li>
+<li>On active node bootstrap hub to itself to start acting as policy server (this step can be skipped if you are upgrading existing installation to High Availability).</li>
+<li>On passive node bootstrap it to active hub. While bootstrapping trust between both hubs will be established and keys will be exchanged.</li>
+<li><p>After successful bootstrapping passive to active bootstrap passive to itself. From now on it will start operate as a hub so that it will be capable to collect reports and serve policy files. Please notice that while bootstrapping passive to itself you can see following message:</p>
+<div class="highlight"><pre><code class="text">&quot;R: This host assumes the role of policy server
+R: Updated local policy from policy server
+R: Failed to start the server
+R: Did not start the scheduler
+R: You are running a hard-coded failsafe. Please use the following command instead.
+    &quot;/var/cfengine/bin/cf-agent&quot; -f /var/cfengine/inputs/update.cf
+2014-09-29T17:36:24+0000   notice: Bootstrap to &#39;10.100.100.116&#39; completed successfully!&quot;
+</code></pre>
+</div></li>
+<li><p>Configure PostgreSQL on active <strong>active node</strong>:</p>
+
+<ol>
+<li>Create two directories owned by PostgreSQL user: /var/cfengine/state/pg/data/pg_archive and /var/cfengine/state/pg/tmp</li>
+<li><p>Modify <em>postgresql.conf</em> configuration file</p>
+<div class="highlight"><pre><code class="bash"><span class="nb">echo</span> <span class="s2">&quot;listen_addresses = &#39;*&#39;</span>
+<span class="s2">wal_level = hot_standby</span>
+<span class="s2">max_wal_senders=5</span>
+<span class="s2">wal_keep_segments = 32</span>
+<span class="s2">hot_standby = on</span>
+<span class="s2">restart_after_crash = off&quot;</span> &gt;&gt; /var/cfengine/state/pg/data/postgresql.conf
+</code></pre>
+</div>
+
+<p><strong>NOTE:</strong> In above configuration <em>wal_keep_segments</em> value specifies minimum number of segments (16 megabytes each) retained in PostgreSQL WAL logs directory in case a standby server needs to fetch them for streaming replication. It should be adjusted to number of clients handled by CFEngine hub and available disk space. Having installation with 1000 clients handled by CFEngine hub and assuming passive hub should be able to catch up with active one after 24 hours break, the value should be set close to 250 (4 GB of additional disk space).</p></li>
+<li><p>Modify <em>pg_hba.conf</em> configuration file</p>
+<div class="highlight"><pre><code class="bash"><span class="nb">echo</span> <span class="s2">&quot;host replication all 192.168.10.10/32 trust</span>
+<span class="s2">host replication all 192.168.10.11/32 trust</span>
+<span class="s2">local replication all trust</span>
+<span class="s2">host replication all 127.0.0.1/32 trust</span>
+<span class="s2">host replication all ::1/128 trust</span>
+<span class="s2">&quot;</span> &gt;&gt; /var/cfengine/state/pg/data/pg_hba.conf
+</code></pre>
+</div>
+
+<p><strong>IMPORTANT:</strong> Above configuration allows accessing hub with cfpostgres user without any authentication from both cluster nodes. For security reasons we strongly advise to create replication user in PostgreSQL and protect access using password or certificate. What is more we advise using ssl-secured replication instead of described here unencrypted method.</p></li>
+<li><p>Adding above changes needs PostgreSQL server to be restarted!</p>
+<div class="highlight"><pre><code class="text">cd /tmp &amp;&amp; su cfpostgres -c &quot;/var/cfengine/bin/pg_ctl -w -D /var/cfengine/state/pg/data stop -m fast&quot;
+cd /tmp &amp;&amp; su cfpostgres -c &quot;/var/cfengine/bin/pg_ctl -w -D /var/cfengine/state/pg/data -l /var/log/postgresql.log start&quot;
+</code></pre>
+</div></li>
+</ol></li>
+<li><p>Configure PostgreSQL on <strong>passive node</strong>:</p>
+
+<ol>
+<li>Remove PostgreSQL directory running following command <code>rm -rf /var/cfengine/state/pg/data/*</code></li>
+<li>Do database backup running <code>su cfpostgres -c &quot;cd /tmp &amp;&amp; /var/cfengine/bin/pg_basebackup -h node1 -U cfpostgres -D /var/cfengine/state/pg/data -X stream -P</code></li>
+<li><p>Configure <em>recovery.conf</em> file indicating PostgreSQL running as hot-standby replica</p>
+<div class="highlight"><pre><code class="text">echo &quot;standby_mode = &#39;on&#39;
+primary_conninfo = &#39;host=node1 port=5432 user=cfpostgres application_name=node2&#39;
+&quot; &gt; /var/cfengine/state/pg/data/recovery.conf
+</code></pre>
+</div></li>
+</ol>
+
+<p><strong>NOTE:</strong> change host and application_name to point to host names of active and passive nodes respectively.</p></li>
+<li><p>Start PostgreSQL on passive hub using following command:</p>
+<div class="highlight"><pre><code class="text">cd /tmp &amp;&amp; su cfpostgres -c &quot;/var/cfengine/bin/pg_ctl -w -D /var/cfengine/state/pg/data -l /var/log/postgresql.log start&quot;
+</code></pre>
+</div></li>
+</ol>
+
+<p>Verify PostgreSQL status on passive instance running <code>echo &quot;select pg_is_in_recovery();&quot; | /var/cfengine/bin/psql cfdb</code>.
+Above should return <code>t</code> indicating that slave is working in recovery mode.</p>
+
+<p>Verify if passive DB instance is connected to active running following command on active hub <code>echo &quot;select * from pg_stat_replication;&quot; | /var/cfengine/bin/psql cfdb</code>.
+Above should return one entry indicating that host <em>node1</em> is connected to database in streaming replication mode.</p>
+<h6 id="cfengine-configuration">CFEngine configuration</h6>
+<p><strong>Before starting this step make sure that PostgreSQL is running on both active and passive nodes and passive node is being replicated.</strong></p>
+
+<ol>
+<li><p>Create HA configuration file on both active and passive hubs like below:</p>
+<div class="highlight"><pre><code class="text">echo &quot;cmp_master: PRI
+cmp_slave: HS:async,HS:sync,HS:alone
+cmd: /usr/sbin/crm_attribute -l reboot -n pgsql-status -G -q&quot; &gt; /var/cfengine/ha.cfg
+</code></pre>
+</div></li>
+<li><p>Create HA JSON configuration file as below:</p>
+<div class="highlight"><pre><code class="text">echo &quot;{
+\&quot;192.168.100.10\&quot;:
+{
+ \&quot;sha\&quot;: \&quot;c14a17325b9a1bdb0417662806f579e4187247317a9e1739fce772992ee422f6\&quot;,
+ \&quot;internal_ip\&quot;: \&quot;192.168.100.10\&quot;,
+ \&quot;tags\&quot;: [\&quot;node1\&quot;]
+},
+\&quot;192.168.100.11\&quot;:
+{
+ \&quot;sha\&quot;: \&quot;b492eb4b59541c02a13bd52efe17c6a720e8a43b7c8f8803f3fc85dee7951e4f\&quot;,
+ \&quot;internal_ip\&quot;: \&quot;192.168.100.11\&quot;,
+ \&quot;tags\&quot;: [\&quot;node2\&quot;]
+}
+}&quot; &gt; /var/cfengine/masterfiles/cfe_internal/ha/ha_info.json
+</code></pre>
+</div>
+
+<p>The <code>internal_ip</code> attribute is the IP address of the hub (the one you used to bootstrapped itself to) and <code>sha</code> is the key of the hub. The <code>sha</code> key can be found by running <code>cf-key -s</code> the on the respective hub and match that to the <code>internal_ip</code>.</p></li>
+<li><p>Modify <em>/var/cfengine/masterfiles/def.cf</em> and enable HA by uncommenting <code>&quot;enable_cfengine_enterprise_hub_ha&quot; expression =&gt; &quot;enterprise_edition&quot;;</code> line (make sure to comment or remove line <code>&quot;enable_cfengine_enterprise_hub_ha&quot; expression =&gt; &quot;!any&quot;;</code>).</p></li>
+<li><p>Run <em>update.cf</em> to make sure that new policy is copied from <em>masterfiles</em> to <em>inputs</em> <code>cf-agent -f update.cf</code> on active first and then on passive.</p></li>
+<li><p>Start corosync and pacemaker on active node first. Make sure that PostgreSQL is running and managed by corosync/pacemaker.
+Verify the status using following commend <code>crm_mon -Afr1</code>
+You should see something similar to one below:</p>
+<div class="highlight"><pre><code class="text">Last updated: Wed Aug 20 15:54:32 2014
+Last change: Wed Aug 20 15:54:09 2014 via crm_attribute on node1
+Stack: classic openais (with plugin)
+Current DC: node1 - partition WITHOUT quorum
+Version: 1.1.10-14.el6_5.3-368c726
+2 Nodes configured, 2 expected votes
+4 Resources configured
+
+Online: [ node1 ]
+OFFLINE: [ node2 ]
+
+Full list of resources:
+
+Master/Slave Set: pgsql-ms [pgsql]
+    Stopped: [ node1 node2 ]
+Resource Group: ip-group
+    ip-cluster    (ocf::heartbeat:IPaddr2):    Stopped
+    ip-rep    (ocf::heartbeat:IPaddr2):    Stopped
+
+Node Attributes:
+* Node node1:
+    + master-pgsql                        : -INFINITY
+    + pgsql-data-status                   : LATEST
+    + pgsql-status                        : STOP
+
+Migration summary:
+* Node node1:
+   pgsql: migration-threshold=1 fail-count=2 last-failure=&#39;Wed Aug 20 15:54:12 2014&#39;
+
+Failed actions:
+    pgsql_monitor_4000 on node1 &#39;not running&#39; (7): call=28, status=complete, last-rc-change=&#39;Wed Aug 20 15:54:12 2014&#39;, queued=300ms, exec=1ms
+</code></pre>
+</div>
+
+<p>By default after starting corosync it will stop PostgreSQL as there is no connection with second node. <em>pgsql-status</em> should be <em>STOP</em> and PostgreSQL should not run.
+If this is the case repair PostgreSQL resource using <code>crm resource cleanup pgsql</code>.
+After this run <code>crm_mon -Afr1</code> again and wait until <em>pgsql-status</em> is reported as <em>PRI</em>.</p></li>
+<li><p>Start corosync on SLAVE node.
+After this second node should immediately be reported as passive and you should see output of <code>crm_mon -Afr1</code> similar to one below:</p>
+<div class="highlight"><pre><code class="text">Last updated: Wed Aug 20 15:47:47 2014
+Last change: Wed Aug 20 15:57:56 2014 via crm_attribute on node1
+Stack: classic openais (with plugin)
+Current DC: node1 - partition with quorum
+Version: 1.1.10-14.el6_5.3-368c726
+2 Nodes configured, 2 expected votes
+4 Resources configured
+
+Online: [ node1 node2 ]
+
+Full list of resources:
+
+Master/Slave Set: pgsql-ms [pgsql]
+     Masters: [ node1 ]
+     Slaves: [ node2 ]
+Resource Group: ip-group
+     ip-cluster    (ocf::heartbeat:IPaddr2):    Started node1
+     ip-rep    (ocf::heartbeat:IPaddr2):    Started node1
+
+Node Attributes:
+* Node node1:
+    + master-pgsql                        : 1000
+    + pgsql-data-status                   : LATEST
+    + pgsql-master-baseline               : 0000000006000090
+    + pgsql-status                        : PRI
+* Node node2:
+    + master-pgsql                        : 1000
+    + pgsql-data-status                   : STREAMING|ASYNC
+    + pgsql-status                        : HS:alone
+    + pgsql-xlog-loc                      : 00000000060000F8
+
+Migration summary:
+* Node node1:
+* Node node2:
+</code></pre>
+</div>
+
+<p><strong>IMPORTANT:</strong> Please make sure that <em>pgsql-status</em> for the active node is reported as <em>PRI</em> and passive as <em>HS:alone</em> or <em>HS:async</em>.</p></li>
+<li><p><strong>Enjoy your working CFEngine High Availability setup!</strong></p></li>
+</ol>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/high-availability/installation-guide.markdown` -->
+
+<hr>
+<h2 id="install-and-get-started">Install and Get Started</h2>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/install-get-started.markdown` -->
+
+<ul>
+<li><a href="enterprise-cfengine-guide-install-get-started.html#installation" title="Install and Get Started - Installation ">Installation</a></li>
+<li><a href="enterprise-cfengine-guide-install-get-started.html#post-install-configuration" title="Install and Get Started - Post-Install Configuration ">Post-Install Configuration</a></li>
+</ul>
+<h6 id="installation">Installation</h6>
+<p>The <a href="guide-installation-and-configuration-general-installation.html" title="General Installation">General Installation</a> instructions provide the detailed steps for installing CFEngine, which are generally the same steps to follow for CFEngine Enterprise, with the exception of license keys (if applicable), and also some aspects of post-installation and configuration.</p>
+<h6 id="installing-enterprise-licenses">Installing Enterprise Licenses</h6>
+<p>Before you begin, you should have your license key, unless you only
+plan to use the free 25 node license. The installation instructions
+will be provided with the key.</p>
+<h6 id="post-install-configuration">Post-Install Configuration</h6><h6 id="change-email-setup-after-cfengine-enterprise-installation">Change Email Setup After CFEngine Enterprise Installation</h6>
+<p>For Enterprise 3.6 local mail relay is used, and it is assumed the server has a proper mail setup.</p>
+
+<p>The default FROM email for all emails sent from the Mission Portal is <code>admin@organization.com</code>. This can be changed on the CFE Server in <code>/var/cfengine/httpd/htdocs/application/config/appsettings.php:$config[&#39;appemail&#39;]</code>.</p>
+<h6 id="version-your-policies">Version your policies</h6>
+<p>Consider enabling the built-in version control of your policies as
+described in
+<a href="enterprise-cfengine-guide-best-practices.html#version-control-and-configuration-policy" title="Best Practices - Version Control and Configuration Policy ">Version Control and Configuration Policy</a></p>
+
+<p>Whether you do or not, please put your policies in some kind of
+backed-up VCS. Losing work because of &quot;fat fingering&quot; <code>rm</code> commands is
+very, very depressing.</p>
+<h6 id="review-settings">Review settings</h6>
+<p>See <a href="guide-writing-and-serving-policy-policy-framework.html" title="The Policy Framework">The Policy Framework</a> for a full list of all the settings you can configure.</p>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/install-get-started.markdown` -->
+
+<hr>
+<h2 id="user-interface">User Interface</h2>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/user-interface.markdown` -->
+
+<p>The challenge in engineering IT infrastructure, especially as it scales vertically and horizontally, is to recognize the system components, what they do at any given moment in time (or over time), and when and how they change state.</p>
+
+<p>CFEngine Enterprise&#39;s data collection service, the cf-hub collector, collects, organizes, and stores data from every host.  The data is stored primarily in a PostgreSQL database.</p>
+
+<p>CFEngine Enterprise&#39;s user interface, the Mission Portal makes that data available for high level reports or alerts and notifications.  The reports can be designed in a GUI report builder or directly with SQL statements passed to PostgreSQL.</p>
+
+<p><img src="Mission-Portal-Dashboard.png" alt="Dashboard"></p>
+
+<p>The Mission Portal also allows authorized infrastructure engineers to quickly and easily modify any group of machines through the Design Center toolchain, which uses a data-driven policy template mechanism called sketches.</p>
+
+<ul>
+<li><a href="enterprise-cfengine-guide-user-interface.html#hosts-and-health" title="User Interface - Hosts and Health ">Hosts and Health</a></li>
+<li><a href="enterprise-cfengine-guide-user-interface.html#alerts-and-notifications" title="User Interface - Alerts and Notifications ">Alerts and Notifications</a></li>
+<li><a href="enterprise-cfengine-guide-user-interface.html#reporting" title="User Interface - Reporting ">Reporting</a></li>
+<li><a href="enterprise-cfengine-guide-user-interface.html#monitoring" title="User Interface - Monitoring ">Monitoring</a></li>
+<li><a href="enterprise-cfengine-guide-user-interface.html#design-center-ui" title="User Interface - Design Center UI ">Design Center UI</a></li>
+<li><a href="enterprise-cfengine-guide-user-interface.html#settings" title="User Interface - Settings ">Settings</a></li>
+</ul>
+<h6 id="hosts-and-health">Hosts and Health</h6>
+<p>CFEngine collects data on promise compliance, and sorts hosts according to 3 different categories: erroneous, fully compliant, and lacking data.</p>
+
+<p>Find out more: <a href="enterprise-cfengine-guide-hosts-health.html" title="Hosts and Health">Hosts and Health</a></p>
+<h6 id="alerts-and-notifications">Alerts and Notifications</h6>
+<p>The dashboard contains informative widgets that you can customize to create alerts. All notifications of alert state changes, e.g. from OK to not-OK, are stored in an event log for later inspection and analysis.</p>
+
+<p><img src="welcome_2nd_screen.png" alt="Enterprise UI Alerts"></p>
+
+<p>Alerts can have three different severity level: low, medium and high. These are represented by yellow, orange and red rings respectively, along with the percentage of hosts alerts have triggered on. Hovering over the widget will show the information as text in a convenient list format.</p>
+
+<p><img src="widget_1.gif" alt="Enterprise UI Alerts"></p>
+
+<p>You can pause alerts during maintenance windows or while working on resolving an underlying issue to avoid unnecessary triggering and notifications.</p>
+
+<p><img src="pause_alerts.gif" alt="Enterprise UI Alerts"></p>
+
+<p>Alerts can have three different states: OK, triggered, and paused. It is easy to filter by state on each widget&#39;s alert overview.</p>
+
+<p>Find out more: <a href="enterprise-cfengine-guide-alerts-notifications.html" title="Alerts and Notifications">Alerts and Notifications</a></p>
+<h6 id="reporting">Reporting</h6>
+<p>Inventory reports allow for quick reporting on out-of-the-box attributes. The attributes are also extensible, by tagging any CFEngine variable or class, such as the role of the host, inside your CFEngine policy. These custom attributes will be automatically added to the Mission Portal.</p>
+
+<p><img src="inventory-hover.png" alt="Enterprise UI Reporting"></p>
+
+<p>You can reduce the amount of data or find specific information by filtering on attributes and host groups. Filtering is independent from the data presented in the results table: you can filter on attributes without them being presented in the table of results.</p>
+
+<p><img src="inventory_filter.gif" alt="Enterprise UI Reporting"></p>
+
+<p>Add and remove columns from the results table in real time, and once you&#39;re happy with your report, save it, export it, or schedule it to be sent by email regularly.</p>
+
+<p><img src="add_columns.gif" alt="Enterprise API Overview"></p>
+
+<p>Find out more: <a href="enterprise-cfengine-guide-reporting.html" title="Reporting UI">Reporting</a></p>
+
+<p>Find out more about writing your own inventory modules: <a href="guide-writing-and-serving-policy-policy-framework.html#cfengine-3-inventory-modules" title="The Policy Framework - CFEngine 3 Inventory Modules ">Inventory modules</a></p>
+<h6 id="monitoring">Monitoring</h6>
+<p>Monitoring allows you to get an overview of your hosts over time.</p>
+
+<p>Find out more: <a href="enterprise-cfengine-guide-monitoring.html" title="Monitoring">Monitoring</a></p>
+<h6 id="design-center-ui">Design Center UI</h6>
+<p>The Design Center UI allows authorized infrastructure engineers to configure, deploy, and monitor data-driven policy templates known as sketches.</p>
+
+<p>Find out more: <a href="reference-design-center.html" title="Design Center">Design Center</a></p>
+<h6 id="settings">Settings</h6>
+<p>A variety of CFEngine and system properties can be changed in the Settings view.</p>
+
+<p>Find out more: <a href="enterprise-cfengine-guide-settings.html" title="Settings">Settings</a></p>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/user-interface.markdown` -->
+
+<hr>
+<h2 id="settings">Settings</h2>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/settings.markdown` -->
+
+<p>A variety of CFEngine and system properties can be changed in the Settings view.</p>
+
+<ul>
+<li><a href="enterprise-cfengine-guide-settings.html#opening-settings" title="Settings - Opening Settings ">Opening Settings</a></li>
+<li><a href="enterprise-cfengine-guide-settings.html#preferences" title="Settings - Preferences ">Preferences</a></li>
+<li><a href="enterprise-cfengine-guide-settings.html#user-management" title="Settings - User Management ">User Management</a></li>
+<li><a href="enterprise-cfengine-guide-settings.html#manage-apps" title="Settings - Manage Apps ">Manage Apps</a></li>
+<li><a href="enterprise-cfengine-guide-settings.html#version-control-repository" title="Settings - Version Control Repository ">Version Control Repository</a></li>
+<li><a href="enterprise-cfengine-guide-settings.html#host-identifier" title="Settings - Host Identifier ">Host Identifier</a></li>
+<li><a href="enterprise-cfengine-guide-settings.html#about-cfengine" title="Settings - About CFEngine ">About CFEngine</a></li>
+</ul>
+<h6 id="opening-settings">Opening Settings</h6>
+<p><img src="Settings-1.png" alt="Opening Settings"></p>
+
+<p>Settings are accessible from any view of the mission portal, from the drop down in the top right hand corner.</p>
+<h6 id="preferences">Preferences</h6>
+<p><img src="Settings-2.png" alt="Preferences"></p>
+
+<p>User settings and preferences allows the CFEngine Enterprise administrator to change various options, including:</p>
+
+<ul>
+<li>User authentication</li>
+<li>Turn on or off RBAC</li>
+<li>Log level</li>
+<li>Customize the user experience with the organization logo</li>
+</ul>
+<h6 id="user-management">User Management</h6>
+<p><img src="Settings-3.png" alt="User Management"></p>
+
+<p>User management is for adding or adjusting CFEngine Enterprise UI users, including their name, role, and password.</p>
+<h6 id="manage-apps">Manage Apps</h6>
+<p><img src="Settings-4.png" alt="Manage Apps"></p>
+
+<p>Application settings can help adjust some of CFEngine Enterprise UI app features, including the order in which the apps appear and their status (on or off).</p>
+<h6 id="version-control-repository">Version Control Repository</h6>
+<p><img src="Settings-5.png" alt="Version Control Repository"></p>
+
+<p>The repository holding the organization&#39;s masterfiles can be adjusted on the Version Control Repository screen.</p>
+<h6 id="host-identifier">Host Identifier</h6>
+<p><img src="Settings-6.png" alt="Host Identifier"></p>
+
+<p>Host identity for the server can be set within settings, and can be adjusted to refer to the FQDN, IP address, or an unqualified domain name.</p>
+<h6 id="about-cfengine">About CFEngine</h6>
+<p><img src="Settings-7.png" alt="About CFEngine"></p>
+
+<p>The About CFEngine screen contains important information about the specific version of CFEngine being used, license information, and more.</p>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/settings.markdown` -->
+
+<hr>
+<h2 id="hosts-and-health">Hosts and Health</h2>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/hosts-health.markdown` -->
+<h6 id="host-compliance">Host Compliance</h6>
+<p>CFEngine collects data on <code>promise</code> compliance. Each host is in one of two groups: out of compliance or fully compliant.</p>
+
+<ul>
+<li>A host is considered out of compliance if less than 100% of its promises were kept.</li>
+<li>A host is considered fully compliant if 100% of its promises were kept.</li>
+</ul>
+
+<p>You can look at a specific sub-set of your hosts by selecting a category from the menu on the left.</p>
+<h6 id="host-info">Host Info</h6>
+<p>Here you will find extensive information on single hosts that CFEngine detects automatically in your environment. Since this is data gathered per host, you need to select a single host from the menu on the left first.</p>
+<h6 id="host-health">Host Health</h6>
+<p><img src="Mission-Portal-Hosts-1.png" alt="Hosts"></p>
+
+<p>You can get quick access to the health of hosts, including direct links to reports, from the Health drop down at the top of every Enterprise UI screen. Hosts are listed as unhealthy if:</p>
+
+<ul>
+<li>the hub was not able to connect to and collect data from the host within a set time interval (unreachable host). The time interval can be set in the Mission Portal settings.</li>
+<li>the policy did not get executed for the last three runs. This could be caused by <a href="reference-components-cf-execd.html" title="cf-execd"><code>cf-execd</code></a> not running on the host (scheduling deviation) or an error in policy that stops its execution. The hub is still able to contact the host, but it will return stale data because of this deviation.</li>
+</ul>
+
+<p>In either situation the data from that host will be from old runs and probably not reflect the current state of that host.</p>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/hosts-health.markdown` -->
+
+<hr>
+<h2 id="alerts-and-notifications">Alerts and Notifications</h2>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/alerts-notifications.markdown` -->
+<h6 id="create-a-new-alert">Create a New Alert</h6>
+<ul>
+<li><p>From the Dashboard, locate the rectangle with the dotted border.</p></li>
+<li><p>When the cursor is hovering over top, an <strong>Add</strong> button will appear.</p></li>
+</ul>
+
+<p><img src="Alerts.new.png" alt="New Alerts"></p>
+
+<ul>
+<li>Click the button to begin creating the alert.</li>
+</ul>
+
+<p><img src="Alerts.top.name.png" alt="New Alerts Name"></p>
+
+<ul>
+<li><p>Add a unique name for the alert.</p></li>
+<li><p>Each alert has a visual indication of its severity, represented by one of the following colors:</p>
+
+<ul>
+<li><strong>Low</strong>: Yellow</li>
+<li><strong>Medium</strong>: Orange</li>
+<li><strong>High</strong>: Red</li>
+</ul></li>
+</ul>
+
+<p><img src="Alerts.top.severity.png" alt="New Alerts Severity"></p>
+
+<ul>
+<li><p>From the <strong>Severity</strong> dropdown box, select one of the three options available.</p></li>
+<li><p>The <strong>Select Condition</strong> drop down box represents an inventory of existing conditional rules, as well as an option to create a new one    </p></li>
+</ul>
+
+<p><img src="Alerts.top.condition.png" alt="New Alerts Condition"></p>
+
+<ul>
+<li><p>When selecting an existing conditional rule, the name of the condition will automatically populate the mandatory condition <strong>Name</strong> field.</p></li>
+<li><p>When creating a new condition the <strong>Name</strong>field must be filled in.</p></li>
+</ul>
+
+<p><img src="Alerts.bottom.condition.type.png" alt="New Alerts Condition Type"></p>
+
+<ul>
+<li><p>Each alert also has a <strong>Condition type</strong>:</p>
+
+<ul>
+<li><strong>Policy</strong> conditions trigger alerts based on CFEngine policy compliance status. They can be set on bundles, promisees, and promises. If nothing is specified, they will trigger alerts for all policy.</li>
+<li><strong>Inventory</strong> conditions trigger alerts for inventory attributes. These attributes correspond to the ones found in inventory reports.</li>
+<li><strong>Sketch</strong> conditions trigger alerts based on the compliance status of the part of CFEngine policy which has been added by a specific sketch during its activation.</li>
+<li><strong>Software Updates</strong> conditions trigger alerts based on packages available for update in the repository. They can be set either for a specific version or trigger on the latest version available. If neither a package nor a version is specified, they will trigger alerts for any update.</li>
+</ul></li>
+<li><p>It is possible to create alerts for all hosts, or a filtered set of hosts.</p></li>
+</ul>
+
+<p><img src="Alerts.bottom.hosts.png" alt="New Alerts Hosts"></p>
+
+<ul>
+<li>Notification by email is also an option for a given alert.</li>
+</ul>
+
+<p><img src="Alerts.bottom.notifications.png" alt="New Alerts Notifications"></p>
+
+<ul>
+<li><p>Check the <strong>Set email notifications for this alert</strong> box to activate the field for entering the email address to notify. At the present time only one email address can be entered into the field.</p></li>
+<li><p>The <strong>Remind me</strong> dropdown box provides a selection of intervals to send reminder emails for triggered events.</p></li>
+</ul>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/alerts-notifications.markdown` -->
+
+<hr>
+<h2 id="custom-actions-for-alerts">Custom actions for Alerts</h2>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/alerts-custom-actions.markdown` -->
+
+<p>Once you have become familiar with the <a href="enterprise-cfengine-guide-user-interface.html#alerts-and-notifications" title="User Interface - Alerts and Notifications ">Alerts and Notifications</a>, you might see the need to integrate the alerts with an existing system like Nagios, instead of relying on emails for getting notified.</p>
+
+<p>This is where the Custom actions come in. A Custom action is a way to execute a script on the hub whenever an alert is triggered or cleared, as well as when a reminder happens (if set). The script will receive a set of parameters containing the state of the alert, and can do practically anything with this information. Typically, it is used to integrate with other alerting or monitoring systems like PagerDuty or Nagios.</p>
+
+<p>Any scripting language may be used, as long as the hub has an interpreter for it.</p>
+<h6 id="alert-parameters">Alert parameters</h6>
+<p>The Custom action script gets called with one parameter: the path to a file with a set of KEY=VALUE lines.
+Most of the keys are common for all alerts, but some additional keys are defined based on the alert type, as shown below.</p>
+<h6 id="common-keys">Common keys</h6>
+<p>These keys are present for all alert types.</p>
+<div class="tableOverflow"><table><thead><tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>ALERT_ID</td>
+<td>Unique ID (number).</td>
+</tr>
+<tr>
+<td>ALERT_NAME</td>
+<td>Name, as defined in when creating the alert (string).</td>
+</tr>
+<tr>
+<td>ALERT_SEVERITY</td>
+<td>Severity, as selected when creating the alert (string).</td>
+</tr>
+<tr>
+<td>ALERT_LAST_CHECK</td>
+<td>Last time alert state was checked (Unix epoch timestamp).</td>
+</tr>
+<tr>
+<td>ALERT_LAST_EVENT_TIME</td>
+<td>Last time the alert created an event log entry (Unix epoch timestamp).</td>
+</tr>
+<tr>
+<td>ALERT_LAST_STATUS_CHANGE</td>
+<td>Last time alert changed from triggered to cleared or the other way around (Unix epoch timestamp).</td>
+</tr>
+<tr>
+<td>ALERT_STATUS</td>
+<td>Current status, either &#39;fail&#39; (triggered) or &#39;success&#39; (cleared).</td>
+</tr>
+<tr>
+<td>ALERT_FAILED_HOST</td>
+<td>Number of hosts currently triggered on (number).</td>
+</tr>
+<tr>
+<td>ALERT_TOTAL_HOST</td>
+<td>Number of hosts defined for (number).</td>
+</tr>
+<tr>
+<td>ALERT_CONDITION_NAME</td>
+<td>Condition name, as defined when creating the alert (string).</td>
+</tr>
+<tr>
+<td>ALERT_CONDITION_DESCRIPTION</td>
+<td>Condition description, as defined when creating the alert (string).</td>
+</tr>
+<tr>
+<td>ALERT_CONDITION_TYPE</td>
+<td>Type, as selected when creating the alert. Can be &#39;policy&#39;, &#39;inventory&#39;, &#39;softwareupdate&#39; or &#39;sketch&#39;.</td>
+</tr>
+</tbody></table></div><h6 id="policy-keys">Policy keys</h6>
+<p>In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE=&#39;policy&#39;.</p>
+<div class="tableOverflow"><table><thead><tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>ALERT_POLICY_CONDITION_FILTERBY</td>
+<td>Policy object to filter by, as selected when creating the alert. Can be &#39;bundlename&#39;, &#39;promiser&#39; or &#39;promisees&#39;.</td>
+</tr>
+<tr>
+<td>ALERT_POLICY_CONDITION_FILTERITEMNAME</td>
+<td>Name of the policy object to filter by, as defined when creating the alert (string).</td>
+</tr>
+<tr>
+<td>ALERT_POLICY_CONDITION_PROMISEHANDLE</td>
+<td>Promise handle to filter by, as defined when creating the alert (string).</td>
+</tr>
+<tr>
+<td>ALERT_POLICY_CONDITION_PROMISEOUTCOME</td>
+<td>Promise outcome to filter by, as selected when creating the alert. Can be either &#39;KEPT&#39;, &#39;REPAIRED&#39; or &#39;NOTKEPT&#39;.</td>
+</tr>
+</tbody></table></div><h6 id="inventory-keys">Inventory keys</h6>
+<p>In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE=&#39;inventory&#39;.</p>
+<div class="tableOverflow"><table><thead><tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>ALERT_INVENTORY_CONDITION_FILTER_$(ATTRIBUTE_NAME)</td>
+<td>The name of the attribute as selected when creating the alert is part of the key (expanded), while the value set when creating is the value (e.g. ALERT_INVENTORY_CONDITION_FILTER_ARCHITECTURE=&#39;x86_64&#39;).</td>
+</tr>
+<tr>
+<td>ALERT_INVENTORY_CONDITION_FILTER_$(ATTRIBUTE_NAME)_CONDITION</td>
+<td>The name of the attribute as selected when creating the alert is part of the key (expanded), while the value is the comparison operator selected. Can be &#39;ILIKE&#39; (matches), &#39;NOT ILIKE&#39; (doesn&#39;t match), &#39;=&#39; (is), &#39;!=&#39; (is not), &#39;&lt;&#39;, &#39;&gt;&#39;.</td>
+</tr>
+<tr>
+<td>...</td>
+<td>There will be pairs of key=value for each attribute name defined in the alert.</td>
+</tr>
+</tbody></table></div><h6 id="software-updates-keys">Software updates keys</h6>
+<p>In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE=&#39;softwareupdate&#39;.</p>
+<div class="tableOverflow"><table><thead><tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>ALERT_SOFTWARE_UPDATE_CONDITION_PATCHNAME</td>
+<td>The name of the package, as defined when creating the alert, or empty if undefined (string).</td>
+</tr>
+<tr>
+<td>ALERT_SOFTWARE_UPDATE_CONDITION_PATCHARCHITECTURE</td>
+<td>The architecture of the package, as defined when creating the alert, or empty if undefined (string).</td>
+</tr>
+</tbody></table></div><h6 id="sketch-keys">Sketch keys</h6>
+<p>In addition to the common keys, the following keys are present when ALERT_CONDITION_TYPE=&#39;sketch&#39;.</p>
+<div class="tableOverflow"><table><thead><tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead><tbody><tr>
+<td>ALERT_SKETCH_CONDITION_SKETCHNAME</td>
+<td>The name of the sketch, e.g. &#39;Security::file_integrity&#39; (string).</td>
+</tr>
+<tr>
+<td>ALERT_SKETCH_CONDITION_ACTIVATIONNAME</td>
+<td>The name of the sketch activation, as typed by the user activating the sketch (string).</td>
+</tr>
+<tr>
+<td>ALERT_SKETCH_CONDITION_ACTIVATIONHASH</td>
+<td>A unique ID for this sketch activation (string).</td>
+</tr>
+<tr>
+<td>ALERT_SKETCH_CONDITION_SKETCHCHECKTYPE</td>
+<td>The type, or category, of the sketch, e.g. &#39;compliance&#39; (string).</td>
+</tr>
+</tbody></table></div><h6 id="example-parameters-policy-bundle-alert-not-kept">Example parameters: policy bundle alert not kept</h6>
+<p>Given an alert that triggers on a policy bundle being not kept (failed), the following is example content of the file being provided as an argument to a Custom action script.</p>
+<div class="highlight"><pre><code class="text">ALERT_ID=&#39;6&#39;
+ALERT_NAME=&#39;Web service&#39;
+ALERT_SEVERITY=&#39;high&#39;
+ALERT_LAST_CHECK=&#39;0&#39;
+ALERT_LAST_EVENT_TIME=&#39;0&#39;
+ALERT_LAST_STATUS_CHANGE=&#39;0&#39;
+ALERT_STATUS=&#39;fail&#39;
+ALERT_FAILED_HOST=&#39;49&#39;
+ALERT_TOTAL_HOST=&#39;275&#39;
+ALERT_CONDITION_NAME=&#39;Web service&#39;
+ALERT_CONDITION_DESCRIPTION=&#39;Ensure web service is running and configured correctly.&#39;
+ALERT_CONDITION_TYPE=&#39;policy&#39;
+ALERT_POLICY_CONDITION_FILTERBY=&#39;bundlename&#39;
+ALERT_POLICY_CONDITION_FILTERITEMNAME=&#39;web_service&#39;
+ALERT_POLICY_CONDITION_PROMISEOUTCOME=&#39;NOTKEPT&#39;
+</code></pre>
+</div>
+
+<p>Saving this as a file, e.g. &#39;alert_parameters_test&#39;, can be useful while writing and testing your Custom action script.
+You could then simply test your Custom action script, e.g. &#39;cfengine_custom_action_ticketing.py&#39;, by running</p>
+<div class="highlight"><pre><code class="text">./cfengine_custom_action_ticketing alert_parameters_test
+</code></pre>
+</div>
+
+<p>When you get this to work as expected on the commmand line, you are ready to upload the script to the Mission Portal, as outlined below.</p>
+<h6 id="example-script-logging-policy-alert-to-syslog">Example script: logging policy alert to syslog</h6>
+<p>The following Custom action script will log the status and definition of a policy alert to syslog.</p>
+<div class="highlight"><pre><code class="text">#!/bin/bash
+
+source $1
+
+if [ &quot;$ALERT_CONDITION_TYPE&quot; != &quot;policy&quot; ]; then
+   logger -i &quot;error: CFEngine Custom action script $0 triggered by non-policy alert type&quot;
+   exit 1
+fi
+
+logger -i &quot;Policy alert &#39;$ALERT_NAME&#39; $ALERT_STATUS. Now triggered on $ALERT_FAILED_HOST hosts. Defined with $ALERT_POLICY_CONDITION_FILTERBY=&#39;$ALERT_POLICY_CONDITION_FILTERITEMNAME&#39;, promise handle &#39;$ALERT_POLICY_CONDITION_PROMISEHANDLE&#39; and outcome $ALERT_POLICY_CONDITION_PROMISEOUTCOME&quot;
+
+exit $?
+</code></pre>
+</div>
+
+<p>What gets logged to syslog depends on which alert is associated with the script, but an example log-line is as follows:</p>
+<div class="highlight"><pre><code class="text">Sep 26 02:00:53 localhost user[18823]: Policy alert &#39;Web service&#39; fail. Now triggered on 11 hosts. Defined with bundlename=&#39;web_service&#39;, promise handle &#39;&#39; and outcome NOTKEPT
+</code></pre>
+</div>
+<h6 id="uploading-the-script-to-the-mission-portal">Uploading the script to the Mission Portal</h6>
+<p>Members of the admin role can manage Custom action scripts in the Mission Portal settings.</p>
+
+<p><img src="mp-settings-custom-notification.png" alt="Custom action scripts overview"></p>
+
+<p>A new script can be uploaded, together with a name and description, which will be shown when creating the alerts.</p>
+
+<p><img src="mp-settings-custom-notification-add.png" alt="Adding Custom action syslog script"></p>
+<h6 id="associating-a-custom-action-with-an-alert">Associating a Custom action with an alert</h6>
+<p>Alerts can have any number of Custom action scripts as well as an email notification associated with them. This can be configured during alert creation. Note that for security reasons, only members of the admin role may associate alerts with Custom action scripts.</p>
+
+<p><img src="create-alert-custom-action-syslog.png" alt="Adding Custom action script to alert"></p>
+
+<p>Conversely, several alerts may be associated with the same Custom action script.</p>
+
+<p>When the alert changes state from triggered to cleared, or the other way around, the script will run. The script will also run if the alert remains in triggered state and there are reminders set for the alert notifications.</p>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/alerts-custom-actions.markdown` -->
+
+<hr>
+<h2 id="reporting-ui">Reporting UI</h2>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/reporting.markdown` -->
+
+<p>CFEngine collects a large amount of data. To inspect it, you can run and schedule pre-defined reports or use the <a href="enterprise-cfengine-guide-reporting.html#query-builder" title="Reporting UI - Query Builder ">query builder</a> for your own custom reports. You can save these queries for later use, and schedule reports for specified times.</p>
+
+<p>If you are familiar with SQL syntax, you can input your query into the interface directly. Make sure to take a look at the database schema. Please note: manual entries in the query field at the bottom of the <a href="enterprise-cfengine-guide-reporting.html#query-builder" title="Reporting UI - Query Builder ">query builder</a> will invalidate all field selections and filters above, and vice-versa.</p>
+
+<p>You can query fewer hosts with the help of filters above the displayed table. These filters are based on the same categorization you can find in the other apps.</p>
+
+<p>You can also filter on the type of promise: user defined, system defined, or all.</p>
+
+<p>See also:</p>
+
+<ul>
+<li><a href="enterprise-cfengine-guide-reporting-reporting-architecture.html" title="Reporting Architecture">Reporting Architecture</a></li>
+<li><a href="enterprise-cfengine-guide-reporting-sql-queries-enterprise-api.html" title="SQL Queries Using the Enterprise API">SQL Queries Using the Enterprise API</a></li>
+</ul>
+<h6 id="query-builder">Query Builder</h6>
+<p>Users not familiar with SQL syntax can easily create their own custom reports in this interface.</p>
+
+<ul>
+<li>Tables - Select the data tables you want include in your report first.</li>
+<li>Fields - Define your table columns based on your selection above.</li>
+<li>Filters - Filter your results.  Remember that unless you filter, you may be querying large data sets, so think about what you absolutely need in your report.</li>
+<li>Group - Group your results.  May be expensive with large data sets.</li>
+<li>Sort - Sort your results.  May be expensive with large data sets.</li>
+<li>Limit - Limit the number of entries in your report. This is a recommended practice for testing your query, and even in production it may be helpful if you don&#39;t need to see every entry.</li>
+<li>Show me the query - View and edit the SQL query directly. Please note, that editing the query directly here will invalidate your choices in the query builder interface, and changing your selections there will override your SQL query.</li>
+</ul>
+<h6 id="ensure-the-report-collection-is-working">Ensure the report collection is working</h6>
+<ul>
+<li><p>The reporting bundle must be called from <a href="guide-writing-and-serving-policy-policy-framework.html#promises-cf" title="The Policy Framework - promises.cf"><code>promises.cf</code></a>. For example,
+the following defines the attribute <code>Role</code> which is set to
+<a href="reference-promise-types-databases.html#database_server" title="databases - database_server"><code>database_server</code></a>. You need to add it to the top-level
+<a href="reference-components.html#bundlesequence" title="Components and Common Control - bundlesequence"><code>bundlesequence</code></a> in <a href="guide-writing-and-serving-policy-policy-framework.html#promises-cf" title="The Policy Framework - promises.cf"><code>promises.cf</code></a> or in a bundle that it calls.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">myreport</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">myrole</span><span class="p">&quot;</span>
+      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;database_server&quot;</span><span class="p">,</span>
+      <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;inventory&quot;</span><span class="p">,</span> <span class="s">&quot;attribute_name=Role&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div></li>
+<li><p>note the <a href="reference-promise-types.html#meta" title="Promise Types and Attributes - meta"><code>meta</code></a> tag <code>inventory</code></p></li>
+<li><p>The hub must be able to collect the reports from the client. TCP
+port 5308 must be open and, because 3.6 uses TLS, should not be
+proxied or otherwise intercepted. Note that bootstrapping and other
+standalone client operations go from the client to the server, so the
+ability to bootstrap and copy policies from the server doesn&#39;t
+necessarily mean the reverse connection will work.</p></li>
+<li><p>Ensure that variables and classes tagged as <code>inventory</code> or <code>report</code>
+are not filtered by <code>controls/cf_serverd.cf</code> in your infrastructure.
+The standard configuration from the stock CFEngine packages allows
+them and should work.</p></li>
+</ul>
+
+<p><strong>Note:</strong> The CFEngine report collection model accounts for long periods of
+time when the hub is unable to collect data from remote agents. This model
+preserves data recorded until it can be collected. Data (promise outcomes, etc
+...) recorded by the agent during normal agent runs is stored locally until it
+is collected from by the cf-hub process. At the time of collection the local
+data stored on the client is cleaned up and only the last hours worth of data
+remains client. It is important to understand that the time between hub
+collection and number of clients that are unable to be collected from grows the
+amount of data to transfer and store in the central database also grows. A
+large number of clinets that have not been collected from that become available
+at once can cause increased load on the hub collector and affect its
+performance until it has been able to collect from all hosts.</p>
+<h6 id="define-a-new-single-table-report">Define a New Single Table Report</h6>
+<ol>
+<li>In <em>Mission Portal</em> select the <em>Report</em> application icon on the left hand side of the screen.</li>
+<li>This will bring you to the <em>Report builder</em> screen.</li>
+<li>The default for what hosts to report on is <em>All hosts</em>. The hosts can be filtered under the <em>Filters</em> section at the top of the page.</li>
+<li>For this tutorial leave it as <em>All hosts</em>.</li>
+<li>Set which tables&#39; data we want reports for.</li>
+<li>For this tutorial select <em>Hosts</em>.</li>
+<li>Select the columns from the <em>Hosts</em> table for the report.</li>
+<li>For this tutorial click the <em>Select all</em> link below the column lables.</li>
+<li>Leave <em>Filters</em>, <em>Sort</em>, and <em>Limit</em> at the default settings.</li>
+<li>Click the orange <em>Run</em> button in the bottom right hand corner.</li>
+</ol>
+<h6 id="check-report-results">Check Report Results</h6>
+<ol>
+<li>The report generated will show each of the selected columns across the report table&#39;s header row.</li>
+<li>In this tutorial the columns being reported back should be: <em>Host key</em>, <em>Last report time</em>, <em>Host name</em>, <em>IP address</em>, <em>First report-time</em>.</li>
+<li>Each row will contain the information for an individual data record, in this case one row for each host.</li>
+<li>Some of the cells in the report may provide links to drill down into more detailed information (e.g. <em>Host name</em> will provide a link to a <em>Host information</em> page).</li>
+<li>It is possible to also export the report to a file.</li>
+<li>Click the orange <em>Export</em> button.</li>
+<li>You will then see a <em>Report Download</em> dialog.</li>
+<li><em>Report type</em> can be either <em>csv</em> or <em>pdf format</em>.</li>
+<li>Leave other fields at the default values.</li>
+<li>If the server&#39;s mail configuration is working properly, it is possible to email the report by checking the <em>Send in email</em> box.</li>
+<li>Click <em>OK</em> to download or email the <em>csv</em> or <em>pdf</em> version of the report.</li>
+<li>Once the report is generated it will be available for download or will be emailed.</li>
+</ol>
+<h6 id="inventory-management">Inventory Management</h6>
+<p>Inventory allows you to define the set of hosts to report on.</p>
+
+<p>The main Inventory screen shows the current set of hosts, together with relevant information such as operating system type, kernel and memory size.</p>
+
+<p><img src="Reports-Inventory-1.png" alt="Inventory Management"></p>
+
+<p>To begin filtering, one would first select the <em>Filters</em> drop down, and then select an attribute to filter on (e.g. OS type = linux)</p>
+
+<p><img src="Reports-Inventory-2.png" alt="Inventory Management"></p>
+
+<p>After applying the filter, it may be convenient to add the attribute as one of the table columns.</p>
+
+<p><img src="Reports-Inventory-4.png" alt="Inventory Management"></p>
+
+<p>Changing the filter, or adding additional attributes for filtering, is just as easy.</p>
+
+<p><img src="Reports-Inventory-5.png" alt="Inventory Management"></p>
+
+<p>We can see here that there are no Windows machines bootstrapped to this hub.</p>
+
+<p><img src="Reports-Inventory-6.png" alt="Inventory Management"></p>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/reporting.markdown` -->
+
+<hr>
+<h3 id="reporting-architecture">Reporting Architecture</h3>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/reporting/reporting-architecture.markdown` -->
+
+<p>The reporting architecture of CFEngine Enterprise uses two software
+components from the CFEngine Enterprise hub package.</p>
+<h6 id="cf-hub">cf-hub</h6>
+<p>Like all CFEngine components, <code>cf-hub</code> is
+located in <code>/var/cfengine/bin</code>. It is a daemon process that runs in the
+background, and is started by <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> and from the init scripts.</p>
+
+<p><code>cf-hub</code> wakes up every 5 minutes and connects to the <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> of
+each host to download new data.</p>
+
+<p>To collect reports from any host manually, run the following:</p>
+<div class="highlight"><pre><code class="text">$ /var/cfengine/bin/cf-hub -H &lt;host IP&gt;
+</code></pre>
+</div>
+
+<ul>
+<li><p>Add <code>-v</code> to run in verbose mode to diagnose connectivity issues and trace the data collected.</p></li>
+<li><p>Delta (differential) reporting, the default mode, collects data that has changed since the
+last collection. Rebase (full) reports collect everything. You can choose the full collection by
+adding <code>-q rebase</code> (for backwards comapatibility, also available as
+<code>-q full</code>).</p></li>
+</ul>
+<h6 id="apache">Apache</h6>
+<p>REST over HTTP is provided by the
+<a href="http://httpd.apache.org">Apache http server</a> which also hosts the
+Mission Portal. The <code>httpd</code> process is started through CFEngine policy
+and the init scripts and listens on ports 80 and 443 (HTTP and HTTP/S).</p>
+
+<p>Apache is part of the CFEngine Enterprise installation in
+<code>/var/cfengine/httpd</code>. A local <code>cfapache</code> user is created with
+privileges to run <a href="reference-components-cf-runagent.html" title="cf-runagent"><code>cf-runagent</code></a>.</p>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/reporting/reporting-architecture.markdown` -->
+
+<hr>
+<h3 id="sql-queries-using-the-enterprise-api">SQL Queries Using the Enterprise API</h3>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/reporting/sql-queries-enterprise-api.markdown` -->
+
+<p>The CFEngine Enterprise Hub collects information about the
+environment in a centralized database. Data is collected every 5
+minutes from all bootstrapped hosts. This data can be accessed through
+the Enterprise Reporting API.</p>
+
+<p>Through the API, you can run CFEngine Enterprise reports with SQL
+queries. The API can create the following report queries:</p>
+
+<ul>
+<li>  Synchronous query: Issue a query and wait for the table to
+be sent back with the response.</li>
+<li>  Asynchronous query: A query is issued and an immediate response with an ID is sent
+so that you can check the query later to download the report.</li>
+<li>  Subscribed query: Specify a query to be run on a schedule
+and have the result emailed to someone.</li>
+</ul>
+<h6 id="synchronous-queries">Synchronous Queries</h6>
+<p>Issuing a synchronous query is the most straightforward way of running
+an SQL query. We simply issue the query and wait for a result to come
+back.</p>
+
+<p><strong>Request:</strong></p>
+<div class="highlight"><pre><code class="text">curl -k --user admin:admin https://test.cfengine.com/api/query -X POST -d
+{
+  &quot;query&quot;: &quot;SELECT ...&quot;
+}
+</code></pre>
+</div>
+
+<p><strong>Response:</strong></p>
+<div class="highlight"><pre><code class="text">{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 1,
+    &quot;total&quot;: 1,
+    &quot;timestamp&quot;: 1351003514
+  },
+  &quot;data&quot;: [
+    {
+      &quot;query&quot;: &quot;SELECT ...&quot;,
+      &quot;header&quot;: [
+        &quot;Column 1&quot;,
+        &quot;Column 2&quot;
+      ],
+      &quot;rowCount&quot;: 3,
+      &quot;rows&quot;: [
+      ]
+      &quot;cached&quot;: false,
+      &quot;sortDescending&quot;: false
+    }
+  ]
+}
+</code></pre>
+</div>
+<h6 id="asynchronous-queries">Asynchronous Queries</h6>
+<p>Because some queries can take some time to compute, you can
+fire off a query and check the status of it later. This is useful for
+dumping a lot of data into CSV files for example. The sequence consists
+of three steps:</p>
+
+<ol>
+<li> Issue the asynchronous query and get a job id.</li>
+<li> Check the processing status using the id.</li>
+<li> When the query is completed, get a download link using the id.</li>
+</ol>
+<h6 id="issuing-the-query">Issuing the query</h6>
+<p><strong>Request:</strong></p>
+<div class="highlight"><pre><code class="text">curl -k --user admin:admin https://test.cfengine.com/api/query/async -X POST -d
+{
+  &quot;query&quot;: &quot;SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts JOIN Contexts ON Hosts.Hostkey = Contexts.HostKey WHERE Contexts.ContextName = &#39;ubuntu&#39;&quot;
+}
+</code></pre>
+</div>
+
+<p><strong>Response:</strong></p>
+<div class="highlight"><pre><code class="text">{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 1,
+    &quot;total&quot;: 1,
+    &quot;timestamp&quot;: 1351003514
+  },
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;32ecb0a73e735477cc9b1ea8641e5552&quot;,
+      &quot;query&quot;: &quot;SELECT ...&quot;
+    }
+  ]
+]
+</code></pre>
+</div>
+<h6 id="checking-the-status">Checking the status</h6>
+<p><strong>Request:</strong></p>
+<div class="highlight"><pre><code class="text">curl -k --user admin:admin https://test.cfengine.com/api/query/async/:id
+</code></pre>
+</div>
+
+<p><strong>Response:</strong></p>
+<div class="highlight"><pre><code class="text">{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 1,
+    &quot;total&quot;: 1,
+    &quot;timestamp&quot;: 1351003514
+  },
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;32ecb0a73e735477cc9b1ea8641e5552&quot;,
+      &quot;percentageComplete&quot;: 42,
+    ]
+}
+</code></pre>
+</div>
+<h6 id="getting-the-completed-report">Getting the completed report</h6>
+<p>This is the same API call as checking the status. Eventually, the
+<strong>percentageComplete</strong> field will reach 100 and a link to
+the completed report will be available for downloading.</p>
+
+<p><strong>Request:</strong></p>
+<div class="highlight"><pre><code class="text">curl -k --user admin:admin https://test.cfengine.com/api/query/async/:id
+</code></pre>
+</div>
+
+<p><strong>Response:</strong></p>
+<div class="highlight"><pre><code class="text">{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 1,
+    &quot;total&quot;: 1,
+    &quot;timestamp&quot;: 1351003514
+  },
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;32ecb0a73e735477cc9b1ea8641e5552&quot;,
+      &quot;percentageComplete&quot;: 100,
+      &quot;href&quot;: &quot;https://test.cfengine.com/api/static/32ecb0a73e735477cc9b1ea8641e5552.csv&quot;
+    }
+  ]
+}
+</code></pre>
+</div>
+<h6 id="subscribed-queries">Subscribed Queries</h6>
+<p>Subscribed queries happen in the context of a user. Any user can create
+a query on a schedule and have it emailed to someone.</p>
+
+<p><strong>Request:</strong></p>
+<div class="highlight"><pre><code class="text">curl -k --user admin:admin https://test.cfengine.com/api/user/name/
+   subscription/query/file-changes-report -X PUT -d
+{
+  &quot;to&quot;: &quot;email@domain.com&quot;,
+  &quot;query&quot;: &quot;SELECT ...&quot;,
+  &quot;schedule&quot;: &quot;Monday.Hr23.Min59&quot;,
+  &quot;title&quot;: &quot;Report title&quot;
+  &quot;description&quot;: &quot;Text that will be included in email&quot;
+  &quot;outputTypes&quot;: [ &quot;pdf&quot; ]
+}
+</code></pre>
+</div>
+
+<p><strong>Response:</strong></p>
+<div class="highlight"><pre><code class="text">204 No Content
+</code></pre>
+</div>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/reporting/sql-queries-enterprise-api.markdown` -->
+
+<hr>
+<h2 id="monitoring">Monitoring</h2>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/monitoring.markdown` -->
+
+<p>Monitoring allows you to get an overview of your hosts over time.</p>
+
+<p><img src="Mission-Portal-Monitoring-1.png" alt="Monitoring"></p>
+
+<p>If multiple hosts are selected in the menu on the left, then you can select one of three key measurements that is then displayed for all hosts:</p>
+
+<ul>
+<li>load average</li>
+<li>Disk free (in %)</li>
+<li>CPU(ALL) (in %)</li>
+</ul>
+
+<p>You can reduce the number of graphs by selecting a sub-set of hosts from the menu on the left. If only a
+single host is selected, then a number of graphs for various measurements will be displayed for this host. Which exact measurements are reported depends on how <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a> is configured and extended via <a href="reference-promise-types-measurements.html" title="measurements"><code>measurements</code></a> promises.</p>
+
+<p>Clicking on an individual graph allows to select different time spans for which monitoring data will be displayed.</p>
+
+<!-- TODO - need screenshots, explanations of the zoom-in graphs, some explanation of the statistics etc -->
+
+<p>If you don&#39;t see any data, make sure that:</p>
+
+<ul>
+<li><a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a> is running on your hosts. This is configurable through the lists <code>agents_to_be_enabled</code> and <code>agents_to_be_disabled</code> in <code>masterfiles/update/update_processes.cf</code>.</li>
+<li><a href="reference-components-cf-hub.html" title="cf-hub"><code>cf-hub</code></a> has access to collecting the monitoring data from your hosts. This is configurable through the attributes in <a href="reference-promise-types-access.html#report_data_select" title="access - report_data_select"><code>report_data_select</code></a> in <code>masterfiles/controls/cf_serverd.cf</code>.</li>
+</ul>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/monitoring.markdown` -->
+
+<hr>
+<h2 id="design-center-ui">Design Center UI</h2>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/design-center.markdown` -->
+
+<p>The Design Center UI allows authorized infrastructure engineers to configure, deploy, and monitor data-driven policy templates known as <em>sketches</em>.  The engineer can target any group of hosts using pre-existing or custom classifications.</p>
+<h6 id="delegation-of-system-administrator-tasks">Delegation of System Administrator Tasks</h6>
+<p>CFEngine experts can write their own sketches to address their exact needs. They can be hosted in a private Design Center repository so that other administrators, developers and line-of-business users can again configure, deploy, and monitor them without detailed CFEngine knowledge.</p>
+
+<p>For more information, see <a href="guide-design-center-design-center-write-sketch.html" title="Write a new Sketch">Write a new Sketch</a></p>
+<h6 id="version-control-for-sketches">Version Control for Sketches</h6>
+<p>CFEngine Enterprise keeps track of sketch deployments, using Git integration to track authors, source-code and meta-information about policy deployments.</p>
+<h6 id="cfengine-design-center-and-version-control-systems">CFEngine, Design Center and Version Control Systems</h6>
+<p>In CFEngine Enterprise, the Design Center is enabled through a Git
+repository integration.  Out of the box, the software uses a &quot;bare&quot;
+Git repository in <code>/opt/cfengine/masterfiles.git</code> but does <strong>not</strong>
+deploy it automatically.  Thus any work you do with Design Center will
+not propagate to your hosts without some help.</p>
+
+<p>Please see
+<a href="enterprise-cfengine-guide-best-practices.html#version-control-and-configuration-policy" title="Best Practices - Version Control and Configuration Policy ">Version Control and Configuration Policy</a>
+for detailed instructions for enabling the Version Control workflow in
+CFEngine Enterprise.</p>
+<h6 id="sketches-in-the-design-center-app">Sketches in the Design Center App</h6>
+<p>The CFEngine Design Center includes a number of data-driven policy templates called <em>sketches</em> that let you configure and deploy CFEngine policies without requiring detailed knowledge of the CFEngine language. You can select sketches from a categorized list and configure them in the interface, then apply them to any group of hosts.</p>
+
+<p>Every organization using CFEngine can add their own custom <em>sketches</em> which will consequently be shown in the app&#39;s list of sketches.</p>
+
+<p>Note: The Mission Portal&#39;s <strong>Design Center App</strong> requires a dedicated Git repository. If you have admin rights to the Mission Portal, you can configure it in the Settings panel.  Furthemore you have to enable the Git repository integration as explained above.</p>
+<h6 id="configuration">Configuration</h6>
+<p>After selecting a sketch, you need to configure it (*activate it*). First, give your activation parameters a unique name so you can recognize it later. Then fill in the fields below (some will be optional, others mandatory). All of them show examples and a descriptive text.</p>
+
+<p>You also need to define the hosts you want to target. You can select host categories through the drop-down menus. These categories are based on categorizations defined in the <strong>Hosts App</strong> for example.  You can select individual hosts too.</p>
+<h6 id="activation">Activation</h6>
+<p>When you&#39;re done configuring your sketch you need to activate it. This will require a commit to your configured Git repository that transforms your configuration parameters into CFEngine policy. You will then be able to follow the state of your activation (*In Progress*, <em>OK</em>, and <em>Failed</em>) and report on any problems.</p>
+
+<p>Note: <em>Sketches</em> can be activated multiple times with different configurations and sets of hosts. The <strong>Design Center UI</strong> will show you each activation, its status, the hosts it targets, and the parameters specified.</p>
+<h6 id="see-also">See Also</h6>
+<ul>
+<li><a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise.html" title="Enterprise Sketches">Enterprise Sketches</a></li>
+<li><a href="guide-design-center-design-center-write-sketch.html" title="Write a new Sketch">Write a new Sketch</a></li>
+<li><a href="enterprise-cfengine-guide-design-center-design-center-deploy-sketch.html" title="Deploy your first Policy">Deploy your first Policy (Enterprise)</a></li>
+<li><a href="enterprise-cfengine-guide-best-practices.html#version-control-and-configuration-policy" title="Best Practices - Version Control and Configuration Policy ">Version Control and Configuration Policy (Enterprise)</a></li>
+<li><a href="guide-design-center-design-center-write-sketch.html" title="Write a new Sketch">Write a new Sketch</a></li>
+</ul>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/design-center.markdown` -->
+
+<hr>
+<h3 id="deploy-your-first-policy">Deploy your first Policy</h3>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/design-center/design-center-deploy-sketch.markdown` -->
+<h6 id="enterprise-users-can-deploy-policies-through-the-design-center-app">Enterprise Users can Deploy Policies through the Design Center App</h6>
+<p><strong>Note:</strong> This tutorial walks you
+through configuring and deploying (&quot;activating&quot;) a sketch to make it part of your site policy. You must be an authenticated Enterprise user who has authorized access
+to the CFEngine Mission Portal console. CFEngine must be up and running in order to complete
+this tutorial.</p>
+<h6 id="overview">Overview</h6>
+<p>A <strong>sketch</strong> defines data-driven configurable and reusable policy. You can use sketches to implement,
+activate, or enforce policy. Sketches are written in the CFEngine
+policy language; you can use them simply by installing them, configuring them
+using the appropriate parameters and environments, and then deploying them on your infrastructure (&quot;activating&quot; them).</p>
+
+<p>In this tutorial, we want to implement the following policy:</p>
+
+<p>The <strong>iscsi-initatior-utils</strong> software package must be present/installed on all hosts.</p>
+
+<p>Since CFEngine includes a sketch (the <strong>Packages</strong> sketch) that can generate this
+policy, we do not do not need to write a policy. Instead, we can use the <strong>Packages</strong> sketch
+to deploy our policy. (Note that you may use an alternate package from your
+system&#39;s package repository if necessary.)</p>
+<h6 id="configure-and-deploy-a-policy-using-sketches">Configure and deploy a policy using sketches</h6>
+<p>We will activate the <strong>Packages</strong> sketch which allows you to install selected software
+packages on specific hosts. A sketch must include a <strong>parameter set</strong> and an <strong>environment(s)</strong>, both of which
+we will set in the example below. Make certain that the packages you select are included in the
+package repository. (The package in our example below is available in the CentOS package repository. You
+can select any package that is available through your operating system&#39;s package repository.)</p>
+
+<ol>
+<li><p>Log in to the Mission Portal. Select <strong>Design Center</strong> from the left sidebar.</p></li>
+<li><p>Select the <strong>Packages::installed</strong> sketch. Use the following values:</p>
+
+<p>a. <strong>Descriptive name:</strong> Enter <strong>Install iSCSI</strong>. This allows you to recognize the activation
+(and its goal) later, as the Design Center uses this name when it commits changes to Git.</p>
+
+<p>b. <strong>Packages that should be installed:</strong> Fill in the name of the package that must be installed.
+For this example, use <strong>iscsi-initiator-utils</strong>. This is the <strong>parameter set</strong>.</p>
+
+<p>c. <strong>Hosts to activate on:</strong> Click <strong>Select category</strong> to display host options. Select <strong>All hosts</strong>
+for our example. All host names appear. This is the <strong>environment</strong> in which the sketch
+must be activate.</p>
+
+<p>Here is an example:</p>
+
+<p><img src="Sketch.png" alt="Sketch Configuration"></p></li>
+<li><p>Click <strong>Activate</strong>. This deploys the sketch to all hosts.</p></li>
+<li><p>Enter a description in the <strong>Commit your changes</strong> window that appears. The Design Center
+uses this comment for version control when it commits changes to Git.
+Click <strong>Commit</strong> to complete the change.</p></li>
+</ol>
+
+<p><strong>When a sketch is activated, the following occurs:</strong></p>
+
+<ul>
+<li><p>The policy that is generated when the sketch is activated gets committed to your Git repository.
+This allows you to keep track of who has made what changes, and when, and why.</p></li>
+<li><p>The <strong>policy server</strong> is typically configured to check the Git repository every five minutes to ensure
+that it is running the latest version of available policies. This process can be handled manually as well.</p></li>
+<li><p>The <strong>hosts</strong> check with the policy server for updated policy. They also work on default intervals of five minutes.</p></li>
+<li><p>The policy server collects information from the agents on the hosts to obtain insight
+into the progress with executing the sketch. The information it collects is used to update
+the information in the Design Center.</p></li>
+</ul>
+
+<p>In total, this process might take a few minutes to converge to the correct state for all hosts.
+The process is designed to be scalable: even though it takes a few minutes for the two servers in this
+example to be updated, it does not take much longer to update 2,000 servers.
+If you check back with the Packages sketch in the middle of the activation process, you will
+see a message that reads <strong>Status: Being Activated</strong>. Upon successful completion, the window
+should look like this:</p>
+
+<p><img src="Activated-sketch.png" alt="Activated Sketch"></p>
+
+<p>Now that the sketch is deployed, CFEngine continuously verifies that it is maintained. It checks
+365 days per year, 24 hours per day, 12 times per hour to make certain this package is on all of the hosts.
+If the package is removed, it is added within five minutes, and CFEngine creates reports that it
+made a <em>repair</em>. Thus, the state of the overall system is known and stable and system drift is avoided.
+This works for 2, 200, or 20,000 servers.</p>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/design-center/design-center-deploy-sketch.markdown` -->
+
+<hr>
+<h3 id="enterprise-sketches">Enterprise Sketches</h3>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/design-center/configure-sketches-enterprise.markdown` -->
+<h6 id="getting-started-topics">Getting Started Topics</h6>
+<p><a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-integrating-mission-portal-with-git.html" title="Integrating Mission Portal with git">Integrating the Mission Portal with git</a>  The <strong>Design
+Center App</strong> requires access to a Git repository in order to manage sketches. This section
+describes how to set up the Git repository and how to connect the Mission Portal to
+it. (The <strong>Design Center App</strong> is located on the Mission Portal console.)
+Instructions for testing the <strong>Design Center App</strong> and for reviewing Git commit logs are also included.</p>
+
+<p><a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-access-control-mission-portal.html" title="Design Center Access Control">Controlling Access to the Design Center UI</a>
+This section describes how to give users access rights for making changes to the <strong>Design
+Center App</strong>. It describes how to allow or limit a Mission Portal user&#39;s ability to commit
+to the Git repository and make changes to the hosts. All Mission Portal changes that users
+make through the <strong>Design Center App</strong> can be viewed in the Git commit log.</p>
+<h6 id="advanced-topics">Advanced Topics</h6>
+<p><a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-enterprise-sketch-flow.html" title="Sketch Flow in CFEngine Enterprise">Sketch Flow in the CFEngine Enterprise</a>
+This section provides a detailed look at the file structure and services that make up the
+<strong>Design Center App</strong>.</p>
+<h6 id="further-reading">Further Reading</h6>
+<p>The following topics are not included in this section but are equally necessary for
+understanding and managing Design Center sketches:</p>
+
+<p><a href="guide-design-center-design-center-write-sketch.html" title="Write a new Sketch">Write a new Sketch</a>  This section describes how to write a Design Center sketch.</p>
+
+<p><a href="reference-design-center-sketch.html" title="Sketch Structure">Design Center Sketch Structure</a>  This reference documentation includes
+a complete list of requirements necessary for a sketch to work well with the <strong>Design Center App</strong>.</p>
+
+<p><a href="reference-design-center-api.html" title="The Design Center API">The Design Center API</a>  The Design Center API performs all
+operations related to sketches, parameter sets, environments, validations, and deployment.</p>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/design-center/configure-sketches-enterprise.markdown` -->
+
+<hr>
+<h4 id="integrating-mission-portal-with-git">Integrating Mission Portal with git</h4>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/design-center/configure-sketches-enterprise/integrating-mission-portal-with-git.markdown` -->
+
+<p>CFEngine Enterprise 3.6 integrates with Git repositories to
+manage CFEngine policy. In particular, the <strong>Design Center App</strong> requires access
+to a Git repository in order to manage sketches.</p>
+
+<p><a href="enterprise-cfengine-guide-best-practices.html#version-control-and-configuration-policy" title="Best Practices - Version Control and Configuration Policy ">Version Control and Configuration Policy</a> describes an out-of-the-box Git repository that is hosted on the
+Policy Server with the initial CFEngine <code>masterfiles</code> and how to configure
+CFEngine Enterprise to use this repository. If you already have a Git
+server, ensure that you have a passphraseless SSH key.</p>
+
+<p><strong>NOTE that if you don&#39;t want to use a remote Git server, you don&#39;t need to change the Mission Portal settings</strong></p>
+
+<p>As you follow these steps, refer to the diagram
+in the <a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-enterprise-sketch-flow.html" title="Sketch Flow in CFEngine Enterprise">CFEngine Enterprise sketch flow</a>. It provides
+a detailed look at the file structure and services that make up the <strong>Design Center App</strong>.</p>
+<h6 id="overview">Overview</h6>
+<ol>
+<li><a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-integrating-mission-portal-with-git.html#check-access" title="Integrating Mission Portal with git - Check access">Check access</a></li>
+<li><a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-integrating-mission-portal-with-git.html#connect-the-mission-portal-to-the-git-repository" title="Integrating Mission Portal with git - Connect the Mission Portal to the git repository">Connect the Mission Portal to the git repository</a></li>
+<li><a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-integrating-mission-portal-with-git.html#test-the-design-center-app" title="Integrating Mission Portal with git - Test the Design Center app">Test the Design Center app</a></li>
+<li><a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-integrating-mission-portal-with-git.html#end-to-end-wait-time" title="Integrating Mission Portal with git - End to end wait time">End to end waiting time</a></li>
+<li><a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-integrating-mission-portal-with-git.html#access-control-and-security" title="Integrating Mission Portal with git - Access control and security">Access control and security</a></li>
+</ol>
+<h6 id="check-access">Check access</h6>
+<p><strong>If you want to use a remote Git server</strong>, test that you can log in as the <code>git</code> user by using the generated
+passphraseless ssh key.</p>
+<div class="highlight"><pre><code class="text">    root@policyserver $ ssh -i my_id_rsa git@remote-git-server
+    git@remote-git-server $
+</code></pre>
+</div>
+
+<p>Once the authorization is tested successfully, move the keypair
+to a secure storage location. You might want to authorize additional keys
+for users to interface with the repository directly. Only the Mission
+Portal key needs to be passphraseless. Your Git server can have additional
+features like the ability to make a specific key read-only. See your Git
+repository provider&#39;s documentation for more information.</p>
+<h6 id="connect-the-mission-portal-to-the-git-repository">Connect the Mission Portal to the git repository</h6>
+<p><strong>NOTE that if you don&#39;t want to use a remote Git server, you don&#39;t need to change the Mission Portal settings</strong></p>
+
+<p><strong>If you want to use a remote Git server</strong>, do the following.</p>
+
+<ol>
+<li>Log in to the Mission Portal as an administrator (e.g. the <code>admin</code> user).</li>
+<li>Navigate to <em>Settings</em> -&gt; <em>Version control repository</em>.</li>
+<li>Input the settings from the Git service that you are using or configured.</li>
+</ol>
+
+<ul>
+<li>Git server url: <code>git@remote-git-server:masterfiles.git</code></li>
+<li>Git branch: <code>master</code></li>
+<li>Committer email <code>git@your-domain-here</code></li>
+<li>Committer name <code>CFEngine Mission Portal</code></li>
+<li>Git private key <code>my_id_rsa</code>
+(You will need to copy the private key to your workstation
+so that it can be accessed via the file selection.</li>
+</ul>
+
+<ol>
+<li>Click save settings and make sure it reports success.</li>
+</ol>
+<h6 id="test-the-design-center-app">Test the Design Center app</h6>
+<ol>
+<li>Log in to the Mission Portal as an administrator (e.g. the <code>admin</code> user).</li>
+<li>Select the <a href="enterprise-cfengine-guide-design-center.html" title="Design Center UI">Design Center</a> at the left.</li>
+<li>View the listing of some sketches that are available out of the box.</li>
+<li>Click the <code>Packages::packages_removed</code> sketch.</li>
+<li>Fill out the fields as shown by the example below, and click <code>Show Hosts</code> and then <code>Activate</code>.
+<img src="mission-portal-test-activation.png" alt="Test activation in Mission Portal"></li>
+<li>Type &quot;My test activation&quot; into the commit message box and commit.</li>
+</ol>
+<h6 id="review-the-change-history-from-the-git-commit-log">Review the change history from the git commit log</h6>
+<p>Our test sketch (created above) is now committed to the Git repository. Go to a clone of the
+Git repository, pull, and see that the commit is there:</p>
+
+<ol>
+<li><p>Fetch your latest commit (<code>origin</code> and <code>master</code> depend on your settings).</p>
+<div class="highlight"><pre><code class="text">$ git fetch origin master
+</code></pre>
+</div></li>
+<li><p>Rebase, and adjust to the branch you are using (<code>master</code> in this example).</p>
+<div class="highlight"><pre><code class="text">$ git rebase origin/master
+</code></pre>
+</div></li>
+<li><p>Note that the Git author (name and email) is set to the user of the Mission Portal,
+while the Git committer (name and email) comes from the Mission Portal settings, under Version Control Repository.</p>
+<div class="highlight"><pre><code class="text">$ git log --pretty=format:&quot;%h - %an, %ae, %cn, %ce : %s&quot;
+        4190ca5 - test, test@localhost.com, Mission Portal, missionportal@cfengine.com : My test activation
+</code></pre>
+</div></li>
+</ol>
+
+<p>We have now confirmed that the Mission Portal is able to commit to our
+Git repository and that author information is kept.</p>
+<h6 id="filter-commits-by-mission-portal-and-users">Filter commits by Mission Portal and users</h6>
+<p>If the Mission Portal is just one out of several users of your git service, you can easily filter
+which commits came from the Mission Portal, and which users of the Mission Portal authored the commit.</p>
+<h6 id="show-all-commits-made-through-the-mission-portal">Show all commits made through the Mission Portal</h6>
+<p>In order to see only commits that are made by users of the Mission Portal, filter on the committer name.
+Note that this needs to match what you have configured as the committer name in the settings,
+under Version Control Repository (we are using &#39;Mission Portal&#39; in the example below).</p>
+
+<p>We can also see the user name of the Mission Portal user by printing the author name.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> git log --pretty<span class="o">=</span>format:<span class="s2">&quot;%h %an: %s&quot;</span> --committer<span class="o">=</span><span class="s1">&#39;Mission Portal&#39;</span>
+<span class="go">0ac4ae0 bob: Setting up dev environment. Ticket #123.</span>
+<span class="go">5ffc4d1 bob: Configuring postgres on test environment. Ticket #124.</span>
+<span class="go">4190ca5 bob: My test activation</span>
+<span class="go">0ac4ae0 tom: remove failed activation</span>
+<span class="go">5ffc4d1 tom: print echo example</span>
+<span class="go">dc9518d rachel: Rolling out Apache, Phase 2</span>
+<span class="go">3cfaf93 rachel: Rolling out Apache, Phase 1</span>
+</code></pre>
+</div>
+<h6 id="show-commits-by-a-mission-portal-user">Show commits by a Mission Portal user</h6>
+<p>If you are only interested in seeing the commits by a particular user of the
+Mission Portal, you can filter on the author name as well (&#39;bob&#39; in the example below).</p>
+<div class="highlight"><pre><code class="console"><span class="go"> $ git log --pretty=oneline --abbrev-commit --committer=&#39;Mission Portal&#39; --author=&#39;bob&#39;</span>
+<span class="go">0ac4ae0 Setting up dev environment. Ticket #123.</span>
+<span class="go">5ffc4d1 Configuring postgres on test environment. Ticket #124.</span>
+<span class="go">4190ca5 My test activation</span>
+</code></pre>
+</div>
+<h6 id="end-to-end-wait-time">End to end wait time</h6>
+<p>If we set up the CFEngine policy server to pull automatically from git and CFEngine runs
+every 5 minutes everywhere (the default), the maximum time elapsed from committing to git
+until reports are collected is <strong>15 minutes</strong>:</p>
+
+<ul>
+<li> 0 minutes: commit to git (e.g. from the Design Center GUI).</li>
+<li> 5 minutes: the policy server has updated <a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-enterprise-sketch-flow.html#var-cfengine-masterfiles" title="Sketch Flow in CFEngine Enterprise - /var/cfengine/masterfiles"><code>/var/cfengine/masterfiles</code></a>.</li>
+<li>10 minutes: all hosts have downloaded and run the policy.</li>
+<li>15 minutes: <a href="reference-components-cf-hub.html" title="cf-hub"><code>cf-hub</code></a> on the database server has collected reports from all hosts.</li>
+</ul>
+<h6 id="access-control-and-security">Access control and security</h6>
+<p>Go to <a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-access-control-mission-portal.html" title="Design Center Access Control">Controlling Access to the Design Center UI</a>
+to learn how to allow or limit the Mission Portal user&#39;s ability
+to commit to the git repository and make changes to the hosts.</p>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/design-center/configure-sketches-enterprise/integrating-mission-portal-with-git.markdown` -->
+
+<hr>
+<h4 id="design-center-access-control">Design Center Access Control</h4>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/design-center/configure-sketches-enterprise/access-control-mission-portal.markdown` -->
+
+<p>After you have set up the <a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-integrating-mission-portal-with-git.html" title="Integrating Mission Portal with git">integration between CFEngine Enterprise and git</a>,
+you can grant or revoke access rights for making changes in the Design
+Center app to your users.</p>
+
+<p>Note that use of the role-based access control (RBAC) for reporting in the Mission Portal
+is not yet supported in conjunction with the Design Center app. For the time being,
+we recommend turning RBAC globally off in the Mission Portal settings when using the
+Design Center app. Support for RBAC might be included in future versions.</p>
+<h6 id="roles">Roles</h6>
+<p>Two user roles impact users&#39; abilities in the Design Center app:</p>
+
+<ul>
+<li><code>cf_vcs</code>. Users that are members of the cf_vcs role can use the Design Center app
+in the Mission Portal and commit to the git service that is configured in the settings. Conversely,
+users they are not members of this role cannot access the Design Center app, not
+even to list the available sketches.</li>
+<li><code>cf_remoteagent</code>. This role allows users to invoke <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> on remote hosts and display the verbose
+output from the agents. In the context of the Design Center app, this is used if a sketch activation
+is non-compliant (red), and a user clicks a failed host followed by the &quot;Verbose output&quot; button.
+Users can benefit from the Design Center app even though they are not members of the <code>cf_remoteagent</code> role.
+Non-members cannot invoke remote <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> runs to get additional diagnostics data.</li>
+</ul>
+<h6 id="allowed-changes">Allowed changes</h6>
+<p>Users have access only to what the available sketches in the Design Center app offers. For example,
+if the only available sketch in the app is one that controls file integrity monitoring (Security::file_integrity),
+users can only change files that CFEngine monitors. All users can see the same sketches,
+and can activate on all hosts. There is not yet a concept of RBAC for the Design Center app.</p>
+
+<p>The sketches that are available are controlled with the contents of <a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-enterprise-sketch-flow.html#var-cfengine-design-center" title="Sketch Flow in CFEngine Enterprise - /var/cfengine/design-center"><code>/var/cfengine/design-center</code></a> on the
+Mission Portal server.</p>
+
+<!-- Please see (TODO: link to doc for creating new sketches) for more information. -->
+
+<p>Note however, that malicious users can potentially do damage to hosts even if you limit their
+abilities. For example, if a user creates many activations of the Security::file_integrity sketch
+for a large amount of directories, this will have a performance impact across the infrastructure.</p>
+
+<p>To get complete control over what users do, changes can be reviewed before
+they are copied to <a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-enterprise-sketch-flow.html#var-cfengine-masterfiles" title="Sketch Flow in CFEngine Enterprise - /var/cfengine/masterfiles"><code>/var/cfengine/masterfiles</code></a> on the policy server. Refer
+to <a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-integrating-mission-portal-with-git.html" title="Integrating Mission Portal with git">Integrating Mission Portal with git</a> for more information.</p>
+<h6 id="audit-log">Audit log</h6>
+<p>All changes that Mission Portal users make through the Design Center app become part of
+the git commit log. Each change in sketch activation corresponds to one
+commit in git. In the git commit log, the git committer name and email is configured
+in the Mission Portal settings. This allows for easily recognizing and parsing which commits
+are made through the Mission Portal as opposed to other users of the git service.</p>
+
+<p>In addition, the git author name and email is set to the user name and email address of the
+user logged into the Mission Portal when the commit is made. This allows you to see exactly
+which users are making which changes in the git commit log.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> git log --pretty<span class="o">=</span>format:<span class="s2">&quot;%h %an: %s&quot;</span> --committer<span class="o">=</span><span class="s1">&#39;Mission Portal&#39;</span>
+<span class="go">0ac4ae0 bob: Setting up dev environment. Ticket #123.</span>
+<span class="go">5ffc4d1 bob: Configuring postgres on test environment. Ticket #124.</span>
+<span class="go">4190ca5 bob: My test activation</span>
+<span class="go">0ac4ae0 tom: remove failed activation</span>
+<span class="go">5ffc4d1 tom: print echo example</span>
+<span class="go">dc9518d rachel: Rolling out Apache, Phase 2</span>
+<span class="go">3cfaf93 rachel: Rolling out Apache, Phase 1</span>
+</code></pre>
+</div>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/design-center/configure-sketches-enterprise/access-control-mission-portal.markdown` -->
+
+<hr>
+<h4 id="sketch-flow-in-cfengine-enterprise">Sketch Flow in CFEngine Enterprise</h4>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/design-center/configure-sketches-enterprise/enterprise-sketch-flow.markdown` -->
+
+<p>The CFEngine Enterprise <strong>Design Center App</strong> (UI) relies on
+several simple services and file structures. The interactions between these
+are shown in the diagram below.</p>
+
+<p><img src="enterprise-sketch-dataflow-diagram.png" alt="Enterprise Design Center data-flow diagram"></p>
+<h6 id="git-repository-service">Git repository service</h6>
+<p>This service must offer git over ssh. It is the canonical place for
+masterfiles, and must be initialized with the CFEngine Enterprise
+masterfiles (version 3.6 and onwards). It can be hosted on an internal git
+server or services like <a href="https://github.com" title="GitHub">github</a>.</p>
+<h6 id="mission-portal-gui">Mission Portal GUI</h6>
+<p>The main CFEngine Enterprise graphical interface. It includes the
+<strong>Design Center App</strong> for using sketches and getting reports about them.
+The Mission Portal administrator must configure its settings
+with the Git version control repository you selected above. Users are only allowed to use
+the <strong>Design Center App</strong> if they are members of the <code>cf_vcs</code> role (see
+<a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-access-control-mission-portal.html" title="Design Center Access Control">Controlling Access to the Design Center UI</a>.</p>
+<h6 id="var-cfengine-masterfiles">/var/cfengine/masterfiles</h6>
+<p>The distribution point for policies for CFEngine.
+This is a shared directory that contains the policy for all hosts.
+CFEngine policy inside this directory automatically
+get pulled down by all CFEngine hosts.  Sketches are added in the <code>sketches</code> subdirectory.</p>
+<h6 id="var-cfengine-design-center">/var/cfengine/design-center</h6>
+<p>This is a stable version of the official <a href="https://github.com/cfengine/design-center" title="Design-Center repository on GitHub">Design Center
+repository</a>. It contains all the
+sketches that are available to the Mission Portal <strong>Design Center App</strong> (UI), as
+well as tools and APIs utilized internally by the app. Note in particular the
+<code>tools/cf-sketch/constdata.conf</code> file that contains out-of-the-box validations
+and other definitions. See the reference documentation for the <a href="reference-design-center-sketch.html" title="Sketch Structure">sketch
+structure</a> for a complete
+list of requirements necessary for a sketch to work well with the app.</p>
+<h6 id="opt-cfengine-userworkdir-user-masterfiles">/opt/cfengine/userworkdir/$(user)/masterfiles</h6>
+<p>Each user of the Mission Portal has his or her own working directory here. It
+contains a local clone from the git repository service, using the shared
+Mission Portal Git credentials that the administrator has set up for all
+users. The operations performed in the <strong>Design Center App</strong> will modify this directory,
+and it will be pushed to the Git repository to make changes to the CFEngine
+policy.</p>
+
+<p><code>/opt/cfengine</code> is chosen as the base directory rather than <code>/var/cfengine</code>
+due to space utilization concerns in <code>/var</code> when many users check out their
+local git clone. It should have enough free space to store the size of the
+git masterfiles clone times the number of users in the <code>cf_vcs</code> role.</p>
+
+<p><strong>NOTE YOU SHOULD NOT CHECK LARGE FILES INTO GIT!!!  IT&#39;S NOT DESIGNED FOR IT AND GETTING RID OF THEM IS HARD BECAUSE OF GIT&#39;S HISTORY!!!</strong></p>
+<h6 id="the-hosts-and-var-cfengine-inputs">The hosts and /var/cfengine/inputs</h6>
+<p>The hosts copy from <a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-enterprise-sketch-flow.html#var-cfengine-masterfiles" title="Sketch Flow in CFEngine Enterprise - /var/cfengine/masterfiles"><code>/var/cfengine/masterfiles</code></a> on the CFEngine server to
+its local <code>/var/cfengine/inputs</code> every time CFEngine runs. The policy that hosts
+copy includes the sketches that have been activated by app users. The
+hosts run the policy, including the sketches, that apply to them. During
+each run they generate local reports that are collected by the CFEngine
+Enterprise Hub.  Thus the app is updated with the sketch activation status.</p>
+
+<p>If a sketch activation is not compliant (red in the app), the user is given the option to
+invoke an agent run on a failing host from the app. This will capture the
+verbose agent output for the user. This is only allowed if the Mission Portal
+administrator has put the user in the <code>cf_remoteagent</code> role, and furthermore requires <code>sudo</code> permissions for the <code>cfapache</code> user.</p>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/design-center/configure-sketches-enterprise/enterprise-sketch-flow.markdown` -->
+
+<hr>
+<h2 id="enterprise-api">Enterprise API</h2>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/enterprise-api.markdown` -->
+
+<p>The CFEngine Enterprise API allows HTTP clients to interact with the
+CFEngine Enterprise  <em>Hub</em>.  Typically this is also the policy server.</p>
+
+<p><img src="enterprise-api-architecture-overview.png" alt="Enterprise API Overview"></p>
+
+<p>The Enterprise API is a REST API, but a central part of interacting with the
+API uses SQL. With the simplicity of REST and the flexibility of
+SQL, users can craft custom reports about systems of arbitrary scale, mining
+a wealth of data residing on globally distributed CFEngine Database Servers.</p>
+
+<p>See also the <a href="examples-enterprise-api-examples.html" title="Enterprise API Examples">Enterprise API Examples</a> and the <a href="reference-enterprise-api-ref.html" title="Enterprise API Reference">Enterprise API Reference</a>.</p>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/enterprise-api.markdown` -->
+
+<hr>
+<h2 id="best-practices">Best Practices</h2>
+<!--- Begin include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/best-practices.markdown` -->
+
+<ul>
+<li><a href="enterprise-cfengine-guide-best-practices.html#version-control-and-configuration-policy" title="Best Practices - Version Control and Configuration Policy ">Version Control and Configuration Policy</a></li>
+<li><a href="enterprise-cfengine-guide-best-practices.html#scalability" title="Best Practices - Scalability ">Scalability</a></li>
+</ul>
+<h6 id="version-control-and-configuration-policy">Version Control and Configuration Policy</h6>
+<p>CFEngine users version their policies.  It&#39;s a reasonable, easy thing
+to do: you just put <a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-enterprise-sketch-flow.html#var-cfengine-masterfiles" title="Sketch Flow in CFEngine Enterprise - /var/cfengine/masterfiles"><code>/var/cfengine/masterfiles</code></a> under version control
+and... you&#39;re done?</p>
+
+<p>What do you think?  How do you version your own infrastructure?</p>
+<h6 id="problem-statement">Problem statement</h6>
+<p>It turns out everyone likes convenience and writing the versioning
+machinery is hard.  So for CFEngine Enterprise 3.6 we set out to
+provide version control integration with Git out of the box, disabled
+by default.  This allows users to use branches for separate hubs
+(which enables a policy release pipeline) and enables Design Center
+integration.</p>
+<h6 id="release-pipeline">Release pipeline</h6>
+<p>A build and release pipeline is how software is typically delivered to
+production through testing stages.  In the case of CFEngine, policies
+are the software.  Users have at least two stages, development and
+production, but typically the sequence has more stages including
+various forms of testing/QA and pre-production.</p>
+<h6 id="design-center">Design Center</h6>
+<p>The CFEngine Design Center is a way to augment your policies (in a way
+that does not conflict or override your own policies) through a GUI,
+using modular testable policies called sketches.  It&#39;s like a Perl
+CPAN for CFEngine but with a GUI and awesome sauce mixed in.</p>
+<h6 id="how-to-enable-it">How to enable it</h6>
+<p>To enable masterfiles versioning, you have to plan a little bit. These
+are the steps:</p>
+<h6 id="choose-your-repository">Choose your repository</h6>
+<p>You have two options: use the default local Git repository which comes
+with CFEngine Enterprise, or use a remote Git repository accessible
+via the <code>git</code> or <code>https</code> protocol.  The first option is good for
+getting started quickly, but we strongly recommend the second option:
+using a remote repository, populated with the contents of the <code>3.6.x</code>
+branch of our masterfiles repository at
+<a href="https://github.com/cfengine/masterfiles">https://github.com/cfengine/masterfiles</a>.</p>
+<h6 id="using-the-default-local-git-repository">Using the default local Git repository</h6>
+<p>The default repository is a local directory on the hub and set up by
+the <code>cfengine-hub</code> package.  It&#39;s the default in the Mission Portal
+VCS integration panel and resides in <code>/opt/cfengine/masterfiles.git</code>.</p>
+
+<p><strong>PLEASE NOTE: you must use user &quot;cfapache&quot; to interact with this
+repository safely on the hub.</strong></p>
+
+<p>You do not have to do anything to set up this repository - it&#39;s
+already preconfigured and prepopulated out of the box. You just need
+to enable VCS deployments as described below.</p>
+
+<p>To check out this default repository, run the following commands on
+your hub (everything needs to be run as user <code>cfapache</code> for the
+permissions to be set correctly. The first two commands setup some
+basic information needed by git to manipulate the repository):</p>
+<div class="highlight"><pre><code class="text">git config user.email &quot;your@email.address&quot;
+git config user.name &quot;Your Name&quot;
+su - cfapache
+git clone /opt/cfengine/masterfiles.git
+</code></pre>
+</div>
+
+<p>And then make all the changes in the checked-out <code>masterfiles</code>
+repository.</p>
+<h6 id="using-a-remote-repository">Using a remote repository</h6>
+<p>To use a remote repository, you must enter its address, login
+credentials and the branch you want to use in the Mission Portal VCS
+integration panel. To access it, click on &quot;Settings&quot; in the top-left
+menu of the Mission Portal screen, and then select &quot;Version control
+repository&quot;. This screen by default contains the settings for using
+the built-in local repository.</p>
+
+<p><img src="settings-menu.png" alt="Settings menu"></p>
+
+<p><img src="settings-vcs.png" alt="VCS settings screen"></p>
+<h6 id="make-sure-your-current-masterfiles-are-in-the-chosen-repository">Make sure your current masterfiles are in the chosen repository</h6>
+<p>This is critical.  When you start auto-deploying policy, you <strong>will</strong>
+overwrite your current <a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-enterprise-sketch-flow.html#var-cfengine-masterfiles" title="Sketch Flow in CFEngine Enterprise - /var/cfengine/masterfiles"><code>/var/cfengine/masterfiles</code></a>.  So take the
+current contents thereof and make sure they are in the Git repository
+you chose in the previous step.</p>
+
+<p>For example, if you create a new repository in GitHub by following the
+instructions from <a href="https://help.github.com/articles/create-a-repo">https://help.github.com/articles/create-a-repo</a>, you
+can add the contents of <code>masterfiles</code> to it with the following
+commands (assuming you are already in your local repository checkout):</p>
+<div class="highlight"><pre><code class="text">cp -r /var/cfengine/masterfiles/* .
+git add *
+git commit -m &#39;Initial masterfiles check in&#39;
+git push
+</code></pre>
+</div>
+<h6 id="enable-vcs-deployments-in-the-versioned-update-cf">Enable VCS deployments in the versioned <a href="guide-writing-and-serving-policy-policy-framework.html#update-cf" title="The Policy Framework - update.cf"><code>update.cf</code></a></h6>
+<p>In the file <a href="guide-writing-and-serving-policy-policy-framework.html#update-cf" title="The Policy Framework - update.cf"><code>update.cf</code></a> in your versioned masterfiles, change</p>
+<div class="highlight"><pre><code class="text">#&quot;cfengine_internal_masterfiles_update&quot; expression =&gt; &quot;enterprise.!(cfengine_3_4|cfengine_3_5)&quot;;
+&quot;cfengine_internal_masterfiles_update&quot; expression =&gt; &quot;!any&quot;;
+</code></pre>
+</div>
+
+<p>to</p>
+<div class="highlight"><pre><code class="text">&quot;cfengine_internal_masterfiles_update&quot; expression =&gt; &quot;enterprise.!(cfengine_3_4|cfengine_3_5)&quot;;
+#&quot;cfengine_internal_masterfiles_update&quot; expression =&gt; &quot;!any&quot;;
+</code></pre>
+</div>
+
+<p>This is simply commenting out one line and uncommenting another.</p>
+
+<p>Remember that you need to commit and push these changes to the
+repository you chose in the previous step, so that they are picked up
+when you deploy from the git repository. In your checked out
+<code>masterfiles</code> git repository, these commands should normally do the
+trick:</p>
+<div class="highlight"><pre><code class="text">git add update.cf
+git commit -m &#39;Enabled auto-policy updates&#39;
+git push
+</code></pre>
+</div>
+
+<p>Now you need to do the first-time deployment, whereupon this new
+<a href="guide-writing-and-serving-policy-policy-framework.html#update-cf" title="The Policy Framework - update.cf"><code>update.cf</code></a> and the rest of your versioned masterfiles will overwrite
+<a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-enterprise-sketch-flow.html#var-cfengine-masterfiles" title="Sketch Flow in CFEngine Enterprise - /var/cfengine/masterfiles"><code>/var/cfengine/masterfiles</code></a>.  We made that easy too, using standard
+CFEngine tools. Exit the <code>cfapache</code> account and run the following
+command as <code>root</code> on your hub:</p>
+<div class="highlight"><pre><code class="text">cf-agent -Dcfengine_internal_masterfiles_update -f update.cf
+</code></pre>
+</div>
+
+<p>Easy, right?  You&#39;re done, from now on every time <a href="guide-writing-and-serving-policy-policy-framework.html#update-cf" title="The Policy Framework - update.cf"><code>update.cf</code></a> is run
+(by default, every 5 minutes) it will check out the repository and
+branch you configured in the Mission Portal VCS integration panel.</p>
+
+<p>Please note all the work is done as user <code>cfapache</code> except the very
+last step of writing into <a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-enterprise-sketch-flow.html#var-cfengine-masterfiles" title="Sketch Flow in CFEngine Enterprise - /var/cfengine/masterfiles"><code>/var/cfengine/masterfiles</code></a>.</p>
+<h6 id="how-it-works">How it works</h6>
+<p>The code is fairly simple and can even be modified if you have special
+requirements (e.g. Subversion integration).  But out of the box there
+are three important components. All the scripts below are stored under
+<code>/var/cfengine/httpd/htdocs/api/dc-scripts/</code> in your CFEngine
+Enterprise hub.</p>
+<h6 id="common-sh"><code>common.sh</code></h6>
+<p>The script <code>common.sh</code> is loaded by the deployment script and does two
+things.  First, it redirects all output to
+<code>/var/cfengine/outputs/dc-scripts.log</code>.  So if you have problems,
+check there first.</p>
+
+<p>Second, the script sources <code>/opt/cfengine/dc-scripts/params.sh</code> where
+the essential parameters like repository address and branch live.
+That file is written out by the Mission Portal VCS integration panel,
+so it&#39;s the connection between the Mission Portal GUI and the
+underlying scripts.</p>
+<h6 id="masterfiles-stage-sh"><code>masterfiles-stage.sh</code></h6>
+<p>This script is called to deploy the masterfiles from VCS to
+<a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-enterprise-sketch-flow.html#var-cfengine-masterfiles" title="Sketch Flow in CFEngine Enterprise - /var/cfengine/masterfiles"><code>/var/cfengine/masterfiles</code></a>.  It&#39;s fairly complicated and does not
+depend on CFEngine itself by design; for instance it uses <code>rsync</code> to
+deploy the policies.  You may want to review and even modify it, for
+example choosing to reject deployments that are too different from the
+current version (which could indicate a catastrophic failure or
+misconfiguration).</p>
+
+<p>This script also validates the policies using <code>cf-promises -T</code>.  That
+command looks in a directory and ensures that <a href="guide-writing-and-serving-policy-policy-framework.html#promises-cf" title="The Policy Framework - promises.cf"><code>promises.cf</code></a> in the
+directory is valid.  If it&#39;s not, an error will go in the log file and
+the script exits.</p>
+
+<p><strong>NOTE</strong> this means that clients will <strong>never</strong> get invalid policies
+  according to the hub, although a 3.5 or older client could still
+  receive policies that are only valid in 3.6.  So make sure you test
+  with 3.5 or older if you anticipate that problem during migration,
+  but in a homogeneous client population this is a wonderful
+  guarantee.</p>
+<h6 id="pre-fetch-sh-and-post-update-sh"><code>pre-fetch.sh</code> and <code>post-update.sh</code></h6>
+<p>These scripts are run by the Mission Portal whenever the user
+configures sketches.  They enable the Mission Portal to check out the
+policies, make changes to them, and then commit and push them back.</p>
+<h6 id="design-center-integration">Design Center integration</h6>
+<p>The Design Center integration Just Works when you follow the procedure
+above to enable the VCS integration.  You can then go into the Mission
+Portal, configure any sketch, and voila, in minutes that sketch will
+be activated across your infrastructure.</p>
+<h6 id="manual-policy-changes">Manual policy changes</h6>
+<p>If you want to make manual changes to your policies, simply make those
+changes in a checkout of your masterfiles repository, commit and push
+the changes. The next time <a href="guide-writing-and-serving-policy-policy-framework.html#update-cf" title="The Policy Framework - update.cf"><code>update.cf</code></a> runs, your changes will be
+checked out and in minutes distributed through your entire
+infrastructure.</p>
+<h6 id="benefits">Benefits</h6>
+<p>To conclude, let&#39;s summmarize the benefits of versioning your
+masterfiles using the built-in facilities in CFEngine Enterprise 3.6</p>
+
+<ul>
+<li>easy to use compared to home-grown VCS integration</li>
+<li>supports Git out of the box and, with some work, can support others
+like Subversion</li>
+<li>tested, reliable, and built-in</li>
+<li>Design Center integration</li>
+<li>supports any repository and branch per hub</li>
+<li>your policies are validated before deployment</li>
+<li>integration happens through shell scripts and <a href="guide-writing-and-serving-policy-policy-framework.html#update-cf" title="The Policy Framework - update.cf"><code>update.cf</code></a>, not C
+code or special policies</li>
+</ul>
+<h6 id="scalability">Scalability</h6>
+<p>When running CFEngine Enterprise in a large-scale IT environment with many thousands of hosts, certain issues arise that require different approaches compared with smaller installations.</p>
+
+<p>With CFEngine 3.6, significant testing was performed to identify the issues surrounding scalability and to determine best practices in large-scale installations of CFEngine.</p>
+<h6 id="moving-postgresql-to-separate-hard-drive">Moving PostgreSQL to Separate Hard Drive</h6>
+<p>Moving the PostgreSQL database to another physical hard drive from the other CFEngine components can improve the stability of large-scale installations, particularly when using a solid-state drive (SSD) for hosting the PostgreSQL database.</p>
+
+<p>The data access involves a huge number of random IO operations, with small chunks of data. SSD may give the best performance because it is designed for these types of scenarios.</p>
+
+<p><em>Important</em>: The PostgreSQL data files are in <code>/var/cfengine/state/pg/</code> by default. Before moving the mount point, please make sure that all CFEngine processes (including PostgreSQL) are stopped and the existing data files are copied to the new location.</p>
+<h6 id="setting-the-splaytime">Setting the splaytime</h6>
+<p>The <a href="reference-components-cf-execd.html#splaytime" title="cf-execd - splaytime"><code>splaytime</code></a> tells CFEngine hosts the base interval over which they will communicate with the <code>policy server</code>, which they then use to &quot;splay&quot; or hash their own runtimes.</p>
+
+<p>Thus when <a href="reference-components-cf-execd.html#splaytime" title="cf-execd - splaytime"><code>splaytime</code></a> is set to 4, 1000 hosts will hash their run attempts evenly over 4 minutes, and each minute will see about 250 hosts make a run attempt.  In effect, the hosts will attempt to communicate with the policy server and run their own policies in predictable &quot;waves.&quot;  This limits the number of concurrent connections and overall system load at any given moment.</p>
+
+<!--- End include: `/home/jenkins/workspace/build-documentation-3.6/label/DOCUMENTATION_x86_64_linux_debian_6/documentation/enterprise-cfengine-guide/best-practices.markdown` -->
+
+<hr>
+
+            </article>
+        </div>
+    </div>
+</body>
+</html>

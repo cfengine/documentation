@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.20  Documentation - ITIL</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/guide/special-topics/itil.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-guide-special-topics-itil.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <link rel="canonical" href="https://docs.cfengine.com/latest/guide-special-topics-itil.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='assets/global-2492ce7571245ef106dbe85ec06e4908.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "ITIL";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/" selected>Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="96c0f638b03564284" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a><ul class="level2"><li><a href="guide-special-topics-adopting-cfengine.html">Adopting CFEngine</a></li><li><a href="guide-special-topics-agility.html">Agility</a></li><li><a href="guide-special-topics-application-management.html">Application Management</a></li><li><a href="guide-special-topics-build-deploy-manage-audit.html">Build Deploy Manage Audit</a></li><li><a href="guide-special-topics-change-management.html">Change Management</a></li><li><a href="guide-special-topics-cloud-computing.html">Cloud Computing</a></li><li><a href="guide-special-topics-content-driven-policy.html">Content Driven Policy</a></li><li><a href="guide-special-topics-devops.html">Devops</a></li><li><a href="guide-special-topics-distributed-scheduling.html">Distributed Scheduling</a></li><li><a href="guide-special-topics-file-content.html">File Content</a></li><li><a href="guide-special-topics-glossary.html">Glossary</a></li><li><a href="guide-special-topics-hierarchies.html">Hierarchies</a></li><li><a class="active" href="guide-special-topics-itil.html">ITIL</a></li><li><a href="guide-special-topics-iteration.html">Iteration (Loops)</a></li><li><a href="guide-special-topics-modularity.html">Modularity and Orchestrating System Policy</a></li><li><a href="guide-special-topics-orchestration.html">Orchestration</a></li><li><a href="guide-special-topics-stigs.html">STIGs</a></li><li><a href="guide-special-topics-security.html">Security</a></li><li><a href="guide-special-topics-teamwork.html">Teamwork</a></li><li><a href="guide-special-topics-open-nebula.html">Using CFEngine with Open Nebula</a></li></ul></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-getting-started-with-cfengine-build.html">Getting Started with CFEngine Build</a></li><li><a href="guide-additional-resources.html">External resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-special-topics.html">Special Topics</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    ITIL
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h1 id="what-it-itil">What it ITIL?</h1>
+<p>The IT Infrastructure Library (ITIL) is a set of human management practices
+surrounding IT infrastructure that are designed to bring quality assurance and
+continuous improvement to organizations. ITIL has emerged as a de-facto set of
+ideas about service management. Many of ITIL&#39;s ideas are rooted in and legacy
+views of the service desk and human remediation. This document explains how to
+accomplish the major goals of ITIL, in the automated framework of CFEngine.</p>
+
+<p>More concretely, the IT Infrastructure Library (ITIL) is a collection of books,
+in which “best practices” for IT Service Management (ITSM) are described. Today,
+ITIL can be seen as a de-facto standard in the discipline of ITSM, for which it
+provides guidelines by its current core titles Service Strategy, Service Design,
+Service Transition, Service Operation and Continual Service Improvement. ITIL
+follows the principle of process-oriented management of IT services.</p>
+
+<p>In effect, the responsibilities for specific IT management decisions can be
+shared between different organizational units as the management processes span
+the entire IT organization independent from its organizational partition.
+Whether this means a centralization or decentralization of IT management in the
+end, depends on the concrete instances of ITIL processes in the respective
+scenario.</p>
+<h1 id="itil-history-and-versions">ITIL history and versions</h1>
+<p>ITIL has its roots in the early 1990s, and since then was subject to numerous
+improvements and enhancements. Today, the most popular release of ITIL is given
+by the books of ITIL version 2 (often referred to as ITILv2), while the British
+OGC (Office of Government Commerce), owner and publisher of ITIL, is currently
+promoting ITIL version 3 (ITILv3) under the device &quot;`ITIL Reloaded&quot;&#39;. A further
+ITIL version has already been planned, owing to perceived problems with version
+3.</p>
+
+<p>ITILv3 is not just an improved version of the ITILv2 books, but rather comes
+with a completely renewed structure, new sets of processes and a different scope
+with respect to the issue of IT strategies, IT-business-alignment and continual
+improvement. In the following, we run through the basics of both versions,
+highlighting commonalities and differences.</p>
+<h1 id="basics">Basics</h1>
+<p>ITIL is an attempt to implement theDeming Quality Circleas a model for continual
+quality improvement. Quality relates to the provided IT services as well as the
+management processes deployed to manage these services. Continual improvement in
+ITIL means to follow the method of Plan-Do-Check-Act:</p>
+
+<ul>
+<li><p>Plan</p>
+
+<p>Plan the provision of high-quality IT services, i.e. set up the required
+management processes for the delivery and support of these services, define
+measurable goals and the course of action in order to fulfill them.</p></li>
+<li><p>Do</p>
+
+<p>Put the plans into action.</p></li>
+<li><p>Check</p>
+
+<p>Measure all relevant performance indicators, and quantify the achieved quality
+compared to the quality objectives. Check for potentials of improvement.</p></li>
+<li><p>Act</p>
+
+<p>In response to the measured quality, start activities for future improvements.
+This step leads into the Plan phase again.</p></li>
+</ul>
+<h1 id="version-2">Version 2</h1>
+<p>Although ITIL version 3 was released during the summer of 2007, it is its
+predecessor that has achieved great acceptance amongst IT service providers all
+over the world. Also due to the fact that the International ISO/IEC 20000
+standard emerged from those basic principles and processes coming from ITILv2,
+it is this version experiencing the biggest distribution and popularity.</p>
+
+<p>The core modules of ITIL version 2 are the books entitled Service Support and
+Service Delivery. While the Service Support processes (e.g. Incident Management,
+Change Management) aim at supporting day-to-day IT service operation, the
+Service Delivery processes (e.g. Service Level Management, Capacity Management,
+Financial Management) are supposed to cover IT service planning like resource
+and quality planning, as well as strategies for customer relationships or
+dealing with unpredictable situations.</p>
+<h1 id="version-3">Version 3</h1>
+<p>In 2007, version 2 was replaced by its successor version 3, aimed at covering
+the entire service life cycle from a management perspective and striving for a
+more substantiated idea of IT business alignment. Many version 2 processes and
+ideas have been recycled and extended by various additional processes and
+principles. The five service life cycle stages accordant to versin 3 are:</p>
+
+<ul>
+<li><p>Service Strategy: Common strategies and principles for customer-oriented,
+business-driven service delivery and management</p></li>
+<li><p>Service Design: Principles and processes for the stage of designing new or
+changed IT services</p></li>
+<li><p>Service Transition: Principles and processes to ensure quality-oriented
+implementation of new or changed services into the operational environment</p></li>
+<li><p>Service Operation: Principles and processes for supporting service operation</p></li>
+<li><p>Continual Service Improvement: Methods for planning and achieving service
+improvements at regular intervals</p></li>
+</ul>
+<h1 id="service-orientation-and-itil">Service orientation and ITIL</h1>
+<p>Why service and process orientation? What is ITIL trying to do? As we mentioned
+in the introduction, the `top down hierarchical&#39; control view of human
+organization fell from favour in business research in the 1980s and service
+oriented autonomy was identified as a new paradigm for levelling organizations –
+getting rid of deep hierarchies that hinder communication and open up
+communication directly.</p>
+
+<p>If we look at ITIL through the eyeglass of a hierarchical organization, some of
+its procedures could be seen as restrictive, throttling scalable freedoms. We do
+not believe that this is their intention. Rather ITIL&#39;s guidelines try to make a
+predictable and reliable face for business and IT operations so that customers
+feel confidence, without choking the creative process that lies behind the
+design of new services.</p>
+<h1 id="cfengine-in-itil-clothes">CFEngine in ITIL clothes?</h1>
+<p>CFEngine users are interested in the ability to manage, i.e. cope with system
+configuration in a way that enables a business or other organization to do its
+work effectively. They don&#39;t want human procedures because this is what CFEngine
+is supposed to eliminate. To be able to use ITIL to help in this task, we have
+to first think of the process of setting up as a number of services. What
+services are these? We have to think a little sideways to see the relationship.</p>
+
+<ul>
+<li><p>Service Management</p>
+
+<p>Providing a sensible configuration policy, responding to discovered problems
+or the needs of end-users.</p></li>
+<li><p>Change Management</p>
+
+<p>A minor edit of the configuration policy, with appropriate quality controls.
+Or a change that comes from a completely different source, outside the scope
+of intended change.</p></li>
+<li><p>Release Management</p>
+
+<p>A new configuration policy, consisting of many changes. This could be a major
+and disruptive change so it should be planned carefully.</p></li>
+<li><p>Capacity Management</p>
+
+<p>Having enough resources for cfservd to answer all queries in a network. Having
+enough people and machines to support the processes of deploying and following
+CFEngine&#39;s progress.</p></li>
+</ul>
+<h1 id="itil-processes">ITIL processes</h1>
+<p>The following management processes are in scope of ITILv3:</p>
+
+<ul>
+<li><p>Service Level Management: Management of Service Level Agreements (Alas), i.e.
+service level and quality promises.</p></li>
+<li><p>Service Catalogue Management: deciding on the services that will be provided
+and how they are advertised to users.</p></li>
+<li><p>Capacity Management: Planning and provision of adequate business, service and
+resource capacities.</p></li>
+<li><p>Availability Management: Resource provision and monitoring of service, from a
+customer viewpoint.</p></li>
+<li><p>Continuity Management: Development of strategies for dealing with potential
+disasters.</p></li>
+<li><p>Information Security Management: Ensuring a minimum level of information
+security throughout the IT organization.</p></li>
+<li><p>Supplier Management: Maintaining supplier relationships.</p></li>
+<li><p>Transition Planning and Support: Ensuring that new or changed services are
+deployed into the operational environment with the minimal impact on existing
+services</p></li>
+<li><p>Asset and Configuration Management: Management of IT assets and Configuration
+Items.</p></li>
+<li><p>Release Management: Planning, building, testing and rolling out hardware and
+software configurations.</p></li>
+<li><p>Change Management: Assessment of current state, authorization and scheduling
+of improvements.</p></li>
+<li><p>Service Validation and Testing: ensuring that services meet their specifications.</p></li>
+<li><p>Knowledge Management: organizing and integrating experience and methodology
+for future reference.</p></li>
+<li><p>Incident Management: responding to deviations from acceptable service.</p></li>
+<li><p>Event Management: Efficient handling of service requests and complaints.</p></li>
+<li><p>Problem Management: Problem identification by trend analysis of incidents.</p></li>
+<li><p>Request Fulfillment: Fulfilling customer service requests.</p></li>
+<li><p>Access Management: Management of access rights to information, services and
+resources.</p></li>
+<li><p>Service Strategy</p></li>
+<li><p>Service Design</p></li>
+<li><p>Service Operation</p></li>
+<li><p>Continual Service Improvement</p></li>
+</ul>
+<h2 id="service-strategy">Service Strategy</h2>
+<p>Service strategy is about deciding what services you want to formalize. In other
+words, what parts of your system administration tasks can you wrap in procedural
+formalities to ensure that they are carried out most excellently?</p>
+<h2 id="service-design">Service Design</h2>
+<p>Service design is about deciding what will be delivered, when it will be
+delivered, how quickly the service will respond to the needs of its clients etc.
+This stage is probably something of a mental barrier to those who are not used
+to service-oriented thinking.</p>
+<h2 id="service-operation">Service Operation</h2>
+<p>How shall we support service operation? What resources do we need to provide,
+both human and computer? Can we be certain of having these resources at all
+times, or is there resource sharing taking place? If services are chained into
+“supply chains”, remember that each link of the chain is a possible delay, and a
+possible misunderstanding. Successfully running services can be more complex at
+task than we expect, and this is why it is useful to formalize them in an ITIL
+fashion.</p>
+<h2 id="continual-service-improvement">Continual Service Improvement</h2>
+<p>Continual improvement is quite self-explanatory. We are obviously interested in
+learning from our mistakes and improving the quality and efficiency by which we
+respond to service requests. But it is necessary to think carefully about when
+and where to introduce this aspect of management. How often should we revise out
+plans and change procedures? If this is too often, the overhead of managing the
+quality becomes one of the main barriers to quality itself! Continual has to
+mean regular on a time-scale that is representative for the service being
+provided, e.g. reviews once per week, once per month? No one can tell you about
+your needs. You have to decide this from local needs.</p>
+<h1 id="tool-support">Tool Support</h1>
+<p>In the field of tool support for IT Service Management accordant to ITIL,
+various white papers and studies have been published. In addition, there are
+papers available from BMC, HP, IBM and other vendors that describe specific
+(commercial) solutions. Generally, the market for tools is growing rapidly,
+since ITIL increasingly gains attention especially in large and medium-size
+enterprises. Today, it is already hard to keep track of the variety of
+functionalities different tools provide. This makes it even more difficult to
+approach this topic in a way satisfactory to the entire researchers&#39;, vendors&#39;
+and practitioners&#39; community.</p>
+
+<p>That is why this document follows a different approach: Instead of thinking of
+ever new tools and computer-aided solutions for ITIL-compliant IT Service
+Management, this book analyses how the existing and well-established
+technologies used for traditional systems administration can fit into an
+ITIL-driven IT management environment, and it guides potential practitioners in
+integrating a respective tool suite – namely CFEngine – with ITIL and its
+processes.</p>
+
+<p>To avoid any misunderstanding: We do not argue that CFEngine – originally
+invented for configuring distributed hosts – may be deployed as a comprehensive
+solution for automating ITIL, but what we believe is CFEngine and its more
+recent innovations can bridge the gap between the technology of distributed
+systems management and business-driven IT Service Management. To make the case
+we must show:</p>
+
+<ul>
+<li><p>How ITIL terminology relates to the terminology of CFEngine and hence to a
+traditional system administrator&#39;s language, and</p></li>
+<li><p>Which parts (processes and activities) of ITIL can be (partially) supported by
+CFEngine, and how.</p></li>
+</ul>
+<h1 id="which-itil-processes-apply-to-cfengine">Which ITIL processes apply to CFEngine?</h1>
+<p><img src="./itil-cfengine.png" alt="ITIL and CFEngine"></p>
+
+<p>In version 2, ITIL divides itself into service support and service delivery. For
+instance, service support might mean having a number of CFEngine experts who can
+diagnose problems, or who have sufficient knowledge about CFEngine to solve
+problems using the software. It could also mean having appropriate tools and
+mechanisms in place to carry out the tasks. Service delivery is about how these
+people make their knowledge available through formal processes, how available
+are they and how much work can they cope with? CFEngine enables a few persons to
+perform a lot of work very cheaply, but we should not forget to track our
+performance and quality for the process of continual improvement.</p>
+
+<p>Service support is composed of a number of issues:</p>
+
+<ul>
+<li><p>Incident management: collecting and dealing with incidents.</p></li>
+<li><p>Problem management: root cause analysis and designing long term
+countermeasures.</p></li>
+<li><p>Configuration management: maintaining information about hardware and software
+and their interrelationships.</p></li>
+<li><p>Change management: implementing major sequenced changes in the infrastructure.</p></li>
+<li><p>Release management: planning and implementing major “product” changes.</p></li>
+</ul>
+
+<p>Although the difference between change management and release management is not
+completely clear in ITIL, we can think of a release as a change in the nature of
+the service, while change management deals with alterations possibly still
+within the scope of the same release. Thus is release is a more major change.</p>
+
+<p>Service delivery, on the other hand, is dissected as follows:</p>
+
+<ul>
+<li>Service Level Management</li>
+<li>Problem management</li>
+<li>Configuration management</li>
+<li>Change management</li>
+<li>Release management</li>
+</ul>
+
+<p>These issues are somewhat clearer once we understand the usage of the terms
+“problem”, “service” and “configuration”. Once again, it is important that we
+don&#39;t mix up configuration management in ITIL with configuration management as
+used in a Unix parlance.</p>
+
+<p>The notion of system administration in the sense of Unix does not exist in ITIL.
+In the world of business, reinvented through the eyes of ITIL&#39;s mentors, system
+administration and all its functions are wrapped in a model of service
+provision.</p>
+
+<ul>
+<li>ITIL Configuration Management (CM)</li>
+<li>CMDB Asset Management</li>
+<li>Change management in the enterprise</li>
+<li>Change management vs convergence</li>
+<li>Release management</li>
+<li>Incident and problem management</li>
+<li>Service Level Management (SLM)</li>
+</ul>
+<h2 id="itil-configuration-management-cm">ITIL Configuration Management (CM)</h2>
+<p>Perhaps the most obvious example is the term configuration management.</p>
+
+<ul>
+<li><p>Configuration Management</p>
+
+<p>The process (and life-cycle) responsible for maintaining information about
+configuration items (CI) required to deliver an IT service, including their
+relationships.</p></li>
+</ul>
+
+<p>As we see, this is comparable to our intuitive idea of “asset management”, but
+with “relationships” between the items included. ITIL also defines “Asset
+Management” as “a process responsible for tracking and reporting the value of
+financially valuable assets” and is a component of ITIL Configuration
+Management.</p>
+
+<p>In the CFEngine world, configuration management involves planning, deciding,
+implementing (“base-lining”) and verifying (“auditing”) the inventory. It also
+involves maintaining the security and privacy of the data, so that only
+authorized changes can be made and private assets are not made public.</p>
+
+<p>In this document we shall try not to mix the ITIL concept with the more prosaic
+system administration notion of a configuration which includes the current state
+of software configuration on the individual computers and routers in a network.</p>
+
+<p>Since CFEngine is a completely distributed system that deals with individual
+devices on a one-by-one basis, we must interpret this asset management at two
+levels:</p>
+
+<ul>
+<li><p>The local assets of an individual device at the level of virtual structures
+and containers within it: files, attributes, software packages, virtual
+machines, processes etc. This is the traditional domain of automation for
+CFEngine&#39;s autonomic agent.</p></li>
+<li><p>The collective assets of a network of such devices.</p></li>
+</ul>
+
+<p>Since a single host can be thought of as a network of assets connected through
+virtual pathways, it really isn&#39;t such a huge leap to see the whole network in a
+similar light. This is especially true when many of the basic resources are
+already shared objects, such as shared storage.</p>
+
+<ul>
+<li>CMDB Asset Management</li>
+</ul>
+
+<p>Why bother to collect an inventory of this kind? Is it bureaucracy gone mad, or
+do we need it for insurance purposes? Both of these things are of course
+possibilities.</p>
+
+<p>The data in an ITIL Configuration Management Database (CMDB) can be used for
+planning the future and for knowing how to respond to incidents, in other words
+for service level management (SLM) and for capacity planning. An organization
+needs to know what resources it has to know whether its can deliver on its
+promises. Moreover, for finance and insurance it is clearly a sound policy to
+have a database of assets.</p>
+
+<p>For continuity management, risk analysis and redundancy assessment we need to
+know how much equipment is in use and how much can be brought in at a moment&#39;s
+notice to solve a business problem. These are a few of the reasons why we need
+to keep track of assets.</p>
+<h2 id="change-management-in-the-enterprise">Change management in the enterprise</h2>
+<p>If we make changes to a technical installation, or even a business process, this
+can affect the service that customers experience. Major changes to service
+delivery are often written into service level agreements since they could result
+in major disruptions. Details of changes need to be known by a help-desk and
+service personnel.</p>
+
+<p>The decision to make a change is more than a single person should usually make
+alone (see the CFEngine Special Topics Guide on Change Management). ITIL
+recommends an advisory board for changes.</p>
+<h2 id="change-management-vs-convergence">Change management vs convergence</h2>
+<p>We should be especially careful here to decide what we mean by change. ITIL
+assumes a traditional model of change management that CFEngine does not
+necessarily need. ITIL&#39;s ideas apply to the management of CFEngine&#39;s
+configuration, not specifically to the way in which CFEngine carries out its
+automated manipulations of the system.</p>
+
+<p>In traditional idea of change management you start by “base-lining” a system, or
+establishing a known starting configuration. Then you assume that things only
+change when you actively implement a change, such as “rolling out a new version”
+or committing a release. This, of course, is very optimistic.</p>
+
+<p>In most cases all kinds of things change beyond our control. Items are stolen,
+things get broken by accident and external circumstances conspire to confound
+the order we would like to preserve. The idea that only authorized people make
+changes is nonsense.</p>
+
+<p>CFEngine takes a different view. It thinks that changes in circumstances are
+part of the picture, as well as changes in inventory and releases. It deals with
+the idea of “convergence”. In this way of thinking, the configuration details
+might be changing at random in a quite unpredictable way, and it is our job to
+continuously monitor and repair general dilapidation. Rather than assuming a
+constant state in between changes, CFEngine assumes a constant “ideal state” or
+goal to be achieved between changes. An important thing to realize about
+including changes of external circumstances is that you cannot “roll back”
+circumstances to an earlier state – they are beyond our control.</p>
+<h2 id="release-management">Release management</h2>
+<p>A release in ITIL is a collection of authorized changes to a system. One part of
+Change Management is thereforeRelease Management. A release is generally a
+larger umbrella under which many smaller changes are made. It is major change.
+Changes are assembled intoreleasesand then they are rolled out.</p>
+
+<p>In fact release management, as described by ITIL, has nothing to do with change
+management. It is rather about the management of designing, testing and
+scheduling the release, i.e. everything to do with the release process except
+the explicit implementation of it. Deployment or rollout describe the physical
+movement of configuration items as part of a release process.</p>
+<h2 id="incident-and-problem-management">Incident and problem management</h2>
+<p>ITIL distinguishes betweenincidentsandproblems. An incident is an event that
+might be problematic, but in general would observe incidents over some length of
+time and then diagnoseproblemsbased on this experience.</p>
+
+<ul>
+<li><p>Incident</p>
+
+<p>An event or occurrence that demands a response.</p>
+
+<p>One goal of CFEngine is to plan pro-actively to handle incidents
+automatically, thus taking them off the list of things to worry about.</p></li>
+<li><p>Problem</p>
+
+<p>A pattern of consequence arising from certain incidents that is detrimental to
+the system. It is often a negative trend that needs to be addressed.</p></li>
+</ul>
+
+<p>Changes can introduce new incidents. An integrated way to make the tracking of
+cause and effect easier is clearly helpful. If we are the cause of our own
+problems, we are in trouble!</p>
+<h2 id="service-level-management-slm">Service Level Management (SLM)</h2>
+<p>Also loosely referred to as Quality of Service. This is the process of making
+sure that Service Level Promises are kept, or Service Level Agreements (SLA) are
+adhered to. We must assess the impact of changes on the ability to deliver on
+promises.</p>
+<h1 id="using-cfengine-to-implement-itil-objectives">Using CFEngine to implement ITIL objectives</h1>
+<p>How does CFEngine fit into the management of a service organization? There are
+several ways:</p>
+
+<ul>
+<li><p>It offers a rapid detection and repair of faults that help to avoid formal
+incidents.</p></li>
+<li><p>It simplifies the deployment (release) of services.</p></li>
+<li><p>Allows resources to be understood and planned better.</p></li>
+</ul>
+
+<p>These properties allow for greaterpredictabilityof system services and therefore
+they contribute to customer confidence.</p>
+
+<p>Any tool for assisting with change management lies somewhere between ITIL&#39;s
+notion of change management and the infrastructure itself. It must essentially
+be part of both (see figure). This applies to CFEngine too.</p>
+
+<p><img src="./cfengine-relationship-to-infrastructure.png" alt="CFEngine Relationship to Infrastructure"></p>
+
+<p>CFEngine can manage itself as well as other resources: itself, its software, its
+policy and the resulting plans for the configuration of the system. In other
+words, CFEngine is itself part of the infrastructure that we might change.</p>
+<h1 id="how-can-cfengine-or-promises-help-an-enterprise">How can CFEngine or promises help an enterprise</h1>
+<p>Traditional methods of managing IT infrastructure involve working from crisis to
+crisis – waiting for `incidents&#39; to occur and then initiating fire suppression
+responses or, if there is time, proactive changes. With CFEngine, these can be
+combined and made into a managementservice, with continuous service quality.</p>
+
+<p>CFEngine can assist with:</p>
+
+<ul>
+<li>Maintenance assurance.</li>
+<li>Reporting for auditing.</li>
+<li>Change management.</li>
+<li>Security verification.</li>
+</ul>
+
+<p>Promise theory comes with a couple of principles:</p>
+
+<ul>
+<li><p>Separation of concerns.</p></li>
+<li><p>Fundamental attention to autonomy of parts.</p></li>
+</ul>
+
+<p>Other approaches to discussing organization talk about the separation of
+concerns, so why is promise theory special? Object Orientation (OO) is an
+obvious example. Promise theory is in fact quite different to object orientation
+(which is a misnomer).</p>
+
+<p>Object orientation asks users to model abstract classes (roles) long before
+actual objects with these properties exist. It does not provide a way to model
+the instantiated objects that later belong to those classes. It is mainly a form
+of information structure modelling. Object orientation models only abstract
+patterns, not concrete organizations.</p>
+
+<p>Promise theory on the other hand considers only actual existing objects (which
+it calls agents) and makes no presumptions that any two of these will be
+similar. Any patterns that might emerge can be exploited, but they are not
+imposed at the outset. Promise theory&#39;s insistence on autonomy of agents is an
+extreme viewpoint from which any other can be built (just as atoms are a basic
+building block from which any substance can be built) so there is no loss of
+generality by making this assumption.</p>
+
+<p>In other words, OO is a design methodology with a philosophy, whereas promises
+are a model for an arbitrary existing system.</p>
+<h1 id="what-is-maintenance">What is maintenance?</h1>
+<p>Maintenance is a process that ITIL does not formally spend any time on
+explicitly, but it is central to real-world quality control.</p>
+
+<p>Imagine that you decide to paint your house. Release 1 is going to be white and
+it is going to last for 6 years. Then release 2 is going to be pink. We manage
+our painting service and produce release 1 with all of the care and quality we
+expect. Job done? No.</p>
+
+<p>It would be wrong for us to assume that the house will stay this fine colour for
+6 years. Wind, rain and sunshine will spoil the paint over time and we shall
+need to touch up and even repaint certain areas in white to maintain release 1
+for the full six years. Then when it is time for release 2, the same kind of
+maintenance will be required for that too.</p>
+
+<p>Unless we read between the lines, it would seem that ITIL&#39;s answer to this is to
+wait for a crisis to take place (an incident). We then mobilize some kind of
+response team. But how serious an incident do we require and what kind of
+incident response is required? A graffiti artist? A lightening strike? A bird
+anoints the paint-work? CFEngine is like the gardener who patrols the grounds
+constantly plucking weeds, before the flower beds are overrun. Call it continual
+improvement if you like: the important thing is that the process your be
+pro-active and not too expensive.</p>
+
+<p>Maintenance is necessary because we do not control all of the changes that take
+place in a system. There is always some kind of “weather” that we have to work
+against. CFEngine is about this process of Maintenance. We call it “convergence”
+to the ideal state, where the ideal state is the specified version release. Keep
+this in mind as you read about ITIL change management.</p>
+<h1 id="itil-and-cfengine-summary">ITIL and CFEngine Summary</h1>
+<p>ITIL is about processes designed mainly for humans in a workplace. It represents
+a service oriented view of an organization, and as such is more scalable than
+hierarchical views of management. CFEngine is also a service oriented
+technology, thus there is some overlap of concepts. Indeed CFEngine is a good
+tool for implementing and assisting in certain ITIL processes, but we believe
+that no automation system can really support what ITIL is about.</p>
+<h1 id="appendix-a-itil-glossary">Appendix A ITIL glossary</h1>
+<p>This section lists some of the many terms from ITIL, especially the ISO/IEC
+20000 version of the text, and offers some comments and translations into common
+CFEngine terminology.</p>
+<h2 id="active-monitoring">Active Monitoring</h2>
+<p>Monitoring of a configuration item or IT service that uses automated regular
+checks to discover the current status.</p>
+
+<p>CFEngine performs programmed checks of all of its promises each time cfagent is
+started. Cfagent is, in a sense, an active monitor for a set of promises that
+are described in its configuration file.</p>
+<h2 id="availability">Availability</h2>
+<p>The ability of a component or service to perform its required function.</p>
+
+<p>Availability = Hours operational / Agreed service hours</p>
+
+<p>Availability or intermittency in CFEngine refers to the responsiveness of hosts
+in a network when remotely connecting to cfservd.</p>
+
+<p>Intermittency = Successful~ attempts / Total Attempts This is a measurement that
+cfagent automatically makes.</p>
+<h2 id="alert">Alert</h2>
+<p>A warning that a threshold has been reached, something has changed or a failure
+has occurred.</p>
+
+<p>A CFEngine alert fits this description quite well. Most alerts are user-defined,
+but a few are side effects of certain configuration rules.</p>
+<h2 id="audit">Audit</h2>
+<p>A formal inspection and verification to check whether a standard or set of
+guidelines is being followed.</p>
+
+<p>CFEngine&#39;s notion of an audit is more like the notion from system accounting.
+However, the data generated by this extra logging information could be collected
+and used in a more detailed examination of CFEngine&#39;s operations, suitable for
+use in a formal inspection (e.g. for compliance).</p>
+<h2 id="baseline">Baseline</h2>
+<p>A snapshot of the state of a service or an individual configuration item at a
+point in time</p>
+
+<p>In CFEngine parlance, we refer to this as an initial state or configuration. In
+principle a CFEngine initial state does not have to be a known-base line, since
+the changes we make will not generally be relative to an existing configuration.
+CFEngine encourages users to define the final state (regardless of initial
+state).</p>
+<h2 id="benchmark">Benchmark</h2>
+<p>The recorded state of something at a specific point in time.</p>
+
+<p>CFEngine does not use this term in any of its documentation, though our general
+understanding of a “benchmark” is that of a standardized performance measurement
+under special conditions. CFEngine regularly records state and performance data
+in a variety of ways, for example when making file copies.</p>
+<h2 id="capability">Capability</h2>
+<p>The ability of someone or something to carry out an activity.</p>
+
+<p>CFEngine does not use this concept specifically. The notion of a capability is
+terminology used in role-based access control.</p>
+<h2 id="change-record">Change record</h2>
+<p>A record containing details of which configuration items are affected and how
+they are affected by an authorized change.</p>
+
+<p>CFEngine&#39;s default modus operandi is to not record changes made to a system
+unless requested by the user. Changes can be written as log entries or audit
+entries by switching on reporting.</p>
+
+<p>An “inform” promise means that cf-agent promises to notify the changes to its
+standard output (which is usually sent by email or printed on a console output).
+A “syslog” promise implies that cfagent will log the message to the system log
+daemon. Both of the foregoing messages give only a simple message of actual
+changes. An “audit” promise is a promise to record extensive details about the
+process that cfagent undergoes in its checking of other promises.</p>
+<h2 id="chronological-analysis">Chronological Analysis</h2>
+<p>An analysis based on the timeline of recorded events (used to help identify
+possible causes of problems).</p>
+
+<p>A timeline analysis could easily be carried out based on audit information,
+system logs and cfenvd behavioural records.</p>
+<h2 id="configuration">Configuration</h2>
+<p>A group of configuration items (CI) that work together to deliver an IT service.</p>
+
+<p>A configuration is the current state of resources on a system. This is, in
+principle, different from the state we would like to achieve, or what has been
+promised.</p>
+<h2 id="configuration-item-ci">Configuration Item (CI)</h2>
+<p>A component of an infrastructure which is or will be under the control of
+configuration management.</p>
+
+<p>A configuration item is any object making a promise in CFEngine. We often speak
+of the promise object, or “promiser”.</p>
+<h2 id="configuration-management-database-cmdb">Configuration Management Database (CMDB)</h2>
+<p>Database containing all the relevant details of each configuration item and
+details of the important relationships between them.</p>
+
+<p>CFEngine has no asset database except for its own list of promises. The only
+relationships is cares about are those which are explicitly coded as promises.
+In the future, CFEngine 3 is likely to extend the notion of promises to allow
+more general records of the CMDB kind, but only to the extent that they can be
+verified autonomically.</p>
+<h2 id="document">Document</h2>
+<p>Information and its supporting medium.</p>
+
+<p>ITIL originally considered a document to be only a container for information. In
+version 3 it considers also the medium on which the data are recorded, i.e. both
+the file and the filesystem on which it resides.</p>
+<h2 id="emergency-change">Emergency Change</h2>
+<p>A change that must be introduced as soon as possible – for example to solve a
+major incident or to implement a critical security patch.</p>
+
+<p>CFEngine has no specific concept for this.</p>
+<h2 id="error">Error</h2>
+<p>A design flaw or malfunction that causes a failure.</p>
+
+<p>CFEngine often uses the term configuration error to mean a deviation of a
+configuration from its promised state. The ITIL meaning of the term would
+translated into “bug in the CFEngine software” or “bug in the promised
+configuration”.</p>
+<h2 id="event">Event</h2>
+<p>A change of state that has significance for the management of a configuration
+item or IT service.</p>
+
+<p>The same basic definition applies to CFEngine also, but CFEngine makes all such
+events into classes, since its approach to observing the environment is to
+measure and then classify it into approximate expected states. CFEngine class
+attributes (usually from cfenvd) may be considered as event notifications as
+they change.</p>
+<h2 id="exception-failure-event-summary">Exception, Failure, Event, Summary</h2>
+<p>An event that is generated when a service or device is currently operating
+abnormally.</p>
+
+<p>A state in which configuration policy is violated (could lead to a warning or an
+automated correction).</p>
+<h2 id="failure">Failure</h2>
+<p>Loss of ability to operate to specification or to deliver the required output.</p>
+
+<p>ITIL&#39;s idea of a failure is something that prevents a promise from being kept.
+CFEngine&#39;s autonomy model means that it is unlikely for such a failure to occur,
+since promises are only allowed to be made about resources for which we have all
+privileges. Occasionally, environmental issues might interfere and lead to
+failure.</p>
+<h2 id="incident">Incident</h2>
+<p>Any event that is not expected in normal operations and which might cause a
+degradation of service quality.</p>
+
+<p>CFEngine&#39;s philosophy of convergence gives us only one option for interpreting
+this term, namely as a temporary deviation from promised behaviour. A deviation
+must be temporary if CFEngine is operating continually, since it will repair any
+problem on its next invocation round. Events which do not impact promises made
+by CFEngine are of no interest to CFEngine, since autonomy means it cannot be
+responsible for anything beyond its own promises.</p>
+<h2 id="monitoring">Monitoring</h2>
+<p>Repeated observation of a configuration item, IT service or process in order to
+detect events and ensure that the current status is known.</p>
+
+<p>CFEngine incorporates a number of different kinds of monitoring, including
+monitoring of kept configuration-promises and passive monitoring of behaviour.</p>
+<h2 id="passive-monitoring">Passive Monitoring</h2>
+<p>Monitoring of a configuration item or IT service that relies on an alert or
+notification to discover the current status.</p>
+
+<p>cf-monitord is CFEngine&#39;s passive monitoring component. It observes system
+related behaviour and learns about it. It assumes that there is likely to be a
+weekly periodicity in the data in order to best handle its statistical
+inference.</p>
+<h2 id="policy">Policy</h2>
+<p>Formally documented management expectations and intentions. Policies are used to
+direct decisions, and to ensure consistent and appropriate development and
+implementation of processes, standards, roles, activities, IT infrastructures,
+etc.</p>
+
+<p>CFEngine&#39;s configuration policy is an automatable set of promises about the
+static and runtime state of a computer. Roles are identified by the kinds of
+behaviour exhibited by resources in a network. We say that a number of resources
+(hosts or smaller configuration objects) play a specific promised role if they
+make identical promises. Any resource can play a number of roles. Decisions in
+CFEngine are made entirely on the basis of the result of monitoring a host
+environment.</p>
+<h2 id="proactive-monitoring-problem-policy-summary">Proactive Monitoring, Problem, Policy, Summary</h2>
+<p>Monitoring that looks for patterns of events to predict possible future
+failures.</p>
+
+<p>All CFEngine monitoring is pro-active in the sense that it can lead to automated
+follow-up actions.</p>
+<h2 id="problem">Problem</h2>
+<p>Unknown underlying cause of one or more incidents.</p>
+
+<p>A repeated deviation from policy that suggests a change of policy or specific
+counter-measures. A promise needs to be reconsidered or new promises are
+required.</p>
+<h2 id="promise-reactive-monitoring-problem-summary">Promise, Reactive Monitoring, Problem, Summary</h2>
+<p>ITIL does not define this term, although promises are deployed in various ways –
+for instance in terms of cooperation, communication interfaces within or between
+processes or contractual relationships as defined by Service Level Agreements,
+Operational Level Agreements and Underpinning Contracts.</p>
+
+<p>A promise in CFEngine is a single rule in the CFEngine language. The promiser is
+the resource whose properties are described, and the promisee is implicitly the
+CFEngine monitor.</p>
+<h2 id="reactive-monitoring">Reactive Monitoring</h2>
+<p>Monitoring that takes action in response to an event – for example submitting a
+batch job when the previous job completes, or logging an incident when an error
+occurs.</p>
+
+<p>The concept of reactive monitoring is unclear because the duration of an event
+and the speed of a response are undefined. In a sense, all CFEngine monitoring
+is potentially reactive. It is possible to attach actions which keep promises to
+any observable condition discernable by CFEngine&#39;s monitor. CFEngine is not
+usually considered event driven however, since it does not react “as soon as
+possible” but at programmed intervals.</p>
+<h2 id="record">Record</h2>
+<p>Information in readable form that is maintained by the service provider about
+operations.</p>
+
+<p>A log entry or database item.</p>
+<h2 id="recovery">Recovery</h2>
+<p>Returning a Configuration Item or an IT service to a working state. Recovering
+of an IT service often includes recovering data to a known consistent state.</p>
+
+<p>All CFEngine promises refer to the state of a system that is desired. The
+promises are automatically enforced, hence CFEngine recovers a system (in
+principle) on every invocation. CFEngine always returns to a known state, due to
+the property of “convergence”. There is no distinction between the concepts of
+repair, recovery or remediation.</p>
+<h2 id="remediation">Remediation</h2>
+<p>Recovery to a known state after a failed change or release.</p>
+
+<p>All CFEngine promises refer to the state of a system that is desired. The
+promises are automatically enforced, hence CFEngine recovers a system (in
+principle) on every invocation. CFEngine always returns to a known state, due to
+the property of “convergence”. There is no distinction between the concepts of
+repair, recovery or remediation.</p>
+
+<p>However, this concept is like the notion of “rollback” which often involves a
+more significant restoration of a system from backup. This is discussed later.</p>
+<h2 id="repair">Repair</h2>
+<p>The replacement or correction of a failed configuration item.</p>
+
+<p>All CFEngine promises refer to the state of a system that is desired. The
+promises are automatically enforced, hence CFEngine recovers a system (in
+principle) on every invocation. CFEngine always returns to a known state, due to
+the property of “convergence”. There is no distinction between the concepts of
+repair, recovery or remediation.</p>
+<h2 id="release-request-for-change-repair-summary">Release, Request for Change, Repair, Summary</h2>
+<p>A collection of new or changed configuration items that are introduced together.</p>
+
+<p>An instantiation of the entire CFEngine system under a specific version of a
+policy, i.e. a specific set of promises.</p>
+<h2 id="request-for-change">Request for Change</h2>
+<p>A form to be completed requesting the need for change. This is to be followed
+up.</p>
+
+<p>This has no counterpart in CFEngine. It is part of human communication which
+coordinates autonomous machines. Clearly autonomous computers do not listen to
+change requests from other computers, but when machines cooperate in clusters or
+groups they take suggestions from the collaborative process. An RFC in an ITIL
+sense is part of an organizational process that goes beyond CFEngine&#39;s level of
+jurisdiction. This is an example of what ITIL adds to the autonomous CFEngine
+model.</p>
+<h2 id="abandon-autonomy">Abandon Autonomy?</h2>
+<p>Why not simply abandon autonomy of machines if this seems to interfere with the
+need for organizational change? There are good reasons why autonomy is the
+correct model for resources. Autonomy reduces the risk to a resource of attack,
+mistake and error propagation.</p>
+
+<p>ITIL&#39;s processes exist precisely to minimize the risk of negative impact of
+change, so the goals are entirely compatible. When an organization discusses a
+change it examines information from possible several autonomous systems and
+discusses how they will change their pattern of collaboration. There is no point
+in this process at which it is necessary for one of the systems to give up its
+autonomy.</p>
+<h2 id="resilience">Resilience</h2>
+<p>The ability of a configuration item or IT service to resist failure or to
+recover quickly following a failure.</p>
+
+<p>CFEngine&#39;s purpose is to make a system resilient to unpredictable change.</p>
+<h2 id="restoration">Restoration</h2>
+<p>Actions taken to return an IT service to the users after repair and recovery
+from an incident.</p>
+
+<p>All CFEngine promises refer to the state of a system that is desired. The
+promises are automatically enforced, hence CFEngine recovers a system (in
+principle) on every invocation. CFEngine always returns to a known state, due to
+the property of “convergence”. There is no distinction between the concepts of
+repair, recovery or remediation.</p>
+
+<p>However, this concept seems to suggest a more catastrophic failure which often
+involves a more significant restoration of a system from backup. This is
+discussed later.</p>
+<h2 id="role">Role</h2>
+<p>A set of responsibilities, activities and authorities granted to a person or a
+team. Roles are defined in processes.</p>
+
+<p>A role in CFEngine is a class of agents that make the same kind of promise. The
+type of role played by the class is determined by the nature of the promise they
+make. e.g. a promise to run a web server would naturally lead to the role “web
+server”.</p>
+<h2 id="service-desk">Service desk</h2>
+<p>Interface between users and service provider.</p>
+
+<p>A help desk. This is not formally part of CFEngine&#39;s tool set.</p>
+<h2 id="service-level-agreement">Service Level Agreement</h2>
+<p>A written agreement between the service provider that documents agreed services,
+levels and penalties for non-compliance.</p>
+
+<p>An agreement assumes a set of promises that propose behaviour and an acceptance
+of those promises by the client. If we assume that the users are satisfied with
+out policies, then an SLA can be interpreted as a combination of a configuration
+policy (configuration service promises), and the CFEngine execution schedule.</p>
+<h2 id="service-management">Service Management</h2>
+<p>The management of services.</p>
+<h2 id="warning">Warning</h2>
+<p>An event that is generated when a service or device is approaching its threshold.</p>
+
+<p>A message generated in place of a correction to system state when a deviation
+from policy is detected. Note that CFEngine is not based on fixed thresholds.
+All “thresholds” for action or warning are defined as a matter of policy.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-special-topics.html">special topics</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-guide.html">guide</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 03 October 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.20/generator/pages/guide/special-topics/itil.markdown/guide/special-topics/itil.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-e4781e211c818162ced38e083ca9577f.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

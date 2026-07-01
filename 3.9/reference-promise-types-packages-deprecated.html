@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.9  Documentation - packages (deprecated)</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.9/assets/global-bbcdf8cb2135dbef89c4d6d19c9604bb.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "packages (deprecated)";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+                       <option value="/docs/3.9/index.html" selected>Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+                       <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:eahkid3txr8" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a><ul class="level2"><li><a href="reference-promise-types-access.html">access</a></li><li><a href="reference-promise-types-edit_line.html">bundle edit_line</a></li><li><a href="reference-promise-types-edit_xml.html">bundle edit_xml</a></li><li><a href="reference-promise-types-classes.html">classes</a></li><li><a href="reference-promise-types-commands.html">commands</a></li><li><a href="reference-promise-types-databases.html">databases</a></li><li><a href="reference-promise-types-defaults.html">defaults</a></li><li><a href="reference-promise-types-files.html">files</a></li><li><a href="reference-promise-types-guest_environments.html">guest_environments</a></li><li><a href="reference-promise-types-methods.html">methods</a></li><li><a href="reference-promise-types-meta.html">meta</a></li><li><a href="reference-promise-types-measurements.html">measurements</a></li><li><a class="active" href="reference-promise-types-packages-deprecated.html">packages (deprecated)</a></li><li><a href="reference-promise-types-packages.html">packages</a></li><li><a href="reference-promise-types-processes.html">processes</a></li><li><a href="reference-promise-types-reports.html">reports</a></li><li><a href="reference-promise-types-roles.html">roles</a></li><li><a href="reference-promise-types-services.html">services</a></li><li><a href="reference-promise-types-storage.html">storage</a></li><li><a href="reference-promise-types-users.html">users</a></li><li><a href="reference-promise-types-vars.html">vars</a></li></ul></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-standard-library.html">Standard Library</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    packages (deprecated)
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p><strong>NOTE:</strong> This package promise is deprecated and has been superseded by
+<a href="reference-promise-types-packages.html" title="packages">the new package promise</a>. It is recommended to use the new package
+promise whenever possible. Simply using attributes from the new package promise
+interface will select the new implementation.</p>
+
+<p>NOTE: CFEngine 3.6 introduces bundles <code>package_absent</code>, <code>package_present</code>,
+<code>package_latest</code>, <code>package_specific_present</code>, <code>package_specific_absent</code>, and
+<code>package_specific_latest</code> that provide a higher-level abstraction for
+working with packages. This is the recommended way to make promises about
+packages. The bundles can be found in the file packages.cf in masterfiles.</p>
+
+<p>CFEngine supports a generic approach to integration with native
+operating support for packaging. Package promises allow CFEngine to make
+promises regarding the state of software packages <em>conditionally</em>, given
+the assumption that a native package manager will perform the actual
+manipulations. Since no agent can make unconditional promises about
+another, this is the best that can be achieved.</p>
+<div class="highlight"><pre><code class="cf3"> <span class="kd">vars</span><span class="p">:</span>
+
+  <span class="p">&quot;</span><span class="nv">match_package</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                           <span class="s">&quot;apache2&quot;</span><span class="p">,</span>
+                           <span class="s">&quot;apache2-mod_php5&quot;</span><span class="p">,</span>
+                           <span class="s">&quot;apache2-prefork&quot;</span><span class="p">,</span>
+                           <span class="s">&quot;php5&quot;</span>
+                           <span class="p">};</span>
+ <span class="kd">packages</span><span class="p">:</span>
+
+    <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+
+         <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+         <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">yum</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Packages are treated as black-boxes with three labels:</p>
+
+<ul>
+<li>  A package name</li>
+<li>  A version string</li>
+<li>  An architecture name</li>
+</ul>
+
+<p>Package managers are treated as black boxes that may support some or all
+of the following promise types:</p>
+
+<ul>
+<li>  List installed packages</li>
+<li>  Add packages</li>
+<li>  Delete packages</li>
+<li>  Reinstall (repair) packages</li>
+<li>  Update packages</li>
+<li>  Patch packages</li>
+<li>  Verify packages</li>
+</ul>
+
+<p>If these services are promised by a package manager, <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> promises
+to use the service and encapsulate it within the overall CFEngine
+framework. It is possible to set classes based on the return code of a
+package-manager command in a very flexible way. See the
+<a href="reference-promise-types.html#kept_returncodes" title="Promise Types and Attributes - kept_returncodes"><code>kept_returncodes</code></a>, <a href="reference-promise-types.html#repaired_returncodes" title="Promise Types and Attributes - repaired_returncodes"><code>repaired_returncodes</code></a> and <a href="reference-promise-types.html#failed_returncodes" title="Promise Types and Attributes - failed_returncodes"><code>failed_returncodes</code></a>
+attributes.</p>
+<h3 id="domain-knowledge">Domain knowledge</h3>
+<p>CFEngine does not maintain operating system specific expert knowledge
+internally, rather it uses a generic model for dealing with promises
+about packages (which depend on the behavior of an external package
+manager). The approach is to define package system details in
+body-constraints that can be written once and for all, for each package
+system.</p>
+
+<p>Package promises are like <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a> promises in the sense that CFEngine
+promises nothing about the outcome of executing a command. All it can
+promise is to interface with it, starting it and using the results in
+good faith. Packages are basically &#39;outsourced&#39;, to invoke IT parlance.</p>
+<h3 id="behavior">Behavior</h3>
+<p>A package promise consists of a name, a version and an architecture,
+<em>(n,v,a)</em>, and behavior to be promised about packages that match
+criteria based on these. The components <em>(n,v,a)</em> can be determined in
+one of two different ways:</p>
+
+<ul>
+<li>They may be specified independently, e.g.</li>
+</ul>
+<div class="highlight"><pre><code class="cf3">     <span class="kd">packages</span><span class="p">:</span>
+
+       <span class="s">&quot;mypackage&quot;</span>
+
+          <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+          <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">rpm</span><span class="p">,</span>
+          <span class="kr">package_select</span> <span class="o">=&gt;</span> <span class="s">&quot;&gt;=&quot;</span><span class="p">,</span>
+          <span class="kr">package_architectures</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;x86_64&quot;</span><span class="p">,</span> <span class="s">&quot;i586&quot;</span> <span class="p">},</span>
+          <span class="kr">package_version</span> <span class="o">=&gt;</span> <span class="s">&quot;1.2.3&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<ul>
+<li>They may be extracted from a package identifier (promiser) or
+filename, using pattern matching. For example, a promiser
+7-Zip-4.50-x86_64.msi and a <a href="reference-promise-types-packages-deprecated.html#package_method" title="packages (deprecated) - package_method"><code>package_method</code></a> containing the
+following:</li>
+</ul>
+<div class="highlight"><pre><code class="cf3">      <span class="kr">package_name_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;^(</span><span class="se">\S</span><span class="s">+)-(</span><span class="se">\d</span><span class="s">+</span><span class="se">\.</span><span class="s">?)+&quot;</span><span class="p">;</span>
+      <span class="kr">package_version_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;^</span><span class="se">\S</span><span class="s">+-((</span><span class="se">\d</span><span class="s">+</span><span class="se">\.</span><span class="s">?)+)&quot;</span><span class="p">;</span>
+      <span class="kr">package_arch_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;^</span><span class="se">\S</span><span class="s">+-[</span><span class="se">\d\.</span><span class="s">]+-(.*).msi&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>When scanning a list of installed packages different managers present
+the information <em>(n,v,a)</em> in quite different forms and pattern
+extraction is necessary. When making a promise about a specific package,
+the CFEngine user may choose one or the other model.</p>
+<h3 id="smart-and-dumb-package-systems">Smart and dumb package systems</h3>
+<p>Package managers vary enormously in their capabilities and in the kinds
+of promises they make. There are broadly two types:</p>
+
+<ul>
+<li>Smart package systems that resolve dependencies and require only a
+symbolic package name.</li>
+<li>Dumb package managers that do not resolve dependencies and need
+filename input.</li>
+</ul>
+
+<p>Normal ordering for packages is the following:</p>
+
+<ul>
+<li>Delete</li>
+<li>Add</li>
+<li>Update</li>
+<li>Patch</li>
+</ul>
+<h3 id="promise-repair-logic">Promise repair logic</h3>
+<p><strong>Identified package matched by name, but not version</strong></p>
+<div class="tableOverflow"><table><thead><tr>
+<th>Command</th>
+<th>Dumb manager</th>
+<th>Smart manager</th>
+</tr>
+</thead><tbody><tr>
+<td>add</td>
+<td>unable</td>
+<td>Never</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>unable</td>
+<td>Attempt deletion</td>
+</tr>
+<tr>
+<td>reinstall</td>
+<td>unable</td>
+<td>Attempt delete/add</td>
+</tr>
+<tr>
+<td>upgrade</td>
+<td>unable</td>
+<td>Upgrade if capable</td>
+</tr>
+<tr>
+<td>patch</td>
+<td>unable</td>
+<td>Patch if capable</td>
+</tr>
+</tbody></table></div>
+<p><strong>Package not installed</strong></p>
+<div class="tableOverflow"><table><thead><tr>
+<th>Command</th>
+<th>Dumb manager</th>
+<th>Smart manager</th>
+</tr>
+</thead><tbody><tr>
+<td>add</td>
+<td>Attempt to install named</td>
+<td>Install any version</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>unable</td>
+<td>unable</td>
+</tr>
+<tr>
+<td>reinstall</td>
+<td>Attempt to install named</td>
+<td>unable</td>
+</tr>
+<tr>
+<td>upgrade</td>
+<td>unable</td>
+<td>unable</td>
+</tr>
+<tr>
+<td>patch</td>
+<td>unable</td>
+<td>unable</td>
+</tr>
+</tbody></table></div><div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">packages</span>
+    <span class="p">{</span>
+    <span class="kd">vars</span><span class="p">:</span>
+
+     <span class="c"># Test the simplest case -- leave everything to the yum smart manager</span>
+
+     <span class="p">&quot;</span><span class="nv">match_package</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                              <span class="s">&quot;apache2&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;apache2-mod_php5&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;apache2-prefork&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;php5&quot;</span>
+                              <span class="p">};</span>
+    <span class="kd">packages</span><span class="p">:</span>
+
+      <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+
+         <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+         <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">yum</span><span class="p">;</span>
+
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Packages promises can be very simple if the package manager is of the
+smart variety that handles details for you. If you need to specify
+architecture and version numbers of packages, this adds some complexity,
+but the options are flexible and designed for maximal adaptability.</p>
+<h3 id="patching">Patching</h3>
+<p>Some package systems also support the idea of &#39;patches&#39;. These might be
+formally different objects to packages. A patch might contain material
+for several packages and be numbered differently. When you select
+patching-policy the package name (promiser) can be a regular expression
+that will match possible patch names, otherwise identifying specific
+patches can be cumbersome.</p>
+
+<p>Note that patching is a subtle business. There is no simple way using
+the patch settings to install &#39;all new system patches&#39;.</p>
+
+<p>If we specify the name of a patch, then CFEngine will try to see if it
+exists and/or is installed. If it exists in the pending list, it will be
+installed. If it exists in the installed list it will not be installed.
+Now consider the pattern <code>.*</code>. This will match any installed package, so
+CFEngine will assume the relevant patch has been installed already. On
+the other hand, the pattern no match will not match an installed patch,
+but it will not match a named patch either.</p>
+
+<p>Some systems provide a command to do this, which can be specified
+without specific patch arguments. If so, that command can be called
+periodically under <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a>. The main purposes of patching body items
+are:</p>
+
+<ul>
+<li>  To install specific named patches in a controlled manner.</li>
+<li>  To generate reports of available and installed patches during system
+reporting.</li>
+</ul>
+<h3 id="installers-without-package-patch-arguments">Installers without package/patch arguments</h3>
+<p>CFEngine supports the syntax <code>$</code> at the end of a command to mean that no
+package name arguments should be used or appended after the dollar sign.
+This is because some commands require a list of packages, while others
+require an empty list. The default behavior is to try to append the
+name of one or more packages to the command, depending on whether the
+policy is for individual or bulk installation.</p>
+<h3 id="default-package-method">Default package method</h3>
+<p>As of core 3.3.0, if no <a href="reference-promise-types-packages-deprecated.html#package_method" title="packages (deprecated) - package_method"><code>package_method</code></a> is defined, CFEngine will look
+for a method called <code>generic</code>. Such a method is defined in the standard
+library for supported operating systems.</p>
+<h3 id="platform-notes">Platform notes</h3>
+<p>Currently, <a href="reference-promise-types-packages.html" title="packages"><code>packages</code></a> promises do not work on HP-UX because CFEngine
+does not come with package bodies for that platform.</p>
+<h2 id="attributes">Attributes</h2><h3 id="common-attributes">Common Attributes</h3>
+<p>Common attributes are available to all promise types. Full details for common
+attributes can be found in the <a href="reference-promise-types.html#common-attributes" title="Promise Types and Attributes - Common Attributes">Common Attributes section</a> of
+the <a href="reference-promise-types.html" title="Promise Types and Attributes">Promise Types and Attributes</a> page. The common attributes are as follows:</p>
+<h4 id="action"><a href="reference-promise-types.html#action" title="Promise Types and Attributes - action">action</a></h4><h4 id="classes"><a href="reference-promise-types.html#classes" title="Promise Types and Attributes - classes">classes</a></h4><h4 id="comment"><a href="reference-promise-types.html#comment" title="Promise Types and Attributes - comment">comment</a></h4><h4 id="depends_on"><a href="reference-promise-types.html#depends_on" title="Promise Types and Attributes - depends_on">depends_on</a></h4><h4 id="handle"><a href="reference-promise-types.html#handle" title="Promise Types and Attributes - handle">handle</a></h4><h4 id="ifvarclass"><a href="reference-promise-types.html#ifvarclass" title="Promise Types and Attributes - ifvarclass">ifvarclass</a></h4><h4 id="meta"><a href="reference-promise-types.html#meta" title="Promise Types and Attributes - meta">meta</a></h4>
+<hr>
+<h3 id="package_architectures">package_architectures</h3>
+<p><strong>Description:</strong> Select the architecture for package selection</p>
+
+<p>It is possible to specify a list of packages of different architectures
+if it is desirable to install multiple architectures on the host. If no
+value is specified, CFEngine makes no promise about the result; the
+package manager&#39;s behavior prevails.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">packages</span><span class="p">:</span>
+
+  <span class="s">&quot;</span><span class="si">$(exact_package)</span><span class="s">&quot;</span>
+
+     <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+     <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">rpm</span><span class="p">,</span>
+     <span class="kr">package_architectures</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;x86_64&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+<h3 id="package_method">package_method</h3>
+<p><strong>Type:</strong> <code>body package_method</code></p>
+<h4 id="common-body-attributes">Common Body Attributes</h4>
+<p>Common body attributes are available to all body types. Full details for common
+body attributes can be found in the
+<a href="reference-promise-types.html#common-body-attributes" title="Promise Types and Attributes - Common Body Attributes">Common Body Attributes section</a>
+of the <a href="reference-promise-types.html" title="Promise Types and Attributes">Promise Types and Attributes</a> page. The common attributes are as
+follows:</p>
+<h5 id="inherit_from"><a href="reference-promise-types.html#inherit_from" title="Promise Types and Attributes - inherit_from">inherit_from</a></h5><h5 id="meta"><a href="reference-promise-types.html#meta" title="Promise Types and Attributes - meta">meta</a></h5>
+<hr>
+<h4 id="package_add_command">package_add_command</h4>
+<p><strong>Description:</strong> Command to install a package to the system</p>
+
+<p>This command should install a package when appended with the package
+reference id, formed using the <a href="reference-promise-types-packages-deprecated.html#package_name_convention" title="packages (deprecated) - package_name_convention"><code>package_name_convention</code></a>, using the
+model of (name,version,architecture). If <a href="reference-promise-types-packages-deprecated.html#package_file_repositories" title="packages (deprecated) - package_file_repositories"><code>package_file_repositories</code></a> is
+specified, the package reference id will include the full path to a
+repository containing the package.</p>
+
+<p>Package managers generally expect the name of a package to be passed as
+a parameter. However, in some cases we do not need to pass the name of a
+particular package to the command. Ending the command string with <code>$</code>
+prevents CFEngine from appending the package name to the string.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">rpm</span>
+     <span class="p">{</span>
+     <span class="kr">package_add_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/rpm -i &quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_arch_regex">package_arch_regex</h4>
+<p><strong>Description:</strong> Regular expression with one back-reference to extract
+package architecture string</p>
+
+<p>This is for use when extracting architecture from the name of the
+promiser, when the architecture is not specified using the
+<a href="reference-promise-types-packages-deprecated.html#package_architectures" title="packages (deprecated) - package_architectures"><code>package_architectures</code></a> list. It is an <a href="guide-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">unanchored</a> regular expression that
+contains exactly one parenthesized back-reference which marks the location in
+the <em>promiser</em> at which the architecture is specified.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">rpm</span>
+
+     <span class="p">{</span>
+     <span class="kr">package_list_arch_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;[^.]+</span><span class="se">\.</span><span class="s">([^.]+)&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong> If no architecture is specified for thegiven package manager, then
+do not define this.</p>
+<h4 id="package_changes">package_changes</h4>
+<p><strong>Description:</strong> Defines whether to group packages into a single aggregate
+command.</p>
+
+<p>This indicates whether the package manager is capable of handling
+package operations with multiple arguments. If this is set to <code>bulk</code> then
+multiple arguments will be passed to the package commands. If set to
+<code>individual</code> packages will be handled one by one. This might add a
+significant overhead to the operations, and also affect the ability of
+the operating system&#39;s package manager to handle dependencies.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">      individual
+      bulk
+</code></pre>
+</div>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">rpm</span>
+
+     <span class="p">{</span>
+     <span class="kr">package_changes</span> <span class="o">=&gt;</span> <span class="s">&quot;bulk&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_delete_command">package_delete_command</h4>
+<p><strong>Description:</strong> Command to remove a package from the system</p>
+
+<p>The command that deletes a package from the system when appended with
+the package reference identifier specified by <a href="reference-promise-types-packages-deprecated.html#package_name_convention" title="packages (deprecated) - package_name_convention"><code>package_name_convention</code></a>.</p>
+
+<p>Package managers generally expect the name of a package to be passed as
+a parameter. However, in some cases we do not need to pass the name of a
+particular package to the command. Ending the command string with <code>$</code>
+prevents CFEngine from appending the package name to the string.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">rpm</span>
+     <span class="p">{</span>
+     <span class="kr">package_delete_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/rpm -e --nodeps&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_delete_convention">package_delete_convention</h4>
+<p><strong>Description:</strong> This is how the package manager expects the package to be
+referred to in the deletion part of a package update, e.g. <code>$(name)</code></p>
+
+<p>This attribute is used when <a href="reference-promise-types-packages-deprecated.html#package_policy" title="packages (deprecated) - package_policy"><code>package_policy</code></a> is <a href="reference-promise-types-files.html#delete" title="files - delete"><code>delete</code></a>, or
+<a href="reference-promise-types-packages-deprecated.html#package_policy" title="packages (deprecated) - package_policy"><code>package_policy</code></a> is <code>update</code> and <a href="reference-promise-types-packages-deprecated.html#package_file_repositories" title="packages (deprecated) - package_file_repositories"><code>package_file_repositories</code></a> is set and
+<a href="reference-promise-types-packages-deprecated.html#package_update_command" title="packages (deprecated) - package_update_command"><code>package_update_command</code></a> is not set. It is then used to set the pattern
+for naming the package in the way expected by the package manager during
+the deletion of existing packages.</p>
+
+<p>Three special variables are defined from the extracted data, in a
+private context for use: <code>$(name)</code>, <code>$(version)</code> and <code>$(arch)</code>. <a href="reference-promise-types-packages.html#version" title="packages - version"><code>version</code></a> and
+<code>arch</code> is the version and architecture (if <a href="reference-promise-types-packages-deprecated.html#package_list_arch_regex" title="packages (deprecated) - package_list_arch_regex"><code>package_list_arch_regex</code></a> is given)
+of the already installed package. Additionally, if
+<a href="reference-promise-types-packages-deprecated.html#package_file_repositories" title="packages (deprecated) - package_file_repositories"><code>package_file_repositories</code></a> is defined, <code>$(firstrepo)</code> can be prepended
+to expand the first repository containing the package. For example:
+<code>$(firstrepo)$(name)-$(version)-$(arch).msi</code>.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">freebsd</span>
+
+     <span class="p">{</span>
+     <span class="kr">package_file_repositories</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;/path/to/packages&quot;</span> <span class="p">};</span>
+     <span class="kr">package_name_convention</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">-</span><span class="si">$(version)</span><span class="s">.tbz&quot;</span><span class="p">;</span>
+     <span class="kr">package_delete_convention</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">-</span><span class="si">$(version)</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>
+If this is not defined, it defaults to the value of
+<a href="reference-promise-types-packages-deprecated.html#package_name_convention" title="packages (deprecated) - package_name_convention"><code>package_name_convention</code></a>.</p>
+<h4 id="package_file_repositories">package_file_repositories</h4>
+<p><strong>Description:</strong> A list of machine-local directories to search for packages</p>
+
+<p>If specified, CFEngine will assume that the package installation occurs
+by filename and will search the named paths for a package matching the
+pattern <a href="reference-promise-types-packages-deprecated.html#package_name_convention" title="packages (deprecated) - package_name_convention"><code>package_name_convention</code></a>. If found the name will be prefixed to
+the package name in the package commands.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">filebased</span>
+     <span class="p">{</span>
+     <span class="kr">package_file_repositories</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;/package/repos1&quot;</span><span class="p">,</span> <span class="s">&quot;/packages/repos2&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_installed_regex">package_installed_regex</h4>
+<p><strong>Description:</strong> Regular expression which matches packages that are already
+installed</p>
+
+<p>This regular expression must match complete lines in the output of the
+list command that are actually installed packages. If all
+the lines match, then the regex can be set of <code>.*</code>, however most package
+systems output prefix lines and a variety of human padding that needs to
+be ignored.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">yum</span>
+     <span class="p">{</span>
+     <span class="kr">package_installed_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;.*installed.*&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_default_arch_command">package_default_arch_command</h4>
+<p><strong>Description:</strong> Command to detect the default packages&#39; architecture</p>
+
+<p>This command allows CFEngine to detect default architecture of packages
+managed by package manager. As an example, multiarch-enabled dpkg only
+lists architectures explicitly for multiarch-enabled packages.</p>
+
+<p>In case this command is not provided, CFEngine treats all packages
+without explicit architecture set as belonging to implicit default
+architecture.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>&quot;?(/.*)</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">dpkg</span>
+     <span class="p">{</span>
+       <span class="kr">package_default_arch_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dpkg --print-architecture&quot;</span><span class="p">;</span>
+
+       <span class="c"># ...</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.4.0, Enterprise 3.0.0 (2012)</p>
+<h4 id="package_list_arch_regex">package_list_arch_regex</h4>
+<p><strong>Description:</strong> Regular expression with one back-reference to extract
+package architecture string</p>
+
+<p>An <a href="guide-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">unanchored</a> regular expression that contains exactly one parenthesized back
+reference that marks the location in the listed package at which the
+architecture is specified.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">rpm</span>
+     <span class="p">{</span>
+     <span class="kr">package_list_arch_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;[^|]+</span><span class="se">\|</span><span class="s">[^|]+</span><span class="se">\|</span><span class="s">[^|]+</span><span class="se">\|</span><span class="s">[^|]+</span><span class="se">\|\s</span><span class="s">+([^</span><span class="se">\s</span><span class="s">]+).*&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong> If no architecture is specified for the given package manager, then
+do not define this regex.</p>
+<h4 id="package_list_command">package_list_command</h4>
+<p><strong>Description:</strong> Command to obtain a list of available packages</p>
+
+<p>This command should provide a complete list of the packages installed on
+the system. It might also list packages that are not installed. Those
+should be filtered out using the <a href="reference-promise-types-packages-deprecated.html#package_installed_regex" title="packages (deprecated) - package_installed_regex"><code>package_installed_regex</code></a>.</p>
+
+<p>Package managers generally expect the name of a package to be passed as
+a parameter. However, in some cases we do not need to pass the name of a
+particular package to the command. Ending the command string with <code>$</code>
+prevents CFEngine from appending the package name to the string.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">rpm</span>
+
+     <span class="p">{</span>
+     <span class="kr">package_list_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/rpm -qa --queryformat </span><span class="se">\&quot;</span><span class="s">%{name} %{version}-%{release}</span><span class="se">\n\&quot;</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_list_name_regex">package_list_name_regex</h4>
+<p><strong>Description:</strong> Regular expression with one back-reference to extract
+package name string</p>
+
+<p>An <a href="guide-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">unanchored</a> regular expression that contains exactly one parenthesized back
+reference which marks the name of the package from the package listing.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">rpm</span>
+
+     <span class="p">{</span>
+     <span class="kr">package_list_name_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;([^</span><span class="se">\s</span><span class="s">]+).*&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_list_update_command">package_list_update_command</h4>
+<p><strong>Description:</strong> Command to update the list of available packages (if any)</p>
+
+<p>Not all package managers update their list information from source
+automatically. This command allows a separate update command to be
+executed at intervals determined by <a href="reference-promise-types-packages-deprecated.html#package_list_update_ifelapsed" title="packages (deprecated) - package_list_update_ifelapsed"><code>package_list_update_ifelapsed</code></a>.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">xyz</span>
+     <span class="p">{</span>
+     <span class="nc">debian|ubuntu</span><span class="p">::</span>
+
+     <span class="kr">package_list_update_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/apt-get update&quot;</span><span class="p">;</span>
+     <span class="kr">package_list_update_ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;240&quot;</span><span class="p">;</span>        <span class="c"># 4 hours</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_list_update_ifelapsed">package_list_update_ifelapsed</h4>
+<p><strong>Description:</strong> The <a href="reference-promise-types.html#ifelapsed" title="Promise Types and Attributes - ifelapsed"><code>ifelapsed</code></a>
+locking time in between updates of the package list</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>-99999999999,9999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">xyz</span>
+     <span class="p">{</span>
+     <span class="nc">debian|ubuntu</span><span class="p">::</span>
+
+     <span class="kr">package_list_update_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/apt-get update&quot;</span><span class="p">;</span>
+     <span class="kr">package_list_update_ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;240&quot;</span><span class="p">;</span>        <span class="c"># 4 hours</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_list_version_regex">package_list_version_regex</h4>
+<p><strong>Description:</strong> Regular expression with one back-reference to extract
+package version string</p>
+
+<p>This <a href="guide-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">unanchored</a> regular expression should contain exactly one parenthesized
+back-reference that marks the version string of packages listed as
+installed.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">rpm</span>
+
+     <span class="p">{</span>
+     <span class="kr">package_list_version_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;[^</span><span class="se">\s</span><span class="s">]+ ([^.]+).*&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_name_convention">package_name_convention</h4>
+<p><strong>Description:</strong> This is how the package manager expects the package to be
+referred to, e.g. <code>$(name).$(arch)</code></p>
+
+<p>This sets the pattern for naming the package in the way expected by the
+package manager. Three special variables are defined from the extracted
+data, in a private context for use: <code>$(name)</code>, <code>$(version)</code> and <code>$(arch)</code>.
+Additionally, if <a href="reference-promise-types-packages-deprecated.html#package_file_repositories" title="packages (deprecated) - package_file_repositories"><code>package_file_repositories</code></a> is defined, <code>$(firstrepo)</code>
+can be prepended to expand the first repository containing the package.
+For example: <code>$(firstrepo)$(name)-$(version)-$(arch).msi</code>.</p>
+
+<p>When <a href="reference-promise-types-packages-deprecated.html#package_policy" title="packages (deprecated) - package_policy"><code>package_policy</code></a> is update, and <a href="reference-promise-types-packages-deprecated.html#package_file_repositories" title="packages (deprecated) - package_file_repositories"><code>package_file_repositories</code></a> is
+specified, <a href="reference-promise-types-packages-deprecated.html#package_delete_convention" title="packages (deprecated) - package_delete_convention"><code>package_delete_convention</code></a> may be used to specify a
+different convention for the delete command.</p>
+
+<p>If this is not defined, it defaults to the value <code>$(name)</code>.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">rpm</span>
+     <span class="p">{</span>
+     <span class="kr">package_name_convention</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">.</span><span class="si">$(arch)</span><span class="s">.rpm&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_name_regex">package_name_regex</h4>
+<p><strong>Description:</strong> Regular expression with one back-reference to extract
+package name string</p>
+
+<p>This <a href="guide-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">unanchored</a> regular expression is only used when the <em>promiser</em> contains
+not only the name of the package, but its version and architecture also. In
+that case, this expression should contain a single parenthesized
+back-reference to extract the name of the package from the string.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">rpm</span>
+     <span class="p">{</span>
+     <span class="kr">package_name_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;([^</span><span class="se">\s</span><span class="s">]).*&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_noverify_regex">package_noverify_regex</h4>
+<p><strong>Description:</strong> Regular expression to match verification failure output</p>
+
+<p>An<a href="guide-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">anchored</a> regular expression to match output from a package verification
+command. If the output string matches this expression, the package is deemed
+broken.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">xyz</span>
+
+     <span class="p">{</span>
+     <span class="kr">package_noverify_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;Package .* is not installed.*&quot;</span><span class="p">;</span>
+     <span class="kr">package_verify_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dpkg -s&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_noverify_returncode">package_noverify_returncode</h4>
+<p><strong>Description:</strong> Integer return code indicating package verification
+failure</p>
+
+<p>For use if a package verification command uses the return code as the
+signal for a failed package verification.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>-99999999999,9999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">xyz</span>
+     <span class="p">{</span>
+     <span class="kr">package_noverify_returncode</span> <span class="o">=&gt;</span> <span class="s">&quot;-1&quot;</span><span class="p">;</span>
+     <span class="kr">package_verify_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/rpm -V&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_patch_arch_regex">package_patch_arch_regex</h4>
+<p><strong>Description:</strong> <a href="guide-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">Anchored</a> regular expression with one back-reference to
+extract update architecture string</p>
+
+<p>A few package managers keep a separate notion of patches, as opposed to
+package updates. OpenSuSE, for example, is one of these. This provides
+an analogous command struct to the packages for patch updates.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">zypper</span>
+     <span class="p">{</span>
+     <span class="kr">package_patch_arch_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_patch_command">package_patch_command</h4>
+<p><strong>Description:</strong> Command to update to the latest patch release of an
+installed package</p>
+
+<p>If the package manager supports patching, this command should patch a
+named package. If only patching of all packages is supported then
+consider running that as a batch operation in <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a>. Alternatively
+one can end the command string with a <code>$</code> symbol, which CFEngine will
+interpret as an instruction to not append package names.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">zypper</span>
+
+     <span class="p">{</span>
+     <span class="kr">package_patch_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/zypper -non-interactive patch&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_patch_installed_regex">package_patch_installed_regex</h4>
+<p><strong>Description:</strong> <a href="guide-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">Anchored</a> regular expression which matches packages that are
+already installed</p>
+
+<p>A few package managers keep a separate notion of patches, as opposed to
+package updates. OpenSuSE, for example, is one of these. This provide an
+analogous command struct to the packages for patch updates.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">zypper</span>
+     <span class="p">{</span>
+     <span class="kr">package_patch_installed_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;.*(Installed|Not Applicable).*&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_patch_list_command">package_patch_list_command</h4>
+<p><strong>Description:</strong> Command to obtain a list of available patches or updates</p>
+
+<p>This command, if it exists at all, is presumed to generate a list of
+patches that are available on the system, in a format analogous to (but
+not necessarily the same as) the package-list command. Patches might
+formally be available in the package manager&#39;s view, but if they have
+already been installed, CFEngine will ignore them.</p>
+
+<p>Package managers generally expect the name of a package to be passed as
+a parameter. However, in some cases we do not need to pass the name of a
+particular package to the command. Ending the command string with <code>$</code>
+prevents CFEngine from appending the package name to the string.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">      <span class="kr">package_patch_list_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/zypper patches&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h4 id="package_patch_name_regex">package_patch_name_regex</h4>
+<p><strong>Description:</strong> <a href="guide-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">Unanchored</a> regular expression with one back-reference to
+extract update name string.</p>
+
+<p>A few package managers keep a separate notion of patches, as opposed to
+package updates. OpenSuSE, for example, is one of these. This provides
+an analogous command struct to the packages for patch updates.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">zypper</span>
+     <span class="p">{</span>
+     <span class="kr">package_patch_name_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;[^|]+</span><span class="se">\|\s</span><span class="s">+([^</span><span class="se">\s</span><span class="s">]+).*&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_patch_version_regex">package_patch_version_regex</h4>
+<p><strong>Description:</strong> <a href="guide-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">Unanchored</a> regular expression with one back-reference to
+extract update version string.</p>
+
+<p>A few package managers keep a separate notion of patches, as opposed to
+package updates. OpenSuSE, for example, is one of these. This provides
+an analogous command struct to the packages for patch updates.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">zypper</span>
+     <span class="p">{</span>
+     <span class="kr">package_patch_version_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;[^|]+</span><span class="se">\|</span><span class="s">[^|]+</span><span class="se">\|\s</span><span class="s">+([^</span><span class="se">\s</span><span class="s">]+).*&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_update_command">package_update_command</h4>
+<p><strong>Description:</strong> Command to update to the latest version a currently
+installed package</p>
+
+<p>If supported this should be a command that updates the version of a
+single currently installed package. If only bulk updates are supported,
+consider running this as a single command under <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a>. The package
+reference id is appended, with the pattern of <a href="reference-promise-types-packages-deprecated.html#package_name_convention" title="packages (deprecated) - package_name_convention"><code>package_name_convention</code></a>.</p>
+
+<p>When <a href="reference-promise-types-packages-deprecated.html#package_file_repositories" title="packages (deprecated) - package_file_repositories"><code>package_file_repositories</code></a> is specified, the package reference id
+will include the full path to a repository containing the package. If
+<a href="reference-promise-types-packages-deprecated.html#package_policy" title="packages (deprecated) - package_policy"><code>package_policy</code></a> is update, and this command is not specified, the
+<a href="reference-promise-types-packages-deprecated.html#package_delete_command" title="packages (deprecated) - package_delete_command"><code>package_delete_command</code></a> and <a href="reference-promise-types-packages-deprecated.html#package_add_command" title="packages (deprecated) - package_add_command"><code>package_add_command</code></a> will be executed to
+carry out the update.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">zypper</span>
+     <span class="p">{</span>
+     <span class="kr">package_update_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/zypper -non-interactive update&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_verify_command">package_verify_command</h4>
+<p><strong>Description:</strong> Command to verify the correctness of an installed package</p>
+
+<p>If available, this is a command to verify an already installed package.
+It is required only when <a href="reference-promise-types-packages-deprecated.html#package_policy" title="packages (deprecated) - package_policy"><code>package_policy</code></a> is verify.</p>
+
+<p>The outcome of the command is compared with
+<a href="reference-promise-types-packages-deprecated.html#package_noverify_returncode" title="packages (deprecated) - package_noverify_returncode"><code>package_noverify_returncode</code></a> or <a href="reference-promise-types-packages-deprecated.html#package_noverify_regex" title="packages (deprecated) - package_noverify_regex"><code>package_noverify_regex</code></a>, one of which
+has to be set when using this command. If the package is not installed,
+the command will not be run the promise gets flagged as not kept before
+the verify command executes.</p>
+
+<p>In order for the promise to be considered kept, the package must be
+installed, and the verify command must be successful according to
+<a href="reference-promise-types-packages-deprecated.html#package_noverify_returncode" title="packages (deprecated) - package_noverify_returncode"><code>package_noverify_returncode</code></a> xor <a href="reference-promise-types-packages-deprecated.html#package_noverify_regex" title="packages (deprecated) - package_noverify_regex"><code>package_noverify_regex</code></a>.</p>
+
+<p>Package managers generally expect the name of a package to be passed as
+a parameter. However, in some cases we do not need to pass the name of a
+particular package to the command. Ending the command string with <code>$</code>
+prevents CFEngine from appending the package name to the string.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">rpm</span>
+
+     <span class="p">{</span>
+     <span class="kr">package_verify_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/rpm -V&quot;</span><span class="p">;</span>
+     <span class="kr">package_noverify_returncode</span> <span class="o">=&gt;</span> <span class="s">&quot;-1&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_version_regex">package_version_regex</h4>
+<p><strong>Description:</strong> Regular expression with one back-reference to extract
+package version string</p>
+
+<p>If the version of a package is not specified separately using
+<a href="reference-promise-types-packages-deprecated.html#package_version" title="packages (deprecated) - package_version"><code>package_version</code></a>, then this should be an <a href="guide-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">unanchored</a> regular expression that
+contains exactly one parenthesized back-reference that matches the
+version string in the promiser.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">rpm</span>
+     <span class="p">{</span>
+     <span class="kr">package_version_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;[^</span><span class="se">\s</span><span class="s">]+ ([^.]+).*&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_multiline_start">package_multiline_start</h4>
+<p><strong>Description:</strong> Regular expression which matches the start of a new
+package in multiline output</p>
+
+<p>This pattern is used in determining when a new package record begins. It
+is used when package managers (like the Solaris package manager) use
+multi-line output formats. This pattern matches the first line of a new
+record.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">solaris</span> <span class="p">(</span><span class="nf">pkgname</span><span class="p">,</span> <span class="nf">spoolfile</span><span class="p">,</span> <span class="nf">adminfile</span><span class="p">)</span>
+     <span class="p">{</span>
+     <span class="kr">package_changes</span> <span class="o">=&gt;</span> <span class="s">&quot;individual&quot;</span><span class="p">;</span>
+     <span class="kr">package_list_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/pkginfo -l&quot;</span><span class="p">;</span>
+     <span class="kr">package_multiline_start</span>    <span class="o">=&gt;</span>  <span class="s">&quot;</span><span class="se">\s</span><span class="s">*PKGINST:</span><span class="se">\s</span><span class="s">+[^</span><span class="se">\s</span><span class="s">]+&quot;</span><span class="p">;</span>
+     <span class="err">...</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="package_commands_useshell">package_commands_useshell</h4>
+<p><strong>Description:</strong> Whether to use shell for commands in this body</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<!-- **TODO: useshell/noshell/powershell?** -->
+
+<p><strong>Default value:</strong> true</p>
+
+<p><strong>History:</strong> Was introduced in 3.4.0, Nova 2.3.0 (2012)</p>
+<h4 id="package_version_less_command">package_version_less_command</h4>
+<p><strong>Description:</strong> Command to check whether first supplied package version is
+less than second one</p>
+
+<p>This attribute allows overriding of the built-in CFEngine algorithm for
+version comparison, by calling an external command to check whether the
+first passed version is less than another.</p>
+
+<p>The built-in algorithm does a good approximation of version comparison,
+but different packaging systems differ in corner cases (e.g Debian
+treats symbol <code>~</code> less than any other symbol and even less than empty
+string), so some sort of override is necessary.</p>
+
+<p>Variables <code>v1</code> and <code>v2</code> are substituted with the first and second
+version to be compared. Command should return code 0 if v1 is less than
+v2 and non-zero otherwise.</p>
+
+<p>Note that if <a href="reference-promise-types-packages-deprecated.html#package_version_equal_command" title="packages (deprecated) - package_version_equal_command"><code>package_version_equal_command</code></a> is not specified, but
+<code>package_version_less_command</code> is, then equality will be tested by
+issuing less comparison twice (v1 equals to v2 if v1 is not less than
+v2, and v2 is not less than v1).</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">deb</span>
+     <span class="p">{</span>
+     <span class="err">...</span>
+     <span class="kr">package_version_less_command</span> <span class="o">=&gt;</span> <span class="s">&quot;dpkg --compare-versions </span><span class="si">${v1}</span><span class="s"> lt </span><span class="si">${v2}</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.4.0 (2012)</p>
+<h4 id="package_version_equal_command">package_version_equal_command</h4>
+<p><strong>Description:</strong> Command to check whether first supplied package version is
+equal to second one</p>
+
+<p>This attribute allows overriding of the built-in CFEngine algorithm for
+version comparison by calling an external command to check whether the
+passed versions are the same. Some package managers consider textually
+different versions to be the same (e.g. optional epoch component, so
+0:1.0-1 and 1.0-1 versions are the same), and rules for comparing vary
+from package manager to package manager, so override is necessary.</p>
+
+<p>Variables <code>v1</code> and <code>v2</code> are substituted with the versions to be
+compared. Command should return code 0 if versions are equal and
+non-zero otherwise.</p>
+
+<p>Note that if <code>package_version_equal_command</code> is not specified, but
+<a href="reference-promise-types-packages-deprecated.html#package_version_less_command" title="packages (deprecated) - package_version_less_command"><code>package_version_less_command</code></a> is, then equality will be tested by
+issuing less comparison twice (v1 equals to v2 if v1 is not less than
+v2, and v2 is not less than v1).</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">package_method</span> <span class="nf">deb</span>
+     <span class="p">{</span>
+     <span class="err">...</span>
+     <span class="kr">package_version_equal_command</span> <span class="o">=&gt;</span> <span class="s">&quot;dpkg --compare-versions </span><span class="si">${v1}</span><span class="s"> eq </span><span class="si">${v2}</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p><strong>History:</strong> Was introduced in 3.4.0 (2012)</p>
+<h3 id="package_policy">package_policy</h3>
+<p><strong>Description:</strong> Criteria for package installation/upgrade on the current
+system</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+
+<ul>
+<li><code>add</code></li>
+</ul>
+
+<p>Ensure that a package is present (this is the default setting from
+3.3.0).</p>
+
+<ul>
+<li><a href="reference-promise-types-files.html#delete" title="files - delete"><code>delete</code></a></li>
+</ul>
+
+<p>Ensure that a package is not present.</p>
+
+<ul>
+<li><code>reinstall</code></li>
+</ul>
+
+<p>Delete then add package (warning, non-convergent).</p>
+
+<ul>
+<li><code>update</code></li>
+</ul>
+
+<p>Update the package if an update is available (manager dependent).</p>
+
+<ul>
+<li><code>addupdate</code></li>
+</ul>
+
+<p>Equivalent to add if the package is not installed, and update if it is
+installed. Note: This attribute requires the specification of <a href="reference-promise-types-packages-deprecated.html#package_version" title="packages (deprecated) - package_version"><code>package_version</code></a>
+and <a href="reference-promise-types-packages-deprecated.html#package_select" title="packages (deprecated) - package_select"><code>package_select</code></a> in order to select the proper version to update to if
+available. <em>See Also</em> <a href="reference-standard-library-packages.html#package_latest" title="Packages Bundles and Bodies - package_latest ">package_latest</a>
+<a href="reference-standard-library-packages.html#package_specific_latest" title="Packages Bundles and Bodies - package_specific_latest ">package_specific_latest</a> in the
+standard library.</p>
+
+<ul>
+<li><code>patch</code></li>
+</ul>
+
+<p>Install one or more patches if available (manager dependent).</p>
+
+<ul>
+<li><a href="reference-promise-types-files.html#verify" title="files - verify"><code>verify</code></a></li>
+</ul>
+
+<p>Verify the correctness of the package (manager dependent). The promise
+is kept if the package is installed correctly, not kept otherwise.
+Requires setting <a href="reference-promise-types-packages-deprecated.html#package_verify_command" title="packages (deprecated) - package_verify_command"><code>package_verify_command</code></a>.</p>
+
+<p><strong>Default value:</strong> verify</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">packages</span><span class="p">:</span>
+
+  <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+
+     <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+     <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">xyz</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="package_select">package_select</h3>
+<p><strong>Description:</strong> Selects which comparison operator to use with
+<a href="reference-promise-types-packages-deprecated.html#package_version" title="packages (deprecated) - package_version"><code>package_version</code></a>.</p>
+
+<p>This selects the operator used to compare available packages. If an
+available package is found to satisfy the version requirement, it may
+be selected for install (if <a href="reference-promise-types-packages-deprecated.html#package_policy" title="packages (deprecated) - package_policy"><code>package_policy</code></a> is <code>add</code>, <code>update</code> or
+<code>addupdate</code>). To select the right package, imagine the available package
+being on the left hand side of the operator, and the value in
+<a href="reference-promise-types-packages-deprecated.html#package_version" title="packages (deprecated) - package_version"><code>package_version</code></a> being on the right.</p>
+
+<p>Note that in the case of deleting a package, you must specify an exact
+version.</p>
+
+<p>If <a href="reference-promise-types-packages-deprecated.html#package_policy" title="packages (deprecated) - package_policy"><code>package_policy</code></a> is <code>update</code> or <code>addupdate</code>, CFEngine will always
+try to keep the most recent package installed that satisfies the version
+requirement. For example, if <code>package_select</code> is <code>&lt;</code> and
+<a href="reference-promise-types-packages-deprecated.html#package_version" title="packages (deprecated) - package_version"><code>package_version</code></a> is <code>3.0.0</code>, you may still match updates to 2.x.x
+series, like: <code>2.2.1</code>, <code>2.2.2</code>, <code>2.3.0</code>, because they all satisfy the
+version requirement.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">     &lt;
+     &gt;
+     ==
+     !=
+     &gt;=
+     &lt;=
+</code></pre>
+</div>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">packages</span><span class="p">:</span>
+
+  <span class="s">&quot;</span><span class="si">$(exact_package)</span><span class="s">&quot;</span>
+
+     <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+     <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">xyz</span><span class="p">,</span>
+     <span class="kr">package_select</span> <span class="o">=&gt;</span> <span class="s">&quot;&gt;=&quot;</span><span class="p">,</span>
+     <span class="kr">package_architectures</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;x86_64&quot;</span> <span class="p">},</span>
+     <span class="kr">package_version</span> <span class="o">=&gt;</span> <span class="s">&quot;1.2.3-456&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="package_version">package_version</h3>
+<p><strong>Description:</strong> Version reference point for determining promised version</p>
+
+<p>Used for specifying the targeted package version when the version is
+written separately from the name of the command.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">packages</span><span class="p">:</span>
+
+  <span class="s">&quot;mypackage&quot;</span>
+
+     <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+     <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">rpm</span><span class="p">,</span>
+     <span class="kr">package_select</span> <span class="o">=&gt;</span> <span class="s">&quot;==&quot;</span><span class="p">,</span>
+     <span class="kr">package_version</span> <span class="o">=&gt;</span> <span class="s">&quot;1.2.3&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-bundle-agent.html">bundle agent</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-packages.html">packages</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-packages-promises.html">packages promises</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-promise-types.html">promise types</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 02 March 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/promise-types/packages-deprecated.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/04ad849bd97ab6da773794babca26d9dd8806039" target="_blank">04ad849bd97ab6da773794babca26d9dd8806039</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.9/assets/footer-e9812654bffc243fc0dd77cc1c8e348e.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

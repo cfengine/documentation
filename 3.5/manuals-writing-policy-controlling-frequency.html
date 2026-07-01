@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - Controlling Frequency</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html"  class="navselected" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="manuals-design.html">Design</a></li><li><a href="manuals-architecture.html">Architecture</a></li><li><a href="manuals-components.html">The CFEngine Components</a></li><li><a href="manuals-language-concepts.html">Language Concepts</a></li><li><a href="manuals-design-center.html">Design Center</a></li><li><a href="manuals-writing-policy.html">Writing Policy</a></li><li><a href="manuals-enterprise-reporting.html">Enterprise Reporting</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li><a href="manuals-writing-policy-policy-style-guide.html">Policy Style Guide</a></li><li><a href="manuals-writing-policy-version-control.html">Version Control</a></li><li class="selected"><span>Controlling Frequency</span></li><li><a href="manuals-writing-policy-configuration-file-structure.html">Default Configuration File Structure</a></li><li><a href="manuals-writing-policy-testing-policies.html">Testing Policies</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="manuals.html">CFEngine Manuals</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="manuals-writing-policy.html">Writing Policy</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>Controlling Frequency</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/manuals.html">manuals</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/systems.html">systems</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/configuration-management.html">configuration management</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/automation.html">automation</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/control.html">control</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/frequency.html">frequency</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/performance.html">performance</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>Controlling Frequency</h1>
+                    <p>When checking a series of expensive functions and verifying complex promises, 
+you may want to make sure that CFEngine is not checking too frequently. One 
+way of doing this is classes and class expression, another is using locks.</p>
+
+<p>CFEngine incorporates a series of locks which prevent it from checking 
+promises too often, and which prevent it from spending too long trying to 
+check promises it has recently verified. This locking mechanism works in such 
+a way that you can start several CFEngine components simultaneously without 
+them interfering with each other. You can control two things about each kind 
+of action in CFEngine:</p>
+<div class="highlight"><pre><code class="text">ifelapsed
+</code></pre>
+</div>
+
+<p>The minimum time (in minutes) which should have passed since the last time 
+that promise was verified. It will not be executed again until this amount of<br>
+time has elapsed. Default time is 1 minute.</p>
+<div class="highlight"><pre><code class="text">expireafter
+</code></pre>
+</div>
+
+<p>The maximum amount (in minutes) of time <a href="reference-components-cfagent.html" title="cf-agent"><code>cf-agent</code></a> should wait for an old 
+instantiation to finish before killing it and starting again. You can think 
+about <a href="reference-components-cfagent.html#expireafter" title="cf-agent - expireafter"><code>expireafter</code></a> as a timeout to use when a promise verification may 
+involve an operation that could wait indefinitely. Default time is 120<br>
+minutes.</p>
+
+<p>You can set these values either globally (for all actions) or for each action 
+separately. If you set global and local values, the local values override the 
+global ones. All times are written in units of minutes. The following global 
+setting is defined in <code>body agent control</code>.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+        <span class="kr">ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;60&quot;</span><span class="p">;</span>  <span class="c"># one hour</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This setting tells CFEngine not to verify promises until 60 minutes have 
+elapsed, ie ensures that the global frequency for all promise verification is 
+one hour. This global setting of one hour could be changed for a specific 
+promise body by setting <a href="reference-components-cfagent.html#ifelapsed" title="cf-agent - ifelapsed"><code>ifelapsed</code></a> in the promise body.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">action</span> <span class="nf">example</span>
+    <span class="p">{</span>
+        <span class="kr">ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;90&quot;</span><span class="p">;</span>  <span class="c"># 1.5 hours</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This promise which overrides the global 60 minute time period and defines a 
+frequency of 90 minutes.</p>
+
+<p>These locks do not prevent the whole of <a href="reference-components-cfagent.html" title="cf-agent"><code>cf-agent</code></a> from running, only atomic 
+promise checks. Several different <a href="reference-components-cfagent.html" title="cf-agent"><code>cf-agent</code></a> instances can run concurrently, and 
+the locks ensure that promises will never be verified by two cf-agents at the 
+same time, or too soon after a verification.</p>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/manuals/writing-policy/controlling-frequency.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

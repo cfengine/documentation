@@ -1,0 +1,719 @@
+<html lang="en">
+<head>
+<title>Virtualization and Cloud Support in CFEngine</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Virtualization and Cloud Support in CFEngine">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; }
+  span.sansserif { font-family:sans-serif; font-weight:normal; }
+body {
+	font-family: Verdana, DejaVu, Vera, Geneva, sans-serif;
+	padding: 10px;
+}
+.node
+{
+	text-align: right;
+	padding: 2px;
+	font-size: smaller;
+}
+.node hr {
+	border: 0;
+	width: 100%;
+	color: #CCC;
+	background-color: #CCC;
+	height: 5px;
+}
+.section {
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+h1 {
+	font-weight: bold;
+	color: #666;
+}
+h2 {
+	font-weight: bold;
+	color: #666;
+}
+h3 {
+	margin-top: 3px;
+	margin-right: 0px;
+	margin-bottom: 10px;
+	margin-left: 0px;
+}
+
+.menu
+{
+}
+
+.contents
+{
+	background-color: #CCC;
+	padding-top: 2px;
+	padding-right: 2px;
+	padding-bottom: 2px;
+	padding-left: 10px;
+}
+
+.index-cp
+{
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 70%; }
+
+.tynn {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: smaller;
+        font-style: normal;
+        font-weight: lighter;
+        margin-bottom: 0em;
+     font-size: 11pt;
+        }
+
+.verbatim {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+
+.example {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	width: 100%;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+.smallexample {
+	font-family: "Lucida Console", Monaco, monospace;
+	color: #000;
+	width: 100%;
+	padding-top: 30px;
+	padding-right: 30px;
+	padding-bottom: 3px;
+	padding-left: 30px;
+	background-color: #FEFFCA;
+	border-left-width: medium;
+	border-left-style: outset;
+	border-left-color: #FDFFD5;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+.cartouche {
+	background-color: #CCC;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	padding: 5px;
+	font-style: italic;
+        width: 100%;
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }--></style>
+</head>
+<body>
+<h1 class="settitle">Virtualization and Cloud Support in CFEngine</h1>
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-are-virtualization-and-cloud-computing_003f">What are virtualization and cloud computing?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">Virtualization</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#What-are-virtualization-and-cloud-computing_003f">What are virtualization and cloud computing?</a>
+<li><a accesskey="2" href="#Why-build-virtualization-support-into-Cfengine_003f">Why build virtualization support into CFEngine?</a>
+<li><a accesskey="3" href="#What-can-CFEngine-do-with-virtual-machines_003f">What can CFEngine do with virtual machines?</a>
+<li><a accesskey="4" href="#Environments-promises">Environments promises</a>
+<li><a accesskey="5" href="#Virtualization-types-supported">Virtualization types supported</a>
+<li><a accesskey="6" href="#Distinct-states">Distinct states</a>
+<li><a accesskey="7" href="#Example-deployment">Example deployment</a>
+<li><a accesskey="8" href="#Virtualized-host-examples">Virtualized host examples</a>
+<li><a accesskey="9" href="#Virtual-network-example">Virtual network example</a>
+</ul>
+
+<p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<div class="node">
+<a name="What-are-virtualization-and-cloud-computing%3f"></a>
+<a name="What-are-virtualization-and-cloud-computing_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Why-build-virtualization-support-into-Cfengine_003f">Why build virtualization support into CFEngine?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">What are virtualization and cloud computing?</h3>
+
+<pre class="sp">
+
+</pre>
+
+Virtualization refers to the ability to run multiple host instances on
+a single physical node. Cloud computing typically refers to what is
+called `platform as a service', or deployment of virtual machines on
+demand, often as an online service.
+
+   <p>In this document, virtualization support refers specifically to
+hypervisor technologies supported by the open source library layer <i>libvirt</i>
+project, which includes interfaces for Xen, KVM, Vmware-ESX, and more.
+CFEngine thus integrates freely with other tools based on this library, such
+as <i>virsh</i> and the <i>Virtual Manager</i> graphical user interface.
+
+<div class="node">
+<a name="Why-build-virtualization-support-into-Cfengine%3f"></a>
+<a name="Why-build-virtualization-support-into-Cfengine_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#What-can-CFEngine-do-with-virtual-machines_003f">What can CFEngine do with virtual machines?</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-are-virtualization-and-cloud-computing_003f">What are virtualization and cloud computing?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Why build virtualization support into CFEngine?</h3>
+
+<pre class="sp">
+
+</pre>
+
+Virtualization engines (usually called supervisors or hypervisors) are
+seeing an explosion of development. They exist as a number of projects
+in various stages of maturity. The libvirt project was designed as
+an integration layer based on an XML specification.
+
+   <p>The tools for management are still quite primitive and require much
+manual work. CFEngine has a unique role to play in maintaining desired
+state in virtual machine systems.
+
+   <p>In the cloud, virtual machines may be rented from remote commercial
+providers, and managed as disposable resources. Convergent or
+`self-healing' maintenance is an essential method for managing
+machines that are geographically remote and awkward to access, e.g.
+machines in other time-zones that it is impractical to monitor by
+legacy methods.
+
+<div class="node">
+<a name="What-can-CFEngine-do-with-virtual-machines%3f"></a>
+<a name="What-can-CFEngine-do-with-virtual-machines_003f"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Environments-promises">Environments promises</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Why-build-virtualization-support-into-Cfengine_003f">Why build virtualization support into CFEngine?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">What can CFEngine do with virtual machines?</h3>
+
+<pre class="sp">
+
+</pre>
+
+The simple answer is: anything that <i>libvirt</i> can do, with added
+convergence to a desired state: that means, creating, destroying and
+starting and stopping machines. By starting virtual machines through
+CFEngine, you can be sure that a given `virtual guest' is running on
+one and only one physical host, thus avoiding conflicts that are
+difficult to detect with centralized systems.
+
+   <p>CFEngine does not support everything that libvirt does &ndash; it offers a
+simplified interface that is meant for robustness, stability and
+hands-free repeatability.
+
+   <pre class="sp">
+
+</pre>
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+CFEngine does not use libvirt's TLS based web communication layer.  It
+manages every host as an independent entity, in typical CFEngine
+fashion, using CFEngine's own distributed cooperation to provide thje
+implicit communication.  CFEngine does not currently support so-called
+`live migration' of virtual machines.
+</td></tr></table>
+
+   <pre class="sp">
+
+</pre>
+
+<div class="node">
+<a name="Environments-promises"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Virtualization-types-supported">Virtualization types supported</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#What-can-CFEngine-do-with-virtual-machines_003f">What can CFEngine do with virtual machines?</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Environments promises</h3>
+
+<pre class="sp">
+
+</pre>
+
+A virtual machine is one example of what CFEngine calls an
+`environment'.  You can promise to create (and host) an environment
+with certain attributes, just as you can promise to host a file or a
+process. Here is a simple example:
+
+<pre class="verbatim">body common control
+{
+bundlesequence  => { "my_vm_cloud" };
+}
+
+#######################################################
+
+bundle agent my_vm_cloud
+{
+environments:
+
+   "myUbuntu" # the running instance name, defined in XML
+
+       environment_resources => virt_xml,
+       environment_type      => "xen",
+       environment_host      => "my_physical_computer", # ipv4_10_1_2_3
+       environment_state     => "create";
+}
+
+#######################################################
+
+body environment_resources virt_xml
+{
+env_spec_file => "/srv/xen/centos5-libvirt-create.xml";
+}
+
+</pre>
+
+     <ul>
+<li>The promiser (in this case &lsquo;<samp><span class="samp">myUbuntu</span></samp>&rsquo;) is the name of the virtual
+machine. This should be a unique identifier, as we need to be able to
+refer to machines uniquely.
+
+     <li>The environment host is the name of the computer that
+is the host for the virtual machine.
+
+     <li>Normally when we want to ensure something on a machine, we use classes
+to decide where the promise will be made. For environments, however,
+we need to make promises about the uniqueness of the machine. When you
+make a machine instance you normally want it to be running on one and
+only one host. So you want <i>every</i> machine to make a promise. On the
+environment's host, you want to promise that the environment is
+running, and on every other machine you want to promise that it is
+not. In CFEngine, you simply include a unique class belonging to host
+in the promise using <code>environment_host</code> and CFEngine assumes that
+rest. Unique classes might include
+          <ul>
+<li>Hostname class e.g. <code>myhost_cfengine_com</code>
+<li>IP address class e.g. <code>ipv4_123_456_789_123</code>
+</ul>
+     </ul>
+
+   <p>An alternative way to write this example is to quote the XML
+specification in CFEngine directly. This has a few advantages: you can
+re-use the data and use it as a template, filling in
+CFEngine-variables. You can thus adapt the configuration using
+Cfengine's classes.
+
+<pre class="verbatim">bundle agent my_vm_cloud
+{
+environments:
+
+   "myUbuntu" # the running instance name, defined in XML
+       environment_resources => virt_xml("$(this.promiser)"),
+       environment_type      => "xen",
+       environment_host      => "myphysicalcomputer";
+       environment_state     => "create"
+}
+
+#######################################################
+
+body environment_resources virt_xml(host)
+{
+env_spec_file =>
+
+"&lt;domain type='xen'>
+  &lt;name>$(host)&lt;/name>
+  &lt;os>
+    &lt;type>linux&lt;/type>
+    &lt;kernel>/var/lib/xen/install/vmlinuz-ubuntu10.4-x86_64&lt;/kernel>
+    &lt;initrd>/var/lib/xen/install/initrd-vmlinuz-ubuntu10.4-x86_64&lt;/initrd>
+    &lt;cmdline> kickstart=http://example.com/myguest.ks &lt;/cmdline>
+  &lt;/os>
+  &lt;memory>131072&lt;/memory>
+  &lt;vcpu>1&lt;/vcpu>
+  &lt;devices>
+    &lt;disk type='file'>
+      &lt;source file='/var/lib/xen/images/$(host).img'/>
+      &lt;target dev='sda1'/>
+    &lt;/disk>
+    &lt;interface type='bridge'>
+      &lt;source bridge='xenbr0'/>
+      &lt;mac address='aa:00:00:00:00:11'/>
+      &lt;script path='/etc/xen/scripts/vif-bridge'/>
+    &lt;/interface>
+    &lt;graphics type='vnc' port='-1'/>
+    &lt;console tty='/dev/pts/5'/>
+  &lt;/devices>
+&lt;/domain>
+";
+}
+</pre>
+
+   <p>You should consult the libvirt documentation for the details of the XML specification.
+
+<div class="node">
+<a name="Virtualization-types-supported"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Distinct-states">Distinct states</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Environments-promises">Environments promises</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Virtualization types supported</h3>
+
+<pre class="sp">
+
+</pre>
+
+CFEngine currently supports virtualization only through libvirt, so it supports
+those technologies that libvirt supports. Currently this includes  most popular
+technologies. You must choose the type of monitor that is to be responsible for
+keeping the environment promise. In CFEngine, you should choose between a
+machine environment or network environment of the following types:
+     <dl>
+<dt><code>xen</code><dd>A Xen hypervisor virtual domain.
+<br><dt><code>kvm</code><dd>A KVM hypervisor virtual domain.
+<br><dt><code>esx</code><dd>A VMware hypervisor virtual domain.
+<br><dt><code>test</code><dd>The libvirt test-hypervisor virtual domain.
+<br><dt><code>xen_net</code><dd>A Xen hypervisor virtual network.
+<br><dt><code>kvm_net</code><dd>A KVM hypervisor virtual network
+<br><dt><code>esx_net</code><dd>An ESX/VMWare hypervisor virtual network.
+<br><dt><code>test_net</code><dd>The test hypervisor virtual network.
+<br><dt><code>zone</code><dd>A Solaris zone (future development)
+<br><dt><code>ec2</code><dd>An Amazon EC2 instance (future development)
+<br><dt><code>eucalyptus</code><dd>A Eucalyptus instance (future development)
+</dl>
+
+   <p>Once again, you must consult the libvirt documentation for details.
+
+<div class="node">
+<a name="Distinct-states"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Example-deployment">Example deployment</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Virtualization-types-supported">Virtualization types supported</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Distinct states</h3>
+
+<pre class="sp">
+
+</pre>
+
+Libvirt recognizes a number of distinct states are transliterated into CFEngine
+as
+     <dl>
+<dt><code>create</code><dd>Build and start an environment.
+<br><dt><code>delete</code><dd>Halt and remove runtime resources associated with an environment.
+<br><dt><code>running</code><dd>An existing environment is in a running state.
+<br><dt><code>suspended</code><dd>An existing environment is in a `paused' state.
+<br><dt><code>down</code><dd>An existing environment is in a halted state.
+</dl>
+   The default promised state is for a machine to be running
+wherever the  <code>environment_host</code> class is true, and
+suspended or down elsewhere.
+
+<div class="node">
+<a name="Example-deployment"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Virtualized-host-examples">Virtualized host examples</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Distinct-states">Distinct states</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Example deployment</h3>
+
+<pre class="sp">
+
+</pre>
+
+Prerequisites: you need to make a `disk image' for the machine, or a
+virtual disk of blocks that can be allocated. This image does not have to
+contain any data, it will simply as a block device for the VM. You
+can then install it by booting the machine from a network image, like a
+PXE/kickstart installation.
+
+   <p>If you want to allocate disk blocks as the file grows, you can create
+a file with a hole. The following command will creates a file of
+2048MB, but the actual data blocks are allocated in a lazy fashion:
+
+<pre class="verbatim">
+# dd if=/dev/zero of=/srv/xen/my.img oflag=direct bs=1M seek=2047 count=1
+
+</pre>
+To reserve all the data blocks right away:
+<pre class="verbatim">
+# dd if=/dev/zero of=/srv/xen/my.img oflag=direct bs=1M count=2048
+
+</pre>
+
+   <p>Libvirt uses an XML file format that cannot be circumvented. CFEngine
+promises to honour the promises that are expressed in this file, as in
+the examples above.  You need to find out about this file format from
+the libvirt website.  To get CFEngine to honour these promises, you
+point it to the specification that it should promise using
+<code>spec_file</code>.
+
+   <p>You need to set up a network for virtual machines to communicate with
+the outside world. This can also be done with CFEngine, using the
+network promise types to build a bridge into a virtual network.
+
+   <p>Then just run CFEngine to start, stop or manage the virtual environments on
+each localhost. Run in verbose mode to see how CFEngine maintains the states
+convergently.
+<pre class="verbatim"># cf-agent -v
+</pre>
+
+<h2 class="appendix">Appendix A Virtualization Examples</h2>
+
+<div class="node">
+<a name="Virtualized-host-examples"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Virtual-network-example">Virtual network example</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Example-deployment">Example deployment</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Virtualized host examples</h3>
+
+<pre class="verbatim">
+#######################################################
+
+body common control
+{
+bundlesequence => {"my_vm_cloud"};
+host_licenses_paid => "2";
+}
+
+#######################################################
+
+bundle agent my_vm_cloud
+{
+environments:
+
+ linux::
+
+ "bishwa-kvm1"
+                 comment => "Keep this vm suspended",
+   environment_resources => myresources,
+        environment_type => "kvm",
+       environment_state => "suspended",
+        environment_host => "ubuntu";
+
+ "bishwa-kvm2"
+
+                 comment => "Keep this vm running",
+   environment_resources => myresources,
+        environment_type => "kvm",
+       environment_state => "running",
+        environment_host => "ubuntu";
+
+ "bishwa-kvm3"
+                 comment => "Power down this VM",
+   environment_resources => myresources,
+        environment_type => "kvm",
+       environment_state => "down",
+        environment_host => "ubuntu";
+
+ "bishwa-kvm4"
+
+                 comment => "Delete this VM",
+   environment_resources => myresources,
+        environment_type => "kvm",
+       environment_state => "delete",
+        environment_host => "ubuntu";
+
+ "bishwa-kvm5"
+                 comment => "Keep this vm running",
+   environment_resources => myresources,
+        environment_type => "kvm",
+       environment_state => "running",
+       environment_host => "ubuntu";
+
+}
+
+
+#######################################################
+
+body environment_resources myresources
+{
+env_cpus => "2";
+#env_memory => "512"; # in KB
+#env_disk => "2048";  # in MB
+}
+
+
+</pre>
+
+<div class="node">
+<a name="Virtual-network-example"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Virtualized-host-examples">Virtualized host examples</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h3 class="unnumberedsec">Virtual network example</h3>
+
+<pre class="verbatim">
+body common control
+{
+bundlesequence => {"my_vm_cloud"};
+host_licenses_paid => "2";
+}
+
+#####################################################
+
+bundle agent my_vm_cloud
+{
+environments:
+
+linux::
+
+"cfvrnet1"
+comment => "Create a virtual network from given xml file",
+environment_resources => virt_xml("$(this.promiser)"),
+environment_type      => "kvm_net",
+environment_state     => "create",
+environment_host      => "ubuntu";
+}
+
+#####################################################
+body environment_resources virt_xml(name)
+{
+
+ env_spec_file =>"
+ "
+  &lt;network>
+  &lt;name>$(name)&lt;/name>
+  &lt;bridge name='virbr1' />
+  &lt;forward mode='route' dev='eth0'/>
+  &lt;ip address='192.168.123.1' netmask='255.255.255.0'>
+  &lt;dhcp>
+  &lt;range start='192.168.123.2' end='192.168.123.254' />
+  &lt;/dhcp>
+  &lt;/ip>
+  &lt;/network>
+  ";
+}
+
+</pre>
+
+<p><a name="Contents">
+<div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">Virtualization</a>
+<ul>
+<li><a href="#What-are-virtualization-and-cloud-computing_003f">What are virtualization and cloud computing?</a>
+<li><a href="#Why-build-virtualization-support-into-Cfengine_003f">Why build virtualization support into CFEngine?</a>
+<li><a href="#What-can-CFEngine-do-with-virtual-machines_003f">What can CFEngine do with virtual machines?</a>
+<li><a href="#Environments-promises">Environments promises</a>
+<li><a href="#Virtualization-types-supported">Virtualization types supported</a>
+<li><a href="#Distinct-states">Distinct states</a>
+<li><a href="#Example-deployment">Example deployment</a>
+</li></ul>
+<li><a name="toc_Example-deployment" href="#Example-deployment">Appendix A Virtualization Examples</a>
+<ul>
+<li><a href="#Virtualized-host-examples">Virtualized host examples</a>
+<li><a href="#Virtual-network-example">Virtual network example</a>
+</li></ul>
+</li></ul>
+</div>
+
+
+
+<p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://
+ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-
+analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+

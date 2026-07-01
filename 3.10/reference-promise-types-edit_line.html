@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.10  Documentation - bundle edit_line</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.10/assets/global-9291732ba4137970d6f84f199dc9b48d.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "bundle edit_line";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/" selected>Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:v9zopcogc1m" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a><ul class="level2"><li><a href="reference-promise-types-access.html">access</a></li><li><a class="active" href="reference-promise-types-edit_line.html">bundle edit_line</a><ul class="level3"><li><a href="reference-promise-types-edit_line-delete_lines.html">delete_lines</a></li><li><a href="reference-promise-types-edit_line-field_edits.html">field_edits</a></li><li><a href="reference-promise-types-edit_line-insert_lines.html">insert_lines</a></li><li><a href="reference-promise-types-edit_line-replace_patterns.html">replace_patterns</a></li></ul></li><li><a href="reference-promise-types-edit_xml.html">bundle edit_xml</a></li><li><a href="reference-promise-types-classes.html">classes</a></li><li><a href="reference-promise-types-commands.html">commands</a></li><li><a href="reference-promise-types-databases.html">databases</a></li><li><a href="reference-promise-types-defaults.html">defaults</a></li><li><a href="reference-promise-types-files.html">files</a></li><li><a href="reference-promise-types-guest_environments.html">guest_environments</a></li><li><a href="reference-promise-types-measurements.html">measurements</a></li><li><a href="reference-promise-types-meta.html">meta</a></li><li><a href="reference-promise-types-methods.html">methods</a></li><li><a href="reference-promise-types-packages.html">packages</a></li><li><a href="reference-promise-types-packages-deprecated.html">packages (deprecated)</a></li><li><a href="reference-promise-types-processes.html">processes</a></li><li><a href="reference-promise-types-reports.html">reports</a></li><li><a href="reference-promise-types-roles.html">roles</a></li><li><a href="reference-promise-types-services.html">services</a></li><li><a href="reference-promise-types-storage.html">storage</a></li><li><a href="reference-promise-types-users.html">users</a></li><li><a href="reference-promise-types-vars.html">vars</a></li></ul></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    bundle edit_line
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Line based editing is a simple model for editing files. Before XML, and
+later JSON, most configuration files were line based. The line-based
+editing offers a powerful environment for model-based editing and
+templating.</p>
+<h3 id="file-editing-in-cfengine-3">File editing in CFEngine 3</h3>
+<p>File editing is not just a single kind of promise but a whole range of
+&#39;promises within files&#39;. It is therefore not merely a body to a single
+kind of promise, but a bundle of sub-promises. After all, inside each
+file are new objects that can make promises, quite separate from files&#39;
+external attributes.</p>
+
+<p>A typical file editing stanza has the elements in the following example:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+  <span class="kr">version</span> <span class="o">=&gt;</span> <span class="s">&quot;1.2.3&quot;</span><span class="p">;</span>
+  <span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;outerbundle&quot;</span>  <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">outerbundle</span>
+<span class="p">{</span>
+<span class="kd">files</span><span class="p">:</span>
+
+  <span class="s">&quot;/home/mark/tmp/cf3_test&quot;</span>
+       <span class="kr">create</span>    <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>     <span class="c"># Like autocreate in cf2</span>
+       <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">inner_bundle</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">inner_bundle</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+
+    <span class="p">&quot;</span><span class="nv">who</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;SysAdmin John&quot;</span><span class="p">;</span> <span class="c"># private variable in bundle</span>
+
+  <span class="kd">insert_lines</span><span class="p">:</span>
+    <span class="s">&quot;/* This file is maintained by CFEngine (see </span><span class="si">$(who)</span><span class="s"> for details) */&quot;</span><span class="p">,</span>
+    <span class="kr">location</span> <span class="o">=&gt;</span> <span class="nf">first_line</span><span class="p">;</span>
+
+  <span class="kd">replace_patterns</span><span class="p">:</span>
+   <span class="c"># replace shell comments with C comments</span>
+
+   <span class="s">&quot;#(.*)&quot;</span>
+      <span class="kr">replace_with</span> <span class="o">=&gt;</span> <span class="nf">C_comment</span><span class="p">,</span>
+     <span class="kr">select_region</span> <span class="o">=&gt;</span> <span class="nf">MySection</span><span class="p">(</span><span class="s">&quot;New section&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="s">&quot;This is file </span><span class="si">$(edit.filename)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">replace_with</span> <span class="nf">C_comment</span>
+<span class="p">{</span>
+  <span class="kr">replace_value</span> <span class="o">=&gt;</span> <span class="s">&quot;/* </span><span class="si">$(match.1)</span><span class="s"> */&quot;</span><span class="p">;</span> <span class="c"># backreference</span>
+  <span class="kr">occurrences</span> <span class="o">=&gt;</span> <span class="s">&quot;all&quot;</span><span class="p">;</span>          <span class="c"># first, last all</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">select_region</span> <span class="nf">MySection</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kr">select_start</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\[</span><span class="si">$(x)</span><span class="se">\]</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="kr">select_end</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\[</span><span class="s">.*</span><span class="se">\]</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">location</span> <span class="nf">first_line</span>
+<span class="p">{</span>
+  <span class="kr">before_after</span> <span class="o">=&gt;</span> <span class="s">&quot;before&quot;</span><span class="p">;</span>
+  <span class="kr">first_last</span> <span class="o">=&gt;</span> <span class="s">&quot;first&quot;</span><span class="p">;</span>
+  <span class="kr">select_line_matching</span> <span class="o">=&gt;</span> <span class="s">&quot;.*&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>There are several things to notice:</p>
+
+<ul>
+<li>  The line-editing promises are all convergent promises about patterns
+within the file. They have bodies, just like other attributes do and
+these allow us to make simple templates about file editing while
+extending the power of the basic primitives.</li>
+<li><p>All file edits specified in a single <a href="reference-promise-types-files.html#edit_line" title="files - edit_line"><code>edit_line</code></a> bundle are handled
+&quot;atomically&quot;. CFEngine edits files like this:</p>
+
+<ul>
+<li>  CFEngine makes a copy of the file you you want to edit.</li>
+<li>  CFEngine makes all the edits in the <strong>copy</strong> of the file. The
+filename is the same as your original file with the extension
+.cf-after-edit appended.</li>
+<li>  After all edits are complete (the <a href="reference-promise-types-edit_line-delete_lines.html" title="delete_lines"><code>delete_lines</code></a>, <a href="reference-promise-types-edit_line-field_edits.html" title="field_edits"><code>field_edits</code></a>,
+<a href="reference-promise-types-edit_line-insert_lines.html" title="insert_lines"><code>insert_lines</code></a>, and finally <a href="reference-promise-types-edit_line-replace_patterns.html" title="replace_patterns"><code>replace_patterns</code></a> promises),
+CFEngine checks to see if the new file is the same as the
+original one. If there are no differences, the promises have
+converged, so it deletes the copy, and the original is left
+completely unmodified.</li>
+<li>  If there are any differences, CFEngine makes a copy of your
+original file with the extension .cf-before-edit (so you always
+have the most recent backup available), and then renames the
+edited version to your original filename.</li>
+</ul>
+
+<p>Because file rename is an atomic operation (guaranteed by the
+operating system), any application program will either see the old
+version of the file or the new one. There is no &quot;window of
+opportunity&quot; where a partially edited file can be seen (unless an
+application intentionally looks for the .cf-after-edit file).
+Problems during editing (such as disk-full or permission errors) are
+likewise detected, and CFEngine will not rename a partial file over
+your original.</p></li>
+<li><p>All pattern matching is through Perl Compatible Regular Expressions</p></li>
+<li><p>Editing takes place within a marked region (which defaults to the
+whole file if not otherwise specified).</p></li>
+<li><p>Search/replace functions now allow back-references.</p></li>
+<li><p>The line edit model now contains a field or column model for dealing
+with tabular files such as Unix passwd and group files. We can now
+apply powerful convergent editing operations to single fields inside
+a table, to append, order and delete items from lists inside fields.</p></li>
+<li><p>The special variable <code>$(edit.filename)</code> contains the name of the
+file being edited within an edit bundle.</p></li>
+<li><p>On Windows, a text file may be stored stored either with CRLF line
+endings (Windows style), or LF line endings (Unix style). CFEngine
+will respect the existing line ending type and make modifications
+using the same type. New files will get CRLF line ending type.</p></li>
+</ul>
+
+<p>In the example above, back references are used to allow conversion of
+comments from shell-style to C-style.</p>
+
+<p>Another example of files promises is to look for changes in files. The
+following example reports on all recent changes to files in a directory
+by maintaining the most recent version of the <code>md5</code> hash of the file
+contents. Similar checks can be used to examine metadata or both the
+contents and metadata, as well as using different difference checks. The
+Community Edition only reports that changes were found, but Enterprise
+versions of CFEngine can also report on what exactly the significant
+changes were.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+<span class="kd">files</span><span class="p">:</span>
+
+  <span class="s">&quot;/home/mark/tmp&quot;</span> <span class="o">-&gt;</span> <span class="s">&quot;Security team&quot;</span>
+
+       <span class="kr">changes</span>      <span class="o">=&gt;</span> <span class="nf">lay_a_tripwire</span><span class="p">,</span>
+       <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">recurse</span><span class="p">(</span><span class="s">&quot;inf&quot;</span><span class="p">),</span>
+       <span class="kr">action</span>       <span class="o">=&gt;</span> <span class="nf">background</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">changes</span> <span class="nf">lay_a_tripwire</span>
+<span class="p">{</span>
+  <span class="kr">hash</span>           <span class="o">=&gt;</span> <span class="s">&quot;md5&quot;</span><span class="p">;</span>
+  <span class="kr">report_changes</span> <span class="o">=&gt;</span> <span class="s">&quot;content&quot;</span><span class="p">;</span>
+  <span class="kr">update</span>         <span class="o">=&gt;</span> <span class="s">&quot;yes&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="scope-and-lifetime-of-the-select_region">Scope and lifetime of the select_region</h3>
+<p>The region selected with <a href="reference-promise-types-edit_line.html#select_region" title="bundle edit_line - select_region"><code>select_region</code></a> exists during the lifetime of the promise.
+This means that once a promise has been started the selected region will be used regardless
+of what the changes are.</p>
+
+<p>There is a down side to this, promise lifetime is shorter than expected. For instance let&#39;s
+look at the following code example:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">init</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">states</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;actual&quot;</span><span class="p">,</span> <span class="s">&quot;expected&quot;</span> <span class="p">};</span>
+
+    <span class="p">&quot;</span><span class="nv">actual</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span>
+<span class="s">&quot;header</span>
+<span class="s">header</span>
+<span class="s">BEGIN</span>
+<span class="s">One potato</span>
+<span class="s">Two potato</span>
+<span class="s">Three potatoe</span>
+<span class="s">Four</span>
+<span class="s">END</span>
+<span class="s">trailer</span>
+<span class="s">trailer&quot;</span><span class="p">;</span>
+
+    <span class="p">&quot;</span><span class="nv">expected</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span>
+<span class="s">&quot;header</span>
+<span class="s">header</span>
+<span class="s">One potato</span>
+<span class="s">Two potato</span>
+<span class="s">Four</span>
+<span class="s">trailer</span>
+<span class="s">trailer&quot;</span><span class="p">;</span>
+
+<span class="kd">files</span><span class="p">:</span>
+    <span class="s">&quot;testfile.</span><span class="si">$(states)</span><span class="s">&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">init_insert</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(init.$(states))</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">init_empty</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">init_insert</span><span class="p">(</span><span class="nv">str</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="kd">insert_lines</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(str)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">edit_defaults</span> <span class="nf">init_empty</span>
+<span class="p">{</span>
+  <span class="kr">empty_file_before_editing</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">#######################################################</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">test</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">tstr</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;BEGIN&quot;</span><span class="p">,</span> <span class="s">&quot;    Three potatoe&quot;</span><span class="p">,</span> <span class="s">&quot;END&quot;</span> <span class="p">};</span>
+
+<span class="kd">files</span><span class="p">:</span>
+    <span class="s">&quot;testfile.actual&quot;</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">test_delete</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(test.tstr)</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">test_delete</span><span class="p">(</span><span class="nv">str</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="kd">delete_lines</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(str)</span><span class="s">&quot;</span>
+      <span class="kr">select_region</span> <span class="o">=&gt;</span> <span class="nf">test_select</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">select_region</span> <span class="nf">test_select</span>
+<span class="p">{</span>
+  <span class="kr">select_start</span> <span class="o">=&gt;</span> <span class="s">&quot;BEGIN&quot;</span><span class="p">;</span>
+  <span class="kr">select_end</span> <span class="o">=&gt;</span> <span class="s">&quot;END&quot;</span><span class="p">;</span>
+  <span class="kr">include_start_delimiter</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+  <span class="kr">include_end_delimiter</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+  <span class="kr">select_end_match_eof</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The code generates two files, <code>testfile.actual</code> and <code>testfile.expected</code>. The idea is that both files will be
+equal after the promise is run, since the transformations applied to <code>testfile.actual</code> will convert it into
+<code>testfile.equal</code>.</p>
+
+<p>However due to the lifetime of promises, this is not true. The attribute <a href="reference-promise-types-edit_line.html#select_region" title="bundle edit_line - select_region"><code>select_region</code></a> lives as long as the
+promise that created it lives and it will be recreated on the next incarnation.</p>
+
+<p>Notice that <code>tstr</code> is a <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> that is used as a parameter for <a href="reference-promise-types-files.html#edit_line" title="files - edit_line"><code>edit_line</code></a>, which uses it to select the strings that
+will be removed. The <a href="reference-promise-types-edit_line.html#select_region" title="bundle edit_line - select_region"><code>select_region</code></a> body specifies that the <a href="reference-promise-types-edit_line.html#select_start" title="bundle edit_line - select_start"><code>select_start</code></a> attribute is &quot;BEGIN&quot;, which holds true only
+for the first invocation of the promise because during that iteration it will be removed. Once it is removed
+the <a href="reference-promise-types-edit_line.html#select_region" title="bundle edit_line - select_region"><code>select_region</code></a> body will never be able to match <a href="reference-promise-types-edit_line.html#select_start" title="bundle edit_line - select_start"><code>select_start</code></a> again.</p>
+
+<p>In the previous example, it is easy to think that the <a href="reference-promise-types-edit_line.html#select_region" title="bundle edit_line - select_region"><code>select_region</code></a> will be kept during the whole iteration of the
+<a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a>. This is not true, each element in the <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a> will trigger its own invocation of the promise, therefore
+<a href="reference-promise-types-edit_line.html#select_region" title="bundle edit_line - select_region"><code>select_region</code></a> will only match the first iteration.</p>
+
+<p>The solution to this problem is simple: if the marker for a region needs to be removed, then it cannot be used as a marker.
+In the example above it is enough to change the markers from &quot;BEGIN&quot; to &quot;header&quot; and from &quot;END&quot; to &quot;trailer&quot; to obtain the
+desired result.</p>
+
+<hr>
+<h2 id="attributes">Attributes</h2><h3 id="select_region">select_region</h3>
+<p><strong>Type:</strong> <code>body select_region</code></p>
+
+<p><strong>Description:</strong> Restrict edit_line promise to specific section</p>
+
+<p>Restrict edits to a specific region of a file based on <a href="reference-promise-types-edit_line.html#select_start" title="bundle edit_line - select_start"><code>select_start</code></a>
+and <a href="reference-promise-types-edit_line.html#select_end" title="bundle edit_line - select_end"><code>select_end</code></a> regular expressions. If the beginning and ending regular
+expressions match more than one region only the first region will be
+selected for editing.</p>
+
+<p><strong>See also:</strong> <a href="reference-promise-types.html#common-body-attributes" title="Promise Types and Attributes - Common Body Attributes">Common Body Attributes</a></p>
+<h4 id="include_start_delimiter">include_start_delimiter</h4>
+<p><strong>Description:</strong> Whether to include the section delimiter</p>
+
+<p>In a sectioned file, the line that marks the opening of a section is not
+normally included in the defined region (that is, it is recognized as a
+delimiter, but it is not included as one of the lines available for
+editing). Setting this option to true makes it included.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">select_region</span> <span class="nf">MySection</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+     <span class="p">{</span>
+       <span class="kr">select_start</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\[</span><span class="si">$(x)</span><span class="se">\]</span><span class="s">&quot;</span><span class="p">;</span>
+       <span class="kr">select_end</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\[</span><span class="s">.*</span><span class="se">\]</span><span class="s">&quot;</span><span class="p">;</span>
+       <span class="kr">include_start_delimiter</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Input file:</p>
+<div class="highlight"><pre><code class="cf3">     <span class="err">[</span><span class="nf">My</span> <span class="nf">section</span><span class="err">]</span>
+     <span class="nf">one</span>
+     <span class="nf">two</span>
+     <span class="nf">three</span>
+</code></pre>
+</div>
+
+<p>In this example, the section does not normally include the line [My
+section]. By setting <code>include_start_delimiter</code> to <code>true</code> it would be
+possible for example, to delete the entire section, including the
+section header. If however <code>include_start_delimiter</code> is false, the
+<em>contents</em> of the section could be deleted, but the header would be
+unaffected by any <a href="reference-promise-types-edit_line-delete_lines.html" title="delete_lines"><code>delete_lines</code></a> promises. See the next section on
+<code>include_start_delimiter</code> for further details.</p>
+
+<p><strong>History:</strong> This attribute was introduced in CFEngine version 3.0.5
+(2010)</p>
+<h4 id="include_end_delimiter">include_end_delimiter</h4>
+<p><strong>Description:</strong> Whether to include the section delimiter</p>
+
+<p>In a sectioned file, the line that marks the end of a section is not
+normally included in the defined region; that is, it is recognized as a
+delimiter, but it is not included as one of the lines available for
+editing. Setting this option to true makes it included.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">select_region</span> <span class="nf">BracketSection</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+     <span class="p">{</span>
+     <span class="kr">select_start</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s"> </span><span class="se">\{</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="kr">select_end</span> <span class="o">=&gt;</span> <span class="s">&quot;}&quot;</span><span class="p">;</span>
+     <span class="kr">include_end_delimiter</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Input file:</p>
+<div class="highlight"><pre><code class="cf3">     <span class="err">/</span><span class="nf">var</span><span class="err">/</span><span class="nf">log</span><span class="err">/</span><span class="nf">mail</span><span class="err">.</span><span class="nf">log</span> <span class="p">{</span>
+         <span class="nf">monthly</span>
+         <span class="nf">missingok</span>
+         <span class="nf">notifempty</span>
+         <span class="nf">rotate</span> <span class="mi">7</span>
+         <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The section does not normally include the line containing }. By setting
+<code>include_end_delimiter</code> to <code>true</code> it would be possible for example, to
+delete the entire section, including the section trailer. If however
+<code>include_end_delimiter</code> is false, the <em>contents</em> of the section could be
+deleted, but the header would be unaffected by any <a href="reference-promise-types-edit_line-delete_lines.html" title="delete_lines"><code>delete_lines</code></a>
+promises.</p>
+
+<p>The use of <a href="reference-promise-types-edit_line.html#include_start_delimiter" title="bundle edit_line - include_start_delimiter"><code>include_start_delimiter</code></a> and <code>include_end_delimiter</code> depend
+on the type of sections you are dealing with, and what you want to do
+with them. Note that sections can be bounded at both the start and end
+(as in the example above) or just at the start (as in the sample shown
+in <a href="reference-promise-types-edit_line.html#include_start_delimiter" title="bundle edit_line - include_start_delimiter"><code>include_start_delimiter</code></a>).</p>
+
+<p><strong>History:</strong> This attribute was introduced in CFEngine version 3.0.5
+(2010)</p>
+<h4 id="select_start">select_start</h4>
+<p><strong>Description:</strong> <a href="reference-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">Anchored</a> regular expression matching start of edit region</p>
+
+<p>See also <a href="reference-promise-types-edit_line.html#select_end" title="bundle edit_line - select_end"><code>select_end</code></a>. These delimiters mark
+out the region of a file to be edited.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">select_region</span> <span class="nf">example</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+     <span class="p">{</span>
+       <span class="kr">select_start</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\[</span><span class="si">$(x)</span><span class="se">\]</span><span class="s">&quot;</span><span class="p">;</span>
+       <span class="kr">select_end</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\[</span><span class="s">.*</span><span class="se">\]</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="select_end">select_end</h4>
+<p><strong>Description:</strong> <a href="reference-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">Anchored</a> regular expression matches end of edit region from start</p>
+
+<p>See also <a href="reference-promise-types-edit_line.html#select_start" title="bundle edit_line - select_start"><code>select_start</code></a>. These delimiters
+mark out the region of a file to be edited.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">select_region</span> <span class="nf">example</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+     <span class="p">{</span>
+     <span class="kr">select_start</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\[</span><span class="si">$(x)</span><span class="se">\]</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="kr">select_end</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\[</span><span class="s">.*</span><span class="se">\]</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>If you want to match from a starting location to the end of the file
+(even if there are other lines matching <a href="reference-promise-types-edit_line.html#select_start" title="bundle edit_line - select_start"><code>select_start</code></a> intervening),
+then just omit the <code>select_end</code> promise and the selected region will run
+to the end of the file.
+The default behavior can be modified by using  <a href="reference-promise-types-edit_line.html#select_end_match_eof" title="bundle edit_line - select_end_match_eof"><code>select_end_match_eof</code></a> or <a href="reference-components-cf-agent.html#select_end_match_eof" title="cf-agent - select_end_match_eof"><code>select_end_match_eof</code></a>. </p>
+<h4 id="select_end_match_eof">select_end_match_eof</h4>
+<p><strong>Description:</strong> When <code>select_end_match_eof</code> is set to true <a href="reference-promise-types-edit_line.html#select_end" title="bundle edit_line - select_end"><code>select_end</code></a> will consider end of file as the end region if it is unable to match
+the end pattern. </p>
+
+<p>See also <a href="reference-promise-types-edit_line.html#select_start" title="bundle edit_line - select_start"><code>select_start</code></a> and <a href="reference-promise-types-edit_line.html#select_end" title="bundle edit_line - select_end"><code>select_end</code></a>. These delimiters
+mark out the region of a file to be edited.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">select_region</span> <span class="nf">example</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+     <span class="p">{</span>
+     <span class="kr">select_start</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\[</span><span class="si">$(x)</span><span class="se">\]</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="kr">select_end</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\[</span><span class="s">.*</span><span class="se">\]</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="kr">select_end_match_eof</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>If the <a href="reference-promise-types-edit_line.html#select_end" title="bundle edit_line - select_end"><code>select_end</code></a> attribute is omitted, the selected region will run to the end of the file no matter what the value of <code>select_end_match_eof</code> is set to.</p>
+
+<p><strong>Note:</strong> The global body agent control <a href="reference-components-cf-agent.html#select_end_match_eof" title="cf-agent - select_end_match_eof">`select_end_match_eof</a> sets the default behaviour for the entire policy. The local <a href="reference-promise-types-files.html#edit_line" title="files - edit_line"><code>edit_line</code></a> promise constraint takes precedence over the <code>body agent control</code> configuration option.</p>
+
+<p><strong>History:</strong> This attribute was introduced in CFEngine version 3.9.0 (2016)</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-bundle-agent.html">bundle agent</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-bundle-edit_line.html">bundle edit_line</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-files-promises.html">files promises</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-file-editing.html">file editing</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 17 March 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/promise-types/edit_line.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/ae7435d3d24d30077bfbf18438f2444c629f8c69" target="_blank">ae7435d3d24d30077bfbf18438f2444c629f8c69</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.10/assets/footer-4c28dbe187e7b2a3c1504ff564f1b523.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

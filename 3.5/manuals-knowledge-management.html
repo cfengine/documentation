@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - Knowledge Management</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <div class="wrapper">
+        <div id="content_col">
+            <article>
+                <h1 id="top">Knowledge Management</h1>
+                    <p><a href="#why-does-knowledge-matter">link</a></p>
+
+<p>Above all, CFEngine promotes a human understanding of complex processes.
+Its promises are easily documentable using comments that the system
+remembers and reminds us about in error reporting. It hides irrelevant
+and transitory details of implementation so that the intentions behind
+the promises are highlighted for all to see. This means that the
+knowledge of your organization can be encoded into a terse,
+easy-to-understand CFEngine language based on promises.</p>
+<h3 id="why-does-knowledge-matter">Why does Knowledge Matter?</h3>
+<p>It is this human understanding of large systems that often makes the
+difference between a sustainable automation effort, and an effort that
+fails to gain traction:</p>
+
+<ol>
+<li><p>Technical descriptions are hard to remember. You might understand
+your configuration decisions when you are writing them, but a few
+months later when something goes wrong, you will probably have
+forgotten what you were thinking. That costs you time and effort to
+diagnose.</p></li>
+<li><p>Organizations are fragile to the loss of those individuals who code
+policy. If they leave, often there is no one left who can understand
+or fix the system. Only with proper documentation is it possible to
+immunize against loss.</p></li>
+</ol>
+
+<p>A unique aspect of CFEngine, that is fully developed in the commercial
+editions of the software, its ability to enable integrated knowledge
+management as part of an automation process, and to use its
+configuration technology as a `semantic&#39; documentation engine.</p>
+
+<p>Knowledge management is the challenge of our times. Organizations
+frequently waste significant effort re-learning old lessons because
+they have not been documented and entered into posterity. Now you can
+alleviate this problem with some simple rules of thumb and even build
+sophisticated index-databases of documents.</p>
+<h3 id="promises-and-knowledge">Promises and Knowledge</h3>
+<p>The learning curve for configuration management systems has been the
+brunt of frequent criticism over the years. Users are expected to
+either confront the informational complexity of systems at a detailed
+level, or abandon the idea of fine control altogether. This has led
+either to information overload or over-simplification. The ability to
+cope with information complexity is therefore fundamental to IT
+management</p>
+
+<p>CFEngine introduced the promise model for configuration in order to
+flatten out this learning curve. It can lead to simplifications in
+use, because a lot of the thinking has been done already and is
+encapsulated into the model. One of its special properties is that it
+is both a model for system behavior and a model for knowledge
+representation (this is what declarative languages seek to be, of
+course). More specifically, it incorporated a subset of the ISO
+standard for `Topic Maps&#39;, an open technology for semantic indexing of
+information resources. By bringing together these two technologies
+(which are highly compatible), we end up with a seamless front-end for
+sewing together and browsing system information.</p>
+
+<p>Knowledge management is a field of research in its own right, and it
+covers a multitude of issues both human and technological. Most would
+agree that knowledge is composed of facts and relationships and that
+there is a need both for clear definitions and semantic context to
+interpret knowledge properly; but how do we attach meaning to raw
+information without ambiguity?</p>
+
+<p>Knowledge has quite a lot in common with configuration: what after all
+is knowledge but a configuration of ideas in our minds, or on some
+representation medium (paper, silicon etc). It is a coded pattern,
+preferably one that we can agree on and share with others. Both
+knowledge and configuration management are about describing patterns.
+A simple knowledge model can be used to represent a policy or
+configuration; conversely, a simple model of policy configuration can
+manufacture a knowledge structure just as it might manufacture a
+filesystem or a set of services.</p>
+<h3 id="the-basics-of-knowledge">The basics of knowledge</h3>
+<p>Knowledge only truly begins when we write things down:</p>
+
+<ul>
+<li><p>The act of formulating something in writing brings a discipline of
+thought than often lends clarity to an idea.</p></li>
+<li><p>You never confront an idea fully until you try to put it into language.</p></li>
+<li><p>Any written record that is kept allows others to read it and pass on
+the knowledge.</p></li>
+</ul>
+
+<p>The trouble is that writing is something people don&#39;t like to do, and
+few are very good at. To an engineer, it can feel like a waste of
+time, especially during a busy day, to break off from the doing to
+write about the doing. Also, writing requires a spurt of creative
+thinking and engineers are often more comfortable with manipulating
+technical patterns and notations than writing fluent linguistic
+formulations that seem overtly long-winded.</p>
+
+<p>CFEngine tries to bridge this gap by making documentation simple and
+part of the technical configuration. </p>
+<h3 id="annotating-promises">Annotating promises</h3>
+<p>The beginning of knowledge is to annotate the technical
+specifications. Remember that the point of a promise is to convey an
+intention. When writing promises, get into the habit of giving every
+promise a comment that explains its intention. Also, expect to give
+special promises handles, or helpful labels that can be used to refer
+to them in other promise statements. A handle could be something dumb
+like `xyz&#39;, but you should try to use more meaningful titles to help
+make references clear.</p>
+<div class="highlight"><pre><code class="text">files:
+
+    &quot;/var/cfengine/inputs&quot;
+      handle       =&gt; &quot;update_policy&quot;,
+      comment      =&gt; &quot;Update the CFEngine input files from the policy server&quot;,
+      perms        =&gt; system(&quot;600&quot;),
+      copy_from    =&gt; rcp(&quot;$(master_location)&quot;,&quot;$(policy_server)&quot;),
+      depth_search =&gt; recurse(&quot;inf&quot;),
+      file_select  =&gt; input_files,
+      action       =&gt; immediate;
+</code></pre>
+</div>
+
+<p>If a promise affects another promise in some way, you can make the
+affected one promise one of the promisees, like this:</p>
+<div class="highlight"><pre><code class="text">access:
+
+    &quot;/master/CFEngine/inputs&quot; -&gt; { &quot;update_policy&quot;, &quot;other_promisee&quot; },
+      handle  =&gt; &quot;serve_updates&quot;,
+      admit   =&gt; { &quot;217.77.34.*&quot; };
+</code></pre>
+</div>
+
+<p>This use of annotation is the first level of documentation in
+CFEngine. The annotations are used internally by CFEngine to provide
+meaningful error messages with context and to compute dependencies
+that reveal the existence of process chains. </p>
+<h4 id="analyzing-and-indexing-the-policy">Analyzing and indexing the policy</h4>
+<p>CFEngine can analyze the promises you have made, index and cross reference them using the command:</p>
+<div class="highlight"><pre><code class="text">$ cf-promises -r
+</code></pre>
+</div>
+
+<p>Normally, the default policy in CFEngine Enterprise will perform this command 
+each time the policy is changed.</p>
+
+            </article>
+        </div>
+    </div>
+</body>
+</html>

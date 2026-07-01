@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.10  Documentation - Design Center Overview</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.10/assets/global-9291732ba4137970d6f84f199dc9b48d.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Design Center Overview";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/" selected>Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:v9zopcogc1m" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a class="active" href="guide-design-center.html">Design Center Overview</a><ul class="level2"><li><a href="guide-design-center-configure-sketches-community.html">Command Line Sketches</a></li><li><a href="guide-design-center-design-center-write-sketch.html">Write a new Sketch</a></li><li><a href="guide-design-center-design-center-write-sketch-advanced.html">sketchify - Write A New Sketch From An Existing Bundle</a></li></ul></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Design Center Overview
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>The Design Center is a public repository for data-driven policy
+templates called <em>sketches</em> that is deeply integrated with CFEngine
+Enterprise.</p>
+
+<p><a href="reference-design-center-sketch.html" title="Sketch Structure">Sketches</a> are ready-to-use components (e.g.
+collections of bundles, support files, etc.) that can be directly
+imported and used in CFEngine policies. Most sketches are specialized
+for achieving specific tasks, or for maintaining a specific piece of
+software, but their scope and capabilities can range beyond. They are
+organized in categories and tagged according to their functionality.</p>
+
+<p>Sketches are managed (installed, configured, enabled and uninstalled)
+through a specialized tool called <code>cf-sketch</code> which in turn talks to a
+specialized Design Center API. That API is available for third-party
+integrations.</p>
+
+<p>In CFEngine Enterprise, the Design Center interactions are driven by
+the Mission Portal <strong>Design Center App</strong> for great ease of use.</p>
+
+<p>This is a guide to the Design Center functionality. For the reference
+pages for its API and code structure, start with
+<a href="reference-design-center.html" title="Design Center">Design Center</a>.</p>
+
+<ul>
+<li><a href="#use-design-center-sketches-to-deploy-policy">Use Design Center Sketches to Deploy Policy</a></li>
+<li><a href="#the-design-center-sketch-workflow">The Design Center Sketch Workflow</a></li>
+<li><a href="#value-of-sketches-to-users">Value of Sketches to Users</a></li>
+<li><a href="#design-center-terminology">Design Center Terminology</a></li>
+<li><a href="#see-also">See Also</a></li>
+</ul>
+<h2 id="use-design-center-sketches-to-deploy-policy">Use Design Center Sketches to Deploy Policy</h2>
+<p>The CFEngine Design Center is a collection of data-driven policy
+templates called <em>sketches</em>. Sketches can be configured and deployed
+(&quot;activated&quot;) without prior knowledge of the CFEngine language.</p>
+
+<p>The Design Center also contains tools that help you to manipulate and
+manage sketches:</p>
+
+<ul>
+<li><p>Enterprise users manage and deploy sketches in the Mission Portal <strong>Design Center App</strong>. <a href="enterprise-cfengine-guide-design-center-design-center-deploy-sketch.html" title="Deploy your first Policy">Deploy your first policy in the Design Center</a>.</p></li>
+<li><p>Community users manage and deploy sketches on the <a href="guide-design-center-configure-sketches-community.html" title="Command Line Sketches">command line</a> by using the <code>cf-sketch</code>
+tool.</p></li>
+<li><p>third-part integrators can use the Design Center API from the
+command line or through the CFEngine Enterprise API. For more information, see <a href="reference-design-center-api.html" title="The Design Center API">The Design Center API</a>.
+&lt;!-- (??? LINK TO Enterprise DC API depends on <a href="https://dev.cfengine.com/issues/6011">https://dev.cfengine.com/issues/6011</a> ???) --&gt;</p></li>
+</ul>
+<h2 id="the-design-center-sketch-workflow">The Design Center Sketch Workflow</h2>
+<p>A sketch is installed, configured, and deployed (the whole process is called an &quot;activation&quot;), as shown in the diagram below:</p>
+
+<p><img src="DCsketchworkflow.png" alt="Sketch Workflow"></p>
+
+<ol>
+<li><p>Install a sketch from a master repository. At this point, the
+sketch is merely a template that cannot do anything because it doesn’t
+contain parameters. With CFEngine Enterprise, installations are
+handled invisibly.</p></li>
+<li><p>Configure the sketch by providing parameters. Now, you can create
+sketch configurations. One sketch can have multiple configurations
+with different parameter sets that will get applied under different
+conditions. With CFEngine Enterprise, you do this from a GUI screen.</p></li>
+<li><p>Deploy the runfile. This makes the sketch visible to CFEngine, so
+it can begin to execute. Typically the intermediate stage here is to
+generate a runfile (the policy glue that enables all the Design Center
+magic) and check it into your version control repository. With
+CFEngine Enterprise, this step is handled invisibly, you just enter a
+commit message for the change you&#39;ve made.</p></li>
+</ol>
+<h2 id="value-of-sketches-to-users">Value of Sketches to Users</h2>
+<p>Sketches provide value to CFEngine users, especially Enterprise customers:</p>
+
+<ul>
+<li><p>Instead of writing a single policy for each desired state, you can
+use data-driven policies (sketches) to implement, activate, or enforce
+policy. Users can configure the sketch for the appropriate environment
+and then deploy it to specific hosts or groups of hosts without knowing the
+intricacies of CFEngine policy language.</p></li>
+<li><p>You can have infinitely flexible configurations of sketches across your infrastructure
+based on static (such as CPU or OS) or dynamic (such as time of day or number of users)
+conditions (classes). Every time CFEngine runs, it chooses which sketch(es) to execute with
+which parameter sets based on those conditions. As conditions change, the execution of
+sketches can change, just as the behavior of regular CFEngine policy can change.</p></li>
+<li><p>There&#39;s a large list of sketches you can use already and the list is growing.  You can use them as they are, or learn from their techniques and write your own.</p></li>
+</ul>
+<h2 id="design-center-terminology">Design Center Terminology</h2>
+<ul>
+<li><a href="reference-design-center.html" title="Design Center"><code>Design Center</code></a>  Refers to the collection of sketches and the tools that allow you to
+manipulate and manage them.</li>
+<li><code>Design Center app (UI)</code> Refers to the Design Center user interface app that is
+located on the Mission Portal console for CFEngine Enterprise users.</li>
+<li><code>Design Center in GitHub</code> Refers to the <a href="https://github.com/cfengine/design-center" title="Design-Center repository on GitHub">CFEngine github</a> repository of sketches, tools,
+and policy examples.</li>
+<li><code>Design Center API</code> Refers to the <a href="reference-design-center-api.html" title="The Design Center API">API</a> which performs all operations related to
+sketches, parameter sets, environments, validations, and deployment.</li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="enterprise-cfengine-guide-design-center-design-center-deploy-sketch.html" title="Deploy your first Policy">Deploy your first Policy (Enterprise)</a> This Enterprise-specific tutorial illustrates how
+to use a sketch to configure and deploy a simple policy by using the <strong>Design Center App</strong> on
+the Mission Portal console.</li>
+<li><a href="guide-design-center-configure-sketches-community.html" title="Command Line Sketches">Configure Sketches on the Command Line (Community)</a> This section is for Community users
+who plan to install, configure, and deploy sketches.</li>
+<li><a href="guide-design-center-design-center-write-sketch.html" title="Write a new Sketch">Write a new Sketch (Enterprise and Community)</a> This is an advanced section for both Enterprise
+and Community users who plan to write new sketches.</li>
+</ul>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-design-center.html">design center</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-cf-sketch.html">cf-sketch</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-sketches.html">sketches</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-deploy-policy.html">deploy policy</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 17 March 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/design-center.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/ae7435d3d24d30077bfbf18438f2444c629f8c69" target="_blank">ae7435d3d24d30077bfbf18438f2444c629f8c69</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.10/assets/footer-4c28dbe187e7b2a3c1504ff564f1b523.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.13  Documentation - controls/def.cf</title>
+        <link rel="icon" type="image/png" href="favicon.png">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.13/assets/global-f8d3d88f1cc74c2ac5c8e408cd101409.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "controls/def.cf";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.13/" selected>Version 3.13 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                    <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:bphk6hztv2i" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a><ul class="level2"><li><a href="reference-masterfiles-policy-framework-update.html">update.cf</a></li><li><a href="reference-masterfiles-policy-framework-promises.html">promises.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls.html">controls/</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_agent.html">controls/cf_agent.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_execd.html">controls/cf_execd.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf-hub.html">controls/cf_hub.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_monitord.html">controls/cf_monitord.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_runagent.html">controls/cf_runagent.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_serverd.html">controls/cf_serverd.cf</a></li><li><a class="active" href="reference-masterfiles-policy-framework-controls-def.html">controls/def.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-def_inputs.html">controls/def_inputs.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-reports.html">controls/reports.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-update_def.html">controls/update_def.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-update_def_inputs.html">controls/update_def_inputs.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal.html">cfe_internal/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-cfe_cfengine.html">cfe_internal/CFE_cfengine.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update.html">cfe_internal/update/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_dc_workflow.html">cfe_internal/update/cfe_internal_dc_workflow.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_update_from_repository.html">cfe_internal/update/cfe_internal_update_from_repository.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-lib.html">cfe_internal/update/lib.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-systemd_units.html">cfe_internal/update/systemd_units.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_bins.html">cfe_internal/update/update_bins.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_policy.html">cfe_internal/update/update_policy.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_processes.html">cfe_internal/update/update_processes.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-core.html">cfe_internal/core/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise.html">cfe_internal/enterprise/</a></li><li><a href="reference-masterfiles-policy-framework-inventory.html">inventory/</a></li><li><a href="reference-masterfiles-policy-framework-inventory-any.html">inventory/any.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-debian.html">inventory/debian.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-freebsd.html">inventory/freebsd.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-generic.html">inventory/generic.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-linux.html">inventory/linux.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-lsb.html">inventory/lsb.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-macos.html">inventory/macos.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-os.html">inventory/os.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-redhat.html">inventory/redhat.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-suse.html">inventory/suse.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-windows.html">inventory/windows.cf</a></li><li><a href="reference-masterfiles-policy-framework-services.html">services/</a></li><li><a href="reference-masterfiles-policy-framework-services-autorun.html">services/autorun/</a></li><li><a href="reference-masterfiles-policy-framework-services-main.html">services/main.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib.html">lib/</a></li><li><a href="reference-masterfiles-policy-framework-standalone_self_upgrade.html">standalone_self_upgrade.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-autorun.html">lib/autorun.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-bundles.html">lib/bundles.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfe_internal.html">lib/cfe_internal.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfe_internal_hub.html">lib/cfe_internal_hub.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfengine_enterprise_hub_ha.html">lib/cfengine_enterprise_hub_ha.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-commands.html">lib/commands.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-common.html">lib/common.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-databases.html">lib/databases.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-edit_xml.html">lib/edit_xml.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-event.html">lib/event.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-examples.html">lib/examples.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-feature.html">lib/feature.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-files.html">lib/files.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-guest_environments.html">lib/guest_environments.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-monitor.html">lib/monitor.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-packages.html">lib/packages.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-paths.html">lib/paths.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-processes.html">lib/processes.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-reports.html">lib/reports.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-services.html">lib/services.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-stdlib.html">lib/stdlib.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-storage.html">lib/storage.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-testing.html">lib/testing.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-users.html">lib/users.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-vcs.html">lib/vcs.cf</a></li></ul></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    controls/def.cf
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>This is where most common variables and classes are defined. Note its variable scope can be augmented with <code>def.json</code>.</p>
+<h3 id="common-bodies"><a href="reference-components.html#common-control">common</a> bodies</h3><h4 id="def">def</h4>
+<p><strong>Prototype:</strong> <code>def</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">common</span> <span class="nf">def</span>
+<span class="p">{</span>
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="s">&quot;_workaround_CFE_2333&quot;</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s">&quot;https://tracker.mender.io/browse/CFE-2333&quot;</span> <span class="p">}</span>
+      <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;cfengine_3_7_3&quot;</span><span class="p">,</span> <span class="s">&quot;cfengine_3_8_1&quot;</span><span class="p">,</span> <span class="s">&quot;cfengine_3_8_2&quot;</span> <span class="p">};</span>
+
+    <span class="c"># If the augments_file is parsed from C then we do not need ot do this work</span>
+    <span class="c"># from policy</span>
+    <span class="nc">!(feature_def_json_preparse)|(_workaround_CFE_2333)</span><span class="p">::</span>
+      <span class="s">&quot;have_augments_file&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">augments_file</span><span class="p">)),</span> <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;bundle&quot;</span><span class="p">;</span>
+      <span class="s">&quot;have_augments_classes&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;augments[classes]&quot;</span><span class="p">),</span> <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;bundle&quot;</span><span class="p">;</span>
+      <span class="s">&quot;have_augments_inputs&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;augments[inputs]&quot;</span><span class="p">),</span> <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;bundle&quot;</span><span class="p">;</span>
+
+    <span class="nc">have_augments_classes.!(feature_def_json_preparse)|(_workaround_CFE_2333)</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(augments_classes_data_keys)</span><span class="s">&quot;</span>
+        <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">classmatch</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(augments[classes][$(augments_classes_data_keys)])</span><span class="s">&quot;</span><span class="p">),</span>
+        <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;augments_class&quot;</span><span class="p">,</span> <span class="s">&quot;derived_from=</span><span class="si">$(augments_file)</span><span class="s">&quot;</span> <span class="p">};</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+
+    <span class="nc">!(feature_def_json_preparse)|(_workaround_CFE_2333)</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">augments_file</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(this.promise_dirname)</span><span class="s">/../../def.json&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">defvars</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">variablesmatching</span><span class="p">(</span><span class="s">&quot;default:def</span><span class="se">\.</span><span class="s">.*&quot;</span><span class="p">,</span> <span class="s">&quot;defvar&quot;</span><span class="p">);</span>
+
+    <span class="nc">have_augments_file.!feature_def_json_preparse|(_workaround_CFE_2333)</span><span class="p">::</span>
+      <span class="s">&quot;augments&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">readjson</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">augments_file</span><span class="p">),</span> <span class="mi">100</span><span class="nf">k</span><span class="p">),</span> <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;have_augments_file&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">augments_inputs</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getvalues</span><span class="p">(</span><span class="s">&quot;augments[inputs]&quot;</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">override_vars</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getindices</span><span class="p">(</span><span class="s">&quot;augments[vars]&quot;</span><span class="p">);</span>
+      <span class="s">&quot;override_data_</span><span class="si">$(override_vars)</span><span class="s">&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span><span class="s">&quot;augments[vars][</span><span class="si">$(override_vars)</span><span class="s">]&quot;</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">override_data_s_$(override_vars)</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">format</span><span class="p">(</span><span class="s">&quot;%S&quot;</span><span class="p">,</span> <span class="s">&quot;override_data_</span><span class="si">$(override_vars)</span><span class="s">&quot;</span><span class="p">);</span>
+
+    <span class="nc">any</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">augments_inputs</span><span class="p">&quot;</span>
+        <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{},</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="s">&quot;augments_inputs&quot;</span> <span class="p">)</span> <span class="p">),</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;It&#39;s important that we define this list, even if it&#39;s empty</span>
+<span class="s">                    or we get errors about the list being unresolved.&quot;</span><span class="p">;</span>
+
+    <span class="nc">have_augments_classes.!(feature_def_json_preparse)|(_workaround_CFE_2333)</span><span class="p">::</span>
+      <span class="s">&quot;augments_classes_data&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span><span class="s">&quot;augments[classes]&quot;</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">augments_classes_data_keys</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getindices</span><span class="p">(</span><span class="s">&quot;augments_classes_data&quot;</span><span class="p">);</span>
+
+    <span class="nc">any</span><span class="p">::</span>
+      <span class="c"># Begin change</span>
+
+      <span class="c"># Your domain name, for use in access control</span>
+      <span class="c"># Note: this default may be inaccurate!</span>
+      <span class="p">&quot;</span><span class="nv">domain</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.domain)</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Define a global domain for all hosts&quot;</span><span class="p">,</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;common_def_vars_domain&quot;</span><span class="p">,</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span><span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;domain&quot;</span><span class="p">));</span>
+
+      <span class="c"># Mail settings used by body executor control found in controls/cf_execd.cf</span>
+      <span class="p">&quot;</span><span class="nv">mailto</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;root@</span><span class="si">$(def.domain)</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span><span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;mailto&quot;</span><span class="p">));</span>
+
+      <span class="p">&quot;</span><span class="nv">mailfrom</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;root@</span><span class="si">$(sys.uqhost)</span><span class="s">.</span><span class="si">$(def.domain)</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span><span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;mailfrom&quot;</span><span class="p">));</span>
+
+      <span class="p">&quot;</span><span class="nv">smtpserver</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span><span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;smtpserver&quot;</span><span class="p">));</span>
+
+      <span class="c"># List here the IP masks that we grant access to on the server</span>
+
+      <span class="c"># Only define here if we are not capable of parsing augments from C</span>
+      <span class="p">&quot;</span><span class="nv">acl</span><span class="p">&quot;</span>
+        <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getvalues</span><span class="p">(</span><span class="s">&quot;override_data_acl&quot;</span><span class="p">),</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;JSON-sourced: Define an acl for the machines to be granted accesses&quot;</span><span class="p">,</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;common_def_json_vars_acl&quot;</span><span class="p">,</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">and</span><span class="p">(</span><span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;override_data_acl&quot;</span><span class="p">),</span> <span class="s">&quot;!feature_def_json_preparse&quot;</span><span class="p">),</span>
+        <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;defvar&quot;</span> <span class="p">};</span>
+
+      <span class="p">&quot;</span><span class="nv">acl</span><span class="p">&quot;</span>
+        <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                   <span class="c"># Allow everything in my own domain.</span>
+
+                   <span class="c"># Note that this:</span>
+                   <span class="c"># 1. requires def.domain to be correctly set</span>
+                   <span class="c"># 2. will cause a DNS lookup for every access</span>
+                   <span class="c"># &quot;.*$(def.domain)&quot;,</span>
+
+                   <span class="c"># Assume /16 LAN clients to start with</span>
+                   <span class="s">&quot;</span><span class="si">$(sys.policy_hub)</span><span class="s">/16&quot;</span><span class="p">,</span>
+
+                   <span class="c"># Uncomment below if HA is used</span>
+                   <span class="c">#&quot;@(def.policy_servers)&quot;</span>
+
+                   <span class="c">#  &quot;2001:700:700:3.*&quot;,</span>
+                   <span class="c">#  &quot;217.77.34.18&quot;,</span>
+                   <span class="c">#  &quot;217.77.34.19&quot;,</span>
+        <span class="p">},</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Define an acl for the machines to be granted accesses&quot;</span><span class="p">,</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;common_def_vars_acl&quot;</span><span class="p">,</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">and</span><span class="p">(</span><span class="nf">not</span><span class="p">(</span><span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;override_data_acl&quot;</span><span class="p">)),</span> <span class="nf">not</span><span class="p">(</span><span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;acl&quot;</span><span class="p">))),</span>
+        <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;defvar&quot;</span> <span class="p">};</span>
+
+      <span class="c"># Out of the hosts in allowconnects, trust new keys only from the</span>
+      <span class="c"># following ones.  This is open by default for bootstrapping.</span>
+
+      <span class="c"># Only define here if we are not capable of parsing augments from C</span>
+      <span class="p">&quot;</span><span class="nv">trustkeysfrom</span><span class="p">&quot;</span>
+        <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getvalues</span><span class="p">(</span><span class="s">&quot;override_data_trustkeysfrom&quot;</span><span class="p">),</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;JSON-sourced: define from which machines keys can be trusted&quot;</span><span class="p">,</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">and</span><span class="p">(</span><span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;override_data_trustkeysfrom&quot;</span><span class="p">),</span> <span class="s">&quot;!feature_def_json_preparse&quot;</span><span class="p">),</span>
+        <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;defvar&quot;</span> <span class="p">};</span>
+
+      <span class="p">&quot;</span><span class="nv">trustkeysfrom</span><span class="p">&quot;</span>
+        <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                   <span class="c"># COMMENT THE NEXT LINE OUT AFTER ALL MACHINES HAVE BEEN BOOTSTRAPPED.</span>
+                   <span class="s">&quot;0.0.0.0/0&quot;</span><span class="p">,</span> <span class="c"># allow any IP</span>
+        <span class="p">},</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Define from which machines keys can be trusted&quot;</span><span class="p">,</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">and</span><span class="p">(</span><span class="nf">not</span><span class="p">(</span><span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;override_data_trustkeysfrom&quot;</span><span class="p">)),</span>
+                          <span class="nf">not</span><span class="p">(</span><span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;trustkeysfrom&quot;</span><span class="p">))),</span>
+        <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;defvar&quot;</span> <span class="p">};</span>
+
+      <span class="c">## List of the hosts not using the latest protocol that we&#39;ll accept connections from</span>
+      <span class="c">## (absence of this option or empty list means allow none)</span>
+      <span class="p">&quot;</span><span class="nv">control_server_allowlegacyconnects</span><span class="p">&quot;</span>
+        <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{},</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="s">&quot;control_server_allowlegacyconnects&quot;</span> <span class="p">)</span> <span class="p">);</span>
+
+
+      <span class="c"># Users authorized to request executions via cf-runagent</span>
+      <span class="p">&quot;</span><span class="nv">control_server_allowusers_non_policy_server</span><span class="p">&quot;</span>
+        <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;root&quot;</span> <span class="p">},</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="s">&quot;control_server_allowusers_non_policy_server&quot;</span> <span class="p">)</span> <span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">control_server_allowusers_policy_server</span><span class="p">&quot;</span>
+        <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{},</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="s">&quot;control_server_allowusers_non_policy_server&quot;</span> <span class="p">)</span> <span class="p">);</span>
+
+      <span class="c"># Executor Controls</span>
+
+      <span class="c">## Default splaytime to 4 unless it&#39;s already defined (via augments)</span>
+      <span class="p">&quot;</span><span class="nv">control_executor_splaytime</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;4&quot;</span><span class="p">,</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="s">&quot;control_executor_splaytime&quot;</span> <span class="p">)</span> <span class="p">),</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Splaytime controls the number of minutes hosts execution</span>
+<span class="s">                    should be splayed over. This value should be less than the</span>
+<span class="s">                    number of minutes between scheduled executions&quot;</span><span class="p">;</span>
+
+      <span class="c">## Default agent_expireafter to 120 unless it&#39;s already defined (via augments)</span>
+      <span class="s">&quot;control_executor_agent_expireafter&quot;</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s">&quot;ENT-4208&quot;</span> <span class="p">}</span>
+        <span class="kr">string</span> <span class="o">=&gt;</span> <span class="s">&quot;120&quot;</span><span class="p">,</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="s">&quot;control_executor_agent_expireafter&quot;</span> <span class="p">)</span> <span class="p">),</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;This controls the number of minutes after no data has been</span>
+<span class="s">                    recieved by cf-execd from a cf-agent process before that</span>
+<span class="s">                    cf-agent process is killed.&quot;</span><span class="p">;</span>
+
+      <span class="c">## Default schedule unless it&#39;s already defined (via augments)</span>
+      <span class="p">&quot;</span><span class="nv">control_executor_schedule_value</span><span class="p">&quot;</span>
+        <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                   <span class="s">&quot;Min00&quot;</span><span class="p">,</span> <span class="s">&quot;Min05&quot;</span><span class="p">,</span> <span class="s">&quot;Min10&quot;</span><span class="p">,</span> <span class="s">&quot;Min15&quot;</span><span class="p">,</span>
+                   <span class="s">&quot;Min20&quot;</span><span class="p">,</span> <span class="s">&quot;Min25&quot;</span><span class="p">,</span> <span class="s">&quot;Min30&quot;</span><span class="p">,</span> <span class="s">&quot;Min35&quot;</span><span class="p">,</span>
+                   <span class="s">&quot;Min40&quot;</span><span class="p">,</span> <span class="s">&quot;Min45&quot;</span><span class="p">,</span> <span class="s">&quot;Min50&quot;</span><span class="p">,</span> <span class="s">&quot;Min55&quot;</span><span class="p">,</span>
+                 <span class="p">},</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="nf">control_executor_schedule</span><span class="p">)</span> <span class="p">),</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;This variable defines the list of classes that should</span>
+<span class="s">                    trigger exec_command if any of them are defined.&quot;</span><span class="p">;</span>
+
+      <span class="c"># schedule cant use a data structure directly, so we must use an</span>
+      <span class="c"># intermediary variable to convert it to list</span>
+      <span class="p">&quot;</span><span class="nv">control_executor_schedule_value</span><span class="p">&quot;</span>
+        <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getvalues</span><span class="p">(</span><span class="nf">control_executor_schedule</span><span class="p">),</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span>  <span class="nf">not</span><span class="p">(</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="nf">control_executor_schedule_value</span><span class="p">)</span> <span class="p">),</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;This variable defines the list of classes that should</span>
+<span class="s">                    trigger exec_command if any of them are defined.&quot;</span><span class="p">;</span>
+
+
+      <span class="c"># Agent Controls</span>
+
+      <span class="p">&quot;</span><span class="nv">control_agent_default_repository</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">ifelse</span><span class="p">(</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="s">&quot;control_agent_default_repository&quot;</span><span class="p">),</span>
+                          <span class="err">$</span><span class="p">(</span><span class="nf">control_agent_default_repository</span><span class="p">),</span>
+                          <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/backups&quot;</span><span class="p">),</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="s">&quot;mpf_control_agent_default_repository&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">control_agent_maxconnections</span><span class="p">&quot;</span>
+        <span class="kt">int</span> <span class="o">=&gt;</span> <span class="s">&quot;30&quot;</span><span class="p">,</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="s">&quot;control_agent_maxconnections&quot;</span> <span class="p">)</span> <span class="p">);</span>
+
+      <span class="c"># Because in some versions of cfengine bundlesequence in body common</span>
+      <span class="c"># control does not support does not support iteration over data containers</span>
+      <span class="c"># we must first pick out the bundles into a shallow container that we can</span>
+      <span class="c"># then get a regular list from using getvalues().</span>
+
+      <span class="s">&quot;tbse&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span> <span class="s">&quot;def.control_common_bundlesequence_end&quot;</span> <span class="p">);</span>
+
+      <span class="c"># Since we have @(def.bundlesequence_end) in body common control</span>
+      <span class="c"># bundlesequence we must have a list variable defined. It can be empty, but it</span>
+      <span class="c"># must be defined. If it is not defined the agent will error complaining</span>
+      <span class="c"># that &#39;@(def.bundlesequence_end) is not a defined bundle.</span>
+
+      <span class="c"># As noted in CFE-2460 getvalues behaviour varies between versions. 3.7.x</span>
+      <span class="c"># getvalues will return an empty list when run on a non existant data</span>
+      <span class="c"># container.  On 3.9.1 it does not return an empty list.</span>
+      <span class="c"># So we initialize it as an empty list first to be safe.</span>
+
+      <span class="p">&quot;</span><span class="nv">bundlesequence_end</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{};</span>
+      <span class="p">&quot;</span><span class="nv">bundlesequence_end</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getvalues</span><span class="p">(</span> <span class="nf">tbse</span> <span class="p">);</span>
+
+      <span class="s">&quot;control_common_ignore_missing_bundles&quot;</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s">&quot;CFE-2773&quot;</span> <span class="p">}</span>
+        <span class="kr">string</span> <span class="o">=&gt;</span> <span class="nf">ifelse</span><span class="p">(</span> <span class="nf">strcmp</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="nf">control_common_ignore_missing_bundles</span><span class="p">),</span> <span class="s">&quot;true&quot;</span> <span class="p">),</span>
+                          <span class="s">&quot;true&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;false&quot;</span><span class="p">);</span>
+
+      <span class="s">&quot;control_common_ignore_missing_inputs&quot;</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s">&quot;CFE-2773&quot;</span> <span class="p">}</span>
+        <span class="kr">string</span> <span class="o">=&gt;</span> <span class="nf">ifelse</span><span class="p">(</span> <span class="nf">strcmp</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="nf">control_common_ignore_missing_inputs</span><span class="p">),</span> <span class="s">&quot;true&quot;</span> <span class="p">),</span>
+                          <span class="s">&quot;true&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;false&quot;</span><span class="p">);</span>
+
+      <span class="c"># Agent controls</span>
+
+      <span class="p">&quot;</span><span class="nv">control_agent_files_single_copy</span><span class="p">&quot;</span>
+        <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="p">},</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span> <span class="nf">some</span><span class="p">(</span> <span class="s">&quot;.*&quot;</span><span class="p">,</span> <span class="s">&quot;control_agent_files_single_copy&quot;</span><span class="p">)</span> <span class="p">),</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Default files_single_copy to an empty list if it is not</span>
+<span class="s">                    defined. It is expected that users can override the default</span>
+<span class="s">                    by setting this value from the augments file (def.json).&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">control_server_maxconnections</span><span class="p">&quot;</span>
+        <span class="kt">int</span> <span class="o">=&gt;</span> <span class="s">&quot;200&quot;</span><span class="p">,</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="s">&quot;control_server_maxconnections&quot;</span> <span class="p">)</span> <span class="p">);</span>
+
+
+    <span class="nc">debian</span><span class="p">::</span>
+      <span class="s">&quot;environment_vars&quot;</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;common_def_vars_environment_vars&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Environment variables of the agent process. The values</span>
+<span class="s">                    of environment variables are inherited by child commands.&quot;</span><span class="p">,</span>
+        <span class="kr">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                   <span class="s">&quot;DEBIAN_FRONTEND=noninteractive&quot;</span><span class="p">,</span>
+                  <span class="c"># &quot;APT_LISTBUGS_FRONTEND=none&quot;,</span>
+                  <span class="c"># &quot;APT_LISTCHANGES_FRONTEND=none&quot;,</span>
+                 <span class="p">};</span>
+
+      <span class="c"># End change #</span>
+
+    <span class="nc">any</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">dir_masterfiles</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">translatepath</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(sys.masterdir)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Define masterfiles path&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;common_def_vars_dir_masterfiles&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">dir_reports</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">translatepath</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/reports&quot;</span><span class="p">),</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Define reports path&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;common_def_vars_dir_reports&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">dir_software</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">translatepath</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/master_software_updates&quot;</span><span class="p">),</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Define software path&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;common_def_vars_dir_software&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">dir_bin</span><span class="p">&quot;</span>         <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">translatepath</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Define binary path&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;common_def_vars_dir_bin&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">dir_modules</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">translatepath</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/modules&quot;</span><span class="p">),</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Define modules path&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;common_def_vars_dir_modules&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">dir_plugins</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">translatepath</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/plugins&quot;</span><span class="p">),</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Define plugins path&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;common_def_vars_dir_plugins&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">dir_templates</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">ifelse</span><span class="p">(</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="s">&quot;def.dir_templates&quot;</span><span class="p">),</span>
+                          <span class="err">$</span><span class="p">(</span><span class="nf">def</span><span class="err">.</span><span class="nf">dir_templates</span><span class="p">),</span>
+                          <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/templates&quot;</span><span class="p">),</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Define templates path&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;common_def_vars_dir_templates&quot;</span><span class="p">;</span>
+
+
+      <span class="p">&quot;</span><span class="nv">cf_apache_user</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;cfapache&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;User that CFEngine Enterprise webserver runs as&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;common_def_vars_cf_cfapache_user&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">cf_apache_group</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;cfapache&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Group that CFEngine Enterprise webserver runs as&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;common_def_vars_cf_cfapache_group&quot;</span><span class="p">;</span>
+
+    <span class="nc">solaris</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">cf_runagent_shell</span><span class="p">&quot;</span>
+        <span class="kt">string</span>  <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/sh&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Define path to shell used by cf-runagent&quot;</span><span class="p">,</span>
+        <span class="kr">handle</span>  <span class="o">=&gt;</span> <span class="s">&quot;common_def_vars_solaris_cf_runagent_shell&quot;</span><span class="p">;</span>
+
+    <span class="nc">!(windows|solaris)</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">cf_runagent_shell</span><span class="p">&quot;</span>
+        <span class="kt">string</span>  <span class="o">=&gt;</span> <span class="s">&quot;/bin/sh&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Define path to shell used by cf-runagent&quot;</span><span class="p">,</span>
+        <span class="kr">handle</span>  <span class="o">=&gt;</span> <span class="s">&quot;common_def_vars_cf_runagent_shell&quot;</span><span class="p">;</span>
+
+    <span class="nc">any</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">base_log_files</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span>
+      <span class="p">{</span>
+        <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/cf3.</span><span class="si">$(sys.uqhost)</span><span class="s">.runlog&quot;</span><span class="p">,</span>
+        <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/promise_summary.log&quot;</span><span class="p">,</span>
+      <span class="p">};</span>
+
+      <span class="p">&quot;</span><span class="nv">enterprise_log_files</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span>
+      <span class="p">{</span>
+        <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/cf_notkept.log&quot;</span><span class="p">,</span>
+        <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/cf_repair.log&quot;</span><span class="p">,</span>
+        <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/state/cf_value.log&quot;</span><span class="p">,</span>
+        <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/outputs/dc-scripts.log&quot;</span><span class="p">,</span>
+        <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/state/promise_log.jsonl&quot;</span><span class="p">,</span>
+        <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/state/classes.jsonl&quot;</span><span class="p">,</span>
+      <span class="p">};</span>
+
+      <span class="p">&quot;</span><span class="nv">hub_log_files</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span>
+      <span class="p">{</span>
+        <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/httpd/logs/access_log&quot;</span><span class="p">,</span> <span class="c"># Mission Portal</span>
+        <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/httpd/logs/error_log&quot;</span><span class="p">,</span> <span class="c"># Mission Portal</span>
+        <span class="s">&quot;/var/log/postgresql.log&quot;</span><span class="p">,</span>
+      <span class="p">};</span>
+
+      <span class="s">&quot;max_client_history_size&quot;</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s">&quot;cf-hub&quot;</span><span class="p">,</span> <span class="s">&quot;CFEngine Enterprise&quot;</span> <span class="p">}</span>
+        <span class="kr">int</span> <span class="o">=&gt;</span> <span class="s">&quot;50M&quot;</span><span class="p">,</span>
+        <span class="kr">unless</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="nf">max_client_history_size</span><span class="p">),</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;The threshold of report diffs which will trigger purging of</span>
+<span class="s">                    diff files.&quot;</span><span class="p">;</span>
+
+    <span class="nc">enterprise.!am_policy_hub</span><span class="p">::</span>
+      <span class="c"># CFEngine&#39;s own log files</span>
+      <span class="p">&quot;</span><span class="nv">cfe_log_files</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(base_log_files)</span><span class="p">,</span> <span class="nv">@(enterprise_log_files)</span> <span class="p">};</span>
+
+    <span class="nc">enterprise.am_policy_hub</span><span class="p">::</span>
+      <span class="c"># CFEngine&#39;s own log files</span>
+      <span class="p">&quot;</span><span class="nv">cfe_log_files</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(base_log_files)</span><span class="p">,</span> <span class="nv">@(enterprise_log_files)</span><span class="p">,</span> <span class="nv">@(hub_log_files)</span> <span class="p">};</span>
+
+    <span class="nc">!enterprise</span><span class="p">::</span>
+      <span class="c"># CFEngine&#39;s own log files</span>
+      <span class="p">&quot;</span><span class="nv">cfe_log_files</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(base_log_files)</span> <span class="p">};</span>
+
+  <span class="c"># Directories where logs are rotated and old files need to be purged.</span>
+
+    <span class="nc">any</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">log_dir[outputs]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/outputs&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">log_dir[reports]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/reports&quot;</span><span class="p">;</span>
+
+    <span class="nc">enterprise.am_policy_hub</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">log_dir[application]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/httpd/htdocs/application/logs&quot;</span><span class="p">;</span>
+
+    <span class="nc">any</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">cfe_log_dirs</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getvalues</span><span class="p">(</span> <span class="nf">log_dir</span> <span class="p">);</span>
+
+  <span class="c"># MPF controls</span>
+
+      <span class="p">&quot;</span><span class="nv">mpf_log_dir_retention</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;30&quot;</span><span class="p">,</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span> <span class="nf">isvariable</span> <span class="p">(</span> <span class="nf">mpf_log_dir_retention</span> <span class="p">)</span> <span class="p">),</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;The default log file retention in cfe_log_dirs is 30 days</span>
+<span class="s">                    unless it&#39;s already been defined (augments).&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">mpf_log_file_retention</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;10&quot;</span><span class="p">,</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="nf">mpf_log_file_retention</span><span class="p">)</span> <span class="p">),</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;This is the number of rotated versions of mpf log files to</span>
+<span class="s">                    save&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">mpf_log_file_max_size</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;1M&quot;</span><span class="p">,</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="nf">mpf_log_file_max_size</span><span class="p">)</span> <span class="p">),</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;When individual mpf log files reach this size they should be</span>
+<span class="s">                    rotated so that we don&#39;t fill up the disk&quot;</span><span class="p">;</span>
+
+  <span class="c"># Enterprise HA Related configuration</span>
+  <span class="c"># enable_cfengine_enterprise_hub_ha is defined below</span>
+  <span class="c"># Disabled by default</span>
+
+    <span class="nc">enable_cfengine_enterprise_hub_ha</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">standby_servers</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">filter</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(sys.policy_hub)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;ha_def.ips&quot;</span><span class="p">,</span> <span class="nf">false</span><span class="p">,</span> <span class="nf">true</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">policy_servers</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(sys.policy_hub)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;@(standby_servers)&quot;</span> <span class="p">};</span>
+
+    <span class="nc">!enable_cfengine_enterprise_hub_ha</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">policy_servers</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;</span><span class="si">$(sys.policy_hub)</span><span class="s">&quot;</span><span class="p">};</span>
+
+    <span class="nc">enterprise_edition.policy_server</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">control_hub_exclude_hosts</span><span class="p">&quot;</span>
+        <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;&quot;</span> <span class="p">},</span>
+        <span class="kr">unless</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="nf">control_hub_exclude_hosts</span><span class="p">);</span>
+
+      <span class="s">&quot;control_hub_hub_schedule&quot;</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;By default Enterprise hubs initiate pull collection once every 5 minutes.&quot;</span><span class="p">,</span>
+        <span class="kr">slist</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;Min00&quot;</span><span class="p">,</span> <span class="s">&quot;Min05&quot;</span><span class="p">,</span> <span class="s">&quot;Min10&quot;</span><span class="p">,</span> <span class="s">&quot;Min15&quot;</span><span class="p">,</span> <span class="s">&quot;Min20&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;Min25&quot;</span><span class="p">,</span> <span class="s">&quot;Min30&quot;</span><span class="p">,</span> <span class="s">&quot;Min35&quot;</span><span class="p">,</span> <span class="s">&quot;Min40&quot;</span><span class="p">,</span> <span class="s">&quot;Min45&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;Min50&quot;</span><span class="p">,</span> <span class="s">&quot;Min55&quot;</span> <span class="p">},</span>
+        <span class="kr">unless</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="nf">control_hub_hub_schedule</span><span class="p">);</span>
+
+      <span class="s">&quot;control_hub_port&quot;</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;cf-hub performs pull collection on port 5308, unless</span>
+<span class="s">                    overridden by augments&quot;</span><span class="p">,</span>
+        <span class="kr">string</span> <span class="o">=&gt;</span> <span class="s">&quot;5308&quot;</span><span class="p">,</span>
+        <span class="kr">unless</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="nf">control_hub_port</span><span class="p">);</span>
+
+      <span class="s">&quot;control_hub_client_history_timeout&quot;</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;cf-hub instructs clients to discard reports older than this</span>
+<span class="s">                    many hours to avoid a condition where a build up of reports</span>
+<span class="s">                    causes a client to never be fully collected from&quot;</span><span class="p">,</span>
+        <span class="kr">string</span> <span class="o">=&gt;</span> <span class="s">&quot;6&quot;</span><span class="p">,</span>
+        <span class="kr">unless</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="nf">control_hub_port</span><span class="p">);</span>
+
+
+      <span class="p">&quot;</span><span class="nv">mpf_access_rules_collect_calls_admit_ips</span><span class="p">&quot;</span>
+        <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(def.acl)</span> <span class="p">},</span>
+        <span class="kr">unless</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="nf">mpf_access_rules_collect_calls_admit_ips</span><span class="p">);</span>
+
+    <span class="nc">enterprise_edition.client_initiated_reporting_enabled</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">control_server_call_collect_interval</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;5&quot;</span><span class="p">,</span>
+        <span class="kr">unless</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="nf">control_server_call_collect_interval</span><span class="p">);</span>
+
+      <span class="s">&quot;control_server_collect_window&quot;</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s">&quot;ENT-4102&quot;</span> <span class="p">}</span>
+        <span class="kr">string</span> <span class="o">=&gt;</span> <span class="s">&quot;30&quot;</span><span class="p">,</span>
+        <span class="kr">unless</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="nf">control_server_collect_window</span><span class="p">);</span>
+
+    <span class="nc">enterprise_edition.policy_server</span><span class="p">::</span>
+      <span class="s">&quot;default_data_select_host_monitoring_include&quot;</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Most people have monitoring systems, so instead of collecting data people won&#39;t use we save the work unless its requested.&quot;</span><span class="p">,</span>
+        <span class="kr">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="p">},</span>
+        <span class="kr">unless</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="nf">default_data_select_host_monitoring_include</span> <span class="p">);</span>
+
+      <span class="s">&quot;default_data_select_policy_hub_monitoring_include&quot;</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Collect all the monitoring data from the hub itself. It can be useful in diagnostics.&quot;</span><span class="p">,</span>
+        <span class="kr">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;.*&quot;</span> <span class="p">},</span>
+        <span class="kr">unless</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="nf">default_data_select_policy_hub_monitoring_include</span> <span class="p">);</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+
+      <span class="s">&quot;cfengine_recommendations_enabled&quot;</span>
+        <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;!cfengine_recommendations_disabled&quot;</span><span class="p">;</span>
+
+      <span class="c">### Enable special features policies. Set to &quot;any&quot; to enable.</span>
+
+      <span class="c"># Auto-load files in &quot;services/autorun&quot; and run bundles tagged &quot;autorun&quot;.</span>
+      <span class="c"># Disabled by default!</span>
+      <span class="s">&quot;services_autorun&quot;</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s">&quot;jira:CFE-2135&quot;</span> <span class="p">}</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;This class enables the automatic parsing running of bundles</span>
+<span class="s">                    tagged with &#39;autorun&#39;. Evaluation limitations require that</span>
+<span class="s">                    this class is set at the beginning of the agent run, so it</span>
+<span class="s">                    must be defined in the augments file (def.json), or as an</span>
+<span class="s">                    option to the agent with --define or -D. Changing the</span>
+<span class="s">                    expression here will *NOT* work correctly. Setting the class</span>
+<span class="s">                    here will result in an error due to the autorun bundle not</span>
+<span class="s">                    being found.&quot;</span><span class="p">,</span>
+        <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;!any&quot;</span><span class="p">;</span>
+
+      <span class="c"># Internal CFEngine log files rotation</span>
+      <span class="s">&quot;cfengine_internal_rotate_logs&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;any&quot;</span><span class="p">;</span>
+
+      <span class="c"># Enable or disable agent email output (also see mailto, mailfrom and</span>
+      <span class="c"># smtpserver)</span>
+      <span class="s">&quot;cfengine_internal_agent_email&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;any&quot;</span><span class="p">;</span>
+      <span class="s">&quot;cfengine_internal_disable_agent_email&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;!any&quot;</span><span class="p">;</span>
+
+
+
+      <span class="c"># Enable or disable external watchdog to ensure cf-execd is running</span>
+      <span class="s">&quot;cfe_internal_core_watchdog_enabled&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;!any&quot;</span><span class="p">;</span>
+      <span class="s">&quot;cfe_internal_core_watchdog_disabled&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;!any&quot;</span><span class="p">;</span>
+
+      <span class="c"># Transfer policies and binaries with encryption</span>
+      <span class="c"># you can also request it from the command line with</span>
+      <span class="c"># -Dcfengine_internal_encrypt_transfers</span>
+
+      <span class="c"># NOTE THAT THIS CLASS ALSO NEEDS TO BE SET IN update.cf</span>
+
+      <span class="s">&quot;cfengine_internal_encrypt_transfers&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;!any&quot;</span><span class="p">;</span>
+
+      <span class="c"># Purge policies that don&#39;t exist on the server side.</span>
+      <span class="c"># you can also request it from the command line with</span>
+      <span class="c"># -Dcfengine_internal_purge_policies</span>
+
+      <span class="c"># NOTE THAT THIS CLASS ALSO NEEDS TO BE SET IN update.cf</span>
+
+      <span class="s">&quot;cfengine_internal_purge_policies&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;!any&quot;</span><span class="p">;</span>
+
+      <span class="c"># Preserve permissions of the policy server&#39;s masterfiles.</span>
+      <span class="c"># you can also request it from the command line with</span>
+      <span class="c"># -Dcfengine_internal_preserve_permissions</span>
+
+      <span class="c"># NOTE THAT THIS CLASS ALSO NEEDS TO BE SET IN update.cf</span>
+
+      <span class="s">&quot;cfengine_internal_preserve_permissions&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;!any&quot;</span><span class="p">;</span>
+
+      <span class="c"># Class defining which versions of cfengine are (not) supported</span>
+      <span class="c"># by this policy version.</span>
+      <span class="c"># Also note that this policy will only be run on enterprise policy_server</span>
+      <span class="s">&quot;postgresql_maintenance_supported&quot;</span>
+        <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;(policy_server.enterprise.!enable_cfengine_enterprise_hub_ha)|(policy_server.enterprise.enable_cfengine_enterprise_hub_ha.hub_active)&quot;</span><span class="p">;</span>
+
+      <span class="c"># This class is for PosgreSQL maintenance</span>
+      <span class="c"># pre-defined to every Sunday at 2 a.m.</span>
+      <span class="c"># This can be changed later on.</span>
+      <span class="s">&quot;postgresql_full_maintenance&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;postgresql_maintenance_supported.Sunday.Hr02.Min00_05&quot;</span><span class="p">;</span>
+
+      <span class="c"># Run vacuum job on database</span>
+      <span class="c"># pre-defined to every night except Sunday when full cleanup is executed.</span>
+      <span class="s">&quot;postgresql_vacuum&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;postgresql_maintenance_supported.!Sunday.Hr02.Min00_05&quot;</span><span class="p">;</span>
+
+      <span class="c"># Enable CFEngine Enterprise HA Policy</span>
+      <span class="s">&quot;enable_cfengine_enterprise_hub_ha&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;!any&quot;</span><span class="p">;</span>
+      <span class="c">#&quot;enable_cfengine_enterprise_hub_ha&quot; expression =&gt; &quot;enterprise_edition&quot;;</span>
+
+      <span class="c"># Enable failover to node which is outside cluster</span>
+      <span class="c">#&quot;failover_to_replication_node_enabled&quot; expression =&gt; &quot;enterprise_edition&quot;;</span>
+
+      <span class="c"># Enable cleanup of agent report diffs when they exceed</span>
+      <span class="c"># `def.max_client_history_size`</span>
+      <span class="s">&quot;enable_cfe_internal_cleanup_agent_reports&quot;</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s">&quot;cf-hub&quot;</span><span class="p">,</span> <span class="s">&quot;CFEngine Enterprise&quot;</span> <span class="p">}</span>
+        <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;enterprise_edition&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;If reports are not collected for an extended period of time</span>
+<span class="s">                    the disk may fill up or cause additional collection</span>
+<span class="s">                    issues.&quot;</span><span class="p">;</span>
+
+      <span class="c"># Enable paths to POSIX tools instead of native tools when possible.</span>
+      <span class="s">&quot;mpf_stdlib_use_posix_utils&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;any&quot;</span><span class="p">;</span>
+
+      <span class="c"># TODO Remove from MPF after 3.12 EOL</span>
+      <span class="s">&quot;cfredis_in_enterprise&quot;</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s">&quot;ENT-2797&quot;</span> <span class="p">}</span>
+        <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;cfengine_3_7&quot;</span><span class="p">,</span> <span class="s">&quot;cfengine_3_8&quot;</span><span class="p">,</span> <span class="s">&quot;cfengine_3_9&quot;</span><span class="p">,</span> <span class="s">&quot;cfengine_3_10&quot;</span><span class="p">,</span> <span class="s">&quot;cfengine_3_11&quot;</span> <span class="p">};</span>
+      <span class="s">&quot;cfconsumer_in_enterprise&quot;</span>  <span class="o">-&gt;</span> <span class="p">{</span> <span class="s">&quot;ENT-2797&quot;</span> <span class="p">}</span>
+        <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;cfengine_3_7&quot;</span><span class="p">,</span> <span class="s">&quot;cfengine_3_8&quot;</span><span class="p">,</span> <span class="s">&quot;cfengine_3_9&quot;</span><span class="p">,</span> <span class="s">&quot;cfengine_3_10&quot;</span><span class="p">,</span> <span class="s">&quot;cfengine_3_11&quot;</span> <span class="p">};</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">DEBUG|DEBUG_def</span><span class="p">::</span>
+      <span class="s">&quot;DEBUG: </span><span class="si">$(this.bundle)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;</span><span class="si">$(const.t)</span><span class="s"> def.json was found at </span><span class="si">$(augments_file)</span><span class="s">&quot;</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="nf">augments_file</span><span class="p">)</span> <span class="p">);</span>
+
+      <span class="s">&quot;</span><span class="si">$(const.t)</span><span class="s"> override request </span><span class="si">$(override_vars)</span><span class="s"> to &#39;</span><span class="si">$(override_data_s_$(override_vars))</span><span class="s">&#39;; new value &#39;</span><span class="si">$($(override_vars))</span><span class="s">&#39;&quot;</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;override_data_</span><span class="si">$(override_vars)</span><span class="s">&quot;</span><span class="p">);</span>
+
+      <span class="s">&quot;</span><span class="si">$(const.t)</span><span class="s"> defined class &#39;</span><span class="si">$(augments_classes_data_keys)</span><span class="s">&#39; because of classmatch(&#39;</span><span class="si">$(augments[classes][$(augments_classes_data_keys)])</span><span class="s">&#39;)&quot;</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(augments_classes_data_keys)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;</span><span class="si">$(const.t)</span><span class="s"> </span><span class="si">$(defvars)</span><span class="s"> = </span><span class="si">$($(defvars))</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="s">&quot;DEBUG </span><span class="si">$(this.bundle)</span><span class="s">: Agent parsed augments_file&quot;</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;have_augments_file.feature_def_json_preparse&quot;</span><span class="p">;</span>
+      <span class="s">&quot;DEBUG </span><span class="si">$(this.bundle)</span><span class="s">: Policy parsed augments_file&quot;</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;have_augments_file.!feature_def_json_preparse&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="inventory_control">inventory_control</h4>
+<p><strong>Prototype:</strong> <code>inventory_control</code></p>
+
+<p><strong>Description:</strong> Inventory control bundle</p>
+
+<p>This common bundle is for controlling whether some inventory bundles
+are disabled.</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">common</span> <span class="nf">inventory_control</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">lldpctl_exec</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">ifelse</span><span class="p">(</span><span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;/usr/sbin/lldpctl&quot;</span><span class="p">),</span> <span class="s">&quot;/usr/sbin/lldpctl&quot;</span><span class="p">,</span>
+                                     <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;/usr/local/bin/lldpctl&quot;</span><span class="p">),</span> <span class="s">&quot;/usr/local/bin/lldpctl&quot;</span><span class="p">,</span>
+                                     <span class="s">&quot;/usr/sbin/lldpctl&quot;</span><span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">lldpctl_json</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(lldpctl_exec)</span><span class="s"> -f json&quot;</span><span class="p">,</span>
+        <span class="kr">unless</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;def.lldpctl_json&quot;</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">lldpctl_json</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(def.lldpctl_json)</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;def.lldpctl_json&quot;</span><span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">lsb_exec</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/lsb_release&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">mtab</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/etc/mtab&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">proc</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/proc&quot;</span><span class="p">;</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+
+    <span class="nc">freebsd</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">dmidecoder</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/local/sbin/dmidecode&quot;</span><span class="p">;</span>
+
+    <span class="nc">!freebsd</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">dmidecoder</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/dmidecode&quot;</span><span class="p">;</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="c"># setting this disables all the inventory modules except package_refresh</span>
+      <span class="s">&quot;disable_inventory&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;!any&quot;</span><span class="p">;</span>
+
+      <span class="c"># disable specific inventory modules below</span>
+
+      <span class="c"># by default disable the LSB inventory if the general inventory</span>
+      <span class="c"># is disabled or the binary is missing.  Note that the LSB</span>
+      <span class="c"># binary is typically not very fast.</span>
+      <span class="s">&quot;disable_inventory_lsb&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;disable_inventory&quot;</span><span class="p">;</span>
+      <span class="s">&quot;disable_inventory_lsb&quot;</span> <span class="kr">not</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">lsb_exec</span><span class="p">));</span>
+
+      <span class="c"># by default disable the dmidecode inventory if the general</span>
+      <span class="c"># inventory is disabled or the binary does not exist.  Note that</span>
+      <span class="c"># typically this is a very fast binary.</span>
+      <span class="s">&quot;disable_inventory_dmidecode&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;disable_inventory&quot;</span><span class="p">;</span>
+      <span class="s">&quot;disable_inventory_dmidecode&quot;</span> <span class="kr">not</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">dmidecoder</span><span class="p">));</span>
+
+      <span class="c"># by default disable the LLDP inventory if the general inventory</span>
+      <span class="c"># is disabled or the binary does not exist.  Note that typically</span>
+      <span class="c"># this is a reasonably fast binary but still may require network</span>
+      <span class="c"># I/O.</span>
+      <span class="s">&quot;disable_inventory_LLDP&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;disable_inventory&quot;</span><span class="p">;</span>
+      <span class="s">&quot;disable_inventory_LLDP&quot;</span> <span class="kr">not</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">lldpctl_exec</span><span class="p">));</span>
+
+      <span class="c"># by default run the package inventory refresh every time, even</span>
+      <span class="c"># if disable_inventory is set</span>
+      <span class="s">&quot;disable_inventory_package_refresh&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;!any&quot;</span><span class="p">;</span>
+
+      <span class="c"># by default disable the mtab inventory if the general inventory</span>
+      <span class="c"># is disabled or $(mtab) is missing.  Note that this is very</span>
+      <span class="c"># fast.</span>
+      <span class="s">&quot;disable_inventory_mtab&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;disable_inventory&quot;</span><span class="p">;</span>
+      <span class="s">&quot;disable_inventory_mtab&quot;</span> <span class="kr">not</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">mtab</span><span class="p">));</span>
+
+      <span class="c"># by default disable the fstab inventory if the general</span>
+      <span class="c"># inventory is disabled or $(sys.fstab) is missing.  Note that</span>
+      <span class="c"># this is very fast.</span>
+      <span class="s">&quot;disable_inventory_fstab&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;disable_inventory&quot;</span><span class="p">;</span>
+      <span class="s">&quot;disable_inventory_fstab&quot;</span> <span class="kr">not</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">sys</span><span class="err">.</span><span class="nf">fstab</span><span class="p">));</span>
+
+      <span class="c"># by default disable the proc inventory if the general</span>
+      <span class="c"># inventory is disabled or /proc is missing.  Note that</span>
+      <span class="c"># this is typically fast.</span>
+      <span class="s">&quot;disable_inventory_proc&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;disable_inventory|freebsd&quot;</span><span class="p">;</span>
+      <span class="s">&quot;disable_inventory_proc&quot;</span> <span class="kr">not</span> <span class="o">=&gt;</span> <span class="nf">isdir</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">proc</span><span class="p">));</span>
+
+      <span class="c"># by default don&#39;t run the CMDB integration every time, even if</span>
+      <span class="c"># disable_inventory is not set</span>
+      <span class="s">&quot;disable_inventory_cmdb&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;any&quot;</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">verbose_mode.disable_inventory</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: All inventory modules disabled&quot;</span><span class="p">;</span>
+    <span class="nc">verbose_mode.!disable_inventory_lsb</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: LSB module enabled&quot;</span><span class="p">;</span>
+    <span class="nc">verbose_mode.!disable_inventory_dmidecode</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: dmidecode module enabled&quot;</span><span class="p">;</span>
+    <span class="nc">verbose_mode.!disable_inventory_LLDP</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: LLDP module enabled&quot;</span><span class="p">;</span>
+    <span class="nc">verbose_mode.!disable_inventory_mtab</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: mtab module enabled&quot;</span><span class="p">;</span>
+    <span class="nc">verbose_mode.!disable_inventory_fstab</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: fstab module enabled&quot;</span><span class="p">;</span>
+    <span class="nc">verbose_mode.!disable_inventory_proc</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: proc module enabled&quot;</span><span class="p">;</span>
+    <span class="nc">verbose_mode.!disable_inventory_package_refresh</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: package_refresh module enabled&quot;</span><span class="p">;</span>
+    <span class="nc">verbose_mode.!disable_inventory_cmdb</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: CMDB module enabled&quot;</span><span class="p">;</span>
+
+    <span class="nc">DEBUG|DEBUG_def</span><span class="p">::</span>
+
+      <span class="s">&quot;Executor Schedule: </span><span class="si">$(def.control_executor_schedule_value)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-controls.html">controls</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-def-cf.html">def.cf</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-mpf.html">mpf</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 11 January 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/masterfiles-policy-framework/controls-def.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/b04b1f6f002a2f00c34834c7f4e2a3b4111fd67d" target="_blank">b04b1f6f002a2f00c34834c7f4e2a3b4111fd67d</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.13/assets/footer-dfbb901e0ce1de822a7bc04bca20268e.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

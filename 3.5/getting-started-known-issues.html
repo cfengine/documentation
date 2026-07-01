@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - Known Issues</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html"  class="navselected" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="index.html">CFEngine 3.5</a></li><li><a href="getting-started.html">Getting Started</a></li><li><a href="whats-new.html">New in CFEngine</a></li><li><a href="manuals.html">CFEngine Manuals</a></li><li><a href="reference.html">CFEngine Reference</a></li><li><a href="examples.html">CFEngine Examples</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li><a href="getting-started-installation.html">Installing CFEngine</a></li><li><a href="getting-started-learning-tools.html">Learning Tools</a></li><li><a href="getting-started-support-and-community.html">Support and Community</a></li><li><a href="getting-started-upgrade.html">Upgrade Instructions</a></li><li><a href="getting-started-supported-platforms.html">Supported Platforms and Versions</a></li><li class="selected"><span>Known Issues</span></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="getting-started.html">Getting Started</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>Known Issues</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/getting-started.html">getting started</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/known-issues.html">known issues</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>Known Issues</h1>
+                    <p>CFEngine defects are managed in our <a href="http://bug.cfengine.com/" title="Bug Tracker">bug tracker</a>. Please report
+bugs or unexpected behavior there. Follow the documented guidelines for new
+bug reports.</p>
+
+<p>The items below highlight issues that require additional awareness when starting
+with CFEngine or when upgrading from a previous version.</p>
+<h3 id="comma-in-promiser-promisee-declaration-generates-syntax-error">Comma in promiser/promisee declaration generates Syntax Error</h3>
+<p>The policy file parser is stricter in CFEngine 3.5.0. The parser is now fully 
+compliant with the CFEngine <a href="manuals-language-concepts.html" title="Language Concepts">language syntax reference</a>.
+The main difference you will encounter is that promiser/promisee no longer 
+allows a comma at the end of the line. This will cause your existing policies 
+to produce errors when they are read by CFEngine 3.5.0.</p>
+
+<p>An example of what you might see as a result of this issue can be found below:</p>
+<div class="highlight"><pre><code class="cf3"><span class="err">/</span><span class="nf">var</span><span class="err">/</span><span class="nf">cfengine</span><span class="err">/</span><span class="nf">inputs</span><span class="err">/</span><span class="nf">CFE_hub_specific</span><span class="err">.</span><span class="kd">cf</span><span class="p">:</span><span class="kd">621</span><span class="p">:</span><span class="kd">28</span><span class="p">:</span> <span class="kd">error</span><span class="p">:</span> <span class="nf">syntax</span> <span class="nf">error</span>
+<span class="kd">Q</span><span class="p">:</span> <span class="s">&quot;.../cf-execd&quot;&quot;:    &quot;</span><span class="err">/</span><span class="nf">usr</span><span class="err">/</span><span class="nf">sbin</span><span class="err">/</span><span class="nf">a2enmod</span> <span class="nf">php5</span><span class="s">&quot;,</span>
+<span class="s">Q: &quot;</span><span class="err">.../</span><span class="nf">cf</span><span class="err">-</span><span class="nf">execd</span><span class="s">&quot;&quot;</span><span class="err">:</span>                            <span class="err">^</span>
+<span class="kd">Q</span><span class="p">:</span> <span class="s">&quot;.../cf-execd&quot;&quot;: /var/cfengine/inputs/CFE_hub_specific.cf:621:28: error: Expected attribute, got &#39;,&#39;</span>
+<span class="s">Q: &quot;</span><span class="err">.../</span><span class="nf">cf</span><span class="err">-</span><span class="nf">execd</span><span class="s">&quot;&quot;</span><span class="err">:</span>    <span class="s">&quot;/usr/sbin/a2enmod php5&quot;</span><span class="p">,</span>
+<span class="kd">Q</span><span class="p">:</span> <span class="s">&quot;.../cf-execd&quot;&quot;:                            ^</span>
+</code></pre>
+</div>
+
+<p>This can be remedied by editing the policy and removing the comma at the end 
+of the appropriate promiser/promisee line.</p>
+<h3 id="on-windows-platforms-cf-serverd-listens-only-to-ipv6-interface">On Windows platforms, cf-serverd listens only to IPv6 interface</h3>
+<p>The policy-level workaround is to add the following to <code>body server control</code> in <code>masterfiles/controls/cf-serverd.cf</code>:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kr">bindtointerface</span> <span class="o">=&gt;</span> <span class="s">&quot;0.0.0.0&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="cf-execd-sends-out-emails-on-every-execution">cf-execd sends out emails on every execution</h3>
+<p><strong>This problem is solved as of CFEngine 3.5.1.</strong></p>
+
+<p>The inclusion of the timestamp in the new log output format causes this
+behavior. This will be resolved in the next release.</p>
+
+<p>Current workaround options include disabling email by commenting out <a href="reference-components-cfexecd.html#mailto" title="cf-execd - mailto"><code>mailto</code></a> and
+<a href="reference-components-cfexecd.html#smtpserver" title="cf-execd - smtpserver"><code>smtpserver</code></a> in <code>body executor control</code> or by running <a href="reference-components-cfagent.html" title="cf-agent"><code>cf-agent</code></a> from cron.</p>
+
+<p><a href="https://cfengine.com/dev/issues/3011">https://cfengine.com/dev/issues/3011</a></p>
+<h3 id="enterprise-upgrade-using-master_software_updates-does-not-work">Enterprise upgrade using master_software_updates does not work</h3>
+<p>The behavior of packages promises on 3.5.x is slightly different from
+3.0.x. This has caused the bundled policy in <code>update/update_bins.cf</code> to not work.
+<strong>Dropping the latest packages into the appropriate directory
+will not work.</strong></p>
+
+<p>The workaround is to patch the policy to be more specific regarding the
+CFEngine version number. (<code>package_select =&gt; &quot;==&quot;</code> and <code>package_version =&gt;
+&quot;3.5.3-1&quot;</code>)</p>
+<h4 id="linux-clients">Linux Clients</h4>
+<p><code>update/update_bins.cf</code>:</p>
+<div class="highlight"><pre><code class="cf3"> <span class="nc">!am_policy_hub.linux</span><span class="p">::</span>
+
+   <span class="s">&quot;</span><span class="si">$(novapkg)</span><span class="s">&quot;</span>
+                    <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Update Nova package to a newer version (package is there)&quot;</span><span class="p">,</span>
+                     <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_packages_nova_update_not_windows_pkg_there&quot;</span><span class="p">,</span>
+             <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;update&quot;</span><span class="p">,</span>
+             <span class="kr">package_select</span> <span class="o">=&gt;</span> <span class="s">&quot;==&quot;</span><span class="p">,</span>
+      <span class="kr">package_architectures</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(pkgarch)</span><span class="s">&quot;</span> <span class="p">},</span>
+            <span class="kr">package_version</span> <span class="o">=&gt;</span> <span class="s">&quot;3.5.3-1&quot;</span><span class="p">,</span>
+             <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">u_generic</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(local_software_dir)</span><span class="s">&quot;</span> <span class="p">),</span>
+                 <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;nova_edition&quot;</span><span class="p">,</span>
+                    <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">u_if_else</span><span class="p">(</span><span class="s">&quot;bin_update_success&quot;</span><span class="p">,</span> <span class="s">&quot;bin_update_fail&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Diff of the changes required for Linux clients:</p>
+<div class="highlight"><pre><code class="text">diff --git a/update/update_bins.cf b/update/update_bins.cf
+index b9747b8..8162826 100755
+--- a/update/update_bins.cf
++++ b/update/update_bins.cf
+@@ -156,15 +156,15 @@ bundle agent cfe_internal_update_bins
+                  ifvarclass =&gt; &quot;nova_edition&quot;,
+                     classes =&gt; u_if_else(&quot;bin_update_success&quot;, &quot;bin_update_fail&quot;);
+
+-  !am_policy_hub.!windows::
++  !am_policy_hub.linux::
+
+    &quot;$(novapkg)&quot;
+                     comment =&gt; &quot;Update Nova package to a newer version (package is there)&quot;,
+                      handle =&gt; &quot;cfe_internal_update_bins_packages_nova_update_not_windows_pkg_there&quot;,
+              package_policy =&gt; &quot;update&quot;,
+-             package_select =&gt; &quot;&gt;=&quot;,            # picks the newest Nova available
++             package_select =&gt; &quot;==&quot;,            # picks the newest Nova available
+       package_architectures =&gt; { &quot;$(pkgarch)&quot; },
+-            package_version =&gt; &quot;9.9.9&quot;,         # Install new Nova anyway
++            package_version =&gt; &quot;3.5.3-1&quot;,         # Install new Nova anyway
+              package_method =&gt; u_generic( &quot;$(local_software_dir)&quot; ),
+                  ifvarclass =&gt; &quot;nova_edition&quot;,
+                     classes =&gt; u_if_else(&quot;bin_update_success&quot;, &quot;bin_update_fail&quot;);
+</code></pre>
+</div>
+
+<p>Windows uses a slightly different version format from Linux. You may obtain the
+information by running <code>appwiz.cpl</code> from <strong>Add or Remove Programs</strong> and then selecting
+cfengine-nova. (3.5.0.65534)</p>
+<h4 id="windows-clients">Windows Clients</h4>
+<p><code>update/update_bins.cf</code>:</p>
+<div class="highlight"><pre><code class="cf3">  <span class="nc">!am_policy_hub.windows</span><span class="p">::</span>
+
+   <span class="s">&quot;</span><span class="si">$(novapkg)</span><span class="s">&quot;</span>
+                    <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Update Nova package to a newer version (package is there)&quot;</span><span class="p">,</span>
+                     <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_packages_nova_update_windows_only_pkg_there&quot;</span><span class="p">,</span>
+             <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;update&quot;</span><span class="p">,</span>
+             <span class="kr">package_select</span> <span class="o">=&gt;</span> <span class="s">&quot;==&quot;</span><span class="p">,</span>
+      <span class="kr">package_architectures</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(pkgarch)</span><span class="s">&quot;</span> <span class="p">},</span>
+            <span class="kr">package_version</span> <span class="o">=&gt;</span> <span class="s">&quot;3.5.3.0&quot;</span><span class="p">,</span>
+             <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">u_generic</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(local_software_dir)</span><span class="s">&quot;</span> <span class="p">),</span>
+                 <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;nova_edition&quot;</span><span class="p">,</span>
+                    <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">u_if_else</span><span class="p">(</span><span class="s">&quot;bin_update_success&quot;</span><span class="p">,</span> <span class="s">&quot;bin_update_fail&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Diff of the changes required for Windows clients:</p>
+<div class="highlight"><pre><code class="text">diff --git a/update/update_bins.cf b/update/update_bins.cf
+index b9747b8..625416c 100755
+--- a/update/update_bins.cf
++++ b/update/update_bins.cf
+@@ -175,9 +175,9 @@ bundle agent cfe_internal_update_bins
+                     comment =&gt; &quot;Update Nova package to a newer version (package is there)&quot;,
+                      handle =&gt; &quot;cfe_internal_update_bins_packages_nova_update_windows_only_pkg_there&quot;,
+              package_policy =&gt; &quot;update&quot;,
+-             package_select =&gt; &quot;&gt;=&quot;,            # picks the newest Nova available
++             package_select =&gt; &quot;==&quot;,            # picks the newest Nova available
+       package_architectures =&gt; { &quot;$(pkgarch)&quot; },
+-            package_version =&gt; &quot;9.9.9.9&quot;,       # Install new Nova anyway
++            package_version =&gt; &quot;3.5.3.0&quot;,       # Install new Nova anyway
+              package_method =&gt; u_generic( &quot;$(local_software_dir)&quot; ),
+                  ifvarclass =&gt; &quot;nova_edition&quot;,
+                     classes =&gt; u_if_else(&quot;bin_update_success&quot;, &quot;bin_update_fail&quot;);
+</code></pre>
+</div>
+<h4 id="solaris-clients">Solaris Clients</h4>
+<p><strong>This is very important:</strong></p>
+
+<p>The <a href="reference-promise-types-packages.html#package_update_command" title="packages - package_update_command"><code>package_update_command</code></a> attribute is missing in <code>update/update_bins.cf</code>.
+Add this line manually under the Solaris package_method() section and let it roll
+out before you do the Solaris upgrade. Otherwise, your Solaris clients will be
+left without CFEngine running on the hosts!</p>
+
+<p><code>update/update_bins.cf</code>:</p>
+<div class="highlight"><pre><code class="cf3"><span class="nc">solarisx86|solaris</span><span class="p">::</span>
+
+ <span class="kr">package_changes</span> <span class="o">=&gt;</span> <span class="s">&quot;individual&quot;</span><span class="p">;</span>
+ <span class="kr">package_list_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/pkginfo -l&quot;</span><span class="p">;</span>
+ <span class="kr">package_list_update_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/true&quot;</span><span class="p">;</span>
+ <span class="kr">package_list_update_ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;1440&quot;</span><span class="p">;</span>  <span class="c"># cachine once a day</span>
+
+ <span class="kr">package_multiline_start</span>    <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\s</span><span class="s">*PKGINST:</span><span class="se">\s</span><span class="s">+[^</span><span class="se">\s</span><span class="s">]+&quot;</span><span class="p">;</span>
+ <span class="kr">package_list_name_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\s</span><span class="s">*PKGINST:</span><span class="se">\s</span><span class="s">+([^</span><span class="se">\s</span><span class="s">]+)&quot;</span><span class="p">;</span>
+ <span class="kr">package_list_version_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\s</span><span class="s">*VERSION:</span><span class="se">\s</span><span class="s">+([^</span><span class="se">\s</span><span class="s">]+)&quot;</span><span class="p">;</span>
+ <span class="kr">package_list_arch_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\s</span><span class="s">*ARCH:</span><span class="se">\s</span><span class="s">+([^</span><span class="se">\s</span><span class="s">]+)&quot;</span><span class="p">;</span>
+
+ <span class="kr">package_file_repositories</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(repo)</span><span class="s">&quot;</span> <span class="p">};</span>
+
+ <span class="kr">package_installed_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\s</span><span class="s">*STATUS:</span><span class="se">\s</span><span class="s">*(completely|partially)</span><span class="se">\s</span><span class="s">+installed.*&quot;</span><span class="p">;</span>
+ <span class="kr">package_name_convention</span>    <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">-</span><span class="si">$(version)</span><span class="s">-</span><span class="si">$(arch)</span><span class="s">.pkg&quot;</span><span class="p">;</span>
+ <span class="kr">package_delete_convention</span>  <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">&quot;</span><span class="p">;</span>
+
+ <span class="c"># Cfengine appends path to package and package name below, respectively</span>
+ <span class="kr">package_add_command</span>        <span class="o">=&gt;</span> <span class="s">&quot;/bin/sh </span><span class="si">$(repo)</span><span class="s">/add_scr </span><span class="si">$(repo)</span><span class="s">/admin_file&quot;</span><span class="p">;</span>
+ <span class="kr">package_update_command</span>     <span class="o">=&gt;</span> <span class="s">&quot;/bin/sh </span><span class="si">$(repo)</span><span class="s">/upg_scr </span><span class="si">$(repo)</span><span class="s">/admin_file&quot;</span><span class="p">;</span>
+ <span class="kr">package_delete_command</span>     <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/pkgrm -n -a </span><span class="si">$(repo)</span><span class="s">/admin_file&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Diff of the changes required for Solaris clients:</p>
+<div class="highlight"><pre><code class="text">diff --git a/update/update_bins.cf b/update/update_bins.cf
+index b9747b8..33535b8 100755
+--- a/update/update_bins.cf
++++ b/update/update_bins.cf
+@@ -403,6 +403,7 @@ solarisx86|solaris::
+
+  # Cfengine appends path to package and package name below, respectively
+  package_add_command        =&gt; &quot;/bin/sh $(repo)/add_scr $(repo)/admin_file&quot;;
++ package_update_command     =&gt; &quot;/bin/sh $(repo)/upg_scr $(repo)/admin_file&quot;;
+  package_delete_command     =&gt; &quot;/usr/sbin/pkgrm -n -a $(repo)/admin_file&quot;;
+
+ aix::
+</code></pre>
+</div>
+
+<p>On Solaris, a wrapper script and admin file are needed to automatically
+silently upgrade CFEngine. The files are located in
+<code>/var/cfengine/share/solaris_admin_files</code> on the policy server. Those files and the 
+PKG package must be included in the directory. For example:</p>
+<div class="highlight"><pre><code class="text">$ cp /var/cfengine/share/solaris_admin_files/sol_9_and_10/* /var/cfengine/master_software_updates/sunos_5.10_sun4u
+$ ls -l /var/cfengine/master_software_updates/sunos_5.10_sun4u/
+total 26468
+-rwxr-xr-x 1 root root       36 Dec  6 16:34 add_scr
+-rwxr-xr-x 1 root root      257 Dec  6 16:34 admin_file
+-rw-r--r-- 1 root root 27090944 Dec  5 15:58 CFEcfengine-nova-3.5.3-sparc.pkg
+-rwxr-xr-x 1 root root      125 Dec  6 16:34 upg_scr
+</code></pre>
+</div>
+
+<p>Adjust the <a href="reference-promise-types-packages.html#package_select" title="packages - package_select"><code>package_select</code></a> and <a href="reference-promise-types-packages.html#package_version" title="packages - package_version"><code>package_version</code></a> attributes; (Version number on Solaris is
+only major release number (3.5.3), not hypen and revision number. (-1))</p>
+
+<p><code>update/update_bins.cf</code>:</p>
+<div class="highlight"><pre><code class="cf3">  <span class="nc">!am_policy_hub.solaris</span><span class="p">::</span>
+
+   <span class="s">&quot;</span><span class="si">$(novapkg)</span><span class="s">&quot;</span>
+                    <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Update Nova package to a newer version (package is there)&quot;</span><span class="p">,</span>
+                     <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_packages_nova_update_windows_only_pkg_there&quot;</span><span class="p">,</span>
+             <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;update&quot;</span><span class="p">,</span>
+             <span class="kr">package_select</span> <span class="o">=&gt;</span> <span class="s">&quot;==&quot;</span><span class="p">,</span>
+      <span class="kr">package_architectures</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(pkgarch)</span><span class="s">&quot;</span> <span class="p">},</span>
+            <span class="kr">package_version</span> <span class="o">=&gt;</span> <span class="s">&quot;3.5.3&quot;</span><span class="p">,</span>
+             <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">u_generic</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(local_software_dir)</span><span class="s">&quot;</span> <span class="p">),</span>
+                 <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;nova_edition&quot;</span><span class="p">,</span>
+                    <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">u_if_else</span><span class="p">(</span><span class="s">&quot;bin_update_success&quot;</span><span class="p">,</span> <span class="s">&quot;bin_update_fail&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Diff of the changes required:</p>
+<div class="highlight"><pre><code class="text">diff --git a/update/update_bins.cf b/update/update_bins.cf
+index b9747b8..b26df4b 100755
+--- a/update/update_bins.cf
++++ b/update/update_bins.cf
+@@ -182,6 +182,18 @@ bundle agent cfe_internal_update_bins
+                  ifvarclass =&gt; &quot;nova_edition&quot;,
+                     classes =&gt; u_if_else(&quot;bin_update_success&quot;, &quot;bin_update_fail&quot;);
+
++  !am_policy_hub.solaris::
++
++   &quot;$(novapkg)&quot;
++                    comment =&gt; &quot;Update Nova package to a newer version (package is there)&quot;,
++                     handle =&gt; &quot;cfe_internal_update_bins_packages_nova_update_windows_only_pkg_there&quot;,
++             package_policy =&gt; &quot;update&quot;,
++             package_select =&gt; &quot;==&quot;,
++      package_architectures =&gt; { &quot;$(pkgarch)&quot; },
++            package_version =&gt; &quot;3.5.3&quot;,
++             package_method =&gt; u_generic( &quot;$(local_software_dir)&quot; ),
++                 ifvarclass =&gt; &quot;nova_edition&quot;,
++                    classes =&gt; u_if_else(&quot;bin_update_success&quot;, &quot;bin_update_fail&quot;);
+ #
+
+  files:
+</code></pre>
+</div>
+
+<p>If the client packages are copied but do not get installed, please verify that
+the package_name matches <a href="reference-promise-types-packages.html#package_name_convention" title="packages - package_name_convention"><code>package_name_convention</code></a> in <code>body package_method
+u_generic</code>.</p>
+<h3 id="installing-cfengine-nova-installs-cfengine-nova-hub-instead-when-packages-are-in-the-yum-repository">Installing cfengine-nova installs cfengine-nova-hub instead when packages are in the yum repository</h3>
+<p>When a host attempts to install cfengine-nova from a private yum package
+repository and that host also has the cfengine-nova-hub package available from
+a repository source, the cfengine-nova-hub package gets installed instead.</p>
+
+<p><a href="https://cfengine.com/dev/issues/2956">https://cfengine.com/dev/issues/2956</a></p>
+<h4 id="workaround">Workaround</h4>
+<p>Remove cfengine-nova-hub from the yum repository and install the hub using rpm.</p>
+<h3 id="installing-cfengine-nova-hub-removes-system-apache">Installing cfengine-nova-hub removes system apache</h3>
+<p>The cfengine-nova-hub package removes apache if it is already installed on the system. In addition it removes <code>/var/www</code>.</p>
+<h3 id="directories-ending-with-are-ignored">Directories ending with / are ignored</h3>
+<p>A directory name ending with <code>/</code> is ignored as missing.</p>
+
+<p><a href="https://cfengine.com/dev/issues/3905">https://cfengine.com/dev/issues/3905</a></p>
+<h4 id="workaround">Workaround</h4>
+<p>End the directory name with <code>/.</code> or nothing.</p>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/getting-started/known-issues.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

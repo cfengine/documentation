@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.6  Documentation - Known Issues</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.6/assets/global-ac3885a0674bd3c9117d62800be1608f.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Known Issues";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                 <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html" selected>Version 3.6 (EOL)</option>
+			                 <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:bm0uhfq8ykk" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a><ul class="level2"><li><a href="guide-latest-release-whatsnew.html">New in CFEngine</a></li><li><a href="guide-latest-release-supported-platforms.html">Supported Platforms and Versions</a></li><li><a href="guide-latest-release-policy-framework-updates.html">Policy Framework Updates</a></li><li><a class="active" href="guide-latest-release-known-issues.html">Known Issues</a></li></ul></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-language-concepts.html">Language Concepts</a></li><li><a href="guide-design-center.html">Design Center Overview</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-latest-release.html">Latest Release</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Known Issues
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>CFEngine defects are managed in our <a href="http://bug.cfengine.com/" title="Bug Tracker">bug tracker</a>. Please report
+bugs or unexpected behavior there, following the documented guideline for new
+bug reports.</p>
+
+<p>The items below highlight issues that require additional awareness when starting
+with CFEngine or when upgrading from a previous version.</p>
+<h3 id="windows-agents-are-unable-to-use-the-shortcut-feature">Windows agents are unable to use the shortcut feature</h3>
+<p>Windows agents are unable to use the shortcut feature in access type promises.
+This is resolved in 3.7.x and will not be backported to 3.6.x.</p>
+<h3 id="constant-variables-do-not-work-variables-are-always-overrideable">Constant variables do not work, variables are always overrideable</h3>
+<p><a href="https://dev.cfengine.com/issues/1492">https://dev.cfengine.com/issues/1492</a></p>
+<h3 id="showing-classes-and-variables-with-cf-promsies">Showing Classes and variables with cf-promsies</h3>
+<p><code>cf-promises --show-classes</code> and <code>cf-promises --show-vars</code> will only show
+classes and variables found on a first pass through the policy, since
+<a href="reference-components-cf-promises.html" title="cf-promises"><code>cf-promises</code></a> does not evaluate agent promises.</p>
+<h3 id="protocol-incompatibility-between">Protocol incompatibility between</h3>
+<p>The CFEngine protocol versions 1 and 2 are incompatible (the latter is based
+on TLS). CFEngine 3.6 supports both protocol versions, but earlier versions
+only support protocol version 1. Protocol version 1 is still the default in
+3.6 but the default will change to 2 in future versions.</p>
+<h3 id="rhel-7-centos-7">RHEL 7 / CentOS 7</h3>
+<ul>
+<li>The CFEngine Enterprise hub does not yet support RHEL 7 / CentOS 7</li>
+<li>The community package repositories hosted by CFEngine does not have the RHEL 7 /CentOS 7 package. Please download and install the package separately.</li>
+<li>If you use the community edition as a Policy Server on RHEL 7 / CentOS 7 you will see &quot;Failed to start the server&quot; when you bootstrap it to itself. This message is harmless and will be removed in future releases.</li>
+</ul>
+<h3 id="hp-ux-specific">HP-UX specific</h3>
+<ul>
+<li><a href="reference-promise-types-packages.html" title="packages">Package promises</a> do not have out-of-the-box support for the HP-UX specific package manager. The workaround is to call the package manager directly using <a href="reference-promise-types-commands.html" title="commands">commands promises</a>.</li>
+<li>Some important system information is missing from the HP-UX inventory report, as well as from CFEngine hard classes and system variables. The workaround is to use system tools to obtain the required information and set classes based on this.
+    * Disk free
+    * Memory size
+    * Several OS and architecture specific attributes
+            * System version
+            * System serial number
+            * System manufacturer
+            * CPU model
+            * BIOS version
+            * BIOS vendor</li>
+<li><a href="reference-promise-types-users.html" title="users">User promises</a> do not work reliably on HP-UX. It is recommended not to use them at this time. The workaround is to call the useradd/usermod/userdel tools directly.  (fixed in CFEngine 3.6.4)</li>
+<li><a href="reference-promise-types-processes.html" title="processes">Process promises</a> depend on the <code>ps</code> native tool, which by default truncates lines at 128 columns on HP-UX. It is recommended to edit the file <code>/etc/default/ps</code> and increase the <code>DEFAULT_CMD_LINE_WIDTH</code> setting to 1024 to guarantee that process promises will work smoothly on the platform.</li>
+<li><a href="reference-promise-types-edit_xml.html" title="bundle edit_xml"><code>edit_xml</code> bundles</a> do not work on HP-UX. (fixed in CFEngine 3.6.4)</li>
+<li>Upgrading CFEngine on HP-UX is not supported by the out-of-the-box policy.
+There is a <a href="https://cfengine.zendesk.com/hc/en-us/articles/205454908">support article</a>
+with a workaround.</li>
+</ul>
+<h3 id="enterprise-mission-portal-is-slow-and-or-var-cfengine-state-pg-consumes-a-lot-of-space-iops-or-cpu-utilization-is-high">Enterprise Mission Portal is slow and/or /var/cfengine/state/pg consumes a lot of space/iops or CPU utilization is high</h3>
+<p>With ceratin policies, the BenchmarksLog table in the PostgreSQL database is known to grow large with CFEngine versions from 3.6.0 to and including 3.6.5. This issue is resolved in CFEngine 3.6.6 and later versions.
+To test for the problem, run the following commands on the hub:</p>
+<div class="highlight"><pre><code class="console"><span class="gp">#</span> /var/cfengine/bin/psql cfdb
+<span class="go">SELECT nspname || &#39;.&#39; || relname AS &quot;relation&quot;, pg_size_pretty(pg_total_relation_size(C.oid)) AS &quot;total_size&quot; FROM pg_class C LEFT JOIN pg_namespace N ON (N.oid = C.relnamespace) WHERE nspname NOT IN (&#39;pg_catalog&#39;, &#39;information_schema&#39;) AND C.relkind &lt;&gt; &#39;i&#39; ORDER BY pg_total_relation_size(C.oid) DESC LIMIT 20;</span>
+</code></pre>
+</div>
+
+<p>If the table public.__benchmarkslog is larger than 2-3 GB, you are likely affected by this isse. The table is not used unless you have created custom queries against it yourself. To resolve the issue, please run these commands after a fresh install of any hub prior to version 3.6.6:</p>
+<div class="highlight"><pre><code class="console"><span class="gp">#</span> /var/cfengine/bin/psql cfdb
+<span class="go">cfdb=# truncate table __benchmarkslog;</span>
+<span class="go">cfdb=# create index benchmarks_subselect ON __benchmarkslog (hostkey, eventname, checktimestamp) WITH (FILLFACTOR = 70);</span>
+</code></pre>
+</div>
+
+<p>If your hub is still slow or BenchmarksLog was not the problem, please contact support.</p>
+<h3 id="unsupported-direct-upgrade-from-cfengine-enterprise-3-6-0-3-6-1-to-3-6-5">Unsupported direct upgrade from CFEngine Enterprise 3.6.0 / 3.6.1 to 3.6.5</h3>
+<p>Due to an issue in Enterprise 3.6.5 direct upgrade from 3.6.0 and 3.6.1 may resolve with database schema curruption.
+Upgrade from 3.6.0 / 3.6.1 to 3.6.5 can be done by upgrading first to 3.6.2 / 3.6.3 / 3.6.4 and then to 3.6.5.</p>
+<h3 id="enterprise-emails-sent-for-alert-noticies-come-from-admin-orginization-com">Enterprise emails sent for alert noticies come from &#39;<a href="mailto:admin@orginization.com">admin@orginization.com</a>&#39;.</h3>
+<p>There is currently no setting in Mission Portal to configure the sender email
+address. This issue is tracked in <a href="https://tracker.mender.io/browse/ENT-695">ENT-695</a>
+and will be addressed in a future release.</p>
+
+<p>To change the setting you must edit the from email address in
+<code>/var/cfengine/share/GUI/application/config/appsettings.php</code>. Policy in the
+Masterfiles Policy Framework will take care of updating the running config
+during the next policy run.</p>
+<div class="highlight"><pre><code class="text">// Default FROM email address
+$config[&#39;appemail&#39;] = &#39;admin@organisation.com&#39;;
+</code></pre>
+</div>
+<h3 id="enterprise-monitoring-graphs">Enterprise monitoring graphs</h3>
+<p>Monitoring graphs are disabled by default in CFEngine Enterprise 3.6 and later versions.
+To enable them, change monitoring_include in masterfiles/lib/VERSION/reports.cf to e.g. &quot;.*&quot;.
+Note that this has a significant impact on the resource consumption of your hub.</p>
+
+<p>Monitoring graphs are not supported on all platforms, currently Aix and Windows do not have this data.</p>
+<h3 id="scheduled-reports-not-written-to-expected-location">Scheduled reports not written to expected location</h3>
+<p>There is a known issue when generating scheduled reports for ONLY CSVs. The
+report gets written to <code>/var/cfengine/reports</code> instead of
+<code>/var/cfengine/httpd/htdocs/tmp</code> and it is <strong>NOT</strong> named for the report title,
+but
+instead named by internal identifiers (like
+admin-17_admin_1440692523-1441038374.csv).</p>
+
+<p>The workaround is to schedule BOTH CSV and PDF reports. When both CSV and PDF
+reports are scheduled the CSV report will be written to
+<code>/var/cfengine/httpd/htdocs/tmp</code> and named for the report title as expected.</p>
+<h3 id="enterprise-reports-not-collected-from-3-5">Enterprise reports not collected from 3.5</h3>
+<p>CFEngine Enterprise 3.6 has a new diff-based report collection mechanism,
+and so a 3.6 hub cannot collect reports from 3.5 or earlier agents.</p>
+
+<p>Currently the 3.5 agents will not show in Mission Portal at all, but
+you will see them by running <code>cf-key -s</code> on the hub.</p>
+<h3 id="enterprise-software-inventory-is-not-out-of-the-box">Enterprise software inventory is not out-of-the-box</h3>
+<p>Software inventory is not out-of-the-box for reporting from the hub on Windows platforms.
+In order to add it, please contact support for a custom policy.</p>
+<h3 id="call-collect-does-not-scale">Call collect does not scale</h3>
+<p>A default configuration of call collect (client initiated reporting) does not scale
+above 50-100 hosts in 3.6 due to clients waiting too long to deliver the reports
+which fills up the queue. As a workaround, collect_window can be increased to get
+proporional scale increase; e.g. increasing to 20 from the default of 10 will double the scale.</p>
+
+<p>If you have this issue in 3.6, please increase collect_window and upgrade to 3.6.5 or later
+which improves stability of clients when they do not regularly get reports collected.</p>
+
+<p>This issue is fixed in 3.7, where call collect scales to thousands of hosts with
+default configuration.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-releases.html">releases</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-latest-release.html">latest release</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-3-6.html">3.6</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-platforms.html">platforms</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-versions.html">versions</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-known-issues.html">known issues</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/latest-release/known-issues.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/13cbf18729a5bf43d836f72e30aab3b2b0bdee7f" target="_blank">13cbf18729a5bf43d836f72e30aab3b2b0bdee7f</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.6/assets/footer-1ca6436dd462ed6a69ad3f2dba0774f0.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

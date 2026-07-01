@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.12  Documentation - Interacting with Directory Services</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/examples-example-snippets-active_directory.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='/docs/3.12/assets/global-2ea8d2fcc0dbfebdbe7d10e6eca6a3b3.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Interacting with Directory Services";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/" selected>Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a><ul class="level2"><li><a href="examples-example-snippets-general.html">General Examples</a></li><li><a href="examples-example-snippets-cfengine-administration.html">CFEngine Administration Examples</a></li><li><a href="examples-example-snippets-promise-patterns.html">Common Promise Patterns</a></li><li><a href="examples-example-snippets-timing-counting-measuring.html">Measuring Examples</a></li><li><a href="examples-example-snippets-software-adminstration.html">Software Administration Examples</a></li><li><a href="examples-example-snippets-commands-scripts-execution.html">Commands, Scripts, and Execution Examples</a></li><li><a href="examples-example-snippets-basic-file-directory.html">File and Directory Examples</a></li><li><a href="examples-example-snippets-file-template.html">File Template Examples</a></li><li><a class="active" href="examples-example-snippets-active_directory.html">Interacting with Directory Services</a></li><li><a href="examples-example-snippets-database.html">Database Examples</a></li><li><a href="examples-example-snippets-network.html">Network Examples</a></li><li><a href="examples-example-snippets-system-security.html">System Security Examples</a></li><li><a href="examples-example-snippets-system-information.html">System Information Examples</a></li><li><a href="examples-example-snippets-system-administration.html">System Administration Examples</a></li><li><a href="examples-example-snippets-system-file.html">System File Examples</a></li><li><a href="examples-example-snippets-windows-registry.html">Windows Registry Examples</a></li><li><a href="examples-example-snippets-file_permissions.html">File Permissions</a></li><li><a href="examples-example-snippets-user-management.html">User Management Examples</a></li></ul></li><li><a href="examples-tutorials.html">Tutorials</a></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-example-snippets.html">Example Snippets</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Interacting with Directory Services
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h2 id="active-directory-example">Active directory example</h2><div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">active_directory</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="c"># NOTE: Edit this to your domain, e.g. &quot;corp&quot;, may also need more DC&#39;s after it</span>
+      <span class="p">&quot;</span><span class="nv">domain_name</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;cftesting&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">user_name</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;Guest&quot;</span><span class="p">;</span>
+
+
+      <span class="c"># NOTE: We can also extract data from remote Domain Controllers</span>
+
+    <span class="nc">dummy.DomainController</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">domain_controller</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;localhost&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">userlist</span><span class="p">&quot;</span>    <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">ldaplist</span><span class="p">(</span>
+                                       <span class="s">&quot;ldap://</span><span class="si">$(domain_controller)</span><span class="s">&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;CN=Users,DC=</span><span class="si">$(domain_name)</span><span class="s">,DC=com&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;(objectClass=user)&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;sAMAccountName&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;subtree&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;none&quot;</span><span class="p">);</span>
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="nc">dummy.DomainController</span><span class="p">::</span>
+      <span class="s">&quot;gotuser&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">ldaparray</span><span class="p">(</span>
+                                         <span class="s">&quot;userinfo&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;ldap://</span><span class="si">$(domain_controller)</span><span class="s">&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;CN=</span><span class="si">$(user_name)</span><span class="s">,CN=Users,DC=</span><span class="si">$(domain_name)</span><span class="s">,DC=com&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;(name=*)&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;subtree&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;none&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">dummy.DomainController</span><span class="p">::</span>
+      <span class="err">&#39;</span><span class="nf">Username</span> <span class="nf">is</span> <span class="s">&quot;</span><span class="si">$(userlist)</span><span class="s">&quot;</span><span class="err">&#39;</span><span class="p">;</span>
+    <span class="nc">dummy.gotuser</span><span class="p">::</span>
+      <span class="s">&quot;Got user data; </span><span class="si">$(userinfo[name])</span><span class="s"> has logged on </span><span class="si">$(userinfo[logonCount])</span><span class="s"> times&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="active-list-users-directory-example">Active list users directory example</h2><div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">ldap</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">userlist</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">ldaplist</span><span class="p">(</span>
+                                    <span class="s">&quot;ldap://cf-win2003&quot;</span><span class="p">,</span>
+                                    <span class="s">&quot;CN=Users,DC=domain,DC=cf-win2003&quot;</span><span class="p">,</span>
+                                    <span class="s">&quot;(objectClass=user)&quot;</span><span class="p">,</span>
+                                    <span class="s">&quot;sAMAccountName&quot;</span><span class="p">,</span>
+                                    <span class="s">&quot;subtree&quot;</span><span class="p">,</span>
+                                    <span class="s">&quot;none&quot;</span><span class="p">);</span>
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="err">&#39;</span><span class="kd">Username</span><span class="p">:</span> <span class="s">&quot;</span><span class="si">$(userlist)</span><span class="s">&quot;</span><span class="err">&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="active-directory-show-users-example">Active directory show users example</h2><div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">ldap</span>
+<span class="p">{</span>
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;gotdata&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">ldaparray</span><span class="p">(</span>
+                                         <span class="s">&quot;myarray&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;ldap://cf-win2003&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;CN=Test Pilot,CN=Users,DC=domain,DC=cf-win2003&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;(name=*)&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;subtree&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;none&quot;</span><span class="p">);</span>
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">gotdata</span><span class="p">::</span>
+      <span class="s">&quot;Got user data&quot;</span><span class="p">;</span>
+    <span class="nc">!gotdata</span><span class="p">::</span>
+      <span class="s">&quot;Did not get user data&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="ldap-interactions">LDAP interactions</h2><div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;ldap&quot;</span> <span class="p">,</span> <span class="s">&quot;followup&quot;</span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">ldap</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="c"># Get the first matching value for &quot;uid&quot;</span>
+
+      <span class="p">&quot;</span><span class="nv">value</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">ldapvalue</span><span class="p">(</span><span class="s">&quot;ldap://eternity.iu.hio.no&quot;</span><span class="p">,</span><span class="s">&quot;dc=cfengine,dc=com&quot;</span><span class="p">,</span><span class="s">&quot;(sn=User)&quot;</span><span class="p">,</span><span class="s">&quot;uid&quot;</span><span class="p">,</span><span class="s">&quot;subtree&quot;</span><span class="p">,</span><span class="s">&quot;none&quot;</span><span class="p">);</span>
+
+      <span class="c"># Get all matching values for &quot;uid&quot; - should be a single record match</span>
+      <span class="p">&quot;</span><span class="nv">list</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span>  <span class="nf">ldaplist</span><span class="p">(</span><span class="s">&quot;ldap://eternity.iu.hio.no&quot;</span><span class="p">,</span><span class="s">&quot;dc=cfengine,dc=com&quot;</span><span class="p">,</span><span class="s">&quot;(sn=User)&quot;</span><span class="p">,</span><span class="s">&quot;uid&quot;</span><span class="p">,</span><span class="s">&quot;subtree&quot;</span><span class="p">,</span><span class="s">&quot;none&quot;</span><span class="p">);</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;gotdata&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">ldaparray</span><span class="p">(</span><span class="s">&quot;myarray&quot;</span><span class="p">,</span><span class="s">&quot;ldap://eternity.iu.hio.no&quot;</span><span class="p">,</span><span class="s">&quot;dc=cfengine,dc=com&quot;</span><span class="p">,</span><span class="s">&quot;(uid=mark)&quot;</span><span class="p">,</span><span class="s">&quot;subtree&quot;</span><span class="p">,</span><span class="s">&quot;none&quot;</span><span class="p">);</span>
+      <span class="s">&quot;found&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regldap</span><span class="p">(</span><span class="s">&quot;ldap://eternity.iu.hio.no&quot;</span><span class="p">,</span><span class="s">&quot;dc=cfengine,dc=com&quot;</span><span class="p">,</span><span class="s">&quot;(sn=User)&quot;</span><span class="p">,</span><span class="s">&quot;uid&quot;</span><span class="p">,</span><span class="s">&quot;subtree&quot;</span><span class="p">,</span><span class="s">&quot;jon.*&quot;</span><span class="p">,</span><span class="s">&quot;none&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">linux</span><span class="p">::</span>
+      <span class="s">&quot;LDAP VALUE </span><span class="si">$(value)</span><span class="s"> found&quot;</span><span class="p">;</span>
+      <span class="s">&quot;LDAP LIST VALUE </span><span class="si">$(list)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="nc">gotdata</span><span class="p">::</span>
+      <span class="s">&quot;Found specific entry data  ...</span><span class="si">$(ldap.myarray[uid])</span><span class="s">,</span><span class="si">$(ldap.myarray[gecos])</span><span class="s">, etc&quot;</span><span class="p">;</span>
+    <span class="nc">found</span><span class="p">::</span>
+      <span class="s">&quot;Matched regex&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">followup</span>
+<span class="p">{</span>
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">linux</span><span class="p">::</span>
+      <span class="s">&quot;Different bundle ...</span><span class="si">$(ldap.myarray[uid])</span><span class="s">,</span><span class="si">$(ldap.myarray[gecos])</span><span class="s">,...&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-examples.html">examples</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-active-directory.html">active directory</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-ldap.html">ldap</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-ldaparray-.html">ldaparray()</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-ldaplist-.html">ldaplist()</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 27 October 2021
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/examples/example-snippets/active_directory.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/3d161b229c7df44b99d8cd6c71640ab53c94fcbd" target="_blank">3d161b229c7df44b99d8cd6c71640ab53c94fcbd</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.12/assets/footer-135fa20640bb1a2bbe772d22c46414cb.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

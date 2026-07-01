@@ -1,0 +1,243 @@
+
+bundle knowledge cf2_remotecomm
+
+{
+topics:
+
+"cf2-remotecomm";
+Security_Implications_of_using_cfengine::
+    "Tamperproof data and distributed monitoring" ;
+Security_Implications_of_using_cfengine::
+    "Neighbourhood watch" ;
+Cfengine_and_Firewalls::
+    "Pulling through a wormhole" ;
+Cfengine_and_Firewalls::
+    "Policy Mirror in the DMZ" ;
+Cfengine_and_Firewalls::
+    "Cfengine trust model" ;
+Security_Implications_of_using_cfengine::
+    "Cfengine and Firewalls" ;
+Security_Implications_of_using_cfengine::
+    "Security of pulling files" ;
+Security_Implications_of_using_cfengine::
+    "Security Implications of using cfengine" ;
+Starting_with_cfrun::
+    "Public Key Exchange Issues" ;
+Starting_with_cfrun::
+    "DHCP and Dynamic Addresses" ;
+Starting_with_cfrun::
+    "Using the cfrun command" ;
+Starting_with_cfrun::
+    "Starting with cfrun" ;
+Debugging_tips::
+    "Debugging tips" ;
+Encryption::
+    "Communication example 12" ;
+Encryption::
+    "Encryption" ;
+Authentication::
+    "Communication example 11" ;
+Authentication::
+    "Communication example 10" ;
+Authentication::
+    "Authentication" ;
+Scenario_3::
+    "Communication example 9" ;
+Scenario_3::
+    "Communication example 8" ;
+Scenario_3::
+    "Communication example 7" ;
+Communication_Overview::
+    "Scenario 3" ;
+Scenario_2::
+    "Communication example 6" ;
+Scenario_2::
+    "Communication example 5" ;
+Scenario_2::
+    "Communication example 4" ;
+Scenario_2::
+    "Communication example 3" ;
+Communication_Overview::
+    "Scenario 2" ;
+Scenario_1::
+    "Communication example 2" ;
+Scenario_1::
+    "Communication example 1" ;
+Communication_Overview::
+    "Scenario 1" ;
+Communication_Overview::
+    "Communication Overview" ;
+
+
+occurrences:
+
+Communication_Overview::
+ "/inside/manuals/cf2-remotecomm#Communication-Overview"
+  represents => { "chapter" };
+Scenario_1::
+ "/inside/manuals/cf2-remotecomm#Scenario-1"
+  represents => { "Scenario 1" };
+Communication_example_1::
+ "/inside/manuals/cf2-remotecomm#Communication-example-1"
+  represents => { "subsection" };
+Communication_example_1::
+ "/inside/manuals/cf2-remotecomm#Communication-example-1"
+  represents => { "example" };
+Communication_example_2::
+ "/inside/manuals/cf2-remotecomm#Communication-example-2"
+  represents => { "subsection" };
+Communication_example_2::
+ "/inside/manuals/cf2-remotecomm#Communication-example-2"
+  represents => { "example" };
+Scenario_2::
+ "/inside/manuals/cf2-remotecomm#Scenario-2"
+  represents => { "Scenario 2" };
+Communication_example_3::
+ "/inside/manuals/cf2-remotecomm#Communication-example-3"
+  represents => { "subsection" };
+Communication_example_3::
+ "/inside/manuals/cf2-remotecomm#Communication-example-3"
+  represents => { "example" };
+Communication_example_4::
+ "/inside/manuals/cf2-remotecomm#Communication-example-4"
+  represents => { "subsection" };
+Communication_example_4::
+ "/inside/manuals/cf2-remotecomm#Communication-example-4"
+  represents => { "example" };
+Communication_example_5::
+ "/inside/manuals/cf2-remotecomm#Communication-example-5"
+  represents => { "subsection" };
+Communication_example_5::
+ "/inside/manuals/cf2-remotecomm#Communication-example-5"
+  represents => { "example" };
+Communication_example_6::
+ "/inside/manuals/cf2-remotecomm#Communication-example-6"
+  represents => { "subsection" };
+Communication_example_6::
+ "/inside/manuals/cf2-remotecomm#Communication-example-6"
+  represents => { "example" };
+Scenario_3::
+ "/inside/manuals/cf2-remotecomm#Scenario-3"
+  represents => { "Scenario 3" };
+Communication_example_7::
+ "/inside/manuals/cf2-remotecomm#Communication-example-7"
+  represents => { "subsection" };
+Communication_example_7::
+ "/inside/manuals/cf2-remotecomm#Communication-example-7"
+  represents => { "example" };
+Communication_example_7::
+ "/inside/manuals/cf2-remotecomm#Communication-example-7"
+  represents => { "example" };
+Communication_example_8::
+ "/inside/manuals/cf2-remotecomm#Communication-example-8"
+  represents => { "subsection" };
+Communication_example_8::
+ "/inside/manuals/cf2-remotecomm#Communication-example-8"
+  represents => { "example" };
+Communication_example_9::
+ "/inside/manuals/cf2-remotecomm#Communication-example-9"
+  represents => { "subsection" };
+Communication_example_9::
+ "/inside/manuals/cf2-remotecomm#Communication-example-9"
+  represents => { "example" };
+Communication_example_9::
+ "/inside/manuals/cf2-remotecomm#Communication-example-9"
+  represents => { "example" };
+Authentication::
+ "/inside/manuals/cf2-remotecomm#Authentication"
+  represents => { "chapter" };
+Communication_example_10::
+ "/inside/manuals/cf2-remotecomm#Communication-example-10"
+  represents => { "Communication example 10" };
+Communication_example_10::
+ "/inside/manuals/cf2-remotecomm#Communication-example-10"
+  represents => { "example" };
+Communication_example_11::
+ "/inside/manuals/cf2-remotecomm#Communication-example-11"
+  represents => { "Communication example 11" };
+Communication_example_11::
+ "/inside/manuals/cf2-remotecomm#Communication-example-11"
+  represents => { "example" };
+Encryption::
+ "/inside/manuals/cf2-remotecomm#Encryption"
+  represents => { "chapter" };
+Communication_example_12::
+ "/inside/manuals/cf2-remotecomm#Communication-example-12"
+  represents => { "Communication example 12" };
+Communication_example_12::
+ "/inside/manuals/cf2-remotecomm#Communication-example-12"
+  represents => { "example" };
+Debugging_tips::
+ "/inside/manuals/cf2-remotecomm#Debugging-Tips"
+  represents => { "chapter" };
+Debugging_tips::
+ "/inside/manuals/cf2-remotecomm#Debugging-Tips"
+  represents => { "example" };
+Debugging_tips::
+ "/inside/manuals/cf2-remotecomm#Debugging-Tips"
+  represents => { "example" };
+Debugging_tips::
+ "/inside/manuals/cf2-remotecomm#Debugging-Tips"
+  represents => { "example" };
+Debugging_tips::
+ "/inside/manuals/cf2-remotecomm#Debugging-Tips"
+  represents => { "example" };
+Starting_with_cfrun::
+ "/inside/manuals/cf2-remotecomm#Starting-with-cfrun"
+  represents => { "chapter" };
+Starting_with_cfrun::
+ "/inside/manuals/cf2-remotecomm#Starting-with-cfrun"
+  represents => { "example" };
+Using_the_cfrun_command::
+ "/inside/manuals/cf2-remotecomm#Using-the-cfrun-command"
+  represents => { "Using the cfrun command" };
+Using_the_cfrun_command::
+ "/inside/manuals/cf2-remotecomm#Using-the-cfrun-command"
+  represents => { "example" };
+DHCP_and_Dynamic_Addresses::
+ "/inside/manuals/cf2-remotecomm#DHCP-and-Dynamic-Addresses"
+  represents => { "DHCP and Dynamic Addresses" };
+DHCP_and_Dynamic_Addresses::
+ "/inside/manuals/cf2-remotecomm#DHCP-and-Dynamic-Addresses"
+  represents => { "example" };
+Public_Key_Exchange_Issues::
+ "/inside/manuals/cf2-remotecomm#Public-Key-Exchange-Issues"
+  represents => { "Public Key Exchange Issues" };
+Security_Implications_of_using_cfengine::
+ "/inside/manuals/cf2-remotecomm#Security-Implications-of-using-cfengine"
+  represents => { "chapter" };
+Security_of_pulling_files::
+ "/inside/manuals/cf2-remotecomm#Security-of-pulling-files"
+  represents => { "Security of pulling files" };
+Cfengine_and_Firewalls::
+ "/inside/manuals/cf2-remotecomm#Cfengine-and-Firewalls"
+  represents => { "Cfengine and Firewalls" };
+Cfengine_trust_model::
+ "/inside/manuals/cf2-remotecomm#Cfengine-trust-model"
+  represents => { "subsection" };
+Policy_Mirror_in_the_DMZ::
+ "/inside/manuals/cf2-remotecomm#Policy-Mirror-in-the-DMZ"
+  represents => { "subsection" };
+Pulling_through_a_wormhole::
+ "/inside/manuals/cf2-remotecomm#Pulling-through-a-wormhole"
+  represents => { "subsection" };
+Pulling_through_a_wormhole::
+ "/inside/manuals/cf2-remotecomm#Pulling-through-a-wormhole"
+  represents => { "example" };
+Pulling_through_a_wormhole::
+ "/inside/manuals/cf2-remotecomm#Pulling-through-a-wormhole"
+  represents => { "example" };
+Neighbourhood_watch::
+ "/inside/manuals/cf2-remotecomm#Centralization-and-Decentralization"
+  represents => { "Neighbourhood watch" };
+Tamperproof_data_and_distributed_monitoring::
+ "/inside/manuals/cf2-remotecomm#Tamperproof-data-and-distributed-monitoring"
+  represents => { "Tamperproof data and distributed monitoring" };
+Tamperproof_data_and_distributed_monitoring::
+ "/inside/manuals/cf2-remotecomm#Tamperproof-data-and-distributed-monitoring"
+  represents => { "example" };
+Tamperproof_data_and_distributed_monitoring::
+ "/inside/manuals/cf2-remotecomm#Tamperproof-data-and-distributed-monitoring"
+  represents => { "example" };
+}
+

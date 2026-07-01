@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.13  Documentation - Augments</title>
+        <link rel="icon" type="image/png" href="favicon.png">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.13/assets/global-f8d3d88f1cc74c2ac5c8e408cd101409.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Augments";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.13/" selected>Version 3.13 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                    <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:bphk6hztv2i" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a><ul class="level2"><li><a href="reference-language-concepts-bundles.html">Bundles</a></li><li><a href="reference-language-concepts-bodies.html">Bodies</a></li><li><a href="reference-language-concepts-promises.html">Promises</a></li><li><a href="reference-language-concepts-normal-ordering.html">Normal Ordering</a></li><li><a href="reference-language-concepts-classes.html">Classes and Decisions</a></li><li><a href="reference-language-concepts-variables.html">Variables</a></li><li><a class="active" href="reference-language-concepts-augments.html">Augments</a></li><li><a href="reference-language-concepts-loops.html">Loops</a></li><li><a href="reference-language-concepts-pattern-matching-and-referencing.html">Pattern Matching and Referencing</a></li><li><a href="reference-language-concepts-namespaces.html">Namespaces</a></li></ul></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-language-concepts.html">Language Concepts</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Augments
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>An augments file can be used to define variables and classes to the execution of
+<strong>all</strong> CFEngine components <strong>before</strong> any parsing or evaluation happen. It&#39;s a
+JSON data file, so you should view and edit it with a JSON-aware editor if
+possible.This is a convenient way to override defaults defined in the
+Masterfiles Policy Framework without modifying the shipped policy itself.</p>
+
+<p>The file <code>def.json</code> is found like the policy file to be run:</p>
+
+<ul>
+<li>with no arguments, it&#39;s in <code>$(sys.inputdir)/def.json</code> because
+<code>$(sys.inputdir)/promises.cf</code> is used</li>
+<li>with <code>-f /dirname/myfile.cf</code>, it&#39;s in <code>/dirname/def.json</code></li>
+<li>with <code>-f ./myfile.cf</code>, it&#39;s in <code>./def.json</code></li>
+</ul>
+
+<p>Values will be expanded, so you can use the variables from
+<a href="reference-special-variables.html" title="Special Variables">Special Variables</a>.</p>
+
+<p>An augments file can contain the following keys:</p>
+<h2 id="inputs">inputs</h2>
+<p>Any filenames you put here will appear in the <code>def.augments_inputs</code> variable.
+The standard set of masterfiles refers to this variable and will autoload those
+files.</p>
+<h2 id="vars">vars</h2>
+<p>Any variables you put here will be put in the <a href="reference-special-variables-def.html" title="def"><code>def</code></a> bundle scope. Thus:</p>
+<div class="highlight"><pre><code class="text">&quot;vars&quot;:
+{
+  &quot;phone&quot;: &quot;22-333-4444&quot;,
+  &quot;myplatform&quot;: &quot;$(sys.os)&quot;,
+}
+</code></pre>
+</div>
+
+<p>results in the variable <code>def.phone</code> with value <code>22-333-4444</code> being defined, and
+<code>def.myplatform</code> with the value of your current OS. Again, note that this
+happens before policy is parsed or evaluated.</p>
+
+<p>You can see the list of variables thus defined in the output of <code>cf-promises
+--show-vars</code> (see <a href="reference-components.html" title="Components and Common Control">Components and Common Control</a>). They will be tagged with
+the tag <code>source=augments_file</code>. For instance, the above two variables (assuming
+you placed the data in <code>$(sys.inputdir)/def.json</code>) result in</p>
+<div class="highlight"><pre><code class="text">cf-promises --show-vars=default:def
+...
+default:def.myplatform                   linux                                                        source=augments_file
+default:def.phone                        22-333-4444                                                  source=augments_file
+</code></pre>
+</div>
+
+<p>Variables of other types than string can be defined too, like in this example</p>
+<div class="highlight"><pre><code class="text">&quot;vars&quot; : {
+    &quot;str1&quot; : &quot;string 1&quot;,
+    &quot;num1&quot; : 5,
+    &quot;num2&quot; : 3.5
+    &quot;slist1&quot; : [&quot;sliststr1&quot;, &quot;sliststr2&quot;]
+    &quot;array1&quot; : {
+        &quot;idx1&quot; : &quot;val1&quot;,
+        &quot;idx2&quot; : &quot;val2&quot;
+    }
+}
+</code></pre>
+</div>
+<h2 id="classes">classes</h2>
+<p>Any class names you put here will be evaluated and installed as <strong>hard classes</strong>
+if they match the <a href="reference-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">anchored regular expression</a>. You can use any
+<a href="reference-language-concepts-classes.html" title="Classes and Decisions"><strong>hard</strong> classes</a>, persistent classes, or classes
+defined earlier in the augments list. Thus:</p>
+<div class="highlight"><pre><code class="text">&quot;classes&quot;:
+{
+  &quot;my_always&quot;: [ &quot;any&quot; ],
+  &quot;my_other_apache&quot;: [ &quot;server[34]&quot;, &quot;debian.*&quot; ],
+  &quot;my_other_always&quot;: [ &quot;my_always&quot; ],
+  &quot;when_MISSING_not_defined&quot;: [ &quot;^(?!MISSING).*&quot; ]
+}
+</code></pre>
+</div>
+
+<p>results in <code>my_always</code> being always defined. <code>my_other_apache</code> will be defined
+if the classes <code>server3</code> or <code>server4</code> are defined, or if any class starting with
+<code>debian</code> is defined. <code>my_other_always</code> will be defined because <code>my_always</code> is
+always defined, and listed first. <code>when_MISSING_not_defined</code> will be defined if
+the class <code>MISSING</code> is not defined.</p>
+
+<p>You can see the list of classes thus defined through <code>def.json</code> in the output
+of <code>cf-promises --show-classes</code> (see <a href="reference-components.html" title="Components and Common Control">Components and Common Control</a>). They
+will be tagged with the tags <code>source=augments_file,hardclass</code>. For instance,
+the above two classes result in:</p>
+<div class="highlight"><pre><code class="text">% cf-promises --show-classes=my_
+...
+my_always                                                    source=augments_file,hardclass
+my_other_always                                              source=augments_file,hardclass
+my_other_apache                                              source=augments_file,hardclass
+</code></pre>
+</div>
+
+<p><strong>See also:</strong></p>
+
+<ul>
+<li>Functions that use regular expressions with classes: <a href="reference-functions-classesmatching.html" title="classesmatching"><code>classesmatching()</code></a>, <a href="reference-functions-classmatch.html" title="classmatch"><code>classmatch()</code></a>, <a href="reference-functions-countclassesmatching.html" title="countclassesmatching"><code>countclassesmatching()</code></a></li>
+</ul>
+<h2 id="augments">augments</h2>
+<p>A list of file names that should be merged using <a href="reference-functions-mergedata.html" title="mergedata"><code>mergedata()</code></a> semantic</p>
+
+<p><strong>Example:</strong></p>
+
+<p>Here we merge a platform specific augments on to the <code>def.json</code> loaded next to
+the policy entry and see what the resulting variable values will
+be.</p>
+
+<p>The <code>def.json</code> next to the policy entry:</p>
+<div class="highlight"><pre><code class="json"><span class="p">{</span>
+  <span class="nt">&quot;vars&quot;</span><span class="p">:{</span>
+    <span class="nt">&quot;my_var&quot;</span><span class="p">:</span> <span class="s2">&quot;defined in def.json&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;my_other_var&quot;</span><span class="p">:</span> <span class="s2">&quot;Defined ONLY in def.json&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;augments&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;/var/cfengine/augments/$(sys.flavor).json&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The platform specific augments on a CentOS 6 host:</p>
+
+<p><code>/var/cfengine/augments/centos_6.json</code>:</p>
+<div class="highlight"><pre><code class="json"><span class="p">{</span>
+  <span class="nt">&quot;vars&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;my_var&quot;</span><span class="p">:</span> <span class="s2">&quot;Overridden in centos_6.json&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;centos_6_var&quot;</span><span class="p">:</span> <span class="s2">&quot;Defined ONLY in centos_6.json&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The expected values of the variables defined in the def bundle scope:</p>
+<div class="highlight"><pre><code class="console"><span class="go">R: def.my_var == Overridden in centos_6.json</span>
+<span class="go">R: def.my_other_var == Defined ONLY in def.json</span>
+<span class="go">R: def.centos_6_var == Defined ONLY in centos_6.json</span>
+</code></pre>
+</div>
+<h1 id="history">History</h1>
+<ul>
+<li>3.12.0 introduced the <a href="reference-language-concepts-augments.html#augments" title="Augments - augments"><code>augments</code></a> key</li>
+<li>3.7.3 back port <code>def.json</code> parsing in core agent and load <code>def.json</code> if present next to policy entry</li>
+<li>3.8.2 removed core support for <a href="reference-components-file_control_promises.html#inputs" title="file control - inputs"><code>inputs</code></a> key, load <code>def.json</code> if present next to policy entry</li>
+<li>3.8.1 <code>def.json</code> parsing moved from policy to core agent for resolution of classes and variables to be able to affect control bodies</li>
+<li>3.7.0 introduced augments concept into the Masterfiles Policy Framework</li>
+</ul>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-manuals.html">manuals</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-language.html">language</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-syntax.html">syntax</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-concepts.html">concepts</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-augments.html">augments</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 11 January 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/language-concepts/augments.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/b04b1f6f002a2f00c34834c7f4e2a3b4111fd67d" target="_blank">b04b1f6f002a2f00c34834c7f4e2a3b4111fd67d</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.13/assets/footer-dfbb901e0ce1de822a7bc04bca20268e.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

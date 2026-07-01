@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - CFEngine 3.5</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li class="selected"><span>CFEngine 3.5</span></li><li><a href="getting-started.html">Getting Started</a></li><li><a href="whats-new.html">New in CFEngine</a></li><li><a href="manuals.html">CFEngine Manuals</a></li><li><a href="reference.html">CFEngine Reference</a></li><li><a href="examples.html">CFEngine Examples</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>CFEngine 3.5</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+
+                <h1>CFEngine 3.5</h1>
+                    <h2 id="welcome-to-the-cfengine-documentation-site">Welcome to the CFEngine Documentation site</h2>
+<p>CFEngine is a configuration management system that enables system administrators to define 
+the desired end states of IT-systems throughout their organizations. The desired state is 
+expressed through policies written using the CFEngine policy language. A <strong>policy</strong> is a 
+collection of <strong>promises</strong>, or declared intentions that you wish to reach based on your business needs. 
+This policy is typically version-controlled like any other software code, and is made available on a server (hub). 
+From there, the policy is automatically pulled down by hosts (clients) that retrieve and execute these promises 
+locally. They ensure the defined state.</p>
+
+<p>CFEngine agents continuously ensure compliance with your desired state. The hub pulls down 
+and collects reports on actual states or failures encountered while implementing the desired 
+state on each and every host. You can read logs or run reports to verify the actual state of your IT-system.</p>
+
+<p>Follow this workflow and examine the relevant links as you get started with CFEngine:</p>
+<h2 id="install-cfengine">Install CFEngine</h2>
+<ul>
+<li>Choose from Community or Enterprise <a href="getting-started-installation.html" title="Installing CFEngine">versions</a></li>
+</ul>
+<h2 id="define-your-desired-state">Define your desired state</h2>
+<p>Your system state is defined by <strong>writing policy</strong>.</p>
+
+<ul>
+<li>Create a Hello World <a href="examples-tutorials-hello-world.html" title="Hello World">policy</a></li>
+<li>Learn how to write your own <a href="manuals-writing-policy.html" title="Writing Policy">policy</a></li>
+<li>View policy <a href="examples-policy.html" title="Policy">examples</a></li>
+</ul>
+
+<p>Your system state can also be defined through reusable policy templates, called <strong>sketches</strong>. </p>
+
+<ul>
+<li><a href="reference-design-center.html" title="Design Center">Enterprise Edition</a>: Learn how to use the Design Center API via the Mission Portal to 
+install, configure, and deploy sketches. View and activate sketches in the Design Center 
+through the Mission Portal.<br></li>
+<li><a href="manuals-design-center-advanced.html" title="Advanced Walkthrough">Community Edition</a>: Learn how to use the Design Center API (via cf-sketch) to install, 
+configure, and deploy sketches into the Masterfiles directory. </li>
+</ul>
+
+<p><strong>Recommended for Beginners</strong></p>
+
+<ul>
+<li>Policy is written in <a href="manuals-language-concepts.html" title="Language Concepts">CFEngine Language</a></li>
+<li>Learn the policy <a href="manuals-architecture-policy-workflow.html" title="Policy Workflow">workflow</a> </li>
+<li>Learn CFEngine <a href="reference-syntax.html" title="Syntax, identifiers and names">syntax</a>, identifiers, and names </li>
+<li><a href="reference-promise-types.html" title="Promise Types and Attributes">Promise types and attributes</a> are necessary for writing policy</li>
+</ul>
+<h2 id="verify-your-actual-state-enterprise-only">Verify your actual state (Enterprise Only)</h2>
+<p>Verify your actual state through <strong>Reports</strong>.</p>
+
+<ul>
+<li>Learn about the <a href="manuals-enterprise-reporting-architecture.html" title="Reporting Architecture">reporting architecture</a></li>
+<li>Create reports with <a href="manuals-enterprise-reporting-sql-queries.html" title="SQL Queries">SQL Queries</a> </li>
+<li>Use the Design Center Reports (Documentation is forthcoming)</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="reference-functions.html" title="Functions">Functions</a></li>
+<li>Special <a href="reference-special-variables.html" title="Special Variables">variables</a></li>
+<li>Hard and soft <a href="reference-classes.html" title="Hard and Soft Classes">classes</a></li>
+<li><a href="examples-enterprise-api.html" title="Enterprise API">Enterprise API</a> reference</li>
+</ul>
+
+<p><strong>Recommended for Beginners</strong></p>
+
+<ul>
+<li>Learn the <a href="reference-components.html" title="Components and Common Control">components</a> that make up CFEngine</li>
+</ul>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/welcome.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

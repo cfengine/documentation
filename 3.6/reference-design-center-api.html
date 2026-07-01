@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.6  Documentation - The Design Center API</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.6/assets/global-ac3885a0674bd3c9117d62800be1608f.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "The Design Center API";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                 <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html" selected>Version 3.6 (EOL)</option>
+			                 <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:bm0uhfq8ykk" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-standard-library.html">Standard Library</a></li><li><a href="reference-design-center.html">Design Center</a><ul class="level2"><li><a href="reference-design-center-maintain-own-dc-repo.html">Maintaining your own sketch repository</a></li><li><a href="reference-design-center-sketch.html">Sketch Structure</a></li><li><a class="active" href="reference-design-center-api.html">The Design Center API</a></li></ul></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-design-center.html">Design Center</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    The Design Center API
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h3 id="api-general-information">API General Information</h3>
+<p>The Design Center API (DC API or just API henceforth) is a simple JSON-based
+protocol for communicating with the Design Center backend.  The backend may be
+running locally or remotely; the API makes no assumptions about the transport
+channel and is entirely a line-based text protocol consisting of <em>one</em> JSON line
+each way.</p>
+
+<p>The API client makes a request and gets a response over the same channel.
+Again, the request and the response can only be a single line of text, ended by
+the transport channel&#39;s standard line-ending sequence, e.g. CRLF for HTTP.  JSON
+escapes such sequences so they should not happen anywhere in the payloads.</p>
+
+<p>API requests have the following general structure:</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: { ...commands... } }
+</code></pre>
+</div>
+
+<p>The version is strictly semantically versioned as <em>major.minor.patch</em>.  It must
+match exactly, so you can&#39;t have a <em>3.6.0</em> client talking to a <em>3.6.1</em> server
+for instance (the client has to say &quot;3.6.1&quot; to be usable).  We expect backward
+compatibility, this is just a way to avoid misunderstandings.</p>
+
+<p>It&#39;s possible that CFEngine 3.7.x will keep using the 3.6.0 API, for instance.
+Think of the API version as the minimum CFEngine version required to use it.</p>
+<h4 id="note-generally-only-one-command-may-be-specified-per-request">NOTE: Generally, only <em>one</em> command may be specified per request.</h4>
+<p>API responses look like this:</p>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {},
+        &quot;data&quot;: {...response data...
+        }
+    }
+}
+</code></pre>
+</div>
+
+<p>The top key can be one of the following:</p>
+
+<ul>
+<li><p><code>api_ok</code>: the command was processed correctly and the response is enclosed as
+valid JSON (note that this doesn&#39;t mean the response indicates success!!!)</p></li>
+<li><p><code>api_error</code>: the command was not processed correctly and the response may not
+be valid JSON at all.  It may be good JSON and even contain keys like <code>api_ok</code>
+promises, e.g. <code>warnings</code> or <code>success</code>, but you can&#39;t rely on that.</p></li>
+</ul>
+
+<p>The API client may wish to replace unparseable data with
+<code>{api_error: &quot;BAD JSON (escaped data here)&quot;}</code> or something similar to make the
+response handler simpler.</p>
+
+<p>Inside the API response, under the <code>api_ok</code> key, you can expect to find the following:</p>
+
+<ul>
+<li><p><code>success</code>: indicates, generally speaking, that the command succeeded or
+failed.  Any complex commands can fail in subtle ways, but the API will do its
+best to make this a good indicator.</p></li>
+<li><p><code>errors</code> and <code>warnings</code>: lists of strings that log errors and warnings for the
+command.</p></li>
+<li><p><code>error_tags</code>: key-value array of tag strings assigned to the error messages.
+This lets the client tell what stages or areas of the command triggered the
+errors.</p></li>
+<li><p><code>log</code>: list of general message strings.  This is optional and purely informational.</p></li>
+<li><p><code>tags</code>: key-value array of tag strings assigned to the response, not
+associated with errors.  This lets the client tell what stages or areas of the
+command triggered messages or warnings, or more generally what stages or areas
+of the command were executed.  This is optional and purely informational.</p></li>
+<li><p><a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a>: the meat of the response plate, if you will.  This key contains all
+the response data that the API command generated.  Each command has different
+return data so the specifics are listed per command.</p></li>
+</ul>
+<h3 id="api-commands">API Commands</h3>
+<p>The API commands and their data responses are listed below.  Generally they are
+exclusive of each other, and the order below is the order in which they are
+answered.  Thus, for instance, a request that issues both <code>list</code> and <code>search</code>
+will get just the <code>list</code> results.</p>
+
+<p>Many commands take <em>terms</em>.  <em>Terms</em> are one of the following:</p>
+
+<ul>
+<li>a string (matches any field)</li>
+<li>a list of strings (any of them may match any field)</li>
+<li>a list of lists, with each one in the following format: either
+<code>[FIELD, &quot;matches&quot;, REGEX]</code> or <code>[FIELD, &quot;equals&quot;, STRING]</code> or
+<code>[[FIELD1, FIELD2,...], &quot;matches&quot;, STRING]</code>.</li>
+</ul>
+<h4 id="list"><code>list</code></h4>
+<p>The <code>list</code> command lists <em>installed</em> sketches.</p>
+
+<p>Here are examples of three <code>list</code> commands.  The first one lists everything installed.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {list: true } }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;list&quot;: {
+                &quot;/home/tzz/.cfagent/inputs/sketches&quot;: {
+                    &quot;CFEngine::dclib::3.5.0&quot;: &quot;CFEngine::dclib::3.5.0&quot;,
+                    &quot;CFEngine::dclib&quot;: &quot;CFEngine::dclib&quot;,
+                    &quot;CFEngine::sketch_template&quot;: &quot;CFEngine::sketch_template&quot;,
+                    &quot;VCS::vcs_mirror&quot;: &quot;VCS::vcs_mirror&quot;,
+                    &quot;Security::SSH&quot;: &quot;Security::SSH&quot;,
+                    &quot;Utilities::ping_report&quot;: &quot;Utilities::ping_report&quot;,
+                    &quot;Monitoring::SNMP::Walk&quot;: &quot;Monitoring::SNMP::Walk&quot;,
+                    &quot;Data::Classes&quot;: &quot;Data::Classes&quot;,
+                    &quot;CFEngine::stdlib&quot;: &quot;CFEngine::stdlib&quot;,
+                    &quot;Utilities::ipverify&quot;: &quot;Utilities::ipverify&quot;
+                },
+            &quot;count&quot;: 10
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {}
+    }
+}
+</code></pre>
+</div>
+
+<p>Note the top-level key under <code>data/list</code> is the name of the repository, which is
+always a local directory.</p>
+
+<p>The next one takes <em>terms</em> and lists all the sketches whose name satisfies the
+<em>terms</em>.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {list: [[&quot;name&quot;, &quot;matches&quot;, &quot;(Cloud|CFEngine|Security)&quot;]] } }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;list&quot;: {
+                &quot;/home/tzz/.cfagent/inputs/sketches&quot;: {
+                    &quot;Security::SSH&quot;: &quot;Security::SSH&quot;,
+                    &quot;CFEngine::dclib::3.5.0&quot;: &quot;CFEngine::dclib::3.5.0&quot;,
+                    &quot;CFEngine::dclib&quot;: &quot;CFEngine::dclib&quot;,
+                    &quot;CFEngine::sketch_template&quot;: &quot;CFEngine::sketch_template&quot;,
+                    &quot;CFEngine::stdlib&quot;: &quot;CFEngine::stdlib&quot;
+                }
+            },
+            &quot;count&quot;: 5
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {}
+    }
+}
+</code></pre>
+</div>
+<h5 id="option-count_only">option: <code>count_only</code></h5>
+<p>When <code>count_only</code> is given as a top-level option with a value of <code>true</code>, only the <code>count</code> is returned..</p>
+<h5 id="option-describe">option: <code>describe</code></h5>
+<p>When <code>describe</code> is given as a top-level option with a value of <code>true</code>, as in the
+example below, the returned data is the contents of <a href="reference-design-center-sketch.html#sketch-json" title="Sketch Structure - sketch.json"><code>sketch.json</code></a>.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {describe: true, list: [[&quot;name&quot;, &quot;matches&quot;, &quot;ping&quot;]] } }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;list&quot;: {
+                &quot;/home/tzz/.cfagent/inputs/sketches&quot;: {
+                    &quot;Utilities::ping_report&quot;: {
+                        &quot;namespace&quot;: &quot;cfdc_ping&quot;,
+                        &quot;manifest&quot;: {
+                            &quot;changelog&quot;: {
+                                &quot;comment&quot;: &quot;changelog&quot;
+                            },
+                            &quot;test.cf&quot;: {
+                                &quot;comment&quot;: &quot;Test Policy&quot;
+                            },
+                            &quot;README.md&quot;: {
+                                &quot;documentation&quot;: true
+                            },
+                            &quot;params/example.json&quot;: {
+                                &quot;comment&quot;: &quot;Example parameters to report on a few hosts connectivity.&quot;
+                            },
+                            &quot;main.cf&quot;: {
+                                &quot;desc&quot;: &quot;main file&quot;
+                            }
+                        },
+                        &quot;interface&quot;: [&quot;main.cf&quot;],
+                        &quot;metadata&quot;: {
+                            &quot;authors&quot;: [&quot;Nick Anderson &lt;nick@cmdln.org&gt;&quot;, &quot;Ted Zlatanov &lt;tzz@lifelogs.com&gt;&quot;],
+                            &quot;version&quot;: 1.2,
+                            &quot;name&quot;: &quot;Utilities::ping_report&quot;,
+                            &quot;license&quot;: &quot;MIT&quot;,
+                            &quot;description&quot;: &quot;Report on pingability of hosts&quot;,
+                            &quot;tags&quot;: [&quot;cfdc&quot;],
+                            &quot;depends&quot;: {
+                                &quot;cfengine&quot;: {
+                                    &quot;version&quot;: &quot;3.4.0&quot;
+                                },
+                                &quot;CFEngine::dclib&quot;: {},
+                                &quot;os&quot;: [&quot;linux&quot;],
+                                &quot;CFEngine::stdlib&quot;: {
+                                    &quot;version&quot;: 105
+                                }
+                            }
+                        },
+                        &quot;entry_point&quot;: null,
+                        &quot;api&quot;: {
+                            &quot;ping&quot;: [{
+                                &quot;name&quot;: &quot;runenv&quot;,
+                                &quot;type&quot;: &quot;environment&quot;
+                            },
+                            {
+                                &quot;name&quot;: &quot;metadata&quot;,
+                                &quot;type&quot;: &quot;metadata&quot;
+                            },
+                            {
+                                &quot;name&quot;: &quot;hosts&quot;,
+                                &quot;type&quot;: &quot;list&quot;
+                            },
+                            {
+                                &quot;name&quot;: &quot;count&quot;,
+                                &quot;type&quot;: &quot;string&quot;
+                            },
+                            {
+                                &quot;name&quot;: &quot;reached&quot;,
+                                &quot;type&quot;: &quot;return&quot;
+                            },
+                            {
+                                &quot;name&quot;: &quot;not_reached&quot;,
+                                &quot;type&quot;: &quot;return&quot;
+                            }]
+                        }
+                    }
+                }
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {}
+    }
+}
+</code></pre>
+</div>
+
+<p>When <code>describe</code> is given as a top-level option with a value of <code>README</code>, as in
+the example below, the returned data is actually the sketch&#39;s auto-generated
+<code>README.md</code> file (which comes from <a href="reference-design-center-sketch.html#sketch-json" title="Sketch Structure - sketch.json"><code>sketch.json</code></a>).  The <code>tools/test/Makefile</code>
+testing Makefile has a convenience <code>regenerate_readme</code> target to do this for all
+the DC sketches.</p>
+
+<p>If the manifest includes a <code>README.include</code> file, it will be included verbatim
+in the <code>README.md</code> in the Description section.  That makes it easier to write
+documentation for your sketches.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {describe: &quot;README&quot;, list: [[&quot;name&quot;, &quot;matches&quot;, &quot;ping&quot;]] } }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;list&quot;: {
+                &quot;/home/tzz/.cfagent/inputs/sketches&quot;: {
+                    &quot;Utilities::ping_report&quot;: [&quot;/home/tzz/.cfagent/inputs/sketches/utilities/ping_report&quot;, &quot;# Utilities::ping_report version 1.2\n\nLicense: MIT\nTags: cfdc\nAuthors: Nick Anderson &lt;nick@cmdln.org&gt;, Ted Zlatanov &lt;tzz@lifelogs.com&gt;\n\n## Description\nReport on pingability of hosts\n\n## Dependencies\nCFEngine::dclib, CFEngine::stdlib\n\n## API\n### bundle: ping\n* parameter _environment_ *runenv* (default: none, description: none)\n\n* parameter _metadata_ *metadata* (default: none, description: none)\n\n* parameter _list_ *hosts* (default: none, description: none)\n\n* parameter _string_ *count* (default: none, description: none)\n\n* returns _return_ *reached* (default: none, description: none)\n\n* returns _return_ *not_reached* (default: none, description: none)\n\n\n## SAMPLE USAGE\nSee `test.cf` or the example parameters provided\n\n&quot;]
+                }
+            },
+            &quot;count&quot;: 1
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {}
+    }
+}
+</code></pre>
+</div>
+<h4 id="search"><code>search</code></h4>
+<p>The <code>search</code> command works exactly like <code>list</code> above, except that the candidate
+list contains all available sketches (from <code>recognized_sources</code>), not just the
+installed sketches.</p>
+<h5 id="option-count_only">option: <code>count_only</code></h5>
+<p>When <code>count_only</code> is given as a top-level option with a value of <code>true</code>, only the <code>count</code> is returned..</p>
+<h5 id="option-describe">option: <code>describe</code></h5>
+<p>The <code>describe</code> option to <code>search</code> works exactly like it does for <code>list</code> above.</p>
+<h4 id="describe"><code>describe</code></h4>
+<p>The <code>describe</code> command gives the contents of <a href="reference-design-center-sketch.html#sketch-json" title="Sketch Structure - sketch.json"><code>sketch.json</code></a> for the matching
+installed sketches by name.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {describe:&quot;Security::SSH&quot;} }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;describe&quot;: {
+                &quot;/home/tzz/.cfagent/inputs/sketches&quot;: {
+                    &quot;Security::SSH&quot;: [{
+                        &quot;namespace&quot;: &quot;cfdc_sshd&quot;,
+                        &quot;manifest&quot;: {
+                            &quot;ssh.cf&quot;: {
+                                &quot;desc&quot;: &quot;main file&quot;
+                            },
+                            &quot;README.md&quot;: {
+                                &quot;documentation&quot;: true
+                            },
+                            &quot;params/simple.json&quot;: {}
+                        },
+                        &quot;interface&quot;: [&quot;ssh.cf&quot;],
+                        &quot;metadata&quot;: {
+                            &quot;authors&quot;: [&quot;Diego Zamboni &lt;diego.zamboni@cfengine.com&gt;&quot;, &quot;Ted Zlatanov &lt;tzz@lifelogs.com&gt;&quot;],
+                            &quot;version&quot;: 1.1,
+                            &quot;name&quot;: &quot;Security::SSH&quot;,
+                            &quot;license&quot;: &quot;MIT&quot;,
+                            &quot;description&quot;: &quot;Configure and enable sshd&quot;,
+                            &quot;tags&quot;: [&quot;cfdc&quot;],
+                            &quot;depends&quot;: {
+                                &quot;cfengine&quot;: {
+                                    &quot;version&quot;: &quot;3.4.0&quot;
+                                },
+                                &quot;CFEngine::dclib&quot;: {
+                                    &quot;version&quot;: &quot;1.0.0&quot;
+                                },
+                                &quot;CFEngine::stdlib&quot;: {
+                                    &quot;version&quot;: 105
+                                }
+                            }
+                        },
+                        &quot;api&quot;: {
+                            &quot;sshd&quot;: [{
+                                &quot;name&quot;: &quot;runenv&quot;,
+                                &quot;type&quot;: &quot;environment&quot;
+                            },
+                            {
+                                &quot;name&quot;: &quot;metadata&quot;,
+                                &quot;type&quot;: &quot;metadata&quot;
+                            },
+                            {
+                                &quot;name&quot;: &quot;params&quot;,
+                                &quot;type&quot;: &quot;array&quot;
+                            }]
+                        }
+                    }]
+                },
+                &quot;/home/tzz/source/design-center/sketches&quot;: {
+                    &quot;Security::SSH&quot;: [{
+                        &quot;namespace&quot;: &quot;cfdc_sshd&quot;,
+                        &quot;manifest&quot;: {
+                            &quot;ssh.cf&quot;: {
+                                &quot;desc&quot;: &quot;main file&quot;
+                            },
+                            &quot;README.md&quot;: {
+                                &quot;documentation&quot;: true
+                            },
+                            &quot;params/simple.json&quot;: {}
+                        },
+                        &quot;interface&quot;: [&quot;ssh.cf&quot;],
+                        &quot;metadata&quot;: {
+                            &quot;authors&quot;: [&quot;Diego Zamboni &lt;diego.zamboni@cfengine.com&gt;&quot;, &quot;Ted Zlatanov &lt;tzz@lifelogs.com&gt;&quot;],
+                            &quot;version&quot;: 1.1,
+                            &quot;name&quot;: &quot;Security::SSH&quot;,
+                            &quot;license&quot;: &quot;MIT&quot;,
+                            &quot;description&quot;: &quot;Configure and enable sshd&quot;,
+                            &quot;tags&quot;: [&quot;cfdc&quot;],
+                            &quot;depends&quot;: {
+                                &quot;cfengine&quot;: {
+                                    &quot;version&quot;: &quot;3.4.0&quot;
+                                },
+                                &quot;CFEngine::dclib&quot;: {
+                                    &quot;version&quot;: &quot;1.0.0&quot;
+                                },
+                                &quot;CFEngine::stdlib&quot;: {
+                                    &quot;version&quot;: 105
+                                }
+                            }
+                        },
+                        &quot;api&quot;: {
+                            &quot;sshd&quot;: [{
+                                &quot;name&quot;: &quot;runenv&quot;,
+                                &quot;type&quot;: &quot;environment&quot;
+                            },
+                            {
+                                &quot;name&quot;: &quot;metadata&quot;,
+                                &quot;type&quot;: &quot;metadata&quot;
+                            },
+                            {
+                                &quot;name&quot;: &quot;params&quot;,
+                                &quot;type&quot;: &quot;array&quot;
+                            }]
+                        }
+                    }]
+                }
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {}
+    }
+}
+</code></pre>
+</div>
+<h4 id="install"><code>install</code></h4>
+<p>The <code>install</code> command installs any number of sketches.  The data provides is a
+list of key-value arrays with keys:</p>
+
+<ul>
+<li><p><code>force</code>: boolean, false by default.  Whether any existing installations of the
+sketch should be respected or overwritten.  Also asks the API to ignore OS and
+CFEngine version dependencies.</p></li>
+<li><p><code>sketch</code>: the sketch name.</p></li>
+<li><p><code>target</code>: the sketch install directory.  Must be in the API&#39;s <code>repolist</code>.  Optional; when not given, the first element of the <code>repolist</code> will be used.</p></li>
+<li><p><a href="reference-promise-types-files.html#source" title="files - source"><code>source</code></a>: the sketch source repository.  Must be in the API&#39;s <code>recognized_sources</code>.  Optional; when not given, every element of the <code>recognized_sources</code> will be tried.  Can be a string or an array of strings.</p></li>
+</ul>
+<div class="highlight"><pre><code class="text">{
+    dc_api_version: &quot;3.6.0&quot;,
+    request: {
+        install: [{
+            sketch: &quot;CFEngine::sketch_template&quot;,
+            force: true,
+        },
+        {
+            sketch: &quot;VCS::vcs_mirror&quot;,
+            force: true,
+            target: &quot;~/.cfagent/inputs/sketches&quot;,
+            source: &quot;/home/tzz/source/design-center/tools/test/../../sketches&quot;
+        }]
+    }
+}
+</code></pre>
+</div>
+
+<p>The return data is a key-value array as follows, describing the installation details.</p>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;VCS::vcs_mirror&quot;: {
+                &quot;params/thrift-lib-perl.json&quot;: &quot;/home/tzz/.cfagent/inputs/sketches/utilities/vcs_mirror/params/thrift-lib-perl.json&quot;,
+                &quot;README.md&quot;: &quot;/home/tzz/.cfagent/inputs/sketches/utilities/vcs_mirror/README.md&quot;,
+                &quot;params/cfengine-core.json&quot;: &quot;/home/tzz/.cfagent/inputs/sketches/utilities/vcs_mirror/params/cfengine-core.json&quot;,
+                &quot;params/cfengine-copbl.json&quot;: &quot;/home/tzz/.cfagent/inputs/sketches/utilities/vcs_mirror/params/cfengine-copbl.json&quot;,
+                &quot;main.cf&quot;: &quot;/home/tzz/.cfagent/inputs/sketches/utilities/vcs_mirror/main.cf&quot;,
+                &quot;params/cfengine-core-runas-tzz.json&quot;: &quot;/home/tzz/.cfagent/inputs/sketches/utilities/vcs_mirror/params/cfengine-core-runas-tzz.json&quot;
+            },
+            &quot;install&quot;: {
+                &quot;~/.cfagent/inputs/sketches&quot;: {
+                    &quot;VCS::vcs_mirror&quot;: 1,
+                    &quot;CFEngine::sketch_template&quot;: 1
+                }
+            },
+            &quot;inventory_save&quot;: 1,
+            &quot;CFEngine::sketch_template&quot;: {
+                &quot;test.cf&quot;: &quot;/home/tzz/.cfagent/inputs/sketches/sketch_template/test.cf&quot;,
+                &quot;scripts/sample.sh&quot;: &quot;/home/tzz/.cfagent/inputs/sketches/sketch_template/scripts/sample.sh&quot;,
+                &quot;params/demo.json&quot;: &quot;/home/tzz/.cfagent/inputs/sketches/sketch_template/params/demo.json&quot;,
+                &quot;README.md&quot;: &quot;/home/tzz/.cfagent/inputs/sketches/sketch_template/README.md&quot;,
+                &quot;modules/mymodule&quot;: &quot;/home/tzz/.cfagent/inputs/sketches/sketch_template/modules/mymodule&quot;,
+                &quot;main.cf&quot;: &quot;/home/tzz/.cfagent/inputs/sketches/sketch_template/main.cf&quot;
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {
+            &quot;VCS::vcs_mirror&quot;: 1,
+            &quot;installation&quot;: 7,
+            &quot;CFEngine::sketch_template&quot;: 1
+        }
+    }
+}
+</code></pre>
+</div>
+<h4 id="uninstall"><code>uninstall</code></h4>
+<p>The <code>uninstall</code> command simply deletes the top-level sketch directory and
+everything under it.  It takes a list of key-value arrays with keys:</p>
+
+<ul>
+<li><p><code>sketch</code>: the sketch name.</p></li>
+<li><p><code>target</code>: the sketch install directory we want to clean.  Must be in the API&#39;s <code>repolist</code>.</p></li>
+</ul>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {uninstall: [ { sketch: &quot;CFEngine::stdlib&quot;, target: &quot;~/.cfagent/inputs/sketches&quot; } ] } }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;inventory_save&quot;: 1,
+            &quot;uninstall&quot;: {
+                &quot;~/.cfagent/inputs/sketches&quot;: {
+                    &quot;CFEngine::stdlib&quot;: 1
+                }
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {
+            &quot;uninstallation&quot;: 1,
+            &quot;CFEngine::stdlib&quot;: 1
+        }
+    }
+}
+</code></pre>
+</div>
+
+<p>The <code>inventory_save</code> key in the return indicates whether the inventory (<code>cfsketches.json</code>) was written successfully.</p>
+<h4 id="compositions"><code>compositions</code></h4>
+<p>The <code>compositions</code> command lists the defined compositions.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {compositions: true} }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;compositions&quot;: {
+                &quot;mirror_to_template_2&quot;: {
+                    &quot;destination_sketch&quot;: &quot;CFEngine::sketch_template&quot;,
+                    &quot;source_scalar&quot;: &quot;deploy_path&quot;,
+                    &quot;source_sketch&quot;: &quot;VCS::vcs_mirror&quot;,
+                    &quot;destination_scalar&quot;: &quot;myip&quot;
+                },
+                &quot;mirror_to_template_1&quot;: {
+                    &quot;destination_sketch&quot;: &quot;CFEngine::sketch_template&quot;,
+                    &quot;source_scalar&quot;: &quot;deploy_path&quot;,
+                    &quot;source_sketch&quot;: &quot;VCS::vcs_mirror&quot;,
+                    &quot;destination_list&quot;: &quot;mylist&quot;
+                }
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {}
+    }
+}
+</code></pre>
+</div>
+<h4 id="compose"><code>compose</code></h4>
+<p>The <code>compose</code> command defines a composition.  It returns the same data as <code>compositions</code>.</p>
+<div class="highlight"><pre><code class="text">{
+    dc_api_version: &quot;3.6.0&quot;,
+    request: {
+        compose: {
+            mirror_to_template_1: {
+                destination_sketch: &quot;CFEngine::sketch_template&quot;,
+                destination_list: &quot;mylist&quot;,
+                source_sketch: &quot;VCS::vcs_mirror&quot;,
+                source_scalar: &quot;deploy_path&quot;
+            },
+            mirror_to_template_2: {
+                destination_sketch: &quot;CFEngine::sketch_template&quot;,
+                destination_scalar: &quot;myip&quot;,
+                source_sketch: &quot;VCS::vcs_mirror&quot;,
+                source_scalar: &quot;deploy_path&quot;
+            }
+        }
+    }
+}
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;compositions&quot;: {
+                &quot;mirror_to_template_2&quot;: {
+                    &quot;destination_sketch&quot;: &quot;CFEngine::sketch_template&quot;,
+                    &quot;source_scalar&quot;: &quot;deploy_path&quot;,
+                    &quot;source_sketch&quot;: &quot;VCS::vcs_mirror&quot;,
+                    &quot;destination_scalar&quot;: &quot;myip&quot;
+                },
+                &quot;mirror_to_template_1&quot;: {
+                    &quot;destination_sketch&quot;: &quot;CFEngine::sketch_template&quot;,
+                    &quot;source_scalar&quot;: &quot;deploy_path&quot;,
+                    &quot;source_sketch&quot;: &quot;VCS::vcs_mirror&quot;,
+                    &quot;destination_list&quot;: &quot;mylist&quot;
+                }
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {
+            &quot;compose&quot;: 1
+        }
+    }
+}
+</code></pre>
+</div>
+<h4 id="decompose"><code>decompose</code></h4>
+<p>The <code>decompose</code> command undefines a composition by name.  It returns the same data as <code>compositions</code>.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {decompose: &quot;mirror_to_template_1&quot; } }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;compositions&quot;: {
+                &quot;destination_sketch&quot;: &quot;CFEngine::sketch_template&quot;,
+                &quot;source_scalar&quot;: &quot;deploy_path&quot;,
+                &quot;source_sketch&quot;: &quot;VCS::vcs_mirror&quot;,
+                &quot;destination_list&quot;: &quot;mylist&quot;
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {
+            &quot;compose&quot;: 1
+        }
+    }
+}
+</code></pre>
+</div>
+
+<p>(Note that Monty Python has beaten us to this joke by decades with &quot;The Decomposing Composers.&quot;)</p>
+<h4 id="activations"><code>activations</code></h4>
+<p>The <code>activations</code> command lists the defined activations.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {activations:true} }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;activations&quot;: {
+                &quot;VCS::vcs_mirror&quot;: [{
+                    &quot;params&quot;: [&quot;vcs_base&quot;, &quot;git_mirror_core&quot;],
+                    &quot;environment&quot;: &quot;testing&quot;,
+                    &quot;target&quot;: &quot;~/.cfagent/inputs/sketches&quot;
+                },
+                {
+                    &quot;params&quot;: [&quot;vcs_base&quot;, &quot;svn_mirror_thrift&quot;],
+                    &quot;environment&quot;: &quot;testing&quot;,
+                    &quot;target&quot;: &quot;~/.cfagent/inputs/sketches&quot;
+                }],
+                &quot;CFEngine::sketch_template&quot;: [{
+                    &quot;params&quot;: [&quot;incomplete_sketch&quot;],
+                    &quot;environment&quot;: &quot;testing&quot;,
+                    &quot;target&quot;: &quot;~/.cfagent/inputs/sketches&quot;,
+                    &quot;compositions&quot;: [&quot;mirror_to_template_1&quot;, &quot;mirror_to_template_2&quot;]
+                }]
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {}
+    }
+}
+</code></pre>
+</div>
+
+<p>Under each activation you may find an optional <a href="reference-promise-types-files.html#hash" title="files - hash"><code>hash</code></a> key identifying it
+uniquely (it&#39;s a hash of the resolved parameters, bundle and sketch name, and
+run environment name), but this should never be considered mandatory.</p>
+<h4 id="activate"><code>activate</code></h4>
+<p>The <code>activate</code> command defines a new activation of a sketch.</p>
+
+<p>An activation is a matching of a sketch bundle with parameters, a run
+environment, and optionally compositions.  The sketch name is matched with a
+target (so the API knows which installed sketch to inspect), a run environment
+name, and a list of parameter names.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {activate: { &quot;VCS::vcs_mirror&quot;: { target: &quot;~/.cfagent/inputs/sketches&quot;, environment: &quot;testing&quot;, params: [ &quot;vcs_base&quot;, &quot;git_mirror_core&quot; ] } } } }
+</code></pre>
+</div>
+
+<p>The sketch bundle will be selected based on which one is satisfied by the given
+parameters and compositions.  You can use the <code>__bundle__</code> parameter key to
+specify the bundle explicitly.</p>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;activate&quot;: {
+                &quot;VCS::vcs_mirror&quot;: {
+                    &quot;params&quot;: [&quot;vcs_base&quot;, &quot;git_mirror_core&quot;],
+                    &quot;environment&quot;: &quot;testing&quot;,
+                    &quot;target&quot;: &quot;~/.cfagent/inputs/sketches&quot;
+                }
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {
+            &quot;VCS::vcs_mirror&quot;: 1
+        }
+    }
+}
+</code></pre>
+</div>
+
+<p>You can pass a <code>identifier</code> parameter to an <code>activate</code> command, which can then
+be used to <code>deactivate</code> an activation specifically, and which will show up in
+the classes and prefixes of that activation.</p>
+
+<p>You can pass a <a href="reference-promise-types-processes.html#priority" title="processes - priority"><code>priority</code></a> parameter to an <code>activate</code> command, which will be used
+for sorting the activations.  By default all activations get priority <code>1</code>.  The
+priorities are sorted lexicographically (<code>00a</code> comes before <code>00b</code> and <code>10</code> comes
+before <code>9</code>).</p>
+
+<p>You can pass a <code>metadata</code> parameter to an <code>activate</code> command, which will show up
+under the <code>activation</code> key in the metadata.</p>
+
+<p>You can pass a <code>target</code> parameter to an <code>activate</code> command with an install location,
+which will only activate sketches that exist in that location.</p>
+
+<p>You may find a <a href="reference-promise-types-files.html#hash" title="files - hash"><code>hash</code></a> key in the result, as described in the <code>activations</code>
+command above.</p>
+<h5 id="option-compose">option: <code>compose</code></h5>
+<p>When the <code>activate</code> command has a <code>compose</code> key with a list of composition
+names, those compositions are considered whenever the parameters alone are not
+enough to activate the sketch.  Thus compositions and parameters work together,
+as late and immediate bindings of the passed data respectively.</p>
+<h4 id="deactivate"><code>deactivate</code></h4>
+<p>The <code>deactivate</code> command removes sketch activations.  It can take either the
+name of a sketch or <code>true</code> to indicate all activations should be removed.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {deactivate: &quot;VCS::vcs_mirror&quot; } }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;deactivate&quot;: {
+                &quot;VCS::vcs_mirror&quot;: 1
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {
+            &quot;deactivate&quot;: 1
+        }
+    }
+}
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {deactivate: true } }
+</code></pre>
+</div>
+
+<p>(No activations existed at this point, so the return data is empty.)</p>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {},
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {}
+    }
+}
+</code></pre>
+</div>
+<h4 id="definitions"><code>definitions</code></h4>
+<p>The <code>definitions</code> command lists the parameter definitions.  This is the DC API&#39;s
+central library of knowledge.  Every parameter definition is a source of
+configuration data (like a CFEngine common bundle, but applied directly to a
+sketch bundle).  Parameter definitions have names, which are used when you want
+to activate a sketch, and can contain more than one sketch&#39;s parameters or only
+part of a sketch&#39;s parameters.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {definitions:true} }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;definitions&quot;: {
+                &quot;simple_ssh&quot;: {
+                    &quot;Security::SSH&quot;: {
+                        &quot;params&quot;: {
+                            &quot;X11Forwarding&quot;: &quot;yes&quot;,
+                            &quot;Protocol&quot;: &quot;2&quot;,
+                            &quot;PermitRootLogin&quot;: &quot;yes&quot;
+                        }
+                    }
+                },
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {}
+    }
+}
+</code></pre>
+</div>
+<h4 id="define"><code>define</code></h4>
+<p>The <code>define</code> command creates a parameter definition with a name.  The example
+here creates some base parameters for the <code>VCS::vcs_mirror</code> sketch and then lays
+specific configuration to mirror the [<a href="https://github.com/cfengine/core.git">https://github.com/cfengine/core.git</a>]
+repository&#39;s master branch from Git.  In this case, we do it in two steps, but
+could have done it in one step.</p>
+
+<p>Note that the reply doesn&#39;t tell you more than &quot;I got it, thanks.&quot;</p>
+
+<p>You can use the <code>function</code> expression in data, as shown below, to make sure that
+the DC API will make a function call and not just pass a string.  So, instead of
+<code>getenv(&quot;LOGNAME&quot;, &quot;128&quot;)</code> you need to use
+<code>{ &quot;function&quot;: &quot;getenv&quot;, &quot;args&quot;: [&quot;LOGNAME&quot;, &quot;128&quot;] }</code> to make sure the function
+call is preserved.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {define: { &quot;vcs_base&quot;: { &quot;VCS::vcs_mirror&quot;: { options: { parent_dir: { owner: { &quot;function&quot;: &quot;getenv&quot;, &quot;args&quot;: [&quot;LOGNAME&quot;, &quot;128&quot;] }, group: { &quot;function&quot;: &quot;getenv&quot;, &quot;args&quot;: [&quot;LOGNAME&quot;, &quot;128&quot;] }, perms: &quot;755&quot;, ensure: true }, nowipe: true, vcs: { runas: { &quot;function&quot;: &quot;getenv&quot;, &quot;args&quot;: [&quot;LOGNAME&quot;, &quot;128&quot;] }, umask: &quot;000&quot; } } } } } } }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;define&quot;: {
+                &quot;vcs_base&quot;: 1
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {
+            &quot;vcs_base&quot;: 1
+        }
+    }
+}
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {define: { &quot;git_mirror_core&quot;: { &quot;VCS::vcs_mirror&quot;: { vcs: &quot;/usr/bin/git&quot;, path: &quot;/tmp/q/cfengine-core&quot;, branch: &quot;master&quot;, origin: &quot;https://github.com/cfengine/core.git&quot; } } } } }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;define&quot;: {
+                &quot;git_mirror_core&quot;: 1
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {
+            &quot;git_mirror_core&quot;: 1
+        }
+    }
+}
+</code></pre>
+</div>
+<h4 id="undefine"><code>undefine</code></h4>
+<p>The <code>undefine</code> command removes a parameter definition by name.  You can pass a
+list of string parameter definition names or simply <code>true</code> to remove all the
+parameter definitions.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {undefine: [&quot;git_mirror_core&quot;] } }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;undefine&quot;: {
+                &quot;git_mirror_core&quot;: &quot;1&quot;
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {
+            &quot;git_mirror_core&quot;: 1
+        }
+    }
+}
+</code></pre>
+</div>
+<h4 id="environments"><code>environments</code></h4>
+<p>The <code>environments</code> command lists the run environments.</p>
+
+<p>A run environment is a common bundle of general settings.  It affects the
+execution of bundles globally, so it&#39;s not intended to be specific for each
+bundle activation.</p>
+
+<p>The sketch bundle chooses to have a run environment by specifying a parameter
+with type <a href="reference-components-cf-agent.html#environment" title="cf-agent - environment"><code>environment</code></a>.  Only a run environment can satisfy that API parameter.</p>
+
+<p>Good examples of run environments are <em>production</em>, <em>production_debug</em>, or
+<em>development_nodebug</em>.  In a run environment you&#39;d expect to find at least the
+<code>activated</code>, <a href="reference-components-cf-agent.html#verbose" title="cf-agent - verbose"><code>verbose</code></a>, and <code>test</code> variables.  For each of those, the DC API
+will also provide a class named <code>runenv_ENVIRONMENTNAME_ENVIRONMENTVARIABLE</code>.
+Here&#39;s an example of a <code>testing</code> run environment, as it appears in the generated
+runfile:</p>
+<div class="highlight"><pre><code class="text">bundle common testing
+{
+  vars:
+      &quot;activated&quot; string =&gt; &quot;1&quot;;
+      &quot;env_vars&quot; slist =&gt; { &quot;activated&quot;, &quot;test&quot;, &quot;verbose&quot; };
+      &quot;test&quot; string =&gt; &quot;1&quot;;
+      &quot;verbose&quot; string =&gt; &quot;1&quot;;
+  classes:
+      &quot;runenv_testing_activated&quot; expression =&gt; &quot;any&quot;;
+      &quot;runenv_testing_test&quot; expression =&gt; &quot;any&quot;;
+      &quot;runenv_testing_verbose&quot; expression =&gt; &quot;any&quot;;
+}
+</code></pre>
+</div>
+
+<p>And here is the definition of that run environment:</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {environments:true} }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;environments&quot;: {
+                &quot;testing&quot;: {
+                    &quot;verbose&quot;: &quot;1&quot;,
+                    &quot;test&quot;: &quot;1&quot;,
+                    &quot;activated&quot;: &quot;1&quot;
+                }
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {}
+    }
+}
+</code></pre>
+</div>
+
+<p>The last thing to note is that any run environment variable can have values
+other than <code>true</code> and <code>false</code>.  If they are a string, then that string is a
+class expression.  So, for instance, if <code>activated</code> is <code>Monday</code> then the run
+environment will only be activated on Mondays.</p>
+
+<p>It&#39;s trivial to do AND and OR in such a string, as normal for CFEngine contexts.</p>
+<h4 id="define_environment"><code>define_environment</code></h4>
+<p>The <code>define_environemnt</code> command defines a run environment.  The <code>testing</code>
+example above can be defined like so:</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {define_environment: { &quot;testing&quot;: { activated: true, test: true, verbose: true } } } }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;define_environment&quot;: {
+                &quot;testing&quot;: 1
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {
+            &quot;testing&quot;: 1
+        }
+    }
+}
+</code></pre>
+</div>
+
+<p>Again, remember that each of those variables can be a string, to be interpreted
+as a class expression, and that you can have more than those three variables.</p>
+<h4 id="undefine_environment"><code>undefine_environment</code></h4>
+<p>The <code>undefine_environemnt</code> command removes a run environment.  It takes a list
+of environment names.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {undefine_environment: [ &quot;testing&quot; ] } }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;undefine_environment&quot;: {
+                &quot;testing&quot;: &quot;1&quot;
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {
+            &quot;testing&quot;: 1
+        }
+    }
+}
+</code></pre>
+</div>
+<h4 id="validations"><code>validations</code></h4>
+<p>The <code>validations</code> command lists the data validations.</p>
+
+<p>The data validations are just strings that have a key-value array associated
+with them.  Specific keys trigger specific validation behavior in order, as
+follows.  Note that the examples below are not necessarily in your API
+installation already.</p>
+<div class="highlight"><pre><code class="text">// only the inside of the request is shown for brevity
+define_validation: { DIGITS: { valid_regex: &quot;^[0-9]+$&quot; } }
+define_validation: { NUMBER: { derived: [ &quot;DIGITS&quot; ] } }
+define_validation: { AB: { choice: [ &quot;A&quot;, &quot;B&quot; ] } }
+define_validation: { 8BIT_NUMBER: { minimum_value: 0, maximum_value: 255 } }
+define_validation: { LIST_OF_NUMBERS: { list: [ &quot;NUMBER&quot; ] } }
+define_validation: { MOG_SEQUENCE: { sequence: [ &quot;OCTAL&quot;, &quot;UID&quot;, &quot;GID&quot;   ] } }
+define_validation: { ARRAY_OF_NUMBERS_TO_URLS: { array_k: [ &quot;NUMBER&quot; ], array_v: [ &quot;URL&quot; ] } }
+</code></pre>
+</div>
+
+<ul>
+<li><p><code>derived</code> defines a parent data validation.  So a <em>NUMBER</em> validation requires
+that <em>DIGITS</em> and any other parent data validations be checked first.</p></li>
+<li><p><code>choice</code> defines a list of exact string matches.  So <em>AB</em> must be given <code>A</code> or
+<code>B</code> to pass validation.</p></li>
+<li><p><code>minimum_value</code> and then <code>maximum_value</code> are numeric checks.  So <em>8BIT_NUMBER</em>
+has to be between 0 and 255.  Any invalid numbers, e.g. <code>hello</code>, will be
+treated as 0.</p></li>
+<li><p><code>invalid_regex</code> and then <code>valid_regex</code> are regular expressions written as
+strings.  They follow the Perl regex syntax right now.  So <em>DIGITS</em> can only
+contain the decimal digits 0 through 9 and will reject the empty string `<code>or
+</code>hello`.</p></li>
+<li><p><code>invalid_ipv4</code> and <code>valid_ipv4</code> are TODO.</p></li>
+<li><p><code>list</code> ensures that the given data is a list of one of several data types.  So
+in the example, <em>LIST_OF_NUMBERS</em> will check that every element passes the
+<em>NUMBER</em> validation.</p></li>
+<li><p><code>sequence</code> is like a record: it ensures that the data is a sequence (list) of
+the given data types.  So for example, <em>MOG_SEQUENCE</em> has to have three
+elements, of which the first one passes <em>OCTAL</em> validation, the second passed
+<em>UID</em> validation, and the third passes <em>GID</em> validation.</p></li>
+<li><p><code>array_k</code> and <code>array_v</code> are almost exactly like <code>list</code> but they validate the
+keys and values of a key-value array, respectively, against a list of several
+data types.  So <em>ARRAY_OF_NUMBERS_TO_URLS</em> requires that every key pass the
+<em>NUMBER</em> validation and every value pass the <em>URL</em> validation.</p></li>
+</ul>
+<h4 id="define_validation"><code>define_validation</code></h4>
+<p>The <code>define_validation</code> command defines a data validation.  In the return data
+you will find all the currently defined data validations.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {define_validation: { NONEMPTY_STRING: { valid_regex: &quot;.&quot; } } } }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;validations&quot;: {
+                &quot;NONEMPTY_STRING&quot;: {
+                    &quot;valid_regex&quot;: &quot;.&quot;
+                },
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {
+            &quot;define_validation&quot;: 1
+        }
+    }
+}
+</code></pre>
+</div>
+<h4 id="undefine_validation"><code>undefine_validation</code></h4>
+<p>The <code>undefine_validation</code> command removes a data validation by name.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {undefine_validation: &quot;NONEMPTY_STRING&quot; } }&#39;
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;validations&quot;: {
+                &quot;valid_regex&quot;: &quot;.&quot;
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {
+            &quot;undefine_validation&quot;: 1
+        }
+    }
+}
+</code></pre>
+</div>
+<h4 id="validate"><code>validate</code></h4>
+<p>The <code>validate</code> command validates data using a named data validation.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {validate: { validation: &quot;ARRAY_OF_NUMBERS_TO_URLS&quot;, data: { &quot;20&quot;: &quot;http://this.that&quot;, &quot;30&quot;: &quot;not a URL&quot; } } } }
+</code></pre>
+</div>
+
+<p>It&#39;s useful to look at the log output here.  This example failed:</p>
+<div class="highlight"><pre><code class="text">DCAPI::log4(Validation.pm:73): Validating ARRAY_OF_NUMBERS_TO_URLS against data &#39;{&quot;30&quot;:&quot;not a URL&quot;,&quot;20&quot;:&quot;http://this.that&quot;}&#39;
+DCAPI::log4(Validation.pm:282): Validating ARRAY_OF_NUMBERS_TO_URLS: checking &#39;array_k&#39; is [&quot;NUMBER&quot;]
+DCAPI::log4(Validation.pm:73): Validating NUMBER against data &#39;30&#39;
+DCAPI::log4(Validation.pm:73): Validating DIGITS against data &#39;30&#39;
+DCAPI::log4(Validation.pm:166): Validating DIGITS: checking valid_regex ^[0-9]+$
+DCAPI::log4(Validation.pm:85): Validating NUMBER: checking parent data type DIGITS
+DCAPI::log4(Validation.pm:73): Validating NUMBER against data &#39;20&#39;
+DCAPI::log4(Validation.pm:73): Validating DIGITS against data &#39;20&#39;
+DCAPI::log4(Validation.pm:166): Validating DIGITS: checking valid_regex ^[0-9]+$
+DCAPI::log4(Validation.pm:85): Validating NUMBER: checking parent data type DIGITS
+DCAPI::log4(Validation.pm:282): Validating ARRAY_OF_NUMBERS_TO_URLS: checking &#39;array_v&#39; is [&quot;URL&quot;]
+DCAPI::log4(Validation.pm:73): Validating URL against data &#39;not a URL&#39;
+DCAPI::log4(Validation.pm:166): Validating URL: checking valid_regex ^[A-Za-z]{3,9}://.+
+DCAPI::log4(Validation.pm:73): Validating URL against data &#39;http://this.that&#39;
+DCAPI::log4(Validation.pm:166): Validating URL: checking valid_regex ^[A-Za-z]{3,9}://.+
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: false,
+        &quot;errors&quot;: [&quot;Could not validate any of the allowed array_v types [URL]&quot;],
+        &quot;error_tags&quot;: {
+            &quot;array_v&quot;: 1,
+            &quot;validation&quot;: 1
+        },
+        &quot;data&quot;: {},
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {}
+    }
+}
+</code></pre>
+</div>
+
+<p>This example succeeded:</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {validate: { validation: &quot;ARRAY_OF_NUMBERS_TO_URLS&quot;, data: { &quot;20&quot;: &quot;http://this.that&quot;, &quot;30&quot;: &quot;http://this.that2&quot; } } } }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">DCAPI::log4(Validation.pm:73): Validating ARRAY_OF_NUMBERS_TO_URLS against data &#39;{&quot;30&quot;:&quot;http://this.that2&quot;,&quot;20&quot;:&quot;http://this.that&quot;}&#39;
+DCAPI::log4(Validation.pm:282): Validating ARRAY_OF_NUMBERS_TO_URLS: checking &#39;array_k&#39; is [&quot;NUMBER&quot;]
+DCAPI::log4(Validation.pm:73): Validating NUMBER against data &#39;30&#39;
+DCAPI::log4(Validation.pm:73): Validating DIGITS against data &#39;30&#39;
+DCAPI::log4(Validation.pm:166): Validating DIGITS: checking valid_regex ^[0-9]+$
+DCAPI::log4(Validation.pm:85): Validating NUMBER: checking parent data type DIGITS
+DCAPI::log4(Validation.pm:73): Validating NUMBER against data &#39;20&#39;
+DCAPI::log4(Validation.pm:73): Validating DIGITS against data &#39;20&#39;
+DCAPI::log4(Validation.pm:166): Validating DIGITS: checking valid_regex ^[0-9]+$
+DCAPI::log4(Validation.pm:85): Validating NUMBER: checking parent data type DIGITS
+DCAPI::log4(Validation.pm:282): Validating ARRAY_OF_NUMBERS_TO_URLS: checking &#39;array_v&#39; is [&quot;URL&quot;]
+DCAPI::log4(Validation.pm:73): Validating URL against data &#39;http://this.that2&#39;
+DCAPI::log4(Validation.pm:166): Validating URL: checking valid_regex ^[A-Za-z]{3,9}://.+
+DCAPI::log4(Validation.pm:73): Validating URL against data &#39;http://this.that&#39;
+DCAPI::log4(Validation.pm:166): Validating URL: checking valid_regex ^[A-Za-z]{3,9}://.+
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {},
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {}
+    }
+}
+</code></pre>
+</div>
+<h4 id="regenerate"><code>regenerate</code></h4>
+<p>The <code>regenerate</code> command writes the API runfile (as specified in the API
+configuration) from all the known activations, compositions, run environments,
+parameter definitions, and data validations.</p>
+
+<p>The command does not allow the user to change the runfile location, as that is a
+possible security risk.</p>
+
+<p>In the returned data you can find the runfile name and also each activation in a
+key-value map, indexed by the internal activation unique name, and with each
+value a list of <code>name, sketch, bundle, parameter checksum</code>.  The parameter
+checksum is calculated from the final parameters <strong>after</strong> the parameter
+definitions have been resolved, so compositions will be recognized as well.
+Here&#39;s an example regeneration with just one activation, with the runfile
+location in a specific user&#39;s home directory (this is typically how
+<code>cf-sketch.pl</code> will configure itself if it runs as non-root).</p>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;___001_System_motd_entry&quot;: [&quot;&quot;, &quot;System::motd&quot;, &quot;entry&quot;, &quot;b3172b7755c090fd49e0b250f6320880&quot;],
+            &quot;runfile&quot;:&quot;/home/tzz/.cfagent/inputs/sketches/meta/api-runfile.cf&quot;
+            },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {
+            &quot;activations&quot;: 1
+        }
+    }
+}
+</code></pre>
+</div>
+<h4 id="regenerate_index"><code>regenerate_index</code></h4>
+<p>The <code>regenerate_index</code> command takes a directory parameter (string) and writes
+the <code>cfsketches.json</code> index from all the sketches found in a given directory.
+The directory must be local and listed in the API configuration&#39;s
+<code>recognized_sources</code>.  The command returns an error if the index could not be
+written or if an error happened while loading any sketch.json files.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {regenerate_index: &quot;~/source/cfengine/design-center/sketches&quot; } }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">DCAPI::log3(DCAPI.pm:1500): Regenerating index: searching for sketches in ~/source/cfengine/design-center/sketches
+DCAPI::log3(DCAPI.pm:1523): Regenerating index: on sketch dir applications/memcached
+...
+DCAPI::log3(DCAPI.pm:1523): Regenerating index: on sketch dir web_servers/apache
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {},
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {}
+    }
+</code></pre>
+</div>
+<h4 id="test"><code>test</code></h4>
+<p>The <code>test</code> command tests <em>installed</em> sketches.  It always returns true if the
+test harness ran, even if the individual tests failed.  It&#39;s up to you to check
+the result of each sketch&#39;s test.</p>
+
+<p>Here are examples of two <code>test</code> commands.  The first one tests everything
+installed (shown when no sketches were installed for brevity; see below for a
+full test example).</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {test: true } }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;coverage&quot;: 0,
+            &quot;test&quot;: {},
+            &quot;total&quot;: 0
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {}
+    }
+}
+</code></pre>
+</div>
+
+<p>Under <a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a> you will find a <code>coverage</code> and a <code>total</code> key, which respectively
+represent the number of covered sketches and the total number of sketches
+inspected.  So if you asked to test 10 sketches but only one had any test
+scripts, your coverage would be 1/10.</p>
+
+<p>The top-level key under <code>data.test</code> is the name of the repository, which is
+always a local directory.</p>
+
+<p>The next one takes <em>terms</em> and tests all the sketches whose name satisfies the
+<em>terms</em>.  The return format is the same: for each repository and each sketch
+tested, you&#39;ll get a key-value array with keys <code>log</code> (the text log of the
+output); <code>failed</code> (with tests that failed); and <code>total</code> (with all the tests).</p>
+
+<p>The format inside each test is according to the Perl module <code>Test::Harness</code>.
+For instance the <code>good</code> key will be <code>1</code> if all the planned tests succeeded.</p>
+
+<p>The <code>bench</code> key will give you some timings, but more precise timings may be
+added in the future.  Do not depend on the format of the <code>bench</code> value.</p>
+<div class="highlight"><pre><code class="text">{ dc_api_version: &quot;3.6.0&quot;, request: {test: [&quot;Applications::Memcached&quot;] } }
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;test&quot;: {
+                &quot;/home/tzz/.cfagent/inputs/sketches&quot;: {
+                    &quot;Applications::Memcached&quot;: {
+                        &quot;log&quot;: &quot;/home/tzz/.cfagent/inputs/sketches/applications/memcached/test.pl .. \n1..6\n# Running under perl version 5.014002 for linux\n# Current time local: Tue May  7 18:08:08 2013\n# Current time GMT:   Tue May  7 22:08:08 2013\n# Using Test.pm version 1.25_02\nok 1\nok 2\nok 3\nok 4\nok 5\nok 6\nok\n&quot;,
+                        &quot;failed&quot;: {},
+                        &quot;total&quot;: {
+                            &quot;files&quot;: 1,
+                            &quot;max&quot;: 6,
+                            &quot;bonus&quot;: 0,
+                            &quot;skipped&quot;: 0,
+                            &quot;sub_skipped&quot;: 0,
+                            &quot;ok&quot;: 6,
+                            &quot;bad&quot;: 0,
+                            &quot;good&quot;: 1,
+                            &quot;tests&quot;: 1,
+                            &quot;bench&quot;: &quot; 1 wallclock secs ( 0.02 usr  0.00 sys +  0.45 cusr  0.01 csys =  0.48 CPU)&quot;,
+                            &quot;todo&quot;: 0
+                        }
+                    }
+                }
+            }
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {}
+    }
+}
+</code></pre>
+</div>
+
+<p>You can skip the actual testing and just get the coverage if you give the <code>test</code>
+command the <code>coverage</code> parameter.  Here&#39;s how you can inspect the coverage of
+every single installed sketch:</p>
+<div class="highlight"><pre><code class="text">{&quot;dc_api_version&quot;:&quot;3.6.0&quot;,&quot;request&quot;:{&quot;coverage&quot;:1,&quot;test&quot;:[&quot;1&quot;]}}
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">{
+    &quot;api_ok&quot;: {
+        &quot;warnings&quot;: [],
+        &quot;success&quot;: true,
+        &quot;errors&quot;: [],
+        &quot;error_tags&quot;: {},
+        &quot;data&quot;: {
+            &quot;coverage&quot;: 7,
+            &quot;test&quot;: {
+                &quot;/home/tzz/.cfagent/inputs/sketches&quot;: {
+                    &quot;System::Syslog&quot;: 0,
+                    &quot;Networking::NTP::Client&quot;: 0,
+// ...
+                    &quot;Packages::installed&quot;: 1,
+                    &quot;CFEngine::dclib::3.5.0&quot;: 1,
+                }
+            },
+            &quot;total&quot;: 32
+        },
+        &quot;log&quot;: [],
+        &quot;tags&quot;: {}
+    }
+}
+</code></pre>
+</div>
+<h4 id="selftests"><code>selftests</code></h4>
+<p>The <code>selftests</code> command lists the internal API tests.  It&#39;s for internal use
+only and so left undocumented.</p>
+<h4 id="selftest"><code>selftest</code></h4>
+<p>The <code>selftest</code> command runs internal API tests.  It&#39;s for internal use only and
+so left undocumented.</p>
+<h3 id="api-cli-interface-and-config-json">API CLI Interface and config.json</h3>
+<p>From the command line, you can run <code>cd tools/cf-sketch; ./cf-dc-api.pl
+config.json</code> where <code>config.json</code> contains the necessary configuration for the
+API:</p>
+<h4 id="log"><code>log</code></h4>
+<p>Either <code>STDOUT</code> or <code>STDERR</code> or a file name.</p>
+<h4 id="log_level"><a href="reference-promise-types.html#log_level" title="Promise Types and Attributes - log_level"><code>log_level</code></a></h4>
+<p>1-5 currently.  4 or 5 for debugging; 1 or 2 for normal usage.</p>
+
+<p>3 is for people who can&#39;t make up their mind.</p>
+<h4 id="repolist"><code>repolist</code></h4>
+<p>A list of local directories where sketches may be installed.</p>
+<h4 id="recognized_sources"><code>recognized_sources</code></h4>
+<p>A list of DC repositories where sketches may be installed FROM.  There can be
+local directories or URLs.</p>
+<h4 id="runfile"><code>runfile</code></h4>
+<p>A key-value array.</p>
+
+<p>The key <a href="reference-promise-types-edit_line-insert_lines.html#location" title="insert_lines - location"><code>location</code></a> specifies the place where the runfile is written.  If not
+specified, it defaults to the first element of <code>repolist</code> plus
+<code>/meta/api-runfile.cf</code>.</p>
+
+<p>The <code>standalone</code>, <code>standalone_inputs</code>, and <code>relocate_path</code> keys were available
+in older versions but are ignored as of DC API version 3.6.0.</p>
+
+<p>If you specify the key <code>filter_inputs</code> with an array value, any inputs matching
+any elements in that array will be omitted from the generated runfile.  That way
+you can, for example, exclude the <code>cfengine_stdlib.cf</code> that Design Center
+provides.</p>
+
+<p>If you specify the string <code>header</code> under <code>runfile</code>, it will be inserted before
+any other comments (so you can have, for instance, a comment).</p>
+<h4 id="vardata"><code>vardata</code></h4>
+<p>The file location where the API will record all data.  If not
+specified, it defaults to the first element of <code>repolist</code> plus
+<code>/meta/vardata.conf</code>.</p>
+
+<p>You should avoid changing this explicitly without very good reason.</p>
+
+<p>A <code>vardata</code> of <code>-</code> (just a dash) means that the API will not try to write to the
+vardata file, but will pretend everything is OK.</p>
+<h4 id="constdata"><code>constdata</code></h4>
+<p>The file location for the pre-defined API validations and other constant DC
+data.  If not specified, it defaults to the first element of <code>repolist</code> plus
+<code>/meta/constdata.conf</code>.</p>
+
+<p>You should avoid changing this explicitly without very good reason.</p>
+
+<p>A <code>constdata</code> of <code>-</code> (just a dash) means that the API will not try to load the
+constdata file, but will pretend everything is OK.</p>
+<h4 id="full-config-json-example">Full <code>config.json</code> example</h4>
+<p>The <code>constdata</code>, <code>vardata</code>, and <code>runfile</code> <a href="reference-promise-types-edit_line-insert_lines.html#location" title="insert_lines - location"><code>location</code></a> are left as the default.</p>
+<div class="highlight"><pre><code class="text">{
+ log: &quot;STDERR&quot;,
+ log_level: 4,
+ repolist: [ &quot;~/.cfagent/inputs/sketches&quot; ],
+ recognized_sources: [ &quot;~/source/design-center/sketches&quot; ],
+ runfile: {
+            header: &quot;# This file is maintained by CFEngine&quot;,
+            filter_inputs: [ &quot;some bad file&quot; ],
+          },
+}
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-design-center.html">design center</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-sketch.html">sketch</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-cf-sketch.html">cf-sketch</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-api.html">api</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/design-center/api.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/13cbf18729a5bf43d836f72e30aab3b2b0bdee7f" target="_blank">13cbf18729a5bf43d836f72e30aab3b2b0bdee7f</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.6/assets/footer-1ca6436dd462ed6a69ad3f2dba0774f0.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

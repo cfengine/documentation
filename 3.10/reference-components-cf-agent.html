@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.10  Documentation - cf-agent</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.10/assets/global-9291732ba4137970d6f84f199dc9b48d.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "cf-agent";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/" selected>Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:v9zopcogc1m" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a><ul class="level2"><li><a class="active" href="reference-components-cf-agent.html">cf-agent</a></li><li><a href="reference-components-cf-serverd.html">cf-serverd</a></li><li><a href="reference-components-cf-execd.html">cf-execd</a></li><li><a href="reference-components-cf-promises.html">cf-promises</a></li><li><a href="reference-components-cf-monitord.html">cf-monitord</a></li><li><a href="reference-components-cf-key.html">cf-key</a></li><li><a href="reference-components-cf-runagent.html">cf-runagent</a></li><li><a href="reference-components-cf-hub.html">cf-hub</a></li><li><a href="reference-components-file_control_promises.html">file control</a></li></ul></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-components.html">Components and Common Control</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    cf-agent
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p><code>cf-agent</code> evaluates policy code and makes changes to the system. Policy
+bundles are evaluated in the order of the provided <a href="reference-components.html#bundlesequence" title="Components and Common Control - bundlesequence"><code>bundlesequence</code></a> (this is normally specified in the
+<a href="reference-components.html#common-control" title="Components and Common Control - Common Control"><code>common control body</code></a>). For
+each bundle, <code>cf-agent</code> groups promise statements according to their type.
+Promise types are then evaluated in a preset order to ensure fast system
+convergence to policy.</p>
+
+<p><code>cf-agent</code> keeps the promises made in <code>common</code> and <a href="reference-components-cf-agent.html" title="cf-agent"><code>agent</code></a> bundles, and is
+affected by <code>common</code> and <a href="reference-components-cf-agent.html" title="cf-agent"><code>agent</code></a> control bodies.</p>
+<h2 id="command-reference">Command reference</h2><div class="highlight"><pre><code class="text">  --bootstrap   , -B value - Bootstrap CFEngine to the given policy server IP, hostname or :avahi (automatic detection)
+  --bundlesequence, -b value - Set or override bundlesequence from command line
+  --workdir     , -w value - Override the default /var/cfengine work directory for testing (same as setting CFENGINE_TEST_OVERRIDE_WORKDIR)
+  --debug       , -d       - Enable debugging output
+  --define      , -D value - Define a list of comma separated classes to be defined at the start of execution
+  --self-diagnostics, -x value - Run checks to diagnose a CFEngine agent installation
+  --dry-run     , -n       - All talk and no action mode - make no changes, only inform of promises not kept
+  --file        , -f value - Specify an alternative input file than the default. This option is overridden by FILE if supplied as argument.
+  --help        , -h       - Print the help message
+  --inform      , -I       - Print basic information about changes made to the system, i.e. promises repaired
+  --negate      , -N value - Define a list of comma separated classes to be undefined at the start of execution
+  --no-lock     , -K       - Ignore locking constraints during execution (ifelapsed/expireafter) if &quot;too soon&quot; to run
+  --verbose     , -v       - Output verbose information about the behaviour of the agent
+  --version     , -V       - Output the version of the software
+  --timing-output, -t       - Output timing information on console when in verbose mode
+  --trust-server, -T value - Possible values: &#39;yes&#39; (default, trust the server when bootstrapping), &#39;no&#39; (server key must already be trusted)
+  --color       , -C value - Enable colorized output. Possible values: &#39;always&#39;, &#39;auto&#39;, &#39;never&#39;. If option is used, the default value is &#39;auto&#39;
+  --no-extensions, -E       - Disable extension loading (used while upgrading)
+  --timestamp   , -l       - Log timestamps on each line of log output
+  --log-modules , - value - Enable even more detailed debug logging for specific areas of the implementation. Use together with &#39;-d&#39;. Use --log-modules=help for a list of available modules
+</code></pre>
+</div>
+<h2 id="automatic-bootstrapping">Automatic Bootstrapping</h2>
+<p>Automatic bootstrapping allows the user to connect a CFEngine Host to a Policy
+Server without specifying the IP address manually. It uses the <em>Avahi</em> service
+discovery implementation of <code>zeroconf</code> to locate the Policy Server, obtain its IP
+address, and then connect to it. To use automatic bootstrap, install the
+following Avahi libraries:</p>
+
+<ul>
+<li>libavahi-client</li>
+<li>libavahi-common</li>
+</ul>
+
+<p>To make the CFEngine Server discoverable, it needs to register itself as an
+Avahi service. Run the following command:</p>
+<div class="highlight"><pre><code class="text">    $ /var/cfengine/bin/cf-serverd -A
+</code></pre>
+</div>
+
+<p>This generates the configuration file for Avahi in <code>/etc/avahi/services</code> and
+restarts the Avahi daemon in order to register the new service.</p>
+
+<p>From this point on, the Policy Server will be discovered with the Avahi service.
+To verify that the server is visible, run the following command (requires
+<code>avahi-utils</code>):</p>
+<div class="highlight"><pre><code class="text">    $ avahi-browse -atr | grep cfenginehub
+</code></pre>
+</div>
+
+<p>The sample output looks like this:</p>
+<div class="highlight"><pre><code class="text">    eth0 IPv4 CFEngine Community 3.5.0 Policy Server on policy_hub_debian7
+    _cfenginehub._tcp local
+</code></pre>
+</div>
+
+<p>Once the Policy Server is configured with the Avahi service, you can
+auto-bootstrap Hosts to it.</p>
+<div class="highlight"><pre><code class="text">    $ /var/cfengine/bin/cf-agent -B :avahi
+</code></pre>
+</div>
+
+<p>The Hosts require Avahi libraries to be installed in order to use this
+functionality. By default <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> looks for libraries in standard install
+locations. Install locations vary from system to system. If Avahi is
+installed in a non-standard location (i.e. compiled from source), set the
+<code>AVAHI_PATH</code> environmental variable to specify the path.</p>
+<div class="highlight"><pre><code class="text">   $ AVAHI_PATH=/lib/libavahi-client.so.3 /var/cfengine/bin/cf-agent -B
+</code></pre>
+</div>
+
+<p>If more than one server is found, or if the server has more than one IP
+address, the list of all available servers is printed and the user is asked to
+manually specify the IP address of the correct server by running the standard
+bootstrap command of cf-agent:</p>
+<div class="highlight"><pre><code class="text">   $ /var/cfengine/bin/cf-agent --bootstrap &lt;IP address&gt;
+</code></pre>
+</div>
+
+<p>If only one Policy Server is found in the network, <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> performs the
+bootstrap without further manual user intervention.</p>
+
+<p><strong>Note:</strong> Automatic bootstrapping support is ONLY for Linux, and it is limited
+only to one subnet.</p>
+<h2 id="control-promises">Control Promises</h2>
+<p>Settings describing the details of the fixed behavioral promises
+made by <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+<span class="p">{</span>
+  <span class="c"># Agent email report settings based on their domain.</span>
+
+    <span class="nc">alpha_cfengine_com</span><span class="p">::</span>
+      <span class="kr">domain</span> <span class="o">=&gt;</span> <span class="s">&quot;alpha.cfengine.com&quot;</span><span class="p">;</span>
+      <span class="kr">mailto</span> <span class="o">=&gt;</span> <span class="s">&quot;admins@alpha.cfengine.com&quot;</span><span class="p">;</span>
+
+    <span class="nc">beta_domain_com</span><span class="p">::</span>
+      <span class="kr">domain</span> <span class="o">=&gt;</span> <span class="s">&quot;beta.cfengine.com&quot;</span><span class="p">;</span>
+      <span class="kr">mailto</span> <span class="o">=&gt;</span> <span class="s">&quot;admins@beta.cfengine.com&quot;</span><span class="p">;</span>
+
+    <span class="nc">any</span><span class="p">::</span>
+      <span class="kr">mailfrom</span> <span class="o">=&gt;</span> <span class="s">&quot;root&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="abortclasses">abortclasses</h3>
+<p><strong>Description:</strong> The <code>abortclasses</code> slist contains regular expressions that
+match classes which if defined lead to termination of cf-agent.</p>
+
+<p>Regular expressions are used for classes that <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> will watch out
+for. If any matching class becomes defined, it will cause the
+current execution of <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> to be aborted. This may be used for
+validation, for example.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+<span class="p">{</span>
+  <span class="kr">abortclasses</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;danger.*&quot;</span><span class="p">,</span> <span class="s">&quot;should_not_continue&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+  <span class="kd">methods</span><span class="p">:</span>
+    <span class="s">&quot;bundle_a&quot;</span><span class="p">;</span>
+    <span class="s">&quot;bundle_b&quot;</span><span class="p">;</span>
+    <span class="s">&quot;bundle_c&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">bundle_a</span>
+<span class="p">{</span>
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="s">&quot;abort_condition_a&quot;</span>
+      <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;any&quot;</span><span class="p">,</span>
+      <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">common</span> <span class="nf">bundle_b</span>
+<span class="p">{</span>
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="s">&quot;abort_condition_b&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;any&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">bundle_c</span>
+<span class="p">{</span>
+  <span class="kd">classes</span><span class="p">:</span>
+
+    <span class="c"># Here we define a class that will match the abortclasses under more complex</span>
+    <span class="c"># conditions</span>
+
+    <span class="s">&quot;should_not_continue&quot;</span>
+      <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;(abort_condition_a.abort_condition_b).!something_else&quot;</span><span class="p">,</span>
+      <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Output</strong>:</p>
+<div class="highlight"><pre><code class="text">error: Fatal CFEngine error: cf-agent aborted on defined class &#39;should_not_continue&#39;
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> CFEngine class expressions are <strong>not</strong> supported. To handle class
+expressions, simply create an alias for the expression with a single name.</p>
+<h3 id="abortbundleclasses">abortbundleclasses</h3>
+<p><strong>Description:</strong> The <code>abortbundleclasses</code> slist contains regular expressions
+that match classes which if defined lead to termination of current bundle.</p>
+
+<p>Regular expressions are used for classes, or class expressions
+that <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> will watch out for. If any of these classes becomes
+defined, it will cause the current bundle to be aborted. This may
+be used for validation, for example.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong>
+This example shows how to use the feature to validate input to a
+method bundle.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+
+    <span class="p">{</span>
+    <span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;testbundle&quot;</span>  <span class="p">};</span>
+    <span class="kr">version</span> <span class="o">=&gt;</span> <span class="s">&quot;1.2.3&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c">#################################</span>
+
+    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+
+    <span class="p">{</span>
+    <span class="kr">abortbundleclasses</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;invalid.*&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="c">#################################</span>
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">testbundle</span>
+    <span class="p">{</span>
+    <span class="kd">vars</span><span class="p">:</span>
+
+     <span class="p">&quot;</span><span class="nv">userlist</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;xyz&quot;</span><span class="p">,</span> <span class="s">&quot;mark&quot;</span><span class="p">,</span> <span class="s">&quot;jeang&quot;</span><span class="p">,</span> <span class="s">&quot;jonhenrik&quot;</span><span class="p">,</span> <span class="s">&quot;thomas&quot;</span><span class="p">,</span> <span class="s">&quot;eben&quot;</span> <span class="p">};</span>
+
+    <span class="kd">methods</span><span class="p">:</span>
+
+     <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">subtest</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(userlist)</span><span class="s">&quot;</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+    <span class="c">#################################</span>
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">subtest</span><span class="p">(</span><span class="nv">user</span><span class="p">)</span>
+
+    <span class="p">{</span>
+    <span class="kd">classes</span><span class="p">:</span>
+
+      <span class="s">&quot;invalid&quot;</span> <span class="kr">not</span> <span class="o">=&gt;</span> <span class="nf">regcmp</span><span class="p">(</span><span class="s">&quot;[a-z]{4}&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(user)</span><span class="s">&quot;</span><span class="p">);</span>
+
+    <span class="kd">reports</span><span class="p">:</span>
+
+     <span class="nc">!invalid</span><span class="p">::</span>
+
+      <span class="s">&quot;User name </span><span class="si">$(user)</span><span class="s"> is valid at exactly 4 letters&quot;</span><span class="p">;</span>
+
+     <span class="c"># abortbundleclasses will prevent this from being evaluated</span>
+     <span class="nc">invalid</span><span class="p">::</span>
+
+      <span class="s">&quot;User name </span><span class="si">$(user)</span><span class="s"> is invalid&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="addclasses">addclasses</h3>
+<p><strong>Description:</strong> The <code>addclasses</code> slist contains classes to be defined
+always in the current context.</p>
+
+<p>This adds global, literal classes. The only predicates available during
+the control section are hard-classes.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="nc">any</span><span class="p">::</span>
+
+      <span class="kr">addclasses</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;My_Organization&quot;</span> <span class="p">}</span>
+
+    <span class="nc">solaris</span><span class="p">::</span>
+
+      <span class="kr">addclasses</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;some_solaris_alive&quot;</span><span class="p">,</span> <span class="s">&quot;running_on_sunshine&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>Another place to make global aliases for system hardclasses.
+Classes here are added unequivocally to the system. If classes are
+used to predicate definition, then they must be defined in terms of
+global hard classes.</p>
+<h3 id="agentaccess">agentaccess</h3>
+<p><strong>Description:</strong> A <code>agentaccess</code> slist contains user names that are
+allowed to execute cf-agent.</p>
+
+<p>This represents a list of user names that will be allowed to attempt
+execution of the current configuration. This is mainly a sanity check
+rather than a security measure.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="kr">agentaccess</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;mark&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;sudo&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+<h3 id="agentfacility">agentfacility</h3>
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">   LOG_USER
+   LOG_DAEMON
+   LOG_LOCAL0
+   LOG_LOCAL1
+   LOG_LOCAL2
+   LOG_LOCAL3
+   LOG_LOCAL4
+   LOG_LOCAL5
+   LOG_LOCAL6
+   LOG_LOCAL7
+</code></pre>
+</div>
+
+<p><strong>Default value:</strong> <code>LOG_USER</code></p>
+
+<p><strong>Description:</strong> The <code>agentfacility</code> menu option policy sets the agent&#39;s
+syslog facility level.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="kr">agentfacility</span> <span class="o">=&gt;</span> <span class="s">&quot;LOG_USER&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>This is ignored on Windows, as CFEngine Enterprise creates event logs.</p>
+
+<p><strong>See Also</strong>: Manual pages for syslog.</p>
+<h3 id="allclassesreport">allclassesreport</h3>
+<p><strong>Description:</strong> The <code>allclassesreport</code> menu option policy determines
+whether to generate the <code>allclasses.txt</code> report.</p>
+
+<p>If set to true, the <code>state/allclasses.txt</code> file will be written to disk
+during agent execution.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">allclassesreport</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>This functionality is retained only for CFEngine 2 compatibility. As of
+CFEngine 3.5, the <a href="reference-functions-classesmatching.html" title="classesmatching"><code>classesmatching()</code></a> function provides
+a more convenient way to retrieve a list of set classes at execution time.</p>
+
+<p><strong>History:</strong> Was introduced in 3.2.4, Enterprise 2.1.4 (2011)</p>
+<h3 id="alwaysvalidate">alwaysvalidate</h3>
+<p><strong>Description:</strong> The <code>alwaysvalidate</code> menu option policy is a true/false
+flag to determine whether configurations will always be checked before
+executing, or only after updates.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="nc">Min00_05</span><span class="p">::</span>
+
+      <span class="c"># revalidate once per hour, regardless of change in configuration</span>
+
+      <span class="kr">alwaysvalidate</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>The agents <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> and <code>cfserverd</code> can run <a href="reference-components-cf-promises.html" title="cf-promises"><code>cf-promises</code></a> to
+validate inputs before attempting to execute a configuration. As of
+version 3.1.2 core, this only happens if the configuration file has
+changed to save CPU cycles. When this attribute is set, <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>
+will force a revalidation of the input.</p>
+
+<p><strong>History:</strong> Was introduced in version 3.1.2,Enterprise 2.0.1 (2010)</p>
+<h3 id="auditing">auditing</h3>
+<p><strong>Deprecated:</strong> This menu option policy is deprecated, does
+nothing and is kept for backward compatibility.</p>
+<h3 id="binarypaddingchar">binarypaddingchar</h3>
+<p><strong>Deprecated: This attribute was deprecated in 3.6.0.</strong></p>
+<h3 id="bindtointerface">bindtointerface</h3>
+<p><strong>Description:</strong> The <code>bindtointerface</code> string describes the interface
+to be used for outgoing connections.</p>
+
+<p>On multi-homed hosts, the server and client can bind to a specific
+interface for server traffic. The IP address of the interface must
+be given as the argument, not the device name.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="kr">bindtointerface</span> <span class="o">=&gt;</span> <span class="s">&quot;192.168.1.1&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="hashupdates">hashupdates</h3>
+<p><strong>Description:</strong> The <code>hashupdates</code> determines whether stored hashes are
+updated when change is detected in source.</p>
+
+<p>If &#39;true&#39; the stored reference value is updated as soon as a warning
+message has been given. As most changes are benign (package updates
+etc) this is a common setting.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">hashupdates</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="childlibpath">childlibpath</h3>
+<p><strong>Description:</strong> The <code>childlibpath</code> string contains the LD_LIBRARY_PATH
+for child processes.</p>
+
+<p>This string may be used to set the internal <code>LD_LIBRARY_PATH</code> environment
+of the agent.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">childlibpath</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/local/lib:/usr/local/gnu/lib&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="checksum_alert_time">checksum_alert_time</h3>
+<p><strong>Description:</strong> The value of checksum_alert_time represents the
+persistence time for the checksum_alert class.</p>
+
+<p>When checksum changes trigger an alert, this is registered as a
+persistent class. This value determines the longevity of that
+class.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,60</code></p>
+
+<p><strong>Default value:</strong> 10 mins</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">checksum_alert_time</span> <span class="o">=&gt;</span> <span class="s">&quot;30&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="defaultcopytype">defaultcopytype</h3>
+<p><strong>Description:</strong> The <code>defaultcopytype</code> menu option policy sets the global
+default policy for comparing source and image in copy transactions.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">   mtime
+   atime
+   ctime
+   digest
+   hash
+   binary
+</code></pre>
+</div>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="c">#...</span>
+    <span class="kr">defaultcopytype</span> <span class="o">=&gt;</span> <span class="s">&quot;digest&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="default_repository">default_repository</h3>
+<p><strong>Description:</strong> The <code>default_repository</code> string contains the path to the
+default file repository.</p>
+
+<p>If defined the default repository is the location where versions of
+files altered by CFEngine are stored. This should be understood in
+relation to the policy for &#39;backup&#39; in copying, editing etc. If the
+backups are time-stamped, this becomes effective a version control
+repository.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>&quot;?(/.*)</code></p>
+
+<p><strong>Default value:</strong> unset</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">default_repository</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/cfengine/repository&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong> When a repository is specified, the files are stored using the
+canonified directory name of the original file, concatenated with the name of
+the file. So, for example, <code>/usr/local/etc/postfix.conf</code> would ordinarily be
+stored in an alternative repository as <code>_usr_local_etc_postfix.conf.cfsaved</code>. If
+unset then backups are stored in the same directory as the original file with an
+identifying suffix.</p>
+
+<p><strong>See also:</strong> <a href="reference-promise-types-files.html#edit_backup" title="files - edit_backup"><code>edit_backup</code> in <code>body edit_defaults</code></a>, <a href="reference-promise-types-files.html#copy_backup" title="files - copy_backup"><code>copy_backup</code> in <code>body copy_from</code></a></p>
+<h3 id="default_timeout">default_timeout</h3>
+<p><strong>Description:</strong> The value of <code>default_timeout</code> represents the maximum
+time a network connection should attempt to connect or read from server.</p>
+
+<p>The time is in seconds. It is not a guaranteed number, since it
+depends on system behavior.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Default value:</strong> 30 seconds</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+<span class="p">{</span>
+  <span class="kr">default_timeout</span> <span class="o">=&gt;</span> <span class="s">&quot;10&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>See Also:</strong> <a href="reference-promise-types-files.html#timeout" title="files - timeout">body <code>copy_from</code> timeout</a>, <a href="reference-components-cf-runagent.html#timeout" title="cf-runagent - timeout"><code>cf-runagent</code> timeout</a></p>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li><a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a> will time out any transfer that takes longer than 10 minutes
+(this is not currently tunable).</li>
+</ul>
+<h3 id="dryrun">dryrun</h3>
+<p><strong>Description:</strong> The <code>dryrun</code> menu option, if set, makes no changes to
+the system, and will only report what it needs to do.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">dryrun</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="editbinaryfilesize">editbinaryfilesize</h3>
+<p><strong>Description:</strong> The value of <code>editbinaryfilesize</code> represents the limit
+on maximum binary file size to be edited.</p>
+
+<p>This is a global setting for the file-editing safety-net for binary files,
+and may be overridden on a per-promise basis with <a href="reference-promise-types-files.html#max_file_size" title="files - max_file_size"><code>max_file_size</code></a>.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Default value:</strong> <code>100k</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">edibinaryfilesize</span> <span class="o">=&gt;</span> <span class="s">&quot;10M&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>
+When setting limits, the limit on editing binary files should
+generally be set higher than for text files.</p>
+<h3 id="editfilesize">editfilesize</h3>
+<p><strong>Description:</strong> The value of <code>editfilesize</code> is the limit on maximum text
+file size to be edited.</p>
+
+<p>This is a global setting for the file-editing safety-net, and may be
+overridden on a per-promise basis with <a href="reference-promise-types-files.html#max_file_size" title="files - max_file_size"><code>max_file_size</code></a>.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Default value:</strong> 100000</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">editfilesize</span> <span class="o">=&gt;</span> <span class="s">&quot;120k&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="environment">environment</h3>
+<p><strong>Description:</strong> The <code>environment</code> slist contains environment variables
+to be inherited by children.</p>
+
+<p>This may be used to set the runtime environment of the agent process.
+The values of environment variables are inherited by child commands.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[A-Za-z0-9_]+=.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;one&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">environment</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;A=123&quot;</span><span class="p">,</span> <span class="s">&quot;B=456&quot;</span><span class="p">,</span> <span class="s">&quot;PGK_PATH=/tmp&quot;</span><span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">one</span>
+    <span class="p">{</span>
+    <span class="kd">commands</span><span class="p">:</span>
+
+      <span class="s">&quot;/usr/bin/env&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Some interactive programs insist on values being set, for example:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># Required by apt-cache, debian</span>
+
+    <span class="kr">environment</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;LANG=C&quot;</span><span class="p">};</span>
+</code></pre>
+</div>
+<h3 id="expireafter">expireafter</h3>
+<p><strong>Description:</strong> The value of <code>expireafter</code> is a global default for time
+before on-going promise repairs are interrupted.</p>
+
+<p>This represents the locking time after which CFEngine will attempt to
+kill and restart its attempt to keep a promise.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Default value:</strong> 1 min</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">action</span> <span class="nf">example</span>
+    <span class="p">{</span>
+    <span class="kr">ifelapsed</span>   <span class="o">=&gt;</span> <span class="s">&quot;120&quot;</span><span class="p">;</span>   <span class="c"># 2 hours</span>
+    <span class="kr">expireafter</span> <span class="o">=&gt;</span> <span class="s">&quot;240&quot;</span><span class="p">;</span>   <span class="c"># 4 hours</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>See Also:</strong> <a href="reference-promise-types.html#expireafter" title="Promise Types and Attributes - expireafter"><code>body action expireafter</code></a>, <a href="reference-promise-types-commands.html#exec_timeout" title="commands - exec_timeout"><code>body contain exec_timeout</code></a>, <a href="reference-components-cf-execd.html#agent_expireafter" title="cf-execd - agent_expireafter"><code>body executor control agent_expireafter</code></a></p>
+<h3 id="files_single_copy">files_single_copy</h3>
+<p><strong>Description:</strong> The <code>files_single_copy</code> slist contains filenames to be
+watched for multiple-source conflicts.</p>
+
+<p>This list of regular expressions will ensure that files matching
+the patterns of the list are never copied from more than one source
+during a single run of <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>. This may be considered a
+protection against accidental overlap of copies from diverse
+remote sources, or as a first-come-first-served disambiguation tool
+for lazy-evaluation of overlapping file-copy promises.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">files_single_copy</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;/etc/.*&quot;</span><span class="p">,</span> <span class="s">&quot;/special/file&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="files_auto_define">files_auto_define</h3>
+<p><strong>Description:</strong> The <code>files_auto_define</code> slist contains filenames to
+define classes if copied.</p>
+
+<p>Classes are automatically defined by the files that are copied. The
+file is named according to the prefixed &#39;canonization&#39; of the file
+name. Canonization means that non-identifier characters are
+converted into underscores. Thus <code>/etc/passwd</code> would canonize to
+<code>_etc_passwd</code>. The prefix <code>auto_</code> is added to clarify the origin
+of the class. Thus in the example the copying of <code>/etc/passwd</code> would
+lead to the class <code>auto__etc_passwd</code> being defined
+automatically.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">files_auto_define</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;/etc/syslog</span><span class="se">\.</span><span class="s">c.*&quot;</span><span class="p">,</span> <span class="s">&quot;/etc/passwd&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="hostnamekeys">hostnamekeys</h3>
+<p><strong>Deprecated:</strong> Host identification is now handled transparently.</p>
+
+<p><strong>Description:</strong> The <code>hostnamekeys</code> menu option policy determines whether
+to label ppkeys by hostname not IP address.</p>
+
+<p>This represents a client side choice to base key associations on host
+names rather than IP address. This is useful for hosts with dynamic
+addresses.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">hostnamekeys</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="ifelapsed">ifelapsed</h3>
+<p><strong>Description:</strong> The value of <code>ifelapsed</code> is a global default representing
+the time that must elapse before a promise will be rechecked.</p>
+
+<p>This overrides the global settings. Promises which take a long time
+to verify should usually be protected with a long value for this
+parameter. This serves as a resource &#39;spam&#39; protection. A CFEngine
+check could easily run every 5 minutes provided resource intensive
+operations are not performed on every run. Using time classes like
+<code>Hr12</code> etc., is one part of this strategy; using <code>ifelapsed</code> is
+another which is not tied to a specific time.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Default value:</strong> 1</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="c">#local</span>
+
+    <span class="k">body</span> <span class="k">action</span> <span class="nf">example</span>
+    <span class="p">{</span>
+    <span class="kr">ifelapsed</span>   <span class="o">=&gt;</span> <span class="s">&quot;120&quot;</span><span class="p">;</span>   <span class="c"># 2 hours</span>
+    <span class="kr">expireafter</span> <span class="o">=&gt;</span> <span class="s">&quot;240&quot;</span><span class="p">;</span>   <span class="c"># 4 hours</span>
+    <span class="p">}</span>
+
+    <span class="c"># global</span>
+
+    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">ifelapsed</span>   <span class="o">=&gt;</span> <span class="s">&quot;180&quot;</span><span class="p">;</span>   <span class="c"># 3 hours</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>See Also:</strong> <a href="reference-language-concepts-promises.html#promise-locking" title="Promises - Promise Locking">Promise locking</a>, <a href="reference-promise-types.html#ifelapsed" title="Promise Types and Attributes - ifelapsed">ifelapsed action body attribute</a></p>
+<h3 id="inform">inform</h3>
+<p><strong>Description:</strong> The <code>inform</code> menu option policy sets the default  output
+level &#39;permanently&#39; within the class context indicated.</p>
+
+<p>It is equivalent to (and when present, overrides) the command line option
+&#39;-I&#39;.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">inform</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="intermittency">intermittency</h3>
+<p><strong>Deprecated:</strong> This attribute does nothing and is kept for backward
+compatibility.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+<h3 id="max_children">max_children</h3>
+<p><strong>Description:</strong> The value of <code>max_children</code> represents the maximum number
+of background tasks that should be allowed concurrently.</p>
+
+<p>For the run-agent this is the maximum number of forked background
+processes allowed when parallelizing connections to servers.
+For the agent it represents the number of background jobs allowed
+concurrently. Background jobs often lead to contention of the disk
+resources slowing down tasks considerably; there is thus a law of
+diminishing returns.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Default value:</strong> 1 concurrent agent promise</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">max_children</span> <span class="o">=&gt;</span> <span class="s">&quot;10&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>See Also</strong>: <a href="reference-promise-types.html#background" title="Promise Types and Attributes - background"><code>background</code> in action bodies</a></p>
+<h3 id="maxconnections">maxconnections</h3>
+<p><strong>Description:</strong> The value of <code>maxconnections</code> represents the maximum
+number of outgoing connections to <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a>.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Default value:</strong> 30 remote queries</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># client side</span>
+
+    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">maxconnections</span> <span class="o">=&gt;</span> <span class="s">&quot;1000&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>Watch out for kernel limitations for maximum numbers of open file
+descriptors which can limit this.</p>
+<h3 id="mountfilesystems">mountfilesystems</h3>
+<p><strong>Description:</strong> The <code>mountfilesystems</code> menu option policy determines
+whether to mount any filesystems promised.</p>
+
+<p>It issues the generic command to mount file systems defined in the
+file system table.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">mountfilesystems</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="nonalphanumfiles">nonalphanumfiles</h3>
+<p><strong>Description:</strong> The <code>nonalphanumfiles</code> menu option policy determines
+whether to warn about filenames with no alphanumeric content.</p>
+
+<p>This test is applied in all recursive/depth searches.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">nonalphanumfiles</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="repchar">repchar</h3>
+<p><strong>Description:</strong> The <code>repchar</code> string represents a character used to
+canonize pathnames in the file repository.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.</code></p>
+
+<p><strong>Default value:</strong> <code>_</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">repchar</span> <span class="o">=&gt;</span> <span class="s">&quot;_&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+<h3 id="refresh_processes">refresh_processes</h3>
+<p><strong>Description:</strong> The <code>refresh_processes</code> slist contains bundles to reload
+the process table before verifying the bundles named in this list
+(lazy evaluation).</p>
+
+<p>If this list of regular expressions is non-null and an existing
+bundle is mentioned or matched in this list, CFEngine will reload
+the process table at the start of the named bundle, each time is is
+scheduled. If the list is null, the process list will be reloaded
+at the start of every scheduled bundle.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_$(){}\[\].:]+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">refresh_processes</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;mybundle&quot;</span> <span class="p">};</span>
+    <span class="c">#refresh_processes =&gt; { &quot;none&quot; };</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This examples uses a non-empty list with the name &#39;none&#39;. This is not a
+reserved word, but as long as there are no bundles with the name &#39;none&#39; this
+has the effect of <em>never</em> reloading the process table. This keeps improves the
+efficiency of the agent.</p>
+
+<p><strong>History:</strong> Was introduced in version 3.1.3, Enterprise 2.0.2 (2010)</p>
+<h3 id="secureinput">secureinput</h3>
+<p><strong>Description:</strong> The <code>secureinput</code> menu option policy checks whether
+input files are writable by unauthorized users.</p>
+
+<p>If this is set, the agent will not accept an input file that is not
+owned by a privileged user.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">secureinput</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="select_end_match_eof">select_end_match_eof</h4>
+<p><strong>Description:</strong> When <code>select_end_match_eof</code> is set to true <a href="reference-promise-types-edit_line.html#select_end" title="bundle edit_line - select_end"><code>select_end</code></a> will consider end of file as the end region if it is unable to match
+the end pattern. For more details see <a href="reference-promise-types-edit_line.html" title="bundle edit_line"><code>edit_line</code></a> promise.</p>
+
+<p><strong>Note:</strong> <a href="reference-promise-types-edit_line.html#select_end_match_eof" title="bundle edit_line - select_end_match_eof">bundle edit_line select_end_match_eof</a> can override this setting at the individual promise level.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+     <span class="p">{</span>
+     <span class="kr">select_end_match_eof</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="sensiblecount">sensiblecount</h3>
+<p><strong>Description:</strong> The value of <code>sensiblecount</code> represents the minimum
+number of files a mounted filesystem is expected to have.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Default value:</strong> 2 files</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">sensiblecount</span> <span class="o">=&gt;</span> <span class="s">&quot;20&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="sensiblesize">sensiblesize</h3>
+<p><strong>Description:</strong> The value of <code>sensiblesize</code> represents the minimum
+number of bytes a mounted filesystem is expected to have.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Default value:</strong> 1000 bytes</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">sensiblesize</span> <span class="o">=&gt;</span> <span class="s">&quot;20K&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="skipidentify">skipidentify</h3>
+<p><strong>Description:</strong> The <code>skipidentify</code> menu option policy determines whether
+to send an IP/name during server connection because address resolution is
+broken.</p>
+
+<p>Hosts that are not registered in DNS cannot supply reasonable
+credentials for a secondary confirmation of their identity to a
+CFEngine server. This causes the agent to ignore its missing DNS
+credentials.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">skipidentify</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="suspiciousnames">suspiciousnames</h3>
+<p><strong>Description:</strong> The <code>suspiciousnames</code> slist contains names to skip and warn
+about if found during any file search.</p>
+
+<p>If CFEngine sees these names during recursive (depth) file searches,
+it will skip them and output a warning message.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">suspiciousnames</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;.mo&quot;</span><span class="p">,</span> <span class="s">&quot;lrk3&quot;</span><span class="p">,</span> <span class="s">&quot;rootkit&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="syslog">syslog</h3>
+<p><strong>Deprecated:</strong> This menu option policy is deprecated as of 3.6.0. It performs
+no action and is kept for backward compatibility.</p>
+<h3 id="track_value">track_value</h3>
+<p><strong>Deprecated:</strong> This menu option policy is deprecated as of 3.6.0. It performs
+no action and is kept for backward compatibility.</p>
+<h3 id="timezone">timezone</h3>
+<p><strong>Description:</strong> The <code>timezone</code> slist contains allowed timezones this
+machine must comply with.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">timezone</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;MET&quot;</span><span class="p">,</span> <span class="s">&quot;CET&quot;</span><span class="p">,</span> <span class="s">&quot;GMT+1&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="verbose">verbose</h3>
+<p><strong>Description:</strong> The <code>verbose</code> menu option policy determines whether to
+switch on verbose standard output.</p>
+
+<p>It is equivalent to (and when present, overrides) the command line option
+&#39;-v&#39;. Sets the default output level &#39;permanently&#39; for this
+promise.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">verbose</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="report_class_log">report_class_log</h3>
+<p><strong>Description:</strong> The <code>report_class_log</code> option enables logging of classes set by
+cf-agent. Each class set by cf-agent will be logged at the end of agent
+execution (all classes defined during the same cf-agent execution will have the
+same timestamp).</p>
+
+<p>Time classes are ignored.
+Destination: &#39;/var/cfengine/state/classes.jsonl&#39;</p>
+
+<p>Format(jsonl):</p>
+<div class="highlight"><pre><code class="text">{&quot;name&quot;:&quot;class_123&quot;,&quot;timestamp&quot;:1456933993}\r\n
+{&quot;name&quot;:&quot;pk_sha_123&quot;,&quot;timestamp&quot;:1456933993}\r\n
+</code></pre>
+</div>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+<span class="p">{</span>
+  <span class="kr">report_class_log</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Added in 3.9.0</li>
+</ul>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li>Available in CFEngine Enterprise.</li>
+<li>Persistent classes are logged with the timestamp of each agent run.</li>
+</ul>
+
+<p>The following classes are excluded from logging:</p>
+
+<ul>
+<li>Time based classes (<code>Hr01</code>, <code>Tuesday</code>, <code>Morning</code>, etc ...)</li>
+<li><code>license_expired</code></li>
+<li><code>any</code></li>
+<li><code>from_cfexecd</code></li>
+<li>Life cycle (<code>Lcycle_0</code>, <code>GMT_Lcycle_3</code>)</li>
+</ul>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-components.html">components</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-cf-agent.html">cf-agent</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 17 March 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/components/cf-agent.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/ae7435d3d24d30077bfbf18438f2444c629f8c69" target="_blank">ae7435d3d24d30077bfbf18438f2444c629f8c69</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.10/assets/footer-4c28dbe187e7b2a3c1504ff564f1b523.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

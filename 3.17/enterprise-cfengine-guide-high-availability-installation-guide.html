@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.17  Documentation - Installation Guide</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/enterprise-cfengine-guide-high-availability-installation-guide.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='/docs/3.17/assets/global-4de74225093262155923559d57c53b5c.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Installation Guide";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/" selected>Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value=" 61c5dfe74ae502b02" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html"  class="navselected" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="enterprise-cfengine-guide-install-get-started.html">Install and Get Started</a></li><li><a href="enterprise-cfengine-guide-user-interface.html">User Interface</a></li><li><a href="enterprise-cfengine-guide-settings.html">Settings</a></li><li><a href="enterprise-cfengine-guide-hosts-health.html">Hosts and Health</a></li><li><a href="enterprise-cfengine-guide-alerts-notifications.html">Alerts and Notifications</a></li><li><a href="enterprise-cfengine-guide-alerts-custom-actions.html">Custom actions for Alerts</a></li><li><a href="enterprise-cfengine-guide-reporting.html">Enterprise Reporting</a></li><li><a href="enterprise-cfengine-guide-federated-reporting.html">Federated Reporting</a></li><li><a href="enterprise-cfengine-guide-measurements.html">Measurements app</a></li><li><a href="enterprise-cfengine-guide-enterprise-api.html">Enterprise API</a></li><li><a href="enterprise-cfengine-guide-best-practices.html">Best Practices</a></li><li><a href="enterprise-cfengine-guide-high-availability.html">High Availability</a><ul class="level2"><li><a class="active" href="enterprise-cfengine-guide-high-availability-installation-guide.html">Installation Guide</a></li></ul></li><li><a href="enterprise-cfengine-guide-hub_administration.html">Hub Administration</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="enterprise-cfengine-guide.html">CFEngine Enterprise</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="enterprise-cfengine-guide-high-availability.html">High Availability</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Installation Guide
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h2 id="overview">Overview</h2>
+<p>This tutorial is describing the installation steps of the <strong>CFEngine High Availability</strong> feature. It
+is suitable for both upgrading existing CFEngine installations to HA and for installing HA from
+scratch. Before starting installation we strongly recommend reading the <a href="enterprise-cfengine-guide-high-availability.html" title="High Availability">CFEngine High Availability
+overview</a>.</p>
+<h2 id="installation-procedure">Installation procedure</h2>
+<p>As with most High Availability systems, setting it up requires carefully following a series of steps
+with dependencies on network components. The setup can therefore be error-prone, so if you are a
+CFEngine Enterprise customer we recommend that you contact support for assistance if you do not feel
+100% comfortable of doing this on your own.</p>
+
+<p>Please also make sure you have a valid license for the passive hub so that it will be able to handle
+all your CFEngine clients in case of failover.</p>
+<h3 id="hardware-configuration-and-os-pre-configuration-steps">Hardware configuration and OS pre-configuration steps</h3>
+<ul>
+<li>CFEngine 3.6.2 (or later) hub package for RHEL6 or CentOS6.</li>
+<li>We recommend selecting dedicated interface used for PostgreSQL replication and optionally one for heartbeat.</li>
+<li>We recommend having one shared IP address assigned for interface where MP is accessible
+(optionally) and one where PostgreSQL replication is configured (mandatory).</li>
+<li>Both active and passive hub machines must be configured so that host names are different.</li>
+<li>Basic hostname resolution works (hub names can be placed in <em>/etc/hosts</em> or DNS configured).</li>
+</ul>
+<h3 id="example-configuration-used-in-this-tutorial">Example configuration used in this tutorial</h3>
+<p>In this tutorial we use the following network configuration:</p>
+
+<ul>
+<li>Two nodes, one acting as active (node1) and one acting as passive (node2).</li>
+<li>Optionally a third node (node3) used as a database backup for offsite replication.</li>
+<li>Each node having three NICs so that eth0 is used for the heartbeat, eth1 is used for PostgreSQL
+replication and eth2 is used for MP and bootstrapping clients.</li>
+<li>IP addresses configured as follows:</li>
+</ul>
+<div class="tableOverflow"><table><thead><tr>
+<th>Node</th>
+<th align="left">eth0</th>
+<th align="left">eth1</th>
+<th align="left">eth2</th>
+</tr>
+</thead><tbody><tr>
+<td>node1</td>
+<td align="left">192.168.0.10</td>
+<td align="left">192.168.10.10</td>
+<td align="left">192.168.100.10</td>
+</tr>
+<tr>
+<td>node2</td>
+<td align="left">192.168.0.11</td>
+<td align="left">192.168.10.11</td>
+<td align="left">192.168.100.11</td>
+</tr>
+<tr>
+<td>node3 (optional)</td>
+<td align="left">---</td>
+<td align="left">192.168.10.12</td>
+<td align="left">192.168.100.12</td>
+</tr>
+<tr>
+<td>cluster shared</td>
+<td align="left">---</td>
+<td align="left">---</td>
+<td align="left">192.168.100.100</td>
+</tr>
+</tbody></table></div>
+<p>Detailed network configuration is shown on the picture below:</p>
+
+<p><img src="ha_network_setup.png" alt="HAGuideNetworkSetup"></p>
+<h2 id="install-cluster-management-tools">Install cluster management tools</h2>
+<p><strong>On both nodes:</strong></p>
+<div class="highlight"><pre><code class="text">   yum -y install pcs pacemaker cman fence-agents
+</code></pre>
+</div>
+
+<p>In order to operate cluster, proper fencing must be configured but description how to fence cluster
+and what mechanism use is out of the scope of this document. For reference please use the <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/configuring_the_red_hat_high_availability_add-on_with_pacemaker/ch-fencing-haar">Red Hat
+HA fencing guide</a>.</p>
+
+<p><strong>IMPORTANT:</strong> please carefully follow the indicators describing if the given step should be
+               performed on the active (node1), the passive (node2) or both nodes.</p>
+
+<ol>
+<li><p>Make sure that the hostnames of all nodes nodes are node1 and node2 respectively. Running
+the command <code>uname -n | tr &#39;[A-Z]&#39; &#39;[a-z]&#39;</code> should return the correct node name. Make sure that
+the DNS or entries in /etc/hosts are updated so that hosts can be accessed using their host names.</p></li>
+<li><p>In order to use <em>pcs</em> to manage the cluster, create the <em>hacluster</em> user designated to manage the
+cluster with <code>passwd hacluster</code> <strong>on both nodes</strong>.</p></li>
+<li><p>Make sure that pcsd demon is started and configure both nodes so that it will be enabled to boot
+on startup <strong>on both nodes</strong>.</p>
+<div class="highlight"><pre><code class="text">service pcsd start
+chkconfig pcsd on
+</code></pre>
+</div></li>
+<li><p>Authenticate hacluster user for each node of the cluster. Run the command below <strong>on the node1</strong>:</p>
+<div class="highlight"><pre><code class="text">pcs cluster auth node1 node2 -u hacluster
+</code></pre>
+</div>
+
+<p>After entering password, you should see a message similar to one below:</p>
+<div class="highlight"><pre><code class="text">node1: Authorized
+node2: Authorized
+</code></pre>
+</div></li>
+<li><p>Create the cluster by running the following command <strong>on the node1</strong>:</p>
+<div class="highlight"><pre><code class="text">pcs cluster setup --name cfcluster node1 node2
+</code></pre>
+</div>
+
+<p>This will create the cluster <code>cfcluster</code> consisting of node1 and node2.</p></li>
+<li><p>Give the cluster time to settle (cca 1 minute) and then start the cluster by running the
+following command <strong>on the node1</strong>:</p>
+<div class="highlight"><pre><code class="text">pcs cluster start --all
+</code></pre>
+</div>
+
+<p>This will start the cluster and all the necessary deamons on both nodes.</p></li>
+<li><p>At this point the cluster should be up and running. Running <code>pcs status</code> should print
+something similar to the output below.</p>
+<div class="highlight"><pre><code class="text">Cluster name: cfcluster
+WARNING: no stonith devices and stonith-enabled is not false
+Stack: cman
+Current DC: node2 (version 1.1.18-3.el6-bfe4e80420) - partition with quorum
+Last updated: Wed Oct 17 12:25:42 2018
+Last change: Wed Oct 17 12:24:52 2018 by root via crmd on node2
+
+2 nodes configured
+0 resources configured
+
+Online: [ node1 node2 ]
+
+No resources
+
+Daemon Status:
+ cman: active/disabled
+ corosync: active/disabled
+ pacemaker: active/disabled
+ pcsd: active/enabled
+</code></pre>
+</div></li>
+<li><p>If you are setting up just a <strong>testing environment without fencing</strong>, you should disable it now
+(**on the node1**):</p>
+<div class="highlight"><pre><code class="text">pcs property set stonith-enabled=false
+pcs property set no-quorum-policy=ignore
+</code></pre>
+</div></li>
+<li><p>Before the PostgreSQL replication is setup, we need to set up a floating IP address that will
+always point to the active node and configure some basic resource parameters (**on the node1**):</p>
+<div class="highlight"><pre><code class="text">pcs resource defaults resource-stickiness=&quot;INFINITY&quot;
+pcs resource defaults migration-threshold=&quot;1&quot;
+pcs resource create cfvirtip IPaddr2 ip=192.168.100.100 cidr_netmask=24 --group cfengine
+pcs cluster enable --all node{1,2}
+</code></pre>
+</div></li>
+<li><p>Verify that the cfvirtip resource is properly configured and running.</p>
+<div class="highlight"><pre><code class="text">pcs status
+</code></pre>
+</div>
+
+<p>should give something like this:</p>
+<div class="highlight"><pre><code class="text">Cluster name: cfcluster
+Last updated: Tue Jul  7 09:29:10 2015
+Last change: Fri Jul  3 08:41:24 2015
+Stack: cman
+Current DC: node1 - partition with quorum
+Version: 1.1.11-97629de
+2 Nodes configured
+1 Resources configured
+
+Online: [ node1 node2 ]
+
+Full list of resources:
+
+Resource Group: cfengine
+    cfvirtip   (ocf::heartbeat:IPaddr2):   Started node1
+</code></pre>
+</div></li>
+</ol>
+<h2 id="postgresql-configuration">PostgreSQL configuration</h2>
+<ol>
+<li>Install the CFEngine hub package <strong>on both node1 and node2</strong>.</li>
+<li><p>Make sure CFEngine is not running (**on both node1 and node2**):</p>
+<div class="highlight"><pre><code class="text">service cfengine3 stop
+</code></pre>
+</div></li>
+<li><p>Configure PostgreSQL <strong>on node1</strong>:</p>
+
+<ol>
+<li><p>Create two special directories owned by the <em>cfpostgres</em> user:</p>
+<div class="highlight"><pre><code class="text">mkdir -p /var/cfengine/state/pg/{data/pg_arch,tmp}
+chown -R cfpostgres:cfpostgres /var/cfengine/state/pg/{data/pg_arch,tmp}
+</code></pre>
+</div></li>
+<li><p>Modify the <em>/var/cfengine/state/pg/data/postgresql.conf</em> configuration file to set the
+following options accordingly (**uncomment the lines if they are commented out**):</p>
+<div class="highlight"><pre><code class="text">listen_addresses = &#39;*&#39;
+wal_level = replica
+max_wal_senders = 5
+wal_keep_segments = 16
+hot_standby = on
+restart_after_crash = off
+archive_mode = on
+archive_command = &#39;cp %p /var/cfengine/state/pg/data/pg_arch/%f&#39;
+</code></pre>
+</div></li>
+<li><p>Modify the <em>pg_hba.conf</em> configuration file to enable access to PostgreSQL for replication
+between the nodes (note that the second pair of IP addresses, not the heartbeat pair, is used
+here):</p>
+<div class="highlight"><pre><code class="text">echo &quot;host replication all 192.168.100.10/32 trust&quot; &gt;&gt; /var/cfengine/state/pg/data/pg_hba.conf
+echo &quot;host replication all 192.168.100.11/32 trust&quot; &gt;&gt; /var/cfengine/state/pg/data/pg_hba.conf
+</code></pre>
+</div>
+
+<p><strong>IMPORTANT:</strong> The above configuration allows accessing PostgreSQL without any authentication
+             from both cluster nodes. For security reasons we strongly advise to create a
+             replication user in PostgreSQL and protect access using a password or
+             certificate. Furthermore, we advise using ssl-secured replication instead of
+             the unencrypted method described here if the hubs are in an untrusted network.</p></li>
+</ol></li>
+<li><p>Do an initial sync of PostgreSQL:</p>
+
+<ol>
+<li><p>Start PostgreSQL <strong>on node1</strong>:</p>
+<div class="highlight"><pre><code class="text">pushd /tmp; su cfpostgres -c &quot;/var/cfengine/bin/pg_ctl -w -D /var/cfengine/state/pg/data -l /var/log/postgresql.log start&quot;; popd
+</code></pre>
+</div></li>
+<li><p><strong>On node2</strong>, initialize PostgreSQL from <strong>node1</strong> (again using the second IP, not the heartbeat IP):</p>
+<div class="highlight"><pre><code class="text">rm -rf /var/cfengine/state/pg/data/*
+pushd /tmp; su cfpostgres -c &quot;/var/cfengine/bin/pg_basebackup -h 192.168.10.10 -U cfpostgres -D /var/cfengine/state/pg/data -X stream -P&quot;; popd
+</code></pre>
+</div></li>
+<li><p><strong>On node2</strong>, create the <em>standby.conf</em> file and configure PostgreSQL to run as a hot-standby replica:</p>
+<div class="highlight"><pre><code class="text">cat &lt;&lt;EOF &gt; /var/cfengine/state/pg/data/standby.conf
+#192.168.100.100 is the shared over cluster IP address of active/master cluster node
+primary_conninfo = &#39;host=192.168.100.100 port=5432 user=cfpostgres application_name=node2&#39;
+restore_command = &#39;cp /var/cfengine/state/pg/pg_arch/%f %p&#39;
+EOF
+chown --reference /var/cfengine/state/pg/data/postgresql.conf /var/cfengine/state/pg/data/standby.conf
+echo &quot;include &#39;standby.conf&#39;&quot; &gt;&gt; /var/cfengine/state/pg/data/postgresql.conf
+touch /var/cfengine/state/pg/data/standby.signal
+</code></pre>
+</div></li>
+</ol></li>
+<li><p>Start PostgreSQL on the <strong>node2</strong> by running the following command:</p>
+<div class="highlight"><pre><code class="text">pushd /tmp; su cfpostgres -c &quot;/var/cfengine/bin/pg_ctl -D /var/cfengine/state/pg/data -l /var/log/postgresql.log start&quot;; popd
+</code></pre>
+</div></li>
+<li><p>Check that PostgreSQL replication is setup and working properly:</p>
+
+<ol>
+<li><p>The <strong>node2</strong> should report it is in the recovery mode:</p>
+<div class="highlight"><pre><code class="text">/var/cfengine/bin/psql -x cfdb -c &quot;SELECT pg_is_in_recovery();&quot;
+</code></pre>
+</div>
+
+<p>should return:</p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]-----+--
+pg_is_in_recovery | t
+</code></pre>
+</div></li>
+<li><p>The <strong>node1</strong> should report it is replicating to node2:</p>
+<div class="highlight"><pre><code class="text">/var/cfengine/bin/psql -x cfdb -c &quot;SELECT * FROM pg_stat_replication;&quot;
+</code></pre>
+</div>
+
+<p>should return something like this:</p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]----+------------------------------
+pid              | 11401
+usesysid         | 10
+usename          | cfpostgres
+application_name | node2
+client_addr      | 192.168.100.11
+client_hostname  | node2-pg
+client_port      | 33958
+backend_start    | 2018-10-16 14:19:04.226773+00
+backend_xmin     |
+state            | streaming
+sent_lsn         | 0/61E2C88
+write_lsn        | 0/61E2C88
+flush_lsn        | 0/61E2C88
+replay_lsn       | 0/61E2C88
+write_lag        |
+flush_lag        |
+replay_lag       |
+sync_priority    | 0
+sync_state       | async
+</code></pre>
+</div></li>
+</ol></li>
+<li><p>Stop PostgreSQL <strong>on both nodes</strong>:</p>
+<div class="highlight"><pre><code class="text">pushd /tmp; su cfpostgres -c &quot;/var/cfengine/bin/pg_ctl -D /var/cfengine/state/pg/data -l /var/log/postgresql.log stop&quot;; popd
+</code></pre>
+</div></li>
+<li><p>Remove the hot-standby configuration <strong>on node2</strong>. It will be handled by the cluster resource and
+the resource agent.</p>
+<div class="highlight"><pre><code class="text">rm -f /var/cfengine/state/pg/data/standby.signal
+rm -f /var/cfengine/state/pg/data/standby.conf
+sed -i &quot;/standby\.conf/d&quot; /var/cfengine/state/pg/data/postgresql.conf
+</code></pre>
+</div></li>
+</ol>
+<h3 id="cluster-resource-configuration">Cluster resource configuration</h3>
+<ol>
+<li><p>Download the PostgreSQL resource agent supporting the CFEngine HA setup <strong>on both nodes</strong>.</p>
+<div class="highlight"><pre><code class="text">wget https://raw.githubusercontent.com/cfengine/core/master/contrib/pgsql_RA
+/bin/cp pgsql_RA /usr/lib/ocf/resource.d/heartbeat/pgsql
+chown --reference /usr/lib/ocf/resource.d/heartbeat/{IPaddr2,pgsql}
+chmod --reference /usr/lib/ocf/resource.d/heartbeat/{IPaddr2,pgsql}
+</code></pre>
+</div></li>
+<li><p>Create the PostgreSQL resource (**on node1**).</p>
+<div class="highlight"><pre><code class="text">pcs resource create cfpgsql pgsql  \
+ pgctl=&quot;/var/cfengine/bin/pg_ctl&quot; \
+ psql=&quot;/var/cfengine/bin/psql&quot;    \
+ pgdata=&quot;/var/cfengine/state/pg/data&quot; \
+ pgdb=&quot;cfdb&quot; pgdba=&quot;cfpostgres&quot; repuser=&quot;cfpostgres&quot; \
+ tmpdir=&quot;/var/cfengine/state/pg/tmp&quot; \
+ rep_mode=&quot;async&quot; node_list=&quot;node1 node2&quot; \
+ primary_conninfo_opt=&quot;keepalives_idle=60 keepalives_interval=5 keepalives_count=5&quot; \
+ master_ip=&quot;192.168.100.100&quot; restart_on_promote=&quot;true&quot; \
+ logfile=&quot;/var/log/postgresql.log&quot; \
+ config=&quot;/var/cfengine/state/pg/data/postgresql.conf&quot; \
+ check_wal_receiver=true restore_command=&quot;cp /var/cfengine/state/pg/data/pg_arch/%f %p&quot; \
+ op monitor timeout=&quot;60s&quot; interval=&quot;3s&quot; on-fail=&quot;restart&quot; role=&quot;Master&quot; \
+ op monitor timeout=&quot;60s&quot; interval=&quot;4s&quot; on-fail=&quot;restart&quot; --disable
+</code></pre>
+</div></li>
+<li><p>Configure PostgreSQL to work in Master/Slave (active/standby) mode (**on node1**).</p>
+<div class="highlight"><pre><code class="text">pcs resource master mscfpgsql cfpgsql master-max=1 master-node-max=1 clone-max=2 clone-node-max=1 notify=true
+</code></pre>
+</div></li>
+<li><p>Tie the previously configured shared IP address and PostgreSQL cluster resources to make sure
+both will always run on the same host and add migration rules to make sure that resources will be
+started and stopped in the correct order (**on node1**).</p>
+<div class="highlight"><pre><code class="text">pcs constraint colocation add cfengine with Master mscfpgsql INFINITY
+pcs constraint order promote mscfpgsql then start cfengine symmetrical=false score=INFINITY
+pcs constraint order demote mscfpgsql then stop cfengine symmetrical=false score=0
+</code></pre>
+</div></li>
+<li><p>Enable and start the new resource now that it is fully configured (**on node1**).</p>
+<div class="highlight"><pre><code class="text">pcs resource enable mscfpgsql --wait=30
+</code></pre>
+</div></li>
+<li><p>Verify that the constraints configuration is correct.</p>
+<div class="highlight"><pre><code class="text">pcs constraint
+</code></pre>
+</div>
+
+<p>should give:</p>
+<div class="highlight"><pre><code class="text">Location Constraints:
+ Resource: mscfpgsql
+   Enabled on: node1 (score:INFINITY) (role: Master)
+Ordering Constraints:
+ promote mscfpgsql then start cfengine (score:INFINITY) (non-symmetrical)
+ demote mscfpgsql then stop cfengine (score:0) (non-symmetrical)
+Colocation Constraints:
+ cfengine with mscfpgsql (score:INFINITY) (rsc-role:Started) (with-rsc-role:Master)
+</code></pre>
+</div></li>
+<li><p>Verify that the cluster is now fully setup and running.</p>
+<div class="highlight"><pre><code class="text">crm_mon -Afr1
+</code></pre>
+</div>
+
+<p>should give something like:</p>
+<div class="highlight"><pre><code class="text">Stack: cman
+Current DC: node1 (version 1.1.18-3.el6-bfe4e80420) - partition with quorum
+Last updated: Tue Oct 16 14:19:37 2018
+Last change: Tue Oct 16 14:19:04 2018 by root via crm_attribute on node1
+
+2 nodes configured
+3 resources configured
+
+Online: [ node1 node2 ]
+
+Full list of resources:
+
+Resource Group: cfengine
+    cfvirtip    (ocf::heartbeat:IPaddr2):   Started node1
+Master/Slave Set: mscfpgsql [cfpgsql]
+    Masters: [ node1 ]
+    Slaves: [ node2 ]
+
+Node Attributes:
+* Node node1:
+   + cfpgsql-data-status                : LATEST
+   + cfpgsql-master-baseline            : 0000000004000098
+   + cfpgsql-receiver-status            : normal (master)
+   + cfpgsql-status                     : PRI
+   + master-cfpgsql                     : 1000
+* Node node2:
+   + cfpgsql-data-status                : STREAMING|ASYNC
+   + cfpgsql-receiver-status            : normal
+   + cfpgsql-status                     : HS:async
+   + master-cfpgsql                     : 100
+</code></pre>
+</div>
+
+<p><strong>IMPORTANT:</strong> Please make sure that there&#39;s one Master node and one Slave node and that the
+              <em>cfpgsql-status</em> for the active node is reported as <em>PRI</em> and passive as
+              <em>HS:async</em> or <em>HS:alone</em>.</p></li>
+</ol>
+<h3 id="cfengine-configuration">CFEngine configuration</h3>
+<ol>
+<li><p>Create the HA configuration file <strong>on both nodes</strong>.</p>
+<div class="highlight"><pre><code class="text">cat &lt;&lt;EOF &gt; /var/cfengine/ha.cfg
+cmp_master: PRI
+cmp_slave: HS:async,HS:sync,HS:alone
+cmd: /usr/sbin/crm_attribute -l reboot -n cfpgsql-status -G -q
+EOF
+</code></pre>
+</div></li>
+<li><p>Bootstrap the nodes.</p>
+
+<p>Bootstrap the <strong>node1</strong> to itself and make sure the initial policy (<a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a>) evaluation is
+skipped:</p>
+<div class="highlight"><pre><code class="text">cf-agent --bootstrap 192.168.100.10 --skip-bootstrap-policy-run
+</code></pre>
+</div>
+
+<p>Bootstrap the <strong>node2</strong> to node1 (to establish trust) and then to itself, again skipping the
+initial policy evaluation:</p>
+<div class="highlight"><pre><code class="text">cf-agent --bootstrap 192.168.100.10 --skip-bootstrap-policy-run
+cf-agent --bootstrap 192.168.100.11 --skip-bootstrap-policy-run
+</code></pre>
+</div></li>
+<li><p>Stop CFEngine <strong>on both nodes</strong>.</p>
+<div class="highlight"><pre><code class="text">service cfengine3 stop
+</code></pre>
+</div></li>
+<li><p>Create the HA JSON configuration file <strong>on both nodes</strong>.</p>
+<div class="highlight"><pre><code class="text">cat &lt;&lt;EOF &gt; /var/cfengine/masterfiles/cfe_internal/enterprise/ha/ha_info.json
+{
+ &quot;192.168.100.10&quot;:
+   {
+    &quot;sha&quot;: &quot;@NODE1_PKSHA@&quot;,
+    &quot;internal_ip&quot;: &quot;192.168.100.10&quot;
+   },
+ &quot;192.168.100.11&quot;:
+   {
+    &quot;sha&quot;: &quot;@NODE2_PKSHA@&quot;,
+    &quot;internal_ip&quot;: &quot;192.168.100.11&quot;
+   }
+}
+EOF
+</code></pre>
+</div>
+
+<p>The <code>@NODE1_PKSHA@</code> and <code>@NODE2_PKSHA@</code> strings are placeholders for the host key hashes of the
+nodes. Replace the placeholders with real values obtained by (on any node):</p>
+<div class="highlight"><pre><code class="text">cf-key -s
+</code></pre>
+</div>
+
+<p><strong>IMPORTANT:</strong> Copy over only the hashes, without the <code>SHA=</code> prefix.</p></li>
+<li><p><strong>On both nodes,</strong> modify the <em>/var/cfengine/masterfiles/controls/def.cf</em> and
+<em>/var/cfengine/masterfiles/controls/update_def.cf</em> files to enable HA by uncommenting the
+following line:</p>
+<div class="highlight"><pre><code class="text">&quot;enable_cfengine_enterprise_hub_ha&quot; expression =&gt; &quot;enterprise_edition&quot;;
+</code></pre>
+</div>
+
+<p>and commenting or removing the line</p>
+<div class="highlight"><pre><code class="text">&quot;enable_cfengine_enterprise_hub_ha&quot; expression =&gt; &quot;!any&quot;;`
+</code></pre>
+</div></li>
+<li><p><strong>On both nodes,</strong> run <code>cf-agent -Kf update.cf</code> to make sure that the new policy is copied from
+<em>masterfiles</em> to <em>inputs</em>.</p></li>
+<li><p>Start CFEngine <strong>on both nodes</strong>.</p>
+<div class="highlight"><pre><code class="text">service cfengine3 start
+</code></pre>
+</div></li>
+<li><p>Check that the CFEngine HA setup is working by logging in to the Mission Portal at the
+<a href="https://192.168.100.100">https://192.168.100.100</a> address in your browser. Note that it takes up to 15 minutes for
+everything to settle and the <code>OK</code> HA status being reported in the Mission Portal&#39;s header.</p></li>
+</ol>
+<h3 id="configuring-3rd-node-as-disaster-recovery-or-database-backup-optional">Configuring 3rd node as disaster-recovery or database backup (optional)</h3>
+<ol>
+<li><p>Install the CFEngine hub package on the node which will be used as disaster-recovery or database
+backup node (node3).</p></li>
+<li><p>Bootstrap the disaster-recovery node to active node first (establish trust between hubs) and then
+bootstrap it to itself. At this point hub will be capable of collecting reports and serve policy.</p></li>
+<li><p>Stop cf-execd and cf-hub processes.</p></li>
+<li><p>Make sure that PostgreSQL configuration allows database replication connection from 3rd node (see
+PostgreSQL configuration section, point 5.3 for more details).</p></li>
+<li><p>Repeat steps 4 - 6 from PostgreSQL configuration to enable and verify database replication
+connection from the node3. Make sure that both the node2 and node3 are connected to active
+database node and streaming replication is in progress.</p>
+
+<p>Running the following command <strong>on node1</strong>:</p>
+<div class="highlight"><pre><code class="text">/var/cfengine/bin/psql cfdb -c &quot;SELECT * FROM pg_stat_replication;&quot;
+</code></pre>
+</div>
+
+<p>Should give:
+```
+pid  | usesysid |  usename   | application_name |  client_addr   | client_hostname | client_port |         backend_start         |   state   | sent_location | write_location | flush_location | replay_location | sync_priority | sync_state
+------+----------+------------+------------------+----------------+-----------------+-------------+-------------------------------+-----------+---------------+----------------+----------------+-----------------+---------------+------------
+9252 |       10 | cfpostgres | node2            | 192.168.100.11 |                 |       58919 | 2015-08-24 07:14:45.925341+00 | streaming | 0/2A7034D0    | 0/2A7034D0     | 0/2A7034D0     | 0/2A7034D0      |             0 | async
+9276 |       10 | cfpostgres | node3            | 192.168.100.12 |                 |       52202 | 2015-08-24 07:14:46.038676+00 | streaming | 0/2A7034D0    | 0/2A7034D0     | 0/2A7034D0     | 0/2A7034D0      |             0 | async</p>
+
+<p>(2 rows)
+```</p></li>
+<li><p>Modify HA JSON configuration file to contain information about the node3 (see CFEngine
+configuration, step 2). You should have configuration similar to one below:</p>
+<div class="highlight"><pre><code class="text">[root@node3 masterfiles]# cat /var/cfengine/masterfiles/cfe_internal/enterprise/ha/ha_info.json
+{
+&quot;192.168.100.10&quot;:
+{
+ &quot;sha&quot;: &quot;b1463b08a89de98793d45a52da63d3f100247623ea5e7ad5688b9d0b8104383f&quot;,
+ &quot;internal_ip&quot;: &quot;192.168.100.10&quot;,
+ &quot;is_in_cluster&quot; : true,
+},
+&quot;192.168.100.11&quot;:
+{
+ &quot;sha&quot;: &quot;b13db51615afa409a22506e2b98006793c1b0a436b601b094be4ee4b32b321d5&quot;,
+ &quot;internal_ip&quot;: &quot;192.168.100.11&quot;,
+},
+&quot;192.168.100.12&quot;:
+{
+ &quot;sha&quot;: &quot;98f14786389b2fe5a93dc3ef4c3c973ef7832279aa925df324f40697b332614c&quot;,
+ &quot;internal_ip&quot;: &quot;192.168.100.12&quot;,
+ &quot;is_in_cluster&quot; : false,
+}
+}
+</code></pre>
+</div>
+
+<p>Please note that <code>is_in_cluster</code> parameter is optional for the 2 nodes in the HA cluster and
+by default is set to true. For the 3-node setup, the node3, which is not part of the cluster,
+<strong>MUST</strong> be marked with <code>&quot;is_in_cluster&quot; : false</code> configuration parameter.</p></li>
+<li><p>Start the cf-execd process (don&#39;t start cf-hub process as this is not needed while manual
+failover to the node3 is not performed). Please also note that during normal operations the
+cf-hub process should not be running on the node3.</p></li>
+</ol>
+<h3 id="manual-failover-to-disaster-recovery-node">Manual failover to disaster-recovery node</h3>
+<ol>
+<li><p>Before starting manual failover process make sure both active and passive nodes are not running.</p></li>
+<li><p>Verify that PostgreSQL is running on 3rd node and data replication from active node is not in progress. If database is actively replicating data with active cluster node make sure that this process will be finished and no new data will be stored in active database instance.</p></li>
+<li><p>After verifying that replication is finished and data is synchronized between active database node and replica node (or once node1 and node2 are both down) promote PostgreSQL to exit recovery and begin read-write operations <code>cd /tmp &amp;&amp; su cfpostgres -c &quot;/var/cfengine/bin/pg_ctl -c -w -D /var/cfengine/state/pg/data -l /var/log/postgresql.log  promote&quot;</code>.</p></li>
+<li><p>In order to make failover process as easy as possible there is <code>&quot;failover_to_replication_node_enabled&quot;</code> class defined both in <em>/var/cfengine/masterfiles/controls/VERSION/def.cf</em> and <em>/var/cfengine/masterfiles/controls/VERSION/update_def.cf</em>. In order to stat collecting reports and serving policy from 3rd node uncomment the line defining mentioned class.</p></li>
+</ol>
+
+<p><strong>IMPORTANT:</strong> Please note that as long as any of the active or passive cluster nodes is accessible by client to be contacted, failover to 3rd node is not possible. If the active or passive node is running and failover to 3rd node is required make sure to disable network interfaces where clients are bootstrapped to so that clients won&#39;t be able to access any other node than disaster-recovery.</p>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<ol>
+<li><p>If either the IPaddr2 or pgslq resource is not running, try to enable it first with <code>pcs cluster enable --all</code>. If this is not strting the resources, you can try to run them in debug mode with this command <code>pcs resource debug-start &lt;resource-name&gt;</code>. The latter command should print diagnostics messages on why resources are not started.</p></li>
+<li><p>If <code>crm_mon -Afr1</code> is printing errors similar to the below</p>
+<div class="highlight"><pre><code class="text">[root@node1]# pcs status
+Cluster name: cfcluster
+Last updated: Tue Jul  7 11:27:23 2015
+Last change: Tue Jul  7 11:02:40 2015
+Stack: cman
+Current DC: node1 - partition with quorum
+Version: 1.1.11-97629de
+2 Nodes configured
+3 Resources configured
+
+Online: [ node1 ]
+OFFLINE: [ node2 ]
+
+Full list of resources:
+
+ Resource Group: cfengine
+     cfvirtip   (ocf::heartbeat:IPaddr2):   Started node1
+ Master/Slave Set: mscfpgsql [cfpgsql]
+     Stopped: [ node1 node2 ]
+
+Failed actions:
+    cfpgsql_start_0 on node1 &#39;unknown error&#39; (1): call=13, status=complete, last-rc-change=&#39;Tue Jul  7 11:25:32 2015&#39;, queued=1ms, exec=137ms
+</code></pre>
+</div>
+
+<p>you can try to clear the errors by running <code>pcs resource cleanup &lt;resource-name&gt;</code>. This should clean errors for the appropriate resource and make the cluster restart it.</p>
+<div class="highlight"><pre><code class="text">[root@node1 vagrant]# pcs resource cleanup cfpgsql
+Resource: cfpgsql successfully cleaned up
+
+[root@node1 vagrant]# pcs status
+Cluster name: cfcluster
+Last updated: Tue Jul  7 11:29:36 2015
+Last change: Tue Jul  7 11:29:08 2015
+Stack: cman
+Current DC: node1 - partition with quorum
+Version: 1.1.11-97629de
+2 Nodes configured
+3 Resources configured
+
+Online: [ node1 ]
+OFFLINE: [ node2 ]
+
+Full list of resources:
+
+ Resource Group: cfengine
+     cfvirtip   (ocf::heartbeat:IPaddr2):   Started node1
+ Master/Slave Set: mscfpgsql [cfpgsql]
+     Masters: [ node1 ]
+     Stopped: [ node2 ]
+</code></pre>
+</div></li>
+<li><p>After cluster crash make sure to always start the node that should be active first, and then the one that should be passive. If the cluster is not running on the given node after restart you can enable it by running the following command:</p>
+<div class="highlight"><pre><code class="text">[root@node2]# pcs cluster start
+Starting Cluster...
+</code></pre>
+</div></li>
+</ol>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-cfengine-enterprise.html">cfengine enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-high-availability.html">high availability</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 09 July 2021
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/enterprise-cfengine-guide/high-availability/installation-guide.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/c2073cd2eb5c0d138609876a2101e6614e8752c0" target="_blank">c2073cd2eb5c0d138609876a2101e6614e8752c0</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.17/assets/footer-c635771088a429be0f794a44abddc48f.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

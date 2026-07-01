@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.16  Documentation - Federated Reporting</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.16/assets/global-78ca1ff06c068c806dddb47b0cb1ea40.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Federated Reporting";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.16/" selected>Version 3.16 (non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html"  class="navselected" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="enterprise-cfengine-guide-install-get-started.html">Install and Get Started</a></li><li><a href="enterprise-cfengine-guide-user-interface.html">User Interface</a></li><li><a href="enterprise-cfengine-guide-settings.html">Settings</a></li><li><a href="enterprise-cfengine-guide-hosts-health.html">Hosts and Health</a></li><li><a href="enterprise-cfengine-guide-alerts-notifications.html">Alerts and Notifications</a></li><li><a href="enterprise-cfengine-guide-alerts-custom-actions.html">Custom actions for Alerts</a></li><li><a href="enterprise-cfengine-guide-reporting.html">Enterprise Reporting</a></li><li><a class="active" href="enterprise-cfengine-guide-federated-reporting.html">Federated Reporting</a></li><li><a href="enterprise-cfengine-guide-measurements.html">Measurements app</a></li><li><a href="enterprise-cfengine-guide-enterprise-api.html">Enterprise API</a></li><li><a href="enterprise-cfengine-guide-best-practices.html">Best Practices</a></li><li><a href="enterprise-cfengine-guide-high-availability.html">High Availability</a></li><li><a href="enterprise-cfengine-guide-hub_administration.html">Hub Administration</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="enterprise-cfengine-guide.html">CFEngine Enterprise</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Federated Reporting
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h2 id="overview">Overview</h2>
+<p>Federated Reporting enables the collection of data from multiple Hubs to provide
+a view in Mission Portal which can scale up beyond the capabilities of a Hub
+which manages hosts. CFEngine supports a large number of hosts per hub, around
+5,000 hosts per hub depending on many factors. With Federated Reporting it is
+possible to scale up to 100,000 hosts or more for the purposes of analysis and
+reporting.</p>
+
+<p>Hubs which hosts report to are called Feeder Hubs.</p>
+
+<p>The hub which collects information from Feeder Hubs is called the Superhub.</p>
+
+<p>If all hubs are version 3.14.0 or higher then Mission Portal can be used to
+configure and connect the Superhub and Feeder hubs. For Feeder hubs with an
+earlier version than 3.14.0 some manual steps must be taken. Links to these
+are provided at each stage of installation and setup that follows.</p>
+
+<ul>
+<li><a href="enterprise-cfengine-guide-federated-reporting.html#requirements" title="Federated Reporting - Requirements ">Requirements</a></li>
+<li><a href="enterprise-cfengine-guide-federated-reporting.html#installation" title="Federated Reporting - Installation ">Installation</a></li>
+<li><a href="enterprise-cfengine-guide-federated-reporting.html#setup" title="Federated Reporting - Setup ">Setup</a></li>
+<li><a href="enterprise-cfengine-guide-federated-reporting.html#operation" title="Federated Reporting - Operation ">Operation</a></li>
+<li><a href="enterprise-cfengine-guide-federated-reporting.html#api-setup" title="Federated Reporting - API Setup ">API Setup</a></li>
+<li><a href="enterprise-cfengine-guide-federated-reporting.html#disable-feeder" title="Federated Reporting - Disable Feeder">Disable Feeder</a></li>
+<li><a href="enterprise-cfengine-guide-federated-reporting.html#uninstall" title="Federated Reporting - Uninstall">Uninstall</a></li>
+</ul>
+<h2 id="requirements">Requirements</h2><h3 id="software-requirements">Software Requirements</h3>
+<p>If your hub will have SELinux enabled, the <code>semanage</code> command must be installed.
+This allows Federated Reporting policy to manage the trust between the superhub and
+feeder hubs.</p>
+
+<p>Add the <code>cfengine_mp_fr_dependencies_auto_install</code> to your augments file to allow
+federation policy to ensure that <code>semanage</code> is installed.</p>
+<div class="highlight"><pre><code class="json"><span class="p">{</span>
+  <span class="nt">&quot;classes&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;cfengine_mp_fr_dependencies_auto_install&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;any&quot;</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>See the <a href="cfe_internal/enterprise/federation/federation.cf#semanage_installed">federation.cf semanage_installed</a> bundle for details on which packages are used for various distributions.</p>
+<h3 id="hardware-requirements">Hardware Requirements</h3>
+<p>The Superhub aggregates all the data from all the Feeders connected to it which
+is a periodically running resource intensive task. The key factors contributing
+to HW requirements for the Superhub are:</p>
+
+<ul>
+<li><p>The refresh interval at which data is pulled from the Feeders and imported on
+the Superhub. The default is 20 minutes and it can be changed in the policy.</p></li>
+<li><p>The amount of data gathered on the Feeders from the reports sent by the
+hosts bootstrapped to them.</p></li>
+</ul>
+
+<p>The current implementation of Federated Reporting is not aggregating monitoring
+data on the Superhub which saves a lot of network traffic, processing power and
+disk space on the Superhub.</p>
+
+<p>In order to utilize modern configurations, the operations on the Superhub run
+multiple tasks in parallel, one task per connected Feeder, and so with the
+increasing number of connected Feeders the number of available logical CPUs and
+I/O speed play an important role. As with any other batch processing the general
+rule is that each batch should finish processing before processing of the next
+batch starts. With the default settings that means that one round of pulling
+data from the Feeders and importing them into the local database on the Superhub
+should take less than 20 minutes. The policy will prevent two or more of such
+rounds from overlapping if one round takes more than 20 minutes, but such setup
+would degrade the freshness of the data available on the Superhub.</p>
+
+<p>The recommended HW configuration for a Superhub with the default configuration
+and 5000 hosts per connected Feeder is:</p>
+
+<ul>
+<li><p>16 GiB of RAM or more,</p></li>
+<li><p>1 logical CPU per connected Feeder or more,</p></li>
+<li><p>5 MiB of disk space per host or more,</p></li>
+<li><p>1000 IOPS storage or faster,</p></li>
+<li><p>100 Mib/s network bandwidth per connected Feeder,</p></li>
+<li><p>135 KiB of network data transfer per host per one pull of the data from
+Feeders.</p></li>
+</ul>
+
+<p>The Federated Reporting process is logging information to the system log and so
+timestamps from the log messages can be used to determine how long each round of
+the pull-import process has taken. If it is close to the configured refresh
+interval, the interval needs to be made longer or the hardware configuration of
+the Superhub needs to be enhanced.</p>
+
+<p>The minimum HW requirements for the Superhub are very dependent on the two key
+factors mentioned above. It is thus highly recommended to connect the Feeders to
+the Superhub one or two at a time and check the intervals in the logs before
+connecting more Feeders.</p>
+<h2 id="installation">Installation</h2>
+<p>The <a href="guide-installation-and-configuration-general-installation.html" title="General Installation">General Installation</a> instructions should be used to
+install CFEngine Hub on a Superhub as well as Feeder hubs.</p>
+<h2 id="setup">Setup</h2><h3 id="enable-hub-management-app">Enable Hub management app</h3>
+<p><img src="fr-hub-management-enabled.png" alt="Enable Hub Management"></p>
+
+<p>On the Superhub and all Feeders enable the Hub management
+app by <a href="enterprise-cfengine-guide-settings.html#opening-settings" title="Settings - Opening Settings ">Opening Settings</a> then 
+selecting <a href="enterprise-cfengine-guide-settings.html#manage-apps" title="Settings - Manage Apps ">Manage Apps</a> and finally
+by clicking the <code>On</code> radio button for Hub management in the Status column.</p>
+
+<p>Note: for pre 3.14 feeders this step is not performed.</p>
+<h3 id="enable-federated-reporting">Enable Federated Reporting</h3>
+<p><img src="fr-hub-management-default.png" alt="Enable Federated Reporting"></p>
+
+<p>The Hub management app should now appear in the bottom left corner of mission
+portal.</p>
+
+<p>Click on the Enable Superhub or Enable Feeder button as appropriate. This will
+cause some configuration to be written in the filesystem and on next agent run
+policy will make the needed changes. You can speed up this process by running
+the agent manually.</p>
+
+<p>Note: for pre 3.14 feeders, you must <a href="enterprise-cfengine-guide-federated-reporting.html#enable-feeder-without-api" title="Federated Reporting - Enable feeder without API">Enable feeder without API</a>.</p>
+<h3 id="connect-feeder-hubs">Connect Feeder Hubs</h3>
+<p><img src="fr-superhub-enabled-no-feeders.png" alt="Connect Feeder Hubs"></p>
+
+<p>Refresh the Hub management on each hub to see that Federated Reporting is
+enabled.</p>
+
+<p>After all hubs have Federated Reporting enabled visit Hub management on the
+Superhub to connect the Feeder hubs.</p>
+
+<p>On the Superhub, click on the Connect hub button to show the Connect a hub dialog.</p>
+
+<p><img src="fr-connect-a-hub.png" alt="Connect a hub"></p>
+
+<p>Fill out the form with the base URL of your feeder hub Mission Portal and enter
+credentials for a user with administrative credentials. These credentials will
+only be used to authenticate to the feeder hub and will not be saved otherwise.</p>
+
+<p>The Hub management view will show all connected hubs, the number of bootstrapped
+hosts and allow you to edit the settings.</p>
+
+<p><img src="fr-feeder-added.png" alt="Feeders connected"></p>
+<h2 id="operation">Operation</h2>
+<p>Now that everything is configured the Feeder hubs will generate a database
+dump every 20 minutes and the Superhub will pull any available dumps from
+each Feeder every 20 minutes as well.</p>
+
+<p>You can test import immediately by running the agent on the feeders and then
+the superhub.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>Please refer to <code>/var/cfengine/output</code>, <code>/var/log/postgresql.log</code> and
+<code>/opt/cfengine/federation/superhub/import/*.log.gz</code> when problems occur. Sending
+these logs to us in bug reports will help significantly as we fine tune the
+Federated Reporting feature.</p>
+
+<p>Also see <a href="enterprise-cfengine-guide-federated-reporting.html#disable-feeder" title="Federated Reporting - Disable Feeder">Disable Feeder</a> for information
+about how to temporarily disable a feeder&#39;s participation in Federated Reporting
+in case that is causing an issue for the Feeder Hub.</p>
+<h2 id="api-setup">API Setup</h2>
+<p>An API may be used instead of the UI. This could be used to automate the setup
+of infrastructure related to Federated Reporting and Feeder hubs.</p>
+
+<p>Command line examples follow using <a href="https://curl.haxx.se/">curl</a> and
+<a href="https://github.com/cfengine/core/tree/master/contrib/cf-remote">cf-remote</a>.</p>
+
+<p>Some environment variables should be set according to your environment so that you
+can simply copy/paste steps as you go.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">CLOUD_USER</span><span class="o">=</span><span class="s2">&quot;ubuntu@&quot;</span>      <span class="c1"># optional, just to save cf-remote from guessing/trying</span>
+<span class="gp">$</span> <span class="nb">export</span> <span class="nv">SUPERHUB</span><span class="o">=</span>18.203.231.97
+<span class="gp">$</span> <span class="nb">export</span> <span class="nv">SUPERHUB_BS</span><span class="o">=</span>172.31.36.33  <span class="c1"># _BS is bootstrap IP in case it needs to be different</span>
+<span class="gp">$</span> <span class="nb">export</span> <span class="nv">FEEDER</span><span class="o">=</span>34.244.118.58
+<span class="gp">$</span> <span class="nb">export</span> <span class="nv">FEEDER_BS</span><span class="o">=</span>172.31.43.102   <span class="c1"># _BS is bootstrap IP</span>
+</code></pre>
+</div>
+<h3 id="stop-cf-execd-on-the-superhub-and-feeder">Stop cf-execd on the superhub and feeder</h3>
+<p>We don&#39;t want periodic agent runs to get in our ways so let&#39;s disable
+<em>cf-execd</em>.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> cf-remote sudo -H <span class="nv">$C</span>LOUD_USER$SUPERHUB,<span class="nv">$C</span>LOUD_USER<span class="nv">$FEEDE</span>R <span class="s2">&quot;systemctl stop cf-execd&quot;</span>
+</code></pre>
+</div>
+
+<p>On systems not using systemd, cf-execd needs to be stopped in a different way.
+Also without systemd, any agent run restarts cf-execd so let&#39;s move it out of
+our ways.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> cf-remote sudo -H <span class="nv">$C</span>LOUD_USER$SUPERHUB,<span class="nv">$C</span>LOUD_USER<span class="nv">$FEEDE</span>R <span class="s2">&quot;pkill cf-execd&quot;</span>
+<span class="gp">$</span> cf-remote sudo -H <span class="nv">$C</span>LOUD_USER$SUPERHUB,<span class="nv">$C</span>LOUD_USER<span class="nv">$FEEDE</span>R <span class="s2">&quot;mv /var/cfengine/bin/cf-execd /var/cfengine/bin/cf-execd.disabled&quot;</span>
+</code></pre>
+</div>
+<h3 id="update-masterfiles-hubs-older-than-3-14-0">Update masterfiles (hubs older than 3.14.0)</h3>
+<p>For hubs older than 3.14.0 the masterfiles must be updated to 3.14.0.</p>
+
+<p>Follow instructions at <a href="examples-tutorials-masterfiles_policy_framework_upgrade.html" title="Masterfiles Policy Framework Upgrade">Masterfiles Policy Framework upgrade</a>.</p>
+<h3 id="passwords">Passwords</h3>
+<p>Export the password for the user with administrative rights that will make the
+API requests. In these examples the <code>admin</code> user is used. Any user with
+administrative rights can make these requests. It is also possible to customize
+the RBAC settings to make a user who only has rights to the needed <code>api/fr</code>
+APIs.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> <span class="nb">export</span> <span class="nv">PASSWORD</span><span class="o">=</span><span class="s2">&quot;testingFR&quot;</span>
+</code></pre>
+</div>
+<h3 id="enable-superhub">Enable superhub</h3><div class="highlight"><pre><code class="console"><span class="gp">$</span> curl -k -i -s -X POST -u admin:$PASSWORD https://$SUPERHUB/api/fr/setup-hub/superhub
+</code></pre>
+</div>
+<h3 id="enable-feeder">Enable feeder</h3><div class="highlight"><pre><code class="console"><span class="gp">$</span> curl -k -i -s -X POST -u admin:$PASSWORD https://<span class="nv">$FEEDE</span>R/api/fr/setup-hub/feeder
+</code></pre>
+</div>
+<h3 id="enable-feeder-without-api">Enable feeder without API</h3>
+<p>For older hubs:</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> ssh <span class="nv">$C</span>LOUD_USER<span class="nv">$FEEDE</span>R
+<span class="gp">$</span> sudo bash
+<span class="gp">$</span> <span class="nb">cd</span> /opt/cfengine/federation/cfapache
+<span class="gp">$</span> <span class="c1"># press Ctrl-D to finish writing file</span>
+<span class="gp">$</span> cat &gt; federation-config.json
+<span class="go">{</span>
+<span class="go">  &quot;hostname&quot;: null,</span>
+<span class="go">  &quot;role&quot;: &quot;feeder&quot;,</span>
+<span class="go">  &quot;target_state&quot;: &quot;on&quot;,</span>
+<span class="go">  &quot;remote_hubs&quot;: []</span>
+<span class="go">}</span>
+<span class="gp">$</span>
+</code></pre>
+</div>
+<h3 id="trigger-agent-run">Trigger agent run</h3><div class="highlight"><pre><code class="console"><span class="gp">$</span> cf-remote sudo -H <span class="nv">$C</span>LOUD_USER$SUPERHUB,<span class="nv">$C</span>LOUD_USER<span class="nv">$FEEDE</span>R <span class="s2">&quot;/var/cfengine/bin/cf-agent -KI&quot;</span>
+</code></pre>
+</div>
+
+<p>Ensure there are no errors in the agent run.</p>
+<h3 id="note-down-ssh-and-hostkey-details">Note down SSH and hostkey details</h3><div class="highlight"><pre><code class="console"><span class="gp">$</span> cf-remote sudo -H <span class="nv">$C</span>LOUD_USER$SUPERHUB,<span class="nv">$C</span>LOUD_USER<span class="nv">$FEEDE</span>R <span class="s2">&quot;cat /opt/cfengine/federation/cfapache/setup-status.json&quot;</span>
+<span class="go">ubuntu@52.215.88.224: &#39;cat /opt/cfengine/federation/cfapache/setup-status.json&#39; -&gt; &#39;{&#39;</span>
+<span class="go">ubuntu@52.215.88.224:                                                              &#39;  &quot;configured&quot;: true,&#39;</span>
+<span class="go">ubuntu@52.215.88.224:                                                              &#39;  &quot;role&quot;: &quot;superhub&quot;,&#39;</span>
+<span class="go">ubuntu@52.215.88.224:                                                              &#39;  &quot;hostkey&quot;: &quot;SHA=5628db8a4c5e6ba4f040ee1cafb3928abd966ebccb38b0045f91af67e91f9a16&quot;,&#39;</span>
+<span class="go">ubuntu@52.215.88.224:                                                              &#39;  &quot;transport_ssh_public_key&quot;: &quot;ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHqMau6qL+iCzr6o1+k+1IwoI6Wj++dzEV/w5VGMKy9w root@ip-172-31-22-191&quot;,&#39;</span>
+<span class="go">ubuntu@52.215.88.224:                                                              &#39;  &quot;transport_ssh_server_fingerprint&quot;: &quot;|1|d7iPkk7pb7tyZ3Y8lpQv6PIGU54=|VutDe9dq5S9nxgFher0LAapKSas= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIW7FD4nfpJThtjtPj5okXsiCEenZOKDZh2akX2pBFlMpwOExVqvZV/all/fSlbVzlZbuHNA99SQ7m9Scsn2o/c=&quot;&#39;</span>
+<span class="go">ubuntu@52.215.88.224:                                                              &#39;}&#39;</span>
+<span class="go">ubuntu@34.241.127.1: &#39;cat /opt/cfengine/federation/cfapache/setup-status.json&#39; -&gt; &#39;{&#39;</span>
+<span class="go">ubuntu@34.241.127.1:                                                              &#39;  &quot;configured&quot;: true,&#39;</span>
+<span class="go">ubuntu@34.241.127.1:                                                              &#39;  &quot;role&quot;: &quot;feeder&quot;,&#39;</span>
+<span class="go">ubuntu@34.241.127.1:                                                              &#39;  &quot;hostkey&quot;: &quot;SHA=8451d14a876bf480da2cf30b3293954722792f721b69541f919bb263326fbc45&quot;,&#39;</span>
+<span class="go">ubuntu@34.241.127.1:                                                              &#39;  &quot;transport_ssh_public_key&quot;: &quot;ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKnYDCbGfSIX/SOj+ZCeca1fX9HF1BdTjUHDyWPFG9Yh root@ip-172-31-27-84&quot;,&#39;</span>
+<span class="go">ubuntu@34.241.127.1:                                                              &#39;  &quot;transport_ssh_server_fingerprint&quot;: &quot;|1|UDqYbxUuV0BxrnpVMCZIjc7AIeg=|+TMJ8Cj3o4u8xy3mRSxfoTOdC7Q= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHqMOtNqVfryEpLK5rhib62hxSTe4DvTGEBy/Bhmb3tqlhhlRgsR1g0tDtNDkJZ12mnuAMntb8WV0j7SGm9+RYo=&quot;&#39;</span>
+<span class="go">ubuntu@34.241.127.1:                                                              &#39;}&#39;</span>
+<span class="gp">$</span> <span class="nb">export</span> <span class="nv">SUPERHUB_HOSTKEY</span><span class="o">=</span><span class="s2">&quot;SHA=5628db8a4c5e6ba4f040ee1cafb3928abd966ebccb38b0045f91af67e91f9a16&quot;</span>
+<span class="gp">$</span> <span class="nb">export</span> <span class="nv">SUPERHUB_PUB</span><span class="o">=</span><span class="s2">&quot;ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHqMau6qL+iCzr6o1+k+1IwoI6Wj++dzEV/w5VGMKy9w root@ip-172-31-22-191&quot;</span>
+<span class="gp">$</span> <span class="nb">export</span> <span class="nv">SUPERHUB_FP</span><span class="o">=</span><span class="s2">&quot;|1|d7iPkk7pb7tyZ3Y8lpQv6PIGU54=|VutDe9dq5S9nxgFher0LAapKSas= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIW7FD4nfpJThtjtPj5okXsiCEenZOKDZh2akX2pBFlMpwOExVqvZV/all/fSlbVzlZbuHNA99SQ7m9Scsn2o/c=&quot;</span>
+<span class="gp">$</span> <span class="nb">export</span> <span class="nv">FEEDER_HOSTKEY</span><span class="o">=</span><span class="s2">&quot;SHA=8451d14a876bf480da2cf30b3293954722792f721b69541f919bb263326fbc45&quot;</span>
+<span class="gp">$</span> <span class="nb">export</span> <span class="nv">FEEDER_PUB</span><span class="o">=</span><span class="s2">&quot;ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKnYDCbGfSIX/SOj+ZCeca1fX9HF1BdTjUHDyWPFG9Yh root@ip-172-31-27-84&quot;</span>
+<span class="gp">$</span> <span class="nb">export</span> <span class="nv">FEEDER_FP</span><span class="o">=</span><span class="s2">&quot;|1|UDqYbxUuV0BxrnpVMCZIjc7AIeg=|+TMJ8Cj3o4u8xy3mRSxfoTOdC7Q= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHqMOtNqVfryEpLK5rhib62hxSTe4DvTGEBy/Bhmb3tqlhhlRgsR1g0tDtNDkJZ12mnuAMntb8WV0j7SGm9+RYo=&quot;</span>
+</code></pre>
+</div>
+<h3 id="adding-superhub-to-feeder">Adding superhub to feeder</h3><h4 id="construct-a-json-for-post-api">Construct a JSON for POST API</h4><div class="highlight"><pre><code class="console"><span class="gp">$</span> <span class="nb">printf</span> <span class="err">&#39;</span><span class="o">{</span>
+<span class="go">  &quot;ui_name&quot;: &quot;superhub&quot;,</span>
+<span class="go">  &quot;role&quot;: &quot;superhub&quot;,</span>
+<span class="go">  &quot;hostkey&quot;: &quot;%s&quot;,</span>
+<span class="go">  &quot;enabled&quot;: &quot;true&quot;,</span>
+<span class="go">  &quot;target_state&quot;: &quot;on&quot;,</span>
+<span class="go">  &quot;transport&quot;:</span>
+<span class="go">  {</span>
+<span class="go">    &quot;mode&quot;: &quot;pull_over_rsync&quot;,</span>
+<span class="go">    &quot;ssh_user&quot;: &quot;cftransport&quot;,</span>
+<span class="go">    &quot;ssh_host&quot;: &quot;%s&quot;,</span>
+<span class="go">    &quot;ssh_pubkey&quot;: &quot;%s&quot;,</span>
+<span class="go">    &quot;ssh_fingerprint&quot;: &quot;%s&quot;</span>
+<span class="go">  }</span>
+<span class="go">}</span>
+<span class="go">&#39; &quot;$SUPERHUB_HOSTKEY&quot; &quot;$SUPERHUB&quot; &quot;$SUPERHUB_PUB&quot; &quot;$SUPERHUB_FP&quot; &gt; superhub.json</span>
+<span class="gp">$</span> cat superhub.json
+<span class="go">{</span>
+<span class="go">  &quot;ui_name&quot;: &quot;superhub&quot;,</span>
+<span class="go">  &quot;role&quot;: &quot;superhub&quot;,</span>
+<span class="go">  &quot;hostkey&quot;: &quot;SHA=5628db8a4c5e6ba4f040ee1cafb3928abd966ebccb38b0045f91af67e91f9a16&quot;,</span>
+<span class="go">  &quot;enabled&quot;: &quot;true&quot;,</span>
+<span class="go">  &quot;target_state&quot;: &quot;on&quot;,</span>
+<span class="go">  &quot;transport&quot;:</span>
+<span class="go">  {</span>
+<span class="go">    &quot;mode&quot;: &quot;pull_over_rsync&quot;,</span>
+<span class="go">    &quot;ssh_user&quot;: &quot;cftransport&quot;,</span>
+<span class="go">    &quot;ssh_host&quot;: &quot;52.215.88.224&quot;,</span>
+<span class="go">    &quot;ssh_pubkey&quot;: &quot;ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHqMau6qL+iCzr6o1+k+1IwoI6Wj++dzEV/w5VGMKy9w root@ip-172-31-22-191&quot;,</span>
+<span class="go">    &quot;ssh_fingerprint&quot;: &quot;|1|d7iPkk7pb7tyZ3Y8lpQv6PIGU54=|VutDe9dq5S9nxgFher0LAapKSas= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBIW7FD4nfpJThtjtPj5okXsiCEenZOKDZh2akX2pBFlMpwOExVqvZV/all/fSlbVzlZbuHNA99SQ7m9Scsn2o/c=&quot;</span>
+<span class="go">  }</span>
+<span class="go">}</span>
+</code></pre>
+</div>
+
+<p>Look at the cat output, ensure <code>ssh_host</code>, <code>ssh_pubkey</code>, and <code>ssh_fingerprint</code>
+are correct.</p>
+<h4 id="use-post-api-to-add-superhub-to-feeder">Use POST API to add superhub to feeder</h4><div class="highlight"><pre><code class="console"><span class="gp">$</span> curl -k -i -s -X POST -u admin:$PASSWORD https://<span class="nv">$FEEDE</span>R/api/fr/remote-hub -d @superhub.json --header <span class="s2">&quot;Content-Type: application/json&quot;</span>
+<span class="gp">$</span> curl -k -i -s -X POST -u admin:$PASSWORD https://<span class="nv">$FEEDE</span>R/api/fr/federation-config
+</code></pre>
+</div>
+
+<p>(The second API call is needed to save the updated config to file,
+<code>federation-config.json</code>).</p>
+
+<p>Note: for pre 3.14 feeders, you must <a href="enterprise-cfengine-guide-federated-reporting.html#add-superhub-to-feeder-without-api" title="Federated Reporting - Add superhub to feeder without API">Add superhub to feeder without API</a></p>
+<h4 id="add-superhub-to-feeder-without-api">Add superhub to feeder without API</h4>
+<p>To configure things without the API, just modify the
+<code>/opt/cfengine/federation/cfapache/federation-config.json</code> file on the
+<strong>feeder</strong> and add the <strong>superhub</strong> as a remote hub by adding this section:</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> <span class="nb">printf</span> <span class="err">&#39;</span>
+<span class="go">  &quot;remote_hubs&quot;: {</span>
+<span class="go">        &quot;id-2&quot;: {</span>
+<span class="go">            &quot;id&quot;: 2,</span>
+<span class="go">            &quot;hostkey&quot;: &quot;%s&quot;,</span>
+<span class="go">            &quot;ui_name&quot;: &quot;superhub&quot;,</span>
+<span class="go">            &quot;role&quot;: &quot;superhub&quot;,</span>
+<span class="go">            &quot;target_state&quot;: &quot;on&quot;,</span>
+<span class="go">            &quot;transport&quot;: {</span>
+<span class="go">               &quot;mode&quot;: &quot;pull_over_rsync&quot;,</span>
+<span class="go">               &quot;ssh_user&quot;: &quot;cftransport&quot;,</span>
+<span class="go">               &quot;ssh_host&quot;: &quot;%s&quot;,</span>
+<span class="go">               &quot;ssh_pubkey&quot;: &quot;%s&quot;,</span>
+<span class="go">               &quot;ssh_fingerprint&quot;: &quot;%s&quot;</span>
+<span class="go">            }</span>
+<span class="go">        }</span>
+<span class="go">  }</span>
+<span class="go">&#39; &quot;$SUPERHUB_HOSTKEY&quot; &quot;$SUPERHUB&quot; &quot;$SUPERHUB_PUB&quot; &quot;$SUPERHUB_FP&quot;</span>
+</code></pre>
+</div>
+
+<p>(This isn&#39;t the entire file, just modify the remote_hubs section).</p>
+<h3 id="adding-feeder-to-superhub">Adding feeder to superhub</h3><h4 id="construct-a-json-for-post-api">Construct a JSON for POST API</h4><div class="highlight"><pre><code class="console"><span class="gp">$</span> <span class="nb">printf</span> <span class="err">&#39;</span><span class="o">{</span>
+<span class="go">  &quot;ui_name&quot;: &quot;feeder&quot;,</span>
+<span class="go">  &quot;role&quot;: &quot;feeder&quot;,</span>
+<span class="go">  &quot;hostkey&quot;: &quot;%s&quot;,</span>
+<span class="go">  &quot;api_url&quot;: &quot;https://%s&quot;,</span>
+<span class="go">  &quot;target_state&quot;: &quot;on&quot;,</span>
+<span class="go">  &quot;transport&quot;:</span>
+<span class="go">  {</span>
+<span class="go">    &quot;mode&quot;: &quot;pull_over_rsync&quot;,</span>
+<span class="go">    &quot;ssh_user&quot;: &quot;cftransport&quot;,</span>
+<span class="go">    &quot;ssh_host&quot;: &quot;%s&quot;,</span>
+<span class="go">    &quot;ssh_pubkey&quot;: &quot;%s&quot;,</span>
+<span class="go">    &quot;ssh_fingerprint&quot;: &quot;%s&quot;</span>
+<span class="go">  }</span>
+<span class="go">}</span>
+<span class="go">&#39; &quot;$FEEDER_HOSTKEY&quot; &quot;$FEEDER&quot; &quot;$FEEDER&quot; &quot;$FEEDER_PUB&quot; &quot;$FEEDER_FP&quot; &gt; feeder.json</span>
+<span class="gp">$</span> cat feeder.json
+<span class="go">{</span>
+<span class="go">  &quot;ui_name&quot;: &quot;feeder&quot;,</span>
+<span class="go">  &quot;role&quot;: &quot;feeder&quot;,</span>
+<span class="go">  &quot;hostkey&quot;: &quot;SHA=8451d14a876bf480da2cf30b3293954722792f721b69541f919bb263326fbc45&quot;,</span>
+<span class="go">  &quot;api_url&quot;: &quot;https://34.241.127.1&quot;,</span>
+<span class="go">  &quot;target_state&quot;: &quot;on&quot;,</span>
+<span class="go">  &quot;transport&quot;:</span>
+<span class="go">  {</span>
+<span class="go">    &quot;mode&quot;: &quot;pull_over_rsync&quot;,</span>
+<span class="go">    &quot;ssh_user&quot;: &quot;cftransport&quot;,</span>
+<span class="go">    &quot;ssh_host&quot;: &quot;34.241.127.1&quot;,</span>
+<span class="go">    &quot;ssh_pubkey&quot;: &quot;ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKnYDCbGfSIX/SOj+ZCeca1fX9HF1BdTjUHDyWPFG9Yh root@ip-172-31-27-84&quot;,</span>
+<span class="go">    &quot;ssh_fingerprint&quot;: &quot;|1|UDqYbxUuV0BxrnpVMCZIjc7AIeg=|+TMJ8Cj3o4u8xy3mRSxfoTOdC7Q= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHqMOtNqVfryEpLK5rhib62hxSTe4DvTGEBy/Bhmb3tqlhhlRgsR1g0tDtNDkJZ12mnuAMntb8WV0j7SGm9+RYo=&quot;</span>
+<span class="go">  }</span>
+<span class="go">}</span>
+</code></pre>
+</div>
+
+<p>Look at the cat output, ensure <code>ssh_host</code>, <code>ssh_pubkey</code>, and <code>ssh_fingerprint</code>
+are correct.</p>
+<h4 id="use-post-api-to-add-feeder-to-superhub">Use POST API to add feeder to superhub</h4><div class="highlight"><pre><code class="console"><span class="gp">$</span> curl -k -i -s -X POST -u admin:$PASSWORD https://$SUPERHUB/api/fr/remote-hub -d @feeder.json --header <span class="s2">&quot;Content-Type: application/json&quot;</span>
+<span class="gp">$</span> curl -k -i -s -X POST -u admin:$PASSWORD https://$SUPERHUB/api/fr/federation-config
+</code></pre>
+</div>
+
+<p>(The second API call is needed to save the updated config to file,
+<code>federation-config.json</code>).</p>
+<h3 id="trigger-agent-runs">Trigger agent runs</h3>
+<p>The agent run on the feeder will configure ssh and generate a dump.
+The agent run on the superhub will pull the data and import it.
+Check that each step works without errors:</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> cf-remote sudo -H <span class="nv">$C</span>LOUD_USER<span class="nv">$FEEDE</span>R,<span class="nv">$C</span>LOUD_USER$SUPERHUB <span class="s2">&quot;/var/cfengine/bin/cf-agent -KI&quot;</span>
+</code></pre>
+</div>
+<h3 id="do-a-manual-collection-of-superhub-data">Do a manual collection of superhub data</h3>
+<p>At this point, the superhubs data has been deleted (replaced by feeder data).
+We can get the superhub to appear in MP by triggering a manual collection:</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> cf-remote sudo -H $SUPERHUB <span class="s2">&quot;/var/cfengine/bin/cf-hub -I -H </span>$<span class="s2">SUPERHUB_BS --query rebase&quot;</span>
+<span class="gp">$</span> cf-remote sudo -H $SUPERHUB <span class="s2">&quot;/var/cfengine/bin/cf-hub -I -H </span>$<span class="s2">SUPERHUB_BS --query delta&quot;</span>
+</code></pre>
+</div>
+<h3 id="start-cf-execd-on-the-superhub-and-feeder">Start cf-execd on the superhub and feeder</h3>
+<p>Let&#39;s switch back to ordinary mode of periodic agent runs.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> cf-remote sudo -H <span class="nv">$C</span>LOUD_USER$SUPERHUB,<span class="nv">$C</span>LOUD_USER<span class="nv">$FEEDE</span>R <span class="s2">&quot;systemctl start cf-execd&quot;</span>
+</code></pre>
+</div>
+
+<p>On systems running systemd, we need to rename the binary back and start it manually.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> cf-remote sudo -H <span class="nv">$C</span>LOUD_USER$SUPERHUB,<span class="nv">$C</span>LOUD_USER<span class="nv">$FEEDE</span>R <span class="s2">&quot;mv /var/cfengine/bin/cf-execd.disabled /var/cfengine/bin/cf-execd&quot;</span>
+<span class="gp">$</span> cf-remote sudo -H <span class="nv">$C</span>LOUD_USER$SUPERHUB,<span class="nv">$C</span>LOUD_USER<span class="nv">$FEEDE</span>R <span class="s2">&quot;/var/cfengine/bin/cf-execd&quot;</span>
+</code></pre>
+</div>
+<h2 id="disable-feeder">Disable Feeder</h2>
+<p><img src="fr-edit-hub-disable.png" alt="Edit Hub Disable"></p>
+
+<p>A Feeder Hub may be disabled from the Hub Management app so that it will no
+longer participate in Federated Reporting. No further attempts to pull data from
+that feeder will occur until it is enabled again.</p>
+
+<p>Click the edit button for the feeder, enter URL and credentials information as
+needed, uncheck the &quot;Enable reporting to superhub&quot; and click the &quot;Update
+connected hub&quot; button.</p>
+
+<p>The list of connected hubs should now reflect the disabled state.</p>
+
+<p><img src="fr-disabled-feeder.png" alt="Disabled Feeder"></p>
+<h2 id="uninstall">Uninstall</h2>
+<p>Uninstalling Federated Reporting from a superhub is not possible at this time.</p>
+
+<p>In order to remove Federated Reporting from a feeder you must set the <code>target_state</code>
+to <code>off</code>. On the next agent run the <code>cftransport</code> user will be removed, thus removing
+the trust established with the superhub and causing no further dump/import procedures
+to occur.</p>
+
+<p>There are two ways to change the <code>target_state</code> of a feeder.</p>
+
+<ul>
+<li>Use the hub-state API (requires version 3.14.0 or greater on the feeder hub)</li>
+<li>Edit federation-config.json (any version)</li>
+</ul>
+<h3 id="uninstall-with-the-api">Uninstall with the API</h3><div class="highlight"><pre><code class="console"><span class="gp">$</span> cat &gt; target-state-off.json
+<span class="go">{</span>
+<span class="go">  &quot;target_state&quot;: &quot;off&quot;</span>
+<span class="go">}</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> curl -k -i -s -X PUT -u admin:$PASSWORD https://<span class="nv">$FEEDE</span>R/api/fr/hub-state -d @target-state-off.json --header <span class="s2">&quot;Content-Type: application/json&quot;</span>
+</code></pre>
+</div>
+<h3 id="uninstall-without-api">Uninstall without API</h3>
+<p>Edit <code>/opt/cfengine/federation/cfapache/federation-config.json</code> on the feeder
+you wish to disable and change the top-level <code>target_state</code> property value to <code>off</code>.</p>
+<div class="highlight"><pre><code class="json"><span class="p">{</span>
+  <span class="nt">&quot;ui_name&quot;</span><span class="p">:</span> <span class="s2">&quot;feeder1&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;feeder&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_state&quot;</span><span class="p">:</span> <span class="s2">&quot;off&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;transport&quot;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;pull_over_rsync&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ssh_user&quot;</span><span class="p">:</span> <span class="s2">&quot;cftransport&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ssh_host&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;superhub-ip&gt;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ssh_pubkey&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;public key&gt;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ssh_fingerprint&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;ssh fingerprint&gt;&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="remove-feeder-from-mission-portal-hub-management">Remove Feeder from Mission Portal Hub Management</h3>
+<p>At this time it is not possible to remove a connected hub in the Mission Portal Hub
+management app. The recommended way to remove a connected hub is with the API.</p>
+
+<p>First list all feeders to find the id value. Use of <code>jq</code> is optional for pretty printing the JSON.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> curl -k -s -X GET -u admin:$PASSWORD https://$SUPERHUB/api/fr/remote-hub <span class="p">|</span> jq <span class="s1">&#39;.&#39;</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="json"><span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nt">&quot;hostkey&quot;</span><span class="p">:</span> <span class="s2">&quot;SHA=cd4be31f20f0c7d019a5d3bfe368415f2d34fec8af26ee28c4c123c6a0af49a2&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;api_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://100.90.80.70&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;ui_name&quot;</span><span class="p">:</span> <span class="s2">&quot;feeder1&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;feeder&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_state&quot;</span><span class="p">:</span> <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;transport&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;pull_over_rsync&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ssh_user&quot;</span><span class="p">:</span> <span class="s2">&quot;cftransport&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ssh_host&quot;</span><span class="p">:</span> <span class="s2">&quot;172.32.1.20&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ssh_pubkey&quot;</span><span class="p">:</span> <span class="s2">&quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDVGoBB3zLKfVTzDNum/JWlmNJrSuDGrhTW1ZGtZEKjxFViFr4j0F8s6gIr5KOMcWtd91XvW6klpCPqKH3lfY767AI/RQa8JgVXgtvUG8rkD+gJ/wzGJm+VoGpxxs9dyBgSOtkaOSIDc574Om8dBR8enRcgxo1cNpvDVLVYKx9IzqhBwqp1gzEtGoIi+CDoGmoj1BT9XTlCRvGXYmSSBrgLARVO2mh5iqhP0XRVCp9Ki6OB9vMcs9rxIgQaPt8tVCt7/FK03IXrWPUsJC4M/kXiaKgHlE96H0CEvYl7GczaIU2NN5AHXZlviL79Zb8kOcUzsMdKv40G9YVa7/kyDOUX root@ip-172-32-1-20&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ssh_fingerprint&quot;</span><span class="p">:</span> <span class="s2">&quot;ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBF18li5PyCyVy27+Lv09HDRxhyEnlL+zK++WaLc78W+Gji5i2VSRDg/jVV0xU2ZUmkohULZ66OmI5/sCOOIa3XU=\nssh-ed25519&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;statistics&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+<span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="nt">&quot;hostkey&quot;</span><span class="p">:</span> <span class="s2">&quot;SHA=30b6bb15fb94c9b7e386521bbe566934d266db2f6f63cd85f5e6fc406d11110b&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;api_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://100.90.80.60&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;ui_name&quot;</span><span class="p">:</span> <span class="s2">&quot;feeder2&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;feeder&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;target_state&quot;</span><span class="p">:</span> <span class="s2">&quot;on&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;transport&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;pull_over_rsync&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ssh_user&quot;</span><span class="p">:</span> <span class="s2">&quot;cftransport&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ssh_host&quot;</span><span class="p">:</span> <span class="s2">&quot;172.32.1.21&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ssh_pubkey&quot;</span><span class="p">:</span> <span class="s2">&quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDin59ffTXhtQxahrYkqNi3x36XIO08GnOvvVe3s+DmuT3kBn8Lh4P30kOVONSGKcfNZLnWVPrk2qqNWuEi6xg861G1kXqce02c26BW+4L/tnz86/kmTBGc2vb6d1NpEKA/1bg6bMf1da+EInxuMsS+yOWCe+s6DJ00bg6iCnmlLYtzAkMXmXK5QgVG6AImJXqG1Px5DlsRcKto00J8WJswfTpQXbZbuog4J6Ltm/J4DQW1/x7pEJby/r+/lKPJWp19t0gaGXfsxwHEPFK6YC8zmFzkBeqiVpAizhs7G8mZDgAAhMyY8d2eYIp+hDIFpfQA3aHHr0L7emsFeDa/rExt root@ip-172-32-1-21&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ssh_fingerprint&quot;</span><span class="p">:</span> <span class="s2">&quot;ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7HE4qJfTLP9j02jZnkpTpUMCBiFzmAemgvIPcJjWJVNcawh1hpGSsWjw9EM1kwn7J6fWrjEkY8lTi2pNTnobL9qt+oQvwFqUvs5EZ8gAVIAyDjKE8GLckZRt8VGxLWMtOlBKaAmPBn0eFP6ToPqnPygJiiM05vKtxPui1xuCTrW+rXShtolUJLwwGH2APcDqjKAdZceQK4nybJzk4J1P77sJc+9IlHJCTpfj8AQEbh/Z3cHtNKauaz1mhDn5YT/QWwzKavGlqFSlSDwLXT2go6P6FoSaVYTV45V9l7q6ahEy3zEe7+7psMFVucS512qYFEKn5FoSIVQLgT3I8MfI1\necdsa-sha2-nistp256&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;statistics&quot;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Determine the id from the &quot;id&quot; property value and delete the remote hub. In this case
+we use the number &quot;1&quot;.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> curl -k -s -X DELETE -u admin:$PASSWORD https://$SUPERHUB/api/fr/remote-hub/1
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-enterprise.html">enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-guide.html">guide</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-federated-reporting.html">federated reporting</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 24 June 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/enterprise-cfengine-guide/federated-reporting.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/4e9e6860aa094f25a21afcdd2087a240dbb1ba7d" target="_blank">4e9e6860aa094f25a21afcdd2087a240dbb1ba7d</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.16/assets/footer-ae31e033a1a936d598cf1c40b94021b9.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

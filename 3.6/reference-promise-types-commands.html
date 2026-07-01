@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.6  Documentation - commands</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.6/assets/global-ac3885a0674bd3c9117d62800be1608f.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "commands";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                 <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html" selected>Version 3.6 (EOL)</option>
+			                 <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:bm0uhfq8ykk" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a><ul class="level2"><li><a href="reference-promise-types-access.html">access</a></li><li><a href="reference-promise-types-edit_xml.html">bundle edit_xml</a></li><li><a href="reference-promise-types-edit_line.html">bundle edit_line</a></li><li><a href="reference-promise-types-classes.html">classes</a></li><li><a class="active" href="reference-promise-types-commands.html">commands</a></li><li><a href="reference-promise-types-databases.html">databases</a></li><li><a href="reference-promise-types-defaults.html">defaults</a></li><li><a href="reference-promise-types-files.html">files</a></li><li><a href="reference-promise-types-guest_environments.html">guest_environments</a></li><li><a href="reference-promise-types-measurements.html">measurements</a></li><li><a href="reference-promise-types-methods.html">methods</a></li><li><a href="reference-promise-types-meta.html">meta</a></li><li><a href="reference-promise-types-packages.html">packages</a></li><li><a href="reference-promise-types-processes.html">processes</a></li><li><a href="reference-promise-types-reports.html">reports</a></li><li><a href="reference-promise-types-roles.html">roles</a></li><li><a href="reference-promise-types-services.html">services</a></li><li><a href="reference-promise-types-storage.html">storage</a></li><li><a href="reference-promise-types-users.html">users</a></li><li><a href="reference-promise-types-vars.html">vars</a></li></ul></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-standard-library.html">Standard Library</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    commands
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Commands and <a href="reference-promise-types-processes.html" title="processes">processes</a> are separated cleanly. Restarting of
+processes must be coded as a separate command. This stricter type separation
+allows for more careful conflict analysis to be carried out.</p>
+<div class="highlight"><pre><code class="cf3">     <span class="kd">commands</span><span class="p">:</span>
+
+       <span class="s">&quot;/path/to/command args&quot;</span>
+
+                  <span class="nf">args</span> <span class="err">=</span> <span class="s">&quot;more args&quot;</span><span class="p">,</span>
+                  <span class="nf">contain</span> <span class="err">=</span> <span class="nf">contain_body</span><span class="p">,</span>
+                  <span class="nf">module</span> <span class="err">=</span> <span class="nf">true</span><span class="err">/</span><span class="nf">false</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Output from commands executed here is quoted inline, but prefixed with
+the letter Q to distinguish it from other output; for example, from
+<a href="reference-promise-types-reports.html" title="reports"><code>reports</code></a>, which is prefixed with the letter <code>R</code>.</p>
+
+<p>It is possible to set classes based on the return code of a
+commands-promise in a very flexible way. See the <a href="reference-promise-types.html#kept_returncodes" title="Promise Types and Attributes - kept_returncodes"><code>kept_returncodes</code></a>,
+<a href="reference-promise-types.html#repaired_returncodes" title="Promise Types and Attributes - repaired_returncodes"><code>repaired_returncodes</code></a> and <a href="reference-promise-types.html#failed_returncodes" title="Promise Types and Attributes - failed_returncodes"><code>failed_returncodes</code></a> attributes.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+
+<span class="p">{</span>
+<span class="kd">commands</span><span class="p">:</span>
+
+  <span class="s">&quot;/bin/sleep 10&quot;</span>
+     <span class="kr">action</span>  <span class="o">=&gt;</span> <span class="nf">background</span><span class="p">;</span>
+
+  <span class="s">&quot;/bin/sleep&quot;</span>
+     <span class="kr">args</span> <span class="o">=&gt;</span> <span class="s">&quot;20&quot;</span><span class="p">,</span>
+     <span class="kr">action</span>  <span class="o">=&gt;</span> <span class="nf">background</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>When referring to executables the full path to the executable must be used.
+When reffereing to executables whose paths contain spaces, you should quote
+the entire program string separately so that CFEngine knows the name of the
+executable file. For example:</p>
+<div class="highlight"><pre><code class="cf3">      <span class="kd">commands</span><span class="p">:</span>
+
+       <span class="nc">windows</span><span class="p">::</span>
+
+        <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">c:</span><span class="se">\P</span><span class="s">rogram Files</span><span class="se">\m</span><span class="s">y name with space</span><span class="se">\&quot;</span><span class="s"> arg1 arg2&quot;</span><span class="p">;</span>
+
+       <span class="nc">linux</span><span class="p">::</span>
+
+        <span class="s">&quot;</span><span class="se">\&quot;</span><span class="s">/usr/bin/funny command name</span><span class="se">\&quot;</span><span class="s"> -a -b -c&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Note</strong>: Some unices leave a hanging pipe on restart (they never manage to
+detect the end of file condition). This occurs on POSIX.1 and SVR4 popen calls
+which use wait4. For some reason they fail to find and end-of-file for an
+exiting child process and go into a deadlock trying to read from an already
+dead process.  This leaves a zombie behind (the parent daemon process which
+forked and was supposed to exit) though the child continues. A way around this
+is to use a wrapper script which prints the line <code>cfengine-die</code> to STDOUT after
+restarting the process. This causes cfengine to close the pipe forcibly and
+continue.</p>
+
+<hr>
+<h2 id="attributes">Attributes</h2><h3 id="common-attributes">Common Attributes</h3>
+<p>Common attributes are available to all promise types. Full details for common
+attributes can be found in the <a href="reference-promise-types.html#common-attributes" title="Promise Types and Attributes - Common Attributes">Common Attributes section</a> of
+the <a href="reference-promise-types.html" title="Promise Types and Attributes">Promise Types and Attributes</a> page. The common attributes are as follows:</p>
+<h4 id="action"><a href="reference-promise-types.html#action" title="Promise Types and Attributes - action">action</a></h4><h4 id="classes"><a href="reference-promise-types.html#classes" title="Promise Types and Attributes - classes">classes</a></h4><h4 id="comment"><a href="reference-promise-types.html#comment" title="Promise Types and Attributes - comment">comment</a></h4><h4 id="depends_on"><a href="reference-promise-types.html#depends_on" title="Promise Types and Attributes - depends_on">depends_on</a></h4><h4 id="handle"><a href="reference-promise-types.html#handle" title="Promise Types and Attributes - handle">handle</a></h4><h4 id="ifvarclass"><a href="reference-promise-types.html#ifvarclass" title="Promise Types and Attributes - ifvarclass">ifvarclass</a></h4><h4 id="meta"><a href="reference-promise-types.html#meta" title="Promise Types and Attributes - meta">meta</a></h4>
+<hr>
+<h3 id="args">args</h3>
+<p><strong>Description:</strong> Allows to separate the arguments to the command from the
+command itself.</p>
+
+<p>Sometimes it is convenient to separate command and arguments. The final arguments are the concatenation with one space.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">commands</span><span class="p">:</span>
+
+  <span class="s">&quot;/bin/echo one&quot;</span>
+
+   <span class="kr">args</span> <span class="o">=&gt;</span> <span class="s">&quot;two three&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>So in the example above the command would be:</p>
+<div class="highlight"><pre><code class="cf3"> <span class="err">/</span><span class="nf">bin</span><span class="err">/</span><span class="nf">echo</span> <span class="nf">one</span> <span class="nf">two</span> <span class="nf">three</span>
+</code></pre>
+</div>
+<h3 id="contain">contain</h3>
+<p><strong>Description:</strong> Allows running the command in a &#39;sandbox&#39;.</p>
+
+<p>Command containment allows you to make a `sandbox&#39; around a command, to run it
+as a non-privileged user inside an isolated directory tree.</p>
+
+<p><strong>Type:</strong> <code>body contain</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">contain</span> <span class="nf">example</span>
+    <span class="p">{</span>
+        <span class="kr">useshell</span> <span class="o">=&gt;</span> <span class="s">&quot;noshell&quot;</span><span class="p">;</span>
+           <span class="kr">umask</span> <span class="o">=&gt;</span> <span class="s">&quot;077&quot;</span><span class="p">;</span>
+      <span class="kr">exec_owner</span> <span class="o">=&gt;</span> <span class="s">&quot;mysql_user&quot;</span><span class="p">;</span>
+      <span class="kr">exec_group</span> <span class="o">=&gt;</span> <span class="s">&quot;nogroup&quot;</span><span class="p">;</span>
+    <span class="kr">exec_timeout</span> <span class="o">=&gt;</span> <span class="s">&quot;60&quot;</span><span class="p">;</span>
+           <span class="kr">chdir</span> <span class="o">=&gt;</span> <span class="s">&quot;/working/path&quot;</span><span class="p">;</span>
+          <span class="kr">chroot</span> <span class="o">=&gt;</span> <span class="s">&quot;/private/path&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="useshell">useshell</h4>
+<p><strong>Description:</strong> Specifies which shell to use when executing the command.</p>
+
+<p>The default is to <em>not</em> use a shell when executing commands. Use of a
+shell has both resource and security consequences. A shell consumes an
+extra process and inherits environment variables, reads commands from
+files and performs other actions beyond the control of CFEngine.</p>
+
+<p>If one does not need shell functionality such as piping through multiple
+commands then it is best to manage without it. In the Windows version of
+CFEngine Enterprise, the command is run in the <code>cmd</code> Command Prompt if this
+attribute is set to <code>useshell</code>, or in the PowerShell if the attribute is set
+to <code>powershell</code>.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">    useshell
+    noshell
+    powershell
+</code></pre>
+</div>
+
+<p>For compatibility, the boolean values are also supported, and map to
+<code>useshell</code> and <code>noshell</code>, respectively.</p>
+
+<p><strong>Default value:</strong> <code>noshell</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">contain</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">useshell</span> <span class="o">=&gt;</span> <span class="s">&quot;useshell&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="umask">umask</h4>
+<p><strong>Description:</strong> Sets the internal umask for the process.</p>
+
+<p>Default value for the mask is 077. On Windows, umask is not supported and is
+thus ignored by Windows versions of CFEngine.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">    0
+    77
+    22
+    27
+    72
+    002
+    077
+    022
+    027
+    072
+</code></pre>
+</div>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">contain</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">umask</span> <span class="o">=&gt;</span> <span class="s">&quot;077&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="exec_owner">exec_owner</h4>
+<p><strong>Description:</strong> Specifies the user under which the command executes.</p>
+
+<p>This is part of the restriction of privilege for child processes when
+running <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> as the root user, or a user with privileges.</p>
+
+<p>Windows requires the clear text password for the user account to run
+under. Keeping this in CFEngine policies could be a security hazard.
+Therefore, this option is not yet implemented on Windows versions of
+CFEngine.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">contain</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">exec_owner</span> <span class="o">=&gt;</span> <span class="s">&quot;mysql_user&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="exec_group">exec_group</h4>
+<p><strong>Description:</strong> Associates the command with a group.</p>
+
+<p>This is part of the restriction of privilege for child processes when
+running <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> as the root group, or a group with privileges. It is
+ignored on Windows, as processes do not have any groups associated with
+them.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">contain</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">exec_group</span> <span class="o">=&gt;</span> <span class="s">&quot;nogroup&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="exec_timeout">exec_timeout</h4>
+<p><strong>Description:</strong> Attempt to time-out after this number of seconds.</p>
+
+<p>This cannot be guaranteed as not all commands are willing to be interrupted in
+case of failure.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>1,3600</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">contain</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">exec_timeout</span> <span class="o">=&gt;</span> <span class="s">&quot;30&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>See Also:</strong> <a href="reference-promise-types.html#expireafter" title="Promise Types and Attributes - expireafter"><code>body action expireafter</code></a>,  <a href="reference-components-cf-agent.html#expireafter" title="cf-agent - expireafter"><code>body agent control expireafter</code></a>, <a href="reference-components-cf-execd.html#agent_expireafter" title="cf-execd - agent_expireafter"><code>body executor control agent_expireafter</code></a></p>
+<h4 id="chdir">chdir</h4>
+<p><strong>Description:</strong> Run the command with a working directory.</p>
+
+<p>This attribute has the effect of placing the running command into a
+current working directory equal to the parameter given; in other words,
+it works like the cd shell command.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>&quot;?(/.*)</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">contain</span> <span class="nf">example</span>
+
+     <span class="p">{</span>
+     <span class="kr">chdir</span> <span class="o">=&gt;</span> <span class="s">&quot;/containment/directory&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="chroot">chroot</h4>
+<p><strong>Description:</strong> Specify the path that will be the root directory for the
+process.</p>
+
+<p>The path of the directory will be experienced as the top-most root directory
+for the process. In security parlance, this creates a &#39;sandbox&#39; for the
+process. Windows does not support this feature.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>&quot;?(/.*)</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">contain</span> <span class="nf">example</span>
+
+     <span class="p">{</span>
+     <span class="kr">chroot</span> <span class="o">=&gt;</span> <span class="s">&quot;/private/path&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="preview">preview</h4>
+<p><strong>Description:</strong> This is the preview command when running in dry-run mode
+(with -n).</p>
+
+<p>Previewing shell scripts during a dry-run is a potentially misleading
+activity. It should only be used on scripts that make no changes to the
+system. It is CFEngine best practice to never write change-functionality into
+user-written scripts except as a last resort. CFEngine can apply its safety
+checks to user defined scripts.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">contain</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">preview</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="no_output">no_output</h4>
+<p><strong>Description:</strong> Allows to discard all output from the command.</p>
+
+<p>Setting this attribute to <code>true</code> is equivalent to piping standard output and
+error to <code>/dev/null</code>.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">contain</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">no_output</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="module">module</h3>
+<p><strong>Description:</strong> Set variables and classes based on command output.</p>
+
+<p>CFEngine <code>modules</code> are commands that support a simple protocol in order to set
+additional variables and classes on execution from user defined code. Modules
+are intended for use as system probes rather than additional configuration
+promises. Such a module may be written in any language.</p>
+
+<p>This attribute determines whether or not to expect the CFEngine module protocol. If true, the module protocol is supported for this command:</p>
+
+<ul>
+<li>lines which begin with a <code>^</code> are protocol extensions
+
+<ul>
+<li><code>^context=xyz</code> sets the module context to <code>xyz</code> instead of the default</li>
+<li><code>^meta=a,b,c</code> sets the class and variable tags for any following definitions to <code>a</code>, <code>b</code>, and <code>c</code></li>
+</ul></li>
+<li>lines which begin with a <code>+</code> are treated as classes to be defined (like -D)</li>
+<li>lines which begin with a <code>-</code> are treated as classes to be undefined (like -N)</li>
+<li>lines which begin with <code>=</code> are scalar variables to be defined</li>
+<li>lines which begin with <code>=</code> and include <code>[]</code> are array variables to be defined</li>
+<li>lines which begin with <code>@</code> are lists.</li>
+<li>lines which begin with <code>%</code> are <a href="reference-promise-types-vars.html#data" title="vars - data"><code>data</code></a> containers.  The value needs to be valid JSON and will be decoded.</li>
+</ul>
+
+<p>These variables end up in a context that has the same name as the
+module, unless the <code>^context</code> extension is used.</p>
+
+<p>All the variables and classes will have at least the tag
+<code>source=module</code> in addition to any tags you may set.</p>
+
+<p>Any other lines of output are cited by <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> as being erroneous, so you
+should normally make your module completely silent.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+
+<p>Here is an example module written in shell:</p>
+<div class="highlight"><pre><code class="sh">     <span class="c">#!/bin/sh</span>
+     /bin/echo <span class="s2">&quot;@mylist= { \&quot;one\&quot;, \&quot;two\&quot;, \&quot;three\&quot; }&quot;</span>
+     /bin/echo <span class="s2">&quot;=myscalar= scalar val&quot;</span>
+     /bin/echo <span class="s2">&quot;=myarray[key]= array key val&quot;</span>
+     /bin/echo <span class="s2">&quot;%mydata=[1,2,3]&quot;</span>
+     /bin/echo <span class="s2">&quot;+module_class&quot;</span>
+</code></pre>
+</div>
+
+<p>And here is an example using it:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">def</span><span class="p">,</span> <span class="nf">modtest</span> <span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">def</span>
+    <span class="p">{</span>
+    <span class="kd">commands</span><span class="p">:</span>
+
+      <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/modules/module_name&quot;</span>
+        <span class="kr">module</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+
+    <span class="kd">reports</span><span class="p">:</span>
+
+      <span class="c"># Each module forms a private context with its name as id</span>
+      <span class="nc">module_class</span><span class="p">::</span>
+
+        <span class="s">&quot;Module set variable </span><span class="si">$(module_name.myscalar)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">modtest</span>
+    <span class="p">{</span>
+    <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">mylist</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(module_name.mylist)</span> <span class="p">};</span>
+
+    <span class="kd">reports</span><span class="p">:</span>
+
+      <span class="nc">module_class</span><span class="p">::</span>
+
+        <span class="s">&quot;Module set variable </span><span class="si">$(mylist)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Here is an example module written in Perl:</p>
+<div class="highlight"><pre><code class="perl">     <span class="c1">#!/usr/bin/perl</span>
+     <span class="c1">#</span>
+     <span class="c1"># module:myplugin</span>
+     <span class="c1">#</span>
+
+       <span class="c1"># lots of computation....</span>
+
+     <span class="k">if</span> <span class="p">(</span><span class="n">special</span><span class="o">-</span><span class="n">condition</span><span class="p">)</span>
+        <span class="p">{</span>
+        <span class="k">print</span> <span class="s">&quot;+specialclass&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>If your module is simple and is best expressed as a shell command, then we
+suggest that you <em>expose</em> the class being defined in the command being
+executed (making it easier to see what classes are used when reading the
+promises file). For example, the promises could read as follows (the two
+<code>echo</code> commands are to ensure that the shell always exits with a successful
+execution of a command):</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">sendmail</span>
+    <span class="p">{</span>
+    <span class="kd">commands</span><span class="p">:</span>
+      <span class="c"># This next module checks a specific failure mode of dcc, namely</span>
+      <span class="c"># more than 3 error states since the last time we ran cf-agent</span>
+      <span class="nc">is_mailhost</span><span class="p">::</span>
+            <span class="s">&quot;/bin/test `/usr/bin/tail -100 /var/log/maillog | /usr/bin/grep &#39;Milter (dcc): to error state&#39; | /usr/bin/wc -l` -gt 3  echo &#39;+start_dccm&#39; || echo</span>
+<span class="s">    &#39;&#39;&quot;</span>
+        <span class="kr">contain</span> <span class="o">=&gt;</span> <span class="nf">shell_command</span><span class="p">,</span>
+        <span class="kr">module</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+
+        <span class="nc">start_dccm</span><span class="p">::</span>
+          <span class="s">&quot;/var/dcc/libexec/start-dccm&quot;</span>
+              <span class="kr">contain</span> <span class="o">=&gt;</span> <span class="nf">not_paranoid</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">body</span> <span class="k">contain</span> <span class="nf">shell_command</span>
+    <span class="p">{</span>
+        <span class="kr">useshell</span>    <span class="o">=&gt;</span> <span class="s">&quot;useshell&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">body</span> <span class="k">contain</span> <span class="nf">not_paranoid</span>
+    <span class="p">{</span>
+        <span class="kr">useshell</span>    <span class="o">=&gt;</span> <span class="s">&quot;no&quot;</span><span class="p">;</span>
+        <span class="kr">exec_owner</span>  <span class="o">=&gt;</span> <span class="s">&quot;root&quot;</span><span class="p">;</span>
+        <span class="kr">umask</span>       <span class="o">=&gt;</span> <span class="s">&quot;22&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Modules inherit the environment variables from <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> and accept
+arguments, just as a regular command does.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-bundle-agent.html">bundle agent</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-commands.html">commands</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-promises.html">promises</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-promise-types.html">promise types</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/promise-types/commands.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/13cbf18729a5bf43d836f72e30aab3b2b0bdee7f" target="_blank">13cbf18729a5bf43d836f72e30aab3b2b0bdee7f</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.6/assets/footer-1ca6436dd462ed6a69ad3f2dba0774f0.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

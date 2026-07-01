@@ -1,0 +1,87 @@
+
+bundle knowledge st_schedule
+
+{
+topics:
+
+"st-schedule";
+Scheduling::
+    "Appendix - Did you know?" ;
+Scheduling::
+    "Choosing a scheduling interval" ;
+Scheduling::
+    "Splaying host times" ;
+Scheduling::
+    "Commands promises" ;
+Scheduling::
+    "Working with Unix cron." ;
+Scheduling::
+    "Scheduling by Sensing Events and Patterns" ;
+Scheduling::
+    "Logging execution" ;
+Scheduling::
+    "Calendars" ;
+Scheduling::
+    "Chaining jobs together" ;
+Scheduling::
+    "Define jobs with basic profile information" ;
+Scheduling::
+    "How can CFEngine help?" ;
+Scheduling::
+    "What is scheduling?" ;
+Special_Topics_Guide::
+    "Scheduling"  association => a("discussed in","Scheduling","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-schedule.html"
+  represents => { "Scheduling and Event Management" };
+Scheduling::
+ "/docs/st-schedule.html#Top"
+  represents => { "Text section" };
+What_is_scheduling_::
+ "/docs/st-schedule.html#What-is-scheduling_003f"
+  represents => { "Text section" };
+How_can_CFEngine_help_::
+ "/docs/st-schedule.html#How-can-CFEngine-help_003f"
+  represents => { "Text section" };
+Define_jobs_with_basic_profile_information::
+ "/docs/st-schedule.html#Define-jobs-with-basic-profile-information"
+  represents => { "Text section" };
+Chaining_jobs_together::
+ "/docs/st-schedule.html#Chaining-jobs-together"
+  represents => { "Text section" };
+Calendars::
+ "/docs/st-schedule.html#Calendars"
+  represents => { "Text section" };
+Logging_execution::
+ "/docs/st-schedule.html#Logging-execution"
+  represents => { "Text section" };
+Logging_execution::
+ "/docs/st-schedule.html#Logging-execution"
+  represents => { "code example" };
+Scheduling_by_Sensing_Events_and_Patterns::
+ "/docs/st-schedule.html#Scheduling-by-Sensing-Events-and-Patterns"
+  represents => { "Text section" };
+Working_with_Unix_cron_::
+ "/docs/st-schedule.html#Working-with-Unix-cron"
+  represents => { "Text section" };
+Commands_promises::
+ "/docs/st-schedule.html#Commands-promises"
+  represents => { "Text section" };
+Commands_promises::
+ "/docs/st-schedule.html#Commands-promises"
+  represents => { "code example" };
+Splaying_host_times::
+ "/docs/st-schedule.html#Splaying-host-times"
+  represents => { "Text section" };
+Choosing_a_scheduling_interval::
+ "/docs/st-schedule.html#Choosing-a-scheduling-interval"
+  represents => { "Text section" };
+Appendix___Did_you_know_::
+ "/docs/st-schedule.html#Appendix-_002d-Did-you-know_003f"
+  represents => { "Text section" };
+}
+

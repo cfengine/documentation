@@ -1,0 +1,41 @@
+
+bundle knowledge locations
+{
+things:
+
+ regions::
+
+   "Americas" comment => "USA, Latin America and Canada";
+   "EMEA"     comment => "Europe, The Middle-East and Africa";
+   "APAC"     comment => "Asia and the Pacific countries";
+
+ countries::
+
+   "USA";
+
+   "Germany"
+                   is_located_in => { "EMEA", "Europe" };
+   "UK"                 synonyms => { "Great Britain" },
+                   is_located_in => { "EMEA", "Europe" };
+   "Netherlands"        synonyms => { "Holland" },
+                   is_located_in => { "EMEA", "Europe" };
+   "Singapore"     is_located_in => { "APAC", "Asia" };
+
+
+topics:
+
+ places::
+
+   "Salt Lake City" comment => "North America, Utah. Timezone MDT/GMT-6.";
+   "New York" comment => "North America, NY State, East Coast. Timezone EST/GMT-5.";
+   "Monterey" comment => "North America, California, West Coast. Timezone PST/GMT-8.";
+   "London"   comment => "United Kingdom, England. Timezone GMT.";
+   "Oslo"     comment => "Norway, South. Timezone CET/MET/GMT+1.";
+   "Bergen"     comment => "Norway, West. Timezone CET/MET/GMT+1.";
+   "Valbonne"     comment => "France, South. Timezone CET/MET/GMT+1.";
+   "Toulouse"     comment => "France, South. Timezone CET/MET/GMT+1.";
+   "Amsterdam"    comment => "Netherlands. Timezone CET/MET/GMT+1.";
+
+
+
+}

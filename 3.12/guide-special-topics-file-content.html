@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.12  Documentation - File Content</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/guide-special-topics-file-content.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='/docs/3.12/assets/global-2ea8d2fcc0dbfebdbe7d10e6eca6a3b3.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "File Content";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/" selected>Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a><ul class="level2"><li><a href="guide-special-topics-adopting-cfengine.html">Adopting CFEngine</a></li><li><a href="guide-special-topics-agility.html">Agility</a></li><li><a href="guide-special-topics-application-management.html">Application Management</a></li><li><a href="guide-special-topics-build-deploy-manage-audit.html">Build Deploy Manage Audit</a></li><li><a href="guide-special-topics-change-management.html">Change Management</a></li><li><a href="guide-special-topics-cloud-computing.html">Cloud Computing</a></li><li><a href="guide-special-topics-content-driven-policy.html">Content Driven Policy</a></li><li><a href="guide-special-topics-devops.html">Devops</a></li><li><a href="guide-special-topics-distributed-scheduling.html">Distributed Scheduling</a></li><li><a class="active" href="guide-special-topics-file-content.html">File Content</a></li><li><a href="guide-special-topics-glossary.html">Glossary</a></li><li><a href="guide-special-topics-hierarchies.html">Hierarchies</a></li><li><a href="guide-special-topics-itil.html">ITIL</a></li><li><a href="guide-special-topics-iteration.html">Iteration (Loops)</a></li><li><a href="guide-special-topics-modularity.html">Modularity and Orchestrating System Policy</a></li><li><a href="guide-special-topics-orchestration.html">Orchestration</a></li><li><a href="guide-special-topics-stigs.html">STIGs</a></li><li><a href="guide-special-topics-teamwork.html">Teamwork</a></li><li><a href="guide-special-topics-open-nebula.html">Using CFEngine with Open Nebula</a></li></ul></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-special-topics.html">Special Topics</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    File Content
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h1 id="from-boiler-plates-to-convergent-file-editing">From boiler-plates to convergent file editing</h1>
+<p>Many configuration management systems allow you to determine configuration file
+content to some extent, usually by over-writing files with boiler-plate
+(template) files. This approach works for some cases, but it is a blunt and
+inflexible instrument, which forces you to take over the ownership of the file
+`all or nothing&#39; and determine its entire content yourself. This is more than is
+necessary or desirable in general.</p>
+
+<p>Other approaches to file editing us search and replace, e.g. with the
+long-standing Unix tools awk and sed. Adding a user to a structured file such as
+the password file, only if the user is not already defined, is a more complex
+operation.</p>
+
+<p>Cfengine allows you to model both whole files and parts of files, in any format,
+and promise that these fragments will satisfy certain promises about their
+state. This is potentially different from more common templating approaches to
+file management in which pre-adjusted copies of files are generated for all
+recipients at a single location and then distributed.</p>
+
+<p>The most important thing about making changes to files is that the result end up
+being predictable. There are three ways to approach this problem. You should
+choose the simplest approach that solves your problem and try not to be
+prejudiced by what you have done before.</p>
+<h1 id="why-is-file-editing-difficult">Why is file editing difficult?</h1>
+<p>File content is not made up of simple data objects like permission flags or
+process tables: files contain compound, ordered structures (known as grammars)
+and they cannot always be determined from a single source of information. To
+determine the outcome of a file we have to adopt either a fully deterministic
+approach, or live with a partial approximation.</p>
+
+<p>Some approaches to file editing try to `know&#39; the intended format of a file, by
+hardcoding it. If the file then fails to follow this format, the algorithms
+might break. CFEngine gives you generic tools to be able to handle files in any
+line-based format, without the need to hard-code specialist knowledge about file
+formats.</p>
+
+<p>Remember that all changes are adapted to your local context and implemented at
+the final destination by cf-agent.</p>
+<h1 id="what-does-file-editing-involve">What does file editing involve?</h1>
+<p>There are several ways to approach desired state management of file contents:</p>
+
+<ul>
+<li><p>Copy a finished file template to the desired location, completely overwriting
+existing content.</p></li>
+<li><p>Copy and adapt an almost finished template, filling in variables or macros to
+yield a desired content.</p></li>
+<li><p>Make corrections to whatever the existing state of the file might be.</p></li>
+</ul>
+
+<p>There are advantages and disadvantages with each of these approaches and the
+best approach depends on the type of situation you need to describe.</p>
+
+<p>For the approach    Against the approach
+1. Deterministic.   Hard to specialize the result and the source must still be maintained by hand.
+2. Deterministic.   Limited specialization and must come from a single source, again maintained by hand.
+3. Non-deterministic/partial model.     Full power to customize file even with multiple managers.</p>
+
+<p>Approaches 1 and 2 are best for situations where very few variations of a file
+are needed in different circumstances. Approach 3 is best when you need to
+customize a file significantly, especially when you don&#39;t know the full details
+of the file you are starting from. Approach 3 is generally required when
+adapting configuration files provided by a third party, since the basic content
+is determined by them.</p>
+<h1 id="three-approaches-to-managing-files">Three approaches to managing files</h1>
+<ul>
+<li><p>Copying a finished file template into place</p></li>
+<li><p>Contextual adaptation of a file template</p></li>
+<li><p>Example file template</p></li>
+<li><p>Combining copy with template expansion</p></li>
+<li><p>Making delta changes to someone else&#39;s file</p></li>
+</ul>
+<h2 id="copying-a-finished-file-template-into-place">Copying a finished file template into place</h2>
+<p>Use this approach if a simple substution of data will solve the problem in all
+contexts.</p>
+
+<ul>
+<li><p>Maintain the content of the file in a version controlled repository.</p></li>
+<li><p>Check out the file into a staging area.</p></li>
+<li><p>Copy the file into place.</p></li>
+</ul>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">something</span>
+<span class="p">{</span>
+<span class="kd">files</span><span class="p">:</span>
+
+  <span class="s">&quot;/important/file&quot;</span>
+
+  <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">secure_cp</span><span class="p">(</span><span class="s">&quot;/repository/important_file_template&quot;</span><span class="p">,</span><span class="s">&quot;svn-host&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="contextual-adaptation-of-a-file-template">Contextual adaptation of a file template</h2>
+<p>There are several approaches here:</p>
+
+<ul>
+<li><p>Encode the boiler-plate template directly in the CFEngine configuration, and
+have full use of the power of the CFEngine language to adapt it.</p></li>
+<li><p>Keep a separate boiler-plate file and edit/adapt it.</p></li>
+<li><p>Copy a template from a repository then edit/adapt it.</p></li>
+<li><p>Copy a generic template with embedded variables that can be expanded like
+macro-substitution.</p></li>
+</ul>
+
+<p>Choose the approach that you consider to be simplest and most reliable for the
+purpose you need. Don&#39;t use templating, for instance, simply because it is what
+you are used to, or you might waste a lot of time and effort maintaining data
+that you don&#39;t need to.</p>
+
+<p>To expand a template file on a local disk:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">templating</span>
+<span class="p">{</span>
+<span class="kd">files</span><span class="p">:</span>
+
+  <span class="s">&quot;/home/mark/tmp/file_based_on_template&quot;</span>
+
+       <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+    <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">expand_template</span><span class="p">(</span><span class="s">&quot;/tmp/source_template&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>As of CFEngine version 3.3.0 you can also use a new templating file format and
+write:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">templating</span>
+<span class="p">{</span>
+<span class="kd">files</span><span class="p">:</span>
+
+  <span class="s">&quot;/home/mark/tmp/file_based_on_template&quot;</span>
+
+       <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+    <span class="kr">edit_template</span> <span class="o">=&gt;</span> <span class="s">&quot;/tmp/source_template&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>For example, the source template file might look like this, with embedded
+CFEngine variables:</p>
+<div class="highlight"><pre><code class="text">     mail_relay = $(sys.fqhost)
+     important_user = $(mybundle.variable)
+     #...
+</code></pre>
+</div>
+
+<p>These variables will be filled in by CFEngine assuming they are defined within
+your CFEngine configuration.</p>
+
+<p>If you use the new edit_template promise, you can embed directives to CFEngine
+context-classes and mark out regions of a file to be treated as an iteratable
+block.</p>
+<div class="highlight"><pre><code class="text">#This is a template file /templates/input.tmpl
+
+These lines apply to anyone
+
+[%CFEngine solaris.Monday:: %]
+Everything after here applies only to solaris on Mondays
+until overridden...
+
+[%CFEngine linux:: %]
+Everything after here now applies now to linux only.
+
+[%CFEngine BEGIN %]
+This is a block of text
+That contains list variables: $(some.list)
+With text before and after.
+[%CFEngine END %]
+
+nameserver $(some.list)
+</code></pre>
+</div>
+
+<p>For example: if we use this template in a promise:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">test</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+   <span class="p">&quot;</span><span class="nv">var</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span><span class="p">};</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="s">&quot;/tmp/expander&quot;</span>
+           <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+    <span class="kr">edit_template</span> <span class="o">=&gt;</span> <span class="s">&quot;/templates/input.tmpl&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The result would look like this, on a linux host:</p>
+<div class="highlight"><pre><code class="text">#This is a template file /templates/input.tmpl
+
+These lines apply to anyone
+Everything after here now applies now to linux only.
+This is a block of text
+That contains list variables: 1
+With text before and after.
+This is a block of text
+That contains list variables: 2
+With text before and after.
+This is a block of text
+That contains list variables: 3
+With text before and after.
+nameserver 1
+nameserver 2
+nameserver 3
+</code></pre>
+</div>
+<h2 id="example-file-template">Example file template</h2><div class="highlight"><pre><code class="text">[%CFEngine any:: %]
+&lt;VirtualHost $(sys.ipv4[eth0]):80&gt;
+        ServerAdmin             $(stage_file.params[apache_mail_address][1])
+        DocumentRoot            /var/www/htdocs
+        ServerName              $(stage_file.params[apache_server_name][1])
+        AddHandler              cgi-script cgi
+        ErrorLog                /var/log/httpd/error.log
+        AddType                 application/x-x509-ca-cert .crt
+        AddType                 application/x-pkcs7-crl    .crl
+        SSLEngine               off
+        CustomLog               /var/log/httpd/access.log
+&lt;/VirtualHost&gt;
+
+[%CFEngine webservers_prod:: %]
+[%CFEngine BEGIN %]
+&lt;VirtualHost $(sys.ipv4[$(bundle.interfaces)]):443&gt;
+        ServerAdmin             $(stage_file.params[apache_mail_address][1])
+        DocumentRoot            /var/www/htdocs
+        ServerName              $(stage_file.params[apache_server_name][1])
+        AddHandler              cgi-script cgi
+        ErrorLog                /var/log/httpd/error.log
+        AddType                 application/x-x509-ca-cert .crt
+        AddType                 application/x-pkcs7-crl    .crl
+        SSLEngine               on
+        SSLCertificateFile      $(stage_file.params[apache_ssl_crt][1])
+        SSLCertificateKeyFile   $(stage_file.params[apache_ssl_key][1])
+        CustomLog               /var/log/httpd/access.log
+&lt;/VirtualHost&gt;
+[%CFEngine END %]
+</code></pre>
+</div>
+<h2 id="combining-copy-with-template-expansion">Combining copy with template expansion</h2>
+<p>What about getting your template to the end-host? To convergently copy a file
+from a source and then edit it, use the following construction with a staging
+file.</p>
+<div class="highlight"><pre><code class="text">bundle agent master
+{
+files:
+  &quot;$(final_destination)&quot;
+         create =&gt; &quot;true&quot;,
+     edit_line =&gt; fix_file(&quot;$(staging_file)&quot;),
+ edit_defaults =&gt; empty,
+         perms =&gt; mo(&quot;644&quot;,&quot;root&quot;),
+        action =&gt; if_elapsed(&quot;60&quot;);
+}
+
+bundle edit_line fix_file(f)
+{
+insert_lines:
+  &quot;$(f)&quot;
+     insert_type =&gt; &quot;file&quot;;
+     # expand_scalars =&gt; &quot;true&quot; ;
+
+replace_patterns:
+    &quot;searchstring&quot;
+          replace_with =&gt; value(&quot;replacestring&quot;);
+}
+</code></pre>
+</div>
+<h2 id="making-delta-changes-to-someone-else-s-file">Making delta changes to someone else&#39;s file</h2>
+<p>Edit a file with multiple promises about its state, when you do not want to
+determine the entire content of the file, or if it is unsafe to make unilateral
+changes, e.g. because its contents are also being managed from another source
+like a software package manager.</p>
+
+<p>For modifying a file, you have access to the full power of text editing
+promises. This is a powerful framework.</p>
+<div class="highlight"><pre><code class="cf3"><span class="c"># Resolve conf edit</span>
+
+<span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+<span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;g&quot;</span><span class="p">,</span> <span class="nf">resolver</span><span class="p">(</span><span class="nv">@(g.searchlist)</span><span class="p">,</span><span class="nv">@(g.nameservers)</span><span class="p">)</span> <span class="p">};</span>
+<span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;cfengine_stdlib.cf&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">common</span> <span class="nf">g</span> <span class="c"># global</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+ <span class="p">&quot;</span><span class="nv">searchlist</span><span class="p">&quot;</span>  <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;example.com&quot;</span><span class="p">,</span> <span class="s">&quot;cfengine.com&quot;</span> <span class="p">};</span>
+ <span class="p">&quot;</span><span class="nv">nameservers</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;10.1.1.10&quot;</span><span class="p">,</span> <span class="s">&quot;10.3.2.16&quot;</span><span class="p">,</span> <span class="s">&quot;8.8.8.8&quot;</span> <span class="p">};</span>
+
+<span class="kd">classes</span><span class="p">:</span>
+  <span class="s">&quot;am_name_server&quot;</span>
+     <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">reglist</span><span class="p">(</span><span class="s">&quot;@(nameservers)&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(sys.ipv4[eth1])</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">resolver</span><span class="p">(</span><span class="nv">s</span><span class="p">,</span><span class="nv">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="kd">files</span><span class="p">:</span>
+  <span class="s">&quot;</span><span class="si">$(sys.resolv)</span><span class="s">&quot;</span>  <span class="c"># test on &quot;/tmp/resolv.conf&quot; #</span>
+      <span class="kr">create</span>        <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">edit_line</span>     <span class="o">=&gt;</span> <span class="nf">doresolv</span><span class="p">(</span><span class="s">&quot;@(this.s)&quot;</span><span class="p">,</span><span class="s">&quot;@(this.n)&quot;</span><span class="p">),</span>
+      <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c"># For your private library ......................</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">doresolv</span><span class="p">(</span><span class="nv">s</span><span class="p">,</span><span class="nv">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="kd">insert_lines</span><span class="p">:</span>
+  <span class="s">&quot;search </span><span class="si">$(s)</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="s">&quot;nameserver </span><span class="si">$(n)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="kd">delete_lines</span><span class="p">:</span>
+ <span class="c"># To clean out junk</span>
+  <span class="s">&quot;nameserver .*| search .*&quot;</span> <span class="kr">not_matching</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h1 id="constructing-files-from-promises">Constructing files from promises</h1>
+<p>Making finished templates for files and filling in the blanks using variables is
+a flexble approach in many cases, but it is not flexible enough for all cases. A
+very flexible approach, but one that requires more thought, is to build a final
+result (desired end-state) from a set of promises about what the file should
+contain. This might or might not include templates in the sense of complete
+files that are read in.</p>
+
+<p>If you are using CFEngine 3.3 or later, you have the option of using
+edit_template and its embedded language constructs to keep decisions and loops
+inside templates. Let&#39;s set aside that for a while and look at the alternatives,
+placing the data entirely within bundles of `edit&#39;-promises.</p>
+
+<p>There is language support for this kind of editing in the standard library, and
+you can store data and template components within a CFEngine configuration
+itself, or as a separate file. For example:</p>
+<div class="highlight"><pre><code class="cf3"><span class="c">#</span>
+
+<span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+<span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;main&quot;</span> <span class="p">};</span>
+<span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;LapTop/cfengine/copbl/cfengine_stdlib.cf&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c">#</span>
+
+<span class="k">bundle</span> <span class="k">common</span> <span class="nf">data</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+  <span class="p">&quot;</span><span class="nv">person</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;Mary&quot;</span><span class="p">;</span>
+  <span class="p">&quot;</span><span class="nv">animal</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;a little lamb&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">#</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+<span class="kd">files</span><span class="p">:</span>
+   <span class="s">&quot;/tmp/my_result&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+     <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">expand_template</span><span class="p">(</span><span class="s">&quot;/tmp/my_template_source&quot;</span><span class="p">),</span>
+ <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Suppose the filemy_template_sourcecontains the following text:</p>
+<div class="highlight"><pre><code class="text">This is a file template containing variables to expand
+
+e.g $(data.person) had $(data.animal)
+</code></pre>
+</div>
+
+<p>Then we would have the file content:</p>
+<div class="highlight"><pre><code class="console"><span class="go">host$ more /tmp/my_result</span>
+<span class="go">   This is a file template containing variables to expand</span>
+
+<span class="go">   e.g Mary had a little lamb</span>
+</code></pre>
+</div>
+<h2 id="adding-a-line-here-and-there">Adding a line here and there</h2>
+<p>A simple file like this could also be defined in-line, without a separate
+template file:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+<span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;main&quot;</span> <span class="p">};</span>
+<span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;LapTop/cfengine/copbl/cfengine_stdlib.cf&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c">#</span>
+
+<span class="k">bundle</span> <span class="k">common</span> <span class="nf">data</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+  <span class="p">&quot;</span><span class="nv">person</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;Mary&quot;</span><span class="p">;</span>
+  <span class="p">&quot;</span><span class="nv">animal</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;a little lamb&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">#</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+  <span class="p">&quot;</span><span class="nv">content</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span>
+    <span class="s">&quot;This is a file template containing variables to expand</span>
+<span class="s">e.g </span><span class="si">$(data.person)</span><span class="s"> had </span><span class="si">$(data.animal)</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="kd">files</span><span class="p">:</span>
+
+   <span class="s">&quot;/tmp/my_result&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+     <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(content)</span><span class="s">&quot;</span><span class="p">),</span>
+ <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="lists-inline">Lists inline</h2>
+<p>Here is a more complicated example, that includes list expansion. List expansion
+(iteration) adds some trickiness because it is an ordered process, which needs
+to be anchored somehow.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+<span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;main&quot;</span> <span class="p">};</span>
+<span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;LapTop/cfengine/copbl/cfengine_stdlib.cf&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c">#</span>
+
+<span class="k">bundle</span> <span class="k">common</span> <span class="nf">data</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+
+  <span class="p">&quot;</span><span class="nv">person</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;Mary&quot;</span><span class="p">;</span>
+  <span class="p">&quot;</span><span class="nv">animal</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;a little lamb&quot;</span><span class="p">;</span>
+
+  <span class="p">&quot;</span><span class="nv">mylist</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;one&quot;</span><span class="p">,</span> <span class="s">&quot;two&quot;</span><span class="p">,</span> <span class="s">&quot;three&quot;</span> <span class="p">};</span>
+  <span class="p">&quot;</span><span class="nv">clocks</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;five&quot;</span><span class="p">,</span> <span class="s">&quot;six&quot;</span><span class="p">,</span> <span class="s">&quot;seven&quot;</span> <span class="p">};</span>
+
+  <span class="c"># or read the list from a file with readstringlist()</span>
+
+<span class="p">}</span>
+
+<span class="c">#</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+<span class="kd">files</span><span class="p">:</span>
+
+
+   <span class="s">&quot;/tmp/my_result&quot;</span>
+
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+     <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">my_expand_template</span><span class="p">,</span>
+ <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">#</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">my_expand_template</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+
+ <span class="c"># import the lists, due to current limitation</span>
+
+ <span class="p">&quot;</span><span class="nv">mylist</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(data.mylist)</span> <span class="p">};</span>
+ <span class="p">&quot;</span><span class="nv">clocks</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">join</span><span class="p">(</span><span class="s">&quot;, &quot;</span><span class="p">,</span><span class="s">&quot;data.clocks&quot;</span><span class="p">);</span>
+ <span class="p">&quot;</span><span class="nv">other</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;eight&quot;</span><span class="p">;</span>
+
+<span class="kd">insert_lines</span><span class="p">:</span>
+
+   <span class="s">&quot;</span>
+<span class="s">   This is a file template containing variables to expand</span>
+
+<span class="s">   e.g </span><span class="si">$(data.person)</span><span class="s"> had </span><span class="si">$(data.animal)</span><span class="s"></span>
+
+<span class="s">   and it said:</span>
+<span class="s">   &quot;</span><span class="p">;</span>
+
+   <span class="s">&quot;</span>
+<span class="s">   </span><span class="si">$(mylist)</span><span class="s"> o&#39;clock &quot;</span><span class="p">;</span>
+   <span class="s">&quot;</span>
+<span class="s">   ROCK!</span>
+<span class="s">   </span><span class="si">$(clocks)</span><span class="s"> o&#39;clock, </span><span class="si">$(other)</span><span class="s"> o&#39;clock</span>
+<span class="s">   &quot;</span><span class="p">;</span>
+
+   <span class="s">&quot;   ROCK!</span>
+<span class="s">   The end.</span>
+<span class="s">   &quot;</span>
+
+   <span class="kr">insert_type</span> <span class="o">=&gt;</span> <span class="s">&quot;preserve_block&quot;</span><span class="p">;</span> <span class="c"># So we keep duplicate line</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This results in a file output containing:</p>
+<div class="highlight"><pre><code class="console"><span class="go">host$ ~/LapTop/cfengine/core/src/cf-agent -f ./test.cf -K</span>
+<span class="go">host$ more /tmp/my_result</span>
+
+<span class="go">   This is a file template containing variables to expand</span>
+
+<span class="go">   e.g Mary had a little lamb</span>
+
+<span class="go">   and it said:</span>
+
+<span class="go">   one o&#39;clock</span>
+<span class="go">   two o&#39;clock</span>
+<span class="go">   three o&#39;clock</span>
+<span class="go">   ROCK!</span>
+<span class="go">   five, six, seven o&#39;clock, eight o&#39;clock</span>
+<span class="go">   ROCK!</span>
+<span class="go">   The end.</span>
+</code></pre>
+</div>
+
+<p>Splitting this example into several promises seems unnecessary and inconvenient,
+so we could use a special function join() to make pre-expand the scalar list and
+insert it as a single object:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+<span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;main&quot;</span> <span class="p">};</span>
+<span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;LapTop/cfengine/copbl/cfengine_stdlib.cf&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="c">#</span>
+
+<span class="k">bundle</span> <span class="k">common</span> <span class="nf">data</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+
+  <span class="p">&quot;</span><span class="nv">person</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;Mary&quot;</span><span class="p">;</span>
+  <span class="p">&quot;</span><span class="nv">animal</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;a little lamb&quot;</span><span class="p">;</span>
+
+  <span class="p">&quot;</span><span class="nv">mylist</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;one&quot;</span><span class="p">,</span> <span class="s">&quot;two&quot;</span><span class="p">,</span> <span class="s">&quot;three&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span> <span class="p">};</span>
+  <span class="p">&quot;</span><span class="nv">clocks</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;five&quot;</span><span class="p">,</span> <span class="s">&quot;six&quot;</span><span class="p">,</span> <span class="s">&quot;seven&quot;</span> <span class="p">};</span>
+
+  <span class="c"># or read the list from a file with readstringlist()</span>
+
+<span class="p">}</span>
+
+<span class="c">#</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+<span class="kd">files</span><span class="p">:</span>
+
+
+   <span class="s">&quot;/tmp/my_result&quot;</span>
+
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+     <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">my_expand_template</span><span class="p">,</span>
+ <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">#</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">my_expand_template</span>
+<span class="p">{</span>
+<span class="kd">vars</span><span class="p">:</span>
+
+ <span class="c"># import the lists, due to current limitation</span>
+
+ <span class="p">&quot;</span><span class="nv">mylist</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">join</span><span class="p">(</span><span class="s">&quot; o&#39;clock</span><span class="si">$(const.n)</span><span class="s">  &quot;</span><span class="p">,</span><span class="s">&quot;data.mylist&quot;</span><span class="p">);</span>
+ <span class="p">&quot;</span><span class="nv">clocks</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">join</span><span class="p">(</span><span class="s">&quot;, &quot;</span><span class="p">,</span><span class="s">&quot;data.clocks&quot;</span><span class="p">);</span>
+ <span class="p">&quot;</span><span class="nv">other</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;eight&quot;</span><span class="p">;</span>
+
+<span class="kd">insert_lines</span><span class="p">:</span>
+
+   <span class="s">&quot;</span>
+<span class="s">   This is a file template containing variables to expand</span>
+
+<span class="s">   e.g </span><span class="si">$(data.person)</span><span class="s"> had </span><span class="si">$(data.animal)</span><span class="s"></span>
+
+<span class="s">   and it said:</span>
+
+<span class="s">   </span><span class="si">$(mylist)</span><span class="s"></span>
+<span class="s">   ROCK!</span>
+<span class="s">   </span><span class="si">$(clocks)</span><span class="s"> o&#39;clock, </span><span class="si">$(other)</span><span class="s"> o&#39;clock</span>
+<span class="s">   ROCK!</span>
+<span class="s">   The end.</span>
+<span class="s">   &quot;</span>
+
+   <span class="kr">insert_type</span> <span class="o">=&gt;</span> <span class="s">&quot;preserve_block&quot;</span><span class="p">;</span> <span class="c"># So we keep duplicate line</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Finally, since this is now entirely contained within a single set of quotes
+(i.e. there is a single promiser), we could replace the in-line template with
+one read from a file:</p>
+<div class="highlight"><pre><code class="text">#
+
+body common control
+{
+bundlesequence =&gt; { &quot;main&quot; };
+inputs =&gt; { &quot;LapTop/cfengine/copbl/cfengine_stdlib.cf&quot; };
+}
+
+#
+
+bundle common data
+{
+vars:
+
+  &quot;person&quot; string =&gt; &quot;Mary&quot;;
+  &quot;animal&quot; string =&gt; &quot;a little lamb&quot;;
+
+  &quot;mylist&quot; slist =&gt; { &quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;&quot; };
+  &quot;clocks&quot; slist =&gt; { &quot;five&quot;, &quot;six&quot;, &quot;seven&quot; };
+
+  # or read the list from a file with readstringlist()
+
+}
+
+#
+
+bundle agent main
+{
+files:
+
+
+   &quot;/tmp/my_result&quot;
+
+        create =&gt; &quot;true&quot;,
+     edit_line =&gt; my_expand_template,
+ edit_defaults =&gt; empty;
+}
+
+#
+
+bundle edit_line my_expand_template
+{
+vars:
+
+ # import the lists, due to current limitation
+
+ &quot;mylist&quot; string =&gt; join(&quot; o&#39;clock$(const.n)  &quot;,&quot;data.mylist&quot;);
+ &quot;clocks&quot; string =&gt; join(&quot;, &quot;,&quot;data.clocks&quot;);
+ &quot;other&quot; string =&gt; &quot;eight&quot;;
+
+insert_lines:
+
+   &quot;/tmp/my_template_source&quot;
+     expand_scalars =&gt; &quot;true&quot;,
+     insert_type =&gt; &quot;file&quot;;
+}
+</code></pre>
+</div>
+<h1 id="editing-bundles">Editing bundles</h1>
+<p>Unlike other aspects of configuration, promising the content of a single file
+object involves possibly many promises about the atoms within the file. Thus we
+need to be able to state bundles of promises for what happens inside a file and
+tie it (like a body-template) to the files promise. This is done using an
+edit_line =&gt; or edit_xml =&gt; constraint1, for instance:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+
+    <span class="s">&quot;/etc/passwd&quot;</span>
+
+       <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+       <span class="c"># other constraints on file container ...</span>
+       <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">mybundle</span><span class="p">(</span><span class="s">&quot;one&quot;</span><span class="p">,</span><span class="s">&quot;two&quot;</span><span class="p">,</span><span class="s">&quot;three&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Editing bundles are defined like other bundles for the agent, except that they
+have a type given by the left hand side of the constraint (just like body
+templates):</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">mybundle</span><span class="p">(</span><span class="nv">arg1</span><span class="p">,</span><span class="nv">arg2</span><span class="p">,</span><span class="nv">arg3</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="kd">insert_lines</span><span class="p">:</span>
+
+   <span class="s">&quot;newuser:x:1111:110:A new user:/home/newuser:/bin/bash&quot;</span><span class="p">;</span>
+   <span class="s">&quot;</span><span class="si">$(arg1)</span><span class="s">:x:</span><span class="si">$(arg2)</span><span class="s">:110:</span><span class="si">$(arg3)</span><span class="s">:/home/</span><span class="si">$(arg1)</span><span class="s">:/bin/bash&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<ul>
+<li><p>Standard library methods for simple editing</p></li>
+<li><p>Expressing expand_template as promises</p></li>
+</ul>
+<h2 id="standard-library-methods-for-simple-editing">Standard library methods for simple editing</h2>
+<p>You may choose to write your own editing bundles for specific purposes; you can
+also use ready-made templates from the standard library for a lot of purposes.
+If you follow the guidelines for choosing an approach to editing below, you will
+be able to re-use standard methods in perhaps most cases. Using standard library
+code keeps your own intentions clear and easily communicable. For example, to
+insert hello into a file at the end once only:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+
+    <span class="s">&quot;/tmp/test_insert&quot;</span>
+
+         <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">),</span>
+  <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Or to set the shell for a user</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+
+    <span class="s">&quot;/etc/passwd&quot;</span>
+         <span class="kr">create</span>    <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+         <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">set_user_field</span><span class="p">(</span><span class="s">&quot;mark&quot;</span><span class="p">,</span><span class="s">&quot;7&quot;</span><span class="p">,</span><span class="s">&quot;/my/favourite/shell&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Some other examples of the standard editing methods are:</p>
+
+<ul>
+<li>append_groups_starting(v)</li>
+<li>append_if_no_line(str)</li>
+<li>append_if_no_lines(list)</li>
+<li>append_user_field(group,field,allusers)</li>
+<li>append_users_starting(v)</li>
+<li>comment_lines_containing(regex,comment)</li>
+<li>edit_line comment_lines_matching(regex,comment)</li>
+<li>delete_lines_matching(regex)</li>
+<li>expand_template(templatefile)</li>
+<li>insert_lines(lines)</li>
+<li>resolvconf(search,list)</li>
+<li>set_user_field(user,field,val)</li>
+<li>set_variable_values(v)</li>
+<li>set_variable_values2(v)</li>
+<li>uncomment_lines_containing(regex,comment)</li>
+<li>uncomment_lines_matching(regex,comment)</li>
+<li>warn_lines_matching(regex)</li>
+</ul>
+
+<p>You find these in the documentation for the COPBL.</p>
+<h2 id="expressing-expand_template-as-promises">Expressing expand_template as promises</h2>
+<p>As on CFEngine 3.3.0, CFEngine has a new template mechanism to make it easier to
+encode complex file templates. These templates map simply to edit_line bundles
+in the following way.</p>
+
+<ul>
+<li><p>Each line in a template maps to a separate insert_lines promise unless it is
+grouped with ‘[%CFEngine BEGIN %]’ and ‘[%CFEngine END %]’ tags.</p></li>
+<li><p>Each multi-line group, marked with ‘[%CFEngine BEGIN %]’ and
+‘[%CFEngine END %]’ tags maps to a multi-line insert_lines promise, with
+insert_type =&gt; &quot;preserve_block&quot;.</p></li>
+<li><p>Each line that expresses a context-class: ‘[%CFEngine classexpression:: %]’
+maps to a normal class expression in a bundle.</p></li>
+</ul>
+
+<p>The order of lines in the template is preserved within each block, or if
+edit_defaults is used to empty the resulting generated file before editing: e.g.
+with the standard library method:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="s">&quot;/tmp/expander&quot;</span>
+
+           <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+    <span class="kr">edit_template</span> <span class="o">=&gt;</span> <span class="s">&quot;/home/a10004/input.dat&quot;</span><span class="p">,</span>
+    <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">empty</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h1 id="choosing-an-approach-to-file-editing">Choosing an approach to file editing</h1>
+<p>There are two decisions to make when choosing how to manage file content:</p>
+
+<p>How can the desired content be constructed from the necessary source(s)?</p>
+
+<ul>
+<li><p>Is there more than one source of infromation that needs to be merged?</p></li>
+<li><p>Do the contents need to be adapted to the specific environment?</p></li>
+<li><p>Is there context-specific information in the file?</p></li>
+</ul>
+
+<p>Use the simplest approach that requires the smallest number of promises to solve
+the problem.</p>
+<h1 id="pitfalls-to-watch-out-for-in-file-editing">Pitfalls to watch out for in file editing</h1>
+<p>File editing is different from most other kinds of configuration promise because
+it is fundamentally an order dependent configuration process. Files contain
+non-regular grammars. CFEngine attempts to simplify the problem by using models
+for the file structure, essentially factoring out as much of the context
+dependence as possible.</p>
+
+<p>Order dependence increases the fragility of maintainence, so you should do what
+you can to minimize it.</p>
+
+<ul>
+<li>Try to use substitution within a known template if order is important.</li>
+</ul>
+
+<p>The simplest kinds of files for configuration are line-based, with no special
+order. For such cases, simple line insertions are usually enough to configure
+files.</p>
+
+<p>The increasing introduction of XML for configuration is a major headache for
+configuration management.</p>
+
+<p>Table of Contents</p>
+<div class="highlight"><pre><code class="text">Editing
+    From boiler-plates to convergent file editing
+    Why is file editing difficult?
+    What does file editing involve?
+    Three approaches to managing files
+        Copying a finished file template into place
+        Contextual adaptation of a file template
+        Example file template
+        Combining copy with template expansion
+ T           Making delta changes to someone else&#39;s file
+    Constructing files from promises
+        Adding a line here and there
+        Lists inline
+    Editing bundles
+        Standard library methods for simple editing
+        Expressing expand_template as promises
+    Choosing an approach to file editing
+    Pitfalls to watch out for in file editing
+</code></pre>
+</div>
+
+<p>Footnotes</p>
+
+<p>[1] At the time of writing only edit_line is implemented.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-special-topics.html">special topics</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-guide.html">guide</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 27 October 2021
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/special-topics/file-content.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/3d161b229c7df44b99d8cd6c71640ab53c94fcbd" target="_blank">3d161b229c7df44b99d8cd6c71640ab53c94fcbd</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.12/assets/footer-135fa20640bb1a2bbe772d22c46414cb.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

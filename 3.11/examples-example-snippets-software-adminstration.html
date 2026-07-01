@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.11  Documentation - Software Administration Examples</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.11/assets/global-c9fa8b1b7e63e1fde6776a47cdcd90c6.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Software Administration Examples";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                        <option value="/docs/3.12/index.html">Version 3.12 (LTS)</option>
+                        <option value="/docs/master/index.html" selected>Version 3.11 (non-LTS)</option>
+                        <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                        <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+                        <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                        <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                        <option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+                        <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                        <option value="/docs/archive/">Version 3.0 (archive)</option>
+                        <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:2riuky-1ece" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a><ul class="level2"><li><a href="examples-example-snippets-general.html">General Examples</a></li><li><a href="examples-example-snippets-cfengine-administration.html">CFEngine Administration Examples</a></li><li><a href="examples-example-snippets-promise-patterns.html">Common Promise Patterns</a></li><li><a href="examples-example-snippets-timing-counting-measuring.html">Measuring Examples</a></li><li><a class="active" href="examples-example-snippets-software-adminstration.html">Software Administration Examples</a></li><li><a href="examples-example-snippets-commands-scripts-execution.html">Commands, Scripts, and Execution Examples</a></li><li><a href="examples-example-snippets-basic-file-directory.html">File and Directory Examples</a></li><li><a href="examples-example-snippets-file-template.html">File Template Examples</a></li><li><a href="examples-example-snippets-active_directory.html">Interacting with Directory Services</a></li><li><a href="examples-example-snippets-database.html">Database Examples</a></li><li><a href="examples-example-snippets-network.html">Network Examples</a></li><li><a href="examples-example-snippets-system-security.html">System Security Examples</a></li><li><a href="examples-example-snippets-system-information.html">System Information Examples</a></li><li><a href="examples-example-snippets-system-administration.html">System Administration Examples</a></li><li><a href="examples-example-snippets-system-file.html">System File Examples</a></li><li><a href="examples-example-snippets-windows-registry.html">Windows Registry Examples</a></li><li><a href="examples-example-snippets-file_permissions.html">File Permissions</a></li><li><a href="examples-example-snippets-user-management.html">User Management Examples</a></li></ul></li><li><a href="examples-tutorials.html">Tutorials</a></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-example-snippets.html">Example Snippets</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Software Administration Examples
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <ul>
+<li><a href="examples-example-snippets-software-adminstration.html#software-and-patch-installation" title="Software Administration Examples - Software and patch installation ">Software and patch installation</a></li>
+<li><a href="examples-example-snippets-software-adminstration.html#postfix-mail-configuration" title="Software Administration Examples - Postfix mail configuration">Postfix mail configuration</a></li>
+<li><a href="examples-example-snippets-software-adminstration.html#set-up-a-web-server" title="Software Administration Examples - Set up a web server">Set up a web server</a></li>
+<li><a href="examples-example-snippets-software-adminstration.html#add-software-packages-to-the-system" title="Software Administration Examples - Add software packages to the system ">Add software packages to the system</a></li>
+<li><a href="examples-example-snippets-software-adminstration.html#application-baseline" title="Software Administration Examples - Application baseline">Application baseline</a></li>
+<li><a href="examples-example-snippets-software-adminstration.html#service-management-windows" title="Software Administration Examples - Service management (windows)">Service management (windows)</a></li>
+<li><a href="examples-example-snippets-software-adminstration.html#software-distribution" title="Software Administration Examples - Software distribution">Software distribution</a></li>
+<li><a href="examples-example-snippets-software-adminstration.html#web-server-modules" title="Software Administration Examples - Web server modules">Web server modules</a></li>
+<li>Ensure a service is enabled and running</li>
+<li>Managing Software</li>
+<li>Install packages</li>
+</ul>
+<h2 id="software-and-patch-installation">Software and patch installation</h2>
+<p>Example for Debian:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;packages&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+<span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">environment</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;DEBIAN_FRONTEND=noninteractive&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">packages</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="c"># Test the simplest case -- leave everything to the yum smart manager</span>
+
+      <span class="p">&quot;</span><span class="nv">match_package</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                 <span class="s">&quot;apache2&quot;</span>
+                                 <span class="c">#                          &quot;apache2-mod_php5&quot;,</span>
+                                 <span class="c">#                          &quot;apache2-prefork&quot;,</span>
+                                 <span class="c">#                          &quot;php5&quot;</span>
+      <span class="p">};</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">apt</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">package_method</span> <span class="nf">apt</span>
+<span class="p">{</span>
+    <span class="nc">any</span><span class="p">::</span>
+      <span class="c"># ii  acpi      0.09-3ubuntu1</span>
+
+      <span class="kr">package_changes</span> <span class="o">=&gt;</span> <span class="s">&quot;bulk&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dpkg -l&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_name_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;ii</span><span class="se">\s</span><span class="s">+([^</span><span class="se">\s</span><span class="s">]+).*&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_version_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;ii</span><span class="se">\s</span><span class="s">+[^</span><span class="se">\s</span><span class="s">]+</span><span class="se">\s</span><span class="s">+([^</span><span class="se">\s</span><span class="s">]+).*&quot;</span><span class="p">;</span>
+      <span class="c"># package_list_arch_regex    =&gt; &quot;none&quot;;</span>
+
+      <span class="kr">package_installed_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;.*&quot;</span><span class="p">;</span> <span class="c"># all reported are installed</span>
+      <span class="c">#package_name_convention =&gt; &quot;$(name)_$(version)_$(arch)&quot;;</span>
+      <span class="kr">package_name_convention</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="c"># Use these only if not using a separate version/arch string</span>
+      <span class="c"># package_version_regex =&gt; &quot;&quot;;</span>
+      <span class="c"># package_name_regex =&gt; &quot;&quot;;</span>
+      <span class="c"># package_arch_regex =&gt; &quot;&quot;;</span>
+
+      <span class="kr">package_add_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/apt-get --yes install&quot;</span><span class="p">;</span>
+      <span class="kr">package_delete_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/apt-get --yes remove&quot;</span><span class="p">;</span>
+      <span class="kr">package_update_command</span> <span class="o">=&gt;</span>  <span class="s">&quot;/usr/bin/apt-get --yes dist-upgrade&quot;</span><span class="p">;</span>
+      <span class="c">#package_verify_command =&gt; &quot;/bin/rpm -V&quot;;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Examples MSI for Windows, by name:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;packages&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">packages</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">match_package</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                 <span class="s">&quot;7zip&quot;</span>
+      <span class="p">};</span>
+  <span class="kd">packages</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;update&quot;</span><span class="p">,</span>
+      <span class="kr">package_select</span> <span class="o">=&gt;</span> <span class="s">&quot;&gt;=&quot;</span><span class="p">,</span>
+      <span class="kr">package_architectures</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;x86_64&quot;</span> <span class="p">},</span>
+      <span class="kr">package_version</span> <span class="o">=&gt;</span> <span class="s">&quot;3.00&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">msi_vmatch</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">package_method</span> <span class="nf">msi_vmatch</span>
+<span class="p">{</span>
+      <span class="kr">package_changes</span> <span class="o">=&gt;</span> <span class="s">&quot;individual&quot;</span><span class="p">;</span>
+      <span class="kr">package_file_repositories</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="se">\s</span><span class="s">oftware_updates</span><span class="se">\w</span><span class="s">indows&quot;</span><span class="p">,</span> <span class="s">&quot;s:</span><span class="se">\s</span><span class="s">u&quot;</span> <span class="p">};</span>
+      <span class="kr">package_installed_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;.*&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_name_convention</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">-</span><span class="si">$(version)</span><span class="s">-</span><span class="si">$(arch)</span><span class="s">.msi&quot;</span><span class="p">;</span>
+      <span class="kr">package_add_command</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="si">$(sys.winsysdir)</span><span class="se">\m</span><span class="s">siexec.exe</span><span class="se">\&quot;</span><span class="s"> /qn /i&quot;</span><span class="p">;</span>
+      <span class="kr">package_update_command</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="si">$(sys.winsysdir)</span><span class="se">\m</span><span class="s">siexec.exe</span><span class="se">\&quot;</span><span class="s"> /qn /i&quot;</span><span class="p">;</span>
+      <span class="kr">package_delete_command</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="si">$(sys.winsysdir)</span><span class="se">\m</span><span class="s">siexec.exe</span><span class="se">\&quot;</span><span class="s"> /qn /x&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Windows MSI by version:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;packages&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">packages</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">match_package</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                 <span class="s">&quot;7zip&quot;</span>
+      <span class="p">};</span>
+  <span class="kd">packages</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;update&quot;</span><span class="p">,</span>
+      <span class="kr">package_select</span> <span class="o">=&gt;</span> <span class="s">&quot;&gt;=&quot;</span><span class="p">,</span>
+      <span class="kr">package_architectures</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;x86_64&quot;</span> <span class="p">},</span>
+      <span class="kr">package_version</span> <span class="o">=&gt;</span> <span class="s">&quot;3.00&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">msi_vmatch</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">package_method</span> <span class="nf">msi_vmatch</span>
+<span class="p">{</span>
+      <span class="kr">package_changes</span> <span class="o">=&gt;</span> <span class="s">&quot;individual&quot;</span><span class="p">;</span>
+      <span class="kr">package_file_repositories</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="se">\s</span><span class="s">oftware_updates</span><span class="se">\w</span><span class="s">indows&quot;</span><span class="p">,</span> <span class="s">&quot;s:</span><span class="se">\s</span><span class="s">u&quot;</span> <span class="p">};</span>
+      <span class="kr">package_installed_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;.*&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_name_convention</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">-</span><span class="si">$(version)</span><span class="s">-</span><span class="si">$(arch)</span><span class="s">.msi&quot;</span><span class="p">;</span>
+      <span class="kr">package_add_command</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="si">$(sys.winsysdir)</span><span class="se">\m</span><span class="s">siexec.exe</span><span class="se">\&quot;</span><span class="s"> /qn /i&quot;</span><span class="p">;</span>
+      <span class="kr">package_update_command</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="si">$(sys.winsysdir)</span><span class="se">\m</span><span class="s">siexec.exe</span><span class="se">\&quot;</span><span class="s"> /qn /i&quot;</span><span class="p">;</span>
+      <span class="kr">package_delete_command</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="si">$(sys.winsysdir)</span><span class="se">\m</span><span class="s">siexec.exe</span><span class="se">\&quot;</span><span class="s"> /qn /x&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Examples for solaris are more complex:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;packages&quot;</span> <span class="p">};</span>
+      <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;cfengine_stdlib.cf&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">packages</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="c"># Test the simplest case -- leave everything to the yum smart manager</span>
+
+      <span class="p">&quot;</span><span class="nv">match_package</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                 <span class="s">&quot;apache2&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;apache2-mod_php5&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;apache2-prefork&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;php5&quot;</span>
+      <span class="p">};</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">yum</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Examples for yum based systems:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;packages&quot;</span> <span class="p">};</span>
+      <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;cfengine_stdlib.cf&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">packages</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="c"># Test the simplest case -- leave everything to the yum smart manager</span>
+
+      <span class="p">&quot;</span><span class="nv">match_package</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                 <span class="s">&quot;apache2&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;apache2-mod_php5&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;apache2-prefork&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;php5&quot;</span>
+      <span class="p">};</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">yum</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>SuSE Linux&#39;s package manager zypper is the most powerful alternative:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;packages&quot;</span> <span class="p">};</span>
+      <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;cfengine_stdlib.cf&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">packages</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="c"># Test the simplest case -- leave everything to the zypper smart manager</span>
+
+      <span class="p">&quot;</span><span class="nv">match_package</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                 <span class="s">&quot;apache2&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;apache2-mod_php5&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;apache2-prefork&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;php5&quot;</span>
+      <span class="p">};</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">zypper</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="postfix-mail-configuration">Postfix mail configuration</h2><div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(sys.libdir)</span><span class="s">/stdlib.cf&quot;</span> <span class="p">};</span>
+      <span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">postfix</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">postfix</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">prefix</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/etc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">smtpserver</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;localhost&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">mailrelay</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;mailx.example.org&quot;</span><span class="p">;</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(prefix)</span><span class="s">/main.cf&quot;</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">prefix_postfix</span><span class="p">;</span>
+
+      <span class="s">&quot;</span><span class="si">$(prefix)</span><span class="s">/sasl-passwd&quot;</span>
+      <span class="kr">create</span>    <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">perms</span>     <span class="o">=&gt;</span> <span class="nf">mo</span><span class="p">(</span><span class="s">&quot;0600&quot;</span><span class="p">,</span><span class="s">&quot;root&quot;</span><span class="p">),</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(smtpserver)</span><span class="s"> _</span><span class="si">$(sys.fqhost)</span><span class="s">:chmsxrcynz4etfrejizhs22&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">prefix_postfix</span>
+<span class="p">{</span>
+      <span class="c">#</span>
+      <span class="c"># Value have the form NAME = &quot;quoted space separated list&quot;</span>
+      <span class="c">#</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">ps[relayhost]</span><span class="p">&quot;</span>                  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;[</span><span class="si">$(postfix.mailrelay)</span><span class="s">]:587&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">ps[mydomain]</span><span class="p">&quot;</span>                   <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;iu.hio.no&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">ps[smtp_sasl_auth_enable]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;yes&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">ps[smtp_sasl_password_maps]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;hash:/etc/postfix/sasl-passwd&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">ps[smtp_sasl_security_options]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">ps[smtp_use_tls]</span><span class="p">&quot;</span>               <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;yes&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">ps[default_privs]</span><span class="p">&quot;</span>              <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;mailman&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">ps[inet_protocols]</span><span class="p">&quot;</span>             <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;all&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">ps[inet_interfaces]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;127.0.0.1&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">parameter_name</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getindices</span><span class="p">(</span><span class="s">&quot;ps&quot;</span><span class="p">);</span>
+
+  <span class="kd">delete_lines</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(parameter_name)</span><span class="s">.*&quot;</span><span class="p">;</span>
+
+  <span class="kd">insert_lines</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(parameter_name)</span><span class="s"> = </span><span class="si">$(ps[$(parameter_name)])</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">AppendIfNSL</span><span class="p">(</span><span class="nv">parameter</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">insert_lines</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(parameter)</span><span class="s">&quot;</span><span class="p">;</span> <span class="c"># This is default</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="set-up-a-web-server">Set up a web server</h2>
+<p>Adapt this template to your operating system by adding multiple classes. Each web server runs something like the present module, which is entered into the bundlesequence like this:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">web_server</span><span class="p">(</span><span class="nv">state</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">document_root</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/&quot;</span><span class="p">;</span>
+      <span class="c">####################################################</span>
+      <span class="c"># Site specific configuration - put it in this file</span>
+      <span class="c">####################################################</span>
+
+      <span class="p">&quot;</span><span class="nv">site_http_conf</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/home/mark/CFEngine-inputs/httpd.conf&quot;</span><span class="p">;</span>
+      <span class="c">####################################################</span>
+      <span class="c"># Software base</span>
+      <span class="c">####################################################</span>
+
+      <span class="p">&quot;</span><span class="nv">match_package</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                 <span class="s">&quot;apache2&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;apache2-mod_php5&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;apache2-prefork&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;php5&quot;</span>
+      <span class="p">};</span>
+      <span class="c">#########################################################</span>
+
+  <span class="kd">processes</span><span class="p">:</span>
+    <span class="nc">web_ok.on</span><span class="p">::</span>
+      <span class="s">&quot;apache2&quot;</span>
+      <span class="kr">restart_class</span> <span class="o">=&gt;</span> <span class="s">&quot;start_apache&quot;</span><span class="p">;</span>
+
+    <span class="nc">off</span><span class="p">::</span>
+      <span class="s">&quot;apache2&quot;</span>
+      <span class="kr">process_stop</span> <span class="o">=&gt;</span> <span class="s">&quot;/etc/init.d/apache2 stop&quot;</span><span class="p">;</span>
+
+      <span class="c">#########################################################</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="nc">start_apache</span><span class="p">::</span>
+      <span class="s">&quot;/etc/init.d/apache2 start&quot;</span><span class="p">;</span> <span class="c"># or startssl</span>
+      <span class="c">#########################################################</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">zypper</span><span class="p">,</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_ok</span><span class="p">(</span><span class="s">&quot;software_ok&quot;</span><span class="p">);</span>
+      <span class="c">#########################################################</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="nc">software_ok</span><span class="p">::</span>
+      <span class="s">&quot;/etc/sysconfig/apache2&quot;</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">fixapache</span><span class="p">,</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_ok</span><span class="p">(</span><span class="s">&quot;web_ok&quot;</span><span class="p">);</span>
+      <span class="c">#########################################################</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">!software_ok.on</span><span class="p">::</span>
+      <span class="s">&quot;The web server software could not be installed&quot;</span><span class="p">;</span>
+
+      <span class="c">#########################################################</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;on&quot;</span>  <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(state)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;on&quot;</span><span class="p">);</span>
+      <span class="s">&quot;off&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(state)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;off&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">fixapache</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">add_modules</span><span class="p">&quot;</span>     <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                   <span class="s">&quot;ssl&quot;</span><span class="p">,</span>
+                                   <span class="s">&quot;php5&quot;</span>
+      <span class="p">};</span>
+
+      <span class="p">&quot;</span><span class="nv">del_modules</span><span class="p">&quot;</span>     <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                   <span class="s">&quot;php3&quot;</span><span class="p">,</span>
+                                   <span class="s">&quot;php4&quot;</span><span class="p">,</span>
+                                   <span class="s">&quot;jk&quot;</span>
+      <span class="p">};</span>
+
+  <span class="kd">insert_lines</span><span class="p">:</span>
+      <span class="s">&quot;APACHE_CONF_INCLUDE_FILES=</span><span class="se">\&quot;</span><span class="si">$(web_server.site_http_conf)</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">;</span>
+
+  <span class="kd">field_edits</span><span class="p">:</span>
+      <span class="c">#####################################################################</span>
+      <span class="c"># APACHE_MODULES=&quot;actions alias ssl php5 dav_svn authz_default jk&quot; etc..</span>
+      <span class="c">#####################################################################</span>
+
+      <span class="s">&quot;APACHE_MODULES=.*&quot;</span>
+      <span class="c"># Insert module &quot;columns&quot; between the quoted RHS</span>
+      <span class="c"># using space separators</span>
+      <span class="kr">edit_field</span> <span class="o">=&gt;</span> <span class="nf">quotedvar</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(add_modules)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;append&quot;</span><span class="p">);</span>
+
+      <span class="s">&quot;APACHE_MODULES=.*&quot;</span>
+      <span class="c"># Delete module &quot;columns&quot; between the quoted RHS</span>
+      <span class="c"># using space separators</span>
+      <span class="kr">edit_field</span> <span class="o">=&gt;</span> <span class="nf">quotedvar</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(del_modules)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;delete&quot;</span><span class="p">);</span>
+
+      <span class="c"># if this line already exists, edit it</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="add-software-packages-to-the-system">Add software packages to the system</h2><div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(sys.libdir)</span><span class="s">/packages.cf&quot;</span> <span class="p">}</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;packages&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">packages</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">match_package</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                 <span class="s">&quot;apache2&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;apache2-mod_php5&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;apache2-prefork&quot;</span><span class="p">,</span>
+                                 <span class="s">&quot;php5&quot;</span>
+      <span class="p">};</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+    <span class="nc">solaris</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">solaris</span><span class="p">;</span>
+
+    <span class="nc">redhat|SuSE</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">yum_rpm</span><span class="p">;</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="c"># equivalent in 3.6, no OS choices</span>
+      <span class="s">&quot;&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">ensure_present</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">match_package</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Note you can also arrange to hide all the differences between package managers on an OS basis, but since some OSs have multiple managers, this might not be 100 percent correct.</p>
+<h2 id="application-baseline">Application baseline</h2><div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">app_baseline</span>
+<span class="p">{</span>
+  <span class="kd">methods</span><span class="p">:</span>
+    <span class="nc">windows</span><span class="p">::</span>
+      <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">detect_adobereader</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">detect_adobereader</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="nc">windows</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">value1</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">registryvalue</span><span class="p">(</span><span class="s">&quot;HKEY_LOCAL_MACHINE</span><span class="se">\S</span><span class="s">OFTWARE</span><span class="se">\A</span><span class="s">dobe</span><span class="se">\A</span><span class="s">crobat Reader</span><span class="se">\9</span><span class="s">.0</span><span class="se">\I</span><span class="s">nstaller&quot;</span><span class="p">,</span> <span class="s">&quot;ENU_GUID&quot;</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">value2</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">registryvalue</span><span class="p">(</span><span class="s">&quot;HKEY_LOCAL_MACHINE</span><span class="se">\S</span><span class="s">OFTWARE</span><span class="se">\A</span><span class="s">dobe</span><span class="se">\A</span><span class="s">crobat Reader</span><span class="se">\9</span><span class="s">.0</span><span class="se">\I</span><span class="s">nstaller&quot;</span><span class="p">,</span> <span class="s">&quot;VersionMax&quot;</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">value3</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">registryvalue</span><span class="p">(</span><span class="s">&quot;HKEY_LOCAL_MACHINE</span><span class="se">\S</span><span class="s">OFTWARE</span><span class="se">\A</span><span class="s">dobe</span><span class="se">\A</span><span class="s">crobat Reader</span><span class="se">\9</span><span class="s">.0</span><span class="se">\I</span><span class="s">nstaller&quot;</span><span class="p">,</span> <span class="s">&quot;VersionMin&quot;</span><span class="p">);</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="nc">windows</span><span class="p">::</span>
+      <span class="s">&quot;is_correct&quot;</span> <span class="kr">and</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                            <span class="nf">strcmp</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">value1</span><span class="p">),</span> <span class="s">&quot;{AC76BA86-7AD7-1033-7B44-A93000000001}&quot;</span><span class="p">),</span>
+                            <span class="nf">strcmp</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">value2</span><span class="p">),</span> <span class="s">&quot;90003&quot;</span><span class="p">),</span>
+                            <span class="nf">islessthan</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">value3</span><span class="p">),</span> <span class="s">&quot;10001&quot;</span> <span class="p">)</span>
+      <span class="p">};</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">windows.!is_correct</span><span class="p">::</span>
+      <span class="err">&#39;</span><span class="nf">Adobe</span> <span class="nf">Reader</span> <span class="nf">is</span> <span class="nf">not</span> <span class="nf">correctly</span> <span class="nf">deployed</span> <span class="err">-</span> <span class="nf">got</span> <span class="s">&quot;</span><span class="si">$(value1)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(value2)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(value3)</span><span class="s">&quot;</span><span class="err">&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="service-management-windows">Service management (windows)</h2><div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;winservice&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">winservice</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">bad_services</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;Alerter&quot;</span><span class="p">,</span>  <span class="s">&quot;ClipSrv&quot;</span> <span class="p">};</span>
+
+  <span class="kd">services</span><span class="p">:</span>
+    <span class="nc">windows</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(bad_services)</span><span class="s">&quot;</span>
+      <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;disable&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Disable services that create security issues&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="software-distribution">Software distribution</h2><div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">check_software</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="c"># software to install if not installed</span>
+      <span class="p">&quot;</span><span class="nv">include_software</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                    <span class="s">&quot;7-zip-4.50-</span><span class="si">$(sys.arch)</span><span class="s">.msi&quot;</span>
+      <span class="p">};</span>
+      <span class="c"># this software gets updated if it is installed</span>
+      <span class="p">&quot;</span><span class="nv">autoupdate_software</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                       <span class="s">&quot;7-zip&quot;</span>
+      <span class="p">};</span>
+      <span class="c"># software to uninstall if it is installed</span>
+      <span class="p">&quot;</span><span class="nv">exclude_software</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                    <span class="s">&quot;7-zip-4.65-</span><span class="si">$(sys.arch)</span><span class="s">.msi&quot;</span>
+      <span class="p">};</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="c">#  &quot;any&quot; usebundle =&gt; add_software( &quot;@(check_software.include_software)&quot;, &quot;$(sys.policy_hub)&quot; );</span>
+      <span class="c">#  &quot;any&quot; usebundle =&gt; update_software( &quot;@(check_software.autoupdate_software)&quot;, &quot;$(sys.policy_hub)&quot; );</span>
+      <span class="c">#  &quot;any&quot; usebundle =&gt; remove_software( &quot;@(check_software.exclude_software)&quot;, &quot;$(sys.policy_hub)&quot; );</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">add_software</span><span class="p">(</span><span class="nv">pkg_name</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="c"># dir to install from locally - can also check multiple directories</span>
+    <span class="p">&quot;</span><span class="nv">local_software_dir</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;C:</span><span class="se">\P</span><span class="s">rogram Files</span><span class="se">\C</span><span class="s">fengine</span><span class="se">\s</span><span class="s">oftware</span><span class="se">\a</span><span class="s">dd&quot;</span><span class="p">;</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(local_software_dir)</span><span class="s">&quot;</span>
+    <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">remote_cp</span><span class="p">(</span><span class="s">&quot;/var/cfengine/master_software_updates/</span><span class="si">$(sys.flavour)</span><span class="s">_</span><span class="si">$(sys.arch)</span><span class="s">/add&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(srv)</span><span class="s">&quot;</span><span class="p">),</span>
+    <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">recurse</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">),</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;got_newpkg&quot;</span><span class="p">),</span>
+    <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Copy software from remote repository&quot;</span><span class="p">;</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+    <span class="c"># When to check if the package is installed ?</span>
+    <span class="nc">got_newpkg|any</span><span class="p">::</span>
+    <span class="s">&quot;</span><span class="si">$(pkg_name)</span><span class="s">&quot;</span>
+    <span class="kr">package_policy</span>           <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+    <span class="kr">package_method</span>           <span class="o">=&gt;</span> <span class="nf">msi_implicit</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(local_software_dir)</span><span class="s">&quot;</span> <span class="p">),</span>
+    <span class="kr">classes</span>                  <span class="o">=&gt;</span> <span class="nf">if_else</span><span class="p">(</span><span class="s">&quot;add_success&quot;</span><span class="p">,</span> <span class="s">&quot;add_fail&quot;</span> <span class="p">),</span>
+    <span class="kr">comment</span>                  <span class="o">=&gt;</span> <span class="s">&quot;Install new software, if not already present&quot;</span><span class="p">;</span>
+
+    <span class="nc">reports</span><span class="p">::</span>
+    <span class="nc">add_fail</span><span class="p">::</span>
+    <span class="s">&quot;Failed to install one or more packages&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+      <span class="c">#########################################################################</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">update_software</span><span class="p">(</span><span class="nv">sw_names</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="c"># dir to install from locally - can also check multiple directories</span>
+    <span class="p">&quot;</span><span class="nv">local_software_dir</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;C:</span><span class="se">\P</span><span class="s">rogram Files</span><span class="se">\C</span><span class="s">fengine</span><span class="se">\s</span><span class="s">oftware</span><span class="se">\u</span><span class="s">pdate&quot;</span><span class="p">;</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(local_software_dir)</span><span class="s">&quot;</span>
+    <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">remote_cp</span><span class="p">(</span><span class="s">&quot;/var/cfengine/master_software_updates/</span><span class="si">$(sys.flavour)</span><span class="s">_</span><span class="si">$(sys.arch)</span><span class="s">/update&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(srv)</span><span class="s">&quot;</span><span class="p">),</span>
+    <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">recurse</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">),</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;got_newpkg&quot;</span><span class="p">),</span>
+    <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Copy software updates from remote repository&quot;</span><span class="p">;</span>
+
+
+  <span class="kd">packages</span><span class="p">:</span>
+    <span class="c"># When to check if the package is updated ?</span>
+    <span class="nc">got_newpkg|any</span><span class="p">::</span>
+    <span class="s">&quot;</span><span class="si">$(sw_names)</span><span class="s">&quot;</span>
+    <span class="kr">package_policy</span>           <span class="o">=&gt;</span> <span class="s">&quot;update&quot;</span><span class="p">,</span>
+    <span class="kr">package_select</span>           <span class="o">=&gt;</span> <span class="s">&quot;&gt;=&quot;</span><span class="p">,</span>                 <span class="c"># picks the newest update available</span>
+    <span class="kr">package_architectures</span>    <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(sys.arch)</span><span class="s">&quot;</span> <span class="p">},</span>    <span class="c"># install 32 or 64 bit package ?</span>
+    <span class="kr">package_version</span>          <span class="o">=&gt;</span> <span class="s">&quot;1.0&quot;</span><span class="p">,</span>                <span class="c"># at least version 1.0</span>
+    <span class="kr">package_method</span>           <span class="o">=&gt;</span> <span class="nf">msi_explicit</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(local_software_dir)</span><span class="s">&quot;</span> <span class="p">),</span>
+    <span class="kr">classes</span>                  <span class="o">=&gt;</span> <span class="nf">if_else</span><span class="p">(</span><span class="s">&quot;update_success&quot;</span><span class="p">,</span> <span class="s">&quot;update_fail&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">update_fail</span><span class="p">::</span>
+    <span class="s">&quot;Failed to update one or more packages&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+      <span class="c">#########################################################################</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">remove_software</span><span class="p">(</span><span class="nv">pkg_name</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="c"># dir to install from locally - can also check multiple directories</span>
+    <span class="p">&quot;</span><span class="nv">local_software_dir</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;C:</span><span class="se">\P</span><span class="s">rogram Files</span><span class="se">\C</span><span class="s">fengine</span><span class="se">\s</span><span class="s">oftware</span><span class="se">\r</span><span class="s">emove&quot;</span><span class="p">;</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(local_software_dir)</span><span class="s">&quot;</span>
+    <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">remote_cp</span><span class="p">(</span><span class="s">&quot;/var/cfengine/master_software_updates/</span><span class="si">$(sys.flavour)</span><span class="s">_</span><span class="si">$(sys.arch)</span><span class="s">/remove&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(srv)</span><span class="s">&quot;</span><span class="p">),</span>
+    <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">recurse</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">),</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;got_newpkg&quot;</span><span class="p">),</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Copy removable software from remote repository&quot;</span><span class="p">;</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+    <span class="nc">got_newpkg</span><span class="p">::</span>
+    <span class="s">&quot;</span><span class="si">$(pkg_name)</span><span class="s">&quot;</span>
+    <span class="kr">package_policy</span>           <span class="o">=&gt;</span> <span class="s">&quot;delete&quot;</span><span class="p">,</span>
+    <span class="kr">package_method</span>           <span class="o">=&gt;</span> <span class="nf">msi_implicit</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(local_software_dir)</span><span class="s">&quot;</span> <span class="p">),</span>
+    <span class="kr">classes</span>                  <span class="o">=&gt;</span> <span class="nf">if_else</span><span class="p">(</span><span class="s">&quot;remove_success&quot;</span><span class="p">,</span> <span class="s">&quot;remove_fail&quot;</span> <span class="p">),</span>
+    <span class="kr">comment</span>                  <span class="o">=&gt;</span> <span class="s">&quot;Remove software, if present&quot;</span><span class="p">;</span>
+
+    <span class="nc">reports</span><span class="p">::</span>
+    <span class="nc">remove_fail</span><span class="p">::</span>
+    <span class="s">&quot;Failed to remove one or more packages&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="web-server-modules">Web server modules</h2>
+<p>The problem of editing the correct modules into the list of standard modules for the Apache web server. This example is based on the standard configuration deployment of SuSE Linux. Simply provide the list of modules you want and another list that you don&#39;t want.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(sys.libdir)</span><span class="s">/stdlib.cf&quot;</span> <span class="p">};</span>
+      <span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span>
+                           <span class="nf">apache</span>
+      <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">apache</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="nc">SuSE</span><span class="p">::</span>
+      <span class="s">&quot;/etc/sysconfig/apache2&quot;</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">fixapache</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">fixapache</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">add_modules</span><span class="p">&quot;</span>     <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                   <span class="s">&quot;dav&quot;</span><span class="p">,</span>
+                                   <span class="s">&quot;dav_fs&quot;</span><span class="p">,</span>
+                                   <span class="s">&quot;ssl&quot;</span><span class="p">,</span>
+                                   <span class="s">&quot;php5&quot;</span><span class="p">,</span>
+                                   <span class="s">&quot;dav_svn&quot;</span><span class="p">,</span>
+                                   <span class="s">&quot;xyz&quot;</span><span class="p">,</span>
+                                   <span class="s">&quot;superduper&quot;</span>
+      <span class="p">};</span>
+      <span class="p">&quot;</span><span class="nv">del_modules</span><span class="p">&quot;</span>     <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                   <span class="s">&quot;php3&quot;</span><span class="p">,</span>
+                                   <span class="s">&quot;jk&quot;</span><span class="p">,</span>
+                                   <span class="s">&quot;userdir&quot;</span><span class="p">,</span>
+                                   <span class="s">&quot;imagemap&quot;</span><span class="p">,</span>
+                                   <span class="s">&quot;alias&quot;</span>
+      <span class="p">};</span>
+  <span class="kd">insert_lines</span><span class="p">:</span>
+      <span class="s">&quot;APACHE_CONF_INCLUDE_FILES=</span><span class="se">\&quot;</span><span class="s">/site/masterfiles/local-http.conf</span><span class="se">\&quot;</span><span class="s">&quot;</span><span class="p">;</span>
+
+  <span class="kd">field_edits</span><span class="p">:</span>
+      <span class="c">#####################################################################</span>
+      <span class="c"># APACHE_MODULES=&quot;authz_host actions alias ...&quot;</span>
+      <span class="c">#####################################################################</span>
+
+      <span class="c"># Values have the form NAME = &quot;quoted space separated list&quot;</span>
+
+      <span class="s">&quot;APACHE_MODULES=.*&quot;</span>
+      <span class="c"># Insert module &quot;columns&quot; between the quoted RHS</span>
+      <span class="c"># using space separators</span>
+
+      <span class="kr">edit_field</span> <span class="o">=&gt;</span> <span class="nf">quoted_var</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">add_modules</span><span class="p">),</span> <span class="s">&quot;append&quot;</span><span class="p">);</span>
+      <span class="s">&quot;APACHE_MODULES=.*&quot;</span>
+
+      <span class="c"># Delete module &quot;columns&quot; between the quoted RHS</span>
+      <span class="c"># using space separators</span>
+
+      <span class="kr">edit_field</span> <span class="o">=&gt;</span> <span class="nf">quoted_var</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">del_modules</span><span class="p">),</span> <span class="s">&quot;delete&quot;</span><span class="p">);</span>
+      <span class="c"># if this line already exists, edit it</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-examples.html">examples</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-software-administration.html">software administration</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 21 May 2018
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/examples/example-snippets/software-adminstration.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/30c92a9bfe995194b9ead5ef2ff3a45a84cd5af8" target="_blank">30c92a9bfe995194b9ead5ef2ff3a45a84cd5af8</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.11/assets/footer-3d92ada135d5c86c6f2a89bc3a15252b.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.8  Documentation - User Management and ACL Examples</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.8/assets/global-8212aa494575341d9a306dae12291eb2.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "User Management and ACL Examples";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       	<option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       	<option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                  <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       	<option value="/docs/3.8/index.html" selected>Version 3.8 (EOL)</option>
+                       	<option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+			                  <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       	<option value="/docs/archive/">Version 3.0 (archive)</option>
+                        <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:v5wte9vybsa" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a><ul class="level2"><li><a href="examples-example-snippets-general.html">General Examples</a></li><li><a href="examples-example-snippets-cfengine-administration.html">CFEngine Administration Examples</a></li><li><a href="examples-example-snippets-promise-patterns.html">Common Promise Patterns</a></li><li><a href="examples-example-snippets-timing-counting-measuring.html">Measuring Examples</a></li><li><a href="examples-example-snippets-software-adminstration.html">Software Administration Examples</a></li><li><a href="examples-example-snippets-commands-scripts-execution.html">Commands, Scripts, and Execution Examples</a></li><li><a href="examples-example-snippets-basic-file-directory.html">File and Directory Examples</a></li><li><a href="examples-example-snippets-file-template.html">File Template Examples</a></li><li><a href="examples-example-snippets-database.html">Database Examples</a></li><li><a href="examples-example-snippets-network.html">Network Examples</a></li><li><a href="examples-example-snippets-system-security.html">System Security Examples</a></li><li><a href="examples-example-snippets-system-information.html">System Information Examples</a></li><li><a href="examples-example-snippets-system-administration.html">System Administration Examples</a></li><li><a href="examples-example-snippets-system-file.html">System File Examples</a></li><li><a href="examples-example-snippets-windows-registry.html">Windows Registry Examples</a></li><li><a class="active" href="examples-example-snippets-user-management-acl.html">User Management and ACL Examples</a></li></ul></li><li><a href="examples-tutorials.html">Tutorials</a></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-example-snippets.html">Example Snippets</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    User Management and ACL Examples
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <ul>
+<li><a href="examples-example-snippets-user-management-acl.html#manage-users" title="User Management and ACL Examples - Manage users">Manage users</a></li>
+<li><a href="examples-example-snippets-user-management-acl.html#add-users" title="User Management and ACL Examples - Add users">Add users</a></li>
+<li><a href="examples-example-snippets-user-management-acl.html#add-users-to-passwd-and-group" title="User Management and ACL Examples - Add users to passwd and group ">Add users to passwd and group</a></li>
+<li><a href="examples-example-snippets-user-management-acl.html#acl-file-example" title="User Management and ACL Examples - ACL file example">ACL file example</a></li>
+<li><a href="examples-example-snippets-user-management-acl.html#acl-generic-example" title="User Management and ACL Examples - ACL generic example">ACL generic example</a></li>
+<li><a href="examples-example-snippets-user-management-acl.html#acl-secret-example" title="User Management and ACL Examples - ACL secret example">ACL secret example</a></li>
+<li><a href="examples-example-snippets-user-management-acl.html#active-directory-example" title="User Management and ACL Examples - Active directory example">Active directory example</a></li>
+<li><a href="examples-example-snippets-user-management-acl.html#active-list-users-directory-example" title="User Management and ACL Examples - Active list users directory example">Active list users directory example</a></li>
+<li><a href="examples-example-snippets-user-management-acl.html#active-directory-show-users-example" title="User Management and ACL Examples - Active directory show users example">Active directory show users example</a></li>
+<li><a href="examples-example-snippets-user-management-acl.html#get-a-list-of-users" title="User Management and ACL Examples - Get a list of users">Get a list of users</a></li>
+<li><a href="examples-example-snippets-user-management-acl.html#ldap-interactions" title="User Management and ACL Examples - LDAP interactions">LDAP interactions</a></li>
+</ul>
+<h2 id="manage-users">Manage users</h2>
+<p>There are many approaches to managing users. You can edit system files like /etc/passwd directly, or you can use commands on some systems like ‘useradd’ or ‘adduser’. In all cases it is desirable to make this a data-driven process.</p>
+<div class="highlight"><pre><code class="text">Add users
+Remove users
+</code></pre>
+</div>
+<h3 id="add-users">Add users</h3>
+<p>A simple approach which adds new users to the password file, and to a group called ‘users’ in the group file. Is shown below. This example does not edit the shadow file. A simple pattern that can be modified for use is shown below.</p>
+
+<p>Note that, although this is a simple minded approach, it is the most efficient of the approaches shown here as all operations can be carried out in a single operation for each file.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">addusers</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="c"># Add some users</span>
+
+
+      <span class="p">&quot;</span><span class="nv">pw[mark]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;mark:x:1000:100:Mark Burgess:/home/mark:/bin/bash&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">pw[fred]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;fred:x:1001:100:Right Said:/home/fred:/bin/bash&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">pw[jane]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;jane:x:1002:100:Jane Doe:/home/jane:/bin/bash&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">users</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getindices</span><span class="p">(</span><span class="s">&quot;pw&quot;</span><span class="p">);</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+
+      <span class="s">&quot;/etc/passwd&quot;</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_users_starting</span><span class="p">(</span><span class="s">&quot;addusers.pw&quot;</span><span class="p">);</span>
+
+      <span class="c">#  &quot;/etc/shadow&quot;</span>
+
+      <span class="c">#     edit_line =&gt; append_users_starting(&quot;$(users):defaultpasswd:::::::&quot;);</span>
+
+
+      <span class="s">&quot;/etc/group&quot;</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_user_field</span><span class="p">(</span><span class="s">&quot;users&quot;</span><span class="p">,</span><span class="s">&quot;4&quot;</span><span class="p">,</span><span class="s">&quot;@(addusers.users)&quot;</span><span class="p">);</span>
+
+      <span class="s">&quot;/home/</span><span class="si">$(users)</span><span class="s">/.&quot;</span>
+
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;755&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(users)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;users&quot;</span><span class="p">);</span>
+
+      <span class="c"># equivalent to ALL of the above in 3.6 (see documentation)</span>
+  <span class="kd">users</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(users)</span><span class="s">&quot;</span> <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span> <span class="kr">shell</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/bash&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>A second approach is to use the shell commands supplied by some operating systems; this assumes that suitable defaults have been set up manually. Also the result is not repairable in a simple convergent manner. The command needs to edit multiple files for each user, and is quite inefficient.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">addusers</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="c"># Add some users</span>
+
+
+      <span class="p">&quot;</span><span class="nv">pw[mark]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;mark:x:1000:100:Mark Burgess:/home/mark:/bin/bash&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">pw[fred]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;fred:x:1001:100:Right Said:/home/fred:/bin/bash&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">pw[jane]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;jane:x:1002:100:Jane Doe:/home/jane:/bin/bash&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">users</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getindices</span><span class="p">(</span><span class="s">&quot;pw&quot;</span><span class="p">);</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+
+      <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">user_add</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(users)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(pw[$(users)</span><span class="s">])&quot;</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">user_add</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="nv">pw</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+
+      <span class="s">&quot;/etc/passwd&quot;</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_users_starting</span><span class="p">(</span><span class="s">&quot;addusers.pw&quot;</span><span class="p">);</span>
+
+      <span class="c">#  &quot;/etc/shadow&quot;</span>
+
+      <span class="c">#     edit_line =&gt; append_users_starting(&quot;$(users):defaultpasswd:::::::&quot;);</span>
+
+
+      <span class="s">&quot;/etc/group&quot;</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_user_field</span><span class="p">(</span><span class="s">&quot;users&quot;</span><span class="p">,</span><span class="s">&quot;4&quot;</span><span class="p">,</span><span class="s">&quot;@(addusers.users)&quot;</span><span class="p">);</span>
+
+      <span class="s">&quot;/home/</span><span class="si">$(users)</span><span class="s">/.&quot;</span>
+
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;755&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(users)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;users&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>An alternative approach is to use a method to wrap around the handling of a user. Although this looks nice, it is less efficient than the first method because it must edit the files multiple times.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">addusers</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="c"># Add some users</span>
+
+
+      <span class="p">&quot;</span><span class="nv">pw[mark]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;mark:x:1000:100:Mark Burgess:/home/mark:/bin/bash&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">pw[fred]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;fred:x:1001:100:Right Said:/home/fred:/bin/bash&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">pw[jane]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;jane:x:1002:100:Jane Doe:/home/jane:/bin/bash&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">users</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getindices</span><span class="p">(</span><span class="s">&quot;pw&quot;</span><span class="p">);</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+
+      <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">user_add</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(users)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(pw[$(users)</span><span class="s">])&quot;</span><span class="p">);</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">user_add</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="nv">pw</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+
+      <span class="s">&quot;/etc/passwd&quot;</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_users_starting</span><span class="p">(</span><span class="s">&quot;addusers.pw&quot;</span><span class="p">);</span>
+
+      <span class="c">#  &quot;/etc/shadow&quot;</span>
+
+      <span class="c">#     edit_line =&gt; append_users_starting(&quot;$(users):defaultpasswd:::::::&quot;);</span>
+
+
+      <span class="s">&quot;/etc/group&quot;</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_user_field</span><span class="p">(</span><span class="s">&quot;users&quot;</span><span class="p">,</span><span class="s">&quot;4&quot;</span><span class="p">,</span><span class="s">&quot;@(addusers.users)&quot;</span><span class="p">);</span>
+
+      <span class="s">&quot;/home/</span><span class="si">$(users)</span><span class="s">/.&quot;</span>
+
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mog</span><span class="p">(</span><span class="s">&quot;755&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(users)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;users&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="add-users-to-passwd-and-group">Add users to passwd and group</h2>
+<p>Add lines to the password file, and users to group if they are not already there.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;addpasswd&quot;</span> <span class="p">};</span>
+      <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;cf_std_library.cf&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">addpasswd</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="c"># want to set these values by the names of their array keys</span>
+
+      <span class="p">&quot;</span><span class="nv">pwd[mark]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;mark:x:1000:100:Mark Burgess:/home/mark:/bin/bash&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">pwd[fred]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;fred:x:1001:100:Right Said:/home/fred:/bin/bash&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">pwd[jane]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;jane:x:1002:100:Jane Doe:/home/jane:/bin/bash&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">users</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getindices</span><span class="p">(</span><span class="s">&quot;pwd&quot;</span><span class="p">);</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;/etc/passwd&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_users_starting</span><span class="p">(</span><span class="s">&quot;addpasswd.pwd&quot;</span><span class="p">);</span>
+
+      <span class="s">&quot;/etc/group&quot;</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_user_field</span><span class="p">(</span><span class="s">&quot;users&quot;</span><span class="p">,</span><span class="s">&quot;4&quot;</span><span class="p">,</span><span class="s">&quot;@(addpasswd.users)&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="acl-file-example">ACL file example</h2><div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;acls&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">acls</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;/media/flash/acl/test_dir&quot;</span>
+
+      <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">include_base</span><span class="p">,</span>
+      <span class="kr">acl</span> <span class="o">=&gt;</span> <span class="nf">template</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">acl</span> <span class="nf">template</span>
+<span class="p">{</span>
+      <span class="kr">acl_method</span> <span class="o">=&gt;</span> <span class="s">&quot;overwrite&quot;</span><span class="p">;</span>
+      <span class="kr">acl_type</span> <span class="o">=&gt;</span> <span class="s">&quot;posix&quot;</span><span class="p">;</span>
+      <span class="kr">acl_directory_inherit</span> <span class="o">=&gt;</span> <span class="s">&quot;parent&quot;</span><span class="p">;</span>
+      <span class="kr">aces</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;user:*:r(wwx),-r:allow&quot;</span><span class="p">,</span> <span class="s">&quot;group:*:+rw:allow&quot;</span><span class="p">,</span> <span class="s">&quot;mask:x:allow&quot;</span><span class="p">,</span> <span class="s">&quot;all:r&quot;</span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">acl</span> <span class="nf">win</span>
+<span class="p">{</span>
+      <span class="kr">acl_method</span> <span class="o">=&gt;</span> <span class="s">&quot;overwrite&quot;</span><span class="p">;</span>
+      <span class="kr">acl_type</span> <span class="o">=&gt;</span> <span class="s">&quot;ntfs&quot;</span><span class="p">;</span>
+      <span class="kr">acl_directory_inherit</span> <span class="o">=&gt;</span> <span class="s">&quot;nochange&quot;</span><span class="p">;</span>
+      <span class="kr">aces</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;user:Administrator:rw&quot;</span><span class="p">,</span> <span class="s">&quot;group:Bad:rwx(Dpo):deny&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">depth_search</span> <span class="nf">include_base</span>
+<span class="p">{</span>
+      <span class="kr">include_basedir</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="acl-generic-example">ACL generic example</h2><div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;acls&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">acls</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;/media/flash/acl/test_dir&quot;</span>
+
+      <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">include_base</span><span class="p">,</span>
+      <span class="kr">acl</span> <span class="o">=&gt;</span> <span class="nf">test</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">acl</span> <span class="nf">test</span>
+<span class="p">{</span>
+      <span class="kr">acl_type</span> <span class="o">=&gt;</span> <span class="s">&quot;generic&quot;</span><span class="p">;</span>
+      <span class="kr">aces</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;user:bob:rwx&quot;</span><span class="p">,</span> <span class="s">&quot;group:staff:rx&quot;</span><span class="p">,</span> <span class="s">&quot;all:r&quot;</span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">depth_search</span> <span class="nf">include_base</span>
+<span class="p">{</span>
+      <span class="kr">include_basedir</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="acl-secret-example">ACL secret example</h2><div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;acls&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">acls</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="nc">windows</span><span class="p">::</span>
+      <span class="s">&quot;c:</span><span class="se">\S</span><span class="s">ecret&quot;</span>
+      <span class="kr">acl</span> <span class="o">=&gt;</span> <span class="nf">win</span><span class="p">,</span>
+      <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">include_base</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Secure the secret directory from unauthorized access&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">acl</span> <span class="nf">win</span>
+<span class="p">{</span>
+      <span class="kr">acl_method</span> <span class="o">=&gt;</span> <span class="s">&quot;overwrite&quot;</span><span class="p">;</span>
+      <span class="kr">aces</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;user:Administrator:rwx&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">depth_search</span> <span class="nf">include_base</span>
+<span class="p">{</span>
+      <span class="kr">include_basedir</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="active-directory-example">Active directory example</h2><div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">active_directory</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="c"># NOTE: Edit this to your domain, e.g. &quot;corp&quot;, may also need more DC&#39;s after it</span>
+      <span class="p">&quot;</span><span class="nv">domain_name</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;cftesting&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">user_name</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;Guest&quot;</span><span class="p">;</span>
+
+
+      <span class="c"># NOTE: We can also extract data from remote Domain Controllers</span>
+
+    <span class="nc">dummy.DomainController</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">domain_controller</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;localhost&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">userlist</span><span class="p">&quot;</span>    <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">ldaplist</span><span class="p">(</span>
+                                       <span class="s">&quot;ldap://</span><span class="si">$(domain_controller)</span><span class="s">&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;CN=Users,DC=</span><span class="si">$(domain_name)</span><span class="s">,DC=com&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;(objectClass=user)&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;sAMAccountName&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;subtree&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;none&quot;</span><span class="p">);</span>
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="nc">dummy.DomainController</span><span class="p">::</span>
+      <span class="s">&quot;gotuser&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">ldaparray</span><span class="p">(</span>
+                                         <span class="s">&quot;userinfo&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;ldap://</span><span class="si">$(domain_controller)</span><span class="s">&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;CN=</span><span class="si">$(user_name)</span><span class="s">,CN=Users,DC=</span><span class="si">$(domain_name)</span><span class="s">,DC=com&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;(name=*)&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;subtree&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;none&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">dummy.DomainController</span><span class="p">::</span>
+      <span class="err">&#39;</span><span class="nf">Username</span> <span class="nf">is</span> <span class="s">&quot;</span><span class="si">$(userlist)</span><span class="s">&quot;</span><span class="err">&#39;</span><span class="p">;</span>
+    <span class="nc">dummy.gotuser</span><span class="p">::</span>
+      <span class="s">&quot;Got user data; </span><span class="si">$(userinfo[name])</span><span class="s"> has logged on </span><span class="si">$(userinfo[logonCount])</span><span class="s"> times&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="active-list-users-directory-example">Active list users directory example</h2><div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">ldap</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">userlist</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">ldaplist</span><span class="p">(</span>
+                                    <span class="s">&quot;ldap://cf-win2003&quot;</span><span class="p">,</span>
+                                    <span class="s">&quot;CN=Users,DC=domain,DC=cf-win2003&quot;</span><span class="p">,</span>
+                                    <span class="s">&quot;(objectClass=user)&quot;</span><span class="p">,</span>
+                                    <span class="s">&quot;sAMAccountName&quot;</span><span class="p">,</span>
+                                    <span class="s">&quot;subtree&quot;</span><span class="p">,</span>
+                                    <span class="s">&quot;none&quot;</span><span class="p">);</span>
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="err">&#39;</span><span class="kd">Username</span><span class="p">:</span> <span class="s">&quot;</span><span class="si">$(userlist)</span><span class="s">&quot;</span><span class="err">&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="active-directory-show-users-example">Active directory show users example</h2><div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">ldap</span>
+<span class="p">{</span>
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;gotdata&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">ldaparray</span><span class="p">(</span>
+                                         <span class="s">&quot;myarray&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;ldap://cf-win2003&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;CN=Test Pilot,CN=Users,DC=domain,DC=cf-win2003&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;(name=*)&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;subtree&quot;</span><span class="p">,</span>
+                                         <span class="s">&quot;none&quot;</span><span class="p">);</span>
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">gotdata</span><span class="p">::</span>
+      <span class="s">&quot;Got user data&quot;</span><span class="p">;</span>
+    <span class="nc">!gotdata</span><span class="p">::</span>
+      <span class="s">&quot;Did not get user data&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="get-a-list-of-users">Get a list of users</h2><div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">test</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">test</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">allusers</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getusers</span><span class="p">(</span><span class="s">&quot;zenoss,mysql,at&quot;</span><span class="p">,</span><span class="s">&quot;12,0&quot;</span><span class="p">);</span>
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">linux</span><span class="p">::</span>
+      <span class="s">&quot;Found user </span><span class="si">$(allusers)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="ldap-interactions">LDAP interactions</h2><div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;ldap&quot;</span> <span class="p">,</span> <span class="s">&quot;followup&quot;</span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">ldap</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="c"># Get the first matching value for &quot;uid&quot;</span>
+
+      <span class="p">&quot;</span><span class="nv">value</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">ldapvalue</span><span class="p">(</span><span class="s">&quot;ldap://eternity.iu.hio.no&quot;</span><span class="p">,</span><span class="s">&quot;dc=cfengine,dc=com&quot;</span><span class="p">,</span><span class="s">&quot;(sn=User)&quot;</span><span class="p">,</span><span class="s">&quot;uid&quot;</span><span class="p">,</span><span class="s">&quot;subtree&quot;</span><span class="p">,</span><span class="s">&quot;none&quot;</span><span class="p">);</span>
+
+      <span class="c"># Get all matching values for &quot;uid&quot; - should be a single record match</span>
+      <span class="p">&quot;</span><span class="nv">list</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span>  <span class="nf">ldaplist</span><span class="p">(</span><span class="s">&quot;ldap://eternity.iu.hio.no&quot;</span><span class="p">,</span><span class="s">&quot;dc=cfengine,dc=com&quot;</span><span class="p">,</span><span class="s">&quot;(sn=User)&quot;</span><span class="p">,</span><span class="s">&quot;uid&quot;</span><span class="p">,</span><span class="s">&quot;subtree&quot;</span><span class="p">,</span><span class="s">&quot;none&quot;</span><span class="p">);</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;gotdata&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">ldaparray</span><span class="p">(</span><span class="s">&quot;myarray&quot;</span><span class="p">,</span><span class="s">&quot;ldap://eternity.iu.hio.no&quot;</span><span class="p">,</span><span class="s">&quot;dc=cfengine,dc=com&quot;</span><span class="p">,</span><span class="s">&quot;(uid=mark)&quot;</span><span class="p">,</span><span class="s">&quot;subtree&quot;</span><span class="p">,</span><span class="s">&quot;none&quot;</span><span class="p">);</span>
+      <span class="s">&quot;found&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regldap</span><span class="p">(</span><span class="s">&quot;ldap://eternity.iu.hio.no&quot;</span><span class="p">,</span><span class="s">&quot;dc=cfengine,dc=com&quot;</span><span class="p">,</span><span class="s">&quot;(sn=User)&quot;</span><span class="p">,</span><span class="s">&quot;uid&quot;</span><span class="p">,</span><span class="s">&quot;subtree&quot;</span><span class="p">,</span><span class="s">&quot;jon.*&quot;</span><span class="p">,</span><span class="s">&quot;none&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">linux</span><span class="p">::</span>
+      <span class="s">&quot;LDAP VALUE </span><span class="si">$(value)</span><span class="s"> found&quot;</span><span class="p">;</span>
+      <span class="s">&quot;LDAP LIST VALUE </span><span class="si">$(list)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="nc">gotdata</span><span class="p">::</span>
+      <span class="s">&quot;Found specific entry data  ...</span><span class="si">$(ldap.myarray[uid])</span><span class="s">,</span><span class="si">$(ldap.myarray[gecos])</span><span class="s">, etc&quot;</span><span class="p">;</span>
+    <span class="nc">found</span><span class="p">::</span>
+      <span class="s">&quot;Matched regex&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">followup</span>
+<span class="p">{</span>
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">linux</span><span class="p">::</span>
+      <span class="s">&quot;Different bundle ...</span><span class="si">$(ldap.myarray[uid])</span><span class="s">,</span><span class="si">$(ldap.myarray[gecos])</span><span class="s">,...&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-examples.html">examples</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-user-management.html">user management</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-acl.html">acl</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/examples/example-snippets/user-management-acl.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/5b2bc459512b94c59b897836ae3071bcd5f777f6" target="_blank">5b2bc459512b94c59b897836ae3071bcd5f777f6</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.8/assets/footer-08442c0761064b6ca280223e9ebacccc.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

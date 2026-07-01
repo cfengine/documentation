@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.7  Documentation - What did cfengine do?</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.7/assets/global-fd19e55abf031add992b4d4a2d9bb344.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "What did cfengine do?";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.13/">Version 3.13 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/" selected>Version 3.7 (EOL)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:skcdq5u4lcc" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-language-concepts.html">Language Concepts</a></li><li><a href="guide-design-center.html">Design Center Overview</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-faq.html">FAQ</a><ul class="level2"><li><a href="guide-faq-enterprise-license.html">Requesting a CFEngine Enterprise License</a></li><li><a href="guide-faq-uninstall-reinstall.html">Uninstalling/Reinstalling</a></li><li><a href="guide-faq-debugging-slow-queries.html">Debugging Slow Queries</a></li><li><a href="guide-faq-enterprise-report-collection.html">Enterprise report collection</a></li><li><a href="guide-faq-unable-to-log-in-mission-portal.html">Unable to log into Mission Portal</a></li><li><a class="active" href="guide-faq-what-did-cfengine-change.html">What did cfengine do?</a></li></ul></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-faq.html">FAQ</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    What did cfengine do?
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h2 id="cfengine-core-community">CFEngine Core/Community</h2><h3 id="the-verbose-agent-log">The verbose agent log</h3>
+<p>Running the agent in verbose mode ( <code>cf-agent --verbose</code> | <code>cf-agent -v</code> )
+provides all of the details about each promise and its result</p>
+
+<p>Example Policy (<code>/tmp/example.cf</code>):</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+
+      <span class="s">&quot;/tmp/example&quot;</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;example_file_exists_and_contains_date&quot;</span><span class="p">,</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">lines_present</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="nf">sys</span><span class="err">.</span><span class="nf">date</span><span class="p">)</span> <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">lines_present</span><span class="p">(</span><span class="nv">lines</span><span class="p">)</span>
+<span class="c"># @brief Ensure `lines` are present in the file. Lines that do not exist are appended to the file</span>
+<span class="c"># @param List or string that should be present in the file</span>
+<span class="c">#</span>
+<span class="c"># **Example:**</span>
+<span class="c">#</span>
+<span class="c"># ```cf3</span>
+<span class="c"># bundle agent example</span>
+<span class="c"># {</span>
+<span class="c">#  vars:</span>
+<span class="c">#    &quot;nameservers&quot; slist =&gt; { &quot;8.8.8.8&quot;, &quot;8.8.4.4&quot; };</span>
+<span class="c">#</span>
+<span class="c">#  files:</span>
+<span class="c">#      &quot;/etc/resolv.conf&quot; edit_line =&gt; lines_present( @(nameservers) );</span>
+<span class="c">#      &quot;/etc/ssh/sshd_config&quot; edit_line =&gt; lines_present( &quot;PermitRootLogin no&quot; );</span>
+<span class="c"># }</span>
+<span class="c"># ```</span>
+<span class="p">{</span>
+  <span class="kd">insert_lines</span><span class="p">:</span>
+
+      <span class="s">&quot;</span><span class="si">$(lines)</span><span class="s">&quot;</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Append lines if they don&#39;t exist&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In the verbose output as each promise is actuated a <code>BEGIN promsie</code> is emitted
+with the promise handle or filename and line number position if it does not have
+a handle. In the example output we can see that the promise for <code>/tmp/example</code>
+was <code>REPAIRED</code>.</p>
+<div class="highlight"><pre><code class="text"><span></span>verbose: B: *****************************************************************
+verbose: B: BEGIN bundle main
+verbose: B: *****************************************************************
+verbose: P: .........................................................
+verbose: P: BEGIN promise &#39;example_file_exists_and_contains_date&#39; of type &quot;files&quot; (pass 1)
+verbose: P:    Promiser/affected object: &#39;/tmp/example&#39;
+verbose: P:    Part of bundle: main
+verbose: P:    Base context class: any
+verbose: P:    Stack path: /default/main/files/&#39;/tmp/example&#39;[1]
+verbose: Using literal pathtype for &#39;/tmp/example&#39;
+verbose: No mode was set, choose plain file default 0600
+   info: Created file &#39;/tmp/example&#39;, mode 0600
+verbose: Handling file edits in edit_line bundle &#39;lines_present&#39;
+verbose: V:     +  Private parameter: &#39;lines&#39; in scope &#39;lines_present&#39; (type: s) in pass 1
+verbose: P: .........................................................
+verbose: P: BEGIN promise &#39;promise_example_cf_32&#39; of type &quot;insert_lines&quot; (pass 1)
+verbose: P:    Promiser/affected object: &#39;Mon Dec  4 21:08:38 2017&#39;
+verbose: P:    Part of bundle: lines_present
+verbose: P:    Base context class: any
+verbose: P:    Stack path: /default/main/files/&#39;/tmp/example&#39;/default/lines_present/insert_lines/&#39;Mon Dec  4 21:08:38 2017&#39;[1]
+verbose: P:
+verbose: P:    Comment:  Append lines if they don&#39;t exist
+verbose: Additional promise info: source path &#39;./example.cf&#39; at line 32 comment &#39;Append lines if they don&#39;t exist&#39;
+verbose: Inserting the promised line &#39;Mon Dec  4 21:08:38 2017&#39; into &#39;/tmp/example&#39; after locator
+verbose: P: .........................................................
+verbose: P: BEGIN promise &#39;promise_example_cf_32&#39; of type &quot;insert_lines&quot; (pass 1)
+verbose: P:    Promiser/affected object: &#39;Mon Dec  4 21:08:38 2017&#39;
+verbose: P:    Part of bundle: lines_present
+verbose: P:    Base context class: any
+verbose: P:    Stack path: /default/main/files/&#39;/tmp/example&#39;/default/lines_present/insert_lines/&#39;Mon Dec  4 21:08:38 2017&#39;[1]
+verbose: P:
+verbose: P:    Comment:  Append lines if they don&#39;t exist
+verbose: P: .........................................................
+verbose: P: BEGIN promise &#39;promise_example_cf_32&#39; of type &quot;insert_lines&quot; (pass 1)
+verbose: P:    Promiser/affected object: &#39;Mon Dec  4 21:08:38 2017&#39;
+verbose: P:    Part of bundle: lines_present
+verbose: P:    Base context class: any
+verbose: P:    Stack path: /default/main/files/&#39;/tmp/example&#39;/default/lines_present/insert_lines/&#39;Mon Dec  4 21:08:38 2017&#39;[1]
+verbose: P:
+verbose: P:    Comment:  Append lines if they don&#39;t exist
+   info: Edit file &#39;/tmp/example&#39;
+verbose: Handling file existence constraints on &#39;/tmp/example&#39;
+verbose: A: Promise REPAIRED
+verbose: P: END files promise (/tmp/example)
+verbose: P: .........................................................
+verbose: P: BEGIN promise &#39;example_file_exists_and_contains_date&#39; of type &quot;files&quot; (pass 2)
+verbose: P:    Promiser/affected object: &#39;/tmp/example&#39;
+verbose: P:    Part of bundle: main
+verbose: P:    Base context class: any
+verbose: P:    Stack path: /default/main/files/&#39;/tmp/example&#39;[1]
+verbose: Using literal pathtype for &#39;/tmp/example&#39;
+verbose: P: .........................................................
+verbose: P: BEGIN promise &#39;example_file_exists_and_contains_date&#39; of type &quot;files&quot; (pass 3)
+verbose: P:    Promiser/affected object: &#39;/tmp/example&#39;
+verbose: P:    Part of bundle: main
+verbose: P:    Base context class: any
+verbose: P:    Stack path: /default/main/files/&#39;/tmp/example&#39;[1]
+verbose: Using literal pathtype for &#39;/tmp/example&#39;
+verbose: A: ...................................................
+verbose: A: Bundle Accounting Summary for &#39;main&#39; in namespace default
+verbose: A: Promises kept in &#39;main&#39; = 0
+verbose: A: Promises not kept in &#39;main&#39; = 0
+verbose: A: Promises repaired in &#39;main&#39; = 2
+verbose: A: Aggregate compliance (promises kept/repaired) for bundle &#39;main&#39; = 100.0%
+verbose: A: ...................................................
+verbose: B: *****************************************************************
+verbose: B: END bundle main
+verbose: B: *****************************************************************
+verbose: Generate diff state reports for policy &#39;./example.cf&#39; SKIPPED
+verbose: No lock purging scheduled
+verbose: Outcome of version (not specified) (agent-0): Promises observed - Total promise compliance: 0% kept, 100% repaired, 0% not kept (out of 2 events). User promise compliance: 0% kept, 100% repaired, 0% not kept (out of 2 events). CFEngine system compliance: 0% kept, 0% repaired, 0% not kept (out of 0 events).
+</code></pre>
+</div>
+<h3 id="promise-logging">Promise logging</h3>
+<p>Promises can be configured to <a href="reference-promise-types.html#log_repaired" title="Promise Types and Attributes - log_repaired">log their outcomes</a>
+to a file with <a href="reference-promise-types.html#log_kept" title="Promise Types and Attributes - log_kept"><code>log_kept</code></a>, <a href="reference-promise-types.html#log_repaired" title="Promise Types and Attributes - log_repaired"><code>log_repaired</code></a>, and <a href="reference-promise-types.html#log_failed" title="Promise Types and Attributes - log_failed"><code>log_failed</code></a> attributes in an action body.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span> <span class="k">file</span> <span class="k">control</span>
+<span class="p">{</span>
+  <span class="c"># reports.cf from stdlib needed for body printfile cat</span>
+  <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(sys.libdir)</span><span class="s">/reports.cf&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+  <span class="kd">commands</span><span class="p">:</span>
+      <span class="s">&quot;/bin/true&quot;</span>
+        <span class="kr">action</span> <span class="o">=&gt;</span> <span class="nf">log_my_repairs</span><span class="p">(</span> <span class="err">&#39;/</span><span class="nf">tmp</span><span class="err">/</span><span class="nf">repaired</span><span class="err">.</span><span class="nf">log</span><span class="err">&#39;</span> <span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="s">&quot;/tmp/repaired.log&quot;</span>
+        <span class="kr">printfile</span> <span class="o">=&gt;</span> <span class="nf">cat</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="nf">this</span><span class="err">.</span><span class="nf">promiser</span><span class="p">)</span> <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">action</span> <span class="nf">log_my_repairs</span><span class="p">(</span> <span class="nv">file</span> <span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">log_repaired</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(file)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">log_string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.date)</span><span class="s"> REPAIRED </span><span class="si">$(this.promiser)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Policy output:</p>
+<div class="highlight"><pre><code class="text"><span></span>R: /tmp/repaired.log
+R: Mon Dec  4 21:21:38 2017 REPAIRED /bin/true
+</code></pre>
+</div>
+<h2 id="cfengine-enterprise">CFEngine Enterprise</h2>
+<p>CFEngine enterprise provides details logging without special configuration.</p>
+<h3 id="changes-ui">Changes UI</h3>
+<p>The changes reporting interface is the easiest way to what repairs the agent is
+making to your infrastructure.</p>
+
+<p><img src="enterprise-changes-ui.png" alt="Enterprise Changes UI"></p>
+<h3 id="changes-api">Changes API</h3>
+<p>Changes can also be queried from the <a href="reference-enterprise-api-ref-changes.html" title="Changes REST API">changes rest api</a>. Here
+we query for repairs made by <a href="reference-promise-types-files.html" title="files"><code>files</code></a> type promises.</p>
+
+<p>Example query:</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">[root@hub ~]#</span> curl https://hub/api/v2/changes/policy?promisetype<span class="o">=</span>files
+</code></pre>
+</div>
+
+<p>Example response:</p>
+<div class="highlight"><pre><code class="json"><span></span>  <span class="p">{</span>
+      <span class="nt">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+              <span class="nt">&quot;bundlename&quot;</span><span class="p">:</span> <span class="s2">&quot;cfe_internal_update_policy&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;changetime&quot;</span><span class="p">:</span> <span class="mi">1512427971</span><span class="p">,</span>
+              <span class="nt">&quot;hostkey&quot;</span><span class="p">:</span> <span class="s2">&quot;SHA=01fe75e93ca88bbd381eb720e9b43d0840ea8727aae8fc84391c297c42798f5c&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;hub&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;logmessages&quot;</span><span class="p">:</span> <span class="p">[</span>
+                  <span class="s2">&quot;Copying from &#39;localhost:/var/cfengine/masterfiles/cf_promises_release_id&#39;&quot;</span>
+              <span class="p">],</span>
+              <span class="nt">&quot;policyfile&quot;</span><span class="p">:</span> <span class="s2">&quot;/var/cfengine/inputs/cfe_internal/update/update_policy.cf&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;promisees&quot;</span><span class="p">:</span> <span class="p">[],</span>
+              <span class="nt">&quot;promisehandle&quot;</span><span class="p">:</span> <span class="s2">&quot;cfe_internal_update_policy_files_inputs_dir&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;promiser&quot;</span><span class="p">:</span> <span class="s2">&quot;/var/cfengine/inputs&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;promisetype&quot;</span><span class="p">:</span> <span class="s2">&quot;files&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;stackpath&quot;</span><span class="p">:</span> <span class="s2">&quot;/default/cfe_internal_update_policy/files/&#39;/var/cfengine/inputs&#39;[1]&quot;</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+              <span class="nt">&quot;bundlename&quot;</span><span class="p">:</span> <span class="s2">&quot;cfe_internal_setup_knowledge&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;changetime&quot;</span><span class="p">:</span> <span class="mi">1512428912</span><span class="p">,</span>
+              <span class="nt">&quot;hostkey&quot;</span><span class="p">:</span> <span class="s2">&quot;SHA=01fe75e93ca88bbd381eb720e9b43d0840ea8727aae8fc84391c297c42798f5c&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;hub&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;logmessages&quot;</span><span class="p">:</span> <span class="p">[</span>
+                  <span class="s2">&quot;Owner of &#39;/var/cfengine/httpd/htdocs/application/logs/./log-2017-12-04.log&#39; was 0, setting to 497&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;Group of &#39;/var/cfengine/httpd/htdocs/application/logs/./log-2017-12-04.log&#39; was 0, setting to 497&quot;</span><span class="p">,</span>
+                  <span class="s2">&quot;Object &#39;/var/cfengine/httpd/htdocs/application/logs/./log-2017-12-04.log&#39; had permission 0644, changed it to 0640&quot;</span>
+              <span class="p">],</span>
+              <span class="nt">&quot;policyfile&quot;</span><span class="p">:</span> <span class="s2">&quot;/var/cfengine/inputs/cfe_internal/enterprise/CFE_knowledge.cf&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;promisees&quot;</span><span class="p">:</span> <span class="p">[],</span>
+              <span class="nt">&quot;promisehandle&quot;</span><span class="p">:</span> <span class="s2">&quot;cfe_internal_setup_knowledge_files_doc_root_application_logs&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;promiser&quot;</span><span class="p">:</span> <span class="s2">&quot;/var/cfengine/httpd/htdocs/application/logs/.&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;promisetype&quot;</span><span class="p">:</span> <span class="s2">&quot;files&quot;</span><span class="p">,</span>
+              <span class="nt">&quot;stackpath&quot;</span><span class="p">:</span> <span class="s2">&quot;/default/cfe_internal_management/methods/&#39;CFEngine_Internals&#39;/default/cfe_internal_enterprise_main/methods/&#39;hub&#39;/default/cfe_internal_setup_knowledge/files/&#39;/var/cfengine/httpd/htdocs/application/logs/.&#39;[1]&quot;</span>
+          <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&quot;total&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="nt">&quot;next&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+      <span class="nt">&quot;previous&quot;</span><span class="p">:</span> <span class="kc">null</span>
+  <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>See Also: <a href="examples-enterprise-api-examples-changes-api-usage.html" title="Tracking changes">query rest api</a></p>
+<h3 id="custom-reports-and-query-api">Custom Reports and Query API</h3>
+<p>The custom reports interface and associated <a href="reference-enterprise-api-ref-query.html" title="Query REST API">query rest api</a> allow more flexible
+reports to be run.</p>
+
+<p>Queries can be made against the <code>promiselog</code> table. This query finds the
+promises that are repaired the most excluding internal cfengine related promises
+and promises from the standard library.</p>
+<div class="highlight"><pre><code class="sql"><span></span><span class="c1">-- Find most frequently repaired promises excluding lib and cfe_internal directories</span>
+<span class="k">SELECT</span> <span class="n">namespace</span><span class="p">,</span><span class="n">bundlename</span><span class="p">,</span><span class="n">promisetype</span><span class="p">,</span><span class="n">promisehandle</span><span class="p">,</span> <span class="n">promiser</span><span class="p">,</span> <span class="k">count</span><span class="p">(</span><span class="n">promiseoutcome</span><span class="p">)</span>
+<span class="k">AS</span> <span class="k">count</span>
+<span class="k">FROM</span> <span class="n">promiselog</span>
+<span class="k">WHERE</span> <span class="n">promiseoutcome</span> <span class="o">=</span> <span class="s1">&#39;REPAIRED&#39;</span>
+<span class="k">AND</span> <span class="n">policyfile</span>
+<span class="k">NOT</span> <span class="k">ilike</span> <span class="s1">&#39;%/lib/%&#39;</span>
+<span class="k">AND</span> <span class="n">policyfile</span>
+<span class="k">NOT</span> <span class="k">ilike</span> <span class="s1">&#39;%cfe_internal%&#39;</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="n">namespace</span><span class="p">,</span> <span class="n">bundlename</span><span class="p">,</span> <span class="n">promisetype</span><span class="p">,</span><span class="n">promisehandle</span><span class="p">,</span><span class="n">promiser</span>
+<span class="k">ORDER</span> <span class="k">BY</span> <span class="k">count</span> <span class="k">DESC</span>
+</code></pre>
+</div>
+
+<p>Reference: <a href="examples-enterprise-api-examples-sql-queries.html" title="SQL Query Examples">query api examples</a></p>
+<h3 id="var-cfengine-state-promise_log-csv">/var/cfengine/state/promise_log/*.csv</h3>
+<p><strong>NOTE:</strong> These logs are purged upon collection by the hub.</p>
+
+<p>In Enterprise 3.7 each agent run logs to a CSV file named for the time the agent
+started in <code>$(sys.workdir)/state/promise_log/</code>.</p>
+
+<p>The fields are <code>promise hash</code>, <code>policy file</code>, <code>release id</code>, unknown (waiting on
+developer feedback), <a href="reference-components-file_control_promises.html#namespace" title="file control - namespace"><code>namespace</code></a>, <code>bundle</code>, <code>promise type</code>, <code>stack path</code> (call
+tree), <code>promise handle</code>, <code>promisees</code>, <code>log messages</code></p>
+
+<p>/Line breaks added on commas for readability./</p>
+<div class="highlight"><pre><code class="text"><span></span>  719b756d3dc8fd7bdd20284c1fd894ae40bac55d8790855b074159db8fe187ae,
+  /var/cfengine/inputs/cfe_internal/enterprise/CFE_hub_specific.cf,
+  &lt;unknown-release-id&gt;,
+  114,default,
+  cfe_internal_update_folders,
+  files,
+  /var/cfengine/master_software_updates/windows_i686,/default/cfe_internal_management/methods/&#39;CFEngine_Internals&#39;/default/cfe_internal_enterprise_main/methods/&#39;hub&#39;/default/cfe_internal_update_folders/files/&#39;/var/cfengine/master_software_updates/windows_i686&#39;[40],
+  cfe_internal_update_folders_files_create_dirs,
+  &quot;[&quot;&quot;goal_updated&quot;&quot;]&quot;,
+  &quot;[&quot;&quot;Created directory &#39;/var/cfengine/master_software_updates/windows_i686/.&#39;&quot;&quot;]&quot;
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-getting-started.html">getting started</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-faq.html">faq</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-logging.html">logging</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-reporting.html">reporting</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 12 April 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/faq/what-did-cfengine-change.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/34a63926eaa48e77d433eef63e7fec91c25bf534" target="_blank">34a63926eaa48e77d433eef63e7fec91c25bf534</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.7/assets/footer-a434e55eb3b9456e270479ce96049098.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

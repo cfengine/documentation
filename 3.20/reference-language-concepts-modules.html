@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.20  Documentation - Modules</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/reference/language-concepts/modules.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-reference-language-concepts-modules.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-language-concepts-modules.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='assets/global-2492ce7571245ef106dbe85ec06e4908.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Modules";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/" selected>Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="96c0f638b03564284" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><li><a href="reference-components.html">Components</a></li><li><a href="reference-promise-types.html">Promise Types</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a><ul class="level2"><li><a href="reference-language-concepts-bundles.html">Bundles</a></li><li><a href="reference-language-concepts-bodies.html">Bodies</a></li><li><a href="reference-language-concepts-promises.html">Promises</a></li><li><a href="reference-language-concepts-normal-ordering.html">Normal Ordering</a></li><li><a href="reference-language-concepts-classes.html">Classes and Decisions</a></li><li><a href="reference-language-concepts-variables.html">Variables</a></li><li><a href="reference-language-concepts-augments.html">Augments</a></li><li><a href="reference-language-concepts-loops.html">Loops</a></li><li><a href="reference-language-concepts-pattern-matching-and-referencing.html">Pattern Matching and Referencing</a></li><li><a href="reference-language-concepts-namespaces.html">Namespaces</a></li><li><a class="active" href="reference-language-concepts-modules.html">Modules</a><ul class="level3"><li><a href="reference-language-concepts-modules-package-module-api.html">Package Modules</a></li></ul></li></ul></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-language-concepts.html">Language Concepts</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Modules
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Modules allow users to extend the capabilities of CFEngine in a modular way, they can be easily added and upgraded independently of when you upgrade your CFEngine version. Several different types of modules are available.</p>
+<h2 id="promise-modules">Promise Modules</h2>
+<p>Promise modules allow for the implementation of <a href="reference-promise-types-custom.html"><em>custom</em> promise types</a>, extending the CFEngine Language. They communicate with <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> using the <a href="reference-promise-types-custom.html#protocol"><em>Promise Module Protocol</em></a>.</p>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Introduced 3.17.0</li>
+</ul>
+<h2 id="package-modules">Package Modules</h2>
+<p><a href="reference-language-concepts-modules-package-module-api.html" title="Package Modules">Package Modules</a> implement the logic behind <em>packages</em> type promises, superseding the <em>package_method</em> based implementation. They interact with package managers like <a href="reference-promise-types-packages.html#yum" title="packages - yum"><code>yum</code></a>, <code>apt</code>, <a href="reference-promise-types-packages.html#msiexec" title="packages - msiexec"><code>msiexec</code></a>, and <code>pip</code> to determine which packages are currently installed or have updates available as well as installing, upgrading or un-installing packages.</p>
+
+<p>Package modules communicate with <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> via the <a href="reference-language-concepts-modules-package-modules.html#the-api">Package Module Protocol</a>.</p>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Introduced 3.7.0</li>
+</ul>
+<h2 id="variables-and-classes-modules">Variables and Classes Modules</h2>
+<p>Variables and Classes Modules are the original way to extend CFEngine. The Variable and Class Module Protocol allows for <em>variables</em> and <em>classes</em> to be defined. The protocol can be interpreted by functions like <a href="reference-functions-usemodule.html" title="usemodule"><code>usemodule()</code></a> and <a href="read_module_protocol"><code>read_module_protocol()</code></a> as well as output from <a href="reference-promise-types-commands.html" title="commands"><em>commands</em> type promises</a> with the <a href="reference-promise-types-commands.html#module" title="commands - module"><code>module =&gt; &quot;true&quot;</code></a> attribute.</p>
+
+<p>The choice of interpretation can depend on many factors but a primary differentiate between functions and classes relate to CFEngine&#39;s evaluation details. Functions are evaluated during early during policy execution unless they are explicitly guarded to delay execution. Commands promises are not executed until the bundle is actuated for it&#39;s three pass evaluation.</p>
+
+<p>Variables and Classes Modules are intended for use as system probes rather than additional configuration promises, especially now that promise modules are available.</p>
+<h3 id="specification">Specification</h3>
+<p>The protocol is <em>line based</em>. Lines that begin with <code>^</code> apply to all following lines.</p>
+
+<ul>
+<li>  <strong><code>^context=BundleName</code>:</strong> Sets the bundle scope in which <em>variables</em> will be defined</li>
+<li>  <strong><code>^meta=Tag1,Tag2</code>:</strong> Sets a comma separated list of tags that are applied to defined <em>variables</em> and <em>classes</em></li>
+<li>  <strong><code>^persistence=X</code>:</strong> Sets the number of minutes for which <em>classes</em> should persist</li>
+<li>  <strong><code>+ClassName</code>:</strong> Defines a namespace scoped class</li>
+<li>  <strong><code>-ClassName</code>:</strong> Undefines a class</li>
+<li>  <strong><code>=VariableName=</code>:</strong> Defines a string variable</li>
+<li>  <strong><code>VariableName[KEY]=</code>:</strong> Defines an associative array key value</li>
+<li>  <strong><code>@VariableName=</code>:</strong> Defines a list of strings</li>
+<li>  <strong><code>%VariableName=</code>:</strong> Must be valid JSON and defines a data container</li>
+</ul>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li>  It is not possible to define variables or classes in a namespace other than the default (<code>default</code>).</li>
+<li>  If no context is provided, the context is the canonified leaf name of the module. For example, if the module is <code>/tmp/path/my-module.sh</code> the default context would be <code>my_module_sh</code> in the <code>default</code> namespace (<code>default:my_module_sh</code>).</li>
+<li>  All <em>variables</em> and <em>classes</em> will be tagged with <code>source=module</code> in addition to any specified tags.</li>
+<li>  All lines of output that do not match the module protocol are treated as <em>errors</em>.</li>
+<li>  Variable names defined by the module protocol are limited to alphanumeric characters and <code>_</code>, <code>.</code>, <code>-</code>, <code>[</code>, <code>]</code>, <code>@</code>, and <code>/</code>.</li>
+</ul>
+
+<p><strong>Examples:</strong></p>
+
+<p>A Variables and Classes module written in shell:</p>
+<div class="highlight"><pre><code class="sh"><span></span><span class="ch">#!/bin/sh</span>
+/bin/echo <span class="s2">&quot;@mylist= { \&quot;one\&quot;, \&quot;two\&quot;, \&quot;three\&quot; }&quot;</span>
+/bin/echo <span class="s2">&quot;=myscalar= scalar val&quot;</span>
+/bin/echo <span class="s2">&quot;=myarray[key]= array key val&quot;</span>
+/bin/echo <span class="s2">&quot;%mydata=[1,2,3]&quot;</span>
+/bin/echo <span class="s2">&quot;+module_class&quot;</span>
+/bin/echo <span class="s2">&quot;^persistence=10&quot;</span>
+/bin/echo <span class="s2">&quot;+persistent_10_minute_class&quot;</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>  Introduced in 3.0.0</li>
+<li>  <code>^context</code>, <code>^meta</code> Added in 3.6.0</li>
+<li>  <code>^persistence</code> Added in 3.8.0</li>
+<li>  <code>@</code> allowed in variables (intended for keys in classic array) 3.15.0, 3.12.3, 3.10.7 (2019)</li>
+<li>  <code>/</code> allowed in variables (intended for keys in classic array) 3.14.0, 3.12.2, 3.10.6 (2019)</li>
+</ul>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-language.html">language</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-concepts.html">concepts</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-syntax.html">syntax</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-modules.html">modules</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 03 October 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.20/generator/pages/reference/language-concepts/modules.markdown/reference/language-concepts/modules.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-e4781e211c818162ced38e083ca9577f.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+
+bundle knowledge SpecialTopic_OpenNebula
+
+{
+topics:
+
+"SpecialTopic_OpenNebula";
+Special_Topics_Guide::
+    "Open Nebula Summary"  association => a("discusses","Using CFEngine with Open Nebula","is discussed in");
+Special_Topics_Guide::
+    "Webserver in Open Nebula"  association => a("discusses","Using CFEngine with Open Nebula","is discussed in");
+Special_Topics_Guide::
+    "Virtual machine configuration"  association => a("discusses","Using CFEngine with Open Nebula","is discussed in");
+Special_Topics_Guide::
+    "Open Nebula Commands"  association => a("discusses","Using CFEngine with Open Nebula","is discussed in");
+Special_Topics_Guide::
+    "Virtual machine template configuration"  association => a("discusses","Using CFEngine with Open Nebula","is discussed in");
+Special_Topics_Guide::
+    "Network configuration"  association => a("discusses","Using CFEngine with Open Nebula","is discussed in");
+Special_Topics_Guide::
+    "Open Nebula environment configuration"  association => a("discusses","Using CFEngine with Open Nebula","is discussed in");
+Special_Topics_Guide::
+    "NFS config for shared image repository"  association => a("discusses","Using CFEngine with Open Nebula","is discussed in");
+Special_Topics_Guide::
+    "Installation and dependancy configuration"  association => a("discusses","Using CFEngine with Open Nebula","is discussed in");
+Special_Topics_Guide::
+    "Example Setup"  association => a("discusses","Using CFEngine with Open Nebula","is discussed in");
+Special_Topics_Guide::
+    "How can CFEngine work with Open Nebula?"  association => a("discusses","Using CFEngine with Open Nebula","is discussed in");
+Special_Topics_Guide::
+    "What is Open Nebula?"  association => a("discusses","Using CFEngine with Open Nebula","is discussed in");
+Special_Topics_Guide::
+    "Open Nebula"  association => a("discusses","Using CFEngine with Open Nebula","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_OpenNebula.html"
+  represents => { "Official CFEngine document"},  about_topics => { "using cfengine with open nebula" };
+ "/knowledge/docs/SpecialTopic_OpenNebula.html"
+  represents => { "Special Topics Guide"},  about_topics => { "using cfengine with open nebula" };
+ "/knowledge/docs/SpecialTopic_OpenNebula.html#Top"
+  represents => { "Text section" }, about_topics => { "open nebula" };
+ "/knowledge/docs/SpecialTopic_OpenNebula.html#What-is-Open-Nebula"
+  represents => { "Text section" }, about_topics => { "what is open nebula?" };
+ "/knowledge/docs/SpecialTopic_OpenNebula.html#How-can-CFEngine-work-with-Open-Nebula"
+  represents => { "Text section" }, about_topics => { "how can cfengine work with open nebula?" };
+ "/knowledge/docs/SpecialTopic_OpenNebula.html#Example-Setup"
+  represents => { "Text section" }, about_topics => { "example setup" };
+ "/knowledge/docs/SpecialTopic_OpenNebula.html#Installation-and-dependancy-configuration"
+  represents => { "Text section" }, about_topics => { "installation and dependancy configuration" };
+ "/knowledge/docs/SpecialTopic_OpenNebula.html#NFS-config-for-shared-image-repository"
+  represents => { "Text section" }, about_topics => { "nfs config for shared image repository" };
+ "/knowledge/docs/SpecialTopic_OpenNebula.html#Open-Nebula-environment-configuration"
+  represents => { "Text section" }, about_topics => { "open nebula environment configuration" };
+ "/knowledge/docs/SpecialTopic_OpenNebula.html#Network-configuration"
+  represents => { "Text section" }, about_topics => { "network configuration" };
+ "/knowledge/docs/SpecialTopic_OpenNebula.html#Virtual-machine-template-configuration"
+  represents => { "Text section" }, about_topics => { "virtual machine template configuration" };
+ "/knowledge/docs/SpecialTopic_OpenNebula.html#Open-Nebula-Commands"
+  represents => { "Text section" }, about_topics => { "open nebula commands" };
+ "/knowledge/docs/SpecialTopic_OpenNebula.html#Virtual-machine-configuration"
+  represents => { "Text section" }, about_topics => { "virtual machine configuration" };
+ "/knowledge/docs/SpecialTopic_OpenNebula.html#Webserver-in-Open-Nebula"
+  represents => { "Text section" }, about_topics => { "webserver in open nebula" };
+ "/knowledge/docs/SpecialTopic_OpenNebula.html#Open-Nebula-Summary"
+  represents => { "Text section" }, about_topics => { "open nebula summary" };
+}
+

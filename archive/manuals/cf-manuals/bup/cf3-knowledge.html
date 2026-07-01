@@ -1,0 +1,843 @@
+<html lang="en">
+<head>
+<title>CFEngine 3 Solutions</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CFEngine 3 Solutions">
+<meta name="generator" content="makeinfo 4.9">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+h1, h2, a, table.list th
+{
+    color: #1f6e6b;
+}
+
+.node
+{ 
+background: #ddd url(Logo2-small.png) right no-repeat;
+}
+
+.menu
+{  
+background: #eef url(menu.png) right no-repeat;
+}
+
+.contents
+{
+background-color: #e9f4e9; 
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{ 
+  border-color: #4e8b8c;
+  border-style: solid;
+  border-width: 1px;
+}
+
+BODY {
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-style: normal;
+     font-size: 11pt;
+     background: #FFFFFF;
+     color: #000000;
+     }
+        
+P { 
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  }
+
+FONT.liten {font-size: 70%; }
+
+H1, H2, H3 {
+        font-weight: normal;
+        color: #2c2e70;
+        margin-bottom: 0em;
+        }
+
+TABLE { vertical-align: top; } 
+
+H1 { font-size: 140% }
+H2 { font-size: 120% }
+H3 { font-size: 110% }
+H4 { font-style: italic; }
+
+TD, TH, UL {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-style: normal;
+        }
+
+TH { background: #9999FF;
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     color: blue;
+  font-size: 10pt;
+   }
+
+TD { color: #000000;
+     font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-size: 10pt;
+   }
+
+PRE { font-family: "Lucida Typewriter", "Courier", monotype;
+      font-style: normal;
+     font-size: 11pt;
+background-color: #eee;
+    }
+ 
+.tynn {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: smaller;
+        font-style: normal;
+        font-weight: lighter;
+        margin-bottom: 0em;
+     font-size: 11pt;
+        }
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+--></style>
+</head>
+<body>
+<h1 class="settitle">CFEngine 3 Solutions</h1>
+<div class="node">
+<p><hr>
+<a name="Top"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Introduction">Introduction</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">CFEngine-Solutions</h2>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+
+   <p><h2>Summary of contents</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Introduction">Introduction </a>
+<li><a accesskey="2" href="#Common-issues">Common issues</a>
+<li><a accesskey="3" href="#Best-practice">Best practice</a>
+</ul>
+
+<!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+<div class="node">
+<p><hr>
+<a name="Introduction"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Common-issues">Common issues</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Introduction</h2>
+
+<!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+<div class="node">
+<p><hr>
+<a name="Common-issues"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Best-practice">Best practice</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Introduction">Introduction</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">2 Common issues</h2>
+
+<!--  -->
+<ul class="menu">
+<li><a accesskey="1" href="#Ordering-promises">Ordering promises</a>
+<li><a accesskey="2" href="#Mount-NFS-filesystem">Mount NFS filesystem</a>
+<li><a accesskey="3" href="#Name-resolution">Name resolution</a>
+<li><a accesskey="4" href="#Postfix-mail-configuration">Postfix mail configuration</a>
+<li><a accesskey="5" href="#Tidying-garbage-files">Tidying garbage files</a>
+<li><a accesskey="6" href="#Unmount-NFS-filesystem">Unmount NFS filesystem</a>
+<li><a accesskey="7" href="#Web-server-modules">Web server modules</a>
+</ul>
+
+<div class="node">
+<p><hr>
+<a name="Ordering-promises"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Mount-NFS-filesystem">Mount NFS filesystem</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Common-issues">Common issues</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-issues">Common issues</a>
+
+</div>
+
+<h3 class="section">2.1 Ordering promises</h3>
+
+<p>This counts to five by default. If we change `<samp><span class="samp">/bin/echo one</span></samp>'
+to `<samp><span class="samp">/bin/echox one</span></samp>', then the command will fail, causing us
+to skip five and go to six instead.
+
+   <p>This shows how dependencies can be chained in spite of the
+order of promises in the bundle.
+
+   <p>Normally the order of promises in a bundle is followed, within each
+promise type, and the types are ordered according to <i>normal
+ordering</i>.
+
+<pre class="verbatim">
+####################################################
+#
+# Counting by the numbers...
+#
+####################################################
+
+body common control
+
+{
+bundlesequence => { "order" };
+}
+
+####################################################
+
+bundle agent order
+
+{
+vars:
+
+ "list" slist => { "three", "four" };
+
+commands:
+
+ ok_later::
+
+   "/bin/echo five";
+
+ otherthing::
+
+   "/bin/echo six";
+
+ any::
+
+  "/bin/echo one"    classes => d("ok_later","otherthing");
+  "/bin/echo two";
+  "/bin/echo $(list)";
+
+ preserved_class::
+
+  "/bin/echo seven";
+
+}
+
+############################################
+
+body classes d(if,else)
+
+{
+promise_repaired => { "$(if)" };
+repair_failed => { "$(else)" };
+persist_time => "0";
+}
+
+
+</pre>
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Mount-NFS-filesystem"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Name-resolution">Name resolution</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Ordering-promises">Ordering promises</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-issues">Common issues</a>
+
+</div>
+
+<h3 class="section">2.2 Mount NFS filesystem</h3>
+
+<pre class="verbatim">
+#####################################################################
+# Mount NFS
+#####################################################################
+
+body common control
+
+{
+bundlesequence => { "mounts" };
+}
+
+#####################################################################
+
+bundle agent mounts
+
+{
+storage:
+
+  # Assumes the filesystem has been exported
+
+  "/mnt" mount  => nfs("server.example.org","/home");
+}
+
+######################################################################
+
+body mount nfs(server,source)
+
+{
+mount_type => "nfs";
+mount_source => "$(source)";
+mount_server => "$(server)";
+edit_fstab => "true";
+}
+</pre>
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Name-resolution"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Postfix-mail-configuration">Postfix mail configuration</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Mount-NFS-filesystem">Mount NFS filesystem</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-issues">Common issues</a>
+
+</div>
+
+<h3 class="section">2.3 Name resolution</h3>
+
+<p>In cfengine 2 there is a separate action type for configuring
+the system resolver. In cfengine 3 this has been deprecated
+for this standard method using the basic functionality of
+cfengine. We write a reusable bundle using the editing
+features.
+
+<pre class="verbatim">
+#######################################################
+#
+# Resolve conf
+#
+#######################################################
+
+bundle common g # globals
+{
+vars:
+
+ "searchlist"  slist => { 
+                        "search iu.hio.no", 
+                        "search cfengine.com" 
+                        };
+
+ "nameservers" slist => { 
+                        "128.39.89.10", 
+                        "128.39.74.16",
+                        "192.168.1.103"
+                        };
+classes:
+
+  # This sets a class if we are in the name server list
+
+  "am_name_server" expression => reglist("@(nameservers)","$(sys.ipv4[eth1])");
+}
+
+#######################################################
+
+body common control
+
+{
+any::
+
+  bundlesequence  => {
+                     "g",
+                     resolver(@(g.searchlist),@(g.nameservers))
+                     };   
+
+}
+
+#######################################################
+
+bundle agent resolver(s,n)
+
+{
+files:
+
+  # When passing parameters down, we have to refer to
+  # a source context
+
+  "$(sys.resolv)"  # test on "/tmp/resolv.conf" #
+
+      create        => "true",
+      edit_line     => doresolv("@(this.s)","@(this.n)"),
+      edit_defaults => reconstruct;
+ # or edit_defaults => modify
+}
+
+#######################################################
+# For the library
+#######################################################
+
+bundle edit_line doresolv(s,n)
+
+{
+vars:
+
+ "line" slist => { @(s), @(n) };
+
+insert_lines:
+
+  "$(line)";
+
+}
+
+#######################################################
+
+body edit_defaults reconstruct
+{
+empty_file_before_editing => "true";
+edit_backup => "false";
+max_file_size => "100000";
+}
+
+#######################################################
+
+body edit_defaults modify
+{
+empty_file_before_editing => "false";
+edit_backup => "false";
+max_file_size => "100000";
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Postfix-mail-configuration"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Tidying-garbage-files">Tidying garbage files</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Name-resolution">Name resolution</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-issues">Common issues</a>
+
+</div>
+
+<h3 class="section">2.4 Postfix mail configuration</h3>
+
+<pre class="verbatim">
+#######################################################
+#
+# Postfix
+#
+#######################################################
+
+body common control
+
+{
+any::
+
+  bundlesequence  => {
+                     postfix
+                     };   
+}
+
+#######################################################
+
+bundle agent postfix
+
+{
+vars:
+
+ "prefix"     string => "/etc";
+ "smtpserver" string => "mailx.example.org";
+ "mailrelay"  string => "mailx.example.org";
+
+files:
+
+  "$(prefix)/main.cf"     
+          edit_line => prefix_postfix;
+
+  "$(prefix)/sasl-passwd" 
+          create    => "true",
+          perms     => system("0600","root"),
+          edit_line => AppendIfNSL("$(smtpserver) _$(fqhost):chmsxrcynz4etzefabj9frejizhs22");
+}
+
+#######################################################
+# For the library
+#######################################################
+
+bundle edit_line prefix_postfix
+
+{
+#
+# Value have the form NAME = "quoted space separated list"
+#
+vars:
+
+  "ps[relayhost]"                  string => "[$(postfix.mailrelay)]:587";
+  "ps[mydomain]"                   string => "iu.hio.no";
+  "ps[smtp_sasl_auth_enable]"      string => "yes";
+  "ps[smtp_sasl_password_maps]"    string => "hash:/etc/postfix/sasl-passwd";
+  "ps[smtp_sasl_security_options]" string => "";
+  "ps[smtp_use_tls]"               string => "yes";
+  "ps[default_privs]"              string => "mailman";
+  "ps[inet_protocols]"             string => "all";
+  "ps[inet_interfaces]"            string => "127.0.0.1";
+
+  "parameter_name" slist => getindices("ps");
+
+delete_lines: 
+
+  "$(parameter_name).*";
+
+insert_lines:
+
+  "$(parameter_name) = $(ps[$(parameter_name)])";
+
+}
+
+########################################################
+
+bundle edit_line AppendIfNSL(parameter)
+  {
+  insert_lines:
+
+    "$(parameter)"; # This is default
+  }
+
+########################################
+# Library Bodies
+########################################
+
+body replace_with All(x)
+
+{
+replace_value => "$(x)";
+occurrences => "all";
+}
+
+#########################################################
+
+body perms system(x,owner)
+
+{
+mode  => "0640";
+owners => { "$(owner)", "root" };
+}
+
+
+</pre>
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Tidying-garbage-files"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Unmount-NFS-filesystem">Unmount NFS filesystem</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Postfix-mail-configuration">Postfix mail configuration</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-issues">Common issues</a>
+
+</div>
+
+<h3 class="section">2.5 Tidying garbage files</h3>
+
+<p>Emulating the `tidy' feature of cfengine 2.
+
+<pre class="verbatim">
+#######################################################
+#
+# Deleting files, like cf2 tidy age=0 r=inf
+#
+#######################################################
+
+body common control
+
+{
+ any::
+
+  bundlesequence  => { "testbundle" };   
+}
+
+############################################
+
+bundle agent testbundle
+
+{
+files:
+
+  "/tmp/test" 
+
+    delete => tidyfiles,
+    file_select => zero_age,
+    depth_search => recurse("inf");
+}
+
+#########################################################
+
+body depth_search recurse(d)
+
+{
+#include_basedir => "true";
+depth => "$(d)";
+}
+
+#########################################################
+
+body delete tidy
+
+{
+dirlinks => "delete";
+rmdirs   => "false"; 
+}
+
+#########################################################
+
+body file_select zero_age
+
+#
+# we can build old "include", "exclude", and "ignore" 
+# from these as standard patterns - these bodies can
+# form a library of standard patterns
+#
+
+{
+mtime     => irange(ago(1,0,0,0,0,0),now);  
+file_result => "mtime"; 
+}
+
+</pre>
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Unmount-NFS-filesystem"></a>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Web-server-modules">Web server modules</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Tidying-garbage-files">Tidying garbage files</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-issues">Common issues</a>
+
+</div>
+
+<h3 class="section">2.6 Unmount NFS filesystem</h3>
+
+<pre class="verbatim">
+#####################################################################
+# Mount NFS
+#####################################################################
+
+body common control
+
+{
+bundlesequence => { "mounts" };
+}
+
+#####################################################################
+
+bundle agent mounts
+
+{
+storage:
+
+  # Assumes the filesystem has been exported
+
+  "/mnt" mount  => nfs("server.example.org","/home");
+}
+
+######################################################################
+
+body mount nfs(server,source)
+
+{
+mount_type => "nfs";
+mount_source => "$(source)";
+mount_server => "$(server)";
+edit_fstab => "true";
+unmount => "true";
+}
+</pre>
+
+<!--  -->
+<div class="node">
+<p><hr>
+<a name="Web-server-modules"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Unmount-NFS-filesystem">Unmount NFS filesystem</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Common-issues">Common issues</a>
+
+</div>
+
+<h3 class="section">2.7 Web server modules</h3>
+
+<p>The problem of editing the correct modules into the list of standard
+modules for the Apache web server. This example is based on the
+standard configuration deployment of SuSE Linux. Simply provide the
+list of modules you want and another list that you don't want.
+
+<pre class="verbatim">
+#######################################################
+#
+# Apache 2 reconfig - modelled on SuSE
+#
+#######################################################
+
+body common control
+
+{
+any::
+
+  bundlesequence  => {
+                     apache
+                     };   
+}
+
+#######################################################
+
+bundle agent apache
+
+{
+files:
+
+ SuSE::
+
+  "/etc/sysconfig/apache2" 
+
+     edit_line => fixapache;
+}
+
+#######################################################
+# For the library
+#######################################################
+
+bundle edit_line fixapache
+
+{ 
+vars:
+
+ "add_modules"     slist => { 
+                            "dav", 
+                            "dav_fs", 
+                            "ssl", 
+                            "php5", 
+                            "dav_svn",
+                            "xyz",
+                            "superduper"
+                            };
+
+ "del_modules"     slist => { 
+                            "php3",
+                            "jk",
+                            "userdir",
+                            "imagemap",
+                            "alias"
+                            };
+
+insert_lines:
+
+ "APACHE_CONF_INCLUDE_FILES=\"/site/masterfiles/local-http.conf\"";
+
+field_edits:
+
+ #####################################################################
+ # APACHE_MODULES="authz_host actions alias ..."
+ #####################################################################
+
+    # Values have the form NAME = "quoted space separated list"
+
+   "APACHE_MODULES=.*"
+
+      # Insert module "columns" between the quoted RHS 
+      # using space separators
+
+      edit_field => quotedvar("$(add_modules)","append");
+
+   "APACHE_MODULES=.*"
+
+      # Delte module "columns" between the quoted RHS 
+      # using space separators
+
+      edit_field => quotedvar("$(del_modules)","delete");
+
+   # if this line already exists, edit it  
+
+}
+
+########################################
+# Bodies
+########################################
+
+body edit_field quotedvar(newval,method)
+
+{
+field_separator => "\"";
+select_field    => "2";
+value_separator  => " ";
+field_value     => "$(newval)";
+field_operation => "$(method)";
+extend_fields => "false";
+allow_blank_fields => "true";
+}
+
+</pre>
+
+<!-- ********************************************************************** -->
+<!-- CHAPTER -->
+<!-- ********************************************************************** -->
+<div class="node">
+<p><hr>
+<a name="Best-practice"></a>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Common-issues">Common issues</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">3 Best practice</h2>
+
+<!-- ========================================================================= -->
+<!-- @node Index,  , CFEngine Methods, Top -->
+<!-- @unnumbered Concept Index -->
+<!-- @printindex cp -->
+<!-- ========================================================================= -->
+<p><a name="Contents">
+
+<div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">CFEngine-Solutions</a>
+<li><a name="toc_Introduction" href="#Introduction">1 Introduction</a>
+<li><a name="toc_Common-issues" href="#Common-issues">2 Common issues</a>
+<ul>
+<li><a href="#Ordering-promises">2.1 Ordering promises</a>
+<li><a href="#Mount-NFS-filesystem">2.2 Mount NFS filesystem</a>
+<li><a href="#Name-resolution">2.3 Name resolution</a>
+<li><a href="#Postfix-mail-configuration">2.4 Postfix mail configuration</a>
+<li><a href="#Tidying-garbage-files">2.5 Tidying garbage files</a>
+<li><a href="#Unmount-NFS-filesystem">2.6 Unmount NFS filesystem</a>
+<li><a href="#Web-server-modules">2.7 Web server modules</a>
+</li></ul>
+<li><a name="toc_Best-practice" href="#Best-practice">3 Best practice</a>
+</li></ul>
+</div>
+
+<p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+</body></html>
+

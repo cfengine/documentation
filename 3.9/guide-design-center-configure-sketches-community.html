@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.9  Documentation - Command Line Sketches</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.9/assets/global-bbcdf8cb2135dbef89c4d6d19c9604bb.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Command Line Sketches";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+                       <option value="/docs/3.9/index.html" selected>Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+                       <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:eahkid3txr8" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-design-center.html">Design Center Overview</a><ul class="level2"><li><a class="active" href="guide-design-center-configure-sketches-community.html">Command Line Sketches</a><ul class="level3"><li><a href="guide-design-center-configure-sketches-community-design-center-advanced.html">Advanced Walkthrough</a></li></ul></li><li><a href="guide-design-center-design-center-write-sketch.html">Write a new Sketch</a></li><li><a href="guide-design-center-design-center-write-sketch-advanced.html">sketchify - Write A New Sketch From An Existing Bundle</a></li></ul></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-design-center.html">Design Center Overview</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Command Line Sketches
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>The CFEngine Design Center is a repository of pre-made components
+called <strong>sketches</strong> that allow you to use the full power of CFEngine
+without having to learn the CFEngine policy language. Although
+sketches are themselves written in the CFEngine policy language, you
+can make use of them by simply installing them, configuring them using
+the appropriate parameters, and deploying them on your
+infrastructure. For users of the Community edition of CFEngine, this can be easily done
+using both a command-line interface called <code>cf-sketch</code>.</p>
+
+<p>Please note that CFEngine Enterprise comes with the <strong>Design Center App</strong> to make the work below effortless.</p>
+<h2 id="overview">Overview</h2>
+<p>This page provides instructions on how a Design Center sketch can be
+found, installed, configured, and executed as policy, using
+command-line tools with CFEngine community. The overview is as follows:</p>
+
+<p><strong>Before you Begin</strong></p>
+
+<p><a href="guide-design-center-configure-sketches-community.html#requirements" title="Command Line Sketches - Requirements ">Requirements</a></p>
+
+<p><a href="guide-design-center-configure-sketches-community.html#basic-concepts" title="Command Line Sketches - Basic Concepts ">Basic Concepts</a></p>
+
+<p><strong>Instructions</strong></p>
+
+<p><a href="guide-design-center-configure-sketches-community.html#step-1-check-out-the-design-center-repository" title="Command Line Sketches - Step 1. Check out the Design Center repository ">Step 1. Check out the Design Center repository</a></p>
+
+<p><a href="guide-design-center-configure-sketches-community.html#step-2-run-cf-sketch" title="Command Line Sketches - Step 2. Run cf-sketch ">Step 2. Run cf-sketch</a></p>
+
+<p><a href="guide-design-center-configure-sketches-community.html#step-3-search-for-sketches" title="Command Line Sketches - Step 3. Search for sketches ">Step 3. Search for sketches</a></p>
+
+<p><a href="guide-design-center-configure-sketches-community.html#step-4-install-a-sketch" title="Command Line Sketches - Step 4. Install a sketch ">Step 4. Install a sketch</a></p>
+
+<p><a href="guide-design-center-configure-sketches-community.html#step-5-activate-a-sketch" title="Command Line Sketches - Step 5. Activate a sketch ">Step 5. Activate a sketch</a>  Define the parameter set and environment, and run the activate command.</p>
+
+<p><a href="guide-design-center-configure-sketches-community.html#step-6-deploy-the-sketch-generate-and-execute-the-runfile" title="Command Line Sketches - Step 6. Deploy the sketch: Generate and execute the runfile ">Step 6. Deploy the sketch</a>  Generate and execute the runfile.</p>
+
+<p>Additional resources are included at the end of this page.</p>
+<h2 id="before-you-begin">Before you Begin</h2>
+<p>Complete the software requirements and review the basic concepts of sketches
+before you begin the instructions:</p>
+<h3 id="requirements">Requirements</h3>
+<p>To follow these instructions, you will need the following:</p>
+
+<ul>
+<li>A Unix-like system</li>
+<li>The following programs installed (all of these are either included
+or easily available in the package repositories for most operating system):
+
+<ul>
+<li><a href="http://git-scm.com/downloads">Git</a>, for checking out the Design
+Center repository</li>
+<li><a href="http://www.perl.org/get.html">Perl</a>, the Design Center tools are
+written in Perl</li>
+<li><a href="http://curl.haxx.se">Curl</a>, used by <code>cf-sketch</code> to fetch remote
+files when needed.</li>
+</ul></li>
+<li>CFEngine Community 3.5.0 or newer, or CFEngine Enterprise 3.5.0 or
+newer. Many of the components will work with CFEngine Community
+3.4.0 or later (Enterprise 3.0.0 or later), but you need 3.5.0 to
+have access to the full range of features and sketches.</li>
+<li>Optional but recommended: the <code>Term::ReadLine::Gnu</code> Perl module. On
+many systems it is available in the standard package repositories
+(for example, on Ubuntu Linux you can install it using <code>apt-get
+install libterm-readline-gnu-perl</code>). You can also install it using
+the <code>cpan</code> utility included with Perl.</li>
+</ul>
+<h3 id="basic-concepts">Basic Concepts</h3>
+<p>The following concepts provide a better understanding of how
+the Design Center works. The Design Center framework contains the following:</p>
+
+<ul>
+<li><strong>Sketches</strong> contain the code that is executed by CFEngine to
+perform some task. Sketches are contributed by the CFEngine
+community and hosted in the Design Center repositories. Most
+sketches take a few parameters to configure their precise
+behavior. For example, the <code>System::tzconfig</code> sketch contains the
+code to update the appropriate files in the system to set the
+correct timezone.</li>
+<li><strong>Parameter sets</strong> contain the parameters that tell a CFEngine sketch
+the details of what to do. For example, the <code>System::tzconfig</code>
+sketch takes a parameter that tells it which timezone should be set in
+the system. The Design Center framework can store several parameter
+sets (each one identified by a name) for the same sketch, and from
+which you can choose to apply according to arbitrary circumstances.</li>
+<li><strong>Environments</strong> contain conditions, expressed as
+<a href="https://github.com/cfengine/documentation/blob/master/manuals/language-concepts/classes.markdown">CFEngine Class Expressions</a>,
+that indicate when and where a particular sketch will be executed
+with a particular set of parameters. Environments also contain
+expressions that determine when and where test and verbose modes
+will be enabled for a sketch. The Design Center can also store
+multiple named environment definitions, which you can combine in
+arbitrary ways to fine tune the execution of each sketch on each
+machine.</li>
+</ul>
+
+<p>Sketches, Parameters and Environments, by themselves, do nothing. They
+have to be combined into <strong>Activations</strong>:</p>
+
+<p>An <strong>activation</strong> is a combination of a sketch, a parameter set, and an
+environment (all three specified by name) that defines which sketches
+must be executed under which conditions, and with which parameters. It is
+only through activations that you put sketches to work and make the
+decisions as to how different parts of your infrastructure will be
+configured. For example, you can have two different parameter sets
+for the <code>System::tzconfig</code> sketch, one for Linux and another one for
+Solaris machines. You can then, on the central CFEngine Policy
+Server, create two activations:</p>
+
+<ul>
+<li>Activation #1: Sketch <code>System::tzconfig</code>, parameter set
+<code>tzconfig-linux</code>, Environment <code>linux</code></li>
+<li>Activation #2: Sketch <code>System::tzconfig</code>, parameter set
+<code>tzconfig-solaris</code>, Environment <code>solaris</code></li>
+</ul>
+
+<p>When these activations are distributed by the policy server to all the
+clients, only Linux and Solaris machines will execute the
+<code>System::tzconfig</code> sketch, and each one of them will apply the
+appropriate parameters.</p>
+
+<p>Other concepts exist that can make your use of the Design
+Center even more powerful, but these are enough to get you started and
+to be able to follow these instructions.</p>
+<h2 id="instructions">Instructions</h2><h3 id="step-1-check-out-the-design-center-repository">Step 1. Check out the Design Center repository</h3>
+<p>The Design Center is an open source project and is hosted on
+GitHub. Access the repository at
+<a href="https://github.com/cfengine/design-center">https://github.com/cfengine/design-center</a>.</p>
+
+<p>The best way to get the Design Center at the moment is to check out
+its git repository. For these instructions, we check it out
+under the <code>$HOME/source/</code> directory (you can use any location you
+want, just replace it throughout the following instructions):</p>
+<div class="highlight"><pre><code class="text">mkdir $HOME/source
+cd $HOME/source
+git clone https://github.com/cfengine/design-center.git
+</code></pre>
+</div>
+
+<p>A directory called <code>design-center</code> is created.  We
+call this the <strong>CHECKOUT</strong> directory and henceforth refer to it as
+<code>$CHECKOUT</code>. In the examples that follow, <strong>CHECKOUT</strong> is
+<code>$HOME/source/design-center</code>. You can save some typing by typing</p>
+<div class="highlight"><pre><code class="text">export CHECKOUT=$HOME/source/design-center
+</code></pre>
+</div>
+
+<p>at the prompt.  From that point on, all command-line interaction can
+use <code>$CHECKOUT</code> and it will expand to the installation directory.</p>
+<h3 id="step-2-run-cf-sketch">Step 2. Run cf-sketch</h3>
+<p>You can run cf-sketch in interactive mode directly from its directory
+under <code>$CHECKOUT</code>:</p>
+<div class="highlight"><pre><code class="text">cd $CHECKOUT/tools/cf-sketch
+./cf-sketch.pl
+Welcome to cf-sketch version 3.5.0b1.
+CFEngine AS, 2013.
+
+Enter any command to cf-sketch, use &#39;help&#39; for help, or &#39;quit&#39; or &#39;^D&#39; to quit.
+
+cf-sketch&gt; _
+</code></pre>
+</div>
+
+<p>By default, <code>cf-sketch</code> provides an interactive prompt where you can
+type the commands you want to execute. Type <code>help</code> at the prompt
+to see the descriptions of all the available commands. You can run
+commands non-interactively by passing them as arguments to the
+<code>cf-sketch.pl</code> script from the command line.</p>
+<h3 id="step-3-search-for-sketches">Step 3. Search for sketches</h3>
+<p>The first step is to find some sketches to install on your system. The
+search command provides, without any parameters, a list of all
+available sketches:</p>
+<div class="highlight"><pre><code class="text">cf-sketch&gt; search
+
+The following sketches are available:
+
+Applications::Memcached Sketch for installing, configuring, and starting memcached.
+...
+Yale::stdlib Yale standard library
+</code></pre>
+</div>
+
+<p>This is useful for exploration, but might be too much information. You
+can also provide a regular expression to search for a particular set
+of sketches:</p>
+<div class="highlight"><pre><code class="text">cf-sketch&gt; search system
+
+The following sketches match your query:
+
+System::Logrotate Sets defaults and user permissions in the sudoers file
+System::Routes Sets defaults and user permissions in the sudoers file
+System::Sudoers Sets defaults and user permissions in the sudoers file
+System::Syslog Configures syslog
+System::access Manage access.conf values
+System::config_resolver Configure DNS resolver
+System::cron Manage crontab and /etc/cron.d contents
+System::etc_hosts Manage /etc/hosts
+System::motd Configure the Message of the Day
+System::set_hostname Set system hostname. Domain name is also set on Mac, Red Hat and and Gentoo derived distributions (but not Debian).
+System::sysctl Manage sysctl values
+System::tzconfig Manage system timezone configuration
+</code></pre>
+</div>
+
+<p>Use the <code>info</code> command to get additional information for a sketch, including details
+about its parameters:</p>
+<div class="highlight"><pre><code class="text">cf-sketch&gt; info -v System::motd
+
+The following sketches match your query:
+
+Sketch System::motd
+Description: Configure the Message of the Day
+Authors: Ben Heilman &lt;bheilman@enova.com&gt;
+Version: 1.00
+License: MIT
+Tags: cfdc
+Installed: No
+Parameters:
+  For bundle entry
+    motd: string
+    motd_path: string
+    prepend_command: string
+    dynamic_path: string
+    symlink_path: string
+</code></pre>
+</div>
+<h3 id="step-4-install-a-sketch">Step 4. Install a sketch</h3>
+<p>The first step in using a sketch is to install it. As an example, install
+the <code>System::motd</code> sketch:</p>
+<div class="highlight"><pre><code class="text">cf-sketch&gt; install System::motd
+
+Sketch System::motd installed under /home/vagrant/.cfagent/inputs/sketches.
+Sketch README.md installed under System::motd.
+Sketch main.cf installed under System::motd.
+Sketch params/debian_squeeze.json installed under System::motd.
+Sketch params/debian_wheezy.json installed under System::motd.
+Sketch params/example.json installed under System::motd.
+Sketch params/simple.json installed under System::motd.
+Sketch test.cf installed under System::motd.
+</code></pre>
+</div>
+
+<p>Verify that the sketch has been installed using the <code>list</code> command:</p>
+<div class="highlight"><pre><code class="text">cf-sketch&gt; list
+
+The following sketches are installed:
+
+CFEngine::dclib Design Center standard library
+CFEngine::stdlib The portions of the CFEngine standard library (also known as COPBL) that are compatible with 3.4.0 releases
+System::motd Configure the Message of the Day
+</code></pre>
+</div>
+
+<p>Note that the <code>CFEngine::dclib</code> and <code>CFEngine::stdlib</code> are
+automatically installed as dependencies of the <code>System::motd</code> sketch.</p>
+<h3 id="step-5-activate-a-sketch">Step 5. Activate a sketch</h3>
+<p>Activating sketches includes adding two elements: a parameter set and an environment.</p>
+<h4 id="define-the-parameter-set">Define the parameter set</h4>
+<p>Define the parameter set that contains the values that will
+be used by the <code>System::motd</code> sketch:</p>
+<div class="highlight"><pre><code class="text">cf-sketch&gt; define params System::motd
+
+Please enter a name for the new parameter set (default: System::motd-entry-000): motd_params
+Querying configuration for parameter set &#39;motd_params&#39; for bundle &#39;entry&#39;.
+Please enter parameter motd (Message of the Day (aka motd)).
+  (enter STOP to cancel)
+motd : Hello there!
+Please enter parameter motd_path (Location of the primary, often only, MotD file).
+  (enter STOP to cancel)
+motd_path [/etc/motd]: /etc/motd
+Please enter parameter prepend_command (Command output to prepend to MotD).
+  (enter STOP to cancel)
+prepend_command [/bin/uname -snrvm]: /bin/uname -snrvm
+Please enter parameter dynamic_path (Location of the dynamic part of the MotD file).
+  (enter STOP to cancel)
+dynamic_path :
+Please enter parameter symlink_path (Location of the symlink to the motd file).
+  (enter STOP to cancel)
+symlink_path :
+Defining parameter set &#39;motd_params&#39; with the entered data.
+Parameter set motd_params successfully defined.
+</code></pre>
+</div>
+
+<p>Confirm that the parameter set has been properly defined using
+the <code>list</code> command:</p>
+<div class="highlight"><pre><code class="text">cf-sketch&gt; list -v params
+
+The following parameter sets are defined:
+
+motd_params: Sketch System::motd
+  [System::motd][dynamic_path]:
+  [System::motd][motd]: Hello there!
+  [System::motd][motd_path]: /etc/motd
+  [System::motd][prepend_command]: /bin/uname -snrvm
+  [System::motd][symlink_path]:
+</code></pre>
+</div>
+<h4 id="define-an-environment">Define an environment</h4>
+<p>For this example, define an
+environment that is always active:</p>
+<div class="highlight"><pre><code class="text">cf-sketch&gt; define environment -n walkthrough any
+
+Environment &#39;walkthrough&#39; successfully defined.
+</code></pre>
+</div>
+
+<p>Use the <code>list</code> command to verify that the environment was
+defined:</p>
+<div class="highlight"><pre><code class="text">cf-sketch&gt; list -v env walk
+
+The following environments match your query:
+
+walkthrough
+  [activated]: any
+  [test]: !any
+  [verbose]: !any
+</code></pre>
+</div>
+
+<p>Note that the <code>test</code> and <a href="reference-components-cf-agent.html#verbose" title="cf-agent - verbose"><code>verbose</code></a> fields are optional and default to
+<code>!any</code>, which is equivalent to &quot;never&quot; in CFEngine terms.</p>
+<h4 id="run-the-activate-command">Run the activate command</h4>
+<p>Activate the sketch by tying together the sketch
+name, parameter set, and environment:</p>
+<div class="highlight"><pre><code class="text">cf-sketch&gt; activate System::motd motd_params walkthrough
+
+Using generated activation ID &#39;System::motd-1&#39;.
+Using existing parameter definition &#39;motd_params&#39;.
+Using existing environment &#39;walkthrough&#39;.
+Activating sketch System::motd with parameters motd_params.
+</code></pre>
+</div>
+
+<p>Verify that the activation has been created:</p>
+<div class="highlight"><pre><code class="text">cf-sketch&gt; list activations
+
+The following activations are defined:
+
+Activation ID System::motd-1
+  Sketch: System::motd
+  Parameter sets: [ motd_params ]
+  Environment:  &#39;walkthrough&#39;
+</code></pre>
+</div>
+
+<p>This means that when the sketches are deployed, the <code>System::motd</code>
+sketch will be executed with the values defined in the
+<code>motd_params</code> parameter set, and on the hosts that satisfy the
+conditions defined in the <code>walkthrough</code> environment (which includes
+all machines for now).</p>
+<h3 id="step-6-deploy-the-sketch-generate-and-execute-the-runfile">Step 6. Deploy the sketch: Generate and execute the runfile</h3>
+<p>So far all the definitions of parameters, environments, and activations
+are known only to the <code>cf-sketch</code> tool. You must deploy these
+changes, which creates the appropriate CFEngine policy files for
+executing the activated sketches. We have two commands for this:</p>
+
+<p>The <code>run</code> command allows you to quickly test the execution of the
+sketches on the local host. It generates a standalone runfile that
+encodes all the necessary information for the activated sketches, and
+then executes it using <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>:</p>
+<div class="highlight"><pre><code class="text">cf-sketch&gt; run
+
+Runfile /var/cfengine/inputs/api-runfile-standalone.cf successfully generated.
+Now executing the runfile with: /var/cfengine/bin/cf-agent  -f /var/cfengine/inputs/api-runfile-standalone.cf
+</code></pre>
+</div>
+
+<p>The <code>deploy</code> command generates a non-standalone runfile that is meant
+to be loaded and executed from your main <a href="guide-writing-and-serving-policy-policy-framework.html#promises-cf" title="The Policy Framework - promises.cf"><code>promises.cf</code></a> file:</p>
+<div class="highlight"><pre><code class="text">cf-sketch&gt; deploy
+
+Runfile /var/cfengine/inputs/api-runfile.cf successfully generated.
+</code></pre>
+</div>
+<h2 id="more-information">More information</h2>
+<p>The Design Center framework provides an API that takes care of
+managing all the backend framework, and cf-sketch offers an &quot;expert&quot;
+mode in addition to the interactive mode described in these
+instructions.</p>
+
+<ul>
+<li><p>Once you are familiar with the basic concepts and want to
+learn more about how things work internally, visit
+the <a href="guide-design-center-configure-sketches-community-design-center-advanced.html" title="Advanced Walkthrough">advanced discussion</a> on configuring sketches.</p></li>
+<li><p>Visit the <a href="reference-design-center-api.html" title="The Design Center API">Design Center API</a> for reference.</p></li>
+<li><p>Once you are ready to start <a href="guide-design-center-design-center-write-sketch.html" title="Write a new Sketch">writing Design Center sketches</a>, refer to the
+<a href="reference-design-center-sketch.html" title="Sketch Structure">sketch structure</a> documentation.</p></li>
+</ul>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-design-center.html">design center</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-cf-sketch.html">cf-sketch</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-sketches.html">sketches</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 02 March 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/design-center/configure-sketches-community.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/04ad849bd97ab6da773794babca26d9dd8806039" target="_blank">04ad849bd97ab6da773794babca26d9dd8806039</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.9/assets/footer-e9812654bffc243fc0dd77cc1c8e348e.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

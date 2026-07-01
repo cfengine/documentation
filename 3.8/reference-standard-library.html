@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.8  Documentation - Standard Library</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.8/assets/global-8212aa494575341d9a306dae12291eb2.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Standard Library";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       	<option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       	<option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                  <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       	<option value="/docs/3.8/index.html" selected>Version 3.8 (EOL)</option>
+                       	<option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+			                  <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       	<option value="/docs/archive/">Version 3.0 (archive)</option>
+                        <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:v5wte9vybsa" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a class="active" href="reference-standard-library.html">Standard Library</a><ul class="level2"><li><a href="reference-standard-library-common.html">Common Bodies and Bundles</a></li><li><a href="reference-standard-library-commands.html">Commands Bundles and Bodies</a></li><li><a href="reference-standard-library-databases.html">Databases Bundles and Bodies</a></li><li><a href="reference-standard-library-files.html">Files Bundles and Bodies</a></li><li><a href="reference-standard-library-monitor.html">Monitor Bundles and Bodies</a></li><li><a href="reference-standard-library-package_modules.html">Package Modules</a></li><li><a href="reference-standard-library-packages.html">Packages Bundles and Bodies</a></li><li><a href="reference-standard-library-processes.html">Processes Bundles and Bodies</a></li><li><a href="reference-standard-library-users.html">Users Bundles and Bodies</a></li><li><a href="reference-standard-library-services.html">Services Bundles and Bodies</a></li><li><a href="reference-standard-library-storage.html">Storage Bundles and Bodies</a></li><li><a href="reference-standard-library-vcs.html">Version Control Bodies and Bundles</a></li></ul></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Standard Library
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>The standard library contains commonly-used promise bundles and bodies. It provides definitions
+that you can use to build up solutions within CFEngine. The standard library is an interface
+layer that brings industry-wide standardization of CFEngine configuration
+scripting and hides the technical details.</p>
+
+<p>To import elements of the CFEngine Standard Library into your CFEngine policy, enter the following:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">file</span> <span class="k">control</span>
+<span class="p">{</span>
+    <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(sys.libdir)</span><span class="s">/files.cf&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(sys.libdir)</span><span class="s">/packages.cf&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>You may wish to use <code>$(sys.libdir)</code> (absolute) or
+<code>$(sys.local_libdir)</code> (relative) to locate these libraries, depending
+on your specific policy layout.</p>
+
+<p>The available pieces are:</p>
+
+<ul>
+<li>bodies and bundles for a specific promise type
+
+<ul>
+<li><code>commands.cf</code>: see <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a></li>
+<li><code>databases.cf</code>: see <a href="reference-promise-types-databases.html" title="databases"><code>databases</code></a></li>
+<li><code>files.cf</code>: see <a href="reference-promise-types-files.html" title="files"><code>files</code></a></li>
+<li><code>monitor.cf</code>: see <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>monitor</code></a></li>
+<li><code>packages.cf</code>: see <a href="reference-promise-types-packages.html" title="packages"><code>packages</code></a></li>
+<li><code>processes.cf</code>: see <a href="reference-promise-types-processes.html" title="processes"><code>processes</code></a></li>
+<li><code>services.cf</code>: see <a href="reference-promise-types-services.html" title="services"><code>services</code></a></li>
+<li><code>storage.cf</code>: see <a href="reference-promise-types-storage.html" title="storage"><code>storage</code></a></li>
+<li><code>users.cf</code>: see <a href="reference-promise-types-users.html" title="users"><code>users</code></a></li>
+</ul></li>
+<li>bodies that apply to all promise types
+
+<ul>
+<li><code>common.cf</code>: <a href="reference-promise-types.html#action" title="Promise Types and Attributes - action"><code>action</code></a> and <a href="reference-promise-types.html#classes" title="Promise Types and Attributes - classes"><code>classes</code></a> bodies</li>
+</ul></li>
+<li>utility bundles
+
+<ul>
+<li><code>bundles.cf</code>: cron jobs, log rotating, <a href="reference-functions-filestat.html" title="filestat"><code>filestat()</code></a> interface, <code>rm_rf</code>, Git-related bundles</li>
+<li><code>paths.cf</code>: standard place to find the path for many common tools and system files</li>
+<li><code>feature.cf</code>: set and unset persistent classes easily</li>
+</ul></li>
+</ul>
+
+<p>To import the entire CFEngine Standard Library, enter the following:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">file</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="c"># relative path</span>
+      <span class="p">&quot;</span><span class="nv">inputs</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(sys.local_libdir)</span><span class="s">/stdlib.cf&quot;</span> <span class="p">};</span>
+      <span class="c"># absolute path</span>
+      <span class="p">&quot;</span><span class="nv">inputs</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(sys.libdir)</span><span class="s">/stdlib.cf&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Note this will not work with CFEngine 3.5 or older.  For backward
+compatibility, you need to follow the approach shown in the standard
+<a href="guide-writing-and-serving-policy-policy-framework.html#promises-cf" title="The Policy Framework - promises.cf"><code>promises.cf</code></a> main entry point for policy:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">common</span> <span class="nf">cfengine_stdlib</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="nc">cfengine_3_4</span><span class="p">::</span>
+      <span class="c"># This is the standard library for CFEngine 3.4 and earlier</span>
+      <span class="c"># (only 3.4 is explicitly supported)</span>
+      <span class="p">&quot;</span><span class="nv">inputs</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;libraries/cfengine_stdlib.cf&quot;</span> <span class="p">};</span>
+    <span class="nc">cfengine_3_5</span><span class="p">::</span>
+      <span class="c"># 3.5 doesn&#39;t have &quot;body file control&quot; so all the includes are listed here</span>
+      <span class="p">&quot;</span><span class="nv">inputs</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                          <span class="s">&quot;lib/3.5/paths.cf&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;lib/3.5/common.cf&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;lib/3.5/commands.cf&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;lib/3.5/packages.cf&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;lib/3.5/files.cf&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;lib/3.5/services.cf&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;lib/3.5/processes.cf&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;lib/3.5/storage.cf&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;lib/3.5/databases.cf&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;lib/3.5/monitor.cf&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;lib/3.5/guest_environments.cf&quot;</span><span class="p">,</span>
+                          <span class="s">&quot;lib/3.5/bundles.cf&quot;</span><span class="p">,</span>
+      <span class="p">};</span>
+
+    <span class="err">!</span><span class="p">(</span><span class="nf">cfengine_3_4</span><span class="err">||</span><span class="nf">cfengine_3_5</span><span class="p">)</span><span class="err">::</span>
+      <span class="c"># CFEngine 3.6 and higher can include through a secondary file</span>
+      <span class="p">&quot;</span><span class="nv">inputs</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(sys.local_libdir)</span><span class="s">/stdlib.cf&quot;</span> <span class="p">};</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">verbose_mode</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: defining inputs=&#39;</span><span class="si">$(inputs)</span><span class="s">&#39;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>And then include <code>@(cfengine_stdlib.inputs)</code> in your main policy
+inputs.  This is recommended <strong>only</strong> if you need to support CFEngine
+clients running 3.5 or older!</p>
+<h2 id="feature">Feature</h2>
+<p>To use these bundles, add the following to your policy:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">file</span> <span class="k">control</span>
+<span class="p">{</span>
+    <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;features.cf&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="agent-bundles"><a href="reference-components-cf-agent.html" title="cf-agent">agent</a> bundles</h3><h4 id="feature">feature</h4>
+<p><strong>Prototype:</strong> <code>feature</code></p>
+
+<p><strong>Description:</strong> Finds feature_set_X and feature_unset_X classes and sets/unsets X persistently</p>
+
+<p>Finds all classes named <code>feature_unset_X</code> and clear class X.</p>
+
+<p>Finds all classes named <code>feature_set_DURATION_X</code> and sets class X
+persistently for DURATION.  DURATION can be any digits followed by
+<code>k</code>, <code>m</code>, or <code>g</code>.</p>
+
+<p>In inform mode (<code>-I</code>) it will report what it does.</p>
+
+<p><strong>Example:</strong>
+Set class <code>xyz</code> for 10 minutes, class <code>qpr</code> for 100 minutes, and
+<code>ijk</code> for 90m minutes.  Unset class <code>abc</code>.
+<code>cf-agent -I -f ./feature.cf -b feature -Dfeature_set_10_xyz,feature_set_100_qpr,feature_set_90m_ijk,feature_unset_abc</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">feature</span>
+<span class="p">{</span>
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;parsed_</span><span class="si">$(on)</span><span class="s">&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regextract</span><span class="p">(</span><span class="s">&quot;feature_set_([0-9]+[kmgKMG]?)_(.*)&quot;</span><span class="p">,</span>
+                                              <span class="err">$</span><span class="p">(</span><span class="nf">on</span><span class="p">),</span>
+                                              <span class="s">&quot;extract_</span><span class="si">$(on)</span><span class="s">&quot;</span><span class="p">);</span>
+
+      <span class="s">&quot;parsed_</span><span class="si">$(off)</span><span class="s">&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regextract</span><span class="p">(</span><span class="s">&quot;feature_unset_(.*)&quot;</span><span class="p">,</span>
+                                               <span class="err">$</span><span class="p">(</span><span class="nf">off</span><span class="p">),</span>
+                                               <span class="s">&quot;extract_</span><span class="si">$(off)</span><span class="s">&quot;</span><span class="p">);</span>
+
+      <span class="s">&quot;</span><span class="si">$(extract_$(on)</span><span class="s">[2])&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;parsed_</span><span class="si">$(on)</span><span class="s">&quot;</span><span class="p">,</span>
+      <span class="kr">persistence</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(extract_$(on)</span><span class="s">[1])&quot;</span><span class="p">;</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">on</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">classesmatching</span><span class="p">(</span><span class="s">&quot;feature_set_.*&quot;</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">off</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">classesmatching</span><span class="p">(</span><span class="s">&quot;feature_unset_.*&quot;</span><span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">_$(off)</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;off&quot;</span><span class="p">,</span> <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">feature_cancel</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(extract_$(off)</span><span class="s">[1])&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;DEBUG|DEBUG_</span><span class="si">$(this.bundle)</span><span class="s">&quot;</span><span class="err">::</span>
+      <span class="s">&quot;DEBUG </span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(on)</span><span class="s"> =&gt; SET class &#39;</span><span class="si">$(extract_$(on)</span><span class="s">[2]) for &#39;</span><span class="si">$(extract_$(on)</span><span class="s">[1])&#39;&quot;</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;parsed_</span><span class="si">$(on)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;DEBUG </span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(off)</span><span class="s"> =&gt; UNSET class &#39;</span><span class="si">$(extract_$(off)</span><span class="s">[1])&#39;&quot;</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;parsed_</span><span class="si">$(off)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;DEBUG </span><span class="si">$(this.bundle)</span><span class="s">: have </span><span class="si">$(extract_$(on)</span><span class="s">[2])&quot;</span> <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(extract_$(on)</span><span class="s">[2])&quot;</span><span class="p">;</span>
+      <span class="s">&quot;DEBUG </span><span class="si">$(this.bundle)</span><span class="s">: have no </span><span class="si">$(extract_$(on)</span><span class="s">[2])&quot;</span> <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;!</span><span class="si">$(extract_$(on)</span><span class="s">[2])&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;DEBUG </span><span class="si">$(this.bundle)</span><span class="s">: have </span><span class="si">$(extract_$(off)</span><span class="s">[1])&quot;</span> <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(extract_$(off)</span><span class="s">[1])&quot;</span><span class="p">;</span>
+      <span class="s">&quot;DEBUG </span><span class="si">$(this.bundle)</span><span class="s">: have no </span><span class="si">$(extract_$(off)</span><span class="s">[1])&quot;</span> <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;!</span><span class="si">$(extract_$(off)</span><span class="s">[1])&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="feature_test">feature_test</h4>
+<p><strong>Prototype:</strong> <code>feature_test</code></p>
+
+<p><strong>Description:</strong> Finds feature_set_X and feature_unset_X classes and reports X</p>
+
+<p>Note that this bundle is intended to be used exactly like <code>feature</code>
+and just show what&#39;s defined or undefined.</p>
+
+<p><strong>Example:</strong>
+Check classes <code>xyz</code>, <code>qpr</code>, <code>ijk</code>, and <code>abc</code>.
+<code>cf-agent -I -f ./feature.cf -b feature_test -Dfeature_set_10_xyz,feature_set_100_qpr,feature_set_90m_ijk,feature_unset_abc</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">feature_test</span>
+<span class="p">{</span>
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;parsed_</span><span class="si">$(on)</span><span class="s">&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regextract</span><span class="p">(</span><span class="s">&quot;feature_set_([0-9]+[kmgKMG]?)_(.*)&quot;</span><span class="p">,</span>
+                                              <span class="err">$</span><span class="p">(</span><span class="nf">on</span><span class="p">),</span>
+                                              <span class="s">&quot;extract_</span><span class="si">$(on)</span><span class="s">&quot;</span><span class="p">);</span>
+
+      <span class="s">&quot;parsed_</span><span class="si">$(off)</span><span class="s">&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regextract</span><span class="p">(</span><span class="s">&quot;feature_unset_(.*)&quot;</span><span class="p">,</span>
+                                               <span class="err">$</span><span class="p">(</span><span class="nf">off</span><span class="p">),</span>
+                                               <span class="s">&quot;extract_</span><span class="si">$(off)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">on</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">classesmatching</span><span class="p">(</span><span class="s">&quot;feature_set_.*&quot;</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">off</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">classesmatching</span><span class="p">(</span><span class="s">&quot;feature_unset_.*&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: have </span><span class="si">$(extract_$(on)</span><span class="s">[2])&quot;</span> <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(extract_$(on)</span><span class="s">[2])&quot;</span><span class="p">;</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: have no </span><span class="si">$(extract_$(on)</span><span class="s">[2])&quot;</span> <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;!</span><span class="si">$(extract_$(on)</span><span class="s">[2])&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: have </span><span class="si">$(extract_$(off)</span><span class="s">[1])&quot;</span> <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(extract_$(off)</span><span class="s">[1])&quot;</span><span class="p">;</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: have no </span><span class="si">$(extract_$(off)</span><span class="s">[1])&quot;</span> <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;!</span><span class="si">$(extract_$(off)</span><span class="s">[1])&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="paths">Paths</h2>
+<p>To use these bundles, add the following to your policy:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">file</span> <span class="k">control</span>
+<span class="p">{</span>
+    <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;paths.cf&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="common-bodies"><a href="reference-components.html#common-control">common</a> bodies</h3><h4 id="paths">paths</h4>
+<p><strong>Prototype:</strong> <code>paths</code></p>
+
+<p><strong>Description:</strong> Defines an array <code>path</code> with common paths to standard binaries,
+and classes for defined and existing paths.</p>
+
+<p>If the current platform knows that binary XYZ should be present,
+<code>_stdlib_has_path_XYZ</code> is defined. Furthermore, if XYZ is actually present
+(i.e. the binary exists) in the expected location, <code>_stdlib_path_exists_XYZ</code> is
+defined.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">repair_newlines</span><span class="p">(</span><span class="nv">filename</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="kd">commands</span><span class="p">:</span>
+  <span class="nc">_stdlib_path_exists_sed</span><span class="p">::</span>
+     <span class="err">“$</span><span class="p">(</span><span class="nf">path</span><span class="err">[</span><span class="nf">sed</span><span class="err">]</span><span class="p">)</span><span class="err">”</span>
+       <span class="kr">args</span> <span class="o">=&gt;</span> <span class="err">“-</span><span class="nf">i</span> <span class="err">&#39;</span><span class="nf">s</span><span class="err">/^</span><span class="nf">M</span><span class="err">//&#39;</span> <span class="err">$</span><span class="p">(</span><span class="nf">filename</span><span class="p">)</span><span class="err">”</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">common</span> <span class="nf">paths</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="c">#</span>
+      <span class="c"># Common full pathname of commands for OS</span>
+      <span class="c">#</span>
+
+    <span class="nf">enterprise</span><span class="err">.</span><span class="p">(</span><span class="nf">am_policy_hub</span><span class="err">|</span><span class="nf">policy_server</span><span class="p">)</span><span class="err">::</span>
+      <span class="p">&quot;</span><span class="nv">path[git]</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/bin/git&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;CFEngine Enterprise Hub ships with its own git which is used internally&quot;</span><span class="p">;</span>
+
+    <span class="err">!</span><span class="p">(</span><span class="nf">enterprise</span><span class="err">.</span><span class="p">(</span><span class="nf">am_policy_hub</span><span class="err">|</span><span class="nf">policy_server</span><span class="p">))</span><span class="err">::</span>
+      <span class="p">&quot;</span><span class="nv">path[git]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/git&quot;</span><span class="p">;</span>
+
+    <span class="err">!</span><span class="p">(</span><span class="nf">freebsd</span><span class="err">|</span><span class="nf">darwin</span><span class="err">|</span><span class="nf">smartos</span><span class="p">)</span><span class="err">::</span>
+      <span class="p">&quot;</span><span class="nv">path[npm]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/npm&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[pip]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/pip&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[virtualenv]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/virtualenv&quot;</span><span class="p">;</span>
+
+    <span class="err">!</span><span class="p">(</span><span class="nf">freebsd</span><span class="err">|</span><span class="nf">darwin</span><span class="p">)</span><span class="err">::</span>
+      <span class="p">&quot;</span><span class="nv">path[getfacl]</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/getfacl&quot;</span><span class="p">;</span>
+
+    <span class="nc">freebsd|darwin</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">path[npm]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/local/bin/npm&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[pip]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/local/bin/pip&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[virtualenv]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/local/bin/virtualenv&quot;</span><span class="p">;</span>
+
+    <span class="nc">_have_bin_env</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">path[env]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/env&quot;</span><span class="p">;</span>
+    <span class="nc">!_have_bin_env</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">path[env]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/env&quot;</span><span class="p">;</span>
+
+    <span class="nc">_have_bin_systemctl</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">path[systemctl]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/systemctl&quot;</span><span class="p">;</span>
+    <span class="nc">!_have_bin_systemctl</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">path[systemctl]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/systemctl&quot;</span><span class="p">;</span>
+
+    <span class="nc">linux</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">path[lsattr]</span><span class="p">&quot;</span>        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/lsattr&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[tar]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/tar&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[pgrep]</span><span class="p">&quot;</span>         <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/pgrep&quot;</span><span class="p">;</span>
+
+    <span class="nc">aix</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">path[awk]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/awk&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[bc]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/bc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cat]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/cat&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cksum]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/cksum&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[crontabs]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/spool/cron/crontabs&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cut]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/cut&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dc]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[df]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/df&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[diff]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/diff&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dig]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dig&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[echo]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/echo&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[egrep]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/egrep&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[find]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/find&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[grep]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/grep&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ls]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/ls&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[netstat]</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/netstat&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ping]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/ping&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[perl]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/perl&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[printf]</span><span class="p">&quot;</span>   <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/printf&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[sed]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/sed&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[sort]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/sort&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[tr]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/tr&quot;</span><span class="p">;</span>
+
+    <span class="nc">archlinux</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">path[awk]</span><span class="p">&quot;</span>               <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/awk&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[bc]</span><span class="p">&quot;</span>                <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/bc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cat]</span><span class="p">&quot;</span>               <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/cat&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cksum]</span><span class="p">&quot;</span>             <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/cksum&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[crontab]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/crontab&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cut]</span><span class="p">&quot;</span>               <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/cut&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dc]</span><span class="p">&quot;</span>                <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[df]</span><span class="p">&quot;</span>                <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/df&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[diff]</span><span class="p">&quot;</span>              <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/diff&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dig]</span><span class="p">&quot;</span>               <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dig&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dmidecode]</span><span class="p">&quot;</span>         <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dmidecode&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[echo]</span><span class="p">&quot;</span>              <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/echo&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[egrep]</span><span class="p">&quot;</span>             <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/egrep&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ethtool]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/ethtool&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[find]</span><span class="p">&quot;</span>              <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/find&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[free]</span><span class="p">&quot;</span>              <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/free&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[grep]</span><span class="p">&quot;</span>              <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/grep&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[hostname]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/hostname&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[init]</span><span class="p">&quot;</span>              <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/init&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[iptables]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/iptables&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[iptables_save]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/iptables-save&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[iptables_restore]</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/iptables-restore&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ls]</span><span class="p">&quot;</span>                <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/ls&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[lsof]</span><span class="p">&quot;</span>              <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/lsof&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[netstat]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/netstat&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ping]</span><span class="p">&quot;</span>              <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/ping&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[perl]</span><span class="p">&quot;</span>              <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/perl&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[printf]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/printf&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[sed]</span><span class="p">&quot;</span>               <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/sed&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[sort]</span><span class="p">&quot;</span>              <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/sort&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[test]</span><span class="p">&quot;</span>              <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/test&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[top]</span><span class="p">&quot;</span>               <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/top&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[tr]</span><span class="p">&quot;</span>                <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/tr&quot;</span><span class="p">;</span>
+      <span class="c">#</span>
+      <span class="p">&quot;</span><span class="nv">path[pacman]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/pacman&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[yaourt]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/yaourt&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[useradd]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/useradd&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[groupadd]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/groupadd&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ip]</span><span class="p">&quot;</span>                <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/ip&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ifconfig]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/ifconfig&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[journalctl]</span><span class="p">&quot;</span>        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/journalctl&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[netctl]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/netctl&quot;</span><span class="p">;</span>
+
+    <span class="nc">freebsd|netbsd|openbsd</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">path[awk]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/awk&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[bc]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/bc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cat]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/cat&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[crontabs]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/cron/tabs&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cut]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/cut&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dc]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[df]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/df&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[diff]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/diff&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dig]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dig&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[echo]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/echo&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[egrep]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/egrep&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[find]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/find&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[grep]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/grep&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ls]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/ls&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[netstat]</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/netstat&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[perl]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/perl&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[printf]</span><span class="p">&quot;</span>   <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/printf&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[sed]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/sed&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[sort]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/sort&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[tr]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/tr&quot;</span><span class="p">;</span>
+
+    <span class="nf">freebsd</span><span class="err">.!</span><span class="p">(</span><span class="nf">freebsd_9_3</span><span class="err">|</span><span class="nf">freebsd_10</span><span class="err">|</span><span class="nf">freebsd_11</span><span class="p">)</span><span class="nc">|netbsd|openbsd</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">path[ping]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/ping&quot;</span><span class="p">;</span>
+
+    <span class="nc">freebsd_9_3|freebsd_10|freebsd_11</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">path[ping]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/ping&quot;</span><span class="p">;</span>
+
+    <span class="nc">freebsd|netbsd</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">path[cksum]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/cksum&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[realpath]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/realpath&quot;</span><span class="p">;</span>
+
+    <span class="nc">freebsd</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">path[getfacl]</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/getfacl&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dtrace]</span><span class="p">&quot;</span>   <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/dtrace&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[service]</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/service&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[zpool]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/zpool&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[zfs]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/zfs&quot;</span><span class="p">;</span>
+
+    <span class="nc">openbsd</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">path[cksum]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/cksum&quot;</span><span class="p">;</span>
+
+    <span class="nc">smartos</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">path[npm]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/opt/local/bin/npm&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[pip]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/opt/local/bin/pip&quot;</span><span class="p">;</span>
+
+    <span class="nc">solaris</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">path[awk]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/awk&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[bc]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/bc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cat]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/cat&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cksum]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/cksum&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[crontab]</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/crontab&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[crontabs]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/spool/cron/crontabs&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[curl]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/curl&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cut]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/cut&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dc]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[df]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/df&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[diff]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/diff&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dig]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/dig&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[echo]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/echo&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[egrep]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/egrep&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[find]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/find&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[grep]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/grep&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ls]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/ls&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[netstat]</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/netstat&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ping]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/ping&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[perl]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/perl&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[printf]</span><span class="p">&quot;</span>   <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/printf&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[sed]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/sed&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[sort]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/sort&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[tr]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/tr&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[wget]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/wget&quot;</span><span class="p">;</span>
+      <span class="c">#</span>
+      <span class="p">&quot;</span><span class="nv">path[svcs]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/svcs&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[svcadm]</span><span class="p">&quot;</span>   <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/svcadm&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[svccfg]</span><span class="p">&quot;</span>   <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/svccfg&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[svcprop]</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/svcprop&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[netadm]</span><span class="p">&quot;</span>   <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/netadm&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dladm]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/dladm&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ipadm]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/ipadm&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[pkg]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/pkg&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[pkginfo]</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/pkginfo&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[pkgadd]</span><span class="p">&quot;</span>   <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/pkgadd&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[pkgrm]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/pkgrm&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[zoneadm]</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/zoneadm&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[zonecfg]</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/zonecfg&quot;</span><span class="p">;</span>
+
+    <span class="nc">redhat</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">path[awk]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/awk&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[bc]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/bc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cat]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/cat&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cksum]</span><span class="p">&quot;</span>         <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/cksum&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[createrepo]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/createrepo&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[crontab]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/crontab&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[crontabs]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/spool/cron&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[curl]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/curl&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cut]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/cut&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dc]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[df]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/df&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[diff]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/diff&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dig]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dig&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[domainname]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/domainname&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[echo]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/echo&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[egrep]</span><span class="p">&quot;</span>         <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/egrep&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ethtool]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/ethtool&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[find]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/find&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[free]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/free&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[grep]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/grep&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[hostname]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/hostname&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[init]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/init&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[iptables]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/iptables&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[iptables_save]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/iptables-save&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ls]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/ls&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[lsof]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/lsof&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[netstat]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/netstat&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[nologin]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/nologin&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ping]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/ping&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[perl]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/perl&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[printf]</span><span class="p">&quot;</span>        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/printf&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[sed]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/sed&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[sort]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/sort&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[test]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/test&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[tr]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/tr&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[wc]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/wc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[wget]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/wget&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[realpath]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/realpath&quot;</span><span class="p">;</span>
+
+      <span class="c">#</span>
+      <span class="p">&quot;</span><span class="nv">path[chkconfig]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/chkconfig&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[groupadd]</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/groupadd&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[groupdel]</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/groupdel&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ifconfig]</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/ifconfig&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ip]</span><span class="p">&quot;</span>        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/ip&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[rpm]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/rpm&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[service]</span><span class="p">&quot;</span>   <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/service&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[svc]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/service&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[useradd]</span><span class="p">&quot;</span>   <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/useradd&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[userdel]</span><span class="p">&quot;</span>   <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/userdel&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[yum]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/yum&quot;</span><span class="p">;</span>
+
+    <span class="nc">darwin</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">path[awk]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/awk&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[bc]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/bc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cat]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/cat&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cksum]</span><span class="p">&quot;</span>         <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/cksum&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[createrepo]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/createrepo&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[crontab]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/crontab&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[crontabs]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/lib/cron/tabs&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cut]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/cut&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dc]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[df]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/df&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[diff]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/diff&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dig]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dig&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[domainname]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/domainname&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dscl]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dscl&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[echo]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/echo&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[egrep]</span><span class="p">&quot;</span>         <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/egrep&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[find]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/find&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[grep]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/grep&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[hostname]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/hostname&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ls]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/ls&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[lsof]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/lsof&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[netstat]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/netstat&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ping]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/ping&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[perl]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/perl&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[printf]</span><span class="p">&quot;</span>        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/printf&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[sed]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/sed&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[sort]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/sort&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[test]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/test&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[tr]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/tr&quot;</span><span class="p">;</span>
+
+      <span class="c">#</span>
+      <span class="p">&quot;</span><span class="nv">path[brew]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/local/bin/brew&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[sudo]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/sudo&quot;</span><span class="p">;</span>
+
+    <span class="nc">debian</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">path[awk]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/awk&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[bc]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/bc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cat]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/cat&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[chkconfig]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/chkconfig&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cksum]</span><span class="p">&quot;</span>         <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/cksum&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[createrepo]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/createrepo&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[crontab]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/crontab&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[crontabs]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/spool/cron/crontabs&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[curl]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/curl&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cut]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/cut&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dc]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[df]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/df&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[diff]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/diff&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dig]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dig&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dmidecode]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/dmidecode&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[domainname]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/domainname&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[echo]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/echo&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[egrep]</span><span class="p">&quot;</span>         <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/egrep&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ethtool]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/ethtool&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[find]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/find&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[free]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/free&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[grep]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/grep&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[hostname]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/hostname&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[init]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/init&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[iptables]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/iptables&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[iptables_save]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/iptables-save&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ls]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/ls&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[lsof]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/lsof&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[netstat]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/netstat&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[nologin]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/nologin&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ping]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/ping&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[perl]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/perl&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[printf]</span><span class="p">&quot;</span>        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/printf&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[sed]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/sed&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[sort]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/sort&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[test]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/test&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[tr]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/tr&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[wc]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/wc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[wget]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/wget&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[realpath]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/realpath&quot;</span><span class="p">;</span>
+
+      <span class="c">#</span>
+      <span class="p">&quot;</span><span class="nv">path[apt_cache]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/apt-cache&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[apt_config]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/apt-config&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[apt_get]</span><span class="p">&quot;</span>             <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/apt-get&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[apt_key]</span><span class="p">&quot;</span>             <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/apt-key&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[aptitude]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/aptitude&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dpkg]</span><span class="p">&quot;</span>                <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dpkg&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[groupadd]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/groupadd&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[groupdel]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/groupdel&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[groupmod]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/groupmod&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ifconfig]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/ifconfig&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ip]</span><span class="p">&quot;</span>                  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/ip&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[service]</span><span class="p">&quot;</span>             <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/service&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[svc]</span><span class="p">&quot;</span>                 <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/service&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[update_alternatives]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/update-alternatives&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[update_rc_d]</span><span class="p">&quot;</span>         <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/update-rc.d&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[useradd]</span><span class="p">&quot;</span>             <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/useradd&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[userdel]</span><span class="p">&quot;</span>             <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/userdel&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[usermod]</span><span class="p">&quot;</span>             <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/usermod&quot;</span><span class="p">;</span>
+
+    <span class="nc">archlinux||darwin</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">path[sysctl]</span><span class="p">&quot;</span>        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/sysctl&quot;</span><span class="p">;</span>
+
+    <span class="err">!</span><span class="p">(</span><span class="nf">archlinux</span><span class="err">||</span><span class="nf">darwin</span><span class="p">)</span><span class="err">::</span>
+
+      <span class="p">&quot;</span><span class="nv">path[sysctl]</span><span class="p">&quot;</span>        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/sysctl&quot;</span><span class="p">;</span>
+
+    <span class="nc">!suse</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">path[logger]</span><span class="p">&quot;</span>        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/logger&quot;</span><span class="p">;</span>
+
+    <span class="nc">suse</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">path[awk]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/awk&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[bc]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/bc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cat]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/cat&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cksum]</span><span class="p">&quot;</span>         <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/cksum&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[createrepo]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/createrepo&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[crontab]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/crontab&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[crontabs]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/spool/cron/tabs&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[curl]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/curl&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[cut]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/cut&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dc]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dc&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[df]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/df&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[diff]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/diff&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dig]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dig&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[dmidecode]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/dmidecode&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[domainname]</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/domainname&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[echo]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/echo&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[egrep]</span><span class="p">&quot;</span>         <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/egrep&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ethtool]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/ethtool&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[find]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/find&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[free]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/free&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[grep]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/grep&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[hostname]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/hostname&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[init]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/init&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[iptables]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/iptables&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[iptables_save]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/iptables-save&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ls]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/ls&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[lsof]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/lsof&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[netstat]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/netstat&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[nologin]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/nologin&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ping]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/ping&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[perl]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/perl&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[printf]</span><span class="p">&quot;</span>        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/printf&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[sed]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/sed&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[sort]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/sort&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[test]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/test&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[tr]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/tr&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[logger]</span><span class="p">&quot;</span>        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/logger&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[wget]</span><span class="p">&quot;</span>          <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/wget&quot;</span><span class="p">;</span>
+
+      <span class="c">#</span>
+      <span class="p">&quot;</span><span class="nv">path[chkconfig]</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/chkconfig&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[groupadd]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/groupadd&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[groupdel]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/groupdel&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[groupmod]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/groupmod&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ifconfig]</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/ifconfig&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[ip]</span><span class="p">&quot;</span>            <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/ip&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[rpm]</span><span class="p">&quot;</span>           <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/rpm&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[service]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/sbin/service&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[useradd]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/useradd&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[userdel]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/userdel&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[usermod]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/usermod&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path[zypper]</span><span class="p">&quot;</span>        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/zypper&quot;</span><span class="p">;</span>
+
+    <span class="nc">linux|solaris</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">path[shadow]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/etc/shadow&quot;</span><span class="p">;</span>
+
+    <span class="nc">freebsd|openbsd|netbsd|darwin</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">path[shadow]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/etc/master.passwd&quot;</span><span class="p">;</span>
+
+    <span class="nc">aix</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">path[shadow]</span><span class="p">&quot;</span>       <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/etc/security/passwd&quot;</span><span class="p">;</span>
+
+    <span class="nc">any</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">all_paths</span><span class="p">&quot;</span>     <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getindices</span><span class="p">(</span><span class="s">&quot;path&quot;</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">$(all_paths)</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(path[$(all_paths)</span><span class="s">])&quot;</span><span class="p">;</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;_have_bin_env&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;/bin/env&quot;</span><span class="p">);</span>
+      <span class="s">&quot;_have_bin_systemctl&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;/bin/systemctl&quot;</span><span class="p">);</span>
+
+      <span class="s">&quot;_stdlib_has_path_</span><span class="si">$(all_paths)</span><span class="s">&quot;</span>
+      <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(all_paths)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">comment</span>    <span class="o">=&gt;</span> <span class="s">&quot;It&#39;s useful to know if a given path is defined&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;_stdlib_path_exists_</span><span class="si">$(all_paths)</span><span class="s">&quot;</span>
+      <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(path[$(all_paths)</span><span class="s">])&quot;</span><span class="p">),</span>
+      <span class="kr">comment</span>    <span class="o">=&gt;</span> <span class="s">&quot;It&#39;s useful to know if </span><span class="si">$(all_paths)</span><span class="s"> exists on the filesystem as defined&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-standard-library.html">standard library</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/standard-library.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/5b2bc459512b94c59b897836ae3071bcd5f777f6" target="_blank">5b2bc459512b94c59b897836ae3071bcd5f777f6</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.8/assets/footer-08442c0761064b6ca280223e9ebacccc.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

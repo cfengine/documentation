@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.13  Documentation - services</title>
+        <link rel="icon" type="image/png" href="favicon.png">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.13/assets/global-f8d3d88f1cc74c2ac5c8e408cd101409.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "services";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.13/" selected>Version 3.13 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                    <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:bphk6hztv2i" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a><ul class="level2"><li><a href="reference-promise-types-access.html">access</a></li><li><a href="reference-promise-types-databases.html">databases</a></li><li><a href="reference-promise-types-guest_environments.html">guest_environments</a></li><li><a href="reference-promise-types-classes.html">classes</a></li><li><a href="reference-promise-types-commands.html">commands</a></li><li><a href="reference-promise-types-defaults.html">defaults</a></li><li><a href="reference-promise-types-files.html">files</a></li><li><a href="reference-promise-types-measurements.html">measurements</a></li><li><a href="reference-promise-types-meta.html">meta</a></li><li><a href="reference-promise-types-methods.html">methods</a></li><li><a href="reference-promise-types-packages.html">packages</a></li><li><a href="reference-promise-types-packages-deprecated.html">packages (deprecated)</a></li><li><a href="reference-promise-types-processes.html">processes</a></li><li><a href="reference-promise-types-reports.html">reports</a></li><li><a href="reference-promise-types-roles.html">roles</a></li><li><a class="active" href="reference-promise-types-services.html">services</a></li><li><a href="reference-promise-types-storage.html">storage</a></li><li><a href="reference-promise-types-users.html">users</a></li><li><a href="reference-promise-types-vars.html">vars</a></li></ul></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    services
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p><code>services</code> type promises in their simplest <em>generic</em> form are an abstraction on
+<strong>bundles</strong>. <code>services</code> type promises are implemented by mapping a bundle to
+<a href="reference-promise-types-services.html#service_bundle" title="services - service_bundle"><code>service_bundle</code></a> in a <a href="reference-promise-types-services.html#service_method" title="services - service_method"><code>service_method</code></a> body. Reference the
+<a href="reference-masterfiles-policy-framework-lib-services.html" title="lib/services.cf">services bodies and bundles in the standard library</a>.</p>
+
+<p>Most commonly services type promises are use to manage standard operating system
+services using the platforms standard service management tools via the
+<code>standard_services</code> bundle in the standard library. However, services type
+promises can be leveraged to build standard abstractions around custom services
+as well.</p>
+
+<p>Services are registered in the operating system in some way, and get a unique name.
+Service promises abstracts the mechanism for interacting with services
+on the given operating system, making it as uniform and easy as possible
+to work with services cross-platform. The exact mechanism CFEngine uses
+vary depending on availability at the OS, but it could be System V scripts,
+systemd units, tools such as <code>chkconfig</code>, or the Windows API.</p>
+
+<p>Some operating systems are bundled with a lot of unused services that
+are running as default. At the same time, faulty or inherently insecure
+services are often the cause of security issues. With CFEngine, one can
+create promises stating the services that should be stopped and disabled.</p>
+
+<p>The operating system may start a service at boot time, or it can be
+started by CFEngine. Either way, CFEngine will ensure that the service
+maintains the correct state (started, stopped, or disabled).</p>
+
+<p>CFEngine supports the concept of dependencies between services,
+and can automatically start or stop these, if desired. Parameters can be
+passed to services that are started by CFEngine.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+    <span class="p">{</span>
+    <span class="kd">services</span><span class="p">:</span>
+
+      <span class="s">&quot;Dhcp&quot;</span>
+        <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;start&quot;</span><span class="p">,</span>
+        <span class="kr">service_dependencies</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;Alerter&quot;</span><span class="p">,</span> <span class="s">&quot;W32Time&quot;</span> <span class="p">},</span>
+        <span class="kr">service_method</span> <span class="o">=&gt;</span> <span class="nf">winmethod</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">body</span> <span class="k">service_method</span> <span class="nf">winmethod</span>
+    <span class="p">{</span>
+      <span class="kr">service_type</span> <span class="o">=&gt;</span> <span class="s">&quot;windows&quot;</span><span class="p">;</span>
+      <span class="kr">service_args</span> <span class="o">=&gt;</span> <span class="s">&quot;--netmask=255.255.0.0&quot;</span><span class="p">;</span>
+      <span class="kr">service_autostart_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;none&quot;</span><span class="p">;</span>
+      <span class="kr">service_dependence_chain</span> <span class="o">=&gt;</span> <span class="s">&quot;start_parent_services&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>Services promises for Windows are only available in CFEngine Enterprise. Note
+that the name of a service in Windows may be different from its <code>Display
+name</code>. CFEngine Enterprise policies use the name, not the display name,
+due to the need for uniqueness.</p>
+
+<p><img src="promise-types-services-winservice-properties_name.png" alt="WinService"></p>
+
+<p>Windows Vista/Server 2008 and later introduced new complications
+to the service security policy. Therefore, when testing <code>services</code>
+promises from the command line, CFEngine may not be given proper access
+rights, which gives errors like &quot;Access is denied&quot;. However, when
+running through the CFEngine Enterprise Executor service, typical for on
+production machines, CFEngine has sufficient rights.</p>
+
+<p>Services of type generic promises are implemented for all operating
+systems and are merely as a convenient front-end to <a href="reference-promise-types-processes.html" title="processes"><code>processes</code></a> and
+<a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a>. If nothing else is specified, CFEngine looks for an special
+reserved agent bundle called</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">standard_services</span><span class="p">(</span><span class="nv">service</span><span class="p">,</span><span class="nv">state</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="err">...</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This bundle is called with two parameters: the name of the service and a
+start/stop state variable. The CFEngine standard library defines many
+common services for standard operating systems for convenience. If no
+<a href="reference-promise-types-services.html#service_bundle" title="services - service_bundle"><code>service_bundle</code></a> is defined in a <a href="reference-promise-types-services.html#service_method" title="services - service_method"><code>service_method</code></a> body, then CFEngine
+assumes the <code>standard_services</code> bundle to be the default source of action
+for the services. This is executed just like a <a href="reference-promise-types-methods.html" title="methods"><code>methods</code></a> promise on the
+service bundle, so this is merely a front-end.</p>
+
+<p>The standard bundle can be replaced with another, as follows:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">test</span>
+    <span class="p">{</span>
+    <span class="kd">vars</span><span class="p">:</span>
+
+     <span class="p">&quot;</span><span class="nv">mail</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;spamassassin&quot;</span><span class="p">,</span> <span class="s">&quot;postfix&quot;</span> <span class="p">};</span>
+
+    <span class="kd">services</span><span class="p">:</span>
+
+      <span class="s">&quot;www&quot;</span> <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;start&quot;</span><span class="p">,</span>
+            <span class="kr">service_method</span> <span class="o">=&gt;</span> <span class="nf">service_test</span><span class="p">;</span>
+
+      <span class="s">&quot;</span><span class="si">$(mail)</span><span class="s">&quot;</span> <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;stop&quot;</span><span class="p">,</span>
+            <span class="kr">service_method</span> <span class="o">=&gt;</span> <span class="nf">service_test</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">body</span> <span class="k">service_method</span> <span class="nf">service_test</span>
+    <span class="p">{</span>
+      <span class="kr">service_bundle</span> <span class="o">=&gt;</span> <span class="nf">non_standard_services</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(this.promiser)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(this.service_policy)</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">non_standard_services</span><span class="p">(</span><span class="nv">service</span><span class="p">,</span><span class="nv">state</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="kd">reports</span><span class="p">:</span>
+
+      <span class="nc">!done</span><span class="p">::</span>
+
+        <span class="s">&quot;Test service promise for </span><span class="se">\&quot;</span><span class="si">$(service)</span><span class="se">\&quot;</span><span class="s"> -&gt; </span><span class="si">$(state)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Note that the special variables <a href="reference-special-variables-this.html#this-promiser" title="this - this.promiser"><code>$(this.promiser)</code></a> and
+<a href="reference-special-variables-this.html#this-service_policy" title="this - this.service_policy"><code>$(this.service_policy)</code></a> may be used to fill in
+the service and state parameters from the promise definition. The
+<a href="reference-special-variables-this.html#this-service_policy" title="this - this.service_policy"><code>$(this.service_policy)</code></a> variable is only defined
+for services promises.</p>
+
+<p><strong>History:</strong> This promise type was introduced in CFEngine 3.3.0 (2012).</p>
+
+<hr>
+<h2 id="attributes">Attributes</h2><h3 id="common-attributes">Common Attributes</h3>
+<p>Common attributes are available to all promise types. Full details for common
+attributes can be found in the <a href="reference-promise-types.html#common-attributes" title="Promise Types and Attributes - Common Attributes">Common Attributes section</a> of
+the <a href="reference-promise-types.html" title="Promise Types and Attributes">Promise Types and Attributes</a> page. The common attributes are as follows:</p>
+<h4 id="action"><a href="reference-promise-types.html#action" title="Promise Types and Attributes - action">action</a></h4><h4 id="classes"><a href="reference-promise-types.html#classes" title="Promise Types and Attributes - classes">classes</a></h4><h4 id="comment"><a href="reference-promise-types.html#comment" title="Promise Types and Attributes - comment">comment</a></h4><h4 id="depends_on"><a href="reference-promise-types.html#depends_on" title="Promise Types and Attributes - depends_on">depends_on</a></h4><h4 id="handle"><a href="reference-promise-types.html#handle" title="Promise Types and Attributes - handle">handle</a></h4><h4 id="ifvarclass"><a href="reference-promise-types.html#ifvarclass" title="Promise Types and Attributes - ifvarclass">ifvarclass</a></h4><h4 id="meta"><a href="reference-promise-types.html#meta" title="Promise Types and Attributes - meta">meta</a></h4><h4 id="with"><a href="reference-promise-types.html#with" title="Promise Types and Attributes - with">with</a></h4>
+<hr>
+<h3 id="service_policy">service_policy</h3>
+<p><strong>Description:</strong> Policy for service status.</p>
+
+<p>The <code>service_policy</code> is expected to be passed to the service bundle in order to
+manage it&#39;s state. It is up to the mapped <a href="reference-promise-types-services.html#service_bundle" title="services - service_bundle"><code>service_bundle</code></a> to determine which
+promises should be actuated in order to converge to the specified
+<code>service_policy</code>.</p>
+
+<p>Reference the policy for detailed information about the semantics of a given
+<a href="reference-promise-types-services.html#service_method" title="services - service_method"><code>service_method</code></a> or <a href="reference-promise-types-services.html#service_bundle" title="services - service_bundle"><code>service_bundle</code></a>, for example the <code>standard_services</code> in the
+standard library.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)|(menu_option) depending on <a href="reference-promise-types-services.html#service_type" title="services - service_type"><code>service_type</code></a></p>
+
+<ul>
+<li><p>When <a href="reference-promise-types-services.html#service_type" title="services - service_type"><code>service_type</code></a> is <code>windows</code> allowed values are limited to <code>start</code>,
+<code>stop</code>, <code>enable</code>, or <a href="reference-promise-types-files.html#disable" title="files - disable"><code>disable</code></a>.</p>
+
+<ul>
+<li><strong>start|enable</strong> :: Will start the service if it is not running. <code>Startup
+Type</code> will be set to <code>Manual</code> if it is not <code>Automatic</code> or
+<code>Automatic (Delayed Start)</code>. For a service to be configured to start
+automatically on boot a <a href="reference-promise-types-services.html#service_method" title="services - service_method"><code>service_method</code></a> must be declared and
+<a href="reference-promise-types-services.html#service_autostart_policy" title="services - service_autostart_policy"><code>service_autostart_policy</code></a> must be set to <code>boot_time</code>.</li>
+<li><strong>stop</strong> :: Will stop the service if it is running. <code>Startup Type</code> will
+not be modified unless a <a href="reference-promise-types-services.html#service_method" title="services - service_method"><code>service_method</code></a> is declared and
+<a href="reference-promise-types-services.html#service_autostart_policy" title="services - service_autostart_policy"><code>service_autostart_policy</code></a> is set.</li>
+<li><strong>disable</strong> :: Will stop the service if it is running, and <code>Startup Type</code>
+will be set to <code>Disabled</code>.</li>
+</ul></li>
+<li><p>When <a href="reference-promise-types-services.html#service_type" title="services - service_type"><code>service_type</code></a> is <code>generic</code> any string is allowed and
+<a href="reference-promise-types-services.html#service_bundle" title="services - service_bundle"><code>service_bundle</code></a> is responsible for interpreting and implementing the desired
+state based on the <code>service_policy</code> value.</p>
+
+<p>Historically <a href="reference-promise-types-services.html#service_type" title="services - service_type"><code>service_type</code></a> <code>generic</code> has supported <code>start</code>,
+<code>stop</code>, <code>enable</code>, <code>disable</code>, <code>restart</code> and <code>reload</code>.</p></li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">services</span><span class="p">:</span>
+
+    <span class="nc">redhat|centos</span><span class="p">::</span>
+
+      <span class="c"># Manage a service using the standard_services implementation from the</span>
+      <span class="c"># standard library.</span>
+
+      <span class="s">&quot;httpd&quot;</span>
+        <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;disable&quot;</span><span class="p">;</span>
+
+    <span class="nc">any</span><span class="p">::</span>
+
+      <span class="c"># Manage a custom service using custom service_method</span>
+
+      <span class="s">&quot;myservice&quot;</span>
+        <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;my_custom_state&quot;</span><span class="p">,</span>
+        <span class="kr">service_method</span> <span class="o">=&gt;</span> <span class="s">&quot;my_custom_service_method&quot;</span><span class="p">;</span>
+
+
+    <span class="nc">windows</span><span class="p">::</span>
+
+        <span class="s">&quot;AdobeARMservice&quot;</span>
+          <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;stop&quot;</span><span class="p">,</span>
+          <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Ensure the Adobe Acrobat Update Service is not running. It</span>
+<span class="s">                      may or may not be automatically started on the next boot</span>
+<span class="s">                      depending on the configuration.&quot;</span><span class="p">;</span>
+
+        <span class="s">&quot;CfengineNovaExec&quot;</span>
+          <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;enable&quot;</span><span class="p">,</span>
+          <span class="kr">service_method</span> <span class="o">=&gt;</span> <span class="nf">bootstart</span><span class="p">,</span> <span class="c"># Ref stdlib</span>
+          <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Ensure cf-execd is running and configured to start on</span>
+<span class="s">                      boot.&quot;</span><span class="p">;</span>
+
+        <span class="s">&quot;VBoxService&quot;</span>
+          <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;start&quot;</span><span class="p">,</span>
+          <span class="kr">service_method</span> <span class="o">=&gt;</span> <span class="nf">bootstart</span><span class="p">,</span> <span class="c"># Ref stdlib</span>
+          <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Ensure VirtualBox Guest Additions Service is running and</span>
+<span class="s">                      configured to start on boot.&quot;</span><span class="p">;</span>
+
+        <span class="s">&quot;Spooler&quot;</span>
+          <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;disable&quot;</span><span class="p">,</span>
+          <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Ensure the Print Spooler is not running and will not start</span>
+<span class="s">                      automatically on boot. We do not want to kill any trees.&quot;</span><span class="p">;</span>
+
+        <span class="s">&quot;tzautoupdate&quot;</span>
+          <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;start&quot;</span><span class="p">,</span>
+          <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Ensure that the Auto Time Zone Updated is running, and set</span>
+<span class="s">                      Startup Type to Manual.&quot;</span><span class="p">;</span>
+
+
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">service_method</span> <span class="nf">my_custom_service_method</span>
+<span class="p">{</span>
+
+  <span class="nc">windows</span><span class="p">::</span>
+    <span class="kr">service_bundle</span> <span class="o">=&gt;</span> <span class="nf">my_custom_service_method_windows</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="nf">this</span><span class="err">.</span><span class="nf">promiser</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">this</span><span class="err">.</span><span class="nf">service_policy</span><span class="p">)</span> <span class="p">);</span>
+
+  <span class="nc">redhat|centos</span><span class="p">::</span>
+    <span class="kr">service_bundle</span> <span class="o">=&gt;</span> <span class="nf">my_custom_service_method_EL</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="nf">this</span><span class="err">.</span><span class="nf">promiser</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">this</span><span class="err">.</span><span class="nf">service_policy</span><span class="p">)</span> <span class="p">);</span>
+
+  <span class="nc">debian|ubuntu</span><span class="p">::</span>
+    <span class="kr">service_bundle</span> <span class="o">=&gt;</span> <span class="nf">my_custom_service_method_DEB</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="nf">this</span><span class="err">.</span><span class="nf">promiser</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">this</span><span class="err">.</span><span class="nf">service_policy</span><span class="p">)</span> <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">my_custom_service_method_windows</span><span class="p">(</span> <span class="nv">service_identifier</span><span class="p">,</span> <span class="nv">desired_service_state</span> <span class="p">)</span>
+<span class="p">{</span>
+  <span class="c"># Specific windows implementation</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">my_custom_service_method_EL</span><span class="p">(</span> <span class="nv">service_identifier</span><span class="p">,</span> <span class="nv">desired_service_state</span> <span class="p">)</span>
+<span class="p">{</span>
+  <span class="c"># Specific Redhat|Centos implementation</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">my_custom_service_method_DEB</span><span class="p">(</span> <span class="nv">service_identifier</span><span class="p">,</span> <span class="nv">desired_service_state</span> <span class="p">)</span>
+<span class="p">{</span>
+  <span class="c"># Specific Debian|Ubuntu implementation</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>See Also:</strong> [generic standard_services][Services Bodies and Bundles#standard_services]</p>
+
+<p><strong>History:</strong></p>
+
+<ul>
+<li>Type changed from <code>menu_option</code> to <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> and allowed input range changed to
+arbitrary string from start|stop|enable|disable|restart|reload in CFEngine
+3.10. Previously enable was mapped to start, disable was mapped to stop and
+reload was mapped to restart.</li>
+</ul>
+<h3 id="service_dependencies">service_dependencies</h3>
+<p><strong>Description:</strong> A list of services on which the named service abstraction
+depends</p>
+
+<p>A list of services that must be running before the service can be started.
+These dependencies can be started automatically by CFEngine if they
+are not running see <a href="reference-promise-types-services.html#service_dependence_chain" title="services - service_dependence_chain"><code>service_dependence_chain</code></a>. However, the dependencies will
+never be implicitly stopped by CFEngine. Specifying dependencies is optional.</p>
+
+<p>Note that the operating system may keep an additional list of dependencies for
+a given service, defined during installation of the service. CFEngine
+requires these dependencies to be running as well before starting
+the service. The complete list of dependencies is thus the union of
+<code>service_dependencies</code> and the internal operating system list.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_$(){}\[\].:]+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">services</span><span class="p">:</span>
+
+  <span class="s">&quot;ftp&quot;</span>
+    <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;start&quot;</span><span class="p">,</span>
+    <span class="kr">service_dependencies</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;network&quot;</span><span class="p">,</span> <span class="s">&quot;logging&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+<h3 id="service_method">service_method</h3>
+<p><strong>Type:</strong> <code>body service_method</code></p>
+
+<p><code>service_method</code> bodies have access to <code>$(this.promiser)</code> (the promised service)
+and <code>$(this.service_policy)</code> (the policy state the service should have).</p>
+
+<p><strong>Notes:</strong> <a href="reference-promise-types-services.html#service_bundle" title="services - service_bundle"><code>service_bundle</code></a> is not used when <a href="reference-promise-types-services.html#service_type" title="services - service_type"><code>service_type</code></a> is <code>windows</code>.</p>
+
+<p><strong>See also:</strong> <a href="reference-promise-types.html#common-body-attributes" title="Promise Types and Attributes - Common Body Attributes">Common Body Attributes</a></p>
+<h4 id="service_args">service_args</h4>
+<p><strong>Description:</strong> Parameters for starting the service as command</p>
+
+<p>These arguments will only be passed if CFEngine starts the service.
+Thus, set <a href="reference-promise-types-services.html#service_autostart_policy" title="services - service_autostart_policy"><code>service_autostart_policy</code></a> to <code>none</code> to ensure that the
+arguments are always passed.</p>
+
+<p>Escaped quotes can be used to pass an argument containing spaces as a
+single argument, e.g. <code>-f \&quot;file name.conf\&quot;</code>. Passing arguments is
+optional.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">service_method</span> <span class="nf">example</span>
+     <span class="p">{</span>
+       <span class="kr">service_args</span> <span class="o">=&gt;</span> <span class="s">&quot;-f filename.conf --some-argument&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="service_autostart_policy">service_autostart_policy</h4>
+<p><strong>Description:</strong> Should the service be started automatically by the OS</p>
+
+<p>Defaults to <code>none</code>, which means that the service is not registered for
+automatic startup by the operating system in any way. It must be <code>none</code>
+if <a href="reference-promise-types-services.html#service_policy" title="services - service_policy"><code>service_policy</code></a> is not <code>start</code>. <code>boot_time</code> means the service is
+started at boot time, while <code>on_demand</code> means that the service is
+dispatched once it is being used.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">    none
+    boot_time
+    on_demand
+</code></pre>
+</div>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">service_method</span> <span class="nf">example</span>
+     <span class="p">{</span>
+       <span class="kr">service_autostart_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;boot_time&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong> <code>on_demand</code> is not supported by Windows, and is implemented through
+inetd or xinetd on Unix.</p>
+<h4 id="service_bundle">service_bundle</h4>
+<p><strong>Description:</strong> The agent bundle to use when managing the service.</p>
+
+<p><strong>Default:</strong> The canonified promiser string prefixed with <code>service_</code>. Note,
+the <code>service_bundle</code> <strong>must</strong> be in the same namespace.</p>
+
+<p><strong>Type:</strong> <code>bundle agent</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+  <span class="kd">services</span><span class="p">:</span>
+      <span class="s">&quot;my-custom-service&quot;</span>
+      <span class="kr">service_method</span> <span class="o">=&gt;</span> <span class="nf">my_custom_service</span><span class="p">,</span>
+      <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;stop&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">service_method</span> <span class="nf">my_custom_service</span>
+<span class="p">{</span>
+      <span class="kr">service_type</span> <span class="o">=&gt;</span> <span class="s">&quot;generic&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">service_my_custom_service</span><span class="p">(</span><span class="nv">service</span><span class="p">,</span> <span class="nv">state</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(service)</span><span class="s"> should have state </span><span class="si">$(state)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">R: my-custom-service should have state stop
+</code></pre>
+</div>
+
+<p>This policy can be found in
+<code>/var/cfengine/share/doc/examples/services_default_service_bundle.cf</code>
+and downloaded directly from
+<a href="https://raw.github.com/cfengine/core/master/examples/services_default_service_bundle.cf" target="_blank">github</a>.</p>
+<h4 id="service_dependence_chain">service_dependence_chain</h4>
+<p><strong>Description:</strong> How to handle dependencies and dependent services</p>
+
+<p>The service dependencies include both the dependencies defined by the
+operating system and in <a href="reference-promise-types-services.html#service_dependencies" title="services - service_dependencies"><code>service_dependencies</code></a>, as described there.</p>
+
+<p>Defaults to <code>ignore</code>, which means that CFEngine will never start or
+stop dependencies or dependent services, but fail if dependencies are
+not satisfied. <code>start_parent_services</code> means that all dependencies of
+the service will be started if they are not already running. When
+stopping a service, <code>stop_child_services</code> means that other services that
+depend on this service will be stopped also. <code>all_related</code> means both
+<code>start_parent_services</code> and <code>stop_child_services</code>.</p>
+
+<p>Note that this setting also affects dependencies of dependencies and so
+on.</p>
+
+<p>For example, consider the case where service A depends on B, which
+depends on C. If we want to start B, we must first make sure A is
+running. If <code>start_parent_services</code> or <code>all_related</code> is set, CFEngine
+will start A, if it is not running. On the other hand, if we want
+to stop B, C needs to be stopped first. <code>stop_child_services</code> or
+<code>all_related</code> means that CFEngine will stop C, if it is running.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">    ignore
+    start_parent_services
+    stop_child_services
+    all_related
+</code></pre>
+</div>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">service_method</span> <span class="nf">example</span>
+     <span class="p">{</span>
+       <span class="kr">service_dependence_chain</span> <span class="o">=&gt;</span> <span class="s">&quot;start_parent_services&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="service_type">service_type</h4>
+<p><strong>Description:</strong> Service abstraction type</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">    windows
+    generic
+</code></pre>
+</div>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">service_method</span> <span class="nf">example</span>
+     <span class="p">{</span>
+       <span class="kr">service_type</span> <span class="o">=&gt;</span> <span class="s">&quot;windows&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong> On Windows this defaults to, and must be <code>windows</code>. Unix systems can
+however have multiple means of registering services, but the choice must be
+available on the given system. <a href="reference-promise-types-services.html#service_bundle" title="services - service_bundle"><code>service_bundle</code></a> is not used when <code>service_type</code>
+is <code>windows</code>.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-bundle-agent.html">bundle agent</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-services.html">services</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-processes.html">processes</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-services-promises.html">services promises</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-promise-types.html">promise types</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 11 January 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/promise-types/services.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/b04b1f6f002a2f00c34834c7f4e2a3b4111fd67d" target="_blank">b04b1f6f002a2f00c34834c7f4e2a3b4111fd67d</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.13/assets/footer-dfbb901e0ce1de822a7bc04bca20268e.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

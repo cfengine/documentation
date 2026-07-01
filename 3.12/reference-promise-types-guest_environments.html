@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.12  Documentation - guest_environments</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-promise-types-guest_environments.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='/docs/3.12/assets/global-2ea8d2fcc0dbfebdbe7d10e6eca6a3b3.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "guest_environments";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/" selected>Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a><ul class="level2"><li><a href="reference-promise-types-access.html">access</a></li><li><a href="reference-promise-types-edit_line.html">bundle edit_line</a></li><li><a href="reference-promise-types-edit_xml.html">bundle edit_xml</a></li><li><a href="reference-promise-types-databases.html">databases</a></li><li><a class="active" href="reference-promise-types-guest_environments.html">guest_environments</a></li><li><a href="reference-promise-types-classes.html">classes</a></li><li><a href="reference-promise-types-commands.html">commands</a></li><li><a href="reference-promise-types-defaults.html">defaults</a></li><li><a href="reference-promise-types-files.html">files</a></li><li><a href="reference-promise-types-measurements.html">measurements</a></li><li><a href="reference-promise-types-meta.html">meta</a></li><li><a href="reference-promise-types-methods.html">methods</a></li><li><a href="reference-promise-types-packages.html">packages</a></li><li><a href="reference-promise-types-packages-deprecated.html">packages (deprecated)</a></li><li><a href="reference-promise-types-processes.html">processes</a></li><li><a href="reference-promise-types-reports.html">reports</a></li><li><a href="reference-promise-types-roles.html">roles</a></li><li><a href="reference-promise-types-services.html">services</a></li><li><a href="reference-promise-types-storage.html">storage</a></li><li><a href="reference-promise-types-users.html">users</a></li><li><a href="reference-promise-types-vars.html">vars</a></li></ul></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    guest_environments
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p><strong>WARNING</strong>: Due to lack of use this promise type has been removed from the
+default binaries beginning with version 3.11.0. We have seen that in most cases
+users want to interact with hypervisors as peripheral instead of managing the
+underlying guest virtual machines. If you want to use this functionality you
+must build the agent with libvirt support.</p>
+
+<p>Guest environment promises describe enclosed computing environments that
+can host physical and virtual machines, Solaris zones, grids, clouds or
+other enclosures, including embedded systems. CFEngine will support the
+convergent maintenance of such inner environments in a fixed location,
+with interfaces to an external environment.</p>
+
+<p>CFEngine currently seeks to add convergence properties to existing
+interfaces for automatic self-healing of guest environments. The current
+implementation integrates with <em>libvirt</em>, supporting host virtualization
+for Xen, KVM, VMWare, etc. Thus CFEngine, running on a virtual host, can
+maintain the state and deployment of virtual guest machines defined
+within the <em>libvirt</em> framework. Guest environment promises are not meant
+to manage what goes on within the virtual guests. For that purpose you
+should run CFEngine directly on the virtual machine, as if it were any
+other machine.</p>
+<div class="highlight"><pre><code class="cf3"> <span class="nc">site1</span><span class="p">::</span>
+
+  <span class="s">&quot;unique_name1&quot;</span>
+
+       <span class="kr">environment_resources</span> <span class="o">=&gt;</span> <span class="nf">myresources</span><span class="p">(</span><span class="s">&quot;2GB&quot;</span><span class="p">,</span><span class="s">&quot;512MB&quot;</span><span class="p">),</span>
+       <span class="kr">environment_interface</span> <span class="o">=&gt;</span> <span class="nf">mymachine</span><span class="p">(</span><span class="s">&quot;hostname&quot;</span><span class="p">),</span>
+            <span class="kr">environment_type</span> <span class="o">=&gt;</span> <span class="s">&quot;xen&quot;</span><span class="p">,</span>
+            <span class="kr">environment_state</span> <span class="o">=&gt;</span> <span class="s">&quot;running&quot;</span><span class="p">,</span>
+            <span class="kr">environment_host</span> <span class="o">=&gt;</span> <span class="s">&quot;atlas&quot;</span><span class="p">;</span>
+
+  <span class="s">&quot;unique_name2&quot;</span>
+
+            <span class="kr">environment_type</span> <span class="o">=&gt;</span> <span class="s">&quot;xen_net&quot;</span><span class="p">,</span>
+           <span class="kr">environment_state</span> <span class="o">=&gt;</span> <span class="s">&quot;create&quot;</span><span class="p">,</span>
+            <span class="kr">environment_host</span> <span class="o">=&gt;</span> <span class="s">&quot;atlas&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>CFEngine currently provides a convergent interface to <em>libvirt</em>.</p>
+
+<hr>
+<h2 id="attributes">Attributes</h2><h3 id="common-attributes">Common Attributes</h3>
+<p>Common attributes are available to all promise types. Full details for common
+attributes can be found in the <a href="reference-promise-types.html#common-attributes" title="Promise Types and Attributes - Common Attributes">Common Attributes section</a> of
+the <a href="reference-promise-types.html" title="Promise Types and Attributes">Promise Types and Attributes</a> page. The common attributes are as follows:</p>
+<h4 id="action"><a href="reference-promise-types.html#action" title="Promise Types and Attributes - action">action</a></h4><h4 id="classes"><a href="reference-promise-types.html#classes" title="Promise Types and Attributes - classes">classes</a></h4><h4 id="comment"><a href="reference-promise-types.html#comment" title="Promise Types and Attributes - comment">comment</a></h4><h4 id="depends_on"><a href="reference-promise-types.html#depends_on" title="Promise Types and Attributes - depends_on">depends_on</a></h4><h4 id="handle"><a href="reference-promise-types.html#handle" title="Promise Types and Attributes - handle">handle</a></h4><h4 id="ifvarclass"><a href="reference-promise-types.html#ifvarclass" title="Promise Types and Attributes - ifvarclass">ifvarclass</a></h4><h4 id="meta"><a href="reference-promise-types.html#meta" title="Promise Types and Attributes - meta">meta</a></h4><h4 id="with"><a href="reference-promise-types.html#with" title="Promise Types and Attributes - with">with</a></h4>
+<hr>
+<h3 id="environment_host">environment_host</h3>
+<p><strong>Description:</strong> <code>environment_host</code> is a class indicating which
+physical node will execute this guest machine</p>
+
+<p>The promise will only apply to the machine with this class set. Thus,
+CFEngine must be running locally on the hypervisor for the promise to
+take effect.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_]+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">guest_environments</span><span class="p">:</span>
+
+ <span class="nc">linux</span><span class="p">::</span>
+
+ <span class="s">&quot;host1&quot;</span>
+                 <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Keep this vm suspended&quot;</span><span class="p">,</span>
+   <span class="kr">environment_resources</span> <span class="o">=&gt;</span> <span class="nf">myresources</span><span class="p">,</span>
+        <span class="kr">environment_type</span> <span class="o">=&gt;</span> <span class="s">&quot;kvm&quot;</span><span class="p">,</span>
+       <span class="kr">environment_state</span> <span class="o">=&gt;</span> <span class="s">&quot;suspended&quot;</span><span class="p">,</span>
+        <span class="kr">environment_host</span> <span class="o">=&gt;</span> <span class="s">&quot;ubuntu&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>This attribute is required.</p>
+
+<p><strong>History:</strong> this feature was introduced in Nova 2.0.0 (2010), Community
+3.3.0 (2012)</p>
+<h3 id="environment_interface">environment_interface</h3>
+<p><strong>Type:</strong> <code>body environment_interface</code></p>
+
+<p><strong>See also:</strong> <a href="reference-promise-types.html#common-body-attributes" title="Promise Types and Attributes - Common Body Attributes">Common Body Attributes</a></p>
+<h4 id="env_addresses">env_addresses</h4>
+<p><strong>Description:</strong> <code>env_addresses</code> is the IP addresses of the environment&#39;s
+network interfaces</p>
+
+<p>The IP addresses of the virtual machine can be overridden here at run
+time.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">environment_interface</span> <span class="nf">vnet</span><span class="p">(</span><span class="nv">primary</span><span class="p">)</span>
+     <span class="p">{</span>
+     <span class="kr">env_name</span>      <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(this.promiser)</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="kr">env_addresses</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(primary)</span><span class="s">&quot;</span> <span class="p">};</span>
+
+     <span class="nc">host1</span><span class="p">::</span>
+
+       <span class="kr">env_network</span> <span class="o">=&gt;</span> <span class="s">&quot;default_vnet1&quot;</span><span class="p">;</span>
+
+     <span class="nc">host2</span><span class="p">::</span>
+
+       <span class="kr">env_network</span> <span class="o">=&gt;</span> <span class="s">&quot;default_vnet2&quot;</span><span class="p">;</span>
+
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="env_name">env_name</h4>
+<p><strong>Description:</strong> <code>env_name</code> is the hostname of the virtual environment.</p>
+
+<p>The &#39;hostname&#39; of a virtual guest may or may not be the same as the
+identifier used as &#39;promiser&#39; by the virtualization manager.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">environment_interface</span> <span class="nf">vnet</span><span class="p">(</span><span class="nv">primary</span><span class="p">)</span>
+     <span class="p">{</span>
+     <span class="kr">env_name</span>      <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(this.promiser)</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="kr">env_addresses</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(primary)</span><span class="s">&quot;</span> <span class="p">};</span>
+
+     <span class="nc">host1</span><span class="p">::</span>
+       <span class="kr">env_network</span> <span class="o">=&gt;</span> <span class="s">&quot;default_vnet1&quot;</span><span class="p">;</span>
+
+     <span class="nc">host2</span><span class="p">::</span>
+       <span class="kr">env_network</span> <span class="o">=&gt;</span> <span class="s">&quot;default_vnet2&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="env_network">env_network</h4>
+<p><strong>Description:</strong> The hostname of the virtual network</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">environment_interface</span> <span class="nf">vnet</span><span class="p">(</span><span class="nv">primary</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="kr">env_name</span>      <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(this.promiser)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="kr">env_addresses</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(primary)</span><span class="s">&quot;</span> <span class="p">};</span>
+
+    <span class="nc">host1</span><span class="p">::</span>
+      <span class="kr">env_network</span> <span class="o">=&gt;</span> <span class="s">&quot;default_vnet1&quot;</span><span class="p">;</span>
+
+    <span class="nc">host2</span><span class="p">::</span>
+      <span class="kr">env_network</span> <span class="o">=&gt;</span> <span class="s">&quot;default_vnet2&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="environment_resources">environment_resources</h3>
+<p><strong>Type:</strong> <code>body environment_resources</code></p>
+
+<p><strong>See also:</strong> <a href="reference-promise-types.html#common-body-attributes" title="Promise Types and Attributes - Common Body Attributes">Common Body Attributes</a></p>
+<h4 id="env_cpus">env_cpus</h4>
+<p><strong>Description:</strong> <code>env_cpus</code> represents the number of virtual CPUs
+in the environment.</p>
+
+<p>The maximum number of cores or processors in the physical environment
+will set a natural limit on this value.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">environment_resources</span> <span class="nf">my_environment</span>
+     <span class="p">{</span>
+     <span class="kr">env_cpus</span> <span class="o">=&gt;</span> <span class="s">&quot;2&quot;</span><span class="p">;</span>
+     <span class="kr">env_memory</span> <span class="o">=&gt;</span> <span class="s">&quot;512&quot;</span><span class="p">;</span> <span class="c"># in KB</span>
+     <span class="kr">env_disk</span> <span class="o">=&gt;</span> <span class="s">&quot;1024&quot;</span><span class="p">;</span>  <span class="c"># in MB</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>
+This attribute conflicts with <a href="reference-promise-types-guest_environments.html#env_spec" title="guest_environments - env_spec"><code>env_spec</code></a>.</p>
+<h4 id="env_memory">env_memory</h4>
+<p><strong>Description:</strong> <code>env_memory</code> represents the amount of primary storage
+(RAM) in the virtual environment (in KB).</p>
+
+<p>The maximum amount of memory in the physical environment will set a
+natural limit on this value.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">environment_resources</span> <span class="nf">my_environment</span>
+     <span class="p">{</span>
+     <span class="kr">env_cpus</span> <span class="o">=&gt;</span> <span class="s">&quot;2&quot;</span><span class="p">;</span>
+     <span class="kr">env_memory</span> <span class="o">=&gt;</span> <span class="s">&quot;512&quot;</span><span class="p">;</span> <span class="c"># in KB</span>
+     <span class="kr">env_disk</span> <span class="o">=&gt;</span> <span class="s">&quot;1024&quot;</span><span class="p">;</span>  <span class="c"># in MB</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>
+This attribute conflicts with <a href="reference-promise-types-guest_environments.html#env_spec" title="guest_environments - env_spec"><code>env_spec</code></a>.</p>
+<h4 id="env_disk">env_disk</h4>
+<p><strong>Description:</strong> <code>env_disk</code> represents the amount of secondary storage
+(DISK) in the virtual environment (in KB).</p>
+
+<p>This parameter is currently unsupported, for future extension.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">environment_resources</span> <span class="nf">my_environment</span>
+     <span class="p">{</span>
+     <span class="kr">env_cpus</span> <span class="o">=&gt;</span> <span class="s">&quot;2&quot;</span><span class="p">;</span>
+     <span class="kr">env_memory</span> <span class="o">=&gt;</span> <span class="s">&quot;512&quot;</span><span class="p">;</span> <span class="c"># in KB</span>
+     <span class="kr">env_disk</span> <span class="o">=&gt;</span> <span class="s">&quot;1024&quot;</span><span class="p">;</span>  <span class="c"># in MB</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>
+This parameter is currently unsupported, for future extension.</p>
+
+<p>This attribute conflicts with <a href="reference-promise-types-guest_environments.html#env_spec" title="guest_environments - env_spec"><code>env_spec</code></a>.</p>
+<h4 id="env_baseline">env_baseline</h4>
+<p><strong>Description:</strong> The <code>env_baseline</code> string represents a path to an
+image with which to baseline the virtual environment.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>&quot;?(/.*)</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="kr">env_baseline</span> <span class="o">=&gt;</span> <span class="s">&quot;/path/to/image&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>
+This function is for future development.</p>
+<h4 id="env_spec">env_spec</h4>
+<p><strong>Description:</strong> A <code>env_spec</code> string contains a technology specific
+set of promises for the virtual instance.</p>
+
+<p>This is the preferred way to specify the resources of an environment on
+creation; in other words, when <a href="reference-promise-types-guest_environments.html#environment_state" title="guest_environments - environment_state"><code>environment_state</code></a> is create.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">environment_resources</span> <span class="nf">virt_xml</span><span class="p">(</span><span class="nv">host</span><span class="p">)</span>
+     <span class="p">{</span>
+     <span class="kr">env_spec</span> <span class="o">=&gt;</span>
+
+     <span class="s">&quot;&lt;domain type=&#39;xen&#39;&gt;</span>
+<span class="s">       &lt;name&gt;</span><span class="si">$(host)</span><span class="s">/name&gt;</span>
+<span class="s">       &lt;os&gt;</span>
+<span class="s">         &lt;type&gt;linux/type&gt;</span>
+<span class="s">         &lt;kernel&gt;/var/lib/xen/install/vmlinuz-ubuntu10.4-x86_64/kernel&gt;</span>
+<span class="s">         &lt;initrd&gt;/var/lib/xen/install/initrd-vmlinuz-ubuntu10.4-x86_64/initrd&gt;</span>
+<span class="s">         &lt;cmdline&gt; kickstart=http://example.com/myguest.ks /cmdline&gt;</span>
+<span class="s">       &lt;/os&gt;</span>
+<span class="s">       &lt;memory&gt;131072/memory&gt;</span>
+<span class="s">       &lt;vcpu&gt;1/vcpu&gt;</span>
+<span class="s">       &lt;devices&gt;</span>
+<span class="s">         &lt;disk type=&#39;file&#39;&gt;</span>
+<span class="s">           &lt;source file=&#39;/var/lib/xen/images/</span><span class="si">$(host)</span><span class="s">.img&#39;/&gt;</span>
+<span class="s">           &lt;target dev=&#39;sda1&#39;/&gt;</span>
+<span class="s">         &lt;/disk&gt;</span>
+<span class="s">         &lt;interface type=&#39;bridge&#39;&gt;</span>
+<span class="s">           &lt;source bridge=&#39;xenbr0&#39;/&gt;</span>
+<span class="s">           &lt;mac address=&#39;aa:00:00:00:00:11&#39;/&gt;</span>
+<span class="s">           &lt;script path=&#39;/etc/xen/scripts/vif-bridge&#39;/&gt;</span>
+<span class="s">         &lt;/interface&gt;</span>
+<span class="s">         &lt;graphics type=&#39;vnc&#39; port=&#39;-1&#39;/&gt;</span>
+<span class="s">         &lt;console tty=&#39;/dev/pts/5&#39;/&gt;</span>
+<span class="s">       &lt;/devices&gt;</span>
+<span class="s">     &lt;/domain&gt;</span>
+<span class="s">     &quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>This attribute conflicts with <a href="reference-promise-types-guest_environments.html#env_cpus" title="guest_environments - env_cpus"><code>env_cpus</code></a>, <a href="reference-promise-types-guest_environments.html#env_memory" title="guest_environments - env_memory"><code>env_memory</code></a> and <a href="reference-promise-types-guest_environments.html#env_disk" title="guest_environments - env_disk"><code>env_disk</code></a>.</p>
+
+<p><strong>History:</strong> Was introduced in version 3.1.0b1,Nova 2.0.0b1 (2010)</p>
+<h3 id="environment_state">environment_state</h3>
+<p><strong>Description:</strong> The <code>environment_state</code> defines the desired dynamic state
+ of the specified environment.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+
+<ul>
+<li><a href="reference-promise-types-files.html#create" title="files - create"><code>create</code></a></li>
+</ul>
+
+<p>The guest machine is allocated, installed and left in a running state.</p>
+
+<ul>
+<li><a href="reference-promise-types-files.html#delete" title="files - delete"><code>delete</code></a></li>
+</ul>
+
+<p>The guest machine is shut down and deallocated, but no files are removed.</p>
+
+<ul>
+<li><code>running</code></li>
+</ul>
+
+<p>The guest machine is in a running state, if it previously exists.</p>
+
+<ul>
+<li><code>suspended</code></li>
+</ul>
+
+<p>The guest exists in a suspended state or a shutdown state. If the guest
+is running, it is suspended; otherwise it is ignored.</p>
+
+<ul>
+<li><code>down</code></li>
+</ul>
+
+<p>The guest machine is shut down, but not deallocated.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">guest_environments</span><span class="p">:</span>
+
+ <span class="nc">linux</span><span class="p">::</span>
+
+ <span class="s">&quot;bishwa-kvm1&quot;</span>
+                 <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Keep this vm suspended&quot;</span><span class="p">,</span>
+   <span class="kr">environment_resources</span> <span class="o">=&gt;</span> <span class="nf">myresources</span><span class="p">,</span>
+        <span class="kr">environment_type</span> <span class="o">=&gt;</span> <span class="s">&quot;kvm&quot;</span><span class="p">,</span>
+       <span class="kr">environment_state</span> <span class="o">=&gt;</span> <span class="s">&quot;suspended&quot;</span><span class="p">,</span>
+        <span class="kr">environment_host</span> <span class="o">=&gt;</span> <span class="s">&quot;ubuntu&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="environment_type">environment_type</h3>
+<p><strong>Description:</strong> <code>environment_type</code> defines the virtual environment type.</p>
+
+<p>The currently supported types are those supported by <em>libvirt</em>. More
+will be added in the future.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">    xen
+    kvm
+    esx
+    vbox
+    test
+    xen_net
+    kvm_net
+    esx_net
+    test_net
+    zone
+    ec2
+    eucalyptus
+</code></pre>
+</div>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">my_vm_cloud</span>
+<span class="p">{</span>
+<span class="kd">guest_environments</span><span class="p">:</span>
+
+ <span class="nc">scope</span><span class="p">::</span>
+
+   <span class="s">&quot;vguest1&quot;</span>
+
+       <span class="kr">environment_resources</span> <span class="o">=&gt;</span> <span class="nf">my_environment_template</span><span class="p">,</span>
+       <span class="kr">environment_interface</span> <span class="o">=&gt;</span> <span class="nf">vnet</span><span class="p">(</span><span class="s">&quot;eth0,192.168.1.100/24&quot;</span><span class="p">),</span>
+       <span class="kr">environment_type</span>      <span class="o">=&gt;</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
+       <span class="kr">environment_state</span>     <span class="o">=&gt;</span> <span class="s">&quot;create&quot;</span><span class="p">,</span>
+       <span class="kr">environment_host</span>      <span class="o">=&gt;</span> <span class="s">&quot;atlas&quot;</span><span class="p">;</span>
+
+   <span class="s">&quot;vguest2&quot;</span>
+
+       <span class="kr">environment_resources</span> <span class="o">=&gt;</span> <span class="nf">my_environment_template</span><span class="p">,</span>
+       <span class="kr">environment_interface</span> <span class="o">=&gt;</span> <span class="nf">vnet</span><span class="p">(</span><span class="s">&quot;eth0,192.168.1.101/24&quot;</span><span class="p">),</span>
+       <span class="kr">environment_type</span>      <span class="o">=&gt;</span> <span class="s">&quot;test&quot;</span><span class="p">,</span>
+       <span class="kr">environment_state</span>     <span class="o">=&gt;</span> <span class="s">&quot;delete&quot;</span><span class="p">,</span>
+       <span class="kr">environment_host</span>      <span class="o">=&gt;</span> <span class="s">&quot;atlas&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-bundle-agent.html">bundle agent</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-guest_environments.html">guest_environments</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-promises.html">promises</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-promise-types.html">promise types</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-virtual-machines.html">virtual machines</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-agent.html">agent</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-promises.html">promises</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-libvirt.html">libvirt</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-kvm.html">kvm</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-vmware.html">vmware</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-deprecated.html">deprecated</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 27 October 2021
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/promise-types/guest_environments.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/3d161b229c7df44b99d8cd6c71640ab53c94fcbd" target="_blank">3d161b229c7df44b99d8cd6c71640ab53c94fcbd</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.12/assets/footer-135fa20640bb1a2bbe772d22c46414cb.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

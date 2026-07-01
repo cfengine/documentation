@@ -1,0 +1,34 @@
+Latest jekyll run :2014-06-27_22-48-27
+Based on latest git commit :
+*********************************************************
+*                  CONSOLE OUTPUT                       *
+*********************************************************
+Started by upstream project "documentation35" build number 229
+originally caused by:
+ Started by upstream project "bootstrap-documentation-3.5.x" build number 166
+ originally caused by:
+  Started by an SCM change
+[EnvInject] - Loading node environment variables.
+Building remotely on documentation_slave in workspace /home/vagrant/workspace/documentation35/label/DOCS
+
+Deleting project workspace... done
+
+Restoring workspace from build #166 of project bootstrap-documentation-3.5.x
+[DOCS] $ /bin/sh -xe /tmp/hudson846105699601542337.sh
++ pwd
++ export WRKDIR=/home/vagrant/workspace/documentation35/label/DOCS
++ ./documentation-generator/_scripts/_run_jekyll.sh
+Configuration from /home/vagrant/workspace/documentation35/label/DOCS/documentation-generator/_config.yml
+Configuration from /home/vagrant/workspace/documentation35/label/DOCS/documentation-generator/_config.yml
+Building site: /home/vagrant/workspace/documentation35/label/DOCS/documentation-generator -> /home/vagrant/workspace/documentation35/label/DOCS/documentation-generator/_site
+Asset Pipeline: Processing 'css_asset_tag' manifest 'global'
+Asset Pipeline: Saved 'global-30d1cad5ede40d8c9460d465a5fc7bf6.css' to '/home/vagrant/workspace/documentation35/label/DOCS/documentation-generator/_site/assets'
+Asset Pipeline: Processing 'javascript_asset_tag' manifest 'global'
+Asset Pipeline: Saved 'global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' to '/home/vagrant/workspace/documentation35/label/DOCS/documentation-generator/_site/assets'
+Asset Pipeline: Processing 'javascript_asset_tag' manifest 'footer'
+Asset Pipeline: Saved 'footer-bb36803951ffa0e2920e5bf30189fc19.js' to '/home/vagrant/workspace/documentation35/label/DOCS/documentation-generator/_site/assets'
+Successfully generated site: /home/vagrant/workspace/documentation35/label/DOCS/documentation-generator -> /home/vagrant/workspace/documentation35/label/DOCS/documentation-generator/_site
+cfdoc_environment: cwd              = /home/vagrant/workspace/documentation35/label/DOCS/documentation-generator
+                   config           = 
+{'markdown': 'redcarpet2', 'paginate': '500', 'pygments': 'true', 'example_directories': ['/home/vagrant/workspace/documentation35/label/DOCS/core/examples', '/home/vagrant/workspace/documentation35/label/DOCS/core/masterfiles/libraries'], 'plugins': './_plugins/', 'CFE_DIR': '_site', 'CFE_OUTPUT': 'true', 'config_path': '/home/vagrant/workspace/documentation35/label/DOCS/documentation-generator/_config.yml', 'git-revision': '"b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2"', 'markdown_directory': '/home/vagrant/workspace/documentation35/label/DOCS/documentation', 'extensions': '["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "superscript", "tables"]', 'reference_path': '/home/vagrant/workspace/documentation35/label/DOCS/documentation-generator/_references.md', 'project_directory': '/home/vagrant/workspace/documentation35/label/DOCS/documentation-generator', 'safe': 'false', 'compress': 'true', 'baseurl': '/docs/3.5/', 'bundle': 'true', 'git-branch': '"3.5"', 'display_path': 'docs/3.5/assets', 'WORKDIR': '/home/vagrant/workspace/documentation35/label/DOCS', 'git-repository': 'github.com/cfengine/documentation', 'output_path': 'assets', 'CFE_manuals_version': '3.5', 'gzip': 'false'}
+Performing Post build task...

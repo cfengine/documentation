@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.8  Documentation - Tags for variables, classes, and bundles</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.8/assets/global-8212aa494575341d9a306dae12291eb2.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Tags for variables, classes, and bundles";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       	<option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       	<option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                  <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       	<option value="/docs/3.8/index.html" selected>Version 3.8 (EOL)</option>
+                       	<option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+			                  <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       	<option value="/docs/archive/">Version 3.0 (archive)</option>
+                        <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:v5wte9vybsa" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a></li><li><a href="examples-tutorials.html">Tutorials</a><ul class="level2"><li><a href="examples-tutorials-json-yaml-support-in-cfengine.html">JSON and YAML Support in CFEngine</a></li><li><a href="examples-tutorials-report_inventory_remediate_sec_vulnerabilities.html">Reporting and Remediation of Security Vulnerabilities</a></li><li><a href="examples-tutorials-distribute-files-from-a-central-location.html">Distribute files from a central location</a></li><li><a href="examples-tutorials-files-tutorial.html">Create, Modify, and Delete Files</a></li><li><a class="active" href="examples-tutorials-tags.html">Tags for variables, classes, and bundles</a></li><li><a href="examples-tutorials-custom_inventory.html">Custom Inventory</a></li><li><a href="examples-tutorials-deploy_sketch.html">Configure and Deploy a Policy Using Sketches</a></li><li><a href="examples-tutorials-file_comparison.html">File Comparison</a></li></ul></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-tutorials.html">Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Tags for variables, classes, and bundles
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h2 id="introduction">Introduction</h2>
+<p>CFEngine 3.6.0 makes great use of the <a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a> attribute to set tags
+on variables and classes. While that attribute was always in the
+language, only in 3.6.0 is it fully utilized</p>
+
+<p>Furthermore, bundles can now be tagged and found by tag, so you can
+construct a fully dynamic bundle sequence.</p>
+<h2 id="problem-statement">Problem statement</h2>
+<p>We&#39;d like to apply tags to variables and classes for many purposes,
+from stating their provenance (whence they came, why they exist, and
+how they can be used) to filtering them based on tags.</p>
+
+<p>We&#39;d also like to be able to include all the files in a directory and
+then run all the discovered bundles if they are tagged appropriately.</p>
+<h2 id="syntax">Syntax</h2>
+<p>Tagging variables and classes is easy with the <a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a> attribute.
+Here&#39;s an example that sets the <code>inventory</code> tag on a variable and
+names the attribute that it represents. This one is actually built
+into the standard 3.6.0 inventory policy under
+<code>masterfiles/inventory/any.cf</code>, so you have it available out
+of the box in either Community or Enterprise.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">cfe_autorun_inventory_listening_ports</span>
+<span class="c"># @brief Inventory the listening ports</span>
+<span class="c">#</span>
+<span class="c"># This bundle uses `mon.listening_ports` and is always enabled by</span>
+<span class="c"># default, as it runs instantly and has no side effects.</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">ports</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(mon.listening_ports)</span> <span class="p">},</span>
+      <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;inventory&quot;</span><span class="p">,</span> <span class="s">&quot;attribute_name=Ports listening&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In the Enterprise Mission Portal, you can then make a report for
+&quot;Ports listening&quot; across all your machines. For more details, see
+<a href="https://cfengine.com/docs/master/guide-enterprise-cfengine-guide-mission-portal-reporting.html">https://cfengine.com/docs/master/guide-enterprise-cfengine-guide-mission-portal-reporting.html</a></p>
+
+<p>Class tags work exactly the same way, you just apply them to a
+<a href="reference-promise-types-classes.html" title="classes"><code>classes</code></a> promise with the <a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a> attribute.</p>
+
+<p>Tagging bundles is different because you have to use the <a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>
+promise type (different from the <a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a> attribute).</p>
+
+<p>An example is easiest:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">run_deprecated</span>
+<span class="p">{</span>
+  <span class="kd">meta</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">tags</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;deprecated&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This declares an agent bundle with a single tag.</p>
+<h2 id="functions">Functions</h2>
+<p>Several new functions exist to give you access to variable and class
+tags, and to find classes and variables with tags.</p>
+
+<ul>
+<li><p><code>classesmatching</code>: this used to be somewhat available with the
+<code>allclasses.txt</code> file. You can now call a function to get all the
+defined classes, optionally filtering by name and tags. See
+<a href="https://cfengine.com/docs/master/reference-functions-classesmatching.html">https://cfengine.com/docs/master/reference-functions-classesmatching.html</a></p></li>
+<li><p><code>getvariablemetatags</code>: get the tags of a variable as an slist. See
+<a href="https://cfengine.com/docs/master/reference-functions-getvariablemetatags.html">https://cfengine.com/docs/master/reference-functions-getvariablemetatags.html</a></p></li>
+<li><p><code>variablesmatching</code>: just like <code>classesmatching</code> but for variables.
+See <a href="https://cfengine.com/docs/master/reference-functions-variablesmatching.html">https://cfengine.com/docs/master/reference-functions-variablesmatching.html</a></p></li>
+<li><p><code>getclassmetatags</code>: get the tags of a class as an slist. See
+<a href="https://cfengine.com/docs/master/reference-functions-getclassmetatags.html">https://cfengine.com/docs/master/reference-functions-getclassmetatags.html</a></p></li>
+</ul>
+
+<p>There is also a new function to find bundles.</p>
+
+<ul>
+<li><code>bundlesmatching</code>: find the bundles matching some tags. See
+<a href="https://cfengine.com/docs/master/reference-functions-bundlesmatching.html">https://cfengine.com/docs/master/reference-functions-bundlesmatching.html</a>
+(the example shows how you&#39;d find a <code>deprecated</code> bundle like
+<code>run_deprecated</code> earlier).</li>
+</ul>
+<h2 id="module-protocol">Module protocol</h2>
+<p>The module protocol has been extended to support tags. You set the
+tags on a line and they persist for every subsequent variable or
+class.</p>
+<div class="highlight"><pre><code class="text">^meta=inventory
++x
+=a=100
+^meta=report,attribute_name=My vars
++y
+=n=100
+</code></pre>
+</div>
+
+<p>This will create class <code>x</code> and variable <code>a</code> with tag <code>inventory</code>.</p>
+
+<p>Then it will create class <code>y</code> and variable <code>b</code> with tags <code>report</code> and
+<code>attribute_name=My vars</code>.</p>
+<h2 id="enterprise-reporting-with-tags">Enterprise Reporting with tags</h2>
+<p>In CFEngine Enterprise 3.6.0, you can build reports based on tagged variables
+and classes.</p>
+
+<p>Please see
+<a href="https://cfengine.com/docs/master/guide-enterprise-cfengine-guide-mission-portal-reporting.html">https://cfengine.com/docs/master/guide-enterprise-cfengine-guide-mission-portal-reporting.html</a>
+for a full tutorial, including troubleshooting possible errors. In
+short, this is extremely easy as long as you:</p>
+
+<ul>
+<li><p>allow classes and variables with the <code>inventory</code> and <code>report</code> tags
+to be reported in <code>controls/cf_serverd.cf</code>. This is already the case
+if you install the stock CFEngine 3.6.0 packages.</p></li>
+<li><p>ensure there are no report collection issues due to firewalls (TCP
+port 5308 must be open from the hub to the agents, for instance)</p></li>
+</ul>
+<h2 id="dynamic-bundlesequence">Dynamic bundlesequence</h2>
+<p>Dynamic bundlesequences are extremely easy.  You simply say</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">vars</span><span class="p">:</span>
+  <span class="p">&quot;</span><span class="nv">bundles</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">bundlesmatching</span><span class="p">(</span><span class="s">&quot;regex&quot;</span><span class="p">,</span> <span class="s">&quot;tag1&quot;</span><span class="p">,</span> <span class="s">&quot;tag2&quot;</span><span class="p">,</span> <span class="err">...</span><span class="p">);</span>
+
+<span class="kd">methods</span><span class="p">:</span>
+  <span class="s">&quot;run </span><span class="si">$(bundles)</span><span class="s">&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="err">$</span><span class="p">(</span><span class="nf">bundles</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Then every bundle matching the regular expression <code>regex</code> and <strong>all</strong>
+the tags will be found and run.</p>
+
+<p>Note that the discovered bundle names will have the namespace prefix,
+e.g. <code>default:mybundle</code>. The regular expression has to match that. So
+<code>mybundle</code> as the regular expression would not work. See
+<a href="https://cfengine.com/docs/master/reference-functions-bundlesmatching.html">https://cfengine.com/docs/master/reference-functions-bundlesmatching.html</a>
+for another detailed example.</p>
+
+<p>In fact we found this so useful we implemented
+<a href="guide-writing-and-serving-policy-policy-framework.html#services_autorun-bundle" title="The Policy Framework - services_autorun (bundle)">services autorun</a> in the
+<a href="guide-writing-and-serving-policy-policy-framework.html" title="The Policy Framework">masterfiles policy framework</a>.</p>
+
+<p>There is only one thing to beware. All the bundles have to have the
+same number of arguments (0 in the case shown). Otherwise you will get
+a runtime error and CFEngine will abort. We recommend only using
+0-argument bundles in a dynamic sequence to reduce this risk.</p>
+<h2 id="summary">Summary</h2>
+<p>Tagging variables and classes and bundles in CFEngine 3.6.0 is easy
+and allows more dynamic behavior than ever before. Try it out and see
+for yourself how it will change the way you use and think about
+system configuration policy and CFEngine.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-tags.html">tags</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-meta.html">meta</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/examples/tutorials/tags.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/5b2bc459512b94c59b897836ae3071bcd5f777f6" target="_blank">5b2bc459512b94c59b897836ae3071bcd5f777f6</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.8/assets/footer-08442c0761064b6ca280223e9ebacccc.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

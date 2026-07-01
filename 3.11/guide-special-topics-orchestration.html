@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.11  Documentation - Orchestration</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.11/assets/global-c9fa8b1b7e63e1fde6776a47cdcd90c6.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Orchestration";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                        <option value="/docs/3.12/index.html">Version 3.12 (LTS)</option>
+                        <option value="/docs/master/index.html" selected>Version 3.11 (non-LTS)</option>
+                        <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                        <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+                        <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                        <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                        <option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+                        <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                        <option value="/docs/archive/">Version 3.0 (archive)</option>
+                        <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:2riuky-1ece" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-design-center.html">Design Center Overview</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a><ul class="level2"><li><a href="guide-special-topics-adopting-cfengine.html">Adopting CFEngine</a></li><li><a href="guide-special-topics-agility.html">Agility</a></li><li><a href="guide-special-topics-application-management.html">Application Management</a></li><li><a href="guide-special-topics-build-deploy-manage-audit.html">Build Deploy Manage Audit</a></li><li><a href="guide-special-topics-change-management.html">Change Management</a></li><li><a href="guide-special-topics-cloud-computing.html">Cloud Computing</a></li><li><a href="guide-special-topics-content-driven-policy.html">Content Driven Policy</a></li><li><a href="guide-special-topics-devops.html">Devops</a></li><li><a href="guide-special-topics-distributed-scheduling.html">Distributed Scheduling</a></li><li><a href="guide-special-topics-file-content.html">File Content</a></li><li><a href="guide-special-topics-glossary.html">Glossary</a></li><li><a href="guide-special-topics-hierarchies.html">Hierarchies</a></li><li><a href="guide-special-topics-itil.html">ITIL</a></li><li><a href="guide-special-topics-iteration.html">Iteration (Loops)</a></li><li><a href="guide-special-topics-modularity.html">Modularity and Orchestrating System Policy</a></li><li><a class="active" href="guide-special-topics-orchestration.html">Orchestration</a></li><li><a href="guide-special-topics-stigs.html">STIGs</a></li><li><a href="guide-special-topics-teamwork.html">Teamwork</a></li><li><a href="guide-special-topics-open-nebula.html">Using CFEngine with Open Nebula</a></li></ul></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-special-topics.html">Special Topics</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Orchestration
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h1 id="what-is-organizational-complexity">What is organizational complexity?</h1>
+<p>Complexity is a measure of the amount of information needed to explain
+something. It implies a `mental cost&#39; (and therefore a time and monetary cost)
+to comprehend a pattern of structure and behaviour.</p>
+
+<p>The term organization has two distinct meanings in English: it can be intended
+as a euphemism for an institution or a business, and it can be intended to mean
+an ordered structural pattern (i.e. the state of being organized). To avoid
+confusion, we shall refer to businesses and public institutions as enterprises,
+and use the term organization to mean an architectural pattern with a certain
+level of complexity.</p>
+
+<p>Organizational Complexity is therefore the amount of information, and hence
+cost, needed to manage an enterprise or system. In information science, the
+complexity of a system is commonly defined as the length of the shortest
+document that fully describes it. A complex system requires a long document to
+capture its workings; a simple system requires only a short document.</p>
+<h1 id="what-is-federation">What is federation?</h1>
+<p>A federation is a pattern of organization obtained by merging a number of
+initially independent parts. The implication is that the resulting organization
+is not a singular rigid unit, but rather a more loosely coupled collective of
+autonomous parts.</p>
+
+<p>Federation is a natural structure for any enterprise that has parts with
+fundamentally different functions or orgins. It can also be a stepping stone on
+the way from a set of independent actors to a state of unified integration.</p>
+
+<p>Companies that merge or acquire other companies, as well as companies that
+reorganize to outsource tasks are natural candidates for federated management.</p>
+
+<p>Promise theory predicts that a federated organization is naturallyservice
+oriented, with two main architectures:</p>
+
+<ul>
+<li><p>The different parts of the collective bind together by promising each other
+services.</p></li>
+<li><p>The parts offer services to external parties, but are bound together by
+promising to coordinate with a central entity.</p></li>
+<li><p>Coordination, hierarchy and centralization</p></li>
+</ul>
+
+<p>Federated parts of an enterprise are said to be coordinated by an entity, if
+they receive common information from it. Merely delivering services (i.e.
+keeping promises) to a common entity does not lead to coordination. Think of an
+orchestra. The conductor does not bring about any coordination simply by
+listening, but rather by providing common signals to the federated agents. On
+the other hand, the conductor is a bottleneck who throttles the productivity of
+the federated agents. If the agents rely too much on the conductor, or are
+discouraged from acting independently, the amplification of effort is lost.</p>
+
+<p><img src="./coordination.png" alt="Coordination implies common knowledge"></p>
+
+<p>The need for coordination is often exaggerated in human organizations – it comes
+from an unrealistic desire to absolutely determine the outcome of decisions.
+Realistically, it is only a means to bring consistency to distributed parts.</p>
+
+<p>In ITIL and current IT parlance, a central hub containing coordination
+information is called a Configuration Management Database (CMDB). The term CMDB
+refers to a range of quite different approaches to coordinating information that
+will not be discussed here. In Object Orientation, the term inheritance is used
+to signify the use of common information by federated parts.</p>
+
+<p>It is possible for federated parts to inherit coordinating information from more
+than one source, just as it is possible for someone to have two different jobs.
+In that case, one must be careful to avoid conflicting directions. As
+organizational complexity grows, the possibility of conflicting direction and
+expectation also grows unless strict principles are adhered to.</p>
+
+<p>Promise Theory tells us that such conflicts can only be resolved by a party
+receiving information, not by the parties sending it. This leads to the model
+known as `voluntary cooperation&#39; used by CFEngine, which implies that each
+federated part must effectively choose which inputs it is willing to use from
+external parties.</p>
+<h1 id="the-authority-paradox">The Authority Paradox</h1>
+<p>For some, the idea that an organization should be built on voluntary cooperation
+sounds wrong. However, no matter how much we might crave certainty of outcome,
+making demands on the compliance of federated parts does nothing to improve that
+certainty; indeed, it can have the reverse effect. The confusion lies in a
+misunderstanding of desired authority over the actual power to change, i.e. in
+what is intended or desired and what is actually possible. Promise Theory
+resolves this confusion by building a model based directly on the agents that
+can effect change.</p>
+
+<p>Authority is about who, in an enterprise, may decide what is intended. Most
+people perceive authority through hierarchies or `chains of command&#39; in which
+the top of the hierarchical pyramid is the master, and the layers below must
+follow: those at the top are more powerful than those on the bottom. This is a
+cultural prejudice. However this perception is, at best misleading, and in fact
+is incorrect.</p>
+
+<p>Humans have been organizing things into hierarchies for most of recorded
+history. We have a deeply held notion that favours hierarchies as an
+organizational form. It is worth examining why. In early times the upper
+echelons of hierarchy were the strong and the educated, served by a relatively
+unspecialised workforce. They wielded their power by guile and by violent force,
+and the lower layers cowered in fear. From Kings and leaders to middle managers
+and class-system underdogs, institutions and government, documents and tables of
+contents, everywhere we look we see hierarchical structures.</p>
+
+<p><img src="./authority-paradox.png" alt="The authority paradox"></p>
+
+<p>Today, education and peaceful society turns the reality of the power hierarchy
+upside down: the true specialists are at the bottom of the hierarchy, closer to
+the levers and the expertise to effect change. Today <code>low level&#39; means more
+specialised, not less educated. Low level experts are held together by
+relatively unspecialised</code>managers&#39; who serve mainly as coordinators and
+communications links. However, the culture and perception of authority from the
+top remains today.</p>
+
+<p>These changes create a paradox in modern systems. The leadership of intent is
+assumed to come from above, but the real power to act is down below. This
+necessitates the binding together of organizations by a social contract of
+voluntary cooperation.</p>
+
+<p>The same is true in computer systems. Most system designs assume that the point
+of command will be placed at the top of an organizational tree, and that every
+part of the system (represented in the branches and leaves) will follow the
+commands made from the top. This turns out to be a poor model because, in
+reality, the top has neither the knowledge nor the proximity to enforce changes
+below.</p>
+
+<p>No central management of either enterprise or computers can force individual
+agents to comply with their wishes, without their low level consent. The
+perception of authority is thus only a fiction1.</p>
+<h1 id="the-social-contract">The social contract</h1>
+<p>Social contracts lie at the heart of all human and computer organizations. For
+computers these contracts may be as simple as `access control settings&#39;,
+nonetheless there are human politics behind them. Most enterprises struggle more
+with their internal sociology (or politics) than with their technological
+solutions.</p>
+
+<p>When an organization is formed by merging independent parts, this is especially
+important. The loss of identity and the feeling of loss of autonomy by these
+parts can fuel a breakdown of the social contract – i.e. a loss of loss of
+voluntary cooperation. In terms of system management, it therefore makes sense
+to preserve as much of the identity and autonomy of the parts as possible.</p>
+
+<p>From an information perspective, this is also the lowest cost solution. The
+expertise to run the merged entity already exists within it2, and the proximity
+to make change is automatic, so to increase the organizational distance between
+decision, expertise and change will at best lead to increased overhead and at
+worst lead to the disconnection of decision making from expertise.</p>
+
+<p>Low level autonomy is a cost saving strategy that reduces the overhead of
+management and improves the link between expertise and action.</p>
+<h1 id="service-oriented-federation">Service oriented federation</h1>
+<p>Service oriented means business oriented. Let us now consider what this means
+for IT configuration. In particular, how should a CFEngine configuration be
+structured for an efficient organization? In the examples below, we shall adopt
+a service oriented view, in which an enterprise is organized as a set of
+federated entities, some of whom depend on each other for services.</p>
+<h1 id="each-part-disconnected-providing-services">Each part disconnected, providing services</h1>
+<p>Each federated entity manages its own promises.cf file. Each has, in effect, its
+own independent CFEngine configuration.</p>
+
+<p>Independent configurations - complete autonomy</p>
+
+<p>The configuration may still use resources provided by other entities&#39; machines,
+but the other entities have no influence on the set of promises used to maintain
+any given one.</p>
+<h1 id="disconnected-parts-inheriting-a-single-baseline">Disconnected parts inheriting a single baseline</h1>
+<p>A more common model for federation is to have a baseline constitution for all
+the parts of the enterprise defined by an umbrella organization. We can refer to
+this as a `global infrastructure&#39; service.</p>
+
+<p>Traditionally (i.e. hierarchically) one would think of this global entity as
+being superior to the other entities, i.e. making them subordinate, but this is
+not necessary, nor correct according to the reality. The role of the global
+service is rather to provide a point of consistent coordination, or centralized
+expertise to the others. Compliance with the proposals of the global coordinator
+will be assured if it plays a valuable roles.</p>
+
+<p>Since the real power to change still lies in the hands of the federated
+entities, the global infrastructure unit must build a social contract with them
+to assure that its wishes are complied with. This goal is attended to by making
+the global entity a valued service for the federated entities. If the global
+service is perceived as being of no value, it will be ignored.</p>
+
+<p>The next step from full autonomy is thus to use methods that have been defined
+by an enterprise-wide global infrastructure service.</p>
+
+<p><img src="./fed2.png" alt="Independent configurations using a common baseline"></p>
+<div class="highlight"><pre><code class="cf3"><span class="c">#</span>
+<span class="c"># Federated promises.cf</span>
+<span class="c">#</span>
+
+ <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+ <span class="p">{</span>
+ <span class="kd">files</span><span class="p">:</span>
+
+   <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/inputs/baseline.cf&quot;</span>
+
+      <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">remote_cp</span><span class="p">(</span>
+                            <span class="s">&quot;/masterfiles/baseline.cf&quot;</span><span class="p">,</span>
+                            <span class="s">&quot;central_service.example.com&quot;</span>
+                            <span class="p">);</span>
+ <span class="kd">methods</span><span class="p">:</span>
+
+  <span class="c"># Inherit the baseline constitution</span>
+
+  <span class="s">&quot;baseline&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">company_baseline</span><span class="p">;</span>
+
+  <span class="c"># All other local promises here ....</span>
+ <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The CFEngine code snippet above represents the CFEngine configuration for any of
+the hosts in one of the federated departments. The configuration is extremely
+simple. It begins by downloading thebaseline.cfconfiguration, provided by the
+global infrastructure service, and then goes on to promise to use this as a
+`method&#39;. Finally, the major part of the configuration is the set of special
+promises determined by the department itself. Federation is thus technically
+trivial. The difficulties are rather conceptual and sociological.</p>
+
+<p>Let us remark on the likelihood for conflict. Although the source of the
+baseline is external, CFEngine configuration promises are always implemented by
+the federated departments themselves, none are (or can be) implemented by any
+external party such as the infrastructure service. Thus, it is the
+responsibility of federated departments to ensure that there are no conflicts
+between the baseline and their own promises. Moreover, as the parts have no
+power to change the baseline, but have agreed to follow it, the logical outcome
+must be that their own special promises must not conflict with the global
+infrastructure proposal. So all requirements are met without the need for
+central enforcement.</p>
+<h1 id="handling-multiple-sources">Handling multiple sources</h1>
+<p>Consider briefly the case in which there is more than one entity offering
+promise proposals. If a part of the federation serves two masters (see
+department 3 in the figure below), i.e. it promises to implement the wishes of
+two external sources, then those sources must either agree one hundred percent
+in their proposals, or they must not overlap at all. Since these `masters&#39; may
+or may not be coordinated, it is up to the federated entity (department 3) to
+make the decision about which of the sources to obey.</p>
+
+<p><img src="./fed3.png" alt="Multiple inheritance can lead to incorrect expectations"></p>
+
+<p>The possiblity of conflict is easily handled in this architecture, because it
+recognizes that the federated entity must be the final arbiter of confict.</p>
+<h1 id="global-assurance">Global assurance</h1>
+<p>The lack of a hierarchy has not made information chaotic and disorganized. It
+has only provided a simple means of scalability and conflict resolution.</p>
+
+<p>So what makes a federation different from a collection of completely independent
+enterprises? The answer to this question us usually some minimum set of common
+promises that all parts of the federation must keep: a baseline constitution.</p>
+
+<p>Now, since the real power lies in the leaves of the organizational tree, but the
+designated authority lies at the root, the root needs to monitor the behaviour
+of the federated entities to ensure that this baseline constition is being
+complied with. This can be handled by performing an audit of the whole
+federation according to a single standard3.</p>
+
+<p>CFEngine allows single-point-of-coodination monitoring of hosts by a variety of
+mechanisms, so that compliance can be assured.</p>
+<h1 id="merging-and-dividing-enterprises">Merging and dividing enterprises</h1>
+<p>Autonomy makes the merging and division of enterprise systems trivial. It is the
+way to enable out-sourcing and in-sourcing.</p>
+
+<p>Imagine trying to combine two cups of coffee. Now try combining two combine two
+buildings or houses of cards. Coffee mixes easily because it is not full of
+dependencies (bonds) between its parts. Buildings are not fluid: at best one can
+build bridges between them, and try to build something else around them and then
+take them apart. The same applies to any system, whether human, software or
+mechanical.</p>
+
+<p>To merge two systems or enterprises, it will be much simpler if they are fluid
+to begin with – i.e. they are basically composed of autonomous parts, loosely
+coupled, not rigidly joined together. Hierarchical organization is rigid, like a
+house of cards. Service-oriented systems are loosely coupled. By keeping the
+internal organization of systems as far as possible like independent service
+atoms, you facilitate reorganization by merging and division.</p>
+<h1 id="why-federation-does-not-reduce-predictabilty">Why federation does not reduce predictabilty</h1>
+<p>The fear that many traditionalists have of federated management is that they
+cannot be certain of the outcome unless they have absolute authority. This fear
+is misplaced however. Certainty of outcome does not depend on whether authority
+is federated or not: there are many reasons why outcomes fail to be realized,
+including misunderstandings, accidents, force majeur and simple disagreements.</p>
+
+<p>Certain knowledge can only be obtained by observing the results directly4, and
+repairing the system if promises have not been kept. Trying to enforce rules and
+command from above is an expensive and often ineffective way to manage systems,
+like swimming against the current. Trust in the federated system reduces the
+cost of verifying one&#39;s assumptions.</p>
+
+<p>Hierarchies are sometimes used for oversight. Just as a conductor takes care of
+the big picture for his orchestra, so managers in a hierarchy can use their
+position to coordinate the larger picture for their subordinates. However, like
+the orchestra, the manager should not think that he has a real influence on the
+outcome. As long as each player has the script and the instruments, the music
+can go on for quite some time without its conductor. The role of a manager is
+one of advice.</p>
+
+<p>Rules of thumb for scalable management:</p>
+
+<ul>
+<li><p>Use autonomy to scale: proximity to the affected area avoids unnecessary
+dependency and transport of materials. Trust costs less.</p></li>
+<li><p>If you need to enforce a common baseline (or constitution) for all, then
+arrange this as a service, not as a punitive force. Use local caching and the
+principal of convergence to a desired state (idempotence) to provide assurance
+without the cost of monitoring.</p></li>
+<li><p>Trust lowers costs.</p></li>
+</ul>
+<h1 id="the-benefits-of-federated-management">The benefits of federated management</h1>
+<p>Hierarchy is familiar, but not essential. A hierarchy is only a so-called
+`spanning tree&#39; for a more general network of relationships. It may be thought
+of as one possible point of view, amongst many – one way of traversing a network
+of relationships.</p>
+
+<p>A federated organization is automatically specialized into departments, each of
+which knows its requirements best.</p>
+
+<p>One could take an enterprise and divide it into skill-areas or departments, then
+divide each department into geopgraphical teams. Conversely, we could divide the
+enterprise by country first and subdivide each country into regions, then divide
+these into skills. There is no unique way to traverse the enterprise. In truth,
+it is not a hierarchy, but a network of relationships.</p>
+
+<p>If the federated teams or clusters in an enterprise have sufficient autonomy,
+both in resources and intended authority, then they don&#39;t need to communicate
+with or wait for other parts to do their jobs. Forcing that communication, due
+to lack of trust, will add overhead and increase costs, without improving the
+certainty of outcome.</p>
+
+<p>Promise Theory tells us that organization by autonomy automatically indentifies
+the parts of a system that can operate independently – i.e., the essential
+`atoms&#39; of the system. Thus, it is a method for identifying the raw material
+building blocks from which everything else can be built. Starting with these
+available raw materials, it encourages a rational approach to design of systems
+that are efficient and service oriented.</p>
+
+<p>Footnotes</p>
+
+<p>[1] Think of an orchestra. The real expertise lies in the players (below). The
+conductor (above) offers coordination and guidance, but has no real power to
+create music. Music is possible because each player has his/her own copy of the
+script, and can work autonomously, with only a little guidance.</p>
+
+<p>[2] At least we may assume this.</p>
+
+<p>[3] Think, once again, about the orchestra. The conductor observes the behaviour
+of each autonomous player to determine whether the orchestra is playing together
+and is playing the same piece of music.</p>
+
+<p>[4] This is why society needs a police force to monitor and respond to those who
+do not obey proposed law – whether they have promised to or not. This is the
+role of CFEngine.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-special-topics.html">special topics</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-guide.html">guide</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 21 May 2018
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/special-topics/orchestration.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/30c92a9bfe995194b9ead5ef2ff3a45a84cd5af8" target="_blank">30c92a9bfe995194b9ead5ef2ff3a45a84cd5af8</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.11/assets/footer-3d92ada135d5c86c6f2a89bc3a15252b.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

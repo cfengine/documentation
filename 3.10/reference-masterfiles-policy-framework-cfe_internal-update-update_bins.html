@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.10  Documentation - cfe_internal/update/update_bins.cf</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.10/assets/global-9291732ba4137970d6f84f199dc9b48d.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "cfe_internal/update/update_bins.cf";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/" selected>Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:v9zopcogc1m" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a><ul class="level2"><li><a href="reference-masterfiles-policy-framework-update.html">update.cf</a></li><li><a href="reference-masterfiles-policy-framework-promises.html">promises.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls.html">controls/</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_agent.html">controls/cf_agent.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_execd.html">controls/cf_execd.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf-hub.html">controls/cf_hub.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_monitord.html">controls/cf_monitord.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_runagent.html">controls/cf_runagent.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_serverd.html">controls/cf_serverd.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-def.html">controls/def.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-def_inputs.html">controls/def_inputs.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-reports.html">controls/reports.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-update_def.html">controls/update_def.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-update_def_inputs.html">controls/update_def_inputs.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal.html">cfe_internal/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-cfe_cfengine.html">cfe_internal/CFE_cfengine.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update.html">cfe_internal/update/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_dc_workflow.html">cfe_internal/update/cfe_internal_dc_workflow.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_local_git_remote.html">cfe_internal/update/cfe_internal_local_git_remote.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_update_from_repository.html">cfe_internal/update/cfe_internal_update_from_repository.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-lib.html">cfe_internal/update/lib.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-systemd_units.html">cfe_internal/update/systemd_units.cf</a></li><li><a class="active" href="reference-masterfiles-policy-framework-cfe_internal-update-update_bins.html">cfe_internal/update/update_bins.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_policy.html">cfe_internal/update/update_policy.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_processes.html">cfe_internal/update/update_processes.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-core.html">cfe_internal/core/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise.html">cfe_internal/enterprise/</a></li><li><a href="reference-masterfiles-policy-framework-inventory.html">inventory/</a></li><li><a href="reference-masterfiles-policy-framework-inventory-any.html">inventory/any.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-debian.html">inventory/debian.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-freebsd.html">inventory/freebsd.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-generic.html">inventory/generic.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-linux.html">inventory/linux.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-lsb.html">inventory/lsb.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-macos.html">inventory/macos.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-os.html">inventory/os.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-redhat.html">inventory/redhat.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-suse.html">inventory/suse.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-windows.html">inventory/windows.cf</a></li><li><a href="reference-masterfiles-policy-framework-services.html">services/</a></li><li><a href="reference-masterfiles-policy-framework-services-autorun.html">services/autorun/</a></li><li><a href="reference-masterfiles-policy-framework-services-main.html">services/main.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib.html">lib/</a></li><li><a href="reference-masterfiles-policy-framework-standalone_self_upgrade.html">standalone_self_upgrade.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-autorun.html">lib/autorun.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-bundles.html">lib/bundles.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfe_internal.html">lib/cfe_internal.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfe_internal_hub.html">lib/cfe_internal_hub.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfengine_enterprise_hub_ha.html">lib/cfengine_enterprise_hub_ha.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-commands.html">lib/commands.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-common.html">lib/common.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-databases.html">lib/databases.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-edit_xml.html">lib/edit_xml.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-examples.html">lib/examples.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-feature.html">lib/feature.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-files.html">lib/files.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-guest_environments.html">lib/guest_environments.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-monitor.html">lib/monitor.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-packages.html">lib/packages.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-paths.html">lib/paths.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-processes.html">lib/processes.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-reports.html">lib/reports.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-services.html">lib/services.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-stdlib.html">lib/stdlib.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-storage.html">lib/storage.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-testing.html">lib/testing.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-users.html">lib/users.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-vcs.html">lib/vcs.cf</a></li></ul></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    cfe_internal/update/update_bins.cf
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h3 id="agent-bundles"><a href="reference-components-cf-agent.html" title="cf-agent">agent</a> bundles</h3><h4 id="cfe_internal_update_bins">cfe_internal_update_bins</h4>
+<p><strong>Prototype:</strong> <code>cfe_internal_update_bins</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">cfe_internal_update_bins</span>
+<span class="p">{</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+
+    <span class="nc">enterprise</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">cf_components</span><span class="p">&quot;</span>       <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;cf-key&quot;</span><span class="p">,</span> <span class="s">&quot;cf-monitord&quot;</span><span class="p">,</span> <span class="s">&quot;cf-promises&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;cf-runagent&quot;</span><span class="p">,</span> <span class="s">&quot;cf-serverd&quot;</span><span class="p">,</span> <span class="s">&quot;cf-hub&quot;</span><span class="p">,</span> <span class="p">},</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Define cfengine robot agents&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_vars_cf_components&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">master_software_location</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/cfengine/master_software_updates&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;The Cfengine binary updates directory on the policy host&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_vars_master_software_location&quot;</span><span class="p">;</span>
+
+    <span class="nc">!hpux</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">package_dir</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.flavour)</span><span class="s">_</span><span class="si">$(sys.arch)</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;The directory within software updates to look for packages&quot;</span><span class="p">;</span>
+
+    <span class="nc">hpux</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">package_dir</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.class)</span><span class="s">_</span><span class="si">$(sys.arch)</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;The directory within software updates to look for packages.</span>
+<span class="s">                    On HPUX sys.flavor includes versions, so we use sys.class</span>
+<span class="s">                    instead.&quot;</span><span class="p">;</span>
+
+    <span class="nc">enterprise</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">local_software_dir</span><span class="p">&quot;</span>        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">translatepath</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/software_updates/</span><span class="si">$(package_dir)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Local directory containing binary updates for this host&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_vars_local_software_dir&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">local_update_log_dir</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">translatepath</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/software_updates/update_log&quot;</span><span class="p">),</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Local directory to store update log for this host&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_vars_local_update_log_dir&quot;</span><span class="p">;</span>
+
+    <span class="nc">!windows.enterprise</span><span class="p">::</span>
+
+      <span class="c"># backup script for cf-upgrade</span>
+      <span class="c"># the script should have 2 conditions, BACKUP and RESTORE</span>
+      <span class="c"># BACKUP and RESTORE status is $(const.dollar)1 variable in the script</span>
+      <span class="c"># see more details at bundle edit_line u_backup_script</span>
+
+      <span class="p">&quot;</span><span class="nv">backup_script</span><span class="p">&quot;</span>   <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/tmp/cf-upgrade_backup.sh&quot;</span><span class="p">;</span>
+
+      <span class="c"># a single compressed backup file for cf-upgrade</span>
+      <span class="c"># this backup_file is passed to backup_script as $(const.dollar)2 variable</span>
+      <span class="c"># cf-upgrade will extract this file if return signal of upgrade command is not 0</span>
+
+      <span class="p">&quot;</span><span class="nv">backup_file</span><span class="p">&quot;</span>     <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/tmp/cfengine-nova-</span><span class="si">$(sys.cf_version)</span><span class="s">.tar.gz&quot;</span><span class="p">;</span>
+
+      <span class="c"># install script for cf-upgrade</span>
+      <span class="c"># each distribution has its own way to upgrade a package</span>
+      <span class="c"># see more details at bundle edit_line u_install_script</span>
+
+      <span class="p">&quot;</span><span class="nv">install_script</span><span class="p">&quot;</span>  <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/tmp/cf-upgrade_install.sh&quot;</span><span class="p">;</span>
+
+    <span class="nc">(solarisx86|solaris).enterprise</span><span class="p">::</span>
+
+      <span class="c"># to automatically remove or install packages on Solaris</span>
+      <span class="c"># admin_file is a must to have to avoid pop-up interaction</span>
+      <span class="c"># see more details at bundle edit_line u_admin_file</span>
+
+      <span class="p">&quot;</span><span class="nv">admin_file</span><span class="p">&quot;</span>      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/tmp/cf-upgrade_admin_file&quot;</span><span class="p">;</span>
+
+    <span class="nc">(solarisx86|solaris).enterprise</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">novapkg</span><span class="p">&quot;</span>                 <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;CFEcfengine-nova&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Name convention of Nova package on Solaris&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_vars_novapkg_solaris&quot;</span><span class="p">,</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;nova_edition&quot;</span><span class="p">;</span>
+
+    <span class="nc">aix.enterprise</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">novapkg</span><span class="p">&quot;</span>                 <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;cfengine.cfengine-nova&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Name convention of Nova package on AIX&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_vars_novapkg_aix&quot;</span><span class="p">,</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;nova_edition&quot;</span><span class="p">;</span>
+
+    <span class="nc">!(solarisx86|solaris|aix).enterprise</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">novapkg</span><span class="p">&quot;</span>                 <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;cfengine-nova&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Name convention of Nova package for all but not Solaris&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_vars_novapkg_not_solaris_aix&quot;</span><span class="p">,</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;nova_edition&quot;</span><span class="p">;</span>
+
+    <span class="nc">solaris.!sunos_i86pc.enterprise</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">pkgarch</span><span class="p">&quot;</span>                 <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;sparc&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Name convention of package arch on Solaris&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_vars_pkgarch_solaris&quot;</span><span class="p">;</span>
+
+    <span class="nc">solarisx86.enterprise</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">pkgarch</span><span class="p">&quot;</span>                 <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;i386&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Name convention of package arch on Solaris&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_vars_pkgarch_solarisx86&quot;</span><span class="p">;</span>
+
+    <span class="nc">redhat.i686.enterprise</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">pkgarch</span><span class="p">&quot;</span>                 <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;i386&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Name convention of package arch on 32-bit RHEL&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_vars_pkgarch_redhat_32b&quot;</span><span class="p">;</span>
+
+    <span class="nc">redhat.(x86_64|ppc64).enterprise</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">pkgarch</span><span class="p">&quot;</span>                 <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.arch)</span><span class="s">&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Name convention of package arch on RHEL x86_64 and ppc64&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_vars_pkgarch_redhat_x86_64_and_ppc64&quot;</span><span class="p">;</span>
+
+    <span class="nc">(freebsd|netbsd|debian|aix).enterprise</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">pkgarch</span><span class="p">&quot;</span>                 <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;*&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Name convention of package arch on *BSD/Debian&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_vars_pkgarch_bsd_debian_aix&quot;</span><span class="p">;</span>
+
+    <span class="nc">!(solarisx86|solaris|freebsd|netbsd|debian|aix|redhat).enterprise</span><span class="p">::</span>
+
+      <span class="p">&quot;</span><span class="nv">pkgarch</span><span class="p">&quot;</span>                 <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.arch)</span><span class="s">&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Name convention of package arch for other system except Solaris and *BSD&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_vars_pkgarch_not_solaris_bsd_debian_aix_redhat_32b&quot;</span><span class="p">;</span>
+
+      <span class="c">#</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+
+      <span class="s">&quot;have_software_dir&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">local_software_dir</span><span class="p">));</span>
+
+      <span class="c">#</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+
+    <span class="nc">!am_policy_hub.linux.enterprise.trigger_upgrade.!bootstrap_mode</span><span class="p">::</span>
+
+      <span class="s">&quot;</span><span class="si">$(novapkg)</span><span class="s">&quot;</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Update Nova package to a newer version (package is there)&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_packages_nova_update_linux_pkg_there&quot;</span><span class="p">,</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;update&quot;</span><span class="p">,</span>
+      <span class="kr">package_select</span> <span class="o">=&gt;</span> <span class="s">&quot;==&quot;</span><span class="p">,</span>            <span class="c"># picks the newest Nova available</span>
+      <span class="kr">package_architectures</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(pkgarch)</span><span class="s">&quot;</span> <span class="p">},</span>
+      <span class="kr">package_version</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(update_def.current_version)</span><span class="s">-1&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">u_generic</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(local_software_dir)</span><span class="s">&quot;</span> <span class="p">),</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;nova_edition.have_software_dir&quot;</span><span class="p">,</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">u_if_else</span><span class="p">(</span><span class="s">&quot;bin_update_success&quot;</span><span class="p">,</span> <span class="s">&quot;bin_update_fail&quot;</span><span class="p">);</span>
+
+    <span class="nc">!am_policy_hub.(solaris|solarisx86).enterprise.trigger_upgrade.!bootstrap_mode</span><span class="p">::</span>
+
+      <span class="s">&quot;</span><span class="si">$(novapkg)</span><span class="s">&quot;</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Update Nova package to a newer version (package is there)&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_packages_nova_update_solaris_pkg_there&quot;</span><span class="p">,</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;update&quot;</span><span class="p">,</span>
+      <span class="kr">package_select</span> <span class="o">=&gt;</span> <span class="s">&quot;==&quot;</span><span class="p">,</span>            <span class="c"># picks the newest Nova available</span>
+      <span class="kr">package_architectures</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(pkgarch)</span><span class="s">&quot;</span> <span class="p">},</span>
+      <span class="kr">package_version</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(update_def.current_version)</span><span class="s">&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">u_generic</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(local_software_dir)</span><span class="s">&quot;</span> <span class="p">),</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;nova_edition.have_software_dir&quot;</span><span class="p">,</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">u_if_else</span><span class="p">(</span><span class="s">&quot;bin_update_success&quot;</span><span class="p">,</span> <span class="s">&quot;bin_update_fail&quot;</span><span class="p">);</span>
+
+    <span class="nc">!am_policy_hub.windows.enterprise.trigger_upgrade.!bootstrap_mode</span><span class="p">::</span>
+
+      <span class="s">&quot;</span><span class="si">$(novapkg)</span><span class="s">&quot;</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Update Nova package to a newer version (package is there)&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_packages_nova_update_windows_only_pkg_there&quot;</span><span class="p">,</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;update&quot;</span><span class="p">,</span>
+      <span class="kr">package_select</span> <span class="o">=&gt;</span> <span class="s">&quot;==&quot;</span><span class="p">,</span>            <span class="c"># picks the newest Nova available</span>
+      <span class="kr">package_architectures</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(pkgarch)</span><span class="s">&quot;</span> <span class="p">},</span>
+      <span class="kr">package_version</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(update_def.current_version)</span><span class="s">&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">u_generic</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(local_software_dir)</span><span class="s">&quot;</span> <span class="p">),</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;nova_edition.have_software_dir&quot;</span><span class="p">,</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">u_if_else</span><span class="p">(</span><span class="s">&quot;bin_update_success&quot;</span><span class="p">,</span> <span class="s">&quot;bin_update_fail&quot;</span><span class="p">);</span>
+
+    <span class="nc">!am_policy_hub.aix.enterprise.trigger_upgrade.!bootstrap_mode</span><span class="p">::</span>
+
+      <span class="s">&quot;</span><span class="si">$(novapkg)</span><span class="s">&quot;</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Update Nova package to a newer version (package is there)&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_packages_nova_update_aix_only_pkg_there&quot;</span><span class="p">,</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;update&quot;</span><span class="p">,</span>
+      <span class="kr">package_select</span> <span class="o">=&gt;</span> <span class="s">&quot;==&quot;</span><span class="p">,</span>            <span class="c"># picks the newest Nova available</span>
+      <span class="kr">package_architectures</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(pkgarch)</span><span class="s">&quot;</span> <span class="p">},</span>
+      <span class="kr">package_version</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(update_def.current_version)</span><span class="s">.0&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">u_generic</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(local_software_dir)</span><span class="s">&quot;</span> <span class="p">),</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;nova_edition.have_software_dir&quot;</span><span class="p">,</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">u_if_else</span><span class="p">(</span><span class="s">&quot;bin_update_success&quot;</span><span class="p">,</span> <span class="s">&quot;bin_update_fail&quot;</span><span class="p">);</span>
+
+      <span class="c">#</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+
+    <span class="nc">enterprise</span><span class="p">::</span>
+
+      <span class="s">&quot;</span><span class="si">$(local_update_log_dir)</span><span class="s">/</span><span class="si">$(sys.nova_version)</span><span class="s">_is_running&quot;</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Create an empty file about a version that is running&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_files_version_is_running&quot;</span><span class="p">,</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+
+    <span class="nc">am_policy_hub.enterprise</span><span class="p">::</span>
+
+      <span class="s">&quot;</span><span class="si">$(master_software_location)</span><span class="s">/cf-upgrade/linux.i386/.&quot;</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Prepare a directory for cf-upgrade&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_files_linux_i386&quot;</span><span class="p">,</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;</span><span class="si">$(master_software_location)</span><span class="s">/cf-upgrade/linux.x86_64/.&quot;</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Prepare a directory for cf-upgrade&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_files_linux_x86_64&quot;</span><span class="p">,</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+
+    <span class="nc">!am_policy_hub.enterprise.trigger_upgrade</span><span class="p">::</span>
+
+      <span class="s">&quot;</span><span class="si">$(admin_file)</span><span class="s">&quot;</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Create solaris admin_file to automate remove and install packages&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_files_solaris_admin_file&quot;</span><span class="p">,</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">u_empty_no_backup</span><span class="p">,</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">u_admin_file</span><span class="p">,</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">u_m</span><span class="p">(</span><span class="s">&quot;0644&quot;</span><span class="p">),</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;solarisx86|solaris&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;</span><span class="si">$(backup_script)</span><span class="s">&quot;</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Create a backup script for cf-upgrade&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_files_backup_script&quot;</span><span class="p">,</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;!windows&quot;</span><span class="p">,</span>
+      <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">u_empty_no_backup</span><span class="p">,</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">u_backup_script</span><span class="p">,</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">u_m</span><span class="p">(</span><span class="s">&quot;0755&quot;</span><span class="p">);</span>
+
+      <span class="s">&quot;</span><span class="si">$(install_script)</span><span class="s">&quot;</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Create an install script for cf-upgrade&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_files_install_script&quot;</span><span class="p">,</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;!windows&quot;</span><span class="p">,</span>
+      <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">u_empty_no_backup</span><span class="p">,</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">u_install_script</span><span class="p">,</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">u_m</span><span class="p">(</span><span class="s">&quot;0755&quot;</span><span class="p">);</span>
+
+      <span class="s">&quot;</span><span class="si">$(local_software_dir)</span><span class="s">/.&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_files_local_software_dir_presence&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Ensure the local software directory exists for new binaries</span>
+<span class="s">                    to be downloaded to&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;</span><span class="si">$(local_software_dir)</span><span class="s">&quot;</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Copy binary updates from master source on policy server&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_files_pkg_copy&quot;</span><span class="p">,</span>
+      <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">u_pcp</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(master_software_location)</span><span class="s">/</span><span class="si">$(package_dir)</span><span class="s">&quot;</span><span class="p">,</span> <span class="nv">@(update_def.policy_servers)</span><span class="p">),</span>
+      <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">u_recurse</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">),</span>  <span class="c"># Nova updates should be in root dir</span>
+      <span class="kr">action</span> <span class="o">=&gt;</span> <span class="nf">u_immediate</span><span class="p">,</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">u_if_repaired</span><span class="p">(</span><span class="s">&quot;bin_newpkg&quot;</span><span class="p">);</span>
+
+    <span class="nc">!am_policy_hub.enterprise.trigger_upgrade.(cfengine_3_6_0|cfengine_3_6_1)</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">/cf-upgrade&quot;</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_files_cf_upgrade_i386_linux&quot;</span><span class="p">,</span>
+      <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">u_rcp</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(master_software_location)</span><span class="s">/cf-upgrade/linux.i386/cf-upgrade&quot;</span><span class="p">,</span> <span class="nv">@(update_def.policy_servers)</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(sys.policy_hub_port)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">u_m</span><span class="p">(</span><span class="s">&quot;0755&quot;</span><span class="p">),</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;linux.i686&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;The cf-upgrade binary that shipped with 3.6.0 and 3.6.1 was</span>
+<span class="s">                  broken, we need to download a working copy so that upgrades</span>
+<span class="s">                  will work on i386 linux&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/bin/cf-upgrade&quot;</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Copy cf-upgrade binary from policy hub for x86_64 linux&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_files_cf_upgrade_x86_64_linux&quot;</span><span class="p">,</span>
+      <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">u_rcp</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(master_software_location)</span><span class="s">/cf-upgrade/linux.x86_64/cf-upgrade&quot;</span><span class="p">,</span> <span class="nv">@(update_def.policy_servers)</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(sys.policy_hub_port)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">u_m</span><span class="p">(</span><span class="s">&quot;0755&quot;</span><span class="p">),</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;linux.x86_64&quot;</span><span class="p">,</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;The cf-upgrade binary that shipped with 3.6.0 and 3.6.1 was</span>
+<span class="s">                  broken, we need to download a working copy so that upgrades</span>
+<span class="s">                  will work on x86_64 linux&quot;</span><span class="p">;</span>
+
+    <span class="nc">bin_update_success.enterprise.trigger_upgrade</span><span class="p">::</span>
+
+      <span class="s">&quot;</span><span class="si">$(local_update_log_dir)</span><span class="s">/upgraded_binary_from_</span><span class="si">$(sys.nova_version)</span><span class="s">&quot;</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Create an empty file after successfully upgrade the binary&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;cfe_internal_update_bins_files_update_from_log&quot;</span><span class="p">,</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">DEBUG|DEBUG_cfe_internal_update_bins</span><span class="p">::</span>
+      <span class="s">&quot;DEBUG </span><span class="si">$(this.bundle)</span><span class="s">: Evaluating binaries for upgrade using internal update mechanism&quot;</span>
+        <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;trigger_upgrade&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="edit_line-bundles"><a href="reference-promise-types-edit_line.html" title="bundle edit_line">edit_line</a> bundles</h3><h4 id="u_admin_file">u_admin_file</h4>
+<p><strong>Prototype:</strong> <code>u_admin_file</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">u_admin_file</span>
+<span class="p">{</span>
+  <span class="kd">insert_lines</span><span class="p">:</span>
+
+    <span class="nc">sunos_5_8</span><span class="p">::</span>
+
+      <span class="s">&quot;mail=</span>
+<span class="s">instance=unique</span>
+<span class="s">partial=nocheck</span>
+<span class="s">runlevel=nocheck</span>
+<span class="s">idepend=nocheck</span>
+<span class="s">rdepend=nocheck</span>
+<span class="s">space=nocheck</span>
+<span class="s">setuid=nocheck</span>
+<span class="s">conflict=nocheck</span>
+<span class="s">action=nocheck</span>
+<span class="s">basedir=default&quot;</span><span class="p">;</span>
+
+    <span class="nc">solaris.!sunos_5_8</span><span class="p">::</span>
+
+      <span class="s">&quot;mail=</span>
+<span class="s">instance=overwrite</span>
+<span class="s">partial=nocheck</span>
+<span class="s">runlevel=nocheck</span>
+<span class="s">idepend=nocheck</span>
+<span class="s">rdepend=nocheck</span>
+<span class="s">space=nocheck</span>
+<span class="s">setuid=nocheck</span>
+<span class="s">conflict=nocheck</span>
+<span class="s">action=nocheck</span>
+<span class="s">networktimeout=60</span>
+<span class="s">networkretries=3</span>
+<span class="s">authentication=quit</span>
+<span class="s">keystore=/var/sadm/security</span>
+<span class="s">proxy=</span>
+<span class="s">basedir=default&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="u_backup_script">u_backup_script</h4>
+<p><strong>Prototype:</strong> <code>u_backup_script</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">u_backup_script</span>
+<span class="p">{</span>
+  <span class="kd">insert_lines</span><span class="p">:</span>
+
+    <span class="nc">linux</span><span class="p">::</span>
+
+      <span class="s">&quot;#!/bin/sh</span>
+
+<span class="s">if [ </span><span class="si">$(const.dollar)</span><span class="s">1 = </span><span class="se">\&quot;</span><span class="s">BACKUP</span><span class="se">\&quot;</span><span class="s"> ]; then</span>
+<span class="s"> tar cfz </span><span class="si">$(const.dollar)</span><span class="s">2 </span><span class="si">$(sys.workdir)</span><span class="s"> &gt; /dev/null</span>
+<span class="s">fi</span>
+<span class="s">if [ </span><span class="si">$(const.dollar)</span><span class="s">1 = </span><span class="se">\&quot;</span><span class="s">RESTORE</span><span class="se">\&quot;</span><span class="s"> ]; then</span>
+<span class="s"> tar xfz </span><span class="si">$(const.dollar)</span><span class="s">2</span>
+<span class="s">fi&quot;</span><span class="p">;</span>
+
+    <span class="nc">solarisx86|solaris</span><span class="p">::</span>
+
+      <span class="s">&quot;#!/bin/sh</span>
+
+<span class="s">if [ </span><span class="si">$(const.dollar)</span><span class="s">1 = </span><span class="se">\&quot;</span><span class="s">BACKUP</span><span class="se">\&quot;</span><span class="s"> ]; then</span>
+<span class="s"> tar cf </span><span class="si">$(const.dollar)</span><span class="s">2 </span><span class="si">$(sys.workdir)</span><span class="s">;  gzip </span><span class="si">$(const.dollar)</span><span class="s">2</span>
+<span class="s">fi</span>
+<span class="s">if [ </span><span class="si">$(const.dollar)</span><span class="s">1 = </span><span class="se">\&quot;</span><span class="s">RESTORE</span><span class="se">\&quot;</span><span class="s"> ]; then</span>
+<span class="s"> gunzip </span><span class="si">$(const.dollar)</span><span class="s">2.gz; tar xf </span><span class="si">$(const.dollar)</span><span class="s">2</span>
+<span class="s">fi&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="u_install_script">u_install_script</h4>
+<p><strong>Prototype:</strong> <code>u_install_script</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">u_install_script</span>
+<span class="p">{</span>
+  <span class="kd">insert_lines</span><span class="p">:</span>
+
+    <span class="nc">redhat|suse</span><span class="p">::</span>
+
+      <span class="s">&quot;#!/bin/sh</span>
+
+<span class="s">/bin/rpm -U </span><span class="si">$(const.dollar)</span><span class="s">1&quot;</span><span class="p">;</span>
+
+    <span class="nc">debian</span><span class="p">::</span>
+
+      <span class="s">&quot;#!/bin/sh</span>
+
+<span class="s">/usr/bin/dpkg --force-confdef --force-confnew --install </span><span class="si">$(const.dollar)</span><span class="s">1 &gt; /dev/null&quot;</span><span class="p">;</span>
+
+    <span class="nc">solarisx86|solaris</span><span class="p">::</span>
+
+      <span class="s">&quot;#!/bin/sh</span>
+
+<span class="s">pkgname=`pkginfo -d </span><span class="si">$(const.dollar)</span><span class="s">1 | awk &#39;{print </span><span class="si">$(const.dollar)</span><span class="s">2}&#39;`</span>
+<span class="s">/usr/sbin/pkgrm -n -a </span><span class="si">$(cfe_internal_update_bins.admin_file)</span><span class="s"> $pkgname</span>
+<span class="s">/usr/sbin/pkgadd -n -a </span><span class="si">$(cfe_internal_update_bins.admin_file)</span><span class="s"> -d </span><span class="si">$(const.dollar)</span><span class="s">1 all</span>
+<span class="si">$(sys.workdir)</span><span class="s">/bin/cf-execd || true</span>
+<span class="s">exit 0&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="common-bodies"><a href="reference-components.html#common-control">common</a> bodies</h3><h4 id="u_common_knowledge">u_common_knowledge</h4>
+<p><strong>Prototype:</strong> <code>u_common_knowledge</code></p>
+
+<p><strong>Description:</strong> standalone common packages knowledge bundle</p>
+
+<p>This common bundle defines general things about platforms.</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">common</span> <span class="nf">u_common_knowledge</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">list_update_ifelapsed_now</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;10080&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="edit_defaults-bodies"><a href="reference-promise-types-files.html#edit_defaults" title="files - edit_defaults">edit_defaults</a> bodies</h3><h4 id="u_empty_no_backup">u_empty_no_backup</h4>
+<p><strong>Prototype:</strong> <code>u_empty_no_backup</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">edit_defaults</span> <span class="nf">u_empty_no_backup</span>
+<span class="p">{</span>
+  <span class="kr">empty_file_before_editing</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+  <span class="kr">edit_backup</span> <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="copy_from-bodies"><a href="reference-promise-types-files.html#copy_from" title="files - copy_from">copy_from</a> bodies</h3><h4 id="u_pcp">u_pcp</h4>
+<p><strong>Prototype:</strong> <code>u_pcp(from, server)</code></p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>from</code>: string, used in the value of attribute <a href="reference-promise-types-files.html#source" title="files - source"><code>source</code></a></li>
+<li><code>server</code></li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">copy_from</span> <span class="nf">u_pcp</span><span class="p">(</span><span class="nv">from</span><span class="p">,</span><span class="nv">server</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">source</span>      <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(from)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">compare</span>     <span class="o">=&gt;</span> <span class="s">&quot;digest&quot;</span><span class="p">;</span>
+      <span class="kr">trustkey</span>    <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">;</span>
+      <span class="kr">purge</span>       <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+
+    <span class="nc">!am_policy_hub</span><span class="p">::</span>
+
+      <span class="kr">servers</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(server)</span><span class="s">&quot;</span> <span class="p">};</span>
+
+    <span class="nc">cfengine_internal_encrypt_transfers</span><span class="p">::</span>
+      <span class="kr">encrypt</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="package_method-bodies"><a href="reference-promise-types-packages-deprecated.html#package_method" title="packages (deprecated) - package_method">package_method</a> bodies</h3><h4 id="u_generic">u_generic</h4>
+<p><strong>Prototype:</strong> <code>u_generic(repo)</code></p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>repo</code>: string, used in the value of attribute <a href="reference-promise-types-packages-deprecated.html#package_add_command" title="packages (deprecated) - package_add_command"><code>package_add_command</code></a>: string, used in the value of attribute <a href="reference-promise-types-packages-deprecated.html#package_add_command" title="packages (deprecated) - package_add_command"><code>package_add_command</code></a></li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">package_method</span> <span class="nf">u_generic</span><span class="p">(</span><span class="nv">repo</span><span class="p">)</span>
+<span class="p">{</span>
+
+    <span class="nc">debian</span><span class="p">::</span>
+
+      <span class="kr">package_changes</span> <span class="o">=&gt;</span> <span class="s">&quot;individual&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dpkg -l&quot;</span><span class="p">;</span>
+
+      <span class="c"># package_list_update_command =&gt; &quot;/usr/bin/apt-get update&quot;;</span>
+      <span class="kr">package_list_update_ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(u_common_knowledge.list_update_ifelapsed_now)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_list_name_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;ii</span><span class="se">\s</span><span class="s">+([^</span><span class="se">\s</span><span class="s">:]+).*&quot;</span><span class="p">;</span>
+      <span class="c"># package_list_version_regex =&gt; &quot;ii\s+[^\s]+\s+([^\s]+).*&quot;;</span>
+      <span class="kr">package_list_version_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;ii</span><span class="se">\s</span><span class="s">+[^</span><span class="se">\s</span><span class="s">]+</span><span class="se">\s</span><span class="s">+(</span><span class="se">\d</span><span class="s">+</span><span class="se">\.\d</span><span class="s">+((</span><span class="se">\.</span><span class="s">|-)</span><span class="se">\d</span><span class="s">+)+).*&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_installed_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;.*&quot;</span><span class="p">;</span> <span class="c"># all reported are installed</span>
+
+      <span class="kr">package_file_repositories</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(repo)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">package_version_equal_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dpkg --compare-versions &#39;</span><span class="si">$(v1)</span><span class="s">&#39; eq &#39;</span><span class="si">$(v2)</span><span class="s">&#39;&quot;</span><span class="p">;</span>
+      <span class="kr">package_version_less_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dpkg --compare-versions &#39;</span><span class="si">$(v1)</span><span class="s">&#39; lt &#39;</span><span class="si">$(v2)</span><span class="s">&#39;&quot;</span><span class="p">;</span>
+
+
+    <span class="nc">debian.x86_64</span><span class="p">::</span>
+      <span class="kr">package_name_convention</span>    <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">_</span><span class="si">$(version)</span><span class="s">_amd64.deb&quot;</span><span class="p">;</span>
+
+    <span class="nc">debian.i686</span><span class="p">::</span>
+      <span class="kr">package_name_convention</span>    <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">_</span><span class="si">$(version)</span><span class="s">_i386.deb&quot;</span><span class="p">;</span>
+
+    <span class="nc">debian</span><span class="p">::</span>
+      <span class="kr">package_add_command</span>        <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dpkg --force-confdef --force-confnew --install&quot;</span><span class="p">;</span>
+      <span class="kr">package_delete_command</span>     <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/dpkg --purge&quot;</span><span class="p">;</span>
+
+    <span class="nc">debian</span><span class="p">::</span>
+      <span class="kr">package_update_command</span>     <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/bin/cf-upgrade -b </span><span class="si">$(cfe_internal_update_bins.backup_script)</span><span class="s"> -s </span><span class="si">$(cfe_internal_update_bins.backup_file)</span><span class="s"> -i </span><span class="si">$(cfe_internal_update_bins.install_script)</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="nc">redhat|SuSE|suse</span><span class="p">::</span>
+
+      <span class="kr">package_changes</span> <span class="o">=&gt;</span> <span class="s">&quot;individual&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_list_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/rpm -qa --queryformat </span><span class="se">\&quot;</span><span class="s">i | repos | %{name} | %{version}-%{release} | %{arch}</span><span class="se">\n\&quot;</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_list_update_ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(u_common_knowledge.list_update_ifelapsed_now)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_list_name_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;[^|]+</span><span class="se">\|</span><span class="s">[^|]+</span><span class="se">\|\s</span><span class="s">+([^</span><span class="se">\s</span><span class="s">|]+).*&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_version_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;[^|]+</span><span class="se">\|</span><span class="s">[^|]+</span><span class="se">\|</span><span class="s">[^|]+</span><span class="se">\|\s</span><span class="s">+([^</span><span class="se">\s</span><span class="s">|]+).*&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_arch_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;[^|]+</span><span class="se">\|</span><span class="s">[^|]+</span><span class="se">\|</span><span class="s">[^|]+</span><span class="se">\|</span><span class="s">[^|]+</span><span class="se">\|\s</span><span class="s">+([^</span><span class="se">\s</span><span class="s">]+).*&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_installed_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;i.*&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_file_repositories</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(repo)</span><span class="s">&quot;</span> <span class="p">};</span>
+
+      <span class="kr">package_name_convention</span>    <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">-</span><span class="si">$(version)</span><span class="s">.</span><span class="si">$(arch)</span><span class="s">.rpm&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_add_command</span>        <span class="o">=&gt;</span> <span class="s">&quot;/bin/rpm -ivh &quot;</span><span class="p">;</span>
+      <span class="kr">package_delete_command</span>     <span class="o">=&gt;</span> <span class="s">&quot;/bin/rpm -e --nodeps&quot;</span><span class="p">;</span>
+      <span class="kr">package_verify_command</span>     <span class="o">=&gt;</span> <span class="s">&quot;/bin/rpm -V&quot;</span><span class="p">;</span>
+      <span class="kr">package_noverify_regex</span>     <span class="o">=&gt;</span> <span class="s">&quot;.*[^</span><span class="se">\s</span><span class="s">].*&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_version_less_command</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">/rpmvercmp &#39;</span><span class="si">$(v1)</span><span class="s">&#39; lt &#39;</span><span class="si">$(v2)</span><span class="s">&#39;&quot;</span><span class="p">;</span>
+      <span class="kr">package_version_equal_command</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">/rpmvercmp &#39;</span><span class="si">$(v1)</span><span class="s">&#39; eq &#39;</span><span class="si">$(v2)</span><span class="s">&#39;&quot;</span><span class="p">;</span>
+
+    <span class="nc">(redhat|SuSE|suse)</span><span class="p">::</span>
+      <span class="kr">package_update_command</span>     <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/bin/cf-upgrade -b </span><span class="si">$(cfe_internal_update_bins.backup_script)</span><span class="s"> -s </span><span class="si">$(cfe_internal_update_bins.backup_file)</span><span class="s"> -i </span><span class="si">$(cfe_internal_update_bins.install_script)</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="nc">redhat.!redhat_4</span><span class="p">::</span>
+      <span class="kr">package_list_update_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/yum --quiet check-update&quot;</span><span class="p">;</span>
+    <span class="nc">redhat_4</span><span class="p">::</span>
+      <span class="kr">package_list_update_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/yum check-update&quot;</span><span class="p">;</span>
+    <span class="nc">SuSE|suse</span><span class="p">::</span>
+      <span class="kr">package_list_update_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/zypper list-updates&quot;</span><span class="p">;</span>
+
+    <span class="nc">windows</span><span class="p">::</span>
+
+      <span class="kr">package_changes</span> <span class="o">=&gt;</span> <span class="s">&quot;individual&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_update_ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(u_common_knowledge.list_update_ifelapsed_now)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">package_file_repositories</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(repo)</span><span class="s">&quot;</span> <span class="p">};</span>
+
+      <span class="kr">package_installed_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;.*&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_name_convention</span>    <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">-</span><span class="si">$(version)</span><span class="s">-</span><span class="si">$(arch)</span><span class="s">.msi&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_add_command</span>        <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="si">$(sys.winsysdir)</span><span class="se">\m</span><span class="s">siexec.exe</span><span class="se">\&quot;</span><span class="s"> /qn /i&quot;</span><span class="p">;</span>
+      <span class="kr">package_update_command</span>     <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="si">$(sys.winsysdir)</span><span class="se">\m</span><span class="s">siexec.exe</span><span class="se">\&quot;</span><span class="s"> /qn /i&quot;</span><span class="p">;</span>
+      <span class="kr">package_delete_command</span>     <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\&quot;</span><span class="si">$(sys.winsysdir)</span><span class="se">\m</span><span class="s">siexec.exe</span><span class="se">\&quot;</span><span class="s"> /qn /x&quot;</span><span class="p">;</span>
+
+    <span class="nc">freebsd</span><span class="p">::</span>
+
+      <span class="kr">package_changes</span> <span class="o">=&gt;</span> <span class="s">&quot;individual&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_list_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/pkg_info&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_list_update_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/true&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_update_ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(u_common_knowledge.list_update_ifelapsed_now)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_list_name_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;^(</span><span class="se">\S</span><span class="s">+)-(</span><span class="se">\d</span><span class="s">+</span><span class="se">\.</span><span class="s">?)+&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_version_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;^</span><span class="se">\S</span><span class="s">+-((</span><span class="se">\d</span><span class="s">+</span><span class="se">\.</span><span class="s">?)+</span><span class="se">\_\d</span><span class="s">)&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_file_repositories</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(repo)</span><span class="s">&quot;</span> <span class="p">};</span>
+
+      <span class="kr">package_installed_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;.*&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_name_convention</span>    <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">-</span><span class="si">$(version)</span><span class="s">.tbz&quot;</span><span class="p">;</span>
+      <span class="kr">package_delete_convention</span>  <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">-</span><span class="si">$(version)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_add_command</span>        <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/pkg_add&quot;</span><span class="p">;</span>
+      <span class="kr">package_delete_command</span>     <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/pkg_delete&quot;</span><span class="p">;</span>
+
+    <span class="nc">netbsd</span><span class="p">::</span>
+
+      <span class="kr">package_changes</span> <span class="o">=&gt;</span> <span class="s">&quot;individual&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_list_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/pkg_info&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_list_update_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/true&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_update_ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(u_common_knowledge.list_update_ifelapsed_now)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_list_name_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;^(</span><span class="se">\S</span><span class="s">+)-(</span><span class="se">\d</span><span class="s">+</span><span class="se">\.</span><span class="s">?)+&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_version_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;^</span><span class="se">\S</span><span class="s">+-((</span><span class="se">\d</span><span class="s">+</span><span class="se">\.</span><span class="s">?)+</span><span class="se">\n</span><span class="s">b</span><span class="se">\d</span><span class="s">)&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_file_repositories</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(repo)</span><span class="s">&quot;</span> <span class="p">};</span>
+
+      <span class="kr">package_installed_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;.*&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_name_convention</span>    <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">-</span><span class="si">$(version)</span><span class="s">.tgz&quot;</span><span class="p">;</span>
+      <span class="kr">package_delete_convention</span>  <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">-</span><span class="si">$(version)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_add_command</span>        <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/pkg_add&quot;</span><span class="p">;</span>
+      <span class="kr">package_delete_command</span>     <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/pkg_delete&quot;</span><span class="p">;</span>
+
+    <span class="nc">solarisx86|solaris</span><span class="p">::</span>
+
+      <span class="kr">package_changes</span> <span class="o">=&gt;</span> <span class="s">&quot;individual&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/pkginfo -l&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_update_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/true&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_update_ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(u_common_knowledge.list_update_ifelapsed_now)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_multiline_start</span>    <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\s</span><span class="s">*PKGINST:</span><span class="se">\s</span><span class="s">+[^</span><span class="se">\s</span><span class="s">]+&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_name_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\s</span><span class="s">*PKGINST:</span><span class="se">\s</span><span class="s">+([^</span><span class="se">\s</span><span class="s">]+)&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_version_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\s</span><span class="s">*VERSION:</span><span class="se">\s</span><span class="s">+([^</span><span class="se">\s</span><span class="s">]+)&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_arch_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\s</span><span class="s">*ARCH:</span><span class="se">\s</span><span class="s">+([^</span><span class="se">\s</span><span class="s">]+)&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_file_repositories</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(repo)</span><span class="s">&quot;</span> <span class="p">};</span>
+
+      <span class="kr">package_installed_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="se">\s</span><span class="s">*STATUS:</span><span class="se">\s</span><span class="s">*(completely|partially)</span><span class="se">\s</span><span class="s">+installed.*&quot;</span><span class="p">;</span>
+      <span class="kr">package_name_convention</span>    <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">-</span><span class="si">$(version)</span><span class="s">-</span><span class="si">$(arch)</span><span class="s">.pkg&quot;</span><span class="p">;</span>
+      <span class="kr">package_delete_convention</span>  <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="c"># Cfengine appends path to package and package name below, respectively</span>
+      <span class="kr">package_add_command</span>        <span class="o">=&gt;</span> <span class="s">&quot;/bin/sh </span><span class="si">$(repo)</span><span class="s">/add_scr </span><span class="si">$(repo)</span><span class="s">/admin_file&quot;</span><span class="p">;</span>
+      <span class="kr">package_delete_command</span>     <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/pkgrm -n -a </span><span class="si">$(repo)</span><span class="s">/admin_file&quot;</span><span class="p">;</span>
+    <span class="nc">(solarisx86|solaris)</span><span class="p">::</span>
+      <span class="kr">package_update_command</span>     <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.workdir)</span><span class="s">/bin/cf-upgrade -b </span><span class="si">$(cfe_internal_update_bins.backup_script)</span><span class="s"> -s </span><span class="si">$(cfe_internal_update_bins.backup_file)</span><span class="s"> -i </span><span class="si">$(cfe_internal_update_bins.install_script)</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="nc">aix</span><span class="p">::</span>
+
+      <span class="kr">package_changes</span> <span class="o">=&gt;</span> <span class="s">&quot;individual&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_list_update_command</span> <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/true&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_update_ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(u_common_knowledge.list_update_ifelapsed_now)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_list_command</span>       <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/lslpp -lc&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_name_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;[^:]+:([^:]+):[^:]+:.*&quot;</span><span class="p">;</span>
+      <span class="kr">package_list_version_regex</span> <span class="o">=&gt;</span> <span class="s">&quot;[^:]+:[^:]+:([^:]+):.*&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_file_repositories</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(repo)</span><span class="s">&quot;</span> <span class="p">};</span>
+
+      <span class="kr">package_installed_regex</span>    <span class="o">=&gt;</span> <span class="s">&quot;[^:]+:[^:]+:[^:]+:[^:]*:(COMMITTED|APPLIED):.*&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_name_convention</span>    <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">-</span><span class="si">$(version)</span><span class="s">.bff&quot;</span><span class="p">;</span>
+      <span class="kr">package_delete_convention</span>  <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="kr">package_add_command</span>        <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/rm -f </span><span class="si">$(repo)</span><span class="s">/.toc &amp;&amp; /usr/sbin/geninstall -IqacgXNY -d </span><span class="si">$(repo)</span><span class="s"> cfengine.cfengine-nova$&quot;</span><span class="p">;</span>
+      <span class="kr">package_update_command</span>     <span class="o">=&gt;</span> <span class="s">&quot;/usr/bin/rm -f </span><span class="si">$(repo)</span><span class="s">/.toc &amp;&amp; /usr/sbin/geninstall -IqacgXNY -d </span><span class="si">$(repo)</span><span class="s"> cfengine.cfengine-nova$&quot;</span><span class="p">;</span>
+
+      <span class="c"># package_add_command        =&gt; &quot;/bin/sh -c /usr/sbin/inutoc $(repo) &amp;&amp; /usr/sbin/installp -qacgXNYd $(repo) cfengine.cfengine-nova$&quot;;</span>
+      <span class="c"># package_update_command     =&gt; &quot;/bin/sh -c /usr/sbin/inutoc $(repo) &amp;&amp; /usr/sbin/installp -qacgXNYd $(repo) cfengine.cfengine-nova$&quot;;</span>
+
+      <span class="kr">package_delete_command</span>     <span class="o">=&gt;</span> <span class="s">&quot;/usr/sbin/installp -ug cfengine.cfengine-nova$&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-cfe_internal.html">cfe_internal</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-mpf.html">mpf</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 17 March 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/masterfiles-policy-framework/cfe_internal-update-update_bins.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/ae7435d3d24d30077bfbf18438f2444c629f8c69" target="_blank">ae7435d3d24d30077bfbf18438f2444c629f8c69</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.10/assets/footer-4c28dbe187e7b2a3c1504ff564f1b523.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - access</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html"  class="navselected" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-enterprise-api.html">Enterprise  API Reference</a></li><li><a href="reference-syntax.html">Syntax, identifiers and names</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li class="selected"><span>access</span></li><li><a href="reference-promise-types-classes.html">classes</a></li><li><a href="reference-promise-types-commands.html">commands</a></li><li><a href="reference-promise-types-databases.html">databases</a></li><li><a href="reference-promise-types-defaults.html">defaults</a></li><li><a href="reference-promise-types-files.html">files</a></li><li><a href="reference-promise-types-guest_environments.html">guest_environments</a></li><li><a href="reference-promise-types-measurements.html">measurements</a></li><li><a href="reference-promise-types-methods.html">methods</a></li><li><a href="reference-promise-types-meta.html">meta</a></li><li><a href="reference-promise-types-packages.html">packages</a></li><li><a href="reference-promise-types-processes.html">processes</a></li><li><a href="reference-promise-types-reports.html">reports</a></li><li><a href="reference-promise-types-roles.html">roles</a></li><li><a href="reference-promise-types-services.html">services</a></li><li><a href="reference-promise-types-storage.html">storage</a></li><li><a href="reference-promise-types-vars.html">vars</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>access</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/reference.html">reference</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/bundle-server.html">bundle server</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/cf-serverd.html">cf-serverd</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/access.html">access</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/server.html">server</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/promise-types.html">promise types</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/acl.html">acl</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/trust.html">trust</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/encryption.html">encryption</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>access</h1>
+                    <p>Access promises are conditional promises made by the server about file
+objects. The promise has two consequences. For file copy requests, the
+file becomes transferable to the remote client according to the
+conditions specified in the server promise; in other words, if the
+connection encryption requirements are met, and if the client has been
+granted appropriate privileges with <a href="reference-promise-types-access.html#maproot" title="access - maproot"><code>maproot</code></a> (like its NFS counterpart)
+to be able to see file objects not owned by the server process owner.</p>
+
+<p>The promise has two mutally exclusive attributes admit and deny. Use of
+admit is preferred as mistakes and omissions can easily be made when
+excluding from a group.</p>
+
+<p>When access is granted to a directory, the promise is automatically
+given about all of its contents and sub-directories. The access promise
+allows overlapping promises to be made, and these are kept on a
+first-come-first-served basis. Thus file objects (promisers) should be
+listed in order of most-specific file first. In this way, specific
+promises will override less specific ones.</p>
+<div class="highlight"><pre><code class="cf3">      <span class="kd">access</span><span class="p">:</span>
+
+         <span class="s">&quot;/path/file_object&quot;</span>
+
+           <span class="nf">admit</span>   <span class="err">=</span> <span class="p">{</span> <span class="s">&quot;hostname&quot;</span><span class="p">,</span> <span class="s">&quot;ipv4_address&quot;</span><span class="p">,</span> <span class="s">&quot;ipv6_address&quot;</span>  <span class="p">};</span>
+</code></pre>
+</div>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">server</span> <span class="k">control</span> 
+<span class="p">{</span>
+<span class="kr">allowconnects</span>         <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">,</span> <span class="s">&quot;::1&quot;</span> <span class="p">};</span>
+<span class="kr">allowallconnects</span>      <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">,</span> <span class="s">&quot;::1&quot;</span> <span class="p">};</span>
+<span class="kr">trustkeysfrom</span>         <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">,</span> <span class="s">&quot;::1&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">server</span> <span class="nf">access_rules</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="kd">access</span><span class="p">:</span>
+
+  <span class="s">&quot;/source/directory&quot;</span>
+          <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Access to file transfer&quot;</span><span class="p">,</span>
+          <span class="kr">admit</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">};</span>
+
+  <span class="c"># Grant orchestration communication</span>
+
+  <span class="s">&quot;did.*&quot;</span>
+          <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Access to class context (enterprise)&quot;</span><span class="p">,</span>
+    <span class="kr">resource_type</span> <span class="o">=&gt;</span> <span class="s">&quot;context&quot;</span><span class="p">,</span>
+            <span class="kr">admit</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">};</span>
+
+
+  <span class="s">&quot;value of my test_scalar, can expand variables here - </span><span class="si">$(sys.host)</span><span class="s">&quot;</span>
+          <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Grant access to the string in quotes, by name test_scalar&quot;</span><span class="p">,</span>
+           <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;test_scalar&quot;</span><span class="p">,</span>
+    <span class="kr">resource_type</span> <span class="o">=&gt;</span> <span class="s">&quot;literal&quot;</span><span class="p">,</span>
+            <span class="kr">admit</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">};</span>
+
+  <span class="s">&quot;XYZ&quot;</span>
+          <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Grant access to contents of persistent scalar variable XYZ&quot;</span><span class="p">,</span>
+    <span class="kr">resource_type</span> <span class="o">=&gt;</span> <span class="s">&quot;variable&quot;</span><span class="p">,</span>
+            <span class="kr">admit</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">};</span>
+
+  <span class="c"># Client grants access to CFEngine hub access</span>
+
+  <span class="s">&quot;delta&quot;</span>
+               <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Grant access to cfengine hub to collect report deltas&quot;</span><span class="p">,</span>
+         <span class="kr">resource_type</span> <span class="o">=&gt;</span> <span class="s">&quot;query&quot;</span><span class="p">,</span>
+    <span class="kr">report_data_select</span> <span class="o">=&gt;</span> <span class="nf">report_filter</span><span class="p">,</span>
+                 <span class="kr">admit</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span>  <span class="p">};</span>
+  <span class="s">&quot;full&quot;</span>
+               <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Grant access to cfengine hub to collect full report dump&quot;</span><span class="p">,</span>
+         <span class="kr">resource_type</span> <span class="o">=&gt;</span> <span class="s">&quot;query&quot;</span><span class="p">,</span>
+    <span class="kr">report_data_select</span> <span class="o">=&gt;</span> <span class="nf">report_filter</span><span class="p">,</span>
+                 <span class="kr">admit</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span>  <span class="p">};</span>
+
+  <span class="nc">policy_hub</span><span class="p">::</span>
+
+  <span class="s">&quot;collect_calls&quot;</span>
+          <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Grant access to cfengine client to request the collection of its reports&quot;</span><span class="p">,</span>
+    <span class="kr">resource_type</span> <span class="o">=&gt;</span> <span class="s">&quot;query&quot;</span><span class="p">,</span>
+            <span class="kr">admit</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;10.1.2.*&quot;</span> <span class="p">};</span>
+
+
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">report_data_select</span> <span class="nf">report_filter</span>
+<span class="p">{</span>
+    <span class="kr">variables_include</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;sys..*&quot;</span><span class="p">,</span> <span class="s">&quot;mon..*&quot;</span> <span class="p">};</span>
+    <span class="kr">variables_exclude</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;sys.host&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Entries may be literal addresses of IPv4 or IPv6, or any name registered
+in the POSIX <code>gethostbyname</code> service.</p>
+
+<hr>
+<h2 id="attributes">Attributes</h2><h3 id="admit">admit</h3>
+<p><strong>Description:</strong> The <code>admit</code> slist contains host names or IP addresses 
+to grant access to file objects.</p>
+
+<p>Admit promises grant access to file objects on the server. Arguments may
+be IP addresses or hostnames, provided DNS name resolution is active. In
+order to reach this stage, a client must first have passed all of the
+standard connection tests in the control body.</p>
+
+<p>The lists may contain network addresses in CIDR notation or regular
+expressions to match the IP address or name of the connecting host.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">access</span><span class="p">:</span>
+
+  <span class="s">&quot;/home/mark/LapTop&quot;</span>
+
+    <span class="kr">admit</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="s">&quot;192.168.0.1/24&quot;</span><span class="p">,</span> <span class="s">&quot;.*</span><span class="se">\.</span><span class="s">domain</span><span class="se">\.</span><span class="s">tld&quot;</span>  <span class="p">};</span>
+</code></pre>
+</div>
+<h3 id="deny">deny</h3>
+<p><strong>Description:</strong> The <code>deny</code> slist contains host names or IP addresses 
+to deny access to file objects.</p>
+
+<p>Denial is for special exceptions. A better strategy is always to grant
+on a need to know basis. A security policy based on exceptions is a weak
+one.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">server</span> <span class="nf">access_rules</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="kd">access</span><span class="p">:</span>
+
+  <span class="s">&quot;/path&quot;</span>
+
+    <span class="kr">admit</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;.*</span><span class="se">\.</span><span class="s">example</span><span class="se">\.</span><span class="s">org&quot;</span> <span class="p">},</span>
+    <span class="kr">deny</span>    <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;badhost_1</span><span class="se">\.</span><span class="s">example</span><span class="se">\.</span><span class="s">org&quot;</span><span class="p">,</span> <span class="s">&quot;badhost_1</span><span class="se">\.</span><span class="s">example</span><span class="se">\.</span><span class="s">org&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>
+Only regular expressions or exact matches are allowed in this list, 
+as non-specific matches are too greedy for denial.</p>
+<h3 id="maproot">maproot</h3>
+<p><strong>Description:</strong> The <code>maproot</code> slist contains host names or IP addresses 
+to grant full read-privilege on the server.</p>
+
+<p>Normally users authenticated by the server are granted access only to
+files owned by them and no-one else. Even if the <a href="reference-components-cfserver.html" title="cf-serverd"><code>cf-serverd</code></a> process
+runs with root privileges on the server side of a client-server
+connection, the client is not automatically granted access to download
+files owned by non-privileged users. If <code>maproot</code> is true then remote
+<code>root</code> users are granted access to all files.</p>
+
+<p>A typical case where mapping is important is in making backups of many
+user files.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">access</span><span class="p">:</span>
+
+ <span class="s">&quot;/home&quot;</span>
+
+       <span class="kr">admit</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;backup_host.example.org&quot;</span> <span class="p">},</span>
+ <span class="kr">ifencrypted</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+
+     <span class="c"># Backup needs to have access to all users</span>
+
+     <span class="kr">maproot</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;backup_host.example.org&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>On Windows, <a href="reference-components-cfserver.html" title="cf-serverd"><code>cf-serverd</code></a>, <code>maproot</code> is required to read files if the 
+connecting user does not own the file on the server.</p>
+<h3 id="ifencrypted">ifencrypted</h3>
+<p><strong>Description:</strong> The <code>ifencrypted</code> menu option determines whether the 
+current file access promise is conditional on the connection from the 
+client being encrypted.</p>
+
+<p>If this flag is true a client cannot access the file object unless its
+connection is encrypted.</p>
+
+<p><strong>Type:</strong> <a href="manuals-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">access</span><span class="p">:</span>
+
+   <span class="s">&quot;/path/file&quot;</span>
+
+    <span class="kr">admit</span>     <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;.*</span><span class="se">\.</span><span class="s">example</span><span class="se">\.</span><span class="s">org&quot;</span> <span class="p">},</span>
+    <span class="kr">ifencrypted</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="resource_type">resource_type</h3>
+<p><strong>Description:</strong> The <code>resource_type</code> is the type of object being granted 
+access.</p>
+
+<p>By default, access to resources granted by the server are files.
+However, sometimes it is useful to cache <code>literal</code> strings, hints and
+data on the server for easy access (e.g. the contents of variables or
+hashed passwords). In the case of literal data, the promise handle
+serves as the reference identifier for queries. Queries are instigated
+by function calls by any agent.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong>   </p>
+<div class="highlight"><pre><code class="text">    path
+    literal
+    context
+    query
+    variable
+</code></pre>
+</div>
+
+<p>If the resource type is <code>literal</code>, CFEngine will grant access to a
+literal data string. This string is defined either by the promiser
+itself, but the name of the variable is the identifier given by the
+promise handle of the access promise, since the promiser string might be
+complex.</p>
+
+<p>If the resource type is <code>variable</code> then the promiser is the name of a
+persistent scalar variable defined on the server-host. Currently
+persistent scalars are only used internally by Enterprise CFEngine to
+hold enumerated classes for orchestration purposes.</p>
+
+<p>If you want to send the value of a policy defined variable in the server
+host (which for some reason is not available directly through policy on
+the client, e.g. because they have different policies), then you could
+use the following construction:</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">access</span><span class="p">:</span>
+
+  <span class="s">&quot;</span><span class="si">$(variable_name)</span><span class="s">&quot;</span>
+
+         <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;variable_name&quot;</span><span class="p">,</span>
+  <span class="kr">resource_type</span> <span class="o">=&gt;</span> <span class="s">&quot;literal&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>If the resource type is <code>context</code>, the promiser is treated as a regular
+expression to match persistent classes defined on the server host. If
+these are matched by the request from the client, they will be
+transmitted (See <a href="#Function-remoteclassesmatching">Function
+remoteclassesmatching</a>).</p>
+
+<p>The term <code>query</code> may also be used in CFEngine Enterprise to query the server 
+for data from embedded databases. This is currently for internal use only, and 
+is used to grant access to report &#39;menus&#39;. If the promiser of a query request 
+is called <code>collect_calls</code>, this grants access to server peering collect-call 
+tunneling.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">server</span> <span class="nf">access_rules</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="kd">access</span><span class="p">:</span>
+
+  <span class="s">&quot;value of my test_scalar, can expand variables here - </span><span class="si">$(sys.host)</span><span class="s">&quot;</span>
+    <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;test_scalar&quot;</span><span class="p">,</span>
+    <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Grant access to contents of test_scalar VAR&quot;</span><span class="p">,</span>
+    <span class="kr">resource_type</span> <span class="o">=&gt;</span> <span class="s">&quot;literal&quot;</span><span class="p">,</span>
+    <span class="kr">admit</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">};</span>
+
+  <span class="s">&quot;XYZ&quot;</span>
+    <span class="kr">resource_type</span> <span class="o">=&gt;</span> <span class="s">&quot;variable&quot;</span><span class="p">,</span>
+    <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;XYZ&quot;</span><span class="p">,</span>
+    <span class="kr">admit</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">};</span>
+
+
+  <span class="c"># On the policy hub</span>
+
+  <span class="s">&quot;collect_calls&quot;</span>
+     <span class="kr">resource_type</span> <span class="o">=&gt;</span> <span class="s">&quot;query&quot;</span><span class="p">,</span>
+           <span class="kr">admit</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">};</span>
+
+  <span class="c"># On the isolated client in the field</span>
+
+
+ <span class="s">&quot;delta&quot;</span>
+    <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Grant access to cfengine hub to collect report deltas&quot;</span><span class="p">,</span>
+    <span class="kr">resource_type</span> <span class="o">=&gt;</span> <span class="s">&quot;query&quot;</span><span class="p">,</span>
+          <span class="kr">admit</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span>  <span class="p">};</span>
+  <span class="s">&quot;full&quot;</span>
+          <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Grant access to cfengine hub to collect full report dump&quot;</span><span class="p">,</span>
+    <span class="kr">resource_type</span> <span class="o">=&gt;</span> <span class="s">&quot;query&quot;</span><span class="p">,</span>
+          <span class="kr">admit</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span>  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="report_data_select">report_data_select</h3>
+<p><strong>This body is only available in CFEngine Enterprise.</strong></p>
+
+<p><strong>Description:</strong> The <code>report_data_select</code> body restricts access to data 
+for the specified query types reported to the CFEngine Enterprise Database.</p>
+
+<p>This body template allows users to control the content of reports collected 
+by the Enterprise Database Server, and allows users to strip unwanted data 
+(e.g. temporary variables from reporting).</p>
+
+<p>Report content can be differentiated between hosts that are controlled
+by the class expression on access promiser.</p>
+
+<p>If more than one select statement applies to the same host, all of them are applied.</p>
+
+<p>Usage of this body is only allowed in conjunction with using 
+<code>resource_type =&gt; &quot;query&quot;</code>, as this is the resource type that is being affected.</p>
+
+<p><strong>Type:</strong> <code>body report_data_select</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="nf">body</span> <span class="nf">report_data_select</span>
+<span class="p">{</span>
+    <span class="kr">variables_include</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;sys..*&quot;</span> <span class="p">};</span>
+    <span class="kr">monitoring_exclude</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;.*&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in Enterprise 3.5.0</p>
+<h4 id="classes_include">classes_include</h4>
+<p><strong>Description:</strong> The <code>classes_include</code> attribute is used to filter content 
+of the class report collected by Enterprise Hub, to include classes matching 
+specified regular expressions on the list.</p>
+
+<p>Only classes matching the specified regular expressions on the list will 
+be sent back in the report. </p>
+
+<p>If this attribute is not used, the report content is not reduced.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="nf">body</span> <span class="nf">report_data_select</span>
+<span class="p">{</span>
+    <span class="kr">classes_include</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;report_only_my_classes_.*&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in Enterprise 3.5.0</p>
+<h4 id="classes_exclude">classes_exclude</h4>
+<p><strong>Description:</strong> The <code>classes_exclude</code> attribute is used to filter content 
+of the class report collected by Enterprise Hub, to exclude classes matching 
+specified regular expressions on the list.</p>
+
+<p>If this attribute is used in conjunction with <a href="reference-promise-types-access.html#classes_include" title="access - classes_include"><code>classes_include</code></a> it will 
+exclude entries from the subset selected by the include expression.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="nf">body</span> <span class="nf">report_data_select</span>
+<span class="p">{</span>
+    <span class="kr">classes_exclude</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;my_tmp_class.*&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p><strong>History:</strong> Introduced in Enterprise 3.5.0</p>
+<h4 id="variables_include">variables_include</h4>
+<p><strong>Description:</strong> The <code>variables_include</code> attribute is used to filter 
+content of the variables report collected by Enterprise Hub, to contain 
+only variables matching specified regular expressions on the list.</p>
+
+<p>If the attribute is not used, the report content is not reduced.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p>Regular expressions for this attribute use the form <code>&lt;scope&gt;.&lt;variable_name&gt;</code>.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="nf">body</span> <span class="nf">report_data_select</span>
+<span class="p">{</span>
+    <span class="kr">variables_include</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;my_bundle.my_variable_prefix_.*&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in Enterprise 3.5.0</p>
+<h4 id="variables_exclude">variables_exclude</h4>
+<p><strong>Description:</strong> The <code>variables_exclude</code> attribute is used to filter 
+content of the variable report collected by Enterprise Hub, to exclude 
+variables matching specified regular expression list.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p>Regular expressions for this attribute use the form <scope>.<variable_name>.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="nf">body</span> <span class="nf">report_data_select</span>
+<span class="p">{</span>
+    <span class="kr">variables_exclude</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;my_bundle.tmp_var_test.*&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>
+If this attribute is used in conjunction with <a href="reference-promise-types-access.html#variables_include" title="access - variables_include"><code>variables_include</code></a>, it will 
+exclude entries from the subset selected by the include expression.</p>
+
+<p><strong>History:</strong> Introduced in Enterprise 3.5.0</p>
+<h4 id="promise_notkept_log_include">promise_notkept_log_include</h4>
+<p><strong>Description:</strong> The <code>promise_notkept_log_include</code> attribute is used to 
+filter content of the not kept log report collected by Enterprise Hub, 
+to contain promise handles matching specified regular expressions on 
+the list.</p>
+
+<p>Only those handles matching the regular expressions on the list will 
+be sent back in the report.</p>
+
+<p>If the attribute is not used, the report content will not be reduced.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="nf">body</span> <span class="nf">report_data_select</span>
+<span class="p">{</span>
+    <span class="kr">promise_notkept_log_include</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;my_none_important_promises_.*&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in Enterprise 3.5.0</p>
+<h4 id="promise_notkept_log_exclude">promise_notkept_log_exclude</h4>
+<p><strong>Description:</strong> The <code>promise_notkept_log_exclude</code> attribute is used to 
+filter content of the not kept log report collected by Enterprise Hub, 
+to exclude promise handles matching specified regular expressions on the 
+list.</p>
+
+<p>Only those handles matching regular expression on the list will be excluded 
+from the report.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="nf">body</span> <span class="nf">report_data_select</span>
+<span class="p">{</span>
+    <span class="kr">promise_notkept_log_exclude</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;my_tmp_promise_handle.*&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong> If this attribute is used in conjunction with the 
+<a href="reference-promise-types-access.html#promise_notkept_log_include" title="access - promise_notkept_log_include"><code>promise_notkept_log_include</code></a> attribute, it will exclude entries 
+from the subset selected by the include expression.</p>
+
+<p><strong>History:</strong> Introduced in Enterprise 3.5.0</p>
+<h4 id="promise_repaired_log_include">promise_repaired_log_include</h4>
+<p><strong>Description:</strong> The <code>promise_repaired_log_include</code> attribute is used to 
+filter content of the repaired log report collected by Enterprise Hub, 
+to include regular expressions matched on the list.</p>
+
+<p>Only those handles matching the regular expression on the list will be 
+sent back in the report. If attribute is not used, the report content 
+will not be filtered.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="nf">body</span> <span class="nf">report_data_select</span>
+<span class="p">{</span>
+    <span class="kr">promise_repaired_log_include</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;my_none_important_promises_.*&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in Enterprise 3.5.0</p>
+<h4 id="promise_repaired_log_exclude">promise_repaired_log_exclude</h4>
+<p><strong>Description:</strong> The <code>promise_repaired_log_exclude</code> attribute is used to 
+filter content of the repaired log report collected by Enterprise Hub, 
+to exclude promise handles matching regular expression on the list.</p>
+
+<p>Only those handles matching regular expression on the list will be excluded 
+from the report.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="nf">body</span> <span class="nf">report_data_select</span>
+<span class="p">{</span>
+    <span class="kr">promise_repaired_log_exclude</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;my_tmp_promise_handle.*&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>
+If this attribute is used in conjunction with <a href="reference-promise-types-access.html#promise_repaired_log_include" title="access - promise_repaired_log_include"><code>promise_repaired_log_include</code></a>, 
+it will exclude entries from the subset selected by the include expression.</p>
+
+<p><strong>History:</strong> Introduced in Enterprise 3.5.0</p>
+<h4 id="monitoring_include">monitoring_include</h4>
+<p><strong>Description:</strong> The <code>monitoring_include</code> attribute is used to filter 
+content of the monitoring report collected by Enterprise Hub, to contain 
+only observed objects matching regular expressions on the list.</p>
+
+<p>Only object names matching regular expression on the list will be sent 
+back in the report. If the attribute is not used, the report content will 
+not be filtered.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="nf">body</span> <span class="nf">report_data_select</span>
+<span class="p">{</span>
+    <span class="kr">monitoring_include</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;mem_.*&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Introduced in Enterprise 3.5.0</p>
+<h4 id="monitoring_exclude">monitoring_exclude</h4>
+<p><strong>Description:</strong> The <code>monitoring_exclude</code> attribute is used to filter 
+content of the monitoring report collected by Enterprise Hub, to exclude 
+observed objects matching specified regular expressions on the list.</p>
+
+<p>Only object names matching regular expression list will be excluded from 
+the report.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="nf">body</span> <span class="nf">report_data_select</span>
+<span class="p">{</span>
+    <span class="kr">monitoring_exclude</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;mem_swap&quot;</span><span class="p">,</span> <span class="s">&quot;mem_freeswap&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>If this attribute is used in conjunction with <a href="reference-promise-types-access.html#monitoring_include" title="access - monitoring_include"><code>monitoring_include</code></a> it will 
+exclude entries from the subset selected by the include expression.</p>
+
+<p><strong>History:</strong> Introduced in Enterprise 3.5.0</p>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/reference/promise-types/access.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

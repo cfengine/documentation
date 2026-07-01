@@ -1,0 +1,1941 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.12  Documentation - SQL Schema</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-enterprise-api-ref-sql-schema.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='/docs/3.12/assets/global-2ea8d2fcc0dbfebdbe7d10e6eca6a3b3.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "SQL Schema";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/" selected>Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a><ul class="level2"><li><a href="reference-enterprise-api-ref-changes.html">Changes REST API</a></li><li><a href="reference-enterprise-api-ref-health-diagnostic.html">Health diagnostic API</a></li><li><a href="reference-enterprise-api-ref-host.html">Host REST API</a></li><li><a href="reference-enterprise-api-ref-export-import-api.html">Import & Export API</a></li><li><a href="reference-enterprise-api-ref-inventory.html">Inventory API</a></li><li><a href="reference-enterprise-api-ref-ldap-api.html">LDAP authentication API</a></li><li><a href="reference-enterprise-api-ref-query.html">Query REST API</a></li><li><a class="active" href="reference-enterprise-api-ref-sql-schema.html">SQL Schema</a></li><li><a href="reference-enterprise-api-ref-status-settings.html">Status and Settings REST API</a></li><li><a href="reference-enterprise-api-ref-users-rbac.html">Users and Access-Control REST API</a></li></ul></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-enterprise-api-ref.html">Enterprise API Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    SQL Schema
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>CFEngine allows standardized SQL <code>SELECT</code> queries to be used with <a href="reference-enterprise-api-ref-query.html#execute-sql-query" title="Query REST API - Execute SQL query">REST API</a>.
+Queries can be used with following database schema.</p>
+<div class="highlight"><pre><code class="bash">curl -k --user admin:admin https://hub.cfengine.com/api/query -X POST -d <span class="s2">&quot;{ \&quot;query\&quot;: \&quot;SELECT Hosts.HostName, Hosts.IPAddress FROM Hosts WHERE hostname = &#39;hub&#39;\&quot;}&quot;</span>
+</code></pre>
+</div>
+<h2 id="table-agentstatus">Table: AgentStatus</h2>
+<p>Agent status contains information about last cf-agent execution.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect data concerning same hosts.</p></li>
+<li><p><strong>AgentExecutionInterval</strong> <em>(integer)</em>
+Estimated interval in which cf-agent is being executed, as cf-agent execution interval is expressed in cfengine context expressions (Min00_05 etc.) it can be not regular, this interval is discovered by analyzing last few cf-agent execution timestamps. Expressed in seconds.</p></li>
+<li><p><strong>LastAgentLocalExecutionTimeStamp</strong> <em>(timestamp)</em>
+Timestamp of last cf-agent execution on the host.</p></li>
+<li><p><strong>LastAgentExecutionStatus</strong> <em>(<code>OK</code>/<code>FAIL</code>)</em>
+cf-agent execution status. In case cf-agent will not execute within 3x <code>AgentExecutionInterval</code> from last execution, status will be set to <code>FAIL</code>. Failure may indicate cf-execd issues, or cf-agent crashes.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">agentexecutioninterval</span><span class="p">,</span>
+       <span class="n">lastagentlocalexecutiontimestamp</span><span class="p">,</span>
+       <span class="n">lastagentexecutionstatus</span>
+<span class="k">FROM</span>   <span class="n">agentstatus</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]--------------------|-----------------------
+hostkey                          | SHA=3b94d...
+agentexecutioninterval           | 277
+lastagentlocalexecutiontimestamp | 2015-03-11 12:37:39+00
+lastagentexecutionstatus         | OK
+-[ RECORD 2 ]--------------------|-----------------------
+hostkey                          | SHA=a4dd5...
+agentexecutioninterval           | 275
+lastagentlocalexecutiontimestamp | 2015-03-11 12:36:36+00
+lastagentexecutionstatus         | OK
+-[ RECORD 3 ]--------------------|-----------------------
+hostkey                          | SHA=2aab8...
+agentexecutioninterval           | 284
+lastagentlocalexecutiontimestamp | 2015-03-11 12:36:51+00
+lastagentexecutionstatus         | OK
+</code></pre>
+</div>
+<h2 id="table-benchmarkslog">Table: BenchmarksLog</h2>
+<p>Data from internal cf-agent monitoring as also <a href="reference-promise-types-measurements.html" title="measurements">measurements promises</a>.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect data concerning same hosts.</p></li>
+<li><p><strong>EventName</strong> <em>(text)</em>
+Name of measured event.</p></li>
+<li><p><strong>StandardDeviation</strong> <em>(numeric)</em>
+Dispersion of a set of data from its mean.</p></li>
+<li><p><strong>AverageValue</strong> <em>(numeric)</em>
+Average value.</p></li>
+<li><p><strong>LastValue</strong> <em>(numeric)</em>
+Last measured value.</p></li>
+<li><p><strong>CheckTimeStamp</strong> <em>(timestamp)</em>
+Measurement time.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">eventname</span><span class="p">,</span>
+       <span class="n">standarddeviation</span><span class="p">,</span>
+       <span class="n">averagevalue</span><span class="p">,</span>
+       <span class="n">lastvalue</span><span class="p">,</span>
+       <span class="n">checktimestamp</span>
+<span class="k">FROM</span>   <span class="n">benchmarkslog</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]-----|--------------------------------------------------------
+hostkey           | SHA=3b94d...
+eventname         | CFEngine Execution (&#39;/var/cfengine/inputs/promises.cf&#39;)
+standarddeviation | 7.659365
+averagevalue      | 3.569665
+lastvalue         | 1.170841
+checktimestamp    | 2015-03-10 14:08:12+00
+-[ RECORD 2 ]---=-|--------------------------------------------------------
+hostkey           | SHA=3b94d...
+eventname         | CFEngine Execution (&#39;/var/cfengine/inputs/update.cf&#39;)
+standarddeviation | 0.131094
+averagevalue      | 0.422757
+lastvalue         | 0.370686
+checktimestamp    | 2015-03-10 14:08:11+00
+-[ RECORD 3 ]-----|--------------------------------------------------------
+hostkey           | SHA=3b94d...
+eventname         | DBReportCollectAll
+standarddeviation | 0.041025
+averagevalue      | 1.001964
+lastvalue         | 1.002346
+checktimestamp    | 2015-03-10 14:05:20+00
+</code></pre>
+</div>
+<h2 id="table-contexts">Table: Contexts</h2>
+<p>CFEngine contexts present on hosts at their last reported cf-agent execution.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect data concerning same hosts.</p></li>
+<li><p><strong>ContextName</strong> <em>(text)</em>
+CFEngine <a href="reference-language-concepts-classes.html" title="Classes and Decisions">context</a> set by cf-agent.</p></li>
+<li><p><strong>MetaTags</strong> <em>(text[])</em>
+List of <a href="examples-tutorials-tags.html" title="Tags for variables, classes, and bundles">meta tags</a> set for the context.</p></li>
+<li><p><strong>ChangeTimeStamp</strong> <em>(timestamp)</em>
+Timestamp since when context is set in its current form.
+<strong>Note:</strong> If any of context attributes change, the timestamp will be updated.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">contextname</span><span class="p">,</span>
+       <span class="n">metatags</span><span class="p">,</span>
+       <span class="n">changetimestamp</span>
+<span class="k">FROM</span>   <span class="n">contexts</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]---|-------------------------------------------------------
+hostkey         | SHA=a4dd5...
+contextname     | enterprise_3_6_5
+metatags        | {inventory,attribute_name=none,source=agent,hardclass}
+changetimestamp | 2015-03-11 09:50:11+00
+-[ RECORD 2 ]---|-------------------------------------------------------
+hostkey         | SHA=a4dd5...
+contextname     | production
+metatags        | {report,&quot;Production environment&quot;}
+changetimestamp | 2015-03-11 09:50:11+00
+-[ RECORD 3 ]---|-------------------------------------------------------
+hostkey         | SHA=a4dd5...
+contextname     | enterprise_edition
+metatags        | {inventory,attribute_name=none,source=agent,hardclass}
+changetimestamp | 2015-03-11 09:50:11+00
+</code></pre>
+</div>
+<h2 id="table-contextslog">Table: ContextsLog</h2>
+<p>CFEngine contexts set on hosts by CFEngine over period of time.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect data concerning same hosts.</p></li>
+<li><p><strong>ChangeTimeStamp</strong> <em>(timestamp)</em>
+Timestamp since when context is set in its current form.
+<strong>Note:</strong> The statement if true till present time or newer entry claims otherwise.</p></li>
+<li><p><strong>ChangeOperation</strong> <em>(<code>ADD</code>,<code>CHANGE</code>,<code>REMOVE</code>,<code>UNTRACKED</code>)</em>
+CFEngine uses incremental diffs to report it&#39;s state. <code>ChangeOperation</code> is a diff state describing current entry.</p>
+
+<ul>
+<li><code>ADD</code> - stands for introducing a new entry which did not exist before. In this case, new CFEngine context have been introduced.</li>
+<li><code>CHANGE</code> - stands for changing value or attribute such as <code>MetaTags</code> have changed.</li>
+<li><code>REMOVE</code> - Context have not been set.</li>
+<li><code>UNTRACKED</code> - CFEngine provides a mechanism for filtering unwanted data from being reported. <code>UNTRACKED</code> marker states that information about this context is being filtered and will not report any future information about it.</li>
+</ul></li>
+<li><p><strong>ContextName</strong> <em>(text)</em>
+CFEngine <a href="reference-language-concepts-classes.html" title="Classes and Decisions">context</a> set by cf-agent.</p></li>
+<li><p><strong>MetaTags</strong> <em>(text[])</em>
+List of <a href="examples-tutorials-tags.html" title="Tags for variables, classes, and bundles">meta tags</a> set for the context.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">changetimestamp</span><span class="p">,</span>
+       <span class="n">changeoperation</span><span class="p">,</span>
+       <span class="n">contextname</span><span class="p">,</span>
+       <span class="n">metatags</span>
+<span class="k">FROM</span>   <span class="n">contextslog</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]---|-------------------------------------------------------
+hostkey         | SHA=a4dd5...
+changetimestamp | 2015-03-10 13:40:20+00
+changeoperation | ADD
+contextname     | debian
+metatags        | {inventory,attribute_name=none,source=agent,hardclass}
+-[ RECORD 2 ]---|-------------------------------------------------------
+hostkey         | SHA=a4dd5...
+changetimestamp | 2015-03-10 14:40:20+00
+changeoperation | ADD
+contextname     | ipv4_192_168
+metatags        | {inventory,attribute_name=none,source=agent,hardclass}
+-[ RECORD 3 ]---|-------------------------------------------------------
+hostkey         | SHA=a4dd5...
+changetimestamp | 2015-03-10 15:40:20+00
+changeoperation | ADD
+contextname     | nova_3_6_5
+metatags        | {inventory,attribute_name=none,source=agent,hardclass}
+</code></pre>
+</div>
+<h2 id="table-filechangeslog">Table: FileChangesLog</h2>
+<p>Log of changes detected to files that are set to be <a href="reference-promise-types-files.html#changes" title="files - changes">monitored</a> by cf-agent.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect data concerning same hosts.</p></li>
+<li><p><strong>PromiseHandle</strong> <em>(text)</em>
+A Uniqueue id-tag string for referring promise.</p></li>
+<li><p><strong>FileName</strong> <em>(text)</em>
+Name of the file that have changed.</p></li>
+<li><p><strong>ChangeTimeStamp</strong> <em>(timestamp)</em>
+Timestamp when CFEngine have detected the change to the file.</p></li>
+<li><p><strong>ChangeType</strong> <em>(text)</em>
+Type of change detected on the monitored file.</p>
+
+<ul>
+<li>DIFF - change in content (with file diff)</li>
+<li>S - change in file stats</li>
+<li>C - change in content (based on file hash)</li>
+</ul></li>
+<li><p><strong>ChangeDetails</strong> <em>(text[])</em>
+Information about changes detected to the file. Such as file stats information, file diff etc.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">promisehandle</span><span class="p">,</span>
+       <span class="n">filename</span><span class="p">,</span>
+       <span class="n">changetimestamp</span><span class="p">,</span>
+       <span class="n">changetype</span><span class="p">,</span>
+       <span class="n">changedetails</span>
+<span class="k">FROM</span>   <span class="n">filechangeslog</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]---|------------------------------------------------------------
+hostkey         | SHA=3b94d...
+promisehandle   | my_test_promise
+filename        | /tmp/app.conf
+changetimestamp | 2015-03-13 13:16:10+00
+changetype      | C
+changedetails   | {&quot;Content changed&quot;}
+-[ RECORD 2 ]---|------------------------------------------------------------
+hostkey         | SHA=3b94d...
+promisehandle   | my_test_promise
+filename        | /tmp/app.conf
+changetimestamp | 2015-03-13 13:16:10+00
+changetype      | DIFF
+changedetails   | {&quot;-,1,loglevel = info&quot;,&quot;+,1,loglevel = debug&quot;}
+-[ RECORD 3 ]---|------------------------------------------------------------
+hostkey         | SHA=3b94d...
+promisehandle   | my_test_promise
+filename        | /tmp/app.conf
+changetimestamp | 2015-03-09 11:46:36+00
+changetype      | S
+changedetails   | {&quot;Modified time: Mon Mar 9 11:37:50 -&gt; Mon Mar 9 11:42:27&quot;}
+</code></pre>
+</div>
+<h2 id="table-hosts">Table: Hosts</h2>
+<p>Hosts table contains basic information about hosts managed by CFEngine.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect
+data concerning same hosts.</p></li>
+<li><p><strong>HostName</strong> <em>(text)</em>
+Host name locally detected on the host, configurable as <code>hostIdentifier</code>
+option in <a href="reference-enterprise-api-ref-status-settings.html#get-settings" title="Status and Settings REST API - Get settings">Settings API</a> and
+Mission Portal settings UI.</p></li>
+<li><p><strong>IPAddress</strong> <em>(text)</em>
+IP address of the host derived from the lastseen database (this is expected
+to be the IP address from which connections come from, beware NAT will cause
+multiple hosts to appear to have the same IP address).</p></li>
+<li><p><strong>LastReportTimeStamp</strong> <em>(timestamp)</em>
+Timestamp of the most recent successful report collection.</p></li>
+<li><p><strong>FirstReportTimeStamp</strong> <em>(timestamp)</em>
+Timestamp when the host reported to the hub for the first time, which
+indicate when the host was bootstrapped to the hub.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">hostname</span><span class="p">,</span>
+       <span class="n">ipaddress</span><span class="p">,</span>
+       <span class="n">lastreporttimestamp</span><span class="p">,</span>
+       <span class="n">firstreporttimestamp</span>
+<span class="k">FROM</span>   <span class="n">hosts</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]--------|-----------------------
+hostkey              | SHA=a4dd...
+hostname             | host001
+ipaddress            | 192.168.33.151
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:40:20+00
+-[ RECORD 2 ]--------|-----------------------
+hostkey              | SHA=3b94...
+hostname             | hub
+ipaddress            | 192.168.33.65
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:34:20+00
+-[ RECORD 3 ]--------|-----------------------
+hostkey              | SHA=2aab...
+hostname             | host002
+ipaddress            | 192.168.33.152
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:40:20+00
+</code></pre>
+</div>
+<h2 id="table-hosts_not_reported">Table: Hosts_not_reported</h2>
+<p>Hosts_not_reported table contains information about not reported hosts.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect
+data concerning same hosts.</p></li>
+<li><p><strong>iscallcollected</strong> <em>(boolean)</em>
+Is host call collected</p></li>
+<li><p><strong>LastReportTimeStamp</strong> <em>(timestamp)</em>
+Timestamp of the most recent successful report collection.</p></li>
+<li><p><strong>FirstReportTimeStamp</strong> <em>(timestamp)</em>
+Timestamp when the host reported to the hub for the first time, which
+indicate when the host was bootstrapped to the hub.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">iscallcollected</span><span class="p">,</span>
+       <span class="n">lastreporttimestamp</span><span class="p">,</span>
+       <span class="n">firstreporttimestamp</span>
+<span class="k">FROM</span>   <span class="n">hosts</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]--------|-----------------------
+hostkey              | SHA=a4dd...
+iscallcollected      | t
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:40:20+00
+-[ RECORD 2 ]--------|-----------------------
+hostkey              | SHA=3b94...
+iscallcollected      | f
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:34:20+00
+-[ RECORD 3 ]--------|-----------------------
+hostkey              | SHA=2aab...
+iscallcollected      | f
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:40:20+00
+</code></pre>
+</div>
+<h2 id="table-hubconnectionerrors">Table: HubConnectionErrors</h2>
+<p>Networking errors encountered by cf-hub during its operation.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique identifier of the host that cf-hub was connecting to.</p></li>
+<li><p><strong>CheckTimeStamp</strong> <em>(timestamp)</em>
+Timestamp when the error occurred.</p></li>
+<li><p><strong>Message</strong> <em>(text)</em>
+Error type / message.</p></li>
+<li><p><strong>QueryType</strong> <em>(text)</em>
+Type of query that was intended to be sent by hub during failed connection attempt.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">checktimestamp</span><span class="p">,</span>
+       <span class="n">message</span><span class="p">,</span>
+       <span class="n">querytype</span><span class="p">,</span>
+<span class="k">FROM</span>   <span class="n">hubconnectionErrors</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]--|--------------------------
+hostkey        | SHA=3b94d...
+checktimestamp | 2015-03-13 13:16:10+00
+message        | ServerNoReply
+querytype      | delta
+-[ RECORD 2 ]--|--------------------------
+hostkey        | SHA=3b94d...
+checktimestamp | 2015-03-13 14:16:10+00
+message        | InvalidData
+querytype      | rebase
+-[ RECORD 3 ]--|--------------------------
+hostkey        | SHA=3b94d...
+checktimestamp | 2015-03-13 15:16:10+00
+message        | ServerAuthenticationError
+querytype      | delta
+</code></pre>
+</div>
+<h2 id="table-inventory">Table: Inventory</h2>
+<p>Inventory data</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique identifier of the host.</p></li>
+<li><p><strong>keyname</strong> <em>(text)</em>
+Name of the key.</p></li>
+<li><p><strong>type</strong> <em>(text)</em>
+Type of the variable. <a href="reference-language-concepts-variables.html" title="Variables">List</a> of supported variable types.</p></li>
+<li><p><strong>metatags</strong> <em>(text[])</em>
+List of <a href="examples-tutorials-tags.html" title="Tags for variables, classes, and bundles">meta tags</a> set for the variable.</p></li>
+<li><p><strong>value</strong> <em>(text)</em>
+Variable value serialized to string.
+    * List types such as: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a>, <a href="reference-promise-types-vars.html#ilist" title="vars - ilist"><code>ilist</code></a>, <a href="reference-promise-types-vars.html#rlist" title="vars - rlist"><code>rlist</code></a> are serialized with CFEngine list format: {&#39;value&#39;,&#39;value&#39;}.
+    * <code>Data</code> type is serialized as JSON string.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">keyname</span><span class="p">,</span>
+       <span class="k">type</span><span class="p">,</span>
+       <span class="n">metatags</span><span class="p">,</span>
+       <span class="n">value</span>
+<span class="k">FROM</span>   <span class="n">Inventory</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]--|--------------------------
+hostkey        | SHA=3b94d...
+keyname        | default.sys.fqhost
+type           | string
+metatags       | {inventory,source=agent,&quot;attribute_name=Host name&quot;}
+value          | host name
+-[ RECORD 2 ]--|--------------------------
+hostkey        | SHA=3b94d...
+keyname        | default.sys.uptime
+type           | int
+metatags       | {inventory,source=agent,&quot;attribute_name=Uptime minutes&quot;}
+value          | 4543
+</code></pre>
+</div>
+<h2 id="table-inventory_new">Table: Inventory_new</h2>
+<p>Inventory data grouped by host</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique identifier of the host.</p></li>
+<li><p><strong>values</strong> <em>(jsonb)</em>
+Inventory values presented in JSON format</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="k">values</span>
+<span class="k">FROM</span>   <span class="n">Inventory_new</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]--|--------------------------
+hostkey        | SHA=3b94d...
+values         | {&quot;OS&quot;: &quot;ubuntu&quot;, &quot;OS type&quot;: &quot;linux&quot;, &quot;CPU model&quot;: &quot;CPU model A10&quot;, &quot;Host name&quot;: &quot;SHA=aa11bb1&quot;, &quot;OS kernel&quot;: &quot;14.4.0-53-generic&quot;, &quot;Interfaces&quot;: &quot;pop, imap&quot;, &quot;BIOS vendor&quot;: &quot;BIOS vendor&quot;, &quot;CFEngine ID&quot;: &quot;SHA=aa11bb1&quot;, &quot;CPU sockets&quot;: &quot;229&quot;, &quot;New OS type&quot;: &quot;linux&quot;, &quot;Architecture&quot;: &quot;x86_64&quot;}
+-[ RECORD 2 ]--|--------------------------
+hostkey        | SHA=5rt43...
+values         | {&quot;OS&quot;: &quot;ubuntu&quot;, &quot;OS type&quot;: &quot;linux&quot;, &quot;CPU model&quot;: &quot;CPU model A10&quot;, &quot;Host name&quot;: &quot;SHA=aa11bb1&quot;, &quot;OS kernel&quot;: &quot;14.4.0-53-generic&quot;, &quot;Interfaces&quot;: &quot;pop, imap&quot;, &quot;BIOS vendor&quot;: &quot;BIOS vendor&quot;, &quot;CFEngine ID&quot;: &quot;SHA=aa11bb1&quot;, &quot;CPU sockets&quot;: &quot;229&quot;, &quot;New OS type&quot;: &quot;linux&quot;, &quot;Architecture&quot;: &quot;x86_64&quot;}
+</code></pre>
+</div>
+<h2 id="table-lastseenhosts">Table: LastSeenHosts</h2>
+<p>Information about communication between CFEngine clients. Effectively a snapshot
+of each hosts lastseen database (<code>cf_lastseen.lmdb</code>, <code>cf-key -s</code>) at the time of
+their last reported <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> execution.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect data concerning same hosts.</p></li>
+<li><p><strong>LastSeenDirection</strong> <em>(<code>INCOMING</code>/<code>OUTGOING</code>)</em>
+Direction within which the connection was established.</p>
+
+<ul>
+<li><code>INCOMING</code> - host received incoming connection.</li>
+<li><code>OUTGOING</code> - host opened connection to remote host.</li>
+</ul></li>
+<li><p><strong>RemoteHostKey</strong> <em>(text)</em>
+<code>HostKey</code> of the remote host.</p></li>
+<li><p><strong>RemoteHostIP</strong> <em>(text)</em>
+IP address of the remote host.</p></li>
+<li><p><strong>LastSeenTimeStamp</strong> <em>(timestamp)</em>
+Time when the connection was established.</p></li>
+<li><p><strong>LastSeenInterval</strong> <em>(real)</em>
+Average time period (seconds) between connections for the given <code>LastSeenDirection</code> with the host.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">lastseendirection</span><span class="p">,</span>
+       <span class="n">remotehostkey</span><span class="p">,</span>
+       <span class="n">remotehostip</span><span class="p">,</span>
+       <span class="n">lastseentimestamp</span><span class="p">,</span>
+       <span class="n">lastseeninterval</span>
+<span class="k">FROM</span>   <span class="n">lastseenhosts</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]-----|-----------------------
+hostkey           | SHA=3b94d...
+lastseendirection | OUTGOING
+remotehostkey     | SHA=2aab8...
+remotehostip      | 192.168.33.152
+lastseentimestamp | 2015-03-13 12:20:45+00
+lastseeninterval  | 299
+-[ RECORD 2 ]-----|------------------------
+hostkey           | SHA=3b94d...
+lastseendirection | INCOMING
+remotehostkey     | SHA=a4dd5...
+remotehostip      | 192.168.33.151
+lastseentimestamp | 2015-03-13 12:22:06+00
+lastseeninterval  | 298
+-[ RECORD 3 ]-----|------------------------
+hostkey           | SHA=2aab8...
+lastseendirection | INCOMING
+remotehostkey     | SHA=3b94d...
+remotehostip      | 192.168.33.65
+lastseentimestamp | 2015-03-13 12:20:45+00
+lastseeninterval  | 299
+</code></pre>
+</div>
+<h2 id="table-lastseenhostslogs">Table: LastSeenHostsLogs</h2>
+<p>History of LastSeenHosts table</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect data concerning same hosts.</p></li>
+<li><p><strong>LastSeenDirection</strong> <em>(<code>INCOMING</code>/<code>OUTGOING</code>)</em>
+Direction within which the connection was established.</p>
+
+<ul>
+<li><code>INCOMING</code> - host received incoming connection.</li>
+<li><code>OUTGOING</code> - host opened connection to remote host.</li>
+</ul></li>
+<li><p><strong>RemoteHostKey</strong> <em>(text)</em>
+<code>HostKey</code> of the remote host.</p></li>
+<li><p><strong>RemoteHostIP</strong> <em>(text)</em>
+IP address of the remote host.</p></li>
+<li><p><strong>LastSeenTimeStamp</strong> <em>(timestamp)</em>
+Time when the connection was established.</p></li>
+<li><p><strong>LastSeenInterval</strong> <em>(real)</em>
+Average time period (seconds) between connections for the given <code>LastSeenDirection</code> with the host.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">lastseendirection</span><span class="p">,</span>
+       <span class="n">remotehostkey</span><span class="p">,</span>
+       <span class="n">remotehostip</span><span class="p">,</span>
+       <span class="n">lastseentimestamp</span><span class="p">,</span>
+       <span class="n">lastseeninterval</span>
+<span class="k">FROM</span>   <span class="n">LastSeenHostsLogs</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]-----|-----------------------
+hostkey           | SHA=3b94d...
+lastseendirection | OUTGOING
+remotehostkey     | SHA=2aab8...
+remotehostip      | 192.168.33.152
+lastseentimestamp | 2015-03-13 12:20:45+00
+lastseeninterval  | 299
+-[ RECORD 2 ]-----|------------------------
+hostkey           | SHA=3b94d...
+lastseendirection | INCOMING
+remotehostkey     | SHA=a4dd5...
+remotehostip      | 192.168.33.151
+lastseentimestamp | 2015-03-13 12:22:06+00
+lastseeninterval  | 298
+-[ RECORD 3 ]-----|------------------------
+hostkey           | SHA=2aab8...
+lastseendirection | INCOMING
+remotehostkey     | SHA=3b94d...
+remotehostip      | 192.168.33.65
+lastseentimestamp | 2015-03-13 12:20:45+00
+lastseeninterval  | 299
+</code></pre>
+</div>
+<h2 id="table-monitoringhg">Table: MonitoringHg</h2>
+<p>Stores 1 record for each observable per host.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>host</strong> <em>(text)</em>
+Unique host identifier. Referred to in other tables as <code>HostKey</code> to connect
+data concerning same hosts.</p></li>
+<li><p><strong>id</strong> <em>(text)</em>
+Name of monitored metric. The handle of the measurement promise.</p></li>
+<li><p><strong>ar1</strong> <em>(real)</em>
+Average across 66 observations.</p></li>
+</ul>
+<h2 id="table-monitoringmgmeta">Table: MonitoringMgMeta</h2>
+<p>Stores 1 record for each observable per host.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>id</strong> <em>(integer)</em>
+Unique identifier for host observable.</p></li>
+<li><p><strong>hostkey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect
+data concerning same hosts.</p></li>
+<li><p><strong>observable</strong> <em>(text)</em>
+Name of monitored metric. The handle of the measurement promise.</p></li>
+<li><p><strong>global</strong> <em>(boolean)</em></p></li>
+<li><p><strong>expected_min</strong> <em>(real)</em>
+Minimum expected value.</p></li>
+<li><p><strong>expected_max</strong> <em>(real)</em>
+Maximum expected value.</p></li>
+<li><p><strong>unit</strong> <em>(text)</em>
+Unit of measurement.</p></li>
+<li><p><strong>description</strong> <em>(text)</em>
+Description of unit of measurement.</p></li>
+<li><p><strong>updatedtimestamp</strong> <em>(timestamp with time zone)</em>
+Time when measurement sampled.</p></li>
+<li><p><strong>lastupdatedsample</strong> <em>(integer)</em>
+Value of most recently collected measurement.</p></li>
+</ul>
+<h2 id="table-monitoringyrmeta">Table: MonitoringYrMeta</h2>
+<p>Stores 1 record for each observable per host.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>id</strong> <em>(integer)</em>
+Unique identifier for host observable.</p></li>
+<li><p><strong>hostkey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect
+data concerning same hosts.</p></li>
+<li><p><strong>observable</strong> <em>(text)</em>
+Name of monitored metric. The handle of the measurement promise.</p></li>
+<li><p><strong>global</strong> <em>(boolean)</em></p></li>
+<li><p><strong>expected_min</strong> <em>(real)</em>
+Minimum expected value.</p></li>
+<li><p><strong>expected_max</strong> <em>(real)</em>
+Maximum expected value.</p></li>
+<li><p><strong>unit</strong> <em>(text)</em>
+Unit of measurement.</p></li>
+<li><p><strong>description</strong> <em>(text)</em>
+Description of unit of measurement.</p></li>
+<li><p><strong>lastupdatedsample</strong> <em>(integer)</em>
+Value of most recently collected measurement.</p>
+<h2 id="table-promiseexecutions">Table: PromiseExecutions</h2></li>
+</ul>
+
+<p>Promises executed on hosts during their last reported cf-agent run.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect data concerning same hosts.</p></li>
+<li><p><strong>PolicyFile</strong> <em>(text)</em>
+Path to the file where the promise is located in.</p></li>
+<li><p><strong>ReleaseId</strong> <em>(text)</em>
+Unique identifier of masterfiles version that is executed on the host.</p></li>
+<li><p><strong>PromiseHash</strong> <em>(text)</em>
+Unique identifier of a promise. It is a hash of all promise attributes and their values.</p></li>
+<li><p><strong>NameSpace</strong> <em>(text)</em>
+<a href="reference-language-concepts-namespaces.html" title="Namespaces">Namespace</a> within which the promise is executed. If no namespace is set then it is set as: <code>default</code>.</p></li>
+<li><p><strong>BundleName</strong> <em>(text)</em>
+<a href="reference-language-concepts-bundles.html" title="Bundles">Bundle</a> name where the promise is executed.</p></li>
+<li><p><strong>PromiseType</strong> <em>(text)</em>
+<a href="reference-promise-types.html" title="Promise Types and Attributes">Type</a> of the promise.</p></li>
+<li><p><strong>Promiser</strong> <em>(text)</em>
+Object affected by a promise.</p></li>
+<li><p><strong>StackPath</strong> <em>(text)</em>
+Call stack of the promise.</p></li>
+<li><p><strong>PromiseHandle</strong> <em>(text)</em>
+A unique id-tag string for referring promise.</p></li>
+<li><p><strong>PromiseOutcome</strong> <em>(<code>KEPT</code>/<code>NOTKEPT</code>/<code>REPAIRED</code>)</em>
+Promise execution result.</p>
+
+<ul>
+<li><code>KEPT</code> - System has been found in the state as desired by the promise. CFEngine did not have to do any action to correct the state.</li>
+<li><code>REPAIRED</code> - State of the system differed from the desired state. CFEngine took successful action to correct it according to promise specification.</li>
+<li><code>NOTKEPT</code> - CFEngine has failed to converge the system according to the promise specification.</li>
+</ul></li>
+<li><p><strong>LogMessages</strong> <em>(text[])</em>
+List of 5 last messages generated during promise execution. If the promise is <code>KEPT</code> the messages are not reported. Log messages can be used for tracking specific changes made by CFEngine while repairing or failing promise execution.</p></li>
+<li><p><strong>Promisees</strong> <em>(text[])</em>
+List of <a href="reference-language-concepts-promises.html" title="Promises">promisees</a> defined for the promise.</p></li>
+<li><p><strong>ChangeTimeStamp</strong> <em>(timestamp)</em>
+Timestamp since when the promise is continuously executed by cf-agent in its current configuration and provides the same output.
+<strong>Note:</strong> If any of the promise dynamic attributes change, like promise outcome, log messages or the new policy version will be rolled out. This timestamp will be changed.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">policyfile</span><span class="p">,</span>
+       <span class="n">releaseid</span><span class="p">,</span>
+       <span class="n">promisehash</span><span class="p">,</span>
+       <span class="n">namespace</span><span class="p">,</span>
+       <span class="n">bundlename</span><span class="p">,</span>
+       <span class="n">promisetype</span><span class="p">,</span>
+       <span class="n">promiser</span><span class="p">,</span>
+       <span class="n">stackpath</span><span class="p">,</span>
+       <span class="n">promisehandle</span><span class="p">,</span>
+       <span class="n">promiseoutcome</span><span class="p">,</span>
+       <span class="n">logmessages</span><span class="p">,</span>
+       <span class="n">promisees</span><span class="p">,</span>
+       <span class="n">changetimestamp</span>
+<span class="k">FROM</span>   <span class="n">softwareupdates</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]---|---------------------------------------------------------
+hostkey         | SHA=a4dd5...
+policyfile      | /var/cfengine/inputs/inventory/any.cf
+releaseid       | 05c0cc909d6709d816521d6cedbc4508894cc497
+promisehash     | fd6d5e40b734e35d9e8b2ed071dfe390f23148053adaae3dbb936...
+namespace       | default
+bundlename      | inventory_autorun
+promisetype     | methods
+promiser        | mtab
+stackpath       | /default/inventory_autorun/methods/&#39;mtab&#39;[0]
+promisehandle   | cfe_internal_autorun_inventory_mtab
+promiseoutcome  | KEPT
+logmessages     | {}
+promisees       | {}
+changetimestamp | 2015-03-12 10:20:18+00
+-[ RECORD 2 ]---|---------------------------------------------------------
+hostkey         | SHA=a4dd5...
+policyfile      | /var/cfengine/inputs/promises.cf
+releaseid       | 05c0cc909d6709d816521d6cedbc4508894cc497
+promisehash     | 925b04453ef86ff2e43228a5ca5d56dc4d69ddf12378d6fdba28b...
+namespace       | default
+bundlename      | service_catalogue
+promisetype     | methods
+promiser        | security
+stackpath       | /default/service_catalogue/methods/&#39;security&#39;[0]
+promisehandle   | service_catalogue_change_management
+promiseoutcome  | KEPT
+logmessages     | {}
+promisees       | {goal_infosec,goal_compliance}
+changetimestamp | 2015-03-12 10:20:18+00
+-[ RECORD 3 ]---|---------------------------------------------------------
+hostkey         | SHA=3b94d...
+policyfile      | /var/cfengine/inputs/lib/3.6/bundles.cf
+releaseid       | 05c0cc909d6709d816521d6cedbc4508894cc497
+promisehash     | 47f64d43f21bc6162b4f21bf385e715535617eebc649b259ebaca...
+namespace       | default
+bundlename      | logrotate
+promisetype     | files
+promiser        | /var/cfengine/cf3.hub.runlog
+stackpath       | /default/cfe_internal_management/files/&#39;any&#39;/default/...
+promisehandle   |
+promiseoutcome  | REPAIRED
+logmessages     | {&quot;Rotating files &#39;/var/cfengine/cf3.hub.runlog&#39;&quot;}
+promisees       | {}
+changetimestamp | 2015-03-12 14:52:36+00
+</code></pre>
+</div>
+<h2 id="table-promiseexecutionslog">Table: PromiseExecutionsLog</h2>
+<p><strong>This table was deprecated in 3.7.0. It is no longer used.</strong></p>
+
+<p>Promise status / outcome changes over period of time.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect data concerning same hosts.</p></li>
+<li><p><strong>ChangeTimeStamp</strong> <em>(timestamp)</em>
+Timestamp when the promise state or outcome changed.
+<strong>Note:</strong> The statement if true till present time or newer entry claims otherwise.</p></li>
+<li><p><strong>ChangeOperation</strong> <em>(<code>ADD</code>,<code>CHANGE</code>,<code>REMOVE</code>,<code>UNTRACKED</code>)</em>
+CFEngine uses incremental diffs to report it&#39;s state. <code>ChangeOperation</code> is a diff state describing current entry.</p>
+
+<ul>
+<li><code>ADD</code> - stands for introducing a new entry which did not exist at last execution. In this case, new promise executed, or the promise was not executed at previous cf-agent run.</li>
+<li><code>CHANGE</code> - stands for changing value or attribute such as <code>PromiseOutcome</code>, <code>LogMessages</code> or <code>ReleaseId</code> in case of new policy rollout.</li>
+<li><code>REMOVE</code> - Promise was not executed last time, but it was executed previously. This is a common report for promises that have been removed from policy at some point, or they are executed only periodically (like once a hour, day etc.).</li>
+<li><code>UNTRACKED</code> - CFEngine provides a mechanism for filtering unwanted data from being reported. <code>UNTRACKED</code> marker states that information is being filtered and will not report any future information about it.</li>
+</ul></li>
+<li><p><strong>PolicyFile</strong> <em>(text)</em>
+Path to the file where the promise is located in.</p></li>
+<li><p><strong>ReleaseId</strong> <em>(text)</em>
+Unique identifier of masterfiles version that is executed in the host.</p></li>
+<li><p><strong>PromiseHash</strong> <em>(text)</em>
+Unique identifier of a promise. It is a hash of all promise attributes and their values.</p></li>
+<li><p><strong>NameSpace</strong> <em>(text)</em>
+<a href="reference-language-concepts-namespaces.html" title="Namespaces">Namespace</a> within which the promise is executed. If no namespace is set then it is set as: <code>default</code>.</p></li>
+<li><p><strong>BundleName</strong> <em>(text)</em>
+<a href="reference-language-concepts-bundles.html" title="Bundles">Bundle</a> name where the promise is executed.</p></li>
+<li><p><strong>PromiseType</strong> <em>(text)</em>
+<a href="reference-promise-types.html" title="Promise Types and Attributes">Type</a> of the promise.</p></li>
+<li><p><strong>Promiser</strong> <em>(text)</em>
+Object affected by a promise.</p></li>
+<li><p><strong>StackPath</strong> <em>(text)</em>
+Call stack of the promise.</p></li>
+<li><p><strong>PromiseHandle</strong> <em>(text)</em>
+A unique id-tag string for referring promise.</p></li>
+<li><p><strong>PromiseOutcome</strong> <em>(<code>KEPT</code>/<code>NOTKEPT</code>/<code>REPAIRED</code>)</em>
+Promise execution result.</p>
+
+<ul>
+<li><code>KEPT</code> - System has been found in the state as desired by the promise. CFEngine did not have to do any action to correct the state.</li>
+<li><code>REPAIRED</code> - State of the system differed from the desired state. CFEngine took successful action to correct it according to promise specification.</li>
+<li><code>NOTKEPT</code> - CFEngine has failed to converge the system according to the promise specification.</li>
+</ul></li>
+<li><p><strong>LogMessages</strong> <em>(text[])</em>
+List of 5 last messages generated during promise execution. If the promise is <code>KEPT</code> the messages are not reported. Log messages can be used for tracking specific changes made by CFEngine while repairing or failing promise execution.</p></li>
+<li><p><strong>Promisees</strong> <em>(text[])</em>
+List of <a href="reference-language-concepts-promises.html" title="Promises">promisees</a> defined for the promise.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">changetimestamp</span><span class="p">,</span>
+       <span class="n">changeoperation</span><span class="p">,</span>
+       <span class="n">policyfile</span><span class="p">,</span>
+       <span class="n">releaseid</span><span class="p">,</span>
+       <span class="n">promisehash</span><span class="p">,</span>
+       <span class="n">namespace</span><span class="p">,</span>
+       <span class="n">bundlename</span><span class="p">,</span>
+       <span class="n">promisetype</span><span class="p">,</span>
+       <span class="n">promiser</span><span class="p">,</span>
+       <span class="n">stackpath</span><span class="p">,</span>
+       <span class="n">promisehandle</span><span class="p">,</span>
+       <span class="n">promiseoutcome</span><span class="p">,</span>
+       <span class="n">logmessages</span><span class="p">,</span>
+       <span class="n">promisees</span>
+<span class="k">FROM</span>   <span class="n">promiseexecutionslog</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]---|--------------------------------------------------
+hostkey         | SHA=a4dd5...
+changetimestamp | 2015-03-11 09:50:11+00
+changeoperation | ADD
+policyfile      | /var/cfengine/inputs/sketches/meta/api-runfile.cf
+releaseid       | 05c0cc909d6709d816521d6cedbc4508894cc497
+promisehash     | 48bc...
+namespace       | default
+bundlename      | cfsketch_run
+promisetype     | methods
+promiser        | cfsketch_g
+stackpath       | /default/cfsketch_run/methods/&#39;cfsketch_g&#39;[0]
+promisehandle   |
+promiseoutcome  | KEPT
+logmessages     | {}
+promisees       | {}
+-[ RECORD 2 ]---|--------------------------------------------------
+hostkey         | SHA=3b94d...
+changetimestamp | 2015-03-17 08:55:38+00
+changeoperation | ADD
+policyfile      | /var/cfengine/inputs/inventory/any.cf
+releaseid       | 05c0cc909d6709d816521d6cedbc4508894cc497
+promisehash     | 6eef8...
+namespace       | default
+bundlename      | inventory_autorun
+promisetype     | methods
+promiser        | disk
+stackpath       | /default/inventory_autorun/methods/&#39;disk&#39;[0]
+promisehandle   | cfe_internal_autorun_disk
+promiseoutcome  | KEPT
+logmessages     | {}
+promisees       | {}
+-[ RECORD 3 ]---|--------------------------------------------------
+hostkey         | SHA=3b94d...
+changetimestamp | 2015-03-10 13:43:28+00
+changeoperation | CHANGE
+policyfile      | /var/cfengine/inputs/inventory/any.cf
+releaseid       | 05c0cc909d6709d816521d6cedbc4508894cc497
+promisehash     | fd6d5...
+namespace       | default
+bundlename      | inventory_autorun
+promisetype     | methods
+promiser        | mtab
+stackpath       | /default/inventory_autorun/methods/&#39;mtab&#39;[0]
+promisehandle   | cfe_internal_autorun_inventory_mtab
+promiseoutcome  | KEPT
+logmessages     | {}
+promisees       | {}
+</code></pre>
+</div>
+<h2 id="table-promiselog">Table: PromiseLog</h2>
+<p>History of promises executed on hosts.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>id</strong> <em>(integer)</em></p></li>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect data concerning same hosts.</p></li>
+<li><p><strong>ChangeTimeStamp</strong> <em>(timestamp)</em>
+The GMT time on the host when this state was first perceived.</p>
+
+<p><strong>Note causes of change:</strong></p>
+
+<ul>
+<li>A change in the promise signature/hash for example, altering the promise
+handle, promisees, or moving the promise to a different bundle</li>
+<li>A change in the policy releaseId (cf_promises_release_id)</li>
+<li>A change in promise outcome</li>
+</ul></li>
+<li><p><strong>PolicyFile</strong> <em>(text)</em>
+Path to the file where the promise is located in.</p></li>
+<li><p><strong>ReleaseId</strong> <em>(text)</em>
+Unique identifier of masterfiles version that is executed on the host.</p></li>
+<li><p><strong>PromiseHash</strong> <em>(text)</em>
+Unique identifier of a promise. It is a hash of all promise attributes and their values.</p></li>
+<li><p><strong>NameSpace</strong> <em>(text)</em>
+<a href="reference-language-concepts-namespaces.html" title="Namespaces">Namespace</a> within which the promise is executed. If no namespace is set then it is set as: <code>default</code>.</p></li>
+<li><p><strong>BundleName</strong> <em>(text)</em>
+<a href="reference-language-concepts-bundles.html" title="Bundles">Bundle</a> name where the promise is executed.</p></li>
+<li><p><strong>PromiseType</strong> <em>(text)</em>
+<a href="reference-promise-types.html" title="Promise Types and Attributes">Type</a> of the promise.</p></li>
+<li><p><strong>Promiser</strong> <em>(text)</em>
+Object affected by a promise.</p></li>
+<li><p><strong>StackPath</strong> <em>(text)</em>
+Call stack of the promise.</p></li>
+<li><p><strong>PromiseHandle</strong> <em>(text)</em>
+A unique id-tag string for referring promise.</p></li>
+<li><p><strong>PromiseOutcome</strong> <em>(<code>KEPT</code>/<code>NOTKEPT</code>/<code>REPAIRED</code>)</em>
+Promise execution result.</p>
+
+<ul>
+<li><code>KEPT</code> - System has been found in the state as desired by the promise. CFEngine did not have to do any action to correct the state.</li>
+<li><code>REPAIRED</code> - State of the system differed from the desired state. CFEngine took successful action to correct it according to promise specification.</li>
+<li><code>NOTKEPT</code> - CFEngine has failed to converge the system according to the promise specification.</li>
+</ul></li>
+<li><p><strong>LogMessages</strong> <em>(text[])</em>
+List of 5 last messages generated during promise execution. If the promise is <code>KEPT</code> the messages are not reported. Log messages can be used for tracking specific changes made by CFEngine while repairing or failing promise execution.</p></li>
+<li><p><strong>Promisees</strong> <em>(text[])</em>
+List of <a href="reference-language-concepts-promises.html" title="Promises">promisees</a> defined for the promise.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">policyfile</span><span class="p">,</span>
+       <span class="n">releaseid</span><span class="p">,</span>
+       <span class="n">promisehash</span><span class="p">,</span>
+       <span class="n">namespace</span><span class="p">,</span>
+       <span class="n">bundlename</span><span class="p">,</span>
+       <span class="n">promisetype</span><span class="p">,</span>
+       <span class="n">promiser</span><span class="p">,</span>
+       <span class="n">stackpath</span><span class="p">,</span>
+       <span class="n">promisehandle</span><span class="p">,</span>
+       <span class="n">promiseoutcome</span><span class="p">,</span>
+       <span class="n">logmessages</span><span class="p">,</span>
+       <span class="n">promisees</span><span class="p">,</span>
+       <span class="n">changetimestamp</span>
+<span class="k">FROM</span>   <span class="n">promiselog</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]---|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+categories: [&quot;reference&quot;, &quot;enterprise-api-ref&quot;, &quot;sql-schema&quot;]
+alias: reference-enterprise-api-ref-sql-schema.html
+-------------------------------------------------------------------------------------------------
+hostkey         | SHA=70138d580b9fd292ff856746df2fe7f9ded29db9ffca0c4d83acbbb97cde4d42
+policyfile      | /var/cfengine/inputs/lib/bundles.cf
+releaseid       | f90866033a826aa05cf10fdc8d34a532a9cd465b
+promisehash     | 04659a0501f471eb1794cead6cd7a3291b78dcb195063821a7dcb4dbe7f7f804
+namespace       | default
+bundlename      | prunedir
+promisetype     | files
+promiser        | /var/cfengine/outputs
+stackpath       | /default/cfe_internal_management/methods/&#39;CFEngine_Internals&#39;/default/cfe_internal_core_main/methods/&#39;any&#39;/default/cfe_internal_log_rotation/methods/&#39;Prune old log files&#39;/default/prunedir/files/&#39;/var/cfengine/output
+s&#39;[1]
+promisehandle   |
+promiseoutcome  | REPAIRED
+logmessages     | {&quot;Deleted file &#39;/var/cfengine/outputs/cf_demohub_a10042_cfengine_com__1535846669_Sun_Sep__2_00_04_29_2018_0x7f4da3549700&#39;&quot;}
+promisees       | {}
+changetimestamp | 2018-10-02 00:04:52+00
+</code></pre>
+</div>
+<h2 id="table-software">Table: Software</h2>
+<p>Software packages installed (according to local package manager) on the hosts.
+More information about CFEngine and package management can be found <a href="reference-promise-types-packages.html" title="packages">here</a>.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect data concerning same hosts.</p></li>
+<li><p><strong>SoftwareName</strong> <em>(text)</em>
+Name of installed software package.</p></li>
+<li><p><strong>SoftwareVersion</strong> <em>(text)</em>
+Software package version.</p></li>
+<li><p><strong>SoftwareArchitecture</strong> <em>(text)</em>
+Architecture.</p></li>
+<li><p><strong>ChangeTimeStamp</strong> <em>(timestamp)</em>
+Timestamp when the package was discovered / installed on the host.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">softwarename</span><span class="p">,</span>
+       <span class="n">softwareversion</span><span class="p">,</span>
+       <span class="n">softwarearchitecture</span><span class="p">,</span>
+       <span class="n">changetimestamp</span>
+<span class="k">FROM</span>   <span class="n">software</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]--------|-----------------------
+hostkey              | SHA=a4dd5...
+softwarename         | libgssapi-krb5-2
+softwareversion      | 1.12+dfsg-2ubuntu4.2
+softwarearchitecture | default
+changetimestamp      | 2015-03-12 10:20:18+00
+-[ RECORD 2 ]--------|-----------------------
+hostkey              | SHA=a4dd5...
+softwarename         | whiptail
+softwareversion      | 0.52.15-2ubuntu5
+softwarearchitecture | default
+changetimestamp      | 2015-03-12 10:20:18+00
+-[ RECORD 3 ]--------|-----------------------
+hostkey              | SHA=a4dd5...
+softwarename         | libruby1.9.1
+softwareversion      | 1.9.3.484-2ubuntu1.2
+softwarearchitecture | default
+changetimestamp      | 2015-03-12 10:20:18+00
+</code></pre>
+</div>
+<h2 id="table-softwareupdates">Table: SoftwareUpdates</h2>
+<p>Patches available for installed packages on the hosts (as reported by local package manager).
+The most up to date patch will be listed.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect data concerning same hosts.</p></li>
+<li><p><strong>PatchName</strong> <em>(text)</em>
+Name of the software.</p></li>
+<li><p><strong>PatchVersion</strong> <em>(text)</em>
+Patch version.</p></li>
+<li><p><strong>PatchArchitecture</strong> <em>(text)</em>
+Architecture of the patch.</p></li>
+<li><p><strong>PatchReportType</strong> <em>(<code>INSTALLED</code>/<code>AVAILABLE</code>)</em>
+Patch status (<code>INSTALLED</code> status is specific only to SUSE Linux).</p></li>
+<li><p><strong>ChangeTimeStamp</strong> <em>(timestamp)</em>
+Timestamp when the new patch / version was discovered as available on the host.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">patchname</span><span class="p">,</span>
+       <span class="n">patchversion</span><span class="p">,</span>
+       <span class="n">patcharchitecture</span><span class="p">,</span>
+       <span class="n">patchreporttype</span><span class="p">,</span>
+       <span class="n">changetimestamp</span>
+<span class="k">FROM</span>   <span class="n">softwareupdates</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]-----|------------------------
+hostkey           | SHA=a4dd5...
+patchname         | libelf1
+patchversion      | 0.158-0ubuntu5.2
+patcharchitecture | default
+patchreporttype   | AVAILABLE
+changetimestamp   | 2015-03-12 10:20:18+00
+-[ RECORD 2 ]-----|------------------------
+hostkey           | SHA=a4dd5...
+patchname         | libisccfg90
+patchversion      | 1:9.9.5.dfsg-3ubuntu0.2
+patcharchitecture | default
+patchreporttype   | AVAILABLE
+changetimestamp   | 2015-03-12 10:20:18+00
+-[ RECORD 3 ]-----|------------------------
+hostkey           | SHA=a4dd5...
+patchname         | libc6-dev
+patchversion      | 2.19-0ubuntu6.6
+patcharchitecture | default
+patchreporttype   | AVAILABLE
+changetimestamp   | 2015-03-12 10:20:18+00
+</code></pre>
+</div>
+<h2 id="table-softwarelog">Table: SoftwareLog</h2>
+<p>Software packages installed / deleted over period of time.
+More information about CFEngine and package management can be found <a href="reference-promise-types-packages.html" title="packages">here</a>.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect data concerning same hosts.</p></li>
+<li><p><strong>ChangeTimeStamp</strong> <em>(timestamp)</em>
+Timestamp when the package state was discovered on the host.
+<strong>Note:</strong> The statement if true till present time or newer entry claims otherwise.</p></li>
+<li><p><strong>ChangeOperation</strong> <em>(<code>ADD</code>,<code>REMOVE</code>)</em>
+CFEngine uses incremental diffs to report it&#39;s state. <code>ChangeOperation</code> is a diff state describing current entry.</p>
+
+<ul>
+<li><code>ADD</code> - New package have been detected / installed. Package upgrate is considered as installing a new package with a different version.</li>
+<li><code>REMOVE</code> - Package have been detected to be removed / uninstalled. During upgrate older version of the package is removed and reported as so.</li>
+</ul></li>
+<li><p><strong>SoftwareName</strong> <em>(text)</em>
+Name of installed software package.</p></li>
+<li><p><strong>SoftwareVersion</strong> <em>(text)</em>
+Software package version.</p></li>
+<li><p><strong>SoftwareArchitecture</strong> <em>(text)</em>
+Architecture.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">changetimestamp</span><span class="p">,</span>
+       <span class="n">changeoperation</span><span class="p">,</span>
+       <span class="n">softwarename</span><span class="p">,</span>
+       <span class="n">softwareversion</span><span class="p">,</span>
+       <span class="n">softwarearchitecture</span>
+<span class="k">FROM</span>   <span class="n">softwarelog</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]--------|-----------------------
+hostkey              | SHA=3b94d...
+changetimestamp      | 2015-03-10 13:38:14+00
+changeoperation      | ADD
+softwarename         | libgssapi-krb5-2
+softwareversion      | 1.12+dfsg-2ubuntu4.2
+softwarearchitecture | default
+-[ RECORD 2 ]--------|-----------------------
+hostkey              | SHA=3b94d...
+changetimestamp      | 2015-03-10 13:38:14+00
+changeoperation      | ADD
+softwarename         | whiptail
+softwareversion      | 0.52.15-2ubuntu5
+softwarearchitecture | default
+-[ RECORD 3 ]--------|-----------------------
+hostkey              | SHA=3b94d...
+changetimestamp      | 2015-03-10 13:38:14+00
+changeoperation      | ADD
+softwarename         | libruby1.9.1
+softwareversion      | 1.9.3.484-2ubuntu1.2
+softwarearchitecture | default
+</code></pre>
+</div>
+<h2 id="table-softwareupdateslog">Table: SoftwareUpdatesLog</h2>
+<p><strong>This table was deprecated in 3.7.0. It is no longer used.</strong></p>
+
+<p>Patches available for installed packages on the hosts (as reported by local package manager) over period of time.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect data concerning same hosts.</p></li>
+<li><p><strong>ChangeTimeStamp</strong> <em>(timestamp)</em>
+Timestamp when the patch state was discovered on the host.
+<strong>Note:</strong> The statement if true till present time or newer entry claims otherwise.</p></li>
+<li><p><strong>ChangeOperation</strong> <em>(<code>ADD</code>,<code>REMOVE</code>)</em>
+CFEngine uses incremental diffs to report it&#39;s state. <code>ChangeOperation</code> is a diff state describing current entry.</p>
+
+<ul>
+<li><code>ADD</code> - New patch have been detected. This is a common in case of release of new patch version or new package was installed that have an upgrate available.</li>
+<li><code>REMOVE</code> - Patch is not longer available. Patch may be replaced with newer version, or installed package have been upgrated.
+<strong>Note:</strong> CFEngine reports only the most up to date version available.</li>
+</ul></li>
+<li><p><strong>PatchName</strong> <em>(text)</em>
+Name of the software.</p></li>
+<li><p><strong>PatchVersion</strong> <em>(text)</em>
+Patch version.</p></li>
+<li><p><strong>PatchArchitecture</strong> <em>(text)</em>
+Architecture of the patch.</p></li>
+<li><p><strong>PatchReportType</strong> <em>(<code>INSTALLED</code>/<code>AVAILABLE</code>)</em>
+Patch status (<code>INSTALLED</code> status is specific only to SUSE Linux).</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">changetimestamp</span><span class="p">,</span>
+       <span class="n">changeoperation</span><span class="p">,</span>
+       <span class="n">patchname</span><span class="p">,</span>
+       <span class="n">patchversion</span><span class="p">,</span>
+       <span class="n">patcharchitecture</span><span class="p">,</span>
+       <span class="n">patchreporttype</span>
+<span class="k">FROM</span>   <span class="n">softwareupdateslog</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]-----|------------------------
+hostkey           | SHA=3b94d...
+changetimestamp   | 2015-03-10 13:38:14+00
+changeoperation   | ADD
+patchname         | libelf1
+patchversion      | 0.158-0ubuntu5.2
+patcharchitecture | default
+patchreporttype   | AVAILABLE
+-[ RECORD 2 ]-----|------------------------
+hostkey           | SHA=3b94d...
+changetimestamp   | 2015-03-10 13:38:14+00
+changeoperation   | ADD
+patchname         | libisccfg90
+patchversion      | 1:9.9.5.dfsg-3ubuntu0.2
+patcharchitecture | default
+patchreporttype   | AVAILABLE
+-[ RECORD 3 ]-----|------------------------
+hostkey           | SHA=3b94d...
+changetimestamp   | 2015-03-10 13:38:14+00
+changeoperation   | ADD
+patchname         | libc6-dev
+patchversion      | 2.19-0ubuntu6.6
+patcharchitecture | default
+patchreporttype   | AVAILABLE
+</code></pre>
+</div>
+<h2 id="table-status">Table: Status</h2>
+<p>Statuses of report collection. cf-hub records all collection attempts and whether they are FAILEDC or CONSUMED. CONSUMED means next one will be delta. FAILEDC means next one will be REBASE.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>host</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect data concerning same hosts.</p></li>
+<li><p><strong>ts</strong> <em>(timestamp)</em>
+Timestamp of last data provided by client during report collection. This is used by delta queries to request a start time.</p></li>
+<li><p><strong>status</strong> <em>(<code>FAILEDC</code>,<code>CONSUMED</code>)</em>
+CFEngine uses incremental diffs to report it&#39;s state. <code>ChangeOperation</code> is a diff state describing current entry.</p>
+
+<ul>
+<li><code>FAILEDC</code> - New patch have been detected. This is a common in case of release of new patch version or new package was installed that have an upgrate available.</li>
+<li><code>CONSUMED</code> - Patch is not longer available. Patch may be replaced with newer version, or installed package have been upgrated.
+<strong>Note:</strong> CFEngine reports only the most up to date version available.</li>
+</ul></li>
+<li><p><strong>lstatus</strong> <em>(text)</em>
+Deprecated</p></li>
+<li><p><strong>type</strong> <em>(text)</em>
+Deprecated</p></li>
+<li><p><strong>who</strong> <em>(integer)</em>
+Deprecated</p></li>
+<li><p><strong>whr</strong> <em>integer</em>
+Deprecated</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">changetimestamp</span><span class="p">,</span>
+       <span class="n">changeoperation</span><span class="p">,</span>
+       <span class="n">patchname</span><span class="p">,</span>
+       <span class="n">patchversion</span><span class="p">,</span>
+       <span class="n">patcharchitecture</span><span class="p">,</span>
+       <span class="n">patchreporttype</span>
+<span class="k">FROM</span>   <span class="n">softwareupdateslog</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]-----|------------------------
+hostkey           | SHA=3b94d...
+changetimestamp   | 2015-03-10 13:38:14+00
+changeoperation   | ADD
+patchname         | libelf1
+patchversion      | 0.158-0ubuntu5.2
+patcharchitecture | default
+patchreporttype   | AVAILABLE
+-[ RECORD 2 ]-----|------------------------
+hostkey           | SHA=3b94d...
+changetimestamp   | 2015-03-10 13:38:14+00
+changeoperation   | ADD
+patchname         | libisccfg90
+patchversion      | 1:9.9.5.dfsg-3ubuntu0.2
+patcharchitecture | default
+patchreporttype   | AVAILABLE
+-[ RECORD 3 ]-----|------------------------
+hostkey           | SHA=3b94d...
+changetimestamp   | 2015-03-10 13:38:14+00
+changeoperation   | ADD
+patchname         | libc6-dev
+patchversion      | 2.19-0ubuntu6.6
+patcharchitecture | default
+patchreporttype   | AVAILABLE
+</code></pre>
+</div>
+<h2 id="table-variables">Table: Variables</h2>
+<p>Variables and their values set on hosts at their last reported cf-agent execution.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect data concerning same hosts.</p></li>
+<li><p><strong>NameSpace</strong> <em>(text)</em>
+<a href="reference-language-concepts-namespaces.html" title="Namespaces">Namespace</a> within which the variable is set. If no namespace is set then it is set as: <code>default</code>.</p></li>
+<li><p><strong>Bundle</strong> <em>(text)</em>
+<a href="reference-language-concepts-bundles.html" title="Bundles">Bundle</a> name where the variable is set.</p></li>
+<li><p><strong>VariableName</strong> <em>(text)</em>
+Name of the variable.</p></li>
+<li><p><strong>VariableValue</strong> <em>(text)</em>
+Variable value serialized to string.</p>
+
+<ul>
+<li>List types such as: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a>, <a href="reference-promise-types-vars.html#ilist" title="vars - ilist"><code>ilist</code></a>, <a href="reference-promise-types-vars.html#rlist" title="vars - rlist"><code>rlist</code></a> are serialized with CFEngine list format: {&#39;value&#39;,&#39;value&#39;}.</li>
+<li><code>Data</code> type is serialized as JSON string.</li>
+</ul></li>
+<li><p><strong>VariableType</strong> <em>(text)</em>
+Type of the variable. <a href="reference-language-concepts-variables.html" title="Variables">List</a> of supported variable types.</p></li>
+<li><p><strong>MetaTags</strong> <em>(text[])</em>
+List of <a href="examples-tutorials-tags.html" title="Tags for variables, classes, and bundles">meta tags</a> set for the variable.</p></li>
+<li><p><strong>ChangeTimeStamp</strong> <em>(timestamp)</em>
+Timestamp since when variable is set in its current form.
+<strong>Note:</strong> If any of variable attributes change such as its <code>VariableValue</code> or <code>Bundle</code>, the timestamp will be updated.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">namespace</span><span class="p">,</span>
+       <span class="n">bundle</span><span class="p">,</span>
+       <span class="n">variablename</span><span class="p">,</span>
+       <span class="n">variablevalue</span><span class="p">,</span>
+       <span class="n">variabletype</span><span class="p">,</span>
+       <span class="n">metatags</span><span class="p">,</span>
+       <span class="n">changetimestamp</span>
+<span class="k">FROM</span>   <span class="n">variables</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]---|-------------------------------------------------------------
+hostkey         | SHA=a4dd5...
+namespace       | default
+bundle          | cfe_autorun_inventory_memory
+variablename    | total
+variablevalue   | 490.00
+variabletype    | string
+metatags        | {source=promise,inventory,&quot;attribute_name=Memory size (MB)&quot;}
+changetimestamp | 2015-03-11 09:51:41+00
+-[ RECORD 2 ]---|-------------------------------------------------------------
+hostkey         | SHA=a4dd5...
+namespace       | default
+bundle          | cfe_autorun_inventory_listening_ports
+variablename    | ports
+variablevalue   | {&#39;22&#39;,&#39;111&#39;,&#39;5308&#39;,&#39;38854&#39;,&#39;50241&#39;}
+variabletype    | slist
+metatags        | {source=promise,inventory,&quot;attribute_name=Ports listening&quot;}
+changetimestamp | 2015-03-11 09:51:41+00
+-[ RECORD 3 ]---|-------------------------------------------------------------
+hostkey         | SHA=a4dd5...
+namespace       | default
+bundle          | cfe_autorun_inventory_memory
+variablename    | free
+variablevalue   | 69.66
+variabletype    | string
+metatags        | {source=promise,report}
+changetimestamp | 2015-03-11 14:27:12+00
+</code></pre>
+</div>
+<h2 id="table-variables_dictionary">Table: Variables_dictionary</h2>
+<p>Inventory attributes, these data are using in <a href="reference-enterprise-api-ref-inventory.html#list-of-inventory-attributes" title="Inventory API - List of inventory attributes">List of inventory attributes API</a></p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><strong>Id</strong> <em>(integer)</em><br>
+Auto incremental ID<br></li>
+<li><strong>Attribute_name</strong> <em>(text)</em>
+Attribute name</li>
+<li><strong>Category</strong> <em>(text)</em> <em>(<code>Hardware</code>,<code>Software</code>,<a href="guide-installation-and-configuration-general-installation-installation-enterprise.html#network" title="Installing Enterprise for Production - Network"><code>Network</code></a>, <code>Security</code>, <code>User defined</code>)</em>
+Attribute category</li>
+<li><strong>Readonly</strong> <em>(integer)</em> <em>(<code>0</code>,<code>1</code>)</em>
+Is attribute readonly</li>
+<li><strong>Type</strong> <em>(text)</em>
+Type of the attribute. <a href="reference-language-concepts-variables.html" title="Variables">List</a> of supported variable types.</li>
+<li><strong>convert_function</strong> <em>(text)</em>
+Convert function. Emp.: <code>cf_clearSlist</code> - to transform string like <code>{&quot;1&quot;, &quot;2&quot;}</code> to <code>1, 2</code></li>
+<li><strong>keyname</strong> <em>(text)</em>
+Key name</li>
+<li><strong>Enabled</strong> <em>(integer)</em> <em>(<code>0</code>,<code>1</code>)</em>
+Is attribute enabled for the API<br></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">attribute_name</span><span class="p">,</span>
+       <span class="n">category</span><span class="p">,</span>
+       <span class="n">readonly</span><span class="p">,</span>
+       <span class="k">type</span><span class="p">,</span>
+       <span class="n">convert_function</span><span class="p">,</span>
+       <span class="n">enabled</span>
+<span class="k">FROM</span>   <span class="n">variables_dictionary</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]---|-----------------------------------------------------
+attribute_name  | Architecture
+category        | Software
+readonly        | 1
+type            | string
+convert_function| 
+enabled         | 1
+-[ RECORD 2 ]---|-----------------------------------------------------
+attribute_name  | IPv4 addresses
+category        | Network
+readonly        | 1
+type            | slist
+convert_function| cf_clearSlist
+enabled         | 1
+</code></pre>
+</div>
+<h2 id="table-variableslog">Table: VariablesLog</h2>
+<p>CFEngine variables set on hosts by CFEngine over period of time.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect data concerning same hosts.</p></li>
+<li><p><strong>ChangeTimeStamp</strong> <em>(timestamp)</em>
+Timestamp since when variable is set in its current form.
+<strong>Note:</strong> The statement if true till present time or newer entry claims otherwise.</p></li>
+<li><p><strong>ChangeOperation</strong> <em>(<code>ADD</code>,<code>CHANGE</code>,<code>REMOVE</code>,<code>UNTRACKED</code>)</em>
+CFEngine uses incremental diffs to report it&#39;s state. <code>ChangeOperation</code> is a diff state describing current entry.</p>
+
+<ul>
+<li><code>ADD</code> - stands for introducing a new entry which did not exist before. In this case, new CFEngine variable have been introduced.</li>
+<li><code>CHANGE</code> - stands for changing value or attribute such as <code>VariableValue</code> or <code>MetaTags</code> have changed.</li>
+<li><code>REMOVE</code> - Variable have not been set.</li>
+<li><code>UNTRACKED</code> - CFEngine provides a mechanism for filtering unwanted data from being reported. <code>UNTRACKED</code> marker states that information is being filtered and will not report any future information about it.</li>
+</ul></li>
+<li><p><strong>NameSpace</strong> <em>(text)</em>
+<a href="reference-language-concepts-namespaces.html" title="Namespaces">Namespace</a> within which the variable is set. If no namespace is set then it is set as: <code>default</code>.</p></li>
+<li><p><strong>Bundle</strong> <em>(text)</em>
+<a href="reference-language-concepts-bundles.html" title="Bundles">Bundle</a> name where the variable is set.</p></li>
+<li><p><strong>VariableName</strong> <em>(text)</em>
+Name of the variable.</p></li>
+<li><p><strong>VariableValue</strong> <em>(text)</em>
+Variable value serialized to string.</p>
+
+<ul>
+<li>List types such as: <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a>, <a href="reference-promise-types-vars.html#ilist" title="vars - ilist"><code>ilist</code></a>, <a href="reference-promise-types-vars.html#rlist" title="vars - rlist"><code>rlist</code></a> are serialized with CFEngine list format: {&#39;value&#39;,&#39;value&#39;}.</li>
+<li><code>Data</code> type is serialized as JSON string.</li>
+</ul></li>
+<li><p><strong>VariableType</strong> <em>(text)</em>
+Type of the variable. <a href="reference-language-concepts-variables.html" title="Variables">List</a> of supported variable types.</p></li>
+<li><p><strong>MetaTags</strong> <em>(text[])</em>
+List of <a href="examples-tutorials-tags.html" title="Tags for variables, classes, and bundles">meta tags</a> set for the variable.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">changetimestamp</span><span class="p">,</span>
+       <span class="n">changeoperation</span><span class="p">,</span>
+       <span class="n">namespace</span><span class="p">,</span>
+       <span class="n">bundle</span><span class="p">,</span>
+       <span class="n">variablename</span><span class="p">,</span>
+       <span class="n">variablevalue</span><span class="p">,</span>
+       <span class="n">variabletype</span><span class="p">,</span>
+       <span class="n">metatags</span>
+<span class="k">FROM</span>   <span class="n">variableslog</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]---|-----------------------------------------------------
+hostkey         | SHA=2aab8...
+changetimestamp | 2015-03-10 13:43:00+00
+changeoperation | CHANGE
+namespace       | default
+bundle          | mon
+variablename    | av_cpu
+variablevalue   | 0.06
+variabletype    | string
+metatags        | {monitoring,source=environment}
+-[ RECORD 2 ]---|-----------------------------------------------------
+hostkey         | SHA=2aab8...
+changetimestamp | 2015-03-10 13:40:20+00
+changeoperation | ADD
+namespace       | default
+bundle          | sys
+variablename    | arch
+variablevalue   | x86_64
+variabletype    | string
+metatags        | {inventory,source=agent,attribute_name=Architecture}
+-[ RECORD 3 ]---|-----------------------------------------------------
+hostkey         | SHA=2aab8...
+changetimestamp | 2015-03-10 13:43:00+00
+changeoperation | CHANGE
+namespace       | default
+bundle          | mon
+variablename    | av_diskfree
+variablevalue   | 67.01
+variabletype    | string
+metatags        | {monitoring,source=environment}
+</code></pre>
+</div>
+<h2 id="table-v_hosts">Table: v_hosts</h2>
+<p>V_hosts table contains information about hosts.</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect
+data concerning same hosts.</p></li>
+<li><p><strong>iscallcollected</strong> <em>(boolean)</em>
+Is host call collected</p></li>
+<li><p><strong>LastReportTimeStamp</strong> <em>(timestamp)</em>
+Timestamp of the most recent successful report collection.</p></li>
+<li><p><strong>FirstReportTimeStamp</strong> <em>(timestamp)</em>
+Timestamp when the host reported to the hub for the first time, which
+indicate when the host was bootstrapped to the hub.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">iscallcollected</span><span class="p">,</span>
+       <span class="n">lastreporttimestamp</span><span class="p">,</span>
+       <span class="n">firstreporttimestamp</span>
+<span class="k">FROM</span>   <span class="n">hosts</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]--------|-----------------------
+hostkey              | SHA=a4dd...
+iscallcollected      | t
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:40:20+00
+-[ RECORD 2 ]--------|-----------------------
+hostkey              | SHA=3b94...
+iscallcollected      | f
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:34:20+00
+-[ RECORD 3 ]--------|-----------------------
+hostkey              | SHA=2aab...
+iscallcollected      | f
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:40:20+00
+</code></pre>
+</div>
+<h2 id="table-vm_hosts">Table: vm_hosts</h2>
+<p>vm_hosts table contains basic information about hosts managed by CFEngine. 
+In this table data are cached what gives a better query performance</p>
+
+<p><strong>Columns:</strong></p>
+
+<ul>
+<li><p><strong>HostKey</strong> <em>(text)</em>
+Unique host identifier. All tables can be joined by <code>HostKey</code> to connect
+data concerning same hosts.</p></li>
+<li><p><strong>HostName</strong> <em>(text)</em>
+Host name locally detected on the host, configurable as <code>hostIdentifier</code>
+option in <a href="reference-enterprise-api-ref-status-settings.html#get-settings" title="Status and Settings REST API - Get settings">Settings API</a> and
+Mission Portal settings UI.</p></li>
+<li><p><strong>IPAddress</strong> <em>(text)</em>
+IP address of the host derived from the lastseen database (this is expected
+to be the IP address from which connections come from, beware NAT will cause
+multiple hosts to appear to have the same IP address).</p></li>
+<li><p><strong>LastReportTimeStamp</strong> <em>(timestamp)</em>
+Timestamp of the most recent successful report collection.</p></li>
+<li><p><strong>FirstReportTimeStamp</strong> <em>(timestamp)</em>
+Timestamp when the host reported to the hub for the first time, which
+indicate when the host was bootstrapped to the hub.</p></li>
+</ul>
+
+<p><strong>Example query:</strong></p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">hostkey</span><span class="p">,</span>
+       <span class="n">hostname</span><span class="p">,</span>
+       <span class="n">ipaddress</span><span class="p">,</span>
+       <span class="n">lastreporttimestamp</span><span class="p">,</span>
+       <span class="n">firstreporttimestamp</span>
+<span class="k">FROM</span>   <span class="n">hosts</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+<div class="highlight"><pre><code class="text">-[ RECORD 1 ]--------|-----------------------
+hostkey              | SHA=a4dd...
+hostname             | host001
+ipaddress            | 192.168.33.151
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:40:20+00
+-[ RECORD 2 ]--------|-----------------------
+hostkey              | SHA=3b94...
+hostname             | hub
+ipaddress            | 192.168.33.65
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:34:20+00
+-[ RECORD 3 ]--------|-----------------------
+hostkey              | SHA=2aab...
+hostname             | host002
+ipaddress            | 192.168.33.152
+lastreporttimestamp  | 2015-03-10 14:20:20+00
+firstreporttimestamp | 2015-03-10 13:40:20+00
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-enterprise.html">enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-rest.html">rest</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-api.html">api</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-reporting.html">reporting</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-sql.html">sql</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-schema.html">schema</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 27 October 2021
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/enterprise-api-ref/sql-schema.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/3d161b229c7df44b99d8cd6c71640ab53c94fcbd" target="_blank">3d161b229c7df44b99d8cd6c71640ab53c94fcbd</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.12/assets/footer-135fa20640bb1a2bbe772d22c46414cb.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+ <div id="wholebody"><div id="pagebody"><div class="rtop"><div class="r1"></div><div class="r2"></div><div class="r3"></div><div class="r4"></div></div><div id="content">
+<pre>
+<h1>Cfengine 3 example unit_measure_log.html</h1>
+
+#######################################################
+#
+# Test file: log scanner
+#
+#######################################################
+
+#
+# Look for a file in /var/cfengine/state/line_counter_measure.log 
+#
+
+bundle monitor watch
+{
+measurements:
+
+   "/home/mark/tmp/file"
+
+         handle => "line_counter",
+    stream_type => "file",
+      data_type => "counter",
+    match_value => scan_log("MYLINE.*"),
+   history_type => "log",
+         action => sample_rate("0");
+
+}
+
+##########################################################
+
+body match_value scan_log(x)
+{
+select_line_matching => "^$(x)$";
+track_growing_file => "true";
+}
+
+body action sample_rate(x)
+{
+ifelapsed => "$(x)";
+expireafter => "10";
+}</div><div class="rbottom"><div class="r4"></div><div class="r3"></div><div class="r2"></div><div class="r1"></div></div></div></div></div>

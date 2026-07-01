@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - processes</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html"  class="navselected" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-enterprise-api.html">Enterprise  API Reference</a></li><li><a href="reference-syntax.html">Syntax, identifiers and names</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li><a href="reference-promise-types-access.html">access</a></li><li><a href="reference-promise-types-classes.html">classes</a></li><li><a href="reference-promise-types-commands.html">commands</a></li><li><a href="reference-promise-types-databases.html">databases</a></li><li><a href="reference-promise-types-defaults.html">defaults</a></li><li><a href="reference-promise-types-files.html">files</a></li><li><a href="reference-promise-types-guest_environments.html">guest_environments</a></li><li><a href="reference-promise-types-measurements.html">measurements</a></li><li><a href="reference-promise-types-methods.html">methods</a></li><li><a href="reference-promise-types-meta.html">meta</a></li><li><a href="reference-promise-types-packages.html">packages</a></li><li class="selected"><span>processes</span></li><li><a href="reference-promise-types-reports.html">reports</a></li><li><a href="reference-promise-types-roles.html">roles</a></li><li><a href="reference-promise-types-services.html">services</a></li><li><a href="reference-promise-types-storage.html">storage</a></li><li><a href="reference-promise-types-vars.html">vars</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>processes</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/reference.html">reference</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/bundle-agent.html">bundle agent</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/promise-types.html">promise types</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/processes.html">processes</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/processes-promises.html">processes promises</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/promise-types.html">promise types</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>processes</h1>
+                    <p>Process promises refer to items in the system process table, i.e., a command 
+in some state of execution (with a Process Control Block). Promiser objects are patterns that are <a href="manuals-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">unanchored</a>, meaning that they match line fragments in the system process table.</p>
+<div class="highlight"><pre><code class="cf3">      <span class="kd">processes</span><span class="p">:</span>
+
+        <span class="s">&quot;regex contained in process line&quot;</span>
+
+            <span class="nf">process_select</span> <span class="err">=</span> <span class="nf">process_filter_body</span><span class="p">,</span>
+            <span class="nf">restart_class</span> <span class="err">=</span> <span class="s">&quot;activation class for process&quot;</span><span class="p">,</span>
+            <span class="err">..</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Note</strong>: Process table formats differ between operating systems, and the use 
+of simple patterns such as program-names is recommended. For more 
+sophisticated matches, users should use the*<a href="reference-promise-types-processes.html#process_select" title="processes - process_select"><code>process_select</code></a>*feature.* For 
+example, on many systems, the process pattern <code>&quot;^cp&quot;</code> may not match any 
+processes, even though <code>&quot;cp&quot;</code> is running. This is because the process table 
+entry may list <code>&quot;/bin/cp&quot;</code>. However, the process pattern <code>&quot;cp&quot;</code> will also 
+match a process containing <code>&quot;scp&quot;</code>, so take care not to oversimplify your 
+patterns (the PCRE pattern anchors <code>&quot;\b&quot;</code> and <code>&quot;\B&quot;</code> may prove very useful to 
+you).</p>
+
+<p>To restart a process, you must use a class to activate and then describe a 
+<a href="reference-promise-types-processes.html#command" title="processes - command"><code>command</code></a> in that class.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">commands</span><span class="p">:</span>
+
+      <span class="nc">restart_me</span><span class="p">::</span>
+
+       <span class="s">&quot;/path/executable&quot;</span> <span class="err">...</span> <span class="p">;</span>
+</code></pre>
+</div>
+
+<p>This rationalizes complex restart-commands and avoids unnecessary overlap 
+between <code>processes</code> and <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a>.</p>
+
+<p>The <a href="reference-promise-types-processes.html#process_stop" title="processes - process_stop"><code>process_stop</code></a> is also arguably a command, but it should be an
+ephemeral command that does not lead to a persistent process. It is
+intended only for commands of the form /etc/inetd service stop, not for
+processes that persist. Processes are restarted at the end of a bundle&#39;s
+execution, but stop commands are executed immediately.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+    <span class="p">{</span>
+    <span class="kd">processes</span><span class="p">:</span>
+
+     <span class="s">&quot;.*&quot;</span>
+
+        <span class="kr">process_count</span>   <span class="o">=&gt;</span> <span class="nf">anyprocs</span><span class="p">,</span>
+        <span class="kr">process_select</span>  <span class="o">=&gt;</span> <span class="nf">proc_finder</span><span class="p">;</span>
+
+    <span class="kd">reports</span><span class="p">:</span>
+
+     <span class="nc">any_procs</span><span class="p">::</span>
+
+       <span class="s">&quot;Found processes out of range&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">body</span> <span class="k">process_select</span> <span class="nf">proc_finder</span>
+    <span class="p">{</span>
+      <span class="c"># Processes started between 5.5 hours and 20 minutes ago</span>
+      <span class="kr">stime_range</span> <span class="o">=&gt;</span> <span class="nf">irange</span><span class="p">(</span><span class="nf">ago</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="nf">ago</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">0</span><span class="p">));</span>
+      <span class="kr">process_result</span> <span class="o">=&gt;</span> <span class="s">&quot;stime&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">body</span> <span class="k">process_count</span> <span class="nf">anyprocs</span>
+    <span class="p">{</span>
+      <span class="kr">match_range</span> <span class="o">=&gt;</span> <span class="s">&quot;0,0&quot;</span><span class="p">;</span>
+      <span class="kr">out_of_range_define</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;any_procs&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="commands-and-processes">Commands and Processes</h3>
+<p>CFEngine distinguishes between <a href="reference-promise-types-processes.html" title="processes"><code>processes</code></a> and <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a> so that 
+there is a clean separation between detection (promises about the process 
+table) and certain repairs (promises to execute commands that start 
+processes).</p>
+
+<p>Command executions are about jobs, services, scripts etc. They are properties 
+of an executable file, and the referring &#39;promiser&#39; is a file object. On the
+other hand a process is a property of a &quot;process identifier&quot; which is a kernel 
+instantiation, a quite different object altogether. For example:</p>
+
+<ul>
+<li>  A &quot;PID&quot; (which is not an executable) promises to be reminded of a
+signal, e.g.</li>
+</ul>
+<div class="highlight"><pre><code class="cf3">    <span class="nf">kill</span> <span class="nf">signal</span> <span class="nf">pid</span>
+</code></pre>
+</div>
+
+<ul>
+<li>  An &quot;command&quot; promises to start or stop itself with a parameterized
+specification.</li>
+</ul>
+<div class="highlight"><pre><code class="cf3">    <span class="nf">exec</span> <span class="nf">command</span> <span class="nf">argument1</span> <span class="nf">argument2</span> <span class="err">...</span>
+</code></pre>
+</div>
+
+<p>Neither the file nor the pid necessarily promise to respond to these
+activations, but they are nonetheless physically meaningful phenomena or
+attributes associated with these objects.</p>
+
+<ul>
+<li>  Executable files do not listen for signals as they have no active
+state.</li>
+<li>  PIDs do not run themselves or stop themselves with new arguments,
+but they can use signals as they are running.</li>
+</ul>
+
+<p>Executions lead to processes for the duration of their lifetime, so
+these two issues are related, although the promises themselves are not.</p>
+
+<hr>
+<h2 id="attributes">Attributes</h2><h3 id="process_count">process_count</h3>
+<p><strong>Type:</strong> <code>body process_count</code></p>
+<h4 id="in_range_define">in_range_define</h4>
+<p><strong>Description:</strong> List of classes to define if the matches are in range</p>
+
+<p>Classes are defined if the processes that are found in the process table
+satisfy the promised process count, in other words if the promise about
+the number of processes matching the other criteria is kept.   </p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">process_count</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">in_range_define</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;class1&quot;</span><span class="p">,</span> <span class="s">&quot;class2&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="match_range">match_range</h4>
+<p><strong>Description:</strong> Integer range for acceptable number of matches for this
+process</p>
+
+<p>This is a numerical range for the number of occurrences of the process
+in the process table. As long as it falls within the specified limits,
+the promise is considered kept.   </p>
+
+<p><strong>Type:</strong> <code>irange[int,int]</code></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">process_count</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">match_range</span> <span class="o">=&gt;</span> <span class="nf">irange</span><span class="p">(</span><span class="s">&quot;10&quot;</span><span class="p">,</span><span class="s">&quot;50&quot;</span><span class="p">);</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="out_of_range_define">out_of_range_define</h4>
+<p><strong>Description:</strong> List of classes to define if the matches are out of range</p>
+
+<p>Classes to activate remedial promises conditional on this promise
+failure to be kept.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">process_count</span> <span class="nf">example</span><span class="p">(</span><span class="nv">s</span><span class="p">)</span>
+     <span class="p">{</span>
+     <span class="kr">out_of_range_define</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;process_anomaly&quot;</span><span class="p">,</span> <span class="s">&quot;anomaly_</span><span class="si">$(s)</span><span class="s">&quot;</span><span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="process_select">process_select</h3>
+<p><strong>Type:</strong> <code>body process_select</code></p>
+<h4 id="command">command</h4>
+<p><strong>Description:</strong> Regular expression matching the command/cmd field of a
+process</p>
+
+<p>This expression should match the entire <code>COMMAND</code> field of the process
+table, not just a fragment. This field is usually the last field on the
+line, so it thus starts with the first non-space character and ends with
+the end of line.   </p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">process_select</span> <span class="nf">example</span>
+
+     <span class="p">{</span>
+     <span class="kr">command</span> <span class="o">=&gt;</span> <span class="s">&quot;cf-.*&quot;</span><span class="p">;</span>
+
+     <span class="kr">process_result</span> <span class="o">=&gt;</span> <span class="s">&quot;command&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="pid">pid</h4>
+<p><strong>Description:</strong> Range of integers matching the process id of a process</p>
+
+<p><strong>Type:</strong> <code>irange[int,int]</code></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">process_select</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">pid</span> <span class="o">=&gt;</span> <span class="nf">irange</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="s">&quot;10&quot;</span><span class="p">);</span>
+     <span class="kr">process_result</span> <span class="o">=&gt;</span> <span class="s">&quot;pid&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="pgid">pgid</h4>
+<p><strong>Description:</strong> Range of integers matching the parent group id of a
+process</p>
+
+<p><strong>Type:</strong> <code>irange[int,int]</code></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">process_select</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">pgid</span> <span class="o">=&gt;</span> <span class="nf">irange</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="s">&quot;10&quot;</span><span class="p">);</span>
+     <span class="kr">process_result</span> <span class="o">=&gt;</span> <span class="s">&quot;pgid&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="ppid">ppid</h4>
+<p><strong>Description:</strong> Range of integers matching the parent process id of a
+process</p>
+
+<p><strong>Type:</strong> <code>irange[int,int]</code></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">process_select</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">ppid</span> <span class="o">=&gt;</span> <span class="nf">irange</span><span class="p">(</span><span class="s">&quot;407&quot;</span><span class="p">,</span><span class="s">&quot;511&quot;</span><span class="p">);</span>
+     <span class="kr">process_result</span> <span class="o">=&gt;</span> <span class="s">&quot;ppid&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="priority">priority</h4>
+<p><strong>Description:</strong> Range of integers matching the priority field (PRI/NI) of
+a process</p>
+
+<p><strong>Type:</strong> <code>irange[int,int]</code></p>
+
+<p><strong>Allowed input range:</strong> <code>-20,+20</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">process_select</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">priority</span> <span class="o">=&gt;</span> <span class="nf">irange</span><span class="p">(</span><span class="s">&quot;-5&quot;</span><span class="p">,</span><span class="s">&quot;0&quot;</span><span class="p">);</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="process_owner">process_owner</h4>
+<p><strong>Description:</strong> List of regexes matching the user of a process</p>
+
+<p>The regular expressions should match a legal user name on the system. The
+regex is <a href="manuals-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">anchored</a>, meaning it must match the entire name.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">process_select</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">process_owner</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;wwwrun&quot;</span><span class="p">,</span> <span class="s">&quot;nobody&quot;</span> <span class="p">};</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="process_result">process_result</h4>
+<p><strong>Description:</strong> Boolean class expression with the logical combination
+of process selection criteria</p>
+
+<p>A logical combination of the process selection classifiers. The syntax
+is the same as that for class expressions. If <code>process_result</code> is not 
+specified, then all set attributes in the <a href="reference-promise-types-processes.html#process_select" title="processes - process_select"><code>process_select</code></a> body are AND&#39;ed 
+together.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong>
+<code>[(process_owner|pid|ppid||pgid|rsize|vsize|status|command|ttime|stime|tty|priority|threads)[|!.]*]*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">process_select</span> <span class="nf">proc_finder</span><span class="p">(</span><span class="nv">p</span><span class="p">)</span>
+
+     <span class="p">{</span>
+     <span class="kr">process_owner</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;avahi&quot;</span><span class="p">,</span> <span class="s">&quot;bin&quot;</span> <span class="p">};</span>
+     <span class="kr">command</span>        <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(p)</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="kr">pid</span>            <span class="o">=&gt;</span> <span class="nf">irange</span><span class="p">(</span><span class="s">&quot;100&quot;</span><span class="p">,</span><span class="s">&quot;199&quot;</span><span class="p">);</span>
+     <span class="kr">vsize</span>          <span class="o">=&gt;</span> <span class="nf">irange</span><span class="p">(</span><span class="s">&quot;0&quot;</span><span class="p">,</span><span class="s">&quot;1000&quot;</span><span class="p">);</span>
+     <span class="kr">process_result</span> <span class="o">=&gt;</span> <span class="s">&quot;command.(process_owner|vsize).!pid&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-promise-types-files.html#file_result" title="files - file_result"><code>file_result</code></a></p>
+<h4 id="rsize">rsize</h4>
+<p><strong>Description:</strong> Range of integers matching the resident memory size of a
+process, in kilobytes</p>
+
+<p><strong>Type:</strong> <code>irange[int,int]</code></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="nf">body</span> <span class="nf">process_select</span>
+     <span class="p">{</span>
+     <span class="kr">rsize</span> <span class="o">=&gt;</span> <span class="nf">irange</span><span class="p">(</span><span class="s">&quot;4000&quot;</span><span class="p">,</span><span class="s">&quot;8000&quot;</span><span class="p">);</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="status">status</h4>
+<p><strong>Description:</strong> Regular expression matching the status field of a process</p>
+
+<p>For instance, characters in the set <code>NRSsl+..</code>. Windows processes do not
+have status fields.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">process_select</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">status</span> <span class="o">=&gt;</span> <span class="s">&quot;Z&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="stime_range">stime_range</h4>
+<p><strong>Description:</strong> Range of integers matching the start time of a process</p>
+
+<p>The calculation of time from process table entries is sensitive to
+Daylight Savings Time (Summer/Winter Time) so calculations could be an
+hour off. This is for now a bug to be fixed.</p>
+
+<p><strong>Type:</strong> <code>irange[int,int]</code></p>
+
+<p><strong>Allowed input range:</strong> <code>0,2147483647</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">process_select</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">stime_range</span> <span class="o">=&gt;</span> <span class="nf">irange</span><span class="p">(</span><span class="nf">ago</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="nf">now</span><span class="p">);</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="ttime_range">ttime_range</h4>
+<p><strong>Description:</strong> Range of integers matching the total elapsed time of a
+process.</p>
+
+<p>This is total accumulated time for a process.</p>
+
+<p><strong>Type:</strong> <code>irange[int,int]</code></p>
+
+<p><strong>Allowed input range:</strong> <code>0,2147483647</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">process_select</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">ttime_range</span> <span class="o">=&gt;</span> <span class="nf">irange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nf">accumulated</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">));</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="tty">tty</h4>
+<p><strong>Description:</strong> Regular expression matching the tty field of a process</p>
+
+<p>Windows processes are not regarded as attached to any terminal, so they
+all have tty &#39;?&#39;.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">process_select</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">tty</span> <span class="o">=&gt;</span> <span class="s">&quot;pts/[0-9]+&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="threads">threads</h4>
+<p><strong>Description:</strong> Range of integers matching the threads (NLWP) field of a
+process</p>
+
+<p><strong>Type:</strong> <code>irange[int,int]</code></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">process_select</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">threads</span> <span class="o">=&gt;</span> <span class="nf">irange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="vsize">vsize</h4>
+<p><strong>Description:</strong> Range of integers matching the virtual memory size of a
+process, in kilobytes.</p>
+
+<p>On Windows, the virtual memory size is the amount of memory that cannot
+be shared with other processes. In Task Manager, this is called Commit
+Size (Windows 2008), or VM Size (Windows XP).</p>
+
+<p><strong>Type:</strong> <code>irange[int,int]</code></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">     <span class="k">body</span> <span class="k">process_select</span> <span class="nf">example</span>
+     <span class="p">{</span>
+     <span class="kr">vsize</span> <span class="o">=&gt;</span> <span class="nf">irange</span><span class="p">(</span><span class="s">&quot;4000&quot;</span><span class="p">,</span><span class="s">&quot;9000&quot;</span><span class="p">);</span>
+     <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="process_stop">process_stop</h3>
+<p><strong>Description:</strong> A command used to stop a running process</p>
+
+<p>As an alternative to sending a termination or kill signal to a process,
+one may call a &#39;stop script&#39; to perform a graceful shutdown.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>&quot;?(/.*)</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">processes</span><span class="p">:</span>
+
+     <span class="s">&quot;snmpd&quot;</span>
+
+            <span class="kr">process_stop</span> <span class="o">=&gt;</span> <span class="s">&quot;/etc/init.d/snmp stop&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="restart_class">restart_class</h3>
+<p><strong>Description:</strong> A class to be defined globally if the process is not
+running, so that a <code>command:</code> rule can be referred to restart the process</p>
+
+<p>This is a signal to restart a process that should be running, if it is
+not running. Processes are signaled first and then restarted later, at
+the end of bundle execution, after all possible corrective actions have
+been made that could influence their execution.</p>
+
+<p>Windows does not support having processes start themselves in the
+background, like Unix daemons usually do; as fork off a child process.
+Therefore, it may be useful to specify an <a href="reference-promise-types.html#action" title="Promise Types and Attributes - action"><code>action</code></a> body that sets
+<a href="reference-promise-types.html#background" title="Promise Types and Attributes - background"><code>background</code></a> to true in a commands promise that is invoked by the class
+set by <code>restart_class</code>. See the <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a> promise type for more
+information.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>[a-zA-Z0-9_$(){}\[\].:]+</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">processes</span><span class="p">:</span>
+
+   <span class="s">&quot;cf-serverd&quot;</span>
+
+     <span class="kr">restart_class</span> <span class="o">=&gt;</span> <span class="s">&quot;start_cfserverd&quot;</span><span class="p">;</span>
+
+<span class="kd">commands</span><span class="p">:</span>
+
+  <span class="nc">start_cfserverd</span><span class="p">::</span>
+
+    <span class="s">&quot;/var/cfengine/bin/cf-serverd&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="signals">signals</h3>
+<p><strong>Description:</strong> A list of menu options representing signals to be sent to
+a process.</p>
+
+<p>Signals are presented as an ordered list to the process. On Windows,
+only the kill signal is supported, which terminates the process.</p>
+
+<p><strong>Type:</strong> (option list)</p>
+
+<p><strong>Allowed input range:</strong>   </p>
+<div class="highlight"><pre><code class="cf3">       <span class="nf">hup</span>
+       <span class="nf">int</span>
+       <span class="nf">trap</span>
+       <span class="nf">kill</span>
+       <span class="nf">pipe</span>
+       <span class="nf">cont</span>
+       <span class="nf">abrt</span>
+       <span class="nf">stop</span>
+       <span class="nf">quit</span>
+       <span class="nf">term</span>
+       <span class="nf">child</span>
+       <span class="nf">usr1</span>
+       <span class="nf">usr2</span>
+       <span class="nf">bus</span>
+       <span class="nf">segv</span>
+</code></pre>
+</div>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">processes</span><span class="p">:</span>
+
+     <span class="nc">cfservd_out_of_control</span><span class="p">::</span>
+
+       <span class="s">&quot;cfservd&quot;</span>
+
+            <span class="kr">signals</span>         <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;stop&quot;</span> <span class="p">,</span> <span class="s">&quot;term&quot;</span> <span class="p">},</span>
+            <span class="kr">restart_class</span>   <span class="o">=&gt;</span> <span class="s">&quot;start_cfserv&quot;</span><span class="p">;</span>
+
+     <span class="nc">any</span><span class="p">::</span>
+
+       <span class="s">&quot;snmpd&quot;</span>
+
+            <span class="kr">signals</span>         <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;term&quot;</span> <span class="p">,</span> <span class="s">&quot;kill&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/reference/promise-types/processes.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

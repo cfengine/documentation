@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.7  Documentation - Mount NFS filesystem</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.7/assets/global-fd19e55abf031add992b4d4a2d9bb344.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Mount NFS filesystem";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.13/">Version 3.13 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/" selected>Version 3.7 (EOL)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:skcdq5u4lcc" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a><ul class="level2"><li><a href="examples-example-snippets-general.html">General Examples</a></li><li><a href="examples-example-snippets-cfengine-administration.html">CFEngine Administration Examples</a></li><li><a href="examples-example-snippets-promise-patterns.html">Common Promise Patterns</a><ul class="level3"><li><a href="examples-example-snippets-promise-patterns-example_aborting_execution.html">Aborting execution</a></li><li><a href="examples-example-snippets-promise-patterns-example_change_detection.html">Change detection</a></li><li><a href="examples-example-snippets-promise-patterns-example_diskfree.html">Check filesystem space</a></li><li><a href="examples-example-snippets-promise-patterns-example_copy_single_files.html">Copy single files</a></li><li><a href="examples-example-snippets-promise-patterns-example_create_filedir.html">Create files and directories</a></li><li><a href="examples-example-snippets-promise-patterns-example_edit_motd.html">Customize Message of the Day</a></li><li><a href="examples-example-snippets-promise-patterns-example_ssh_keys.html">Distribute ssh keys</a></li><li><a href="examples-example-snippets-promise-patterns-example_process_kill.html">Ensure a process is not running</a></li><li><a href="examples-example-snippets-promise-patterns-example_enable_service.html">Ensure a service is enabled and running</a></li><li><a href="examples-example-snippets-promise-patterns-example_find_mac_addr.html">Find the MAC address</a></li><li><a href="examples-example-snippets-promise-patterns-example_install_package.html">Install packages</a></li><li><a class="active" href="examples-example-snippets-promise-patterns-example_mount_nfs.html">Mount NFS filesystem</a></li><li><a href="examples-example-snippets-promise-patterns-example_process_restart.html">Restart a Process</a></li><li><a href="examples-example-snippets-promise-patterns-example_edit_name_resolution.html">Set up name resolution with DNS</a></li><li><a href="examples-example-snippets-promise-patterns-example_sudoers.html">Set up sudo</a></li><li><a href="examples-example-snippets-promise-patterns-example_ntp.html">Set up time management through NTP</a></li><li><a href="examples-example-snippets-promise-patterns-example_updating_from_central_hub.html">Updating from a central policy server</a></li></ul></li><li><a href="examples-example-snippets-timing-counting-measuring.html">Measuring Examples</a></li><li><a href="examples-example-snippets-software-adminstration.html">Software Administration Examples</a></li><li><a href="examples-example-snippets-commands-scripts-execution.html">Commands, Scripts, and Execution Examples</a></li><li><a href="examples-example-snippets-basic-file-directory.html">File and Directory Examples</a></li><li><a href="examples-example-snippets-file-template.html">File Template Examples</a></li><li><a href="examples-example-snippets-database.html">Database Examples</a></li><li><a href="examples-example-snippets-network.html">Network Examples</a></li><li><a href="examples-example-snippets-system-security.html">System Security Examples</a></li><li><a href="examples-example-snippets-system-information.html">System Information Examples</a></li><li><a href="examples-example-snippets-system-administration.html">System Administration Examples</a></li><li><a href="examples-example-snippets-system-file.html">System File Examples</a></li><li><a href="examples-example-snippets-windows-registry.html">Windows Registry Examples</a></li><li><a href="examples-example-snippets-user-management-acl.html">User Management and ACL Examples</a></li></ul></li><li><a href="examples-tutorials.html">Tutorials</a></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a></li></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-example-snippets.html">Example Snippets</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-example-snippets-promise-patterns.html">Common Promise Patterns</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Mount NFS filesystem
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Mounting an NFS filesystem is straightforward using CFEngine&#39;s storage promises. The following bundle specifies the name of a remote file system server, the path of the remote file system and the mount point directory on the local machine:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+<span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;mounts&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">mounts</span>
+<span class="p">{</span>
+<span class="kd">storage</span><span class="p">:</span>
+
+  <span class="s">&quot;/mnt&quot;</span> <span class="kr">mount</span>  <span class="o">=&gt;</span> <span class="nf">nfs</span><span class="p">(</span><span class="s">&quot;fileserver&quot;</span><span class="p">,</span><span class="s">&quot;/home&quot;</span><span class="p">);</span>  <span class="c"># &quot;/mnt&quot; is the local moint point</span>
+                                               <span class="c"># &quot;fileserver&quot; is the remote fileserver</span>
+                                               <span class="c"># &quot;/home&quot; is the path to the remote file system</span>
+<span class="p">}</span>
+
+
+<span class="k">body</span> <span class="k">mount</span> <span class="nf">nfs</span><span class="p">(</span><span class="nv">server</span><span class="p">,</span><span class="nv">source</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="kr">mount_type</span> <span class="o">=&gt;</span> <span class="s">&quot;nfs&quot;</span><span class="p">;</span>           <span class="c"># Protocol type of remote file system</span>
+<span class="kr">mount_source</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(source)</span><span class="s">&quot;</span><span class="p">;</span>   <span class="c"># Path of remote file system</span>
+<span class="kr">mount_server</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(server)</span><span class="s">&quot;</span><span class="p">;</span>   <span class="c"># Name or IP of remote file system server</span>
+<span class="kr">mount_options</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;rw&quot;</span> <span class="p">};</span>     <span class="c"># List of option strings to add to the file system table (&quot;fstab&quot;)</span>
+<span class="kr">edit_fstab</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>          <span class="c"># True/false add or remove entries to the file system table (&quot;fstab&quot;)</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This policy can be found in <code>/var/cfengine/share/doc/examples/example_mount_nfs.cf</code></p>
+
+<p>Here is an example run.  At start, the filesystem is not in /etc/fstab and is not mounted:</p>
+<div class="highlight"><pre><code class="text"><span></span># grep mnt /etc/fstab # filesystem is not in /etc/fstab
+# df |grep mnt # filesystem is not mounted
+</code></pre>
+</div>
+
+<p>Now we run CFEngine to mount the filesystem and add it to /etc/fstab:</p>
+<div class="highlight"><pre><code class="text"><span></span># cf-agent -f example_mount_nfs.cf
+2013-06-08T17:48:42-0700    error: Attempting abort because mount went into a retry loop.
+# grep mnt /etc/fstab
+fileserver:/home     /mnt    nfs     rw
+# df |grep mnt
+fileserver:/home 149912064 94414848  47882240  67% /mnt
+#
+</code></pre>
+</div>
+
+<p>Note: CFEngine errors out after it mounts the filesystem and updates
+/etc/fstab.  There is a ticket <a href="https://cfengine.com/dev/issues/2937">https://cfengine.com/dev/issues/2937</a>
+open on this issue.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-examples.html">examples</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-policy.html">policy</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-mount.html">mount</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-nfs.html">nfs</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-filesystem.html">filesystem</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 12 April 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/examples/example-snippets/promise-patterns/example_mount_nfs.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/34a63926eaa48e77d433eef63e7fec91c25bf534" target="_blank">34a63926eaa48e77d433eef63e7fec91c25bf534</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.7/assets/footer-a434e55eb3b9456e270479ce96049098.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

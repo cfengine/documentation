@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.18  Documentation - strftime</title>
+        <link rel="icon" type="image/svg+xml" href="./media/images/favicon.svg">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-functions-strftime.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+        <link href='assets/global-337446952f2ea3d590f5c3e3687cd5f0.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "strftime";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.24/">Version 3.24 (LTS)</option>
+<option value="/docs/3.23/">Version 3.23 (EOL non-LTS)</option>
+<option value="/docs/3.22/">Version 3.22 (non-LTS)</option>
+<option value="/docs/3.21/">Version 3.21 (LTS)</option>
+<option value="/docs/3.20/">Version 3.20 (EOL non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/" selected>Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (EOL LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="c5f68dd2aab4228c4" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components</a></li><li><a href="reference-promise-types.html">Promise Types</a></li><li><a href="reference-functions.html">Functions</a><ul class="level2"><li><a href="reference-functions-accessedbefore.html">accessedbefore</a></li><li><a href="reference-functions-accumulated.html">accumulated</a></li><li><a href="reference-functions-ago.html">ago</a></li><li><a href="reference-functions-and.html">and</a></li><li><a href="reference-functions-basename.html">basename</a></li><li><a href="reference-functions-bundlesmatching.html">bundlesmatching</a></li><li><a href="reference-functions-bundlestate.html">bundlestate</a></li><li><a href="reference-functions-callstack_callers.html">callstack_callers</a></li><li><a href="reference-functions-callstack_promisers.html">callstack_promisers</a></li><li><a href="reference-functions-canonify.html">canonify</a></li><li><a href="reference-functions-canonifyuniquely.html">canonifyuniquely</a></li><li><a href="reference-functions-cf_version_after.html">cf_version_after</a></li><li><a href="reference-functions-cf_version_at.html">cf_version_at</a></li><li><a href="reference-functions-cf_version_before.html">cf_version_before</a></li><li><a href="reference-functions-cf_version_between.html">cf_version_between</a></li><li><a href="reference-functions-cf_version_maximum.html">cf_version_maximum</a></li><li><a href="reference-functions-cf_version_minimum.html">cf_version_minimum</a></li><li><a href="reference-functions-changedbefore.html">changedbefore</a></li><li><a href="reference-functions-classesmatching.html">classesmatching</a></li><li><a href="reference-functions-classfiltercsv.html">classfiltercsv</a></li><li><a href="reference-functions-classify.html">classify</a></li><li><a href="reference-functions-classmatch.html">classmatch</a></li><li><a href="reference-functions-concat.html">concat</a></li><li><a href="reference-functions-countclassesmatching.html">countclassesmatching</a></li><li><a href="reference-functions-countlinesmatching.html">countlinesmatching</a></li><li><a href="reference-functions-data_expand.html">data_expand</a></li><li><a href="reference-functions-data_readstringarray.html">data_readstringarray</a></li><li><a href="reference-functions-data_readstringarrayidx.html">data_readstringarrayidx</a></li><li><a href="reference-functions-data_regextract.html">data_regextract</a></li><li><a href="reference-functions-data_sysctlvalues.html">data_sysctlvalues</a></li><li><a href="reference-functions-datastate.html">datastate</a></li><li><a href="reference-functions-difference.html">difference</a></li><li><a href="reference-functions-dirname.html">dirname</a></li><li><a href="reference-functions-diskfree.html">diskfree</a></li><li><a href="reference-functions-escape.html">escape</a></li><li><a href="reference-functions-eval.html">eval</a></li><li><a href="reference-functions-every.html">every</a></li><li><a href="reference-functions-execresult.html">execresult</a></li><li><a href="reference-functions-execresult_as_data.html">execresult_as_data</a></li><li><a href="reference-functions-expandrange.html">expandrange</a></li><li><a href="reference-functions-file_hash.html">file_hash</a></li><li><a href="reference-functions-fileexists.html">fileexists</a></li><li><a href="reference-functions-filesexist.html">filesexist</a></li><li><a href="reference-functions-filesize.html">filesize</a></li><li><a href="reference-functions-filestat.html">filestat</a></li><li><a href="reference-functions-filter.html">filter</a></li><li><a href="reference-functions-findfiles.html">findfiles</a></li><li><a href="reference-functions-findfiles_up.html">findfiles_up</a></li><li><a href="reference-functions-findprocesses.html">findprocesses</a></li><li><a href="reference-functions-format.html">format</a></li><li><a href="reference-functions-getclassmetatags.html">getclassmetatags</a></li><li><a href="reference-functions-getenv.html">getenv</a></li><li><a href="reference-functions-getfields.html">getfields</a></li><li><a href="reference-functions-getgid.html">getgid</a></li><li><a href="reference-functions-getindices.html">getindices</a></li><li><a href="reference-functions-getuid.html">getuid</a></li><li><a href="reference-functions-getuserinfo.html">getuserinfo</a></li><li><a href="reference-functions-getusers.html">getusers</a></li><li><a href="reference-functions-getvalues.html">getvalues</a></li><li><a href="reference-functions-getvariablemetatags.html">getvariablemetatags</a></li><li><a href="reference-functions-grep.html">grep</a></li><li><a href="reference-functions-groupexists.html">groupexists</a></li><li><a href="reference-functions-hash.html">hash</a></li><li><a href="reference-functions-hash_to_int.html">hash_to_int</a></li><li><a href="reference-functions-hashmatch.html">hashmatch</a></li><li><a href="reference-functions-host2ip.html">host2ip</a></li><li><a href="reference-functions-hostinnetgroup.html">hostinnetgroup</a></li><li><a href="reference-functions-hostrange.html">hostrange</a></li><li><a href="reference-functions-hostsseen.html">hostsseen</a></li><li><a href="reference-functions-hostswithclass.html">hostswithclass</a></li><li><a href="reference-functions-hubknowledge.html">hubknowledge</a></li><li><a href="reference-functions-ifelse.html">ifelse</a></li><li><a href="reference-functions-int.html">int</a></li><li><a href="reference-functions-intersection.html">intersection</a></li><li><a href="reference-functions-ip2host.html">ip2host</a></li><li><a href="reference-functions-iprange.html">iprange</a></li><li><a href="reference-functions-irange.html">irange</a></li><li><a href="reference-functions-isdir.html">isdir</a></li><li><a href="reference-functions-isexecutable.html">isexecutable</a></li><li><a href="reference-functions-isgreaterthan.html">isgreaterthan</a></li><li><a href="reference-functions-isipinsubnet.html">isipinsubnet</a></li><li><a href="reference-functions-islessthan.html">islessthan</a></li><li><a href="reference-functions-islink.html">islink</a></li><li><a href="reference-functions-isnewerthan.html">isnewerthan</a></li><li><a href="reference-functions-isplain.html">isplain</a></li><li><a href="reference-functions-isvariable.html">isvariable</a></li><li><a href="reference-functions-join.html">join</a></li><li><a href="reference-functions-lastnode.html">lastnode</a></li><li><a href="reference-functions-laterthan.html">laterthan</a></li><li><a href="reference-functions-ldaparray.html">ldaparray</a></li><li><a href="reference-functions-ldaplist.html">ldaplist</a></li><li><a href="reference-functions-ldapvalue.html">ldapvalue</a></li><li><a href="reference-functions-length.html">length</a></li><li><a href="reference-functions-lsdir.html">lsdir</a></li><li><a href="reference-functions-makerule.html">makerule</a></li><li><a href="reference-functions-maparray.html">maparray</a></li><li><a href="reference-functions-mapdata.html">mapdata</a></li><li><a href="reference-functions-maplist.html">maplist</a></li><li><a href="reference-functions-max.html">max</a></li><li><a href="reference-functions-mean.html">mean</a></li><li><a href="reference-functions-mergedata.html">mergedata</a></li><li><a href="reference-functions-min.html">min</a></li><li><a href="reference-functions-network_connections.html">network_connections</a></li><li><a href="reference-functions-none.html">none</a></li><li><a href="reference-functions-not.html">not</a></li><li><a href="reference-functions-now.html">now</a></li><li><a href="reference-functions-nth.html">nth</a></li><li><a href="reference-functions-on.html">on</a></li><li><a href="reference-functions-or.html">or</a></li><li><a href="reference-functions-packagesmatching.html">packagesmatching</a></li><li><a href="reference-functions-packageupdatesmatching.html">packageupdatesmatching</a></li><li><a href="reference-functions-parseintarray.html">parseintarray</a></li><li><a href="reference-functions-parsejson.html">parsejson</a></li><li><a href="reference-functions-parserealarray.html">parserealarray</a></li><li><a href="reference-functions-parsestringarray.html">parsestringarray</a></li><li><a href="reference-functions-parsestringarrayidx.html">parsestringarrayidx</a></li><li><a href="reference-functions-parseyaml.html">parseyaml</a></li><li><a href="reference-functions-peerleader.html">peerleader</a></li><li><a href="reference-functions-peerleaders.html">peerleaders</a></li><li><a href="reference-functions-peers.html">peers</a></li><li><a href="reference-functions-processexists.html">processexists</a></li><li><a href="reference-functions-product.html">product</a></li><li><a href="reference-functions-randomint.html">randomint</a></li><li><a href="reference-functions-read_module_protocol.html">read_module_protocol</a></li><li><a href="reference-functions-readcsv.html">readcsv</a></li><li><a href="reference-functions-readdata.html">readdata</a></li><li><a href="reference-functions-readenvfile.html">readenvfile</a></li><li><a href="reference-functions-readfile.html">readfile</a></li><li><a href="reference-functions-readintarray.html">readintarray</a></li><li><a href="reference-functions-readintlist.html">readintlist</a></li><li><a href="reference-functions-readjson.html">readjson</a></li><li><a href="reference-functions-readrealarray.html">readrealarray</a></li><li><a href="reference-functions-readreallist.html">readreallist</a></li><li><a href="reference-functions-readstringarray.html">readstringarray</a></li><li><a href="reference-functions-readstringarrayidx.html">readstringarrayidx</a></li><li><a href="reference-functions-readstringlist.html">readstringlist</a></li><li><a href="reference-functions-readtcp.html">readtcp</a></li><li><a href="reference-functions-readyaml.html">readyaml</a></li><li><a href="reference-functions-regarray.html">regarray</a></li><li><a href="reference-functions-regcmp.html">regcmp</a></li><li><a href="reference-functions-regex_replace.html">regex_replace</a></li><li><a href="reference-functions-regextract.html">regextract</a></li><li><a href="reference-functions-registryvalue.html">registryvalue</a></li><li><a href="reference-functions-regldap.html">regldap</a></li><li><a href="reference-functions-regline.html">regline</a></li><li><a href="reference-functions-reglist.html">reglist</a></li><li><a href="reference-functions-remoteclassesmatching.html">remoteclassesmatching</a></li><li><a href="reference-functions-remotescalar.html">remotescalar</a></li><li><a href="reference-functions-returnszero.html">returnszero</a></li><li><a href="reference-functions-reverse.html">reverse</a></li><li><a href="reference-functions-rrange.html">rrange</a></li><li><a href="reference-functions-selectservers.html">selectservers</a></li><li><a href="reference-functions-shuffle.html">shuffle</a></li><li><a href="reference-functions-some.html">some</a></li><li><a href="reference-functions-sort.html">sort</a></li><li><a href="reference-functions-splayclass.html">splayclass</a></li><li><a href="reference-functions-splitstring.html">splitstring</a></li><li><a href="reference-functions-storejson.html">storejson</a></li><li><a href="reference-functions-strcmp.html">strcmp</a></li><li><a class="active" href="reference-functions-strftime.html">strftime</a></li><li><a href="reference-functions-string.html">string</a></li><li><a href="reference-functions-string_downcase.html">string_downcase</a></li><li><a href="reference-functions-string_head.html">string_head</a></li><li><a href="reference-functions-string_length.html">string_length</a></li><li><a href="reference-functions-string_mustache.html">string_mustache</a></li><li><a href="reference-functions-string_replace.html">string_replace</a></li><li><a href="reference-functions-string_reverse.html">string_reverse</a></li><li><a href="reference-functions-string_split.html">string_split</a></li><li><a href="reference-functions-string_tail.html">string_tail</a></li><li><a href="reference-functions-string_trim.html">string_trim</a></li><li><a href="reference-functions-string_upcase.html">string_upcase</a></li><li><a href="reference-functions-sublist.html">sublist</a></li><li><a href="reference-functions-sum.html">sum</a></li><li><a href="reference-functions-sysctlvalue.html">sysctlvalue</a></li><li><a href="reference-functions-translatepath.html">translatepath</a></li><li><a href="reference-functions-type.html">type</a></li><li><a href="reference-functions-unique.html">unique</a></li><li><a href="reference-functions-url_get.html">url_get</a></li><li><a href="reference-functions-usemodule.html">usemodule</a></li><li><a href="reference-functions-userexists.html">userexists</a></li><li><a href="reference-functions-validdata.html">validdata</a></li><li><a href="reference-functions-validjson.html">validjson</a></li><li><a href="reference-functions-variablesmatching.html">variablesmatching</a></li><li><a href="reference-functions-variablesmatching_as_data.html">variablesmatching_as_data</a></li><li><a href="reference-functions-variance.html">variance</a></li></ul></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-functions.html">Functions</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    strftime
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p><strong>Prototype:</strong> <code>strftime(mode, template, time)</code></p>
+
+<p><strong>Return type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Description:</strong> Interprets a time and date format string at a particular
+point in GMT or local time using Unix epoch time.</p>
+
+<p><strong>Arguments:</strong> </p>
+
+<ul>
+<li><code>mode</code>:  - Use GMT or local time - one of
+
+<ul>
+<li><code>gmtime</code></li>
+<li><code>localtime</code></li>
+</ul></li>
+<li><code>template</code>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a> - A format string - in the range: <code>.*</code></li>
+<li><code>time</code>: <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> - The time as a Unix epoch offset - in the range: <code>0,99999999999</code></li>
+</ul>
+
+<p>The <a href="reference-promise-types-files.html#mode" title="files - mode"><code>mode</code></a> is either <code>gmtime</code> (to get GMT times and dates) or
+<code>localtime</code> (to get times and dates according to the local
+timezone, usually specified by the <code>TZ</code> environment variable).</p>
+
+<p>The conversion specifications that can appear in the format <code>template</code>
+are specialized for printing components of the date and time according to the system locale.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="nf">The</span><span class="w"> </span><span class="nf">templates</span><span class="w"> </span><span class="nf">used</span><span class="w"> </span><span class="nf">here</span><span class="w"> </span><span class="nf">are</span><span class="w"> </span><span class="nf">from</span><span class="w"> </span><span class="nf">the</span><span class="w"> </span><span class="nf">documentation</span><span class="w"> </span><span class="nf">of</span><span class="w"> </span><span class="nf">the</span><span class="w"> </span><span class="nf">standard</span><span class="w"> </span><span class="nf">strftime</span><span class="w"></span>
+<span class="nf">implementation</span><span class="w"> </span><span class="nf">in</span><span class="w"> </span><span class="nf">the</span><span class="w"> </span><span class="err">[</span><span class="nf">glibc</span><span class="w"> </span><span class="nf">manual</span><span class="err">]</span><span class="p">(</span><span class="kd">http</span><span class="p">:</span><span class="err">//</span><span class="nf">www</span><span class="err">.</span><span class="nf">gnu</span><span class="err">.</span><span class="nf">org</span><span class="err">/</span><span class="nf">software</span><span class="err">/</span><span class="nf">libc</span><span class="err">/</span><span class="nf">manual</span><span class="err">/</span><span class="nf">html_node</span><span class="err">/</span><span class="nf">Formatting</span><span class="err">-</span><span class="nf">Calendar</span><span class="err">-</span><span class="nf">Time</span><span class="err">.</span><span class="nf">html</span><span class="c">#Formatting-Calendar-Time).</span>
+
+<span class="err">```</span><span class="nf">cf3</span><span class="w"></span>
+<span class="k">body</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="k">control</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="kr">environment</span><span class="w"> </span><span class="o">=&gt;</span> <span class="p">{</span><span class="w"> </span><span class="s">&quot;LC_ALL=en_US.UTF-8&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;TZ=GMT&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">main</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">time</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;1234567890&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%a]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The abbreviated weekday name according to the current locale.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%A]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The full weekday name according to the current locale.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%b]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The abbreviated month name according to the current locale.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%B]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The full month name according to the current locale.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%c]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The preferred calendar time representation for the current locale.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%C]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The century of the year. This is equivalent to the greatest integer not greater than the year divided by 100.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%d]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The day of the month as a decimal number (range 01 through 31).&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%D]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The date using the format %m/$d/%y.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%e]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The day of the month like with %d, but padded with blank (range 1 through 31).&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%F]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The date using the format %Y-%m-%d. This is the form specified in the ISO 8601 standard and is the preferred form for all uses.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%g]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The year corresponding to the ISO week number, but without the century (range 00 through 99). This has the same format and value as %y, except that if the ISO week number (see %V) belongs to the previous or next year, that year is used instead.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%G]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The year corresponding to the ISO week number. This has the same format and value as %Y, except that if the ISO week number (see %V) belongs to the previous or next year, that year is used instead.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%h]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The abbreviated month name according to the current locale. The action is the same as for %b.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%H]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The hour as a decimal number, using a 24-hour clock (range 00 through 23).&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%I]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The hour as a decimal number, using a 12-hour clock (range 01 through 12).&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%j]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The day of the year as a decimal number (range 001 through 366).&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%k]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The hour as a decimal number, using a 24-hour clock like %H, but padded with blank (range 0 through 23).&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%l]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The hour as a decimal number, using a 12-hour clock like %I, but padded with blank (range 1 through 12).&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%m]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The month as a decimal number (range 01 through 12).&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%M]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The minute as a decimal number (range 00 through 59).&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%n]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;A single </span><span class="se">\n</span><span class="s"> (newline) character.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%p]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;Either AM or PM, according to the given time value; or the corresponding strings for the current locale.  Noon is treated as PM and midnight as AM.  In most locales AM/PM format is not supported, in such cases %p yields an empty string.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%P]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;Either am or pm, according to the given time value; or the corresponding strings for the current locale, printed in lowercase characters.  Noon is treated as pm and midnight as am.  In most locales AM/PM format is not supported, in such cases %P yields an empty string.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%r]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The complete calendar time using the AM/PM format of the current locale.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%R]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The hour and minute in decimal numbers using the format %H:%M.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%S]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The seconds as a decimal number (range 00 through 60).&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%t]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;A single </span><span class="se">\t</span><span class="s"> (tabulator) character.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%T]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The time of day using decimal numbers using the format %H:%M:%S.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%u]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The day of the week as a decimal number (range 1 through 7), Monday being 1.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%U]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The week number of the current year as a decimal number (range 00 through 53), starting with the first Sunday as the first day of the first week.  Days preceding the first Sunday in the year are considered to be in week 00.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%V]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The *ISO 8601:1988* week number as a decimal number (range 01 through 53).  ISO weeks start with Monday and end with Sunday. Week 01 of a year is the first week which has the majority of its days in that year; this is equivalent to the week containing the year&#39;s first Thursday, and it is also equivalent to the week containing January 4.  Week 01 of a year can contain days from the previous year. The week before week 01 of a year is the last week (52 or 53) of the previous year even if it contains days from the new year.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%w]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The day of the week as a decimal number (range 0 through 6), Sunday being 0.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%w]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The day of the week as a decimal number (range 0 through 6), Sunday being 0.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%x]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The preferred date representation for the current locale.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%X]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The preferred time of day representation for the current locale.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%y]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The year without a century as a decimal number (range 00 through 99).  This is equivalent to the year modulo 100.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%Y]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The year as a decimal number, using the Gregorian calendar.  Years before the year 1 are numbered 0, -1, and so on.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%z]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;*RFC 822*/*ISO 8601:1988* style numeric time zone (e.g., -0600 or +0100), or nothing if no time zone is determinable.&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%Z]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The time zone abbreviation (empty if the time zone can&#39;t be determined).&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%%]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;A literal % character.&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="c"># Since %s is ever changing resulting in unstable output, causing a test failure in CI</span>
+<span class="w">      </span><span class="c"># it&#39;s not used unless show_seconds_since_epoch is defined</span>
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">template[%s]</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;The number of seconds since the epoch, i.e., since 1970-01-01 00:00:00 UTC. Leap seconds are not counted unless leap second support is available.&quot;</span><span class="p">,</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;show_seconds_since_epoch&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">      </span><span class="p">&quot;</span><span class="nv">_i</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="nf">getindices</span><span class="p">(</span><span class="nf">template</span><span class="p">),</span><span class="w"> </span><span class="nf">lex</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="kd">reports</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="s">&quot;</span><span class="si">$(_i)</span><span class="s"> :: </span><span class="si">$(template[$(_i)])$(const.n)$(const.t)</span><span class="s">For example: &#39;</span><span class="si">$(with)</span><span class="s">&#39;&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="kr">with</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">strftime</span><span class="p">(</span><span class="nf">gmtime</span><span class="p">,</span><span class="w"> </span><span class="err">$</span><span class="p">(</span><span class="nf">_i</span><span class="p">),</span><span class="w"> </span><span class="err">$</span><span class="p">(</span><span class="nf">time</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text"><span></span>R: %% :: A literal % character.
+    For example: &#39;%&#39;
+R: %A :: The full weekday name according to the current locale.
+    For example: &#39;Friday&#39;
+R: %B :: The full month name according to the current locale.
+    For example: &#39;February&#39;
+R: %C :: The century of the year. This is equivalent to the greatest integer not greater than the year divided by 100.
+    For example: &#39;20&#39;
+R: %D :: The date using the format %m/$d/%y.
+    For example: &#39;02/13/09&#39;
+R: %F :: The date using the format %Y-%m-%d. This is the form specified in the ISO 8601 standard and is the preferred form for all uses.
+    For example: &#39;2009-02-13&#39;
+R: %G :: The year corresponding to the ISO week number. This has the same format and value as %Y, except that if the ISO week number (see %V) belongs to the previous or next year, that year is used instead.
+    For example: &#39;2009&#39;
+R: %H :: The hour as a decimal number, using a 24-hour clock (range 00 through 23).
+    For example: &#39;23&#39;
+R: %I :: The hour as a decimal number, using a 12-hour clock (range 01 through 12).
+    For example: &#39;11&#39;
+R: %M :: The minute as a decimal number (range 00 through 59).
+    For example: &#39;31&#39;
+R: %P :: Either am or pm, according to the given time value; or the corresponding strings for the current locale, printed in lowercase characters.  Noon is treated as pm and midnight as am.  In most locales AM/PM format is not supported, in such cases %P yields an empty string.
+    For example: &#39;pm&#39;
+R: %R :: The hour and minute in decimal numbers using the format %H:%M.
+    For example: &#39;23:31&#39;
+R: %S :: The seconds as a decimal number (range 00 through 60).
+    For example: &#39;30&#39;
+R: %T :: The time of day using decimal numbers using the format %H:%M:%S.
+    For example: &#39;23:31:30&#39;
+R: %U :: The week number of the current year as a decimal number (range 00 through 53), starting with the first Sunday as the first day of the first week.  Days preceding the first Sunday in the year are considered to be in week 00.
+    For example: &#39;06&#39;
+R: %V :: The *ISO 8601:1988* week number as a decimal number (range 01 through 53).  ISO weeks start with Monday and end with Sunday. Week 01 of a year is the first week which has the majority of its days in that year; this is equivalent to the week containing the year&#39;s first Thursday, and it is also equivalent to the week containing January 4.  Week 01 of a year can contain days from the previous year. The week before week 01 of a year is the last week (52 or 53) of the previous year even if it contains days from the new year.
+    For example: &#39;07&#39;
+R: %X :: The preferred time of day representation for the current locale.
+    For example: &#39;23:31:30&#39;
+R: %Y :: The year as a decimal number, using the Gregorian calendar.  Years before the year 1 are numbered 0, -1, and so on.
+    For example: &#39;2009&#39;
+R: %Z :: The time zone abbreviation (empty if the time zone can&#39;t be determined).
+    For example: &#39;GMT&#39;
+R: %a :: The abbreviated weekday name according to the current locale.
+    For example: &#39;Fri&#39;
+R: %b :: The abbreviated month name according to the current locale.
+    For example: &#39;Feb&#39;
+R: %c :: The preferred calendar time representation for the current locale.
+    For example: &#39;Fri Feb 13 23:31:30 2009&#39;
+R: %d :: The day of the month as a decimal number (range 01 through 31).
+    For example: &#39;13&#39;
+R: %e :: The day of the month like with %d, but padded with blank (range 1 through 31).
+    For example: &#39;13&#39;
+R: %g :: The year corresponding to the ISO week number, but without the century (range 00 through 99). This has the same format and value as %y, except that if the ISO week number (see %V) belongs to the previous or next year, that year is used instead.
+    For example: &#39;09&#39;
+R: %h :: The abbreviated month name according to the current locale. The action is the same as for %b.
+    For example: &#39;Feb&#39;
+R: %j :: The day of the year as a decimal number (range 001 through 366).
+    For example: &#39;044&#39;
+R: %k :: The hour as a decimal number, using a 24-hour clock like %H, but padded with blank (range 0 through 23).
+    For example: &#39;23&#39;
+R: %l :: The hour as a decimal number, using a 12-hour clock like %I, but padded with blank (range 1 through 12).
+    For example: &#39;11&#39;
+R: %m :: The month as a decimal number (range 01 through 12).
+    For example: &#39;02&#39;
+R: %n :: A single \n (newline) character.
+    For example: &#39;
+&#39;
+R: %p :: Either AM or PM, according to the given time value; or the corresponding strings for the current locale.  Noon is treated as PM and midnight as AM.  In most locales AM/PM format is not supported, in such cases %p yields an empty string.
+    For example: &#39;PM&#39;
+R: %r :: The complete calendar time using the AM/PM format of the current locale.
+    For example: &#39;11:31:30 PM&#39;
+R: %t :: A single \t (tabulator) character.
+    For example: &#39;  &#39;
+R: %u :: The day of the week as a decimal number (range 1 through 7), Monday being 1.
+    For example: &#39;5&#39;
+R: %w :: The day of the week as a decimal number (range 0 through 6), Sunday being 0.
+    For example: &#39;5&#39;
+R: %x :: The preferred date representation for the current locale.
+    For example: &#39;02/13/09&#39;
+R: %y :: The year without a century as a decimal number (range 00 through 99).  This is equivalent to the year modulo 100.
+    For example: &#39;09&#39;
+R: %z :: *RFC 822*/*ISO 8601:1988* style numeric time zone (e.g., -0600 or +0100), or nothing if no time zone is determinable.
+    For example: &#39;+0000&#39;
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong> Note that <code>strftime</code> is a standard C function and you should consult
+its
+<a href="https://pubs.opengroup.org/onlinepubs/9699919799/functions/strftime.html">reference</a>
+to be sure of the specifiers allowed.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-data-functions.html">data functions</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-functions.html">functions</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-strftime.html">strftime</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 23 July 2024
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.18/generator/pages/reference/functions/strftime.markdown/reference/functions/strftime.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-6e603435d313e50beb7f6915d5c67a09.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

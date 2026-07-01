@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.8  Documentation - Common Bodies and Bundles</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.8/assets/global-8212aa494575341d9a306dae12291eb2.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Common Bodies and Bundles";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       	<option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       	<option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                  <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       	<option value="/docs/3.8/index.html" selected>Version 3.8 (EOL)</option>
+                       	<option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+			                  <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       	<option value="/docs/archive/">Version 3.0 (archive)</option>
+                        <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:v5wte9vybsa" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-standard-library.html">Standard Library</a><ul class="level2"><li><a class="active" href="reference-standard-library-common.html">Common Bodies and Bundles</a></li><li><a href="reference-standard-library-commands.html">Commands Bundles and Bodies</a></li><li><a href="reference-standard-library-databases.html">Databases Bundles and Bodies</a></li><li><a href="reference-standard-library-files.html">Files Bundles and Bodies</a></li><li><a href="reference-standard-library-monitor.html">Monitor Bundles and Bodies</a></li><li><a href="reference-standard-library-package_modules.html">Package Modules</a></li><li><a href="reference-standard-library-packages.html">Packages Bundles and Bodies</a></li><li><a href="reference-standard-library-processes.html">Processes Bundles and Bodies</a></li><li><a href="reference-standard-library-users.html">Users Bundles and Bodies</a></li><li><a href="reference-standard-library-services.html">Services Bundles and Bodies</a></li><li><a href="reference-standard-library-storage.html">Storage Bundles and Bodies</a></li><li><a href="reference-standard-library-vcs.html">Version Control Bodies and Bundles</a></li></ul></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-standard-library.html">Standard Library</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Common Bodies and Bundles
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>See the <a href="reference-promise-types.html#common-attributes" title="Promise Types and Attributes - Common Attributes">common promise attributes</a>
+documentation for a comprehensive reference on the body types and attributes used here.</p>
+
+<p>To use these bodies, add the following to your policy:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">file</span> <span class="k">control</span>
+<span class="p">{</span>
+    <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;common.cf&quot;</span><span class="p">,</span> <span class="s">&quot;bundles.cf&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="action-bodies"><a href="reference-promise-types.html#action" title="Promise Types and Attributes - action">action</a> bodies</h3><h4 id="if_elapsed">if_elapsed</h4>
+<p><strong>Prototype:</strong> <code>if_elapsed(x)</code></p>
+
+<p><strong>Description:</strong> Evaluate the promise every <code>x</code> minutes</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>x</code>: The time in minutes between promise evaluations</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">action</span> <span class="nf">if_elapsed</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">expireafter</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="if_elapsed_day">if_elapsed_day</h4>
+<p><strong>Prototype:</strong> <code>if_elapsed_day</code></p>
+
+<p><strong>Description:</strong> Evalute the promise once every 24 hours</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">action</span> <span class="nf">if_elapsed_day</span>
+<span class="p">{</span>
+      <span class="kr">ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;1440&quot;</span><span class="p">;</span>    <span class="c"># 60 x 24</span>
+      <span class="kr">expireafter</span> <span class="o">=&gt;</span> <span class="s">&quot;1400&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="measure_performance">measure_performance</h4>
+<p><strong>Prototype:</strong> <code>measure_performance(x)</code></p>
+
+<p><strong>Description:</strong> Measure repairs of the promiser every <code>x</code> minutes</p>
+
+<p>Repair-attempts are cancelled after <code>x</code> minutes.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>x</code>: The time in minutes between promise evaluations.</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">action</span> <span class="nf">measure_performance</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">measurement_class</span> <span class="o">=&gt;</span> <span class="s">&quot;Detect changes in </span><span class="si">$(this.promiser)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">expireafter</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="measure_promise_time">measure_promise_time</h4>
+<p><strong>Prototype:</strong> <code>measure_promise_time(identifier)</code></p>
+
+<p><strong>Description:</strong> Performance will be measured and recorded under identifier</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>identifier</code>: Measurement name.</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">action</span> <span class="nf">measure_promise_time</span><span class="p">(</span><span class="nv">identifier</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">measurement_class</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(identifier)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="warn_only">warn_only</h4>
+<p><strong>Prototype:</strong> <code>warn_only</code></p>
+
+<p><strong>Description:</strong> Warn once an hour if the promise needs to be repaired</p>
+
+<p>The promise does not get repaired.</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">action</span> <span class="nf">warn_only</span>
+<span class="p">{</span>
+      <span class="kr">action_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;warn&quot;</span><span class="p">;</span>
+      <span class="kr">ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;60&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="bg">bg</h4>
+<p><strong>Prototype:</strong> <code>bg(elapsed, expire)</code></p>
+
+<p><strong>Description:</strong> Evaluate the promise in the background every <code>elapsed</code> minutes, for at most <code>expire</code> minutes</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>elapsed</code>: The time in minutes between promise evaluations</li>
+<li><code>expire</code>: The time in minutes after which a repair-attempt gets cancelled</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">action</span> <span class="nf">bg</span><span class="p">(</span><span class="nv">elapsed</span><span class="p">,</span><span class="nv">expire</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">ifelapsed</span>   <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(elapsed)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">expireafter</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(expire)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">background</span>  <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="ifwin_bg">ifwin_bg</h4>
+<p><strong>Prototype:</strong> <code>ifwin_bg</code></p>
+
+<p><strong>Description:</strong> Evaluate the promise in the background when running on Windows</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">action</span> <span class="nf">ifwin_bg</span>
+<span class="p">{</span>
+    <span class="nc">windows</span><span class="p">::</span>
+      <span class="kr">background</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="immediate">immediate</h4>
+<p><strong>Prototype:</strong> <code>immediate</code></p>
+
+<p><strong>Description:</strong> Evaluate the promise at every <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> execution.</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">action</span> <span class="nf">immediate</span>
+<span class="p">{</span>
+      <span class="kr">ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;0&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="policy">policy</h4>
+<p><strong>Prototype:</strong> <code>policy(p)</code></p>
+
+<p><strong>Description:</strong> Set the <a href="reference-promise-types.html#action_policy" title="Promise Types and Attributes - action_policy"><code>action_policy</code></a> to <code>p</code></p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>p</code>: The action policy</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">action</span> <span class="nf">policy</span><span class="p">(</span><span class="nv">p</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">action_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(p)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="log_repaired">log_repaired</h4>
+<p><strong>Prototype:</strong> <code>log_repaired(log, message)</code></p>
+
+<p><strong>Description:</strong> Log <code>message</code> to a file <code>log</code>=[/file|stdout]</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>log</code>: The log file for repaired messages</li>
+<li><code>message</code>: The log message</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">action</span> <span class="nf">log_repaired</span><span class="p">(</span><span class="nv">log</span><span class="p">,</span><span class="nv">message</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">log_string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(sys.date)</span><span class="s">, </span><span class="si">$(message)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">log_repaired</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(log)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="log_verbose">log_verbose</h4>
+<p><strong>Prototype:</strong> <code>log_verbose</code></p>
+
+<p><strong>Description:</strong> Sets the <a href="reference-promise-types.html#log_level" title="Promise Types and Attributes - log_level"><code>log_level</code></a> attribute to &quot;verbose&quot;</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">action</span> <span class="nf">log_verbose</span>
+<span class="p">{</span>
+      <span class="kr">log_level</span> <span class="o">=&gt;</span> <span class="s">&quot;verbose&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="sample_rate">sample_rate</h4>
+<p><strong>Prototype:</strong> <code>sample_rate(x)</code></p>
+
+<p><strong>Description:</strong> Evaluate the promise every <code>x</code> minutes,
+A repair-attempt is cancelled after 10 minutes</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>x</code>: The time in minutes between promise evaluation</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">action</span> <span class="nf">sample_rate</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">ifelapsed</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">expireafter</span> <span class="o">=&gt;</span> <span class="s">&quot;10&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="classes-bodies"><a href="reference-promise-types.html#classes">classes</a> bodies</h3><h4 id="if_repaired">if_repaired</h4>
+<p><strong>Prototype:</strong> <code>if_repaired(x)</code></p>
+
+<p><strong>Description:</strong> Define class <code>x</code> if the promise has been repaired</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>x</code>: The name of the class</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">classes</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">promise_repaired</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="if_else">if_else</h4>
+<p><strong>Prototype:</strong> <code>if_else(yes, no)</code></p>
+
+<p><strong>Description:</strong> Define the classes <code>yes</code> or <code>no</code> depending on promise outcome</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>yes</code>: The name of the class that should be defined if the promise is kept or repaired</li>
+<li><code>no</code>: The name of the class that should be defined if the promise could not be repaired</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">classes</span> <span class="nf">if_else</span><span class="p">(</span><span class="nv">yes</span><span class="p">,</span><span class="nv">no</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">promise_kept</span>     <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(yes)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">promise_repaired</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(yes)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">repair_failed</span>    <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(no)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">repair_denied</span>    <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(no)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">repair_timeout</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(no)</span><span class="s">&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cf2_if_else">cf2_if_else</h4>
+<p><strong>Prototype:</strong> <code>cf2_if_else(yes, no)</code></p>
+
+<p><strong>Description:</strong> Define the classes <code>yes</code> or <code>no</code>, depending on promise outcome</p>
+
+<p>A version of <code>if_else</code> that matches CFEngine2 semantics. Neither class is set if the promise
+does not require any repair.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>yes</code>: The name of the class that should be defined if the promise is repaired</li>
+<li><code>no</code>: The name of the class that should be defind if teh promise could not be repaired</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">classes</span> <span class="nf">cf2_if_else</span><span class="p">(</span><span class="nv">yes</span><span class="p">,</span><span class="nv">no</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">promise_repaired</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(yes)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">repair_failed</span>    <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(no)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">repair_denied</span>    <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(no)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">repair_timeout</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(no)</span><span class="s">&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="if_notkept">if_notkept</h4>
+<p><strong>Prototype:</strong> <code>if_notkept(x)</code></p>
+
+<p><strong>Description:</strong> Define the class <code>x</code> if the promise is not kept and cannot be repaired.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>x</code>: The name of the class that should be defined</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">classes</span> <span class="nf">if_notkept</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">repair_failed</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">repair_denied</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">repair_timeout</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="if_ok">if_ok</h4>
+<p><strong>Prototype:</strong> <code>if_ok(x)</code></p>
+
+<p><strong>Description:</strong> Define the class <code>x</code> if the promise is kept or could be repaired</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>x</code>: The name of the class that should be defined</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">classes</span> <span class="nf">if_ok</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">promise_repaired</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">promise_kept</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="if_ok_cancel">if_ok_cancel</h4>
+<p><strong>Prototype:</strong> <code>if_ok_cancel(x)</code></p>
+
+<p><strong>Description:</strong> Cancel the class <code>x</code> if the promise ks kept or repaired</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>x</code>: The name of the class that should be cancelled</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">classes</span> <span class="nf">if_ok_cancel</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">cancel_repaired</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">cancel_kept</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cmd_repair">cmd_repair</h4>
+<p><strong>Prototype:</strong> <code>cmd_repair(code, cl)</code></p>
+
+<p><strong>Description:</strong> Define the class <code>cl</code> if an external command in a <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a>, <code>file</code> or <a href="reference-promise-types-packages.html" title="packages"><code>packages</code></a>
+promise is executed with return code <code>code</code></p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>code</code>: The return codes that indicate a successful repair</li>
+<li><code>cl</code>: The name of the class that should be defined</li>
+</ul>
+
+<p><strong>See also:</strong> <a href="reference-promise-types.html#repaired_returncodes" title="Promise Types and Attributes - repaired_returncodes"><code>repaired_returncodes</code></a></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">classes</span> <span class="nf">cmd_repair</span><span class="p">(</span><span class="nv">code</span><span class="p">,</span><span class="nv">cl</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">repaired_returncodes</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(code)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">promise_repaired</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(cl)</span><span class="s">&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="classes_generic">classes_generic</h4>
+<p><strong>Prototype:</strong> <code>classes_generic(x)</code></p>
+
+<p><strong>Description:</strong> Define <code>x</code> prefixed/suffixed with promise outcome</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>x</code>: The unique part of the classes to be defined</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">classes</span> <span class="nf">classes_generic</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">promise_repaired</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;promise_repaired_</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_repaired&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_ok&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_reached&quot;</span> <span class="p">};</span>
+      <span class="kr">repair_failed</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;repair_failed_</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_failed&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_not_ok&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_error&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_not_kept&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_reached&quot;</span> <span class="p">};</span>
+      <span class="kr">repair_denied</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;repair_denied_</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_denied&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_not_ok&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_error&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_not_kept&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_reached&quot;</span> <span class="p">};</span>
+      <span class="kr">repair_timeout</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;repair_timeout_</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_timeout&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_not_ok&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_error&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_not_kept&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_reached&quot;</span> <span class="p">};</span>
+      <span class="kr">promise_kept</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;promise_kept_</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_kept&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_ok&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_reached&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="results">results</h4>
+<p><strong>Prototype:</strong> <code>results(scope, class_prefix)</code></p>
+
+<p><strong>Description:</strong> Define classes prefixed with <code>class_prefix</code> and suffixed with
+appropriate outcomes { _kept, _repaired, _not_kept, _error, _failed,
+_denied, _timeout, _reached }</p>
+
+<p><strong>See also:</strong> <a href="reference-promise-types-classes.html#scope" title="classes - scope"><code>scope</code></a></p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>scope</code>: The scope in which the class should be defined</li>
+<li><code>class_prefix</code>: The unique part of the classes to be defined</li>
+</ul>
+
+<p>This is a more concise version of <code>scoped_classes_generic</code>. The key
+difference is that only suffixed classes are defined, and only for
+outcomes that we can know. For example _ok is not defined by this
+bundle, as a promsie could be both kept and failed at the same time.</p>
+
+<p><strong>Suffix Notes:</strong></p>
+
+<ul>
+<li><p>_reached indicates the promise was tried. Any outcome will result
+in a class with this suffix being defined.</p></li>
+<li><p>_kept indicates some aspect of the promise was kept</p></li>
+<li><p>_repaired indicates some aspect of the promise was repaired</p></li>
+<li><p>_not_kept indicates some aspect of the promise was not kept.
+error, failed, denied and timeout outcomes will result in a class
+with this suffix being defined</p></li>
+<li><p>_error indicates the promise errored</p></li>
+<li><p>_failed indicates the promise failed</p></li>
+<li><p>_denided indicates the promsie was denied</p></li>
+<li><p>_timeout indicates the promise timed out</p></li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="s">&quot;/bin/true&quot;</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="s">&quot;bundle&quot;</span><span class="p">,</span> <span class="s">&quot;my_class_prefix&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">my_class_prefix_kept</span><span class="p">::</span>
+      <span class="s">&quot;My promise was kept&quot;</span><span class="p">;</span>
+
+    <span class="nc">my_class_prefix_repaired</span><span class="p">::</span>
+      <span class="s">&quot;My promise was repaired&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <code>scoped_classes_generic</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">classes</span> <span class="nf">results</span><span class="p">(</span><span class="nv">scope</span><span class="p">,</span> <span class="nv">class_prefix</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(scope)</span><span class="s">&quot;</span><span class="p">;</span>
+
+  <span class="kr">promise_kept</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(class_prefix)</span><span class="s">_reached&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;</span><span class="si">$(class_prefix)</span><span class="s">_kept&quot;</span> <span class="p">};</span>
+
+  <span class="kr">promise_repaired</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(class_prefix)</span><span class="s">_reached&quot;</span><span class="p">,</span>
+                        <span class="s">&quot;</span><span class="si">$(class_prefix)</span><span class="s">_repaired&quot;</span> <span class="p">};</span>
+
+  <span class="kr">repair_failed</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(class_prefix)</span><span class="s">_reached&quot;</span><span class="p">,</span>
+                     <span class="s">&quot;</span><span class="si">$(class_prefix)</span><span class="s">_error&quot;</span><span class="p">,</span>
+                     <span class="s">&quot;</span><span class="si">$(class_prefix)</span><span class="s">_not_kept&quot;</span><span class="p">,</span>
+                     <span class="s">&quot;</span><span class="si">$(class_prefix)</span><span class="s">_failed&quot;</span> <span class="p">};</span>
+
+  <span class="kr">repair_denied</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(class_prefix)</span><span class="s">_reached&quot;</span><span class="p">,</span>
+                     <span class="s">&quot;</span><span class="si">$(class_prefix)</span><span class="s">_error&quot;</span><span class="p">,</span>
+                     <span class="s">&quot;</span><span class="si">$(class_prefix)</span><span class="s">_not_kept&quot;</span><span class="p">,</span>
+                     <span class="s">&quot;</span><span class="si">$(class_prefix)</span><span class="s">_denied&quot;</span> <span class="p">};</span>
+
+  <span class="kr">repair_timeout</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(class_prefix)</span><span class="s">_reached&quot;</span><span class="p">,</span>
+                      <span class="s">&quot;</span><span class="si">$(class_prefix)</span><span class="s">_error&quot;</span><span class="p">,</span>
+                      <span class="s">&quot;</span><span class="si">$(class_prefix)</span><span class="s">_not_kept&quot;</span><span class="p">,</span>
+                      <span class="s">&quot;</span><span class="si">$(class_prefix)</span><span class="s">_timeout&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="scoped_classes_generic">scoped_classes_generic</h4>
+<p><strong>Prototype:</strong> <code>scoped_classes_generic(scope, x)</code></p>
+
+<p><strong>Description:</strong> Define <code>x</code> prefixed/suffixed with promise outcome
+<strong>See also:</strong> <a href="reference-promise-types-classes.html#scope" title="classes - scope"><code>scope</code></a></p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>scope</code>: The scope in which the class should be defined</li>
+<li><code>x</code>: The unique part of the classes to be defined</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">classes</span> <span class="nf">scoped_classes_generic</span><span class="p">(</span><span class="nv">scope</span><span class="p">,</span> <span class="nv">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(scope)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="kr">promise_repaired</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;promise_repaired_</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_repaired&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_ok&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_reached&quot;</span> <span class="p">};</span>
+      <span class="kr">repair_failed</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;repair_failed_</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_failed&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_not_ok&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_error&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_not_kept&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_reached&quot;</span> <span class="p">};</span>
+      <span class="kr">repair_denied</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;repair_denied_</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_denied&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_not_ok&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_error&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_not_kept&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_reached&quot;</span> <span class="p">};</span>
+      <span class="kr">repair_timeout</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;repair_timeout_</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_timeout&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_not_ok&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_error&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_not_kept&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_reached&quot;</span> <span class="p">};</span>
+      <span class="kr">promise_kept</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;promise_kept_</span><span class="si">$(x)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_kept&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_ok&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">_reached&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="state_repaired">state_repaired</h4>
+<p><strong>Prototype:</strong> <code>state_repaired(x)</code></p>
+
+<p><strong>Description:</strong> Define <code>x</code> for 10 minutes if the promise was repaired</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>x</code>: The name of the class that should be defined</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">classes</span> <span class="nf">state_repaired</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">promise_repaired</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">persist_time</span> <span class="o">=&gt;</span> <span class="s">&quot;10&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="enumerate">enumerate</h4>
+<p><strong>Prototype:</strong> <code>enumerate(x)</code></p>
+
+<p><strong>Description:</strong> Define <code>x</code> for 15 minutes if the promise is either kept or repaired
+This is used by commercial editions to count instances of jobs in a cluster</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>x</code>: The unqiue part of the class that should be defind
+The class defined is prefixed with <code>mXC_</code></li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">classes</span> <span class="nf">enumerate</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">promise_repaired</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;mXC_</span><span class="si">$(x)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">promise_kept</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;mXC_</span><span class="si">$(x)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">persist_time</span> <span class="o">=&gt;</span> <span class="s">&quot;15&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="always">always</h4>
+<p><strong>Prototype:</strong> <code>always(x)</code></p>
+
+<p><strong>Description:</strong> Define class <code>x</code> no matter what the outcome of the promise is</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>x</code>: The name of the class to be defined</li>
+</ul>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">classes</span> <span class="nf">always</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span>
+<span class="p">{</span>
+      <span class="kr">promise_repaired</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">promise_kept</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">repair_failed</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">repair_denied</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span> <span class="p">};</span>
+      <span class="kr">repair_timeout</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;</span><span class="si">$(x)</span><span class="s">&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="kept_successful_command">kept_successful_command</h4>
+<p><strong>Prototype:</strong> <code>kept_successful_command</code></p>
+
+<p><strong>Description:</strong> Set command to &quot;kept&quot; instead of &quot;repaired&quot; if it returns 0</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">classes</span> <span class="nf">kept_successful_command</span>
+<span class="p">{</span>
+      <span class="kr">kept_returncodes</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;0&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h1 id="re-usable-agent-bundles">Re-usable agent bundles</h1>
+<p>These agent bundles can be used via <a href="reference-promise-types-methods.html#usebundle" title="methods - usebundle"><code>usebundle</code></a> in <a href="reference-promise-types-methods.html" title="methods"><code>methods</code></a> promises.</p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">methods</span><span class="p">:</span>
+    <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">library_bundle</span><span class="p">(</span><span class="nf">parameters</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>To use these bundles, add the following to your policy:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">file</span> <span class="k">control</span>
+<span class="p">{</span>
+    <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;bundles.cf&quot;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="agent-bundles"><a href="reference-components-cf-agent.html" title="cf-agent">agent</a> bundles</h3><h4 id="cronjob">cronjob</h4>
+<p><strong>Prototype:</strong> <code>cronjob(commands, user, hours, mins)</code></p>
+
+<p><strong>Description:</strong> Defines a cron job for <code>user</code></p>
+
+<p>Adds a line to crontab, if necessary.</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>commands</code>: The commands that should be run</li>
+<li><code>user</code>: The owner of crontab</li>
+<li><code>hours</code>: The hours at which the job should run</li>
+<li><code>mins</code>: The minutes at which the job should run</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">methods</span><span class="p">:</span>
+ <span class="s">&quot;cron&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">cronjob</span><span class="p">(</span><span class="s">&quot;/bin/ls&quot;</span><span class="p">,</span><span class="s">&quot;mark&quot;</span><span class="p">,</span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="s">&quot;5,10&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">cronjob</span><span class="p">(</span><span class="nv">commands</span><span class="p">,</span><span class="nv">user</span><span class="p">,</span><span class="nv">hours</span><span class="p">,</span><span class="nv">mins</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="nc">suse</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">crontab</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/spool/cron/tabs&quot;</span><span class="p">;</span>
+    <span class="nc">redhat|fedora</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">crontab</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/spool/cron&quot;</span><span class="p">;</span>
+    <span class="nc">freebsd</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">crontab</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/cron/tabs&quot;</span><span class="p">;</span>
+    <span class="err">!</span><span class="p">(</span><span class="nf">suse</span><span class="err">|</span><span class="nf">redhat</span><span class="err">|</span><span class="nf">fedora</span><span class="err">|</span><span class="nf">freebsd</span><span class="p">)</span><span class="err">::</span>
+      <span class="p">&quot;</span><span class="nv">crontab</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/spool/cron/crontabs&quot;</span><span class="p">;</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+
+    <span class="nc">!windows</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(crontab)</span><span class="s">/</span><span class="si">$(user)</span><span class="s">&quot;</span>
+
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;A user&#39;s regular batch jobs are added to this file&quot;</span><span class="p">,</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">append_if_no_line</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(mins)</span><span class="s"> </span><span class="si">$(hours)</span><span class="s"> * * * </span><span class="si">$(commands)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">mo</span><span class="p">(</span><span class="s">&quot;600&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(user)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;changed_crontab&quot;</span><span class="p">);</span>
+
+  <span class="kd">processes</span><span class="p">:</span>
+
+    <span class="nc">changed_crontab</span><span class="p">::</span>
+      <span class="s">&quot;cron&quot;</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Most crons need to be huped after file changes&quot;</span><span class="p">,</span>
+      <span class="kr">signals</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;hup&quot;</span> <span class="p">};</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="rm_rf">rm_rf</h4>
+<p><strong>Prototype:</strong> <code>rm_rf(name)</code></p>
+
+<p><strong>Description:</strong> recursively remove <code>name</code> to any depth, including base</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>name</code>: the file or directory name</li>
+</ul>
+
+<p>This bundle will remove <code>name</code> to any depth, including <code>name</code> itself.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">methods</span><span class="p">:</span>
+    <span class="s">&quot;bye&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">rm_rf</span><span class="p">(</span><span class="s">&quot;/var/tmp/oldstuff&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">rm_rf</span><span class="p">(</span><span class="nv">name</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="s">&quot;rm&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">rm_rf_depth</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">name</span><span class="p">),</span><span class="s">&quot;inf&quot;</span><span class="p">);</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="rm_rf_depth">rm_rf_depth</h4>
+<p><strong>Prototype:</strong> <code>rm_rf_depth(name, depth)</code></p>
+
+<p><strong>Description:</strong> recursively remove <code>name</code> to depth <a href="reference-promise-types-files.html#depth" title="files - depth"><code>depth</code></a>, including base</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>name</code>: the file or directory name</li>
+<li><code>depth</code>: how far to descend</li>
+</ul>
+
+<p>This bundle will remove <code>name</code> to depth <a href="reference-promise-types-files.html#depth" title="files - depth"><code>depth</code></a>, including <code>name</code> itself.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">methods</span><span class="p">:</span>
+    <span class="s">&quot;bye&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">rm_rf_depth</span><span class="p">(</span><span class="s">&quot;/var/tmp/oldstuff&quot;</span><span class="p">,</span> <span class="s">&quot;100&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">rm_rf_depth</span><span class="p">(</span><span class="nv">name</span><span class="p">,</span><span class="nv">depth</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;isdir&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">isdir</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">name</span><span class="p">));</span>
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="nc">isdir</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">&quot;</span>
+      <span class="kr">file_select</span> <span class="o">=&gt;</span> <span class="nf">all</span><span class="p">,</span>
+      <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">recurse_with_base</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">depth</span><span class="p">)),</span>
+      <span class="kr">delete</span> <span class="o">=&gt;</span> <span class="nf">tidy</span><span class="p">;</span>
+
+      <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">/.&quot;</span>
+        <span class="kr">delete</span> <span class="o">=&gt;</span> <span class="nf">tidy</span><span class="p">;</span>
+
+    <span class="nc">!isdir</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">&quot;</span> <span class="kr">delete</span> <span class="o">=&gt;</span> <span class="nf">tidy</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="fileinfo">fileinfo</h4>
+<p><strong>Prototype:</strong> <code>fileinfo(f)</code></p>
+
+<p><strong>Description:</strong> provide access to file stat fields from the bundle caller and report
+file stat info for file &quot;f&quot; if &quot;verbose_mode&quot; class is defined</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>f</code>: file or files to stat</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">files</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;/tmp/example1&quot;</span><span class="p">,</span> <span class="s">&quot;/tmp/example2&quot;</span> <span class="p">};</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(files)</span><span class="s">&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_ok</span><span class="p">(</span><span class="s">&quot;verbose_mode&quot;</span><span class="p">),</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;verbose_mode is defined because the fileinfo bundle restricts the report of the file info to verbose mode&quot;</span><span class="p">;</span>
+
+    <span class="s">&quot;/tmp/example3&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_ok</span><span class="p">(</span><span class="s">&quot;verbose_mode&quot;</span><span class="p">),</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;verbose_mode is defined because the fileinfo bundle restricts the report of the file info to verbose mode&quot;</span><span class="p">;</span>
+
+
+  <span class="kd">methods</span><span class="p">:</span>
+    <span class="s">&quot;fileinfo&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">fileinfo</span><span class="p">(</span> <span class="nv">@(files)</span> <span class="p">);</span>
+    <span class="s">&quot;fileinfo&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">fileinfo</span><span class="p">(</span> <span class="s">&quot;/tmp/example3&quot;</span> <span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(files)</span><span class="s">: </span><span class="si">$(fileinfo.fields)</span><span class="s"> = &#39;</span><span class="si">$(fileinfo.stat[$(files)</span><span class="s">][</span><span class="si">$(fileinfo.fields)</span><span class="s">])&#39;&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][size])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][gid])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][uid])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][ino])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][nlink])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][ctime])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][atime])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][mtime])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][mode])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][modeoct])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][permstr])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][permoct])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][type])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][devno])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][dev_minor])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][dev_major])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][basename])</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(fileinfo.stat[/tmp/example3][dirname])</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">fileinfo</span><span class="p">(</span><span class="nv">f</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">fields</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">splitstring</span><span class="p">(</span><span class="s">&quot;size,gid,uid,ino,nlink,ctime,atime,mtime,mode,modeoct,permstr,permoct,type,devno,dev_minor,dev_major,basename,dirname,linktarget,linktarget_shallow&quot;</span><span class="p">,</span> <span class="s">&quot;,&quot;</span><span class="p">,</span> <span class="mi">999</span><span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">stat[$(f)][$(fields)]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">filestat</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">f</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">fields</span><span class="p">));</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">verbose_mode</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: file </span><span class="si">$(f)</span><span class="s"> has </span><span class="si">$(fields)</span><span class="s"> = </span><span class="si">$(stat[$(f)</span><span class="s">][</span><span class="si">$(fields)</span><span class="s">])&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="logrotate">logrotate</h4>
+<p><strong>Prototype:</strong> <code>logrotate(log_files, max_size, rotate_levels)</code></p>
+
+<p><strong>Description:</strong> rotate specified &quot;log_files&quot; larger than &quot;max_size&quot;. Keep
+&quot;rotate_levels&quot; versions of the files before overwriting the oldest one</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>log_files</code>: single file or list of files to evaluate for rotation</li>
+<li><code>max_size</code>: minimum size in bytes that the file will grow to before being rotated</li>
+<li><code>rotate_levels</code>: number of rotations to keep before overwriting the oldest one</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">logdirs</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;/var/log/syslog&quot;</span><span class="p">,</span> <span class="s">&quot;/var/log/maillog&quot;</span><span class="p">};</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+    <span class="s">&quot;logrotate&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">logrotate</span><span class="p">(</span> <span class="nv">@(logdirs)</span><span class="p">,</span> <span class="s">&quot;1M&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span> <span class="p">);</span>
+    <span class="s">&quot;logrotate&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">logrotate</span><span class="p">(</span> <span class="s">&quot;/var/log/mylog, &quot;</span><span class="mi">1</span><span class="s">&quot;, &quot;</span><span class="mi">5</span><span class="s">&quot; );</span>
+<span class="s">    &quot;</span><span class="nf">logrotate</span><span class="s">&quot; usebundle =&gt; logrotate( &quot;</span><span class="err">/</span><span class="nf">var</span><span class="err">/</span><span class="nf">log</span><span class="err">/</span><span class="nf">alog</span><span class="p">,</span> <span class="s">&quot;500k&quot;</span><span class="p">,</span> <span class="s">&quot;7&quot;</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">logrotate</span><span class="p">(</span><span class="nv">log_files</span><span class="p">,</span> <span class="nv">max_size</span><span class="p">,</span> <span class="nv">rotate_levels</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(log_files)</span><span class="s">&quot;</span>
+      <span class="kr">comment</span>     <span class="o">=&gt;</span> <span class="s">&quot;Rotate file if above specified size&quot;</span><span class="p">,</span>
+      <span class="kr">rename</span>      <span class="o">=&gt;</span> <span class="nf">rotate</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(rotate_levels)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">file_select</span> <span class="o">=&gt;</span> <span class="nf">bigger_than</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(max_size)</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="prunedir">prunedir</h4>
+<p><strong>Prototype:</strong> <code>prunedir(dir, max_days)</code></p>
+
+<p><strong>Description:</strong> delete plain files inside &quot;dir&quot; older than &quot;max_days&quot; (not recursively).</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>dir</code>: directory to examine for files</li>
+<li><code>max_days</code>: maximum number of days old a files mtime is allowed to before deletion</li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">dirs</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;/tmp/logs&quot;</span><span class="p">,</span> <span class="s">&quot;/tmp/logs2&quot;</span> <span class="p">};</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+    <span class="s">&quot;prunedir&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">prunedir</span><span class="p">(</span> <span class="nv">@(dirs)</span><span class="p">,</span> <span class="s">&quot;1&quot;</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">prunedir</span><span class="p">(</span><span class="nv">dir</span><span class="p">,</span> <span class="nv">max_days</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(dir)</span><span class="s">&quot;</span>
+      <span class="kr">comment</span>       <span class="o">=&gt;</span> <span class="s">&quot;Delete plain files inside directory older than max_days&quot;</span><span class="p">,</span>
+      <span class="kr">delete</span>        <span class="o">=&gt;</span> <span class="nf">tidy</span><span class="p">,</span>
+      <span class="kr">file_select</span>   <span class="o">=&gt;</span> <span class="nf">filetype_older_than</span><span class="p">(</span><span class="s">&quot;plain&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(max_days)</span><span class="s">&quot;</span><span class="p">),</span>
+      <span class="kr">depth_search</span>  <span class="o">=&gt;</span> <span class="nf">recurse</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="url_ping">url_ping</h4>
+<p><strong>Prototype:</strong> <code>url_ping(host, method, port, uri)</code></p>
+
+<p><strong>Description:</strong> ping HOST:PORT/URI using METHOD</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>host</code>: the host name</li>
+<li><code>method</code>: the HTTP method (HEAD or GET)</li>
+<li><code>port</code>: the port number, e.g. 80</li>
+<li><code>uri</code>: the URI, e.g. /path/to/resource</li>
+</ul>
+
+<p>This bundle will send a simple HTTP request and read 20 bytes back,
+then compare them to <code>200 OK.*</code> (ignoring leading spaces).</p>
+
+<p>If the data matches, the global class &quot;url_ok_HOST&quot; will be set, where
+HOST is the canonified host name, i.e. <code>canonify($(host))</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="kd">methods</span><span class="p">:</span>
+    <span class="s">&quot;check&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">url_ping</span><span class="p">(</span><span class="s">&quot;cfengine.com&quot;</span><span class="p">,</span> <span class="s">&quot;HEAD&quot;</span><span class="p">,</span> <span class="s">&quot;80&quot;</span><span class="p">,</span> <span class="s">&quot;/bill/was/here&quot;</span><span class="p">);</span>
+<span class="kd">reports</span><span class="p">:</span>
+  <span class="nc">url_ok_cfengine_com</span><span class="p">::</span>
+    <span class="s">&quot;CFEngine&#39;s web site is up&quot;</span><span class="p">;</span>
+  <span class="nc">url_not_ok_cfengine_com</span><span class="p">::</span>
+    <span class="s">&quot;CFEngine&#39;s web site *may* be down.  Or you&#39;re offline.&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">url_ping</span><span class="p">(</span><span class="nv">host</span><span class="p">,</span> <span class="nv">method</span><span class="p">,</span> <span class="nv">port</span><span class="p">,</span> <span class="nv">uri</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">url_check</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">readtcp</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">host</span><span class="p">),</span>
+                                    <span class="err">$</span><span class="p">(</span><span class="nf">port</span><span class="p">),</span>
+                                    <span class="s">&quot;</span><span class="si">$(method)</span><span class="s"> </span><span class="si">$(uri)</span><span class="s"> HTTP/1.1</span><span class="si">$(const.r)$(const.n)</span><span class="s">Host:</span><span class="si">$(host)$(const.r)$(const.n)$(const.r)$(const.n)</span><span class="s">&quot;</span><span class="p">,</span>
+                                    <span class="mi">20</span><span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">chost</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">canonify</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">host</span><span class="p">));</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;url_ok_</span><span class="si">$(chost)</span><span class="s">&quot;</span>
+      <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">,</span>
+      <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regcmp</span><span class="p">(</span><span class="s">&quot;[^</span><span class="se">\n</span><span class="s">]*200 OK.*</span><span class="se">\n</span><span class="s">.*&quot;</span><span class="p">,</span>
+                           <span class="err">$</span><span class="p">(</span><span class="nf">url_check</span><span class="p">));</span>
+
+      <span class="s">&quot;url_not_ok_</span><span class="si">$(chost)</span><span class="s">&quot;</span>
+      <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">,</span>
+      <span class="kr">not</span> <span class="o">=&gt;</span> <span class="nf">regcmp</span><span class="p">(</span><span class="s">&quot;[^</span><span class="se">\n</span><span class="s">]*200 OK.*</span><span class="se">\n</span><span class="s">.*&quot;</span><span class="p">,</span>
+                           <span class="err">$</span><span class="p">(</span><span class="nf">url_check</span><span class="p">));</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">verbose_mode</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(method)</span><span class="s"> </span><span class="si">$(host)</span><span class="s">:</span><span class="si">$(port)</span><span class="s">/</span><span class="si">$(uri)</span><span class="s"> got 200 OK&quot;</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;url_ok_</span><span class="si">$(chost)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: </span><span class="si">$(method)</span><span class="s"> </span><span class="si">$(host)</span><span class="s">:</span><span class="si">$(port)</span><span class="s">/</span><span class="si">$(uri)</span><span class="s"> did *not* get 200 OK&quot;</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;url_not_ok_</span><span class="si">$(chost)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cmerge">cmerge</h4>
+<p><strong>Prototype:</strong> <code>cmerge(name, varlist)</code></p>
+
+<p><strong>Description:</strong> bundle to merge many data containers into one</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>name</code>: the variable name to create</li>
+<li><code>varlist</code>: a list of variable names (**MUST** be a list)</li>
+</ul>
+
+<p>The result will be in <code>cmerge.$(name)</code>.  You can also use
+<code>cmerge.$(name)_str</code> for a string version of the merged containers.</p>
+
+<p>The name is variable so you can call this bundle for more than one
+merge.</p>
+
+<p>If you merge a key-value map into an array or vice versa, the map
+always wins.  So this example will result in a key-value map even
+though <code>cmerge.$(name)</code> starts as an array.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">run</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="c"># the &quot;mymerge&quot; tag is user-defined</span>
+      <span class="s">&quot;a&quot;</span>       <span class="kr">data</span>  <span class="o">=&gt;</span> <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;</span><span class="p">{</span> <span class="s">&quot;mark&quot;</span><span class="err">:</span> <span class="s">&quot;b&quot;</span> <span class="p">}</span><span class="err">&#39;</span><span class="p">),</span> <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;mymerge&quot;</span> <span class="p">};</span>
+      <span class="s">&quot;b&quot;</span>       <span class="kr">data</span>  <span class="o">=&gt;</span> <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;</span><span class="p">{</span> <span class="s">&quot;volker&quot;</span><span class="err">:</span> <span class="s">&quot;h&quot;</span> <span class="p">}</span><span class="err">&#39;</span><span class="p">),</span> <span class="kr">meta</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;mymerge&quot;</span> <span class="p">};</span>
+
+      <span class="c"># you can list them explicitly: &quot;default:run.a&quot; through &quot;default:run.d&quot;</span>
+      <span class="p">&quot;</span><span class="nv">todo</span><span class="p">&quot;</span>    <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">variablesmatching</span><span class="p">(</span><span class="s">&quot;.*&quot;</span><span class="p">,</span> <span class="s">&quot;mymerge&quot;</span><span class="p">);</span>
+
+      <span class="c"># you can use cmerge.all_str instead of accessing the merged data directly</span>
+      <span class="p">&quot;</span><span class="nv">merged_str</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">format</span><span class="p">(</span><span class="s">&quot;%S&quot;</span><span class="p">,</span> <span class="s">&quot;cmerge.all&quot;</span><span class="p">);</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="s">&quot;go&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">cmerge</span><span class="p">(</span><span class="s">&quot;all&quot;</span><span class="p">,</span> <span class="nv">@(todo)</span><span class="p">);</span> <span class="c"># merge a, b into container cmerge.all</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="s">&quot;merged = </span><span class="si">$(cmerge.all_str)</span><span class="s">&quot;</span><span class="p">;</span> <span class="c"># will print a map with keys &quot;mark&quot; and &quot;volker&quot;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">cmerge</span><span class="p">(</span><span class="nv">name</span><span class="p">,</span> <span class="nv">varlist</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;[]&#39;</span><span class="p">),</span>            <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;free&quot;</span><span class="p">;</span>
+      <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">name</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">varlist</span><span class="p">)),</span> <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;free&quot;</span><span class="p">;</span> <span class="c"># iterates!</span>
+      <span class="p">&quot;</span><span class="nv">$(name)_str</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">format</span><span class="p">(</span><span class="s">&quot;%S&quot;</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="nf">name</span><span class="p">)),</span>    <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;free&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="run_ifdefined">run_ifdefined</h4>
+<p><strong>Prototype:</strong> <code>run_ifdefined(namespace, mybundle)</code></p>
+
+<p><strong>Description:</strong> bundle to maybe run another bundle dynamically</p>
+
+<p><strong>Arguments:</strong></p>
+
+<ul>
+<li><code>namespace</code>: the namespace, usually <code>$(this.namespace)</code></li>
+<li><code>mybundle</code>: the bundle to maybe run</li>
+</ul>
+
+<p>This bundle simply is a way to run another bundle only if it&#39;s defined.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">run</span>
+<span class="p">{</span>
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="c"># does nothing if bundle &quot;runthis&quot; is not defined</span>
+      <span class="s">&quot;go&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">run_ifdefined</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">this</span><span class="err">.</span><span class="nf">namespace</span><span class="p">),</span> <span class="nf">runthis</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">run_ifdefined</span><span class="p">(</span><span class="nv">namespace</span><span class="p">,</span> <span class="nv">mybundle</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">bundlesfound</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">bundlesmatching</span><span class="p">(</span><span class="s">&quot;^</span><span class="si">$(namespace)</span><span class="s">:</span><span class="si">$(mybundle)</span><span class="s">$&quot;</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">count</span><span class="p">&quot;</span> <span class="kt">int</span> <span class="o">=&gt;</span> <span class="nf">length</span><span class="p">(</span><span class="nf">bundlesfound</span><span class="p">);</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+      <span class="s">&quot;any&quot;</span>
+      <span class="kr">usebundle</span>  <span class="o">=&gt;</span> <span class="err">$</span><span class="p">(</span><span class="nf">bundlesfound</span><span class="p">),</span>
+      <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="nf">count</span><span class="p">));</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">verbose_mode</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: found matching bundles </span><span class="si">$(bundlesfound)</span><span class="s"> for namespace &#39;</span><span class="si">$(namespace)</span><span class="s">&#39; and bundle &#39;</span><span class="si">$(mybundle)</span><span class="s">&#39;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-standard-library.html">standard library</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/standard-library/common.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/5b2bc459512b94c59b897836ae3071bcd5f777f6" target="_blank">5b2bc459512b94c59b897836ae3071bcd5f777f6</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.8/assets/footer-08442c0761064b6ca280223e9ebacccc.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

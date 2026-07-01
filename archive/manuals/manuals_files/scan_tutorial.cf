@@ -1,0 +1,988 @@
+
+bundle knowledge cf2_Tutorial
+
+{
+topics:
+
+"cf2-Tutorial";
+Summary::
+    "Summary" ;
+Security_and_cfengine::
+    "Firewalls" ;
+Security_and_cfengine::
+    "useshell= and owner= in shellcommands" ;
+Security_and_cfengine::
+    "size= in copy" ;
+Security_and_cfengine::
+    "Race conditions in file copying" ;
+Security_and_cfengine::
+    "Spoofing" ;
+Security_and_cfengine::
+    "Adaptive locks" ;
+Security_and_cfengine::
+    "Trust and key races" ;
+Security_and_cfengine::
+    "Privacy (encryption)" ;
+Security_and_cfengine::
+    "Miscellaneous security of cfengine itself" ;
+Security_and_cfengine::
+    "WWW security" ;
+Security_and_cfengine::
+    "Anonymous FTP example" ;
+Security_and_cfengine::
+    "Defensive garbage collection" ;
+Security_and_cfengine::
+    "NonAlphaNumFiles" ;
+Security_and_cfengine::
+    "FileExtensions" ;
+Security_and_cfengine::
+    "Checksums and Tripwire functionality" ;
+Security_and_cfengine::
+    "Suspicious filenames" ;
+Security_and_cfengine::
+    "The setuid log" ;
+Security_and_cfengine::
+    "Monitoring files" ;
+Security_and_cfengine::
+    "Process monitoring" ;
+Security_and_cfengine::
+    "Disabling and replacing software" ;
+Security_and_cfengine::
+    "Configuration" ;
+Security_and_cfengine::
+    "Why trust cfengine?" ;
+Security_and_cfengine::
+    "Trust" ;
+Security_and_cfengine::
+    "Automation" ;
+Security_and_cfengine::
+    "A word of warning" ;
+Security_and_cfengine::
+    "What is security?" ;
+Security_and_cfengine::
+    "Security and cfengine" ;
+Configuring_cfservd::
+    "Configuration file cfservd.conf" ;
+Configuring_cfservd::
+    "Installation of cfservd" ;
+Cfengine_and_network_services::
+    "Configuring cfservd" ;
+How_it_works::
+    "Deadlocks and runaway loops" ;
+How_it_works::
+    "Some points on the cfservd protocol" ;
+How_it_works::
+    "Spamming and security" ;
+How_it_works::
+    "Remote execution of cfagent" ;
+How_it_works::
+    "Remote file distribution" ;
+Cfengine_and_network_services::
+    "How it works" ;
+Cfengine_and_network_services::
+    "Cfengine network services" ;
+Cfengine_and_network_services::
+    "Cfengine and network services" ;
+Using_cfengine_as_a_front_end_for_cron::
+    "Choosing a scheduling interval" ;
+Using_cfengine_as_a_front_end_for_cron::
+    "Building flexible time classes" ;
+Using_cfengine_as_a_front_end_for_cron::
+    "Splaying host times" ;
+Using_cfengine_as_a_front_end_for_cron::
+    "Structuring cfagent.conf" ;
+Using_cfengine_as_a_front_end_for_cron::
+    "Using cfengine as a front end for cron" ;
+Designing_a_global_system_configuration::
+    "Managing ACLs" ;
+Designing_a_global_system_configuration::
+    "Compressing old log files" ;
+Designing_a_global_system_configuration::
+    "Running user scripts" ;
+Designing_a_global_system_configuration::
+    "Disabling and the file repository" ;
+Designing_a_global_system_configuration::
+    "Editing Files" ;
+Designing_a_global_system_configuration::
+    "Using the automounter" ;
+Cfengines_model_for_NFS_mounted_filesystems::
+    "Example programs for mounting resources" ;
+Cfengines_model_for_NFS_mounted_filesystems::
+    "Special variables" ;
+Cfengines_model_for_NFS_mounted_filesystems::
+    "How does it work?" ;
+Cfengines_model_for_NFS_mounted_filesystems::
+    "Unique filesystem mountpoints" ;
+Cfengines_model_for_NFS_mounted_filesystems::
+    "NFS filesystem resources" ;
+Designing_a_global_system_configuration::
+    "Cfengines model for NFS-mounted filesystems" ;
+Designing_a_global_system_configuration::
+    "Managing processes" ;
+Designing_a_global_system_configuration::
+    "Copying files" ;
+Designing_a_global_system_configuration::
+    "Files and links" ;
+Designing_a_global_system_configuration::
+    "Using netgroups" ;
+Designing_a_global_system_configuration::
+    "General considerations" ;
+Designing_a_global_system_configuration::
+    "Designing a global system configuration" ;
+More_advanced_concepts::
+    "Iterating over lists" ;
+More_advanced_concepts::
+    "Regular expressions" ;
+More_advanced_concepts::
+    "Quoted strings" ;
+More_advanced_concepts::
+    "Log files written by cfagent" ;
+More_advanced_concepts::
+    "Security in Recursive file sweeps" ;
+More_advanced_concepts::
+    "Recursive file sweeps/directory traversals" ;
+More_advanced_concepts::
+    "Wildcards in directory names" ;
+More_advanced_concepts::
+    "Access control" ;
+More_advanced_concepts::
+    "Debugging tips" ;
+More_advanced_concepts::
+    "The generic class any" ;
+Defining_classes_and_making_exceptions::
+    "Writing plugin modules" ;
+Defining_classes_and_making_exceptions::
+    "Feedback classes" ;
+Defining_classes_and_making_exceptions::
+    "shellcommand classes" ;
+Defining_classes_and_making_exceptions::
+    "actionsequence classes" ;
+Defining_classes_and_making_exceptions::
+    "Command line classes" ;
+More_advanced_concepts::
+    "Defining classes and making exceptions" ;
+More_advanced_concepts::
+    "Undefined variables" ;
+More_advanced_concepts::
+    "Variable substitution" ;
+More_advanced_concepts::
+    "Classes" ;
+More_advanced_concepts::
+    "More advanced concepts" ;
+Getting_started::
+    "What to aim for" ;
+Getting_started::
+    "CFINPUTS environment variable" ;
+Getting_started::
+    "Running cfengine permanently, monitoring and restarting cfexecd" ;
+Getting_started::
+    "Invoking cfagent" ;
+Getting_started::
+    "Optional features in cfagent" ;
+Building_a_distributed_configuration::
+    "Where should I put the files?" ;
+Building_a_distributed_configuration::
+    "Startup cfservd.conf" ;
+Building_a_distributed_configuration::
+    "Startup update.conf" ;
+Getting_started::
+    "Building a distributed configuration" ;
+Getting_started::
+    "Program structure" ;
+Getting_started::
+    "What you must have in a cfagent program" ;
+Getting_started::
+    "Getting started" ;
+Overview::
+    "Functionality" ;
+Key_Concepts::
+    "Making links" ;
+Key_Concepts::
+    "Monitoring important files" ;
+Key_Concepts::
+    "Name servers (DNS)" ;
+Key_Concepts::
+    "Network File System (NFS) or file distribution?" ;
+Key_Concepts::
+    "Network interface" ;
+Key_Concepts::
+    "Configuration files and registries" ;
+Overview::
+    "Key Concepts" ;
+Overview::
+    "Site configuration" ;
+Overview::
+    "What is cfengine and who can use it?" ;
+Overview::
+    "Overview" ;
+
+
+occurrences:
+
+Overview::
+ "/inside/manuals/cf2-Tutorial#Overview"
+  represents => { "chapter" };
+What_is_cfengine_and_who_can_use_it_::
+ "/inside/manuals/cf2-Tutorial#What-is-cfengine_003f"
+  represents => { "What is cfengine and who can use it?" };
+Site_configuration::
+ "/inside/manuals/cf2-Tutorial#Site-configuration"
+  represents => { "Site configuration" };
+Key_Concepts::
+ "/inside/manuals/cf2-Tutorial#Key-concepts"
+  represents => { "Key Concepts" };
+Configuration_files_and_registries::
+ "/inside/manuals/cf2-Tutorial#Control-files"
+  represents => { "subsection" };
+Network_interface::
+ "/inside/manuals/cf2-Tutorial#Network-interface"
+  represents => { "subsection" };
+Network_File_System__NFS__or_file_distribution_::
+ "/inside/manuals/cf2-Tutorial#Network-File-System-_0028NFS_0029"
+  represents => { "subsection" };
+Name_servers__DNS_::
+ "/inside/manuals/cf2-Tutorial#Name-servers-_0028DNS_0029"
+  represents => { "subsection" };
+Monitoring_important_files::
+ "/inside/manuals/cf2-Tutorial#Monitoring-important-files"
+  represents => { "subsection" };
+Making_links::
+ "/inside/manuals/cf2-Tutorial#Making-links"
+  represents => { "subsection" };
+Making_links::
+ "/inside/manuals/cf2-Tutorial#index-Links-13"
+  represents => { "example" };
+Functionality::
+ "/inside/manuals/cf2-Tutorial#Functionality"
+  represents => { "Functionality" };
+Getting_started::
+ "/inside/manuals/cf2-Tutorial#Getting-started"
+  represents => { "chapter" };
+What_you_must_have_in_a_cfagent_program::
+ "/inside/manuals/cf2-Tutorial#What-you-must-have"
+  represents => { "What you must have in a cfagent program" };
+What_you_must_have_in_a_cfagent_program::
+ "/inside/manuals/cf2-Tutorial#index-Musts-in-cfengine-16"
+  represents => { "example" };
+What_you_must_have_in_a_cfagent_program::
+ "/inside/manuals/cf2-Tutorial#index-Musts-in-cfengine-16"
+  represents => { "example" };
+What_you_must_have_in_a_cfagent_program::
+ "/inside/manuals/cf2-Tutorial#index-Musts-in-cfengine-16"
+  represents => { "example" };
+Program_structure::
+ "/inside/manuals/cf2-Tutorial#Program-structure"
+  represents => { "Program structure" };
+Program_structure::
+ "/inside/manuals/cf2-Tutorial#index-Comments-19"
+  represents => { "example" };
+Program_structure::
+ "/inside/manuals/cf2-Tutorial#index-Comments-19"
+  represents => { "example" };
+Program_structure::
+ "/inside/manuals/cf2-Tutorial#index-Free-format-23"
+  represents => { "example" };
+Building_a_distributed_configuration::
+ "/inside/manuals/cf2-Tutorial#Building-a-distributed-configuration"
+  represents => { "Building a distributed configuration" };
+Startup_update_conf::
+ "/inside/manuals/cf2-Tutorial#Startup-update_002econf"
+  represents => { "subsection" };
+Startup_update_conf::
+ "/inside/manuals/cf2-Tutorial#Startup-update_002econf"
+  represents => { "example" };
+Startup_cfservd_conf::
+ "/inside/manuals/cf2-Tutorial#Startup-cfservd_002econf"
+  represents => { "subsection" };
+Startup_cfservd_conf::
+ "/inside/manuals/cf2-Tutorial#Startup-cfservd_002econf"
+  represents => { "example" };
+Where_should_I_put_the_files_::
+ "/inside/manuals/cf2-Tutorial#Where-should-I-put-the-files_003f"
+  represents => { "subsection" };
+Where_should_I_put_the_files_::
+ "/inside/manuals/cf2-Tutorial#index-Work-Directory-27"
+  represents => { "example" };
+Optional_features_in_cfagent::
+ "/inside/manuals/cf2-Tutorial#Options"
+  represents => { "Optional features in cfagent" };
+Optional_features_in_cfagent::
+ "/inside/manuals/cf2-Tutorial#index-Optional-features-in-cfagent-28"
+  represents => { "example" };
+Invoking_cfagent::
+ "/inside/manuals/cf2-Tutorial#Invoking-cfagent"
+  represents => { "Invoking cfagent" };
+Invoking_cfagent::
+ "/inside/manuals/cf2-Tutorial#index-Help-38"
+  represents => { "example" };
+Running_cfengine_permanently__monitoring_and_restarting_cfexecd::
+ "/inside/manuals/cf2-Tutorial#Running-cfengine-permanently-monitoring-and-restarting-cfexecd"
+  represents => { "Running cfengine permanently, monitoring and restarting cfexecd" };
+Running_cfengine_permanently__monitoring_and_restarting_cfexecd::
+ "/inside/manuals/cf2-Tutorial#Running-cfengine-permanently-monitoring-and-restarting-cfexecd"
+  represents => { "example" };
+Running_cfengine_permanently__monitoring_and_restarting_cfexecd::
+ "/inside/manuals/cf2-Tutorial#index-g_t_002fvar_002fcfengine_002foutput-42"
+  represents => { "example" };
+Running_cfengine_permanently__monitoring_and_restarting_cfexecd::
+ "/inside/manuals/cf2-Tutorial#index-Mailing-output-45"
+  represents => { "example" };
+Running_cfengine_permanently__monitoring_and_restarting_cfexecd::
+ "/inside/manuals/cf2-Tutorial#index-Mailing-output-45"
+  represents => { "example" };
+Running_cfengine_permanently__monitoring_and_restarting_cfexecd::
+ "/inside/manuals/cf2-Tutorial#index-Mailing-output-45"
+  represents => { "example" };
+CFINPUTS_environment_variable::
+ "/inside/manuals/cf2-Tutorial#CFINPUTS-environment-variable"
+  represents => { "CFINPUTS environment variable" };
+What_to_aim_for::
+ "/inside/manuals/cf2-Tutorial#What-to-aim-for"
+  represents => { "What to aim for" };
+More_advanced_concepts::
+ "/inside/manuals/cf2-Tutorial#More-advanced-concepts"
+  represents => { "chapter" };
+Classes::
+ "/inside/manuals/cf2-Tutorial#Classes-basics"
+  represents => { "Classes" };
+Classes::
+ "/inside/manuals/cf2-Tutorial#index-Classes-60"
+  represents => { "example" };
+Classes::
+ "/inside/manuals/cf2-Tutorial#index-Compound-classes-61"
+  represents => { "example" };
+Classes::
+ "/inside/manuals/cf2-Tutorial#index-Compound-classes-61"
+  represents => { "example" };
+Classes::
+ "/inside/manuals/cf2-Tutorial#index-Compound-classes-61"
+  represents => { "example" };
+Classes::
+ "/inside/manuals/cf2-Tutorial#index-NOT-operator-66"
+  represents => { "example" };
+Classes::
+ "/inside/manuals/cf2-Tutorial#index-NOT-operator-66"
+  represents => { "example" };
+Classes::
+ "/inside/manuals/cf2-Tutorial#index-NOT-operator-66"
+  represents => { "example" };
+Classes::
+ "/inside/manuals/cf2-Tutorial#index-NOT-operator-66"
+  represents => { "example" };
+Classes::
+ "/inside/manuals/cf2-Tutorial#index-NOT-operator-66"
+  represents => { "example" };
+Variable_substitution::
+ "/inside/manuals/cf2-Tutorial#Variable-substitution"
+  represents => { "Variable substitution" };
+Variable_substitution::
+ "/inside/manuals/cf2-Tutorial#index-Variables-and-Macros-87"
+  represents => { "example" };
+Variable_substitution::
+ "/inside/manuals/cf2-Tutorial#index-Variables-and-Macros-87"
+  represents => { "example" };
+Variable_substitution::
+ "/inside/manuals/cf2-Tutorial#index-Variables-and-Macros-87"
+  represents => { "example" };
+Variable_substitution::
+ "/inside/manuals/cf2-Tutorial#index-Variables_002c-setting-to-result-of-a-shell-command-92"
+  represents => { "example" };
+Variable_substitution::
+ "/inside/manuals/cf2-Tutorial#index-In_002dbuilt-functions-94"
+  represents => { "example" };
+Variable_substitution::
+ "/inside/manuals/cf2-Tutorial#index-MaxCfengines-110"
+  represents => { "example" };
+Variable_substitution::
+ "/inside/manuals/cf2-Tutorial#index-g_t_0024_0028tab_0029-131"
+  represents => { "example" };
+Variable_substitution::
+ "/inside/manuals/cf2-Tutorial#index-g_t_0024_0028tab_0029-131"
+  represents => { "example" };
+Variable_substitution::
+ "/inside/manuals/cf2-Tutorial#index-Variables_002c-using-132"
+  represents => { "example" };
+Variable_substitution::
+ "/inside/manuals/cf2-Tutorial#index-Variables_002c-using-132"
+  represents => { "example" };
+Undefined_variables::
+ "/inside/manuals/cf2-Tutorial#Undefined-variables"
+  represents => { "Undefined variables" };
+Undefined_variables::
+ "/inside/manuals/cf2-Tutorial#Undefined-variables"
+  represents => { "example" };
+Undefined_variables::
+ "/inside/manuals/cf2-Tutorial#Undefined-variables"
+  represents => { "example" };
+Defining_classes_and_making_exceptions::
+ "/inside/manuals/cf2-Tutorial#Defining-classes"
+  represents => { "Defining classes and making exceptions" };
+Command_line_classes::
+ "/inside/manuals/cf2-Tutorial#Command-line-classes"
+  represents => { "subsection" };
+Command_line_classes::
+ "/inside/manuals/cf2-Tutorial#Command-line-classes"
+  represents => { "example" };
+Command_line_classes::
+ "/inside/manuals/cf2-Tutorial#Command-line-classes"
+  represents => { "example" };
+actionsequence_classes::
+ "/inside/manuals/cf2-Tutorial#actionsequence-classes"
+  represents => { "subsection" };
+actionsequence_classes::
+ "/inside/manuals/cf2-Tutorial#actionsequence-classes"
+  represents => { "example" };
+shellcommand_classes::
+ "/inside/manuals/cf2-Tutorial#shellcommand-classes"
+  represents => { "subsection" };
+shellcommand_classes::
+ "/inside/manuals/cf2-Tutorial#shellcommand-classes"
+  represents => { "example" };
+Feedback_classes::
+ "/inside/manuals/cf2-Tutorial#Feedback-classes"
+  represents => { "subsection" };
+Writing_plugin_modules::
+ "/inside/manuals/cf2-Tutorial#Writing-plugin-modules"
+  represents => { "subsection" };
+Writing_plugin_modules::
+ "/inside/manuals/cf2-Tutorial#index-moduledirectory-143"
+  represents => { "example" };
+Writing_plugin_modules::
+ "/inside/manuals/cf2-Tutorial#index-moduledirectory-143"
+  represents => { "example" };
+Writing_plugin_modules::
+ "/inside/manuals/cf2-Tutorial#index-moduledirectory-143"
+  represents => { "example" };
+Writing_plugin_modules::
+ "/inside/manuals/cf2-Tutorial#index-moduledirectory-143"
+  represents => { "example" };
+Writing_plugin_modules::
+ "/inside/manuals/cf2-Tutorial#index-moduledirectory-143"
+  represents => { "example" };
+The_generic_class_any::
+ "/inside/manuals/cf2-Tutorial#The-generic-class-any"
+  represents => { "The generic class any" };
+The_generic_class_any::
+ "/inside/manuals/cf2-Tutorial#index-any-145"
+  represents => { "example" };
+Debugging_tips::
+ "/inside/manuals/cf2-Tutorial#Debugging-tips"
+  represents => { "Debugging tips" };
+Debugging_tips::
+ "/inside/manuals/cf2-Tutorial#Debugging-tips"
+  represents => { "example" };
+Debugging_tips::
+ "/inside/manuals/cf2-Tutorial#Debugging-tips"
+  represents => { "example" };
+Access_control::
+ "/inside/manuals/cf2-Tutorial#Access-control"
+  represents => { "Access control" };
+Access_control::
+ "/inside/manuals/cf2-Tutorial#Access-control"
+  represents => { "example" };
+Wildcards_in_directory_names::
+ "/inside/manuals/cf2-Tutorial#Wildcards-in-directory-names"
+  represents => { "Wildcards in directory names" };
+Wildcards_in_directory_names::
+ "/inside/manuals/cf2-Tutorial#index-Wildcards_002c-in-directory-names-157"
+  represents => { "example" };
+Recursive_file_sweeps_directory_traversals::
+ "/inside/manuals/cf2-Tutorial#File-sweeps"
+  represents => { "Recursive file sweeps/directory traversals" };
+Recursive_file_sweeps_directory_traversals::
+ "/inside/manuals/cf2-Tutorial#index-g_t_0040code_007binclude_003d_007d-167"
+  represents => { "example" };
+Recursive_file_sweeps_directory_traversals::
+ "/inside/manuals/cf2-Tutorial#index-g_t_0040code_007binclude_003d_007d-167"
+  represents => { "example" };
+Recursive_file_sweeps_directory_traversals::
+ "/inside/manuals/cf2-Tutorial#index-exclude_003d_002c-problems-173"
+  represents => { "example" };
+Security_in_Recursive_file_sweeps::
+ "/inside/manuals/cf2-Tutorial#Security-in-File-sweeps"
+  represents => { "Security in Recursive file sweeps" };
+Log_files_written_by_cfagent::
+ "/inside/manuals/cf2-Tutorial#Log-files"
+  represents => { "Log files written by cfagent" };
+Quoted_strings::
+ "/inside/manuals/cf2-Tutorial#Quoted-strings"
+  represents => { "Quoted strings" };
+Quoted_strings::
+ "/inside/manuals/cf2-Tutorial#Quoted-strings"
+  represents => { "example" };
+Quoted_strings::
+ "/inside/manuals/cf2-Tutorial#Quoted-strings"
+  represents => { "example" };
+Quoted_strings::
+ "/inside/manuals/cf2-Tutorial#index-Strings-185"
+  represents => { "example" };
+Regular_expressions::
+ "/inside/manuals/cf2-Tutorial#Regular-expressions"
+  represents => { "Regular expressions" };
+Regular_expressions::
+ "/inside/manuals/cf2-Tutorial#Regular-expressions"
+  represents => { "example" };
+Iterating_over_lists::
+ "/inside/manuals/cf2-Tutorial#Iterating-over-lists"
+  represents => { "Iterating over lists" };
+Iterating_over_lists::
+ "/inside/manuals/cf2-Tutorial#index-Split-191"
+  represents => { "example" };
+Iterating_over_lists::
+ "/inside/manuals/cf2-Tutorial#index-Split_002c-using-a-space-195"
+  represents => { "example" };
+Designing_a_global_system_configuration::
+ "/inside/manuals/cf2-Tutorial#Global-configurations"
+  represents => { "chapter" };
+General_considerations::
+ "/inside/manuals/cf2-Tutorial#General-considerations"
+  represents => { "General considerations" };
+Using_netgroups::
+ "/inside/manuals/cf2-Tutorial#Using-netgroups"
+  represents => { "Using netgroups" };
+Using_netgroups::
+ "/inside/manuals/cf2-Tutorial#index-netgroups-201"
+  represents => { "example" };
+Files_and_links::
+ "/inside/manuals/cf2-Tutorial#Files-and-links"
+  represents => { "Files and links" };
+Files_and_links::
+ "/inside/manuals/cf2-Tutorial#Files-and-links"
+  represents => { "example" };
+Files_and_links::
+ "/inside/manuals/cf2-Tutorial#Files-and-links"
+  represents => { "example" };
+Files_and_links::
+ "/inside/manuals/cf2-Tutorial#Files-and-links"
+  represents => { "example" };
+Files_and_links::
+ "/inside/manuals/cf2-Tutorial#Files-and-links"
+  represents => { "example" };
+Files_and_links::
+ "/inside/manuals/cf2-Tutorial#index-Tidying-files-205"
+  represents => { "example" };
+Copying_files::
+ "/inside/manuals/cf2-Tutorial#Copying-files"
+  represents => { "Copying files" };
+Managing_processes::
+ "/inside/manuals/cf2-Tutorial#Managing-processes"
+  represents => { "Managing processes" };
+Cfengines_model_for_NFS_mounted_filesystems::
+ "/inside/manuals/cf2-Tutorial#NFS-resources"
+  represents => { "Cfengines model for NFS-mounted filesystems" };
+NFS_filesystem_resources::
+ "/inside/manuals/cf2-Tutorial#NFS-filesystem-resources"
+  represents => { "subsection" };
+Unique_filesystem_mountpoints::
+ "/inside/manuals/cf2-Tutorial#Unique-filesystem-mountpoints"
+  represents => { "subsection" };
+Unique_filesystem_mountpoints::
+ "/inside/manuals/cf2-Tutorial#index-Mount-points-213"
+  represents => { "example" };
+Unique_filesystem_mountpoints::
+ "/inside/manuals/cf2-Tutorial#index-Mount-points-213"
+  represents => { "example" };
+Unique_filesystem_mountpoints::
+ "/inside/manuals/cf2-Tutorial#index-Mount-points-213"
+  represents => { "example" };
+How_does_it_work_::
+ "/inside/manuals/cf2-Tutorial#How-does-it-work_003f"
+  represents => { "subsection" };
+How_does_it_work_::
+ "/inside/manuals/cf2-Tutorial#index-Binary-servers_002c-declaring-215"
+  represents => { "example" };
+How_does_it_work_::
+ "/inside/manuals/cf2-Tutorial#index-Binary-servers_002c-declaring-215"
+  represents => { "example" };
+Special_variables::
+ "/inside/manuals/cf2-Tutorial#Special-variables"
+  represents => { "subsection" };
+Special_variables::
+ "/inside/manuals/cf2-Tutorial#index-Linking-to-binservers-218"
+  represents => { "example" };
+Example_programs_for_mounting_resources::
+ "/inside/manuals/cf2-Tutorial#Mount-example"
+  represents => { "subsection" };
+Example_programs_for_mounting_resources::
+ "/inside/manuals/cf2-Tutorial#Mount-example"
+  represents => { "example" };
+Example_programs_for_mounting_resources::
+ "/inside/manuals/cf2-Tutorial#Mount-example"
+  represents => { "example" };
+Using_the_automounter::
+ "/inside/manuals/cf2-Tutorial#Using-the-automounter"
+  represents => { "Using the automounter" };
+Using_the_automounter::
+ "/inside/manuals/cf2-Tutorial#index-How-to-keep-all-users-in-_0040file_007b_002fhome_007d-234"
+  represents => { "example" };
+Using_the_automounter::
+ "/inside/manuals/cf2-Tutorial#index-How-to-keep-all-users-in-_0040file_007b_002fhome_007d-234"
+  represents => { "example" };
+Editing_Files::
+ "/inside/manuals/cf2-Tutorial#Editing-files"
+  represents => { "Editing Files" };
+Editing_Files::
+ "/inside/manuals/cf2-Tutorial#Editing-files"
+  represents => { "example" };
+Editing_Files::
+ "/inside/manuals/cf2-Tutorial#Editing-files"
+  represents => { "example" };
+Editing_Files::
+ "/inside/manuals/cf2-Tutorial#Editing-files"
+  represents => { "example" };
+Disabling_and_the_file_repository::
+ "/inside/manuals/cf2-Tutorial#Disabling-and-the-file-repository"
+  represents => { "Disabling and the file repository" };
+Disabling_and_the_file_repository::
+ "/inside/manuals/cf2-Tutorial#index-g_t_0040file_007b_002fetc_002fhosts_002eequiv_007d-235"
+  represents => { "example" };
+Disabling_and_the_file_repository::
+ "/inside/manuals/cf2-Tutorial#index-g_t_0040file_007b_002fvar_002fadm_002fwtmpx_007d-236"
+  represents => { "example" };
+Disabling_and_the_file_repository::
+ "/inside/manuals/cf2-Tutorial#index-Timestamp-backups-242"
+  represents => { "example" };
+Running_user_scripts::
+ "/inside/manuals/cf2-Tutorial#Running-user-scripts"
+  represents => { "Running user scripts" };
+Running_user_scripts::
+ "/inside/manuals/cf2-Tutorial#Running-user-scripts"
+  represents => { "example" };
+Running_user_scripts::
+ "/inside/manuals/cf2-Tutorial#Running-user-scripts"
+  represents => { "example" };
+Running_user_scripts::
+ "/inside/manuals/cf2-Tutorial#Running-user-scripts"
+  represents => { "example" };
+Compressing_old_log_files::
+ "/inside/manuals/cf2-Tutorial#Compressing-logs"
+  represents => { "Compressing old log files" };
+Compressing_old_log_files::
+ "/inside/manuals/cf2-Tutorial#Compressing-logs"
+  represents => { "example" };
+Managing_ACLs::
+ "/inside/manuals/cf2-Tutorial#ACLs"
+  represents => { "Managing ACLs" };
+Managing_ACLs::
+ "/inside/manuals/cf2-Tutorial#index-Access-control-lists-243"
+  represents => { "example" };
+Managing_ACLs::
+ "/inside/manuals/cf2-Tutorial#index-g_t_0040code_007bacl_007d-246"
+  represents => { "example" };
+Managing_ACLs::
+ "/inside/manuals/cf2-Tutorial#index-g_t_0040code_007bacl_007d-246"
+  represents => { "example" };
+Managing_ACLs::
+ "/inside/manuals/cf2-Tutorial#index-g_t_0040code_007bacl_007d-246"
+  represents => { "example" };
+Managing_ACLs::
+ "/inside/manuals/cf2-Tutorial#index-g_t_0040code_007bacl_007d-246"
+  represents => { "example" };
+Managing_ACLs::
+ "/inside/manuals/cf2-Tutorial#index-g_t_0040code_007bacl_007d-246"
+  represents => { "example" };
+Managing_ACLs::
+ "/inside/manuals/cf2-Tutorial#index-g_t_0040code_007bacl_007d-246"
+  represents => { "example" };
+Managing_ACLs::
+ "/inside/manuals/cf2-Tutorial#index-g_t_0040code_007bacl_007d-246"
+  represents => { "example" };
+Managing_ACLs::
+ "/inside/manuals/cf2-Tutorial#index-ACLs_002c-DFS-249"
+  represents => { "example" };
+Managing_ACLs::
+ "/inside/manuals/cf2-Tutorial#index-ACLs_002c-DFS-249"
+  represents => { "example" };
+Managing_ACLs::
+ "/inside/manuals/cf2-Tutorial#index-ACLs_002c-DFS-249"
+  represents => { "example" };
+Managing_ACLs::
+ "/inside/manuals/cf2-Tutorial#index-ACLs_002c-DFS-249"
+  represents => { "example" };
+Managing_ACLs::
+ "/inside/manuals/cf2-Tutorial#index-ACLs_002c-DFS-249"
+  represents => { "example" };
+Using_cfengine_as_a_front_end_for_cron::
+ "/inside/manuals/cf2-Tutorial#Using-cfengine-as-a-front_002dend-for-cron"
+  represents => { "chapter" };
+Using_cfengine_as_a_front_end_for_cron::
+ "/inside/manuals/cf2-Tutorial#index-How-can-I-use-cfengine-to-make-a-global-cron-file_003f-251"
+  represents => { "example" };
+Structuring_cfagent_conf::
+ "/inside/manuals/cf2-Tutorial#Structuring-cfagent_002econf"
+  represents => { "Structuring cfagent.conf" };
+Structuring_cfagent_conf::
+ "/inside/manuals/cf2-Tutorial#Structuring-cfagent_002econf"
+  represents => { "example" };
+Structuring_cfagent_conf::
+ "/inside/manuals/cf2-Tutorial#Structuring-cfagent_002econf"
+  represents => { "example" };
+Structuring_cfagent_conf::
+ "/inside/manuals/cf2-Tutorial#Structuring-cfagent_002econf"
+  represents => { "example" };
+Splaying_host_times::
+ "/inside/manuals/cf2-Tutorial#Splaying-host-times"
+  represents => { "Splaying host times" };
+Splaying_host_times::
+ "/inside/manuals/cf2-Tutorial#Splaying-host-times"
+  represents => { "example" };
+Building_flexible_time_classes::
+ "/inside/manuals/cf2-Tutorial#Building-flexible-time-classes"
+  represents => { "Building flexible time classes" };
+Building_flexible_time_classes::
+ "/inside/manuals/cf2-Tutorial#index-Grouping-time-values-261"
+  represents => { "example" };
+Choosing_a_scheduling_interval::
+ "/inside/manuals/cf2-Tutorial#Scheduling-interval"
+  represents => { "Choosing a scheduling interval" };
+Cfengine_and_network_services::
+ "/inside/manuals/cf2-Tutorial#Cfengine-network-services"
+  represents => { "chapter" };
+Cfengine_network_services::
+ "/inside/manuals/cf2-Tutorial#What-services_003f"
+  represents => { "Cfengine network services" };
+How_it_works::
+ "/inside/manuals/cf2-Tutorial#How-it-works"
+  represents => { "How it works" };
+Remote_file_distribution::
+ "/inside/manuals/cf2-Tutorial#Emulating-rdist"
+  represents => { "subsection" };
+Remote_file_distribution::
+ "/inside/manuals/cf2-Tutorial#index-g_t_0040code_007bserver_003d_007d-272"
+  represents => { "example" };
+Remote_execution_of_cfagent::
+ "/inside/manuals/cf2-Tutorial#Remote-execution-of-cfagent"
+  represents => { "subsection" };
+Remote_execution_of_cfagent::
+ "/inside/manuals/cf2-Tutorial#index-Remote-execution-of-cfagent-276"
+  represents => { "example" };
+Spamming_and_security::
+ "/inside/manuals/cf2-Tutorial#Spamming-and-security"
+  represents => { "subsection" };
+Spamming_and_security::
+ "/inside/manuals/cf2-Tutorial#Spamming-and-security"
+  represents => { "example" };
+Spamming_and_security::
+ "/inside/manuals/cf2-Tutorial#Spamming-and-security"
+  represents => { "example" };
+Spamming_and_security::
+ "/inside/manuals/cf2-Tutorial#Spamming-and-security"
+  represents => { "example" };
+Some_points_on_the_cfservd_protocol::
+ "/inside/manuals/cf2-Tutorial#cfservd-protocol"
+  represents => { "subsection" };
+Deadlocks_and_runaway_loops::
+ "/inside/manuals/cf2-Tutorial#Deadlocks-and-runaway-loops"
+  represents => { "subsection" };
+Configuring_cfservd::
+ "/inside/manuals/cf2-Tutorial#Configuring-cfservd"
+  represents => { "Configuring cfservd" };
+Installation_of_cfservd::
+ "/inside/manuals/cf2-Tutorial#Installation-of-cfservd"
+  represents => { "subsection" };
+Installation_of_cfservd::
+ "/inside/manuals/cf2-Tutorial#Installation-of-cfservd"
+  represents => { "example" };
+Installation_of_cfservd::
+ "/inside/manuals/cf2-Tutorial#Installation-of-cfservd"
+  represents => { "example" };
+Installation_of_cfservd::
+ "/inside/manuals/cf2-Tutorial#Installation-of-cfservd"
+  represents => { "example" };
+Configuration_file_cfservd_conf::
+ "/inside/manuals/cf2-Tutorial#Configuration-file-cfservd_002econf"
+  represents => { "subsection" };
+Configuration_file_cfservd_conf::
+ "/inside/manuals/cf2-Tutorial#index-g_t_0040code_007bCFINPUTS_007d-variable-294"
+  represents => { "example" };
+Configuration_file_cfservd_conf::
+ "/inside/manuals/cf2-Tutorial#index-g_t_0040code_007bCFINPUTS_007d-variable-294"
+  represents => { "example" };
+Security_and_cfengine::
+ "/inside/manuals/cf2-Tutorial#Security-and-cfengine"
+  represents => { "chapter" };
+What_is_security_::
+ "/inside/manuals/cf2-Tutorial#What-is-security_003f"
+  represents => { "What is security?" };
+A_word_of_warning::
+ "/inside/manuals/cf2-Tutorial#A-word-of-warning"
+  represents => { "A word of warning" };
+Automation::
+ "/inside/manuals/cf2-Tutorial#Automation"
+  represents => { "Automation" };
+Trust::
+ "/inside/manuals/cf2-Tutorial#Trust"
+  represents => { "Trust" };
+Why_trust_cfengine_::
+ "/inside/manuals/cf2-Tutorial#Why-trust-cfengine_003f"
+  represents => { "Why trust cfengine?" };
+Configuration::
+ "/inside/manuals/cf2-Tutorial#Configuration"
+  represents => { "Configuration" };
+Configuration::
+ "/inside/manuals/cf2-Tutorial#Configuration"
+  represents => { "example" };
+Configuration::
+ "/inside/manuals/cf2-Tutorial#Configuration"
+  represents => { "example" };
+Disabling_and_replacing_software::
+ "/inside/manuals/cf2-Tutorial#Disabling-and-replacing-software"
+  represents => { "Disabling and replacing software" };
+Disabling_and_replacing_software::
+ "/inside/manuals/cf2-Tutorial#Disabling-and-replacing-software"
+  represents => { "example" };
+Disabling_and_replacing_software::
+ "/inside/manuals/cf2-Tutorial#Disabling-and-replacing-software"
+  represents => { "example" };
+Disabling_and_replacing_software::
+ "/inside/manuals/cf2-Tutorial#Disabling-and-replacing-software"
+  represents => { "example" };
+Disabling_and_replacing_software::
+ "/inside/manuals/cf2-Tutorial#Disabling-and-replacing-software"
+  represents => { "example" };
+Disabling_and_replacing_software::
+ "/inside/manuals/cf2-Tutorial#Disabling-and-replacing-software"
+  represents => { "example" };
+Disabling_and_replacing_software::
+ "/inside/manuals/cf2-Tutorial#Disabling-and-replacing-software"
+  represents => { "example" };
+Disabling_and_replacing_software::
+ "/inside/manuals/cf2-Tutorial#Disabling-and-replacing-software"
+  represents => { "example" };
+Disabling_and_replacing_software::
+ "/inside/manuals/cf2-Tutorial#Disabling-and-replacing-software"
+  represents => { "example" };
+Disabling_and_replacing_software::
+ "/inside/manuals/cf2-Tutorial#Disabling-and-replacing-software"
+  represents => { "example" };
+Disabling_and_replacing_software::
+ "/inside/manuals/cf2-Tutorial#Disabling-and-replacing-software"
+  represents => { "example" };
+Process_monitoring::
+ "/inside/manuals/cf2-Tutorial#Process-monitoring"
+  represents => { "Process monitoring" };
+Process_monitoring::
+ "/inside/manuals/cf2-Tutorial#Process-monitoring"
+  represents => { "example" };
+Process_monitoring::
+ "/inside/manuals/cf2-Tutorial#Process-monitoring"
+  represents => { "example" };
+Process_monitoring::
+ "/inside/manuals/cf2-Tutorial#Process-monitoring"
+  represents => { "example" };
+Process_monitoring::
+ "/inside/manuals/cf2-Tutorial#Process-monitoring"
+  represents => { "example" };
+Process_monitoring::
+ "/inside/manuals/cf2-Tutorial#Process-monitoring"
+  represents => { "example" };
+Monitoring_files::
+ "/inside/manuals/cf2-Tutorial#Monitoring-files"
+  represents => { "Monitoring files" };
+Monitoring_files::
+ "/inside/manuals/cf2-Tutorial#Monitoring-files"
+  represents => { "example" };
+Monitoring_files::
+ "/inside/manuals/cf2-Tutorial#Monitoring-files"
+  represents => { "example" };
+The_setuid_log::
+ "/inside/manuals/cf2-Tutorial#The-setuid-log"
+  represents => { "The setuid log" };
+Suspicious_filenames::
+ "/inside/manuals/cf2-Tutorial#Suspicious-filenames"
+  represents => { "Suspicious filenames" };
+Suspicious_filenames::
+ "/inside/manuals/cf2-Tutorial#Suspicious-filenames"
+  represents => { "example" };
+Suspicious_filenames::
+ "/inside/manuals/cf2-Tutorial#Suspicious-filenames"
+  represents => { "example" };
+Checksums_and_Tripwire_functionality::
+ "/inside/manuals/cf2-Tutorial#Checksums-and-Tripwire-functionality"
+  represents => { "Checksums and Tripwire functionality" };
+Checksums_and_Tripwire_functionality::
+ "/inside/manuals/cf2-Tutorial#Checksums-and-Tripwire-functionality"
+  represents => { "example" };
+FileExtensions::
+ "/inside/manuals/cf2-Tutorial#FileExtensions"
+  represents => { "FileExtensions" };
+FileExtensions::
+ "/inside/manuals/cf2-Tutorial#FileExtensions"
+  represents => { "example" };
+NonAlphaNumFiles::
+ "/inside/manuals/cf2-Tutorial#NonAlphaNumFiles"
+  represents => { "NonAlphaNumFiles" };
+NonAlphaNumFiles::
+ "/inside/manuals/cf2-Tutorial#NonAlphaNumFiles"
+  represents => { "example" };
+Defensive_garbage_collection::
+ "/inside/manuals/cf2-Tutorial#Defensive-garbage-collection"
+  represents => { "Defensive garbage collection" };
+Defensive_garbage_collection::
+ "/inside/manuals/cf2-Tutorial#Defensive-garbage-collection"
+  represents => { "example" };
+Defensive_garbage_collection::
+ "/inside/manuals/cf2-Tutorial#Defensive-garbage-collection"
+  represents => { "example" };
+Defensive_garbage_collection::
+ "/inside/manuals/cf2-Tutorial#Defensive-garbage-collection"
+  represents => { "example" };
+Anonymous_FTP_example::
+ "/inside/manuals/cf2-Tutorial#Anonymous-FTP-example"
+  represents => { "Anonymous FTP example" };
+Anonymous_FTP_example::
+ "/inside/manuals/cf2-Tutorial#Anonymous-FTP-example"
+  represents => { "example" };
+WWW_security::
+ "/inside/manuals/cf2-Tutorial#WWW-security"
+  represents => { "WWW security" };
+WWW_security::
+ "/inside/manuals/cf2-Tutorial#WWW-security"
+  represents => { "example" };
+WWW_security::
+ "/inside/manuals/cf2-Tutorial#WWW-security"
+  represents => { "example" };
+Miscellaneous_security_of_cfengine_itself::
+ "/inside/manuals/cf2-Tutorial#Miscellaneous-security-of-cfengine-itself"
+  represents => { "Miscellaneous security of cfengine itself" };
+Miscellaneous_security_of_cfengine_itself::
+ "/inside/manuals/cf2-Tutorial#Miscellaneous-security-of-cfengine-itself"
+  represents => { "example" };
+Privacy__encryption_::
+ "/inside/manuals/cf2-Tutorial#Privacy-_0028encryption_0029"
+  represents => { "Privacy (encryption)" };
+Privacy__encryption_::
+ "/inside/manuals/cf2-Tutorial#index-Immune-identity-303"
+  represents => { "example" };
+Privacy__encryption_::
+ "/inside/manuals/cf2-Tutorial#index-Immune-identity-303"
+  represents => { "example" };
+Trust_and_key_races::
+ "/inside/manuals/cf2-Tutorial#Trust-and-key-races"
+  represents => { "Trust and key races" };
+Trust_and_key_races::
+ "/inside/manuals/cf2-Tutorial#Trust-and-key-races"
+  represents => { "example" };
+Adaptive_locks::
+ "/inside/manuals/cf2-Tutorial#Adaptive-locks"
+  represents => { "Adaptive locks" };
+Spoofing::
+ "/inside/manuals/cf2-Tutorial#Spoofing"
+  represents => { "Spoofing" };
+Race_conditions_in_file_copying::
+ "/inside/manuals/cf2-Tutorial#Race-conditions-in-file-copying"
+  represents => { "Race conditions in file copying" };
+size__in_copy::
+ "/inside/manuals/cf2-Tutorial#size_003d-in-copy"
+  represents => { "size= in copy" };
+useshell__and_owner__in_shellcommands::
+ "/inside/manuals/cf2-Tutorial#useshell_003d-and-owner_003d-in-shellcommands"
+  represents => { "useshell= and owner= in shellcommands" };
+Firewalls::
+ "/inside/manuals/cf2-Tutorial#Firewalls"
+  represents => { "Firewalls" };
+Summary::
+ "/inside/manuals/cf2-Tutorial#Summary"
+  represents => { "chapter" };
+}
+

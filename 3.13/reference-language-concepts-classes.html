@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.13  Documentation - Classes and Decisions</title>
+        <link rel="icon" type="image/png" href="favicon.png">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.13/assets/global-f8d3d88f1cc74c2ac5c8e408cd101409.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Classes and Decisions";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.13/" selected>Version 3.13 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                    <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:bphk6hztv2i" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a><ul class="level2"><li><a href="reference-language-concepts-bundles.html">Bundles</a></li><li><a href="reference-language-concepts-bodies.html">Bodies</a></li><li><a href="reference-language-concepts-promises.html">Promises</a></li><li><a href="reference-language-concepts-normal-ordering.html">Normal Ordering</a></li><li><a class="active" href="reference-language-concepts-classes.html">Classes and Decisions</a></li><li><a href="reference-language-concepts-variables.html">Variables</a></li><li><a href="reference-language-concepts-augments.html">Augments</a></li><li><a href="reference-language-concepts-loops.html">Loops</a></li><li><a href="reference-language-concepts-pattern-matching-and-referencing.html">Pattern Matching and Referencing</a></li><li><a href="reference-language-concepts-namespaces.html">Namespaces</a></li></ul></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-language-concepts.html">Language Concepts</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Classes and Decisions
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Classes are used to apply promises only to particular environments, depending
+on context. A promise might only apply to Linux systems, or should only be
+applied on Sundays, or only when a
+<a href="guide-faq-variables.html" title="Variables">variable</a> has a certain value.</p>
+
+<p>Classes are simply facts that represent the current state or context of a
+system. The list of set classes classifies the environment at time of
+execution.</p>
+
+<p>Classes are either <code>set</code> or <code>not set</code>, depending on context. Classes fall into
+<strong>hard</strong> classes that are discovered by CFEngine, and <strong>soft</strong> classes that are
+user-defined.</p>
+
+<p>Classes have either a <a href="reference-components-file_control_promises.html#namespace" title="file control - namespace"><code>namespace</code></a> or <code>bundle</code> scoped. namespace scoped classes
+are visible from any bundle. <code>bundle</code> scoped classes can only be checked within
+that bundle or from a bundle called with inheritance. Hard classes always have a
+namespace scope.</p>
+
+<p>In <a href="guide-faq-enterprise.html" title="CFEngine Enterprise">CFEngine Enterprise</a>, classes that are defined can be reported to the
+CFEngine Database Server and can be used there for reporting, grouping of hosts
+and inventory management. For more information about how this is configured please read the documentation on <a href="enterprise-cfengine-guide-reporting.html" title="Enterprise Reporting">Enterprise Reporting</a>.</p>
+<h2 id="listing-classes">Listing Classes</h2>
+<p>To see the first order of <code>hard classes</code> and <code>soft classes</code> run <code>cf-promises
+--show-classes</code> as a privileged user. Alternatively run <code>cf-agent
+--show-evaluated-classes</code> to get the listing of classes at the end of the agent
+execution. This will show additional namespace scoped classes that were defined
+over the course of the agent execution. This output can be convenient for policy
+testing.</p>
+
+<p>Example:</p>
+<div class="highlight"><pre><code class="console"><span class="gp">[root@hub masterfiles]#</span> cf-promises --show-classes
+<span class="go">Class name                                                   Meta tags</span>
+<span class="go">10_0_2_15                                                    inventory,attribute_name=none,source=agent,hardclass</span>
+<span class="go">127_0_0_1                                                    inventory,attribute_name=none,source=agent,hardclass</span>
+<span class="go">192_168_33_2                                                 inventory,attribute_name=none,source=agent,hardclass</span>
+<span class="go">1_cpu                                                        source=agent,derived-from=sys.cpus,hardclass</span>
+<span class="go">64_bit                                                       source=agent,hardclass</span>
+<span class="go">Afternoon                                                    time_based,source=agent,hardclass</span>
+<span class="go">Day22                                                        time_based,source=agent,hardclass</span>
+<span class="go">...</span>
+</code></pre>
+</div>
+
+<p>Note that some of the classes are set only if a trusted link can be established
+with <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a>, i.e. if both are running with privilege, and
+the <code>/var/cfengine/state/env_data</code> file is secure.</p>
+
+<p>The <a href="reference-functions-classesmatching.html" title="classesmatching"><code>classesmatching()</code></a> function searches using a regular expression for classes
+matching a given name and or tag.</p>
+
+<p><strong>See also</strong>: The <code>--show-vars</code> option for <a href="reference-components-cf-promises.html" title="cf-promises"><code>cf-promises</code></a> and the
+<code>--show-evaluated-vars</code> option for <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a>.</p>
+<h2 id="tags">Tags</h2>
+<p>Classes and variables have tags that describe their provenance (who
+created them) and purpose (why were they created).</p>
+
+<p>While you can provide your own tags for soft classes in policy with
+the <a href="reference-promise-types.html#meta" title="Promise Types and Attributes - meta"><code>meta</code></a> attribute, there are some tags applied to hard classes and
+other special cases.  This list may change in future versions of
+CFEngine.</p>
+
+<ul>
+<li><code>source=agent</code>: this hard class or variable was created by the agent in the C code.  This tag is useful when you need to find classes or variables that don&#39;t match the other sources below.  e.g. <code>linux</code>.</li>
+<li><code>source=environment</code>: this hard class or variable was created by the agent in the C code.  It reflects something about the environment like a command-line option, e.g. <code>-d</code> sets <code>debug_mode</code>, <code>-v</code> sets <code>verbose_mode</code>, and <code>-I</code> sets <code>inform_mode</code>.  Another useful option, <code>-n</code>, sets <code>opt_dry_run</code>.</li>
+<li><code>source=bootstrap</code>: this hard class or variable was created by the agent in the C code based on bootstrap parameters.  e.g. <code>policy_server</code> is set based on the IP address or host name you provided when you ran <code>cf-agent -B host-or-ip</code>.</li>
+<li><code>source=module</code>: this class or variable was created through the module protocol.</li>
+<li><code>source=persistent</code>: this persistent class was loaded from storage.</li>
+<li><code>source=body</code>: this variable was created by a body with side effects.</li>
+<li><code>source=function</code>: this class or variable was created by a function as a side effect, e.g. see the classes that <a href="reference-functions-selectservers.html" title="selectservers"><code>selectservers()</code></a> sets or the variables that <a href="reference-functions-regextract.html" title="regextract"><code>regextract()</code></a> sets.  These classes or variables will also have a <code>function=FUNCTIONNAME</code> tag.</li>
+<li><code>source=promise</code>: this soft class was created from policy.</li>
+<li><code>inventory</code>: related to the system inventory, e.g. the network interfaces
+
+<ul>
+<li><code>attribute_name=none</code>: has no visual attribute name (ignored by Mission Portal)</li>
+<li><code>attribute_name=X</code>: has visual attribute name <code>X</code> (used by Mission Portal)</li>
+</ul></li>
+<li><code>monitoring</code>: related to the monitoring (<a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a> usually).</li>
+<li><code>time_based</code>: based on the system date, e.g. <code>Afternoon</code></li>
+<li><code>derived-from=varname</code>: for a class, this tells you it was derived from a variable name, e.g. if the special variable <a href="reference-special-variables-sys.html#sys-fqhost" title="sys - sys.fqhost"><code>sys.fqhost</code></a> is <code>xyz</code>, the resulting class <code>xyz</code> will have the tag <code>derived-from=sys.fqhost</code>.</li>
+<li><code>cfe_internal</code>: internal utility classes and variables</li>
+</ul>
+
+<p>Enterprise only:</p>
+
+<ul>
+<li><code>source=ldap</code>: this soft class or variable was created from an LDAP lookup.</li>
+<li><code>source=observation</code>: this class or variable came from a <a href="reference-promise-types-measurements.html" title="measurements"><code>measurements</code></a> system observation and will also have the <code>monitoring</code> tag.</li>
+</ul>
+<h2 id="hard-classes">Hard Classes</h2>
+<p>Hard classes are discovered by CFEngine. Each time it wakes up, it discovers
+and reads properties of the environment or context in which it runs.It turns
+these properties of the environment into classes. This information is
+effectively cached and may be used to make decisions about configuration.</p>
+
+<p>You can see all of the hard classes defined on a particular host by running the
+following command as a privileged user.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">    $</span> cf-promises --show-classes<span class="p">|</span>grep hardclass
+</code></pre>
+</div>
+
+<p>These are classes that describe your operating system, the time of
+day, the week of the year, etc. Time-varying classes (tagged with
+<code>time_based</code>) will change if you do this a few times over the course
+of a week.</p>
+
+<ul>
+<li>CFEngine-specific classes
+
+<ul>
+<li><code>any</code>: this class is always set</li>
+<li><code>am_policy_hub</code>, <code>policy_server</code>: set when the file
+<code>$(workdir)/state/am_policy_hub</code> exists. When a host is <a href="reference-components-cf-agent.html" title="cf-agent">bootstrapped</a>, if
+the agent detects that it is bootstrapping to itself the file is created.</li>
+<li><code>bootstrap_mode</code>: set when bootstrapping a host</li>
+<li><code>inform_mode</code>, <code>verbose_mode</code>, <code>debug_mode</code>: log verbosity levels in order of noisiness</li>
+<li><code>opt_dry_run</code>: set when the <code>--dry-run</code> option is given</li>
+<li><code>failsafe_fallback</code>: set when the base policy is invalid and the built-in <code>failsafe.cf</code> (see <code>bootstrap.c</code>) is invoked</li>
+<li>(<code>community</code>, <code>community_edition</code>) and (<code>enterprise</code>, <code>enterprise_edition</code>): the two different CFEngine products, Community and Enterprise, can be distinguished by these mutually exclusive sets of hard classes</li>
+<li><a href="reference-components-cf-agent.html" title="cf-agent"><code>agent</code></a> <em>cf-agent</em>, <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>server</code></a> <em>cf-serverd</em>, <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>monitor</code></a> <em>cf-monitord</em>, <a href="reference-components-cf-execd.html" title="cf-execd"><code>executor</code></a> <em>cf-execd</em>, <a href="reference-components-cf-runagent.html" title="cf-runagent"><code>runagent</code></a> <em>cf-runagent</em>, <code>keygenerator</code> <em>cf-keygen</em>, <a href="reference-components-cf-hub.html" title="cf-hub"><code>hub</code></a> <em>cf-hub</em>, <code>common</code> <em>cf-promises</em> and others: classes that identify the current component.  <a href="reference-components-cf-promises.html" title="cf-promises"><code>cf-promises</code></a> is a special case because it&#39;s not an agent in the CFEngine sense, so note that using <code>cf-promises --show-classes</code> will not show these classes because it can&#39;t.</li>
+</ul></li>
+<li>Operating System Classes (note that the presence of these classes doesn&#39;t imply platform support)
+
+<ul>
+<li>Operating System Architecture -  <code>arista</code>, <code>big_ip</code>, <code>debian</code>, <code>eos</code>, <code>fedora</code>, <code>Mandrake</code>, <code>Mandriva</code>, <code>oracle</code>, <code>redhat</code>, <code>slackware</code>, <code>smartmachine</code>, <code>smartos</code>, <code>solarisx86</code>, <code>sun4</code>, <code>SuSE</code>, <code>ubuntu</code>, <code>ultrix</code>, the always-favorite <code>unknown_ostype</code>, etc.</li>
+<li>VM or hypervisor specific: <code>VMware</code>, <code>virt_guest_vz</code>, <code>virt_host_vz</code>, <code>virt_host_vz_vzps</code>, <code>xen</code>, <code>xen_dom0</code>, <code>xen_domu_hv</code>, <code>xen_domu_pv</code>, <code>oraclevmserver</code>, etc.</li>
+<li>On Solaris-10 systems, the zone name (in the form <code>zone_global, zone_foo, zone_baz</code>).</li>
+<li>Windows-specific: <code>DomainController</code>, <code>Win2000</code>, <code>WinServer</code>, <code>WinServer2003</code>, <code>WinServer2008</code>, <code>WinVista</code>, <code>WinWorkstation</code>, <code>WinXP</code></li>
+<li><code>have_aptitude</code>, <code>powershell</code>, <code>systemd</code>: based on the detected capabilities of the platform or the compiled-in options</li>
+<li><strong>See also:</strong> <a href="reference-special-variables-sys.html#sys-arch" title="sys - sys.arch"><code>sys.arch</code></a>, <a href="reference-special-variables-sys.html#sys-class" title="sys - sys.class"><code>sys.class</code></a>, <code>sys.flavor</code>, <a href="reference-special-variables-sys.html#sys-os" title="sys - sys.os"><code>sys.os</code></a>, <a href="reference-special-variables-sys.html#sys-ostype" title="sys - sys.ostype"><code>sys.ostype</code></a>.</li>
+</ul></li>
+<li>Network Classes
+
+<ul>
+<li>Unqualified Name of Host. CFEngine truncates it at the first dot.
+Note: <code>www.sales.company.com</code> and <code>www.research.company.com</code> have the
+same unqualified name – <code>www</code></li>
+<li>The IPv4 address octets of any active interface (in the form
+<code>ipv4_192_0_0_1</code>, <code>ipv4_192_0_0</code>, <code>ipv4_192_0</code>, <code>ipv4_192</code>)</li>
+<li>The IPv6 addresses of all active interfaces (with dots replaced by
+underscores, e.g. <code>ipv6_fe80__a410_6072_21eb_d3fa</code>) added in 3.7.8, 3.10.3, 3.12.0</li>
+<li>User-defined Group of Hosts</li>
+<li><code>mac_unknown</code>: set when the MAC address can&#39;t be found</li>
+<li><strong>See also:</strong> <a href="reference-special-variables-sys.html#sys-domain" title="sys - sys.domain"><code>sys.domain</code></a>, <a href="reference-special-variables-sys.html#sys-hardware_addresses" title="sys - sys.hardware_addresses"><code>sys.hardware_addresses</code></a>, <code>sys.sys.host</code>, <a href="reference-special-variables-sys.html#sys-interface" title="sys - sys.interface"><code>sys.interface</code></a>, <a href="reference-special-variables-sys.html#sys-interfaces" title="sys - sys.interfaces"><code>sys.interfaces</code></a>, <a href="reference-special-variables-sys.html#sys-interface_flags" title="sys - sys.interface_flags"><code>sys.interface_flags</code></a>, <a href="reference-special-variables-sys.html#sys-ipv4" title="sys - sys.ipv4"><code>sys.ipv4</code></a>, <a href="reference-special-variables-sys.html#sys-ip_addresses" title="sys - sys.ip_addresses"><code>sys.ip_addresses</code></a>, <a href="reference-special-variables-sys.html#sys-fqhost" title="sys - sys.fqhost"><code>sys.fqhost</code></a>, <code>sys.uqhost</code>.</li>
+</ul></li>
+<li><p>Time Classes</p>
+
+<ul>
+<li>note ALL of these have a local and a GMT version.  The GMT classes are consistent the world over, in case you need global change coordination.</li>
+<li>Day of the Week - <code>Monday, Tuesday, Wednesday,...GMT_Monday, GMT_Tuesday, GMT_Wednesday,...</code></li>
+<li>Hour of the Day in Current Time Zone - <code>Hr00, Hr01,... Hr23</code> and <code>Hr0, Hr1,... Hr23</code></li>
+<li>Hour of the Day in GMT - <code>GMT_Hr00, GMT_Hr01, ...GMT_Hr23</code> and <code>GMT_Hr0, GMT_Hr1, ...GMT_Hr23</code>.</li>
+<li>Minutes of the Hour - <code>Min00, Min17,... Min45,...</code> and <code>GMT_Min00, GMT_Min17,... GMT_Min45,...</code></li>
+<li>Five Minute Interval of the Hour - <code>Min00_05, Min05_10,... Min55_00</code> and <code>GMT_Min00_05, GMT_Min05_10,... GMT_Min55_00</code>.  Note the second number indicates <em>up to</em> what minute the interval extends and does not include that minute.</li>
+<li>Quarter of the Hour - <code>Q1, Q2, Q3, Q4</code> and <code>GMT_Q1, GMT_Q2, GMT_Q3, GMT_Q4</code></li>
+<li>An expression of the current quarter hour - <code>Hr12_Q3</code> and <code>GMT_Hr12_Q3</code></li>
+<li>Day of the Month - <code>Day1, Day2,... Day31</code> and <code>GMT_Day1, GMT_Day2,... GMT_Day31</code></li>
+<li>Month - <code>January, February,... December</code> and <code>GMT_January, GMT_February,... GMT_December</code></li>
+<li>Year - <code>Yr1997, Yr2004</code> and <code>GMT_Yr1997, GMT_Yr2004</code></li>
+<li>Period of the Day - <code>Night, Morning, Afternoon, Evening</code> and <code>GMT_Night, GMT_Morning, GMT_Afternoon, GMT_Evening</code> (six hour blocks starting at 00:00 hours).</li>
+<li>Lifecycle Index - <code>Lcycle_0, Lcycle_1, Lcycle_2</code> and <code>GMT_Lcycle_0, GMT_Lcycle_1, GMT_Lcycle_2</code> (the year number modulo 3, used in long term resource memory).</li>
+<li><strong>See also:</strong> <a href="reference-special-variables-sys.html#sys-cdate" title="sys - sys.cdate"><code>sys.cdate</code></a>, <a href="reference-special-variables-sys.html#sys-date" title="sys - sys.date"><code>sys.date</code></a>.</li>
+</ul></li>
+<li><p>The unqualified name of a particular host (e.g., <code>www</code>). If
+your system returns a fully qualified domain name for your host
+(e.g., <code>www.iu.hio.no</code>), CFEngine will also define a hard class for
+the fully qualified name, as well as the partially-qualified
+component names <code>iu.hio.no</code>, <code>hio.no</code>, and <code>no</code>.</p>
+
+<ul>
+<li><strong>See also:</strong> <a href="reference-special-variables-sys.html#sys-fqhost" title="sys - sys.fqhost"><code>sys.fqhost</code></a>, <code>sys.uqhost</code>.</li>
+</ul></li>
+<li><p>An arbitrary user-defined string (as specified in the <code>-D</code>
+command line option, or defined in a <a href="reference-promise-types-classes.html" title="classes"><code>classes</code> promise</a> promise or
+<a href="reference-promise-types.html#classes" title="Promise Types and Attributes - classes"><code>classes</code> body</a>,
+<a href="reference-promise-types-processes.html#restart_class" title="processes - restart_class"><code>restart_class</code></a> in a <a href="reference-promise-types-processes.html" title="processes"><code>processes</code></a> promise, etc).</p></li>
+<li><p>The IP address octets of any active interface (in the form
+<code>ipv4_192_0_0_1&lt;!-- /@w --&gt;</code>, <code>ipv4_192_0_0&lt;!-- /@w --&gt;</code>,
+<code>ipv4_192_0&lt;!-- /@w --&gt;</code>, <code>ipv4_192&lt;!-- /@w --&gt;</code>), provided they
+are not excluded by a regular expression in the file
+<code>WORKDIR/inputs/ignore_interfaces.rx</code>.</p></li>
+<li><p>The names of the active interfaces (in the form
+<code>net_iface_xl0</code>, <code>net_iface_vr0</code>).</p></li>
+<li><p>System status and entropy information reported by
+<a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a>.</p></li>
+</ul>
+<h2 id="soft-classes">Soft Classes</h2>
+<p>Soft classes are user-defined classes which you can use to implement your own
+classifications.</p>
+
+<p>Soft classes can be set by using the <code>-D</code> or <code>--define</code> options wihtout having
+to edit the policy. Multiple classes can be defined by separating them with
+commas (no spaces).</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> cf-agent -Dclass
+</code></pre>
+</div>
+
+<p>or</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> cf-agent --define class1,class2,class3
+</code></pre>
+</div>
+
+<p>This can be especially useful when requesting a remote host to run its policy
+by using <a href="reference-components-cf-runagent.html" title="cf-runagent"><code>cf-runagent</code></a> to activate policy that is normally dormant.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> cf-runagent -Demergency_evacuation -H remoteclient
+</code></pre>
+</div>
+
+<p>If you&#39;re using dynamic inputs this can be useful in combination with
+<a href="reference-components-cf-promises.html" title="cf-promises"><code>cf-promises</code></a> to ensure that various input combinations syntax is validated
+correctly. Many people will have this run by pre-commit hooks or as part of a
+continuous build system like <a href="http://jenkins-ci.org/">Jenkins</a> or
+<a href="https://www.atlassian.com/software/bamboo">Bamboo</a>.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> cf-promises -f ./promises.cf -D prod
+<span class="gp">$</span> cf-promises -f ./promises.cf -D dev
+<span class="go">./promises.cf:10:12: error: syntax error</span>
+<span class="go">   &quot;global1&quot; expression =&gt; &quot;any&quot;;</span>
+<span class="go">           ^</span>
+<span class="go">./promises.cf:10:12: error: Check previous line, Expected &#39;;&#39;, got &#39;&quot;global1&quot;&#39;</span>
+<span class="go">   &quot;global1&quot; expression =&gt; &quot;any&quot;;</span>
+<span class="go">           ^</span>
+<span class="go">./promises.cf:10:23: error: Expected promiser string, got &#39;expression&#39;</span>
+<span class="go">   &quot;global1&quot; expression =&gt; &quot;any&quot;;</span>
+<span class="go">                      ^</span>
+<span class="go">./promises.cf:10:26: error: Expected &#39;;&#39;, got &#39;=&gt;&#39;</span>
+<span class="go">   &quot;global1&quot; expression =&gt; &quot;any&quot;;</span>
+<span class="go">                         ^</span>
+<span class="go">2014-05-22T13:46:05+0000    error: There are syntax errors in policy files</span>
+</code></pre>
+</div>
+
+<p><em>Note</em>: Classes, once defined, will stay defined either for as long as the
+bundle is evaluated (for classes with a <code>bundle</code> scope) or until the agent
+exits (for classes with a <a href="reference-components-file_control_promises.html#namespace" title="file control - namespace"><code>namespace</code></a> scope). See <a href="reference-promise-types.html#cancel_kept" title="Promise Types and Attributes - cancel_kept"><code>cancel_kept</code></a>,
+<a href="reference-promise-types.html#cancel_repaired" title="Promise Types and Attributes - cancel_repaired"><code>cancel_repaired</code></a>, and <a href="reference-promise-types.html#cancel_notkept" title="Promise Types and Attributes - cancel_notkept"><code>cancel_notkept</code></a> in classes body.</p>
+
+<p>This example defines a few soft classes local to the <code>myclasses</code> bundle.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">myclasses</span>
+<span class="p">{</span>
+<span class="kd">classes</span><span class="p">:</span>
+  <span class="s">&quot;always&quot;</span><span class="p">;</span>
+  <span class="s">&quot;always2&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;any&quot;</span><span class="p">;</span>
+  <span class="s">&quot;solinux&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;linux||solaris&quot;</span><span class="p">;</span>
+  <span class="s">&quot;alt_class&quot;</span> <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;linux&quot;</span><span class="p">,</span> <span class="s">&quot;solaris&quot;</span><span class="p">,</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;/etc/fstab&quot;</span><span class="p">)</span> <span class="p">};</span>
+  <span class="s">&quot;oth_class&quot;</span> <span class="kr">and</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;/etc/shadow&quot;</span><span class="p">),</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;/etc/passwd&quot;</span><span class="p">)</span> <span class="p">};</span>
+
+<span class="kd">reports</span><span class="p">:</span>
+  <span class="nc">alt_class</span><span class="p">::</span>
+    <span class="c"># This will only report &quot;Boo!&quot; on linux, solaris, or any system</span>
+    <span class="c"># on which the file /etc/fstab exists</span>
+    <span class="s">&quot;Boo!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<ul>
+<li><p>The <code>always</code> and <code>always2</code> soft classes are always defined.</p></li>
+<li><p>The <code>solinux</code> soft class is defined as a combination of the <code>linux</code> or the
+<code>solaris</code> hard classes. This class will be set if the operating
+system family is either of these values.</p></li>
+<li><p>The <code>alt_class</code> soft class is defined as a combination of <code>linux</code>,
+<code>solaris</code>, or the presence of a file named <code>/etc/fstab</code>. If one of the two
+hard classes evaluate to true, or if there is a file named <code>/etc/fstab</code>, the
+<code>alt_class</code> class will also be set.</p></li>
+<li><p>The <code>oth_class</code> soft class is defined as the combination of two <code>fileexists</code>
+functions - <code>/etc/shadow</code> and <code>/etc/passwd</code>.  If both of these files are
+present the <code>oth_class</code> class will also be set.</p></li>
+</ul>
+<h3 id="negative-knowledge">Negative Knowledge</h3>
+<p>If a class is set, then it is certain that the corresponding fact is true.
+However, that a class is not set could mean that something is not the case, or
+that something is simply not known. This is only a problem with soft classes,
+where the state of a class can change during the execution of a policy,
+depending on the <a href="reference-language-concepts-normal-ordering.html" title="Normal Ordering">order</a> in which bundles and promises are
+evaluated.</p>
+<h2 id="making-decisions-based-on-classes">Making Decisions based on classes</h2>
+<p>The easiest way to limit the application of a promise to certain conditions is to use the following notation:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">greetings</span>
+    <span class="p">{</span>
+     <span class="kd">reports</span><span class="p">:</span>
+       <span class="nc">Morning</span><span class="p">::</span>
+         <span class="s">&quot;Good morning!&quot;</span><span class="p">;</span>
+
+       <span class="nc">Evening</span><span class="p">::</span>
+         <span class="s">&quot;Good evening!&quot;</span><span class="p">;</span>
+
+       <span class="s">&quot;! any&quot;</span><span class="err">::</span>
+         <span class="s">&quot;This report won&#39;t ever be seen.&quot;</span><span class="p">;</span>
+
+       <span class="c"># whitespace allowed only in 3.8 and later</span>
+       <span class="nf">Friday</span> <span class="err">.</span> <span class="nc">Evening</span><span class="p">::</span>
+         <span class="s">&quot;It&#39;s Friday evening, TGIF!&quot;</span><span class="p">;</span>
+
+       <span class="s">&quot;Monday . Evening&quot;</span><span class="err">::</span>
+         <span class="s">&quot;It&#39;s Monday evening.&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In this example, the report &quot;Good morning!&quot; is only printed if the class
+<code>Morning</code> is set, while the report &quot;Good evening!&quot; is only printed when the
+class <code>Evening</code> is set.</p>
+
+<p>The <code>&quot;! any&quot;</code> context will never be evaluated. Note that since
+CFEngine 3.8 context expressions can contain spaces for legibility.</p>
+
+<p>The <code>&quot;Monday . Evening&quot;</code> context will only be true on Monday evenings.
+The <code>Friday . Evening</code> context will only be true on Friday evenings.
+See below for more on context operators.</p>
+
+<p>Sometimes it&#39;s convenient to put class names in variables. This
+example shows two ways to execute code conditionally based on such
+variables:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">greetings</span>
+    <span class="p">{</span>
+     <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">myclassname</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;Evening&quot;</span><span class="p">;</span>
+
+      <span class="kd">reports</span><span class="p">:</span>
+       <span class="s">&quot;</span><span class="si">$(myclassname)</span><span class="s">&quot;</span><span class="err">::</span>
+         <span class="s">&quot;Good evening!&quot;</span><span class="p">;</span>
+
+       <span class="s">&quot;any&quot;</span><span class="err">::</span>
+         <span class="s">&quot;Good evening too!&quot;</span> <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(myclassname)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>As you saw above, the class predicate <a href="reference-promise-types.html#ifvarclass" title="Promise Types and Attributes - ifvarclass"><code>ifvarclass</code></a> (aliased to <a href="reference-promise-types.html#if" title="Promise Types and Attributes - if"><code>if</code></a>;
+<a href="reference-promise-types.html#unless" title="Promise Types and Attributes - unless"><code>unless</code></a> is also available) can be used if variable class expressions
+are required. It is <code>AND</code>ed with the normal class expression, and is
+evaluated together with the promise. Both may contain variables as long
+as the resulting expansion is a legal class expression.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span>
+    <span class="p">{</span>
+      <span class="kd">vars</span><span class="p">:</span>
+              <span class="p">&quot;</span><span class="nv">french_cities</span><span class="p">&quot;</span>  <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;toulouse&quot;</span><span class="p">,</span> <span class="s">&quot;paris&quot;</span> <span class="p">};</span>
+              <span class="p">&quot;</span><span class="nv">german_cities</span><span class="p">&quot;</span>  <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;berlin&quot;</span> <span class="p">};</span>
+              <span class="p">&quot;</span><span class="nv">italian_cities</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;milan&quot;</span> <span class="p">};</span>
+              <span class="p">&quot;</span><span class="nv">usa_cities</span><span class="p">&quot;</span>     <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;lawrence&quot;</span> <span class="p">};</span>
+
+              <span class="p">&quot;</span><span class="nv">all_cities</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(french_cities)</span><span class="p">,</span> <span class="nv">@(german_cities)</span><span class="p">,</span> <span class="nv">@(italian_cities)</span><span class="p">,</span> <span class="nv">@(usa_cities)</span> <span class="p">};</span>
+
+      <span class="kd">classes</span><span class="p">:</span>
+          <span class="s">&quot;italy&quot;</span>   <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(italian_cities)</span> <span class="p">};</span>
+          <span class="s">&quot;germany&quot;</span> <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(german_cities)</span> <span class="p">};</span>
+          <span class="s">&quot;france&quot;</span>  <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nv">@(french_cities)</span> <span class="p">};</span>
+
+      <span class="kd">reports</span><span class="p">:</span>
+        <span class="s">&quot;It&#39;s </span><span class="si">$(sys.date)</span><span class="s"> here&quot;</span><span class="p">;</span>
+
+        <span class="nc">Morning.italy</span><span class="p">::</span>
+          <span class="s">&quot;Good morning from Italy&quot;</span><span class="p">,</span>
+            <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(all_cities)</span><span class="s">&quot;</span><span class="p">;</span>
+
+        <span class="nc">Afternoon.germany</span><span class="p">::</span>
+          <span class="s">&quot;Good afternoon from Germany&quot;</span><span class="p">,</span>
+            <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(all_cities)</span><span class="s">&quot;</span><span class="p">;</span>
+
+        <span class="nc">france</span><span class="p">::</span>
+          <span class="s">&quot;Hello from France&quot;</span><span class="p">,</span>
+            <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(all_cities)</span><span class="s">&quot;</span><span class="p">;</span>
+
+        <span class="nc">france</span><span class="p">::</span>
+          <span class="s">&quot;IMPOSSSIBLE!  THIS WILL NOT PRINT!!!&quot;</span><span class="p">,</span>
+            <span class="kr">unless</span> <span class="o">=&gt;</span> <span class="s">&quot;france&quot;</span><span class="p">;</span>
+
+        <span class="s">&quot;</span><span class="si">$(all_cities)</span><span class="s">&quot;</span><span class="err">::</span>
+          <span class="s">&quot;Hello from </span><span class="si">$(all_cities)</span><span class="s">&quot;</span><span class="p">;</span>
+
+        <span class="s">&quot;Hello from </span><span class="si">$(all_cities)</span><span class="s">, ifvarclass edition&quot;</span><span class="p">,</span>
+          <span class="kr">ifvarclass</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(all_cities)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Example Output:</p>
+<div class="highlight"><pre><code class="text">    cf-agent -Kf example.cf -D lawrence -b example
+    R: It&#39;s Tue May 28 16:47:33 2013 here
+    R: Hello from lawrence
+    R: Hello from lawrence, ifvarclass edition
+
+    cf-agent -Kf example.cf -D paris -b example
+    R: It&#39;s Tue May 28 16:48:18 2013 here
+    R: Hello from France
+    R: Hello from paris
+    R: Hello from paris, ifvarclass edition
+
+    cf-agent -Kf example.cf -D milan -b example
+    R: It&#39;s Tue May 28 16:48:40 2013 here
+    R: Hello from milan
+    R: Hello from milan, ifvarclass edition
+
+    cf-agent -Kf example.cf -D germany -b example
+    R: It&#39;s Tue May 28 16:49:01 2013 here
+
+    cf-agent -Kf example.cf -D berlin -b example
+    R: It&#39;s Tue May 28 16:51:53 2013 here
+    R: Good afternoon from Germany
+    R: Hello from berlin
+    R: Hello from berlin, ifvarclass edition
+</code></pre>
+</div>
+
+<p>In this example, lists of cities are defined in the <a href="reference-promise-types-vars.html" title="vars"><code>vars</code></a> section and these
+lists are combined into a list of all cities. These variable lists are used to
+qualify the greetings and to make the policy more concise. In the <a href="reference-promise-types-classes.html" title="classes"><code>classes</code></a>
+section a country class is defined if a class described on the right hand side
+evaluates to true. In the reports section the current time is always reported
+but only agents found to have the <code>Morning</code> and <code>italy</code> classes defined will
+report &quot;Good morning from Italy&quot;, this is further qualified by ensuring that
+the report is only generated if one of the known cities also has a class
+defined.</p>
+
+<p><strong>Note:</strong> Classes are automatically canonified when they are defined. Classes
+are not automatically canonified when they are checked.</p>
+
+<p>This example shows how classes are automatically canonified when they are
+defined and that you must explicitly canonify when verifying classes.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+  <span class="kd">classes</span><span class="p">:</span>
+
+      <span class="s">&quot;my-illegal-class&quot;</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+
+      <span class="c"># We search to see what class was defined:</span>
+      <span class="s">&quot;</span><span class="si">$(with)</span><span class="s">&quot;</span> <span class="kr">with</span> <span class="o">=&gt;</span> <span class="nf">join</span><span class="p">(</span> <span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nf">classesmatching</span><span class="p">(</span> <span class="s">&quot;my.illegal.class&quot;</span> <span class="p">)</span> <span class="p">);</span>
+
+      <span class="c"># We see that the illegal class is explicitly not defined.</span>
+      <span class="s">&quot;my-illegal-class is NOT defined (as expected, its invalid)&quot;</span>
+        <span class="kr">unless</span> <span class="o">=&gt;</span> <span class="s">&quot;my-illegal-class&quot;</span><span class="p">;</span>
+
+      <span class="c"># We see the canonified form of the illegal class is defined.</span>
+      <span class="s">&quot;my_illegal_class is defined&quot;</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">canonify</span><span class="p">(</span><span class="s">&quot;my-illegal-class&quot;</span><span class="p">);</span>
+
+      <span class="c"># Note, ifvarclass takes expressisons, you couldn&#39;t do that if it were</span>
+      <span class="c"># automatically canonified. Here I canonify the string using with, and use</span>
+      <span class="c"># it as part of the expression which contains an invalid classcharacter, but</span>
+      <span class="c"># its desireable for constructing expressions.</span>
+
+      <span class="s">&quot;Slice and dice using `with`&quot;</span>
+        <span class="kr">with</span> <span class="o">=&gt;</span> <span class="nf">canonify</span><span class="p">(</span> <span class="s">&quot;my-illegal-class&quot;</span> <span class="p">),</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="s">&quot;linux|</span><span class="si">$(with)</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>First we promise to define <code>my-illegal-class</code>. When the promise is actuated
+it is automatically canonified and defined. This automatic canonification is
+logged in verbose logs (<code>verbose: Class identifier &#39;my-illegal-class&#39; contains illegal characters - canonifying</code>).
+Next several reports prove which form of the class was defined. The last
+report shows how <a href="reference-promise-types.html#if" title="Promise Types and Attributes - if"><code>if</code></a> takes a class expression, and if you are checking a class
+that contains invalid characters you must canonify it.</p>
+<div class="highlight"><pre><code class="cf3">
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text">R: my_illegal_class
+R: my-illegal-class is NOT defined (as expected, its invalid)
+R: my_illegal_class is defined
+R: Slice and dice using `with`
+</code></pre>
+</div>
+
+<p>This policy can be found in
+<code>/var/cfengine/share/doc/examples/class-automatic-canonificiation.cf</code>
+and downloaded directly from
+<a href="https://raw.github.com/cfengine/core/master/examples/class-automatic-canonificiation.cf" target="_blank">github</a>.</p>
+<h2 id="operators-and-precedence">Operators and Precedence</h2>
+<p>Classes promises define new classes based on combinations of old ones. This is
+how to make complex decisions in CFEngine, with readable results. It is like
+defining aliases for class combinations. Such class &#39;aliases&#39; may be specified
+in any kind of bundle.</p>
+
+<p>Since CFEngine 3.8, whitespace is <strong>allowed</strong> between operators. It
+was not allowed up to 3.7.</p>
+
+<p>For example <code>a . b</code> is equivalent to <code>a.b</code> and perhaps more readable.</p>
+
+<p>Classes may be combined with the operators listed here in order from highest
+to lowest precedence:</p>
+
+<ul>
+<li><p>‘()&#39;::
+~ The parenthesis group operator.</p></li>
+<li><p>‘!’::
+~ The NOT operator.</p></li>
+<li><p>‘.’::
+~ The AND operator.</p></li>
+<li><p>‘&amp;’::
+~ The AND operator (alternative).</p></li>
+<li><p>‘|’::
+~ The OR operator.</p></li>
+<li><p>‘||’::
+~ The OR operator (alternative).</p></li>
+</ul>
+
+<p>These operators can be combined to form complex expressions.  For example, the
+following expression would be only true on Mondays or Wednesdays from 2:00pm
+to 2:59pm on Windows XP systems:</p>
+<div class="highlight"><pre><code class="text">(Monday|Wednesday).Hr14.WinXP::
+</code></pre>
+</div>
+<h3 id="operands-that-are-functions">Operands that are functions</h3>
+<p>If an operand is another function and the return value of the function is
+undefined, the result of the logical operation will also be undefined.
+For this reason, when using functions as operators, it is safer to collapse
+the functions down to scalar values and to test if the values are either
+true or false before using them as operands in a logical expression.</p>
+
+<p>e.g.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="err">...</span>
+    <span class="kd">classes</span><span class="p">:</span>
+            <span class="s">&quot;variable_1&quot;</span>
+            <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;/etc/aliases.db&quot;</span><span class="p">);</span>
+    <span class="err">...</span>
+
+    <span class="s">&quot;result&quot;</span>
+    <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">isnewerthan</span><span class="p">(</span><span class="s">&quot;/etc/aliases&quot;</span><span class="p">,</span> <span class="s">&quot;/etc/aliases.db&quot;</span><span class="p">),</span>
+    <span class="s">&quot;!variable_1&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<p>The function, <code>isnewerthan</code> can return &quot;undefined&quot; if one or other of the files
+does not exist. In that case, result would also be undefined. By checking the
+validity of the return value before using it as an operand in a logical expression,
+unpredictable results are avoided. i.e negative knowledge does not necessarily
+imply that something is not the case, it could simply be unknown. Checking if
+each file exists before calling <code>isnewerthan</code> would avoid this problem.</p>
+<h3 id="operands-that-are-json-booleans">Operands that are JSON booleans</h3>
+<p>If an operand is <code>true</code> it will succeed, <strong>even though there doesn&#39;t have to be
+a class named</strong> <code>true</code>. If an operand is <code>false</code> it will fail, <strong>even though
+there may be a class named</strong> <code>false</code>. This allows JSON booleans from data
+containers to be used in context expressions:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+    <span class="kd">vars</span><span class="p">:</span>
+      <span class="s">&quot;checks&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="err">&#39;[</span><span class="nf">true</span><span class="p">,</span> <span class="nf">false</span><span class="err">]&#39;</span><span class="p">;</span>
+      <span class="c"># find all classes named</span>
+      <span class="p">&quot;</span><span class="nv">classes_named_true</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">classesmatching</span><span class="p">(</span><span class="err">&#39;</span><span class="nf">true</span><span class="err">&#39;</span><span class="p">);</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="c"># always defined</span>
+      <span class="s">&quot;first_check&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(checks[0])</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="c"># never defined</span>
+      <span class="s">&quot;second_check&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(checks[1])</span><span class="s">&quot;</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="c"># prints nothing, there are no classes named &#39;true&#39;</span>
+      <span class="s">&quot;Classes named &#39;true&#39;: </span><span class="si">$(classes_named_true)</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="nc">first_check</span><span class="p">::</span>
+      <span class="s">&quot;The class was defined from &#39;</span><span class="si">$(checks[0])</span><span class="s">&#39;&quot;</span><span class="p">;</span>
+    <span class="nc">!first_check</span><span class="p">::</span>
+      <span class="s">&quot;The class was NOT defined from &#39;</span><span class="si">$(checks[0])</span><span class="s">&#39;&quot;</span><span class="p">;</span>
+    <span class="nc">second_check</span><span class="p">::</span>
+      <span class="s">&quot;The class was defined from &#39;</span><span class="si">$(checks[1])</span><span class="s">&#39;&quot;</span><span class="p">;</span>
+    <span class="nc">!second_check</span><span class="p">::</span>
+      <span class="s">&quot;The class was NOT defined from &#39;</span><span class="si">$(checks[1])</span><span class="s">&#39;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text">R: The class was defined from &#39;true&#39;
+R: The class was NOT defined from &#39;false&#39;
+</code></pre>
+</div>
+<h2 id="class-scope">Class scope</h2>
+<p>Classes defined by classes type promises in bundles of type <code>common</code> are
+<a href="reference-components-file_control_promises.html#namespace" title="file control - namespace"><code>namespace</code></a> scoped by default (globally available, can be seen from any bundle),
+whereas classes defined in all other bundle types are local aka <code>bundle</code> scoped
+(they can not be seen from other bundles). Classes are evaluated when the bundle
+is evaluated (and the bundles are evaluated in the order specified in the
+<a href="reference-components.html#bundlesequence" title="Components and Common Control - bundlesequence"><code>bundlesequence</code></a>).</p>
+
+<p>Note that any class promise must have one - and only one - value constraint.
+That is, you may not leave <a href="reference-promise-types-classes.html#expression" title="classes - expression"><code>expression</code></a> in the example
+above and add <a href="reference-promise-types-classes.html#and" title="classes - and"><code>and</code></a> or <a href="reference-promise-types-classes.html#xor" title="classes - xor"><code>xor</code></a> constraints to the
+single promise.</p>
+
+<p>Additionally classes can be defined or undefined as the result of a promise by
+using a <a href="reference-promise-types.html#classes" title="Promise Types and Attributes - classes">classes body</a>. To set a class if
+a promise is repaired, one might write:</p>
+<div class="highlight"><pre><code class="cf3">     <span class="s">&quot;promiser...&quot;</span>
+        <span class="err">...</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">if_repaired</span><span class="p">(</span><span class="s">&quot;signal_class&quot;</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>These classes are <a href="reference-components-file_control_promises.html#namespace" title="file control - namespace"><code>namespace</code></a> scoped by default. The
+<a href="reference-promise-types.html#scope" title="Promise Types and Attributes - scope"><code>scope</code></a> attribute can be used to make them
+local to the bundle.</p>
+
+<p>It is recommended to use bundle scoped classes whenever possible. This example
+will define <code>signal_class</code> prefixed classes with a suffix matching the
+promise outcome (<code>_kept</code>, <code>_repaired</code>, <code>_notkept</code>).</p>
+<div class="highlight"><pre><code class="cf3">     <span class="s">&quot;promiser...&quot;</span>
+        <span class="err">...</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">results</span><span class="p">(</span><span class="s">&quot;bundle&quot;</span><span class="p">,</span> <span class="s">&quot;signal_class&quot;</span><span class="p">);</span>
+
+    <span class="kd">reports</span><span class="p">:</span>
+
+      <span class="nc">signal_class_repaired</span><span class="p">::</span>
+        <span class="s">&quot;Some aspect of the promise was repaired.&quot;</span><span class="p">;</span>
+        <span class="s">&quot;The agent made a change to take us closer to the desired state&quot;</span><span class="p">;</span>
+
+      <span class="nc">signal_class_kept</span><span class="p">::</span>
+        <span class="s">&quot;Some aspect of the promise was kept&quot;</span><span class="p">;</span>
+
+      <span class="nc">signal_class_notkept</span><span class="p">::</span>
+        <span class="s">&quot;Some aspect of the promsie was unable to be repaired&quot;</span><span class="p">;</span>
+
+      <span class="nc">signal_class_kept.signal_class_notkept</span><span class="p">::</span>
+        <span class="s">&quot;All promise aspects were as desired&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Classes defined by the <a href="reference-promise-types-commands.html#module" title="commands - module">module protocol</a> are <a href="reference-components-file_control_promises.html#namespace" title="file control - namespace"><code>namespace</code></a>
+scoped.</p>
+
+<p>Finally, <a href="reference-promise-types-processes.html#restart_class" title="processes - restart_class"><code>restart_class</code></a> classes in <a href="reference-promise-types-processes.html" title="processes"><code>processes</code></a> are global.</p>
+<h3 id="class-scopes-a-more-complex-example">Class Scopes: A More Complex Example</h3><div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+    <span class="p">{</span>
+        <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;global&quot;</span><span class="p">,</span><span class="s">&quot;local_one&quot;</span><span class="p">,</span> <span class="s">&quot;local_two&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="c">#################################</span>
+
+    <span class="k">bundle</span> <span class="k">common</span> <span class="nf">global</span>
+    <span class="p">{</span>
+        <span class="kd">classes</span><span class="p">:</span>
+            <span class="c"># The soft class &quot;zero&quot; is always satisfied,</span>
+            <span class="c"># and is global in scope</span>
+            <span class="s">&quot;zero&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;any&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c">#################################</span>
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">local_one</span>
+    <span class="p">{</span>
+        <span class="kd">classes</span><span class="p">:</span>
+            <span class="c"># The soft class &quot;one&quot; is always satisfied,</span>
+            <span class="c"># and is local in scope to local_one</span>
+            <span class="s">&quot;one&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;any&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c">#################################</span>
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">local_two</span>
+    <span class="p">{</span>
+        <span class="kd">classes</span><span class="p">:</span>
+            <span class="c"># The soft class &quot;two&quot; is always satisfied,</span>
+            <span class="c"># and is local in scope to ls_2</span>
+            <span class="s">&quot;two&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;any&quot;</span><span class="p">;</span>
+
+        <span class="kd">reports</span><span class="p">:</span>
+            <span class="nc">zero.!one.two</span><span class="p">::</span>
+                <span class="c"># This report will be generated</span>
+                <span class="s">&quot;Success&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In this example, there are three bundles. One common bundle named <code>global</code>
+with a global scope. Two agent bundles define classes <code>one</code> and <code>two</code> which
+are local to those bundles.</p>
+
+<p>The <code>local_two</code> bundle promises a report &quot;Success&quot; which applies only if
+<code>zero.!one.two</code> evaluates to true. Within the <code>local_two</code> scope this evaluates
+to <code>true</code> because the <code>one</code> class is not set.</p>
+<h2 id="persistence">Persistence</h2>
+<p>By default classes are re-computed on each agent execution. Once a class has
+been defined, it persists until the end of that agent execution. Persistent classes
+are always global and can not be set to local by <strong>scope</strong> directive. Classes can
+persist for a period of time. This can be useful to avoid the expense of
+re-evaluation, communicate states across multiple agent runs on the same host.</p>
+
+<p>The standard library in the Masterfiles Policy Framework contains
+the <a href="reference-masterfiles-policy-framework-lib-feature.html" title="lib/feature.cf"><code>feature</code></a> bundle which implements a useful model for
+defining classes for a period of time as well as canceling them on demand.</p>
+<h2 id="canceling-classes">Canceling classes</h2>
+<p>You can cancel a class with a <a href="reference-promise-types.html#classes" title="Promise Types and Attributes - classes"><code>classes</code></a> body.
+See the <a href="reference-promise-types.html#cancel_kept" title="Promise Types and Attributes - cancel_kept"><code>cancel_kept</code></a>, <a href="reference-promise-types.html#cancel_notkept" title="Promise Types and Attributes - cancel_notkept"><code>cancel_notkept</code></a>, and <a href="reference-promise-types.html#cancel_repaired" title="Promise Types and Attributes - cancel_repaired"><code>cancel_repaired</code></a> attributes.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-manuals.html">manuals</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-language.html">language</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-syntax.html">syntax</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-concepts.html">concepts</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-classes.html">classes</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-decisions.html">decisions</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 11 January 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/language-concepts/classes.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/b04b1f6f002a2f00c34834c7f4e2a3b4111fd67d" target="_blank">b04b1f6f002a2f00c34834c7f4e2a3b4111fd67d</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.13/assets/footer-dfbb901e0ce1de822a7bc04bca20268e.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

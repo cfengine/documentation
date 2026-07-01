@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.8  Documentation - Secure Bootstrap</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.8/assets/global-8212aa494575341d9a306dae12291eb2.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Secure Bootstrap";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       	<option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       	<option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                  <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       	<option value="/docs/3.8/index.html" selected>Version 3.8 (EOL)</option>
+                       	<option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+			                  <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       	<option value="/docs/archive/">Version 3.0 (archive)</option>
+                        <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:v5wte9vybsa" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a><ul class="level2"><li><a href="guide-installation-and-configuration-pre-installation-checklist.html">Pre-Installation Checklist</a></li><li><a href="guide-installation-and-configuration-general-installation.html">General Installation</a></li><li><a class="active" href="guide-installation-and-configuration-secure-bootstrap.html">Secure Bootstrap</a></li><li><a href="guide-installation-and-configuration-upgrading.html">Upgrading</a></li><li><a href="guide-installation-and-configuration-version-control.html">Version Control</a></li></ul></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-design-center.html">Design Center Overview</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-installation-and-configuration.html">Installation and Configuration</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Secure Bootstrap
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>This guide presumes that you already have CFEngine properly installed
+and running on the policy hub, the machine that distributes the policy
+to all the clients. It also presumes that CFEngine is installed, but not
+yet configured, on a number of clients.</p>
+
+<p>We present a step-by-step procedure to securely bootstrapping a
+number of servers (referred to as <em>clients</em>) to the policy hub, over a
+possibly unsafe network.</p>
+<h2 id="introduction">Introduction</h2>
+<p>CFEngine&#39;s trust model is based on the secure exchange of keys. This
+exchange of keys between <em>client</em> and <em>hub</em>, can either happen manually
+or automatically. Usually this step is automated as a dead-simple
+&quot;bootstrap&quot; procedure:</p>
+
+<p><code>cf-agent --bootstrap $HUB_IP</code></p>
+
+<p>It is presumed that during this first key exchange, <em>the network is
+trusted</em>, and no attacker will hijack the connection. After
+&quot;bootstrapping&quot; is complete, the node can be deployed in the open
+internet, and all connections are considered secure.</p>
+
+<p>However there are cases where initial CFEngine deployment is happening
+over an insecure network, for example the Internet. In such cases we
+already have a secure channel to the clients, usually ssh, and we use
+this channel to <em>manually establish trust</em> from the hub to the clients
+and vice-versa.</p>
+<h2 id="manual-trust-establishment">Manual Trust Establishment</h2>
+<p>This procedure concerns CFEngine version 3.6 or earlier. While this
+fully manual procedure should always work, from version 3.7 onwards
+there is a simpler semi-automatic procedure for establishing trust.</p>
+<h3 id="on-the-policy-hub">On the policy hub</h3>
+<p>We must change the policy we&#39;re distributing to fully locked-down
+settings. So after we have set-up our hub (using the standard procedure
+of <code>cf-agent --bootstrap $HUB_IP</code>) we take care of the following:</p>
+
+<ul>
+<li><p>Cf-serverd must never accept a connection from a client presenting an
+untrusted key.  So in <code>body server control</code> we must empty the
+<code>trustkeysfrom</code> attribute:</p>
+
+<p><code>trustkeysfrom =&gt; {};</code></p></li>
+<li><p>Since we will be manually bootstrapping the clients, we need to
+distribute a proper <a href="guide-writing-and-serving-policy-policy-framework.html#failsafe-cf" title="The Policy Framework - failsafe.cf"><code>failsafe.cf</code></a> policy. (**NOTE:**
+<a href="guide-writing-and-serving-policy-policy-framework.html#failsafe-cf" title="The Policy Framework - failsafe.cf"><code>failsafe.cf</code></a> is a file auto-generated in the <code>inputs</code> directory when
+we run <code>cf-agent --bootstrap</code>).</p>
+
+<p>In order to do that, we copy hub&#39;s <a href="guide-writing-and-serving-policy-policy-framework.html#failsafe-cf" title="The Policy Framework - failsafe.cf"><code>failsafe.cf</code></a> to <code>masterfiles</code>
+directory:</p>
+<div class="highlight"><pre><code class="text">cp /var/cfengine/inputs/failsafe.cf /var/cfengine/masterfiles/
+</code></pre>
+</div>
+
+<p>We&#39;ll edit that copy in <code>masterfiles</code> in the next step.</p></li>
+<li><p>All <a href="reference-promise-types-files.html#copy_from" title="files - copy_from"><code>copy_from</code></a> files promises must never connect to an untrusted
+server, which means that the following line should not be found
+anywhere:</p>
+
+<p><code>trustkey =&gt; &quot;true&quot;</code></p>
+
+<p>All occurrences of <code>trustkey</code> in <code>masterfiles</code> directory should be
+changed to &quot;false&quot;, or be removed (since it defaults to false
+anyway). It is certain that <code>failsafe.cf</code> that we copied in
+the previous step will contain such occurrences that should be
+changed. (Those occurrences are the reason that automatic bootstrapping
+requires a trusted network).</p></li>
+<li><p>The previous changes in <code>masterfiles</code> need to be properly propagated
+to the <code>inputs</code> directory. The automated way to do that is to run the
+update.cf policy:</p>
+<div class="highlight"><pre><code class="text">cf-agent -f update.cf
+</code></pre>
+</div></li>
+<li><p>Get the hub&#39;s key fingerprint, we&#39;ll need it later:</p>
+<div class="highlight"><pre><code class="text">HUB_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub`
+</code></pre>
+</div></li>
+</ul>
+<h3 id="on-each-client-we-deploy">On each client we deploy</h3>
+<p>We should <strong>not</strong> follow the automatic method, i.e. the
+<code>cf-agent --bootstrap</code> command. We will perform a
+<em>manual bootstrap</em>.</p>
+
+<ul>
+<li><p>Generate a private/public key pair by running <a href="reference-components-cf-key.html" title="cf-key"><code>cf-key</code></a>.</p></li>
+<li><p>Get the client&#39;s key fingerprint, we&#39;ll need it later:</p>
+<div class="highlight"><pre><code class="text">CLIENT_KEY=`cf-key -p /var/cfengine/ppkeys/localhost.pub`
+</code></pre>
+</div></li>
+<li><p>Write the policy hub&#39;s IP address to <code>policy_server.dat</code>:</p>
+<div class="highlight"><pre><code class="text">echo $HUB_IP &gt; /var/cfengine/policy_server.dat
+</code></pre>
+</div></li>
+<li><p>Manually copy the modified <a href="guide-writing-and-serving-policy-policy-framework.html#failsafe-cf" title="The Policy Framework - failsafe.cf"><code>failsafe.cf</code></a> from hub&#39;s <code>masterfiles</code>
+directory into client&#39;s <a href="reference-components-file_control_promises.html#inputs" title="file control - inputs"><code>inputs</code></a> directory. You should do
+it in a secure manner, for example using <code>scp</code> with properly trusted
+fingerprint of the remote host.</p></li>
+<li><p><strong>NOTE:</strong> At this step, you can try running the failsafe policy. Because
+trust between the two hosts has not been established, <em>you will get a
+failure</em>, which is totally expected and means everything is correct
+and secure:</p>
+<div class="highlight"><pre><code class="text">$# cf-agent -f failsafe.cf
+error: TRUST FAILED, server presented untrusted key: MD5=cc27570b8b831192d9f20b54d07dd80b
+error: No suitable server responded to hail
+error: TRUST FAILED, server presented untrusted key: MD5=cc27570b8b831192d9f20b54d07dd80b
+error: No suitable server responded to hail
+[ ... ]
+</code></pre>
+</div></li>
+<li><p>Put the hub&#39;s key into the client&#39;s trusted keys:</p>
+<div class="highlight"><pre><code class="text">scp $HUB_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${HUB_KEY}.pub
+</code></pre>
+</div></li>
+</ul>
+<h3 id="final-steps">Final steps</h3>
+<ul>
+<li><p>Put the client&#39;s key into the hub&#39;s trusted keys. So
+on the hub, run:</p>
+<div class="highlight"><pre><code class="text">scp $CLIENT_IP:/var/cfengine/ppkeys/localhost.pub /var/cfengine/ppkeys/root-${CLIENT_KEY}.pub
+</code></pre>
+</div></li>
+<li><p>If you now run the failsafe policy on each and every client, it should
+succeed:</p>
+<div class="highlight"><pre><code class="text">cf-agent -f failsafe.cf
+</code></pre>
+</div></li>
+</ul>
+
+<p>Congratulations, you have performed a fully manual bootstrap procedure
+for your clients!</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-guide.html">guide</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-installation.html">installation</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-install.html">install</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-security.html">security</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/installation-and-configuration/secure-bootstrap.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/5b2bc459512b94c59b897836ae3071bcd5f777f6" target="_blank">5b2bc459512b94c59b897836ae3071bcd5f777f6</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.8/assets/footer-08442c0761064b6ca280223e9ebacccc.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

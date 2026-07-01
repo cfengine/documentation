@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.8  Documentation - Known Issues</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.8/assets/global-8212aa494575341d9a306dae12291eb2.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Known Issues";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       	<option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       	<option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                  <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       	<option value="/docs/3.8/index.html" selected>Version 3.8 (EOL)</option>
+                       	<option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+			                  <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       	<option value="/docs/archive/">Version 3.0 (archive)</option>
+                        <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:v5wte9vybsa" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a><ul class="level2"><li><a href="guide-latest-release-whatsnew.html">New in CFEngine</a></li><li><a href="guide-latest-release-supported-platforms.html">Supported Platforms and Versions</a></li><li><a href="guide-latest-release-policy-framework-updates.html">Policy Framework Updates</a></li><li><a class="active" href="guide-latest-release-known-issues.html">Known Issues</a></li></ul></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-design-center.html">Design Center Overview</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-latest-release.html">Latest Release</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Known Issues
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>CFEngine defects are managed in our <a href="http://bug.cfengine.com/" title="Bug Tracker">bug tracker</a>. Please report
+bugs or unexpected behavior there, following the documented guideline for new
+bug reports.</p>
+
+<p>The items below highlight issues that require additional awareness when starting
+with CFEngine or when upgrading from a previous version.</p>
+<h3 id="hp-ux-specific">HP-UX specific</h3>
+<ul>
+<li><a href="reference-promise-types-packages.html" title="packages">Package promises</a> do not have out-of-the-box support for the HP-UX
+specific package manager. The workaround is to call the package manager
+directly using <a href="reference-promise-types-commands.html" title="commands">commands promises</a>.</li>
+<li>Some important system information is missing from the HP-UX inventory report,
+as well as from CFEngine hard classes and system variables. The workaround is
+to use system tools to obtain the required information and set classes based
+on this.
+    * Disk free
+    * Memory size
+    * Several OS and architecture specific attributes
+            * System version
+            * System serial number
+            * System manufacturer
+            * CPU model
+            * BIOS version
+            * BIOS vendor</li>
+<li><a href="reference-promise-types-processes.html" title="processes">Process promises</a> depend on the <code>ps</code> native tool, which by
+default truncates lines at 128 columns on HP-UX. It is recommended to edit
+the file <code>/etc/default/ps</code> and increase the <code>DEFAULT_CMD_LINE_WIDTH</code> setting
+to 1024 to guarantee that process promises will work smoothly on the
+platform.</li>
+<li>Upgrading CFEngine on HP-UX is not supported by the out-of-the-box policy.
+There is a <a href="https://cfengine.zendesk.com/hc/en-us/articles/205454908">support article</a>
+with a workaround.</li>
+</ul>
+<h3 id="enterprise-emails-sent-for-alert-noticies-come-from-admin-organization-com">Enterprise emails sent for alert noticies come from &#39;<a href="mailto:admin@organization.com">admin@organization.com</a>&#39;.</h3>
+<p>There is currently no setting in Mission Portal to configure the sender email
+address. This issue is tracked in <a href="https://tracker.mender.io/browse/ENT-695">ENT-695</a>
+and will be addressed in a future release.</p>
+
+<p>To change the setting you must edit the from email address in
+<code>/var/cfengine/share/GUI/application/config/appsettings.php</code>. Policy in the
+Masterfiles Policy Framework will take care of updating the running config
+during the next policy run.</p>
+<div class="highlight"><pre><code class="text">// Default FROM email address
+$config[&#39;appemail&#39;] = &#39;admin@organisation.com&#39;;
+</code></pre>
+</div>
+<h3 id="enterprise-monitoring-graphs">Enterprise monitoring graphs</h3>
+<p>Monitoring graphs are disabled by default in CFEngine Enterprise 3.6 and later
+versions.  To enable them, change monitoring_include in
+masterfiles/controls/VERSION/reports.cf to e.g. &quot;.*&quot;.  Note that this has a
+significant impact on the resource consumption of your hub.</p>
+
+<p>Monitoring graphs are not supported on all platforms, currently AIX, HP-UX and
+Windows do not have this data.</p>
+<h3 id="enterprise-software-inventory-is-not-out-of-the-box">Enterprise software inventory is not out-of-the-box</h3>
+<p>Software inventory is not out-of-the-box for reporting from the hub on other
+platforms than Debian, Ubuntu and Red Hat/CentOS.</p>
+
+<p>In order to add software inventory for other platforms,
+please contact support for a custom policy.</p>
+<h3 id="enterprise---unable-to-edit-directory-based-users-with-dots-in-username">Enterprise - Unable to edit directory based users with dots in username</h3>
+<p>Mission Portal does not allow users from a directory to be edited if they have
+dots in their username.</p>
+<h3 id="enterprise-hub---php-warnings-after-upgrading-from-3-6-x">Enterprise Hub - PHP warnings after upgrading from <code>3.6.x</code></h3>
+<p>After upgrading from <code>3.6.x</code> PHP warns it is unable to
+initialize the apc module.</p>
+<div class="highlight"><pre><code class="text">  notice: Q: &quot;...hp/bin/php /var&quot;: PHP Warning:  PHP Startup: apc: Unable to initialize module
+Q: &quot;...hp/bin/php /var&quot;: Module compiled with module API=20100525
+Q: &quot;...hp/bin/php /var&quot;: PHP    compiled with module API=20131226
+Q: &quot;...hp/bin/php /var&quot;: These options need to match
+Q: &quot;...hp/bin/php /var&quot;:  in Unknown on line 0
+</code></pre>
+</div>
+
+<p>This warning can be resolved by removing
+<code>/var/cfengine/httpd/php/lib/apc.ini</code> and
+<code>/var/cfengine/httpd/php/lib/php/extensions/no-debug-non-zts-20131226/apc.so</code></p>
+<h3 id="dynamic-bundle-actuation-results-in-error-about-cf_null">Dynamic bundle actuation results in error about <code>cf_null</code></h3>
+<p><a href="https://tracker.mender.io/browse/CFE-2426">Jira #CFE-2426</a>
+<code>
+   error: A method attempted to use a bundle &#39;cf_null&#39; that was apparently not defined
+</code></p>
+
+<p>This is a benign error. <code>cf_null</code> is an internal implementation detail that is
+used to handle empty lists.</p>
+
+<p><strong>Workarounds:</strong></p>
+
+<ul>
+<li>Explicitly guard against iterating methods on an empty list.</li>
+</ul>
+
+<p>This snippet shows one way to define a class if a list is <strong>not</strong> empty.</p>
+<div class="highlight"><pre><code class="cf3">  <span class="kd">classes</span><span class="p">:</span>
+    <span class="s">&quot;have_some_zero_dynamic_role_bundles&quot;</span>
+      <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">some</span><span class="p">(</span> <span class="s">&quot;.*&quot;</span><span class="p">,</span> <span class="s">&quot;roles_dynamic.bundles&quot;</span> <span class="p">);</span>
+</code></pre>
+</div>
+
+<ul>
+<li>Ignore missing bundles in body common control</li>
+</ul>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+<span class="c">#...</span>
+
+  <span class="kr">ignore_missing_bundles</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+
+<span class="c">#...</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<ul>
+<li>Add an empty =cf_null= bundle</li>
+</ul>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">common</span> <span class="nf">cf_null</span>
+<span class="p">{</span>
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">!any</span><span class="p">::</span>
+      <span class="s">&quot;This works around an issue iterating over an list of bundles.&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-releases.html">releases</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-latest-release.html">latest release</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-3-8.html">3.8</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-platforms.html">platforms</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-versions.html">versions</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-known-issues.html">known issues</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/latest-release/known-issues.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/5b2bc459512b94c59b897836ae3071bcd5f777f6" target="_blank">5b2bc459512b94c59b897836ae3071bcd5f777f6</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.8/assets/footer-08442c0761064b6ca280223e9ebacccc.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

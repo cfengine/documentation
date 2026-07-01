@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.14  Documentation - cf-net</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.14/assets/global-87598b50cf828dc4e1c1ad7f860740dc.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "cf-net";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.14/" selected>Version 3.14 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="012826289311752768906:kp0fmjlfqyu" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a><ul class="level2"><li><a href="reference-components-cf-agent.html">cf-agent</a></li><li><a href="reference-components-cf-serverd.html">cf-serverd</a></li><li><a href="reference-components-cf-execd.html">cf-execd</a></li><li><a href="reference-components-cf-promises.html">cf-promises</a></li><li><a href="reference-components-cf-monitord.html">cf-monitord</a></li><li><a href="reference-components-cf-key.html">cf-key</a></li><li><a href="reference-components-cf-runagent.html">cf-runagent</a></li><li><a href="reference-components-cf-hub.html">cf-hub</a></li><li><a class="active" href="reference-components-cf-net.html">cf-net</a></li><li><a href="reference-components-file_control_promises.html">file control</a></li></ul></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-components.html">Components and Common Control</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    cf-net
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p><code>cf-net</code> can be used to send simple protocol commands to a policy server.
+It is a Command-Line-Interface (CLI) to the CFEngine network protocol, and a standalone tool.
+<code>cf-net</code> is not needed or used by any of the other binaries.
+The tool can be used to send commands like <code>GET</code> and <code>OPENDIR</code> without writing policy.
+It is in some ways an extremely light-weight version of <a href="reference-components-cf-agent.html" title="cf-agent"><code>cf-agent</code></a> - policy evaluation is replaced with easy to use command line arguments.</p>
+<h2 id="command-reference">Command reference</h2><div class="highlight"><pre><code class="text"><span></span>  --help        , -h       - Print the help message
+  --manpage     , -M       - Print the man page
+  --host        , -H value - Server hostnames or IPs, comma-separated (defaults to policy server)
+  --debug       , -d       - Enable debugging output
+  --verbose     , -v       - Enable verbose output
+  --log-level   , -g value - Specify how detailed logs should be. Possible values: &#39;error&#39;, &#39;warning&#39;, &#39;notice&#39;, &#39;info&#39;, &#39;verbose&#39;, &#39;debug&#39;
+  --inform      , -I       - Enable basic information output
+  --tls-version , -t value - Minimum TLS version to use
+  --ciphers     , -c value - TLS ciphers to use (comma-separated list)
+</code></pre>
+</div>
+
+<!-- ** <- Terminate syntax highlighting of weird regex -->
+<h2 id="bootstrapping-and-cf-key">Bootstrapping and cf-key</h2>
+<p><a href="reference-components-cf-net.html" title="cf-net"><code>cf-net</code></a> <em>needs</em> a key-pair generated by <a href="reference-components-cf-key.html" title="cf-key"><code>cf-key</code></a> to communicate with a server.
+Thus, the easiest way to use cf-net is on a successfully bootstrapped client:</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">$</span> sudo /var/cfengine/bin/cf-key
+<span class="gp">$</span> sudo /var/cfengine/bin/cf-agent --bootstrap myhostname
+<span class="gp">$</span> sudo /var/cfengine/bin/cf-net connect
+<span class="go">Connected &amp; authenticated successfully to &#39;myhostname&#39;</span>
+</code></pre>
+</div>
+
+<p>(<code>myhostname</code> can also be an IP address)</p>
+
+<p>All three commands above are run with sudo, so they access the same key file.</p>
+<h2 id="cf-net-commands">cf-net commands</h2>
+<p><a href="reference-components-cf-net.html" title="cf-net"><code>cf-net</code></a> syntax follows the general structure:</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">$</span> cf-net <span class="o">[</span>global options<span class="o">]</span> <span class="nb">command</span> <span class="o">[</span>command-specific options/arguments<span class="o">]</span>
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> <a href="reference-components-cf-net.html" title="cf-net"><code>cf-net</code></a> command names are <em>case insensitive</em>, so <code>cf-net get</code> and <code>cf-net GET</code> are equivalent.
+All other options, arguments and file names are <em>case sensitive</em>.</p>
+<h3 id="help">Help</h3>
+<p><strong>Description:</strong> <code>cf-net help</code> is used to access help pages for <a href="reference-components-cf-net.html" title="cf-net"><code>cf-net</code></a>.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">$</span> cf-net <span class="nb">help</span>
+<span class="go">Usage: cf-net [OPTIONS] command</span>
+
+<span class="go">Options:</span>
+<span class="go">[...]</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">$</span> cf-net <span class="nb">help</span> connect
+<span class="go">Command:     connect</span>
+<span class="go">Usage:       cf-net -H 192.168.50.50,192.168.50.51 connect</span>
+<span class="go">Description: Checks if host(s) is available by connecting</span>
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> <code>cf-net --help</code> cannot be used with arguments like <code>cf-net help</code>.</p>
+<h3 id="connect">Connect</h3>
+<p><strong>Description:</strong> <code>cf-net connect</code> attempts to connect and authenticate to one or more hosts running <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a>.
+If no hostname is specified <code>policy_server.dat</code> is used (this is true for all <a href="reference-components-cf-net.html" title="cf-net"><code>cf-net</code></a> commands).</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">$</span> sudo /var/cfengine/bin/cf-net -H <span class="m">192</span>.168.50.50,myhostname,myhostname:5308 connect
+<span class="go">Connected &amp; authenticated successfully to &#39;192.168.50.50&#39;</span>
+<span class="go">Connected &amp; authenticated successfully to &#39;myhostname&#39;</span>
+<span class="go">Connected &amp; authenticated successfully to &#39;myhostname:5308&#39;</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">$</span> sudo /var/cfengine/bin/cf-net connect
+<span class="go">Connected &amp; authenticated successfully to &#39;myhostname:5308&#39;</span>
+</code></pre>
+</div>
+<h3 id="stat">Stat</h3>
+<p><strong>Description:</strong> <code>cf-net stat</code> is similar to UNIX stat, it gives information about a file/directory.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">$</span> cf-net stat /var/cfengine/masterfiles/update.cf
+<span class="go">myhostname:5308:&#39;/var/cfengine/masterfiles/update.cf&#39; is a regular file</span>
+<span class="gp">$</span> cf-net stat masterfiles
+<span class="go">myhostname:5308:&#39;masterfiles&#39; is a directory</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">$</span> cf-net -I stat masterfiles
+<span class="go">    info: Inform log level enabled</span>
+<span class="go">    info: Detailed stat output:</span>
+<span class="go">mode  = 40700,  size = 4096,</span>
+<span class="go">uid   = 0,      gid = 0,</span>
+<span class="go">atime = 1495551229,     mtime = 1495551172</span>
+<span class="go">myhostname:5308:&#39;masterfiles&#39; is a directory</span>
+</code></pre>
+</div>
+<h3 id="get">Get</h3>
+<p><strong>Description:</strong> Performs a <code>stat</code> and then <code>get</code> command, downloading the specified file to the current working directory.
+Use the <code>-o</code> option to specify output path.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">$</span> cf-net get masterfiles/update.cf
+<span class="gp">$</span> ls
+<span class="go">cfengine  update.cf</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">$</span> cf-net get -o test.cf masterfiles/update.cf
+<span class="gp">$</span> ls
+<span class="go">cfengine  test.cf  update.cf</span>
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> The <code>-o</code> option must come before the remote filename:</p>
+<h3 id="opendir">Opendir</h3>
+<p><strong>Description:</strong> Similar to UNIX <code>ls</code>, prints everything inside a directory, in no particular order.</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">$</span> cf-net opendir masterfiles
+<span class="go">services</span>
+<span class="go">cf_promises_validated</span>
+<span class="go">cfe_internal</span>
+<span class="go">..</span>
+<span class="go">controls</span>
+<span class="go">templates</span>
+<span class="go">cf_promises_release_id</span>
+<span class="go">lib</span>
+<span class="go">inventory</span>
+<span class="go">update.cf</span>
+<span class="go">promises.cf</span>
+<span class="go">.</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-components.html">components</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-cf-net.html">cf-net</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 10 July 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/components/cf-net.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/d99dd1f07cf37da07fbd675717c47f3201990891" target="_blank">d99dd1f07cf37da07fbd675717c47f3201990891</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.14/assets/footer-0ce0c884995cf0be0e878ec70c137005.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

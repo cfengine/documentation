@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.10  Documentation - Masterfiles Policy Framework ChangeLog</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.10/assets/global-9291732ba4137970d6f84f199dc9b48d.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Masterfiles Policy Framework ChangeLog";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/" selected>Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:v9zopcogc1m" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a><ul class="level2"><li><a href="guide-latest-release-whatsnew.html">New in CFEngine</a><ul class="level3"><li><a href="guide-latest-release-whatsnew-changelog-core.html">ChangeLog</a></li><li><a class="active" href="guide-latest-release-whatsnew-changelog-masterfiles-policy-framework.html">Masterfiles Policy Framework ChangeLog</a></li><li><a href="guide-latest-release-whatsnew-changelog-enterprise.html">Enterprise ChangeLog</a></li></ul></li><li><a href="guide-latest-release-supported-platforms.html">Supported Platforms and Versions</a></li><li><a href="guide-latest-release-known-issues.html">Known Issues</a></li></ul></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-design-center.html">Design Center Overview</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-latest-release.html">Latest Release</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-latest-release-whatsnew.html">New in CFEngine</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Masterfiles Policy Framework ChangeLog
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Changes in the Masterfiles Policy Framework.</p>
+
+<pre>
+# Changelog
+Notable changes to the framework should be documented here
+
+3.10.7:
+    - Added ability to avoid limiting robot agents (CFE-3161)
+    - Added and transitioned to using master_software_updates shortcut
+      (ENT-4953)
+    - Added continual checking for policy_server state (CFE-3073)
+    - Added documentation how to enable systemd unit management and disable
+      agents on all hosts (CFE-3416)
+    - Added package_module for snap (CFE-2811)
+    - Always set files_single_copy from augments if available (CFE-3064)
+    - Fixed cleanup of future timestamps from status table (ENT-4331,
+      ENT-4992)
+    - Fixed maintenance policy for promise log cleanup to respect
+      history_length_days (ENT-4588)
+    - Fixed pkgsrc in case where multiple Prefix paths are returned for
+      pkg_install (CFE-3152)
+    - Fixed pkgsrc module on Solaris/NetBSD (CFE-3151)
+    - Set default access promises for directories to only share if directory
+      exists (CFE-3060)
+    - Suppressed stderr output from lldpctl when using path defined by
+      def.lldpctl_json (CFE-3109)
+    - lib/paths.cf: Add usermod path for redhat systems
+    - yum package_module gets updates available from online repos if local
+      cache fails (CFE-3094)
+
+3.10.6:
+    - Add path support for setfacl
+    - Add path support for timedatectl and journalctl (CFE-3013)
+    - Add trailing slash to access promises expecting directories
+      (CFE-3024)
+    - Do not suppress repair outcome for starting cf-monitord or cf-execd
+      (CFE-2964)
+    - Enforce restrictive permissions on hub install log (ENT-4506)
+    - Ensure that asynchronous query API semaphores are writable (ENT-4551)
+    - Fix standalone_self_upgrade not triggering because of stale data
+      (ENT-4317)
+    - Improve performance of enterprise license utilization logging
+    - Log version of Enterprise agent outside of state (ENT-4352)
+    - Prevent performance overhead on hubs that don't enable license utilization logging
+      (ENT-4333)
+    - Purge collection status records from the future (ENT-4362)
+    - Reduce cost of knowing when setopt is available in yum (CFE-2993)
+    - Separate termination and observation promises for cf-monitord
+      (CFE-2963)
+    - Set default value for purge_scheduled_reports_older_than_days
+      (ENT-4404)
+    - Constrain variables in cfe_internal_enterprise_mission_portal_apache
+      policy_server.enterprise_edition to reduce unnecessary resource utilization
+      (CFE-3011)
+    - redhat_pure is no longer defined on Fedora hosts (CFE-3022)
+
+3.10.5:
+    - Add 'system-uuid' to default dmidecode inventory (CFE-2925)
+    - Add inventory of AWS EC2 linux instances (CFE-2924)
+    - Add ubuntu 18 to package map for self upgrade (ENT-4118)
+    - Allow dmidefs inventory to be overridden via augments (CFE-2927)
+    - apt_get module now includes held packages when listing updates (CFE-2855)
+    - Analyze yum return code before parsing its output (CFE-2868)
+    - Cleanup old report data relative to the most recent changetimestamp
+      (ENT-4807)
+    - Create desired version tracking data when necessary (ENT-3937)
+    - Detect systemd service enablement for non-native services (CFE-2932)
+    - Fix name of tunable to control max client-side report history
+      (CFE-2926)
+    - Fix package_latest detecting larger version in some cases (CFE-1743)
+    - Fix standalone self-upgrade when path contains spaces (ENT-4117)
+    - Fix unattended self-upgrade on AIX (ENT-3972)
+    - Inventory Physical Memory MB when dmidecode is found (CFE-2896)
+    - Only consider files that exist for rotation (ENT-3946)
+    - Prevent noise when a service that should be disabled is missing.
+      (CFE-2690)
+    - Prevent standalone self-upgrade from triggering un-necessarily
+      (ENT-4092)
+    - Remove more smartquotes (ENT-3823)
+    - Remove un-necessary agent run during self upgrade (ENT-4116)
+    - Replace unicode smartquotes with apostrophe (ENT-3823)
+    - Specify scope => "namespace" when using persistent classes (CFE-2860)
+    - Store epoch for packages managed by zypper module (CFE-2875)
+    - Store the epoch of packages in cache db with zypper
+    - Updated yum package module to take arbitrary options (ENT-4177)
+    - apt_get package module includes held packages when listing updates
+      (CFE-2855)
+
+3.10.4:
+    - Avoid executing self upgrade policy unnecessarily (ENT-3592)
+    - Change class identifying runagent initiated executions from cfruncommand to cf_runagent_initated
+    - Fix cf-runagent during 3.7.x -> 3.10.x migration
+      (CFE-2776, CFE-2781, CFE-2782)
+    - Improve MPF agent self upgrade docs (ENT-3592)
+    - Localize delete tidy in ha update policy (ENT-3659)
+
+3.10.3:
+    - Add oracle linux support to standalone self upgrade
+    - Fix systemctl path detection
+    - Add support for 32bit rpms in standalone self upgrade (ENT-3377)
+    - make apt_get package module work with repositories containing spaces in the label
+      (ENT-3438)
+    - Be less noisy when a promised service is not found (CFE-2690)
+    - Fix to frequent logging of enterprise license utilization (ENT-3390)
+    - Include scheduled report assets in self maintenance (ENT-3558)
+    - Allow hubs to collect from themselves over loopback (ENT-3329)
+    - Allow multiple sections in insert_ini_section (CFE-2721)
+    - Ensure HA standby hubs have am_policy_hub state marker (ENT-3328)
+    - fixed an error in the file_make_mustache_*, incorrect variable name used
+      (CFE-2714)
+    - Add json templates for rendering serial and multiline data (CFE-2713)
+    - Allow configuration of allowlegacyconnects from augments (ENT-3375)
+    - Fix self upgrade for hosts older than 3.7.4 (ENT-3368)
+    - Ignore empty options in apt_get module (CFE-2685)
+    - cf-execd service override template now only kills cf-execd on stop
+      (ENT-3395)
+    - Policy Release Id is now inventoried by default (CFE-2097)
+    - Avoid triggering self upgrade during bootstrap (ENT-3394)
+    - Maintain access to exported CSV reports in older versions (ENT-3572)
+    - prevent yum from locking in package_methods when possible (CFE-2759)
+
+3.10.2:
+    - Disable package inventory via modules on redhat like systems with unsupported python versions
+      (CFE-2602)
+    - Pass --oldpackage to zypper to allow downgrading packages, but check first if the zypper version supports it.
+      (CFE-2643)
+    - Rename enable_client_initiated_reporting to client_initiated_reporting_enabled
+    - Add postgres.log to enterprise log file rotation (ENT-3191)
+    - Add: prunetree bundle to stdlib
+      The prunetree bundle allws you to delete files and directories up to a
+      sepcified depth older than a specified number of days.
+    - Add the path to mailx on Linux, Darwin, OpenBSD, NetBSD and FreeBSD
+    - Add aix OOTB oslevel inventory (ENT-3117)
+    - Configure networks allowed to initiate report collection (client initiated reporting) via augments (#910)
+      (CFE-2624)
+    - Add templates shortcut (CFE-2582)
+    - Fix: suppress error about unknown lvalue
+    - Configure call_collect_interval from augments (enable_client_initiated_reporting) (#905)
+      (CFE-2623)
+    - Allow specification of files_single_copy via augments (CFE-2458)
+    - Add zypper package module (CFE-2533)
+    - zendesk#3432: fix zypper package downgrade
+    - Enable settig def.max_client_history_size via augments (CFE-2560)
+    - Enable specification of monitoring_include via augments (CFE-2505)
+    - Include previous_state and untracked reports when client clear a buildup of unreported data
+      (ENT-3161)
+    - Configure exclude_hosts in body hub control via augments (CFE-2622)
+    - Change self upgrade now uses standalone policy (ENT-3155)
+    - Directories for ubuntu 16 and centos 7 should exist in master_software_updates
+      (ENT-3136)
+    - Add oslevel to well known paths. (ENT-3121)
+    - server control maxconnections can be configured via augments
+      (CFE-2660)
+    - Fix command to restart apache on config change (ENT-3134)
+    - Add policy to track CFEngine Enterprise license utilization
+      (ENT-3186)
+    - apt_get package module: Fix bug which prevented updates
+      from being picked up if there was more than one source listed in the
+      'apt upgrade' output, without a comma in between. (CFE-2605)
+    - Change: Do not silence Enterprise hub maintenance
+    - Remove bundle agent cfe_internal_bins (CFE-2636)
+
+3.10.1:
+    - Ensure MP SSL Cert is readable (ENT-3050)
+    - Change Opportunisticaly monitor file integrity (ENT-3040)
+    - Fix systemd unit restart when not running (CFE-2541)
+    - Make stock policy update more resiliant (CFE-2587)
+    - FixesMake apt_get module compatible with Ubuntu 16.04 (CFE-2445)
+    - Add default report collection exclusion based on promise handle
+      (ENT-3061)
+    - Fix: Automatic client upgrades for deb hosts
+    - Do not symlink agents to /usr/local/bin on coreos (ENT-3047)
+    - Add: Ability to set default_repository via augments
+
+3.10.0:
+    - Add: Classes body tailored for use with diff
+    - Change: Session Cookies use HTTPOnly and secure attribtues (ENT-2781)
+    - Change: Verify transfered files during policy update
+    - Add: Inventory for system product name (model) (ENT-2780)
+    - Add: Ensure appropriate permissions for SSL files (ENT-760)
+    - Fix rare bug that would sometimes prevent redis-server from launching.
+    - Change: Enable strict transport security
+    - Add: Definition of from_cfexecd for cf-execd initiated runs
+      (CFE-2386)
+    - Add testing jUnit and TAP bundles and include them in stdlib.cf
+    - Change: Rename duplicate bodies in ha_update.cf (ENT-2753)
+    - Change: Disable RC4 Cipher for ssl in Mission Portal
+    - Pass package promise options to underlying apt-get call (#802)
+      (CFE-2468)
+    - Change: Enable agent component management policy on systemd hosts
+      (CFE-2429)
+    - Add: Enterprise appliaction log dir to rotation
+    - Change: re-enable hub process maintainance
+    - Add: edit_line contains_literal_string to stdlib
+    - Fix: Services starting or stopping unnecessarily (CFE-2421)
+    - Allow specifying agent maxconnections via def.json (CFE-2461)
+    - Change: Disable http TRACE method
+    - Change: Reduce Enteprise webserver info
+    - Change: cronjob bundle tolerates different spacing
+    - Fix: CFEngine choking on standard services (CFE-2806)
+    - Change select_region INI_section to match end of section or end of file
+      (CFE-2519)
+    - Fix ability to manage INI sections with metachars for
+      manage_variable_values_ini and set_variable_values_ini (CFE-2519)
+    - Fix apt_get package module incorrectly using interactive mode.
+    - Add ability to append to bundlesequnece with def.json (CFE-2460)
+    - Behaviour change: when used with CFEngine 3.10.0 or greater,
+      bundles set_config_values() and set_line_based() are appending a
+      trailing space when inserting a configuration option with empty value.
+      (CFE-2466)
+
+3.7.0:
+ - Support for user specified overring of framework defaults without modifying
+   policy supplied by the framework itself (see example_def.json)
+ - Support for def.json class augmentation in update policy
+ - Run vacuum operation on postgresql every night as a part of maintenance.
+ - Add measure_promise_time action body to lib (3.5, 3.6, 3.7, 3.8)
+ - New negative class guard `cfengine_internal_disable_agent_email` so that
+   agent email can be easily disabled by augmenting def.json
+ - Relocate def.cf to controls/VER/
+ - Relocate update_def to controls/VER
+ - Relocate all controls to controls/VER
+ - Only load cf_hub and reports.cf on CFEngine Enterprise installs
+ - Relocate acls related to report collection from bundle server access_rules
+   to controls/VER/reports.cf into bundle server report_access_rules
+ - Re-organize cfe_internal splitting core from enterprise specific policies
+   and loading the appropriate inputs only when necessary
+ - Moved update directory into cfe_internal as it is not generally intended to
+   be modified
+ - services/autorun.cf moved to lib/VER/ as it is not generally intended to be
+   modified
+ - To improve predictibility autorun bundles are activated in lexicographical
+   order
+ - Relocate services/file_change.cf to cfe_internal/enterprise. This policy is
+   most useful for a good OOTB experience with CFEngine Enterprise Mission
+   Portal.
+ - Relocate service_catalogue from promsies.cf to services/main.cf. It is
+   intended to be a user entry. This name change correlates with the main
+   bundle being activated by default if there is no bundlesequence specified.
+ - Reduce benchmarks sample history to 1 day.
+ - Update policy no longer generates a keypair if one is not found. (Redmine: #7167)
+ - Relocate cfe_internal_postgresql_maintenance bundle to lib/VER/
+ - Set postgresql_monitoring_maintenance only for versions 3.6.0 and 3.6.1
+ - Move hub specific bundles from lib/VER/cfe_internal.cf into lib/VER/cfe_internal_hub.cf
+   and load them only if policy_server policy if set.
+ - Re-organize lib/VER/stdlib.cf from lists into classic array for use with getvalues
+ - inform_mode classes changed to DEBUG|DEBUG_$(this.bundle):: (Redmine: #7191)
+ - Enabled limit_robot_agents in order to work around multiple cf-execd
+   processes after upgrade. (Redmine #7185)
+ - Remove Diff reporting on /etc/shadow (Enterprise)
+ - Update policy from promise.cf inputs. There is no reason to include the
+   update policy into promsies.cf, update.cf is the entry for the update policy
+ - _not_repaired outcome from classes_generic and scoped_classes generic (Redmine: # 7022)
+ - standard_services now restarts the service if it was not already running
+   when using service_policy => restart with chkconfig (Redmine #7258)
+ - Fix process_result logic to match the purpose of body process_select
+   days_older_than (Redmine #3009)
+</pre>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-latest-release.html">latest release</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags--site-cfengine-branch-.html">{{site.cfengine.branch}}</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-what-s-new.html">what's new</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 17 March 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/latest-release/whatsnew/changelog-masterfiles-policy-framework.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/ae7435d3d24d30077bfbf18438f2444c629f8c69" target="_blank">ae7435d3d24d30077bfbf18438f2444c629f8c69</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.10/assets/footer-4c28dbe187e7b2a3c1504ff564f1b523.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

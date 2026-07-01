@@ -1,0 +1,316 @@
+
+bundle knowledge Enterprise_2_2_OwnersManual
+
+{
+topics:
+
+"Enterprise-2-2-OwnersManual";
+Special_Topics_Guide::
+    "CFEngine 3 Enterprise 2.2 Owners Manual"  association => a("discusses","CFEngine 3 Enterprise 2.2 Owner's Manual","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html"
+  represents => { "Official CFEngine document"},  about_topics => { "cfengine 3 enterprise 2.2 owner's manual" };
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html"
+  represents => { "Special Topics Guide"},  about_topics => { "cfengine 3 enterprise 2.2 owner's manual" };
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Top"
+  represents => { "Text section" }, about_topics => { "cfengine 3 enterprise 2.2 owners manual" };
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Introduction"
+  represents => { "manual chapter" }, about_topics => { "introduction"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#CFEngine-3-Enterprise-_002d-the-new-CFEngine-3-Nova_0021"
+  represents => { "manual section" }, about_topics => { "cfengine 3 enterprise - the new cfengine 3 nova!"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#About-CFEngine-3-Enterprise"
+  represents => { "manual section" }, about_topics => { "about cfengine 3 enterprise"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Requirements"
+  represents => { "manual chapter" }, about_topics => { "requirements"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Hardware-requirements"
+  represents => { "manual section" }, about_topics => { "hardware requirements"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Operating-system-support"
+  represents => { "manual section" }, about_topics => { "operating system support"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Installing-CFEngine-3-Enterprise"
+  represents => { "manual chapter" }, about_topics => { "installing cfengine 3 enterprise"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Installation-procedure"
+  represents => { "manual section" }, about_topics => { "installation procedure"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Frequently-Asked-Questions"
+  represents => { "manual section" }, about_topics => { "frequently asked questions"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#How-do-I-install-the-prerequisites-for-the-hub-manually_003f"
+  represents => { "manual subsection" }, about_topics => { "how do i install the prerequisites for the hub manually?"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#I-did-bootstrap-the-hub-before-obtaining-a-license-file-_002d-what-should-I-do_003f"
+  represents => { "manual subsection" }, about_topics => { "i did bootstrap the hub before obtaining a license file - what should i do?"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Upgrading-to-CFEngine-3-Enterprise"
+  represents => { "manual chapter" }, about_topics => { "upgrading to cfengine 3 enterprise"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Upgrade-procedure-for-the-hub-_0028and-policy_0029"
+  represents => { "manual section" }, about_topics => { "upgrade procedure for the hub"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Upgrade-procedure-for-the-clients"
+  represents => { "manual section" }, about_topics => { "upgrade procedure for the clients"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Upgrade-procedure-for-the-standard-library"
+  represents => { "manual section" }, about_topics => { "upgrade procedure for the standard library"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#How-can-I-do-phased-deployment_003f"
+  represents => { "manual section" }, about_topics => { "how can i do phased deployment?"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#What-if-I-have-multiple-operating-system-platforms_003f"
+  represents => { "manual section" }, about_topics => { "what if i have multiple operating system platforms?"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#How-do-CFEngine-3-Enterprise-policies-update-if-I-already-have-my-own-policy_003f"
+  represents => { "manual section" }, about_topics => { "how do cfengine 3 enterprise policies update if i already have my own policy?"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#How-do-I-upgrade-from-CFEngine-Community-3-to-CFEngine-3-Enterprise_003f"
+  represents => { "manual section" }, about_topics => { "how do i upgrade from cfengine community 3 to cfengine 3 enterprise?"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Mission-Portal"
+  represents => { "manual chapter" }, about_topics => { "mission portal"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Mission-Portal-Rooms"
+  represents => { "manual section" }, about_topics => { "mission portal rooms"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Mission-Status-and-Reports"
+  represents => { "manual subsection" }, about_topics => { "mission status and reports"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Navigation-Tree"
+  represents => { "manual subsubsection" }, about_topics => { "navigation tree"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Status-tab"
+  represents => { "manual subsubsection" }, about_topics => { "status tab"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Reports-tab"
+  represents => { "manual subsubsection" }, about_topics => { "reports tab"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Mission-Business"
+  represents => { "manual subsection" }, about_topics => { "mission business"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Mission-Planning"
+  represents => { "manual subsection" }, about_topics => { "mission planning"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Mission-Library"
+  represents => { "manual subsection" }, about_topics => { "mission library"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Finders"
+  represents => { "manual section" }, about_topics => { "finders"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Class-finder"
+  represents => { "manual subsection" }, about_topics => { "class finder"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Host-finder"
+  represents => { "manual subsection" }, about_topics => { "host finder"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Promise-finder"
+  represents => { "manual subsection" }, about_topics => { "promise finder"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Topic-finder"
+  represents => { "manual subsection" }, about_topics => { "topic finder"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Viewers"
+  represents => { "manual section" }, about_topics => { "viewers"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Host-viewer"
+  represents => { "manual subsection" }, about_topics => { "host viewer"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Bundle-viewer"
+  represents => { "manual subsection" }, about_topics => { "bundle viewer"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Promise-viewer"
+  represents => { "manual subsection" }, about_topics => { "promise viewer"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Vital-signs-viewer"
+  represents => { "manual subsection" }, about_topics => { "vital signs viewer"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Topics-viewer-_0028Knowledge-map_0029"
+  represents => { "manual subsection" }, about_topics => { "topics viewer"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Report-viewer"
+  represents => { "manual subsection" }, about_topics => { "report viewer"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Editors"
+  represents => { "manual section" }, about_topics => { "editors"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Policy-editor"
+  represents => { "manual subsection" }, about_topics => { "policy editor"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Integration-with-subversion"
+  represents => { "manual subsection" }, about_topics => { "integration with subversion"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Mission-Portal-Administration"
+  represents => { "manual section" }, about_topics => { "mission portal administration"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#User-Settings-and-Preferences"
+  represents => { "manual subsection" }, about_topics => { "user settings and preferences"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#List-of-saved-searches"
+  represents => { "manual subsubsection" }, about_topics => { "list of saved searches"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Mission-Portal-Settings"
+  represents => { "manual subsubsection" }, about_topics => { "mission portal settings"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#My-Preferences"
+  represents => { "manual subsubsection" }, about_topics => { "my preferences"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Hub-Replication-Status"
+  represents => { "manual subsubsection" }, about_topics => { "hub replication status"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Mission-Portal-User-Admin"
+  represents => { "manual subsection" }, about_topics => { "mission portal user admin"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#User-Roles"
+  represents => { "manual subsubsection" }, about_topics => { "user roles"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Monitoring-extensions"
+  represents => { "manual chapter" }, about_topics => { "monitoring extensions"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Integration-of-monitoring-with-knowledge-base"
+  represents => { "manual section" }, about_topics => { "integration of monitoring with knowledge base"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Long-term-trends"
+  represents => { "manual section" }, about_topics => { "long term trends"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Custom-promises-to-measure"
+  represents => { "manual section" }, about_topics => { "custom promises to measure"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Extraction-strings-and-logging"
+  represents => { "manual subsection" }, about_topics => { "extraction strings and logging"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Extracting-one_002doff-numerical-data"
+  represents => { "manual subsection" }, about_topics => { "extracting one-off numerical data"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Extraction-to-list-variable"
+  represents => { "manual subsection" }, about_topics => { "extraction to list variable"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Uses-for-custom-monitoring"
+  represents => { "manual section" }, about_topics => { "uses for custom monitoring"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#File-Access-Control-Lists"
+  represents => { "manual chapter" }, about_topics => { "file access control lists"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#ACL-Introduction"
+  represents => { "manual section" }, about_topics => { "acl introduction"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#File-ACL-example"
+  represents => { "manual section" }, about_topics => { "file acl example"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Concepts"
+  represents => { "manual subsection" }, about_topics => { "concepts"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Entity-types"
+  represents => { "manual subsection" }, about_topics => { "entity types"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Owners"
+  represents => { "manual subsection" }, about_topics => { "owners"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Changing-owner"
+  represents => { "manual subsection" }, about_topics => { "changing owner"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Permissions"
+  represents => { "manual subsection" }, about_topics => { "permissions"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Deny-permissions"
+  represents => { "manual subsection" }, about_topics => { "deny permissions"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Changing-permissions"
+  represents => { "manual subsection" }, about_topics => { "changing permissions"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Effective-permissions"
+  represents => { "manual subsection" }, about_topics => { "effective permissions"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Inheritance"
+  represents => { "manual subsection" }, about_topics => { "inheritance"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#CFEngine-3-Generic-ACL-Syntax"
+  represents => { "manual section" }, about_topics => { "cfengine 3 generic acl syntax"};
+examples:: "/knowledge/docs/Enterprise-2-2-OwnersManual.html#CFEngine-3-Generic-ACL-Syntax"
+ about_topics => { "CFEngine 3 Generic ACL Syntax" },
+  represents => { "code example" };
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Generic-syntax-examples"
+  represents => { "manual subsection" }, about_topics => { "generic syntax examples"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#POSIX-ACL-type"
+  represents => { "manual section" }, about_topics => { "posix acl type"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#POSIX_002dspecific-ACL-syntax"
+  represents => { "manual subsection" }, about_topics => { "posix-specific acl syntax"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Generic-syntax-mapping"
+  represents => { "manual subsection" }, about_topics => { "generic syntax mapping"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#POSIX-ACL-examples"
+  represents => { "manual subsection" }, about_topics => { "posix acl examples"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#NT-ACL-type"
+  represents => { "manual section" }, about_topics => { "nt acl type"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#NT_002dspecific-ACL-syntax"
+  represents => { "manual subsection" }, about_topics => { "nt-specific acl syntax"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#NT_002dspecific-ACL-syntax"
+  represents => { "manual subsection" }, about_topics => { "generic syntax mapping"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#NT_002dspecific-ACL-syntax"
+  represents => { "manual subsection" }, about_topics => { "nt acl examples"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Server-extensions"
+  represents => { "manual chapter" }, about_topics => { "server extensions"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Server-access-resource-type"
+  represents => { "manual section" }, about_topics => { "server access resource type"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Function-remotescalar"
+  represents => { "manual section" }, about_topics => { "function remotescalar"};
+examples:: "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Function-remotescalar"
+ about_topics => { "Function remotescalar" },
+  represents => { "code example" };
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Example-remote-scalar-lookup"
+  represents => { "manual section" }, about_topics => { "example remote scalar lookup"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Environments-and-workflows"
+  represents => { "manual chapter" }, about_topics => { "environments and workflows"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Environments-in-CFEngine-3-Enterprise"
+  represents => { "manual section" }, about_topics => { "environments in cfengine 3 enterprise"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Implementing-workflows-in-CFEngine-3-Enterprise"
+  represents => { "manual section" }, about_topics => { "implementing workflows in cfengine 3 enterprise"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Virtualization"
+  represents => { "manual chapter" }, about_topics => { "virtualization"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#What-are-virtualization-and-cloud-computing_003f"
+  represents => { "manual section" }, about_topics => { "what are virtualization and cloud computing?"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Why-build-virtualization-support-into-CFEngine_003f"
+  represents => { "manual section" }, about_topics => { "why build virtualization support into cfengine?"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#What-can-CFEngine-do-with-virtual-machines_003f"
+  represents => { "manual section" }, about_topics => { "what can cfengine do with virtual machines?"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Guest-environments-promises"
+  represents => { "manual section" }, about_topics => { "guest environments promises"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Virtualization-types-supported"
+  represents => { "manual section" }, about_topics => { "virtualization types supported"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Distinct-states"
+  represents => { "manual section" }, about_topics => { "distinct states"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Example-deployment"
+  represents => { "manual section" }, about_topics => { "example deployment"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Content_002dDriven-Policies"
+  represents => { "manual chapter" }, about_topics => { "content-driven policies"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Content_002dDriven-Policies"
+  represents => { "manual section" }, about_topics => { "benefits of content-driven policies"};
+examples:: "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Content_002dDriven-Policies"
+ about_topics => { "Benefits of Content-Driven Policies" },
+  represents => { "code example" };
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Content_002dDriven-Policies"
+  represents => { "manual section" }, about_topics => { "getting started"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Windows_002dspecific-features-in-CFEngine-3-Enterprise"
+  represents => { "manual chapter" }, about_topics => { "windows-specific features in cfengine 3 enterprise"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Windows_002dspecific-features-in-CFEngine-3-Enterprise"
+  represents => { "manual section" }, about_topics => { "windows service management"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Windows_002dspecific-features-in-CFEngine-3-Enterprise"
+  represents => { "manual section" }, about_topics => { "windows event logging"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Windows_002dspecific-features-in-CFEngine-3-Enterprise"
+  represents => { "manual section" }, about_topics => { "windows special variables"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Windows_002dspecific-features-in-CFEngine-3-Enterprise"
+  represents => { "manual section" }, about_topics => { "windows hard classes"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Windows_002dspecific-features-in-CFEngine-3-Enterprise"
+  represents => { "manual section" }, about_topics => { "notes on windows policies"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#REST-API"
+  represents => { "manual chapter" }, about_topics => { "rest api"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#API-Overview"
+  represents => { "manual section" }, about_topics => { "api overview"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Response-Codes"
+  represents => { "manual subsection" }, about_topics => { "response codes"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Response-Bodies"
+  represents => { "manual subsection" }, about_topics => { "response bodies"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Common-Query-Parameters"
+  represents => { "manual subsection" }, about_topics => { "common query parameters"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Time"
+  represents => { "manual subsection" }, about_topics => { "time"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Versioning-and-Content_002dTypes"
+  represents => { "manual subsection" }, about_topics => { "versioning and content-types"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Authentication"
+  represents => { "manual subsection" }, about_topics => { "authentication"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Role_002dbased-Access-Control-for-REST"
+  represents => { "manual subsubsection" }, about_topics => { "role-based access control for rest"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Resources"
+  represents => { "manual section" }, about_topics => { "resources"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Status"
+  represents => { "manual subsection" }, about_topics => { "status"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Contexts"
+  represents => { "manual subsection" }, about_topics => { "contexts"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Hosts"
+  represents => { "manual subsection" }, about_topics => { "hosts"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Listing-hosts"
+  represents => { "manual subsubsection" }, about_topics => { "listing hosts"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Basic-Host-Information"
+  represents => { "manual subsubsection" }, about_topics => { "basic host information"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Hosts-Seen"
+  represents => { "manual subsubsection" }, about_topics => { "hosts seen"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Promises"
+  represents => { "manual subsection" }, about_topics => { "promises"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Promise-Compliance"
+  represents => { "manual subsubsection" }, about_topics => { "promise compliance"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Promise-Log"
+  represents => { "manual subsubsection" }, about_topics => { "promise log"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Promise-Log-Summary"
+  represents => { "manual subsubsection" }, about_topics => { "promise log summary"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Setuid-Programs"
+  represents => { "manual subsection" }, about_topics => { "setuid programs"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Software"
+  represents => { "manual subsection" }, about_topics => { "software"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Variables"
+  represents => { "manual subsection" }, about_topics => { "variables"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Variable-Types"
+  represents => { "manual subsubsection" }, about_topics => { "variable types"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#File-Changes"
+  represents => { "manual subsection" }, about_topics => { "file changes"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Troubleshooting"
+  represents => { "manual chapter" }, about_topics => { "troubleshooting"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Mission-Portal-Logs"
+  represents => { "manual section" }, about_topics => { "mission portal logs"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Apache-HTTP-error_005flog-is-your-friend"
+  represents => { "manual section" }, about_topics => { "apache http error_log is your friend"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Some-report-pages-return-HTTP-error-404"
+  represents => { "manual section" }, about_topics => { "some report pages return http error 404"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#CFEngine-processes-are-running-but-I-cannot-connect-to-the-Mission-Portal-web-page"
+  represents => { "manual section" }, about_topics => { "cfengine processes are running but i cannot connect to the mission portal web page"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#First-time-login-to-Mission-Portal-fails"
+  represents => { "manual section" }, about_topics => { "first time login to mission portal fails"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Cannot-send-emails-from-the-Mission-Portal"
+  represents => { "manual section" }, about_topics => { "cannot send emails from the mission portal"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Warning-messages-on-web-pages-in-SLES_002fOpenSuSE-Hub"
+  represents => { "manual section" }, about_topics => { "warning messages on web pages in sles/opensuse hub"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Knowledge-map-remains-unpopulated"
+  represents => { "manual section" }, about_topics => { "knowledge map remains unpopulated"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#I-get-a-promise-failed-with-the-message-_0022Can_0027t-stat-_002fvar_002fcfengine_002fmaster_005fsoftware_005fupdates_002fSOME_002dOS_0022-on-some-hosts"
+  represents => { "manual section" }, about_topics => { "i get a promise failed with the message cant stat /var/cfengine/master_software_updates/some-os on some hosts"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#I-get-messages-of-connection-failures-to-a-database-on-my-hub"
+  represents => { "manual section" }, about_topics => { "i get messages of connection failures to a database on my hub"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Configure-LDAP"
+  represents => { "manual section" }, about_topics => { "configure ldap"};
+ "/knowledge/docs/Enterprise-2-2-OwnersManual.html#Configure-Active-Directory"
+  represents => { "manual section" }, about_topics => { "configure active directory"};
+}
+

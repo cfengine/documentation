@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - Installing Enterprise for Production</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html"  class="navselected" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="getting-started-installation.html">Installing CFEngine</a></li><li><a href="getting-started-learning-tools.html">Learning Tools</a></li><li><a href="getting-started-support-and-community.html">Support and Community</a></li><li><a href="getting-started-upgrade.html">Upgrade Instructions</a></li><li><a href="getting-started-supported-platforms.html">Supported Platforms and Versions</a></li><li><a href="getting-started-known-issues.html">Known Issues</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li><a href="getting-started-installation-installing-enterprise-free.html">Installing Enterprise 25 Free</a></li><li><a href="getting-started-installation-installing-enterprise-vagrant.html">Installing Enterprise Vagrant Environment</a></li><li class="selected"><span>Installing Enterprise for Production</span></li><li><a href="getting-started-installation-installing-community.html">Installing Community</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="getting-started.html">Getting Started</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="getting-started-installation.html">Installing CFEngine</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>Installing Enterprise for Production</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/getting-started.html">getting started</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/installation.html">installation</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/enterprise.html">enterprise</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>Installing Enterprise for Production</h1>
+                    <p>These instructions describe how to install the latest version of CFEngine Enterprise in a production environment 
+using pre-compiled rpm and deb packages for Ubuntu, Debian, Redhat, CentOS, and SUSE.</p>
+<h2 id="general-requirements">General Requirements</h2>
+<p>CFEngine recommends the following:</p>
+
+<p><strong>Host(s) Memory</strong> </p>
+
+<p>256 MB available memory in order to run the CFEngine agent software (cf-agent).</p>
+
+<p><strong>Disk Storage</strong> </p>
+
+<p>Plan for approximately 100MB of disk space per host. Due to MongoDB&#39;s pre-allocation 
+strategy, always provide an extra 2G to 4G of disk space if you plan to bootstrap more hosts later.</p>
+
+<p><strong>Network</strong> </p>
+
+<ul>
+<li><p>Verify that the machine’s network connection is working and that port 5308
+(used by CFEngine) is open for both incoming and outgoing connections.</p></li>
+<li><p>If iptables are active on your operating system, stop this service or adapt
+it to allow for communication on the above ports. If applicable, type the
+following two commands: /<code>etc/init.d/iptables stop</code> and <code>chkconfig iptables
+off</code></p></li>
+</ul>
+
+<p>CFEngine bundles all critical dependencies into the package; therefore,
+additional software is not required.</p>
+
+<p><strong>Requirements for VIOS</strong></p>
+
+<p>CFEngine Enterprise has <a href="http://www.ibm.com/partnerworld/gsd/solutiondetails.do?solution=48493">Virtual I/O Server (VIOS) Recognized status</a> from IBM.
+This means that CFEngine Enterprise has been technically verified by IBM
+to be installed in and manage VIOS environments.</p>
+
+<p>During testing, CFEngine Enterprise was seen to use up to 2% of the VIOS CPU
+during <a href="reference-components-cfagent.html" title="cf-agent"><code>cf-agent</code></a> runs with the default CFEngine policy. The resource
+utilization may vary depending on the policy CFEngine is running.
+The VIOS should be configured with Shared Processors in Uncapped mode.</p>
+<h2 id="policy-server-requirements">Policy Server Requirements</h2>
+<p>CFEngine recommends the following:</p>
+<h3 id="dedicated-server">Dedicated server</h3>
+<p>CFEngine enterprise expectes to be installed on to a fresh system and not be
+co-located with any other webserver or database server.</p>
+<h3 id="memory">Memory</h3>
+<p>A minimum of 2 GB of available memory and a modern 64 bit processor. For a
+large number of Hosts (Clients), we recommend 8 GB of available memory per 500
+hosts that are bootstrapped to your Policy Server. Contact your sales
+representative if you have any questions regarding these numbers.</p>
+<h3 id="port-80">Port 80</h3>
+<p>The Policy Server hosts the Mission Portal through Apache, so ensure that port
+80 is open.</p>
+
+<p><strong>Note:</strong> To avoid potential interference with the installation process, start
+from a blank system (i.e. no Apache Web Server, no MongoDB, etc).</p>
+<h3 id="mongodb-requirements">MongoDB Requirements</h3>
+<p>CFEngine uses MongoDB, an open-source, NoSQL database. It stores data that
+is collected from the Hosts.</p>
+
+<p>CFEngine recommends the following configurations:</p>
+
+<ol>
+<li>Filesystem type:
+
+<ul>
+<li>ext4 (a 2.6.23 kernel is required for efficient filesystem preallocation)</li>
+<li>xfs (a 2.6.25 kernel is required for efficient filesystem preallocation)</li>
+</ul></li>
+<li>Memory: Approximately 8 GB per 500 hosts</li>
+<li>Turn off NUMA if you are running MongoDB on NUMA. Refer to
+<a href="http://www.mongodb.org/display/DOCS/NUMA">http://www.mongodb.org/display/DOCS/NUMA</a> for more information.</li>
+<li>Do not use large VM pages with Linux. Refer to
+<a href="http://linuxgazette.net/155/krishnakumar.html">http://linuxgazette.net/155/krishnakumar.html</a> for more information on large
+pages.</li>
+<li>Set the file descriptor limit and user process limit to 4k+ (see etc/limits
+and ulimit)</li>
+</ol>
+<h2 id="download-packages">Download Packages</h2>
+<p>CFEngine Enterprise is provided in two packages; one is for the Policy
+Server (hub) and the other is for each Host (client). </p>
+
+<p><strong>Select a Policy Server (hub) package to download:</strong></p>
+
+<p>Ubuntu 10.04</p>
+<div class="highlight"><pre><code class="text">wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/ubuntu-10.04-x86_64/cfengine-nova-hub_3.5.2-1_amd64.deb
+</code></pre>
+</div>
+
+<p>Ubuntu 12.04</p>
+<div class="highlight"><pre><code class="text">wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/ubuntu-12.04-x86_64/cfengine-nova-hub_3.5.2-1_amd64.deb
+</code></pre>
+</div>
+
+<p>RHEL 5.4</p>
+<div class="highlight"><pre><code class="text">wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/rhel-5.4-x86_64/cfengine-nova-hub-3.5.2-1.x86_64.rpm
+</code></pre>
+</div>
+
+<p>SUSE 11.1</p>
+<div class="highlight"><pre><code class="text">wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/sles-11.1-x86_64/cfengine-nova-hub-3.5.2-1.x86_64.rpm
+</code></pre>
+</div>
+
+<p>Debian 6.0</p>
+<div class="highlight"><pre><code class="text">wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/debian-6.0-x86_64/cfengine-nova-hub_3.5.2-1_amd64.deb
+</code></pre>
+</div>
+
+<p>RHEL 6.0 </p>
+<div class="highlight"><pre><code class="text">wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/hub/rhel-6.0-x86_64/cfengine-nova-hub-3.5.2-1.x86_64.rpm
+</code></pre>
+</div>
+
+<p><strong>Select a Host (client) package to download:</strong></p>
+
+<p>Ubuntu/Debian 32-bit:</p>
+<div class="highlight"><pre><code class="text">wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_deb_i386/cfengine-nova_3.5.2-1_i386.deb
+</code></pre>
+</div>
+
+<p>Ubuntu/Debian 64-bit:</p>
+<div class="highlight"><pre><code class="text">wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_deb_x86_64/cfengine-nova_3.5.2-1_x86_64.deb
+</code></pre>
+</div>
+
+<p>Redhat/CentOS/SUSE 32-bit:</p>
+<div class="highlight"><pre><code class="text">wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_rpm_i386/cfengine-nova-3.5.2-1.i386.rpm
+</code></pre>
+</div>
+
+<p>Redhat/CentOS/SUSE 64-bit:</p>
+<div class="highlight"><pre><code class="text">wget http://s3.amazonaws.com/cfengine.packages/Enterprise-3.5.2/client/agent_rpm_x86_64/cfengine-nova-3.5.2-1.x86_64.rpm
+</code></pre>
+</div>
+<h2 id="install-packages">Install Packages</h2>
+<p><strong>Log in as root</strong> and then follow these steps to install CFEngine Enterprise:</p>
+
+<ol>
+<li><p>On the designated Policy Server, install the <code>cfengine-nova-hub</code> package:</p>
+<div class="highlight"><pre><code class="text">    [RedHat/CentOS/SUSE] $ rpm -i &lt;hub package&gt;.rpm
+    [Debian/Ubuntu]      $ dpkg -i &lt;hub package&gt;.deb
+</code></pre>
+</div></li>
+<li><p>On each Host, install the <code>cfengine-nova</code> package:</p>
+<div class="highlight"><pre><code class="text">    [RedHat/CentOS/SUSE] $ rpm -i &lt;agent package&gt;.rpm
+    [Debian/Ubuntu]      $ dpkg -i &lt;agent package&gt;.deb
+</code></pre>
+</div></li>
+</ol>
+<h2 id="bootstrap">Bootstrap</h2>
+<p>Run the bootstrap command, <strong>first</strong> on the policy server and then on each
+host:</p>
+<div class="highlight"><pre><code class="text">$ /var/cfengine/bin/cf-agent --bootstrap &lt;IP address of the Policy Server&gt;
+</code></pre>
+</div>
+<h2 id="licensed-installations">Licensed installations</h2>
+<p>If you are evaluating CFEngine Enterprise or otherwise using it in an environment with 
+less than 25 agents connecting to a Policy Server, 
+you do not need a license and there is no expiry.</p>
+
+<p>If you are a customer, please send the Policy Server&#39;s public key (<code>/var/cfengine/ppkeys/localhost.pub</code>) to
+CFEngine support to obtain a license. CFEngine will send you a <code>license.dat</code>
+file. Copy the obtained license file to
+<code>/var/cfengine/masterfiles/license.dat</code></p>
+<h2 id="next-steps">Next Steps</h2>
+<p>When bootstrapping is complete, CFEngine is up and running on your system.</p>
+
+<p>The Mission Portal is immediately accessible. Connect to the Policy Server
+through your web browser at http://<code>&lt;IP address of your Policy Server&gt;</code>.</p>
+
+<p>To be able to use the Mission Portal&#39;s Design Center
+front-end, continue with <a href="manuals-design-center-integrating-mission-portal-with-git.html" title="Integrating Mission Portal with git">integrating Mission Portal with git</a>. </p>
+
+<p>Learn more about CFEngine by using the following resources:</p>
+
+<ul>
+<li><p>Tutorial: <a href="examples-tutorials-hello-world.html" title="Hello World">Create a standalone policy (Hello World).</a></p></li>
+<li><p>Tutorial: <a href="examples-tutorials-deploy-sketch.html" title="Configure and Deploy a Policy Using Sketches (Enterprise Only)">Configure and deploy a policy using sketches in the Design Center.</a></p></li>
+<li><p>CFEngine <a href="manuals.html" title="CFEngine Manuals">manuals</a>.</p></li>
+<li><p>Additional <a href="getting-started-learning-tools.html" title="Learning Tools">tutorials, examples, and documentation</a>.</p></li>
+<li><p>Get <a href="getting-started-support-and-community.html" title="Support and Community">Support</a> from the CFEngine community.</p></li>
+</ul>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/getting-started/installation/installation-enterprise.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

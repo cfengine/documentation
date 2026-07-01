@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.16  Documentation</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.16/assets/global-78ca1ff06c068c806dddb47b0cb1ea40.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "CFEngine documentation";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.16/" selected>Version 3.16 (non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h1>Pages by tag: data functions</h1>
+
+ <!-- Print tag title here -->
+
+
+
+
+<ul>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-accumulated.html">accumulated</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-ago.html">ago</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-and.html">and</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-bundlestate.html">bundlestate</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-canonify.html">canonify</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-canonifyuniquely.html">canonifyuniquely</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-classfiltercsv.html">classfiltercsv</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-classify.html">classify</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-concat.html">concat</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-data_expand.html">data_expand</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-data_regextract.html">data_regextract</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-datastate.html">datastate</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-difference.html">difference</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-escape.html">escape</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-eval.html">eval</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-every.html">every</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-file_hash.html">file_hash</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-filter.html">filter</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-format.html">format</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-getclassmetatags.html">getclassmetatags</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-getfields.html">getfields</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-getgid.html">getgid</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-getindices.html">getindices</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-getvalues.html">getvalues</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-getvariablemetatags.html">getvariablemetatags</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-grep.html">grep</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-hash.html">hash</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-hashmatch.html">hashmatch</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-ifelse.html">ifelse</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-intersection.html">intersection</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-irange.html">irange</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-isgreaterthan.html">isgreaterthan</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-islessthan.html">islessthan</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-join.html">join</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-lastnode.html">lastnode</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-length.html">length</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-maparray.html">maparray</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-mapdata.html">mapdata</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-maplist.html">maplist</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-max.html">max</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-mean.html">mean</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-mergedata.html">mergedata</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-min.html">min</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-none.html">none</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-not.html">not</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-nth.html">nth</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-on.html">on</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-or.html">or</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-product.html">product</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-randomint.html">randomint</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-read_module_protocol.html">read_module_protocol</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-regarray.html">regarray</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-regcmp.html">regcmp</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-regex_replace.html">regex_replace</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-regextract.html">regextract</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-reglist.html">reglist</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-reverse.html">reverse</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-rrange.html">rrange</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-shuffle.html">shuffle</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-some.html">some</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-sort.html">sort</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-splitstring.html">splitstring</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-strcmp.html">strcmp</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-strftime.html">strftime</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-string_replace.html">string_replace</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-string_split.html">string_split</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-sublist.html">sublist</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-sum.html">sum</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-unique.html">unique</a></li>
+
+  <!-- Print post entry short stuff -->
+  <li><a href="reference-functions-variance.html">variance</a></li>
+
+</ul>
+
+
+
+
+
+
+
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 24 June 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/4e9e6860aa094f25a21afcdd2087a240dbb1ba7d" target="_blank">4e9e6860aa094f25a21afcdd2087a240dbb1ba7d</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.16/assets/footer-ae31e033a1a936d598cf1c40b94021b9.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

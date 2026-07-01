@@ -1,0 +1,918 @@
+<html lang="en">
+<head>
+<title>Get Started Guide for CFEngine 3 Enterprise 2.2</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="Get Started Guide for CFEngine 3 Enterprise 2.2">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+@font-face {
+    font-family: 'CFE_FONT';
+    src: url('fonts/eot/opensans-regular-webfont.eot');
+    src: local('☺'),  url('fonts/ttf/opensans-regular-webfont.ttf') format('truetype'), url('fonts/svg/opensans-regular-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}    
+pre {
+    background-color: #EEFFDD;
+    border: 1px solid #CCCCCC;
+    font-family: courier;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 90%;
+    }
+pre.display { font-family:inherit }
+pre.format  { font-family:inherit }
+pre.smallexample
+pre.smalllisp,
+pre.smallformat,
+pre.smalldisplay {
+  font-size: 90%;
+} 
+
+span.sc    { font-variant:small-caps }
+span.roman { font-family:serif; font-weight:normal; } 
+span.sansserif { font-family:sans-serif; font-weight:normal; } 
+
+body {
+    font:  90%  'CFE_FONT', arial, Helvetica,sans-serif; 
+    color: #646464;
+    padding: 10px 20px;
+    width: 960px;
+    margin: 0 auto;
+}
+.node
+{
+    text-align: right;
+    padding: 2px;
+    font-size: smaller;
+}
+.node hr {
+    border: 0;
+    width: 100%;
+    color: #CCC;
+    background-color: #CCC;
+    height: 5px;
+}
+.section {
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    margin: 32px 0 16px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #9E9981 !important;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+    margin: 16px 0 26px;
+    text-align: left;
+}
+h3 {
+    margin-top: 3px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contents
+{
+    background-color: #CCC;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.index-cp
+{  
+background: #fff url(index-cp.png) right repeat-y;
+}
+
+.index-vr
+{  
+background: #fff url(index-vr.png) right repeat-y;
+}
+
+.index-mb
+{  
+background: #eee url(index-faq.png) right repeat-y;
+}
+
+table.border
+{
+	border-color: #666;
+	border-width: 0px;
+}
+
+FONT.liten {font-size: 80%; }
+ 
+.tynn {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: smaller;
+    font-style: normal;
+    font-weight: lighter;
+    margin-bottom: 0em;
+    font-size: 11pt;
+}
+.verbatim {
+    color: #000;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.example {
+    color: #000;
+    width: 100%;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+.smallexample {
+    color: #000;
+    padding-top: 10px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+.cartouche {
+    padding: 5px;
+    font-style: italic;
+    font-size: 85%;
+}
+
+table.cartouche {
+    border: none !important;
+}
+
+ .cartouche td  {
+    background: none !important;
+    border: none !important;
+    padding: 5px; 
+
+/*    background-color: #ddd;
+    border: 1px solid #ccc;
+    padding: 5px;*/
+}
+
+A:link { color: #2c2e70 }
+A:visited { color: black }
+A:active { color: #600041 }
+dt em {font-weight: bold}
+/* don't change this rule */    
+pre.sp {
+    background: none !important;   
+    border:none !important
+}
+/* --- */
+/*code hightlight*/
+.red { color: #b80047; font-weight: bold; }
+
+.blue { color: blue;  /*font-weight: bold;*/ }
+
+.green { color: darkgreen; }
+
+.comment { font-style: italic; }
+--></style>
+</head>
+<body>
+<h1 class="settitle">Get Started Guide for CFEngine 3 Enterprise 2.2</h1>
+Updated 29. May 2012
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#dir">(dir)</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">Igniting CFEngine 3 Enterprise!</h2>
+
+   <p><a href="#Contents"><h1>COMPLETE TABLE OF CONTENTS</h1></a>
+<h2>Summary of contents</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Introduction">Introduction</a>
+<li><a accesskey="2" href="#Installing-CFEngine-3-Enterprise">Installing CFEngine 3 Enterprise</a>
+<li><a accesskey="3" href="#Mission-Portal">Mission Portal</a>
+<li><a accesskey="4" href="#Next-steps">Next steps</a>
+</ul>
+
+<!-- ***************************************************** -->
+<!-- * CHAPTER -->
+<!-- ***************************************************** -->
+<div class="node">
+<a name="Introduction"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Installing-CFEngine-3-Enterprise">Installing CFEngine 3 Enterprise</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Introduction</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#CFEngine-3-Enterprise-_002d-the-new-CFEngine-3-Nova_0021">CFEngine 3 Enterprise - the new CFEngine 3 Nova!</a>
+<li><a accesskey="2" href="#About-CFEngine-3-Enterprise">About CFEngine 3 Enterprise</a>
+</ul>
+
+<div class="node">
+<a name="CFEngine-3-Enterprise---the-new-CFEngine-3-Nova!"></a>
+<a name="CFEngine-3-Enterprise-_002d-the-new-CFEngine-3-Nova_0021"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#About-CFEngine-3-Enterprise">About CFEngine 3 Enterprise</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Introduction">Introduction</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
+
+</div>
+
+<h3 class="section">1.1 CFEngine 3 Enterprise - the new CFEngine 3 Nova!</h3>
+
+<p>CFEngine 3 Enterprise 2.2 is the next generation of CFEngine 3 Nova (successor of CFEngine 3 Nova 2.1.3), upgraded with productivity and performance enhancements. We have made a new Mission Portal Engineering room tailored to the needs of infrastructure engineers, making it both easier and more powerful to use. Most notably we have introduced dynamic grouping of hosts through a flexible tree control, also referred to as the Navigation Tree. It allows system adminsitrators to flexibly group hosts based on CFEngine classes, both discovered (hard classes such as operating system, architecture, IP address, etc.) and user defined (soft classes such as webserver, development, staging, etc).
+
+   <p>CFEngine 3 Nova is compatible with CFEngine 3 Enterprise and can easily be upgraded by following the instructions in the <a href="http://cfengine.com/manuals/Enterprise-2-2-OwnersManual">CFEngine 3 Enterprise Owner's Manual</a>.
+
+   <p>The launch of CFEngine 3 Enterprise also brings a new offering: CFEngine 3 Free Enterprise, our commercial enterprise product offered for free for up to 25 managed hosts. It differs from our commercial offer in that it has different licensing terms, different support and it is limited to a maximum of 25 hosts. The product is described in full detail at <a href="http://cfengine.com/25free">http://cfengine.com/25free</a>.
+
+<!--  -->
+<div class="node">
+<a name="About-CFEngine-3-Enterprise"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CFEngine-3-Enterprise-_002d-the-new-CFEngine-3-Nova_0021">CFEngine 3 Enterprise - the new CFEngine 3 Nova!</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Introduction">Introduction</a>
+
+</div>
+
+<h3 class="section">1.2 About CFEngine 3 Enterprise</h3>
+
+<p>CFEngine 3 Enterprise is a commercially licensed version of the core CFEngine
+software<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a> with enterprise library extensions. All of
+the documentation for CFEngine 3 applies to CFEngine 3 Enterprise.
+
+   <p>The aim of CFEngine 3 Enterprise is to offer a knowledge-enhanced framework for configuration man-
+agement that goes beyond mere technical configuration to support the needs of businesses. Features
+include compliance management, reporting and business integration, and tools for handling necessary
+complexity. CFEngine 3 Enterprise has features to support Cloud Computing for public and private clouds, as
+well as greater integration facilities with database resources.
+
+<!-- ***************************************************** -->
+<!-- * CHAPTER -->
+<!-- ***************************************************** -->
+<div class="node">
+<a name="Installing-CFEngine-3-Enterprise"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Mission-Portal">Mission Portal</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Introduction">Introduction</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">2 Installing CFEngine 3 Enterprise</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Installation-procedure">Installation procedure</a>
+</ul>
+
+<div class="node">
+<a name="Installation-procedure"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Installing-CFEngine-3-Enterprise">Installing CFEngine 3 Enterprise</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Installing-CFEngine-3-Enterprise">Installing CFEngine 3 Enterprise</a>
+
+</div>
+
+<h3 class="section">2.1 Installation procedure</h3>
+
+<p>CFEngine 3 Enterprise is designed to be simple to install in its default configuration. The installation
+process has three phases:
+
+     <ul>
+<li>Unpacking the software. 
+<li>For commercial customers: Obtaining a license. CFEngine 3 Free Enterprise users can use the product without a license file (provided they have accepted the licensing terms, see also <a href="http://cfengine.com/25free">http://cfengine.com/25free</a>). 
+<li>Adapting policy. 
+</ul>
+
+<!-- For Windows related issues, see our special topic guide @url{http://cfengine.com/manuals/st-windows.html}. -->
+   <p>You should start from a blank system. If you have been using CFEngine Community Edition and you have
+already developed a policy, set aside this policy during the installation process. You will be able
+to integrate it back later.
+
+   <p>CFEngine 3 Enterprise is provided in two packages, <samp><span class="file">cfengine-nova</span></samp> and <br>
+<samp><span class="file">cfengine-nova-expansion</span></samp>. The main software package
+must be installed on every host (including the hub). The expansion package is only installed on the policy hub. You should install and set up the hub first.
+
+     <ol type=1 start=1>
+<li>Verify that the machine's network connection is working. On the hub, verify that package managers <code>yum</code>,
+<code>zypper</code> or <code>apt-get</code> are working (e.g. <code>apt-get update</code>).
+
+     <li>Copy the CFEngine 3 Enterprise packages to the system.<br>
+     On the hub (policy server):
+     <pre class="example">          cfengine-nova_2.2.<var>xxx.[rpm|deb]</var>
+          cfengine-nova-expansion_2.2.<var>xxx.[rpm|deb]</var>
+</pre>
+     <p class="noindent">On all other machines:
+     <pre class="example">          cfengine-nova_2.2.<var>xxx.[rpm|deb]</var>
+</pre>
+     <li>Unpack the software:
+          <dl>
+<dt><i>Red Hat family</i><dd>
+          <pre class="example">               host# rpm -ihv <var>packages</var>
+</pre>
+          <br><dt><i>SUSE family</i><dd>
+          <pre class="example">               host# rpm -ihv <var>packages</var>
+</pre>
+          <br><dt><i>Debian family</i><dd>
+          <pre class="example">               host# dpkg --install  <var>packages</var>
+</pre>
+          </dl>
+
+     <li>On the hub, a public key has now been created in <samp><span class="file">/var/cfengine/ppkeys/localhost.pub</span></samp> as part of the
+package installation.
+          <ul>
+<li>CFEngine 3 Enterprise 25 free users: You do not not need to do anything in regard to this step. 
+<li>Commercial CFEngine 3 Enterprise customers: You should send this public key to CFEngine Support<a rel="footnote" href="#fn-2" name="fnd-2"><sup>2</sup></a> as an attachment in the ticket system, to obtain a license file <samp><span class="file">license.dat</span></samp>. 
+<p><table class="cartouche" summary="cartouche" border="1"><tr><td>
+Save the returned license file to <samp><span class="file">/var/cfengine/masterfiles/license.dat</span></samp>
+on the hub before continuing. 
+</td></tr></table>
+          </ul>
+
+     <li>The remaining steps apply to all hosts, but you should install the hub or policy server first. For large systems (&gt; 1000 hosts) we recommend increasing the memory limit in php.ini on the hub (for instance to 128 MB).
+
+     <p>Find the hostname or IP address of the hub (policy server), here we assume &lsquo;<samp><span class="samp">123.456.789.123</span></samp>&rsquo; is the address. 
+<pre class="verbatim">      hub # /var/cfengine/bin/cf-agent --bootstrap --policy-server 123.456.789.123
+</pre>
+Use the same command on all hosts, i.e. *** do not bootstrap the policy server with a localhost address ***
+If you mistype the address of the hub, we recommend doing the following steps to re-boostrap:
+<pre class="verbatim">      hub # /var/cfengine/bin/cf-agent --bootstrap --policy-server 123.456.789.124
+      hub # killall cf-execd cf-serverd cf-monitord cf-hub
+      hub # rm -rf /var/cfengine/inputs/*
+      hub # rm -f /var/cfengine/policy_server.dat
+      hub # /var/cfengine/bin/cf-agent --bootstrap --policy-server 123.456.789.123
+</pre>
+
+     <p>CFEngine will output diagnostic information upon bootstrap. Error messages will be displayed if bootstrapping failed, pursue these to get an indication of what went wrong and correct accordingly. If all is well you should see the following in the output:
+
+     <pre class="verbatim">     
+     -> Bootstrap to 123.456.789.123 completed successfully
+     
+</pre>
+
+     <li>CFEngine should now be up and running on your system. It will copy its default policy files into <samp><span class="file">masterfiles</span></samp> on the hub (policy server). When the clients are bootstrapped, they will contact the hub and copy them to their <samp><span class="file">inputs</span></samp> directory.
+
+     <li>Commercial CFEngine 3 Enterprise customers: To complete licensing setup, you should make a promise to accept the license
+terms by editing <samp><span class="file">/var/cfengine/masterfiles/promises.cf</span></samp>
+on the hub (policy server), changing the line &lsquo;<samp><span class="samp">host_licenses_paid =&gt; "&lt;NUMBER&gt;";</span></samp>&rsquo;
+in &lsquo;<samp><span class="samp">body common control</span></samp>&rsquo; to reflect the correct number of licenses that you have subscribed to.
+
+        </ol>
+
+<p class="noindent"><b>How to assess success in this procedure:</b>
+
+     <ol type=1 start=1>
+
+     <li>Look at the process list on the systems with &lsquo;<samp><span class="samp">ps waux | grep cf-</span></samp>&rsquo;. 
+You should be able to see <code>cf-execd</code> running, and eventually other processes from
+the CFEngine suite like <code>cf-monitord</code> <code>cf-serverd</code>. On the hub, you should
+also eventually see <code>cf-hub</code>. Note that it may take 5&ndash;10 minutes before all the
+processes get started.
+
+     <li>Look for files in <samp><span class="file">/var/cfengine/inputs</span></samp> (Unix)
+or <samp><span class="file">C:\Program Files\Cfengine\inputs</span></samp> (Windows). The license
+file will be copied out from the policy server to the clients as part
+of the normal distribution of policy. If you have obtained a license file (see step 4 above), each machine should get a
+copy of the <samp><span class="file">license.dat</span></samp> file in <samp><span class="file">/var/cfengine/inputs</span></samp>
+(Unix) or <samp><span class="file">C:\Program Files\Cfengine\inputs</span></samp> (Windows).
+
+     <li>On the hub, the file <samp><span class="file">/var/cfengine/promise_knowledge.cf</span></samp> should have been
+created, and should contain data.
+
+     <li>Finally, try to connect to the web server at port 80 on the hub/policy host (for example at http://123.456.789.123). 
+You should see a login page like the one shown in the figure below:
+
+     <pre class="sp">
+     
+     </pre>
+     <div align="center"><img src="img-login-2-2.png" alt="Mission Portal login"></div>
+     <div align="center">Figure: Mission Portal login screen</div>
+     <pre class="sp">
+     
+     </pre>
+        </ol>
+
+   <p>Default user name and password is 'admin' and 'admin' (make sure to change this at first login to prevent unauthorized access).
+
+   <p>Note that some of the displays in the Mission Portal may be blank when you log in just after installation; some reports and graphs are only updated every six hours. It may also take some time for the system to fully converge, do not get troubled if initially there are some promises repaired or not kept.
+
+   <p>Please refer to the CFEngine 3 Enterprise Owner's Manual <br>
+(<a href="http://www.cfengine.com/manuals/Enterprise-2-2-OwnersManual">http://www.cfengine.com/manuals/Enterprise-2-2-OwnersManual</a>) for complete information and help troubleshooting your installation.
+
+<!-- ***************************************************** -->
+<!-- * CHAPTER -->
+<!-- ***************************************************** -->
+<div class="node">
+<a name="Mission-Portal"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Next-steps">Next steps</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Installing-CFEngine-3-Enterprise">Installing CFEngine 3 Enterprise</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">3 Mission Portal</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Mission-Portal-Rooms">Mission Portal Rooms</a>
+</ul>
+
+<p>The Mission Portal is the centerpiece
+of user interaction with CFEngine 3 Enterprise. It can be accessed by connecting to the hub (policy server) with your web browser (for example at http://123.456.789.123; default port 80). From here you can get a complete overview of operations and performance, business and compliance, organizational knowledge and library. We will make a quick introduction of the four main rooms in the Mission Portal, please refer to the <a href="http://www.cfengine.com/manuals/Enterprise-2-2-OwnersManual">CFEngine 3 Enterprise Owner's Manual</a> for a complete overview.
+
+   <div class="block-image"><img src="img-mission-portal-2-2.png" alt="Mission Portal"></div>
+<div align="center">Figure: The Mission Portal</div>
+
+<div class="node">
+<a name="Mission-Portal-Rooms"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Mission-Engineering">Mission Engineering</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Mission-Portal">Mission Portal</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Mission-Portal">Mission Portal</a>
+
+</div>
+
+<h3 class="section">3.1 Mission Portal Rooms</h3>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Mission-Engineering">Mission Engineering</a>
+<li><a accesskey="2" href="#Mission-Business">Mission Business</a>
+<li><a accesskey="3" href="#Mission-Planning">Mission Planning</a>
+<li><a accesskey="4" href="#Mission-Library">Mission Library</a>
+</ul>
+
+<p>There are four main rooms in the Mission Portal that offer insight into different aspects of operations:
+
+     <ul>
+<li>Mission Engineering: a place to see the current state of system repair
+<li>Mission Business: a top level overview of compliance status and business value
+<li>Mission Planning: a place to plan and make policy changes
+<li>Mission Library: a knowledge bank that connects information together
+</ul>
+
+   <p>Each of these rooms is a beginning from which you can refine your overview and search
+through information.
+
+<div class="node">
+<a name="Mission-Engineering"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Mission-Business">Mission Business</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Mission-Portal-Rooms">Mission Portal Rooms</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Mission-Portal-Rooms">Mission Portal Rooms</a>
+
+</div>
+
+<h4 class="subsection">3.1.1 Mission Engineering</h4>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Navigation-Tree">Navigation Tree</a>
+<li><a accesskey="2" href="#Status-tab">Status tab</a>
+<li><a accesskey="3" href="#Reports-tab">Reports tab</a>
+</ul>
+
+<p>Mission Engineering illustrates the state of the system in relation to the desired state at all scales. Zoom in to specific areas and examine the impact of promises, query data, and extract reports.
+
+   <p>The Mission Engineering room underwent a substantial rework for the release of CFEngine 3 Enterprise 2.2. Most notably we introduced a host Navigation Tree where hosts can be grouped and organized in a hierarchy defined by classes. The remaining content on the page is influenced by the selected tree context, i.e. the <b>Status</b> and <b>Reports</b> tabs will only show information for linux hosts if such a context/node is selected in the the tree (the active node is highlighted to show that it is selected). Another notable change is the new interface to interact with reports, now available as a tab and drop-down menus.
+
+   <pre class="sp">
+
+</pre>
+<img src="img-engineering-room-2-2.png" alt="Mission Engineering">
+<div align="center">Figure: Mission Engineering</div>
+<pre class="sp">
+
+</pre>
+
+<!--  -->
+<div class="node">
+<a name="Navigation-Tree"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Status-tab">Status tab</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Mission-Engineering">Mission Engineering</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Mission-Engineering">Mission Engineering</a>
+
+</div>
+
+<h5 class="subsubsection">3.1.1.1 Navigation Tree</h5>
+
+<p>The Navigation Tree consists of two main parts:
+
+     <ul>
+<li>Top menu:
+     <pre class="sp">
+     
+     </pre>
+     <div align="center"><img src="img-nav-tree-top-menu-2-2.png" alt="Top Menu"></div>
+     <div align="center">Figure: Top Menu</div>
+     <pre class="sp">
+     
+     </pre>
+          <ul>
+<li>The Tree Selector: Dropdown menu; choose between the default tree and custom trees defined by the user. Each tree can have a different subset of nodes. Click <code>Add</code> in the dropdown menu to add your own tree (input the name of the new tree in the field next to the add button). Click <code>X</code> next to a tree name to delete it. 
+<li>Class finder, Host finder and Promise finder to explore classes, hosts/IP-addresses or promises, respectively. 
+</ul>
+     <li>The tree itself, grouped by classes. The user can add up to four sublevels in the Navigation Tree and edit or delete existing nodes.
+     <pre class="sp">
+     
+     </pre>
+     <div align="center"><img src="img-nav-tree-edit-2-2.png" alt="Navigation Tree"></div>
+     <div align="center">Figure: Navigation Tree</div>
+     <pre class="sp">
+     
+     </pre>
+          <ul>
+<li>To add a node:
+               <ol type=1 start=1>
+<li>Put the mouse pointer over the node you wish to add a sublevel to, click the plus sign shown beside the node. 
+<li>A pop-up appears with fields to enter a label (name) to the node that you wish to create and the class expression you wish to filter by. The class expression field contains a button which opens a class finder to help you select classes.
+               </ol>
+<li>To delete a node: Put the mouse pointer over the node that you wish to delete, click the <code>X</code> shown beside the node. 
+<li>To edit a node:
+               <ol type=1 start=1>
+<li>Put the mouse pointer over the node that you wish to edit, click the <code>Pencil icon</code> shown beside the node. 
+<li>A pop-up appears where you can edit the fields that you wish to change.
+               </ol>
+</ul>
+     </ul>
+
+<p class="noindent">The trees and nodes that a user creates will not be visible to other users of the Mission Portal.
+
+   <p>Click on any host in the tree to get a quick overview of that host in the status tab. Click the host name under the compliance graph to see more detailed information about the host.
+
+<!--  -->
+<div class="node">
+<a name="Status-tab"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Reports-tab">Reports tab</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Navigation-Tree">Navigation Tree</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Mission-Engineering">Mission Engineering</a>
+
+</div>
+
+<h5 class="subsubsection">3.1.1.2 Status tab</h5>
+
+<p>The Status tab shows the overall status of the hosts selected in the Navigation Tree. This section contains:
+
+     <ul>
+<li>Selected context: Shows the context (combination of selected classes) for which the data is valid. 
+<li>Compliance Summary: The row of bars shows the compliance of all registered hosts in blocks of five minutes for the last six hours or for the last week (depending on which is selected at the bottom of the graph)<a rel="footnote" href="#fn-3" name="fnd-3"><sup>3</sup></a>. The hosts are classified into red, yellow and green according to the status of their compliance (see below). The height of a bar corresponds to the number of registered hosts. Note that the last column may have a lower height than the others (i.e. show information for fewer hosts)<a rel="footnote" href="#fn-4" name="fnd-4"><sup>4</sup></a>. Click on a bar to see which promises were repaired or not kept. 
+<li>Host Compliance (last hour): The hosts are classified into red, yellow and green according to the status of their compliance over the last hour:
+          <ul>
+<li>A host is red if more than 20% of its promises are not kept
+<li>A host is yellow if 20% or more of its promises were repaired and host is now compliant (&gt; 20% repaired, now compliant)
+<li>A host is green if more than 80% of its promises are kept (&gt; 80% compliant)
+</ul>
+     <li>Host Operations: The hosts are classified into blue and black according to their operational status.
+          <ul>
+<li>A host is blue if there has not been any contact between the hub and the client within a set time interval (host unreachable; default value is set to 15 minutes). 
+<li>A host is black if CFEngine's scheduling daemon, <code>execd</code>, is not running (the hub will still able to contact the client to collect reports but the client will return stale data since it has not been running at regular intervals). 
+</ul>
+     <li>Clicking a link in any of the above categories (red/yellow/green/blue/black) produces a list of the hosts in that category (in the above mentioned context).
+
+     <pre class="sp">
+     
+     </pre>
+     <div align="center"><img src="img-compliant-hosts-2-2.png" alt="Compliant hosts"></div>
+     <div align="center">Figure: Compliant hosts</div>
+     <pre class="sp">
+     
+     </pre>
+     
+     Action icons:
+          <ul>
+<li>Yellow warning triangle: View the promises not kept on this host
+<li>Pulse line: View vitals signs (statistics) on this host
+<li>Red X: Delete this host (host will be deleted from database, but may re-appear if CFEngine is still running on it; see footnote below).<a rel="footnote" href="#fn-5" name="fnd-5"><sup>5</sup></a>
+</ul>
+     </ul>
+
+<!--  -->
+<div class="node">
+<a name="Reports-tab"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Status-tab">Status tab</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Mission-Engineering">Mission Engineering</a>
+
+</div>
+
+<h5 class="subsubsection">3.1.1.3 Reports tab</h5>
+
+<p>Reports are sorted into five main categories that contain drop down menus to select default reports. Clicking a report will bring up a search filter specific to that report.
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-reports-tab-2-2.png" alt="Reports tab"></div>
+<div align="center">Figure: Reports tab</div>
+   <pre class="sp">
+
+</pre>
+
+Reports are updated at different intervals, the default values are every 5 minutes or every 6 hours (this can be changed by the user). Below is a list of standard reports, updated every 5 minutes unless otherwise noted:
+
+     <ul>
+<li>Policy
+          <ul>
+    <li>Compliance by bundle: Status of promise bundles and when they were last verified
+    <li>Compliance by promise: Compliance of each promise individually
+    <li>Promises repaired log: Log of actual repairs made to the system
+    <li>Promises repaired summary: Cumulative (histogram) summary of promises repaired
+    <li>Promises not kept log: Log of promises that could not or would not be kept
+    <li>Promises not kept summary: Cumulative (histogram) summary of promises not kept
+</ul>
+     <li>Accounting
+          <ul>
+    <li>Compliance summary: Total summary of host compliance
+    <li>Business value report: Accumulated value of promises kept (6 hrs)
+    <li>Benchmarks: Execution time used to verify selected promises
+</ul>
+     <li>System
+          <ul>
+    <li>Context classes: User defined classes observed on the system
+    <li>Last saw neighbours: Log of when neighboring hosts were last observed online
+    <li>Variables: Table of variable values last observed (6 hrs)
+</ul>
+     <li>Software
+          <ul>
+    <li>Patches available: A list of patches currently claimed to be available by the local package manager
+    <li>Patch installed: A list of (un)applied patches according to the local package manager
+    <li>Installed: List of software packages claimed to be installed according to the local package manager
+</ul>
+     <li>File watch
+          <ul>
+    <li>Change summary: Log of all detected changes to files from changes promises
+    <li>Text changes: Delta/difference comparison showing file changes
+    <li>Setuid: Current list of observed setuid/setgid root programs (6 hrs)
+</ul>
+     </ul>
+
+<div class="node">
+<a name="Mission-Business"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Mission-Planning">Mission Planning</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Mission-Engineering">Mission Engineering</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Mission-Portal-Rooms">Mission Portal Rooms</a>
+
+</div>
+
+<h4 class="subsection">3.1.2 Mission Business</h4>
+
+<p>Mission status is a high level summary of how well the entire system is behaving.
+
+   <pre class="sp">
+
+</pre>
+<img src="img-business-status-2-2.png" alt="Mission Status">
+<div align="center">Figure: The status of IT operations.</div>
+<pre class="sp">
+
+</pre>
+
+Business Value and Host Status:
+The two pie charts show the business value of the promises kept/not kept and well as host status, respectively. Business value is associated with the value of promises as defined in policy files. In the Host Status chart, each host represents a slice of the pie and is classified into red, yellow, green and blue according to the level of their compliance. A host is red if less than 80% of its promises are kept, yellow if 20% or more of its promises were repaired and host is now compliant, green if more than 80% of its promises are kept, and blue if there is no contact between the hub and the client host.
+
+   <p>Compliance Summary:
+The row of bar meters shows the compliance (average percentage of promises kept, repaired or not kept) of all registered hosts <a rel="footnote" href="#fn-6" name="fnd-6"><sup>6</sup></a> in blocks of 6 hours for the past week. It summarizes performance and anomalous behavior in a simple red (promises not kept), yellow (promises repaired) and green (promises kept) scale. Click on a bar to see which promises were kept/not kept.
+
+   <p>Services/Goals:
+A summary of Mission goals (as defined in user policy files). See the CFEngine 3 Enterprise Owners Manual for more information.
+
+<div class="node">
+<a name="Mission-Planning"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Mission-Library">Mission Library</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Mission-Business">Mission Business</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Mission-Portal-Rooms">Mission Portal Rooms</a>
+
+</div>
+
+<h4 class="subsection">3.1.3 Mission Planning</h4>
+
+<p>Make changes to policies, goals determined by promises and implement specific tactics to achieve the desired state. Interact with data, approve changes and anomalies. Get an overview of users logged on to the Mission Portal, as well as their current activity.
+
+   <pre class="sp">
+
+</pre>
+<img src="img-planning-room-2-2.png" alt="Mission Planning">
+<div align="center">Figure: Mission Planning</div>
+<pre class="sp">
+
+</pre>
+
+Policy Goals:
+List of policy goals as defined in policy files; these examples are from <samp><span class="file">company_knowledge.cf</span></samp>. Edit the file in the policy editor (<b>Edit policies</b> button) or edit the file in your own text editor. The "More..." button links  to the Service Catalogue, click to see which bundles contribute to these policy goals.
+
+<p class="noindent">Action buttons:
+     <ul>
+<li>Edit policies: Edit policy files in the integrated policy editor (requires Subversion)
+<li>Track records: Overview of promises repaired or not kept
+<li>Approve policies: Give your approval of a submitted policy file
+<li>Service catalogue: See which bundles contribute to policy goals
+</ul>
+
+<p class="noindent">Logged on:
+Shows users currently logged on to the Mission Portal and their activity.
+
+<p class="noindent">Activity log:
+Shows the latest activity entries. Type in a new activity to keep colleagues posted on current work.
+
+<div class="node">
+<a name="Mission-Library"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Topics-viewer-_0028Knowledge-map_0029">Topics viewer (Knowledge map)</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Mission-Planning">Mission Planning</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Mission-Portal-Rooms">Mission Portal Rooms</a>
+
+</div>
+
+<h4 class="subsection">3.1.4 Mission Library</h4>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Topics-viewer-_0028Knowledge-map_0029">Topics viewer (Knowledge map)</a>
+</ul>
+The Library contains finders for documents, topics, a notes archive, and (external) link to the CFEngine community.
+
+<pre class="sp">
+
+</pre>
+<img src="img-library.png" alt="Mission Library">
+<div align="center">Figure: Mission Library</div>
+<pre class="sp">
+
+</pre>
+
+Library buttons:
+     <ul>
+<li>Docs: Overview of documentation that was packaged with CFEngine 3 Enterprise. 
+<li>Find Topic: Search for topics either by scrolling through the alphabetical list or by typing in the search box (same as the search box on top right of page). 
+<li>Notes Archive: Get overview of all notes made in regard to hosts or reports. 
+<li>Community: External link to the CFEngine community
+</ul>
+
+<div class="node">
+<a name="Topics-viewer-(Knowledge-map)"></a>
+<a name="Topics-viewer-_0028Knowledge-map_0029"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Mission-Library">Mission Library</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Mission-Library">Mission Library</a>
+
+</div>
+
+<h5 class="subsubsection">3.1.4.1 Topics viewer (Knowledge map)</h5>
+
+<p>The Topics viewer, or Knowledge map, is a <i>sematic web</i> of subject references and document pointers. In a semantic web, you are presented with links to
+documents about your chosen topic. In addition you are
+offered <i>leads</i> and possible pathways to topics that are known to be
+related. These leads don't just point you to more documents, but
+explain <i>how</i> neighboring issues are related.  The aim is to help
+the user learn from the experience of browsing, by conveying the
+meaning of the current topic in relation to other issues in the
+system. This is how <i>knowledge transfer</i> occurs.
+
+   <p>The Knowledge Map can be found by searching for a topic in the top right corner or through the topic finder in the Mission Library (this will sometimes also lead directly to a document or web page instead).
+
+   <pre class="sp">
+
+</pre>
+<div align="center"><img src="img-topicsviewer.png" alt="Topics viewer"></div>
+<div align="center">Figure: Topics viewer (Knowledge map)</div>
+   <pre class="sp">
+
+</pre>
+
+The yellow sphere represents the current topic, surrounding (blue) spheres represent related topics, and the size of the spheres represents the number of associations each topic has. This map is navigable: click on a different topic to see a new view centered on that topic and its associations. The tabs will show leads, references, topics in the same context, and sub topics in the same context. Links can also lead to other viewers in the Mission Portal, documents and web pages related to the current topic.
+
+<!-- ***************************************************** -->
+<!-- * CHAPTER -->
+<!-- ***************************************************** -->
+<div class="node">
+<a name="Next-steps"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Mission-Portal">Mission Portal</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">4 Next steps</h2>
+
+<p>Please refer to the CFEngine 3 Enterprise Owner's Manual for complete information about this product. You may also wish to visit our getting started section on cfengine.com:
+
+     <ul>
+<li><a href="http://cfengine.com/manuals/Enterprise-2-2-OwnersManual">http://cfengine.com/manuals/Enterprise-2-2-OwnersManual</a>
+<li><a href="http://cfengine.com/getting-started">http://cfengine.com/getting-started</a>
+</ul>
+
+<!-- ========================================================================= -->
+<!-- @node Index,  , CFEngine Methods, Top -->
+<!-- @unnumbered Concept Index -->
+<!-- @printindex cp -->
+<!-- ========================================================================= -->
+   <p><a name="Contents">
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">Igniting CFEngine 3 Enterprise!</a>
+<li><a name="toc_Introduction" href="#Introduction">1 Introduction</a>
+<ul>
+<li><a href="#CFEngine-3-Enterprise-_002d-the-new-CFEngine-3-Nova_0021">1.1 CFEngine 3 Enterprise - the new CFEngine 3 Nova!</a>
+<li><a href="#About-CFEngine-3-Enterprise">1.2 About CFEngine 3 Enterprise</a>
+</li></ul>
+<li><a name="toc_Installing-CFEngine-3-Enterprise" href="#Installing-CFEngine-3-Enterprise">2 Installing CFEngine 3 Enterprise</a>
+<ul>
+<li><a href="#Installation-procedure">2.1 Installation procedure</a>
+</li></ul>
+<li><a name="toc_Mission-Portal" href="#Mission-Portal">3 Mission Portal</a>
+<ul>
+<li><a href="#Mission-Portal-Rooms">3.1 Mission Portal Rooms</a>
+<ul>
+<li><a href="#Mission-Engineering">3.1.1 Mission Engineering</a>
+<ul>
+<li><a href="#Navigation-Tree">3.1.1.1 Navigation Tree</a>
+<li><a href="#Status-tab">3.1.1.2 Status tab</a>
+<li><a href="#Reports-tab">3.1.1.3 Reports tab</a>
+</li></ul>
+<li><a href="#Mission-Business">3.1.2 Mission Business</a>
+<li><a href="#Mission-Planning">3.1.3 Mission Planning</a>
+<li><a href="#Mission-Library">3.1.4 Mission Library</a>
+<ul>
+<li><a href="#Topics-viewer-_0028Knowledge-map_0029">3.1.4.1 Topics viewer (Knowledge map)</a>
+</li></ul>
+</li></ul>
+</li></ul>
+<li><a name="toc_Next-steps" href="#Next-steps">4 Next steps</a>
+</li></ul>
+</div>
+
+
+
+<!-- The file is structured like a programming language. Each chapter -->
+<!-- starts with a chapter comment. -->
+<!-- Menus list the subsections so that an online info-reader can parse -->
+<!-- the file hierarchically. -->
+   <p><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2576171-2");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+   <div class="footnote">
+<hr>
+<a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> Major version 3</p>
+
+   <p class="footnote"><small>[<a name="fn-2" href="#fnd-2">2</a>]</small> You will obtain credentials to the CFEngine Support ticketing system and software download repository as a part of your purchase. (Note: CFEngine 3 Free Enterprise users do not have access to commercial support, see http://cfengine.com/25free</p>
+
+   <p class="footnote"><small>[<a name="fn-3" href="#fnd-3">3</a>]</small> Blue or black hosts will not appear here</p>
+
+   <p class="footnote"><small>[<a name="fn-4" href="#fnd-4">4</a>]</small> This is because hosts check in at different times and some hosts may not yet be accounted for at the time of generation of the graph.</p>
+
+   <p class="footnote"><small>[<a name="fn-5" href="#fnd-5">5</a>]</small> You have to stop CFEngine on the concerned host before deleting it in the Mission Portal, else the host will contact the hub and re-appear in the database.</p>
+
+   <p class="footnote"><small>[<a name="fn-6" href="#fnd-6">6</a>]</small> Blue or black hosts will not appear here</p>
+
+   <hr></div>
+
+</body></html>
+

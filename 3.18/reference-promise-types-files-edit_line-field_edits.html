@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.18  Documentation - field_edits</title>
+        <link rel="icon" type="image/svg+xml" href="./media/images/favicon.svg">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-promise-types-files-edit_line-field_edits.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+        <link href='assets/global-337446952f2ea3d590f5c3e3687cd5f0.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "field_edits";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.24/">Version 3.24 (LTS)</option>
+<option value="/docs/3.23/">Version 3.23 (EOL non-LTS)</option>
+<option value="/docs/3.22/">Version 3.22 (non-LTS)</option>
+<option value="/docs/3.21/">Version 3.21 (LTS)</option>
+<option value="/docs/3.20/">Version 3.20 (EOL non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/" selected>Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (EOL LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="c5f68dd2aab4228c4" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><li><a href="reference-promise-types-files-edit_line.html">edit_line</a><ul class="level2"><li><a href="reference-promise-types-files-edit_line-delete_lines.html">delete_lines</a></li><li><a class="active" href="reference-promise-types-files-edit_line-field_edits.html">field_edits</a></li><li><a href="reference-promise-types-files-edit_line-insert_lines.html">insert_lines</a></li><li><a href="reference-promise-types-files-edit_line-replace_patterns.html">replace_patterns</a></li></ul></li><li><a href="reference-promise-types-files-edit_xml.html">edit_xml</a></li></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types-files.html">files</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types-files-edit_line.html">edit_line</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    field_edits
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Certain types of text files are tabular in nature, with field separators (e.g.
+<code>:</code> or <code>,</code>). The <code>passwd</code> and group files are classic examples of tabular
+files, but there are many ways to use this  feature. For example, editing a
+string:</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="nf">VARIABLE</span><span class="err">=</span><span class="s">&quot;one two three&quot;</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>View this line as a tabular line separated by &quot; and with sub-separator
+given by the space.</p>
+
+<p>Field editing allows us to edit tabular files in a unique way, adding and
+removing data from addressable fields.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="k">bundle</span><span class="w"> </span><span class="k">agent</span><span class="w"> </span><span class="nf">example</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">       </span><span class="p">&quot;</span><span class="nv">userset</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;one-x&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;two-x&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;three-x&quot;</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">      </span><span class="kd">files</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="s">&quot;/tmp/passwd&quot;</span><span class="w"></span>
+
+<span class="w">             </span><span class="kr">create</span><span class="w">    </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">             </span><span class="kr">edit_line</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">SetUserParam</span><span class="p">(</span><span class="s">&quot;mark&quot;</span><span class="p">,</span><span class="s">&quot;6&quot;</span><span class="p">,</span><span class="s">&quot;/set/this/shell&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="s">&quot;/tmp/group&quot;</span><span class="w"></span>
+
+<span class="w">             </span><span class="kr">create</span><span class="w">    </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">             </span><span class="kr">edit_line</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">AppendUserParam</span><span class="p">(</span><span class="s">&quot;root&quot;</span><span class="p">,</span><span class="s">&quot;4&quot;</span><span class="p">,</span><span class="s">&quot;@(userset)&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>The promise in this example assumes a parameterizable model for editing the
+fields of such files.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="k">bundle</span><span class="w"> </span><span class="k">edit_line</span><span class="w"> </span><span class="nf">SetUserParam</span><span class="p">(</span><span class="nv">user</span><span class="p">,</span><span class="nv">field</span><span class="p">,</span><span class="nv">val</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="kd">field_edits</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">       </span><span class="s">&quot;</span><span class="si">$(user)</span><span class="s">:.*&quot;</span><span class="w"></span>
+
+<span class="w">          </span><span class="c"># Set field of the file to parameter</span>
+
+<span class="w">          </span><span class="kr">edit_field</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">col</span><span class="p">(</span><span class="s">&quot;:&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(field)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(val)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;set&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">bundle</span><span class="w"> </span><span class="k">edit_line</span><span class="w"> </span><span class="nf">AppendUserParam</span><span class="p">(</span><span class="nv">user</span><span class="p">,</span><span class="nv">field</span><span class="p">,</span><span class="nv">allusers</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="kd">vars</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">        </span><span class="p">&quot;</span><span class="nv">val</span><span class="p">&quot;</span><span class="w"> </span><span class="kt">slist</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">@(allusers)</span><span class="w"> </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">      </span><span class="kd">field_edits</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">       </span><span class="s">&quot;</span><span class="si">$(user)</span><span class="s">:.*&quot;</span><span class="w"></span>
+
+<span class="w">          </span><span class="c"># Set field of the file to parameter</span>
+
+<span class="w">          </span><span class="kr">edit_field</span><span class="w"> </span><span class="o">=&gt;</span> <span class="nf">col</span><span class="p">(</span><span class="s">&quot;:&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(field)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(val)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;alphanum&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>First you match the line with a regular expression. The regular expression
+must match the entire line; that is, it is <a href="reference-language-concepts-pattern-matching-and-referencing.html#anchored-vs-unanchored-regular-expressions">anchored</a>.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">    </span><span class="k">body</span><span class="w"> </span><span class="k">edit_field</span><span class="w"> </span><span class="nf">col</span><span class="p">(</span><span class="nv">split</span><span class="p">,</span><span class="nv">col</span><span class="p">,</span><span class="nv">newval</span><span class="p">,</span><span class="nv">method</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="kr">field_separator</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(split)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">select_field</span><span class="w">    </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(col)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">value_separator</span><span class="w">  </span><span class="o">=&gt;</span> <span class="s">&quot;,&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">field_value</span><span class="w">     </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(newval)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">field_operation</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(method)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">      </span><span class="kr">extend_fields</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p>Then a <code>field_edits</code> body describes the separators for fields and
+one level of sub-fields, along with policies for editing these fields,
+ordering the items within them.</p>
+
+<hr>
+<h2 id="attributes">Attributes</h2><h3 id="edit_field">edit_field</h3>
+<p><strong>Type:</strong> <code>body edit_field</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">     </span><span class="k">body</span><span class="w"> </span><span class="k">edit_field</span><span class="w"> </span><span class="nf">col</span><span class="p">(</span><span class="nv">split</span><span class="p">,</span><span class="w"> </span><span class="nv">col</span><span class="p">,</span><span class="w"> </span><span class="nv">newval</span><span class="p">,</span><span class="w"> </span><span class="nv">method</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="kr">field_separator</span><span class="w">    </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(split)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="kr">select_field</span><span class="w">       </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(col)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="kr">value_separator</span><span class="w">    </span><span class="o">=&gt;</span> <span class="s">&quot;,&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="kr">field_value</span><span class="w">        </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(newval)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="kr">field_operation</span><span class="w">    </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(method)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="kr">extend_fields</span><span class="w">      </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="kr">allow_blank_fields</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="kr">start_fields_from_zero</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-promise-types.html#common-body-attributes" title="Promise Types - Common Body Attributes">Common Body Attributes</a></p>
+<h4 id="allow_blank_fields">allow_blank_fields</h4>
+<p><strong>Description:</strong> Setting <code>allow_blank_fields</code> defines how blank fields in a line are handled.</p>
+
+<p>When editing a file using the field or column model, blank fields, especially
+at the start and end, are generally discarded. If <code>allow_blank_fields</code> is set
+to true, CFEngine will retain the blank fields and print the appropriate
+number of field separators.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">     </span><span class="k">body</span><span class="w"> </span><span class="k">edit_field</span><span class="w"> </span><span class="nf">example</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="kr">allow_blank_fields</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h4 id="extend_fields">extend_fields</h4>
+<p><strong>Description:</strong> Setting <code>extend_fields</code> can add new fields, to avoid
+triggering an error.</p>
+
+<p>If a user specifies a field that does not exist, because there are not so many
+fields, this allows the number of fields to be extended. Without this setting,
+CFEngine will issue an error if a non-existent field is referenced. Blank
+fields in a tabular file can be eliminated or kept depending  in this setting.
+If in doubt, set this to true.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">     </span><span class="k">body</span><span class="w"> </span><span class="k">edit_field</span><span class="w"> </span><span class="nf">example</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="kr">extend_fields</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h4 id="field_operation">field_operation</h4>
+<p><strong>Description:</strong> Menu option policy for editing subfields.</p>
+
+<p>The method by which to edit a field in multi-field/column editing of tabular
+files.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+
+<ul>
+<li><code>append</code></li>
+</ul>
+
+<p>Append the specified value to the end of the field/column, separating
+(potentially) multiple values with <a href="reference-promise-types-files-edit_line-field_edits.html#value_separator" title="field_edits - value_separator"><code>value_separator</code></a></p>
+
+<ul>
+<li><code>prepend</code></li>
+</ul>
+
+<p>Prepend the specified value at the beginning of the field/column, separating
+(potentially) multiple values with <a href="reference-promise-types-files-edit_line-field_edits.html#value_separator" title="field_edits - value_separator"><code>value_separator</code></a></p>
+
+<ul>
+<li><code>alphanum</code></li>
+</ul>
+
+<p>Insert the specified value into the field/column, keeping all the values
+(separated by <a href="reference-promise-types-files-edit_line-field_edits.html#value_separator" title="field_edits - value_separator"><code>value_separator</code></a>) in alphanumerically sorted order</p>
+
+<ul>
+<li><code>set</code></li>
+</ul>
+
+<p>Replace the entire field/column with the specified value.</p>
+
+<ul>
+<li><a href="reference-promise-types-files.html#delete" title="files - delete"><code>delete</code></a></li>
+</ul>
+
+<p>Delete the specified value (if present) in the specified field/column.</p>
+
+<p><strong>Default value:</strong> append</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">     </span><span class="k">body</span><span class="w"> </span><span class="k">edit_field</span><span class="w"> </span><span class="nf">example</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="kr">field_operation</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;append&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h4 id="field_separator">field_separator</h4>
+<p><strong>Description:</strong> The regular expression used to separate fields in a line.</p>
+
+<p>Most tabular files are separated by simple characters, but by allowing a
+general regular expression one can make creative use of this model to
+edit all kinds of line-based text files.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Default value:</strong> none</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">     </span><span class="k">body</span><span class="w"> </span><span class="k">edit_field</span><span class="w"> </span><span class="nf">example</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="kr">field_separator</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;:&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h4 id="field_value">field_value</h4>
+<p><strong>Description:</strong> Set a field to a constant value.</p>
+
+<p>For example, reset the value to a constant default, empty the field, or set it
+fixed list.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">     </span><span class="k">body</span><span class="w"> </span><span class="k">edit_field</span><span class="w"> </span><span class="nf">example</span><span class="p">(</span><span class="nv">s</span><span class="p">)</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="kr">field_value</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(s)</span><span class="s">&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h4 id="select_field">select_field</h4>
+<p><strong>Description</strong>: Sets the index of the field required, see also <a href="reference-promise-types-files-edit_line-field_edits.html#start_fields_from_zero" title="field_edits - start_fields_from_zero"><code>start_fields_from_zero</code></a>.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">     </span><span class="k">body</span><span class="w"> </span><span class="k">field_edits</span><span class="w"> </span><span class="nf">example</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="kr">select_field</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;5&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h4 id="start_fields_from_zero">start_fields_from_zero</h4>
+<p><strong>Description:</strong> The numbering of fields is a matter for consistency and
+convention. Arrays are usually thought to start with first index equal to zero
+(0), but the first column in a file would normally be 1. By setting this
+option, you can tell CFEngine that the first column should be understood as
+number 0 instead, for consistency with other array functions.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>History:</strong> Version 3.1.0b1,Nova 2.0.0b1 (2010)</p>
+<h4 id="value_separator">value_separator</h4>
+<p><strong>Description:</strong> Defines the character separator for subfields inside the
+selected field.</p>
+
+<p>For example, elements in the group file are separated by a colon (&#39;:&#39;), but
+the lists of users in these fields are separated by a comma (&#39;,&#39;).</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>^.$</code></p>
+
+<p><strong>Default value:</strong> none</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="w">     </span><span class="k">body</span><span class="w"> </span><span class="k">field_edit</span><span class="w"> </span><span class="nf">example</span><span class="w"></span>
+<span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="kr">value_separator</span><span class="w"> </span><span class="o">=&gt;</span> <span class="s">&quot;,&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+</code></pre>
+</div>
+<h3 id="select_region">select_region</h3>
+<p><strong>Description:</strong> Constrains <a href="reference-promise-types-files-edit_line.html" title="edit_line"><code>edit_line</code></a> operations to region identified by matching regular expressions.</p>
+
+<p>This body applies to all promise types within <a href="reference-promise-types-files-edit_line.html" title="edit_line"><code>edit_line</code></a> bundles.</p>
+
+<p><strong>See also:</strong> <a href="reference-promise-types-files-edit_line.html#select_region" title="edit_line - select_region"><code>select_region</code> with <code>edit_line</code> operations</a>, <a href="reference-promise-types-files-edit_line-delete_lines.html#select_region" title="delete_lines - select_region"><code>select_region</code> in <code>delete_lines</code></a>, <a href="reference-promise-types-files-edit_line-insert_lines.html#select_region" title="insert_lines - select_region"><code>select_region</code> in <code>insert_lines</code></a>, <a href="reference-promise-types-files-edit_line-replace_patterns.html#select_region" title="replace_patterns - select_region"><code>select_region</code> in <code>replace_patterns</code></a></p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-bundle-agent.html">bundle agent</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-edit_line.html">edit_line</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-files-promises.html">files promises</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-file-editing.html">file editing</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-field_edits.html">field_edits</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 23 July 2024
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.18/generator/pages/reference/promise-types/files/edit_line/field_edits.markdown/reference/promise-types/files/edit_line/field_edits.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-6e603435d313e50beb7f6915d5c67a09.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

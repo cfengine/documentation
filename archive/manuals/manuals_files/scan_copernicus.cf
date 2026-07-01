@@ -1,0 +1,72 @@
+
+bundle knowledge cf_copernicus
+
+{
+topics:
+
+"cf-copernicus";
+Improve_Copernicus::
+    "Improve Copernicus" ;
+Graphs::
+    "Graphs" ;
+The_content::
+    "Searching" ;
+The_content::
+    "Occurrences" ;
+The_content::
+    "Associations" ;
+The_content::
+    "Types" ;
+The_content::
+    "Topics" ;
+The_content::
+    "The content" ;
+Introduction::
+    "Introduction" ;
+Special_Topics_Guide::
+    "CFEngine-Reference"  association => a("discussed in","CFEngine-Reference","discusses");
+
+
+occurrences:
+
+manuals::
+ "/docs/cf-copernicus.html"
+  represents => { "Copernicus Hints" };
+CFEngine_Reference::
+ "/docs/cf-copernicus.html#Top"
+  represents => { "Text section" };
+Introduction::
+ "/docs/cf-copernicus.html#Introduction"
+  represents => { "manual chapter" };
+The_content::
+ "/docs/cf-copernicus.html#The-content"
+  represents => { "manual chapter" };
+Topics::
+ "/docs/cf-copernicus.html#Topics"
+  represents => { "manual section Topics" };
+Types::
+ "/docs/cf-copernicus.html#Types"
+  represents => { "manual section Types" };
+Associations::
+ "/docs/cf-copernicus.html#Associations"
+  represents => { "manual section Associations" };
+Associations::
+ "/docs/cf-copernicus.html#Associations"
+  represents => { "code example" };
+Occurrences::
+ "/docs/cf-copernicus.html#Occurrences"
+  represents => { "manual section Occurrences" };
+Searching::
+ "/docs/cf-copernicus.html#Searching"
+  represents => { "manual section Searching" };
+Searching::
+ "/docs/cf-copernicus.html#Searching"
+  represents => { "code example" };
+Graphs::
+ "/docs/cf-copernicus.html#Graphs"
+  represents => { "manual chapter" };
+Improve_Copernicus::
+ "/docs/cf-copernicus.html#Improve-Copernicus"
+  represents => { "manual chapter" };
+}
+

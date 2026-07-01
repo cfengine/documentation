@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>Installation guide - CFEngine 3.25  Docs</title>
+        <link rel="icon" type="image/svg+xml" href="./media/images/favicon.svg">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/examples/tutorials/high-availability/installation-guide.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-examples-tutorials-high-availability-installation-guide.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <meta prefix="og: http://ogp.me/ns#" property="og:type" content="website">
+        <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Installation guide - CFEngine 3.25 Docs">
+        <meta prefix="og: http://ogp.me/ns#" property="og:description" content="">
+        <meta prefix="og: http://ogp.me/ns#" property="og:image" content="https://docs.cfengine.com/docs/master/media/images/logo_wide_opengraph.png">
+        <meta prefix="og: http://ogp.me/ns#" property="og:url" content="docs.cfengine.com">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="docs.cfengine.com">
+        <meta name="twitter:title" content="Installation guide - CFEngine 3.25  Docs">
+        <meta name="twitter:description" content="">
+        <meta name="twitter:image" content="https://docs.cfengine.com/docs/master/media/images/agent_white_background.png">
+
+        <link rel="canonical" href="https://docs.cfengine.com/latest/examples-tutorials-high-availability-installation-guide.html">
+        <link href='assets/styles.min.css?v=2025-01-07T17:33:36+00:00' rel='stylesheet' type='text/css' media='screen,print' />
+    </head>
+
+<body>
+<header>
+    <div class="top_menu">
+        <div class="container">
+            <div id="logo">
+                <a href="./"><img src="media/images/docs-logo.svg" alt="CFEngine documentation homepage"></a>
+            </div>
+
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" autocomplete="off" placeholder="Search" />
+                        <input type="submit" value="" />
+                    </div>
+                </form>
+            </div>
+
+            <ul>
+                <li><a target="_blank" href="https://cfengine.com/product-overview/">Product</a></li>
+                <li><a target="_blank" href="https://cfengine.com/blog/">Blog</a></li>
+                <li class="top_menu-versions">
+                    <div class="top_menu-versions-title">
+                        <div>Docs versions</div>
+                        <span>Version <span></span></span>
+                    </div>
+                    <div class="top_menu-versions-list">
+                        <a onclick="selectVersion('/docs/master/')" href="#">master</a>
+<a onclick="selectVersion('javascript:void(0);')" href="#" selected="selected">3.25 (non-LTS)</a>
+<a onclick="selectVersion('/docs/3.24/')" href="#">3.24 (LTS)</a>
+<a onclick="selectVersion('/docs/3.21/')" href="#">3.21 (LTS)</a>
+<a href="./versions.html">view all versions</a>
+
+                    </div>
+                </li>
+                <li><a class="btn btn-orange" href="https://cfengine.com/download/" target="_blank">Try for free</a></li>
+            </ul>
+            <div onclick="openMenuHandler(this)" class="collapse center-align relative">
+                <i class="vertical-middle centered collapse-open bi bi-list"></i>
+                <i class="vertical-middle centered collapse-close bi bi-x"></i>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="main_wrapper container pages-wrapper">
+    <article>
+        
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul itemscope="" itemtype="http://schema.org/BreadcrumbList">
+            
+                
+                
+                    
+                
+                
+                    
+                        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                            <a
+                                    itemid="examples.html"
+                                    itemprop="item" itemscope=""
+                                    itemtype="http://schema.org/Thing"
+                                    href="examples.html">
+                                <span itemprop="name">Examples and tutorials</span>
+                            </a>
+                        </li>
+                        <li>/</li>
+                    
+                
+            
+                
+                    
+                    
+                
+                
+                    
+                        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                            <a
+                                    itemid="examples-tutorials.html"
+                                    itemprop="item" itemscope=""
+                                    itemtype="http://schema.org/Thing"
+                                    href="examples-tutorials.html">
+                                <span itemprop="name">Tutorials</span>
+                            </a>
+                        </li>
+                        <li>/</li>
+                    
+                
+            
+                
+                    
+                    
+                
+                
+                    
+                        <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                            <a
+                                    itemid="examples-tutorials-high-availability.html"
+                                    itemprop="item" itemscope=""
+                                    itemtype="http://schema.org/Thing"
+                                    href="examples-tutorials-high-availability.html">
+                                <span itemprop="name">High availability</span>
+                            </a>
+                        </li>
+                        <li>/</li>
+                    
+                
+            
+                
+                    
+                    
+                
+                
+                    
+                
+            
+            <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
+                <a itemid="examples-tutorials-high-availability-installation-guide.html" itemprop="item" itemscope="" itemtype="http://schema.org/Thing" href="examples-tutorials-high-availability-installation-guide.html">
+                    <span itemprop="name">Installation guide</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+        <div class="article">
+            
+            <div class="article_title">
+                <h1 id="top">
+                    Installation guide
+                </h1>
+                <div class="suggestChanges">
+                    <a class="btn btn-transparent btn-bordered"
+                       href='https://github.com/cfengine/documentation/edit/3.25/examples/tutorials/high-availability/installation-guide.markdown'
+                       target="_blank">
+                        <i class="bi bi-github"></i> Suggest changes
+                    </a>
+                </div>
+            </div>
+            
+            
+            <div class="table-of-contents">
+                <div class="TOC closed" id="TOCbox_wrapper">
+                    <div class="TOC-title">Table of contents</div>
+                    <span id="TOCbox">
+                        <div id="TOCbox_list"></div>
+                    </span>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <h2 id="overview">Overview</h2>
+<p>This tutorial is describing the installation steps of the <strong>CFEngine High availability</strong> feature. It
+is suitable for both upgrading existing CFEngine installations to HA and for installing HA from
+scratch. Before starting installation we strongly recommend reading the <a href="examples-tutorials-high-availability.html" title="High availability">CFEngine High availability
+overview</a>.</p>
+<h2 id="installation-procedure">Installation procedure</h2>
+<p>As with most High availability systems, setting it up requires carefully following a series of steps
+with dependencies on network components. The setup can therefore be error-prone, so if you are a
+CFEngine Enterprise customer we recommend that you contact support for assistance if you do not feel
+100% comfortable of doing this on your own.</p>
+
+<p>Please also make sure you have a valid license for the passive hub so that it will be able to handle
+all your CFEngine clients in case of failover.</p>
+<h3 id="hardware-configuration-and-os-pre-configuration-steps">Hardware configuration and OS pre-configuration steps</h3>
+<ul>
+<li>CFEngine 3.15.3 (or later) hub package for RHEL7 or CentOS7.</li>
+<li>We recommend selecting dedicated interface used for PostgreSQL replication and optionally one for heartbeat.</li>
+<li>We recommend having one shared IP address assigned for interface where MP is accessible
+(optionally) and one where PostgreSQL replication is configured (mandatory).</li>
+<li>Both active and passive hub machines must be configured so that host names are different.</li>
+<li>Basic hostname resolution works (hub names can be placed in <em>/etc/hosts</em> or DNS configured).</li>
+</ul>
+<h3 id="example-configuration-used-in-this-tutorial">Example configuration used in this tutorial</h3>
+<p>In this tutorial we use the following network configuration:</p>
+
+<ul>
+<li>Two nodes, one acting as active (node1) and one acting as passive (node2).</li>
+<li>Optionally a third node (node3) used as a database backup for offsite replication.</li>
+<li>Each node having three NICs so that eth0 is used for the heartbeat, eth1 is used for PostgreSQL
+replication and eth2 is used for MP and bootstrapping clients.</li>
+<li>IP addresses configured as follows:</li>
+</ul>
+<div class="tableOverflow"><table><thead><tr>
+<th>Node</th>
+<th align="left">eth0</th>
+<th align="left">eth1</th>
+<th align="left">eth2</th>
+</tr>
+</thead><tbody><tr>
+<td>node1</td>
+<td align="left">192.168.0.10</td>
+<td align="left">192.168.10.10</td>
+<td align="left">192.168.100.10</td>
+</tr>
+<tr>
+<td>node2</td>
+<td align="left">192.168.0.11</td>
+<td align="left">192.168.10.11</td>
+<td align="left">192.168.100.11</td>
+</tr>
+<tr>
+<td>node3 (optional)</td>
+<td align="left">---</td>
+<td align="left">192.168.10.12</td>
+<td align="left">192.168.100.12</td>
+</tr>
+<tr>
+<td>cluster shared</td>
+<td align="left">---</td>
+<td align="left">---</td>
+<td align="left">192.168.100.100</td>
+</tr>
+</tbody></table></div>
+<p>Detailed network configuration is shown on the picture below:</p>
+
+<p><img src="ha_network_setup.png" alt="HAGuideNetworkSetup"></p>
+<h2 id="install-cluster-management-tools">Install cluster management tools</h2>
+<p><strong>On both nodes:</strong></p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>   yum -y install pcs pacemaker cman fence-agents
+</code></pre></div>
+</div>
+
+<p>In order to operate cluster, proper fencing must be configured but description how to fence cluster
+and what mechanism use is out of the scope of this document. For reference please use the <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/configuring_the_red_hat_high_availability_add-on_with_pacemaker/ch-fencing-haar">Red Hat
+HA fencing guide</a>.</p>
+
+<p><strong>IMPORTANT:</strong> please carefully follow the indicators describing if the given step should be
+               performed on the active (node1), the passive (node2) or both nodes.</p>
+
+<ol>
+<li><p>Make sure that the hostnames of all nodes nodes are node1 and node2 respectively. Running
+the command <code>uname -n | tr &#39;[A-Z]&#39; &#39;[a-z]&#39;</code> should return the correct node name. Make sure that
+the DNS or entries in /etc/hosts are updated so that hosts can be accessed using their host names.</p></li>
+<li><p>In order to use <em>pcs</em> to manage the cluster, create the <em>hacluster</em> user designated to manage the
+cluster with <code>passwd hacluster</code> <strong>on both nodes</strong>.</p></li>
+<li><p>Make sure that pcsd demon is started and configure both nodes so that it will be enabled to boot
+on startup <strong>on both nodes</strong>.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>service pcsd start
+chkconfig pcsd on
+</code></pre></div>
+</div></li>
+<li><p>Authenticate hacluster user for each node of the cluster. Run the command below <strong>on the node1</strong>:</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>pcs cluster auth node1 node2 -u hacluster
+</code></pre></div>
+</div>
+
+<p>After entering password, you should see a message similar to one below:</p>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>node1: Authorized
+node2: Authorized
+</code></pre></div>
+</div></li>
+<li><p>Create the cluster by running the following command <strong>on the node1</strong>:</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>pcs cluster setup --name cfcluster node1 node2
+</code></pre></div>
+</div>
+
+<p>This will create the cluster <code>cfcluster</code> consisting of node1 and node2.</p></li>
+<li><p>Give the cluster time to settle (cca 1 minute) and then start the cluster by running the
+following command <strong>on the node1</strong>:</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>pcs cluster start --all
+</code></pre></div>
+</div>
+
+<p>This will start the cluster and all the necessary deamons on both nodes.</p></li>
+<li><p>At this point the cluster should be up and running. Running <code>pcs status</code> should print
+something similar to the output below.</p>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>Cluster name: cfcluster
+WARNING: no stonith devices and stonith-enabled is not false
+Stack: cman
+Current DC: node2 (version 1.1.18-3.el6-bfe4e80420) - partition with quorum
+Last updated: Wed Oct 17 12:25:42 2018
+Last change: Wed Oct 17 12:24:52 2018 by root via crmd on node2
+
+2 nodes configured
+0 resources configured
+
+Online: [ node1 node2 ]
+
+No resources
+
+Daemon Status:
+ cman: active/disabled
+ corosync: active/disabled
+ pacemaker: active/disabled
+ pcsd: active/enabled
+</code></pre></div>
+</div></li>
+<li><p>If you are setting up just a <strong>testing environment without fencing</strong>, you should disable it now
+(**on the node1**):</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>pcs property set stonith-enabled=false
+pcs property set no-quorum-policy=ignore
+</code></pre></div>
+</div></li>
+<li><p>Before the PostgreSQL replication is setup, we need to set up a floating IP address that will
+always point to the active node and configure some basic resource parameters (**on the node1**):</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>pcs resource defaults resource-stickiness=&quot;INFINITY&quot;
+pcs resource defaults migration-threshold=&quot;1&quot;
+pcs resource create cfvirtip IPaddr2 ip=192.168.100.100 cidr_netmask=24 --group cfengine
+pcs cluster enable --all
+</code></pre></div>
+</div></li>
+<li><p>Verify that the cfvirtip resource is properly configured and running.</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>pcs status
+</code></pre></div>
+</div>
+
+<p>should give something like this:</p>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>Cluster name: cfcluster
+Last updated: Tue Jul  7 09:29:10 2015
+Last change: Fri Jul  3 08:41:24 2015
+Stack: cman
+Current DC: node1 - partition with quorum
+Version: 1.1.11-97629de
+2 Nodes configured
+1 Resources configured
+
+Online: [ node1 node2 ]
+
+Full list of resources:
+
+Resource Group: cfengine
+    cfvirtip   (ocf::heartbeat:IPaddr2):   Started node1
+</code></pre></div>
+</div></li>
+</ol>
+<h2 id="postgresql-configuration">PostgreSQL configuration</h2>
+<ol>
+<li>Install the CFEngine hub package <strong>on both node1 and node2</strong>.</li>
+<li><p>Make sure CFEngine is not running (**on both node1 and node2**):</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>service cfengine3 stop
+</code></pre></div>
+</div></li>
+<li><p>Configure PostgreSQL <strong>on node1</strong>:</p>
+
+<ol>
+<li><p>Create two special directories owned by the <em>cfpostgres</em> user:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>mkdir -p /var/cfengine/state/pg/{data/pg_arch,tmp}
+chown -R cfpostgres:cfpostgres /var/cfengine/state/pg/{data/pg_arch,tmp}
+</code></pre></div>
+</div></li>
+<li><p>Modify the <em>/var/cfengine/state/pg/data/postgresql.conf</em> configuration file to set the
+following options accordingly (**uncomment the lines if they are commented out**):</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>listen_addresses = &#39;*&#39;
+wal_level = replica
+max_wal_senders = 5
+wal_keep_segments = 16
+hot_standby = on
+restart_after_crash = off
+archive_mode = on
+archive_command = &#39;cp %p /var/cfengine/state/pg/data/pg_arch/%f&#39;
+</code></pre></div>
+</div></li>
+<li><p>Modify the <em>pg_hba.conf</em> configuration file to enable access to PostgreSQL for replication
+between the nodes (note that the second pair of IP addresses, not the heartbeat pair, is used
+here):</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>echo &quot;host replication all 192.168.100.10/32 trust&quot; &gt;&gt; /var/cfengine/state/pg/data/pg_hba.conf
+echo &quot;host replication all 192.168.100.11/32 trust&quot; &gt;&gt; /var/cfengine/state/pg/data/pg_hba.conf
+</code></pre></div>
+</div>
+
+<p><strong>IMPORTANT:</strong> The above configuration allows accessing PostgreSQL without any authentication
+             from both cluster nodes. For security reasons we strongly advise to create a
+             replication user in PostgreSQL and protect access using a password or
+             certificate. Furthermore, we advise using ssl-secured replication instead of
+             the unencrypted method described here if the hubs are in an untrusted network.</p></li>
+</ol></li>
+<li><p>Do an initial sync of PostgreSQL:</p>
+
+<ol>
+<li><p>Start PostgreSQL <strong>on node1</strong>:</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>pushd /tmp; su cfpostgres -c &quot;/var/cfengine/bin/pg_ctl -w -D /var/cfengine/state/pg/data -l /var/log/postgresql.log start&quot;; popd
+</code></pre></div>
+</div></li>
+<li><p><strong>On node2</strong>, initialize PostgreSQL from <strong>node1</strong> (again using the second IP, not the heartbeat IP):</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>rm -rf /var/cfengine/state/pg/data/*
+pushd /tmp; su cfpostgres -c &quot;/var/cfengine/bin/pg_basebackup -h 192.168.10.10 -U cfpostgres -D /var/cfengine/state/pg/data -X stream -P&quot;; popd
+</code></pre></div>
+</div></li>
+<li><p><strong>On node2</strong>, create the <em>standby.conf</em> file and configure PostgreSQL to run as a hot-standby replica:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>cat &lt;&lt;EOF &gt; /var/cfengine/state/pg/data/standby.conf
+#192.168.100.100 is the shared over cluster IP address of active/master cluster node
+primary_conninfo = &#39;host=192.168.100.100 port=5432 user=cfpostgres application_name=node2&#39;
+restore_command = &#39;cp /var/cfengine/state/pg/pg_arch/%f %p&#39;
+EOF
+chown --reference /var/cfengine/state/pg/data/postgresql.conf /var/cfengine/state/pg/data/standby.conf
+echo &quot;include &#39;standby.conf&#39;&quot; &gt;&gt; /var/cfengine/state/pg/data/postgresql.conf
+touch /var/cfengine/state/pg/data/standby.signal
+</code></pre></div>
+</div></li>
+</ol></li>
+<li><p>Start PostgreSQL on the <strong>node2</strong> by running the following command:</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>pushd /tmp; su cfpostgres -c &quot;/var/cfengine/bin/pg_ctl -D /var/cfengine/state/pg/data -l /var/log/postgresql.log start&quot;; popd
+</code></pre></div>
+</div></li>
+<li><p>Check that PostgreSQL replication is setup and working properly:</p>
+
+<ol>
+<li><p>The <strong>node2</strong> should report it is in the recovery mode:</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>/var/cfengine/bin/psql -x cfdb -c &quot;SELECT pg_is_in_recovery();&quot;
+</code></pre></div>
+</div>
+
+<p>should return:</p>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>-[ RECORD 1 ]-----+--
+pg_is_in_recovery | t
+</code></pre></div>
+</div></li>
+<li><p>The <strong>node1</strong> should report it is replicating to node2:</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>/var/cfengine/bin/psql -x cfdb -c &quot;SELECT * FROM pg_stat_replication;&quot;
+</code></pre></div>
+</div>
+
+<p>should return something like this:</p>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>-[ RECORD 1 ]----+------------------------------
+pid              | 11401
+usesysid         | 10
+usename          | cfpostgres
+application_name | node2
+client_addr      | 192.168.100.11
+client_hostname  | node2-pg
+client_port      | 33958
+backend_start    | 2018-10-16 14:19:04.226773+00
+backend_xmin     |
+state            | streaming
+sent_lsn         | 0/61E2C88
+write_lsn        | 0/61E2C88
+flush_lsn        | 0/61E2C88
+replay_lsn       | 0/61E2C88
+write_lag        |
+flush_lag        |
+replay_lag       |
+sync_priority    | 0
+sync_state       | async
+</code></pre></div>
+</div></li>
+</ol></li>
+<li><p>Stop PostgreSQL <strong>on both nodes</strong>:</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>pushd /tmp; su cfpostgres -c &quot;/var/cfengine/bin/pg_ctl -D /var/cfengine/state/pg/data -l /var/log/postgresql.log stop&quot;; popd
+</code></pre></div>
+</div></li>
+<li><p>Remove the hot-standby configuration <strong>on node2</strong>. It will be handled by the cluster resource and
+the resource agent.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>rm -f /var/cfengine/state/pg/data/standby.signal
+rm -f /var/cfengine/state/pg/data/standby.conf
+sed -i &quot;/standby\.conf/d&quot; /var/cfengine/state/pg/data/postgresql.conf
+</code></pre></div>
+</div></li>
+</ol>
+<h3 id="cluster-resource-configuration">Cluster resource configuration</h3>
+<ol>
+<li><p>Download the PostgreSQL resource agent supporting the CFEngine HA setup <strong>on both nodes</strong>.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>wget https://raw.githubusercontent.com/cfengine/core/master/contrib/pgsql_RA
+/bin/cp pgsql_RA /usr/lib/ocf/resource.d/heartbeat/pgsql
+chown --reference /usr/lib/ocf/resource.d/heartbeat/{IPaddr2,pgsql}
+chmod --reference /usr/lib/ocf/resource.d/heartbeat/{IPaddr2,pgsql}
+</code></pre></div>
+</div></li>
+<li><p>Create the PostgreSQL resource (**on node1**).</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>pcs resource create cfpgsql pgsql  \
+ pgctl=&quot;/var/cfengine/bin/pg_ctl&quot; \
+ psql=&quot;/var/cfengine/bin/psql&quot;    \
+ pgdata=&quot;/var/cfengine/state/pg/data&quot; \
+ pgdb=&quot;cfdb&quot; pgdba=&quot;cfpostgres&quot; repuser=&quot;cfpostgres&quot; \
+ tmpdir=&quot;/var/cfengine/state/pg/tmp&quot; \
+ rep_mode=&quot;async&quot; node_list=&quot;node1 node2&quot; \
+ primary_conninfo_opt=&quot;keepalives_idle=60 keepalives_interval=5 keepalives_count=5&quot; \
+ master_ip=&quot;192.168.100.100&quot; restart_on_promote=&quot;true&quot; \
+ logfile=&quot;/var/log/postgresql.log&quot; \
+ config=&quot;/var/cfengine/state/pg/data/postgresql.conf&quot; \
+ check_wal_receiver=true restore_command=&quot;cp /var/cfengine/state/pg/data/pg_arch/%f %p&quot; \
+ op monitor timeout=&quot;60s&quot; interval=&quot;3s&quot; on-fail=&quot;restart&quot; role=&quot;Master&quot; \
+ op monitor timeout=&quot;60s&quot; interval=&quot;4s&quot; on-fail=&quot;restart&quot; --disable
+</code></pre></div>
+</div></li>
+<li><p>Configure PostgreSQL to work in Master/Slave (active/standby) mode (**on node1**).</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>pcs resource master mscfpgsql cfpgsql master-max=1 master-node-max=1 clone-max=2 clone-node-max=1 notify=true
+</code></pre></div>
+</div></li>
+<li><p>Tie the previously configured shared IP address and PostgreSQL cluster resources to make sure
+both will always run on the same host and add migration rules to make sure that resources will be
+started and stopped in the correct order (**on node1**).</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>pcs constraint colocation add cfengine with Master mscfpgsql INFINITY
+pcs constraint order promote mscfpgsql then start cfengine symmetrical=false score=INFINITY
+pcs constraint order demote mscfpgsql then stop cfengine symmetrical=false score=0
+</code></pre></div>
+</div></li>
+<li><p>Enable and start the new resource now that it is fully configured (**on node1**).</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>pcs resource enable mscfpgsql --wait=30
+</code></pre></div>
+</div></li>
+<li><p>Verify that the constraints configuration is correct.</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>pcs constraint
+</code></pre></div>
+</div>
+
+<p>should give:</p>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>Location Constraints:
+ Resource: mscfpgsql
+   Enabled on: node1 (score:INFINITY) (role: Master)
+Ordering Constraints:
+ promote mscfpgsql then start cfengine (score:INFINITY) (non-symmetrical)
+ demote mscfpgsql then stop cfengine (score:0) (non-symmetrical)
+Colocation Constraints:
+ cfengine with mscfpgsql (score:INFINITY) (rsc-role:Started) (with-rsc-role:Master)
+</code></pre></div>
+</div></li>
+<li><p>Verify that the cluster is now fully setup and running.</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>crm_mon -Afr1
+</code></pre></div>
+</div>
+
+<p>should give something like:</p>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>Stack: cman
+Current DC: node1 (version 1.1.18-3.el6-bfe4e80420) - partition with quorum
+Last updated: Tue Oct 16 14:19:37 2018
+Last change: Tue Oct 16 14:19:04 2018 by root via crm_attribute on node1
+
+2 nodes configured
+3 resources configured
+
+Online: [ node1 node2 ]
+
+Full list of resources:
+
+Resource Group: cfengine
+    cfvirtip    (ocf::heartbeat:IPaddr2):   Started node1
+Master/Slave Set: mscfpgsql [cfpgsql]
+    Masters: [ node1 ]
+    Slaves: [ node2 ]
+
+Node Attributes:
+* Node node1:
+   + cfpgsql-data-status                : LATEST
+   + cfpgsql-master-baseline            : 0000000004000098
+   + cfpgsql-receiver-status            : normal (master)
+   + cfpgsql-status                     : PRI
+   + master-cfpgsql                     : 1000
+* Node node2:
+   + cfpgsql-data-status                : STREAMING|ASYNC
+   + cfpgsql-receiver-status            : normal
+   + cfpgsql-status                     : HS:async
+   + master-cfpgsql                     : 100
+</code></pre></div>
+</div>
+
+<p><strong>IMPORTANT:</strong> Please make sure that there&#39;s one Master node and one Slave node and that the
+              <em>cfpgsql-status</em> for the active node is reported as <em>PRI</em> and passive as
+              <em>HS:async</em> or <em>HS:alone</em>.</p></li>
+</ol>
+<h3 id="cfengine-configuration">CFEngine configuration</h3>
+<ol>
+<li><p>Create the HA configuration file <strong>on both nodes</strong>.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>cat &lt;&lt;EOF &gt; /var/cfengine/ha.cfg
+cmp_master: PRI
+cmp_slave: HS:async,HS:sync,HS:alone
+cmd: /usr/sbin/crm_attribute -l reboot -n cfpgsql-status -G -q
+EOF
+</code></pre></div>
+</div></li>
+<li><p>Mask the <em>cf-postgres.service</em> and make sure it is not required by the
+<em>cf-hub.service</em> <strong>on both nodes</strong> (PostgreSQL is managed by the cluster
+resource, not by the service).</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>sed -ri s/Requires/Wants/ /usr/lib/systemd/system/cf-hub.service
+systemctl daemon-reload
+systemctl mask cf-postgres.service
+</code></pre></div>
+</div></li>
+<li><p>Bootstrap the nodes.</p>
+
+<p>Bootstrap the <strong>node1</strong> to itself and make sure the initial policy (<a href="reference-masterfiles-policy-framework-promises.html" title="promises.cf"><code>promises.cf</code></a>) evaluation is
+skipped:</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>cf-agent --bootstrap 192.168.100.10 --skip-bootstrap-policy-run
+</code></pre></div>
+</div>
+
+<p>Bootstrap the <strong>node2</strong> to node1 (to establish trust) and then to itself, again skipping the
+initial policy evaluation:</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>cf-agent --bootstrap 192.168.100.10 --skip-bootstrap-policy-run
+cf-agent --bootstrap 192.168.100.11 --skip-bootstrap-policy-run
+</code></pre></div>
+</div></li>
+<li><p>Stop CFEngine <strong>on both nodes</strong>.</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>service cfengine3 stop
+</code></pre></div>
+</div></li>
+<li><p>Create the HA JSON configuration file <strong>on both nodes</strong>.</p>
+<div class="highlight code"><div class='code_block code'><div><i class='code'></i> code</div>
+      <pre><code class="text"><span></span>cat &lt;&lt;EOF &gt; /var/cfengine/masterfiles/cfe_internal/enterprise/ha/ha_info.json
+{
+ &quot;192.168.100.10&quot;:
+   {
+    &quot;sha&quot;: &quot;@NODE1_PKSHA@&quot;,
+    &quot;internal_ip&quot;: &quot;192.168.100.10&quot;
+   },
+ &quot;192.168.100.11&quot;:
+   {
+    &quot;sha&quot;: &quot;@NODE2_PKSHA@&quot;,
+    &quot;internal_ip&quot;: &quot;192.168.100.11&quot;
+   }
+}
+EOF
+</code></pre></div>
+</div>
+
+<p>The <code>@NODE1_PKSHA@</code> and <code>@NODE2_PKSHA@</code> strings are placeholders for the host key hashes of the
+nodes. Replace the placeholders with real values obtained by (on any node):</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>cf-key -s
+</code></pre></div>
+</div>
+
+<p><strong>IMPORTANT:</strong> Copy over only the hashes, without the <code>SHA=</code> prefix.</p></li>
+<li><p><strong>On both nodes,</strong> add the following class definition to the <em>/var/cfengine/masterfiles/def.json</em>
+file to enable HA:</p>
+<div class="highlight file"><div class='code_block file'><div><i class='file'></i> def.json</div>
+      <pre><code class="json"><span></span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;enable_cfengine_enterprise_hub_ha&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;any::&quot;</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
+<span class="w"> </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</div></li>
+<li><p><strong>On both nodes,</strong> run <code>cf-agent -Kf update.cf</code> to make sure that the new policy is copied from
+<em>masterfiles</em> to <em>inputs</em>.</p></li>
+<li><p>Start CFEngine <strong>on both nodes</strong>.</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>service cfengine3 start
+</code></pre></div>
+</div></li>
+<li><p>Check that the CFEngine HA setup is working by logging in to the Mission Portal at the
+<a href="https://192.168.100.100">https://192.168.100.100</a> address in your browser. Note that it takes up to 15 minutes for
+everything to settle and the <code>OK</code> HA status being reported in the Mission Portal&#39;s header.</p></li>
+</ol>
+<h3 id="configuring-3rd-node-as-disaster-recovery-or-database-backup-optional">Configuring 3rd node as disaster-recovery or database backup (optional)</h3>
+<ol>
+<li><p>Install the CFEngine hub package on the node which will be used as disaster-recovery or database
+backup node (node3).</p></li>
+<li><p>Bootstrap the disaster-recovery node to active node first (establish trust between hubs) and then
+bootstrap it to itself. At this point hub will be capable of collecting reports and serve policy.</p></li>
+<li><p>Stop cf-execd and cf-hub processes.</p></li>
+<li><p>Make sure that PostgreSQL configuration allows database replication connection from 3rd node (see
+PostgreSQL configuration section, point 5.3 for more details).</p></li>
+<li><p>Repeat steps 4 - 6 from PostgreSQL configuration to enable and verify database replication
+connection from the node3. Make sure that both the node2 and node3 are connected to active
+database node and streaming replication is in progress.</p>
+
+<p>Running the following command <strong>on node1</strong>:</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>/var/cfengine/bin/psql cfdb -c &quot;SELECT * FROM pg_stat_replication;&quot;
+</code></pre></div>
+</div>
+
+<p>Should give:</p>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>pid  | usesysid |  usename   | application_name |  client_addr   | client_hostname | client_port |         backend_start         |   state   | sent_location | write_location | flush_location | replay_location | sync_priority | sync_state
+------+----------+------------+------------------+----------------+-----------------+-------------+-------------------------------+-----------+---------------+----------------+----------------+-----------------+---------------+------------
+9252 |       10 | cfpostgres | node2            | 192.168.100.11 |                 |       58919 | 2015-08-24 07:14:45.925341+00 | streaming | 0/2A7034D0    | 0/2A7034D0     | 0/2A7034D0     | 0/2A7034D0      |             0 | async
+9276 |       10 | cfpostgres | node3            | 192.168.100.12 |                 |       52202 | 2015-08-24 07:14:46.038676+00 | streaming | 0/2A7034D0    | 0/2A7034D0     | 0/2A7034D0     | 0/2A7034D0      |             0 | async
+
+(2 rows)
+</code></pre></div>
+</div></li>
+<li><p>Modify HA JSON configuration file to contain information about the node3 (see CFEngine
+configuration, step 2). You should have configuration similar to one below:</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>cat /var/cfengine/masterfiles/cfe_internal/enterprise/ha/ha_info.json
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>{
+&quot;192.168.100.10&quot;:
+{
+ &quot;sha&quot;: &quot;b1463b08a89de98793d45a52da63d3f100247623ea5e7ad5688b9d0b8104383f&quot;,
+ &quot;internal_ip&quot;: &quot;192.168.100.10&quot;,
+ &quot;is_in_cluster&quot; : true,
+},
+&quot;192.168.100.11&quot;:
+{
+ &quot;sha&quot;: &quot;b13db51615afa409a22506e2b98006793c1b0a436b601b094be4ee4b32b321d5&quot;,
+ &quot;internal_ip&quot;: &quot;192.168.100.11&quot;,
+},
+&quot;192.168.100.12&quot;:
+{
+ &quot;sha&quot;: &quot;98f14786389b2fe5a93dc3ef4c3c973ef7832279aa925df324f40697b332614c&quot;,
+ &quot;internal_ip&quot;: &quot;192.168.100.12&quot;,
+ &quot;is_in_cluster&quot; : false,
+}
+}
+</code></pre></div>
+</div>
+
+<p>Please note that <code>is_in_cluster</code> parameter is optional for the 2 nodes in the HA cluster and
+by default is set to true. For the 3-node setup, the node3, which is not part of the cluster,
+<strong>MUST</strong> be marked with <code>&quot;is_in_cluster&quot; : false</code> configuration parameter.</p></li>
+<li><p>Start the cf-execd process (don&#39;t start cf-hub process as this is not needed while manual
+failover to the node3 is not performed). Please also note that during normal operations the
+cf-hub process should not be running on the node3.</p></li>
+</ol>
+<h3 id="manual-failover-to-disaster-recovery-node">Manual failover to disaster-recovery node</h3>
+<ol>
+<li><p>Before starting manual failover process make sure both active and passive nodes are not running.</p></li>
+<li><p>Verify that PostgreSQL is running on 3rd node and data replication from active node is not in progress. If database is actively replicating data with active cluster node make sure that this process will be finished and no new data will be stored in active database instance.</p></li>
+<li><p>After verifying that replication is finished and data is synchronized between active database node and replica node (or once node1 and node2 are both down) promote PostgreSQL to exit recovery and begin read-write operations <code>cd /tmp &amp;&amp; su cfpostgres -c &quot;/var/cfengine/bin/pg_ctl -c -w -D /var/cfengine/state/pg/data -l /var/log/postgresql.log  promote&quot;</code>.</p></li>
+<li><p>In order to make failover process as easy as possible there is <code>&quot;failover_to_replication_node_enabled&quot;</code> class defined both in <em>/var/cfengine/masterfiles/controls/VERSION/def.cf</em> and <em>/var/cfengine/masterfiles/controls/VERSION/update_def.cf</em>. In order to stat collecting reports and serving policy from 3rd node uncomment the line defining mentioned class.</p></li>
+</ol>
+
+<p><strong>IMPORTANT:</strong> Please note that as long as any of the active or passive cluster nodes is accessible by client to be contacted, failover to 3rd node is not possible. If the active or passive node is running and failover to 3rd node is required make sure to disable network interfaces where clients are bootstrapped to so that clients won&#39;t be able to access any other node than disaster-recovery.</p>
+<h3 id="troubleshooting">Troubleshooting</h3>
+<ol>
+<li><p>If either the IPaddr2 or pgslq resource is not running, try to enable it first with <code>pcs cluster enable --all</code>. If this is not strting the resources, you can try to run them in debug mode with this command <code>pcs resource debug-start &lt;resource-name&gt;</code>. The latter command should print diagnostics messages on why resources are not started.</p></li>
+<li><p>If <code>crm_mon -Afr1</code> is printing errors similar to the below</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>pcs status
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>Cluster name: cfcluster
+Last updated: Tue Jul  7 11:27:23 2015
+Last change: Tue Jul  7 11:02:40 2015
+Stack: cman
+Current DC: node1 - partition with quorum
+Version: 1.1.11-97629de
+2 Nodes configured
+3 Resources configured
+
+Online: [ node1 ]
+OFFLINE: [ node2 ]
+
+Full list of resources:
+
+Resource Group: cfengine
+    cfvirtip   (ocf::heartbeat:IPaddr2):   Started node1
+Master/Slave Set: mscfpgsql [cfpgsql]
+    Stopped: [ node1 node2 ]
+
+Failed actions:
+   cfpgsql_start_0 on node1 &#39;unknown error&#39; (1): call=13, status=complete, last-rc-change=&#39;Tue Jul  7 11:25:32 2015&#39;, queued=1ms, exec=137ms
+</code></pre></div>
+</div>
+
+<p>You can try to clear the errors by running <code>pcs resource cleanup &lt;resource-name&gt;</code>. This should clean errors for the appropriate resource and make the cluster restart it.</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>pcs resource cleanup cfpgsql
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>Resource: cfpgsql successfully cleaned up
+</code></pre></div>
+</div>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>pcs status
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>Cluster name: cfcluster
+Last updated: Tue Jul  7 11:29:36 2015
+Last change: Tue Jul  7 11:29:08 2015
+Stack: cman
+Current DC: node1 - partition with quorum
+Version: 1.1.11-97629de
+2 Nodes configured
+3 Resources configured
+
+Online: [ node1 ]
+OFFLINE: [ node2 ]
+
+Full list of resources:
+
+Resource Group: cfengine
+    cfvirtip   (ocf::heartbeat:IPaddr2):   Started node1
+Master/Slave Set: mscfpgsql [cfpgsql]
+    Masters: [ node1 ]
+    Stopped: [ node2 ]
+</code></pre></div>
+</div></li>
+<li><p>After cluster crash make sure to always start the node that should be active first, and then the one that should be passive. If the cluster is not running on the given node after restart you can enable it by running the following command:</p>
+<div class="highlight command"><div class='code_block command'><div><i class='command'></i> command</div>
+      <pre><code class="text"><span></span>pcs cluster start
+</code></pre></div>
+</div>
+<div class="highlight output"><div class='code_block output'><div><i class='output'></i> output</div>
+      <pre><code class="text"><span></span>Starting Cluster...
+</code></pre></div>
+</div></li>
+</ol>
+
+            </div>
+        </div>
+        
+        <div class="footer-top">
+            <div>
+                <h3>Still need help? </h3>
+                <a href="https://matrix.to/#/#CFEngine:matrix.org" target="_blank"><img src="./media/images/chat-square-dots-fill.svg"/> Chat</a>
+                <a href="https://github.com/cfengine/core/discussions" target="_blank"><img src="./media/images/people-fill.svg"/> Ask a question on Github</a>
+                <a href="https://groups.google.com/forum/#!forum/dev-cfengine" target="_blank"><img src="./media/images/mail.svg"/> Mailing list</a>
+            </div>
+        </div>
+    </article>
+    <aside>
+    <button onclick="openNavigationHandler()" class="btn navigation-btn">
+        <i class="bi bi-list-ul"></i> Navigation table
+    </button>
+    <div class="select versions-dropdown">
+        <label>Version</label>
+        <div class="dropdown-select">
+            <span>Version&nbsp;<div></div></span>
+            <div class="dropdown-select_options">
+                <a onclick="selectVersion('/docs/master/')" href="#">master</a>
+<a onclick="selectVersion('javascript:void(0);')" href="#" selected="selected">3.25 (non-LTS)</a>
+<a onclick="selectVersion('/docs/3.24/')" href="#">3.24 (LTS)</a>
+<a onclick="selectVersion('/docs/3.21/')" href="#">3.21 (LTS)</a>
+<a href="./versions.html">view all versions</a>
+
+            </div>
+        </div>
+    </div>
+    <div class="left-menu">
+        <div class="left-menu-top">
+            <i class="bi menu-back bi-arrow-left-short"></i>
+            <i class="bi menu-close bi-x"></i>
+        </div>
+        <ul class="left-menu-breadcrumbs"></ul>
+        <div class="selectedMenu"></div>
+        <ul class='mainMenu'><li class="parent level-1" data-url="overview.html"><i></i><a href="overview.html">Overview</a><ul><li class=" level-2" data-url="overview-what-is-cfengine-and-why.html"><i></i><a href="overview-what-is-cfengine-and-why.html">What is CFEngine and why?</a></li><li class=" level-2" data-url="overview-how-cfengine-works.html"><i></i><a href="overview-how-cfengine-works.html">How CFEngine works</a></li><li class=" level-2" data-url="overview-directory-structure.html"><i></i><a href="overview-directory-structure.html">CFEngine directory structure</a></li><li class=" level-2" data-url="overview-client-server-communication.html"><i></i><a href="overview-client-server-communication.html">Client server communication</a></li><li class=" level-2" data-url="overview-glossary.html"><i></i><a href="overview-glossary.html">Glossary</a></li></ul></li><li class="parent level-1" data-url="getting-started.html"><i></i><a href="getting-started.html">Getting started</a><ul><li class="parent level-2" data-url="getting-started-installation.html"><i></i><a href="getting-started-installation.html">Installation</a><ul><li class="parent level-3" data-url="getting-started-installation-pre-installation-checklist.html"><i></i><a href="getting-started-installation-pre-installation-checklist.html">Pre-installation checklist</a><ul><li class=" level-4" data-url="getting-started-installation-pre-installation-checklist-vi-quick-start-guide.html"><i></i><a href="getting-started-installation-pre-installation-checklist-vi-quick-start-guide.html">Quick-Start guide to using vi</a></li><li class=" level-4" data-url="getting-started-installation-pre-installation-checklist-putty-quick-start-guide.html"><i></i><a href="getting-started-installation-pre-installation-checklist-putty-quick-start-guide.html">Quick-Start guide to using PuTTY</a></li><li class=" level-4" data-url="getting-started-installation-pre-installation-checklist-verify-signatures.html"><i></i><a href="getting-started-installation-pre-installation-checklist-verify-signatures.html">Verifying package signatures</a></li></ul></li><li class=" level-3" data-url="getting-started-installation-local-virtual-machine.html"><i></i><a href="getting-started-installation-local-virtual-machine.html">Local virtual machine</a></li><li class="parent level-3" data-url="getting-started-installation-general-installation.html"><i></i><a href="getting-started-installation-general-installation.html">General installation</a><ul><li class=" level-4" data-url="getting-started-installation-general-installation-installation-enterprise-free-aws-rhel.html"><i></i><a href="getting-started-installation-general-installation-installation-enterprise-free-aws-rhel.html">Using Amazon Web Services</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-enterprise-free.html"><i></i><a href="getting-started-installation-general-installation-installation-enterprise-free.html">Installing Enterprise 25 Free</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-enterprise-vagrant.html"><i></i><a href="getting-started-installation-general-installation-installation-enterprise-vagrant.html">Using Vagrant</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-enterprise.html"><i></i><a href="getting-started-installation-general-installation-installation-enterprise.html">Installing Enterprise for production</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-coreos.html"><i></i><a href="getting-started-installation-general-installation-installation-coreos.html">Installing Enterprise on CoreOS</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-community.html"><i></i><a href="getting-started-installation-general-installation-installation-community.html">Installing Community</a></li><li class=" level-4" data-url="getting-started-installation-general-installation-installation-enterprise-generic-tarball.html"><i></i><a href="getting-started-installation-general-installation-installation-enterprise-generic-tarball.html">Installing from binary tarball</a></li></ul></li><li class=" level-3" data-url="getting-started-installation-secure-bootstrap.html"><i></i><a href="getting-started-installation-secure-bootstrap.html">Secure bootstrap</a></li><li class=" level-3" data-url="getting-started-installation-installation-overview.html"><i></i><a href="getting-started-installation-installation-overview.html">Installation overview</a></li><li class=" level-3" data-url="getting-started-installation-upgrading.html"><i></i><a href="getting-started-installation-upgrading.html">Upgrading</a></li><li class=" level-3" data-url="getting-started-installation-version-control.html"><i></i><a href="getting-started-installation-version-control.html">Version control</a></li></ul></li><li class=" level-2" data-url="getting-started-modules-from-cfengine-build.html"><i></i><a href="getting-started-modules-from-cfengine-build.html">Modules from CFEngine Build</a></li><li class=" level-2" data-url="getting-started-reporting-and-web-ui.html"><i></i><a href="getting-started-reporting-and-web-ui.html">Reporting and web UI</a></li><li class=" level-2" data-url="getting-started-writing-policy.html"><i></i><a href="getting-started-writing-policy.html">Writing policy</a></li><li class=" level-2" data-url="getting-started-developing-modules.html"><i></i><a href="getting-started-developing-modules.html">Developing modules</a></li></ul></li><li class="parent level-1" data-url="release-notes.html"><i></i><a href="release-notes.html">Release notes</a><ul><li class="parent level-2" data-url="release-notes-whatsnew.html"><i></i><a href="release-notes-whatsnew.html">New in CFEngine</a><ul><li class=" level-3" data-url="release-notes-whatsnew-changelog-core.html"><i></i><a href="release-notes-whatsnew-changelog-core.html">Changelog</a></li><li class=" level-3" data-url="release-notes-whatsnew-changelog-masterfiles-policy-framework.html"><i></i><a href="release-notes-whatsnew-changelog-masterfiles-policy-framework.html">Masterfiles changelog</a></li><li class=" level-3" data-url="release-notes-whatsnew-changelog-enterprise.html"><i></i><a href="release-notes-whatsnew-changelog-enterprise.html">Enterprise changelog</a></li></ul></li><li class=" level-2" data-url="release-notes-supported-platforms.html"><i></i><a href="release-notes-supported-platforms.html">Supported platforms and versions</a></li><li class=" level-2" data-url="release-notes-known-issues.html"><i></i><a href="release-notes-known-issues.html">Known issues</a></li><li class=" level-2" data-url="release-notes-legal-and-licenses.html"><i></i><a href="release-notes-legal-and-licenses.html">Legal and licenses</a></li></ul></li><li class="parent level-1" data-url="web-ui.html"><i></i><a href="web-ui.html">Web UI</a><ul><li class=" level-2" data-url="web-ui-settings.html"><i></i><a href="web-ui-settings.html">Settings</a></li><li class=" level-2" data-url="web-ui-health.html"><i></i><a href="web-ui-health.html">Health</a></li><li class=" level-2" data-url="web-ui-hosts.html"><i></i><a href="web-ui-hosts.html">Hosts</a></li><li class=" level-2" data-url="web-ui-alerts-and-notifications.html"><i></i><a href="web-ui-alerts-and-notifications.html">Alerts and notifications</a></li><li class=" level-2" data-url="web-ui-custom-actions-for-alerts.html"><i></i><a href="web-ui-custom-actions-for-alerts.html">Custom actions for alerts</a></li><li class="parent level-2" data-url="web-ui-enterprise-reporting.html"><i></i><a href="web-ui-enterprise-reporting.html">Enterprise reporting</a><ul><li class=" level-3" data-url="web-ui-enterprise-reporting-reporting-architecture.html"><i></i><a href="web-ui-enterprise-reporting-reporting-architecture.html">Reporting architecture</a></li><li class=" level-3" data-url="web-ui-enterprise-reporting-sql-queries-enterprise-api.html"><i></i><a href="web-ui-enterprise-reporting-sql-queries-enterprise-api.html">SQL queries using the Enterprise API</a></li><li class=" level-3" data-url="web-ui-enterprise-reporting-reporting_ui.html"><i></i><a href="web-ui-enterprise-reporting-reporting_ui.html">Reporting UI</a></li><li class=" level-3" data-url="web-ui-enterprise-reporting-client-initiated-reporting.html"><i></i><a href="web-ui-enterprise-reporting-client-initiated-reporting.html">Client initiated reporting / call collect</a></li></ul></li><li class=" level-2" data-url="web-ui-federated-reporting.html"><i></i><a href="web-ui-federated-reporting.html">Federated reporting</a></li><li class=" level-2" data-url="web-ui-measurements.html"><i></i><a href="web-ui-measurements.html">Measurements app</a></li><li class=" level-2" data-url="web-ui-debugging-mission-portal.html"><i></i><a href="web-ui-debugging-mission-portal.html">Debugging Mission Portal</a></li><li class="parent level-2" data-url="web-ui-hub_administration.html"><i></i><a href="web-ui-hub_administration.html">Hub administration</a><ul><li class=" level-3" data-url="web-ui-hub_administration-decommissioning-hosts.html"><i></i><a href="web-ui-hub_administration-decommissioning-hosts.html">Decommissioning hosts</a></li><li class=" level-3" data-url="web-ui-hub_administration-extending-mission-portal.html"><i></i><a href="web-ui-hub_administration-extending-mission-portal.html">Extending Mission Portal</a></li><li class=" level-3" data-url="web-ui-hub_administration-extending-query-builder.html"><i></i><a href="web-ui-hub_administration-extending-query-builder.html">Extending query builder in Mission Portal</a></li><li class=" level-3" data-url="web-ui-hub_administration-adjusting-schedules.html"><i></i><a href="web-ui-hub_administration-adjusting-schedules.html">Adjusting schedules</a></li><li class=" level-3" data-url="web-ui-hub_administration-backup-and-restore.html"><i></i><a href="web-ui-hub_administration-backup-and-restore.html">Backup and restore</a></li><li class=" level-3" data-url="web-ui-hub_administration-custom-ldap-port.html"><i></i><a href="web-ui-hub_administration-custom-ldap-port.html">Configure a custom LDAP port</a></li><li class=" level-3" data-url="web-ui-hub_administration-custom-ldaps-certificate.html"><i></i><a href="web-ui-hub_administration-custom-ldaps-certificate.html">Custom LDAPs certificate</a></li><li class=" level-3" data-url="web-ui-hub_administration-custom-https-certificate.html"><i></i><a href="web-ui-hub_administration-custom-https-certificate.html">Custom SSL certificate</a></li><li class=" level-3" data-url="web-ui-hub_administration-enable-plain-http.html"><i></i><a href="web-ui-hub_administration-enable-plain-http.html">Enable plain http</a></li><li class=" level-3" data-url="web-ui-hub_administration-lookup-license-info.html"><i></i><a href="web-ui-hub_administration-lookup-license-info.html">Lookup license info</a></li><li class=" level-3" data-url="web-ui-hub_administration-policy-deployment.html"><i></i><a href="web-ui-hub_administration-policy-deployment.html">Policy deployment</a></li><li class=" level-3" data-url="web-ui-hub_administration-public-key-distribution.html"><i></i><a href="web-ui-hub_administration-public-key-distribution.html">Public key distribution</a></li><li class=" level-3" data-url="web-ui-hub_administration-reinstall.html"><i></i><a href="web-ui-hub_administration-reinstall.html">Re-installing Enterprise hub</a></li><li class=" level-3" data-url="web-ui-hub_administration-regenerate-self-signed-cert.html"><i></i><a href="web-ui-hub_administration-regenerate-self-signed-cert.html">Regenerate self signed SSL certificate</a></li><li class=" level-3" data-url="web-ui-hub_administration-reset-admin-creds.html"><i></i><a href="web-ui-hub_administration-reset-admin-creds.html">Reset administrative credentials</a></li></ul></li><li class=" level-2" data-url="web-ui-license.html"><i></i><a href="web-ui-license.html">License</a></li></ul></li><li class="parent level-1" data-url="api.html"><i></i><a href="api.html">API</a><ul><li class="parent level-2" data-url="api-enterprise-api-examples.html"><i></i><a href="api-enterprise-api-examples.html">Enterprise API examples</a><ul><li class=" level-3" data-url="api-enterprise-api-examples-checking-status.html"><i></i><a href="api-enterprise-api-examples-checking-status.html">Checking status</a></li><li class=" level-3" data-url="api-enterprise-api-examples-managing-settings.html"><i></i><a href="api-enterprise-api-examples-managing-settings.html">Managing settings</a></li><li class=" level-3" data-url="api-enterprise-api-examples-managing-users-and-roles.html"><i></i><a href="api-enterprise-api-examples-managing-users-and-roles.html">Managing users and roles</a></li><li class=" level-3" data-url="api-enterprise-api-examples-browsing-host-information.html"><i></i><a href="api-enterprise-api-examples-browsing-host-information.html">Browsing host information</a></li><li class=" level-3" data-url="api-enterprise-api-examples-changes-api-usage.html"><i></i><a href="api-enterprise-api-examples-changes-api-usage.html">Tracking changes</a></li><li class=" level-3" data-url="api-enterprise-api-examples-sql-queries.html"><i></i><a href="api-enterprise-api-examples-sql-queries.html">SQL query examples</a></li></ul></li><li class="parent level-2" data-url="api-enterprise-api-ref.html"><i></i><a href="api-enterprise-api-ref.html">Enterprise API reference</a><ul><li class=" level-3" data-url="api-enterprise-api-ref-actions-api.html"><i></i><a href="api-enterprise-api-ref-actions-api.html">Actions API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-audit-logs-api.html"><i></i><a href="api-enterprise-api-ref-audit-logs-api.html">Audit log API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-build-api.html"><i></i><a href="api-enterprise-api-ref-build-api.html">Build API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-cmdb-api.html"><i></i><a href="api-enterprise-api-ref-cmdb-api.html">CMDB API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-changes.html"><i></i><a href="api-enterprise-api-ref-changes.html">Changes REST API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-federated-reporting-api.html"><i></i><a href="api-enterprise-api-ref-federated-reporting-api.html">Federated reporting configuration API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-file-changes.html"><i></i><a href="api-enterprise-api-ref-file-changes.html">File changes API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-health-diagnostic.html"><i></i><a href="api-enterprise-api-ref-health-diagnostic.html">Health diagnostic API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-host.html"><i></i><a href="api-enterprise-api-ref-host.html">Host REST API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-export-import-api.html"><i></i><a href="api-enterprise-api-ref-export-import-api.html">Import & export API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-export-import-compliance-report-api.html"><i></i><a href="api-enterprise-api-ref-export-import-compliance-report-api.html">Import & export compliance report API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-inventory.html"><i></i><a href="api-enterprise-api-ref-inventory.html">Inventory API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-ldap-api.html"><i></i><a href="api-enterprise-api-ref-ldap-api.html">LDAP authentication API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-personal-groups.html"><i></i><a href="api-enterprise-api-ref-personal-groups.html">Personal groups API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-query.html"><i></i><a href="api-enterprise-api-ref-query.html">Query REST API</a></li><li class="parent level-3" data-url="api-enterprise-api-ref-sql-schema.html"><i></i><a href="api-enterprise-api-ref-sql-schema.html">SQL schema</a><ul><li class=" level-4" data-url="api-enterprise-api-ref-sql-schema-cfdb.html"><i></i><a href="api-enterprise-api-ref-sql-schema-cfdb.html">cfdb</a></li><li class=" level-4" data-url="api-enterprise-api-ref-sql-schema-cfmp.html"><i></i><a href="api-enterprise-api-ref-sql-schema-cfmp.html">cfmp</a></li><li class=" level-4" data-url="api-enterprise-api-ref-sql-schema-cfsettings.html"><i></i><a href="api-enterprise-api-ref-sql-schema-cfsettings.html">cfsettings</a></li></ul></li><li class=" level-3" data-url="api-enterprise-api-ref-ssh-keys-api.html"><i></i><a href="api-enterprise-api-ref-ssh-keys-api.html">SSH keys API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-shared-groups.html"><i></i><a href="api-enterprise-api-ref-shared-groups.html">Shared groups API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-status-settings.html"><i></i><a href="api-enterprise-api-ref-status-settings.html">Status and settings REST API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-two-factor-authentication.html"><i></i><a href="api-enterprise-api-ref-two-factor-authentication.html">Two-factor authentication API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-users-rbac.html"><i></i><a href="api-enterprise-api-ref-users-rbac.html">Users and access-control REST API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-vcs-settings.html"><i></i><a href="api-enterprise-api-ref-vcs-settings.html">VCS settings API</a></li><li class=" level-3" data-url="api-enterprise-api-ref-web-rbac.html"><i></i><a href="api-enterprise-api-ref-web-rbac.html">Web RBAC API</a></li></ul></li></ul></li><li class="parent level-1" data-url="examples.html"><i></i><a href="examples.html">Examples and tutorials</a><ul><li class="parent level-2" data-url="examples-example-snippets.html"><i></i><a href="examples-example-snippets.html">Example snippets</a><ul><li class=" level-3" data-url="examples-example-snippets-general.html"><i></i><a href="examples-example-snippets-general.html">General examples</a></li><li class=" level-3" data-url="examples-example-snippets-cfengine-administration.html"><i></i><a href="examples-example-snippets-cfengine-administration.html">Administration examples</a></li><li class=" level-3" data-url="examples-example-snippets-timing-counting-measuring.html"><i></i><a href="examples-example-snippets-timing-counting-measuring.html">Measuring examples</a></li><li class=" level-3" data-url="examples-example-snippets-software-adminstration.html"><i></i><a href="examples-example-snippets-software-adminstration.html">Software administration examples</a></li><li class=" level-3" data-url="examples-example-snippets-commands-scripts-execution.html"><i></i><a href="examples-example-snippets-commands-scripts-execution.html">Commands, scripts, and execution examples</a></li><li class=" level-3" data-url="examples-example-snippets-basic-file-directory.html"><i></i><a href="examples-example-snippets-basic-file-directory.html">File and directory examples</a></li><li class=" level-3" data-url="examples-example-snippets-file-template.html"><i></i><a href="examples-example-snippets-file-template.html">File template examples</a></li><li class=" level-3" data-url="examples-example-snippets-active_directory.html"><i></i><a href="examples-example-snippets-active_directory.html">Interacting with directory services</a></li><li class=" level-3" data-url="examples-example-snippets-database.html"><i></i><a href="examples-example-snippets-database.html">Database examples</a></li><li class=" level-3" data-url="examples-example-snippets-network.html"><i></i><a href="examples-example-snippets-network.html">Network examples</a></li><li class=" level-3" data-url="examples-example-snippets-system-security.html"><i></i><a href="examples-example-snippets-system-security.html">System security examples</a></li><li class=" level-3" data-url="examples-example-snippets-system-information.html"><i></i><a href="examples-example-snippets-system-information.html">System information examples</a></li><li class=" level-3" data-url="examples-example-snippets-system-administration.html"><i></i><a href="examples-example-snippets-system-administration.html">System administration examples</a></li><li class=" level-3" data-url="examples-example-snippets-system-file.html"><i></i><a href="examples-example-snippets-system-file.html">System file examples</a></li><li class=" level-3" data-url="examples-example-snippets-windows-registry.html"><i></i><a href="examples-example-snippets-windows-registry.html">Windows registry examples</a></li><li class=" level-3" data-url="examples-example-snippets-file_permissions.html"><i></i><a href="examples-example-snippets-file_permissions.html">File permissions</a></li><li class=" level-3" data-url="examples-example-snippets-user-management.html"><i></i><a href="examples-example-snippets-user-management.html">User management examples</a></li><li class="parent level-3" data-url="examples-example-snippets-promise-patterns.html"><i></i><a href="examples-example-snippets-promise-patterns.html">Common promise patterns</a><ul><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_aborting_execution.html"><i></i><a href="examples-example-snippets-promise-patterns-example_aborting_execution.html">Aborting execution</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_change_detection.html"><i></i><a href="examples-example-snippets-promise-patterns-example_change_detection.html">Change detection</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_diskfree.html"><i></i><a href="examples-example-snippets-promise-patterns-example_diskfree.html">Check filesystem space</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_copy_single_files.html"><i></i><a href="examples-example-snippets-promise-patterns-example_copy_single_files.html">Copy single files</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_create_filedir.html"><i></i><a href="examples-example-snippets-promise-patterns-example_create_filedir.html">Create files and directories</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_edit_motd.html"><i></i><a href="examples-example-snippets-promise-patterns-example_edit_motd.html">Customize message of the day</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_ssh_keys.html"><i></i><a href="examples-example-snippets-promise-patterns-example_ssh_keys.html">Distribute ssh keys</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_process_kill.html"><i></i><a href="examples-example-snippets-promise-patterns-example_process_kill.html">Ensure a process is not running</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_enable_service.html"><i></i><a href="examples-example-snippets-promise-patterns-example_enable_service.html">Ensure a service is enabled and running</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_find_mac_addr.html"><i></i><a href="examples-example-snippets-promise-patterns-example_find_mac_addr.html">Find the MAC address</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_install_package.html"><i></i><a href="examples-example-snippets-promise-patterns-example_install_package.html">Install packages</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_mount_nfs.html"><i></i><a href="examples-example-snippets-promise-patterns-example_mount_nfs.html">Mount NFS filesystem</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_process_restart.html"><i></i><a href="examples-example-snippets-promise-patterns-example_process_restart.html">Restart a process</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_edit_name_resolution.html"><i></i><a href="examples-example-snippets-promise-patterns-example_edit_name_resolution.html">Set up name resolution with DNS</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_sudoers.html"><i></i><a href="examples-example-snippets-promise-patterns-example_sudoers.html">Set up sudo</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_ntp.html"><i></i><a href="examples-example-snippets-promise-patterns-example_ntp.html">Set up time management through NTP</a></li><li class=" level-4" data-url="examples-example-snippets-promise-patterns-example_updating_from_central_hub.html"><i></i><a href="examples-example-snippets-promise-patterns-example_updating_from_central_hub.html">Updating from a central policy server</a></li></ul></li></ul></li><li class="parent level-2" data-url="examples-tutorials.html"><i></i><a href="examples-tutorials.html">Tutorials</a><ul><li class=" level-3" data-url="examples-tutorials-json-yaml-support-in-cfengine.html"><i></i><a href="examples-tutorials-json-yaml-support-in-cfengine.html">JSON and YAML support in CFEngine</a></li><li class=" level-3" data-url="examples-tutorials-installing-cfengine-enterprise-agent.html"><i></i><a href="examples-tutorials-installing-cfengine-enterprise-agent.html">Installing CFEngine Enterprise agent</a></li><li class=" level-3" data-url="examples-tutorials-manage-local-users.html"><i></i><a href="examples-tutorials-manage-local-users.html">Managing local users</a></li><li class=" level-3" data-url="examples-tutorials-manage-ntp.html"><i></i><a href="examples-tutorials-manage-ntp.html">Managing network time protocol</a></li><li class=" level-3" data-url="examples-tutorials-manage-processes-and-services.html"><i></i><a href="examples-tutorials-manage-processes-and-services.html">Managing processes and services</a></li><li class=" level-3" data-url="examples-tutorials-manage-packages.html"><i></i><a href="examples-tutorials-manage-packages.html">Package management</a></li><li class=" level-3" data-url="examples-tutorials-write-cfengine-policy.html"><i></i><a href="examples-tutorials-write-cfengine-policy.html">Writing CFEngine policy</a></li><li class=" level-3" data-url="examples-tutorials-distribute-files-from-a-central-location.html"><i></i><a href="examples-tutorials-distribute-files-from-a-central-location.html">Distributing files from a central location</a></li><li class=" level-3" data-url="examples-tutorials-files-tutorial.html"><i></i><a href="examples-tutorials-files-tutorial.html">File editing</a></li><li class="parent level-3" data-url="examples-tutorials-reporting.html"><i></i><a href="examples-tutorials-reporting.html">Reporting</a><ul><li class=" level-4" data-url="examples-tutorials-reporting-monitoring-reporting.html"><i></i><a href="examples-tutorials-reporting-monitoring-reporting.html">Monitoring and reporting</a></li><li class=" level-4" data-url="examples-tutorials-reporting-command-line-reports.html"><i></i><a href="examples-tutorials-reporting-command-line-reports.html">Command-Line reports</a></li></ul></li><li class=" level-3" data-url="examples-tutorials-report_inventory_remediate_sec_vulnerabilities.html"><i></i><a href="examples-tutorials-report_inventory_remediate_sec_vulnerabilities.html">Reporting and remediation of security vulnerabilities</a></li><li class=" level-3" data-url="examples-tutorials-masterfiles_policy_framework_upgrade.html"><i></i><a href="examples-tutorials-masterfiles_policy_framework_upgrade.html">Masterfiles Policy Framework upgrade</a></li><li class=" level-3" data-url="examples-tutorials-tags.html"><i></i><a href="examples-tutorials-tags.html">Tags for variables, classes, and bundles</a></li><li class=" level-3" data-url="examples-tutorials-custom_inventory.html"><i></i><a href="examples-tutorials-custom_inventory.html">Custom inventory</a></li><li class=" level-3" data-url="examples-tutorials-dashboard-alerts.html"><i></i><a href="examples-tutorials-dashboard-alerts.html">Dashboard alerts</a></li><li class=" level-3" data-url="examples-tutorials-integrating-alerts-with-pager-duty.html"><i></i><a href="examples-tutorials-integrating-alerts-with-pager-duty.html">Integrating alerts with PagerDuty</a></li><li class=" level-3" data-url="examples-tutorials-integrating-alerts-with-ticketing-systems.html"><i></i><a href="examples-tutorials-integrating-alerts-with-ticketing-systems.html">Integrating alerts with ticketing systems</a></li><li class=" level-3" data-url="examples-tutorials-integrating-with-sumo-logic.html"><i></i><a href="examples-tutorials-integrating-with-sumo-logic.html">Integrating with Sumo Logic</a></li><li class=" level-3" data-url="examples-tutorials-render-files-with-mustache-templates.html"><i></i><a href="examples-tutorials-render-files-with-mustache-templates.html">Rendering files with Mustache templates</a></li><li class=" level-3" data-url="examples-tutorials-file_comparison.html"><i></i><a href="examples-tutorials-file_comparison.html">File comparison</a></li><li class="parent level-3" data-url="examples-tutorials-high-availability.html"><i></i><a href="examples-tutorials-high-availability.html">High availability</a><ul><li class=" level-4" data-url="examples-tutorials-high-availability-installation-guide.html"><i></i><a href="examples-tutorials-high-availability-installation-guide.html">Installation guide</a></li></ul></li><li class="parent level-3" data-url="examples-tutorials-writing-and-serving-policy.html"><i></i><a href="examples-tutorials-writing-and-serving-policy.html">Writing and serving policy</a><ul><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-policy-layers-abstraction.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-policy-layers-abstraction.html">Layers of abstraction in policy</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-promises-available-in-cfengine.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-promises-available-in-cfengine.html">Promises available in CFEngine</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-authoring-policy-tools-and-workflow.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-authoring-policy-tools-and-workflow.html">Authoring policy tools & workflow</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-editors.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-editors.html">Editors</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-policy-style.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-policy-style.html">Policy style guide</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-bundles-best-practices.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-bundles-best-practices.html">Bundles best practices</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-external_data.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-external_data.html">External data</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-testing-policies.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-testing-policies.html">Testing policies</a></li><li class=" level-4" data-url="examples-tutorials-writing-and-serving-policy-controlling-frequency.html"><i></i><a href="examples-tutorials-writing-and-serving-policy-controlling-frequency.html">Controlling frequency</a></li></ul></li></ul></li></ul></li><li class="parent level-1" data-url="reference.html"><i></i><a href="reference.html">Reference</a><ul><li class="parent level-2" data-url="reference-components.html"><i></i><a href="reference-components.html">Components</a><ul><li class=" level-3" data-url="reference-components-cf-agent.html"><i></i><a href="reference-components-cf-agent.html">cf-agent</a></li><li class=" level-3" data-url="reference-components-cf-secret.html"><i></i><a href="reference-components-cf-secret.html">cf-secret</a></li><li class=" level-3" data-url="reference-components-cf-support.html"><i></i><a href="reference-components-cf-support.html">cf-support</a></li><li class=" level-3" data-url="reference-components-cf-serverd.html"><i></i><a href="reference-components-cf-serverd.html">cf-serverd</a></li><li class=" level-3" data-url="reference-components-cf-execd.html"><i></i><a href="reference-components-cf-execd.html">cf-execd</a></li><li class=" level-3" data-url="reference-components-cf-promises.html"><i></i><a href="reference-components-cf-promises.html">cf-promises</a></li><li class=" level-3" data-url="reference-components-cf-monitord.html"><i></i><a href="reference-components-cf-monitord.html">cf-monitord</a></li><li class=" level-3" data-url="reference-components-cf-key.html"><i></i><a href="reference-components-cf-key.html">cf-key</a></li><li class=" level-3" data-url="reference-components-cf-runagent.html"><i></i><a href="reference-components-cf-runagent.html">cf-runagent</a></li><li class=" level-3" data-url="reference-components-cf-check.html"><i></i><a href="reference-components-cf-check.html">cf-check</a></li><li class=" level-3" data-url="reference-components-cf-hub.html"><i></i><a href="reference-components-cf-hub.html">cf-hub</a></li><li class=" level-3" data-url="reference-components-cf-net.html"><i></i><a href="reference-components-cf-net.html">cf-net</a></li><li class=" level-3" data-url="reference-components-cf-reactor.html"><i></i><a href="reference-components-cf-reactor.html">cf-reactor</a></li><li class=" level-3" data-url="reference-components-file_control_promises.html"><i></i><a href="reference-components-file_control_promises.html">file control</a></li></ul></li><li class="parent level-2" data-url="reference-promise-types.html"><i></i><a href="reference-promise-types.html">Promise types</a><ul><li class=" level-3" data-url="reference-promise-types-access.html"><i></i><a href="reference-promise-types-access.html">access</a></li><li class=" level-3" data-url="reference-promise-types-classes.html"><i></i><a href="reference-promise-types-classes.html">classes</a></li><li class=" level-3" data-url="reference-promise-types-commands.html"><i></i><a href="reference-promise-types-commands.html">commands</a></li><li class=" level-3" data-url="reference-promise-types-custom.html"><i></i><a href="reference-promise-types-custom.html">custom</a></li><li class=" level-3" data-url="reference-promise-types-defaults.html"><i></i><a href="reference-promise-types-defaults.html">defaults</a></li><li class="parent level-3" data-url="reference-promise-types-files.html"><i></i><a href="reference-promise-types-files.html">files</a><ul><li class="parent level-4" data-url="reference-promise-types-files-edit_line.html"><i></i><a href="reference-promise-types-files-edit_line.html">edit_line</a><ul><li class=" level-5" data-url="reference-promise-types-files-edit_line-delete_lines.html"><i></i><a href="reference-promise-types-files-edit_line-delete_lines.html">delete_lines</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_line-field_edits.html"><i></i><a href="reference-promise-types-files-edit_line-field_edits.html">field_edits</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_line-insert_lines.html"><i></i><a href="reference-promise-types-files-edit_line-insert_lines.html">insert_lines</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_line-replace_patterns.html"><i></i><a href="reference-promise-types-files-edit_line-replace_patterns.html">replace_patterns</a></li></ul></li><li class="parent level-4" data-url="reference-promise-types-files-edit_xml.html"><i></i><a href="reference-promise-types-files-edit_xml.html">edit_xml</a><ul><li class=" level-5" data-url="reference-promise-types-files-edit_xml-build_xpath.html"><i></i><a href="reference-promise-types-files-edit_xml-build_xpath.html">build_xpath</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-delete_attribute.html"><i></i><a href="reference-promise-types-files-edit_xml-delete_attribute.html">delete_attribute</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-delete_text.html"><i></i><a href="reference-promise-types-files-edit_xml-delete_text.html">delete_text</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-delete_tree.html"><i></i><a href="reference-promise-types-files-edit_xml-delete_tree.html">delete_tree</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-insert_text.html"><i></i><a href="reference-promise-types-files-edit_xml-insert_text.html">insert_text</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-insert_tree.html"><i></i><a href="reference-promise-types-files-edit_xml-insert_tree.html">insert_tree</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-set_attribute.html"><i></i><a href="reference-promise-types-files-edit_xml-set_attribute.html">set_attribute</a></li><li class=" level-5" data-url="reference-promise-types-files-edit_xml-set_text.html"><i></i><a href="reference-promise-types-files-edit_xml-set_text.html">set_text</a></li></ul></li></ul></li><li class=" level-3" data-url="reference-promise-types-measurements.html"><i></i><a href="reference-promise-types-measurements.html">measurements</a></li><li class=" level-3" data-url="reference-promise-types-meta.html"><i></i><a href="reference-promise-types-meta.html">meta</a></li><li class=" level-3" data-url="reference-promise-types-methods.html"><i></i><a href="reference-promise-types-methods.html">methods</a></li><li class=" level-3" data-url="reference-promise-types-packages.html"><i></i><a href="reference-promise-types-packages.html">packages</a></li><li class=" level-3" data-url="reference-promise-types-packages-deprecated.html"><i></i><a href="reference-promise-types-packages-deprecated.html">packages (deprecated)</a></li><li class=" level-3" data-url="reference-promise-types-processes.html"><i></i><a href="reference-promise-types-processes.html">processes</a></li><li class=" level-3" data-url="reference-promise-types-reports.html"><i></i><a href="reference-promise-types-reports.html">reports</a></li><li class=" level-3" data-url="reference-promise-types-roles.html"><i></i><a href="reference-promise-types-roles.html">roles</a></li><li class=" level-3" data-url="reference-promise-types-services.html"><i></i><a href="reference-promise-types-services.html">services</a></li><li class=" level-3" data-url="reference-promise-types-storage.html"><i></i><a href="reference-promise-types-storage.html">storage</a></li><li class=" level-3" data-url="reference-promise-types-users.html"><i></i><a href="reference-promise-types-users.html">users</a></li><li class=" level-3" data-url="reference-promise-types-vars.html"><i></i><a href="reference-promise-types-vars.html">vars</a></li><li class=" level-3" data-url="reference-promise-types-databases.html"><i></i><a href="reference-promise-types-databases.html">databases</a></li><li class=" level-3" data-url="reference-promise-types-guest_environments.html"><i></i><a href="reference-promise-types-guest_environments.html">guest_environments</a></li></ul></li><li class="parent level-2" data-url="reference-functions.html"><i></i><a href="reference-functions.html">Functions</a><ul><li class=" level-3" data-url="reference-functions-accessedbefore.html"><i></i><a href="reference-functions-accessedbefore.html">accessedbefore</a></li><li class=" level-3" data-url="reference-functions-accumulated.html"><i></i><a href="reference-functions-accumulated.html">accumulated</a></li><li class=" level-3" data-url="reference-functions-ago.html"><i></i><a href="reference-functions-ago.html">ago</a></li><li class=" level-3" data-url="reference-functions-and.html"><i></i><a href="reference-functions-and.html">and</a></li><li class=" level-3" data-url="reference-functions-basename.html"><i></i><a href="reference-functions-basename.html">basename</a></li><li class=" level-3" data-url="reference-functions-bundlesmatching.html"><i></i><a href="reference-functions-bundlesmatching.html">bundlesmatching</a></li><li class=" level-3" data-url="reference-functions-bundlestate.html"><i></i><a href="reference-functions-bundlestate.html">bundlestate</a></li><li class=" level-3" data-url="reference-functions-callstack_callers.html"><i></i><a href="reference-functions-callstack_callers.html">callstack_callers</a></li><li class=" level-3" data-url="reference-functions-callstack_promisers.html"><i></i><a href="reference-functions-callstack_promisers.html">callstack_promisers</a></li><li class=" level-3" data-url="reference-functions-canonify.html"><i></i><a href="reference-functions-canonify.html">canonify</a></li><li class=" level-3" data-url="reference-functions-canonifyuniquely.html"><i></i><a href="reference-functions-canonifyuniquely.html">canonifyuniquely</a></li><li class=" level-3" data-url="reference-functions-cf_version_after.html"><i></i><a href="reference-functions-cf_version_after.html">cf_version_after</a></li><li class=" level-3" data-url="reference-functions-cf_version_at.html"><i></i><a href="reference-functions-cf_version_at.html">cf_version_at</a></li><li class=" level-3" data-url="reference-functions-cf_version_before.html"><i></i><a href="reference-functions-cf_version_before.html">cf_version_before</a></li><li class=" level-3" data-url="reference-functions-cf_version_between.html"><i></i><a href="reference-functions-cf_version_between.html">cf_version_between</a></li><li class=" level-3" data-url="reference-functions-cf_version_maximum.html"><i></i><a href="reference-functions-cf_version_maximum.html">cf_version_maximum</a></li><li class=" level-3" data-url="reference-functions-cf_version_minimum.html"><i></i><a href="reference-functions-cf_version_minimum.html">cf_version_minimum</a></li><li class=" level-3" data-url="reference-functions-changedbefore.html"><i></i><a href="reference-functions-changedbefore.html">changedbefore</a></li><li class=" level-3" data-url="reference-functions-classesmatching.html"><i></i><a href="reference-functions-classesmatching.html">classesmatching</a></li><li class=" level-3" data-url="reference-functions-classfiltercsv.html"><i></i><a href="reference-functions-classfiltercsv.html">classfiltercsv</a></li><li class=" level-3" data-url="reference-functions-classify.html"><i></i><a href="reference-functions-classify.html">classify</a></li><li class=" level-3" data-url="reference-functions-classmatch.html"><i></i><a href="reference-functions-classmatch.html">classmatch</a></li><li class=" level-3" data-url="reference-functions-concat.html"><i></i><a href="reference-functions-concat.html">concat</a></li><li class=" level-3" data-url="reference-functions-countclassesmatching.html"><i></i><a href="reference-functions-countclassesmatching.html">countclassesmatching</a></li><li class=" level-3" data-url="reference-functions-countlinesmatching.html"><i></i><a href="reference-functions-countlinesmatching.html">countlinesmatching</a></li><li class=" level-3" data-url="reference-functions-data_expand.html"><i></i><a href="reference-functions-data_expand.html">data_expand</a></li><li class=" level-3" data-url="reference-functions-data_readstringarray.html"><i></i><a href="reference-functions-data_readstringarray.html">data_readstringarray</a></li><li class=" level-3" data-url="reference-functions-data_readstringarrayidx.html"><i></i><a href="reference-functions-data_readstringarrayidx.html">data_readstringarrayidx</a></li><li class=" level-3" data-url="reference-functions-data_regextract.html"><i></i><a href="reference-functions-data_regextract.html">data_regextract</a></li><li class=" level-3" data-url="reference-functions-data_sysctlvalues.html"><i></i><a href="reference-functions-data_sysctlvalues.html">data_sysctlvalues</a></li><li class=" level-3" data-url="reference-functions-datastate.html"><i></i><a href="reference-functions-datastate.html">datastate</a></li><li class=" level-3" data-url="reference-functions-difference.html"><i></i><a href="reference-functions-difference.html">difference</a></li><li class=" level-3" data-url="reference-functions-dirname.html"><i></i><a href="reference-functions-dirname.html">dirname</a></li><li class=" level-3" data-url="reference-functions-diskfree.html"><i></i><a href="reference-functions-diskfree.html">diskfree</a></li><li class=" level-3" data-url="reference-functions-escape.html"><i></i><a href="reference-functions-escape.html">escape</a></li><li class=" level-3" data-url="reference-functions-eval.html"><i></i><a href="reference-functions-eval.html">eval</a></li><li class=" level-3" data-url="reference-functions-every.html"><i></i><a href="reference-functions-every.html">every</a></li><li class=" level-3" data-url="reference-functions-execresult.html"><i></i><a href="reference-functions-execresult.html">execresult</a></li><li class=" level-3" data-url="reference-functions-execresult_as_data.html"><i></i><a href="reference-functions-execresult_as_data.html">execresult_as_data</a></li><li class=" level-3" data-url="reference-functions-expandrange.html"><i></i><a href="reference-functions-expandrange.html">expandrange</a></li><li class=" level-3" data-url="reference-functions-file_hash.html"><i></i><a href="reference-functions-file_hash.html">file_hash</a></li><li class=" level-3" data-url="reference-functions-fileexists.html"><i></i><a href="reference-functions-fileexists.html">fileexists</a></li><li class=" level-3" data-url="reference-functions-filesexist.html"><i></i><a href="reference-functions-filesexist.html">filesexist</a></li><li class=" level-3" data-url="reference-functions-filesize.html"><i></i><a href="reference-functions-filesize.html">filesize</a></li><li class=" level-3" data-url="reference-functions-filestat.html"><i></i><a href="reference-functions-filestat.html">filestat</a></li><li class=" level-3" data-url="reference-functions-filter.html"><i></i><a href="reference-functions-filter.html">filter</a></li><li class=" level-3" data-url="reference-functions-findfiles.html"><i></i><a href="reference-functions-findfiles.html">findfiles</a></li><li class=" level-3" data-url="reference-functions-findfiles_up.html"><i></i><a href="reference-functions-findfiles_up.html">findfiles_up</a></li><li class=" level-3" data-url="reference-functions-findprocesses.html"><i></i><a href="reference-functions-findprocesses.html">findprocesses</a></li><li class=" level-3" data-url="reference-functions-format.html"><i></i><a href="reference-functions-format.html">format</a></li><li class=" level-3" data-url="reference-functions-getclassmetatags.html"><i></i><a href="reference-functions-getclassmetatags.html">getclassmetatags</a></li><li class=" level-3" data-url="reference-functions-getenv.html"><i></i><a href="reference-functions-getenv.html">getenv</a></li><li class=" level-3" data-url="reference-functions-getfields.html"><i></i><a href="reference-functions-getfields.html">getfields</a></li><li class=" level-3" data-url="reference-functions-getgid.html"><i></i><a href="reference-functions-getgid.html">getgid</a></li><li class=" level-3" data-url="reference-functions-getindices.html"><i></i><a href="reference-functions-getindices.html">getindices</a></li><li class=" level-3" data-url="reference-functions-getuid.html"><i></i><a href="reference-functions-getuid.html">getuid</a></li><li class=" level-3" data-url="reference-functions-getuserinfo.html"><i></i><a href="reference-functions-getuserinfo.html">getuserinfo</a></li><li class=" level-3" data-url="reference-functions-getusers.html"><i></i><a href="reference-functions-getusers.html">getusers</a></li><li class=" level-3" data-url="reference-functions-getvalues.html"><i></i><a href="reference-functions-getvalues.html">getvalues</a></li><li class=" level-3" data-url="reference-functions-getvariablemetatags.html"><i></i><a href="reference-functions-getvariablemetatags.html">getvariablemetatags</a></li><li class=" level-3" data-url="reference-functions-grep.html"><i></i><a href="reference-functions-grep.html">grep</a></li><li class=" level-3" data-url="reference-functions-groupexists.html"><i></i><a href="reference-functions-groupexists.html">groupexists</a></li><li class=" level-3" data-url="reference-functions-hash.html"><i></i><a href="reference-functions-hash.html">hash</a></li><li class=" level-3" data-url="reference-functions-hash_to_int.html"><i></i><a href="reference-functions-hash_to_int.html">hash_to_int</a></li><li class=" level-3" data-url="reference-functions-hashmatch.html"><i></i><a href="reference-functions-hashmatch.html">hashmatch</a></li><li class=" level-3" data-url="reference-functions-host2ip.html"><i></i><a href="reference-functions-host2ip.html">host2ip</a></li><li class=" level-3" data-url="reference-functions-hostinnetgroup.html"><i></i><a href="reference-functions-hostinnetgroup.html">hostinnetgroup</a></li><li class=" level-3" data-url="reference-functions-hostrange.html"><i></i><a href="reference-functions-hostrange.html">hostrange</a></li><li class=" level-3" data-url="reference-functions-hostsseen.html"><i></i><a href="reference-functions-hostsseen.html">hostsseen</a></li><li class=" level-3" data-url="reference-functions-hostswithclass.html"><i></i><a href="reference-functions-hostswithclass.html">hostswithclass</a></li><li class=" level-3" data-url="reference-functions-hubknowledge.html"><i></i><a href="reference-functions-hubknowledge.html">hubknowledge</a></li><li class=" level-3" data-url="reference-functions-ifelse.html"><i></i><a href="reference-functions-ifelse.html">ifelse</a></li><li class=" level-3" data-url="reference-functions-int.html"><i></i><a href="reference-functions-int.html">int</a></li><li class=" level-3" data-url="reference-functions-intersection.html"><i></i><a href="reference-functions-intersection.html">intersection</a></li><li class=" level-3" data-url="reference-functions-ip2host.html"><i></i><a href="reference-functions-ip2host.html">ip2host</a></li><li class=" level-3" data-url="reference-functions-iprange.html"><i></i><a href="reference-functions-iprange.html">iprange</a></li><li class=" level-3" data-url="reference-functions-irange.html"><i></i><a href="reference-functions-irange.html">irange</a></li><li class=" level-3" data-url="reference-functions-isdir.html"><i></i><a href="reference-functions-isdir.html">isdir</a></li><li class=" level-3" data-url="reference-functions-isexecutable.html"><i></i><a href="reference-functions-isexecutable.html">isexecutable</a></li><li class=" level-3" data-url="reference-functions-isgreaterthan.html"><i></i><a href="reference-functions-isgreaterthan.html">isgreaterthan</a></li><li class=" level-3" data-url="reference-functions-isipinsubnet.html"><i></i><a href="reference-functions-isipinsubnet.html">isipinsubnet</a></li><li class=" level-3" data-url="reference-functions-islessthan.html"><i></i><a href="reference-functions-islessthan.html">islessthan</a></li><li class=" level-3" data-url="reference-functions-islink.html"><i></i><a href="reference-functions-islink.html">islink</a></li><li class=" level-3" data-url="reference-functions-isnewerthan.html"><i></i><a href="reference-functions-isnewerthan.html">isnewerthan</a></li><li class=" level-3" data-url="reference-functions-isplain.html"><i></i><a href="reference-functions-isplain.html">isplain</a></li><li class=" level-3" data-url="reference-functions-isreadable.html"><i></i><a href="reference-functions-isreadable.html">isreadable</a></li><li class=" level-3" data-url="reference-functions-isvariable.html"><i></i><a href="reference-functions-isvariable.html">isvariable</a></li><li class=" level-3" data-url="reference-functions-join.html"><i></i><a href="reference-functions-join.html">join</a></li><li class=" level-3" data-url="reference-functions-lastnode.html"><i></i><a href="reference-functions-lastnode.html">lastnode</a></li><li class=" level-3" data-url="reference-functions-laterthan.html"><i></i><a href="reference-functions-laterthan.html">laterthan</a></li><li class=" level-3" data-url="reference-functions-ldaparray.html"><i></i><a href="reference-functions-ldaparray.html">ldaparray</a></li><li class=" level-3" data-url="reference-functions-ldaplist.html"><i></i><a href="reference-functions-ldaplist.html">ldaplist</a></li><li class=" level-3" data-url="reference-functions-ldapvalue.html"><i></i><a href="reference-functions-ldapvalue.html">ldapvalue</a></li><li class=" level-3" data-url="reference-functions-length.html"><i></i><a href="reference-functions-length.html">length</a></li><li class=" level-3" data-url="reference-functions-lsdir.html"><i></i><a href="reference-functions-lsdir.html">lsdir</a></li><li class=" level-3" data-url="reference-functions-makerule.html"><i></i><a href="reference-functions-makerule.html">makerule</a></li><li class=" level-3" data-url="reference-functions-maparray.html"><i></i><a href="reference-functions-maparray.html">maparray</a></li><li class=" level-3" data-url="reference-functions-mapdata.html"><i></i><a href="reference-functions-mapdata.html">mapdata</a></li><li class=" level-3" data-url="reference-functions-maplist.html"><i></i><a href="reference-functions-maplist.html">maplist</a></li><li class=" level-3" data-url="reference-functions-max.html"><i></i><a href="reference-functions-max.html">max</a></li><li class=" level-3" data-url="reference-functions-mean.html"><i></i><a href="reference-functions-mean.html">mean</a></li><li class=" level-3" data-url="reference-functions-mergedata.html"><i></i><a href="reference-functions-mergedata.html">mergedata</a></li><li class=" level-3" data-url="reference-functions-min.html"><i></i><a href="reference-functions-min.html">min</a></li><li class=" level-3" data-url="reference-functions-network_connections.html"><i></i><a href="reference-functions-network_connections.html">network_connections</a></li><li class=" level-3" data-url="reference-functions-none.html"><i></i><a href="reference-functions-none.html">none</a></li><li class=" level-3" data-url="reference-functions-not.html"><i></i><a href="reference-functions-not.html">not</a></li><li class=" level-3" data-url="reference-functions-now.html"><i></i><a href="reference-functions-now.html">now</a></li><li class=" level-3" data-url="reference-functions-nth.html"><i></i><a href="reference-functions-nth.html">nth</a></li><li class=" level-3" data-url="reference-functions-on.html"><i></i><a href="reference-functions-on.html">on</a></li><li class=" level-3" data-url="reference-functions-or.html"><i></i><a href="reference-functions-or.html">or</a></li><li class=" level-3" data-url="reference-functions-packagesmatching.html"><i></i><a href="reference-functions-packagesmatching.html">packagesmatching</a></li><li class=" level-3" data-url="reference-functions-packageupdatesmatching.html"><i></i><a href="reference-functions-packageupdatesmatching.html">packageupdatesmatching</a></li><li class=" level-3" data-url="reference-functions-parseintarray.html"><i></i><a href="reference-functions-parseintarray.html">parseintarray</a></li><li class=" level-3" data-url="reference-functions-parsejson.html"><i></i><a href="reference-functions-parsejson.html">parsejson</a></li><li class=" level-3" data-url="reference-functions-parserealarray.html"><i></i><a href="reference-functions-parserealarray.html">parserealarray</a></li><li class=" level-3" data-url="reference-functions-parsestringarray.html"><i></i><a href="reference-functions-parsestringarray.html">parsestringarray</a></li><li class=" level-3" data-url="reference-functions-parsestringarrayidx.html"><i></i><a href="reference-functions-parsestringarrayidx.html">parsestringarrayidx</a></li><li class=" level-3" data-url="reference-functions-parseyaml.html"><i></i><a href="reference-functions-parseyaml.html">parseyaml</a></li><li class=" level-3" data-url="reference-functions-peerleader.html"><i></i><a href="reference-functions-peerleader.html">peerleader</a></li><li class=" level-3" data-url="reference-functions-peerleaders.html"><i></i><a href="reference-functions-peerleaders.html">peerleaders</a></li><li class=" level-3" data-url="reference-functions-peers.html"><i></i><a href="reference-functions-peers.html">peers</a></li><li class=" level-3" data-url="reference-functions-processexists.html"><i></i><a href="reference-functions-processexists.html">processexists</a></li><li class=" level-3" data-url="reference-functions-product.html"><i></i><a href="reference-functions-product.html">product</a></li><li class=" level-3" data-url="reference-functions-randomint.html"><i></i><a href="reference-functions-randomint.html">randomint</a></li><li class=" level-3" data-url="reference-functions-read_module_protocol.html"><i></i><a href="reference-functions-read_module_protocol.html">read_module_protocol</a></li><li class=" level-3" data-url="reference-functions-readcsv.html"><i></i><a href="reference-functions-readcsv.html">readcsv</a></li><li class=" level-3" data-url="reference-functions-readdata.html"><i></i><a href="reference-functions-readdata.html">readdata</a></li><li class=" level-3" data-url="reference-functions-readenvfile.html"><i></i><a href="reference-functions-readenvfile.html">readenvfile</a></li><li class=" level-3" data-url="reference-functions-readfile.html"><i></i><a href="reference-functions-readfile.html">readfile</a></li><li class=" level-3" data-url="reference-functions-readintarray.html"><i></i><a href="reference-functions-readintarray.html">readintarray</a></li><li class=" level-3" data-url="reference-functions-readintlist.html"><i></i><a href="reference-functions-readintlist.html">readintlist</a></li><li class=" level-3" data-url="reference-functions-readjson.html"><i></i><a href="reference-functions-readjson.html">readjson</a></li><li class=" level-3" data-url="reference-functions-readrealarray.html"><i></i><a href="reference-functions-readrealarray.html">readrealarray</a></li><li class=" level-3" data-url="reference-functions-readreallist.html"><i></i><a href="reference-functions-readreallist.html">readreallist</a></li><li class=" level-3" data-url="reference-functions-readstringarray.html"><i></i><a href="reference-functions-readstringarray.html">readstringarray</a></li><li class=" level-3" data-url="reference-functions-readstringarrayidx.html"><i></i><a href="reference-functions-readstringarrayidx.html">readstringarrayidx</a></li><li class=" level-3" data-url="reference-functions-readstringlist.html"><i></i><a href="reference-functions-readstringlist.html">readstringlist</a></li><li class=" level-3" data-url="reference-functions-readtcp.html"><i></i><a href="reference-functions-readtcp.html">readtcp</a></li><li class=" level-3" data-url="reference-functions-readyaml.html"><i></i><a href="reference-functions-readyaml.html">readyaml</a></li><li class=" level-3" data-url="reference-functions-regarray.html"><i></i><a href="reference-functions-regarray.html">regarray</a></li><li class=" level-3" data-url="reference-functions-regcmp.html"><i></i><a href="reference-functions-regcmp.html">regcmp</a></li><li class=" level-3" data-url="reference-functions-regex_replace.html"><i></i><a href="reference-functions-regex_replace.html">regex_replace</a></li><li class=" level-3" data-url="reference-functions-regextract.html"><i></i><a href="reference-functions-regextract.html">regextract</a></li><li class=" level-3" data-url="reference-functions-registryvalue.html"><i></i><a href="reference-functions-registryvalue.html">registryvalue</a></li><li class=" level-3" data-url="reference-functions-regldap.html"><i></i><a href="reference-functions-regldap.html">regldap</a></li><li class=" level-3" data-url="reference-functions-regline.html"><i></i><a href="reference-functions-regline.html">regline</a></li><li class=" level-3" data-url="reference-functions-reglist.html"><i></i><a href="reference-functions-reglist.html">reglist</a></li><li class=" level-3" data-url="reference-functions-remoteclassesmatching.html"><i></i><a href="reference-functions-remoteclassesmatching.html">remoteclassesmatching</a></li><li class=" level-3" data-url="reference-functions-remotescalar.html"><i></i><a href="reference-functions-remotescalar.html">remotescalar</a></li><li class=" level-3" data-url="reference-functions-returnszero.html"><i></i><a href="reference-functions-returnszero.html">returnszero</a></li><li class=" level-3" data-url="reference-functions-reverse.html"><i></i><a href="reference-functions-reverse.html">reverse</a></li><li class=" level-3" data-url="reference-functions-rrange.html"><i></i><a href="reference-functions-rrange.html">rrange</a></li><li class=" level-3" data-url="reference-functions-selectservers.html"><i></i><a href="reference-functions-selectservers.html">selectservers</a></li><li class=" level-3" data-url="reference-functions-shuffle.html"><i></i><a href="reference-functions-shuffle.html">shuffle</a></li><li class=" level-3" data-url="reference-functions-some.html"><i></i><a href="reference-functions-some.html">some</a></li><li class=" level-3" data-url="reference-functions-sort.html"><i></i><a href="reference-functions-sort.html">sort</a></li><li class=" level-3" data-url="reference-functions-splayclass.html"><i></i><a href="reference-functions-splayclass.html">splayclass</a></li><li class=" level-3" data-url="reference-functions-splitstring.html"><i></i><a href="reference-functions-splitstring.html">splitstring</a></li><li class=" level-3" data-url="reference-functions-storejson.html"><i></i><a href="reference-functions-storejson.html">storejson</a></li><li class=" level-3" data-url="reference-functions-strcmp.html"><i></i><a href="reference-functions-strcmp.html">strcmp</a></li><li class=" level-3" data-url="reference-functions-strftime.html"><i></i><a href="reference-functions-strftime.html">strftime</a></li><li class=" level-3" data-url="reference-functions-string.html"><i></i><a href="reference-functions-string.html">string</a></li><li class=" level-3" data-url="reference-functions-string_downcase.html"><i></i><a href="reference-functions-string_downcase.html">string_downcase</a></li><li class=" level-3" data-url="reference-functions-string_head.html"><i></i><a href="reference-functions-string_head.html">string_head</a></li><li class=" level-3" data-url="reference-functions-string_length.html"><i></i><a href="reference-functions-string_length.html">string_length</a></li><li class=" level-3" data-url="reference-functions-string_mustache.html"><i></i><a href="reference-functions-string_mustache.html">string_mustache</a></li><li class=" level-3" data-url="reference-functions-string_replace.html"><i></i><a href="reference-functions-string_replace.html">string_replace</a></li><li class=" level-3" data-url="reference-functions-string_reverse.html"><i></i><a href="reference-functions-string_reverse.html">string_reverse</a></li><li class=" level-3" data-url="reference-functions-string_split.html"><i></i><a href="reference-functions-string_split.html">string_split</a></li><li class=" level-3" data-url="reference-functions-string_tail.html"><i></i><a href="reference-functions-string_tail.html">string_tail</a></li><li class=" level-3" data-url="reference-functions-string_trim.html"><i></i><a href="reference-functions-string_trim.html">string_trim</a></li><li class=" level-3" data-url="reference-functions-string_upcase.html"><i></i><a href="reference-functions-string_upcase.html">string_upcase</a></li><li class=" level-3" data-url="reference-functions-sublist.html"><i></i><a href="reference-functions-sublist.html">sublist</a></li><li class=" level-3" data-url="reference-functions-sum.html"><i></i><a href="reference-functions-sum.html">sum</a></li><li class=" level-3" data-url="reference-functions-sysctlvalue.html"><i></i><a href="reference-functions-sysctlvalue.html">sysctlvalue</a></li><li class=" level-3" data-url="reference-functions-translatepath.html"><i></i><a href="reference-functions-translatepath.html">translatepath</a></li><li class=" level-3" data-url="reference-functions-type.html"><i></i><a href="reference-functions-type.html">type</a></li><li class=" level-3" data-url="reference-functions-unique.html"><i></i><a href="reference-functions-unique.html">unique</a></li><li class=" level-3" data-url="reference-functions-url_get.html"><i></i><a href="reference-functions-url_get.html">url_get</a></li><li class=" level-3" data-url="reference-functions-usemodule.html"><i></i><a href="reference-functions-usemodule.html">usemodule</a></li><li class=" level-3" data-url="reference-functions-userexists.html"><i></i><a href="reference-functions-userexists.html">userexists</a></li><li class=" level-3" data-url="reference-functions-validdata.html"><i></i><a href="reference-functions-validdata.html">validdata</a></li><li class=" level-3" data-url="reference-functions-validjson.html"><i></i><a href="reference-functions-validjson.html">validjson</a></li><li class=" level-3" data-url="reference-functions-variablesmatching.html"><i></i><a href="reference-functions-variablesmatching.html">variablesmatching</a></li><li class=" level-3" data-url="reference-functions-variablesmatching_as_data.html"><i></i><a href="reference-functions-variablesmatching_as_data.html">variablesmatching_as_data</a></li><li class=" level-3" data-url="reference-functions-variance.html"><i></i><a href="reference-functions-variance.html">variance</a></li><li class=" level-3" data-url="reference-functions-version_compare.html"><i></i><a href="reference-functions-version_compare.html">version_compare</a></li></ul></li><li class="parent level-2" data-url="reference-language-concepts.html"><i></i><a href="reference-language-concepts.html">Language concepts</a><ul><li class=" level-3" data-url="reference-language-concepts-bundles.html"><i></i><a href="reference-language-concepts-bundles.html">Bundles</a></li><li class=" level-3" data-url="reference-language-concepts-bodies.html"><i></i><a href="reference-language-concepts-bodies.html">Bodies</a></li><li class=" level-3" data-url="reference-language-concepts-promises.html"><i></i><a href="reference-language-concepts-promises.html">Promises</a></li><li class=" level-3" data-url="reference-language-concepts-policy-evaluation.html"><i></i><a href="reference-language-concepts-policy-evaluation.html">Policy evaluation</a></li><li class=" level-3" data-url="reference-language-concepts-classes.html"><i></i><a href="reference-language-concepts-classes.html">Classes and decisions</a></li><li class=" level-3" data-url="reference-language-concepts-variables.html"><i></i><a href="reference-language-concepts-variables.html">Variables</a></li><li class=" level-3" data-url="reference-language-concepts-augments.html"><i></i><a href="reference-language-concepts-augments.html">Augments</a></li><li class=" level-3" data-url="reference-language-concepts-loops.html"><i></i><a href="reference-language-concepts-loops.html">Loops</a></li><li class=" level-3" data-url="reference-language-concepts-pattern-matching-and-referencing.html"><i></i><a href="reference-language-concepts-pattern-matching-and-referencing.html">Pattern matching and referencing</a></li><li class="parent level-3" data-url="reference-language-concepts-modules.html"><i></i><a href="reference-language-concepts-modules.html">Modules</a><ul><li class=" level-4" data-url="reference-language-concepts-modules-package-module-api.html"><i></i><a href="reference-language-concepts-modules-package-module-api.html">Package modules</a></li></ul></li><li class=" level-3" data-url="reference-language-concepts-namespaces.html"><i></i><a href="reference-language-concepts-namespaces.html">Namespaces</a></li></ul></li><li class="parent level-2" data-url="reference-special-variables.html"><i></i><a href="reference-special-variables.html">Special variables</a><ul><li class=" level-3" data-url="reference-special-variables-connection.html"><i></i><a href="reference-special-variables-connection.html">connection</a></li><li class=" level-3" data-url="reference-special-variables-const.html"><i></i><a href="reference-special-variables-const.html">const</a></li><li class=" level-3" data-url="reference-special-variables-def.html"><i></i><a href="reference-special-variables-def.html">def</a></li><li class=" level-3" data-url="reference-special-variables-edit.html"><i></i><a href="reference-special-variables-edit.html">edit</a></li><li class=" level-3" data-url="reference-special-variables-match.html"><i></i><a href="reference-special-variables-match.html">match</a></li><li class=" level-3" data-url="reference-special-variables-mon.html"><i></i><a href="reference-special-variables-mon.html">mon</a></li><li class=" level-3" data-url="reference-special-variables-sys.html"><i></i><a href="reference-special-variables-sys.html">sys</a></li><li class=" level-3" data-url="reference-special-variables-this.html"><i></i><a href="reference-special-variables-this.html">this</a></li></ul></li><li class="parent level-2" data-url="reference-masterfiles-policy-framework.html"><i></i><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a><ul><li class=" level-3" data-url="reference-masterfiles-policy-framework-promises.html"><i></i><a href="reference-masterfiles-policy-framework-promises.html">promises.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-no-distrib.html"><i></i><a href="reference-masterfiles-policy-framework-no-distrib.html">.no-distrib/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-update.html"><i></i><a href="reference-masterfiles-policy-framework-update.html">update.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-standalone_self_upgrade.html"><i></i><a href="reference-masterfiles-policy-framework-standalone_self_upgrade.html">standalone_self_upgrade.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal.html">cfe_internal/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-cfe_cfengine.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-cfe_cfengine.html">cfe_internal/CFE_cfengine.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-core.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-core.html">cfe_internal/core/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-core-watchdog.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-core-watchdog.html">cfe_internal/core/watchdog</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-core-watchdog-watchdog.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-core-watchdog-watchdog.html">cfe_internal/core/watchdog/watchdog.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-enterprise.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise.html">cfe_internal/enterprise/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation.html">cfe_internal/enterprise/federation/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation-federation.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation-federation.html">cfe_internal/enterprise/federation/federation.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-recommendations.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-recommendations.html">cfe_internal/recommendations.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update.html">cfe_internal/update/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_dc_workflow.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_dc_workflow.html">cfe_internal/update/cfe_internal_dc_workflow.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_update_from_repository.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_update_from_repository.html">cfe_internal/update/cfe_internal_update_from_repository.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-lib.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-lib.html">cfe_internal/update/lib.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-systemd_units.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-systemd_units.html">cfe_internal/update/systemd_units.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-update_bins.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_bins.html">cfe_internal/update/update_bins.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-update_policy.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_policy.html">cfe_internal/update/update_policy.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-cfe_internal-update-update_processes.html"><i></i><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_processes.html">cfe_internal/update/update_processes.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls.html"><i></i><a href="reference-masterfiles-policy-framework-controls.html">controls/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf_agent.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf_agent.html">controls/cf_agent.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf_execd.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf_execd.html">controls/cf_execd.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf-hub.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf-hub.html">controls/cf_hub.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf_monitord.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf_monitord.html">controls/cf_monitord.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf_runagent.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf_runagent.html">controls/cf_runagent.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-cf_serverd.html"><i></i><a href="reference-masterfiles-policy-framework-controls-cf_serverd.html">controls/cf_serverd.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-def.html"><i></i><a href="reference-masterfiles-policy-framework-controls-def.html">controls/def.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-def_inputs.html"><i></i><a href="reference-masterfiles-policy-framework-controls-def_inputs.html">controls/def_inputs.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-reports.html"><i></i><a href="reference-masterfiles-policy-framework-controls-reports.html">controls/reports.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-update_def.html"><i></i><a href="reference-masterfiles-policy-framework-controls-update_def.html">controls/update_def.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-controls-update_def_inputs.html"><i></i><a href="reference-masterfiles-policy-framework-controls-update_def_inputs.html">controls/update_def_inputs.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory.html"><i></i><a href="reference-masterfiles-policy-framework-inventory.html">inventory/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-any.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-any.html">inventory/any.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-debian.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-debian.html">inventory/debian.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-freebsd.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-freebsd.html">inventory/freebsd.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-generic.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-generic.html">inventory/generic.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-linux.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-linux.html">inventory/linux.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-lsb.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-lsb.html">inventory/lsb.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-macos.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-macos.html">inventory/macos.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-os.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-os.html">inventory/os.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-redhat.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-redhat.html">inventory/redhat.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-suse.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-suse.html">inventory/suse.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-inventory-windows.html"><i></i><a href="reference-masterfiles-policy-framework-inventory-windows.html">inventory/windows.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib.html"><i></i><a href="reference-masterfiles-policy-framework-lib.html">lib/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-autorun.html"><i></i><a href="reference-masterfiles-policy-framework-lib-autorun.html">lib/autorun.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-bundles.html"><i></i><a href="reference-masterfiles-policy-framework-lib-bundles.html">lib/bundles.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-cfe_internal.html"><i></i><a href="reference-masterfiles-policy-framework-lib-cfe_internal.html">lib/cfe_internal.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-cfe_internal_hub.html"><i></i><a href="reference-masterfiles-policy-framework-lib-cfe_internal_hub.html">lib/cfe_internal_hub.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-cfengine_enterprise_hub_ha.html"><i></i><a href="reference-masterfiles-policy-framework-lib-cfengine_enterprise_hub_ha.html">lib/cfengine_enterprise_hub_ha.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-commands.html"><i></i><a href="reference-masterfiles-policy-framework-lib-commands.html">lib/commands.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-common.html"><i></i><a href="reference-masterfiles-policy-framework-lib-common.html">lib/common.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-databases.html"><i></i><a href="reference-masterfiles-policy-framework-lib-databases.html">lib/databases.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-edit_xml.html"><i></i><a href="reference-masterfiles-policy-framework-lib-edit_xml.html">lib/edit_xml.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-event.html"><i></i><a href="reference-masterfiles-policy-framework-lib-event.html">lib/event.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-examples.html"><i></i><a href="reference-masterfiles-policy-framework-lib-examples.html">lib/examples.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-feature.html"><i></i><a href="reference-masterfiles-policy-framework-lib-feature.html">lib/feature.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-files.html"><i></i><a href="reference-masterfiles-policy-framework-lib-files.html">lib/files.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-guest_environments.html"><i></i><a href="reference-masterfiles-policy-framework-lib-guest_environments.html">lib/guest_environments.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-monitor.html"><i></i><a href="reference-masterfiles-policy-framework-lib-monitor.html">lib/monitor.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-packages.html"><i></i><a href="reference-masterfiles-policy-framework-lib-packages.html">lib/packages.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-paths.html"><i></i><a href="reference-masterfiles-policy-framework-lib-paths.html">lib/paths.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-processes.html"><i></i><a href="reference-masterfiles-policy-framework-lib-processes.html">lib/processes.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-reports.html"><i></i><a href="reference-masterfiles-policy-framework-lib-reports.html">lib/reports.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-services.html"><i></i><a href="reference-masterfiles-policy-framework-lib-services.html">lib/services.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-stdlib.html"><i></i><a href="reference-masterfiles-policy-framework-lib-stdlib.html">lib/stdlib.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-storage.html"><i></i><a href="reference-masterfiles-policy-framework-lib-storage.html">lib/storage.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-testing.html"><i></i><a href="reference-masterfiles-policy-framework-lib-testing.html">lib/testing.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-users.html"><i></i><a href="reference-masterfiles-policy-framework-lib-users.html">lib/users.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-lib-vcs.html"><i></i><a href="reference-masterfiles-policy-framework-lib-vcs.html">lib/vcs.cf</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules.html"><i></i><a href="reference-masterfiles-policy-framework-modules.html">modules/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-mustache.html"><i></i><a href="reference-masterfiles-policy-framework-modules-mustache.html">modules/mustache/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-packages.html"><i></i><a href="reference-masterfiles-policy-framework-modules-packages.html">modules/packages/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-packages-vendored.html"><i></i><a href="reference-masterfiles-policy-framework-modules-packages-vendored.html">modules/packages/vendored/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-promises.html"><i></i><a href="reference-masterfiles-policy-framework-modules-promises.html">modules/promises/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-promises-cfengine.py.html"><i></i><a href="reference-masterfiles-policy-framework-modules-promises-cfengine.py.html">modules/promises/cfengine.py</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-modules-promises-cfengine.sh.html"><i></i><a href="reference-masterfiles-policy-framework-modules-promises-cfengine.sh.html">modules/promises/cfengine.sh</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-services.html"><i></i><a href="reference-masterfiles-policy-framework-services.html">services/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-services-autorun.html"><i></i><a href="reference-masterfiles-policy-framework-services-autorun.html">services/autorun/</a></li><li class=" level-3" data-url="reference-masterfiles-policy-framework-services-main.html"><i></i><a href="reference-masterfiles-policy-framework-services-main.html">services/main.cf</a></li></ul></li><li class=" level-2" data-url="reference-macros.html"><i></i><a href="reference-macros.html">Macros</a></li><li class=" level-2" data-url="reference-all-types.html"><i></i><a href="reference-all-types.html">All promise and body types</a></li></ul></li><li class="parent level-1" data-url="resources.html"><i></i><a href="resources.html">Resources</a><ul><li class="parent level-2" data-url="resources-faq.html"><i></i><a href="resources-faq.html">FAQ</a><ul><li class=" level-3" data-url="resources-faq-why-knowledge-management.html"><i></i><a href="resources-faq-why-knowledge-management.html">Why knowledge management?</a></li><li class=" level-3" data-url="resources-faq-enterprise-license.html"><i></i><a href="resources-faq-enterprise-license.html">Requesting a CFEngine Enterprise License</a></li><li class=" level-3" data-url="resources-faq-uninstall-reinstall.html"><i></i><a href="resources-faq-uninstall-reinstall.html">Uninstalling / reinstalling</a></li><li class=" level-3" data-url="resources-faq-output-email.html"><i></i><a href="resources-faq-output-email.html">Agent output email</a></li><li class=" level-3" data-url="resources-faq-debugging-slow-queries.html"><i></i><a href="resources-faq-debugging-slow-queries.html">Debugging slow queries</a></li><li class=" level-3" data-url="resources-faq-enterprise-report-filtering.html"><i></i><a href="resources-faq-enterprise-report-filtering.html">Enterprise Report Filtering</a></li><li class=" level-3" data-url="resources-faq-enterprise-report-collection.html"><i></i><a href="resources-faq-enterprise-report-collection.html">Enterprise report collection</a></li><li class=" level-3" data-url="resources-faq-enterprise.html"><i></i><a href="resources-faq-enterprise.html">Enterprise reporting database</a></li><li class=" level-3" data-url="resources-faq-show-classes-and-vars.html"><i></i><a href="resources-faq-show-classes-and-vars.html">How can I tell what classes and variables are defined?</a></li><li class=" level-3" data-url="resources-faq-find-public-key-for-host-sha.html"><i></i><a href="resources-faq-find-public-key-for-host-sha.html">How do I find the public key for a given host</a></li><li class=" level-3" data-url="resources-faq-fix-trust-after-ip-change.html"><i></i><a href="resources-faq-fix-trust-after-ip-change.html">How do I fix trust after an IP change?</a></li><li class=" level-3" data-url="resources-faq-fix-undefined-body-error.html"><i></i><a href="resources-faq-fix-undefined-body-error.html">How do I fix undefined body errors?</a></li><li class=" level-3" data-url="resources-faq-integrate-custom-policy.html"><i></i><a href="resources-faq-integrate-custom-policy.html">How do I integrate custom policy?</a></li><li class=" level-3" data-url="resources-faq-variables.html"><i></i><a href="resources-faq-variables.html">How do I pass a data type variable?</a></li><li class=" level-3" data-url="resources-faq-manual-execution.html"><i></i><a href="resources-faq-manual-execution.html">Manual execution</a></li><li class=" level-3" data-url="resources-faq-mustache-templating.html"><i></i><a href="resources-faq-mustache-templating.html">Mustache templating</a></li><li class=" level-3" data-url="resources-faq-unable-to-log-in-mission-portal.html"><i></i><a href="resources-faq-unable-to-log-in-mission-portal.html">Unable to log into Mission Portal</a></li><li class=" level-3" data-url="resources-faq-users.html"><i></i><a href="resources-faq-users.html">Users</a></li><li class=" level-3" data-url="resources-faq-what-is-promise-locking.html"><i></i><a href="resources-faq-what-is-promise-locking.html">What is promise locking?</a></li><li class=" level-3" data-url="resources-faq-why-are-remote-agents-not-updating.html"><i></i><a href="resources-faq-why-are-remote-agents-not-updating.html">Why are remote agents not updating?</a></li><li class=" level-3" data-url="resources-faq-why-are-files-not-being-distributed.html"><i></i><a href="resources-faq-why-are-files-not-being-distributed.html">Why are some files inside masterfiles not being updated/distributed?</a></li><li class=" level-3" data-url="resources-faq-fhs.html"><i></i><a href="resources-faq-fhs.html">Why does CFEngine install into /var/cfengine instead of following the FHS?</a></li><li class=" level-3" data-url="resources-faq-bootstrap-failed.html"><i></i><a href="resources-faq-bootstrap-failed.html">Bootstrapping</a></li><li class=" level-3" data-url="resources-faq-tuning-postgresql.html"><i></i><a href="resources-faq-tuning-postgresql.html">Tuning PostgreSQL</a></li><li class=" level-3" data-url="resources-faq-what-did-cfengine-change.html"><i></i><a href="resources-faq-what-did-cfengine-change.html">What did CFEngine do?</a></li></ul></li><li class="parent level-2" data-url="resources-additional-topics.html"><i></i><a href="resources-additional-topics.html">Additional topics</a><ul><li class=" level-3" data-url="resources-additional-topics-agility.html"><i></i><a href="resources-additional-topics-agility.html">Agility</a></li><li class=" level-3" data-url="resources-additional-topics-application-management.html"><i></i><a href="resources-additional-topics-application-management.html">Application management</a></li><li class=" level-3" data-url="resources-additional-topics-build-deploy-manage-audit.html"><i></i><a href="resources-additional-topics-build-deploy-manage-audit.html">Build Deploy Manage Audit</a></li><li class=" level-3" data-url="resources-additional-topics-change-management.html"><i></i><a href="resources-additional-topics-change-management.html">Change management</a></li><li class=" level-3" data-url="resources-additional-topics-cloud-computing.html"><i></i><a href="resources-additional-topics-cloud-computing.html">Cloud computing</a></li><li class=" level-3" data-url="resources-additional-topics-content-driven-policy.html"><i></i><a href="resources-additional-topics-content-driven-policy.html">Content driven policy</a></li><li class=" level-3" data-url="resources-additional-topics-devops.html"><i></i><a href="resources-additional-topics-devops.html">DevOps</a></li><li class=" level-3" data-url="resources-additional-topics-distributed-scheduling.html"><i></i><a href="resources-additional-topics-distributed-scheduling.html">Distributed scheduling</a></li><li class=" level-3" data-url="resources-additional-topics-file-content.html"><i></i><a href="resources-additional-topics-file-content.html">File content</a></li><li class=" level-3" data-url="resources-additional-topics-hierarchies.html"><i></i><a href="resources-additional-topics-hierarchies.html">Hierarchies</a></li><li class=" level-3" data-url="resources-additional-topics-itil.html"><i></i><a href="resources-additional-topics-itil.html">ITIL</a></li><li class=" level-3" data-url="resources-additional-topics-iteration.html"><i></i><a href="resources-additional-topics-iteration.html">Iteration (Loops)</a></li><li class=" level-3" data-url="resources-additional-topics-modularity.html"><i></i><a href="resources-additional-topics-modularity.html">Modularity and orchestrating system policy</a></li><li class=" level-3" data-url="resources-additional-topics-orchestration.html"><i></i><a href="resources-additional-topics-orchestration.html">Orchestration</a></li><li class=" level-3" data-url="resources-additional-topics-stigs.html"><i></i><a href="resources-additional-topics-stigs.html">STIGs</a></li><li class=" level-3" data-url="resources-additional-topics-security.html"><i></i><a href="resources-additional-topics-security.html">Security</a></li><li class=" level-3" data-url="resources-additional-topics-teamwork.html"><i></i><a href="resources-additional-topics-teamwork.html">Teamwork</a></li><li class=" level-3" data-url="resources-additional-topics-open-nebula.html"><i></i><a href="resources-additional-topics-open-nebula.html">Using CFEngine with Open Nebula</a></li></ul></li><li class=" level-2" data-url="resources-external-resources.html"><i></i><a href="resources-external-resources.html">External resources</a></li><li class=" level-2" data-url="resources-best-practices.html"><i></i><a href="resources-best-practices.html">Best practices</a></li></ul></li></ul>
+    </div>
+</aside>
+
+<div id="top_form" class="group">
+    <div class="float-right">
+        <div id="top_version_wrapper"></div>
+    </div>
+</div>
+
+</main>
+<div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer class="footer">
+    <div class="container">
+        <ul>
+            <li><a target="_blank" href="https://cfengine.com"><img  alt="CFEngine homepage"src="./media/images/cfengine-logo-white.svg" /></a></li>
+            <li><a href="release-notes-legal-and-licenses.html">Legal and licenses</a></li>
+            <li><a target="_blank" href="https://cfengine.com/contact/">Contact us</a></li>
+            <li>Last update on 07 January 2025</li>
+        </ul>
+    </div>
+</footer>
+<div id="overlay"></div>
+<button id="scrollToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"><i class="bi bi-chevron-up"></i></button>
+<script src="assets/bundle.min.js?v=2025-01-07T17:33:36+00:00" type="text/javascript"></script>
+
+</body>
+</html>

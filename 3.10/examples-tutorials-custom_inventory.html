@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.10  Documentation - Custom Inventory</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.10/assets/global-9291732ba4137970d6f84f199dc9b48d.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Custom Inventory";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/" selected>Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:v9zopcogc1m" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a></li><li><a href="examples-tutorials.html">Tutorials</a><ul class="level2"><li><a href="examples-tutorials-json-yaml-support-in-cfengine.html">JSON and YAML Support in CFEngine</a></li><li><a href="examples-tutorials-files-tutorial.html">Create, Modify, and Delete Files</a></li><li><a href="examples-tutorials-distribute-files-from-a-central-location.html">Distribute files from a central location</a></li><li><a href="examples-tutorials-report_inventory_remediate_sec_vulnerabilities.html">Reporting and Remediation of Security Vulnerabilities</a></li><li><a href="examples-tutorials-masterfiles_policy_framework_upgrade.html">Masterfiles Policy Framework Upgrade</a></li><li><a href="examples-tutorials-tags.html">Tags for variables, classes, and bundles</a></li><li><a class="active" href="examples-tutorials-custom_inventory.html">Custom Inventory</a></li><li><a href="examples-tutorials-deploy_sketch.html">Configure and Deploy a Policy Using Sketches</a></li><li><a href="examples-tutorials-file_comparison.html">File Comparison</a></li></ul></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-tutorials.html">Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Custom Inventory
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>This tutorial will show you how to add custom inventory attributes that can be
+leveraged in policy and reported on in the CFEngine Enterprise Mission Portal.
+For a more detailed overview on how the inventory system works please reference
+<a href="reference-masterfiles-policy-framework-inventory.html" title="inventory/">CFEngine 3 inventory modules</a>.</p>
+<h2 id="overview">Overview</h2>
+<p>This tutorial provides instructions for the following:</p>
+
+<ul>
+<li><p><a href="examples-tutorials-custom_inventory.html#choose-an-attribute-to-inventory" title="Custom Inventory - Choose an Attribute to Inventory ">Choose an attribute</a></p></li>
+<li><p><a href="examples-tutorials-custom_inventory.html#create-and-deploy-inventory-policy" title="Custom Inventory - Create and Deploy Inventory Policy ">Create and deploy inventory policy</a></p></li>
+<li><p><a href="examples-tutorials-custom_inventory.html#run-reports" title="Custom Inventory - Run Reports ">Run Reports</a></p></li>
+</ul>
+<h2 id="choose-an-attribute-to-inventory">Choose an Attribute to Inventory</h2>
+<p>Writing inventory policy is incredibly easy. Simply add the <code>inventory</code> and
+<code>attribute_name=</code> tags to any variable or <a href="reference-promise-types-classes.html#scope" title="classes - scope">namespace scoped
+classes</a>.</p>
+
+<p>In this tutorial we will add <code>Owner</code> information into the inventory. In this
+example we will use a simple shared flat file data source
+<code>/vagrant/inventory_owner.csv</code>.</p>
+
+<p>On your hosts create <code>/vagrant/inventory_owner.csv</code> with the following contnet:</p>
+<div class="highlight"><pre><code class="text">hub, Operations Team &lt;ops@cfengine.com&gt;
+host001, Development &lt;dev@cfengine.com&gt;
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> I am using the [CFEngine Enterprise Vagrant Environment][Installing
+Enterprise Vagrant Environemt] and files located in the vagrant project
+directory are automatically available to all hosts.</p>
+<h2 id="create-and-deploy-inventory-policy">Create and Deploy Inventory Policy</h2>
+<p>Now that each of your hosts has access to a data source that provides the Owner
+information we will write an inventory policy to report that information.</p>
+
+<p>Create <code>/var/cfengine/masterfiles/services/tutorials/inventory/owner.cf</code> with the
+following content:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">common</span> <span class="nf">tutorials_inventory_owner</span>
+<span class="c"># @brief Inventory Owner information</span>
+<span class="c"># @description Inventory owner information from `/vagrant/inventory_owner.csv`.</span>
+<span class="p">{</span>
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="s">&quot;have_owner&quot;</span>
+      <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;my_owner&quot;</span><span class="p">);</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">data_source</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/vagrant/inventory_owner.csv&quot;</span><span class="p">;</span>
+    <span class="s">&quot;owners&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">data_readstringarray</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="nf">data_source</span><span class="p">),</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;, &quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">512</span> <span class="p">);</span>
+
+    <span class="p">&quot;</span><span class="nv">my_owner</span><span class="p">&quot;</span>
+      <span class="kt">string</span>  <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(owners[$(sys.uqhost)][0])</span><span class="s">&quot;</span><span class="p">,</span>
+      <span class="kr">meta</span>    <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;inventory&quot;</span><span class="p">,</span> <span class="s">&quot;attribute_name=Owner&quot;</span> <span class="p">},</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;We need to tag the owner information so that it is correctly</span>
+<span class="s">                  reported via the UI.&quot;</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">inform_mode.have_owner</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(this.bundle)</span><span class="s">: Discovered Owner=&#39;</span><span class="si">$(my_owner)</span><span class="s">&#39;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> For the simplicity of this tutorial we assume that
+<a href="reference-special-variables-sys.html#sys-masterdir" title="sys - sys.masterdir ">masterfiles</a> is not configured for policy updates from a
+git repository. If it is, please add the policy to your repository and ensure
+it gets to its final destination as needed.</p>
+
+<p>This policy will not be activated until it has been included in
+<a href="reference-components.html#inputs" title="Components and Common Control - inputs">inputs</a>. For simplicity we will be
+adding it to <a href="reference-components.html" title="Components and Common Control">common control</a>, but note that
+files can include other files through the use of <a href="reference-components-file_control_promises.html#inputs" title="file control - inputs">inputs in file control</a>.</p>
+
+<p>Add &#39;services/tutorials/inventory/owner.cf&#39; to <a href="reference-components.html#inputs" title="Components and Common Control - inputs">inputs</a> and
+&#39;tutorials_inventory_owner&#39; to the <a href="reference-components.html#bundlesequence" title="Components and Common Control - bundlesequence">bundlesequence</a> in
+<a href="reference-components.html" title="Components and Common Control">common control</a> found in <code>/var/cfengine/masterfiles/promises.cf</code> as shown below.</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+    <span class="kr">bundlesequence</span> <span class="o">=&gt;</span>  <span class="p">{</span>
+                         <span class="s">&quot;inventory_control&quot;</span><span class="p">,</span>
+                         <span class="nv">@(inventory.bundles)</span><span class="p">,</span>
+                         <span class="nf">tutorials_inventory_owner</span><span class="p">,</span>
+                         <span class="nf">def</span><span class="p">,</span>
+                         <span class="nf">cfe_internal_hub_vars</span><span class="p">,</span>
+<span class="c"># snipped for brevity</span>
+                         <span class="nf">service_catalogue</span><span class="p">,</span>
+    <span class="p">};</span>
+
+    <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span>
+               <span class="c"># File definition for global variables and classes</span>
+                <span class="s">&quot;def.cf&quot;</span><span class="p">,</span>
+
+              <span class="c"># Inventory policy</span>
+                <span class="nv">@(inventory.inputs)</span><span class="p">,</span>
+                <span class="s">&quot;services/tutorials/inventory/owner.cf&quot;</span><span class="p">,</span>
+<span class="c"># snipped for brevity</span>
+                <span class="c"># List of services here</span>
+                  <span class="s">&quot;services/init_msg.cf&quot;</span><span class="p">,</span>
+                  <span class="s">&quot;services/file_change.cf&quot;</span><span class="p">,</span>
+
+      <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>When you finish its a good idea to run <a href="reference-components-cf-promises.html" title="cf-promises"><code>cf-promises</code></a> (syntax analyzer) to
+ensure the policy validates. You can also perform a manual policy run and check
+that the correct owner is discovered.</p>
+
+<p>Syntax Check:</p>
+<div class="highlight"><pre><code class="console"><span class="gp">[root@hub ~]#</span> cf-promises -f /var/cfengine/masterfiles/promises.cf
+<span class="gp">[root@hub ~]#</span>
+</code></pre>
+</div>
+
+<p>No output and return code 0 indicate the policy was successfully validated.</p>
+
+<p>Manual Policy Run:</p>
+<div class="highlight"><pre><code class="console"><span class="gp">[root@hub ~]#</span> cf-agent -KIf /var/cfengine/masterfiles/promises.cf -b tutorials_inventory_owner
+<span class="go">2014-06-16T19:24:58+0000     info: Using command line specified bundlesequence</span>
+<span class="go">R: tutorials_inventory_owner: Discovered Owner=&#39;Operations Team &lt;ops@cfengine.com&gt;&#39;</span>
+</code></pre>
+</div>
+
+<p>Here I have run the policy without locks (-K) in inform mode (-I), using a
+specific policy entry (-f) and activating only a specific bundle (-b). The
+inform output helps me confirm that my hubs owner is discovered from our CSV
+properly.</p>
+<h2 id="run-reports">Run Reports</h2>
+<p>Once you have integrated the policy into promises.cf it will be distributed and
+run by all agents. Once the hub has had a chance to collect reports the &#39;Owner&#39;
+attribute will be available to select as a Table column for Inventory Reports.
+Custom attributes appear under the &#39;User defined&#39; section.</p>
+
+<p><strong>Note:</strong> It may take up to 15 minutes for your custom inventory attributes to
+be collected and made available for reporting.</p>
+
+<p><img src="tutorials_custom_inventory_attribute.png" alt="custom inventory attribute"></p>
+
+<p>You will see the host owner as shown in the following report.</p>
+
+<p><img src="tutorials_custom_inventory_report.png" alt="custom inventory report"></p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-examples.html">examples</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-tutorials.html">tutorials</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-inventory.html">inventory</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-enterprise.html">enterprise</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 17 March 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/examples/tutorials/custom_inventory.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/ae7435d3d24d30077bfbf18438f2444c629f8c69" target="_blank">ae7435d3d24d30077bfbf18438f2444c629f8c69</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.10/assets/footer-4c28dbe187e7b2a3c1504ff564f1b523.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

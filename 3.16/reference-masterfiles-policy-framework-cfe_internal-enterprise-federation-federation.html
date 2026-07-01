@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.16  Documentation - cfe_internal/enterprise/federation/federation.cf</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.16/assets/global-78ca1ff06c068c806dddb47b0cb1ea40.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "cfe_internal/enterprise/federation/federation.cf";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.16/" selected>Version 3.16 (non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a><ul class="level2"><li><a href="reference-masterfiles-policy-framework-update.html">update.cf</a></li><li><a href="reference-masterfiles-policy-framework-promises.html">promises.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls.html">controls/</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_agent.html">controls/cf_agent.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_execd.html">controls/cf_execd.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf-hub.html">controls/cf_hub.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_monitord.html">controls/cf_monitord.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_runagent.html">controls/cf_runagent.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-cf_serverd.html">controls/cf_serverd.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-def.html">controls/def.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-def_inputs.html">controls/def_inputs.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-reports.html">controls/reports.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-update_def.html">controls/update_def.cf</a></li><li><a href="reference-masterfiles-policy-framework-controls-update_def_inputs.html">controls/update_def_inputs.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal.html">cfe_internal/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-cfe_cfengine.html">cfe_internal/CFE_cfengine.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update.html">cfe_internal/update/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_dc_workflow.html">cfe_internal/update/cfe_internal_dc_workflow.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-cfe_internal_update_from_repository.html">cfe_internal/update/cfe_internal_update_from_repository.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-lib.html">cfe_internal/update/lib.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-systemd_units.html">cfe_internal/update/systemd_units.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_bins.html">cfe_internal/update/update_bins.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_policy.html">cfe_internal/update/update_policy.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-update-update_processes.html">cfe_internal/update/update_processes.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-core.html">cfe_internal/core/</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-core-watchdog.html">cfe_internal/core/watchdog</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-core-watchdog-watchdog.html">cfe_internal/core/watchdog/watchdog.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation.html">cfe_internal/enterprise/federation/</a></li><li><a class="active" href="reference-masterfiles-policy-framework-cfe_internal-enterprise-federation-federation.html">cfe_internal/enterprise/federation/federation.cf</a></li><li><a href="reference-masterfiles-policy-framework-cfe_internal-enterprise.html">cfe_internal/enterprise/</a></li><li><a href="reference-masterfiles-policy-framework-inventory.html">inventory/</a></li><li><a href="reference-masterfiles-policy-framework-inventory-any.html">inventory/any.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-debian.html">inventory/debian.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-freebsd.html">inventory/freebsd.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-generic.html">inventory/generic.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-linux.html">inventory/linux.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-lsb.html">inventory/lsb.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-macos.html">inventory/macos.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-os.html">inventory/os.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-redhat.html">inventory/redhat.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-suse.html">inventory/suse.cf</a></li><li><a href="reference-masterfiles-policy-framework-inventory-windows.html">inventory/windows.cf</a></li><li><a href="reference-masterfiles-policy-framework-services.html">services/</a></li><li><a href="reference-masterfiles-policy-framework-services-autorun.html">services/autorun/</a></li><li><a href="reference-masterfiles-policy-framework-services-main.html">services/main.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib.html">lib/</a></li><li><a href="reference-masterfiles-policy-framework-standalone_self_upgrade.html">standalone_self_upgrade.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-autorun.html">lib/autorun.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-bundles.html">lib/bundles.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfe_internal.html">lib/cfe_internal.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfe_internal_hub.html">lib/cfe_internal_hub.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-cfengine_enterprise_hub_ha.html">lib/cfengine_enterprise_hub_ha.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-commands.html">lib/commands.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-common.html">lib/common.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-databases.html">lib/databases.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-edit_xml.html">lib/edit_xml.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-event.html">lib/event.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-examples.html">lib/examples.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-feature.html">lib/feature.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-files.html">lib/files.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-guest_environments.html">lib/guest_environments.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-monitor.html">lib/monitor.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-packages.html">lib/packages.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-paths.html">lib/paths.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-processes.html">lib/processes.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-reports.html">lib/reports.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-services.html">lib/services.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-stdlib.html">lib/stdlib.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-storage.html">lib/storage.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-testing.html">lib/testing.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-users.html">lib/users.cf</a></li><li><a href="reference-masterfiles-policy-framework-lib-vcs.html">lib/vcs.cf</a></li></ul></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    cfe_internal/enterprise/federation/federation.cf
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h3 id="agent-bundles"><a href="reference-components-cf-agent.html" title="cf-agent">agent</a> bundles</h3><h4 id="cfengine_enterprise_federation-config">cfengine_enterprise_federation:config</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:config</code></p>
+
+<p><strong>Description:</strong> Read/parse config JSON, define variables and classes for use later</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">config</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="nc">enterprise_edition.(policy_server|am_policy_hub)</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">federation_dir</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/opt/cfengine/federation&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">bin_dir</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(federation_dir)</span><span class="s">/bin&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">path</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(federation_dir)</span><span class="s">/cfapache/federation-config.json&quot;</span><span class="p">;</span>
+
+      <span class="c"># TODO: Instrument augments</span>
+      <span class="s">&quot;dump_interval&quot;</span> <span class="o">-&gt;</span> <span class="p">{</span><span class="s">&quot;ENT-4806&quot;</span><span class="p">}</span>
+        <span class="kr">int</span> <span class="o">=&gt;</span> <span class="s">&quot;20&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Dump data on the feeders every 20 minutes&quot;</span><span class="p">;</span>
+
+      <span class="c"># TODO: don&#39;t hard-code cftransport user</span>
+      <span class="s">&quot;transport_user&quot;</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s">&quot;ENT-4610&quot;</span> <span class="p">}</span> <span class="kr">string</span> <span class="o">=&gt;</span> <span class="s">&quot;cftransport&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">transport_home</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.federation_dir)</span><span class="s">/cftransport&quot;</span><span class="p">;</span>
+
+    <span class="nc">config_present</span><span class="p">::</span>
+      <span class="s">&quot;data&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">readjson</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="nf">path</span><span class="p">)</span> <span class="p">);</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="nc">enterprise_edition.(policy_server|am_policy_hub)</span><span class="p">::</span>
+      <span class="s">&quot;config_present&quot;</span>
+        <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="nf">path</span><span class="p">)</span> <span class="p">);</span>
+    <span class="nc">config_present</span><span class="p">::</span>
+      <span class="s">&quot;enabled&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">or</span><span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="s">&quot;on&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[target_state])</span><span class="s">&quot;</span><span class="p">),</span>
+                                 <span class="nf">strcmp</span><span class="p">(</span><span class="s">&quot;paused&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[target_state])</span><span class="s">&quot;</span><span class="p">)),</span>
+        <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">;</span>
+      <span class="s">&quot;am_off&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="s">&quot;off&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[target_state])</span><span class="s">&quot;</span><span class="p">),</span>
+        <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">;</span>
+      <span class="s">&quot;am_on&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="s">&quot;on&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[target_state])</span><span class="s">&quot;</span><span class="p">),</span>
+        <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">;</span>
+
+      <span class="c"># _stdlib_path_exists_getenforce and paths.getenforce are defined by masterfiles/lib/paths.cf</span>
+      <span class="kd">default</span><span class="p">:</span><span class="nc">_stdlib_path_exists_getenforce</span><span class="p">::</span>
+        <span class="s">&quot;selinux_enabled&quot;</span>
+          <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="s">&quot;Enforcing&quot;</span><span class="p">,</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(paths.getenforce)</span><span class="s">&quot;</span><span class="p">,</span> <span class="nf">useshell</span><span class="p">)),</span>
+          <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">;</span>
+
+
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="nc">enabled</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">role</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(data[role])</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">remotes</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getindices</span><span class="p">(</span> <span class="nv">@(data[remote_hubs])</span> <span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">login</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;&quot;</span><span class="p">;</span> <span class="c"># default</span>
+      <span class="p">&quot;</span><span class="nv">login</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][transport][ssh_user])</span><span class="s">@</span><span class="si">$(data[remote_hubs][$(remotes)][transport][ssh_host])</span><span class="s">&quot;</span><span class="p">,</span>
+            <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">and</span><span class="p">(</span>
+                       <span class="c"># To ensure we are using a remote hub that&#39;s actually enabled</span>
+                       <span class="nf">strcmp</span><span class="p">(</span> <span class="s">&quot;on&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][target_state])</span><span class="s">&quot;</span> <span class="p">),</span>
+                       <span class="c"># To ensure the remote we are pushing to actually needs the data (is a superhub)</span>
+                       <span class="nf">strcmp</span><span class="p">(</span> <span class="s">&quot;superhub&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][role])</span><span class="s">&quot;</span> <span class="p">));</span>
+
+    <span class="nc">am_superhub</span><span class="p">::</span>
+      <span class="c"># Public keys of enabled pushing feeders need to be trusted (on a superhub)</span>
+      <span class="p">&quot;</span><span class="nv">pubkey[$(remotes)]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][transport][ssh_pubkey])</span><span class="s">&quot;</span><span class="p">,</span>
+            <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">and</span><span class="p">(</span> <span class="nf">strcmp</span><span class="p">(</span> <span class="s">&quot;on&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][target_state])</span><span class="s">&quot;</span> <span class="p">),</span>
+                       <span class="nf">strcmp</span><span class="p">(</span> <span class="s">&quot;feeder&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][role])</span><span class="s">&quot;</span> <span class="p">),</span>
+                       <span class="nf">strcmp</span><span class="p">(</span> <span class="s">&quot;push_over_rsync&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][transport][mode])</span><span class="s">&quot;</span><span class="p">));</span>
+
+    <span class="nc">am_feeder</span><span class="p">::</span>
+      <span class="c"># Public key(s) of enabled pulling superhub(s) need(s) to be trusted (on a feeder)</span>
+      <span class="p">&quot;</span><span class="nv">pubkey[$(remotes)]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][transport][ssh_pubkey])</span><span class="s">&quot;</span><span class="p">,</span>
+            <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">and</span><span class="p">(</span> <span class="nf">strcmp</span><span class="p">(</span> <span class="s">&quot;on&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][target_state])</span><span class="s">&quot;</span> <span class="p">),</span>
+                       <span class="nf">strcmp</span><span class="p">(</span> <span class="s">&quot;superhub&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][role])</span><span class="s">&quot;</span> <span class="p">),</span>
+                       <span class="nf">strcmp</span><span class="p">(</span> <span class="s">&quot;pull_over_rsync&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][transport][mode])</span><span class="s">&quot;</span><span class="p">));</span>
+
+    <span class="nc">am_superhub|am_feeder</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">pubkeys</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getvalues</span><span class="p">(</span> <span class="nf">pubkey</span> <span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">fingerprint[$(data[remote_hubs][$(remotes)][transport][ssh_host])]</span><span class="p">&quot;</span>
+        <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">string_split</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][transport][ssh_fingerprint])</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(const.n)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;inf&quot;</span><span class="p">),</span>
+        <span class="c"># To ensure we are using a remote hub that&#39;s enabled</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span> <span class="s">&quot;on&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][target_state])</span><span class="s">&quot;</span> <span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">fingerprints</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">maparray</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(this.k)</span><span class="s"> </span><span class="si">$(this.v)</span><span class="s">&quot;</span><span class="p">,</span> <span class="nf">fingerprint</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">feeder[$(remotes)]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][hostkey])</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span> <span class="s">&quot;feeder&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][role])</span><span class="s">&quot;</span> <span class="p">);</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="nc">enabled</span><span class="p">::</span>
+
+      <span class="c"># Knowing if feeder or superhub is based on explicit setting of role in</span>
+      <span class="c"># path (federation-config.json)</span>
+      <span class="s">&quot;am_feeder&quot;</span>
+        <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="s">&quot;feeder&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[role])</span><span class="s">&quot;</span><span class="p">),</span>
+        <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;am_superhub&quot;</span>
+        <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="s">&quot;superhub&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[role])</span><span class="s">&quot;</span><span class="p">),</span>
+        <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;am_pusher&quot;</span>
+        <span class="kr">and</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="nf">strcmp</span><span class="p">(</span><span class="s">&quot;superhub&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][role])</span><span class="s">&quot;</span><span class="p">),</span>
+                <span class="nf">strcmp</span><span class="p">(</span><span class="s">&quot;on&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][target_state])</span><span class="s">&quot;</span><span class="p">),</span>
+                <span class="nf">strcmp</span><span class="p">(</span><span class="s">&quot;push_over_rsync&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][transport][mode])</span><span class="s">&quot;</span><span class="p">)},</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Has an enabled remote superhub with push as transport method, should run push transport&quot;</span><span class="p">,</span>
+        <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;am_puller&quot;</span>
+        <span class="kr">and</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;am_superhub&quot;</span><span class="p">,</span>
+                <span class="nf">strcmp</span><span class="p">(</span><span class="s">&quot;on&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][target_state])</span><span class="s">&quot;</span><span class="p">),</span>
+                <span class="nf">strcmp</span><span class="p">(</span><span class="s">&quot;pull_over_rsync&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][transport][mode])</span><span class="s">&quot;</span><span class="p">)},</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Superhub with some enabled remote hub with pull as transport method, should run pull transport&quot;</span><span class="p">,</span>
+        <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;am_transporter&quot;</span>
+        <span class="kr">or</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;am_pusher&quot;</span><span class="p">,</span> <span class="s">&quot;am_puller&quot;</span><span class="p">},</span>
+        <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">;</span>
+
+      <span class="s">&quot;am_paused&quot;</span>
+        <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">strcmp</span><span class="p">(</span><span class="s">&quot;paused&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[target_state])</span><span class="s">&quot;</span><span class="p">),</span>
+        <span class="kr">scope</span> <span class="o">=&gt;</span> <span class="s">&quot;namespace&quot;</span><span class="p">;</span>
+
+  <span class="c"># Note: in order to see these debugs you must either define the default DEBUG class</span>
+  <span class="c"># or the namespace prefixed class like:</span>
+  <span class="c"># cf-agent -KI -DDEBUG</span>
+  <span class="c"># or</span>
+  <span class="c"># cf-agent -KI -Dcfengine_enterprise_federation:DEBUG_config</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nf">enabled</span><span class="err">.</span><span class="p">(</span><span class="kd">default</span><span class="p">:</span><span class="nc">DEBUG|DEBUG_config)</span><span class="p">::</span>
+      <span class="s">&quot;Federation enabled!&quot;</span><span class="p">;</span>
+    <span class="nf">am_superhub</span><span class="err">.</span><span class="p">(</span><span class="kd">default</span><span class="p">:</span><span class="nc">DEBUG|DEBUG_config)</span><span class="p">::</span>
+      <span class="s">&quot;I&#39;m a superhub!&quot;</span><span class="p">;</span>
+    <span class="nf">am_feeder</span><span class="err">.</span><span class="p">(</span><span class="kd">default</span><span class="p">:</span><span class="nc">DEBUG|DEBUG_config)</span><span class="p">::</span>
+      <span class="s">&quot;I&#39;m a feeder!&quot;</span><span class="p">;</span>
+    <span class="nf">am_pusher</span><span class="err">.</span><span class="p">(</span><span class="kd">default</span><span class="p">:</span><span class="nc">DEBUG|DEBUG_config)</span><span class="p">::</span>
+      <span class="s">&quot;I&#39;m pushing dumps!&quot;</span><span class="p">;</span>
+    <span class="nf">am_puller</span><span class="err">.</span><span class="p">(</span><span class="kd">default</span><span class="p">:</span><span class="nc">DEBUG|DEBUG_config)</span><span class="p">::</span>
+      <span class="s">&quot;I&#39;m pulling dumps!&quot;</span><span class="p">;</span>
+    <span class="nf">am_transporter</span><span class="err">.</span><span class="p">(</span><span class="kd">default</span><span class="p">:</span><span class="nc">DEBUG|DEBUG_config)</span><span class="p">::</span>
+      <span class="s">&quot;I&#39;m a transporter!&quot;</span><span class="p">;</span>
+    <span class="nf">am_paused</span><span class="err">.</span><span class="p">(</span><span class="kd">default</span><span class="p">:</span><span class="nc">DEBUG|DEBUG_config)</span><span class="p">::</span>
+      <span class="s">&quot;I&#39;m paused so won&#39;t do any import/dump&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cfengine_enterprise_federation-semanage_installed">cfengine_enterprise_federation:semanage_installed</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:semanage_installed</code></p>
+
+<p><strong>Description:</strong> Install semanage utility if selinux enabled and
+cfengine_mp_fr_dependencies_auto_install class is defined
+if not defined then only warn</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">semanage_installed</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">semanage_action</span><span class="p">&quot;</span>
+      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">ifelse</span><span class="p">(</span> <span class="s">&quot;default:_stdlib_path_exists_semanage&quot;</span><span class="p">,</span> <span class="s">&quot;fix&quot;</span><span class="p">,</span> <span class="s">&quot;default:cfengine_mp_fr_dependencies_auto_install&quot;</span><span class="p">,</span> <span class="s">&quot;fix&quot;</span><span class="p">,</span> <span class="s">&quot;warn&quot;</span> <span class="p">),</span>
+      <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;We only want to use semanage if it&#39;s available, or if we have</span>
+<span class="s">                  indicated it&#39;s ok to install it automatically. This variable</span>
+<span class="s">                  is subsequently used by a commands and packages promises to</span>
+<span class="s">                  warn or fix based.&quot;</span><span class="p">;</span>
+    <span class="nc">debian_6|debian_7|debian_8|ubuntu_12|ubuntu_14|ubuntu_16|rhel_5</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">semanage_package</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;policycoreutils&quot;</span><span class="p">;</span>
+    <span class="nc">debian_9|debian_10|ubuntu_18|redhat_8|centos_8</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">semanage_package</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;policycoreutils-python-utils&quot;</span><span class="p">;</span>
+    <span class="nc">redhat_6|centos_6|redhat_7|centos_7</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">semanage_package</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;policycoreutils-python&quot;</span><span class="p">;</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+    <span class="nc">debian|ubuntu</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(semanage_package)</span><span class="s">&quot;</span>
+        <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span>
+        <span class="kr">package_module</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">apt_get</span><span class="p">,</span>
+        <span class="kr">action</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">policy</span> <span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="nf">semanage_action</span><span class="p">)</span> <span class="p">);</span>
+    <span class="nc">redhat</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(semanage_package)</span><span class="s">&quot;</span>
+        <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span>
+        <span class="kr">package_module</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">yum</span><span class="p">,</span>
+        <span class="kr">action</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">policy</span> <span class="p">(</span> <span class="err">$</span><span class="p">(</span><span class="nf">semanage_action</span><span class="p">)</span> <span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="kd">default</span><span class="p">:</span><span class="nc">DEBUG|DEBUG_semanage_installed</span><span class="p">::</span>
+      <span class="s">&quot;paths.semanage = </span><span class="si">$(paths.semanage)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="err">!</span><span class="kd">default</span><span class="p">:</span><span class="nf">_stdlib_path_exists_semanage</span><span class="err">.!</span><span class="kd">default</span><span class="p">:</span><span class="nc">cfengine_mp_fr_dependencies_auto_install</span><span class="p">::</span>
+      <span class="s">&quot;semanage command is not available at </span><span class="si">$(paths.semanage)</span><span class="s">. Will only install needed package if cfengine_mp_fr_dependencies_auto_install class is defined in augments(def.json) or with --define cf-agent option.&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cfengine_enterprise_federation-transport_user">cfengine_enterprise_federation:transport_user</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:transport_user</code></p>
+
+<p><strong>Description:</strong> Manage transport user and permissions for remote SSH access</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">transport_user</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">user</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.transport_user)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">home</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.transport_home)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">ssh_key_name</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;id_FR&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">ssh_priv_key</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(home)</span><span class="s">/.ssh/</span><span class="si">$(ssh_key_name)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">ssh_pub_key</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(ssh_priv_key)</span><span class="s">.pub&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">ssh_auth_keys</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(home)</span><span class="s">/.ssh/authorized_keys&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">ssh_known_hosts</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(home)</span><span class="s">/.ssh/known_hosts&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">ssh_config</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(home)</span><span class="s">/.ssh/config&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">create_files</span><span class="p">&quot;</span>
+        <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="s">&quot;</span><span class="si">$(home)</span><span class="s">/.&quot;</span><span class="p">,</span>
+          <span class="s">&quot;</span><span class="si">$(home)</span><span class="s">/.ssh/.&quot;</span><span class="p">,</span>
+          <span class="s">&quot;</span><span class="si">$(home)</span><span class="s">/source/.&quot;</span><span class="p">,</span>      <span class="c"># Dumps from feeders are taken from here</span>
+          <span class="s">&quot;</span><span class="si">$(home)</span><span class="s">/destination/.&quot;</span><span class="p">,</span> <span class="c"># And dropped here on superhub</span>
+          <span class="s">&quot;</span><span class="si">$(ssh_auth_keys)</span><span class="s">&quot;</span><span class="p">,</span>
+          <span class="s">&quot;</span><span class="si">$(ssh_known_hosts)</span><span class="s">&quot;</span><span class="p">,</span>
+          <span class="s">&quot;</span><span class="si">$(ssh_config)</span><span class="s">&quot;</span>
+        <span class="p">};</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="nc">enabled.selinux_enabled</span><span class="p">::</span>
+        <span class="s">&quot;incorrect_ssh_context&quot;</span>
+          <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span> <span class="nf">or</span><span class="p">(</span>
+                               <span class="nf">regcmp</span><span class="p">(</span><span class="s">&quot;.*[</span><span class="se">\s</span><span class="s">:]ssh_home_t[</span><span class="se">\s</span><span class="s">:].*&quot;</span><span class="p">,</span>
+                                      <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;ls -Z </span><span class="si">$(home)</span><span class="s"> | grep .ssh&quot;</span><span class="p">,</span>
+                                                 <span class="nf">useshell</span><span class="p">)),</span>
+                               <span class="nf">regcmp</span><span class="p">(</span><span class="s">&quot;.*[</span><span class="se">\s</span><span class="s">:]ssh_home_t[</span><span class="se">\s</span><span class="s">:].*&quot;</span><span class="p">,</span>
+                                      <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;ls -Z </span><span class="si">$(ssh_auth_keys)</span><span class="s">&quot;</span><span class="p">,</span>
+                                                 <span class="nf">useshell</span><span class="p">)),</span>
+                               <span class="nf">regcmp</span><span class="p">(</span><span class="s">&quot;.*[</span><span class="se">\s</span><span class="s">:]ssh_home_t[</span><span class="se">\s</span><span class="s">:].*&quot;</span><span class="p">,</span>
+                                      <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;ls -Z </span><span class="si">$(ssh_priv_key)</span><span class="s">&quot;</span><span class="p">,</span>
+                                                 <span class="nf">useshell</span><span class="p">)),</span>
+                               <span class="nf">regcmp</span><span class="p">(</span><span class="s">&quot;.*[</span><span class="se">\s</span><span class="s">:]ssh_home_t[</span><span class="se">\s</span><span class="s">:].*&quot;</span><span class="p">,</span>
+                                      <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;ls -Z </span><span class="si">$(ssh_pub_key)</span><span class="s">&quot;</span><span class="p">,</span>
+                                                 <span class="nf">useshell</span><span class="p">)),</span>
+                               <span class="nf">regcmp</span><span class="p">(</span><span class="s">&quot;.*[</span><span class="se">\s</span><span class="s">:]ssh_home_t[</span><span class="se">\s</span><span class="s">:].*&quot;</span><span class="p">,</span>
+                                      <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;ls -Z </span><span class="si">$(ssh_config)</span><span class="s">&quot;</span><span class="p">,</span>
+                                                 <span class="nf">useshell</span><span class="p">))));</span>
+  <span class="kd">users</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(user)</span><span class="s">&quot;</span>
+      <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span>
+      <span class="kr">home_dir</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(home)</span><span class="s">&quot;</span><span class="p">;</span>
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(create_files)</span><span class="s">&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(home)</span><span class="s">/.&quot;</span>
+      <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">recurse_with_base</span><span class="p">(</span><span class="s">&quot;inf&quot;</span><span class="p">),</span>
+      <span class="kr">file_select</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">all</span><span class="p">,</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;600&quot;</span><span class="p">,</span> <span class="err">$</span><span class="p">(</span><span class="nf">user</span><span class="p">),</span> <span class="s">&quot;root&quot;</span> <span class="p">);</span>
+    <span class="s">&quot;</span><span class="si">$(ssh_auth_keys)</span><span class="s">&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;ssh_auth_keys_configured&quot;</span><span class="p">,</span>
+      <span class="kr">edit_template_string</span> <span class="o">=&gt;</span> <span class="s">&quot;}</span><span class="si">$(const.n)</span><span class="s">&quot;</span><span class="p">,</span>
+      <span class="kr">template_data</span> <span class="o">=&gt;</span> <span class="nv">@(cfengine_enterprise_federation:config.pubkeys)</span><span class="p">,</span>
+      <span class="kr">template_method</span> <span class="o">=&gt;</span> <span class="s">&quot;inline_mustache&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(ssh_known_hosts)</span><span class="s">&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;ssh_known_hosts_configured&quot;</span><span class="p">,</span>
+      <span class="kr">edit_template_string</span> <span class="o">=&gt;</span> <span class="s">&quot;}</span><span class="si">$(const.n)</span><span class="s">&quot;</span><span class="p">,</span>
+      <span class="kr">template_data</span> <span class="o">=&gt;</span> <span class="nv">@(cfengine_enterprise_federation:config.fingerprints)</span><span class="p">,</span>
+      <span class="kr">template_method</span> <span class="o">=&gt;</span> <span class="s">&quot;inline_mustache&quot;</span><span class="p">,</span>
+      <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span><span class="s">&quot;cfengine_enterprise_federation:config.fingerprints&quot;</span><span class="p">);</span>
+    <span class="s">&quot;</span><span class="si">$(ssh_config)</span><span class="s">&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;ssh_config_configured&quot;</span><span class="p">,</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">insert_lines</span><span class="p">(</span><span class="s">&quot;IdentityFile </span><span class="si">$(ssh_priv_key)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+    <span class="nc">selinux_enabled</span><span class="p">::</span>
+      <span class="s">&quot;semanage_installed&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">semanage_installed</span><span class="p">;</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="c"># _stdlib_path_exists_&lt;command&gt; and paths.&lt;command&gt; are defined is masterfiles/lib/paths.cf</span>
+    <span class="nf">selinux_enabled</span><span class="err">.</span><span class="nf">incorrect_ssh_context</span><span class="err">.</span><span class="kd">default</span><span class="p">:</span><span class="nf">_stdlib_path_exists_semanage</span><span class="err">.</span><span class="kd">default</span><span class="p">:</span><span class="nc">_stdlib_path_exists_restorecon</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(paths.semanage)</span><span class="s"> fcontext -a -t ssh_home_t &#39;</span><span class="si">$(home)</span><span class="s">/.ssh(/.*)?&#39;&quot;</span><span class="p">;</span>
+      <span class="s">&quot;</span><span class="si">$(paths.restorecon)</span><span class="s"> -R -F </span><span class="si">$(home)</span><span class="s">/.ssh/&quot;</span><span class="p">;</span>
+
+    <span class="nc">any</span><span class="p">::</span>
+      <span class="c"># Generate ssh keypair</span>
+      <span class="s">&quot;/usr/bin/ssh-keygen&quot;</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;ssh_keys_configured&quot;</span><span class="p">,</span>
+        <span class="kr">args</span> <span class="o">=&gt;</span> <span class="s">&quot;-N &#39;&#39; -f </span><span class="si">$(ssh_priv_key)</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">and</span><span class="p">(</span> <span class="nf">isdir</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(home)</span><span class="s">/.ssh&quot;</span> <span class="p">),</span>
+                   <span class="nf">not</span><span class="p">(</span> <span class="nf">fileexists</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(ssh_priv_key)</span><span class="s">&quot;</span> <span class="p">)));</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nf">selinux_enabled</span><span class="err">.</span><span class="nf">incorrect_ssh_context</span><span class="err">.!</span><span class="kd">default</span><span class="p">:</span><span class="nc">_stdlib_path_exists_semanage</span><span class="p">::</span>
+      <span class="s">&quot;need to fix incorrect ssh context for transport user but semanage path in </span><span class="si">$(sys.libdir)</span><span class="s">/paths.cf </span><span class="si">$(paths.semanage)</span><span class="s"> does not resolve&quot;</span><span class="p">;</span>
+    <span class="nf">selinux_enabled</span><span class="err">.</span><span class="nf">incorrect_ssh_context</span><span class="err">.!</span><span class="kd">default</span><span class="p">:</span><span class="nc">_stdlib_path_exists_restorecon)</span><span class="p">::</span>
+      <span class="s">&quot;need to fix incorrect ssh context for transport user but restorecon path in </span><span class="si">$(sys.libdir)</span><span class="s">/paths.cf </span><span class="si">$(paths.restorecon)</span><span class="s"> does not resolve&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cfengine_enterprise_federation-clean_when_off">cfengine_enterprise_federation:clean_when_off</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:clean_when_off</code></p>
+
+<p><strong>Description:</strong> cleanup changes made for federated reporting on a feeder
+NOTE: a superhub turned off by removing federation-config.json or setting
+target_state=off will not revert schema changes.
+federation_manage_files will always run regardless of off or not
+so as to be prepared for enablement via Mission Portal UI</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">clean_when_off</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">user</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:transport_user.user)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">&quot;</span><span class="nv">home</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:transport_user.home)</span><span class="s">&quot;</span><span class="p">;</span>
+
+  <span class="kd">users</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(user)</span><span class="s">&quot;</span>
+      <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;absent&quot;</span><span class="p">;</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+    <span class="s">&quot;rm_rf_cftransport_home_dir&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">rm_rf</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(home)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="nf">selinux_enabled</span><span class="err">.</span><span class="kd">default</span><span class="p">:</span><span class="nc">_stdlib_path_exists_semanage</span><span class="p">::</span>
+      <span class="s">&quot;has_cftransport_fcontext&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">returnszero</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(paths.semanage)</span><span class="s"> fcontext -l | grep </span><span class="si">$(home)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;useshell&quot;</span><span class="p">);</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="c"># _stdlib_path_exists_&lt;command&gt; and paths.&lt;command&gt; are defined is masterfiles/lib/paths.cf</span>
+    <span class="nf">selinux_enabled</span><span class="err">.</span><span class="kd">default</span><span class="p">:</span><span class="nc">_stdlib_path_exists_semanage.has_cftransport_fcontext</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(paths.semanage)</span><span class="s"> fcontext -d &#39;</span><span class="si">$(home)</span><span class="s">/.ssh(/.*)?&#39;&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cfengine_enterprise_federation-federation_manage_files">cfengine_enterprise_federation:federation_manage_files</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:federation_manage_files</code></p>
+
+<p><strong>Description:</strong> Manage files, directories and permissions in $(cfengine_enterprise_federation:config.federation_dir)</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">federation_manage_files</span>
+<span class="p">{</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">transport_user</span><span class="p">&quot;</span>
+      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.transport_user)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;login&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;</span><span class="p">{</span><span class="s">&quot;login&quot;</span><span class="err">:</span><span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.login)</span><span class="s">&quot;</span><span class="p">}</span><span class="err">&#39;</span><span class="p">);</span>
+    <span class="s">&quot;feeder_username&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;</span><span class="p">{</span><span class="s">&quot;feeder_username&quot;</span><span class="err">:</span><span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.transport_user)</span><span class="s">&quot;</span><span class="p">}</span><span class="err">&#39;</span><span class="p">);</span>
+    <span class="s">&quot;feeder&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;</span><span class="p">{</span><span class="s">&quot;feeder&quot;</span><span class="err">:</span> <span class="s">&quot;</span><span class="si">$(sys.key_digest)</span><span class="s">&quot;</span><span class="p">}</span><span class="err">&#39;</span><span class="p">);</span>
+    <span class="s">&quot;cf_version&quot;</span> <span class="kr">data</span> <span class="o">=&gt;</span> <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;</span><span class="p">{</span><span class="s">&quot;cf_version&quot;</span><span class="err">:</span><span class="s">&quot;</span><span class="si">$(sys.cf_version)</span><span class="s">&quot;</span><span class="p">}</span><span class="err">&#39;</span><span class="p">);</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="nc">enterprise_edition.(policy_server|am_policy_hub)</span><span class="p">::</span>
+      <span class="c"># Both cfpache and $(transport_user) need permission so adding o+x here</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.federation_dir)</span><span class="s">/.&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;661&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span> <span class="p">);</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.federation_dir)</span><span class="s">/cfapache/.&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;600&quot;</span><span class="p">,</span> <span class="s">&quot;cfapache&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span> <span class="p">);</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.federation_dir)</span><span class="s">/cfapache/.&quot;</span>
+        <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">recurse_with_base</span><span class="p">(</span><span class="s">&quot;inf&quot;</span><span class="p">),</span>
+        <span class="kr">file_select</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">all</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;600&quot;</span><span class="p">,</span> <span class="s">&quot;cfapache&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span> <span class="p">);</span>
+    <span class="nc">enabled</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.bin_dir)</span><span class="s">/.&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;660&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(transport_user)</span><span class="s">&quot;</span> <span class="p">);</span>
+    <span class="nc">am_superhub</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.federation_dir)</span><span class="s">/superhub/.&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;770&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(transport_user)</span><span class="s">&quot;</span> <span class="p">);</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.federation_dir)</span><span class="s">/superhub/import/.&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;600&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span> <span class="p">);</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.federation_dir)</span><span class="s">/superhub/import/filters/.&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;600&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span> <span class="p">);</span>
+    <span class="nc">am_feeder</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.federation_dir)</span><span class="s">/fedhub/.&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;660&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(transport_user)</span><span class="s">&quot;</span> <span class="p">);</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.federation_dir)</span><span class="s">/fedhub/dump/.&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;660&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(transport_user)</span><span class="s">&quot;</span> <span class="p">);</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.federation_dir)</span><span class="s">/fedhub/transport/.&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;660&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(transport_user)</span><span class="s">&quot;</span> <span class="p">);</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.federation_dir)</span><span class="s">/fedhub/dump/filters/.&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;600&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span> <span class="p">);</span>
+
+    <span class="nc">am_feeder|am_transporter|am_superhub</span><span class="p">::</span>
+      <span class="c"># TODO: Instrument augments</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.bin_dir)</span><span class="s">/config.sh&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">template_method</span> <span class="o">=&gt;</span> <span class="s">&quot;mustache&quot;</span><span class="p">,</span>
+        <span class="kr">edit_template</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(this.promise_dirname)</span><span class="s">/../../../templates/federated_reporting/config.sh.mustache&quot;</span><span class="p">,</span>
+        <span class="kr">template_data</span> <span class="o">=&gt;</span> <span class="nf">mergedata</span><span class="p">(</span><span class="nv">@(login)</span><span class="p">,</span> <span class="nv">@(feeder_username)</span><span class="p">,</span> <span class="nv">@(feeder)</span><span class="p">,</span> <span class="nv">@(cf_version)</span><span class="p">,</span>
+                                   <span class="nf">parsejson</span><span class="p">(</span><span class="err">&#39;</span><span class="p">{</span><span class="s">&quot;inventory_refresh_cmd&quot;</span><span class="err">:</span> <span class="s">&quot;&quot;</span><span class="p">}</span><span class="err">&#39;</span><span class="p">)),</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;640&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(transport_user)</span><span class="s">&quot;</span> <span class="p">);</span>
+
+      <span class="c"># TODO: Instrument augments</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.bin_dir)</span><span class="s">/log.sh&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">template_method</span> <span class="o">=&gt;</span> <span class="s">&quot;mustache&quot;</span><span class="p">,</span>
+        <span class="kr">edit_template</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(this.promise_dirname)</span><span class="s">/../../../templates/federated_reporting/log.sh.mustache&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;640&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(transport_user)</span><span class="s">&quot;</span> <span class="p">);</span>
+
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.bin_dir)</span><span class="s">/parallel.sh&quot;</span>
+        <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">local_dcp</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(this.promise_dirname)</span><span class="s">/../../../templates/federated_reporting/parallel.sh&quot;</span> <span class="p">),</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;640&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(transport_user)</span><span class="s">&quot;</span> <span class="p">);</span>
+
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.bin_dir)</span><span class="s">/psql_wrapper.sh&quot;</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s">&quot;ENT-4792&quot;</span><span class="p">}</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">edit_template</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(this.promise_dirname)</span><span class="s">/../../../templates/federated_reporting/psql_wrapper.sh.mustache&quot;</span><span class="p">,</span>
+        <span class="kr">template_method</span> <span class="o">=&gt;</span> <span class="s">&quot;mustache&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;700&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span> <span class="p">);</span>
+
+    <span class="nc">am_feeder</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.bin_dir)</span><span class="s">/dump.sh&quot;</span>
+        <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">local_dcp</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(this.promise_dirname)</span><span class="s">/../../../templates/federated_reporting/dump.sh&quot;</span> <span class="p">),</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;700&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span> <span class="p">);</span>
+
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.federation_dir)</span><span class="s">/fedhub/dump/filters/50-merge_inserts.awk&quot;</span>
+        <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">local_dcp</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(this.promise_dirname)</span><span class="s">/../../../templates/federated_reporting/50-merge_inserts.awk&quot;</span> <span class="p">),</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;600&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span> <span class="p">);</span>
+
+    <span class="nc">am_transporter</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.bin_dir)</span><span class="s">/transport.sh&quot;</span>
+        <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">local_dcp</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(this.promise_dirname)</span><span class="s">/../../../templates/federated_reporting/transport.sh&quot;</span> <span class="p">),</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;500&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(transport_user)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span> <span class="p">);</span>
+
+    <span class="nc">am_puller</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.bin_dir)</span><span class="s">/pull_dumps_from.sh&quot;</span>
+        <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">local_dcp</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(this.promise_dirname)</span><span class="s">/../../../templates/federated_reporting/pull_dumps_from.sh&quot;</span> <span class="p">),</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;500&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(transport_user)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span> <span class="p">);</span>
+
+    <span class="nc">am_superhub</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.bin_dir)</span><span class="s">/import.sh&quot;</span>
+        <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">local_dcp</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(this.promise_dirname)</span><span class="s">/../../../templates/federated_reporting/import.sh&quot;</span> <span class="p">),</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;700&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span> <span class="p">);</span>
+
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.bin_dir)</span><span class="s">/import_file.sh&quot;</span>
+        <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">local_dcp</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(this.promise_dirname)</span><span class="s">/../../../templates/federated_reporting/import_file.sh&quot;</span> <span class="p">),</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;700&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span> <span class="p">);</span>
+
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.federation_dir)</span><span class="s">/superhub/import/filters/10-base_filter.sed&quot;</span>
+        <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">local_dcp</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(this.promise_dirname)</span><span class="s">/../../../templates/federated_reporting/10-base_filter.sed&quot;</span> <span class="p">),</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;600&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cfengine_enterprise_federation-postgres_config">cfengine_enterprise_federation:postgres_config</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:postgres_config</code></p>
+
+<p><strong>Description:</strong> Customize postgres config for superhub</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">postgres_config</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="nc">am_superhub</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">c[shared_buffers]</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;1GB&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Changing this setting requires restarting the database.&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">c[max_locks_per_transaction]</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;4000&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Changing this setting requires restarting the database.&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">c[log_lock_waits]</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;on&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Changing this setting requires restarting the database.&quot;</span><span class="p">;</span>
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="nc">am_superhub</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(sys.statedir)</span><span class="s">/pg/data/postgresql.conf&quot;</span>
+        <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">set_line_based</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(this.namespace)</span><span class="s">:</span><span class="si">$(this.bundle)</span><span class="s">.c&quot;</span><span class="p">,</span>
+                                     <span class="s">&quot;=&quot;</span><span class="p">,</span>
+                                     <span class="s">&quot;</span><span class="se">\s</span><span class="s">*=</span><span class="se">\s</span><span class="s">*&quot;</span><span class="p">,</span>
+                                     <span class="s">&quot;.*&quot;</span><span class="p">,</span>
+                                     <span class="s">&quot;&quot;</span><span class="p">),</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">results</span><span class="p">(</span> <span class="s">&quot;bundle&quot;</span><span class="p">,</span> <span class="s">&quot;postgresql_conf&quot;</span> <span class="p">);</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="nc">am_superhub.postgresql_conf_repaired.!systemd</span><span class="p">::</span>
+      <span class="c"># smart mode tries to wait for operations to finish and clients to</span>
+      <span class="c"># disconnect, fast mode terminates open connections gracefully</span>
+      <span class="s">&quot;</span><span class="si">$(sys.bindir)</span><span class="s">/pg_ctl --pgdata </span><span class="si">$(sys.statedir)</span><span class="s">/pg/data --log /var/log/postgresql.log --wait --mode smart restart ||</span>
+<span class="s">       </span><span class="si">$(sys.bindir)</span><span class="s">/pg_ctl --pgdata </span><span class="si">$(sys.statedir)</span><span class="s">/pg/data --log /var/log/postgresql.log --wait --mode fast  restart&quot;</span>
+        <span class="kr">contain</span> <span class="o">=&gt;</span> <span class="nf">cfpostgres_user</span><span class="p">;</span>
+
+  <span class="kd">services</span><span class="p">:</span>
+    <span class="nc">am_superhub.postgresql_conf_repaired.systemd</span><span class="p">::</span>
+      <span class="s">&quot;cf-postgres&quot;</span>
+        <span class="kr">service_method</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">standard_services</span><span class="p">,</span>
+        <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;restart&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cfengine_enterprise_federation-exported_data">cfengine_enterprise_federation:exported_data</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:exported_data</code></p>
+
+<p><strong>Description:</strong> Run script to dump pg data on feeder hub</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">exported_data</span>
+<span class="p">{</span>
+  <span class="kd">methods</span><span class="p">:</span>
+    <span class="nc">am_feeder.!am_paused</span><span class="p">::</span>
+      <span class="s">&quot;Refresh Inventory&quot;</span>
+        <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="s">&quot;default:cfe_internal_refresh_inventory_view&quot;</span><span class="p">,</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;fr_inventory_refresh&quot;</span><span class="p">,</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Use standard inventory refresh so that we don&#39;t run it twice&quot;</span><span class="p">;</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="nc">am_feeder.!am_paused</span><span class="p">::</span>
+      <span class="s">&quot;/bin/bash&quot;</span>
+        <span class="kr">arglist</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.bin_dir)</span><span class="s">/dump.sh&quot;</span><span class="p">},</span>
+        <span class="kr">contain</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">in_shell</span><span class="p">,</span>
+        <span class="kr">depends_on</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;fr_inventory_refresh&quot;</span> <span class="p">},</span>
+        <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Refresh Inventory must be completed before dumping data&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cfengine_enterprise_federation-data_transport">cfengine_enterprise_federation:data_transport</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:data_transport</code></p>
+
+<p><strong>Description:</strong> Run script to transport data from feeder to superhub</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">data_transport</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="nc">am_puller.!am_paused</span><span class="p">::</span>
+      <span class="c"># local copies of the variables to make using them below sane</span>
+      <span class="p">&quot;</span><span class="nv">remotes</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="nv">@(cfengine_enterprise_federation:config.remotes)</span><span class="p">};</span>
+      <span class="s">&quot;data&quot;</span>    <span class="kr">data</span>  <span class="o">=&gt;</span> <span class="nv">@(cfengine_enterprise_federation:config.data)</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">enabled_pull_hosts[$(remotes)]</span><span class="p">&quot;</span>
+        <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][transport][ssh_host])</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">and</span><span class="p">(</span><span class="nf">strcmp</span><span class="p">(</span><span class="s">&quot;on&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][target_state])</span><span class="s">&quot;</span><span class="p">),</span>
+                  <span class="nf">strcmp</span><span class="p">(</span><span class="s">&quot;pull_over_rsync&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(data[remote_hubs][$(remotes)][transport][mode])</span><span class="s">&quot;</span><span class="p">));</span>
+
+      <span class="s">&quot;pull_args&quot;</span> <span class="o">-&gt;</span> <span class="p">{</span><span class="s">&quot;ENT-4499&quot;</span><span class="p">}</span>
+        <span class="kr">string</span> <span class="o">=&gt;</span> <span class="nf">join</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="nf">getvalues</span><span class="p">(</span><span class="nv">@(enabled_pull_hosts)</span><span class="p">));</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="nc">am_pusher.!am_paused</span><span class="p">::</span>
+      <span class="s">&quot;/bin/bash&quot;</span>
+        <span class="kr">arglist</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.bin_dir)</span><span class="s">/transport.sh push&quot;</span><span class="p">},</span>
+        <span class="kr">contain</span> <span class="o">=&gt;</span> <span class="nf">contain_transport_user</span><span class="p">;</span>
+
+    <span class="nc">am_puller.!am_paused</span><span class="p">::</span>
+      <span class="s">&quot;/bin/bash&quot;</span>
+        <span class="kr">arglist</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.bin_dir)</span><span class="s">/transport.sh pull </span><span class="si">$(pull_args)</span><span class="s">&quot;</span><span class="p">},</span>
+        <span class="kr">contain</span> <span class="o">=&gt;</span> <span class="nf">contain_transport_user</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cfengine_enterprise_federation-pre_import_state">cfengine_enterprise_federation:pre_import_state</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:pre_import_state</code></p>
+
+<p><strong>Description:</strong> Get the superhub into a state ready for importing dumps from feeders</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">pre_import_state</span>
+<span class="p">{</span>
+  <span class="kd">meta</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">comment</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;We need to stop cf-hub to prevent deadlocks on the PostgreSQL database&quot;</span><span class="p">;</span>
+
+  <span class="kd">services</span><span class="p">:</span>
+    <span class="nc">systemd</span><span class="p">::</span>
+      <span class="s">&quot;cf-hub&quot;</span>
+        <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;stop&quot;</span><span class="p">,</span>
+        <span class="kr">service_method</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">standard_services</span><span class="p">;</span>
+
+  <span class="kd">processes</span><span class="p">:</span>
+    <span class="nc">!systemd</span><span class="p">::</span>
+      <span class="s">&quot;cf-hub&quot;</span>
+        <span class="kr">process_select</span> <span class="o">=&gt;</span> <span class="nf">daemon_select</span><span class="p">,</span>  <span class="c"># we want the main process (not its child processes)</span>
+        <span class="kr">signals</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;term&quot;</span><span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cfengine_enterprise_federation-imported_data">cfengine_enterprise_federation:imported_data</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:imported_data</code></p>
+
+<p><strong>Description:</strong> Run script to import dumps on superhub</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">imported_data</span>
+<span class="p">{</span>
+  <span class="kd">commands</span><span class="p">:</span>
+      <span class="s">&quot;/bin/bash&quot;</span>
+        <span class="kr">arglist</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.bin_dir)</span><span class="s">/import.sh&quot;</span><span class="p">},</span>
+        <span class="kr">contain</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">in_shell</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cfengine_enterprise_federation-post_import_state">cfengine_enterprise_federation:post_import_state</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:post_import_state</code></p>
+
+<p><strong>Description:</strong> Get the superhub into the standard state, after importing dumps from feeders</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">post_import_state</span>
+<span class="p">{</span>
+  <span class="kd">services</span><span class="p">:</span>
+    <span class="nc">systemd</span><span class="p">::</span>
+      <span class="s">&quot;cf-hub&quot;</span>
+        <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;start&quot;</span><span class="p">,</span>
+        <span class="kr">service_method</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">standard_services</span><span class="p">;</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="nc">!systemd</span><span class="p">::</span>
+      <span class="s">&quot;/var/cfengine/bin/cf-hub&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cfengine_enterprise_federation-superhub_schema">cfengine_enterprise_federation:superhub_schema</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:superhub_schema</code></p>
+
+<p><strong>Description:</strong> Run SQL script to ensure schema is migrated to superhub partitioned tables architecture</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">superhub_schema</span>
+<span class="p">{</span>
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="nc">am_superhub</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.bin_dir)</span><span class="s">/psql_wrapper.sh&quot;</span>
+        <span class="kr">arglist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                     <span class="s">&quot;cfdb&quot;</span><span class="p">,</span>
+                     <span class="err">`</span><span class="s">&quot;select superhub_schema(&#39;</span><span class="si">$(sys.key_digest)</span><span class="s">&#39;);&quot;</span><span class="err">`</span><span class="p">,</span>
+                   <span class="p">},</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">psql_wrapper_exit_codes</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cfengine_enterprise_federation-ensure_feeders">cfengine_enterprise_federation:ensure_feeders</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:ensure_feeders</code></p>
+
+<p><strong>Description:</strong> Run SQL function to ensure that all configured feeder hubs are in __hubs table</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">ensure_feeders</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="nc">am_superhub</span><span class="p">::</span>
+      <span class="p">&quot;</span><span class="nv">feeders</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getvalues</span><span class="p">(</span> <span class="s">&quot;cfengine_enterprise_federation:config.feeder&quot;</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">feeders_arg</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">concat</span><span class="p">(</span> <span class="s">&quot;ARRAY[&#39;&quot;</span><span class="p">,</span> <span class="nf">join</span><span class="p">(</span> <span class="s">&quot;&#39;, &#39;&quot;</span><span class="p">,</span> <span class="nf">feeders</span> <span class="p">),</span> <span class="s">&quot;&#39;]&quot;</span><span class="p">);</span>
+
+  <span class="kd">commands</span><span class="p">:</span>
+    <span class="nc">am_superhub</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.bin_dir)</span><span class="s">/psql_wrapper.sh&quot;</span>
+        <span class="kr">arglist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                     <span class="s">&quot;cfdb&quot;</span><span class="p">,</span>
+                     <span class="err">`</span><span class="s">&quot;select ensure_feeders(</span><span class="si">$(feeders_arg)</span><span class="s">);&quot;</span><span class="err">`</span>
+                   <span class="p">},</span>
+        <span class="kr">classes</span> <span class="o">=&gt;</span> <span class="nf">psql_wrapper_exit_codes</span><span class="p">,</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">isgreaterthan</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="nf">feeders</span><span class="p">),</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cfengine_enterprise_federation-entry">cfengine_enterprise_federation:entry</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:entry</code></p>
+
+<p><strong>Description:</strong> Conditionally runs all federated reporting bundles</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">entry</span>
+<span class="p">{</span>
+  <span class="kd">meta</span><span class="p">:</span>
+    <span class="nc">(policy_server|am_policy_hub).enterprise_edition</span><span class="p">::</span>
+      <span class="s">&quot;tags&quot;</span> <span class="o">-&gt;</span> <span class="p">{</span> <span class="s">&quot;ENT-4383&quot;</span> <span class="p">}</span>
+        <span class="kr">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;enterprise_maintenance&quot;</span> <span class="p">};</span>
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="nc">enterprise_edition.(policy_server|am_policy_hub)</span><span class="p">::</span>
+      <span class="s">&quot;config_exists&quot;</span>
+        <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.federation_dir)</span><span class="s">/cfapache/federation-config.json&quot;</span><span class="p">);</span>
+    <span class="nc">enterprise_edition.(policy_server|am_policy_hub)</span><span class="p">::</span>
+      <span class="s">&quot;config_not_exists&quot;</span>
+        <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">not</span><span class="p">(</span><span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.federation_dir)</span><span class="s">/cfapache/federation-config.json&quot;</span><span class="p">));</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+    <span class="nc">config_exists</span><span class="p">::</span>
+      <span class="s">&quot;CFEngine Enterprise Federation Configuration&quot;</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;config&quot;</span><span class="p">,</span>
+        <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">config</span><span class="p">;</span>
+    <span class="nc">am_off|config_not_exists</span><span class="p">::</span>
+      <span class="s">&quot;CFEngine Enterprise Federation Transport Off&quot;</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;clean_when_off&quot;</span><span class="p">,</span>
+        <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">clean_when_off</span><span class="p">;</span>
+    <span class="nc">enabled.am_on</span><span class="p">::</span>
+      <span class="s">&quot;CFEngine Enterprise Federation Transport User&quot;</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;transport_user&quot;</span><span class="p">,</span>
+        <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">transport_user</span><span class="p">;</span>
+    <span class="nc">enterprise_edition.(policy_server|am_policy_hub)</span><span class="p">::</span>
+      <span class="s">&quot;federation_manage_files&quot;</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;federation_manage_files&quot;</span><span class="p">,</span>
+        <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">federation_manage_files</span><span class="p">;</span>
+    <span class="nc">enabled.am_on</span><span class="p">::</span>
+      <span class="s">&quot;CFEngine Enterprise Federation Postgres Configuration&quot;</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;postgres_config&quot;</span><span class="p">,</span>
+        <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">postgres_config</span><span class="p">;</span>
+      <span class="s">&quot;CFEngine Enterprise Federation Schema Migration&quot;</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;superhub_schema&quot;</span><span class="p">,</span>
+        <span class="kr">depends_on</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;postgres_config&quot;</span> <span class="p">},</span>
+        <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">superhub_schema</span><span class="p">;</span>
+      <span class="s">&quot;CFEngine Enterprise Federation Ensure Feeder Hubs in Database&quot;</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;ensure_feeders&quot;</span><span class="p">,</span>
+        <span class="kr">depends_on</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;superhub_schema&quot;</span> <span class="p">},</span>
+        <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">ensure_feeders</span><span class="p">;</span>
+      <span class="s">&quot;CFEngine Enterprise Federation Feeder Data Transport&quot;</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;data_transport&quot;</span><span class="p">,</span>
+        <span class="kr">depends_on</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;transport_user&quot;</span> <span class="p">},</span>
+        <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">data_transport</span><span class="p">;</span>
+      <span class="s">&quot;CFEngine Enterprise Federation Feeder Data Export&quot;</span>
+        <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">exported_data</span><span class="p">,</span>
+        <span class="kr">action</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">if_elapsed</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="kd">cfengine_enterprise_federation</span><span class="p">:</span><span class="nf">config</span><span class="err">.</span><span class="nf">dump_interval</span><span class="p">));</span>
+      <span class="s">&quot;Configuration Status&quot;</span>
+        <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">setup_status</span><span class="p">;</span>
+
+    <span class="nc">enabled.am_on.am_superhub.!am_paused</span><span class="p">::</span>
+      <span class="s">&quot;CFEngine Enterprise Federation Feeder Data Import Preparations&quot;</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;pre_import_state&quot;</span><span class="p">,</span>
+        <span class="kr">depends_on</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;transport_user&quot;</span><span class="p">,</span> <span class="s">&quot;ensure_feeders&quot;</span> <span class="p">},</span>
+        <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">pre_import_state</span><span class="p">;</span>
+      <span class="s">&quot;CFEngine Enterprise Federation Feeder Data Import&quot;</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;imported_data&quot;</span><span class="p">,</span>
+        <span class="kr">depends_on</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;pre_import_state&quot;</span> <span class="p">},</span>
+        <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">imported_data</span><span class="p">;</span>
+      <span class="s">&quot;CFEngine Enterprise Federation Feeder Data Import Cleanups&quot;</span>
+        <span class="kr">handle</span> <span class="o">=&gt;</span> <span class="s">&quot;post_import_state&quot;</span><span class="p">,</span>
+        <span class="kr">depends_on</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;imported_data&quot;</span> <span class="p">},</span>
+        <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">post_import_state</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">!enterprise_edition</span><span class="p">::</span>
+      <span class="s">&quot;Federated reporting is only available in CFEngine Enterprise.&quot;</span><span class="p">;</span>
+    <span class="nc">enterprise_edition.!(policy_server|am_policy_hub)</span><span class="p">::</span>
+      <span class="s">&quot;Federated reporting is only available on the policy server / hub.&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cfengine_enterprise_federation-setup_status">cfengine_enterprise_federation:setup_status</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:setup_status</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">setup_status</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="p">&quot;</span><span class="nv">role</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.role)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">&quot;</span><span class="nv">ssh_pub_key</span><span class="p">&quot;</span>
+      <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">readfile</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:transport_user.ssh_pub_key)</span><span class="s">&quot;</span> <span class="p">),</span>
+      <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:transport_user.ssh_pub_key)</span><span class="s">&quot;</span> <span class="p">);</span>
+    <span class="s">&quot;ssh_server_fingerprint&quot;</span>
+      <span class="c"># ssh-keyscan is used because it&#39;s more reliable/easy than trying to</span>
+      <span class="c"># parse sshd config to find the file and then readfile():</span>
+      <span class="kr">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;ssh-keyscan localhost 2&gt;/dev/null | sed &#39;s/localhost //g&#39;&quot;</span><span class="p">,</span> <span class="nf">useshell</span><span class="p">);</span>
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="s">&quot;superhub_setup_status_complete&quot;</span>
+      <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;any&quot;</span><span class="p">,</span>
+      <span class="kr">depends_on</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                      <span class="s">&quot;config&quot;</span><span class="p">,</span>
+                      <span class="s">&quot;transport_user&quot;</span><span class="p">,</span>
+                      <span class="s">&quot;postgres_config&quot;</span><span class="p">,</span> <span class="c"># We are depending on a deep guard within this bundle</span>
+                      <span class="s">&quot;federation_manage_files&quot;</span><span class="p">,</span>
+      <span class="p">};</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="nc">superhub_setup_status_complete</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.federation_dir)</span><span class="s">/cfapache/setup-status.json&quot;</span>
+        <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+        <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="kd">default</span><span class="p">:</span><span class="nf">mog</span><span class="p">(</span> <span class="s">&quot;600&quot;</span><span class="p">,</span> <span class="s">&quot;cfapache&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span> <span class="p">),</span>
+        <span class="kr">template_method</span> <span class="o">=&gt;</span> <span class="s">&quot;inline_mustache&quot;</span><span class="p">,</span>
+        <span class="kr">edit_template_string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(const.n)</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="kr">template_data</span> <span class="o">=&gt;</span> <span class="err">&#39;</span><span class="p">{</span>
+          <span class="s">&quot;configured&quot;</span><span class="err">:</span> <span class="nf">true</span><span class="p">,</span>
+          <span class="s">&quot;role&quot;</span><span class="err">:</span> <span class="s">&quot;</span><span class="si">$(role)</span><span class="s">&quot;</span><span class="p">,</span>
+          <span class="s">&quot;hostkey&quot;</span><span class="err">:</span> <span class="s">&quot;</span><span class="si">$(sys.key_digest)</span><span class="s">&quot;</span><span class="p">,</span>
+          <span class="s">&quot;transport_ssh_public_key&quot;</span><span class="err">:</span> <span class="s">&quot;</span><span class="si">$(ssh_pub_key)</span><span class="s">&quot;</span><span class="p">,</span>
+          <span class="s">&quot;transport_ssh_server_fingerprint&quot;</span><span class="err">:</span> <span class="s">&quot;</span><span class="si">$(ssh_server_fingerprint)</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="p">}</span><span class="err">&#39;</span><span class="p">,</span>
+        <span class="kr">if</span> <span class="o">=&gt;</span> <span class="nf">isvariable</span><span class="p">(</span> <span class="nf">ssh_pub_key</span> <span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="main"><strong>main</strong></h4>
+<p><strong>Prototype:</strong> <code>__main__</code></p>
+
+<p><strong>Description:</strong> You can run this policy file from shell without specifying bundle</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">__main__</span>
+<span class="p">{</span>
+  <span class="kd">methods</span><span class="p">:</span>
+    <span class="s">&quot;entry&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="kd">cfengine_enterprise_federation</span><span class="p">:</span><span class="nf">entry</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="file-bodies"><a href="guide-language-concepts-namespaces.html">file</a> bodies</h3><h4 id="control">control</h4>
+<p><strong>Prototype:</strong> <code>control</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">file</span> <span class="k">control</span>
+<span class="p">{</span>
+        <span class="kr">namespace</span> <span class="o">=&gt;</span> <span class="s">&quot;cfengine_enterprise_federation&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="contain-bodies"><a href="reference-promise-types-commands.html#contain" title="commands - contain">contain</a> bodies</h3><h4 id="cfengine_enterprise_federation-cfpostgres_user">cfengine_enterprise_federation:cfpostgres_user</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:cfpostgres_user</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">contain</span> <span class="nf">cfpostgres_user</span>
+<span class="p">{</span>
+  <span class="kr">useshell</span>   <span class="o">=&gt;</span> <span class="s">&quot;useshell&quot;</span><span class="p">;</span>
+  <span class="kr">exec_owner</span> <span class="o">=&gt;</span> <span class="s">&quot;cfpostgres&quot;</span><span class="p">;</span>
+  <span class="kr">exec_group</span> <span class="o">=&gt;</span> <span class="s">&quot;cfpostgres&quot;</span><span class="p">;</span>
+  <span class="kr">chdir</span>      <span class="o">=&gt;</span> <span class="s">&quot;/tmp&quot;</span><span class="p">;</span>
+  <span class="kr">no_output</span>  <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="cfengine_enterprise_federation-contain_transport_user">cfengine_enterprise_federation:contain_transport_user</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:contain_transport_user</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">contain</span> <span class="nf">contain_transport_user</span>
+<span class="p">{</span>
+    <span class="kr">exec_owner</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.transport_user)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="kr">exec_group</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.transport_user)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="kr">chdir</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(cfengine_enterprise_federation:config.transport_home)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="kr">useshell</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="process_select-bodies"><a href="reference-promise-types-processes.html#process_select" title="processes - process_select">process_select</a> bodies</h3><h4 id="cfengine_enterprise_federation-daemon_select">cfengine_enterprise_federation:daemon_select</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:daemon_select</code></p>
+
+<p><strong>Description:</strong> Select a daemon process (with PPID equal to 1)</p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">process_select</span> <span class="nf">daemon_select</span>
+<span class="p">{</span>
+        <span class="kr">ppid</span> <span class="o">=&gt;</span> <span class="nf">irange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="kr">process_result</span> <span class="o">=&gt;</span> <span class="s">&quot;ppid&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="classes-bodies"><a href="reference-promise-types.html#classes">classes</a> bodies</h3><h4 id="cfengine_enterprise_federation-psql_wrapper_exit_codes">cfengine_enterprise_federation:psql_wrapper_exit_codes</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:psql_wrapper_exit_codes</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">classes</span> <span class="nf">psql_wrapper_exit_codes</span>
+<span class="p">{</span>
+  <span class="kr">kept_returncodes</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;0&quot;</span> <span class="p">};</span>
+  <span class="kr">repaired_returncodes</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;1&quot;</span> <span class="p">};</span>
+  <span class="kr">failed_returncodes</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;2&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="file-bodies"><a href="guide-language-concepts-namespaces.html">file</a> bodies</h3><h4 id="cfengine_enterprise_federation-control">cfengine_enterprise_federation:control</h4>
+<p><strong>Prototype:</strong> <code>cfengine_enterprise_federation:control</code></p>
+
+<p><strong>Implementation:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">file</span> <span class="k">control</span>
+<span class="p">{</span>
+        <span class="kr">namespace</span> <span class="o">=&gt;</span> <span class="s">&quot;default&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-mpf.html">mpf</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-cfe_internal.html">cfe_internal</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-federated-reporting.html">federated reporting</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 24 June 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/masterfiles-policy-framework/cfe_internal-enterprise-federation-federation.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/4e9e6860aa094f25a21afcdd2087a240dbb1ba7d" target="_blank">4e9e6860aa094f25a21afcdd2087a240dbb1ba7d</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.16/assets/footer-ae31e033a1a936d598cf1c40b94021b9.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

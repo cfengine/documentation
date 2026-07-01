@@ -1,0 +1,184 @@
+
+bundle knowledge st_scale
+
+{
+topics:
+
+"st-scale";
+Redundancy_and_load_balancing_in_the_Nova_hub::
+    "Redundant reporting hubs and recovery" ;
+Redundancy_and_load_balancing_in_the_Nova_hub::
+    "Balancing multiple policy servers" ;
+Internal_and_external_scalability_of_the_software::
+    "Redundancy and load balancing in the Nova hub" ;
+Optimizations_affecting_scalability::
+    "Push versus pull" ;
+Optimizations_affecting_scalability::
+    "Deterministic queue" ;
+Optimizations_affecting_scalability::
+    "The role of caching and indexing" ;
+Internal_and_external_scalability_of_the_software::
+    "Optimizations affecting scalability" ;
+A_simple_worst_case_approach_to_scalability__the_star_network::
+    "Update storms" ;
+A_simple_worst_case_approach_to_scalability__the_star_network::
+    "Limitations on the CFDB hub database" ;
+A_simple_worst_case_approach_to_scalability__the_star_network::
+    "Scaling of updates" ;
+A_simple_worst_case_approach_to_scalability__the_star_network::
+    "Typical CFEngine scales" ;
+Internal_and_external_scalability_of_the_software::
+    "A simple worst case approach to scalability: the star network" ;
+Internal_and_external_scalability_of_the_software::
+    "Failover and redundancy" ;
+Internal_and_external_scalability_of_the_software::
+    "Best case approach to external scalability" ;
+Internal_and_external_scalability_of_the_software::
+    "Internal and external scalability of the software" ;
+Scalable_policy_strategy::
+    "Using the Copernicus Knowledge Map" ;
+Scalable_policy_strategy::
+    "Defining classes" ;
+Scalable_policy_strategy::
+    "Avoiding network traffic" ;
+Scalable_policy_strategy::
+    "Performance impact of promises" ;
+Policy_guidelines_for_comprehension::
+    "Tactics for scaling policy" ;
+Policy_guidelines_for_comprehension::
+    "Strategy for scaling policy" ;
+Scalable_policy_strategy::
+    "Policy guidelines for comprehension" ;
+Scalable_policy_strategy::
+    "Scalable policy strategy" ;
+Principles_of_scalability::
+    "Unexpected risks of scaling" ;
+A_user_strategy_for_scaling::
+    "Layout guidelines for scalability" ;
+A_user_strategy_for_scaling::
+    "Scalable CFEngine architecture" ;
+Principles_of_scalability::
+    "A user strategy for scaling" ;
+Principles_of_scalability::
+    "A product strategy for scaling" ;
+Principles_of_scalability::
+    "What does scalability depend on?" ;
+Principles_of_scalability::
+    "How does CFEngine address scale?" ;
+Principles_of_scalability::
+    "What is scalability?" ;
+Principles_of_scalability::
+    "Principles of scalability" ;
+Special_Topics_Guide::
+    "Scalability"  association => a("discussed in","Scalability","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-scale.html"
+  represents => { "Scale and Scalability" };
+Scalability::
+ "/docs/st-scale.html#Top"
+  represents => { "Text section" };
+Principles_of_scalability::
+ "/docs/st-scale.html#Principles-of-scalability"
+  represents => { "manual chapter" };
+What_is_scalability_::
+ "/docs/st-scale.html#What-is-scalability_003f"
+  represents => { "manual section What is scalability?" };
+How_does_CFEngine_address_scale_::
+ "/docs/st-scale.html#How-does-CFEngine-address-scale_003f"
+  represents => { "manual section How does CFEngine address scale?" };
+What_does_scalability_depend_on_::
+ "/docs/st-scale.html#What-does-scalability-depend-on_003f"
+  represents => { "manual section What does scalability depend on?" };
+A_product_strategy_for_scaling::
+ "/docs/st-scale.html#A-product-strategy-for-scaling"
+  represents => { "manual section A product strategy for scaling" };
+A_user_strategy_for_scaling::
+ "/docs/st-scale.html#A-user-strategy-for-scaling"
+  represents => { "manual section A user strategy for scaling" };
+Scalable_CFEngine_architecture::
+ "/docs/st-scale.html#Scalable-CFEngine-architecture"
+  represents => { "manual subsection" };
+Layout_guidelines_for_scalability::
+ "/docs/st-scale.html#Layout-guidelines-for-scalability"
+  represents => { "manual subsection" };
+Unexpected_risks_of_scaling::
+ "/docs/st-scale.html#Unexpected-risks-of-scaling"
+  represents => { "manual section Unexpected risks of scaling" };
+Scalable_policy_strategy::
+ "/docs/st-scale.html#Scalable-policy-strategy"
+  represents => { "manual chapter" };
+Policy_guidelines_for_comprehension::
+ "/docs/st-scale.html#Policy-guidelines-for-comprehension"
+  represents => { "manual section Policy guidelines for comprehension" };
+Strategy_for_scaling_policy::
+ "/docs/st-scale.html#Strategy-for-scaling-policy"
+  represents => { "manual subsection" };
+Tactics_for_scaling_policy::
+ "/docs/st-scale.html#Tactics-for-scaling-policy"
+  represents => { "manual subsection" };
+Performance_impact_of_promises::
+ "/docs/st-scale.html#Performance-impact-of-promises"
+  represents => { "manual section Performance impact of promises" };
+Avoiding_network_traffic::
+ "/docs/st-scale.html#Avoiding-network-traffic"
+  represents => { "manual section Avoiding network traffic" };
+Avoiding_network_traffic::
+ "/docs/st-scale.html#Avoiding-network-traffic"
+  represents => { "code example" };
+Defining_classes::
+ "/docs/st-scale.html#Defining-classes"
+  represents => { "manual section Defining classes" };
+Using_the_Copernicus_Knowledge_Map::
+ "/docs/st-scale.html#Copernicus-Knowledge-Map"
+  represents => { "manual section Using the Copernicus Knowledge Map" };
+Internal_and_external_scalability_of_the_software::
+ "/docs/st-scale.html#Internal-and-external-scalability-of-the-software"
+  represents => { "manual chapter" };
+Best_case_approach_to_external_scalability::
+ "/docs/st-scale.html#Best-case-approach-to-external-scalability"
+  represents => { "manual section Best case approach to external scalability" };
+Failover_and_redundancy::
+ "/docs/st-scale.html#Failover-and-redundancy"
+  represents => { "manual section Failover and redundancy" };
+A_simple_worst_case_approach_to_scalability__the_star_network::
+ "/docs/st-scale.html#A-simple-worst-case-approach-to-scalability-_002d-the-star-network"
+  represents => { "manual section A simple worst case approach to scalability: the star network" };
+Typical_CFEngine_scales::
+ "/docs/st-scale.html#Typical-CFEngine-scales"
+  represents => { "manual subsection" };
+Scaling_of_updates::
+ "/docs/st-scale.html#Scaling-of-updates"
+  represents => { "manual subsection" };
+Limitations_on_the_CFDB_hub_database::
+ "/docs/st-scale.html#Limitations-on-the-CFDB-hub-database"
+  represents => { "manual subsection" };
+Update_storms::
+ "/docs/st-scale.html#Update-storms"
+  represents => { "manual subsection" };
+Optimizations_affecting_scalability::
+ "/docs/st-scale.html#Optimizations-affecting-scalability"
+  represents => { "manual section Optimizations affecting scalability" };
+The_role_of_caching_and_indexing::
+ "/docs/st-scale.html#The-role-of-caching-and-indexing"
+  represents => { "manual subsection" };
+Deterministic_queue::
+ "/docs/st-scale.html#Deterministic-queue"
+  represents => { "manual subsection" };
+Push_versus_pull::
+ "/docs/st-scale.html#Push-versus-pull"
+  represents => { "manual subsection" };
+Redundancy_and_load_balancing_in_the_Nova_hub::
+ "/docs/st-scale.html#Redundancy-and-load-balancing-in-the-Nova-hub"
+  represents => { "manual section Redundancy and load balancing in the Nova hub" };
+Balancing_multiple_policy_servers::
+ "/docs/st-scale.html#Balancing-multiple-policy-servers"
+  represents => { "manual subsection" };
+Redundant_reporting_hubs_and_recovery::
+ "/docs/st-scale.html#Redundant-reporting-hubs-and-recovery"
+  represents => { "manual subsection" };
+}
+

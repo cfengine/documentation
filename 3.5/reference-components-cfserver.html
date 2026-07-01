@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - cf-serverd</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html"  class="navselected" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-enterprise-api.html">Enterprise  API Reference</a></li><li><a href="reference-syntax.html">Syntax, identifiers and names</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li><a href="reference-components-cfpromises.html">cf-promises</a></li><li><a href="reference-components-cfrunagent.html">cf-runagent</a></li><li><a href="reference-components-cfhub.html">cf-hub</a></li><li><a href="reference-components-cfkey.html">cf-key</a></li><li class="selected"><span>cf-serverd</span></li><li><a href="reference-components-cfmonitord.html">cf-monitord</a></li><li><a href="reference-components-cfexecd.html">cf-execd</a></li><li><a href="reference-components-cfagent.html">cf-agent</a></li><li><a href="reference-components-file-control.html">file control</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference-components.html">Components and Common Control</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>cf-serverd</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/components.html">components</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/cf-serverd.html">cf-serverd</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>cf-serverd</h1>
+                    <p><code>cf-serverd</code> is a socket listening daemon providing two services: it acts as a 
+file server for remote file copying and it allows an authorized 
+<a href="reference-components-cfrunagent.html" title="cf-runagent"><code>cf-runagent</code></a> to start a <a href="reference-components-cfagent.html" title="cf-agent"><code>cf-agent</code></a> run. <a href="reference-components-cfagent.html" title="cf-agent"><code>cf-agent</code></a> 
+typically connects to a <code>cf-serverd</code> instance to request updated policy code, 
+but may also request additional files for download. <code>cf-serverd</code>  employs 
+<a href="reference-promise-types-roles.html" title="roles">role based access control</a> (defined in policy code) to authorize 
+requests.</p>
+
+<p><code>cf-serverd</code> keeps the promises made in <code>common</code> and <code>server</code> bundles, and is
+affected by <code>common</code> and <code>server</code> control bodies.</p>
+<h2 id="command-reference">Command reference</h2><div class="highlight"><pre><code class="text">--help, -h
+    Print the help message
+
+--debug, -d
+    Enable debugging output
+
+--verbose, -v
+    Output verbose information about the behaviour of the agent
+
+--version, -V
+    Output the version of the software
+
+--file, -f
+    Specify an alternative input file than the default
+
+--define, -D
+    Define a list of comma separated classes to be defined at the start of execution
+
+--negate, -N
+    Define a list of comma separated classes to be undefined at the start of execution
+
+--no-lock, -K
+    Ignore locking constraints during execution (ifelapsed/expireafter) if &quot;too soon&quot; to run
+
+--inform, -I
+    Print basic information about changes made to the system, i.e. promises repaired
+
+--no-fork, -F
+    Run as a foreground processes (do not fork)
+
+--ld-library-path, -L
+    Set the internal value of LD_LIBRARY_PATH for child processes
+
+--generate-avahi-conf, -A
+    Generates avahi configuration file to enable policy server to be discovered in the network
+
+--legacy-output, -l
+    Use legacy output format
+
+--color, -C
+    Enable colorized output. Possible values: &#39;always&#39;, &#39;auto&#39;, &#39;never&#39;. Default is &#39;never&#39;
+</code></pre>
+</div>
+<h2 id="control-promises">Control Promises</h2>
+<p>Settings describing the details of the fixed behavioral promises made by
+<a href="reference-components-cfserver.html" title="cf-serverd"><code>cf-serverd</code></a>. Server controls are mainly about determining access policy for
+the connection protocol: i.e. access to the server itself. Access to specific
+files must be granted in addition.</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+    <span class="p">{</span>
+        <span class="kr">allowconnects</span>         <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">,</span> <span class="s">&quot;::1&quot;</span> <span class="p">,</span>  <span class="s">&quot;.*</span><span class="se">\.</span><span class="s">example</span><span class="se">\.</span><span class="s">org&quot;</span> <span class="p">};</span>
+        <span class="kr">allowallconnects</span>      <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;127.0.0.1&quot;</span> <span class="p">,</span> <span class="s">&quot;::1&quot;</span> <span class="p">,</span>  <span class="s">&quot;.*</span><span class="se">\.</span><span class="s">example</span><span class="se">\.</span><span class="s">org&quot;</span> <span class="p">};</span>
+
+        <span class="c"># Uncomment me under controlled circumstances</span>
+        <span class="c">#trustkeysfrom         =&gt; { &quot;127.0.0.1&quot; , &quot;::1&quot; ,  &quot;.*\.example\.org&quot; };</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="allowallconnects">allowallconnects</h3>
+<p><strong>Description:</strong> List of IPs or hostnames that may have more than one
+connection to the server port</p>
+
+<p>This list of regular expressions matches hosts that are allowed to
+connect an unlimited number of times up to the maximum connection
+limit. Without this, a host may only connect once (which is a very
+strong constraint, as the host must wait for the TCP <code>FIN_WAIT</code> to
+expire before reconnection can be attempted).</p>
+
+<p>Note that <code>127.0.0.1</code> is a regular expression (i.e., &quot;127 any
+character 0 any character 0 any character 1&quot;), but this will only
+match the IP address <code>127.0.0.1</code>. Take care with IP addresses and
+domain names, as the hostname regular expression <code>www.domain.com</code>
+will potentially match more than one hostname (e.g.,
+<code>wwwxdomain.com</code>, in addition to the desired hostname
+<code>www.domain.com</code>).</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Examples</strong>:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="kr">allowallconnects</span>      <span class="o">=&gt;</span> <span class="p">{</span>
+         <span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+         <span class="s">&quot;::1&quot;</span><span class="p">,</span>
+         <span class="s">&quot;200</span><span class="se">\.</span><span class="s">1</span><span class="se">\.</span><span class="s">10</span><span class="se">\.</span><span class="s">.*&quot;</span><span class="p">,</span>
+         <span class="s">&quot;host</span><span class="se">\.</span><span class="s">domain</span><span class="se">\.</span><span class="s">tld&quot;</span><span class="p">,</span>
+         <span class="s">&quot;host[0-9]+</span><span class="se">\.</span><span class="s">domain</span><span class="se">\.</span><span class="s">com&quot;</span>
+         <span class="p">};</span>
+</code></pre>
+</div>
+<h3 id="allowconnects">allowconnects</h3>
+<p><strong>Description:</strong> List of IPs or hostnames that may connect to the
+server port</p>
+
+<p>If a client&#39;s identity matches an entry in this list it is granted
+to permission to send data to the server port. Clients who are not
+in this list may not connect or send data to the server.</p>
+
+<p>See also the warning about regular expressions in
+<a href="reference-components-cfserver.html#allowallconnects" title="cf-serverd - allowallconnects"><code>allowallconnects</code></a>.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Examples</strong>:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="kr">allowconnects</span> <span class="o">=&gt;</span> <span class="p">{</span>
+         <span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+         <span class="s">&quot;::1&quot;</span><span class="p">,</span>
+         <span class="s">&quot;200</span><span class="se">\.</span><span class="s">1</span><span class="se">\.</span><span class="s">10</span><span class="se">\.</span><span class="s">.*&quot;</span><span class="p">,</span>
+         <span class="s">&quot;host</span><span class="se">\.</span><span class="s">domain</span><span class="se">\.</span><span class="s">tld&quot;</span><span class="p">,</span>
+         <span class="s">&quot;host[0-9]+</span><span class="se">\.</span><span class="s">domain</span><span class="se">\.</span><span class="s">com&quot;</span>
+         <span class="p">};</span>
+</code></pre>
+</div>
+<h3 id="allowusers">allowusers</h3>
+<p><strong>Description:</strong> List of usernames who may execute requests from this
+server</p>
+
+<p>The usernames listed in this list are those asserted as public key
+identities during client-server connections. These may or may not
+correspond to system identities on the server-side system.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="kr">allowusers</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;cfengine&quot;</span><span class="p">,</span> <span class="s">&quot;root&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+<h3 id="auditing">auditing</h3>
+<p><strong>Deprecated:</strong> This menu option policy is deprecated, does
+nothing and is kept for backward compatibility.</p>
+
+<p><strong>Type:</strong> <a href="manuals-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+<h3 id="bindtointerface">bindtointerface</h3>
+<p><strong>Description:</strong> IP of the interface to which the server should bind
+on multi-homed hosts</p>
+
+<p>On multi-homed hosts, the server and client can bind to a specific
+interface for server traffic. The IP address of the interface must
+be given as the argument, not the device name.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+<div class="highlight"><pre><code class="cf3">    <span class="kr">bindtointerface</span> <span class="o">=&gt;</span> <span class="s">&quot;192.168.1.1&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>To bind to all interfaces, including IPV6:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="kr">bindtointerface</span> <span class="o">=&gt;</span> <span class="s">&quot;::&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>Note that a bug in netstat will not correctly report that cf-serverd is
+listening on both IPV4 and IPV6 interfaces. A test with netcat (nc) will
+confirm.</p>
+<div class="highlight"><pre><code class="cf3">   <span class="c"># nc -v -4 172.16.100.1 5308</span>
+   <span class="nf">Connection</span> <span class="nf">to</span> <span class="mf">172.16</span><span class="err">.</span><span class="mf">100.1</span> <span class="mi">5308</span> <span class="nf">port</span> <span class="err">[</span><span class="nf">tcp</span><span class="err">/</span><span class="nf">cfengine</span><span class="err">]</span> <span class="nf">succeeded</span><span class="err">!</span>
+   <span class="err">^</span><span class="nf">C</span>
+   <span class="c"># nc -v -6 fe80:470:1d:a2f::2 5308</span>
+   <span class="nf">Connection</span> <span class="nf">to</span> <span class="kd">fe80</span><span class="p">:</span><span class="kd">470</span><span class="p">:</span><span class="kd">1d</span><span class="p">:</span><span class="nc">a2f</span><span class="p">::</span><span class="mi">2</span> <span class="mi">5308</span> <span class="nf">port</span> <span class="err">[</span><span class="nf">tcp</span><span class="err">/</span><span class="nf">cfengine</span><span class="err">]</span> <span class="nf">succeeded</span><span class="err">!</span>
+   <span class="err">^</span><span class="nf">C</span>
+</code></pre>
+</div>
+<h3 id="cfruncommand">cfruncommand</h3>
+<p><strong>Description:</strong> Path to the cf-agent command or cf-execd wrapper for
+remote execution</p>
+
+<p>It is normal for this to point to the location of <a href="reference-components-cfagent.html" title="cf-agent"><code>cf-agent</code></a> but it
+could also point to the <a href="reference-components-cfexecd.html" title="cf-execd"><code>cf-execd</code></a>, or even another program or
+shell command at your own risk.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.+</code></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">cfruncommand</span> <span class="o">=&gt;</span> <span class="s">&quot;/var/cfengine/bin/cf-agent&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="call_collect_interval">call_collect_interval</h3>
+<p><strong>CFEngine Enterprise only.</strong></p>
+
+<p><strong>Description:</strong> The interval in minutes in between collect calls to
+the CFEngine Server offering a tunnel for report collection.</p>
+
+<p>If option time is set, it causes the server daemon to peer with a
+policy hub by attempting a connection at regular intervals of the
+value of the parameter in minutes.</p>
+
+<p>This feature is designed to allow Enterprise report collection from
+hosts that are not directly addressable from a hub data-aggregation
+process. For example, if some of the clients of a policy hub are
+behind a network address translator then the hub is not able to
+open a channel to address them directly. The effect is to place a
+&#39;collect call&#39; with the policy hub.</p>
+
+<p>If this option is set, the client&#39;s <a href="reference-components-cfserver.html" title="cf-serverd"><code>cf-serverd</code></a> will &quot;peer&quot; with
+the server daemon on a policy hub. This means that, <a href="reference-components-cfserver.html" title="cf-serverd"><code>cf-serverd</code></a> on
+an unreachable (e.g. NATed) host will attempt to report in to the
+<a href="reference-components-cfserver.html" title="cf-serverd"><code>cf-serverd</code></a> on its assigned policy hub and offer it a short time
+window in which to download reports over the established
+connection. The effect is to establish a temporary secure tunnel
+between hosts, initiated from the satellite host end. The
+connection is made in such a way that host autonomy is not
+compromised. Either hub may refuse or decline to play their role at
+any time, in the usual way (avoiding DOS attacks). Normal access
+controls must be set for communication in both directions.</p>
+
+<p>Collect calling cannot be as efficient as data collection by the
+<a href="reference-components-cfhub.html" title="cf-hub"><code>cf-hub</code></a>, as the hub is not able to load balance. Hosts that use this
+approach should exclude themselves from the cf-hub data
+collection.</p>
+
+<p>The sequence of events is this:</p>
+
+<ul>
+<li>  The host&#39;s <a href="reference-components-cfserver.html" title="cf-serverd"><code>cf-serverd</code></a> connects to its registered CFEngine Server</li>
+<li>  The host identifies itself to authentication and access
+control and sends a collect-call pull-request to the server</li>
+<li>  The server might honor this, if the access control grants access.</li>
+<li>  If access is granted, the server has <a href="reference-components-cfserver.html#collect_window" title="cf-serverd - collect_window"><code>collect_window</code></a> seconds to
+initiate a query to the host for its reports.</li>
+<li>  The server identifies itself to authentication and access
+control and sends a query request to the host to collect the
+reports.</li>
+<li>  When finished, the host closes the tunnel.</li>
+</ul>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="text">call_collect_interval =&gt; &quot;5&quot;;
+</code></pre>
+</div>
+
+<p>The full configuration would look something like this</p>
+<div class="highlight"><pre><code class="cf3">        <span class="c">#########################################################</span>
+        <span class="c"># Server config</span>
+        <span class="c">#########################################################</span>
+
+        <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+        <span class="p">{</span>
+        <span class="kr">allowconnects</span>         <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;10.10.10&quot;</span> <span class="p">,</span> <span class="s">&quot;::1&quot;</span> <span class="p">};</span>
+        <span class="kr">allowallconnects</span>      <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;10.10.10&quot;</span> <span class="p">,</span> <span class="s">&quot;::1&quot;</span> <span class="p">};</span>
+        <span class="kr">trustkeysfrom</span>         <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;10.10.10&quot;</span> <span class="p">,</span> <span class="s">&quot;::1&quot;</span> <span class="p">};</span>
+
+        <span class="kr">call_collect_interval</span> <span class="o">=&gt;</span> <span class="s">&quot;5&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c">#########################################################</span>
+
+        <span class="k">bundle</span> <span class="k">server</span> <span class="nf">access_rules</span><span class="p">()</span>
+
+        <span class="p">{</span>
+        <span class="kd">access</span><span class="p">:</span>
+
+          <span class="nc">policy_hub</span><span class="p">::</span>
+
+           <span class="s">&quot;collect_calls&quot;</span>
+               <span class="kr">resource_type</span> <span class="o">=&gt;</span> <span class="s">&quot;query&quot;</span><span class="p">,</span>
+                     <span class="kr">admit</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;10.10.10&quot;</span> <span class="p">};</span> <span class="c"># the apparent NAT address of the satellite</span>
+
+          <span class="nc">satellite_hosts</span><span class="p">::</span>
+
+            <span class="s">&quot;delta&quot;</span>
+                     <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Grant access to cfengine hub to collect report deltas&quot;</span><span class="p">,</span>
+               <span class="kr">resource_type</span> <span class="o">=&gt;</span> <span class="s">&quot;query&quot;</span><span class="p">,</span>
+                     <span class="kr">admit</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;policy_hub&quot;</span> <span class="p">};</span>
+
+            <span class="s">&quot;full&quot;</span>
+                    <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;Grant access to cfengine hub to collect full report dump&quot;</span><span class="p">,</span>
+              <span class="kr">resource_type</span> <span class="o">=&gt;</span> <span class="s">&quot;query&quot;</span><span class="p">,</span>
+                    <span class="kr">admit</span>   <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;policy_hub&quot;</span>  <span class="p">};</span>
+        <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in Enterprise 3.0.0 (2012)</p>
+<h3 id="collect_window">collect_window</h3>
+<p><strong>CFEngine Enterprise only.</strong></p>
+
+<p><strong>Description:</strong> A time in seconds that a collect-call tunnel remains
+open to a hub to attempt a report transfer before it is closed</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+<div class="highlight"><pre><code class="text">collect_window =&gt; &quot;15&quot;;
+</code></pre>
+</div>
+
+<p><strong>Default value:</strong> 10.</p>
+
+<p><strong>History:</strong> Was introduced in Enterprise 3.0.0 (2012)</p>
+<h3 id="denybadclocks">denybadclocks</h3>
+<p><strong>Description:</strong> true/false accept connections from hosts with clocks
+that are out of sync</p>
+
+<p>A possible form of attack on the fileserver is to request files
+based on time by setting the clocks incorrectly. This option
+prevents connections from clients whose clocks are drifting too far
+from the server clock (where &quot;too far&quot; is currently defined as
+&quot;more than an hour off&quot;). This serves as a warning about clock
+asynchronization and also a protection against Denial of Service
+attempts based on clock corruption.</p>
+
+<p><strong>Type:</strong> <a href="manuals-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> true</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">denybadclocks</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="denyconnects">denyconnects</h3>
+<p><strong>Description:</strong> List of IPs or hostnames that may NOT connect to the
+server port</p>
+
+<p>Hosts or IP addresses that are explicitly denied access. This
+should only be used in special circumstances. One should never
+grant generic access to everything and then deny special cases.
+Since the default server behavior is to grant no access to
+anything, this list is unnecessary unless you have already granted
+access to some set of hosts using a generic pattern, to which you
+intend to make an exception.</p>
+
+<p>See also the warning about regular expressions in
+<a href="reference-components-cfserver.html#allowallconnects" title="cf-serverd - allowallconnects"><code>allowallconnects</code></a>.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">denyconnects</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;badhost</span><span class="se">\.</span><span class="s">domain</span><span class="se">\.</span><span class="s">evil&quot;</span><span class="p">,</span> <span class="s">&quot;host3</span><span class="se">\.</span><span class="s">domain</span><span class="se">\.</span><span class="s">com&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="dynamicaddresses">dynamicaddresses</h3>
+<p><strong>Deprecated:</strong> This is now handled transparently.</p>
+
+<p>List of IPs or hostnames for which the IP/name
+binding is expected to change</p>
+
+<p>The addresses or hostnames here are expected to have non-permanent
+address-name bindings, we must therefor work harder to determine
+whether hosts credentials are trusted by looking for existing
+public keys in files that do not match the current hostname or IP.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">dynamicaddresses</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;dhcp_.*&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="hostnamekeys">hostnamekeys</h3>
+<p><strong>Deprecated:</strong> Host identification is now handled transparently.</p>
+
+<p>true/false store keys using hostname lookup instead of IP addresses</p>
+
+<p>Client side choice to base key associations on host names rather
+than IP address. This is useful for hosts with dynamic addresses.</p>
+
+<p><strong>Type:</strong> <a href="manuals-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">hostnamekeys</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="keycachettl">keycacheTTL</h3>
+<p><strong>Description:</strong> Maximum number of hours to hold public keys in the
+cache</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Default value:</strong> 24</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">keycacheTTL</span> <span class="o">=&gt;</span> <span class="s">&quot;24&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in version 3.1.0b1,Enterprise 2.0.0b1 (2010)</p>
+<h3 id="logallconnections">logallconnections</h3>
+<p><strong>Description:</strong> true/false causes the server to log all new
+connections to syslog</p>
+
+<p>If set, the server will record connection attempts in syslog.</p>
+
+<p><strong>Type:</strong> <a href="manuals-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">logallconnections</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="logencryptedtransfers">logencryptedtransfers</h3>
+<p><strong>Description:</strong> true/false log all successful transfers required to
+be encrypted</p>
+
+<p>If true the server will log all transfers of files which the server
+requires to encrypted in order to grant access (see <a href="reference-promise-types-access.html#ifencrypted" title="access - ifencrypted"><code>ifencrypted</code></a>)
+to syslog. These files are deemed to be particularly sensitive.</p>
+
+<p><strong>Type:</strong> <a href="manuals-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> false</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">logencryptedtransfers</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="maxconnections">maxconnections</h3>
+<p><strong>Description:</strong> Maximum number of connections that will be accepted</p>
+
+<p>Watch out for kernel limitations for maximum numbers of open file
+descriptors which can limit this.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>0,99999999999</code></p>
+
+<p><strong>Default value:</strong> 30 remote queries</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># client side</span>
+
+    <span class="k">body</span> <span class="k">agent</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">maxconnections</span> <span class="o">=&gt;</span> <span class="s">&quot;1000&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c"># server side</span>
+
+    <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">maxconnections</span> <span class="o">=&gt;</span> <span class="s">&quot;1000&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="port">port</h3>
+<p><strong>Description:</strong> Default port for the CFEngine server</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>1024,99999</code></p>
+
+<p><strong>Default value:</strong> 5308</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">hub</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">port</span> <span class="o">=&gt;</span> <span class="s">&quot;5308&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="nc">specialhost</span><span class="p">::</span>
+     <span class="kr">port</span> <span class="o">=&gt;</span> <span class="s">&quot;5308&quot;</span><span class="p">;</span>
+
+    <span class="nc">!specialhost</span><span class="p">::</span>
+     <span class="kr">port</span> <span class="o">=&gt;</span> <span class="s">&quot;5308&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>The standard or registered port number is tcp/5308. CFEngine does
+not presently use its registered udp port with the same number, but
+this could change in the future.</p>
+
+<p>Changing the standard port number is not recommended practice. You
+should not do it without a good reason.</p>
+<h3 id="serverfacility">serverfacility</h3>
+<p><strong>Description:</strong> Menu option for syslog facility level</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+<div class="highlight"><pre><code class="text">LOG_USER
+LOG_DAEMON
+LOG_LOCAL0
+LOG_LOCAL1
+LOG_LOCAL2
+LOG_LOCAL3
+LOG_LOCAL4
+LOG_LOCAL5
+LOG_LOCAL6
+LOG_LOCAL7
+</code></pre>
+</div>
+
+<p>See syslog notes.</p>
+
+<p><strong>Default value:</strong> <code>LOG_USER</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">serverfacility</span> <span class="o">=&gt;</span> <span class="s">&quot;LOG_USER&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="skipverify">skipverify</h3>
+<p><strong>Description:</strong> List of IPs or hostnames for which we expect no DNS
+binding and cannot verify</p>
+
+<p>Server side decision to ignore requirements of DNS identity
+confirmation.</p>
+
+<p>See also the warning about regular expressions in
+<a href="reference-components-cfserver.html#allowallconnects" title="cf-serverd - allowallconnects"><code>allowallconnects</code></a>.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">skipverify</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;special_host.*&quot;</span><span class="p">,</span> <span class="s">&quot;192.168</span><span class="se">\.</span><span class="s">.*&quot;</span> <span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="trustkeysfrom">trustkeysfrom</h3>
+<p><strong>Description:</strong> List of IPs from whom we accept public keys on trust</p>
+
+<p>If connecting hosts&#39; public keys have not already been trusted, this allows us
+to accept the keys on trust. Normally this should be an empty list except in
+controlled circumstances.</p>
+
+<p>See also the warning about regular expressions in
+<a href="reference-components-cfserver.html#allowallconnects" title="cf-serverd - allowallconnects"><code>allowallconnects</code></a>.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+    <span class="p">{</span>
+    <span class="kr">trustkeysfrom</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;10</span><span class="se">\.</span><span class="s">0</span><span class="se">\.</span><span class="s">1</span><span class="se">\.</span><span class="s">1&quot;</span><span class="p">,</span> <span class="s">&quot;192</span><span class="se">\.</span><span class="s">168</span><span class="se">\.</span><span class="s">.*&quot;</span><span class="p">};</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="listen">listen</h3>
+<p><strong>Description:</strong> true/false enable server deamon to listen on defined
+port</p>
+
+<p>This attribute allows to disable <a href="reference-components-cfserver.html" title="cf-serverd"><code>cf-serverd</code></a> from listening on any
+port. Should be used in conjunction with <a href="reference-components-cfserver.html#call_collect_interval" title="cf-serverd - call_collect_interval"><code>call_collect_interval</code></a>.</p>
+
+<p>This setting only applies to CFEngine clients, the policy hub will
+not be affected. Changing this setting requires a restart of
+<a href="reference-components-cfserver.html" title="cf-serverd"><code>cf-serverd</code></a> for the change to take effect.</p>
+
+<p><strong>Type:</strong> <a href="manuals-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Default value:</strong> true</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">server</span> <span class="k">control</span>
+    <span class="p">{</span>
+
+      <span class="nc">listening_host_context</span><span class="p">::</span>
+        <span class="kr">listen</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+
+      <span class="nc">!listening_host_context</span><span class="p">::</span>
+        <span class="kr">listen</span> <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>History:</strong> Was introduced in 3.4.0, Enterprise 3.0 (2012)</p>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/reference/components/cf-serverd.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

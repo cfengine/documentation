@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.18  Documentation - Import & Export Compliance Report API</title>
+        <link rel="icon" type="image/svg+xml" href="./media/images/favicon.svg">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/reference-enterprise-api-ref-export-import-compliance-report-api.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet">
+        <link href='assets/global-337446952f2ea3d590f5c3e3687cd5f0.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Import & Export Compliance Report API";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.24/">Version 3.24 (LTS)</option>
+<option value="/docs/3.23/">Version 3.23 (EOL non-LTS)</option>
+<option value="/docs/3.22/">Version 3.22 (non-LTS)</option>
+<option value="/docs/3.21/">Version 3.21 (LTS)</option>
+<option value="/docs/3.20/">Version 3.20 (EOL non-LTS)</option>
+<option value="/docs/3.19/">Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/" selected>Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (EOL LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="c5f68dd2aab4228c4" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components</a></li><li><a href="reference-promise-types.html">Promise Types</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a><ul class="level2"><li><a href="reference-enterprise-api-ref-actions-api.html">Actions API</a></li><li><a href="reference-enterprise-api-ref-cmdb-api.html">CMDB API</a></li><li><a href="reference-enterprise-api-ref-changes.html">Changes REST API</a></li><li><a href="reference-enterprise-api-ref-federated-reporting-api.html">Federated reporting configuration API</a></li><li><a href="reference-enterprise-api-ref-file-changes.html">File Changes API</a></li><li><a href="reference-enterprise-api-ref-health-diagnostic.html">Health diagnostic API</a></li><li><a href="reference-enterprise-api-ref-host.html">Host REST API</a></li><li><a href="reference-enterprise-api-ref-export-import-api.html">Import & Export API</a></li><li><a class="active" href="reference-enterprise-api-ref-export-import-compliance-report-api.html">Import & Export Compliance Report API</a></li><li><a href="reference-enterprise-api-ref-inventory.html">Inventory API</a></li><li><a href="reference-enterprise-api-ref-ldap-api.html">LDAP authentication API</a></li><li><a href="reference-enterprise-api-ref-query.html">Query REST API</a></li><li><a href="reference-enterprise-api-ref-sql-schema.html">SQL Schema</a></li><li><a href="reference-enterprise-api-ref-status-settings.html">Status and Settings REST API</a></li><li><a href="reference-enterprise-api-ref-users-rbac.html">Users and Access-Control REST API</a></li><li><a href="reference-enterprise-api-ref-vcs-settings.html">VCS settings API</a></li><li><a href="reference-enterprise-api-ref-web-rbac.html">Web RBAC API</a></li></ul></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-enterprise-api-ref.html">Enterprise API Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Import & Export Compliance Report API
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>This provides users the ability to transfer compliance reports between hubs or create reports from a JSON definition file.</p>
+<h2 id="export">Export</h2>
+<p><strong>URI:</strong> <a href="https://hub.example/advancedreports/complianceReport/export?id=:ID">https://hub.example/advancedreports/complianceReport/export?id=:ID</a></p>
+
+<p><strong>Method:</strong> GET</p>
+
+<p><strong>Example request (curl):</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>curl -k --user &lt;username&gt;:&lt;password&gt; \
+  -X GET \
+  https://hub.cfengine.com/advancedreports/complianceReport/export?id=20
+</code></pre>
+</div>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 200 Ok
+{
+    &quot;reports&quot;: {
+        &quot;example-compliance-report&quot;: {
+            &quot;id&quot;: &quot;example-compliance-report&quot;,
+            &quot;type&quot;: &quot;compliance&quot;,
+            &quot;title&quot;: &quot;Example Compliance Report&quot;,
+            &quot;conditions&quot;: [
+                &quot;software-updates-available&quot;,
+                &quot;entire-cfengine-policy&quot;
+            ]
+        }
+    },
+    &quot;conditions&quot;: {
+        &quot;software-updates-available&quot;: {
+            &quot;id&quot;: &quot;software-updates-available&quot;,
+            &quot;name&quot;: &quot;Software updates available&quot;,
+            &quot;description&quot;: &quot;Available software updates to any package.&quot;,
+            &quot;type&quot;: &quot;softwareupdate&quot;,
+            &quot;condition_for&quot;: &quot;failing&quot;,
+            &quot;rules&quot;: {
+                &quot;package-name&quot;: null,
+                &quot;condition&quot;: null,
+                &quot;architecture&quot;: null
+            },
+            &quot;category&quot;: &quot;uncategorized&quot;,
+            &quot;severity&quot;: null,
+            &quot;host_filter&quot;: null
+        },
+        &quot;entire-cfengine-policy&quot;: {
+            &quot;id&quot;: &quot;entire-cfengine-policy&quot;,
+            &quot;name&quot;: &quot;Entire CFEngine policy&quot;,
+            &quot;description&quot;: &quot;Promises not kept in the entire policy.&quot;,
+            &quot;type&quot;: &quot;policy&quot;,
+            &quot;condition_for&quot;: &quot;failing&quot;,
+            &quot;rules&quot;: {
+                &quot;filter-by&quot;: null,
+                &quot;value&quot;: null,
+                &quot;promise-handle&quot;: null,
+                &quot;promise-status&quot;: &quot;NOTKEPT&quot;
+            },
+            &quot;category&quot;: &quot;uncategorized&quot;,
+            &quot;severity&quot;: null,
+            &quot;host_filter&quot;: null
+        }
+    }
+}
+</code></pre>
+</div>
+<h2 id="import">Import</h2>
+<p><strong>URI:</strong> <a href="https://hub.example/advancedreports/complianceReport/import">https://hub.example/advancedreports/complianceReport/import</a></p>
+
+<p><strong>Method:</strong> POST</p>
+
+<p><strong>Parameters:</strong></p>
+
+<ul>
+<li><p><strong>data</strong> <em>(json)</em>
+Reports and conditions data to be imported. Data json object should have two nested objects: <a href="reference-promise-types-reports.html" title="reports"><code>reports</code></a> and <code>condtions</code>:</p>
+
+<ul>
+<li><strong>reports</strong>
+JSON object where the key is report ID, which will be used to identify if report already exists in the system.
+
+<ul>
+<li><strong>id</strong> <em>(text)</em>
+Report ID</li>
+<li><strong>type</strong> <em>(text)</em>
+Report&#39;s type. Should be set to <code>complince</code></li>
+<li><strong>title</strong> <em>(text)</em>
+Report&#39;s title.</li>
+<li><strong>conditions</strong> <em>(array)</em>
+Conditions list</li>
+</ul></li>
+<li><strong>conditions</strong>
+JSON object where the key is condition ID, which will be used to identify if condition already exists in the system.
+
+<ul>
+<li><strong>id</strong> <em>(text)</em>
+ Condition ID</li>
+<li><strong>name</strong> <em>(text)</em>
+Condition name </li>
+<li><strong>description</strong> <em>(text)</em>
+Condition description</li>
+<li><strong>condition_for</strong> <em>(text)</em>
+Condition for <code>passing</code> or <code>failing</code>. </li>
+<li><strong>type</strong> <em>(text)</em>
+Condition type. Possible values: <code>inventory</code>, <a href="reference-promise-types-custom.html" title="custom"><code>custom</code></a>, <code>fileChanged</code>, <a href="examples-tutorials-manage-ntp.html#policy" title="Manage Network Time Protocol - policy"><code>policy</code></a>, <code>software</code></li>
+<li><strong>rules</strong> <em>(json object)</em>
+JSON object that define rules. Each type has own set of fields:
+
+<ul>
+<li><strong>inventory</strong>
+
+<ul>
+<li><strong>attribute</strong> <em>(text)</em>
+Inventory attribute</li>
+<li><strong>operator</strong> <em>(text)</em>
+Operator. Possible values: <code>matches</code>, <code>not_match</code>, <code>contains</code>, <code>not_contain</code>, <code>regex_matches</code>, <code>regex_not_match</code>, <code>is_not_reported</code>, <code>is_reported</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>=</code>, <code>!=</code></li>
+<li><strong>value</strong> <em>(text)</em>
+Value. This field might be skipped in case of <code>is_reported</code> or <code>is_not_reported</code> operators</li>
+</ul></li>
+<li><strong>custom</strong>
+
+<ul>
+<li><strong>sql</strong> <em>(text)</em>
+Custom SQL</li>
+</ul></li>
+<li><strong>fileChanged</strong>
+
+<ul>
+<li><strong>file-name</strong> <em>(text)</em>
+File name</li>
+<li><strong>condition</strong> <em>(text)</em>
+Condition. Possible values: <code>matches</code>, <code>is</code></li>
+<li><strong>time-period</strong> <em>(int)</em>
+Changed within the time period (hours).</li>
+</ul></li>
+<li><strong>policy</strong><br>
+
+<ul>
+<li><strong>filter-by</strong> <em>(text)</em>
+Filter by: <code>Bundlename</code>, <code>Promisees</code>, <code>Promiser</code></li>
+<li><strong>value</strong> <em>(text)</em>
+Filter value</li>
+<li><strong>promise-handle</strong> <em>(text)</em>
+Promise handle</li>
+<li><strong>promise-status</strong> <em>(text)</em>
+Promise status: <code>KEPT</code>, <code>NOTKEPT</code>, <code>REPAIRED</code></li>
+</ul></li>
+<li><strong>software</strong>
+
+<ul>
+<li><strong>package-name</strong> <em>(text)</em>
+Package name</li>
+<li><strong>condition</strong> <em>(text)</em>
+Condition: <code>matches</code>, <code>is</code></li>
+<li><strong>architecture</strong> <em>(text)</em>
+Architecture</li>
+</ul></li>
+</ul></li>
+<li><strong>category</strong> <em>(text)</em>
+Conditions category</li>
+<li><strong>severity</strong> <em>(text)</em>
+Condition severity. Possible values: <code>low</code>, <code>medium</code>, <code>high</code></li>
+<li><strong>host_filter</strong> <em>(text)</em>
+Host filter, should be valid class expression. </li>
+</ul></li>
+</ul></li>
+<li><p><strong>overwrite</strong> <em>(booleans)</em>
+Set true to overwrite existing reports or conditions that belong to you. Default: false</p></li>
+<li><p><strong>public</strong> <em>(booleans)</em>
+Set true to make report publicly accessible. Default: false</p></li>
+</ul>
+
+<p><strong>Example request (curl):</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>curl -k --user &lt;username&gt;:&lt;password&gt; \
+-X POST https://hub.cfengine.com/advancedreports/complianceReport/import \
+--form &#39;data={
+  &quot;reports&quot;: {
+    &quot;example-report-1&quot;: {
+      &quot;id&quot;: &quot;example-report-1&quot;,
+      &quot;type&quot;: &quot;compliance&quot;,
+      &quot;title&quot;: &quot;Example report #1&quot;,
+      &quot;conditions&quot;: [&quot;os-is-reported&quot;, &quot;supported-ubuntu&quot;]
+    }
+  },
+  &quot;conditions&quot;: {
+    &quot;os-is-reported&quot;: {
+      &quot;id&quot;: &quot;os-is-reported&quot;,
+      &quot;name&quot;: &quot;Operating system is reported&quot;,
+      &quot;description&quot;: &quot;&quot;,
+      &quot;condition_for&quot;: &quot;passing&quot;,
+      &quot;type&quot;: &quot;inventory&quot;,
+      &quot;rules&quot;: [
+        {
+          &quot;attribute&quot;: &quot;OS&quot;,
+          &quot;operator&quot;: &quot;is_reported&quot;
+        }
+      ],
+      &quot;category&quot;: &quot;Operating System&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;host_filter&quot;: &quot;linux&quot;
+    },
+    &quot;supported-ubuntu&quot;: {
+      &quot;id&quot;: &quot;supported-ubuntu&quot;,
+      &quot;name&quot;: &quot;Ubuntu version is supported&quot;,
+      &quot;description&quot;: &quot;Only Ubuntu 18+ are supported&quot;,
+      &quot;condition_for&quot;: &quot;passing&quot;,
+      &quot;type&quot;: &quot;inventory&quot;,
+      &quot;rules&quot;: [
+        {
+          &quot;attribute&quot;: &quot;OS&quot;,
+          &quot;operator&quot;: &quot;matches&quot;,
+          &quot;value&quot;: &quot;Ubuntu&quot;
+        }
+      ],
+      &quot;category&quot;: &quot;Operating System&quot;,
+      &quot;severity&quot;: &quot;high&quot;,
+      &quot;host_filter&quot;: &quot;linux&quot;
+    }
+  }
+}&#39; \
+--form &#39;public=true&#39; \
+--form &#39;overwrite=true&#39;
+</code></pre>
+</div>
+
+<p><strong>Example response:</strong></p>
+<div class="highlight"><pre><code class="text"><span></span>HTTP 200 OK
+{
+    &quot;processed-conditions&quot;: {
+        &quot;os-is-reported&quot;: 13,
+        &quot;supported-ubuntu&quot;: 14
+    },
+    &quot;processed-reports&quot;: {
+        &quot;example-report-1&quot;: 22
+    }
+}
+</code></pre>
+</div>
+
+<p><strong>Output:</strong></p>
+
+<ul>
+<li><strong>processed-conditions</strong>
+List of processed conditions where the key is condition ID from the data JSON and the value is internal
+ID from the database.</li>
+<li><strong>processed-reports</strong>
+List of processed reports where the key is condition ID from the data JSON and the value is internal
+ID from the database.</li>
+</ul>
+<h2 id="history">History</h2>
+<ul>
+<li>Introduced in CFEngine 3.19.0, 3.18.1</li>
+</ul>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-enterprise.html">enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-api.html">api</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-import.html">import</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-export.html">export</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-compliance-report.html">compliance report</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 23 July 2024
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.18/generator/pages/reference/enterprise-api-ref/export-import-compliance-report-api.markdown/reference/enterprise-api-ref/export-import-compliance-report-api.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-6e603435d313e50beb7f6915d5c67a09.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

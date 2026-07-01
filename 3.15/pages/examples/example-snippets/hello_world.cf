@@ -1,0 +1,11 @@
+body common control
+{
+      bundlesequence => { "hello" };
+}
+
+bundle agent hello
+{
+  reports:
+    linux::
+      "Hello world!";
+}

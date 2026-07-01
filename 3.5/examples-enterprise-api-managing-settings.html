@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - Managing Settings</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html"  class="navselected" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="examples-tutorials.html">Tutorials</a></li><li><a href="examples-enterprise-api.html">Enterprise API</a></li><li><a href="examples-policy.html">Policy</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li><a href="examples-enterprise-api-browsing-host-information.html">Browsing Host Information</a></li><li><a href="examples-enterprise-api-checking-status.html">Checking Status</a></li><li class="selected"><span>Managing Settings</span></li><li><a href="examples-enterprise-api-managing-users-and-roles.html">Managing Users and Roles</a></li><li><a href="examples-enterprise-reporting-sql-queries.html">SQL Query Examples</a></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="examples.html">CFEngine Examples</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="examples-enterprise-api.html">Enterprise API</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>Managing Settings</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/examples.html">examples</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/enterprise.html">enterprise</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/rest.html">rest</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/api.html">api</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/reporting.html">reporting</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/settings.html">settings</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/ldap.html">ldap</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>Managing Settings</h1>
+                    <p>Most of the settings configurable in the API relate to LDAP authentication of 
+users. Settings support two operations, <strong>GET</strong> (view settings) and <strong>POST</strong> 
+(update settings). When settings are updated, they are sanity checked 
+individually and as a whole. All or no settings will be updated for a request.</p>
+<h2 id="viewing-settings">Viewing settings</h2>
+<p><strong>Request</strong></p>
+<div class="highlight"><pre><code class="text">curl --user admin:admin http://test.cfengine.com/api/settings
+</code></pre>
+</div>
+
+<p><strong>Response</strong></p>
+<div class="highlight"><pre><code class="text">{
+  &quot;meta&quot;: {
+    &quot;page&quot;: 1,
+    &quot;count&quot;: 1,
+    &quot;total&quot;: 1,
+    &quot;timestamp&quot;: 1350992335
+  },
+  &quot;data&quot;: [
+    {
+      &quot;rbacEnabled&quot;: true,
+      &quot;ldapEnabled&quot;: false,
+      &quot;ldapActiveDirectoryDomain&quot;: &quot;ad.cfengine.com&quot;,
+      &quot;ldapBaseDN&quot;: &quot;DC=ad,DC=cfengine,DC=com&quot;,
+      &quot;ldapEncryption&quot;: &quot;plain&quot;,
+      &quot;ldapHost&quot;: &quot;ldap-server.cfengine.com&quot;,
+      &quot;ldapLoginAttribute&quot;: &quot;sAMAccountName&quot;,
+      &quot;ldapMode&quot;: &quot;activeDirectory&quot;,
+      &quot;ldapPassword&quot;: &quot;password&quot;,
+      &quot;ldapPort&quot;: 389,
+      &quot;ldapPortSSL&quot;: 636,
+      &quot;ldapUsername&quot;: &quot;test&quot;,
+      &quot;ldapUsersDirectory&quot;: &quot;CN=Users&quot;,
+      &quot;blueHostHorizon&quot;: 900,
+      &quot;logLevel&quot;: &quot;error&quot;
+    }
+  ]
+}
+</code></pre>
+</div>
+<h2 id="example-configuring-ldap">Example: Configuring LDAP</h2>
+<p>The setting <code>ldapEnabled</code> turns external authentication on or off. When turned 
+on, the API will check to see that the other LDAP related settings make sense, 
+and attempt to authenticate using the configured credentials. If it is not 
+successful in doing this, no settings will be changed. The API will notify you 
+with a return code an a message describing the error.</p>
+
+<p><strong>Request</strong></p>
+<div class="highlight"><pre><code class="text">curl --user admin:admin http://test.cfengine.com/api/settings -X POST -d
+{
+  &quot;ldapEnabled&quot;: true,
+  &quot;ldapActiveDirectoryDomain&quot;: &quot;ad.cfengine.com&quot;,
+  &quot;ldapBaseDN&quot;: &quot;DC=ad,DC=example,DC=com&quot;,
+  &quot;ldapEncryption&quot;: &quot;ssl&quot;,
+  &quot;ldapHost&quot;: &quot;ldap-server.cfengine.com&quot;,
+  &quot;ldapLoginAttribute&quot;: &quot;sAMAccountName&quot;,
+  &quot;ldapMode&quot;: &quot;standard&quot;,
+  &quot;ldapPassword&quot;: &quot;password&quot;,
+  &quot;ldapUsername&quot;: &quot;test&quot;,
+  &quot;ldapUsersDirectory&quot;: &quot;ou&quot;,
+}
+</code></pre>
+</div>
+
+<p><strong>Response</strong></p>
+<div class="highlight"><pre><code class="text">204 No Content
+</code></pre>
+</div>
+<h2 id="example-configuring-active-directory">Example: Configuring Active Directory</h2>
+<p>Active Directory is configured in much the same way as OpenLDAP, but the 
+additional field <code>ldapActiveDirectoryDomain</code> is required. <code>ldapMode</code> is also 
+changed from <code>standard</code> to <code>activeDirectory</code>.</p>
+
+<p><strong>Request</strong></p>
+<div class="highlight"><pre><code class="text">curl --user admin:admin http://test.cfengine.com/api/settings -X POST -d
+{
+  &quot;ldapEnabled&quot;: true,
+  &quot;ldapBaseDN&quot;: &quot;DC=example,DC=com&quot;,
+  &quot;ldapEncryption&quot;: &quot;plain&quot;,
+  &quot;ldapHost&quot;: &quot;ad-server.cfengine.com&quot;,
+  &quot;ldapLoginAttribute&quot;: &quot;uid&quot;,
+  &quot;ldapMode&quot;: &quot;activeDirectory&quot;,
+  &quot;ldapPassword&quot;: &quot;password&quot;,
+  &quot;ldapUsername&quot;: &quot;test&quot;,
+  &quot;ldapUsersDirectory&quot;: &quot;CN=Users&quot;,
+}
+</code></pre>
+</div>
+
+<p><strong>Response</strong></p>
+<div class="highlight"><pre><code class="text">204 No Content
+</code></pre>
+</div>
+<h2 id="example-changing-the-log-level">Example: Changing The Log Level</h2>
+<p>The API uses standard Unix syslog to log a number of events. Additionally, log 
+events are sent to <code>stderr</code>, which means they may also end up in your Apache 
+log. Log events are filtered based on the log level in settings. Suppose you 
+wanted to have greater visibility into the processing done at the backend. The 
+standard log level is <code>error</code>. Changing it to <code>info</code> is done as follows.</p>
+
+<p><strong>Request</strong></p>
+<div class="highlight"><pre><code class="text">curl --user admin:admin http://test.cfengine.com/api/settings -X POST -d
+{
+  &quot;logLevel&quot;: &quot;info&quot;
+}
+</code></pre>
+</div>
+
+<p><strong>Response</strong></p>
+<div class="highlight"><pre><code class="text">204 No Content
+</code></pre>
+</div>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/examples/enterprise-api/managing-settings.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

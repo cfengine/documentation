@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.9  Documentation - Enterprise report collection</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.9/assets/global-bbcdf8cb2135dbef89c4d6d19c9604bb.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Enterprise report collection";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+                       <option value="/docs/3.9/index.html" selected>Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+                       <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:eahkid3txr8" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-design-center.html">Design Center Overview</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-faq.html">FAQ</a><ul class="level2"><li><a class="active" href="guide-faq-enterprise-report-collection.html">Enterprise report collection</a></li></ul></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-faq.html">FAQ</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Enterprise report collection
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h1 id="how-does-cfengine-enterprise-collect-reports">How does CFEngine Enterprise collect reports?</h1>
+<p><a href="reference-components-cf-hub.html" title="cf-hub"><code>cf-hub</code></a> makes connections from the hub to remote agents currently registered in
+the lastseen database (viewable with <code>cf-key -s</code>)
+on [<code>body hub control port</code>]<a href="5308%20by%20default">body hub control port</a>. The hub
+tries to collect from up to the licensed number of hosts for each collection
+round as identified by <a href="reference-components-cf-hub.html#hub_schedule" title="cf-hub - hub_schedule"><code>hub_schedule</code></a> as defined
+in <a href="cf-hub#control-promises"><code>body hub control</code></a>.</p>
+
+<ul>
+<li><p><strong>Note:</strong> No ordering is specified, so if the number of entries in the
+lastseen database is greater than the number of licensed hosts it is not
+possible to determine which hosts will be collected from and which hosts will
+be skipped.</p></li>
+<li><p><strong>See Also:</strong> <a href="reference-functions-hostsseen.html" title="hostsseen"><code>hostsseen()</code></a>, <a href="reference-functions-hostswithclass.html" title="hostswithclass"><code>hostswithclass()</code></a></p></li>
+</ul>
+<h1 id="how-are-agents-not-running-determined">How are agents not running determined?</h1>
+<p>Hosts who&#39;s last agent execution status is &quot;FAIL&quot; will show up under &quot;Agents not
+running&quot;. A hosts last agent execution status is set to &quot;FAIL&quot; when the hub
+notices that there are no promise results within 3x of the expected agent run
+interval. The agents average run interval is computed by a geometric average
+based on the 4 most recent agent executions.</p>
+
+<p><img src="agents-not-running.png" alt="Agents not running"></p>
+
+<p>You can inspect hosts last execution time, execution status (from the hubs
+perspective), and average run interval using the following SQL.</p>
+<div class="highlight"><pre><code class="sql"><span class="k">SELECT</span> <span class="n">Hosts</span><span class="p">.</span><span class="n">HostName</span> <span class="k">AS</span> <span class="ss">&quot;Host name&quot;</span><span class="p">,</span>
+<span class="n">AgentStatus</span><span class="p">.</span><span class="n">LastAgentLocalExecutionTimeStamp</span> <span class="k">AS</span> <span class="ss">&quot;Last agent local execution</span>
+<span class="ss">time&quot;</span><span class="p">,</span> <span class="k">cast</span><span class="p">(</span><span class="n">AgentStatus</span><span class="p">.</span><span class="n">AgentExecutionInterval</span> <span class="k">AS</span> <span class="nb">integer</span><span class="p">)</span> <span class="k">AS</span> <span class="ss">&quot;Agent execution</span>
+<span class="ss">interval&quot;</span><span class="p">,</span> <span class="n">AgentStatus</span><span class="p">.</span><span class="n">LastAgentExecutionStatus</span> <span class="k">AS</span> <span class="ss">&quot;Last agent execution status&quot;</span>
+<span class="k">FROM</span> <span class="n">AgentStatus</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">Hosts</span> <span class="k">ON</span> <span class="n">Hosts</span><span class="p">.</span><span class="n">HostKey</span> <span class="o">=</span> <span class="n">AgentStatus</span><span class="p">.</span><span class="n">HostKey</span>
+</code></pre>
+</div>
+
+<p>This can be queried over the API most easily by placing the query into a json
+file. And then using the <code>query</code> API.</p>
+
+<p><code>agent_execution_time_interval_status.query.json</code>:</p>
+<div class="highlight"><pre><code class="text">{
+  &quot;query&quot;: &quot;SELECT Hosts.HostName, AgentStatus.LastAgentLocalExecutionTimeStamp, cast(AgentStatus.AgentExecutionInterval AS integer), AgentStatus.LastAgentExecutionStatus FROM AgentStatus INNER JOIN Hosts ON Hosts.HostKey = AgentStatus.HostKey&quot;
+}
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> curl -s -u admin:admin http://hub/api/query -X POST -d @agent_execution_time_interval_status.query.json | jq <span class="s2">&quot;.data[0].rows&quot;</span>
+<span class="go">[</span>
+<span class="go">  [</span>
+<span class="go">    &quot;hub&quot;,</span>
+<span class="go">    &quot;2016-07-25 16:53:23+00&quot;,</span>
+<span class="go">    &quot;296&quot;,</span>
+<span class="go">    &quot;OK&quot;</span>
+<span class="go">  ],</span>
+<span class="go">  [</span>
+<span class="go">    &quot;host001&quot;,</span>
+<span class="go">    &quot;2016-07-25 16:06:50+00&quot;,</span>
+<span class="go">    &quot;305&quot;,</span>
+<span class="go">    &quot;FAIL&quot;</span>
+<span class="go">  ]</span>
+<span class="go">]</span>
+</code></pre>
+</div>
+
+<p><strong>See Also</strong>: <a href="reference-enterprise-api-ref.html" title="Enterprise API Reference"><code>Enterprise API Reference</code></a>, <a href="examples-enterprise-api-examples.html" title="Enterprise API Examples"><code>Enterprise API Examples</code></a></p>
+<h1 id="how-are-hosts-not-reporting-determined">How are hosts not reporting determined?</h1>
+<p>Hosts that have not been collected from within <code>blueHostHorizon</code> seconds will
+show up under &quot;Hosts not reporting&quot;.</p>
+
+<p><img src="hosts-not-reporting.png" alt="Hosts not reporting"></p>
+
+<p><code>blueHostHorizon</code> defaults to 900 seconds (15 minutes). You can inspect the
+current value of <code>blueHostHorizon</code> from Mission Portal or via the API:</p>
+<div class="highlight"><pre><code class="console"><span class="gp">$</span> curl -s -u admin:admin http://hub/api/settings/ | jq <span class="s2">&quot;.data[0].blueHostHorizon&quot;</span>
+<span class="go">900</span>
+</code></pre>
+</div>
+
+<p><strong>See Also</strong>: <a href="reference-enterprise-api-ref.html" title="Enterprise API Reference"><code>Enterprise API Reference</code></a>, <a href="examples-enterprise-api-examples.html" title="Enterprise API Examples"><code>Enterprise API Examples</code></a>, <a href="enterprise-cfengine-guide-settings.html#preferences" title="Settings - Preferences ">Enterprise Settings</a></p>
+<h1 id="troubleshooting-report-collection">Troubleshooting report collection</h1>
+<p>The following steps can be used to help diagnose and potentially restore
+reporting for hosts experiencing issues.</p>
+<h2 id="perform-manual-delta-collection-for-a-single-host">Perform manual delta collection for a single host</h2>
+<p>Performing back to back delta collections and comparing the data received can
+help to expose so called <em>patching</em> issues. If the same amount of data is
+collected twice a <strong>rebase</strong> may resolve it.</p>
+<div class="highlight"><pre><code class="console"><span class="go">[root@hub ~]# cf-hub -q delta -H 192.168.33.2 -v</span>
+<span class="go"> verbose: ----------------------------------------------------------------</span>
+<span class="go"> verbose:  Initialization preamble </span>
+<span class="go"> verbose: ----------------------------------------------------------------</span>
+<span class="go"> # &lt;snipped for brevity&gt;</span>
+<span class="go"> verbose: Connecting to host 192.168.33.2, port 5308 as address 192.168.33.2</span>
+<span class="go"> verbose: Waiting to connect...</span>
+<span class="go"> verbose: Setting socket timeout to 10 seconds.</span>
+<span class="go"> verbose: Connected to host 192.168.33.2 address 192.168.33.2 port 5308 (socket descriptor 4)</span>
+<span class="go"> verbose: TLS version negotiated:  TLSv1.2; Cipher: AES256-GCM-SHA384,TLSv1/SSLv3</span>
+<span class="go"> verbose: TLS session established, checking trust...</span>
+<span class="go"> verbose: Received public key compares equal to the one we have stored</span>
+<span class="go"> verbose: Server is TRUSTED, received key &#39;SHA=e77d408e9802e2c549417d5e3379c43050d2ad5928a198855dbb7e9c8af9a6f1&#39; MATCHES stored one.</span>
+<span class="go"> verbose: Key digest for address &#39;192.168.33.2&#39; is SHA=e77d408e9802e2c549417d5e3379c43050d2ad5928a198855dbb7e9c8af9a6f1</span>
+<span class="go"> verbose: Will request from host 192.168.33.2 (digest = SHA=e77d408e9802e2c549417d5e3379c43050d2ad5928a198855dbb7e9c8af9a6f1) data later than timestamp 1481901790</span>
+<span class="go"> verbose: Successfully opened extension plugin &#39;cfengine-report-collect.so&#39; from &#39;/var/cfengine/lib/cfengine-report-collect.so&#39;</span>
+<span class="go"> verbose: Successfully loaded extension plugin &#39;cfengine-report-collect.so&#39;</span>
+<span class="go"> verbose: Sending query at Fri Dec 16 15:24:23 2016</span>
+<span class="go"> verbose: h&gt;s QUERY delta 1481901790 1481901863</span>
+<span class="go"> verbose: Sending query at Fri Dec 16 15:24:23 2016</span>
+<span class="go"> verbose: Received reply of 5050 bytes at Fri Dec 16 15:24:23 2016 -&gt; Xfer time 0 seconds (processing time 0 seconds)</span>
+<span class="go"> verbose: Processing report: MOM (items: 44)</span>
+<span class="go"> verbose: Processing report: MOY (items: 48)</span>
+<span class="go"> verbose: Processing report: MOH (items: 22)</span>
+<span class="go"> verbose: Processing report: EXS (items: 1)</span>
+<span class="go"> verbose: Received 5 kb of report data with 115 individual items</span>
+<span class="go"> verbose: Connection to 192.168.33.2 is closed</span>
+</code></pre>
+</div>
+<h2 id="perform-manual-rebase-collection-for-a-single-host">Perform manual rebase collection for a single host</h2>
+<p>A <code>rebase</code> causes the hub to throw away all reports since the last collection
+and collect only the output from the most recent run.</p>
+<div class="highlight"><pre><code class="console"><span class="go">[root@hub ~]# cf-hub -q rebase -H 192.168.33.2 -v</span>
+<span class="go"> verbose: ----------------------------------------------------------------</span>
+<span class="go"> verbose:  Initialization preamble </span>
+<span class="go"> verbose: ----------------------------------------------------------------</span>
+<span class="go"> # &lt;snipped for brevity&gt;</span>
+<span class="go"> verbose: Connecting to host 192.168.33.2, port 5308 as address 192.168.33.2</span>
+<span class="go"> verbose: Waiting to connect...</span>
+<span class="go"> verbose: Setting socket timeout to 10 seconds.</span>
+<span class="go"> verbose: Connected to host 192.168.33.2 address 192.168.33.2 port 5308 (socket descriptor 4)</span>
+<span class="go"> verbose: TLS version negotiated:  TLSv1.2; Cipher: AES256-GCM-SHA384,TLSv1/SSLv3</span>
+<span class="go"> verbose: TLS session established, checking trust...</span>
+<span class="go"> verbose: Received public key compares equal to the one we have stored</span>
+<span class="go"> verbose: Server is TRUSTED, received key &#39;SHA=e77d408e9802e2c549417d5e3379c43050d2ad5928a198855dbb7e9c8af9a6f1&#39; MATCHES stored one.</span>
+<span class="go"> verbose: Key digest for address &#39;192.168.33.2&#39; is SHA=e77d408e9802e2c549417d5e3379c43050d2ad5928a198855dbb7e9c8af9a6f1</span>
+<span class="go"> verbose: Successfully opened extension plugin &#39;cfengine-report-collect.so&#39; from &#39;/var/cfengine/lib/cfengine-report-collect.so&#39;</span>
+<span class="go"> verbose: Successfully loaded extension plugin &#39;cfengine-report-collect.so&#39;</span>
+<span class="go"> verbose: Sending query at Fri Dec 16 15:35:10 2016</span>
+<span class="go"> verbose: h&gt;s QUERY rebase 0 1481902510</span>
+<span class="go"> verbose: Sending query at Fri Dec 16 15:35:10 2016</span>
+<span class="go"> verbose: Received reply of 128157 bytes at Fri Dec 16 15:35:10 2016 -&gt; Xfer time 0 seconds (processing time 0 seconds)</span>
+<span class="go"> verbose: Processing report: CLD (items: 46)</span>
+<span class="go"> verbose: Processing report: VAD (items: 52)</span>
+<span class="go"> verbose: Processing report: LSD (items: 13)</span>
+<span class="go"> verbose: Processing report: SDI (items: 327)</span>
+<span class="go"> verbose: Processing report: SPD (items: 143)</span>
+<span class="go"> verbose: Processing report: ELD (items: 205)</span>
+<span class="go"> verbose:   ts #0 &gt; 1481902510</span>
+<span class="go"> verbose: Received 125 kb of report data with 786 individual items</span>
+<span class="go"> verbose: Connection to 192.168.33.2 is closed</span>
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> The Enterprise hub automatically schedules rebase queries if it has
+been unable to collect from a given candidate for <a href="reference-components-cf-hub.html#client_history_timeout" title="cf-hub - client_history_timeout"><code>client_history_timeout</code></a>
+hours.</p>
+
+<p>If a manual rebase collection does not restore reporting functionality for a
+host continue on to restarting the report collection components.</p>
+<h2 id="restart-report-collection-components">Restart report collection components</h2>
+<p>Sometimes it is necessary to restart the report collection subsystem in order to
+re-synchronize the caching layer with the database. To restart the report
+collection subsystem simply kill <a href="reference-components-cf-hub.html" title="cf-hub"><code>cf-hub</code></a>, <code>cf-consumer</code>, <code>redis-server</code>, and
+run the update policy.</p>
+
+<p>For systemd hosts this can be accomplished by simply restarting the <a href="reference-components-cf-hub.html" title="cf-hub"><code>cf-hub</code></a>
+service. The related component restarts are automatically handled via the unit
+dependencies:</p>
+<div class="highlight"><pre><code class="console"><span class="go">[root@hub ~]# systemctl restart cf-hub</span>
+</code></pre>
+</div>
+
+<p>For non-systemd hosts:</p>
+<div class="highlight"><pre><code class="console"><span class="go">[root@hub ~]# pkill cf-consumer</span>
+<span class="go">[root@hub ~]# pkill cf-hub</span>
+<span class="go">[root@hub ~]# pkill redis-server</span>
+<span class="go">[root@hub ~]# cf-agent -KIf update.cf</span>
+<span class="go">    info: Executing &#39;no timeout&#39; ... &#39;/var/cfengine/bin/redis-server /var/cfengine/config/redis.conf&#39;</span>
+<span class="go">    info: Command related to promiser &#39;/var/cfengine/bin/redis-server /var/cfengine/config/redis.conf&#39; returned code defined as promise kept 0</span>
+<span class="go">    info: Completed execution of &#39;/var/cfengine/bin/redis-server /var/cfengine/config/redis.conf&#39;</span>
+<span class="go">    info: Executing &#39;no timeout&#39; ... &#39;/var/cfengine/bin/cf-consumer&#39;</span>
+<span class="go">    info: Command related to promiser &#39;/var/cfengine/bin/cf-consumer&#39; returned code defined as promise kept 0</span>
+<span class="go">    info: Completed execution of &#39;/var/cfengine/bin/cf-consumer&#39;</span>
+<span class="go">    info: Executing &#39;no timeout&#39; ... &#39;&quot;/var/cfengine/bin/cf-hub&quot;&#39;</span>
+<span class="go">    info: Command related to promiser &#39;&quot;/var/cfengine/bin/cf-hub&quot;&#39; returned code defined as promise kept 0</span>
+<span class="go">    info: Completed execution of &#39;&quot;/var/cfengine/bin/cf-hub&quot;&#39;</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-faq.html">faq</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-enterprise.html">enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-reporting.html">reporting</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-health.html">health</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 02 March 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/faq/enterprise-report-collection.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/04ad849bd97ab6da773794babca26d9dd8806039" target="_blank">04ad849bd97ab6da773794babca26d9dd8806039</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.9/assets/footer-e9812654bffc243fc0dd77cc1c8e348e.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

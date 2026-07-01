@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.7  Documentation - File Comparison</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.7/assets/global-fd19e55abf031add992b4d4a2d9bb344.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "File Comparison";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.13/">Version 3.13 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/" selected>Version 3.7 (EOL)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:skcdq5u4lcc" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a></li><li><a href="examples-tutorials.html">Tutorials</a><ul class="level2"><li><a href="examples-tutorials-json-yaml-support-in-cfengine.html">JSON and YAML Support in CFEngine</a></li><li><a href="examples-tutorials-files-tutorial.html">Create, Modify, and Delete Files</a></li><li><a href="examples-tutorials-distribute-files-from-a-central-location.html">Distribute files from a central location</a></li><li><a href="examples-tutorials-report_inventory_remediate_sec_vulnerabilities.html">Reporting and Remediation of Security Vulnerabilities</a></li><li><a href="examples-tutorials-tags.html">Tags for variables, classes, and bundles</a></li><li><a href="examples-tutorials-custom_inventory.html">Custom Inventory</a></li><li><a href="examples-tutorials-deploy_sketch.html">Configure and Deploy a Policy Using Sketches</a></li><li><a class="active" href="examples-tutorials-file_comparison.html">File Comparison</a></li></ul></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-tutorials.html">Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    File Comparison
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <ol>
+<li>Add the <a href="examples-tutorials-file_comparison.html#full-policy" title="File Comparison - Full Policy ">policy contents</a> (also can be downloaded from <a href="file_compare_test.cf">file_compare_test.cf</a>) to a new file, such as /var/cfengine/masterfiles/file_test.cf.</li>
+<li><p>Run the following commands as root on the command line:</p>
+<div class="highlight"><pre><code class="console"><span></span><span class="go">export AOUT_BIN=&quot;a.out&quot;</span>
+<span class="go">export GCC_BIN=&quot;/usr/bin/gcc&quot;</span>
+<span class="go">export RM_BIN=&quot;/bin/rm&quot;</span>
+<span class="go">export WORK_DIR=$HOME</span>
+<span class="go">export CFE_FILE1=&quot;test_plain_1.txt&quot;</span>
+<span class="go">export CFE_FILE2=&quot;test_plain_2.txt&quot;</span>
+
+<span class="go">/var/cfengine/bin/cf-agent /var/cfengine/masterfiles/file_test.cf --bundlesequence robot,global_vars,packages,create_aout_source_file,create_aout,test_delete,do_files_exist_1,create_file_1,outer_bundle_1,copy_a_file,do_files_exist_2,list_file_1,stat,outer_bundle_2,list_file_2</span>
+</code></pre>
+</div></li>
+</ol>
+
+<p>Here is the order in which bundles are called in the command line above (some other support bundles are contained within file_test.cf but are not included here):</p>
+
+<ol>
+<li><a href="examples-tutorials-file_comparison.html#robot" title="File Comparison - robot ">robot</a> - demonstrates use of <a href="reference-promise-types-reports.html" title="reports"><code>reports</code></a>.</li>
+<li><a href="examples-tutorials-file_comparison.html#global_vars" title="File Comparison - global_vars ">global_vars</a> - sets up some global variables for later use.</li>
+<li><a href="examples-tutorials-file_comparison.html#packages" title="File Comparison - packages ">packages</a> - installs packages that will be used later on.</li>
+<li><a href="examples-tutorials-file_comparison.html#create_aout_source_file" title="File Comparison - create_aout_source_file ">create_aout_source_file</a> - creates a source file.</li>
+<li><a href="examples-tutorials-file_comparison.html#create_aout" title="File Comparison - create_aout ">create_aout</a> - compiles the source file.</li>
+<li><a href="examples-tutorials-file_comparison.html#test_delete" title="File Comparison - test_delete ">test_delete</a> - deletes a file.</li>
+<li><a href="examples-tutorials-file_comparison.html#do_files_exist_1" title="File Comparison - do_files_exist_1 ">do_files_exist_1</a> - checks the existence of files.</li>
+<li><a href="examples-tutorials-file_comparison.html#create_file_1" title="File Comparison - create_file_1 ">create_file_1</a> - creates a file.</li>
+<li><a href="examples-tutorials-file_comparison.html#outer_bundle_1" title="File Comparison - outer_bundle_1 ">outer_bundle_1</a> - adds text to a file.</li>
+<li><a href="examples-tutorials-file_comparison.html#copy_a_file" title="File Comparison - copy_a_file ">copy_a_file</a> - copies the file.</li>
+<li><a href="examples-tutorials-file_comparison.html#do_files_exist_2" title="File Comparison - do_files_exist_2 ">do_files_exist_2</a> - checks the existence of both files.</li>
+<li><a href="examples-tutorials-file_comparison.html#list_file_1" title="File Comparison - list_file_1 ">list_file_1</a> - shows the contents of each file.</li>
+<li><a href="examples-tutorials-file_comparison.html#stat" title="File Comparison - stat ">stat</a> - uses the stat command and the aout application to compare modified times of both files.</li>
+<li><a href="examples-tutorials-file_comparison.html#outer_bundle_2" title="File Comparison - outer_bundle_2 ">outer_bundle_2</a> - modifies the contents of the second file.</li>
+<li><a href="examples-tutorials-file_comparison.html#list_file_2" title="File Comparison - list_file_2 ">list_file_2</a> - shows the contents of both files and uses CFEngine functionality to compare the modified time for each file.</li>
+</ol>
+<h2 id="robot">robot</h2>
+<p>Demonstrates use of <a href="reference-promise-types-reports.html" title="reports"><code>reports</code></a>, using an ascii art representation of the CFEngine robot.</p>
+<h2 id="global_vars">global_vars</h2>
+<p>Sets up some global variables that are used frequently by other bundles.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">common</span> <span class="nf">global_vars</span>
+<span class="p">{</span>
+    <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">gccexec</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">getenv</span><span class="p">(</span><span class="s">&quot;GCC_BIN&quot;</span><span class="p">,</span><span class="mi">255</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">rmexec</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">getenv</span><span class="p">(</span><span class="s">&quot;RM_BIN&quot;</span><span class="p">,</span><span class="mi">255</span><span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">aoutbin</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">getenv</span><span class="p">(</span><span class="s">&quot;AOUT_BIN&quot;</span><span class="p">,</span><span class="mi">255</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">workdir</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">getenv</span><span class="p">(</span><span class="s">&quot;WORK_DIR&quot;</span><span class="p">,</span><span class="mi">255</span><span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">aoutexec</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(workdir)</span><span class="s">/</span><span class="si">$(aoutbin)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">file1name</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">getenv</span><span class="p">(</span><span class="s">&quot;CFE_FILE1&quot;</span><span class="p">,</span><span class="mi">255</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">file2name</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">getenv</span><span class="p">(</span><span class="s">&quot;CFE_FILE2&quot;</span><span class="p">,</span><span class="mi">255</span><span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">file1</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(workdir)</span><span class="s">/</span><span class="si">$(file1name)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">file2</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(workdir)</span><span class="s">/</span><span class="si">$(file2name)</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;gclass&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;any&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="packages">packages</h2>
+<p>Ensures that the gcc package is installed, for later use by the create_aout bundle.</p>
+<div class="highlight"><pre><code class="cf3"><span></span>    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">packages</span>
+    <span class="p">{</span>
+      <span class="kd">vars</span><span class="p">:</span>
+
+          <span class="p">&quot;</span><span class="nv">match_package</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="s">&quot;gcc&quot;</span>
+          <span class="p">};</span>
+
+      <span class="kd">packages</span><span class="p">:</span>
+          <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+          <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+          <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">yum</span><span class="p">;</span>
+
+      <span class="kd">reports</span><span class="p">:</span>
+
+        <span class="nc">gclass</span><span class="p">::</span>
+            <span class="s">&quot;Package gcc installed&quot;</span><span class="p">;</span>
+            <span class="s">&quot;*********************************&quot;</span><span class="p">;</span>
+
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="create_aout_source_file">create_aout_source_file</h2>
+<p>Creates the c source file that will generate a binary application in create_aout.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">create_aout_source_file</span>
+<span class="p">{</span>
+
+  <span class="c"># This bundle creates the source file that will be compiled in bundle agent create_aout.</span>
+  <span class="c"># See that bunlde&#39;s comments for more information.</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+
+    <span class="c"># An slist is used here instead of a straight forward string because it doesn&#39;t seem possible to create</span>
+    <span class="c"># line endings using \n when using a string to insert text into a file.</span>
+
+    <span class="p">&quot;</span><span class="nv">c</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;#include &lt;stdlib.h&gt;&quot;</span><span class="p">,</span><span class="s">&quot;#include &lt;stdio.h&gt;&quot;</span><span class="p">,</span><span class="s">&quot;#include &lt;sys/stat.h&gt;&quot;</span><span class="p">,</span><span class="s">&quot;#include &lt;string.h&gt;&quot;</span><span class="p">,</span><span class="s">&quot;void main()&quot;</span><span class="p">,</span><span class="s">&quot;{char file1[255];strcpy(file1,</span><span class="se">\&quot;</span><span class="si">$(global_vars.file1)</span><span class="se">\&quot;</span><span class="s">);char file2[255];strcpy(file2,</span><span class="se">\&quot;</span><span class="si">$(global_vars.file2)</span><span class="se">\&quot;</span><span class="s">);struct stat time1;int i = lstat(file1, &amp;time1);struct stat time2;int j = lstat(file2, &amp;time2);if (time1.st_mtime &lt; time2.st_mtime){printf(</span><span class="se">\&quot;</span><span class="s">Newer</span><span class="se">\&quot;</span><span class="s">);}else{if(time1.st_mtim.tv_nsec &lt; time2.st_mtim.tv_nsec){printf(</span><span class="se">\&quot;</span><span class="s">Newer</span><span class="se">\&quot;</span><span class="s">);}else{printf(</span><span class="se">\&quot;</span><span class="s">Not newer</span><span class="se">\&quot;</span><span class="s">);}}}&quot;</span><span class="p">};</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(global_vars.workdir)</span><span class="s">/a.c&quot;</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">system</span><span class="p">,</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">Insert</span><span class="p">(</span><span class="s">&quot;@(c)&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;The source file </span><span class="si">$(global_vars.workdir)</span><span class="s">/a.c has been created. It will be used to compile the binary a.out, which will provide more accurate file stats to compare two files than the built in CFEngine functionality for comparing file stats, including modification time. This information will be used to determine of the second of the two files being compared is newer or not.&quot;</span><span class="p">;</span>
+    <span class="s">&quot;*********************************&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="create_aout">create_aout</h2>
+<p>This bundle creates a binary application from the source in  create_aout_source_file that uses the stat library to compare two files, determine if the modified times are different, nd whether the second file is newer than the first.</p>
+
+<p>The difference between this application and using CFEngine&#39;s built in support for getting file stats is that normally the accuracy is only to the second of the modified file time but in order to better compare two files requires parts of a second as well. The stat library provides the extra support for retrieving the additional information required. </p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">create_aout</span>
+<span class="p">{</span>
+
+    <span class="kd">classes</span><span class="p">:</span>
+
+    <span class="s">&quot;doesfileacexist&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.workdir)</span><span class="s">/a.c&quot;</span><span class="p">);</span>
+    <span class="s">&quot;doesaoutexist&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.aoutbin)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+
+    <span class="c"># Removes any previous binary</span>
+    <span class="p">&quot;</span><span class="nv">rmaout</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.rmexec)</span><span class="s"> </span><span class="si">$(global_vars.aoutexec)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+
+    <span class="nc">doesfileacexist</span><span class="p">::</span>
+    <span class="p">&quot;</span><span class="nv">compilestr</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(global_vars.gccexec)</span><span class="s"> </span><span class="si">$(global_vars.workdir)</span><span class="s">/a.c -o </span><span class="si">$(global_vars.aoutexec)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">&quot;</span><span class="nv">gccaout</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(compilestr)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">doesfileacexist</span><span class="p">::</span>
+      <span class="s">&quot;gcc output: </span><span class="si">$(gccaout)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="s">&quot;Creating aout using </span><span class="si">$(compilestr)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="nc">!doesfileacexist</span><span class="p">::</span>
+      <span class="s">&quot;Cannot compile a.out, </span><span class="si">$(global_vars.workdir)</span><span class="s">/a.c does not exist.&quot;</span><span class="p">;</span>   
+    <span class="nc">doesaoutexist</span><span class="p">::</span>
+      <span class="s">&quot;The binary application aout has been compiled from the source in the create_aout_source_file bundle. It uses the stat library to compare two files, determine if the modified times are different, and whether the second file is newer than the first. The difference between this application and using CFEngine&#39;s built in support for getting file stats (e.g. filestat, isnewerthan), which provides file modification time accurate to a second. However, in order to better compare two files might sometimes require parts of a second as well. The stat library provides the extra support for retrieving the additional information required to get better accuracy (down to parts of a second), and is utilized by the binary application a.out that is compiled within the create_aout bundle.&quot;</span><span class="p">;</span>
+      <span class="s">&quot;*********************************&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="test_delete">test_delete</h2>
+<p>Deletes any previous copy of the test files used in the example.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">test_delete</span>
+<span class="p">{</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span>
+      <span class="kr">delete</span> <span class="o">=&gt;</span> <span class="nf">tidy</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="do_files_exist_1">do_files_exist_1</h2>
+<p>Verifies whether the test files exist or not.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">do_files_exist_1</span>
+
+<span class="p">{</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+
+    <span class="s">&quot;doesfile1exist&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="s">&quot;doesfile2exist&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+
+    <span class="nc">doesfile1exist</span><span class="p">::</span>
+
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">delete_file</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span><span class="p">);</span> 
+    <span class="nc">doesfile2exist</span><span class="p">::</span>
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">delete_file</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span><span class="p">);</span> 
+  <span class="kd">reports</span><span class="p">:</span>
+
+    <span class="nc">!doesfile1exist</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s"> does not exist.&quot;</span><span class="p">;</span>
+    <span class="nc">doesfile1exist</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s"> did exist. Call to delete it was made.&quot;</span><span class="p">;</span>    
+
+    <span class="nc">!doesfile2exist</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s"> does not exist.&quot;</span><span class="p">;</span>
+    <span class="nc">doesfile2exist</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s"> did exist. Call to delete it was made.&quot;</span><span class="p">;</span>    
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="create_file_1">create_file_1</h2>
+<p>Creates the first test file, as an empty file.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">create_file_1</span>
+<span class="p">{</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">system</span><span class="p">,</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s"> has been created&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="outer_bundle_1">outer_bundle_1</h2>
+<p>Adds some text to the first test file.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">outer_bundle_1</span>
+<span class="p">{</span>
+    <span class="kd">files</span><span class="p">:</span>
+
+       <span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span>
+       <span class="kr">create</span>    <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">,</span>
+       <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">inner_bundle_1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="copy_a_file">copy_a_file</h2>
+<p>Makes a copy of the test file.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">copy_a_file</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+
+      <span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span>
+      <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">local_cp</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+     <span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s"> has been copied to </span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="do_files_exist_2">do_files_exist_2</h2>
+<p>Verifies that both test files exist.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">do_files_exist_2</span>
+<span class="p">{</span>
+    <span class="kd">methods</span><span class="p">:</span>
+
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">does_file_exist</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">global_vars</span><span class="err">.</span><span class="nf">file1</span><span class="p">));</span>
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">does_file_exist</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">global_vars</span><span class="err">.</span><span class="nf">file2</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="list_file_1">list_file_1</h2>
+<p>Reports the contents of each test file.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">list_file_1</span>
+<span class="p">{</span>
+
+  <span class="kd">methods</span><span class="p">:</span>  
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">file_content</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">global_vars</span><span class="err">.</span><span class="nf">file1</span><span class="p">));</span>
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">file_content</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">global_vars</span><span class="err">.</span><span class="nf">file2</span><span class="p">));</span>
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;*********************************&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="exec_aout">exec_aout</h2><div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">exec_aout</span>
+<span class="p">{</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="s">&quot;doesaoutexist&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.aoutbin)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="nc">doesaoutexist</span><span class="p">::</span>
+    <span class="p">&quot;</span><span class="nv">aout</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.aoutexec)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">doesaoutexist</span><span class="p">::</span>
+    <span class="s">&quot;*********************************&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(global_vars.aoutbin)</span><span class="s"> determined that </span><span class="si">$(global_vars.file2)</span><span class="s"> is </span><span class="si">$(aout)</span><span class="s"> than </span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;*********************************&quot;</span><span class="p">;</span>
+    <span class="nc">!doesaoutexist</span><span class="p">::</span>
+    <span class="s">&quot;Executable </span><span class="si">$(global_vars.aoutbin)</span><span class="s"> does not exist.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="stat">stat</h2>
+<p>Compares the modified time of each test file using the binary application compiled in create_aout to see if it is newer.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">stat</span>
+<span class="p">{</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+
+    <span class="s">&quot;doesfile1exist&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="s">&quot;doesfile2exist&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+
+    <span class="nc">doesfile1exist</span><span class="p">::</span>
+
+    <span class="p">&quot;</span><span class="nv">file1</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">&quot;</span><span class="nv">file2</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="p">&quot;</span><span class="nv">file1_stat</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;/usr/bin/stat -c </span><span class="se">\&quot;</span><span class="s">%y</span><span class="se">\&quot;</span><span class="s"> </span><span class="si">$(file1)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+    <span class="p">&quot;</span><span class="nv">file1_split1</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">string_split</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">file1_stat</span><span class="p">),</span><span class="s">&quot; &quot;</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+    <span class="p">&quot;</span><span class="nv">file1_split2</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">nth</span><span class="p">(</span><span class="s">&quot;file1_split1&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">&quot;</span><span class="nv">file1_split3</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">string_split</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">file1_split2</span><span class="p">),</span><span class="s">&quot;</span><span class="se">\.</span><span class="s">&quot;</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+    <span class="p">&quot;</span><span class="nv">file1_split4</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">nth</span><span class="p">(</span><span class="s">&quot;file1_split3&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+
+    <span class="p">&quot;</span><span class="nv">file2_stat</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;/usr/bin/stat -c </span><span class="se">\&quot;</span><span class="s">%y</span><span class="se">\&quot;</span><span class="s"> </span><span class="si">$(file2)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+    <span class="p">&quot;</span><span class="nv">file2_split1</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">string_split</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">file2_stat</span><span class="p">),</span><span class="s">&quot; &quot;</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+    <span class="p">&quot;</span><span class="nv">file2_split2</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">nth</span><span class="p">(</span><span class="s">&quot;file2_split1&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">&quot;</span><span class="nv">file2_split3</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">string_split</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">file2_split2</span><span class="p">),</span><span class="s">&quot;</span><span class="se">\.</span><span class="s">&quot;</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+    <span class="p">&quot;</span><span class="nv">file2_split4</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">nth</span><span class="p">(</span><span class="s">&quot;file2_split3&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+
+      <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">exec_aout</span><span class="p">();</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">doesfile1exist</span><span class="p">::</span>
+      <span class="s">&quot;Parts of a second extracted extracted from stat for </span><span class="si">$(file1)</span><span class="s">: </span><span class="si">$(file1_split4)</span><span class="s">. Full stat output for </span><span class="si">$(file1)</span><span class="s">: </span><span class="si">$(file1_stat)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="s">&quot;Parts of a second extracted extracted from stat for </span><span class="si">$(file2)</span><span class="s">: </span><span class="si">$(file2_split4)</span><span class="s">. Full stat output for </span><span class="si">$(file2)</span><span class="s">: </span><span class="si">$(file2_stat)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="s">&quot;Using the binary Linux application stat to compare two files can help determine if the modified times between two files are different. The difference between the stat application using its additional flags and using CFEngine&#39;s built in support for getting and comparing file stats (e.g. filestat, isnewerthan) is that normally the accuracy is only to the second of the file&#39;s modified time. In order to better compare two files requires parts of a second as well, which the stat command can provide with some additional flags. Unfortunately the information must be extracted from the middle of a string, which is what the stat bundle accomplishes using the string_split and nth functions.&quot;</span><span class="p">;</span>
+      <span class="s">&quot;*********************************&quot;</span><span class="p">;</span>
+    <span class="nc">!doesfile1exist</span><span class="p">::</span>
+      <span class="s">&quot;stat: </span><span class="si">$(global_vars.file1)</span><span class="s"> and probably </span><span class="si">$(global_vars.file2)</span><span class="s"> do not exist.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="outer_bundle_2">outer_bundle_2</h2>
+<p>Modifies the text in the second file.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">outer_bundle_2</span>
+<span class="p">{</span>
+    <span class="kd">files</span><span class="p">:</span>
+
+       <span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span>
+       <span class="kr">create</span>    <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">,</span>
+       <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">inner_bundle_2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="list_file_2">list_file_2</h2>
+<p>Uses <code>filestat</code> and <code>isnewerthan</code> to compare the two test files to see if the second one is newer. Sometimes the modifications already performed, such as copy and modifying text, happen too quickly and filestat and isnewerthan may both report that the second test file is not newer than the first, while the more accurate stat based checks in the stat bundle (see step 12) will recognize the difference.</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">list_file_2</span>
+<span class="p">{</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+
+      <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">file_content</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">global_vars</span><span class="err">.</span><span class="nf">file1</span><span class="p">));</span>
+      <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">file_content</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">global_vars</span><span class="err">.</span><span class="nf">file2</span><span class="p">));</span>    
+
+  <span class="kd">classes</span><span class="p">:</span>
+
+      <span class="s">&quot;ok&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">isgreaterthan</span><span class="p">(</span><span class="nf">filestat</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;mtime&quot;</span><span class="p">),</span><span class="nf">filestat</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;mtime&quot;</span><span class="p">));</span>
+      <span class="s">&quot;newer&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">isnewerthan</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;*********************************&quot;</span><span class="p">;</span>
+      <span class="nc">ok</span><span class="p">::</span>
+         <span class="s">&quot;Using isgreaterthan+filestat determined that </span><span class="si">$(global_vars.file2)</span><span class="s"> was modified later than </span><span class="si">$(global_vars.file1)</span><span class="s">.&quot;</span><span class="p">;</span>
+
+      <span class="nc">!ok</span><span class="p">::</span>
+         <span class="s">&quot;Using isgreaterthan+filestat determined that </span><span class="si">$(global_vars.file2)</span><span class="s"> was not modified later than </span><span class="si">$(global_vars.file1)</span><span class="s">.&quot;</span><span class="p">;</span>
+      <span class="nc">newer</span><span class="p">::</span>
+         <span class="s">&quot;Using isnewerthan determined that </span><span class="si">$(global_vars.file2)</span><span class="s"> was modified later than </span><span class="si">$(global_vars.file1)</span><span class="s">.&quot;</span><span class="p">;</span>
+      <span class="nc">!newer</span><span class="p">::</span>
+         <span class="s">&quot;Using isnewerthan determined that </span><span class="si">$(global_vars.file2)</span><span class="s"> was not modified later than </span><span class="si">$(global_vars.file1)</span><span class="s">.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+</code></pre>
+</div>
+<h2 id="full-policy">Full Policy</h2><div class="highlight"><pre><code class="cf3"><span></span><span class="k">body</span> <span class="k">common</span> <span class="k">control</span> <span class="p">{</span>
+
+    <span class="kr">inputs</span> <span class="o">=&gt;</span> <span class="p">{</span>
+       <span class="s">&quot;libraries/cfengine_stdlib.cf&quot;</span><span class="p">,</span>
+    <span class="p">};</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">robot</span>
+<span class="p">{</span>
+  <span class="kd">reports</span><span class="p">:</span>
+<span class="s">&quot;                                    77777777777&quot;</span><span class="p">;</span>
+<span class="s">&quot;                                   77777777777777&quot;</span><span class="p">;</span>
+<span class="s">&quot;                                    777 7777 777&quot;</span><span class="p">;</span>
+<span class="s">&quot;                                  7777777777777&quot;</span><span class="p">;</span>
+<span class="s">&quot;                                   777777777777&quot;</span><span class="p">;</span>
+<span class="s">&quot;                                    777 7777 77&quot;</span><span class="p">;</span>
+<span class="s">&quot;                                    &quot;</span><span class="p">;</span>
+<span class="s">&quot;                           ZZZZ     ZZZ ZZZZ ZZZ     ZZZZ&quot;</span><span class="p">;</span>
+<span class="s">&quot;                          ZZZZZ    ZZZZZZZZZZZZZZ    ZZZZZ &quot;</span><span class="p">;</span>
+<span class="s">&quot;                        ZZZZZZZ    ZZZZZZZZZZZZZ     ZZZZZZZ&quot;</span><span class="p">;</span>
+<span class="s">&quot;                         ZZZZ      -------------      ZZZZZZ&quot;</span><span class="p">;</span>
+<span class="s">&quot;                       ZZZZZ        !CFENGINE!        ZZZZZ&quot;</span><span class="p">;</span>
+<span class="s">&quot;                         ZZZZ      -------------      ZZZZZ&quot;</span><span class="p">;</span>
+<span class="s">&quot;                       ZZZZZ       ZZZZZZZZZZZZZZ       ZZZZZ&quot;</span><span class="p">;</span>
+<span class="s">&quot;                        ZZZ        ZZZZZZZZZZZZZ         ZZZ&quot;</span><span class="p">;</span>
+<span class="s">&quot;                       ZZZZZ       ZZZZZZZZZZZZZ        ZZZZZ&quot;</span><span class="p">;</span>
+<span class="s">&quot;                     ..?ZZZ+,,,,,  ZZZZZZZZZZZZZZ       ZZZZZ&quot;</span><span class="p">;</span>
+<span class="s">&quot;                    ...ZZZZ~  ,::  ZZZZZZZZZZZZZ         ZZZZ&quot;</span><span class="p">;</span>
+<span class="s">&quot;                    ..,ZZZZZ,::::::                     ZZZZZ&quot;</span><span class="p">;</span>
+<span class="s">&quot;                        ZZZ                              ZZZ&quot;</span><span class="p">;</span>
+<span class="s">&quot;                                  ~       ===+&quot;</span><span class="p">;</span>
+<span class="s">&quot;                                    ZZZZZZZZZZZZZI??&quot;</span><span class="p">;</span>
+<span class="s">&quot;                                    ZZZZZZZZZZZZZ$???&quot;</span><span class="p">;</span>
+<span class="s">&quot;                                    7Z$+ ZZ  ZZZ???II&quot;</span><span class="p">;</span>
+<span class="s">&quot;                                    ZZZZZ+   ZZZZZIIII&quot;</span><span class="p">;</span>
+<span class="s">&quot;                                 ZZZZZ    ZZZZZ III77&quot;</span><span class="p">;</span>
+<span class="s">&quot;                              +++  +$ZZ???   ZZZ&quot;</span><span class="p">;</span>
+<span class="s">&quot;                              +++??ZZZZZIIIIZZZZZ&quot;</span><span class="p">;</span>
+<span class="s">&quot;                               ????ZZZZZIIIIZZZZZ&quot;</span><span class="p">;</span>
+<span class="s">&quot;                                ??IIZZZZ 7777ZZZ&quot;</span><span class="p">;</span>
+<span class="s">&quot;                                 IIZZZZZ  77ZZZZZ&quot;</span><span class="p">;</span>
+<span class="s">&quot;                                  I$ZZZZ   $ZZZZ&quot;</span><span class="p">;</span>
+
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">common</span> <span class="nf">global_vars</span>
+<span class="p">{</span>
+    <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">gccexec</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">getenv</span><span class="p">(</span><span class="s">&quot;GCC_BIN&quot;</span><span class="p">,</span><span class="mi">255</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">rmexec</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">getenv</span><span class="p">(</span><span class="s">&quot;RM_BIN&quot;</span><span class="p">,</span><span class="mi">255</span><span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">aoutbin</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">getenv</span><span class="p">(</span><span class="s">&quot;AOUT_BIN&quot;</span><span class="p">,</span><span class="mi">255</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">workdir</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">getenv</span><span class="p">(</span><span class="s">&quot;WORK_DIR&quot;</span><span class="p">,</span><span class="mi">255</span><span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">aoutexec</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(workdir)</span><span class="s">/</span><span class="si">$(aoutbin)</span><span class="s">&quot;</span><span class="p">;</span>
+
+      <span class="p">&quot;</span><span class="nv">file1name</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">getenv</span><span class="p">(</span><span class="s">&quot;CFE_FILE1&quot;</span><span class="p">,</span><span class="mi">255</span><span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">file2name</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">getenv</span><span class="p">(</span><span class="s">&quot;CFE_FILE2&quot;</span><span class="p">,</span><span class="mi">255</span><span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">file1</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(workdir)</span><span class="s">/</span><span class="si">$(file1name)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">file2</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(workdir)</span><span class="s">/</span><span class="si">$(file2name)</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;gclass&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="s">&quot;any&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">packages</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">match_package</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="s">&quot;gcc&quot;</span>
+      <span class="p">};</span>
+
+  <span class="kd">packages</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(match_package)</span><span class="s">&quot;</span>
+      <span class="kr">package_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;add&quot;</span><span class="p">,</span>
+      <span class="kr">package_method</span> <span class="o">=&gt;</span> <span class="nf">yum</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+
+    <span class="nc">gclass</span><span class="p">::</span>
+        <span class="s">&quot;Package gcc installed&quot;</span><span class="p">;</span>
+        <span class="s">&quot;*********************************&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">create_aout_source_file</span>
+<span class="p">{</span>
+
+  <span class="c"># This bundle creates the source file that will be compiled in bundle agent create_aout.</span>
+  <span class="c"># See that bunlde&#39;s comments for more information.</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+
+    <span class="c"># An slist is used here instead of a straight forward string because it doesn&#39;t seem possible to create</span>
+    <span class="c"># line endings using \n when using a string to insert text into a file.</span>
+
+    <span class="p">&quot;</span><span class="nv">c</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s">&quot;#include &lt;stdlib.h&gt;&quot;</span><span class="p">,</span><span class="s">&quot;#include &lt;stdio.h&gt;&quot;</span><span class="p">,</span><span class="s">&quot;#include &lt;sys/stat.h&gt;&quot;</span><span class="p">,</span><span class="s">&quot;#include &lt;string.h&gt;&quot;</span><span class="p">,</span><span class="s">&quot;void main()&quot;</span><span class="p">,</span><span class="s">&quot;{char file1[255];strcpy(file1,</span><span class="se">\&quot;</span><span class="si">$(global_vars.file1)</span><span class="se">\&quot;</span><span class="s">);char file2[255];strcpy(file2,</span><span class="se">\&quot;</span><span class="si">$(global_vars.file2)</span><span class="se">\&quot;</span><span class="s">);struct stat time1;int i = lstat(file1, &amp;time1);struct stat time2;int j = lstat(file2, &amp;time2);if (time1.st_mtime &lt; time2.st_mtime){printf(</span><span class="se">\&quot;</span><span class="s">Newer</span><span class="se">\&quot;</span><span class="s">);}else{if(time1.st_mtim.tv_nsec &lt; time2.st_mtim.tv_nsec){printf(</span><span class="se">\&quot;</span><span class="s">Newer</span><span class="se">\&quot;</span><span class="s">);}else{printf(</span><span class="se">\&quot;</span><span class="s">Not newer</span><span class="se">\&quot;</span><span class="s">);}}}&quot;</span><span class="p">};</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(global_vars.workdir)</span><span class="s">/a.c&quot;</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">system</span><span class="p">,</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">Insert</span><span class="p">(</span><span class="s">&quot;@(c)&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;The source file </span><span class="si">$(global_vars.workdir)</span><span class="s">/a.c has been created. It will be used to compile the binary a.out, which will provide more accurate file stats to compare two files than the built in CFEngine functionality for comparing file stats, including modification time. This information will be used to determine of the second of the two files being compared is newer or not.&quot;</span><span class="p">;</span>
+    <span class="s">&quot;*********************************&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">Insert</span><span class="p">(</span><span class="nv">name</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="kd">insert_lines</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(name)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">create_aout</span>
+<span class="p">{</span>
+
+    <span class="kd">classes</span><span class="p">:</span>
+
+    <span class="s">&quot;doesfileacexist&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.workdir)</span><span class="s">/a.c&quot;</span><span class="p">);</span>
+    <span class="s">&quot;doesaoutexist&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.aoutbin)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+
+    <span class="c"># Removes any previous binary</span>
+    <span class="p">&quot;</span><span class="nv">rmaout</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.rmexec)</span><span class="s"> </span><span class="si">$(global_vars.aoutexec)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+
+    <span class="nc">doesfileacexist</span><span class="p">::</span>
+    <span class="p">&quot;</span><span class="nv">compilestr</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(global_vars.gccexec)</span><span class="s"> </span><span class="si">$(global_vars.workdir)</span><span class="s">/a.c -o </span><span class="si">$(global_vars.aoutexec)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">&quot;</span><span class="nv">gccaout</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(compilestr)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">doesfileacexist</span><span class="p">::</span>
+      <span class="s">&quot;gcc output: </span><span class="si">$(gccaout)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="s">&quot;Creating aout using </span><span class="si">$(compilestr)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="nc">!doesfileacexist</span><span class="p">::</span>
+      <span class="s">&quot;Cannot compile a.out, </span><span class="si">$(global_vars.workdir)</span><span class="s">/a.c does not exist.&quot;</span><span class="p">;</span>   
+    <span class="nc">doesaoutexist</span><span class="p">::</span>
+      <span class="s">&quot;The binary application aout has been compiled from the source in the create_aout_source_file bundle. It uses the stat library to compare two files, determine if the modified times are different, and whether the second file is newer than the first. The difference between this application and using CFEngine&#39;s built in support for getting file stats (e.g. filestat, isnewerthan), which provides file modification time accurate to a second. However, in order to better compare two files might sometimes require parts of a second as well. The stat library provides the extra support for retrieving the additional information required to get better accuracy (down to parts of a second), and is utilized by the binary application a.out that is compiled within the create_aout bundle.&quot;</span><span class="p">;</span>
+      <span class="s">&quot;*********************************&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">test_delete</span>
+<span class="p">{</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span>
+      <span class="kr">delete</span> <span class="o">=&gt;</span> <span class="nf">tidy</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">delete_file</span><span class="p">(</span><span class="nv">fname</span><span class="p">)</span>
+<span class="p">{</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(fname)</span><span class="s">&quot;</span>
+      <span class="kr">delete</span> <span class="o">=&gt;</span> <span class="nf">tidy</span><span class="p">;</span>
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;Deleted </span><span class="si">$(fname)</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">contain</span> <span class="nf">del_file</span>
+<span class="p">{</span>
+
+  <span class="kr">useshell</span> <span class="o">=&gt;</span> <span class="s">&quot;useshell&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">do_files_exist_1</span>
+
+<span class="p">{</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+
+    <span class="s">&quot;doesfile1exist&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="s">&quot;doesfile2exist&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+
+    <span class="nc">doesfile1exist</span><span class="p">::</span>
+
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">delete_file</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span><span class="p">);</span> 
+    <span class="nc">doesfile2exist</span><span class="p">::</span>
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">delete_file</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span><span class="p">);</span> 
+  <span class="kd">reports</span><span class="p">:</span>
+
+    <span class="nc">!doesfile1exist</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s"> does not exist.&quot;</span><span class="p">;</span>
+    <span class="nc">doesfile1exist</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s"> did exist. Call to delete it was made.&quot;</span><span class="p">;</span>    
+
+    <span class="nc">!doesfile2exist</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s"> does not exist.&quot;</span><span class="p">;</span>
+    <span class="nc">doesfile2exist</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s"> did exist. Call to delete it was made.&quot;</span><span class="p">;</span>    
+
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">create_file_1</span>
+<span class="p">{</span>
+
+  <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span>
+      <span class="kr">perms</span> <span class="o">=&gt;</span> <span class="nf">system</span><span class="p">,</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s"> has been created&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">outer_bundle_1</span>
+<span class="p">{</span>
+    <span class="kd">files</span><span class="p">:</span>
+
+       <span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span>
+       <span class="kr">create</span>    <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">,</span>
+       <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">inner_bundle_1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">copy_a_file</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+
+      <span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span>
+      <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">local_cp</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+     <span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s"> has been copied to </span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span><span class="p">;</span>
+     <span class="s">&quot;*********************************&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">do_files_exist_2</span>
+
+<span class="p">{</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">does_file_exist</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">global_vars</span><span class="err">.</span><span class="nf">file1</span><span class="p">));</span>
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">does_file_exist</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">global_vars</span><span class="err">.</span><span class="nf">file2</span><span class="p">));</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">does_file_exist</span><span class="p">(</span><span class="nv">filename</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">filestat</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">filestat</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(filename)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;mtime&quot;</span><span class="p">);</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+      <span class="s">&quot;fileexists&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(filename)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+
+    <span class="nc">fileexists</span><span class="p">::</span>
+
+      <span class="s">&quot;</span><span class="si">$(filename)</span><span class="s"> exists. Last Modified Time = </span><span class="si">$(filestat)</span><span class="s">.&quot;</span><span class="p">;</span>
+
+    <span class="nc">!fileexists</span><span class="p">::</span>
+
+      <span class="s">&quot;</span><span class="si">$(filename)</span><span class="s"> does not exist&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">list_file_1</span>
+<span class="p">{</span>
+
+  <span class="kd">methods</span><span class="p">:</span>  
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">file_content</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">global_vars</span><span class="err">.</span><span class="nf">file1</span><span class="p">));</span>
+    <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">file_content</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">global_vars</span><span class="err">.</span><span class="nf">file2</span><span class="p">));</span>
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;*********************************&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">exec_aout</span>
+<span class="p">{</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+    <span class="s">&quot;doesaoutexist&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.aoutbin)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+    <span class="nc">doesaoutexist</span><span class="p">::</span>
+    <span class="p">&quot;</span><span class="nv">aout</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.aoutexec)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">doesaoutexist</span><span class="p">::</span>
+    <span class="s">&quot;*********************************&quot;</span><span class="p">;</span>
+    <span class="s">&quot;</span><span class="si">$(global_vars.aoutbin)</span><span class="s"> determined that </span><span class="si">$(global_vars.file2)</span><span class="s"> is </span><span class="si">$(aout)</span><span class="s"> than </span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="s">&quot;*********************************&quot;</span><span class="p">;</span>
+    <span class="nc">!doesaoutexist</span><span class="p">::</span>
+    <span class="s">&quot;Executable </span><span class="si">$(global_vars.aoutbin)</span><span class="s"> does not exist.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">stat</span>
+<span class="p">{</span>
+
+  <span class="kd">classes</span><span class="p">:</span>
+
+    <span class="s">&quot;doesfile1exist&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="s">&quot;doesfile2exist&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">fileexists</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+
+    <span class="nc">doesfile1exist</span><span class="p">::</span>
+
+    <span class="p">&quot;</span><span class="nv">file1</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">&quot;</span><span class="nv">file2</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span><span class="p">;</span>
+
+    <span class="p">&quot;</span><span class="nv">file1_stat</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;/usr/bin/stat -c </span><span class="se">\&quot;</span><span class="s">%y</span><span class="se">\&quot;</span><span class="s"> </span><span class="si">$(file1)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+    <span class="p">&quot;</span><span class="nv">file1_split1</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">string_split</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">file1_stat</span><span class="p">),</span><span class="s">&quot; &quot;</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+    <span class="p">&quot;</span><span class="nv">file1_split2</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">nth</span><span class="p">(</span><span class="s">&quot;file1_split1&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">&quot;</span><span class="nv">file1_split3</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">string_split</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">file1_split2</span><span class="p">),</span><span class="s">&quot;</span><span class="se">\.</span><span class="s">&quot;</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+    <span class="p">&quot;</span><span class="nv">file1_split4</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">nth</span><span class="p">(</span><span class="s">&quot;file1_split3&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+
+    <span class="p">&quot;</span><span class="nv">file2_stat</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">execresult</span><span class="p">(</span><span class="s">&quot;/usr/bin/stat -c </span><span class="se">\&quot;</span><span class="s">%y</span><span class="se">\&quot;</span><span class="s"> </span><span class="si">$(file2)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;noshell&quot;</span><span class="p">);</span>
+    <span class="p">&quot;</span><span class="nv">file2_split1</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">string_split</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">file2_stat</span><span class="p">),</span><span class="s">&quot; &quot;</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+    <span class="p">&quot;</span><span class="nv">file2_split2</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">nth</span><span class="p">(</span><span class="s">&quot;file2_split1&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">&quot;</span><span class="nv">file2_split3</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">string_split</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">file2_split2</span><span class="p">),</span><span class="s">&quot;</span><span class="se">\.</span><span class="s">&quot;</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+    <span class="p">&quot;</span><span class="nv">file2_split4</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">nth</span><span class="p">(</span><span class="s">&quot;file2_split3&quot;</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+
+      <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">exec_aout</span><span class="p">();</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="nc">doesfile1exist</span><span class="p">::</span>
+      <span class="s">&quot;Parts of a second extracted extracted from stat for </span><span class="si">$(file1)</span><span class="s">: </span><span class="si">$(file1_split4)</span><span class="s">. Full stat output for </span><span class="si">$(file1)</span><span class="s">: </span><span class="si">$(file1_stat)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="s">&quot;Parts of a second extracted extracted from stat for </span><span class="si">$(file2)</span><span class="s">: </span><span class="si">$(file2_split4)</span><span class="s">. Full stat output for </span><span class="si">$(file2)</span><span class="s">: </span><span class="si">$(file2_stat)</span><span class="s">&quot;</span><span class="p">;</span>
+      <span class="s">&quot;Using the binary Linux application stat to compare two files can help determine if the modified times between two files are different. The difference between the stat application using its additional flags and using CFEngine&#39;s built in support for getting and comparing file stats (e.g. filestat, isnewerthan) is that normally the accuracy is only to the second of the file&#39;s modified time. In order to better compare two files requires parts of a second as well, which the stat command can provide with some additional flags. Unfortunately the information must be extracted from the middle of a string, which is what the stat bundle accomplishes using the string_split and nth functions.&quot;</span><span class="p">;</span>
+      <span class="s">&quot;*********************************&quot;</span><span class="p">;</span>
+    <span class="nc">!doesfile1exist</span><span class="p">::</span>
+      <span class="s">&quot;stat: </span><span class="si">$(global_vars.file1)</span><span class="s"> and probably </span><span class="si">$(global_vars.file2)</span><span class="s"> do not exist.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">outer_bundle_2</span>
+<span class="p">{</span>
+    <span class="kd">files</span><span class="p">:</span>
+
+       <span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span>
+       <span class="kr">create</span>    <span class="o">=&gt;</span> <span class="s">&quot;false&quot;</span><span class="p">,</span>
+       <span class="kr">edit_line</span> <span class="o">=&gt;</span> <span class="nf">inner_bundle_2</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">inner_bundle_1</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+
+    <span class="p">&quot;</span><span class="nv">msg</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;Helloz to World!&quot;</span><span class="p">;</span>
+
+  <span class="kd">insert_lines</span><span class="p">:</span>
+    <span class="s">&quot;</span><span class="si">$(msg)</span><span class="s">&quot;</span><span class="p">;</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;inserted </span><span class="si">$(msg)</span><span class="s"> into </span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">edit_line</span> <span class="nf">inner_bundle_2</span>
+<span class="p">{</span>
+   <span class="kd">replace_patterns</span><span class="p">:</span>
+
+   <span class="s">&quot;Helloz to World!&quot;</span>
+      <span class="kr">replace_with</span> <span class="o">=&gt;</span> <span class="nf">hello_world</span><span class="p">;</span>
+
+   <span class="kd">reports</span><span class="p">:</span>
+      <span class="s">&quot;Text in </span><span class="si">$(global_vars.file2)</span><span class="s"> has been replaced&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">replace_with</span> <span class="nf">hello_world</span>
+<span class="p">{</span>
+   <span class="kr">replace_value</span> <span class="o">=&gt;</span> <span class="s">&quot;Hello World&quot;</span><span class="p">;</span>
+   <span class="kr">occurrences</span> <span class="o">=&gt;</span> <span class="s">&quot;all&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">list_file_2</span>
+<span class="p">{</span>
+
+  <span class="kd">methods</span><span class="p">:</span>
+
+      <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">file_content</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">global_vars</span><span class="err">.</span><span class="nf">file1</span><span class="p">));</span>
+      <span class="s">&quot;any&quot;</span> <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">file_content</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">global_vars</span><span class="err">.</span><span class="nf">file2</span><span class="p">));</span>    
+
+  <span class="kd">classes</span><span class="p">:</span>
+
+      <span class="s">&quot;ok&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">isgreaterthan</span><span class="p">(</span><span class="nf">filestat</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;mtime&quot;</span><span class="p">),</span><span class="nf">filestat</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;mtime&quot;</span><span class="p">));</span>
+      <span class="s">&quot;newer&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">isnewerthan</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(global_vars.file2)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;</span><span class="si">$(global_vars.file1)</span><span class="s">&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+    <span class="s">&quot;*********************************&quot;</span><span class="p">;</span>
+      <span class="nc">ok</span><span class="p">::</span>
+         <span class="s">&quot;Using isgreaterthan+filestat determined that </span><span class="si">$(global_vars.file2)</span><span class="s"> was modified later than </span><span class="si">$(global_vars.file1)</span><span class="s">.&quot;</span><span class="p">;</span>
+
+      <span class="nc">!ok</span><span class="p">::</span>
+         <span class="s">&quot;Using isgreaterthan+filestat determined that </span><span class="si">$(global_vars.file2)</span><span class="s"> was not modified later than </span><span class="si">$(global_vars.file1)</span><span class="s">.&quot;</span><span class="p">;</span>
+      <span class="nc">newer</span><span class="p">::</span>
+         <span class="s">&quot;Using isnewerthan determined that </span><span class="si">$(global_vars.file2)</span><span class="s"> was modified later than </span><span class="si">$(global_vars.file1)</span><span class="s">.&quot;</span><span class="p">;</span>
+      <span class="nc">!newer</span><span class="p">::</span>
+         <span class="s">&quot;Using isnewerthan determined that </span><span class="si">$(global_vars.file2)</span><span class="s"> was not modified later than </span><span class="si">$(global_vars.file1)</span><span class="s">.&quot;</span><span class="p">;</span>
+
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">file_content</span><span class="p">(</span><span class="nv">filename</span><span class="p">)</span>
+<span class="p">{</span>
+
+  <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">file_content</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">readfile</span><span class="p">(</span> <span class="s">&quot;</span><span class="si">$(filename)</span><span class="s">&quot;</span> <span class="p">,</span> <span class="s">&quot;0&quot;</span> <span class="p">);</span>
+      <span class="p">&quot;</span><span class="nv">file_stat</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">filestat</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(filename)</span><span class="s">&quot;</span><span class="p">,</span><span class="s">&quot;mtime&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="s">&quot;Contents of </span><span class="si">$(filename)</span><span class="s"> = </span><span class="si">$(file_content)</span><span class="s">. Last Modified Time = </span><span class="si">$(file_stat)</span><span class="s">.&quot;</span><span class="p">;</span>
+      <span class="c">#&quot;The report on contents will only show new content and modifications. Even if the method is called more than once, if the evaluation is exactly the same as the previous call then there will be no report (possibly because the bundle is not evaluated a second time?).&quot;;</span>
+
+
+<span class="p">}</span>
+
+<span class="k">body</span> <span class="k">perms</span> <span class="nf">system</span>
+<span class="p">{</span>
+      <span class="kr">mode</span>  <span class="o">=&gt;</span> <span class="s">&quot;0640&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-examples.html">examples</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-tutorials.html">tutorials</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-file.html">file</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 12 April 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/examples/tutorials/file_comparison.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/34a63926eaa48e77d433eef63e7fec91c25bf534" target="_blank">34a63926eaa48e77d433eef63e7fec91c25bf534</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.7/assets/footer-a434e55eb3b9456e270479ce96049098.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

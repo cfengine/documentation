@@ -1,0 +1,195 @@
+
+bundle knowledge cf2_anomaly
+
+{
+topics:
+
+"cf2-anomaly";
+Anomaly_Detection::
+    "System Auditing" ;
+Anomaly_Detection::
+    "cfbrain" ;
+Anomaly_Detection::
+    "Fluctuation profiles" ;
+Anomaly_Detection::
+    "Using cfenvgraph" ;
+Anomaly_Detection::
+    "Starting with anomaly detection" ;
+Anomaly_Detection::
+    "Anomaly Detection" ;
+Monitoring_with_cfengine::
+    "Disk scans" ;
+Monitoring_with_cfengine::
+    "Performance" ;
+Last_seen_database::
+    "Intermittency times" ;
+Monitoring_with_cfengine::
+    "Last seen database" ;
+Monitoring_with_cfengine::
+    "Cfagent collected data" ;
+Cfenvd__a_learning_agent::
+    "Entropy and its interpretation" ;
+Cfenvd__a_learning_agent::
+    "Interpreting anomalies" ;
+Monitoring_with_cfengine::
+    "Cfenvd, a learning agent" ;
+Change_Detection::
+    "Tamperproof data" ;
+Change_Detection::
+    "Computing hashes" ;
+Change_Detection::
+    "Hashes or Digests" ;
+Change_Detection::
+    "Cryptographic checksums" ;
+Monitoring_with_cfengine::
+    "Change Detection" ;
+Monitoring_with_cfengine::
+    "Intrusion detection" ;
+Monitoring_with_cfengine::
+    "Monitoring features" ;
+Monitoring_with_cfengine::
+    "Monitoring with cfengine" ;
+
+
+occurrences:
+
+Monitoring_with_cfengine::
+ "/inside/manuals/cf2-anomaly#Monitoring-with-cfengine"
+  represents => { "chapter" };
+Monitoring_features::
+ "/inside/manuals/cf2-anomaly#Monitoring-features"
+  represents => { "Monitoring features" };
+Intrusion_detection::
+ "/inside/manuals/cf2-anomaly#Intrusion-detection"
+  represents => { "Intrusion detection" };
+Change_Detection::
+ "/inside/manuals/cf2-anomaly#Change-Detection"
+  represents => { "Change Detection" };
+Cryptographic_checksums::
+ "/inside/manuals/cf2-anomaly#Cryptographic-checksums"
+  represents => { "subsection" };
+Hashes_or_Digests::
+ "/inside/manuals/cf2-anomaly#Hashes-or-Digests"
+  represents => { "subsection" };
+Hashes_or_Digests::
+ "/inside/manuals/cf2-anomaly#Hashes-or-Digests"
+  represents => { "example" };
+Computing_hashes::
+ "/inside/manuals/cf2-anomaly#Computing-hashes"
+  represents => { "subsection" };
+Computing_hashes::
+ "/inside/manuals/cf2-anomaly#Computing-hashes"
+  represents => { "example" };
+Computing_hashes::
+ "/inside/manuals/cf2-anomaly#Computing-hashes"
+  represents => { "example" };
+Computing_hashes::
+ "/inside/manuals/cf2-anomaly#Computing-hashes"
+  represents => { "example" };
+Computing_hashes::
+ "/inside/manuals/cf2-anomaly#Computing-hashes"
+  represents => { "example" };
+Computing_hashes::
+ "/inside/manuals/cf2-anomaly#Computing-hashes"
+  represents => { "example" };
+Tamperproof_data::
+ "/inside/manuals/cf2-anomaly#Tamperproof"
+  represents => { "subsection" };
+Tamperproof_data::
+ "/inside/manuals/cf2-anomaly#Tamperproof"
+  represents => { "example" };
+Tamperproof_data::
+ "/inside/manuals/cf2-anomaly#Tamperproof"
+  represents => { "example" };
+Cfenvd__a_learning_agent::
+ "/inside/manuals/cf2-anomaly#cfenvd"
+  represents => { "Cfenvd, a learning agent" };
+Interpreting_anomalies::
+ "/inside/manuals/cf2-anomaly#Interpreting-anomalies"
+  represents => { "subsection" };
+Interpreting_anomalies::
+ "/inside/manuals/cf2-anomaly#Interpreting-anomalies"
+  represents => { "example" };
+Entropy_and_its_interpretation::
+ "/inside/manuals/cf2-anomaly#Entropy-and-its-interpretation"
+  represents => { "subsection" };
+Cfagent_collected_data::
+ "/inside/manuals/cf2-anomaly#Cfagent-collected-data"
+  represents => { "Cfagent collected data" };
+Last_seen_database::
+ "/inside/manuals/cf2-anomaly#last-seen-database"
+  represents => { "Last seen database" };
+Last_seen_database::
+ "/inside/manuals/cf2-anomaly#last-seen-database"
+  represents => { "example" };
+Intermittency_times::
+ "/inside/manuals/cf2-anomaly#Intermittency"
+  represents => { "subsection" };
+Intermittency_times::
+ "/inside/manuals/cf2-anomaly#Intermittency"
+  represents => { "example" };
+Performance::
+ "/inside/manuals/cf2-anomaly#Performance"
+  represents => { "Performance" };
+Performance::
+ "/inside/manuals/cf2-anomaly#Performance"
+  represents => { "example" };
+Disk_scans::
+ "/inside/manuals/cf2-anomaly#Disk-scans"
+  represents => { "Disk scans" };
+Disk_scans::
+ "/inside/manuals/cf2-anomaly#Disk-scans"
+  represents => { "example" };
+Anomaly_Detection::
+ "/inside/manuals/cf2-anomaly#Anomaly-Detection"
+  represents => { "chapter" };
+Anomaly_Detection::
+ "/inside/manuals/cf2-anomaly#Anomaly-Detection"
+  represents => { "example" };
+Starting_with_anomaly_detection::
+ "/inside/manuals/cf2-anomaly#Starting-with-anomaly-detection"
+  represents => { "Starting with anomaly detection" };
+Starting_with_anomaly_detection::
+ "/inside/manuals/cf2-anomaly#Starting-with-anomaly-detection"
+  represents => { "example" };
+Starting_with_anomaly_detection::
+ "/inside/manuals/cf2-anomaly#Starting-with-anomaly-detection"
+  represents => { "example" };
+Starting_with_anomaly_detection::
+ "/inside/manuals/cf2-anomaly#Starting-with-anomaly-detection"
+  represents => { "example" };
+Using_cfenvgraph::
+ "/inside/manuals/cf2-anomaly#Using-cfenvgraph"
+  represents => { "Using cfenvgraph" };
+Using_cfenvgraph::
+ "/inside/manuals/cf2-anomaly#Using-cfenvgraph"
+  represents => { "example" };
+Using_cfenvgraph::
+ "/inside/manuals/cf2-anomaly#Using-cfenvgraph"
+  represents => { "example" };
+Using_cfenvgraph::
+ "/inside/manuals/cf2-anomaly#Using-cfenvgraph"
+  represents => { "example" };
+Using_cfenvgraph::
+ "/inside/manuals/cf2-anomaly#Using-cfenvgraph"
+  represents => { "example" };
+Using_cfenvgraph::
+ "/inside/manuals/cf2-anomaly#Using-cfenvgraph"
+  represents => { "example" };
+Fluctuation_profiles::
+ "/inside/manuals/cf2-anomaly#Fluctuation-profiles"
+  represents => { "Fluctuation profiles" };
+Fluctuation_profiles::
+ "/inside/manuals/cf2-anomaly#Fluctuation-profiles"
+  represents => { "example" };
+cfbrain::
+ "/inside/manuals/cf2-anomaly#cfbrain"
+  represents => { "cfbrain" };
+System_Auditing::
+ "/inside/manuals/cf2-anomaly#System-Auditing"
+  represents => { "System Auditing" };
+System_Auditing::
+ "/inside/manuals/cf2-anomaly#System-Auditing"
+  represents => { "example" };
+}
+

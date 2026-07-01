@@ -1,0 +1,66 @@
+
+bundle knowledge st_adopt
+
+{
+topics:
+
+"st-adopt";
+Adoption::
+    "Contact CFEngine" ;
+Adoption::
+    "Build, Deploy, Manage, Audit" ;
+Adoption::
+    "Mission Goal and Knowledge Management" ;
+Adoption::
+    "Training and Certification" ;
+Adoption::
+    "Identifying the Team" ;
+Adoption::
+    "Installation or Pilot" ;
+Adoption::
+    "Commercial or Free?" ;
+Adoption::
+    "The Mission Plan" ;
+Adoption::
+    "What does adoption involve?" ;
+Special_Topics_Guide::
+    "Adoption"  association => a("discussed in","Adoption","discusses");
+
+
+occurrences:
+
+special_topics_guides::
+ "/docs/st-adopt.html"
+  represents => { "Adopting Cfengine in Your Organization" };
+Adoption::
+ "/docs/st-adopt.html#Top"
+  represents => { "Text section" };
+What_does_adoption_involve_::
+ "/docs/st-adopt.html#What-does-adoption-involve_003f"
+  represents => { "Text section" };
+The_Mission_Plan::
+ "/docs/st-adopt.html#The-Mission-Plan"
+  represents => { "Text section" };
+Commercial_or_Free_::
+ "/docs/st-adopt.html#Commercial-or-Free_003f"
+  represents => { "Text section" };
+Installation_or_Pilot::
+ "/docs/st-adopt.html#Installation-or-Pilot"
+  represents => { "Text section" };
+Identifying_the_Team::
+ "/docs/st-adopt.html#Identifying-the-Team"
+  represents => { "Text section" };
+Training_and_Certification::
+ "/docs/st-adopt.html#Training-and-Certification"
+  represents => { "Text section" };
+Mission_Goal_and_Knowledge_Management::
+ "/docs/st-adopt.html#Mission-Goal-and-Knowledge-Management"
+  represents => { "Text section" };
+Build__Deploy__Manage__Audit::
+ "/docs/st-adopt.html#Build"
+  represents => { "Text section" };
+Contact_CFEngine::
+ "/docs/st-adopt.html#Contact-CFEngine"
+  represents => { "Text section" };
+}
+

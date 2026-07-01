@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - vars</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html"  class="navselected" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-enterprise-api.html">Enterprise  API Reference</a></li><li><a href="reference-syntax.html">Syntax, identifiers and names</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li><a href="reference-promise-types-access.html">access</a></li><li><a href="reference-promise-types-classes.html">classes</a></li><li><a href="reference-promise-types-commands.html">commands</a></li><li><a href="reference-promise-types-databases.html">databases</a></li><li><a href="reference-promise-types-defaults.html">defaults</a></li><li><a href="reference-promise-types-files.html">files</a></li><li><a href="reference-promise-types-guest_environments.html">guest_environments</a></li><li><a href="reference-promise-types-measurements.html">measurements</a></li><li><a href="reference-promise-types-methods.html">methods</a></li><li><a href="reference-promise-types-meta.html">meta</a></li><li><a href="reference-promise-types-packages.html">packages</a></li><li><a href="reference-promise-types-processes.html">processes</a></li><li><a href="reference-promise-types-reports.html">reports</a></li><li><a href="reference-promise-types-roles.html">roles</a></li><li><a href="reference-promise-types-services.html">services</a></li><li><a href="reference-promise-types-storage.html">storage</a></li><li class="selected"><span>vars</span></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>vars</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/reference.html">reference</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/bundle-common.html">bundle common</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/vars.html">vars</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/promises.html">promises</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>vars</h1>
+                    <p><a href="manuals-language-concepts-variables.html" title="Variables">Variables</a> in CFEngine are defined 
+as promises that an identifier of a certain type represents a particular 
+value. Variables can be scalars or lists of types <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a>, <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a> or <a href="reference-promise-types-vars.html#real" title="vars - real"><code>real</code></a>. 
+Arrays are <code>associative</code> and use square brackets <code>[]</code> to enclose an-arbitrary 
+key.</p>
+
+<hr>
+<h2 id="scalar-variables">Scalar Variables</h2><h3 id="string">string</h3>
+<p><strong>Description:</strong> A scalar string</p>
+
+<p><strong>Type:</strong> <code>string</code></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong>  </p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">vars</span><span class="p">:</span>
+
+     <span class="p">&quot;</span><span class="nv">xxx</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;Some literal string...&quot;</span><span class="p">;</span>
+     <span class="p">&quot;</span><span class="nv">yyy</span><span class="p">&quot;</span>    <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">readfile</span><span class="p">(</span> <span class="s">&quot;/home/mark/tmp/testfile&quot;</span> <span class="p">,</span> <span class="s">&quot;33&quot;</span> <span class="p">);</span>
+</code></pre>
+</div>
+<h3 id="int">int</h3>
+<p><strong>Description:</strong> A scalar integer</p>
+
+<p><strong>Type:</strong> <code>int</code></p>
+
+<p><strong>Allowed input range:</strong> <code>-99999999999,9999999999</code></p>
+
+<p><strong>Example:</strong>  </p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">vars</span><span class="p">:</span>
+
+     <span class="p">&quot;</span><span class="nv">scalar</span><span class="p">&quot;</span> <span class="kt">int</span>    <span class="o">=&gt;</span> <span class="s">&quot;16k&quot;</span><span class="p">;</span>
+     <span class="p">&quot;</span><span class="nv">ran</span><span class="p">&quot;</span>    <span class="kt">int</span>    <span class="o">=&gt;</span> <span class="nf">randomint</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">88</span><span class="p">);</span>
+     <span class="p">&quot;</span><span class="nv">dim_array</span><span class="p">&quot;</span> <span class="kt">int</span> <span class="o">=&gt;</span>  <span class="nf">readstringarray</span><span class="p">(</span><span class="s">&quot;array_name&quot;</span><span class="p">,</span><span class="s">&quot;/etc/passwd&quot;</span><span class="p">,</span><span class="s">&quot;#[^</span><span class="se">\n</span><span class="s">]*&quot;</span><span class="p">,</span><span class="s">&quot;:&quot;</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">4000</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>  </p>
+
+<p>Int variables are strings that are expected to be used as integer numbers. The 
+typing in CFEngine is dynamic, so the variable types are interchangeable. 
+However, when you declare a variable to be type <code>int</code>, CFEngine verifies that 
+the value you assign to it looks like an integer (e.g., 3, -17, 16K).</p>
+<h3 id="real">real</h3>
+<p><strong>Description:</strong> A scalar real number</p>
+
+<p><strong>Type:</strong> <code>real</code></p>
+
+<p><strong>Allowed input range:</strong> <code>-9.99999E100,9.99999E100</code></p>
+
+<p><strong>Example:</strong>  </p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">vars</span><span class="p">:</span>
+
+     <span class="p">&quot;</span><span class="nv">scalar</span><span class="p">&quot;</span> <span class="kt">real</span>   <span class="o">=&gt;</span> <span class="s">&quot;0.5&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>  </p>
+
+<p>Real variables are strings that are expected to be used as real numbers. The 
+typing in CFEngine is dynamic, so the variable types are interchangeable, but 
+when you declare a variable to be type <code>real</code>, CFEngine verifies that the 
+value you assign to it looks like a real number (e.g., 3, 3.1415, .17, 
+6.02e23, -9.21e-17).</p>
+
+<p>Real numbers are not used in many places in CFEngine, but they are useful for 
+representing probabilities and performance data.</p>
+
+<hr>
+<h2 id="list-variables">List variables</h2>
+<p>Lists are specified using curly brackets <code>{}</code> that enclose a 
+comma-separated list of values.</p>
+<h3 id="slist">slist</h3>
+<p><strong>Description:</strong> A list of scalar strings</p>
+
+<p><strong>Type:</strong> <code>slist</code></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong>  </p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">vars</span><span class="p">:</span>
+
+     <span class="p">&quot;</span><span class="nv">xxx</span><span class="p">&quot;</span>    <span class="kt">slist</span>  <span class="o">=&gt;</span> <span class="p">{</span>  <span class="s">&quot;literal1&quot;</span><span class="p">,</span>  <span class="s">&quot;literal2&quot;</span> <span class="p">};</span>
+     <span class="p">&quot;</span><span class="nv">yyy</span><span class="p">&quot;</span>    <span class="kt">slist</span>  <span class="o">=&gt;</span> <span class="p">{</span> 
+                        <span class="nf">readstringlist</span><span class="p">(</span>
+                                      <span class="s">&quot;/home/mark/tmp/testlist&quot;</span><span class="p">,</span>
+                                      <span class="s">&quot;#[a-zA-Z0-9 ]*&quot;</span><span class="p">,</span>
+                                      <span class="s">&quot;[^a-zA-Z0-9]&quot;</span><span class="p">,</span>
+                                      <span class="mi">15</span><span class="p">,</span>
+                                      <span class="mi">4000</span>
+                                      <span class="p">)</span> 
+                        <span class="p">};</span>
+
+     <span class="p">&quot;</span><span class="nv">zzz</span><span class="p">&quot;</span>    <span class="kt">slist</span>  <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">readstringlist</span><span class="p">(</span><span class="s">&quot;/home/mark/tmp/testlist2&quot;</span><span class="p">,</span><span class="s">&quot;#[^</span><span class="se">\n</span><span class="s">]*&quot;</span><span class="p">,</span><span class="s">&quot;,&quot;</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4000</span><span class="p">)</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong></p>
+
+<p>Some <a href="reference-functions.html" title="Functions">functions</a> return <code>slist</code>s, and an <code>slist</code> 
+may contain the values copied from another <code>slist</code>, <a href="reference-promise-types-vars.html#rlist" title="vars - rlist"><code>rlist</code></a>, or <a href="reference-promise-types-vars.html#ilist" title="vars - ilist"><code>ilist</code></a>. See 
+<a href="#policy"><code>policy</code></a>.</p>
+<h3 id="ilist">ilist</h3>
+<p><strong>Description:</strong> A list of integers</p>
+
+<p><strong>Type:</strong> <code>ilist</code></p>
+
+<p><strong>Allowed input range:</strong> <code>-99999999999,9999999999</code></p>
+
+<p><strong>Example:</strong>  </p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="s">&quot;variable_id&quot;</span>
+
+           <span class="kr">ilist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;10&quot;</span><span class="p">,</span> <span class="s">&quot;11&quot;</span><span class="p">,</span> <span class="s">&quot;12&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>  </p>
+
+<p>Integer lists are lists of strings that are expected to be treated as
+integers. The typing in CFEngine is dynamic, so the variable types are
+interchangeable, but when you declare a variable to be type <code>ilist</code>,
+CFEngine verifies that each value you assign to it looks like an integer
+(e.g., 3, -17, 16K).</p>
+
+<p>Some <a href="reference-functions.html" title="Functions">functions</a> return <code>ilist</code>s, and an <code>ilist</code> may 
+contain the values copied from another <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a>, <a href="reference-promise-types-vars.html#rlist" title="vars - rlist"><code>rlist</code></a>, or <code>ilist</code>. See 
+<a href="#policy"><code>policy</code></a></p>
+<h3 id="rlist">rlist</h3>
+<p><strong>Description:</strong> A list of real numbers</p>
+
+<p><strong>Type:</strong> <code>rlist</code></p>
+
+<p><strong>Allowed input range:</strong> <code>-9.99999E100,9.99999E100</code></p>
+
+<p><strong>Example:</strong>  </p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="s">&quot;varid&quot;</span> <span class="kr">rlist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;0.1&quot;</span><span class="p">,</span> <span class="s">&quot;0.2&quot;</span><span class="p">,</span> <span class="s">&quot;0.3&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>  </p>
+
+<p>Real lists are lists of strings that are expected to be used as real
+numbers. The typing in CFEngine is dynamic, so the variable types are
+interchangeable, but when you declare a variable to be type <code>rlist</code>,
+CFEngine verifies that each value you assign to it looks like a real
+number (e.g., 3, 3.1415, .17, 6.02e23, -9.21e-17).</p>
+
+<p>Some <a href="reference-functions.html" title="Functions">functions</a> return <code>rlist</code>s, and an <code>rlist</code> may 
+contain the values copied from another <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a>, <code>rlist</code>, or <a href="reference-promise-types-vars.html#ilist" title="vars - ilist"><code>ilist</code></a>. See <a href="#policy"><code>policy</code></a></p>
+
+<hr>
+<h2 id="attributes">Attributes</h2><h3 id="policy">policy</h3>
+<p><strong>Description:</strong> The policy for (dis)allowing (re)definition of variables</p>
+
+<p>Variables can either be allowed to change their value dynamically (be
+redefined) or they can be constant.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong>   </p>
+<div class="highlight"><pre><code class="text">    free
+    overridable
+    constant
+    ifdefined
+</code></pre>
+</div>
+
+<p><strong>Default value:</strong>  </p>
+
+<p><code>policy = constant</code></p>
+
+<p><strong>Example:</strong>  </p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">vars</span><span class="p">:</span>
+
+      <span class="p">&quot;</span><span class="nv">varid</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;value...&quot;</span><span class="p">,</span>
+              <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;constant&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>Notes:</strong>  </p>
+
+<p>The policy <code>constant</code> indicates that the variable value may not be changed. 
+The policies <code>free</code> and <code>overridable</code> are synonymous, and indicated that the 
+variable&#39;s value may be changed.</p>
+
+<p>The policy <code>ifdefined</code> applies only to lists and implies that unexpanded or 
+undefined lists are dropped. The default behavior is otherwise to retain this 
+value as an indicator of the failure to quench the variable reference, for 
+example:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="p">&quot;</span><span class="nv">one</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="s">&quot;3&quot;</span> <span class="p">};</span>
+
+    <span class="p">&quot;</span><span class="nv">list</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;@(one)&quot;</span><span class="p">,</span> <span class="nv">@(two)</span> <span class="p">},</span>
+          <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;ifdefined&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>This results in <code>@(list)</code> being the same as <code>@(one)</code>, and the reference to 
+<code>@(two)</code> disappears. This is useful for combining lists.</p>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/reference/promise-types/vars.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

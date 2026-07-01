@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.6  Documentation - URI Resources</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.6/assets/global-ac3885a0674bd3c9117d62800be1608f.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "URI Resources";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                 <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html" selected>Version 3.6 (EOL)</option>
+			                 <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:bm0uhfq8ykk" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a><ul class="level2"><li><a href="reference-enterprise-api-ref-sql-schema.html">SQL Schema</a></li><li><a class="active" href="reference-enterprise-api-ref-uri-resources.html">URI Resources</a></li></ul></li><li><a href="reference-standard-library.html">Standard Library</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-enterprise-api-ref.html">Enterprise API Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    URI Resources
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h3 id="api">/api</h3>
+<p><strong>Supported Operations</strong>: <code>GET</code></p>
+
+<p><strong>Fields</strong>:</p>
+
+<ul>
+<li>  <code>apiName</code> <em>(string)</em> Human-friendly API name.</li>
+<li>  <code>apiVersion</code> <em>(string)</em> API version string.</li>
+<li>  <code>enterpriseVersion</code> <em>(string)</em> Version of the CFEngine Enterprise
+build.</li>
+<li>  <code>uiVersion</code> <em>(string)</em> The internal build number of the Enterprise UI
+(since 3.6)</li>
+<li>  <code>coreVersion</code> <em>(string)</em> The version of CFEngine Core (Community)
+the Enterprise version was built against.</li>
+<li>  <code>databaseHostname</code> <em>(string)</em> Hostname (or IP) of the database the
+API is connected to.</li>
+<li>  <code>databasePort</code> <em>(integer)</em> Port number of the database the API is
+connected to.</li>
+<li>  <code>authenticated</code> <em>(&quot;internal&quot;, &quot;external&quot;)</em>, Whether the request
+was authenticated using the internal users table or an external
+source.</li>
+<li>  <code>license.expires</code> <em>(integer)</em> Time when the license expires.</li>
+<li>  <code>license.installTime</code> <em>(integer)</em> Time when the license was
+installed.</li>
+<li>  <code>license.owner</code> <em>(string)</em> The name of the license owner.</li>
+<li>  <code>license.granted</code> <em>(integer)</em> Host number capacity granted by the
+license.</li>
+<li>  <code>license.licenseUsage.lastMeasured</code> <em>(integer)</em> Time when license
+usage was last updated.</li>
+<li>  <code>license.licenseUsage.samples</code> <em>(integer)</em> Number of samples
+collected for license usage.</li>
+<li>  <code>license.licenseUsage.minObservedLevel</code> <em>(integer)</em> Minimum number
+of observed host licenses in use.</li>
+<li>  <code>license.licenseUsage.minObservedLevel</code> <em>(integer)</em> Maximum number
+of observed host licenses in use.</li>
+<li>  <code>license.licenseUsage.meanUsage</code> <em>(integer)</em> Average number of
+observed host licenses in use.</li>
+<li>  <code>license.licenseUsage.meanCumulativeUtilization</code> <em>(integer)</em> (not
+sure)</li>
+<li>  <code>license.licenseUsage.usedToday</code> <em>(integer)</em> Total number of host
+licenses observed used today.</li>
+</ul>
+<h3 id="api-settings">/api/settings</h3>
+<p><strong>Supported Operations</strong>: <code>GET</code>, <code>POST</code></p>
+
+<p><strong>Fields</strong>:</p>
+
+<ul>
+<li>  <code>rbacEnabled</code> <em>(boolean)</em> Whether RBAC is applied to requests.</li>
+<li>  <code>hostIdentifier</code> <em>(string)</em> The identfying string for hosts, such as name or IP.</li>
+<li>  <code>ldapEnabled</code> <em>(boolean)</em> Whether external authentication is
+activated.</li>
+<li>  <code>ldapBaseDN</code> <em>(string)</em> LDAP BaseDN to use for external LDAP
+requests.</li>
+<li>  <code>ldapFilter</code> <em>(string)</em> Filter for LDAP objects.</li>
+<li>  <code>ldapEncryption</code> <em>(&quot;plain&quot;, &quot;ssl&quot;, &quot;tls&quot;)</em> Type of LDAP binding to
+establish to external LDAP server. (Default: &quot;plain&quot;).</li>
+<li>  <code>ldapHost</code> <em>(string)</em> Hostname of external LDAP server.</li>
+<li>  <code>ldapLoginAttribute</code> <em>(string)</em> LDAP attribute to use for
+usernames. (default: &quot;uid&quot;).</li>
+<li>  <code>ldapUsername</code> <em>(string)</em> LDAP username.</li>
+<li>  <code>ldapPassword</code> <em>(string)</em> LDAP password.</li>
+<li>  <code>ldapUsersDirectory</code> <em>(string)</em> Attribute and value to qualify the
+directory in which to look up users, e.g. &quot;ou=people&quot;.</li>
+<li>  <code>ldapPort</code> <em>(integer)</em> Port for external LDAP connections not
+using SSL. (default 389).</li>
+<li>  <code>ldapPortSSL</code> <em>(integer)</em> Port for external LDAP connections using
+SSL. (default 636).</li>
+<li>  <code>blueHostHorizon</code> <em>(integer)</em> Time interval (seconds) for when to
+consider a host unreachable. (default 900).</li>
+<li>  <code>logLevel</code> <em>(&quot;emergency&quot;, &quot;alert&quot;, &quot;critical&quot;, &quot;error&quot;, &quot;warning&quot;,
+&quot;notice&quot;, &quot;info&quot;, &quot;debug&quot;)</em> Syslog filter specifying the severity
+level at which messages produced by the API should be emitted to
+syslog and apache.log. (default: error).</li>
+<li>  <code>sketchActivationAlertTimeout</code> <em>(integer)</em> Global timeout in
+minutes for sketch activation alerts.</li>
+</ul>
+<h3 id="api-user">/api/user</h3>
+<p><strong>Supported Operations</strong>: <code>GET</code></p>
+
+<p><strong>Query Parameters</strong>:</p>
+
+<ul>
+<li>  <code>id</code> <em>(regex string)</em> Regular expression for filtering usernames.</li>
+<li>  <code>external</code> <em>(&quot;true&quot;, &quot;false&quot;)</em> Returns only internal users (false)
+or only external (true), or all if not specified.</li>
+</ul>
+<h3 id="api-user-id">/api/user/:id</h3>
+<p><strong>Supported Operations</strong>: <code>GET</code>, <code>PUT</code>, <code>POST</code>, <code>DELETE</code></p>
+
+<p><strong>Fields</strong>:</p>
+
+<ul>
+<li>  <code>id</code> <em>(string)</em> ID of a user.</li>
+<li>  <a href="reference-promise-types-users.html#password" title="users - password"><code>password</code></a> <em>(string)</em> Password of a user. (Never returned from
+API).</li>
+<li>  <code>email</code> <em>(string)</em> Email address associated with user.</li>
+<li>  <a href="reference-promise-types-roles.html" title="roles"><code>roles</code></a> <em>(array of strings)</em> Set of IDs of roles a user is in.
+(Default: empty)</li>
+<li>  <code>external</code> <em>(boolean)</em> Whether or not the user was found
+externally (LDAP).</li>
+</ul>
+<h3 id="api-role">/api/role</h3>
+<p><strong>Supported Operations</strong>: <code>GET</code></p>
+<h3 id="api-role-id">/api/role/:id</h3>
+<p><strong>Supported Operations</strong>: <code>GET</code>, <code>PUT</code>, <code>POST</code>, <code>DELETE</code></p>
+
+<p><strong>Fields</strong>:</p>
+
+<ul>
+<li>  <code>id</code> <em>(string)</em> ID of a role.</li>
+<li>  <a href="reference-promise-types-users.html#description" title="users - description"><code>description</code></a> <em>(string)</em> Arbitrary text describing the role</li>
+<li>  <code>includeContext</code> <em>(comma delimited string of regular expression
+strings)</em> Includes hosts visible to the users in the role.</li>
+<li>  <code>excludeContext</code> <em>(comma delimited string of regular expression
+strings)</em> Excludes bundles visible to the users in the role.</li>
+<li>  <code>includeBundles</code> <em>(comma delimited string of regular expression
+strings)</em> Includes bundles visible to the users in the role.</li>
+<li>  <code>excludeBundles</code> <em>(comma delimited string of regular expression
+strings)</em> Excludes bundles visible to the users in the role.</li>
+</ul>
+<h3 id="api-host">/api/host</h3>
+<p><strong>Supported Operations</strong>: <code>GET</code> ,<code>DELETE</code></p>
+
+<p><em>Query Parameters</em>:</p>
+
+<ul>
+<li>  <code>include-context</code> <em>(comma delimited string of regular expression
+strings)</em> Includes hosts having context matching the expression.</li>
+<li>  <code>exclude-context</code> <em>(comma delimited string of regular expression
+strings)</em> Excludes hosts having context matching the expression.</li>
+</ul>
+<h3 id="api-host-host-id">/api/host/:host-id</h3>
+<ul>
+<li>  <code>id</code> <em>(string)</em> ID of a host.</li>
+<li>  <code>hostname</code> <em>(string)</em> Hostname of a host.</li>
+<li>  <code>ip</code> <em>(string)</em> IP address of a host.</li>
+</ul>
+<h4 id="api-host-host-id-vital-vital-id">/api/host/:host-id/vital/:vital-id</h4>
+<p><strong>Supported Operations</strong>: <code>GET</code></p>
+
+<p><em>Query Parameters</em>:</p>
+
+<ul>
+<li>  <code>from</code> <em>(integer)</em> Timestamp marking the start of the interval for
+which to fetch data. Data is only available going back one week.</li>
+<li>  <code>to</code> <em>(integer)</em> End of data interval to be fetched.</li>
+</ul>
+
+<p><strong>Fields</strong>:</p>
+
+<ul>
+<li>  <code>id</code> <em>(string)</em> ID of vital sign.</li>
+<li>  <a href="reference-promise-types-users.html#description" title="users - description"><code>description</code></a> <em>(string)</em> Description of vital sign.</li>
+<li>  <a href="reference-promise-types-measurements.html#units" title="measurements - units"><code>units</code></a> <em>(string)</em> Measurement unit of vital sign.</li>
+<li>  <code>timestamp</code> <em>(integer)</em> Timestamp of the last received data point.</li>
+<li>  <code>values</code> <em>(array of [ t, y ], where t is the sample timestamp)</em>
+Vital sign data.</li>
+</ul>
+<h3 id="api-query">/api/query</h3>
+<p><strong>Supported Operations</strong>:
+<code>POST</code></p>
+
+<p><strong>Fields</strong>:</p>
+
+<ul>
+<li>  <code>query</code> <em>(string)</em> SQL query string.</li>
+<li>  <code>sortColumn</code> <em>(string)</em> Column on which to sort results. This is
+applied to the result of the SQL query and can be considered post
+processing. The Mission Portal uses this to sort cached reports.</li>
+<li>  <code>sortDescending</code> <em>(boolean)</em> Apply post-sorting in descending order.</li>
+<li>  <code>skip</code> <em>(integer)</em> Number of results to skip for the processed
+query. The Mission Portal uses this for pagination on cached
+results.</li>
+<li>  <code>limit</code> <em>(integer)</em> Limit the number of results in the processed
+query.</li>
+<li>  <code>disableCache</code> <em>(boolean)</em> Don&#39;t use cached data</li>
+</ul>
+<h3 id="api-query-async">/api/query/async</h3>
+<p><strong>Supported Operations</strong>: <code>POST</code></p>
+
+<p><strong>Fields</strong>:</p>
+
+<ul>
+<li>  <code>query</code> <em>(string)</em> SQL query string.</li>
+<li>  <code>id</code> <em>(string)</em> ID of the query job.</li>
+<li>  <code>error</code> <em>(string)</em> Error if anything went wrong.</li>
+</ul>
+<h3 id="api-query-async-async-query-id">/api/query/async/:async-query-id</h3>
+<p><strong>Supported Operations</strong>: <code>GET</code>, <code>DELETE</code></p>
+
+<p><strong>Fields</strong>:</p>
+
+<ul>
+<li>  <code>id</code> <em>(string)</em> ID of the query job.</li>
+<li>  <code>percentageComplete</code> <em>(integer)</em> Processing status for the query.</li>
+<li>  <code>href</code> <em>(string)</em> Download link for the finished report.</li>
+<li>  <code>error</code> <em>(string)</em> Error if anything went wrong.</li>
+</ul>
+<h3 id="enterprise-design-center-api">Enterprise Design Center API</h3>
+<p>Please see <a href="reference-design-center-api.html" title="The Design Center API">The Design Center API</a> for the Design Center API
+commands that are wrapped by the following Enterprise API commands.</p>
+<h4 id="api-dc-sketch">/api/dc/sketch</h4>
+<ul>
+<li><strong>GET</strong>: List of sketches</li>
+</ul>
+<div class="highlight"><pre><code class="text">{
+    &quot;meta&quot;: {
+        &quot;page&quot;: 1,
+        &quot;count&quot;: 69,
+        &quot;total&quot;: 69,
+        &quot;timestamp&quot;: 1383829723
+        },
+    &quot;data&quot;: [
+        {
+            &quot;Utilities::Staging&quot;: {
+                &quot;metadata&quot;: {
+                    &quot;authors&quot;: [
+                        &quot;Ted Zlatanov &lt;tzz@lifelogs.com&gt;&quot;
+                    ],
+                    &quot;version&quot;: 1,
+                    &quot;name&quot;: &quot;Utilities::Staging&quot;,
+                    &quot;license&quot;: &quot;MIT&quot;,
+                    &quot;description&quot;: &quot;Stage a directory of content to a target directory.&quot;,
+                    &quot;tags&quot;: [
+                        &quot;cfdc&quot;,
+                        &quot;stage&quot;,
+                        &quot;directory&quot;,
+                        &quot;rsync&quot;
+                    ],
+                    &quot;depends&quot;: {
+                        &quot;cfengine&quot;: {
+                            &quot;version&quot;: &quot;3.5.0&quot;
+                        },
+                        &quot;CFEngine::dclib::3.5.0&quot;: [],
+                        &quot;CFEngine::dclib&quot;: [],
+                        &quot;CFEngine::stdlib&quot;: {
+                            &quot;version&quot;: 109
+                        }
+                    }
+                }
+            }
+        }]
+    }
+</code></pre>
+</div>
+<h4 id="api-dc-sketch-name">/api/dc/sketch/:name</h4>
+<ul>
+<li><strong>GET</strong>: info about specific sketch</li>
+</ul>
+<div class="highlight"><pre><code class="text">{
+    &quot;meta&quot;: {
+        &quot;page&quot;: 1,
+        &quot;count&quot;: 1,
+        &quot;total&quot;: 1,
+        &quot;timestamp&quot;: 1383831531
+    },
+    &quot;data&quot;: [
+        {
+            &quot;namespace&quot;: &quot;cfdc_staging&quot;,
+            &quot;manifest&quot;: {
+                &quot;test.cf&quot;: {
+                    &quot;comment&quot;: &quot;Test Policy&quot;
+                },
+                &quot;params/demo.json&quot;: {
+                    &quot;comment&quot;: &quot;Demo parameters.&quot;
+                },
+                &quot;README.md&quot;: {
+                    &quot;documentation&quot;: true
+                },
+                &quot;test.pl&quot;: {
+                    &quot;test&quot;: true
+                },
+                &quot;main.cf&quot;: {
+                    &quot;desc&quot;: &quot;main file&quot;
+                }
+            },
+            &quot;interface&quot;: [
+                &quot;main.cf&quot;
+            ],
+            &quot;metadata&quot;: {
+                &quot;authors&quot;: [
+                    &quot;Ted Zlatanov &lt;tzz@lifelogs.com&gt;&quot;
+                ],
+                &quot;version&quot;: 1,
+                &quot;name&quot;: &quot;Utilities::Staging&quot;,
+                &quot;license&quot;: &quot;MIT&quot;,
+                &quot;description&quot;: &quot;Stage a directory of content to a target directory.&quot;,
+                &quot;tags&quot;: [
+                    &quot;cfdc&quot;,
+                    &quot;stage&quot;,
+                    &quot;directory&quot;,
+                    &quot;rsync&quot;
+                ],
+                &quot;depends&quot;: {
+                    &quot;cfengine&quot;: {
+                        &quot;version&quot;: &quot;3.5.0&quot;
+                    },
+                    &quot;CFEngine::dclib::3.5.0&quot;: [],
+                    &quot;CFEngine::dclib&quot;: [],
+                    &quot;CFEngine::stdlib&quot;: {
+                        &quot;version&quot;: 109
+                    }
+                }
+            },
+            &quot;entry_point&quot;: null,
+            &quot;api&quot;: {
+                &quot;stage&quot;: [
+                    {
+                        &quot;name&quot;: &quot;runenv&quot;,
+                        &quot;type&quot;: &quot;environment&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;metadata&quot;,
+                        &quot;type&quot;: &quot;metadata&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;source_dir&quot;,
+                        &quot;validation&quot;: &quot;PATH_ABSOLUTE_UNIX_OR_WINDOWS&quot;,
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;description&quot;: &quot;Directory where the content can be found.&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;dest_dir&quot;,
+                        &quot;validation&quot;: &quot;PATH_ABSOLUTE_UNIX_OR_WINDOWS&quot;,
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;description&quot;: &quot;Directory where the content will be installed.&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;owner&quot;,
+                        &quot;validation&quot;: &quot;USERNAME_UNIX&quot;,
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;description&quot;: &quot;Owner of the dest_dir after staging.&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;group&quot;,
+                        &quot;validation&quot;: &quot;USERNAME_UNIX&quot;,
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;description&quot;: &quot;Owner of the dest_dir after staging.&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;dirmode&quot;,
+                        &quot;validation&quot;: &quot;DIGITS&quot;,
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;description&quot;: &quot;Directory mode to install.&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;filemode&quot;,
+                        &quot;validation&quot;: &quot;DIGITS&quot;,
+                        &quot;type&quot;: &quot;string&quot;,
+                        &quot;description&quot;: &quot;File mode to install.&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;options&quot;,
+                        &quot;type&quot;: &quot;array&quot;,
+                        &quot;default&quot;: {
+                            &quot;precommand&quot;: &quot;/bin/echo precommand&quot;,
+                            &quot;postcommand&quot;: &quot;/bin/echo postcommand&quot;,
+                            &quot;excluded&quot;: [
+                                &quot;.cvs&quot;,
+                                &quot;.svn&quot;,
+                                &quot;.subversion&quot;,
+                                &quot;.git&quot;,
+                                &quot;.bzr&quot;
+                            ]
+                        },
+                        &quot;description&quot;: &quot;Staging options.&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;staged&quot;,
+                        &quot;type&quot;: &quot;return&quot;
+                    },
+                    {
+                        &quot;name&quot;: &quot;directory&quot;,
+                        &quot;type&quot;: &quot;return&quot;
+                    }
+                ]
+            }
+        }
+    ]
+}
+</code></pre>
+</div>
+<h4 id="api-dc-sketch-sketchname">/api/dc/sketch/:sketchName</h4>
+<ul>
+<li><strong>PUT</strong>: install sketch in the system</li>
+</ul>
+<h4 id="api-dc-definition">/api/dc/definition</h4>
+<ul>
+<li><strong>GET</strong>: List of available definitions</li>
+</ul>
+<div class="highlight"><pre><code class="text">{
+    &quot;meta&quot;: {
+        &quot;page&quot;: 1,
+        &quot;count&quot;: 1,
+        &quot;total&quot;: 28,
+        &quot;timestamp&quot;: 1383831645
+    },
+    &quot;data&quot;: [
+        {
+            ...
+            &quot;e180fc753487e749056f422f89420d06&quot;: {
+                &quot;Data::Classes&quot;: {
+                    &quot;url_retriever&quot;: &quot;/usr/bin/curl -s&quot;,
+                    &quot;CF_MP_ENTRY_POINT&quot;: &quot;bynet&quot;,
+                    &quot;regex&quot;: &quot;daas&quot;,
+                    &quot;url&quot;: &quot;http://asw.as&quot;,
+                    &quot;classname&quot;: &quot;as&quot;
+                }
+            },
+            &quot;efce8022c7a53d3755ded38aa6b64730&quot;: {
+                &quot;Utilities::abortclasses&quot;: {
+                    &quot;alert_only&quot;: &quot;1&quot;,
+                    &quot;trigger_file&quot;: &quot;/COWBOY&quot;,
+                    &quot;timeout&quot;: {
+                        &quot;hours&quot;: 24,
+                        &quot;years&quot;: 0,
+                        &quot;minutes&quot;: 0,
+                        &quot;action&quot;: &quot;abortclasses_timeout_action_noop&quot;,
+                        &quot;months&quot;: 0,
+                        &quot;enabled&quot;: false,
+                        &quot;days&quot;: &quot;144&quot;
+                    },
+                    &quot;trigger_context&quot;: &quot;any&quot;,
+                    &quot;abortclass&quot;: &quot;class&quot;
+                }
+            }
+        }
+    ]
+}
+</code></pre>
+</div>
+<h4 id="api-dc-definition-definitionname">/api/dc/definition/:definitionName</h4>
+<ul>
+<li><em>definitionName</em>: name of the definition<br></li>
+<li><strong>PUT</strong>: Create new definition</li>
+<li>Request Body:</li>
+</ul>
+<div class="highlight"><pre><code class="text">    {
+    &quot;sketchName&quot;:&quot;test&quot;,
+    &quot;params&quot;: {
+        &quot;hey&quot;:&quot;ho&quot;
+        }
+    }
+</code></pre>
+</div>
+<h4 id="api-dc-environment">/api/dc/environment</h4>
+<ul>
+<li><strong>GET</strong>: List of available environments</li>
+</ul>
+<div class="highlight"><pre><code class="text">{
+    &quot;meta&quot;: {
+        &quot;page&quot;: 1,
+        &quot;count&quot;: 1,
+        &quot;total&quot;: 6,
+        &quot;timestamp&quot;: 1383831817
+    },
+    &quot;data&quot;: [
+        {
+            &quot;092b04a40fdd4cb8bfdb685f2c4a0328&quot;: {
+                &quot;verbose&quot;: &quot;&quot;,
+                &quot;test&quot;: &quot;&quot;,
+                &quot;activated&quot;: {
+                    &quot;include&quot;: [
+                        &quot;cfengine_3&quot;
+                    ],
+                    &quot;class_function&quot;: [
+                        {
+                            &quot;function&quot;: &quot;classmatch&quot;,
+                            &quot;args&quot;: [
+                                &quot;cfengine_3&quot;
+                            ]
+                        }
+                    ],
+                    &quot;exclude&quot;: []
+                }
+            }
+    ]
+}
+</code></pre>
+</div>
+<h4 id="api-dc-environment-environmentname">/api/dc/environment/:environmentName</h4>
+<ul>
+<li><em>environmentName</em>: name of the environment</li>
+<li><strong>PUT</strong>: Create new environment</li>
+<li>Request Body:</li>
+</ul>
+<div class="highlight"><pre><code class="text">    {
+    &quot;environment&quot;: [&quot;cfengine3&quot;]
+    }
+</code></pre>
+</div>
+<h4 id="api-dc-activation-sketch-amp-details-1">/api/dc/activation?sketch=<sketchname>&amp;details=1</h4>
+<p><em>GET</em>: List of available activations</p>
+<div class="highlight"><pre><code class="text">{
+    &quot;meta&quot;: {
+        &quot;page&quot;: 1,
+        &quot;count&quot;: 1,
+        &quot;total&quot;: 9,
+        &quot;timestamp&quot;: 1383831923
+    },
+    &quot;data&quot;: [
+        {
+            &quot;Data::Classes&quot;: [
+                {
+                    &quot;params&quot;: [
+                        &quot;3603e753b8cb8ecc4d440dc91cd74742&quot;
+                    ],
+                    &quot;environment&quot;: &quot;092b04a40fdd4cb8bfdb685f2c4a0328&quot;,
+                    &quot;target&quot;: &quot;sketches&quot;,
+                    &quot;identifier&quot;: &quot;cc&quot;,
+                    &quot;bundle&quot;: &quot;byfile&quot;,
+                    &quot;metadata&quot;: {
+                        &quot;identifier&quot;: &quot;cc&quot;,
+                        &quot;timestamp&quot;: 1379939700
+                    }
+                },
+                {
+                    &quot;params&quot;: [
+                        &quot;e180fc753487e749056f422f89420d06&quot;
+                    ],
+                    &quot;environment&quot;: &quot;092b04a40fdd4cb8bfdb685f2c4a0328&quot;,
+                    &quot;target&quot;: &quot;sketches&quot;,
+                    &quot;identifier&quot;: &quot;aaa&quot;,
+                    &quot;bundle&quot;: &quot;bynet&quot;,
+                    &quot;metadata&quot;: {
+                        &quot;identifier&quot;: &quot;aaa&quot;,
+                        &quot;timestamp&quot;: 1380011681
+                    }
+                }
+            ],
+            &quot;Packages::removed&quot;: [
+                {
+                    &quot;params&quot;: [
+                        &quot;8f068e0b3d7c2edc2d113a48b2485f94&quot;
+                    ],
+                    &quot;environment&quot;: &quot;092b04a40fdd4cb8bfdb685f2c4a0328&quot;,
+                    &quot;target&quot;: &quot;sketches&quot;,
+                    &quot;identifier&quot;: &quot;12&quot;,
+                    &quot;bundle&quot;: &quot;removed&quot;,
+                    &quot;metadata&quot;: {
+                        &quot;identifier&quot;: &quot;12&quot;,
+                        &quot;timestamp&quot;: 1382366628
+                    }
+                },
+                {
+                    &quot;params&quot;: [
+                        &quot;e3134847d954d98d7419137b437cfd3c&quot;
+                    ],
+                    &quot;environment&quot;: &quot;092b04a40fdd4cb8bfdb685f2c4a0328&quot;,
+                    &quot;target&quot;: &quot;sketches&quot;,
+                    &quot;identifier&quot;: &quot;xz&quot;,
+                    &quot;bundle&quot;: &quot;removed&quot;,
+                    &quot;metadata&quot;: {
+                        &quot;identifier&quot;: &quot;xz&quot;,
+                        &quot;timestamp&quot;: 1382367291
+                    }
+                }
+            ]
+
+        }
+    ]
+}
+</code></pre>
+</div>
+<h4 id="api-dc-activation-id-sketchname-details">/api/dc/activation/:id/:sketchName?details+</h4>
+<ul>
+<li><em>id</em>: (identifier of activation)</li>
+<li><em>sketchName</em>: name of the sketch</li>
+<li><p><em>Params details</em>: 1 or 0 for host and other details</p></li>
+<li><p><strong>GET</strong>: Info about specific activations</p></li>
+</ul>
+<div class="highlight"><pre><code class="text">{
+    &quot;meta&quot;: {
+        &quot;page&quot;: 1,
+        &quot;count&quot;: 1,
+        &quot;total&quot;: 1,
+        &quot;timestamp&quot;: 1383832020
+    },
+    &quot;data&quot;: [
+        [
+
+            {
+                &quot;params&quot;: [
+                    &quot;087b875ad637c6392acc3b78b66910cb&quot;
+                ],
+                &quot;environment&quot;: &quot;092b04a40fdd4cb8bfdb685f2c4a0328&quot;,
+                &quot;target&quot;: &quot;sketches&quot;,
+                &quot;identifier&quot;: &quot;pokemon&quot;,
+                &quot;bundle&quot;: &quot;installed&quot;,
+                &quot;metadata&quot;: {
+                    &quot;identifier&quot;: &quot;pokemon&quot;,
+                    &quot;timestamp&quot;: 1383306456
+                },
+                &quot;details&quot;: {
+                    &quot;params&quot;: {
+                        &quot;CF_MP_ENTRY_POINT&quot;: &quot;installed&quot;,
+                        &quot;pkgs_add&quot;: [
+                            &quot;po&quot;
+                        ]
+                    },
+                    &quot;environments&quot;: {
+                        &quot;verbose&quot;: &quot;&quot;,
+                        &quot;test&quot;: &quot;&quot;,
+                        &quot;activated&quot;: {
+                            &quot;include&quot;: [
+                                &quot;cfengine_3&quot;
+                            ],
+                            &quot;class_function&quot;: [
+                                {
+                                    &quot;function&quot;: &quot;classmatch&quot;,
+                                    &quot;args&quot;: [
+                                        &quot;cfengine_3&quot;
+                                    ]
+                                }
+                            ],
+                            &quot;exclude&quot;: []
+                        }
+                    },
+                    &quot;hosts&quot;: []
+                }
+            }
+        ]
+    ]
+}
+</code></pre>
+</div>
+
+<ul>
+<li><strong>PUT</strong>: Create new activation</li>
+</ul>
+<div class="highlight"><pre><code class="text">    Request body:
+    {
+
+         &quot;environmentName&quot;:&quot;092b04a40fdd4cb8bfdb685f2c4a0328&quot;,
+         &quot;paramName&quot;:&quot;c53db12b79d5b2b74f319b91caf7e88f&quot;,
+         &quot;bundleName&quot;: &quot;installed&quot;
+    }
+</code></pre>
+</div>
+
+<ul>
+<li><strong>DELETE</strong>: Delete the activation</li>
+</ul>
+<h4 id="api-dc-validation">/api/dc/validation</h4>
+<ul>
+<li><strong>GET</strong>: Get list of validations</li>
+</ul>
+<h4 id="api-dc-validation-id">/api/dc/validation/:id</h4>
+<ul>
+<li><strong>GET</strong>: Get specific validations</li>
+</ul>
+<h4 id="api-dc-validate-validationtype">/api/dc/validate/:validationType</h4>
+<ul>
+<li><em>validationType</em>: specific validation type</li>
+<li><strong>POST</strong>: validate the data</li>
+<li>Request Body:</li>
+</ul>
+<div class="highlight"><pre><code class="text">    {
+    &quot;validationData&quot;:[&quot;asdasd&quot;]
+    }
+</code></pre>
+</div>
+<h4 id="api-dc-workspace">/api/dc/workspace</h4>
+<ul>
+<li><strong>GET</strong>: checks for the workspace and returns the path</li>
+</ul>
+<h4 id="api-dc-workspace-commit">/api/dc/workspace/commit</h4>
+<ul>
+<li><strong>POST</strong>: Post the commits</li>
+</ul>
+<div class="highlight"><pre><code class="text">    Request Body:
+    {
+    &#39;message&#39;: &quot;some message&quot;,
+        &#39;userEmail&#39;: &#39;email.com&#39;
+    }
+</code></pre>
+</div>
+<h4 id="api-dc-workspace-reset">/api/dc/workspace/reset</h4>
+<ul>
+<li><strong>POST</strong>: Resets the user workspace</li>
+</ul>
+<h4 id="api-dc-workspace-settings">/api/dc/workspace/settings</h4>
+<ul>
+<li><strong>GET</strong>: Returns the settings of the workspace (VCS settings), 404 if not found</li>
+<li><strong>POST</strong>: Create the settings. Content-Type header should be multipart/form-data</li>
+<li><strong>DELETE</strong>: Delete settings</li>
+</ul>
+<div class="highlight"><pre><code class="text">        Request Body:
+        {
+         &#39;gitServer&#39;:&quot;serverurl&quot;,
+         &#39;gitEmail&#39;: &quot;email.com&quot; ,
+         &#39;gitBranch&#39;:&quot;gitbranch name&quot;,
+         &#39;gitAuthor&#39;: &quot;author name&quot;,
+         &#39;gitPrivateKey&#39;: &quot;@filepath&quot;
+        }
+        eg: curl -F &quot;gitServer=servername&quot; -F &quot;gitEmail=mail&quot; -F &quot;gitPrivateKey=@/home/user1/Desktop/id_rsa&quot; http://server
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-enterprise.html">enterprise</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-rest.html">rest</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-api.html">api</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-reporting.html">reporting</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-sql.html">sql</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-uri.html">uri</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-ldap.html">ldap</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/enterprise-api-ref/uri-resources.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/13cbf18729a5bf43d836f72e30aab3b2b0bdee7f" target="_blank">13cbf18729a5bf43d836f72e30aab3b2b0bdee7f</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.6/assets/footer-1ca6436dd462ed6a69ad3f2dba0774f0.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

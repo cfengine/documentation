@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.11  Documentation - mon</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.11/assets/global-c9fa8b1b7e63e1fde6776a47cdcd90c6.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "mon";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                        <option value="/docs/3.12/index.html">Version 3.12 (LTS)</option>
+                        <option value="/docs/master/index.html" selected>Version 3.11 (non-LTS)</option>
+                        <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                        <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+                        <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                        <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                        <option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+                        <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                        <option value="/docs/archive/">Version 3.0 (archive)</option>
+                        <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:2riuky-1ece" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a><ul class="level2"><li><a href="reference-special-variables-connection.html">connection</a></li><li><a href="reference-special-variables-const.html">const</a></li><li><a href="reference-special-variables-def.html">def</a></li><li><a href="reference-special-variables-edit.html">edit</a></li><li><a href="reference-special-variables-match.html">match</a></li><li><a class="active" href="reference-special-variables-mon.html">mon</a></li><li><a href="reference-special-variables-sys.html">sys</a></li><li><a href="reference-special-variables-this.html">this</a></li></ul></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-special-variables.html">Special Variables</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    mon
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>The variables discovered by <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a> are placed in this monitoring
+context. Monitoring variables are expected to be changing rapidly - values are
+typically updated or added every 2.5 minutes.</p>
+
+<p>In CFEngine Enterprise, custom defined monitoring targets also become
+variables in this context, named by the handle of the promise that defined
+them.</p>
+<h3 id="mon-listening_ports">mon.listening_ports</h3>
+<p>All of the TCP and UDP ports for both IPV4 and IPv6 that <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a> has
+observed listening.</p>
+<h3 id="mon-listening_udp4_ports">mon.listening_udp4_ports</h3>
+<p>Port numbers that were observed to be set up to receive connections on the
+host concerned.</p>
+<h3 id="mon-listening_tcp4_ports">mon.listening_tcp4_ports</h3>
+<p>Port numbers that were observed to be set up to receive connections on the
+host concerned.</p>
+<h3 id="mon-listening_udp6_ports">mon.listening_udp6_ports</h3>
+<p>Port numbers that were observed to be set up to receive connections on the
+host concerned.</p>
+<h3 id="mon-listening_tcp6_ports">mon.listening_tcp6_ports</h3>
+<p>port numbers that were observed
+to be set up to receive connections on the host concerned.</p>
+<h3 id="mon-value_users">mon.value_users</h3>
+<p>Users with active processes, including system users.</p>
+<h3 id="mon-av_users">mon.av_users</h3>
+<p>Observational measure collected every 2.5 minutes from <a href="reference-components-cf-monitord.html" title="cf-monitord"><code>cf-monitord</code></a>.
+Description: Users with active processes, including system users.</p>
+<h3 id="mon-dev_users">mon.dev_users</h3>
+<p>Users with active processes, including system users.</p>
+<h3 id="mon-value_rootprocs">mon.value_rootprocs</h3>
+<p>Sum privileged system processes.</p>
+<h3 id="mon-av_rootprocs">mon.av_rootprocs</h3>
+<p>Sum privileged system processes.</p>
+<h3 id="mon-dev_rootprocs">mon.dev_rootprocs</h3>
+<p>Sum privileged system processes.</p>
+<h3 id="mon-value_otherprocs">mon.value_otherprocs</h3>
+<p>Sum non-privileged process.</p>
+<h3 id="mon-av_otherprocs">mon.av_otherprocs</h3>
+<p>Sum non-privileged process.</p>
+<h3 id="mon-dev_otherprocs">mon.dev_otherprocs</h3>
+<p>Sum non-privileged process.</p>
+<h3 id="mon-value_diskfree">mon.value_diskfree</h3>
+<p>Last checked percentage Free disk on / partition.</p>
+<h3 id="mon-av_diskfree">mon.av_diskfree</h3>
+<p>Average percentage Free disk on / partition.</p>
+<h3 id="mon-dev_diskfree">mon.dev_diskfree</h3>
+<p>Standard deviation of percentage Free disk on / partition.</p>
+<h3 id="mon-value_loadavg">mon.value_loadavg</h3>
+<p>Kernel load average utilization (sum over cores).</p>
+<h3 id="mon-av_loadavg">mon.av_loadavg</h3>
+<p>Kernel load average utilization (sum over cores).</p>
+<h3 id="mon-dev_loadavg">mon.dev_loadavg</h3>
+<p>Kernel load average utilization (sum over cores).</p>
+<h3 id="mon-value_netbiosns_in">mon.value_netbiosns_in</h3>
+<p>netbios name lookups (in).</p>
+<h3 id="mon-av_netbiosns_in">mon.av_netbiosns_in</h3>
+<p>netbios name lookups (in).</p>
+<h3 id="mon-dev_netbiosns_in">mon.dev_netbiosns_in</h3>
+<p>netbios name lookups (in).</p>
+<h3 id="mon-value_netbiosns_out">mon.value_netbiosns_out</h3>
+<p>netbios name lookups (out).</p>
+<h3 id="mon-av_netbiosns_out">mon.av_netbiosns_out</h3>
+<p>netbios name lookups (out).</p>
+<h3 id="mon-dev_netbiosns_out">mon.dev_netbiosns_out</h3>
+<p>netbios name lookups (out).</p>
+<h3 id="mon-value_netbiosdgm_in">mon.value_netbiosdgm_in</h3>
+<p>netbios name datagrams (in).</p>
+<h3 id="mon-av_netbiosdgm_in">mon.av_netbiosdgm_in</h3>
+<p>netbios name datagrams (in).</p>
+<h3 id="mon-dev_netbiosdgm_in">mon.dev_netbiosdgm_in</h3>
+<p>netbios name datagrams (in).</p>
+<h3 id="mon-value_netbiosdgm_out">mon.value_netbiosdgm_out</h3>
+<p>netbios name datagrams (out).</p>
+<h3 id="mon-av_netbiosdgm_out">mon.av_netbiosdgm_out</h3>
+<p>netbios name datagrams (out).</p>
+<h3 id="mon-dev_netbiosdgm_out">mon.dev_netbiosdgm_out</h3>
+<p>netbios name datagrams (out).</p>
+<h3 id="mon-value_netbiosssn_in">mon.value_netbiosssn_in</h3>
+<p>Samba/netbios name sessions (in).</p>
+<h3 id="mon-av_netbiosssn_in">mon.av_netbiosssn_in</h3>
+<p>Samba/netbios name sessions (in).</p>
+<h3 id="mon-dev_netbiosssn_in">mon.dev_netbiosssn_in</h3>
+<p>Samba/netbios name sessions (in).</p>
+<h3 id="mon-value_netbiosssn_out">mon.value_netbiosssn_out</h3>
+<p>Samba/netbios name sessions (out).</p>
+<h3 id="mon-av_netbiosssn_out">mon.av_netbiosssn_out</h3>
+<p>Samba/netbios name sessions (out).</p>
+<h3 id="mon-dev_netbiosssn_out">mon.dev_netbiosssn_out</h3>
+<p>Samba/netbios name sessions (out).</p>
+<h3 id="mon-value_imap_in">mon.value_imap_in</h3>
+<p>imap mail client sessions (in).</p>
+<h3 id="mon-av_imap_in">mon.av_imap_in</h3>
+<p>imap mail client sessions (in).</p>
+<h3 id="mon-dev_imap_in">mon.dev_imap_in</h3>
+<p>imap mail client sessions (in).</p>
+<h3 id="mon-value_imap_out">mon.value_imap_out</h3>
+<p>imap mail client sessions (out).</p>
+<h3 id="mon-av_imap_out">mon.av_imap_out</h3>
+<p>imap mail client sessions (out).</p>
+<h3 id="mon-dev_imap_out">mon.dev_imap_out</h3>
+<p>imap mail client sessions (out).</p>
+<h3 id="mon-value_cfengine_in">mon.value_cfengine_in</h3>
+<p>cfengine connections (in).</p>
+<h3 id="mon-av_cfengine_in">mon.av_cfengine_in</h3>
+<p>cfengine connections (in).</p>
+<h3 id="mon-dev_cfengine_in">mon.dev_cfengine_in</h3>
+<p>cfengine connections (in).</p>
+<h3 id="mon-value_cfengine_out">mon.value_cfengine_out</h3>
+<p>cfengine connections (out).</p>
+<h3 id="mon-av_cfengine_out">mon.av_cfengine_out</h3>
+<p>cfengine connections (out).</p>
+<h3 id="mon-dev_cfengine_out">mon.dev_cfengine_out</h3>
+<p>cfengine connections (out).</p>
+<h3 id="mon-value_nfsd_in">mon.value_nfsd_in</h3>
+<p>nfs connections (in).</p>
+<h3 id="mon-av_nfsd_in">mon.av_nfsd_in</h3>
+<p>nfs connections (in).</p>
+<h3 id="mon-dev_nfsd_in">mon.dev_nfsd_in</h3>
+<p>nfs connections (in).</p>
+<h3 id="mon-value_nfsd_out">mon.value_nfsd_out</h3>
+<p>nfs connections (out).</p>
+<h3 id="mon-av_nfsd_out">mon.av_nfsd_out</h3>
+<p>nfs connections (out).</p>
+<h3 id="mon-dev_nfsd_out">mon.dev_nfsd_out</h3>
+<p>nfs connections (out).</p>
+<h3 id="mon-value_smtp_in">mon.value_smtp_in</h3>
+<p>smtp connections (in).</p>
+<h3 id="mon-av_smtp_in">mon.av_smtp_in</h3>
+<p>smtp connections (in).</p>
+<h3 id="mon-dev_smtp_in">mon.dev_smtp_in</h3>
+<p>smtp connections (in).</p>
+<h3 id="mon-value_smtp_out">mon.value_smtp_out</h3>
+<p>smtp connections (out).</p>
+<h3 id="mon-av_smtp_out">mon.av_smtp_out</h3>
+<p>smtp connections (out).</p>
+<h3 id="mon-dev_smtp_out">mon.dev_smtp_out</h3>
+<p>smtp connections (out).</p>
+<h3 id="mon-value_www_in">mon.value_www_in</h3>
+<p>www connections (in).</p>
+<h3 id="mon-av_www_in">mon.av_www_in</h3>
+<p>www connections (in).</p>
+<h3 id="mon-dev_www_in">mon.dev_www_in</h3>
+<p>www connections (in).</p>
+<h3 id="mon-value_www_out">mon.value_www_out</h3>
+<p>www connections (out).</p>
+<h3 id="mon-av_www_out">mon.av_www_out</h3>
+<p>www connections (out).</p>
+<h3 id="mon-dev_www_out">mon.dev_www_out</h3>
+<p>www connections (out).</p>
+<h3 id="mon-value_ftp_in">mon.value_ftp_in</h3>
+<p>ftp connections (in).</p>
+<h3 id="mon-av_ftp_in">mon.av_ftp_in</h3>
+<p>ftp connections (in).</p>
+<h3 id="mon-dev_ftp_in">mon.dev_ftp_in</h3>
+<p>ftp connections (in).</p>
+<h3 id="mon-value_ftp_out">mon.value_ftp_out</h3>
+<p>ftp connections (out).</p>
+<h3 id="mon-av_ftp_out">mon.av_ftp_out</h3>
+<p>ftp connections (out).</p>
+<h3 id="mon-dev_ftp_out">mon.dev_ftp_out</h3>
+<p>ftp connections (out).</p>
+<h3 id="mon-value_ssh_in">mon.value_ssh_in</h3>
+<p>ssh connections (in).</p>
+<h3 id="mon-av_ssh_in">mon.av_ssh_in</h3>
+<p>ssh connections (in).</p>
+<h3 id="mon-dev_ssh_in">mon.dev_ssh_in</h3>
+<p>ssh connections (in).</p>
+<h3 id="mon-value_ssh_out">mon.value_ssh_out</h3>
+<p>ssh connections (out).</p>
+<h3 id="mon-av_ssh_out">mon.av_ssh_out</h3>
+<p>ssh connections (out).</p>
+<h3 id="mon-dev_ssh_out">mon.dev_ssh_out</h3>
+<p>ssh connections (out).</p>
+<h3 id="mon-value_wwws_in">mon.value_wwws_in</h3>
+<p>wwws connections (in).</p>
+<h3 id="mon-av_wwws_in">mon.av_wwws_in</h3>
+<p>wwws connections (in).</p>
+<h3 id="mon-dev_wwws_in">mon.dev_wwws_in</h3>
+<p>wwws connections (in).</p>
+<h3 id="mon-value_wwws_out">mon.value_wwws_out</h3>
+<p>wwws connections (out).</p>
+<h3 id="mon-av_wwws_out">mon.av_wwws_out</h3>
+<p>wwws connections (out).</p>
+<h3 id="mon-dev_wwws_out">mon.dev_wwws_out</h3>
+<p>wwws connections (out).</p>
+<h3 id="mon-value_icmp_in">mon.value_icmp_in</h3>
+<p>ICMP packets (in).</p>
+<h3 id="mon-av_icmp_in">mon.av_icmp_in</h3>
+<p>ICMP packets (in).</p>
+<h3 id="mon-dev_icmp_in">mon.dev_icmp_in</h3>
+<p>ICMP packets (in).</p>
+<h3 id="mon-value_icmp_out">mon.value_icmp_out</h3>
+<p>ICMP packets (out).</p>
+<h3 id="mon-av_icmp_out">mon.av_icmp_out</h3>
+<p>ICMP packets (out).</p>
+<h3 id="mon-dev_icmp_out">mon.dev_icmp_out</h3>
+<p>ICMP packets (out).</p>
+<h3 id="mon-value_udp_in">mon.value_udp_in</h3>
+<p>UDP dgrams (in).</p>
+<h3 id="mon-av_udp_in">mon.av_udp_in</h3>
+<p>UDP dgrams (in).</p>
+<h3 id="mon-dev_udp_in">mon.dev_udp_in</h3>
+<p>UDP dgrams (in).</p>
+<h3 id="mon-value_udp_out">mon.value_udp_out</h3>
+<p>UDP dgrams (out).</p>
+<h3 id="mon-av_udp_out">mon.av_udp_out</h3>
+<p>UDP dgrams (out).</p>
+<h3 id="mon-dev_udp_out">mon.dev_udp_out</h3>
+<p>UDP dgrams (out).</p>
+<h3 id="mon-value_dns_in">mon.value_dns_in</h3>
+<p>DNS requests (in).</p>
+<h3 id="mon-av_dns_in">mon.av_dns_in</h3>
+<p>DNS requests (in).</p>
+<h3 id="mon-dev_dns_in">mon.dev_dns_in</h3>
+<p>DNS requests (in).</p>
+<h3 id="mon-value_dns_out">mon.value_dns_out</h3>
+<p>DNS requests (out).</p>
+<h3 id="mon-av_dns_out">mon.av_dns_out</h3>
+<p>DNS requests (out).</p>
+<h3 id="mon-dev_dns_out">mon.dev_dns_out</h3>
+<p>DNS requests (out).</p>
+<h3 id="mon-value_tcpsyn_in">mon.value_tcpsyn_in</h3>
+<p>TCP sessions (in).</p>
+<h3 id="mon-av_tcpsyn_in">mon.av_tcpsyn_in</h3>
+<p>TCP sessions (in).</p>
+<h3 id="mon-dev_tcpsyn_in">mon.dev_tcpsyn_in</h3>
+<p>TCP sessions (in).</p>
+<h3 id="mon-value_tcpsyn_out">mon.value_tcpsyn_out</h3>
+<p>TCP sessions (out).</p>
+<h3 id="mon-av_tcpsyn_out">mon.av_tcpsyn_out</h3>
+<p>TCP sessions (out).</p>
+<h3 id="mon-dev_tcpsyn_out">mon.dev_tcpsyn_out</h3>
+<p>TCP sessions (out).</p>
+<h3 id="mon-value_tcpack_in">mon.value_tcpack_in</h3>
+<p>TCP acks (in).</p>
+<h3 id="mon-av_tcpack_in">mon.av_tcpack_in</h3>
+<p>TCP acks (in).</p>
+<h3 id="mon-dev_tcpack_in">mon.dev_tcpack_in</h3>
+<p>TCP acks (in).</p>
+<h3 id="mon-value_tcpack_out">mon.value_tcpack_out</h3>
+<p>TCP acks (out).</p>
+<h3 id="mon-av_tcpack_out">mon.av_tcpack_out</h3>
+<p>TCP acks (out).</p>
+<h3 id="mon-dev_tcpack_out">mon.dev_tcpack_out</h3>
+<p>TCP acks (out).</p>
+<h3 id="mon-value_tcpfin_in">mon.value_tcpfin_in</h3>
+<p>TCP finish (in).</p>
+<h3 id="mon-av_tcpfin_in">mon.av_tcpfin_in</h3>
+<p>TCP finish (in).</p>
+<h3 id="mon-dev_tcpfin_in">mon.dev_tcpfin_in</h3>
+<p>TCP finish (in).</p>
+<h3 id="mon-value_tcpfin_out">mon.value_tcpfin_out</h3>
+<p>TCP finish (out).</p>
+<h3 id="mon-av_tcpfin_out">mon.av_tcpfin_out</h3>
+<p>TCP finish (out).</p>
+<h3 id="mon-dev_tcpfin_out">mon.dev_tcpfin_out</h3>
+<p>TCP finish (out).</p>
+<h3 id="mon-value_tcpmisc_in">mon.value_tcpmisc_in</h3>
+<p>TCP misc (in).</p>
+<h3 id="mon-av_tcpmisc_in">mon.av_tcpmisc_in</h3>
+<p>TCP misc (in).</p>
+<h3 id="mon-dev_tcpmisc_in">mon.dev_tcpmisc_in</h3>
+<p>TCP misc (in).</p>
+<h3 id="mon-value_tcpmisc_out">mon.value_tcpmisc_out</h3>
+<p>TCP misc (out).</p>
+<h3 id="mon-av_tcpmisc_out">mon.av_tcpmisc_out</h3>
+<p>TCP misc (out).</p>
+<h3 id="mon-dev_tcpmisc_out">mon.dev_tcpmisc_out</h3>
+<p>TCP misc (out).</p>
+<h3 id="mon-value_webaccess">mon.value_webaccess</h3>
+<p>Webserver hits.</p>
+<h3 id="mon-av_webaccess">mon.av_webaccess</h3>
+<p>Webserver hits.</p>
+<h3 id="mon-dev_webaccess">mon.dev_webaccess</h3>
+<p>Webserver hits.</p>
+<h3 id="mon-value_weberrors">mon.value_weberrors</h3>
+<p>Webserver errors.</p>
+<h3 id="mon-av_weberrors">mon.av_weberrors</h3>
+<p>Webserver errors.</p>
+<h3 id="mon-dev_weberrors">mon.dev_weberrors</h3>
+<p>Webserver errors.</p>
+<h3 id="mon-value_syslog">mon.value_syslog</h3>
+<p>New log entries (Syslog).</p>
+<h3 id="mon-av_syslog">mon.av_syslog</h3>
+<p>New log entries (Syslog).</p>
+<h3 id="mon-dev_syslog">mon.dev_syslog</h3>
+<p>New log entries (Syslog).</p>
+<h3 id="mon-value_messages">mon.value_messages</h3>
+<p>New log entries (messages).</p>
+<h3 id="mon-av_messages">mon.av_messages</h3>
+<p>New log entries (messages).</p>
+<h3 id="mon-dev_messages">mon.dev_messages</h3>
+<p>New log entries (messages).</p>
+<h3 id="mon-value_temp0">mon.value_temp0</h3>
+<p>CPU Temperature 0.</p>
+<h3 id="mon-av_temp0">mon.av_temp0</h3>
+<p>CPU Temperature 0.</p>
+<h3 id="mon-dev_temp0">mon.dev_temp0</h3>
+<p>CPU Temperature 0.</p>
+<h3 id="mon-value_temp1">mon.value_temp1</h3>
+<p>CPU Temperature 1.</p>
+<h3 id="mon-av_temp1">mon.av_temp1</h3>
+<p>CPU Temperature 1.</p>
+<h3 id="mon-dev_temp1">mon.dev_temp1</h3>
+<p>CPU Temperature 1.</p>
+<h3 id="mon-value_temp2">mon.value_temp2</h3>
+<p>CPU Temperature 2.</p>
+<h3 id="mon-av_temp2">mon.av_temp2</h3>
+<p>CPU Temperature 2.</p>
+<h3 id="mon-dev_temp2">mon.dev_temp2</h3>
+<p>CPU Temperature 2.</p>
+<h3 id="mon-value_temp3">mon.value_temp3</h3>
+<p>CPU Temperature 3.</p>
+<h3 id="mon-av_temp3">mon.av_temp3</h3>
+<p>CPU Temperature 3.</p>
+<h3 id="mon-dev_temp3">mon.dev_temp3</h3>
+<p>CPU Temperature 3.</p>
+<h3 id="mon-value_cpu">mon.value_cpu</h3>
+<p>%CPU utilization (all).</p>
+<h3 id="mon-av_cpu">mon.av_cpu</h3>
+<p>%CPU utilization (all).</p>
+<h3 id="mon-dev_cpu">mon.dev_cpu</h3>
+<p>%CPU utilization (all).</p>
+<h3 id="mon-value_cpu0">mon.value_cpu0</h3>
+<p>%CPU utilization 0.</p>
+<h3 id="mon-av_cpu0">mon.av_cpu0</h3>
+<p>%CPU utilization 0.</p>
+<h3 id="mon-dev_cpu0">mon.dev_cpu0</h3>
+<p>%CPU utilization 0.</p>
+<h3 id="mon-value_cpu1">mon.value_cpu1</h3>
+<p>%CPU utilization 1.</p>
+<h3 id="mon-av_cpu1">mon.av_cpu1</h3>
+<p>%CPU utilization 1.</p>
+<h3 id="mon-dev_cpu1">mon.dev_cpu1</h3>
+<p>%CPU utilization 1.</p>
+<h3 id="mon-value_cpu2">mon.value_cpu2</h3>
+<p>%CPU utilization 2.</p>
+<h3 id="mon-av_cpu2">mon.av_cpu2</h3>
+<p>%CPU utilization 2.</p>
+<h3 id="mon-dev_cpu2">mon.dev_cpu2</h3>
+<p>%CPU utilization 2.</p>
+<h3 id="mon-value_cpu3">mon.value_cpu3</h3>
+<p>%CPU utilization 3.</p>
+<h3 id="mon-av_cpu3">mon.av_cpu3</h3>
+<p>%CPU utilization 3.</p>
+<h3 id="mon-dev_cpu3">mon.dev_cpu3</h3>
+<p>%CPU utilization 3.</p>
+<h3 id="mon-value_microsoft_ds_in">mon.value_microsoft_ds_in</h3>
+<p>Samba/MS_ds name sessions (in).</p>
+<h3 id="mon-av_microsoft_ds_in">mon.av_microsoft_ds_in</h3>
+<p>Samba/MS_ds name sessions (in).</p>
+<h3 id="mon-dev_microsoft_ds_in">mon.dev_microsoft_ds_in</h3>
+<p>Samba/MS_ds name sessions (in).</p>
+<h3 id="mon-value_microsoft_ds_out">mon.value_microsoft_ds_out</h3>
+<p>Samba/MS_ds name sessions (out).</p>
+<h3 id="mon-av_microsoft_ds_out">mon.av_microsoft_ds_out</h3>
+<p>Samba/MS_ds name sessions (out).</p>
+<h3 id="mon-dev_microsoft_ds_out">mon.dev_microsoft_ds_out</h3>
+<p>Samba/MS_ds name sessions (out).</p>
+<h3 id="mon-value_www_alt_in">mon.value_www_alt_in</h3>
+<p>Alternative web service connections (in).</p>
+<h3 id="mon-av_www_alt_in">mon.av_www_alt_in</h3>
+<p>Alternative web service connections (in).</p>
+<h3 id="mon-dev_www_alt_in">mon.dev_www_alt_in</h3>
+<p>Alternative web service connections (in).</p>
+<h3 id="mon-value_www_alt_out">mon.value_www_alt_out</h3>
+<p>Alternative web client connections (out).</p>
+<h3 id="mon-av_www_alt_out">mon.av_www_alt_out</h3>
+<p>Alternative web client connections (out).</p>
+<h3 id="mon-dev_www_alt_out">mon.dev_www_alt_out</h3>
+<p>Alternative web client connections (out).</p>
+<h3 id="mon-value_imaps_in">mon.value_imaps_in</h3>
+<p>encrypted imap mail service sessions (in).</p>
+<h3 id="mon-av_imaps_in">mon.av_imaps_in</h3>
+<p>encrypted imap mail service sessions (in).</p>
+<h3 id="mon-dev_imaps_in">mon.dev_imaps_in</h3>
+<p>encrypted imap mail service sessions (in).</p>
+<h3 id="mon-value_imaps_out">mon.value_imaps_out</h3>
+<p>encrypted imap mail client sessions (out).</p>
+<h3 id="mon-av_imaps_out">mon.av_imaps_out</h3>
+<p>encrypted imap mail client sessions (out).</p>
+<h3 id="mon-dev_imaps_out">mon.dev_imaps_out</h3>
+<p>encrypted imap mail client sessions (out).</p>
+<h3 id="mon-value_ldap_in">mon.value_ldap_in</h3>
+<p>LDAP directory service service sessions (in).</p>
+<h3 id="mon-av_ldap_in">mon.av_ldap_in</h3>
+<p>LDAP directory service service sessions (in).</p>
+<h3 id="mon-dev_ldap_in">mon.dev_ldap_in</h3>
+<p>LDAP directory service service sessions (in).</p>
+<h3 id="mon-value_ldap_out">mon.value_ldap_out</h3>
+<p>LDAP directory service client sessions (out).</p>
+<h3 id="mon-av_ldap_out">mon.av_ldap_out</h3>
+<p>LDAP directory service client sessions (out).</p>
+<h3 id="mon-dev_ldap_out">mon.dev_ldap_out</h3>
+<p>LDAP directory service client sessions (out).</p>
+<h3 id="mon-value_ldaps_in">mon.value_ldaps_in</h3>
+<p>LDAP directory service service sessions (in).</p>
+<h3 id="mon-av_ldaps_in">mon.av_ldaps_in</h3>
+<p>LDAP directory service service sessions (in).</p>
+<h3 id="mon-dev_ldaps_in">mon.dev_ldaps_in</h3>
+<p>LDAP directory service service sessions (in).</p>
+<h3 id="mon-value_ldaps_out">mon.value_ldaps_out</h3>
+<p>LDAP directory service client sessions (out).</p>
+<h3 id="mon-av_ldaps_out">mon.av_ldaps_out</h3>
+<p>LDAP directory service client sessions (out).</p>
+<h3 id="mon-dev_ldaps_out">mon.dev_ldaps_out</h3>
+<p>LDAP directory service client sessions (out).</p>
+<h3 id="mon-value_mongo_in">mon.value_mongo_in</h3>
+<p>Mongo database service sessions (in).</p>
+<h3 id="mon-av_mongo_in">mon.av_mongo_in</h3>
+<p>Mongo database service sessions (in).</p>
+<h3 id="mon-dev_mongo_in">mon.dev_mongo_in</h3>
+<p>Mongo database service sessions (in).</p>
+<h3 id="mon-value_mongo_out">mon.value_mongo_out</h3>
+<p>Mongo database client sessions (out).</p>
+<h3 id="mon-av_mongo_out">mon.av_mongo_out</h3>
+<p>Mongo database client sessions (out).</p>
+<h3 id="mon-dev_mongo_out">mon.dev_mongo_out</h3>
+<p>Mongo database client sessions (out).</p>
+<h3 id="mon-value_mysql_in">mon.value_mysql_in</h3>
+<p>MySQL database service sessions (in).</p>
+<h3 id="mon-av_mysql_in">mon.av_mysql_in</h3>
+<p>MySQL database service sessions (in).</p>
+<h3 id="mon-dev_mysql_in">mon.dev_mysql_in</h3>
+<p>MySQL database service sessions (in).</p>
+<h3 id="mon-value_mysql_out">mon.value_mysql_out</h3>
+<p>MySQL database client sessions (out).</p>
+<h3 id="mon-av_mysql_out">mon.av_mysql_out</h3>
+<p>MySQL database client sessions (out).</p>
+<h3 id="mon-dev_mysql_out">mon.dev_mysql_out</h3>
+<p>MySQL database client sessions (out).</p>
+<h3 id="mon-value_postgres_in">mon.value_postgres_in</h3>
+<p>PostgreSQL database service sessions (in).</p>
+<h3 id="mon-av_postgres_in">mon.av_postgres_in</h3>
+<p>PostgreSQL database service sessions (in).</p>
+<h3 id="mon-dev_postgres_in">mon.dev_postgres_in</h3>
+<p>PostgreSQL database service sessions (in).</p>
+<h3 id="mon-value_postgres_out">mon.value_postgres_out</h3>
+<p>PostgreSQL database client sessions (out).</p>
+<h3 id="mon-av_postgres_out">mon.av_postgres_out</h3>
+<p>PostgreSQL database client sessions (out).</p>
+<h3 id="mon-dev_postgres_out">mon.dev_postgres_out</h3>
+<p>PostgreSQL database client sessions (out).</p>
+<h3 id="mon-value_ipp_in">mon.value_ipp_in</h3>
+<p>Internet Printer Protocol (in).</p>
+<h3 id="mon-av_ipp_in">mon.av_ipp_in</h3>
+<p>Internet Printer Protocol (in).</p>
+<h3 id="mon-dev_ipp_in">mon.dev_ipp_in</h3>
+<p>Internet Printer Protocol (in).</p>
+<h3 id="mon-value_ipp_out">mon.value_ipp_out</h3>
+<p>Internet Printer Protocol (out).</p>
+<h3 id="mon-av_ipp_out">mon.av_ipp_out</h3>
+<p>Internet Printer Protocol (out).</p>
+<h3 id="mon-dev_ipp_out">mon.dev_ipp_out</h3>
+<p>Internet Printer Protocol (out).</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-variables.html">variables</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-mon.html">mon</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-cf-monitord.html">cf-monitord</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-monitoring.html">monitoring</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 21 May 2018
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/special-variables/mon.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/30c92a9bfe995194b9ead5ef2ff3a45a84cd5af8" target="_blank">30c92a9bfe995194b9ead5ef2ff3a45a84cd5af8</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.11/assets/footer-3d92ada135d5c86c6f2a89bc3a15252b.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.14  Documentation - Additional Resources</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.14/assets/global-87598b50cf828dc4e1c1ad7f860740dc.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Additional Resources";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.14/" selected>Version 3.14 (non-LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			                 <input type="hidden" name="cx" value="012826289311752768906:kp0fmjlfqyu" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a class="active" href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Additional Resources
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>Use the following links to learn more about CFEngine:</p>
+
+<ul>
+<li><a href="guide-additional-resources.html#reading" title="Additional Resources - Reading ">Reading</a></li>
+<li><a href="guide-additional-resources.html#training" title="Additional Resources - Training ">Training</a></li>
+<li><a href="guide-additional-resources.html#tools" title="Additional Resources - Tools ">Tools</a></li>
+<li><a href="guide-additional-resources.html#support-and-community" title="Additional Resources - Support and Community ">Support and Community</a></li>
+<li><a href="guide-additional-resources.html#contribute-to-cfengine" title="Additional Resources - Contribute to CFEngine ">Contribute to CFEngine</a></li>
+</ul>
+<h2 id="reading">Reading</h2>
+<p>Learn by reading information brought to you by CFEngine experts:</p>
+
+<ul>
+<li><p><a href="http://cf-learn.info/">Learning CFEngine</a> by Diego Zamboni</p></li>
+<li><p><a href="http://watson-wilson.ca/2011/03/cfengine-3-tutorial.html">CFEngine 3 Tutorial</a> and
+<a href="http://watson-wilson.ca/cfengine/cf-cookbook/">Cookbook</a> by Neil Watson, a Senior
+UNIX/Linux system admin and a <a href="https://cfengine.com/cfengine-champions-hall-of-fame">CFEngine Champion</a>.</p></li>
+<li><p><a href="http://www.verticalsysadmin.com/cfengine.htm">CFEngine Resources</a> by Vertical
+Sysadmin, Inc, a sysadmin training company and an authorized CFEngine training partner.</p></li>
+<li><p><a href="http://cfengine.com/blog/tag/Development">CFEngine Development blog</a> Posts on
+configuration management best practices from the CFEngine team.</p></li>
+</ul>
+<h2 id="training">Training</h2>
+<ul>
+<li><p><a href="https://www.youtube.com/playlist?list=PLh71Vl9YjMajsWxT8zQuRKEPwosG9HdzV">Online Training</a> An introduction to CFEngine by our founder, Mark Burgess. These video recordings explain the basic principles and syntax of the CFEngine language and suggests some examples to try out.</p></li>
+<li><p><a href="http://shop.oreilly.com/product/110000787.do">Beyond Automation</a> Learn how to go beyond classical automation with CFEngine 3, one of the most established configuration management systems available. In this video tutorial, host and CFEngine creator Mark Burgess takes you on a tour of discovery from basic automation concepts to more complex examples, such as implementing distributed orchestration.</p></li>
+<li><p><a href="http://cfengine.com/learn">Learn</a> Videos which demonstrate the key capabilities of CFEngine Enterprise and Community editions.</p></li>
+<li><p>CFEngine as a powerful security tool: Three <a href="http://prezi.com/user/zzamboni/">presentations</a> by Diego Zamboni</p></li>
+</ul>
+<h2 id="tools">Tools</h2>
+<ul>
+<li><p>Download CFEngine <a href="https://cfengine.com/cfengine-code-editors">code editors</a>.</p></li>
+<li><p>Download syntax highlighters for
+<a href="https://github.com/neilhwatson/vim_cf3">vim</a> or
+<a href="https://github.com/cfengine/core/blob/master/contrib/cfengine.el">emacs</a>.</p></li>
+</ul>
+<h3 id="sign-up">Sign Up</h3>
+<ul>
+<li><p><a href="https://cfengine.com/events">On-Site Training</a> Sign up for professional training courses
+that provide a better understanding of CFEngine and how it can help improve configuration
+management in your organization.</p></li>
+<li><p><a href="http://info.cfengine.com/ContactUs.html">Contact us</a> to get more info on training courses.</p></li>
+</ul>
+<h2 id="support-and-community">Support and Community</h2><h3 id="support-desk">Support Desk</h3>
+<ul>
+<li><a href="https://support.northern.tech" title="CFEngine - Support Desk">CFEngine Enterprise Support Desk</a> Enterprise users have access to our support desk.</li>
+</ul>
+<h3 id="forums">Forums</h3>
+<p>Help from our CFEngine community is available to all users on our Google
+Groups forums:</p>
+
+<ul>
+<li><p><a href="https://groups.google.com/forum/?hl=en&amp;fromgroups#!forum/cfengine-enterprise-free-25" title="Free25 Forum">Support for CFEngine Enterprise users</a> Help for users who
+have downloaded the free version of CFEngine 3 Enterprise.</p></li>
+<li><p><a href="https://groups.google.com/forum/?hl=en&amp;fromgroups#!forum/help-cfengine" title="Help Forum">help-cfengine</a> General help for all your CFEngine questions.</p></li>
+</ul>
+<h3 id="learning-resources">Learning Resources</h3>
+<p>Sometimes the best help is already written.</p>
+
+<ul>
+<li>Visit our <a href="http://cfengine.com/learn" title="CFEngine Learning Center">learning resources</a> for guides, demos, training videos, and tools.</li>
+</ul>
+<h3 id="social-media">Social Media</h3>
+<p>Stay in touch. Follow us:</p>
+
+<ul>
+<li><p><a href="http://cfengine.com/blog" title="CFEngine - Blog">CFEngine blog</a></p></li>
+<li><p><a href="http://www.linkedin.com/groups?gid=136574&trk=hb_side_g"
+target="_blank">LinkedIn</a></p></li>
+<li><p><a href="https://twitter.com/cfengine" target="_blank">Twitter</a></p></li>
+<li><p><a href="https://www.facebook.com/pages/Cfengine/311003700627?ref=ts"
+target="_blank">Facebook</a></p></li>
+<li><p>The #cfengine IRC channel on the <a href="irc:irc.freenode.org">irc.freenode.org</a> network.</p></li>
+</ul>
+
+<p>If you want to learn more about how CFEngine can help you and your
+organization, <a href="https://cfengine.com/contactUs" title="CFEngine - Contact Us">contact us</a>.</p>
+<h2 id="contribute-to-cfengine">Contribute to CFEngine</h2>
+<p><strong>CFEngine Github</strong></p>
+
+<ul>
+<li><p><a href="https://github.com/cfengine/core">Code</a></p></li>
+<li><p><a href="https://github.com/cfengine/documentation">Documentation</a></p></li>
+</ul>
+
+<p><strong>Public Bug Tracker</strong></p>
+
+<ul>
+<li>Bugs and improvement suggestions can be registered with our development team
+in our <a href="http://tracker.mender.io/projects/CFE/issues" title="Bug Tracker">public bug tracker</a>. Read the bug tracker information before you
+submit a bug.</li>
+</ul>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-learning.html">learning</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 10 July 2019
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/additional-resources.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/d99dd1f07cf37da07fbd675717c47f3201990891" target="_blank">d99dd1f07cf37da07fbd675717c47f3201990891</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.14/assets/footer-0ce0c884995cf0be0e878ec70c137005.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

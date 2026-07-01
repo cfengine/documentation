@@ -1,0 +1,43 @@
+
+bundle knowledge SpecialTopic_ContentDrivenPolicies
+
+{
+topics:
+
+"SpecialTopic_ContentDrivenPolicies";
+Special_Topics_Guide::
+    "Can I make my own Content-Diven Policies?"  association => a("discusses","Content-Driven Policies","is discussed in");
+Special_Topics_Guide::
+    "How do Content-Driven Policies work in detail?"  association => a("discusses","Content-Driven Policies","is discussed in");
+Special_Topics_Guide::
+    "Why should I use Content-Driven Policies?"  association => a("discusses","Content-Driven Policies","is discussed in");
+Special_Topics_Guide::
+    "What is a Content-Driven Policy?"  association => a("discusses","Content-Driven Policies","is discussed in");
+Special_Topics_Guide::
+    "Content-Driven Policies"  association => a("discusses","Content-Driven Policies","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_ContentDrivenPolicies.html"
+  represents => { "Official CFEngine document"},  about_topics => { "content-driven policies" };
+ "/knowledge/docs/SpecialTopic_ContentDrivenPolicies.html"
+  represents => { "Special Topics Guide"},  about_topics => { "content-driven policies" };
+ "/knowledge/docs/SpecialTopic_ContentDrivenPolicies.html#Top"
+  represents => { "Text section" }, about_topics => { "content-driven policies" };
+ "/knowledge/docs/SpecialTopic_ContentDrivenPolicies.html#What-is-a-Content_002dDriven-Policy_003f"
+  represents => { "Text section" }, about_topics => { "what is a content-driven policy?" };
+examples:: "/knowledge/docs/SpecialTopic_ContentDrivenPolicies.html#What-is-a-Content_002dDriven-Policy_003f"
+ about_topics => { "What is a Content-Driven Policy?" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_ContentDrivenPolicies.html#Why-should-I-use-Content_002dDriven-Policies_003f"
+  represents => { "Text section" }, about_topics => { "why should i use content-driven policies?" };
+examples:: "/knowledge/docs/SpecialTopic_ContentDrivenPolicies.html#Why-should-I-use-Content_002dDriven-Policies_003f"
+ about_topics => { "Why should I use Content-Driven Policies?" },
+  represents => { "code example" };
+ "/knowledge/docs/SpecialTopic_ContentDrivenPolicies.html#How-do-Content_002dDriven-Policies-work-in-detail_003f"
+  represents => { "Text section" }, about_topics => { "how do content-driven policies work in detail?" };
+ "/knowledge/docs/SpecialTopic_ContentDrivenPolicies.html#Can-I-make-my-own-Content_002dDiven-Policies_003f"
+  represents => { "Text section" }, about_topics => { "can i make my own content-diven policies?" };
+}
+

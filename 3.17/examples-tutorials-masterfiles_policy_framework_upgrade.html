@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.17  Documentation - Masterfiles Policy Framework Upgrade</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="canonical" href="https://docs.cfengine.com/latest/examples-tutorials-masterfiles_policy_framework_upgrade.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='/docs/3.17/assets/global-4de74225093262155923559d57c53b5c.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Masterfiles Policy Framework Upgrade";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/" selected>Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value=" 61c5dfe74ae502b02" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a></li><li><a href="examples-tutorials.html">Tutorials</a><ul class="level2"><li><a href="examples-tutorials-json-yaml-support-in-cfengine.html">JSON and YAML Support in CFEngine</a></li><li><a href="examples-tutorials-files-tutorial.html">Create, Modify, and Delete Files</a></li><li><a href="examples-tutorials-distribute-files-from-a-central-location.html">Distribute files from a central location</a></li><li><a href="examples-tutorials-report_inventory_remediate_sec_vulnerabilities.html">Reporting and Remediation of Security Vulnerabilities</a></li><li><a class="active" href="examples-tutorials-masterfiles_policy_framework_upgrade.html">Masterfiles Policy Framework Upgrade</a></li><li><a href="examples-tutorials-tags.html">Tags for variables, classes, and bundles</a></li><li><a href="examples-tutorials-custom_inventory.html">Custom Inventory</a></li><li><a href="examples-tutorials-file_comparison.html">File Comparison</a></li></ul></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-tutorials.html">Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Masterfiles Policy Framework Upgrade
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h1 id="introduction">Introduction</h1>
+<p>Upgrading the Masterfiles Policy Framework (MPF) is an <em>optional</em> but <strong>highly
+recommended</strong> first step when upgrading CFEngine.</p>
+
+<p>Upgrading the MPF is not an exact process as the details highly depend on the
+specifics of the changes made to the default policy. This tutorial leverages
+<code>git</code> and shows an example of upgrading a simple policy set based on 3.6.7 to
+3.7.4 and can be used as a reference for upgrading your own policy sets.</p>
+<h1 id="prepare-a-git-clone-of-your-working-masterfiles">Prepare a Git clone of your working masterfiles</h1>
+<p>If you are not using Git and instead editing directly in
+<code>$(sys.workdir/masterfiles)</code> you can simply copy your masterfiles into a new
+directory and initalize a new Git repository.</p>
+
+<p>If you&#39;re using Git already simply clone your repository and skip to the next
+step.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">[root@hub MPF_upgrade]#</span> rsync -a /var/cfengine/masterfiles/ MPF_upgrade/
+</code></pre>
+</div>
+
+<p>Then initialize the new Git repository and add all the files to it.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">[root@hub ~]#</span> <span class="nb">cd</span> MPF_upgrade/
+<span class="gp">[root@hub MPF_upgrade]#</span> git init
+<span class="go">Initialized empty Git repository in /root/MPF_upgrade/.git/</span>
+<span class="gp">[root@hub MPF_upgrade]#</span> git add -A
+<span class="gp">[root@hub MPF_upgrade]#</span> git commit -m <span class="s2">&quot;Before Upgrade&quot;</span>
+<span class="go">[master (root-commit) 108c210] Before Upgrade</span>
+<span class="go"> 78 files changed, 19980 insertions(+)</span>
+<span class="go"> create mode 100644 CUSTOM/policy1.cf</span>
+<span class="go"> create mode 100644 cf_promises_release_id</span>
+<span class="go"> create mode 100644 cf_promises_validated</span>
+<span class="go"> create mode 100644 cfe_internal/CFE_cfengine.cf</span>
+<span class="go"> create mode 100644 cfe_internal/CFE_hub_specific.cf</span>
+<span class="go"> create mode 100644 cfe_internal/CFE_knowledge.cf</span>
+<span class="go"> create mode 100644 cfe_internal/cfengine_processes.cf</span>
+<span class="go"> create mode 100644 cfe_internal/ha/ha.cf</span>
+<span class="go"> create mode 100644 cfe_internal/ha/ha_def.cf</span>
+<span class="go"> create mode 100644 cfe_internal/host_info_report.cf</span>
+<span class="go"> create mode 100644 controls/3.4/cf_serverd.cf</span>
+<span class="go"> create mode 100644 controls/cf_agent.cf</span>
+<span class="go"> create mode 100644 controls/cf_execd.cf</span>
+<span class="go"> create mode 100644 controls/cf_hub.cf</span>
+<span class="go"> create mode 100644 controls/cf_monitord.cf</span>
+<span class="go"> create mode 100644 controls/cf_runagent.cf</span>
+<span class="go"> create mode 100644 controls/cf_serverd.cf</span>
+<span class="go"> create mode 100644 def.cf</span>
+<span class="go"> create mode 100644 inventory/any.cf</span>
+<span class="go"> create mode 100644 inventory/debian.cf</span>
+<span class="go"> create mode 100644 inventory/generic.cf</span>
+<span class="go"> create mode 100644 inventory/linux.cf</span>
+<span class="go"> create mode 100644 inventory/lsb.cf</span>
+<span class="go"> create mode 100644 inventory/macos.cf</span>
+<span class="go"> create mode 100644 inventory/os.cf</span>
+<span class="go"> create mode 100644 inventory/redhat.cf</span>
+<span class="go"> create mode 100644 inventory/suse.cf</span>
+<span class="go"> create mode 100644 inventory/windows.cf</span>
+<span class="go"> create mode 100644 lib/3.5/bundles.cf</span>
+<span class="go"> create mode 100644 lib/3.5/cfe_internal.cf</span>
+<span class="go"> create mode 100644 lib/3.5/commands.cf</span>
+<span class="go"> create mode 100644 lib/3.5/common.cf</span>
+<span class="go"> create mode 100644 lib/3.5/databases.cf</span>
+<span class="go"> create mode 100644 lib/3.5/feature.cf</span>
+<span class="go"> create mode 100644 lib/3.5/files.cf</span>
+<span class="go"> create mode 100644 lib/3.5/guest_environments.cf</span>
+<span class="go"> create mode 100644 lib/3.5/monitor.cf</span>
+<span class="go"> create mode 100644 lib/3.5/packages.cf</span>
+<span class="go"> create mode 100644 lib/3.5/paths.cf</span>
+<span class="go"> create mode 100644 lib/3.5/processes.cf</span>
+<span class="go"> create mode 100644 lib/3.5/reports.cf</span>
+<span class="go"> create mode 100644 lib/3.5/services.cf</span>
+<span class="go"> create mode 100644 lib/3.5/storage.cf</span>
+<span class="go"> create mode 100644 lib/3.6/bundles.cf</span>
+<span class="go"> create mode 100644 lib/3.6/cfe_internal.cf</span>
+<span class="go"> create mode 100644 lib/3.6/cfengine_enterprise_hub_ha.cf</span>
+<span class="go"> create mode 100644 lib/3.6/commands.cf</span>
+<span class="go"> create mode 100644 lib/3.6/common.cf</span>
+<span class="go"> create mode 100644 lib/3.6/databases.cf</span>
+<span class="go"> create mode 100644 lib/3.6/edit_xml.cf</span>
+<span class="go"> create mode 100644 lib/3.6/examples.cf</span>
+<span class="go"> create mode 100644 lib/3.6/feature.cf</span>
+<span class="go"> create mode 100644 lib/3.6/files.cf</span>
+<span class="go"> create mode 100644 lib/3.6/guest_environments.cf</span>
+<span class="go"> create mode 100644 lib/3.6/monitor.cf</span>
+<span class="go"> create mode 100644 lib/3.6/packages.cf</span>
+<span class="go"> create mode 100644 lib/3.6/paths.cf</span>
+<span class="go"> create mode 100644 lib/3.6/processes.cf</span>
+<span class="go"> create mode 100644 lib/3.6/reports.cf</span>
+<span class="go"> create mode 100644 lib/3.6/services.cf</span>
+<span class="go"> create mode 100644 lib/3.6/stdlib.cf</span>
+<span class="go"> create mode 100644 lib/3.6/storage.cf</span>
+<span class="go"> create mode 100644 lib/3.6/users.cf</span>
+<span class="go"> create mode 100644 lib/3.6/vcs.cf</span>
+<span class="go"> create mode 100644 promises.cf</span>
+<span class="go"> create mode 100644 services/autorun.cf</span>
+<span class="go"> create mode 100644 services/autorun/custom_policy2.cf</span>
+<span class="go"> create mode 100644 services/autorun/hello.cf</span>
+<span class="go"> create mode 100644 services/file_change.cf</span>
+<span class="go"> create mode 100644 sketches/meta/api-runfile.cf</span>
+<span class="go"> create mode 100644 templates/host_info_report.mustache</span>
+<span class="go"> create mode 100644 update.cf</span>
+<span class="go"> create mode 100644 update/cfe_internal_dc_workflow.cf</span>
+<span class="go"> create mode 100644 update/cfe_internal_local_git_remote.cf</span>
+<span class="go"> create mode 100644 update/cfe_internal_update_from_repository.cf</span>
+<span class="go"> create mode 100644 update/update_bins.cf</span>
+<span class="go"> create mode 100644 update/update_policy.cf</span>
+<span class="go"> create mode 100644 update/update_processes.cf</span>
+<span class="gp">[root@hub MPF_upgrade]#</span> git status
+<span class="gp">#</span> On branch master
+<span class="go">nothing to commit, working directory clean</span>
+</code></pre>
+</div>
+
+<p>Now we have a Git repository that we can start merging in the changes from
+upstream.</p>
+<h1 id="merge-the-upstream-changes-to-the-mpf-into-your-policy">Merge the upstream changes to the MPF into your policy</h1><h2 id="remove-everything-except-the-git-directory">Remove everything except the .git directory.</h2>
+<p>By first removing everything we will easily be able so see which files are
+<em>new</em>, <em>changed</em>, <em>moved</em> or <em>removed</em> upstream.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">[root@hub MPF_upgrade]#</span> rm -rf *
+
+
+<span class="gp">[root@hub MPF_upgrade]#</span> git status
+<span class="go">On branch master</span>
+<span class="go">Changes not staged for commit:</span>
+<span class="go">  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)</span>
+<span class="go">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span>
+
+<span class="go">    deleted:    CUSTOM/policy1.cf</span>
+<span class="go">    deleted:    cf_promises_release_id</span>
+<span class="go">    deleted:    cf_promises_validated</span>
+<span class="go">    deleted:    cfe_internal/CFE_cfengine.cf</span>
+<span class="go">    deleted:    cfe_internal/CFE_hub_specific.cf</span>
+<span class="go">    deleted:    cfe_internal/CFE_knowledge.cf</span>
+<span class="go">    deleted:    cfe_internal/cfengine_processes.cf</span>
+<span class="go">    deleted:    cfe_internal/ha/ha.cf</span>
+<span class="go">    deleted:    cfe_internal/ha/ha_def.cf</span>
+<span class="go">    deleted:    cfe_internal/host_info_report.cf</span>
+<span class="go">    deleted:    controls/3.4/cf_serverd.cf</span>
+<span class="go">    deleted:    controls/cf_agent.cf</span>
+<span class="go">    deleted:    controls/cf_execd.cf</span>
+<span class="go">    deleted:    controls/cf_hub.cf</span>
+<span class="go">    deleted:    controls/cf_monitord.cf</span>
+<span class="go">    deleted:    controls/cf_runagent.cf</span>
+<span class="go">    deleted:    controls/cf_serverd.cf</span>
+<span class="go">    deleted:    def.cf</span>
+<span class="go">    deleted:    inventory/any.cf</span>
+<span class="go">    deleted:    inventory/debian.cf</span>
+<span class="go">    deleted:    inventory/generic.cf</span>
+<span class="go">    deleted:    inventory/linux.cf</span>
+<span class="go">    deleted:    inventory/lsb.cf</span>
+<span class="go">    deleted:    inventory/macos.cf</span>
+<span class="go">    deleted:    inventory/os.cf</span>
+<span class="go">    deleted:    inventory/redhat.cf</span>
+<span class="go">    deleted:    inventory/suse.cf</span>
+<span class="go">    deleted:    inventory/windows.cf</span>
+<span class="go">    deleted:    lib/3.5/bundles.cf</span>
+<span class="go">    deleted:    lib/3.5/cfe_internal.cf</span>
+<span class="go">    deleted:    lib/3.5/commands.cf</span>
+<span class="go">    deleted:    lib/3.5/common.cf</span>
+<span class="go">    deleted:    lib/3.5/databases.cf</span>
+<span class="go">    deleted:    lib/3.5/feature.cf</span>
+<span class="go">    deleted:    lib/3.5/files.cf</span>
+<span class="go">    deleted:    lib/3.5/guest_environments.cf</span>
+<span class="go">    deleted:    lib/3.5/monitor.cf</span>
+<span class="go">    deleted:    lib/3.5/packages.cf</span>
+<span class="go">    deleted:    lib/3.5/paths.cf</span>
+<span class="go">    deleted:    lib/3.5/processes.cf</span>
+<span class="go">    deleted:    lib/3.5/reports.cf</span>
+<span class="go">    deleted:    lib/3.5/services.cf</span>
+<span class="go">    deleted:    lib/3.5/storage.cf</span>
+<span class="go">    deleted:    lib/3.6/bundles.cf</span>
+<span class="go">    deleted:    lib/3.6/cfe_internal.cf</span>
+<span class="go">    deleted:    lib/3.6/cfengine_enterprise_hub_ha.cf</span>
+<span class="go">    deleted:    lib/3.6/commands.cf</span>
+<span class="go">    deleted:    lib/3.6/common.cf</span>
+<span class="go">    deleted:    lib/3.6/databases.cf</span>
+<span class="go">    deleted:    lib/3.6/edit_xml.cf</span>
+<span class="go">    deleted:    lib/3.6/examples.cf</span>
+<span class="go">    deleted:    lib/3.6/feature.cf</span>
+<span class="go">    deleted:    lib/3.6/files.cf</span>
+<span class="go">    deleted:    lib/3.6/guest_environments.cf</span>
+<span class="go">    deleted:    lib/3.6/monitor.cf</span>
+<span class="go">    deleted:    lib/3.6/packages.cf</span>
+<span class="go">    deleted:    lib/3.6/paths.cf</span>
+<span class="go">    deleted:    lib/3.6/processes.cf</span>
+<span class="go">    deleted:    lib/3.6/reports.cf</span>
+<span class="go">    deleted:    lib/3.6/services.cf</span>
+<span class="go">    deleted:    lib/3.6/stdlib.cf</span>
+<span class="go">    deleted:    lib/3.6/storage.cf</span>
+<span class="go">    deleted:    lib/3.6/users.cf</span>
+<span class="go">    deleted:    lib/3.6/vcs.cf</span>
+<span class="go">    deleted:    promises.cf</span>
+<span class="go">    deleted:    services/autorun.cf</span>
+<span class="go">    deleted:    services/autorun/custom_policy2.cf</span>
+<span class="go">    deleted:    services/autorun/hello.cf</span>
+<span class="go">    deleted:    services/file_change.cf</span>
+<span class="go">    deleted:    sketches/meta/api-runfile.cf</span>
+<span class="go">    deleted:    templates/host_info_report.mustache</span>
+<span class="go">    deleted:    update.cf</span>
+<span class="go">    deleted:    update/cfe_internal_dc_workflow.cf</span>
+<span class="go">    deleted:    update/cfe_internal_local_git_remote.cf</span>
+<span class="go">    deleted:    update/cfe_internal_update_from_repository.cf</span>
+<span class="go">    deleted:    update/update_bins.cf</span>
+<span class="go">    deleted:    update/update_policy.cf</span>
+<span class="go">    deleted:    update/update_processes.cf</span>
+
+<span class="go">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span>
+</code></pre>
+</div>
+<h2 id="install-the-new-mpf">Install the new MPF</h2>
+<p>The MPF can be obtained from
+any <a href="https://cfengine.com/product/community/">community package</a> (in
+<code>$(sys.workdir)/share/CoreBase/</code>),
+<a href="https://cfengine.com/product/free-download/">enterprise hub package</a> (in
+<code>$(sys.workdir)/share/NovaBase/</code>),
+<a href="https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-masterfiles-3.17.0.tar.gz">masterfiles source tarball</a> (requires
+<code>./configure</code> and <code>make install</code>
+),
+<a href="https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-masterfiles-3.17.0.pkg.tar.gz">installed masterfiles tarball</a> (ready
+for extraction),
+or
+<a href="https://github.com/cfengine/masterfiles/tree/3.17">directly from github</a>.</p>
+
+<p>We will install the MPF from source obtained
+directly from github.</p>
+
+<p><strong>Note:</strong> You will need <code>automake</code> to install from source.</p>
+
+<p>First clone the masterfiles repository for the version you are installing. And
+verify you have the correct tag checked out.</p>
+
+<p><strong>Note:</strong> Directly checking out a tag as in the example below is only
+supported in Git versions 1.7.9.5 and newer.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">[root@hub MPF_upgrade]#</span> <span class="nb">cd</span> ..
+<span class="gp">[root@hub ~]#</span> git clone -b 3.7.4 https://github.com/cfengine/masterfiles
+<span class="gp">[root@hub ~]#</span> <span class="nb">cd</span> masterfiles
+<span class="gp">[root@hub ~]#</span> git describe
+<span class="go">3.7.4</span>
+</code></pre>
+</div>
+
+<p><strong>Note:</strong> For systems without python 3 easily available (such as centos 6) you can use the following to get around problems in autogen with 3rdparty/core/determine-version.py, which requires python3.</p>
+<div class="highlight"><pre><code class="text">export EXPLICIT_VERSION=$(git describe)
+</code></pre>
+</div>
+
+<p>Now we will install the masterfiles from upstream into the directory where we
+are doing the integration.</p>
+
+<p>First we build and install masterfiles to a temporary location.</p>
+<div class="highlight"><pre><code class="console"><span class="go">./autogen.sh</span>
+<span class="gp">[root@hub masterfiles]#</span> ./autogen.sh
+<span class="go">configure.ac:31: installing `./config.guess&#39;</span>
+<span class="go">configure.ac:31: installing `./config.sub&#39;</span>
+<span class="go">configure.ac:34: installing `./install-sh&#39;</span>
+<span class="go">configure.ac:34: installing `./missing&#39;</span>
+<span class="go">checking build system type... x86_64-unknown-linux-gnu</span>
+<span class="go">checking host system type... x86_64-unknown-linux-gnu</span>
+<span class="go">checking target system type... x86_64-unknown-linux-gnu</span>
+<span class="go">checking for a BSD-compatible install... /usr/bin/install -c</span>
+<span class="go">checking whether build environment is sane... yes</span>
+<span class="go">checking for a thread-safe mkdir -p... /bin/mkdir -p</span>
+<span class="go">checking for gawk... gawk</span>
+<span class="go">checking whether make sets $(MAKE)... yes</span>
+<span class="go">checking how to create a ustar tar archive... gnutar</span>
+<span class="go">checking whether to disable maintainer-specific portions of Makefiles... yes</span>
+<span class="go">checking for a thread-safe mkdir -p... /bin/mkdir -p</span>
+<span class="go">checking for a BSD-compatible install... /usr/bin/install -c</span>
+
+<span class="go">Summary of options:</span>
+<span class="go">Core directory       -&gt; not set - tests are disabled</span>
+<span class="go">Enterprise directory -&gt; not set - some tests are disabled</span>
+<span class="go">Install prefix       -&gt; /var/cfengine</span>
+
+<span class="go">configure: generating makefile targets</span>
+<span class="go">configure: creating ./config.status</span>
+<span class="go">config.status: creating Makefile</span>
+<span class="go">config.status: creating controls/3.5/update_def.cf</span>
+<span class="go">config.status: creating controls/3.6/update_def.cf</span>
+<span class="go">config.status: creating controls/3.7/update_def.cf</span>
+<span class="go">config.status: creating modules/packages/Makefile</span>
+<span class="go">config.status: creating promises.cf</span>
+<span class="go">config.status: creating tests/acceptance/Makefile</span>
+<span class="go">config.status: creating tests/unit/Makefile</span>
+
+<span class="go">DONE: Configuration done. Run &quot;make install&quot; to install CFEngine Masterfiles.</span>
+<span class="gp">[root@hub masterfiles]#</span> ./configure --prefix /tmp/masterfiles-3.7.4
+<span class="go">checking build system type... x86_64-unknown-linux-gnu</span>
+<span class="go">checking host system type... x86_64-unknown-linux-gnu</span>
+<span class="go">checking target system type... x86_64-unknown-linux-gnu</span>
+<span class="go">checking for a BSD-compatible install... /usr/bin/install -c</span>
+<span class="go">checking whether build environment is sane... yes</span>
+<span class="go">checking for a thread-safe mkdir -p... /bin/mkdir -p</span>
+<span class="go">checking for gawk... gawk</span>
+<span class="go">checking whether make sets $(MAKE)... yes</span>
+<span class="go">checking how to create a ustar tar archive... gnutar</span>
+<span class="go">checking whether to disable maintainer-specific portions of Makefiles... yes</span>
+<span class="go">checking for a thread-safe mkdir -p... /bin/mkdir -p</span>
+<span class="go">checking for a BSD-compatible install... /usr/bin/install -c</span>
+
+<span class="go">Summary of options:</span>
+<span class="go">Core directory       -&gt; not set - tests are disabled</span>
+<span class="go">Enterprise directory -&gt; not set - some tests are disabled</span>
+<span class="go">Install prefix       -&gt; /tmp/masterfiles-3.7.4</span>
+
+<span class="go">configure: generating makefile targets</span>
+<span class="go">configure: creating ./config.status</span>
+<span class="go">config.status: creating Makefile</span>
+<span class="go">config.status: creating controls/3.5/update_def.cf</span>
+<span class="go">config.status: creating controls/3.6/update_def.cf</span>
+<span class="go">config.status: creating controls/3.7/update_def.cf</span>
+<span class="go">config.status: creating modules/packages/Makefile</span>
+<span class="go">config.status: creating promises.cf</span>
+<span class="go">config.status: creating tests/acceptance/Makefile</span>
+<span class="go">config.status: creating tests/unit/Makefile</span>
+
+<span class="go">DONE: Configuration done. Run &quot;make install&quot; to install CFEngine Masterfiles.</span>
+</code></pre>
+</div>
+
+<p>Then after running <code>make install</code> we move the installed masterfiles into our
+integration directory.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">[root@hub masterfiles]#</span> mv /tmp/masterfiles-3.7.4/masterfiles/* ../MPF_upgrade
+<span class="gp">[root@hub masterfiles]#</span> <span class="nb">cd</span> ../MPF_upgrade/
+</code></pre>
+</div>
+<h2 id="merge-differences">Merge differences</h2>
+<p>Now we can use <code>git status</code> to see an overview of the changes to the
+repository between our starting point and the new MPF.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">[root@hub MPF_upgrade]#</span> git status
+<span class="go">On branch master</span>
+<span class="go">Changes not staged for commit:</span>
+<span class="go">  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)</span>
+<span class="go">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span>
+
+<span class="go">    deleted:    CUSTOM/policy1.cf</span>
+<span class="go">    deleted:    cf_promises_release_id</span>
+<span class="go">    deleted:    cf_promises_validated</span>
+<span class="go">    modified:   cfe_internal/CFE_cfengine.cf</span>
+<span class="go">    deleted:    cfe_internal/CFE_hub_specific.cf</span>
+<span class="go">    deleted:    cfe_internal/CFE_knowledge.cf</span>
+<span class="go">    deleted:    cfe_internal/cfengine_processes.cf</span>
+<span class="go">    deleted:    cfe_internal/ha/ha.cf</span>
+<span class="go">    deleted:    cfe_internal/ha/ha_def.cf</span>
+<span class="go">    deleted:    cfe_internal/host_info_report.cf</span>
+<span class="go">    deleted:    controls/3.4/cf_serverd.cf</span>
+<span class="go">    deleted:    controls/cf_agent.cf</span>
+<span class="go">    deleted:    controls/cf_execd.cf</span>
+<span class="go">    deleted:    controls/cf_hub.cf</span>
+<span class="go">    deleted:    controls/cf_monitord.cf</span>
+<span class="go">    deleted:    controls/cf_runagent.cf</span>
+<span class="go">    deleted:    controls/cf_serverd.cf</span>
+<span class="go">    deleted:    def.cf</span>
+<span class="go">    modified:   inventory/any.cf</span>
+<span class="go">    modified:   inventory/linux.cf</span>
+<span class="go">    modified:   inventory/lsb.cf</span>
+<span class="go">    modified:   lib/3.5/cfe_internal.cf</span>
+<span class="go">    modified:   lib/3.5/common.cf</span>
+<span class="go">    modified:   lib/3.5/files.cf</span>
+<span class="go">    modified:   lib/3.5/packages.cf</span>
+<span class="go">    deleted:    lib/3.5/reports.cf</span>
+<span class="go">    modified:   lib/3.6/cfe_internal.cf</span>
+<span class="go">    modified:   lib/3.6/common.cf</span>
+<span class="go">    modified:   lib/3.6/files.cf</span>
+<span class="go">    modified:   lib/3.6/packages.cf</span>
+<span class="go">    deleted:    lib/3.6/reports.cf</span>
+<span class="go">    modified:   lib/3.6/services.cf</span>
+<span class="go">    modified:   lib/3.6/stdlib.cf</span>
+<span class="go">    modified:   promises.cf</span>
+<span class="go">    deleted:    services/autorun.cf</span>
+<span class="go">    deleted:    services/autorun/custom_policy2.cf</span>
+<span class="go">    deleted:    services/file_change.cf</span>
+<span class="go">    modified:   sketches/meta/api-runfile.cf</span>
+<span class="go">    modified:   update.cf</span>
+<span class="go">    deleted:    update/cfe_internal_dc_workflow.cf</span>
+<span class="go">    deleted:    update/cfe_internal_local_git_remote.cf</span>
+<span class="go">    deleted:    update/cfe_internal_update_from_repository.cf</span>
+<span class="go">    deleted:    update/update_bins.cf</span>
+<span class="go">    deleted:    update/update_policy.cf</span>
+<span class="go">    deleted:    update/update_processes.cf</span>
+
+<span class="go">Untracked files:</span>
+<span class="go">  (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)</span>
+
+<span class="go">    cfe_internal/core/</span>
+<span class="go">    cfe_internal/enterprise/</span>
+<span class="go">    cfe_internal/update/</span>
+<span class="go">    controls/3.5/</span>
+<span class="go">    controls/3.6/</span>
+<span class="go">    controls/3.7/</span>
+<span class="go">    inventory/freebsd.cf</span>
+<span class="go">    lib/3.6/autorun.cf</span>
+<span class="go">    lib/3.6/cfe_internal_hub.cf</span>
+<span class="go">    lib/3.7/</span>
+<span class="go">    services/main.cf</span>
+
+<span class="go">no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)</span>
+</code></pre>
+</div>
+
+<p>All of the <em>Untracked files</em> are new additions from upstream so they should be
+safe to take.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">[root@hub MPF_upgrade]#</span> git add cfe_internal/core/ <span class="se">\</span>
+<span class="go">cfe_internal/enterprise/ \</span>
+<span class="go">cfe_internal/update/ \</span>
+<span class="go">controls/3.5/ \</span>
+<span class="go">controls/3.6/ \</span>
+<span class="go">controls/3.7/ \</span>
+<span class="go">inventory/freebsd.cf \</span>
+<span class="go">lib/3.6/autorun.cf \</span>
+<span class="go">lib/3.6/cfe_internal_hub.cf \</span>
+<span class="go">lib/3.7/ \</span>
+<span class="go">services/main.cf</span>
+</code></pre>
+</div>
+
+<p>We can run git status again to see the current overview:</p>
+<div class="highlight"><pre><code class="console"><span class="gp">[root@hub MPF_upgrade]#</span> git status
+<span class="go">On branch master</span>
+<span class="go">Changes to be committed:</span>
+<span class="go">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span>
+
+<span class="go">    new file:   cfe_internal/core/deprecated/cfengine_processes.cf</span>
+<span class="go">    new file:   cfe_internal/core/host_info_report.cf</span>
+<span class="go">    new file:   cfe_internal/core/limit_robot_agents.cf</span>
+<span class="go">    new file:   cfe_internal/core/log_rotation.cf</span>
+<span class="go">    new file:   cfe_internal/core/main.cf</span>
+<span class="go">    new file:   cfe_internal/enterprise/CFE_hub_specific.cf</span>
+<span class="go">    new file:   cfe_internal/enterprise/CFE_knowledge.cf</span>
+<span class="go">    new file:   cfe_internal/enterprise/file_change.cf</span>
+<span class="go">    new file:   cfe_internal/enterprise/ha/ha.cf</span>
+<span class="go">    new file:   cfe_internal/enterprise/ha/ha_def.cf</span>
+<span class="go">    new file:   cfe_internal/enterprise/ha/ha_update.cf</span>
+<span class="go">    new file:   cfe_internal/enterprise/main.cf</span>
+<span class="go">    new file:   cfe_internal/update/cfe_internal_dc_workflow.cf</span>
+<span class="go">    new file:   cfe_internal/update/cfe_internal_local_git_remote.cf</span>
+<span class="go">    new file:   cfe_internal/update/cfe_internal_update_from_repository.cf</span>
+<span class="go">    new file:   cfe_internal/update/update_bins.cf</span>
+<span class="go">    new file:   cfe_internal/update/update_policy.cf</span>
+<span class="go">    new file:   cfe_internal/update/update_processes.cf</span>
+<span class="go">    new file:   controls/3.5/cf_agent.cf</span>
+<span class="go">    new file:   controls/3.5/cf_execd.cf</span>
+<span class="go">    new file:   controls/3.5/cf_hub.cf</span>
+<span class="go">    new file:   controls/3.5/cf_monitord.cf</span>
+<span class="go">    new file:   controls/3.5/cf_runagent.cf</span>
+<span class="go">    new file:   controls/3.5/cf_serverd.cf</span>
+<span class="go">    new file:   controls/3.5/def.cf</span>
+<span class="go">    new file:   controls/3.5/def_inputs.cf</span>
+<span class="go">    new file:   controls/3.5/reports.cf</span>
+<span class="go">    new file:   controls/3.5/update_def.cf</span>
+<span class="go">    new file:   controls/3.5/update_def_inputs.cf</span>
+<span class="go">    new file:   controls/3.6/cf_agent.cf</span>
+<span class="go">    new file:   controls/3.6/cf_execd.cf</span>
+<span class="go">    new file:   controls/3.6/cf_hub.cf</span>
+<span class="go">    new file:   controls/3.6/cf_monitord.cf</span>
+<span class="go">    new file:   controls/3.6/cf_runagent.cf</span>
+<span class="go">    new file:   controls/3.6/cf_serverd.cf</span>
+<span class="go">    new file:   controls/3.6/def.cf</span>
+<span class="go">    new file:   controls/3.6/def_inputs.cf</span>
+<span class="go">    new file:   controls/3.6/reports.cf</span>
+<span class="go">    new file:   controls/3.6/update_def.cf</span>
+<span class="go">    new file:   controls/3.6/update_def_inputs.cf</span>
+<span class="go">    new file:   controls/3.7/cf_agent.cf</span>
+<span class="go">    new file:   controls/3.7/cf_execd.cf</span>
+<span class="go">    new file:   controls/3.7/cf_hub.cf</span>
+<span class="go">    new file:   controls/3.7/cf_monitord.cf</span>
+<span class="go">    new file:   controls/3.7/cf_runagent.cf</span>
+<span class="go">    new file:   controls/3.7/cf_serverd.cf</span>
+<span class="go">    new file:   controls/3.7/def.cf</span>
+<span class="go">    new file:   controls/3.7/def_inputs.cf</span>
+<span class="go">    new file:   controls/3.7/reports.cf</span>
+<span class="go">    new file:   controls/3.7/update_def.cf</span>
+<span class="go">    new file:   controls/3.7/update_def_inputs.cf</span>
+<span class="go">    new file:   inventory/freebsd.cf</span>
+<span class="go">    new file:   lib/3.6/autorun.cf</span>
+<span class="go">    new file:   lib/3.6/cfe_internal_hub.cf</span>
+<span class="go">    new file:   lib/3.7/autorun.cf</span>
+<span class="go">    new file:   lib/3.7/bundles.cf</span>
+<span class="go">    new file:   lib/3.7/cfe_internal.cf</span>
+<span class="go">    new file:   lib/3.7/cfe_internal_hub.cf</span>
+<span class="go">    new file:   lib/3.7/cfengine_enterprise_hub_ha.cf</span>
+<span class="go">    new file:   lib/3.7/commands.cf</span>
+<span class="go">    new file:   lib/3.7/common.cf</span>
+<span class="go">    new file:   lib/3.7/databases.cf</span>
+<span class="go">    new file:   lib/3.7/edit_xml.cf</span>
+<span class="go">    new file:   lib/3.7/examples.cf</span>
+<span class="go">    new file:   lib/3.7/feature.cf</span>
+<span class="go">    new file:   lib/3.7/files.cf</span>
+<span class="go">    new file:   lib/3.7/guest_environments.cf</span>
+<span class="go">    new file:   lib/3.7/monitor.cf</span>
+<span class="go">    new file:   lib/3.7/packages.cf</span>
+<span class="go">    new file:   lib/3.7/paths.cf</span>
+<span class="go">    new file:   lib/3.7/processes.cf</span>
+<span class="go">    new file:   lib/3.7/services.cf</span>
+<span class="go">    new file:   lib/3.7/stdlib.cf</span>
+<span class="go">    new file:   lib/3.7/storage.cf</span>
+<span class="go">    new file:   lib/3.7/users.cf</span>
+<span class="go">    new file:   lib/3.7/vcs.cf</span>
+<span class="go">    new file:   services/main.cf</span>
+
+<span class="go">Changes not staged for commit:</span>
+<span class="go">  (use &quot;git add/rm &lt;file&gt;...&quot; to update what will be committed)</span>
+<span class="go">  (use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)</span>
+
+<span class="go">    deleted:    CUSTOM/policy1.cf</span>
+<span class="go">    deleted:    cf_promises_release_id</span>
+<span class="go">    deleted:    cf_promises_validated</span>
+<span class="go">    modified:   cfe_internal/CFE_cfengine.cf</span>
+<span class="go">    deleted:    cfe_internal/CFE_hub_specific.cf</span>
+<span class="go">    deleted:    cfe_internal/CFE_knowledge.cf</span>
+<span class="go">    deleted:    cfe_internal/cfengine_processes.cf</span>
+<span class="go">    deleted:    cfe_internal/ha/ha.cf</span>
+<span class="go">    deleted:    cfe_internal/ha/ha_def.cf</span>
+<span class="go">    deleted:    cfe_internal/host_info_report.cf</span>
+<span class="go">    deleted:    controls/3.4/cf_serverd.cf</span>
+<span class="go">    deleted:    controls/cf_agent.cf</span>
+<span class="go">    deleted:    controls/cf_execd.cf</span>
+<span class="go">    deleted:    controls/cf_hub.cf</span>
+<span class="go">    deleted:    controls/cf_monitord.cf</span>
+<span class="go">    deleted:    controls/cf_runagent.cf</span>
+<span class="go">    deleted:    controls/cf_serverd.cf</span>
+<span class="go">    deleted:    def.cf</span>
+<span class="go">    modified:   inventory/any.cf</span>
+<span class="go">    modified:   inventory/linux.cf</span>
+<span class="go">    modified:   inventory/lsb.cf</span>
+<span class="go">    modified:   lib/3.5/cfe_internal.cf</span>
+<span class="go">    modified:   lib/3.5/common.cf</span>
+<span class="go">    modified:   lib/3.5/files.cf</span>
+<span class="go">    modified:   lib/3.5/packages.cf</span>
+<span class="go">    deleted:    lib/3.5/reports.cf</span>
+<span class="go">    modified:   lib/3.6/cfe_internal.cf</span>
+<span class="go">    modified:   lib/3.6/common.cf</span>
+<span class="go">    modified:   lib/3.6/files.cf</span>
+<span class="go">    modified:   lib/3.6/packages.cf</span>
+<span class="go">    deleted:    lib/3.6/reports.cf</span>
+<span class="go">    modified:   lib/3.6/services.cf</span>
+<span class="go">    modified:   lib/3.6/stdlib.cf</span>
+<span class="go">    modified:   promises.cf</span>
+<span class="go">    deleted:    services/autorun.cf</span>
+<span class="go">    deleted:    services/autorun/custom_policy2.cf</span>
+<span class="go">    deleted:    services/file_change.cf</span>
+<span class="go">    modified:   sketches/meta/api-runfile.cf</span>
+<span class="go">    modified:   update.cf</span>
+<span class="go">    deleted:    update/cfe_internal_dc_workflow.cf</span>
+<span class="go">    deleted:    update/cfe_internal_local_git_remote.cf</span>
+<span class="go">    deleted:    update/cfe_internal_update_from_repository.cf</span>
+<span class="go">    deleted:    update/update_bins.cf</span>
+<span class="go">    deleted:    update/update_policy.cf</span>
+<span class="go">    deleted:    update/update_processes.cf</span>
+</code></pre>
+</div>
+
+<p>Next we want to bring back any of our custom policy files. Keeping your
+polices organized together helps to make this process easy. The custom policy
+files in the example policy set are <code>CUSTOM/policy1.cf</code> and
+<code>services/autorun/custom_policy2.cf</code>. Restore them with <code>git checkout</code>.</p>
+<div class="highlight"><pre><code class="console"><span class="go">[root@hub MPF_upgrade] git checkout CUSTOM/policy1.cf services/autorun/custom_policy2.cf</span>
+</code></pre>
+</div>
+
+<p>The files marked as <em>modified</em> in the <code>git status</code> output are files that have
+changed upstream.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">[root@hub MPF_upgrade]#</span> git status <span class="p">|</span> grep modified
+<span class="go">    modified:   cfe_internal/CFE_cfengine.cf</span>
+<span class="go">    modified:   inventory/any.cf</span>
+<span class="go">    modified:   inventory/linux.cf</span>
+<span class="go">    modified:   inventory/lsb.cf</span>
+<span class="go">    modified:   lib/3.5/cfe_internal.cf</span>
+<span class="go">    modified:   lib/3.5/common.cf</span>
+<span class="go">    modified:   lib/3.5/files.cf</span>
+<span class="go">    modified:   lib/3.5/packages.cf</span>
+<span class="go">    modified:   lib/3.6/cfe_internal.cf</span>
+<span class="go">    modified:   lib/3.6/common.cf</span>
+<span class="go">    modified:   lib/3.6/files.cf</span>
+<span class="go">    modified:   lib/3.6/packages.cf</span>
+<span class="go">    modified:   lib/3.6/services.cf</span>
+<span class="go">    modified:   lib/3.6/stdlib.cf</span>
+<span class="go">    modified:   promises.cf</span>
+<span class="go">    modified:   sketches/meta/api-runfile.cf</span>
+<span class="go">    modified:   update.cf</span>
+</code></pre>
+</div>
+
+<p>For any files that you have not modified (like those in lib) simply add them
+to gits staging area with <code>git add</code>. Carefully review and merge or
+re-integrate your custom changes on top of the upstream files.</p>
+
+<p>The remaining files in <code>git status</code> marked as <em>deleted</em> are files that have
+been moved or removed from upstream.</p>
+
+<p><strong>NOTE:</strong> It is uncommon for any files to be moved or deleted between patch
+releases (e.g. 3.7.1 -&gt; 3.7.2).</p>
+<div class="highlight"><pre><code class="console"><span class="gp">[root@hub MPF_upgrade]#</span> git status <span class="p">|</span> grep deleted
+<span class="go">    deleted:    cf_promises_release_id</span>
+<span class="go">    deleted:    cf_promises_validated</span>
+<span class="go">    deleted:    cfe_internal/CFE_hub_specific.cf</span>
+<span class="go">    deleted:    cfe_internal/CFE_knowledge.cf</span>
+<span class="go">    deleted:    cfe_internal/cfengine_processes.cf</span>
+<span class="go">    deleted:    cfe_internal/ha/ha.cf</span>
+<span class="go">    deleted:    cfe_internal/ha/ha_def.cf</span>
+<span class="go">    deleted:    cfe_internal/host_info_report.cf</span>
+<span class="go">    deleted:    controls/3.4/cf_serverd.cf</span>
+<span class="go">    deleted:    controls/cf_agent.cf</span>
+<span class="go">    deleted:    controls/cf_execd.cf</span>
+<span class="go">    deleted:    controls/cf_hub.cf</span>
+<span class="go">    deleted:    controls/cf_monitord.cf</span>
+<span class="go">    deleted:    controls/cf_runagent.cf</span>
+<span class="go">    deleted:    controls/cf_serverd.cf</span>
+<span class="go">    deleted:    def.cf</span>
+<span class="go">    deleted:    lib/3.5/reports.cf</span>
+<span class="go">    deleted:    lib/3.6/reports.cf</span>
+<span class="go">    deleted:    services/autorun.cf</span>
+<span class="go">    deleted:    services/file_change.cf</span>
+<span class="go">    deleted:    update/cfe_internal_dc_workflow.cf</span>
+<span class="go">    deleted:    update/cfe_internal_local_git_remote.cf</span>
+<span class="go">    deleted:    update/cfe_internal_update_from_repository.cf</span>
+<span class="go">    deleted:    update/update_bins.cf</span>
+<span class="go">    deleted:    update/update_policy.cf</span>
+<span class="go">    deleted:    update/update_processes.cf</span>
+</code></pre>
+</div>
+
+<p>It&#39;s a good idea to review these files as some of them might have contained
+modifications, especially <code>def.cf</code> and any files under <code>controls</code>. Always keep
+track of the modifications you make to any of the files that ship with the
+MPF. Make sure that any necessary customization&#39;s to the deleted files are
+carried through to their new locations.</p>
+
+<p>Once the files are no longer needed you can <code>git rm</code> them.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">[root@hub MPF_upgrade]#</span> git rm def.cf cf_promises_release_id cf_promises_validated cfe_internal/CFE_hub_specific.cf cfe_internal/CFE_knowledge.cf cfe_internal/cfengine_processes.cf cfe_internal/ha/ha.cf cfe_internal/ha/ha_def.cf cfe_internal/host_info_report.cf controls/3.4/cf_serverd.cf controls/cf_agent.cf controls/cf_execd.cf controls/cf_hub.cf controls/cf_monitord.cf controls/cf_runagent.cf controls/cf_serverd.cf lib/3.5/reports.cf lib/3.6/reports.cf services/autorun.cf services/file_change.cf update/cfe_internal_dc_workflow.cf update/cfe_internal_local_git_remote.cf update/cfe_internal_update_from_repository.cf update/update_bins.cf update/update_policy.cf update/update_processes.cf
+<span class="go">rm &#39;def.cf&#39;</span>
+<span class="go">rm &#39;cf_promises_release_id&#39;</span>
+<span class="go">rm &#39;cf_promises_validated&#39;</span>
+<span class="go">rm &#39;cfe_internal/CFE_hub_specific.cf&#39;</span>
+<span class="go">rm &#39;cfe_internal/CFE_knowledge.cf&#39;</span>
+<span class="go">rm &#39;cfe_internal/cfengine_processes.cf&#39;</span>
+<span class="go">rm &#39;cfe_internal/ha/ha.cf&#39;</span>
+<span class="go">rm &#39;cfe_internal/ha/ha_def.cf&#39;</span>
+<span class="go">rm &#39;cfe_internal/host_info_report.cf&#39;</span>
+<span class="go">rm &#39;controls/3.4/cf_serverd.cf&#39;</span>
+<span class="go">rm &#39;controls/cf_agent.cf&#39;</span>
+<span class="go">rm &#39;controls/cf_execd.cf&#39;</span>
+<span class="go">rm &#39;controls/cf_hub.cf&#39;</span>
+<span class="go">rm &#39;controls/cf_monitord.cf&#39;</span>
+<span class="go">rm &#39;controls/cf_runagent.cf&#39;</span>
+<span class="go">rm &#39;controls/cf_serverd.cf&#39;</span>
+<span class="go">rm &#39;lib/3.5/reports.cf&#39;</span>
+<span class="go">rm &#39;lib/3.6/reports.cf&#39;</span>
+<span class="go">rm &#39;services/autorun.cf&#39;</span>
+<span class="go">rm &#39;services/file_change.cf&#39;</span>
+<span class="go">rm &#39;update/cfe_internal_dc_workflow.cf&#39;</span>
+<span class="go">rm &#39;update/cfe_internal_local_git_remote.cf&#39;</span>
+<span class="go">rm &#39;update/cfe_internal_update_from_repository.cf&#39;</span>
+<span class="go">rm &#39;update/update_bins.cf&#39;</span>
+<span class="go">rm &#39;update/update_policy.cf&#39;</span>
+<span class="go">rm &#39;update/update_processes.cf&#39;</span>
+</code></pre>
+</div>
+
+<p>Review <code>git status</code> and make sure that the policy validates then commit your
+changes.</p>
+<div class="highlight"><pre><code class="console"><span class="gp">[root@hub MPF_upgrade]#</span> git status
+<span class="go">On branch master</span>
+<span class="go">Changes to be committed:</span>
+<span class="go">  (use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span>
+
+<span class="go">    deleted:    cf_promises_release_id</span>
+<span class="go">    deleted:    cf_promises_validated</span>
+<span class="go">    modified:   cfe_internal/CFE_cfengine.cf</span>
+<span class="go">    renamed:    cfe_internal/cfengine_processes.cf -&gt; cfe_internal/core/deprecated/cfengine_processes.cf</span>
+<span class="go">    renamed:    cfe_internal/host_info_report.cf -&gt; cfe_internal/core/host_info_report.cf</span>
+<span class="go">    new file:   cfe_internal/core/limit_robot_agents.cf</span>
+<span class="go">    new file:   cfe_internal/core/log_rotation.cf</span>
+<span class="go">    new file:   cfe_internal/core/main.cf</span>
+<span class="go">    renamed:    cfe_internal/CFE_hub_specific.cf -&gt; cfe_internal/enterprise/CFE_hub_specific.cf</span>
+<span class="go">    renamed:    cfe_internal/CFE_knowledge.cf -&gt; cfe_internal/enterprise/CFE_knowledge.cf</span>
+<span class="go">    renamed:    services/file_change.cf -&gt; cfe_internal/enterprise/file_change.cf</span>
+<span class="go">    new file:   cfe_internal/enterprise/ha/ha.cf</span>
+<span class="go">    renamed:    cfe_internal/ha/ha_def.cf -&gt; cfe_internal/enterprise/ha/ha_def.cf</span>
+<span class="go">    new file:   cfe_internal/enterprise/ha/ha_update.cf</span>
+<span class="go">    new file:   cfe_internal/enterprise/main.cf</span>
+<span class="go">    deleted:    cfe_internal/ha/ha.cf</span>
+<span class="go">    renamed:    update/cfe_internal_dc_workflow.cf -&gt; cfe_internal/update/cfe_internal_dc_workflow.cf</span>
+<span class="go">    renamed:    update/cfe_internal_local_git_remote.cf -&gt; cfe_internal/update/cfe_internal_local_git_remote.cf</span>
+<span class="go">    new file:   cfe_internal/update/cfe_internal_update_from_repository.cf</span>
+<span class="go">    renamed:    update/update_bins.cf -&gt; cfe_internal/update/update_bins.cf</span>
+<span class="go">    renamed:    update/update_policy.cf -&gt; cfe_internal/update/update_policy.cf</span>
+<span class="go">    renamed:    update/update_processes.cf -&gt; cfe_internal/update/update_processes.cf</span>
+<span class="go">    deleted:    controls/3.4/cf_serverd.cf</span>
+<span class="go">    renamed:    controls/cf_agent.cf -&gt; controls/3.5/cf_agent.cf</span>
+<span class="go">    new file:   controls/3.5/cf_execd.cf</span>
+<span class="go">    renamed:    controls/cf_hub.cf -&gt; controls/3.5/cf_hub.cf</span>
+<span class="go">    renamed:    controls/cf_monitord.cf -&gt; controls/3.5/cf_monitord.cf</span>
+<span class="go">    renamed:    controls/cf_runagent.cf -&gt; controls/3.5/cf_runagent.cf</span>
+<span class="go">    renamed:    controls/cf_serverd.cf -&gt; controls/3.5/cf_serverd.cf</span>
+<span class="go">    renamed:    def.cf -&gt; controls/3.5/def.cf</span>
+<span class="go">    new file:   controls/3.5/def_inputs.cf</span>
+<span class="go">    renamed:    lib/3.5/reports.cf -&gt; controls/3.5/reports.cf</span>
+<span class="go">    renamed:    update.cf -&gt; controls/3.5/update_def.cf</span>
+<span class="go">    new file:   controls/3.5/update_def_inputs.cf</span>
+<span class="go">    new file:   controls/3.6/cf_agent.cf</span>
+<span class="go">    new file:   controls/3.6/cf_execd.cf</span>
+<span class="go">    new file:   controls/3.6/cf_hub.cf</span>
+<span class="go">    new file:   controls/3.6/cf_monitord.cf</span>
+<span class="go">    new file:   controls/3.6/cf_runagent.cf</span>
+<span class="go">    new file:   controls/3.6/cf_serverd.cf</span>
+<span class="go">    new file:   controls/3.6/def.cf</span>
+<span class="go">    new file:   controls/3.6/def_inputs.cf</span>
+<span class="go">    renamed:    lib/3.6/reports.cf -&gt; controls/3.6/reports.cf</span>
+<span class="go">    new file:   controls/3.6/update_def.cf</span>
+<span class="go">    new file:   controls/3.6/update_def_inputs.cf</span>
+<span class="go">    new file:   controls/3.7/cf_agent.cf</span>
+<span class="go">    new file:   controls/3.7/cf_execd.cf</span>
+<span class="go">    new file:   controls/3.7/cf_hub.cf</span>
+<span class="go">    new file:   controls/3.7/cf_monitord.cf</span>
+<span class="go">    new file:   controls/3.7/cf_runagent.cf</span>
+<span class="go">    new file:   controls/3.7/cf_serverd.cf</span>
+<span class="go">    new file:   controls/3.7/def.cf</span>
+<span class="go">    new file:   controls/3.7/def_inputs.cf</span>
+<span class="go">    new file:   controls/3.7/reports.cf</span>
+<span class="go">    new file:   controls/3.7/update_def.cf</span>
+<span class="go">    new file:   controls/3.7/update_def_inputs.cf</span>
+<span class="go">    deleted:    controls/cf_execd.cf</span>
+<span class="go">    modified:   inventory/any.cf</span>
+<span class="go">    new file:   inventory/freebsd.cf</span>
+<span class="go">    modified:   inventory/linux.cf</span>
+<span class="go">    modified:   inventory/lsb.cf</span>
+<span class="go">    modified:   lib/3.5/cfe_internal.cf</span>
+<span class="go">    modified:   lib/3.5/common.cf</span>
+<span class="go">    modified:   lib/3.5/files.cf</span>
+<span class="go">    modified:   lib/3.5/packages.cf</span>
+<span class="go">    renamed:    services/autorun.cf -&gt; lib/3.6/autorun.cf</span>
+<span class="go">    modified:   lib/3.6/cfe_internal.cf</span>
+<span class="go">    renamed:    lib/3.6/cfe_internal.cf -&gt; lib/3.6/cfe_internal_hub.cf</span>
+<span class="go">    modified:   lib/3.6/common.cf</span>
+<span class="go">    modified:   lib/3.6/files.cf</span>
+<span class="go">    modified:   lib/3.6/packages.cf</span>
+<span class="go">    modified:   lib/3.6/services.cf</span>
+<span class="go">    modified:   lib/3.6/stdlib.cf</span>
+<span class="go">    new file:   lib/3.7/autorun.cf</span>
+<span class="go">    new file:   lib/3.7/bundles.cf</span>
+<span class="go">    new file:   lib/3.7/cfe_internal.cf</span>
+<span class="go">    new file:   lib/3.7/cfe_internal_hub.cf</span>
+<span class="go">    new file:   lib/3.7/cfengine_enterprise_hub_ha.cf</span>
+<span class="go">    new file:   lib/3.7/commands.cf</span>
+<span class="go">    new file:   lib/3.7/common.cf</span>
+<span class="go">    new file:   lib/3.7/databases.cf</span>
+<span class="go">    new file:   lib/3.7/edit_xml.cf</span>
+<span class="go">    new file:   lib/3.7/examples.cf</span>
+<span class="go">    new file:   lib/3.7/feature.cf</span>
+<span class="go">    new file:   lib/3.7/files.cf</span>
+<span class="go">    new file:   lib/3.7/guest_environments.cf</span>
+<span class="go">    new file:   lib/3.7/monitor.cf</span>
+<span class="go">    new file:   lib/3.7/packages.cf</span>
+<span class="go">    new file:   lib/3.7/paths.cf</span>
+<span class="go">    new file:   lib/3.7/processes.cf</span>
+<span class="go">    new file:   lib/3.7/services.cf</span>
+<span class="go">    new file:   lib/3.7/stdlib.cf</span>
+<span class="go">    new file:   lib/3.7/storage.cf</span>
+<span class="go">    new file:   lib/3.7/users.cf</span>
+<span class="go">    new file:   lib/3.7/vcs.cf</span>
+<span class="go">    modified:   promises.cf</span>
+<span class="go">    new file:   services/main.cf</span>
+<span class="go">    modified:   sketches/meta/api-runfile.cf</span>
+<span class="go">    modified:   update.cf</span>
+<span class="go">    deleted:    update/cfe_internal_update_from_repository.cf</span>
+
+<span class="gp">[root@hub MPF_upgrade]#</span> cf-promises -cf ./promises.cf
+<span class="gp">[root@hub MPF_upgrade]#</span> cf-promises -cf ./update.cf
+<span class="gp">[root@hub MPF_upgrade]#</span> git commit -m <span class="s2">&quot;After Policy Upgrade&quot;</span>
+<span class="go"> 100 files changed, 12521 insertions(+), 1493 deletions(-)</span>
+<span class="go"> delete mode 100644 cf_promises_release_id</span>
+<span class="go"> delete mode 100644 cf_promises_validated</span>
+<span class="go"> rewrite cfe_internal/CFE_cfengine.cf (88%)</span>
+<span class="go"> rename cfe_internal/{ =&gt; core/deprecated}/cfengine_processes.cf (95%)</span>
+<span class="go"> rename cfe_internal/{ =&gt; core}/host_info_report.cf (98%)</span>
+<span class="go"> create mode 100644 cfe_internal/core/limit_robot_agents.cf</span>
+<span class="go"> create mode 100644 cfe_internal/core/log_rotation.cf</span>
+<span class="go"> create mode 100644 cfe_internal/core/main.cf</span>
+<span class="go"> rename cfe_internal/{ =&gt; enterprise}/CFE_hub_specific.cf (85%)</span>
+<span class="go"> rename cfe_internal/{ =&gt; enterprise}/CFE_knowledge.cf (100%)</span>
+<span class="go"> rename {services =&gt; cfe_internal/enterprise}/file_change.cf (58%)</span>
+<span class="go"> create mode 100644 cfe_internal/enterprise/ha/ha.cf</span>
+<span class="go"> rename cfe_internal/{ =&gt; enterprise}/ha/ha_def.cf (54%)</span>
+<span class="go"> create mode 100644 cfe_internal/enterprise/ha/ha_update.cf</span>
+<span class="go"> create mode 100644 cfe_internal/enterprise/main.cf</span>
+<span class="go"> delete mode 100644 cfe_internal/ha/ha.cf</span>
+<span class="go"> rename {update =&gt; cfe_internal/update}/cfe_internal_dc_workflow.cf (100%)</span>
+<span class="go"> rename {update =&gt; cfe_internal/update}/cfe_internal_local_git_remote.cf (100%)</span>
+<span class="go"> create mode 100644 cfe_internal/update/cfe_internal_update_from_repository.cf</span>
+<span class="go"> rename {update =&gt; cfe_internal/update}/update_bins.cf (97%)</span>
+<span class="go"> rename {update =&gt; cfe_internal/update}/update_policy.cf (92%)</span>
+<span class="go"> rename {update =&gt; cfe_internal/update}/update_processes.cf (92%)</span>
+<span class="go"> delete mode 100644 controls/3.4/cf_serverd.cf</span>
+<span class="go"> rename controls/{ =&gt; 3.5}/cf_agent.cf (80%)</span>
+<span class="go"> create mode 100644 controls/3.5/cf_execd.cf</span>
+<span class="go"> rename controls/{ =&gt; 3.5}/cf_hub.cf (100%)</span>
+<span class="go"> rename controls/{ =&gt; 3.5}/cf_monitord.cf (100%)</span>
+<span class="go"> rename controls/{ =&gt; 3.5}/cf_runagent.cf (100%)</span>
+<span class="go"> rename controls/{ =&gt; 3.5}/cf_serverd.cf (87%)</span>
+<span class="go"> rename def.cf =&gt; controls/3.5/def.cf (74%)</span>
+<span class="go"> create mode 100644 controls/3.5/def_inputs.cf</span>
+<span class="go"> rename {lib =&gt; controls}/3.5/reports.cf (80%)</span>
+<span class="go"> rename update.cf =&gt; controls/3.5/update_def.cf (59%)</span>
+<span class="go"> create mode 100644 controls/3.5/update_def_inputs.cf</span>
+<span class="go"> create mode 100644 controls/3.6/cf_agent.cf</span>
+<span class="go"> create mode 100644 controls/3.6/cf_execd.cf</span>
+<span class="go"> create mode 100644 controls/3.6/cf_hub.cf</span>
+<span class="go"> create mode 100644 controls/3.6/cf_monitord.cf</span>
+<span class="go"> create mode 100644 controls/3.6/cf_runagent.cf</span>
+<span class="go"> create mode 100644 controls/3.6/cf_serverd.cf</span>
+<span class="go"> create mode 100644 controls/3.6/def.cf</span>
+<span class="go"> create mode 100644 controls/3.6/def_inputs.cf</span>
+<span class="go"> rename {lib =&gt; controls}/3.6/reports.cf (78%)</span>
+<span class="go"> create mode 100644 controls/3.6/update_def.cf</span>
+<span class="go"> create mode 100644 controls/3.6/update_def_inputs.cf</span>
+<span class="go"> create mode 100644 controls/3.7/cf_agent.cf</span>
+<span class="go"> create mode 100644 controls/3.7/cf_execd.cf</span>
+<span class="go"> create mode 100644 controls/3.7/cf_hub.cf</span>
+<span class="go"> create mode 100644 controls/3.7/cf_monitord.cf</span>
+<span class="go"> create mode 100644 controls/3.7/cf_runagent.cf</span>
+<span class="go"> create mode 100644 controls/3.7/cf_serverd.cf</span>
+<span class="go"> create mode 100644 controls/3.7/def.cf</span>
+<span class="go"> create mode 100644 controls/3.7/def_inputs.cf</span>
+<span class="go"> create mode 100644 controls/3.7/reports.cf</span>
+<span class="go"> create mode 100644 controls/3.7/update_def.cf</span>
+<span class="go"> create mode 100644 controls/3.7/update_def_inputs.cf</span>
+<span class="go"> delete mode 100644 controls/cf_execd.cf</span>
+<span class="go"> create mode 100644 inventory/freebsd.cf</span>
+<span class="go"> rename {services =&gt; lib/3.6}/autorun.cf (50%)</span>
+<span class="go"> rewrite lib/3.6/cfe_internal.cf (67%)</span>
+<span class="go"> rename lib/3.6/{cfe_internal.cf =&gt; cfe_internal_hub.cf} (77%)</span>
+<span class="go"> create mode 100644 lib/3.7/autorun.cf</span>
+<span class="go"> create mode 100644 lib/3.7/bundles.cf</span>
+<span class="go"> create mode 100644 lib/3.7/cfe_internal.cf</span>
+<span class="go"> create mode 100644 lib/3.7/cfe_internal_hub.cf</span>
+<span class="go"> create mode 100644 lib/3.7/cfengine_enterprise_hub_ha.cf</span>
+<span class="go"> create mode 100644 lib/3.7/commands.cf</span>
+<span class="go"> create mode 100644 lib/3.7/common.cf</span>
+<span class="go"> create mode 100644 lib/3.7/databases.cf</span>
+<span class="go"> create mode 100644 lib/3.7/edit_xml.cf</span>
+<span class="go"> create mode 100644 lib/3.7/examples.cf</span>
+<span class="go"> create mode 100644 lib/3.7/feature.cf</span>
+<span class="go"> create mode 100644 lib/3.7/files.cf</span>
+<span class="go"> create mode 100644 lib/3.7/guest_environments.cf</span>
+<span class="go"> create mode 100644 lib/3.7/monitor.cf</span>
+<span class="go"> create mode 100644 lib/3.7/packages.cf</span>
+<span class="go"> create mode 100644 lib/3.7/paths.cf</span>
+<span class="go"> create mode 100644 lib/3.7/processes.cf</span>
+<span class="go"> create mode 100644 lib/3.7/services.cf</span>
+<span class="go"> create mode 100644 lib/3.7/stdlib.cf</span>
+<span class="go"> create mode 100644 lib/3.7/storage.cf</span>
+<span class="go"> create mode 100644 lib/3.7/users.cf</span>
+<span class="go"> create mode 100644 lib/3.7/vcs.cf</span>
+<span class="go"> create mode 100644 services/main.cf</span>
+<span class="go"> rewrite update.cf (78%)</span>
+<span class="go"> delete mode 100644 update/cfe_internal_update_from_repository.cf</span>
+</code></pre>
+</div>
+
+<p>Now your Masterfiles Policy Framework is upgraded and ready to be tested.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-mpf.html">mpf</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-upgrade.html">upgrade</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-masterfiles.html">masterfiles</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-tutorial.html">tutorial</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 09 July 2021
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/examples/tutorials/masterfiles_policy_framework_upgrade.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/c2073cd2eb5c0d138609876a2101e6614e8752c0" target="_blank">c2073cd2eb5c0d138609876a2101e6614e8752c0</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.17/assets/footer-c635771088a429be0f794a44abddc48f.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>

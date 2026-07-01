@@ -1,0 +1,151 @@
+3.0.0	New classes enterprise, enterprise_X, enterprise_X_Y, enterprise_X_Y_Z
+	on CFEngine Enterprise, to reflect the version running. New variable
+	sys.enterprise_version that holds the CFEngine Enterprise version.
+	This complements the Nova classes and the sys.nova_version variable,
+	which will eventually be deprecated.
+
+	Created a variable update_policy.mongodb_dir, for cases where MongoDB
+	should not run out of /var/cfengine/state (could grow to tens of gigabytes).
+
+	Removed commercial_customer class, as it was unused in internal policies.
+	Please use enterprise_edition instead if you used this in your policies.
+
+	New performance report events: DBPurgeHostsAll, DBMaintenance,
+	DBMaintenanceTimestampsSingleHost, DBCacheCompliance, DBReportCollectAll.
+
+	License verification is made more robust by not relying on the last-seen
+	database anymore. This means you do not need to bootstrap a client to
+	verify the license. See the cf-key --install-license option.
+
+2.2.0
+	More diagnostics on report collection from cf-hub. Logging more
+	useful information in cf-hub -l, measuring total collection time
+	in benchmarks report, under id "ReportCollectAll".
+
+	Fixed issue where client would show as green in the Mission Portal when no
+	data was received, e.g. due to access or license error at client.
+	Now correctly shows as blue in these cases.
+
+	Greatly reduced amount of connections from cf-hub
+	to localhost mongodb. Now there is one connection per
+	cf-hub run (max 50), before it was three per client.
+	
+	Software and variable report now contains end-node discovery time.
+
+	Software and patches available/status reports contain maximum 5-minute old data,
+	improved from 6 hours in last release. This will only apply to clients
+	that are upgraded to 2.2.0.
+
+	Software report query from Mission Portal is much faster on larger data-sets due
+	to removal of autocomplete feature.
+
+	Upgraded mongod from version 1.8.2 to 2.0.4, which increases
+	efficiency on concurrency and reduces memory usage.
+
+	New function hostswithclass() that generates a list of hosts in a given class
+	on the hub.
+
+	The bundled failsafe.cf policy now has trustkey=false to avoid IP spoofing
+	attacks in default policy
+
+
+2.1.0 
+	New interface with interactive graphs on Nova hub.
+
+	User management on hub.
+
+	Allowing TAB in file diff report. Better handling
+	of large diffs and attempts to diff binaries.
+
+	Support for adding notes to all hosts and reports.
+
+	Support for policy staging environments.
+
+	Nova reports can be exported to file and imported manually
+	using cf-report -x and cf-report -i.
+
+	Faster collection of monitoring (vitals) data due to 
+	new protocol and data structure.
+
+	Long-term storage (one year) of diff and changes reports.
+
+	The variables report got a last-seen column. Now variables
+	are stored in the hub for a longer time like classes, 
+	and not overwritten on every update.
+
+	The report of reports-promises are shown in the promise repaired log 
+	in the Mission Portal.
+	
+	New option cf-hub --cache, recreates the cache data needed
+	by the web interface.
+	
+	Only showing the last seen host name and ip address when
+	listing hosts and on the host page.
+
+	Reliability improvements, especially when querying
+	the variables report.
+
+2.0.2 
+	Much faster report querying.
+	
+	Allows to specify age interval when querying promise not
+	kept and repaired.
+
+	Promiser conflict identifcation.
+
+	Built with Cfengine Community Edition 3.1.4.
+
+2.0.1   
+	Fixed promise query of not kept/promise repaired logs.
+
+1.2.0
+	Windows Event Logs include output_prefix if set, and which component 
+	reported the event. The verbosity of event logs have been reduced
+	by not including promise kept and repaired events, this can now be
+	tuned with action.log_level.
+	
+	Take out network communications from total state calculation,
+	as it gets counted twice.
+	
+1.1.2 
+	Encryption problems fixed in Community Edition.
+
+	Built with Cfengine Community Edition 3.0.4p3.
+
+1.1.0
+	Regular expressions in file paths supported on Windows by using
+	forward slash as path separator.
+
+	CPU utilization report on Windows.
+	Users logged in report on Windows.
+
+	On the Windows cf-serverd, requests for /var/cfengine are
+	translated to $(sys.workdir)\Cfengine, and path separators are
+	automatically adjusted ("/" becomes "\"). This yields support for
+	more platform-independent promises and allows for automatic
+	copying of reports from Windows clients to the policy server.
+
+	Scale on graphs in the Knowledge Map, and different background
+	color gives more readability.
+
+	Special functions added for accessing remote classes for distributed cooperation.
+
+1.0.0
+	Reports added to cf-report for compliance, setuid, file_changes etc.
+	Added csv format also
+	
+	Automating topic map integration of policy, with impact analysis
+	using promisee and builds_on promises.
+
+	Literal string lookup in server.
+
+	Database SQL and registry functions added. Verification and sanity
+	checking of SQL database table structure. Create and destroy
+	databases convergently.
+
+	Access control list support for Linux.
+
+	Powerful and lightweight promises for Customizable monitoring and
+	system discovery promises added to cf-monitord.
+	
+	Longterm memory for 3 year trend analysis.

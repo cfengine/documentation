@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.10  Documentation - users</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.10/assets/global-9291732ba4137970d6f84f199dc9b48d.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "users";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			                 <option value="/docs/master/">master</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/" selected>Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="012826289311752768906:v9zopcogc1m" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a><ul class="level2"><li><a href="reference-promise-types-access.html">access</a></li><li><a href="reference-promise-types-edit_line.html">bundle edit_line</a></li><li><a href="reference-promise-types-edit_xml.html">bundle edit_xml</a></li><li><a href="reference-promise-types-classes.html">classes</a></li><li><a href="reference-promise-types-commands.html">commands</a></li><li><a href="reference-promise-types-databases.html">databases</a></li><li><a href="reference-promise-types-defaults.html">defaults</a></li><li><a href="reference-promise-types-files.html">files</a></li><li><a href="reference-promise-types-guest_environments.html">guest_environments</a></li><li><a href="reference-promise-types-measurements.html">measurements</a></li><li><a href="reference-promise-types-meta.html">meta</a></li><li><a href="reference-promise-types-methods.html">methods</a></li><li><a href="reference-promise-types-packages.html">packages</a></li><li><a href="reference-promise-types-packages-deprecated.html">packages (deprecated)</a></li><li><a href="reference-promise-types-processes.html">processes</a></li><li><a href="reference-promise-types-reports.html">reports</a></li><li><a href="reference-promise-types-roles.html">roles</a></li><li><a href="reference-promise-types-services.html">services</a></li><li><a href="reference-promise-types-storage.html">storage</a></li><li><a class="active" href="reference-promise-types-users.html">users</a></li><li><a href="reference-promise-types-vars.html">vars</a></li></ul></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-language-concepts.html">Language Concepts</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-package_modules.html">Package Modules</a></li><li><a href="reference-masterfiles-policy-framework.html">Masterfiles Policy Framework</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li><li><a href="reference-macros.html">Macros</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-promise-types.html">Promise Types and Attributes</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    users
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>User promises are promises made about <strong>local users</strong> on a host. They
+express which users should be present on a system, and which
+attributes and group memberships the users should have.</p>
+
+<p>Every user promise has at least one attribute, <a href="reference-promise-types-users.html#policy" title="users - policy"><code>policy</code></a>, which
+describes whether or not the user should be present on the system. Other
+attributes are optional; they allow you to specify UID, home directory, login
+shell, group membership, description, and password. Platform native tools are
+used to create/modify/delete users (C api on Windows, and <code>useradd</code> <code>usermod</code>
+<code>userdel</code> on Unix, Linux and similar platforms). User presence is determined by
+the <code>NetUserGetInfo</code> function on Windows and reading <code>/etc/passwd</code> on Unix,
+Linux and similar platforms nix External/non-local for example LDAP are ignored.</p>
+
+<p>A bundle can be associated with a user promise, such as when a user is created
+in order to do housekeeping tasks in his/her home directory, like putting
+default configuration files in place, installing encryption keys, and storing
+a login picture.</p>
+
+<p><strong>Note:</strong> This promise type does not create or delete groups (not even a users
+primary group). The groups the user is promised to be in need to be managed
+separately.</p>
+
+<p><strong>History:</strong> Introduced in CFEngine 3.6.0</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">      <span class="kd">users</span><span class="p">:</span>
+         <span class="s">&quot;jsmith&quot;</span>
+            <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span>
+            <span class="kr">description</span> <span class="o">=&gt;</span> <span class="s">&quot;John Smith&quot;</span><span class="p">,</span>
+            <span class="kr">home_dir</span> <span class="o">=&gt;</span> <span class="s">&quot;/remote/home/jsmith&quot;</span><span class="p">,</span>
+            <span class="kr">group_primary</span> <span class="o">=&gt;</span> <span class="s">&quot;users&quot;</span><span class="p">,</span>
+            <span class="kr">groups_secondary</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;printers&quot;</span><span class="p">,</span> <span class="s">&quot;webadmin&quot;</span> <span class="p">},</span>
+            <span class="kr">shell</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/bash&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<hr>
+<h2 id="attributes">Attributes</h2><h3 id="common-attributes">Common Attributes</h3>
+<p>Common attributes are available to all promise types. Full details for common
+attributes can be found in the <a href="reference-promise-types.html#common-attributes" title="Promise Types and Attributes - Common Attributes">Common Attributes section</a> of
+the <a href="reference-promise-types.html" title="Promise Types and Attributes">Promise Types and Attributes</a> page. The common attributes are as follows:</p>
+<h4 id="action"><a href="reference-promise-types.html#action" title="Promise Types and Attributes - action">action</a></h4><h4 id="classes"><a href="reference-promise-types.html#classes" title="Promise Types and Attributes - classes">classes</a></h4><h4 id="comment"><a href="reference-promise-types.html#comment" title="Promise Types and Attributes - comment">comment</a></h4><h4 id="depends_on"><a href="reference-promise-types.html#depends_on" title="Promise Types and Attributes - depends_on">depends_on</a></h4><h4 id="handle"><a href="reference-promise-types.html#handle" title="Promise Types and Attributes - handle">handle</a></h4><h4 id="ifvarclass"><a href="reference-promise-types.html#ifvarclass" title="Promise Types and Attributes - ifvarclass">ifvarclass</a></h4><h4 id="meta"><a href="reference-promise-types.html#meta" title="Promise Types and Attributes - meta">meta</a></h4>
+<hr>
+<h3 id="description">description</h3>
+<p><strong>Description:</strong> The <code>description</code> string sets the description
+associated with a user.</p>
+
+<p>The exact use of this string depends on the operating system,
+but most systems treat it as the full name of the user and therefore
+display it on graphical login terminals.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">      <span class="kd">users</span><span class="p">:</span>
+         <span class="s">&quot;jsmith&quot;</span>
+            <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span>
+            <span class="kr">description</span> <span class="o">=&gt;</span> <span class="s">&quot;John Smith&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="group_primary">group_primary</h3>
+<p><strong>Description:</strong> The <code>group_primary</code> attribute sets the user&#39;s primary group.</p>
+
+<p><strong>Note:</strong> On Windows, no difference exists between primary and
+secondary groups so specifying either one works.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">      <span class="kd">users</span><span class="p">:</span>
+         <span class="s">&quot;jsmith&quot;</span>
+            <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span>
+            <span class="kr">group_primary</span> <span class="o">=&gt;</span> <span class="s">&quot;users&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="groups_secondary">groups_secondary</h3>
+<p><strong>Description:</strong> The <code>groups_secondary</code> attributes sets the user&#39;s
+secondary group membership(s), in addition to his/her primary group.</p>
+
+<p><strong>Note:</strong> On Windows, no difference exists between primary and
+secondary groups so specifying either one works.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#slist" title="vars - slist"><code>slist</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>.*</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">      <span class="kd">users</span><span class="p">:</span>
+         <span class="s">&quot;jsmith&quot;</span>
+            <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span>
+            <span class="kr">groups_secondary</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;site_a&quot;</span><span class="p">,</span> <span class="s">&quot;tester&quot;</span> <span class="p">};</span>
+</code></pre>
+</div>
+<h3 id="home_bundle">home_bundle</h3>
+<p><strong>Description:</strong> The <code>home_bundle</code> attribute specifies a bundle that
+is evaluated when the user is created.</p>
+
+<p>If the user already exists, the bundle is not evaluated.</p>
+
+<p>The name of the promised user is not passed to the bundle
+directly, but you can specify a bundle with parameters in order to
+pass it in.</p>
+
+<p>Note that this attribute does not set the home directory in the user
+database. For that, you must use the <a href="reference-promise-types-users.html#home_dir" title="users - home_dir"><code>home_dir</code></a> attribute.</p>
+
+<p><strong>Type:</strong> <code>bundle</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">users</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;jack&quot;</span><span class="p">,</span> <span class="s">&quot;john&quot;</span> <span class="p">};</span>
+      <span class="p">&quot;</span><span class="nv">skel</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;/etc/skel&quot;</span><span class="p">;</span>
+
+  <span class="kd">users</span><span class="p">:</span>
+    <span class="nc">!windows</span><span class="p">::</span>
+      <span class="s">&quot;</span><span class="si">$(users)</span><span class="s">&quot;</span>
+        <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span>
+        <span class="kr">home_dir</span> <span class="o">=&gt;</span> <span class="s">&quot;/home/</span><span class="si">$(users)</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="kr">home_bundle</span> <span class="o">=&gt;</span> <span class="nf">home_skel</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">users</span><span class="p">),</span> <span class="err">$</span><span class="p">(</span><span class="nf">skel</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="cf3"><span class="k">bundle</span> <span class="k">agent</span> <span class="nf">home_skel</span><span class="p">(</span><span class="nv">user</span><span class="p">,</span> <span class="nv">skel</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kd">files</span><span class="p">:</span>
+    <span class="s">&quot;/home/</span><span class="si">$(user)</span><span class="s">/.&quot;</span>
+      <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+      <span class="kr">copy_from</span> <span class="o">=&gt;</span> <span class="nf">seed_cp</span><span class="p">(</span><span class="err">$</span><span class="p">(</span><span class="nf">skel</span><span class="p">)),</span>
+      <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">recurse</span><span class="p">(</span><span class="s">&quot;inf&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This example uses implicit looping to create the two users, &quot;jack&quot;
+and &quot;john.&quot; Each has his respective home directory that is created by
+the <a href="reference-promise-types-files.html" title="files"><code>files</code></a> promise.</p>
+<h3 id="home_bundle_inherit">home_bundle_inherit</h3>
+<p><strong>Description:</strong> The <code>home_bundle_inherit</code> attribute specifies if classes set
+in the current bundle are inherited by the bundle specified in the
+<a href="reference-promise-types-users.html#home_bundle" title="users - home_bundle"><code>home_bundle</code></a> attribute.</p>
+
+<p><strong>Type:</strong> <a href="guide-language-concepts-promises.html#promise-attributes"><code>boolean</code></a></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">   <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">main</span>
+   <span class="p">{</span>
+      <span class="kd">vars</span><span class="p">:</span>
+         <span class="p">&quot;</span><span class="nv">user</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;jack&quot;</span><span class="p">;</span>
+      <span class="kd">classes</span><span class="p">:</span>
+         <span class="s">&quot;should_have_home_dir&quot;</span> <span class="kr">expression</span> <span class="o">=&gt;</span> <span class="nf">regcmp</span><span class="p">(</span><span class="s">&quot;j.*&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(user)</span><span class="s">&quot;</span><span class="p">);</span>
+      <span class="kd">users</span><span class="p">:</span>
+         <span class="s">&quot;</span><span class="si">$(user)</span><span class="s">&quot;</span>
+            <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span>
+            <span class="kr">home_dir</span> <span class="o">=&gt;</span> <span class="s">&quot;/home/</span><span class="si">$(user)</span><span class="s">&quot;</span><span class="p">,</span>
+            <span class="kr">home_bundle</span> <span class="o">=&gt;</span> <span class="nf">setup_home_dir</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(user)</span><span class="s">&quot;</span><span class="p">),</span>
+            <span class="kr">home_bundle_inherit</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+   <span class="p">}</span>
+
+   <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">setup_home_dir</span><span class="p">(</span><span class="nv">user</span><span class="p">)</span>
+   <span class="p">{</span>
+      <span class="kd">files</span><span class="p">:</span>
+         <span class="nc">should_have_home_dir</span><span class="p">::</span>
+            <span class="s">&quot;/home/</span><span class="si">$(user)</span><span class="s">/.&quot;</span>
+               <span class="kr">create</span> <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">;</span>
+   <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The user &quot;jack&quot; will have his home directory created, since his
+username starts with &quot;j&quot;.</p>
+<h3 id="home_dir">home_dir</h3>
+<p><strong>Description:</strong> The <code>home_dir</code> attribute associates a user with the
+given home directory.</p>
+
+<p>Note that this attribute does not create the directory. For that you
+must use the <a href="reference-promise-types-users.html#home_bundle" title="users - home_bundle"><code>home_bundle</code></a> attribute. This just sets the home
+directory in the user database.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>&quot;?(/.*)</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">      <span class="kd">users</span><span class="p">:</span>
+         <span class="s">&quot;jsmith&quot;</span>
+            <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;present&quot;</span><span class="p">,</span>
+            <span class="kr">home_dir</span> <span class="o">=&gt;</span> <span class="s">&quot;/home/j/jsmith&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="password">password</h3>
+<p><strong>Description:</strong> The <code>password</code> attribute specifies a <code>password</code> body
+that contains information about a user&#39;s password.</p>
+
+<p><strong>Type:</strong> <code>body password</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">password</span> <span class="nf">user_password</span>
+    <span class="p">{</span>
+        <span class="kr">format</span> <span class="o">=&gt;</span> <span class="s">&quot;hash&quot;</span><span class="p">;</span>
+          <span class="kr">data</span> <span class="o">=&gt;</span> <span class="s">&quot;jiJSlLSkZuVLE&quot;</span><span class="p">;</span> <span class="c"># &quot;CFEngine&quot;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>See also:</strong> <a href="reference-promise-types.html#common-body-attributes" title="Promise Types and Attributes - Common Body Attributes">Common Body Attributes</a></p>
+<h4 id="format">format</h4>
+<p><strong>Description:</strong> Specifies the format of the given password data.</p>
+
+<p>If the value is &quot;hash,&quot; then the <a href="reference-promise-types-users.html#data" title="users - data "><code>data</code></a> attribute is expected to
+contain a string with a password in hashed format. Note that CFEngine
+does not validate that the given hash format is supported by
+the platform. The system administrator must verify this.
+However, CFEngine continues to run even in the event of an
+unsupported password format, so it can always be corrected by updating
+the policy.</p>
+
+<p>If the value is &quot;plaintext,&quot; then the <a href="reference-promise-types-users.html#data" title="users - data "><code>data</code></a> attribute contains
+the password in plain text.</p>
+
+<p><strong>Note:</strong> On Windows, only the &quot;plaintext&quot; password type is supported,
+due to a lack of support from the operating system for setting
+hashed passwords.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+
+<ul>
+<li><code>plaintext</code></li>
+<li><code>hash</code></li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">password</span> <span class="nf">user_password</span>
+    <span class="p">{</span>
+        <span class="kr">format</span> <span class="o">=&gt;</span> <span class="s">&quot;plaintext&quot;</span><span class="p">;</span>
+          <span class="kr">data</span> <span class="o">=&gt;</span> <span class="s">&quot;CFEngine&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h4 id="data">data</h4>
+<p><strong>Description:</strong> Specifies the password data.</p>
+
+<p>The format of the password data depends on the <a href="reference-promise-types-users.html#format" title="users - format"><code>format</code></a> attribute.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> (arbitrary string)</p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">body</span> <span class="k">password</span> <span class="nf">user_password</span>
+    <span class="p">{</span>
+        <span class="kr">format</span> <span class="o">=&gt;</span> <span class="s">&quot;plaintext&quot;</span><span class="p">;</span>
+          <span class="kr">data</span> <span class="o">=&gt;</span> <span class="s">&quot;CFEngine&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="policy">policy</h3>
+<p><strong>Description:</strong> The <code>policy</code> attribute specifies what state the user
+account has on the system.</p>
+
+<p>If the policy is <strong>present</strong>, the user is present and active
+on the system. Note that an unset password might still prevent the user
+from logging in.</p>
+
+<p>If the policy is <strong>locked</strong>, and the user does not exist, it is created with
+password authentication disabled. If the user account already exists its
+password digest is prepended with a &quot;!&quot;, disabling password authentication.
+Note that only logins via the PAM framework are prevented. This includes normal
+console logins and SSH logins on most systems.</p>
+
+<p>If the policy is <strong>absent</strong>, the user does not exist on the system. Note
+that if a user previously existed, his/her files are not
+automatically removed. You must create a separate <a href="reference-promise-types-files.html" title="files"><code>files</code></a> promise for
+this.</p>
+
+<p><strong>Note:</strong> When CFEngine locks an account it does two things, it disables
+the login password, and it sets the account expiration date far in the
+past. The expiration date is to prevent key based SSH logins. However,
+on Solaris it is not possible to set the account expiration date in this
+way, hence SSH logins may still work there after an account is locked
+and additional steps may be required.</p>
+
+<p><strong>Type:</strong> (menu option)</p>
+
+<p><strong>Allowed input range:</strong></p>
+
+<ul>
+<li><code>present</code></li>
+<li><code>absent</code></li>
+<li><code>locked</code></li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">      <span class="kd">users</span><span class="p">:</span>
+         <span class="s">&quot;jsmith&quot;</span>
+            <span class="kr">policy</span> <span class="o">=&gt;</span> <span class="s">&quot;locked&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="shell">shell</h3>
+<p><strong>Description:</strong> The <code>shell</code> attribute specifies the user&#39;s login
+shell.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>&quot;?(/.*)</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">      <span class="kd">users</span><span class="p">:</span>
+         <span class="s">&quot;jsmith&quot;</span>
+            <span class="kr">shell</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/bash&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+<h3 id="uid">uid</h3>
+<p><strong>Description:</strong> The <code>uid</code> attribute specifies the user&#39;s UID number.</p>
+
+<p>Note that if the UID of an existing user is changed, the files owned
+by that user do not automatically change ownership. You must create a
+separate <a href="reference-promise-types-files.html" title="files"><code>files</code></a> promise for this.</p>
+
+<p><strong>Type:</strong> <a href="reference-promise-types-vars.html#int" title="vars - int"><code>int</code></a></p>
+
+<p><strong>Allowed input range:</strong> <code>-99999999999,99999999999</code></p>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3">      <span class="kd">users</span><span class="p">:</span>
+         <span class="s">&quot;jsmith&quot;</span>
+            <span class="kr">uid</span> <span class="o">=&gt;</span> <span class="s">&quot;1357&quot;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-bundle-agent.html">bundle agent</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-cf-agent.html">cf-agent</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-users.html">users</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-promise-types.html">promise types</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 17 March 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/promise-types/users.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/ae7435d3d24d30077bfbf18438f2444c629f8c69" target="_blank">ae7435d3d24d30077bfbf18438f2444c629f8c69</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.10/assets/footer-4c28dbe187e7b2a3c1504ff564f1b523.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

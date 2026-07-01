@@ -1,0 +1,69 @@
+
+bundle knowledge SpecialTopic_Windows
+
+{
+topics:
+
+"SpecialTopic_Windows";
+Special_Topics_Guide::
+    "Notes on windows policies"  association => a("discusses","Windows Management with CFEngine Enterprise","is discussed in");
+Special_Topics_Guide::
+    "Windows hard classes"  association => a("discusses","Windows Management with CFEngine Enterprise","is discussed in");
+Special_Topics_Guide::
+    "Windows special variables"  association => a("discusses","Windows Management with CFEngine Enterprise","is discussed in");
+Special_Topics_Guide::
+    "Windows-aware features in CFE Enterprise"  association => a("discusses","Windows Management with CFEngine Enterprise","is discussed in");
+Special_Topics_Guide::
+    "File and folder permissions"  association => a("discusses","Windows Management with CFEngine Enterprise","is discussed in");
+Special_Topics_Guide::
+    "Windows service management"  association => a("discusses","Windows Management with CFEngine Enterprise","is discussed in");
+Special_Topics_Guide::
+    "Removing values"  association => a("discusses","Windows Management with CFEngine Enterprise","is discussed in");
+Special_Topics_Guide::
+    "Creating values"  association => a("discusses","Windows Management with CFEngine Enterprise","is discussed in");
+Special_Topics_Guide::
+    "Windows registry management"  association => a("discusses","Windows Management with CFEngine Enterprise","is discussed in");
+Special_Topics_Guide::
+    "Testing policies locally"  association => a("discusses","Windows Management with CFEngine Enterprise","is discussed in");
+Special_Topics_Guide::
+    "Installation"  association => a("discusses","Windows Management with CFEngine Enterprise","is discussed in");
+Special_Topics_Guide::
+    "System requirements"  association => a("discusses","Windows Management with CFEngine Enterprise","is discussed in");
+Special_Topics_Guide::
+    "Windows Managment with CFEngine Enterprise"  association => a("discusses","Windows Management with CFEngine Enterprise","is discussed in");
+
+
+occurrences:
+
+ "/knowledge/docs/SpecialTopic_Windows.html"
+  represents => { "Official CFEngine document"},  about_topics => { "windows management with cfengine enterprise" };
+ "/knowledge/docs/SpecialTopic_Windows.html"
+  represents => { "Special Topics Guide"},  about_topics => { "windows management with cfengine enterprise" };
+ "/knowledge/docs/SpecialTopic_Windows.html#Top"
+  represents => { "Text section" }, about_topics => { "windows managment with cfengine enterprise" };
+ "/knowledge/docs/SpecialTopic_Windows.html#System-requirements"
+  represents => { "Text section" }, about_topics => { "system requirements" };
+ "/knowledge/docs/SpecialTopic_Windows.html#Installation"
+  represents => { "Text section" }, about_topics => { "installation" };
+ "/knowledge/docs/SpecialTopic_Windows.html#Testing-policies-locally"
+  represents => { "Text section" }, about_topics => { "testing policies locally" };
+ "/knowledge/docs/SpecialTopic_Windows.html#Windows-registry-management"
+  represents => { "Text section" }, about_topics => { "windows registry management" };
+ "/knowledge/docs/SpecialTopic_Windows.html#Windows-registry-management"
+  represents => { "Text section" }, about_topics => { "creating values" };
+ "/knowledge/docs/SpecialTopic_Windows.html#Windows-registry-management"
+  represents => { "Text section" }, about_topics => { "removing values" };
+ "/knowledge/docs/SpecialTopic_Windows.html#Windows-service-management"
+  represents => { "Text section" }, about_topics => { "windows service management" };
+ "/knowledge/docs/SpecialTopic_Windows.html#File-and-folder-permissions"
+  represents => { "Text section" }, about_topics => { "file and folder permissions" };
+ "/knowledge/docs/SpecialTopic_Windows.html#Windows_002daware-features-in-CFE-Enterprise"
+  represents => { "Text section" }, about_topics => { "windows-aware features in cfe enterprise" };
+ "/knowledge/docs/SpecialTopic_Windows.html#Windows-special-variables"
+  represents => { "Text section" }, about_topics => { "windows special variables" };
+ "/knowledge/docs/SpecialTopic_Windows.html#Windows-hard-classes"
+  represents => { "Text section" }, about_topics => { "windows hard classes" };
+ "/knowledge/docs/SpecialTopic_Windows.html#Notes-on-windows-policies"
+  represents => { "Text section" }, about_topics => { "notes on windows policies" };
+}
+

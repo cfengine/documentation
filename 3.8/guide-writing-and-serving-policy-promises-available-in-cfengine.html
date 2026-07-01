@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.8  Documentation - Promises Available in CFEngine</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.8/assets/global-8212aa494575341d9a306dae12291eb2.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Promises Available in CFEngine";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       	<option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       	<option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                  <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       	<option value="/docs/3.8/index.html" selected>Version 3.8 (EOL)</option>
+                       	<option value="/docs/3.6/index.html">Version 3.6 (EOL)</option>
+			                  <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       	<option value="/docs/archive/">Version 3.0 (archive)</option>
+                        <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:v5wte9vybsa" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a><ul class="level2"><li><a href="guide-writing-and-serving-policy-policy-layers-abstraction.html">Layers of Abstraction in Policy</a></li><li><a class="active" href="guide-writing-and-serving-policy-promises-available-in-cfengine.html">Promises Available in CFEngine</a></li><li><a href="guide-writing-and-serving-policy-authoring-policy-tools-and-workflow.html">Authoring Policy Tools & Workflow</a></li><li><a href="guide-writing-and-serving-policy-policy-style.html">Policy Style Guide</a></li><li><a href="guide-writing-and-serving-policy-bundles-best-practices.html">Bundles Best Practices</a></li><li><a href="guide-writing-and-serving-policy-external_data.html">External Data</a></li><li><a href="guide-writing-and-serving-policy-testing-policies.html">Testing Policies</a></li><li><a href="guide-writing-and-serving-policy-policy-framework.html">The Policy Framework</a></li></ul></li><li><a href="guide-design-center.html">Design Center Overview</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Promises Available in CFEngine
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <h3 id="meta---information-about-promise-bundles">meta - information about promise bundles</h3>
+<p>Meta-data promises have no internal function. They are intended to be used to represent arbitrary information about promise bundles. Formally, meta promises are implemented as variables, and the values map to a variable context called bundlename_meta. The values can be used as variables and will appear in CFEngine Enterprise variable reports.</p>
+
+<p>See <a href="reference-promise-types-meta.html" title="meta"><code>meta</code></a>.</p>
+<h3 id="vars---a-variable-representing-a-value">vars - a variable, representing a value</h3>
+<p>Variables in CFEngine are defined as promises that an identifier of a certain type represents a particular value. Variables can be scalars or lists of types string, int, real or data.</p>
+
+<p>The allowed characters in variable names are alphanumeric (both upper and lower case) and undercore. Associative arrays using the string type and square brackets [] to enclose an arbitrary key are being deprecated in favor of the data variable type.</p>
+
+<p>See <a href="reference-promise-types-vars.html" title="vars"><code>vars</code></a>.</p>
+<h3 id="defaults---a-default-value-for-bundle-parameters">defaults - a default value for bundle parameters</h3>
+<p>Defaults promises are related to variables. If a variable or parameter in a promise bundle is undefined, or its value is defined to be invalid, a default value can be promised instead.</p>
+
+<p>CFEngine does not use Perl semantics: i.e. undefined variables do not map to the empty string, they remain as variables for possible future expansion. Some variables might be defined but still contain unresolved variables. To handle this you will need to match the <code>$(abc)</code> form of the variables.</p>
+
+<p>See <a href="reference-promise-types-defaults.html" title="defaults"><code>defaults</code></a>.</p>
+<h3 id="classes---a-class-representing-a-state-of-the-system">classes - a class, representing a state of the system</h3>
+<p>Classes promises may be made in any bundle. Classes that are set in common bundles are global in scope, while classes in all other bundles are local.</p>
+
+<p>Note: The term class and context are sometimes used interchangeably.</p>
+
+<p>See <a href="reference-promise-types-classes.html" title="classes"><code>classes</code></a>.</p>
+<h3 id="users---add-or-remove-users">users - add or remove users</h3>
+<p>User promises are promises made about local users on a host. They express which users should be present on a system, and which attributes and group memberships the users should have.</p>
+
+<p>Every user promise has at least one attribute, policy, which describes whether or not the user should be present on the system. Other attributes are optional; they allow you to specify UID, home directory, login shell, group membership, description, and password.</p>
+
+<p>A bundle can be associated with a user promise, such as when a user is created in order to do housekeeping tasks in his/her home directory, like putting default configuration files in place, installing encryption keys, and storing a login picture.</p>
+
+<p>History: Introduced in CFEngine 3.6.0</p>
+
+<p>See <a href="reference-promise-types-users.html" title="users"><code>users</code></a>.</p>
+<h3 id="files---configure-a-file">files - configure a file</h3>
+<p>Files promises are an umbrella for attributes of files. Operations fall basically into three categories: create, delete and edit.</p>
+
+<p>See <a href="reference-promise-types-files.html" title="files"><code>files</code></a>.</p>
+<h3 id="packages---install-a-package">packages - install a package</h3>
+<p>CFEngine supports a generic approach to integration with native operating support for packaging. Package promises allow CFEngine to make promises regarding the state of software packages conditionally, given the assumption that a native package manager will perform the actual manipulations. Since no agent can make unconditional promises about another, this is the best that can be achieved.</p>
+
+<p>See <a href="reference-promise-types-packages.html" title="packages"><code>packages</code></a>.</p>
+<h3 id="guest_environments">guest_environments</h3>
+<p>Guest environment promises describe enclosed computing environments that can host physical and virtual machines, Solaris zones, grids, clouds or other enclosures, including embedded systems. CFEngine will support the convergent maintenance of such inner environments in a fixed location, with interfaces to an external environment.</p>
+
+<p>CFEngine currently seeks to add convergence properties to existing interfaces for automatic self-healing of guest environments. The current implementation integrates with libvirt, supporting host virtualization for Xen, KVM, VMWare, etc. Thus CFEngine, running on a virtual host, can maintain the state and deployment of virtual guest machines defined within the libvirt framework. Guest environment promises are not meant to manage what goes on within the virtual guests. For that purpose you should run CFEngine directly on the virtual machine, as if it were any other machine.</p>
+
+<p>See <code>guest_environments</code>.</p>
+<h3 id="methods---take-on-a-whole-bundle-of-other-promises">methods - take on a whole bundle of other promises</h3>
+<p>Methods are compound promises that refer to whole bundles of promises. Methods may be parameterized. Methods promises are written in a form that is ready for future development. The promiser object is an abstract identifier that refers to a collection (or pattern) of lower level objects that are affected by the promise-bundle. Since the use of these identifiers is for the future, you can simply use any string here for the time being.</p>
+
+<p>See <a href="reference-promise-types-methods.html" title="methods"><code>methods</code></a>.</p>
+<h3 id="processes---start-or-terminate-processes">processes - start or terminate processes</h3>
+<p>Process promises refer to items in the system process table, i.e., a command in some state of execution (with a Process Control Block). Promiser objects are patterns that are unanchored, meaning that they match line fragments in the system process table.</p>
+
+<p>See <a href="reference-promise-types-processes.html" title="processes"><code>processes</code></a>.</p>
+<h3 id="services---start-or-stop-services">services - start or stop services</h3>
+<p>A service is a set of zero or more processes. It can be zero if the service is not currently running. Services run in the background, and do not require user intervention.</p>
+
+<p>Service promises may be viewed as an abstraction of process and commands promises. An important distinguisher is however that a single service may consist of multiple processes. Additionally, services are registered in the operating system in some way, and get a unique name. Unlike processes and commands promises, this makes it possible to use the same name both when it is running and not.</p>
+
+<p>Some operating systems are bundled with a lot of unused services that are running as default. At the same time, faulty or inherently insecure services are often the cause of security issues. With CFEngine, one can create promises stating the services that should be stopped and disabled.</p>
+
+<p>The operating system may start a service at boot time, or it can be started by CFEngine. Either way, CFEngine will ensure that the service maintains the correct state (started, stopped, or disabled). On some operating systems, CFEngine also allows services to be started on demand, when they are needed. This is implemented though the inetd or xinetd daemon on Unix. Windows does not support this.</p>
+
+<p>CFEngine also allows for the concept of dependencies between services, and can automatically start or stop these, if desired. Parameters can be passed to services that are started by CFEngine.</p>
+
+<p>See <a href="reference-promise-types-services.html" title="services"><code>services</code></a>.</p>
+<h3 id="commands---execute-a-command">commands - execute a command</h3>
+<p>Commands and processes are separated cleanly. Restarting of processes must be coded as a separate command. This stricter type separation allows for more careful conflict analysis to be carried out.</p>
+
+<p>See <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a>.</p>
+<h3 id="storage---verify-attached-storage">storage - verify attached storage</h3>
+<p>Storage promises refer to disks and filesystem properties.</p>
+
+<p>See <a href="reference-promise-types-storage.html" title="storage"><code>storage</code></a>.</p>
+<h3 id="databases---configure-a-database">databases - configure a database</h3>
+<p>CFEngine can interact with commonly used database servers to keep promises about the structure and content of data within them.</p>
+
+<p>There are two main cases of database management to address: small embedded databases and large centralized databases.</p>
+
+<p>Databases are often centralized entities that have a single point of management. While large monolithic database can be more easily managed with other tools, CFEngine can still monitor changes and discrepancies. In addition, CFEngine can also manage smaller embedded databases that are distributed in nature, whether they are SQL, registry or future types.</p>
+
+<p>For example, creating 100 new databases for test purposes is a task for CFEngine; but adding a new item to an important production database is not a recommended task for CFEngine.</p>
+
+<p>See <a href="reference-promise-types-databases.html" title="databases"><code>databases</code></a>.</p>
+<h3 id="access---grant-or-deny-access-to-file-objects">access - grant or deny access to file objects</h3>
+<p>Access promises are conditional promises made by resources living on the server.</p>
+
+<p>The promiser is the name of the resource affected and is interpreted to be a path, unless a different resource_type is specified. Access is then granted to hosts listed in admit_ips, admit_keys and admit_hostnames, or denied using the counterparts deny_ips, deny_keys and deny_hostnames.</p>
+
+<p>You layer the access policy by denying all access and then allowing it only to selected clients, then denying to an even more restricted set.</p>
+
+<p>See <a href="reference-promise-types-access.html" title="access"><code>access</code></a>.</p>
+<h3 id="roles---allow-certain-users-to-activate-certain-classes">roles - allow certain users to activate certain classes</h3>
+<p>Roles promises are server-side decisions about which users are allowed to define soft-classes on the server&#39;s system during remote invocation of cf-agent. This implements a form of Role Based Access Control (RBAC) for pre-assigned class-promise bindings. The user names cited must be attached to trusted public keys in order to be accepted. The regular expression is anchored, meaning it must match the entire name.</p>
+
+<p>See <a href="reference-promise-types-roles.html" title="roles"><code>roles</code></a>.</p>
+<h3 id="measurements---measure-or-sample-data-from-the-system">measurements - measure or sample data from the system</h3>
+<p>This is an Enterprise-only feature.</p>
+
+<p>By default,CFEngine&#39;s monitoring component cf-monitord records performance data about the system. These include process counts, service traffic, load average and CPU utilization and temperature when available.</p>
+
+<p>CFEngine Enterprise extends this in two ways. First it adds a three year trend summary based any &#39;shift&#39;-averages. Second, it adds customizable measurements promises to monitor or log very specific user data through a generic interface. The end-result is to either generate a periodic time series, like the above mentioned values, or to log the results to custom-defined reports.</p>
+
+<p>Promises of type measurement are written just like all other promises within a bundle destined for the agent concerned, in this case monitor. However, it is not necessary to add them to the bundlesequence, because cf-monitord executes all bundles of type monitor.</p>
+
+<p>See <a href="reference-promise-types-measurements.html" title="measurements"><code>measurements</code></a>.</p>
+<h3 id="reports---report-a-message">reports - report a message</h3>
+<p>Reports promises simply print messages. Outputting a message without qualification can be a dangerous operation. In a large installation it could unleash an avalanche of messaging.</p>
+
+<p>See <a href="reference-promise-types-reports.html" title="reports"><code>reports</code></a>.</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-promises.html">promises</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/writing-and-serving-policy/promises-available-in-cfengine.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/5b2bc459512b94c59b897836ae3071bcd5f777f6" target="_blank">5b2bc459512b94c59b897836ae3071bcd5f777f6</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.8/assets/footer-08442c0761064b6ca280223e9ebacccc.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

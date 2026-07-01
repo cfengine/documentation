@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.16  Documentation - Glossary</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.16/assets/global-78ca1ff06c068c806dddb47b0cb1ea40.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Glossary";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.16/" selected>Version 3.16 (non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html"  class="navselected" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="guide-introduction.html">Introduction and System Overview</a></li><li><a href="guide-latest-release.html">Latest Release</a></li><li><a href="guide-installation-and-configuration.html">Installation and Configuration</a></li><li><a href="guide-writing-and-serving-policy.html">Writing and Serving Policy</a></li><li><a href="guide-reporting.html">Reporting</a></li><li><a href="guide-special-topics.html">Special Topics</a><ul class="level2"><li><a href="guide-special-topics-adopting-cfengine.html">Adopting CFEngine</a></li><li><a href="guide-special-topics-agility.html">Agility</a></li><li><a href="guide-special-topics-application-management.html">Application Management</a></li><li><a href="guide-special-topics-build-deploy-manage-audit.html">Build Deploy Manage Audit</a></li><li><a href="guide-special-topics-change-management.html">Change Management</a></li><li><a href="guide-special-topics-cloud-computing.html">Cloud Computing</a></li><li><a href="guide-special-topics-content-driven-policy.html">Content Driven Policy</a></li><li><a href="guide-special-topics-devops.html">Devops</a></li><li><a href="guide-special-topics-distributed-scheduling.html">Distributed Scheduling</a></li><li><a href="guide-special-topics-file-content.html">File Content</a></li><li><a class="active" href="guide-special-topics-glossary.html">Glossary</a></li><li><a href="guide-special-topics-hierarchies.html">Hierarchies</a></li><li><a href="guide-special-topics-itil.html">ITIL</a></li><li><a href="guide-special-topics-iteration.html">Iteration (Loops)</a></li><li><a href="guide-special-topics-modularity.html">Modularity and Orchestrating System Policy</a></li><li><a href="guide-special-topics-orchestration.html">Orchestration</a></li><li><a href="guide-special-topics-stigs.html">STIGs</a></li><li><a href="guide-special-topics-teamwork.html">Teamwork</a></li><li><a href="guide-special-topics-open-nebula.html">Using CFEngine with Open Nebula</a></li></ul></li><li><a href="guide-faq.html">FAQ</a></li><li><a href="guide-additional-resources.html">Additional Resources</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide.html">Guide</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="guide-special-topics.html">Special Topics</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Glossary
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <ul>
+<li><p>Agent</p>
+
+<p>A piece of software that runs independently and automatically to carry out a
+task (think software robot). Inn CFEngine, the agent is called cf-agent and is
+responsible for making changes to computers.</p></li>
+<li><p>Amber host</p>
+
+<p>A host that has repaired more than 20% of its scheduled promises in the past 5
+minutes. (See yellow host.)</p></li>
+<li><p>Body</p>
+
+<p>A promise body is the description of exactly what is promised (as opposed to
+what/who is making the promise). The term `body&#39; is used in the CFEngine
+syntax to mean a small template that can be used to contribute as part of a
+larger promise body.</p></li>
+<li><p>Bundle</p>
+
+<p>In CFEngine, a bundle refers to a collection of promises that has a name.</p></li>
+<li><p>CDP</p>
+
+<p>Content Driven Policy. A way of simplifying the way users provide information
+to CFEngine about policy by hiding the overhead of policy coding. A CDP is a
+set of promises that is designed to solve a particular task in a standard way.
+Users provide only a little data in the form of a simple spreadsheet of data
+in a table.</p></li>
+<li><p>CFEngine</p>
+
+<p>The name of the CFEngine Company, as well as the name of the Software.
+CFEngine comes from a contraction of `ConFiguration Engine&#39;.</p></li>
+<li><p>CFEngine 3.x</p>
+
+<p>Major version 3 of the CFEngine software, started in 2008 and going up to the
+present day. This comes in several editions, both Open Source and Commercial.</p></li>
+<li><p>CFEngine Community Edition</p>
+
+<p>Free and Open Source edition of the CFEngine software, published under the
+GPL3 license, and optionally under the COSL license.</p></li>
+<li><p>CFEngine Community Open Promise-Body Library</p>
+
+<p>A collection of standard definitions that is open to the user community for
+comment and standardization.</p></li>
+<li><p>CFEngine Constellation</p>
+
+<p>An enterprise edition of CFEngine, that is designed to scale to huge systems
+by using a federated design. Constellation allows better handling of groups
+(i.e. constellations of objects) in a network.</p></li>
+<li><p>CFEngine Enterprise Editions</p>
+
+<p>Refers to commercial (paid) editions of the CFEngine software, published under
+the COSL license.</p></li>
+<li><p>CFEngine Nova</p>
+
+<p>The lowest level enterprise edition of CFEngine, that automatically creates a
+simple `star network&#39; mangement model for hosts in an environment.</p></li>
+<li><p>ChangeLog</p>
+
+<p>A file used to describe the changes made since the last version of the
+software.</p></li>
+<li><p>CMDB</p>
+
+<p>A Configuration Management Database. A term coined as part of the IT
+Infrastructure Library (ITIL) as an outgrowth of an inventory database.</p></li>
+<li><p>CMS</p>
+
+<p>Content Management System. A kind of editor for maintaining something (often
+web pages).</p></li>
+<li><p>Code branch</p>
+
+<p>The development of software is a branching process. At certain times, the
+software code splits into different versions following different paths. Each
+path needs to be maintained separately for a while. This often happens when a
+release is made, because one wants to freeze the development of a public
+release (allowing nevertheless for some minor bugfixes), while continuing to
+add features to a branch leading to future versions.</p></li>
+<li><p>COPBL</p>
+
+<p>CFEngine Community Open Promise-Body Library (abbrev: CFEngine standard
+library). A collection of standard definitions.</p></li>
+<li><p>COSL license</p>
+
+<p>The Commercial Open Source License used for the CFEngine</p></li>
+<li><p>CSS</p>
+
+<p>Cascading Style Sheets. Part of Web technology used to describe page design.</p></li>
+<li><p>Diff</p>
+
+<p>A `diff&#39; is a report (originally that generated by the UNIX diff command) that
+details the differences between two files. The term is often used as slang
+meaning a file comparison.</p></li>
+<li><p>GPL3</p>
+
+<p>The GNU Public License, version 3.</p></li>
+<li><p>Green Host</p>
+
+<p>A host for which more than 80% of all promises are kept.</p></li>
+<li><p>GUI</p>
+
+<p>Graphical User Interface.</p></li>
+<li><p>Host</p>
+
+<p>UNIX terminology for a computer the runs <code>guest programs&#39;. In practice,</code>host&#39;
+is a synonym for `computer&#39;.</p></li>
+<li><p>Hub</p>
+
+<p>A software component in CFE Nova and CFE Constellation that works as a single
+point of management in a local `star-network&#39;. The term hub is sometimes used
+to mean policy distribution server, but more commonly a running cf-hub process
+that does report collection from all CFEngine managed hosts. The term hub
+means the centre of a wheel, from which multiple spokes emerge.</p></li>
+<li><p>Knowledge Map</p>
+
+<p>A master index of all the information known about a CFEngine managed
+environment, represented as a set of web pages with an interactive interface
+based on a `semantic web&#39;. The CFEngine Mission Portal provides a web-based
+interface for browsing this knowledge map index.</p></li>
+<li><p>Mission</p>
+
+<p>The mission refers to the raison d&#39;\hat etre of an organization. CFEngine&#39;s
+task is to support this mission by keeping a set of promises for its IT
+infrastructure.</p></li>
+<li><p>Mission Portal</p>
+
+<p>The name given to the user interface used in commercial CFEngine editions,
+where all reports and progress summaries are kept.</p></li>
+<li><p>Modular license</p>
+
+<p>A license granting partial functionality to an Enterprise Edition of CFEngine.</p></li>
+<li><p>LDAP</p>
+
+<p>The Lightweight Directory Access Protocol. A kind of `phone book&#39; service
+providing information about persons and computers in an organization.</p></li>
+<li><p>Libraries</p>
+
+<p>A library generally refers to collection of standardized CFEngine code that
+can be reused in different scenarios and environments. This might be bundles
+of promises, or reusable body-parts.</p></li>
+<li><p>Packages</p>
+
+<p>Software binaries or executable files. The CFEngine company compiles and tests
+software into packages suitable for different platforms.</p></li>
+<li><p>Platforms</p>
+
+<p>This usually refers to an operating system type, e.g. Linux (in its many
+flavours), or Windows, etc. Platforms are described using short identifiers,
+e.g. RH5, REL5, SuSE 11, SLES, etc.</p></li>
+<li><p>Knowledge Map</p>
+
+<p>Content portal containing datacentre information, privately managed knowledge
+resources and CFEngine documentation.</p></li>
+<li><p>PCI compliance</p>
+
+<p>Payment Card Industry Data Security Standard (PCI DSS) is a set of
+requirements designed to ensure that ALL companies that process, store or
+transmit credit card information maintain a secure environment.</p></li>
+<li><p>Promise</p>
+
+<p>The CFEngine software manages every intended system outcome as `promises&#39; to
+be kept. A CFEngine Promise corresponds roughly to a rule in other software
+products, but importantly promises are always things that can be kept and
+repaired continuously, on a real time basis, not just once at install-time.</p></li>
+<li><p>Policy</p>
+
+<p>A policy is a set of intentions about the system, coded as a list of promises.
+A policy is not a standard, but the result of specific organizational
+management decisions.</p></li>
+<li><p>Semantic web</p>
+
+<p>A form of web content in which hyperlinks always explain the meaning of the
+information they point to, in relation to the subject of interest. Semantic
+web technologies include RDF, Topic Maps etc.</p></li>
+<li><p>Server</p>
+
+<p>A term used in many different ways, riddled with confusion. A server is
+strictly a piece of software that runs on some computer in order to perform a
+service, e.g. a web server is a program that makes a computer part of the
+World Wide Web. For historical reasons, certain computers are referred to as
+servers, especially when kept in datacentres because such computers often run
+services. In CFEngine, cf-serverd is a software component that serves files
+from one computer to another. All computers are recommended to run cf-serverd,
+making all computers CFEngine servers, whether they are laptops, phones or
+datacentre computers.</p></li>
+<li><p>Service Catalogue</p>
+
+<p>A kind of directory of `services&#39; provided in an environment. The concept of a
+service could be anything from a human help desk to a machine controlled email
+subsystem. In the CFEngine Mission Portal, the service catalogue (for
+maintenance) treats promise-bundles of promises as low-level maintenance
+services, and relates these to high level business goals.</p></li>
+<li><p>SOX Compliance</p>
+
+<p>Sarbanes-Oxley Act compliance. An audited accolade for financial data security
+required by all companies on the New York stock exchange.</p></li>
+<li><p>Standard library</p>
+
+<p>The CFEngine Standard library is a collection of standardized definitions (see
+COPBL).</p></li>
+<li><p>Template</p>
+
+<p>A template is an incomplete piece of CFEngine code, with blanks to fill in. It
+is often a policy fragment that can be re-used in different scenarios. This is
+often used interchangeably with the term `library&#39;.</p></li>
+<li><p>UI</p>
+
+<p>User interface.</p></li>
+<li><p>Yellow host.</p>
+
+<p>See amber host.</p></li>
+</ul>
+
+<p>This work is licensed under a Creative Commons Attribution-ShareAlike 3.0
+Unported License (<a href="http://creativecommons.org/licenses/by-sa/3.0/">http://creativecommons.org/licenses/by-sa/3.0/</a>).</p>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-overviews.html">overviews</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-special-topics.html">special topics</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-guide.html">guide</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 24 June 2020
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/guide/special-topics/glossary.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/4e9e6860aa094f25a21afcdd2087a240dbb1ba7d" target="_blank">4e9e6860aa094f25a21afcdd2087a240dbb1ba7d</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.16/assets/footer-ae31e033a1a936d598cf1c40b94021b9.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

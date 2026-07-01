@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.6  Documentation - Distribute files from a central location</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.6/assets/global-ac3885a0674bd3c9117d62800be1608f.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Distribute files from a central location";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                 <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html" selected>Version 3.6 (EOL)</option>
+			                 <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:bm0uhfq8ykk" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html"  class="navselected" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="examples-example-snippets.html">Example Snippets</a></li><li><a href="examples-tutorials.html">Tutorials</a><ul class="level2"><li><a href="examples-tutorials-json-support-in-cfengine.html">JSON Support in CFEngine</a></li><li><a href="examples-tutorials-files-tutorial.html">Create, Modify, and Delete Files</a></li><li><a class="active" href="examples-tutorials-distribute-files-from-a-central-location.html">Distribute files from a central location</a></li><li><a href="examples-tutorials-report_inventory_remediate_sec_vulnerabilities.html">Reporting and Remediation of Security Vulnerabilities</a></li><li><a href="examples-tutorials-tags.html">Tags for variables, classes, and bundles</a></li><li><a href="examples-tutorials-custom_inventory.html">Custom Inventory</a></li><li><a href="examples-tutorials-deploy_sketch.html">Configure and Deploy a Policy Using Sketches</a></li><li><a href="examples-tutorials-file_comparison.html">File Comparison</a></li></ul></li><li><a href="examples-enterprise-api-examples.html">Enterprise API Examples</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples.html">Examples and Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="examples-tutorials.html">Tutorials</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Distribute files from a central location
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p>CFEngine can manage many machines simply by distributing policies to all its hosts.
+This tutorial describes how to distribute files to hosts from a central policy server location.
+For this example, we will distribute software patches.</p>
+
+<p>Files are centrally stored on the policy server (hub). In our example, they are stored in <code>/storage/patches</code>.
+These patch files must also exist on the agent host (client) in <code>/storage/deploy/patches</code>. To do this,
+perform the following instructions:</p>
+<h2 id="check-out-masterfiles-from-your-central-repository">Check out masterfiles from your central repository</h2>
+<p>CFEngine stores the master copy of all policy in the <a href="enterprise-cfengine-guide-design-center-configure-sketches-enterprise-enterprise-sketch-flow.html#var-cfengine-masterfiles" title="Sketch Flow in CFEngine Enterprise - /var/cfengine/masterfiles"><code>/var/cfengine/masterfiles</code></a> directory.
+Ensure that you are working with the latest version of your <code>masterfiles</code>.</p>
+<div class="highlight"><pre><code class="text">git clone url
+</code></pre>
+</div>
+
+<p>or</p>
+<div class="highlight"><pre><code class="text">git pull origin master
+</code></pre>
+</div>
+<h2 id="make-policy-changes">Make policy changes</h2><h3 id="define-locations">Define locations</h3>
+<p>Before files can be copied we must know where files should be copied from and
+where files should be copied to. If these locations are used by multiple
+components, then defining them in a <a href="guide-language-concepts-bundles.html" title="Bundles">common bundle</a>
+can reduce repetition. Variables and classes that are defined in common bundles are
+accessible by all <a href="guide-introduction.html#cfengine-component-applications-and-daemons" title="Introduction and System Overview - CFEngine Component Applications and Daemons ">CFEngine components</a>. This is
+especially useful in the case of file copies because the same variable
+definition can be used both by the policy server when granting access and by the agent host
+when performing the copy.</p>
+
+<p>The policy framework includes a common bundle called <code>def</code>. In this example, we
+will add two variables--<code>dir_patch_store</code> and <code>dir_patch_deploy</code>--to this existing bundle.
+These variables provide path definitions for storing and deploying patches.</p>
+
+<p>Add the following variable information to the <code>masterfiles/def.cf</code> file:</p>
+<div class="highlight"><pre><code class="text">&quot;dir_patch_store&quot;
+  string =&gt; &quot;/storage/patches&quot;,
+  comment =&gt; &quot;Define patch files source location&quot;,
+  handle =&gt; &quot;common_def_vars_dir_patch_store&quot;;
+
+&quot;dir_patch_deploy&quot;
+  string =&gt; &quot;/storage/deploy/patches&quot;,
+  comment =&gt; &quot;Define patch files deploy location&quot;,
+  handle =&gt; &quot;common_def_vars_dir_patch_deploy&quot;;
+
+}
+</code></pre>
+</div>
+
+<p>These common variables can be referenced from the rest of the policy by using their fully
+ <a href="guide-language-concepts-variables.html#scalar-referencing-and-expansion" title="Variables - Scalar Referencing and Expansion">qualified names</a>,
+<code>$(def.dir_patch_store)</code> and <code>$(def.dir_patch_deploy)</code></p>
+<h3 id="grant-file-access">Grant file access</h3>
+<p>Access must be granted before files can be copied. The right to access a file
+is provided by <a href="reference-components-cf-serverd.html" title="cf-serverd"><code>cf-serverd</code></a>, the server component of CFEngine. Enter access information using the <a href="reference-promise-types-access.html" title="access"><code>access</code></a>
+promise type in the <code>bundle server access_rules</code> section. This section is located in
+<code>controls/cf_serverd.cf</code> in the policy framework.</p>
+
+<p>For our example, add the following information to <code>controls/cf_serverd.cf</code>:</p>
+<div class="highlight"><pre><code class="text">&quot;$(def.dir_patch_store)&quot;
+  handle =&gt; &quot;server_access_grant_locations_files_patch_store_for_hosts&quot;,
+  admit =&gt; { &quot;.*$(def.domain)&quot;, @(def.acl) },
+  comment =&gt; &quot;Hosts need to download patch files from the central location&quot;;
+</code></pre>
+</div>
+<h3 id="create-a-custom-library-for-reusable-synchronization-policy">Create a custom library for reusable synchronization policy</h3>
+<p>You might need to frequently synchronize or copy a directory structure from the policy server to
+an agent host. Thus, identifying reusable parts of policy and abstracting them for later
+use is a good idea. This information is stored in a custom library.</p>
+
+<p>Create a custom library called <code>lib/custom/files.cf</code>. Add the following content:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">sync_from_policyserver</span><span class="p">(</span><span class="nv">source_path</span><span class="p">,</span> <span class="nv">dest_path</span><span class="p">)</span>
+    <span class="c"># @brief Sync files from the policy server to the agent</span>
+    <span class="c">#</span>
+    <span class="c"># @param source_path  Location on policy server to copy files from</span>
+    <span class="c"># @param dest_path Location on agent host to copy files to</span>
+    <span class="p">{</span>
+      <span class="kd">files</span><span class="p">:</span>
+        <span class="s">&quot;</span><span class="si">$(dest_path)</span><span class="s">/.&quot;</span>
+          <span class="kr">handle</span>       <span class="o">=&gt;</span> <span class="s">&quot;sync_from_policy_server_files_dest_path_copy_from_source_path_sys_policy_hub&quot;</span><span class="p">,</span>
+          <span class="kr">copy_from</span>    <span class="o">=&gt;</span> <span class="nf">sync_cp</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(source_path)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(sys.policy_hub)</span><span class="s">&quot;</span><span class="p">),</span>
+          <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">recurse</span><span class="p">(</span><span class="s">&quot;inf&quot;</span><span class="p">),</span>
+          <span class="kr">comment</span>      <span class="o">=&gt;</span> <span class="s">&quot;Ensure files from </span><span class="si">$(sys.policy_hub)</span><span class="s">:</span><span class="si">$(source_path)</span><span class="s"> exist in </span><span class="si">$(dest_path)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This reusable policy will be used to synchronize a directory on the policy server to a
+directory on the agent host.</p>
+<h3 id="create-a-patch-policy">Create a patch policy</h3>
+<p>Organize in a way that makes the most sense to you and your team. We recommend organizing
+policy by services.</p>
+
+<p>Create <code>services/patching.cf</code> with the following content:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="c"># Patching Policy</span>
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">patching</span>
+    <span class="c"># @brief Ensure various aspects of patching are handeled</span>
+
+    <span class="c"># We can break down the various parts of patching into separate bundles. This</span>
+    <span class="c"># allows us to become less overwhelmed by details if numerous specifics</span>
+    <span class="c"># exist in one or more aspect for different host classifications.</span>
+    <span class="p">{</span>
+      <span class="kd">methods</span><span class="p">:</span>
+
+        <span class="s">&quot;Patch Distribution&quot;</span>
+          <span class="kr">handle</span>    <span class="o">=&gt;</span> <span class="s">&quot;patching_methods_patch_distribution&quot;</span><span class="p">,</span>
+          <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="s">&quot;patch_distribution&quot;</span><span class="p">,</span>
+          <span class="kr">comment</span>   <span class="o">=&gt;</span> <span class="s">&quot;Ensure patches are properly distributed&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">patch_distribution</span>
+    <span class="c"># @brief Ensures that our patches are distributed to the proper locations</span>
+    <span class="p">{</span>
+      <span class="kd">files</span><span class="p">:</span>
+        <span class="s">&quot;</span><span class="si">$(def.dir_patch_deploy)</span><span class="s">/.&quot;</span>
+          <span class="kr">handle</span>  <span class="o">=&gt;</span> <span class="s">&quot;patch_distribution_files_def_dir_patch_deploy_exists&quot;</span><span class="p">,</span>
+          <span class="kr">create</span>  <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+          <span class="kr">comment</span> <span class="o">=&gt;</span> <span class="s">&quot;If the destination directory does not exist, we have no place</span>
+<span class="s">                      to which to copy the patches.&quot;</span><span class="p">;</span>
+
+      <span class="kd">methods</span><span class="p">:</span>
+
+        <span class="s">&quot;Patches&quot;</span>
+          <span class="kr">handle</span>    <span class="o">=&gt;</span> <span class="s">&quot;patch_distribution_methods_patches_from_policyserver_def_dir_patch_store_to_def_dir_patch_deploy&quot;</span><span class="p">,</span>
+          <span class="kr">usebundle</span> <span class="o">=&gt;</span> <span class="nf">sync_from_policyserver</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(def.dir_patch_store)</span><span class="s">&quot;</span><span class="p">,</span> <span class="s">&quot;</span><span class="si">$(def.dir_patch_deploy)</span><span class="s">&quot;</span><span class="p">),</span>
+          <span class="kr">comment</span>   <span class="o">=&gt;</span> <span class="s">&quot;Patches need to be present on host systems so that we can use</span>
+<span class="s">                       them. By convention we use the policy server as the central</span>
+<span class="s">                       distribution point.&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The above policy contains two bundles. We have separated a top-level patching
+bundle from a more specific <code>patch_distribution</code> bundle. This is an
+illustration of how to use bundles in order to abstract details. You
+might, for example, have some hosts that you don’t want to fully
+synchronize so you might use a different method or copy from a
+different path. Creating numerous bundles allows you to move those details away from the top
+level of what is involved in patching. If people are interested in what
+is involved in patch distribution, they can view that bundle for specifics.</p>
+<h2 id="integrate-the-policy">Integrate the policy</h2>
+<p>Now that all the pieces of the policy are in place, they must be integrated
+into the policy so they can be activated. Add each policy file to the <a href="reference-components.html#inputs" title="Components and Common Control - inputs"><code>inputs</code></a>
+section which is found under <code>body common control</code>. Once the policy file is included in
+inputs, the bundle can be activated. Bundles can be activated by adding them to either the
+<a href="reference-components.html#bundlesequence" title="Components and Common Control - bundlesequence"><code>bundlesequence</code></a> or they can be called as a <a href="reference-promise-types-methods.html" title="methods"><code>methods</code></a> type promise.</p>
+
+<p>Add the following entries to <a href="guide-writing-and-serving-policy-policy-framework.html#promises-cf" title="The Policy Framework - promises.cf"><code>promises.cf</code></a> under <code>body common control</code> -&gt; <a href="reference-components.html#inputs" title="Components and Common Control - inputs"><code>inputs</code></a>:</p>
+<div class="highlight"><pre><code class="text">&quot;lib/custom/files.cf&quot;,
+&quot;services/patching.cf&quot;,
+</code></pre>
+</div>
+
+<p>and the following to <a href="guide-writing-and-serving-policy-policy-framework.html#promises-cf" title="The Policy Framework - promises.cf"><code>promises.cf</code></a> under <code>body common control</code> -&gt; <a href="reference-components.html#bundlesequence" title="Components and Common Control - bundlesequence"><code>bundlesequence</code></a>:</p>
+<div class="highlight"><pre><code class="text">&quot;patching&quot;,
+</code></pre>
+</div>
+
+<p>Now that all of the policy has been edited and is in place, check for syntax errors by
+running <code>cf-promises -f ./promises.cf</code>. This promise is activated from the <strong>service_catalogue</strong>
+bundle.</p>
+<h2 id="commit-changes">Commit Changes</h2><h3 id="set-up-trackers-in-the-mission-portal-enterprise-users-only">Set up trackers in the Mission Portal (Enterprise Users Only)</h3>
+<p>Before committing the changes to your repository, log in to the Mission Portal
+and set up a Tracker so that you can see the policy as it goes out. To do this, perform the
+following:</p>
+
+<p>Navigate to the <strong>Hosts</strong> section. Select <strong>All hosts</strong>. Select the <strong>Events</strong> tab, located
+in the right-hand panel. Click <strong>Add new tracker</strong>.</p>
+
+<p><img src="hosts-add-new-tracker.png" alt="Mission Portal Host Event"></p>
+
+<p>Name it <em>Patch Failure</em>. Set the
+<strong>Report Type</strong> to <em>Promise not Kept</em>. Under <strong>Watch</strong>, enter <strong>.patch</strong>.  Set the <strong>Start Time</strong> to <strong>Now</strong>
+and then click <strong>Done</strong> to close the Start Time window. Click <strong>Start</strong> to save the new tracker.
+This tracker watches for  any promise handle that includes the string patch where a promise is not kept.</p>
+
+<p><img src="add-new-tracker.png" alt="Add New Tracker"></p>
+
+<p>Add another tracker called <em>Patch Repaired</em>. Set the <strong>Report Type</strong> to <em>Promise Repaired</em>.
+Enter the same values as above for <strong>Watch</strong> and <strong>Start Time</strong>. Click <strong>Start</strong> to save the new tracker.
+This tracker allows you to see how the policy reacts as it is activated on your infrastructure.</p>
+<h3 id="deploy-changes-enterprise-and-community-users">Deploy changes (Enterprise and Community Users)</h3>
+<p>Always inspect what you expect. <code>git status</code> shows the status of your current branch.</p>
+<div class="highlight"><pre><code class="text">git status
+</code></pre>
+</div>
+
+<p>Inspect the changes contained in each file. Once satisfied, add them to git&#39;s commit staging area.</p>
+<div class="highlight"><pre><code class="text">git diff file
+git add file
+</code></pre>
+</div>
+
+<p>Iterate over using git <strong>diff</strong>, <strong>add</strong>, and <strong>status</strong> until all of the changes that you
+expected are listed as <strong>Changes to be committed</strong>. Check the status once more before you
+commit the changes.</p>
+<div class="highlight"><pre><code class="text">git status
+</code></pre>
+</div>
+
+<p>Commit the changes to your local repository.</p>
+<div class="highlight"><pre><code class="text">git commit
+</code></pre>
+</div>
+
+<p>Push the changes to the central repository so they can be pulled down to
+your policy server for distribution.</p>
+<div class="highlight"><pre><code class="text">git push origin master
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-examples.html">examples</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-tutorials.html">tutorials</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-file-distribution.html">file distribution</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/examples/tutorials/distribute-files-from-a-central-location.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/13cbf18729a5bf43d836f72e30aab3b2b0bdee7f" target="_blank">13cbf18729a5bf43d836f72e30aab3b2b0bdee7f</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.6/assets/footer-1ca6436dd462ed6a69ad3f2dba0774f0.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

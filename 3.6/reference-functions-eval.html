@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.6  Documentation - eval</title>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.6/assets/global-ac3885a0674bd3c9117d62800be1608f.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "eval";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                       <option value="/docs/3.10/index.html">Version 3.10 (LTS)</option>
+                       <option value="/docs/3.7/index.html">Version 3.7 (LTS)</option>
+			                 <option value="/docs/3.9/index.html">Version 3.9 (EOL)</option>
+                       <option value="/docs/3.8/index.html">Version 3.8 (EOL)</option>
+                       <option value="/docs/3.6/index.html" selected>Version 3.6 (EOL)</option>
+			                 <option value="/docs/3.5/index.html">Version 3.5 (EOL)</option>
+                       <option value="/docs/archive/">Version 3.0 (archive)</option>
+                       <option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+                   </select>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+                       <input type="hidden" name="cx" value="013522560145330013240:bm0uhfq8ykk" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/logo_134x35.png" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html"  class="navselected" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a><ul class="level2"><li><a href="reference-functions-accessedbefore.html">accessedbefore</a></li><li><a href="reference-functions-accumulated.html">accumulated</a></li><li><a href="reference-functions-ago.html">ago</a></li><li><a href="reference-functions-and.html">and</a></li><li><a href="reference-functions-bundlesmatching.html">bundlesmatching</a></li><li><a href="reference-functions-canonifyuniquely.html">canonifyuniquely</a></li><li><a href="reference-functions-canonify.html">canonify</a></li><li><a href="reference-functions-changedbefore.html">changedbefore</a></li><li><a href="reference-functions-classify.html">classify</a></li><li><a href="reference-functions-classmatch.html">classmatch</a></li><li><a href="reference-functions-classesmatching.html">classesmatching</a></li><li><a href="reference-functions-countclassesmatching.html">countclassesmatching</a></li><li><a href="reference-functions-concat.html">concat</a></li><li><a href="reference-functions-countlinesmatching.html">countlinesmatching</a></li><li><a href="reference-functions-data_readstringarrayidx.html">data_readstringarrayidx</a></li><li><a href="reference-functions-datastate.html">datastate</a></li><li><a href="reference-functions-data_readstringarray.html">data_readstringarray</a></li><li><a href="reference-functions-difference.html">difference</a></li><li><a href="reference-functions-diskfree.html">diskfree</a></li><li><a href="reference-functions-dirname.html">dirname</a></li><li><a href="reference-functions-escape.html">escape</a></li><li><a href="reference-functions-every.html">every</a></li><li><a class="active" href="reference-functions-eval.html">eval</a></li><li><a href="reference-functions-execresult.html">execresult</a></li><li><a href="reference-functions-findfiles.html">findfiles</a></li><li><a href="reference-functions-filestat.html">filestat</a></li><li><a href="reference-functions-filesexist.html">filesexist</a></li><li><a href="reference-functions-filter.html">filter</a></li><li><a href="reference-functions-filesize.html">filesize</a></li><li><a href="reference-functions-fileexists.html">fileexists</a></li><li><a href="reference-functions-format.html">format</a></li><li><a href="reference-functions-getfields.html">getfields</a></li><li><a href="reference-functions-getvariablemetatags.html">getvariablemetatags</a></li><li><a href="reference-functions-getuid.html">getuid</a></li><li><a href="reference-functions-getindices.html">getindices</a></li><li><a href="reference-functions-getclassmetatags.html">getclassmetatags</a></li><li><a href="reference-functions-getenv.html">getenv</a></li><li><a href="reference-functions-getgid.html">getgid</a></li><li><a href="reference-functions-getvalues.html">getvalues</a></li><li><a href="reference-functions-getusers.html">getusers</a></li><li><a href="reference-functions-groupexists.html">groupexists</a></li><li><a href="reference-functions-grep.html">grep</a></li><li><a href="reference-functions-hashmatch.html">hashmatch</a></li><li><a href="reference-functions-hash.html">hash</a></li><li><a href="reference-functions-hostrange.html">hostrange</a></li><li><a href="reference-functions-host2ip.html">host2ip</a></li><li><a href="reference-functions-hostinnetgroup.html">hostinnetgroup</a></li><li><a href="reference-functions-hostswithclass.html">hostswithclass</a></li><li><a href="reference-functions-hostsseen.html">hostsseen</a></li><li><a href="reference-functions-hubknowledge.html">hubknowledge</a></li><li><a href="reference-functions-ifelse.html">ifelse</a></li><li><a href="reference-functions-intersection.html">intersection</a></li><li><a href="reference-functions-ip2host.html">ip2host</a></li><li><a href="reference-functions-iprange.html">iprange</a></li><li><a href="reference-functions-irange.html">irange</a></li><li><a href="reference-functions-isexecutable.html">isexecutable</a></li><li><a href="reference-functions-isgreaterthan.html">isgreaterthan</a></li><li><a href="reference-functions-islessthan.html">islessthan</a></li><li><a href="reference-functions-isdir.html">isdir</a></li><li><a href="reference-functions-islink.html">islink</a></li><li><a href="reference-functions-isnewerthan.html">isnewerthan</a></li><li><a href="reference-functions-isplain.html">isplain</a></li><li><a href="reference-functions-isvariable.html">isvariable</a></li><li><a href="reference-functions-join.html">join</a></li><li><a href="reference-functions-laterthan.html">laterthan</a></li><li><a href="reference-functions-lastnode.html">lastnode</a></li><li><a href="reference-functions-ldaparray.html">ldaparray</a></li><li><a href="reference-functions-ldaplist.html">ldaplist</a></li><li><a href="reference-functions-ldapvalue.html">ldapvalue</a></li><li><a href="reference-functions-length.html">length</a></li><li><a href="reference-functions-lsdir.html">lsdir</a></li><li><a href="reference-functions-maplist.html">maplist</a></li><li><a href="reference-functions-maparray.html">maparray</a></li><li><a href="reference-functions-makerule.html">makerule</a></li><li><a href="reference-functions-max.html">max</a></li><li><a href="reference-functions-mergedata.html">mergedata</a></li><li><a href="reference-functions-mean.html">mean</a></li><li><a href="reference-functions-min.html">min</a></li><li><a href="reference-functions-not.html">not</a></li><li><a href="reference-functions-none.html">none</a></li><li><a href="reference-functions-now.html">now</a></li><li><a href="reference-functions-nth.html">nth</a></li><li><a href="reference-functions-on.html">on</a></li><li><a href="reference-functions-or.html">or</a></li><li><a href="reference-functions-packageupdatesmatching.html">packageupdatesmatching</a></li><li><a href="reference-functions-parseintrealstringarray.html">parse[int|real|string]array</a></li><li><a href="reference-functions-parsejson.html">parsejson</a></li><li><a href="reference-functions-parsestringarrayidx.html">parsestringarrayidx</a></li><li><a href="reference-functions-packagesmatching.html">packagesmatching</a></li><li><a href="reference-functions-peerleaders.html">peerleaders</a></li><li><a href="reference-functions-peers.html">peers</a></li><li><a href="reference-functions-peerleader.html">peerleader</a></li><li><a href="reference-functions-product.html">product</a></li><li><a href="reference-functions-randomint.html">randomint</a></li><li><a href="reference-functions-regldap.html">regldap</a></li><li><a href="reference-functions-regline.html">regline</a></li><li><a href="reference-functions-reverse.html">reverse</a></li><li><a href="reference-functions-reglist.html">reglist</a></li><li><a href="reference-functions-readintrealstringarray.html">read[int|real|string]array</a></li><li><a href="reference-functions-remoteclassesmatching.html">remoteclassesmatching</a></li><li><a href="reference-functions-readintrealstringlist.html">read[int|real|string]list</a></li><li><a href="reference-functions-readtcp.html">readtcp</a></li><li><a href="reference-functions-regcmp.html">regcmp</a></li><li><a href="reference-functions-registryvalue.html">registryvalue</a></li><li><a href="reference-functions-returnszero.html">returnszero</a></li><li><a href="reference-functions-regextract.html">regextract</a></li><li><a href="reference-functions-regarray.html">regarray</a></li><li><a href="reference-functions-remotescalar.html">remotescalar</a></li><li><a href="reference-functions-readstringarrayidx.html">readstringarrayidx</a></li><li><a href="reference-functions-readfile.html">readfile</a></li><li><a href="reference-functions-readjson.html">readjson</a></li><li><a href="reference-functions-rrange.html">rrange</a></li><li><a href="reference-functions-selectservers.html">selectservers</a></li><li><a href="reference-functions-shuffle.html">shuffle</a></li><li><a href="reference-functions-sort.html">sort</a></li><li><a href="reference-functions-some.html">some</a></li><li><a href="reference-functions-splayclass.html">splayclass</a></li><li><a href="reference-functions-splitstring.html">splitstring</a></li><li><a href="reference-functions-string_downcase.html">string_downcase</a></li><li><a href="reference-functions-string_head.html">string_head</a></li><li><a href="reference-functions-string_reverse.html">string_reverse</a></li><li><a href="reference-functions-storejson.html">storejson</a></li><li><a href="reference-functions-strftime.html">strftime</a></li><li><a href="reference-functions-strcmp.html">strcmp</a></li><li><a href="reference-functions-string_tail.html">string_tail</a></li><li><a href="reference-functions-string_split.html">string_split</a></li><li><a href="reference-functions-string_upcase.html">string_upcase</a></li><li><a href="reference-functions-string_length.html">string_length</a></li><li><a href="reference-functions-sublist.html">sublist</a></li><li><a href="reference-functions-sum.html">sum</a></li><li><a href="reference-functions-translatepath.html">translatepath</a></li><li><a href="reference-functions-unique.html">unique</a></li><li><a href="reference-functions-userexists.html">userexists</a></li><li><a href="reference-functions-usemodule.html">usemodule</a></li><li><a href="reference-functions-variance.html">variance</a></li><li><a href="reference-functions-variablesmatching.html">variablesmatching</a></li></ul></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-enterprise-api-ref.html">Enterprise API Reference</a></li><li><a href="reference-standard-library.html">Standard Library</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-all-types.html">All Promise and Body Types</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="reference-functions.html">Functions</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    eval
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <p><strong>Prototype:</strong> <code>eval(expression, mode, options)</code></p>
+
+<p><strong>Return type:</strong> <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a></p>
+
+<p><strong>Description:</strong> Returns <a href="reference-promise-types-classes.html#expression" title="classes - expression"><code>expression</code></a> evaluated according to <a href="reference-promise-types-files.html#mode" title="files - mode"><code>mode</code></a>
+and <code>options</code>.  Currently only the <code>math</code> mode with <code>infix</code> option
+is supported for evaluating traditional math expressions.</p>
+
+<p>All the math is done with the C <code>double</code> type internally.  The results are returned as a string</p>
+
+<p>The supported infix mathematical syntax, in order of precedence, is:</p>
+
+<ul>
+<li><code>(</code> and <code>)</code> parentheses for grouping expressions</li>
+<li><code>^</code> operator for exponentiation</li>
+<li><code>*</code> and <code>/</code> operators for multiplication and division</li>
+<li><code>%</code> operators for modulo operation</li>
+<li><code>+</code> and <code>-</code> operators for addition and subtraction</li>
+<li><code>==</code> &quot;close enough&quot; operator to tell if two expressions evaluate to the same number, with a tiny margin to tolerate floating point errors.  It returns 1 or 0.</li>
+</ul>
+
+<p>The numbers can be in any format acceptable to the C <code>scanf</code> function with the <code>%lf</code> format specifier, followed by the <code>k</code>, <code>m</code>, <code>g</code>, <code>t</code>, or <code>p</code> SI units.  So e.g. <code>-100</code> and <code>2.34m</code> are valid numbers.</p>
+
+<p>In addition, the following constants are recognized:</p>
+
+<ul>
+<li><code>e</code>: 2.7182818284590452354</li>
+<li><code>log2e</code>: 1.4426950408889634074</li>
+<li><code>log10e</code>: 0.43429448190325182765</li>
+<li><code>ln2</code>: 0.69314718055994530942</li>
+<li><code>ln10</code>: 2.30258509299404568402</li>
+<li><code>pi</code>: 3.14159265358979323846</li>
+<li><code>pi_2</code>: 1.57079632679489661923 (pi over 2)</li>
+<li><code>pi_4</code>: 0.78539816339744830962 (pi over 4)</li>
+<li><code>1_pi</code>: 0.31830988618379067154 (1 over pi)</li>
+<li><code>2_pi</code>: 0.63661977236758134308 (2 over pi)</li>
+<li><code>2_sqrtpi</code>: 1.12837916709551257390 (2 over square root of pi)</li>
+<li><code>sqrt2</code>: 1.41421356237309504880 (square root of 2)</li>
+<li><code>sqrt1_2</code>: 0.70710678118654752440 (square root of 1/2)</li>
+</ul>
+
+<p>The following functions can be used, with parentheses:</p>
+
+<ul>
+<li><code>ceil</code> and <code>floor</code>: the next highest or the previous highest integer</li>
+<li><code>log10</code>, <code>log2</code>, <code>log</code></li>
+<li><code>sqrt</code></li>
+<li><code>sin</code>, <code>cos</code>, <code>tan</code>, <code>asin</code>, <code>acos</code>, <code>atan</code></li>
+<li><code>abs</code>: absolute value</li>
+<li><code>step</code>: 0 if the argument is negative, 1 otherwise</li>
+</ul>
+
+<p><strong>Arguments:</strong> </p>
+
+<ul>
+<li><code>mode</code>: <a href="reference-promise-types-vars.html#string" title="vars - string"><code>string</code></a>, in the range: <code>.*</code></li>
+<li><code>options</code>: one of
+
+<ul>
+<li><code>math</code></li>
+</ul></li>
+<li><code>expression</code>: one of
+
+<ul>
+<li><code>infix</code></li>
+</ul></li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">common</span> <span class="k">control</span>
+<span class="p">{</span>
+      <span class="kr">bundlesequence</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nf">run</span> <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">run</span>
+<span class="p">{</span>
+  <span class="kd">vars</span><span class="p">:</span>
+      <span class="p">&quot;</span><span class="nv">values[0]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;x&quot;</span><span class="p">;</span> <span class="c"># bad</span>
+      <span class="p">&quot;</span><span class="nv">values[1]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;+ 200&quot;</span><span class="p">;</span> <span class="c"># bad</span>
+      <span class="p">&quot;</span><span class="nv">values[2]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;200 + 100&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">values[3]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;200 - 100&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">values[4]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;- - -&quot;</span><span class="p">;</span> <span class="c"># bad</span>
+      <span class="p">&quot;</span><span class="nv">values[5]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;2 + 3 - 1&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">values[6]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;&quot;</span><span class="p">;</span> <span class="c"># 0</span>
+      <span class="p">&quot;</span><span class="nv">values[7]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;3 / 0&quot;</span><span class="p">;</span> <span class="c"># inf but not an error</span>
+      <span class="p">&quot;</span><span class="nv">values[8]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;3^3&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">values[9]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;-1^2.1&quot;</span><span class="p">;</span> <span class="c"># -nan but not an error</span>
+      <span class="p">&quot;</span><span class="nv">values[10]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;sin(20)&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">values[11]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;cos(20)&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">values[19]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;20 % 3&quot;</span><span class="p">;</span> <span class="c"># remainder</span>
+      <span class="p">&quot;</span><span class="nv">values[20]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;sqrt(0.2)&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">values[21]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;ceil(3.5)&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">values[22]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;floor(3.4)&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">values[23]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;abs(-3.4)&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">values[24]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;-3.4 == -3.4&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">values[25]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;-3.400000 == -3.400001&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">values[26]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;e&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">values[27]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;pi&quot;</span><span class="p">;</span>
+      <span class="p">&quot;</span><span class="nv">values[28]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;100m&quot;</span><span class="p">;</span> <span class="c"># 100 million</span>
+      <span class="p">&quot;</span><span class="nv">values[29]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="s">&quot;100k&quot;</span><span class="p">;</span> <span class="c"># 100 thousand</span>
+
+      <span class="p">&quot;</span><span class="nv">indices</span><span class="p">&quot;</span> <span class="kt">slist</span> <span class="o">=&gt;</span> <span class="nf">getindices</span><span class="p">(</span><span class="s">&quot;values&quot;</span><span class="p">);</span>
+
+      <span class="p">&quot;</span><span class="nv">eval[$(indices)]</span><span class="p">&quot;</span> <span class="kt">string</span> <span class="o">=&gt;</span> <span class="nf">eval</span><span class="p">(</span><span class="s">&quot;</span><span class="si">$(values[$(indices)</span><span class="s">])&quot;</span><span class="p">,</span> <span class="s">&quot;math&quot;</span><span class="p">,</span> <span class="s">&quot;infix&quot;</span><span class="p">);</span>
+
+  <span class="kd">reports</span><span class="p">:</span>
+      <span class="s">&quot;math/infix eval(&#39;</span><span class="si">$(values[$(indices)</span><span class="s">])&#39;) = &#39;</span><span class="si">$(eval[$(indices)</span><span class="s">])&#39;&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Output:</p>
+<div class="highlight"><pre><code class="text">2013-09-14T08:34:16-0400     info: eval error: expression could not be parsed (input &#39;x&#39;)
+2013-09-14T08:34:16-0400     info: eval error: expression could not be parsed (input &#39;+ 200&#39;)
+2013-09-14T08:34:16-0400     info: eval error: expression could not be parsed (input &#39;- - -&#39;)
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;x&#39;) = &#39;&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;+ 200&#39;) = &#39;&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;floor(3.4)&#39;) = &#39;3.000000&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;sqrt(0.2)&#39;) = &#39;0.447214&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;2 + 3 - 1&#39;) = &#39;4.000000&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;sin(20)&#39;) = &#39;0.912945&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;200 - 100&#39;) = &#39;100.000000&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;20 % 3&#39;) = &#39;2.000000&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;ceil(3.5)&#39;) = &#39;4.000000&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;200 + 100&#39;) = &#39;300.000000&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;pi&#39;) = &#39;3.141593&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;- - -&#39;) = &#39;&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;-3.400000 == -3.400001&#39;) = &#39;0.000000&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;3 / 0&#39;) = &#39;inf&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;e&#39;) = &#39;2.718282&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;cos(20)&#39;) = &#39;0.408082&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;&#39;) = &#39;0.000000&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;-1^2.1&#39;) = &#39;-nan&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;abs(-3.4)&#39;) = &#39;3.400000&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;-3.4 == -3.4&#39;) = &#39;1.000000&#39;
+2013-09-14T08:34:16-0400   notice: R: math/prefix eval(&#39;3^3&#39;) = &#39;27.000000&#39;
+</code></pre>
+</div>
+
+                        </div>
+                        
+                        <div id="tags">
+                            <ul>
+                                
+                                <li>
+                                    <a href="tags-reference.html">reference</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-data-functions.html">data functions</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-functions.html">functions</a>
+                                </li>
+                                
+                                <li>
+                                    <a href="tags-eval.html">eval</a>
+                                </li>
+                                
+                            </ul>
+                            <div class="clear"></div>
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+               
+               <p>Updated: 24 February 2017
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/master/reference/functions/eval.markdown">markdown source</a>]
+                revision <a href="http://github.com/cfengine/documentation/commit/13cbf18729a5bf43d836f72e30aab3b2b0bdee7f" target="_blank">13cbf18729a5bf43d836f72e30aab3b2b0bdee7f</a>.
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='/docs/3.6/assets/footer-1ca6436dd462ed6a69ad3f2dba0774f0.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+    </div>
+</body>
+</html>

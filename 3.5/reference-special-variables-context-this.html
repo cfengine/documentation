@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/docs/3.5/" />
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.5  Documentation - this</title>
+        <link href='/docs/3.5/assets/global-30d1cad5ede40d8c9460d465a5fc7bf6.css' rel='stylesheet' type='text/css' />
+
+
+        <script src='/docs/3.5/assets/global-c1cd9f8a5c9111c0ff6bdfeeca403598.js' type='text/javascript'></script>
+
+
+    </head>
+
+<body>
+    <header>
+    <div class="wrapper">
+        <div id="logo">
+            <a href="https://cfengine.com"><img src="media/images/logo.png" width="245" height="54" alt="CFEngine Homepage"></a>
+        </div>
+        <div id="top_form">
+            <div id="top_version_wrapper">
+                <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="https://docs.cfengine.com/docs/3.6/index.html">Version 3.6</option>
+                    <option value="https://docs.cfengine.com/docs/3.5/index.html" selected>Version 3.5</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/">Version 3.0</option>
+                    <option value="https://docs.cfengine.com/archive/manuals/cf2-Reference/">Version 2.0</option>
+                </select>
+            </div>
+            <div class="top_search_form">
+                <form id="cse-search-box" action="search.html">
+                    <input type="hidden" name="cx" value="003210255674884169375:g5rolpigr2s" />
+                    <input type="hidden" name="ie" value="UTF-8" />
+                    <div class="formbody">
+                        <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<nav id="nav_wrapper">
+    <div class="wrapper">
+        <ul>
+            <li>
+                <a href="/docs/3.5/getting-started.html" >Getting Started</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/whats-new.html" >New in CFEngine</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/manuals.html" >Manuals</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/reference.html"  class="navselected" >Reference</a>
+            </li>
+            <li>
+                <a href="/docs/3.5/examples.html" >Examples</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="wrapper">
+      
+  
+        
+            
+        
+  
+        
+            
+        
+  
+        
+            
+        
+  
+<div id="left_col">
+    <div id="resizable_zone">
+        <div id="nav_level1_wrapper" class="level1 scroll-pane">
+            <ul><li><a href="reference-components.html">Components and Common Control</a></li><li><a href="reference-promise-types.html">Promise Types and Attributes</a></li><li><a href="reference-functions.html">Functions</a></li><li><a href="reference-classes.html">Hard and Soft Classes</a></li><li><a href="reference-special-variables.html">Special Variables</a></li><li><a href="reference-design-center.html">Design Center</a></li><li><a href="reference-enterprise-api.html">Enterprise  API Reference</a></li><li><a href="reference-syntax.html">Syntax, identifiers and names</a></li></ul>
+        </div>
+    </div>
+    
+    <div id="nav_show_category">
+        <div class="level2">
+            <ul><li><a href="reference-special-variables-context-const.html">const</a></li><li><a href="reference-special-variables-context-edit.html">edit</a></li><li><a href="reference-special-variables-context-match.html">match</a></li><li><a href="reference-special-variables-context-mon.html">mon</a></li><li><a href="reference-special-variables-context-sys.html">sys</a></li><li class="selected"><span>this</span></li></ul>
+        </div>
+    </div>
+    
+</div>
+        <div id="content_col">
+              <div id="breadcrumbs_wrapper">
+    <div id="breadcrumbs">
+        <ul>
+                          
+                
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference.html">CFEngine Reference</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <a href="reference-special-variables.html">Special Variables</a>
+                        </li>
+                        <li>
+                            <i class="arrow">&nbsp;</i>
+                        </li>
+                    
+
+                
+            
+        
+                
+                    
+                
+        
+                
+
+                    
+                        <li>
+                            <span>this</span>
+                        </li>
+                    
+
+                
+            
+        </ul>
+    </div>
+    <div id="jumpto_wrapper">
+        <span id="jump_to">Jump to</span>
+        <div id="jumpto_list"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+            <article>
+                
+                <div id="tags">
+                    <ul>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/reference.html">reference</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/variables.html">variables</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/this.html">this</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/docs/3.5/tags/this.html">this</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                
+
+                <h1>this</h1>
+                    <p>The context <code>this</code> is used to access information about promises during
+their execution. It is context dependent and not universally meaningful
+or available, but provides a context for variables where one is needed
+(such as when passing the value of a list variable into a parameterized
+<a href="reference-promise-types-files.html#edit_line" title="files - edit_line"><code>edit_line</code></a> promise from a <a href="reference-promise-types-files.html" title="files"><code>files</code></a> promise).</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">resolver</span><span class="p">(</span><span class="nv">s</span><span class="p">,</span><span class="nv">n</span><span class="p">)</span>
+    <span class="p">{</span> 
+    <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;</span><span class="si">$(sys.resolv)</span><span class="s">&quot;</span> 
+
+          <span class="kr">create</span>        <span class="o">=&gt;</span> <span class="s">&quot;true&quot;</span><span class="p">,</span>
+          <span class="kr">edit_line</span>     <span class="o">=&gt;</span> <span class="nf">doresolv</span><span class="p">(</span><span class="s">&quot;@(this.s)&quot;</span><span class="p">,</span><span class="s">&quot;@(this.n)&quot;</span><span class="p">),</span>
+          <span class="kr">edit_defaults</span> <span class="o">=&gt;</span> <span class="nf">reconstruct</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Note that every unqualified variable is automatically considered to be
+in context <code>this</code>, so that a reference to the variable <code>$(foo)</code> is
+identical to referencing <code>$(this.foo)</code>. You are strongly encouraged to
+<strong>not</strong> take advantage of this behavior, but simply to be aware that if
+you attempt to declare a variable name with one of the following special
+reserved names, CFEngine will issue a warning (and you can reference
+your variable by qualifying it with the bundle name in which it is
+declared).</p>
+<h3 id="this-bundle">this.bundle</h3>
+<p>This variable contains the current bundle name.</p>
+<h3 id="this-handle">this.handle</h3>
+<p>This variable points to the promise handle of the currently handled
+promise; it is useful for referring to the intention in log messages.</p>
+<h3 id="this-namespace">this.namespace</h3>
+<p>This variable contains the current namespace name.</p>
+<h3 id="this-promise_filename">this.promise_filename</h3>
+<p>This variable reveals the name of the file in which the current promise
+is defined.</p>
+<h3 id="this-promise_linenumber">this.promise_linenumber</h3>
+<p>This variable reveals the line number in the file at which it is used.
+It is useful to differentiate otherwise identical reports promises.</p>
+<h3 id="this-promiser">this.promiser</h3>
+<p>The special variable <code>$(this.promiser)</code> is used to refer to the current
+value of the promiser itself, in a number of allowed cases, typically
+when searches can take place. Current promise types that define
+<code>$(this.promiser)</code> are: <a href="reference-promise-types-files.html" title="files"><code>files</code></a>, <a href="reference-promise-types-processes.html" title="processes"><code>processes</code></a>, <a href="reference-promise-types-commands.html" title="commands"><code>commands</code></a>.</p>
+
+<p>This variable is useful in <a href="reference-promise-types-files.html" title="files"><code>files</code></a> promises, for instance when using
+pattern matching or <a href="reference-promise-types-files.html#depth_search" title="files - depth_search"><code>depth_search</code></a> that implicitly match multiple
+objects. In that case, <code>$(this.promiser)</code> refers to the currently
+identified file that makes the promise. For example:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="k">bundle</span> <span class="k">agent</span> <span class="nf">find666</span>
+    <span class="p">{</span>
+    <span class="kd">files</span><span class="p">:</span>
+      <span class="s">&quot;/home&quot;</span>
+        <span class="kr">file_select</span> <span class="o">=&gt;</span> <span class="nf">world_writeable</span><span class="p">,</span>
+        <span class="kr">transformer</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/echo DETECTED </span><span class="si">$(this.promiser)</span><span class="s">&quot;</span><span class="p">,</span>
+        <span class="kr">depth_search</span> <span class="o">=&gt;</span> <span class="nf">recurse</span><span class="p">(</span><span class="s">&quot;inf&quot;</span><span class="p">);</span>
+
+      <span class="s">&quot;/etc/.*&quot;</span>
+        <span class="kr">file_select</span> <span class="o">=&gt;</span> <span class="nf">world_writeable</span><span class="p">,</span>
+        <span class="kr">transformer</span> <span class="o">=&gt;</span> <span class="s">&quot;/bin/echo DETECTED </span><span class="si">$(this.promiser)</span><span class="s">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">body</span> <span class="k">file_select</span> <span class="nf">world_writeable</span>
+    <span class="p">{</span>
+      <span class="kr">search_mode</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;o+w&quot;</span> <span class="p">};</span>
+      <span class="kr">file_result</span> <span class="o">=&gt;</span> <span class="s">&quot;mode&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="this-service_policy">this.service_policy</h3>
+<p>In a services promise, this variable is set to the value of the promise 
+attribute <a href="reference-promise-types-services.html#service_policy" title="services - service_policy"><code>service_policy</code></a>. For example:</p>
+<div class="highlight"><pre><code class="cf3">    <span class="kd">services</span><span class="p">:</span>
+
+      <span class="s">&quot;www&quot;</span>  <span class="kr">service_policy</span> <span class="o">=&gt;</span> <span class="s">&quot;start&quot;</span><span class="p">;</span>
+      <span class="kr">service_bundle</span> <span class="o">=&gt;</span> <span class="nf">non_standard_services</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>This is typically used in the adaptations for custom services bundles in
+the service methods.</p>
+<h3 id="this-this">this.this</h3>
+<p>From version 3.3.0 on, this variable is reserved. It is used by
+functions like <a href="reference-functions-maplist.html" title="maplist"><code>maplist()</code></a> to represent the current object in a
+transformation map.</p>
+
+            </article>
+        </div>
+    </div>
+  
+    <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"><span>&uarr;</span></a>
+</div>
+<footer>
+    <div class="license_info">
+        <div class="wrapper">
+           <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by-sa/3.0/88x31.png" /></a>
+           This work is licensed under a <a rel="license" target="_blank" href="//creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+        </div>
+    </div>
+<div class="compilation_info">Updated: 27 June 2014
+
+ from [<a target="_blank" href="http://github.com/cfengine/documentation/blob/3.5/reference/special-variables/this.markdown">markdown source</a>]
+ revision <a href="http://github.com/cfengine/documentation/commit/b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2" target="_blank">b69a6ec7a42da3ed7122b8a8f6cdd30bc2c9ced2</a>
+
+.
+</div>
+</footer>
+<script src='/docs/3.5/assets/footer-bb36803951ffa0e2920e5bf30189fc19.js' type='text/javascript'></script>
+
+
+<script type="text/javascript">document.write('<scr'+'ipt type="text/javascript" src="' + document.location.protocol + '//munchkin.marketo.net/munchkin.js"><\/scr'+'ipt>');</script>
+<script type="text/javascript">mktoMunchkin("205-ONE-981");</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.7  Documentation - Markdown Cheatsheet</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script type="text/javascript" src="//use.typekit.net/zih3sou.js"></script>
+        <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+        <link href='/docs/3.7/assets/global-fd19e55abf031add992b4d4a2d9bb344.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Markdown Cheatsheet";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div class="wrapper">
+        <div id="content_col" style="margin:0; padding:0">
+            <article>
+                <h1 id="top">Markdown Cheatsheet</h1>
+                    <p>Markdown formatting is simple, and the CFEngine generator adds a few things
+to make it even simpler. Here&#39;s a list of the most commonly used formats.</p>
+<h2 id="remember">Remember</h2>
+<ul>
+<li><strong>&quot;Always pull never push&quot;</strong></li>
+</ul>
+<h2 id="basic-formatting">Basic Formatting</h2><div class="highlight"><pre><code class="text"><span></span>One
+Paragraph
+
+Two
+Paragraphs
+</code></pre>
+</div>
+
+<p>One
+Paragraph</p>
+
+<p>Two
+Paragraphs</p>
+
+<p><code>**Bold**</code> <strong>Bold</strong></p>
+
+<p><code>*Italic*</code> <em>Italic</em></p>
+<h2 id="links">Links</h2><h3 id="link-within-documentation-and-to-known-pages">Link within documentation and to known pages</h3>
+<p><code>[top of the page][Markdown Cheatsheet], to the [Markdown Cheatsheet][], [inside page][Markdown Cheatsheet#Links] and [inside current page][Markdown Cheatsheet#Links]</code></p>
+
+<!--- Cheating here - this page is not published, so included from link map -->
+
+<p><a href="markdown-cheatsheet.html">top of the page</a>, to the <a href="markdown-cheatsheet.html">Markdown Cheatsheet</a>, <a href="markdown-cheatsheet.html#Links">inside page</a> and <a href="markdown-cheatsheet.html#Links">inside current page</a></p>
+
+<p><strong>Note:</strong> For known pages, see the
+<a href="https://github.com/cfengine/documentation-generator/blob/master/_references.md">_references.md</a>
+file.</p>
+<h3 id="link-to-cfengine-keyword">Link to CFEngine keyword</h3>
+<p>The documentation pre-processor will create those automatically.</p>
+<div class="highlight"><pre><code class="text"><span></span>`classes` and `readfile()`
+</code></pre>
+</div>
+
+<!--- cheat - otherwise we get ambiuous link target warnings -->
+
+<p><a href="reference-promise-types-classes.html" title="classes"><code>classes</code></a> and <a href="reference-functions-readfile.html" title="readfile"><code>readfile()</code></a></p>
+
+<p>However, the preprocess will not create links if the code word is in triple backticks:</p>
+<div class="highlight"><pre><code class="text"><span></span>```classes``` and ```readfile()```
+</code></pre>
+</div>
+
+<p><code>classes</code> and <code>readfile()</code></p>
+<h3 id="link-to-external-url">Link to External URL</h3>
+<p><code>[Markdown Documentation](http://daringfireball.net/projects/markdown/)</code></p>
+
+<p><a href="http://daringfireball.net/projects/markdown/syntax">Markdown Documentation</a></p>
+<h2 id="lists">Lists</h2>
+<p>Unordered lists - Markdown supports other markers than the asterisk, but in
+CFEngine we use only <code>*</code>.</p>
+<div class="highlight"><pre><code class="text"><span></span>* Item 1
+* Item 2
+   * Item 2a
+* Multi paragraph item
+
+    Four spaces indented
+</code></pre>
+</div>
+
+<ul>
+<li>Item 1</li>
+<li>Item 2
+
+<ul>
+<li>Item 2a</li>
+</ul></li>
+<li><p>Multi paragraph item</p>
+
+<p>Four spaces indented</p></li>
+</ul>
+
+<p>Ordered lists - the numbers you use don&#39;t matter.</p>
+<div class="highlight"><pre><code class="text"><span></span>1. first
+1. second
+9. Third
+</code></pre>
+</div>
+
+<ol>
+<li>first</li>
+<li>second</li>
+<li>Third</li>
+</ol>
+<h2 id="tables">Tables</h2>
+<p>Wiki-syntax for tables is supported, and you can be a bit sloppy
+about it, although it&#39;s better to align the <code>|</code> properly.</p>
+<div class="highlight"><pre><code class="text"><span></span>| Header | Left aligned | Centered | Right aligned |
+|--------|:-------------|:--------:|--------------:|
+|text    | text | X | 234 |
+</code></pre>
+</div>
+<div class="tableOverflow"><table><thead><tr>
+<th>Header</th>
+<th align="left">Left aligned</th>
+<th align="center">Centered</th>
+<th align="right">Right aligned</th>
+</tr>
+</thead><tbody><tr>
+<td>text</td>
+<td align="left">text</td>
+<td align="center">X</td>
+<td align="right">234</td>
+</tr>
+</tbody></table></div><h2 id="code">Code</h2><h3 id="inline-code">Inline code</h3><div class="highlight"><pre><code class="text"><span></span>This renders as `inline code`.
+</code></pre>
+</div>
+
+<p>This renders as <code>inline code</code>.</p>
+<div class="highlight"><pre><code class="text"><span></span>This also renders as ```inline code```.
+</code></pre>
+</div>
+
+<p>This also renders as <code>inline code</code>.</p>
+
+<p>See the note above on implicit linking - single backticks will link, triple backticks won&#39;t.</p>
+<h3 id="code-blocks">Code Blocks</h3>
+<p>Code blocks are either indendented by four spaces:</p>
+
+<p>Just indent by four spaces:</p>
+<div class="highlight"><pre><code class="text"><span></span>    $ code block
+    $ without syntax highlighting
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text"><span></span>$ code block
+$ without syntax highlighting
+</code></pre>
+</div>
+
+<p>or use three backticks:</p>
+<div class="highlight"><pre><code class="text"><span></span>```
+some more code
+in a block
+```
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="text"><span></span>some more code
+in a block
+</code></pre>
+</div>
+
+<p>To turn on syntax highlighting, specify the brush directly after the opening three
+backticks. Syntax highlighting is provided by pygments. Find all available lexers <a href="http://pygments.org/docs/lexers/">here</a>.</p>
+<h4 id="cfengine-code-blocks">CFEngine Code Blocks</h4>
+<p>If you want CFEngine syntax highlighting, use</p>
+<div class="highlight"><pre><code class="text"><span></span>```cf3
+# CFEngine block
+
+bundle agent example()
+{
+}
+```
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="c"># CFEngine code block</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Other frequently used syntax highlighers shown below.</p>
+<h4 id="bash-script-code-blocks">Bash Script Code Blocks</h4><div class="highlight"><pre><code class="text"><span></span>    ```bash
+    #!/bin/bash
+    echo hi
+    for i in `seq 1 10`;
+    do
+      echo $i
+    done
+    ```
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="bash"><span></span><span class="ch">#!/bin/bash</span>
+<span class="nb">echo</span> hi
+<span class="k">for</span> i in <span class="sb">`</span>seq <span class="m">1</span> <span class="m">10</span><span class="sb">`</span><span class="p">;</span>
+<span class="k">do</span>
+  <span class="nb">echo</span> <span class="nv">$i</span>
+<span class="k">done</span>
+</code></pre>
+</div>
+<h4 id="console-blocks">Console Blocks</h4><div class="highlight"><pre><code class="text"><span></span>    ```console
+    root@policy_server # /etc/init.d/cfengine3 stop
+    ```
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="console"><span></span><span class="gp">root@policy_server #</span> /etc/init.d/cfengine3 stop
+</code></pre>
+</div>
+<h4 id="sql-code-blocks">SQL Code Blocks</h4><div class="highlight"><pre><code class="text"><span></span>    ```sql
+    SELECT
+         FileChanges.FileName,
+         Count(Distinct(FileChanges.HostKey)) AS DistinctHostCount,
+         COUNT(1) AS ChangeCount
+      FROM
+         FileChanges JOIN Contexts
+      WHERE
+         Contexts.ContextName=&#39;ubuntu&#39;
+      GROUP BY
+         FileChanges.FileName
+      ORDER BY
+         ChangeCount DESC
+    ```
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="sql"><span></span><span class="k">SELECT</span>
+     <span class="n">FileChanges</span><span class="p">.</span><span class="n">FileName</span><span class="p">,</span>
+     <span class="k">Count</span><span class="p">(</span><span class="k">Distinct</span><span class="p">(</span><span class="n">FileChanges</span><span class="p">.</span><span class="n">HostKey</span><span class="p">))</span> <span class="k">AS</span> <span class="n">DistinctHostCount</span><span class="p">,</span>
+     <span class="k">COUNT</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">AS</span> <span class="n">ChangeCount</span>
+  <span class="k">FROM</span>
+     <span class="n">FileChanges</span> <span class="k">JOIN</span> <span class="n">Contexts</span>
+  <span class="k">WHERE</span>
+     <span class="n">Contexts</span><span class="p">.</span><span class="n">ContextName</span><span class="o">=</span><span class="s1">&#39;ubuntu&#39;</span>
+  <span class="k">GROUP</span> <span class="k">BY</span>
+     <span class="n">FileChanges</span><span class="p">.</span><span class="n">FileName</span>
+  <span class="k">ORDER</span> <span class="k">BY</span>
+     <span class="n">ChangeCount</span> <span class="k">DESC</span>
+</code></pre>
+</div>
+<h4 id="diff-code-blocks">Diff Code Blocks</h4><div class="highlight"><pre><code class="text"><span></span>    ```diff
+    diff --git a/README.md b/README.md
+    index 92555a2..b49c0bb 100644
+    --- a/README.md
+    +++ b/README.md
+    @@ -377,8 +377,12 @@ As a general note, avoiding abbreviations provides better readability.
+
+     * follow the [Policy Style Guide](manuals/policy-style.markdown)
+       in examples and code snippets
+    -* always run it through Pygments plus the appropriate lexer (only cf3
+    -  supported for now)
+    +* always run it through Pygments plus the appropriate lexer
+    +
+    +Most important are the `cf3` lexer, as well as `bash`, `console`,
+    +`diff`, `shell-session` and `postgresql`. But Jekyll supports
+    +[many more lexers](http://pygments.org/docs/lexers/)
+    +
+     * avoid custom color schemes and hand-coded HTML
+     * document the example after the example code
+    ```
+</code></pre>
+</div>
+<div class="highlight"><pre><code class="diff"><span></span><span class="gh">diff --git a/README.md b/README.md</span>
+<span class="gh">index 92555a2..b49c0bb 100644</span>
+<span class="gd">--- a/README.md</span>
+<span class="gi">+++ b/README.md</span>
+<span class="gu">@@ -377,8 +377,12 @@ As a general note, avoiding abbreviations provides better readability.</span>
+
+ * follow the [Policy Style Guide](manuals/policy-style.markdown)
+   in examples and code snippets
+<span class="gd">-* always run it through Pygments plus the appropriate lexer (only cf3</span>
+<span class="gd">-  supported for now)</span>
+<span class="gi">+* always run it through Pygments plus the appropriate lexer</span>
+<span class="gi">+</span>
+<span class="gi">+Most important are the `cf3` lexer, as well as `bash`, `console`,</span>
+<span class="gi">+`diff`, `shell-session` and `postgresql`. But Jekyll supports</span>
+<span class="gi">+[many more lexers](http://pygments.org/docs/lexers/)</span>
+<span class="gi">+</span>
+ * avoid custom color schemes and hand-coded HTML
+ * document the example after the example code
+</code></pre>
+</div>
+<h3 id="code-blocks-and-lists">Code Blocks and Lists</h3>
+<p>If you want to include a code block within a list, put two tabs (8 spaces) in front of the entire block (4 to make the paragraph part of the list item, and 4 for it a code block):</p>
+<div class="highlight"><pre><code class="text"><span></span>* List item with code
+
+        &lt;code goes here&gt;
+</code></pre>
+</div>
+
+<ul>
+<li><p>List item with code</p>
+<div class="highlight"><pre><code class="text"><span></span>&lt;code goes here&gt;
+</code></pre>
+</div></li>
+</ul>
+
+<p>You can also use backticks (and get syntax highlighting) - just make sure the backticks are indented once:</p>
+<div class="highlight"><pre><code class="text"><span></span>1. First
+
+    ```cf3
+    # CFEngine block
+
+    bundle agent example()
+    {
+    }
+    ```
+
+2. Second
+3. Third
+</code></pre>
+</div>
+
+<ol>
+<li><p>First</p>
+<div class="highlight"><pre><code class="cf3"><span></span><span class="c"># CFEngine block</span>
+
+<span class="k">bundle</span> <span class="k">agent</span> <span class="nf">example</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</code></pre>
+</div></li>
+<li><p>Second</p></li>
+<li><p>Third</p></li>
+</ol>
+
+<hr>
+<h2 id="headers">Headers</h2><h3 id="horizontal-bar">Horizontal bar</h3>
+<p><code>***</code></p>
+
+<hr>
+
+<p><code># Level 1</code></p>
+<h1 id="level-1">Level 1</h1>
+<p><code>## Level 2</code></p>
+<h2 id="level-2">Level 2</h2>
+<p><code>### Level 3</code></p>
+<h3 id="level-3">Level 3</h3>
+<p><code>#### Level 4</code></p>
+<h4 id="level-4">Level 4</h4>
+<p><code>##### Level 5</code></p>
+<h5 id="level-5">Level 5</h5>
+<p><code>###### Level 6</code></p>
+<h6 id="level-6">Level 6</h6>
+<hr>
+
+            </article>
+        </div>
+    </div>
+</body>
+</html>

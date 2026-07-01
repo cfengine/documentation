@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>CFEngine 3.19  Documentation - Install and Get Started</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- page.url ~ https://docs.cfengine.com/latest/pages/examples/tutorials/manage-packages.html -->
+        <!-- WANT https://docs.cfengine.com/latest/pages/examples-tutorials-manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest/enterprise-cfengine-guide/install-get-started.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest/examples/tutorials/manage-packages.html -->
+        <!-- <link rel="canonical" href="https://docs.cfengine.com/latest-enterprise-cfengine-guide-install-get-started.html"> -->
+        <!-- Gave https://docs.cfengine.com/latest-reference-masterfiles-policy-framework.html -->
+        <link rel="canonical" href="https://docs.cfengine.com/latest/enterprise-cfengine-guide-install-get-started.html">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='assets/global-6a0b9da22cb0d4bd16e0e337e3484c43.css' rel='stylesheet' type='text/css' media='screen,print' />
+
+
+       
+        <style>
+            @media print {
+                 @page
+                    {
+                    @top-right{
+                        content: "Install and Get Started";
+                        width: 100%;
+                        vertical-align: bottom;
+                        border-bottom: .5pt solid;
+                        margin-bottom: .7cm;
+                    }
+            }
+        </style>
+    </head>
+
+<body>
+    <div id="full_container">
+        <header>
+    <div class="wrapper">
+        <div id="top_form" class="group">
+            <div class="float-right">
+               <div id="top_version_wrapper">
+                   <select onchange="selectVersion(this.options[this.selectedIndex].value)">
+			<option value="/docs/master/">master</option>
+<option value="/docs/3.20/">Version 3.20 (non-LTS)</option>
+<option value="/docs/3.19/" selected>Version 3.19 (EOL non-LTS)</option>
+<option value="/docs/3.18/">Version 3.18 (LTS)</option>
+<option value="/docs/3.17/">Version 3.17 (EOL non-LTS)</option>
+<option value="/docs/3.16/">Version 3.16 (EOL non-LTS)</option>
+<option value="/docs/3.15/">Version 3.15 (LTS)</option>
+<option value="/docs/3.12/">Version 3.12 (EOL LTS)</option>
+<option value="/docs/3.14/">Version 3.14 (EOL non-LTS)</option>
+<option value="/docs/3.13/">Version 3.13 (EOL non-LTS)</option>
+<option value="/docs/3.11/">Version 3.11 (EOL non-LTS)</option>
+<option value="/docs/3.10/">Version 3.10 (EOL LTS)</option>
+<option value="/docs/3.9/">Version 3.9 (EOL non-LTS)</option>
+<option value="/docs/3.8/">Version 3.8 (EOL non-LTS)</option>
+<option value="/docs/3.7/">Version 3.7 (EOL LTS)</option>
+<option value="/docs/3.6/">Version 3.6 (EOL)</option>
+<option value="/docs/3.5/">Version 3.5 (EOL)</option>
+<option value="/docs/archive/index.html">Version 3.0 (archive)</option>
+<option value="/docs/archive/cf2-index.html">Version 2.0 (archive)</option>
+
+                   </select>
+                   <script>
+                       function fillVersionWrapperSelect(url) {
+                           // Fills above <select> with data from a json file.
+                           var xmlhttp = new XMLHttpRequest();
+                           xmlhttp.open('GET', url, true);
+                           xmlhttp.onreadystatechange = function() {
+                               if (xmlhttp.readyState != 4 || xmlhttp.status != 200) {
+                                   return
+                               }
+                               var str = ''; //generated HTML
+                               var data = JSON.parse(xmlhttp.responseText);
+                               for(var i = 0; i<data.docs.length; i++){
+                                   var branch = data.docs[i];
+                                   var selected = '';
+                                   if(location.pathname.indexOf(branch.Link)==0){
+                                       // this is version that we're currently looking at
+                                       selected = ' selected';
+                                       window.currentVersionLink = branch.Link;
+                                   }
+                                   str += '<option value="' + branch.Link + '"' + selected + '>' + branch.Title + '</option>';
+                               }
+                               document.querySelector('#top_version_wrapper select').innerHTML = str;
+                           }
+                           xmlhttp.send(null);
+                       };
+                       function selectVersion(value){
+                           if(value.indexOf('archive')==-1 && window.currentVersionLink){
+                               window.location = window.location.href.replace(window.currentVersionLink, value);
+                           } else {
+                               window.location = value;
+                           }
+                       };
+                       document.addEventListener("DOMContentLoaded", function() {fillVersionWrapperSelect('/docs/branches.json')});
+                   </script>
+                </div>
+                <div class="top_search_form">
+                   <form id="cse-search-box" action="search.html">
+			   <input type="hidden" name="cx" value="012826289311752768906:ofqwltf6-kg" />
+                       <input type="hidden" name="ie" value="UTF-8" />
+                       <div class="formbody">
+                           <input type="text" name="q" id="top_search" class="text" value="" placeholder="Search..." />
+                       </div>
+                   </form>
+               </div>
+            </div>
+        </div>
+
+        <div class="group" id="nav_container">
+            <div id="logo">
+                <a href="https://cfengine.com"><img src="media/images/cfengine-logo.svg" alt="CFEngine Homepage"></a>
+            </div>
+
+            <nav id="nav_wrapper">
+                <ul id="nav_links">
+                    <li>
+                        <a href="index.html" >Home</a>
+                    </li>
+                    <li>
+                        <a href="guide.html" >Guide</a>
+                    </li>
+                    <li>
+                        <a href="enterprise-cfengine-guide.html"  class="navselected" >CFEngine Enterprise</a>
+                    </li>
+                    <li>
+                        <a href="examples.html" >Examples</a>
+                    </li>
+                    <li>
+                        <a href="reference.html" >Reference</a>
+                    </li>
+                    <li>
+                        <a class="hover" href="http://www.cfengine.com/product/free-download/" target="_blank">Download</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+        <div class="wrapper" id="main_content">
+            <div class="group">
+            
+
+
+          
+          
+             
+           
+    
+          
+         
+           
+           
+    
+<div id="left_col">
+    <div id="nav_level1_wrapper" class="level1">
+         <ul class="level1"><ul class="level1"><li><a class="active" href="enterprise-cfengine-guide-install-get-started.html">Install and Get Started</a></li><li><a href="enterprise-cfengine-guide-user-interface.html">User Interface</a></li><li><a href="enterprise-cfengine-guide-settings.html">Settings</a></li><li><a href="enterprise-cfengine-guide-health.html">Health</a></li><li><a href="enterprise-cfengine-guide-hosts-health.html">Hosts</a></li><li><a href="enterprise-cfengine-guide-alerts-notifications.html">Alerts and Notifications</a></li><li><a href="enterprise-cfengine-guide-alerts-custom-actions.html">Custom actions for Alerts</a></li><li><a href="enterprise-cfengine-guide-reporting.html">Enterprise Reporting</a></li><li><a href="enterprise-cfengine-guide-federated-reporting.html">Federated Reporting</a></li><li><a href="enterprise-cfengine-guide-measurements.html">Measurements app</a></li><li><a href="enterprise-cfengine-guide-enterprise-api.html">Enterprise API</a></li><li><a href="enterprise-cfengine-guide-best-practices.html">Best Practices</a></li><li><a href="enterprise-cfengine-guide-high-availability.html">High Availability</a></li><li><a href="enterprise-cfengine-guide-hub_administration.html">Hub Administration</a></li></ul></ul>
+    </div>
+</div> 
+                <div id="content_col">
+                      
+<div id="breadcrumbs_wrapper">
+
+    <div id="breadcrumbs">
+        <ul>
+            
+                
+
+                
+                    
+                
+
+                
+
+                    
+                        <li>
+                            <a href="enterprise-cfengine-guide.html">CFEngine Enterprise</a>
+                        </li>
+                    
+                
+            
+
+                
+                    
+                    
+                
+
+                
+
+                    
+                
+            
+        </ul>
+    </div>
+
+    <div id="edit_link">
+        <a href="" class="float-right">
+            <i class="fa fa-pencil"></i>
+        </a>
+    </div>
+</div>
+                    <article>
+
+                        
+                        <div id="print_TOC_wrapper">Table of Contents<br>
+                             <div id="print_TOC"></div>
+                        </div>
+                        <div class="article">
+                            
+                            <div class="article_title">
+                                <h1 id="top">
+                                    Install and Get Started
+                                </h1>
+                            </div>
+                            
+                            <div id="TOCbox_wrapper">
+                                <span id="TOCbox"><i class="fa fa-chevron-down"></i>Table of Contents<div id="TOCbox_list"></div></span>
+                            </div>
+
+                            <ul>
+<li><a href="enterprise-cfengine-guide-install-get-started.html#installation" title="Install and Get Started - Installation ">Installation</a></li>
+<li><a href="enterprise-cfengine-guide-install-get-started.html#post-install-configuration" title="Install and Get Started - Post-Install Configuration ">Post-Install Configuration</a></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>The <a href="guide-installation-and-configuration-general-installation.html" title="General Installation">General Installation</a> instructions provide the detailed steps for installing CFEngine, which are generally the same steps to follow for CFEngine Enterprise, with the exception of license keys (if applicable), and also some aspects of post-installation and configuration.</p>
+<h3 id="installing-enterprise-licenses">Installing Enterprise Licenses</h3>
+<p>Before you begin, you should have your license key, unless you only
+plan to use the free 25 node license. The installation instructions
+will be provided with the key.</p>
+<h2 id="post-install-configuration">Post-Install Configuration</h2><h3 id="change-email-setup-after-cfengine-enterprise-installation">Change Email Setup After CFEngine Enterprise Installation</h3>
+<p>For Enterprise 3.6 local mail relay is used, and it is assumed the server has a proper mail setup.</p>
+
+<p>The default FROM email for all emails sent from the Mission Portal is <code>admin@organization.com</code>. This can be changed on the CFE Server in <code>/var/cfengine/httpd/htdocs/application/config/appsettings.php:$config[&#39;appemail&#39;]</code>.</p>
+<h3 id="version-your-policies">Version your policies</h3>
+<p>Consider enabling the built-in version control of your policies as
+described in
+<a href="enterprise-cfengine-guide-best-practices.html#version-control-and-configuration-policy" title="Best Practices - Version Control and Configuration Policy ">Version Control and Configuration Policy</a></p>
+
+<p>Whether you do or not, please put your policies in some kind of
+backed-up VCS. Losing work because of &quot;fat fingering&quot; <code>rm</code> commands is
+very, very depressing.</p>
+<h3 id="configure-collection-for-monitoring-data">Configure collection for monitoring data</h3>
+<p><a href="enterprise-cfengine-guide-measurements.html" title="Measurements app">Measurements</a> allows you to sample a metric and assess its value
+across your hosts over time. Collection of monitoring information is disabled by
+default. Metrics must match <a href="reference-promise-types-access.html#monitoring_include" title="access - monitoring_include"><code>monitoring_include</code></a> in the appropriate
+<a href="reference-promise-types-access.html#report_data_select" title="access - report_data_select"><code>report_data_select</code></a> body.
+The <a href="reference-masterfiles-policy-framework.html" title="Masterfiles Policy Framework">Masterfiles Policy Framework</a> uses <code>body
+report_data_select default_data_select_policy_hub</code> to specify metrics that
+should be collected from policy hubs and <code>default_data_select_host</code> to specify
+metrics that should be collected from non hubs.</p>
+
+<p>For example:</p>
+
+<p>To collect all metrics from hubs:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">report_data_select</span> <span class="nf">default_data_select_policy_hub</span>
+<span class="c"># @brief Data to collect from policy servers by default</span>
+<span class="c">#</span>
+<span class="c"># By convention variables and classes known to be internal, (having no</span>
+<span class="c"># reporting value) should be prefixed with an underscore. By default the policy</span>
+<span class="c"># framework explicitly excludes these variables and classes from collection.</span>
+<span class="p">{</span>
+      <span class="kr">metatags_include</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;inventory&quot;</span><span class="p">,</span> <span class="s">&quot;report&quot;</span> <span class="p">};</span>
+      <span class="kr">metatags_exclude</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;noreport&quot;</span> <span class="p">};</span>
+      <span class="kr">promise_handle_exclude</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;noreport_.*&quot;</span> <span class="p">};</span>
+      <span class="kr">monitoring_include</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;.*&quot;</span> <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>To collect <code>cpu</code>, <code>loadavg</code> , <code>diskfree</code>, <code>swap_page_in</code>,
+<code>cpu_utilization</code>, <code>swap_utilization</code>, and <code>memory_utilization</code> from
+non hubs:</p>
+<div class="highlight"><pre><code class="cf3"><span class="k">body</span> <span class="k">report_data_select</span> <span class="nf">default_data_select_host</span>
+<span class="c"># @brief Data to collect from remote hosts by default</span>
+<span class="c">#</span>
+<span class="c"># By convention variables and classes known to be internal, (having no</span>
+<span class="c"># reporting value) should be prefixed with an underscore. By default the policy</span>
+<span class="c"># framework explicitly excludes these variables and classes from collection.</span>
+<span class="p">{</span>
+      <span class="kr">metatags_include</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;inventory&quot;</span><span class="p">,</span> <span class="s">&quot;report&quot;</span> <span class="p">};</span>
+      <span class="kr">metatags_exclude</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;noreport&quot;</span> <span class="p">};</span>
+      <span class="kr">promise_handle_exclude</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="s">&quot;noreport_.*&quot;</span> <span class="p">};</span>
+      <span class="kr">monitoring_include</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                              <span class="s">&quot;cpu&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;loadavg&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;diskfree&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;swap_page_in&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;cpu_utilization&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;swap_utilization&quot;</span><span class="p">,</span>
+                              <span class="s">&quot;memory_utilization&quot;</span><span class="p">,</span>
+                              <span class="p">};</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+<h3 id="review-settings">Review settings</h3>
+<p>See the <a href="reference-masterfiles-policy-framework.html" title="Masterfiles Policy Framework">Masterfiles Policy Framework</a> for a full
+list of all the settings you can configure.</p>
+
+                        </div>
+                        
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+<div id="moveTop">
+    <a href="#top"></a>
+</div>
+<footer>
+    <div class="wrapper">
+        <div class="group">
+            <div class="license_info">
+               <br /><br />
+               <p>This documentation is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.en_US">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.</p>
+
+               <p>See our general information on <a href="legal.html">licenses</a> and <a href="http://cfengine.com/terms">terms and conditions.</a></p>
+
+               <p>Updated: 06 July 2022
+               
+                from [<a target="_blank" href="http://github.com/cfengine/documentation/enterprise-cfengine-guide/install-get-started.markdown">markdown source</a>]
+               .
+               </p>
+            </div>
+            <div class="contact_info" style="text-align:right">
+               <p>CFEngine</p>
+               <p>470 Ramona Street,</p>
+               <p>Palo Alto, CA 94301</p>
+               <p>Phone: +1 650 560-4888</p>
+               <p><a href="http://cfengine.com/engage/contact/">Contact Us</a></p>
+           </div>
+        </div>
+    </div>
+</footer>
+<script src='assets/footer-38e3fd0081b106f885a95356ca1249c5.js' type='text/javascript'></script>
+
+<div id ="mobile_naw_wrapper">
+    <div id="mobile_links">
+        <table>
+             <tr>
+                <td id="mobile_left"><a id="mobile_left_menu"   href="#left-menu">Left Menu</a></td>
+                <td id="mobile_center"><a id="mobile_go_top"    href="#top">Go to Top</a></td>
+                <td id="mobile_right"><a id="mobile_right_menu" href="#right-menu">Table of Content</a></td>
+             </tr>
+        </table>
+    </div>
+</div>
+
+
+
+    </div>
+</body>
+</html>
