@@ -356,6 +356,52 @@ classes:
 
 **See also:** [`persistence` classes attribute][classes#persistence], [`persist_time` in classes body][Promise types#persist_time]
 
+### timer_policy
+
+**Description:** Determines whether a persistent class restarts its counter
+when rediscovered.
+
+When a [`persistence`][classes#persistence] timer is set, `timer_policy`
+controls what happens on later runs while the class is still defined (loaded
+from the persistent store):
+
+- `reset` re-evaluates the promise and restarts the timer, so the class keeps
+  persisting for as long as the policy keeps running and the expression stays
+  true.
+- `absolute` preserves the original expiry. While the class is already defined
+  the promise is skipped, so the class disappears once the original timer
+  elapses, regardless of how often the policy runs.
+
+This is the counterpart of `timer_policy` in the classes body, which has always
+defaulted to `reset`.
+
+**Type:** (menu option)
+
+**Allowed input range:** `absolute|reset`
+
+**Default value:** reset
+
+**Example:**
+
+```cf3
+bundle common setclasses
+{
+  classes:
+    "cached_class"
+      expression => "any",
+      persistence => "120",
+      timer_policy => "reset";
+}
+```
+
+**History:**
+
+- Introduced in CFEngine 3.24.5, 3.27.2, 3.28.0.
+- The default changed from `reset` to `absolute` 3.28.0, preserving prior
+  default behavior in 3.24.5 and 3.27.2 and later patch releases in the series.
+
+**See also:** [`persistence` classes attribute][classes#persistence], [`timer_policy` in classes body][Promise types#timer_policy], [`persist_time` in classes body][Promise types#persist_time]
+
 ### not
 
 **Description:** Evaluate the negation of string expression in normal form
