@@ -173,9 +173,9 @@ Note: You can install CFEngine Enterprise on up to 25 hosts using the script abo
 ### Step 4. Bootstrap the host to the policy server
 
 - All hosts must be bootstrapped to the Policy Server in order to establish a connection between the `Host` and the `Policy Server`.
-- Run the same commands that you ran in Step 2, `$ sudo /var/cfengine/bin/cfagent bootstrap <IP address of policy server>`.
+- Run the same commands that you ran in Step 2, `$ sudo /var/cfengine/bin/cf-agent --bootstrap <IP address of policy server>`.
 
-  Example: `$ sudo /var/cfengine/bin/cfagent bootstrap 172.31.3.25`
+  Example: `$ sudo /var/cfengine/bin/cf-agent --bootstrap 172.31.3.25`
 
 - The installation process is complete and CFEngine Enterprise is up and running on your system.
 
