@@ -35,7 +35,7 @@ You will be prompted to select a version of the masterfiles policy framework (th
 In general, the default is the best option, it will choose a version matching the version of CFEngine you are running.
 Click **Confirm**.
 
-{{< img "masterfiles-selection.png" "Small popup which allows you to choose between maserfiles version 3.27.1 (default) and master" >}}
+{{< img "masterfiles-selection.png" "Small popup which allows you to choose between masterfiles version 3.27.1 (default) and master" >}}
 
 ## Step 1: Explore and add modules
 

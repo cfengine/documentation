@@ -103,7 +103,7 @@ http://`<IP address of your Policy Server>`
 username: admin
 password: admin
 
-The Mission Portal runs TCP port 80 by default. (Click [here] (https://cfengine.zendesk.com/entries/25005193-Configure-Mission-Portal-to-use-HTTPS-instead-of-HTTP)
+The Mission Portal runs TCP port 80 by default. (Click [here](https://cfengine.zendesk.com/entries/25005193-Configure-Mission-Portal-to-use-HTTPS-instead-of-HTTP)
 to configure the Mission Portal to use HTTPS instead of HTTP.) During the initial setup, the Host(s) might take a few minutes to show up in the Mission Portal. Simply refresh the web page
 and log in again if necessary.
 
