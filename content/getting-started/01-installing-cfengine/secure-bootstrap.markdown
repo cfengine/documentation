@@ -188,7 +188,7 @@ scp ./client.pub "$HUB_SSH":client.pub
 And use `cf-key` to trust the key:
 
 ```command
-ssh "$CLIENT_SSH" "sudo cf-key --trust-key client.pub"
+ssh "$HUB_SSH" "sudo cf-key --trust-key client.pub"
 ```
 
 ### Trusting the hub's key on the client
