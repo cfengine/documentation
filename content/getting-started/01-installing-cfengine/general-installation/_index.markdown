@@ -35,7 +35,7 @@ Note: See [Installing Community][Installing Community] for the community version
    [Debian/Ubuntu]      # apt -y install /path/to/<agent package>.deb
    ```
 
-Note: Install actions are logged to `/var/logs/cfengine-install.log`.
+Note: Install actions are logged to `/var/log/cfengine-install.log`.
 
 ## Bootstrap
 

@@ -215,7 +215,7 @@ Enterprise:
    [HP-UX]              # swinstall -s <full path to agent package>.depot cfengine-nova
    ```
 
-Note: Install actions are logged to `/var/logs/cfengine-install.log`.
+Note: Install actions are logged to `/var/log/cfengine-install.log`.
 
 ## Bootstrap
 
