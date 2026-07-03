@@ -94,7 +94,7 @@ needing to make any additional changes elsewhere. However, any emails sent from
 the system might also end up flagged as spam and sent directly to a user's junk
 mailbox.
 
-**Note:** It's best practice to restart daemons after adjusting its settings to
+**Note:** It's best practice to restart daemons after adjusting their settings to
 ensure they have taken effect.
 
 #### Disable agent emails
@@ -110,7 +110,7 @@ The preferred way to disable the agent from sending emails is to define
 
 Alternatively you can define the class from `def.cf`.
 
-**Note:** It's best practice to restart daemons after adjusting its settings to
+**Note:** It's best practice to restart daemons after adjusting their settings to
 ensure they have taken effect.
 
 ### Server IP address and hostname
