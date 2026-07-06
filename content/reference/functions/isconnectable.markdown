@@ -17,6 +17,8 @@ This function checks whether a `hostname`:`port` is connectable within `timeout`
 
 {{< CFEngine_include_example(isconnectable.cf) >}}
 
+**See also:** `readtcp()`.
+
 **History:**
 
 - Introduced in 3.26.0
