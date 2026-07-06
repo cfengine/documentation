@@ -5,14 +5,15 @@ aliases:
   - "/reference-functions-string_replace.html"
 ---
 
-{{< CFEngine_function_prototype(string, match, replacement) >}}
+{{< CFEngine_function_prototype(string, match, replacement, option) >}}
 
-**Description:** In a given string, replaces a substring with another string.
-
-{{< CFEngine_function_attributes(string, match, replacement) >}}
+**Description:** Replaces a substring, or a list of substrings, within a given string with a specified replacement string or list of replacement strings.
+{{< CFEngine_function_attributes(string, match, replacement, option) >}}
 
 Reads a string from left to right, replacing the occurences of the second
 argument with the third argument in order.
+
+By default, the `option` parameter is set to `"strings"`, meaning the function expects `match` and `replacement` to be single strings. To use lists of strings instead, set option to `"lists"`. Lists can be passed as variables or inline JSON. However, their lengths must match exactly, as substitutions are applied pairwise. Note that mixing single string and list arguments is not supported.
 
 All characters in the string to replace in, the substring to match for and the
 replacement are read literally. This means that `.`, `*`, `\` and similar
