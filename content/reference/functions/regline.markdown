@@ -42,6 +42,7 @@ bundle edit_line upgrade_cfexecd
       # bundles and persist until it is explicitly canceled or until the end of
       # the agent run.
       scope => "bundle";
+
   insert_lines:
     exec_fix::
       "0,5,10,15,20,25,30,35,40,45,50,55 * * * * /var/cfengine/bin/cf-execd -F";
