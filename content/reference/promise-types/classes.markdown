@@ -383,7 +383,7 @@ defaulted to `reset`.
 
 **Example:**
 
-```cf3 {skip TODO}
+```cf3
 bundle common setclasses
 {
   classes:
