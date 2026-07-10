@@ -618,6 +618,7 @@ bundle agent ntp
       "servers"
         slist => getvalues("def.ntp[config][servers]"),
         if => isvariable("def.ntp[config][servers]");
+}
 ```
 
 Notice two promises were introduced, one setting `driftfile` to the value of `$(def.ntp[config][driftfile])` if it is defined and one setting servers to the list of values for `def.ntp[config][servers]` if it is defined. [Augments][Augments] allows for variables to be set in the _def_ bundle scope very early before policy is evaluated.
