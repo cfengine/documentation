@@ -450,6 +450,7 @@ bundle agent change_management
       ),
       depends_on => { "grant_hash_tables" },
       action => neighbourwatch("File changes observed on $(neighbours)");
+}
 ```
 
 It works by building a list of neighbours for each host. The function peers can

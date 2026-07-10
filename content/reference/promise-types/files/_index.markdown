@@ -2063,7 +2063,7 @@ body file_select example
 {
   leaf_name => { "prog.pid", "prog.log" };
   path_name => { "/etc/.*", "/var/run/.*" };
-  file_result => "leaf_name.path_name"
+  file_result => "leaf_name.path_name";
 }
 ```
 

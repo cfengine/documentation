@@ -184,6 +184,7 @@ bundle agent workflow_one
       "/usr/local/bin/my_job",
         action => if_elapsed("100"),
         classes => state_repaired("did_my_job");
+}
 ```
 
 ## Fancy distributed encapsulation
@@ -366,6 +367,7 @@ bundle agent workflow_one
       "/usr/local/bin/my_job",
         action => if_elapsed("100"),
         classes => state_repaired("did_my_job");
+}
 ```
 
 ## Self-healing workflows

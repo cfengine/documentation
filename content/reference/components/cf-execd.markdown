@@ -43,7 +43,7 @@ body executor control
   mailto => "cfengine@example.org";
   mailfrom => "cfengine@$(host).example.org";
   smtpserver => "localhost";
-  schedule => { "Min00", "Min30" }
+  schedule => { "Min00", "Min30" };
 }
 ```
 
