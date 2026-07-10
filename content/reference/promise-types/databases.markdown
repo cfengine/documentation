@@ -82,57 +82,49 @@ body database_server name
 ```cf3
 body common control
 {
-bundlesequence => { "databases" };
+  bundlesequence => { "databases" };
 }
 
 bundle agent databases
-
 {
-#commands:
-
-#  "/usr/bin/createdb cf_topic_maps",
-
-#        contain => as_user("mysql");
-
-databases:
-
-  "cf_topic_maps/topics"
-
-    database_operation => "create",
-    database_type => "sql",
-    database_columns => {
-                        "topic_name,varchar,256",
-                        "topic_comment,varchar,1024",
-                        "topic_id,varchar,256",
-                        "topic_type,varchar,256",
-                        "topic_extra,varchar,26"
-                        },
-
-    database_server => myserver;
-
+  #commands:
+  #  "/usr/bin/createdb cf_topic_maps",
+  #        contain => as_user("mysql");
+  databases:
+    "cf_topic_maps/topics"
+      database_operation => "create",
+      database_type => "sql",
+      database_columns => {
+        "topic_name,varchar,256",
+        "topic_comment,varchar,1024",
+        "topic_id,varchar,256",
+        "topic_type,varchar,256",
+        "topic_extra,varchar,26",
+      },
+      database_server => myserver;
 }
 
 ################################################
-
 body database_server myserver
 {
-any::
- db_server_owner => "postgres";
- db_server_password => "";
- db_server_host => "localhost";
- db_server_type => "postgres";
- db_server_connection_db => "postgres";
-none::
- db_server_owner => "root";
- db_server_password => "";
- db_server_host => "localhost";
- db_server_type => "mysql";
- db_server_connection_db => "mysql";
+  any::
+    db_server_owner => "postgres";
+    db_server_password => "";
+    db_server_host => "localhost";
+    db_server_type => "postgres";
+    db_server_connection_db => "postgres";
+
+  none::
+    db_server_owner => "root";
+    db_server_password => "";
+    db_server_host => "localhost";
+    db_server_type => "mysql";
+    db_server_connection_db => "mysql";
 }
 
 body contain as_user(x)
 {
-exec_owner => "$(x)";
+  exec_owner => "$(x)";
 }
 ```
 
@@ -245,11 +237,11 @@ for their respective database servers.
 ```cf3
 body database_server myserver(x)
 {
-db_server_owner => "$(x)";
-db_server_password => "";
-db_server_host => "localhost";
-db_server_type => "$(mysql)";
-db_server_connection_db => "$(x)";
+  db_server_owner => "$(x)";
+  db_server_password => "";
+  db_server_host => "localhost";
+  db_server_type => "$(mysql)";
+  db_server_connection_db => "$(x)";
 }
 ```
 
@@ -348,17 +340,15 @@ considered to be instances of individual columns.
 ```cf3
 bundle agent databases
 {
-databases:
-
- windows::
-
-  # Registry has (value,data) pairs in "keys" which are directories
-
-  "HKEY_LOCAL_MACHINE\SOFTWARE\CFEngine AS\CFEngine"
-
-    database_operation => "create",
-    database_rows => { "value1,REG_SZ,new value 1", "value2,REG_DWORD,12345"} ,
-    database_type     => "ms_registry";
+  databases:
+    windows::
+      # Registry has (value,data) pairs in "keys" which are directories
+      "HKEY_LOCAL_MACHINE\SOFTWARE\CFEngine AS\CFEngine"
+        database_operation => "create",
+        database_rows => {
+          "value1,REG_SZ,new value 1", "value2,REG_DWORD,12345"
+        },
+        database_type => "ms_registry";
 }
 ```
 
@@ -375,14 +365,12 @@ If a column value has a comma you can escape the comma with backslash `\,`.
 bundle agent main
 # @brief Configure system variables for hosts that should not use a proxy
 {
-
   databases:
     windows::
       "HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\Environment"
         database_operation => "create",
-        database_rows =>
-        {
-          "NO_PROXY,REG_SZ,localhost\,127.0.0.1\,localaddress\,.localdomain\,169.254.169.254\,.cfengine.com"
+        database_rows => {
+          "NO_PROXY,REG_SZ,localhost\,127.0.0.1\,localaddress\,.localdomain\,169.254.169.254\,.cfengine.com",
         },
         database_type => "ms_registry";
 }

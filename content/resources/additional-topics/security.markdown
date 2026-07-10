@@ -429,15 +429,10 @@ bundle agent change_management
 {
   vars:
     "watch_files"
-      slist =>  {
-        "/etc/passwd",
-        "/etc/shadow",
-        "/etc/group",
-        "/etc/services"
-      };
+      slist => { "/etc/passwd", "/etc/shadow", "/etc/group", "/etc/services" };
 
     "neighbours"
-      slist => peers("/var/cfengine/inputs/hostlist","#.*",4),
+      slist => peers("/var/cfengine/inputs/hostlist", "#.*", 4),
       comment => "Partition the network into groups";
 
   files:
@@ -445,13 +440,14 @@ bundle agent change_management
       comment => "Change detection on the above",
       changes => detect_diff_content;
 
-#######################################################################
-# Redundant cross monitoring .......................................
-#######################################################################
-
+    #######################################################################
+    # Redundant cross monitoring .......................................
+    #######################################################################
     "$(sys.workdir)/nw/$(neighbours)_checksum_digests.db"
       comment => "Watching our peers remote hash tables for changes - cross check",
-      copy_from => remote_cp("$(sys.workdir)/checksum_digests.db", "$(neighbours)"),
+      copy_from => remote_cp(
+        "$(sys.workdir)/checksum_digests.db", "$(neighbours)"
+      ),
       depends_on => { "grant_hash_tables" },
       action => neighbourwatch("File changes observed on $(neighbours)");
 ```

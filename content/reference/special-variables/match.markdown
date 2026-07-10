@@ -14,17 +14,15 @@ files.
 ```cf3
 bundle agent testbundle
 {
-files:
+  files:
+    "/home/mark/tmp/(cf[23])_(.*)"
+      create => "true",
+      edit_line => myedit("second $(match.2)");
 
-  "/home/mark/tmp/(cf[23])_(.*)"
-       create    => "true",
-       edit_line => myedit("second $(match.2)");
-
-  # but more specifically...
-
-  "/home/mark/tmp/cf3_(test)"
-       create    => "true",
-       edit_line => myedit("second $(match.1)");
+    # but more specifically...
+    "/home/mark/tmp/cf3_(test)"
+      create => "true",
+      edit_line => myedit("second $(match.1)");
 }
 ```
 

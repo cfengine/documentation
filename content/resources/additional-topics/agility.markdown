@@ -603,8 +603,7 @@ details are not hard-coded, and you can make your own custom version quickly.
 bundle agent example
 {
   packages:
-      "apache2"
-        package_method => my_special_package_manager_interface;
+    "apache2" package_method => my_special_package_manager_interface;
 }
 ```
 

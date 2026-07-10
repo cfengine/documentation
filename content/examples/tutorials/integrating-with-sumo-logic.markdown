@@ -163,24 +163,22 @@ The policy as found in `sumologic_policy_update.cf`.
 bundle agent sumo_logic_policy_update
 {
   vars:
-      "policy_update_file"
-        string => "/tmp/CFEngine_policy_updated";
-      "sumo_url"
-        string => "https://collectors.sumologic.com/receiver/v1/http/";
-      "sumo_secret"
-        string => "MY_SECRET_KEY";
-      "curl_args"
-        string => "-X POST -T $(policy_update_file) $(sumo_url)$(sumo_secret)";
+    "policy_update_file" string => "/tmp/CFEngine_policy_updated";
+    "sumo_url" string => "https://collectors.sumologic.com/receiver/v1/http/";
+    "sumo_secret" string => "MY_SECRET_KEY";
+
+    "curl_args"
+      string => "-X POST -T $(policy_update_file) $(sumo_url)$(sumo_secret)";
 
   files:
-      "$(policy_update_file)"
-        create => "true",
-        edit_line => insert_str("CFEngine_update: $(sys.last_policy_update)"),
-        edit_defaults => file;
+    "$(policy_update_file)"
+      create => "true",
+      edit_line => insert_str("CFEngine_update: $(sys.last_policy_update)"),
+      edit_defaults => file;
 
-      "$(policy_update_file)"
-        classes => if_repaired("new_policy_update"),
-        changes => change_detections;
+    "$(policy_update_file)"
+      classes => if_repaired("new_policy_update"),
+      changes => change_detections;
 
   commands:
     new_policy_update::
@@ -193,25 +191,25 @@ bundle agent sumo_logic_policy_update
 
 body changes change_detections
 {
-        hash => "md5";
-        update_hashes => "true";
-        report_changes => "content";
-        report_diffs => "true";
+  hash => "md5";
+  update_hashes => "true";
+  report_changes => "content";
+  report_diffs => "true";
 }
 
 body contain shell_command
 {
-        useshell => "useshell";
+  useshell => "useshell";
 }
 
 bundle edit_line insert_str(str)
 {
   insert_lines:
-      "$(str)";
+    "$(str)";
 }
 
 body edit_defaults file
 {
-        empty_file_before_editing => "true";
+  empty_file_before_editing => "true";
 }
 ```

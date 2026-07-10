@@ -48,8 +48,7 @@ a policy expert who is familiar with Normal ordering.
 bundle agent main
 {
   vars:
-    "sshd_config"
-      string => "/etc/ssh/sshd_config";
+    "sshd_config" string => "/etc/ssh/sshd_config";
 
   files:
     "$(sshd_config)"
@@ -68,7 +67,6 @@ bundle agent main
         comment => "After the sshd config file has been repaired, the
                     service must be reloaded in order for the new
                     settings to take effect.";
-
 }
 ```
 
@@ -99,8 +97,7 @@ bundle agent main
       package_module => apt_get;
 
   vars:
-    "sshd_config"
-      string => "/etc/ssh/sshd_config";
+    "sshd_config" string => "/etc/ssh/sshd_config";
 
   files:
     "$(sshd_config)"
@@ -114,7 +111,6 @@ bundle agent main
         comment => "After the sshd config file has been repaired, the
                     service must be reloaded in order for the new
                     settings to take effect.";
-
 }
 ```
 
@@ -139,11 +135,7 @@ bundle agent example
   vars:
     "people"
       slist => {
-        "Obi-Wan Kenobi",
-        "Luke Skywalker",
-        "Chewbacca",
-        "Yoda",
-        "Darth Vader",
+        "Obi-Wan Kenobi", "Luke Skywalker", "Chewbacca", "Yoda", "Darth Vader",
       };
 
     "cuddly" slist => { "Chewbacca", "Yoda" };
@@ -183,8 +175,10 @@ bundle agent example
   vars:
     any::
       "foo" string => "bar";
+
     windows::
       "foo" string => "baz";
+
     any::
       "fizz" string => "buzz";
 }
@@ -205,15 +199,19 @@ bundle agent example
   vars:
     # Short promises can be on one line:
     "a" string => "foo";
+
     # Small lists are also okay:
     "b" slist => { "1", "2", "3" };
 
     # Don't put multiple attributes on one line:
-    "c" string => "foo", comment => "bar";
+    "c"
+      string => "foo",
+      comment => "bar";
 
     # Not like this either:
     "c"
-      string => "foo", comment => "bar";
+      string => "foo",
+      comment => "bar";
 
     # Split up instead:
     "c"
@@ -221,19 +219,12 @@ bundle agent example
       comment => "bar";
 
     # When splitting up, don't keep the attribute name on the same line:
-    "e" slist => {
-        "lorem ipsum dolor sit",
-        "foo bar baz",
-        "fizz buzz fizzbuzz",
-      };
+    "e"
+      slist => { "lorem ipsum dolor sit", "foo bar baz", "fizz buzz fizzbuzz" };
 
-   # Instead, put the attribute name on a separate line:
-   "e"
-     slist => {
-       "lorem ipsum dolor sit",
-       "foo bar baz",
-       "fizz buzz fizzbuzz",
-     };
+    # Instead, put the attribute name on a separate line:
+    "e"
+      slist => { "lorem ipsum dolor sit", "foo bar baz", "fizz buzz fizzbuzz" };
 }
 ```
 
@@ -261,11 +252,11 @@ bundle agent example(param1)
         "Obi-Wan Kenobi",
         "Luke Skywalker",
         "Yoda",
-        "Darth Vader", # He used to be a Jedi, and since he
-                       # tossed the emperor into the Death
-                       # Star's reactor shaft we are including
-                       # him.
+        # He used to be a Jedi, and since he tossed the emperor into the
+        # Death Star's reactor shaft we are including him.
+        "Darth Vader",
       };
+
   classes:
     # Most of the time we don't need differentiation of redhat and centos
     "EL5" or => { "centos_5", "redhat_5" };
@@ -321,10 +312,10 @@ bundle agent example
   commands:
     dev::
       "/usr/bin/git"
-        args    => "pull",
+        args => "pull",
         contain => in_dir("/var/srv/myrepo"),
-        if      => "redhat",
-        handle  => "example_commands_dev_redhat_git_pull";
+        if => "redhat",
+        handle => "example_commands_dev_redhat_git_pull";
 }
 ```
 
@@ -341,13 +332,15 @@ bundle agent example
   files:
     any::
       "/var/cfengine/inputs/"
-        copy_from    => update_policy( "/var/cfengine/masterfiles","$(policyhost)" ),
-        classes      => policy_updated( "policy_updated" ),
+        copy_from => update_policy(
+          "/var/cfengine/masterfiles", "$(policyhost)"
+        ),
+        classes => policy_updated("policy_updated"),
         depth_search => recurse("inf");
 
       "/var/cfengine/modules"
-        copy_from => update_policy( "/var/cfengine/modules", "$(policyhost" ),
-        classes   => policy_updated( "modules_updated" );
+        copy_from => update_policy("/var/cfengine/modules", "$(policyhost"),
+        classes => policy_updated("modules_updated");
 
   classes:
     "EL5" or => { "centos_5", "redhat_5" };
@@ -363,13 +356,15 @@ bundle agent example
   files:
     any::
       "/var/cfengine/inputs/"
-        copy_from => update_policy( "/var/cfengine/masterfiles","$(policyhost)" ),
-        classes => policy_updated( "policy_updated" ),
+        copy_from => update_policy(
+          "/var/cfengine/masterfiles", "$(policyhost)"
+        ),
+        classes => policy_updated("policy_updated"),
         depth_search => recurse("inf");
 
       "/var/cfengine/modules"
-        copy_from => update_policy( "/var/cfengine/modules", "$(policyhost" ),
-        classes => policy_updated( "modules_updated" );
+        copy_from => update_policy("/var/cfengine/modules", "$(policyhost"),
+        classes => policy_updated("modules_updated");
 
   classes:
     "EL5" or => { "centos_5", "redhat_5" };
@@ -459,8 +454,7 @@ highly recommended.
 bundle agent main
 {
   vars:
-    "sshd_config"
-      string => "/etc/ssh/sshd_config";
+    "sshd_config" string => "/etc/ssh/sshd_config";
 
   files:
     "$(sshd_config)"
@@ -515,11 +509,10 @@ Example policy:
 ```cf3
 bundle agent satellite_bootstrap_main
 {
-
 @if feature(this_is_not_the_feature_your_looking_for)
-   some_promise: "foo" unknown => "bar";
+  some_promise:
+    "foo" unknown => "bar";
 @endif
-
   meta:
     (!ubuntu&!vvlan&!role_satellite)::
       "tags" slist => { "autorun" };
@@ -544,7 +537,7 @@ bundle agent satellite_bootstrap_main()
 {
   meta:
     (!ubuntu&!vvlan&!sarcrole_satellite)::
-      "tags" slist => {"autorun"};
+      "tags" slist => { "autorun" };
 
   methods:
     any::

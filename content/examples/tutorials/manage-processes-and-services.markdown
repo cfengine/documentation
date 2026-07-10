@@ -21,14 +21,13 @@ Create a new file called `ensure_process.cf`:
 ```cf3 {file="ensure_process.cf"}
 body file control
 {
-      inputs => { "$(sys.libdir)/stdlib.cf" };
+  inputs => { "$(sys.libdir)/stdlib.cf" };
 }
 
 bundle agent main
 {
   processes:
-      "/usr/sbin/ntpd"
-        restart_class => "ntpd_not_running";
+    "/usr/sbin/ntpd" restart_class => "ntpd_not_running";
 
   commands:
     ntpd_not_running::

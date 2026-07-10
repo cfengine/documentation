@@ -961,15 +961,12 @@ local variables can be iterated.
 ```cf3
 bundle agent test
 {
-vars:
+  vars:
+    # To iterate, we need a local copy
+    "i1" slist => { @(sys.ip_addresses) };
+    "i2" slist => { @(sys.interfaces) };
 
- # To iterate, we need a local copy
-
- "i1" slist => { @(sys.ip_addresses)} ;
- "i2" slist => { @(sys.interfaces)} ;
-
-reports:
-
+  reports:
     "Addresses: $(i1)";
     "Interfaces: $(i2)";
     "Addresses of the interfaces: $(sys.ipv4[$(i2)])";
@@ -1175,7 +1172,7 @@ A human friendly version of the operating system that's running.
 ```cf3
 bundle agent __main__
 {
-   reports:
+  reports:
     "$(sys.os_name_human)";
 }
 ```
@@ -1197,9 +1194,8 @@ Information parsed from `/etc/os-release` if present.
 ```cf3
 bundle agent main
 {
-    reports:
-       "$(with)"
-         with => string_mustache("{{%-top-}}", @(sys.os_release) );
+  reports:
+    "$(with)" with => string_mustache("{{%-top-}}", @(sys.os_release));
 }
 ```
 
@@ -1235,7 +1231,7 @@ The major version of the operating system that's running.
 ```cf3
 bundle agent __main__
 {
-   reports:
+  reports:
     "$(sys.os_version_major)";
 }
 ```

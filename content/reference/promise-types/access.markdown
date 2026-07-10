@@ -303,16 +303,10 @@ policy. Example:
 ```cf3
 bundle server my_access_rules()
 {
-access:
-  "/directory/"
-    admit => {
-      "127.0.0.1",
-      ".example.org",
-    },
-    deny => {
-      "badhost_1.example.org",
-      "badhost_1.example.org",
-    };
+  access:
+    "/directory/"
+      admit => { "127.0.0.1", ".example.org" },
+      deny => { "badhost_1.example.org", "badhost_1.example.org" };
 }
 ```
 
@@ -323,12 +317,9 @@ bundle server my_access_rules()
 {
   access:
     "/directory/"
-      admit_ips       => { "127.0.0.1" },
+      admit_ips => { "127.0.0.1" },
       admit_hostnames => { ".example.org" },
-      deny_hostnames  => {
-        "badhost_1.example.org",
-        "badhost_1.example.org"
-      };
+      deny_hostnames => { "badhost_1.example.org", "badhost_1.example.org" };
 }
 ```
 
@@ -623,27 +614,32 @@ bundle server my_access_rules()
       comment => "Grant access to contents of test_scalar VAR",
       resource_type => "literal",
       admit_ips => { "127.0.0.1" };
+
     "XYZ"
       resource_type => "variable",
       handle => "XYZ",
       admit_ips => { "$(sys.policy_hub)" };
-   "delta"
+
+    "delta"
       comment => "Grant access to cfengine hub to collect report deltas",
       resource_type => "query",
-      admit_ips   => { "$(sys.policy_hub)"  };
-   "full"
+      admit_ips => { "$(sys.policy_hub)" };
+
+    "full"
       comment => "Grant access to cfengine hub to collect full report dump",
       resource_type => "query",
-      admit_ips => { "$(sys.policy_hub)"  };
-   "magic_bundle"
+      admit_ips => { "$(sys.policy_hub)" };
+
+    "magic_bundle"
       comment => "Grant access to the hub to activate magic_bundle with cf-runagent",
       resource_type => "bundle",
       admit_ips => { "$(sys.policy_hub)" };
-   am_policy_hub::
-    "collect_calls"
-       comment => "Enable call-collect report collection for the specific client",
-       resource_type => "query",
-       admit_ips => { "1.2.3.4" };
+
+    am_policy_hub::
+      "collect_calls"
+        comment => "Enable call-collect report collection for the specific client",
+        resource_type => "query",
+        admit_ips => { "1.2.3.4" };
 }
 ```
 

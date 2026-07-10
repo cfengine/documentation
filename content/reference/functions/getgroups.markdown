@@ -17,15 +17,11 @@ aliases:
 bundle agent main
 {
   vars:
-    "groups"
-      slist => getgroups("root", "");
-
-    "first_three_groups"
-      slist => sublist("@(groups)", head, 3);
+    "groups" slist => getgroups("root", "");
+    "first_three_groups" slist => sublist("@(groups)", head, 3);
 
   reports:
     "$(first_three_groups)";
-
 }
 ```
 

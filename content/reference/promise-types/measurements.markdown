@@ -26,27 +26,25 @@ bundle monitor self_watch
   measurements:
     # Follow a special process over time
     # using CFEngine's process cache to avoid resampling
-
     # Example content from /var/cfengine/state/cf_rootprocs
     #USER                             PID         PPID          PGID          %CPU         %MEM        VSZ        NI         RSS    TTY      NLWP STIME     ELAPSED     TIME COMMAND
     #root                             19103       1             19103         0.2          2.1         71716      0          10676  ?           1 18:09       40:13 00:00:06 /var/cfengine/bin/cf-monitord --no-fork
-
     # match_value:
     #root \s+                         [0-9.]+ \s+ [0-9.]+  \s+  [0-9.]+ \s+   [0-9.]+ \s+  [0-9.]+ \s+ [0-9]+ \s+ [0-9]+ \s+ ([0-9]+) .*"
-
-     "/var/cfengine/state/cf_rootprocs"
-
-        handle => "cf_monitord_RSS",
-        stream_type => "file",
-        data_type => "int",
-        history_type => "weekly",
-        units => "kb",
-        match_value => proc_value(".*cf-monitord.*",
-        "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*"),
-        comment => "The amount of memory (RSS or Resident Set Size) cf-monitored is consuming";
+    "/var/cfengine/state/cf_rootprocs"
+      handle => "cf_monitord_RSS",
+      stream_type => "file",
+      data_type => "int",
+      history_type => "weekly",
+      units => "kb",
+      match_value => proc_value(
+        ".*cf-monitord.*",
+        "root\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+[0-9.]+\s+\s+[0-9.]+\s+[0-9.]+\s+([0-9]+).*"
+      ),
+      comment => "The amount of memory (RSS or Resident Set Size) cf-monitored is consuming";
 }
 
-body match_value proc_value(x,y)
+body match_value proc_value(x, y)
 {
   select_line_matching => "$(x)";
   select_multiline_policy => "sum";
@@ -66,7 +64,6 @@ bundle monitor watch_diskspace
       history_type => "static",
       units => "device",
       match_value => file_systems;
-
 }
 
 body match_value file_systems
@@ -311,17 +308,15 @@ This attribute is mutually exclusive of `select_line_number`.
 
 ```cf3
 # Editing
-
 body location example
 {
-select_line_matching => "Expression match.* whole line";
+  select_line_matching => "Expression match.* whole line";
 }
 
 # Measurement promises
-
 body match_value example
 {
-select_line_matching => "Expression match.* whole line";
+  select_line_matching => "Expression match.* whole line";
 }
 ```
 
@@ -340,7 +335,7 @@ This is mutually exclusive of [`select_line_matching`][measurements#select_line_
 ```cf3
 body match_value find_line
 {
-select_line_number => "2";
+  select_line_number => "2";
 }
 ```
 
@@ -362,8 +357,8 @@ it may match a partial string.
 ```cf3
 body match_value free_memory
 {
-select_line_matching => "MemFree:.*";
-extraction_regex => "MemFree:\s+([0-9]+).*";
+  select_line_matching => "MemFree:.*";
+  extraction_regex => "MemFree:\s+([0-9]+).*";
 }
 ```
 
@@ -389,33 +384,26 @@ logfile | grep pattern in Unix parlance.
 ```cf3
 bundle monitor watch
 {
-measurements:
-
-   "/home/mark/tmp/file"
-
-         handle => "line_counter",
-    stream_type => "file",
+  measurements:
+    "/home/mark/tmp/file"
+      handle => "line_counter",
+      stream_type => "file",
       data_type => "counter",
-    match_value => scan_log("MYLINE.*"),
-   history_type => "log",
-         action => sample_rate("0");
-
+      match_value => scan_log("MYLINE.*"),
+      history_type => "log",
+      action => sample_rate("0");
 }
-
-#
 
 body match_value scan_log(x)
 {
-select_line_matching => "^$(x)$";
-track_growing_file => "true";
+  select_line_matching => "^$(x)$";
+  track_growing_file => "true";
 }
-
-#
 
 body action sample_rate(x)
 {
-ifelapsed => "$(x)";
-expireafter => "10";
+  ifelapsed => "$(x)";
+  expireafter => "10";
 }
 ```
 
@@ -444,9 +432,9 @@ last
 ```cf3
 body match_value myvalue(xxx)
 {
- select_line_matching => ".*$(xxx).*";
- extraction_regex => "root\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+).*";
- select_multiline_policy => "sum";
+  select_line_matching => ".*$(xxx).*";
+  extraction_regex => "root\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+).*";
+  select_multiline_policy => "sum";
 }
 ```
 

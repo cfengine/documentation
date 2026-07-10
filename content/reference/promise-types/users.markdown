@@ -144,24 +144,25 @@ in the current bundle are inherited by the bundle specified in the
 ```cf3
 bundle agent main
 {
-   vars:
-      "user" string => "jack";
-   classes:
-      "should_have_home_dir" expression => regcmp("j.*", "$(user)");
-   users:
-      "$(user)"
-         policy => "present",
-         home_dir => "/home/$(user)",
-         home_bundle => setup_home_dir("$(user)"),
-         home_bundle_inherit => "true";
+  vars:
+    "user" string => "jack";
+
+  classes:
+    "should_have_home_dir" expression => regcmp("j.*", "$(user)");
+
+  users:
+    "$(user)"
+      policy => "present",
+      home_dir => "/home/$(user)",
+      home_bundle => setup_home_dir("$(user)"),
+      home_bundle_inherit => "true";
 }
 
 bundle agent setup_home_dir(user)
 {
-   files:
-      should_have_home_dir::
-         "/home/$(user)/."
-            create => "true";
+  files:
+    should_have_home_dir::
+      "/home/$(user)/." create => "true";
 }
 ```
 
@@ -200,8 +201,8 @@ that contains information about a user's password.
 ```cf3
 body password user_password
 {
-    format => "hash";
-      data => "jiJSlLSkZuVLE"; # "CFEngine"
+  format => "hash";
+  data => "jiJSlLSkZuVLE"; # "CFEngine"
 }
 ```
 
@@ -233,8 +234,8 @@ hashed passwords.
 ```cf3
 body password user_password
 {
-    format => "plaintext";
-      data => "CFEngine";
+  format => "plaintext";
+  data => "CFEngine";
 }
 ```
 
@@ -251,8 +252,8 @@ The format of the password data depends on the `format` attribute.
 ```cf3
 body password user_password
 {
-    format => "plaintext";
-      data => "CFEngine";
+  format => "plaintext";
+  data => "CFEngine";
 }
 ```
 

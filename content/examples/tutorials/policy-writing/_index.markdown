@@ -31,12 +31,9 @@ When individual components are empowered with clear guidance, independent decisi
 bundle agent hello_world
 {
   reports:
-
     any::
-
       "Hello World!"
         comment => "This is a simple promise saying hello to the world.";
-
 }
 ```
 

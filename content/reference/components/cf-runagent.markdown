@@ -42,10 +42,10 @@ introducing such dependencies makes configuration brittle.
 ```cf3
 body runagent control
 {
-    # default port is 5308
-    hosts => { "127.0.0.1:5308", "eternity.iu.hio.no:80", "slogans.iu.hio.no" };
+  # default port is 5308
+  hosts => { "127.0.0.1:5308", "eternity.iu.hio.no:80", "slogans.iu.hio.no" };
 
-    #output_to_file => "true";
+  #output_to_file => "true";
 }
 ```
 
@@ -99,10 +99,10 @@ body hub control
 body server control
 {
   specialhost::
-   port => "5308";
+    port => "5308";
 
   !specialhost::
-   port => "5308";
+    port => "5308";
 }
 ```
 
@@ -192,7 +192,7 @@ public/private keys for the client and server hosts.
 ```cf3
 body copy_from example
 {
-  servers  => { "remote-host.example.org" };
+  servers => { "remote-host.example.org" };
   encrypt => "true";
 }
 ```

@@ -29,8 +29,9 @@ The contained policy is only included if the version is greater than or equal to
 bundle agent extractor
 {
 @if minimum_version(3.8)
-# This block is only parsed on CFEngine 3.8 or later
-vars: "container" data => parsejson('{}');
+  # This block is only parsed on CFEngine 3.8 or later
+  vars:
+    "container" data => parsejson('{}');
 @endif
 }
 ```
@@ -112,8 +113,7 @@ bundle agent extractor
 @if before_version(3.15)
   # Policy to work around issue which was fixed in 3.15
   vars:
-    "container"
-      data => parsejson('{}');
+    "container" data => parsejson('{}');
 @endif
 }
 ```
@@ -134,8 +134,7 @@ bundle agent extractor
 @if after_version(3.15)
   # This policy is only parsed on 3.16+
   vars:
-    "container"
-      data => parsejson('{}');
+    "container" data => parsejson('{}');
 @endif
 }
 ```
@@ -158,13 +157,11 @@ bundle agent extractor
 @if minimum_version(3.16)
   # Implementation for 3.16+
   vars:
-    "container"
-      data => classfiltercsv("/tmp/data.csv", "true", "any");
+    "container" data => classfiltercsv("/tmp/data.csv", "true", "any");
 @else
   # Implementation for versions before 3.16
   vars:
-    "container"
-      data => readcsv("/tmp/data.csv");
+    "container" data => readcsv("/tmp/data.csv");
 @endif
 }
 ```
@@ -180,10 +177,11 @@ You can conditionally include policy test using the `@if` macro.
 ```cf3
 bundle agent extractor
 {
-  @if feature(xml)
-# the yaml library may not be compiled in
-  vars: "container" data => parseyaml("---");
-  @endif
+@if feature(xml)
+  # the yaml library may not be compiled in
+  vars:
+    "container" data => parseyaml("---");
+@endif
 }
 ```
 

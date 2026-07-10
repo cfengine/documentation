@@ -97,8 +97,8 @@ for the specific promise it's attached to.
 ```cf3
 body action example
 {
-  ifelapsed   => "120";  # 2 hours
-  expireafter => "240";  # 4 hours
+  ifelapsed => "120"; # 2 hours
+  expireafter => "240"; # 4 hours
 }
 ```
 
@@ -137,8 +137,8 @@ on the long running promise.
 ```cf3
 body action example
 {
-  ifelapsed   => "120";  # 2 hours
-  expireafter => "240";  # 4 hours
+  ifelapsed => "120"; # 2 hours
+  expireafter => "240"; # 4 hours
 }
 ```
 
@@ -224,16 +224,12 @@ defined in body common control over UDP. Please note
 bundle agent test
 {
   vars:
-
-      "software" slist => { "/root/xyz", "/tmp/xyz" };
+    "software" slist => { "/root/xyz", "/tmp/xyz" };
 
   files:
-
-      "$(software)"
-
-        create => "true",
-         action => logme("$(software)");
-
+    "$(software)"
+      create => "true",
+      action => logme("$(software)");
 }
 
 body action logme(x)
@@ -364,15 +360,13 @@ background on Windows.
 bundle agent main
 {
   commands:
-
-    "/bin/sleep 10"
-      action  => background;
+    "/bin/sleep 10" action => background;
 
     "/bin/sleep"
       args => "20",
-      action  => background;
-
+      action => background;
 }
+
 body action background
 {
   background => "true";
@@ -737,12 +731,11 @@ from 0 to 255.
 bundle agent cmdtest
 {
   commands:
-      "/bin/false"
-       classes => example;
+    "/bin/false" classes => example;
 
   reports:
-      waskept::
-        "The command-promise was kept!";
+    waskept::
+      "The command-promise was kept!";
 }
 
 body classes example
@@ -788,12 +781,11 @@ from 0 to 255.
 bundle agent cmdtest
 {
   commands:
-      "/bin/false"
-      classes => example;
+    "/bin/false" classes => example;
 
   reports:
-      wasrepaired::
-        "The command-promise got repaired!";
+    wasrepaired::
+      "The command-promise got repaired!";
 }
 
 body classes example
@@ -845,16 +837,15 @@ body common control
 bundle agent cmdtest
 {
   files:
-      "/tmp/test"
-        copy_from => copy("/etc/passwd");
+    "/tmp/test" copy_from => copy("/etc/passwd");
 
-      "/tmp/test"
-        classes => example,
-        transformer => "/bin/grep -q lkajfo999999 $(this.promiser)";
+    "/tmp/test"
+      classes => example,
+      transformer => "/bin/grep -q lkajfo999999 $(this.promiser)";
 
   reports:
-      hasfailed::
-        "The files-promise failed!";
+    hasfailed::
+      "The files-promise failed!";
 }
 
 body classes example
@@ -1035,14 +1026,9 @@ A specific example would be:
 bundle agent example
 {
   commands:
-
-      any::
-
-        "/bin/echo This is linux"
-          if => "linux";
-
-        "/bin/echo This is solaris"
-          if => "solaris";
+    any::
+      "/bin/echo This is linux" if => "linux";
+      "/bin/echo This is solaris" if => "solaris";
 }
 ```
 
@@ -1080,8 +1066,8 @@ will be skipped if `something` is never resolved:
 bundle agent main
 {
   classes:
-      "a" if => "$(no_such_var)";      # Will be skipped
-      "b" if => not("$(no_such_var)"); # Will be skipped
+    "a" if => "$(no_such_var)"; # Will be skipped
+    "b" if => not("$(no_such_var)"); # Will be skipped
 }
 ```
 
@@ -1182,9 +1168,8 @@ A specific example would be:
 bundle agent example
 {
   commands:
-      any::
-        "/bin/echo This is NOT linux"
-          unless => "linux";
+    any::
+      "/bin/echo This is NOT linux" unless => "linux";
 }
 ```
 
@@ -1208,11 +1193,10 @@ promise to be skipped. Since `if` defaults to skipping in those cases,
 bundle agent main
 {
   classes:
-      "a"     if => "any";            # Will be evaluated
-      "b" unless => "any";            # Will be skipped
-
-      "c"     if => "$(no_such_var)"; # Will be skipped
-      "d" unless => "$(no_such_var)"; # Will be evaluated
+    "a" if => "any"; # Will be evaluated
+    "b" unless => "any"; # Will be skipped
+    "c" if => "$(no_such_var)"; # Will be skipped
+    "d" unless => "$(no_such_var)"; # Will be evaluated
 }
 ```
 
@@ -1287,7 +1271,7 @@ Since the right hand side for this attribute is an slist, multiple strings (tags
 ```cf3
 body ANYTYPE mybody
 {
-  meta => { "deprecated" , "CFE-1234", "CVE-2020-1234" };
+  meta => { "deprecated", "CFE-1234", "CVE-2020-1234" };
 }
 ```
 
