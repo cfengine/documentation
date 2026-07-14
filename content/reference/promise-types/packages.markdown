@@ -583,7 +583,7 @@ The `options` attribute supports DNF setopt-style configuration:
 
 **History:**
 
-- Added in CFEngine 3.28.0
+- Added in CFEngine 3.28.0, 3.27.1, 3.24.4
 
 ### apt_get
 
