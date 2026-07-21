@@ -640,7 +640,7 @@ body acl template
 
 **Description:** The `hash` menu option defines the type of hash used for change detection.
 
-The `best` option cross correlates the best two available algorithms known in the OpenSSL library.
+The `best` option uses the strongest hash algorithm available (SHA-512).
 
 **Type:** (menu option)
 
@@ -664,6 +664,13 @@ body changes example
   hash => "md5";
 }
 ```
+
+**History:** Before 3.29.0, in the community edition the `best` option
+cross correlated two algorithms (MD5 and SHA1); it now uses SHA-512, matching
+the enterprise edition. Files tracked with `hash => "best"` are silently
+re-baselined under the new hash on the first agent run after upgrade. This
+change only affects the community edition; the enterprise edition already used
+SHA-512.
 
 #### report_changes
 
