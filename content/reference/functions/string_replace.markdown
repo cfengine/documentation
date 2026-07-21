@@ -28,6 +28,9 @@ advanced replace functionality, check out `regex_replace()`.
 
 {{< CFEngine_include_snippet(string_replace.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
-**History:** Introduced in 3.12.1 (2018) as a simpler version of `regex_replace()`
+**History:**
+
+- Introduced in 3.12.1 (2018) as a simpler version of `regex_replace()`
+- Added multiple string replacement via list or inline JSON in 3.29.0
 
 **See also:** `regex_replace()`
