@@ -173,6 +173,16 @@ regular expression that matches any single-character filename, use
 Depth search refers to a search for file objects that starts from the
 one or more matched base-paths as shown in the example above.
 
+### When is a promiser treated as a regular expression?
+
+CFEngine treats a files promiser as a regular expression if:
+
+- `pathtype => "regex"` is explicitly set.
+- `pathtype => "guess"` (the default) is set **and** the promiser contains any of the following:
+  - `*` or `+` (unescaped)
+  - `[...]` (character classes)
+  - `|` inside parentheses `(...)`
+
 ### Filenames and regular expressions
 
 CFEngine allows regular expressions within filenames, but only after
