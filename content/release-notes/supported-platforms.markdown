@@ -13,28 +13,28 @@ for all supported platforms and [binary packages for popular Linux distributions
 
 ## Hub
 
-|  Platform   |   Versions   | Architecture |
-| :---------: | :----------: | :----------: |
-| CentOS/RHEL | 8.1+, 9, 10  |    x86-64    |
-| CentOS/RHEL |      10      |    arm64     |
-|   Debian    |    12, 13    |    x86-64    |
-|   Debian    |    12, 13    |    arm64     |
-|   Ubuntu    | 22.04, 24.04 |    x86-64    |
-|   Ubuntu    | 22.04, 24.04 |    arm64     |
+|  Platform   |      Versions       | Architecture |
+| :---------: | :-----------------: | :----------: |
+| CentOS/RHEL |     8.1+, 9, 10     |    x86-64    |
+| CentOS/RHEL |         10          |    arm64     |
+|   Debian    |       12, 13        |    x86-64    |
+|   Debian    |       12, 13        |    arm64     |
+|   Ubuntu    | 22.04, 24.04, 26.04 |    x86-64    |
+|   Ubuntu    | 22.04, 24.04, 26.04 |    arm64     |
 
 Any supported host can be a policy server in Community installations of CFEngine.
 
 ## Clients
 
-|  Platform   |      Versions       | Architectures |
-| :---------: | :-----------------: | :-----------: |
-| CentOS/RHEL |   7, 8.1+, 9, 10    |    x86-64     |
-| CentOS/RHEL |         10          |     arm64     |
-|   Debian    |       12, 13        |    x86-64     |
-|   Debian    |       12, 13        |     arm64     |
-|   Ubuntu    | 20.04, 22.04, 24.04 |    x86-64     |
-|   Ubuntu    |    22.04, 24.04     |     arm64     |
-|   Windows   |  2012, 2016, 2019   |    x86-64     |
+|  Platform   |          Versions          | Architectures |
+| :---------: | :------------------------: | :-----------: |
+| CentOS/RHEL |       7, 8.1+, 9, 10       |    x86-64     |
+| CentOS/RHEL |             10             |     arm64     |
+|   Debian    |           12, 13           |    x86-64     |
+|   Debian    |           12, 13           |     arm64     |
+|   Ubuntu    | 20.04, 22.04, 24.04, 26.04 |    x86-64     |
+|   Ubuntu    |    22.04, 24.04, 26.04     |     arm64     |
+|   Windows   |      2012, 2016, 2019      |    x86-64     |
 
 [Known issues][] also includes platform-specific notes.
 
