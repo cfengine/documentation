@@ -173,6 +173,22 @@ regular expression that matches any single-character filename, use
 Depth search refers to a search for file objects that starts from the
 one or more matched base-paths as shown in the example above.
 
+### When is a promiser treated as a regular expression?
+
+By default (`pathtype => "guess"`), CFEngine treats a `files` promiser as
+a regular expression only if it contains an unescaped `*`, `+`, a `[...]`
+character class, or a `|` _inside_ parentheses. Otherwise it is a literal
+path — including a promiser with a lone `.`, `?`, `{n,m}`, `^`, `$`, a
+bare `|`, or a backslash class like `\d` (a backslash makes the next
+character literal). So `/tmp/test.txt` matches only `/tmp/test.txt`, not
+`/tmp/test-txt`.
+
+When regular expression is chosen the entire promiser is converted into a
+regular expression, in which every unescaped `.` becomes a wildcard. In
+`/etc/apt/sources.list.d/(cdrom|microsoft)\.list` the alternation makes the path
+a regex, so the dots in `sources.list.d` match any character unless escaped as
+`\.`. When in doubt, set [`pathtype`](#pathtype) explicitly.
+
 ### Filenames and regular expressions
 
 CFEngine allows regular expressions within filenames, but only after
