@@ -119,7 +119,7 @@ Here is an example promise type, written in Python, using our library:
 ```python
 import sys
 import os
-from cfengine import PromiseModule, ValidationError
+from cfengine_module_library import PromiseModule, ValidationError
 
 class GitPromiseTypeModule(PromiseModule):
     def validate_promise(self, promiser, attributes, metadata):
