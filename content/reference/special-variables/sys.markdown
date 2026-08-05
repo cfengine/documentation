@@ -45,6 +45,17 @@ The date of the system in canonical form, i.e. in the form of a class, from when
 sys.cdate = Sun_Dec__7_10_39_53_2008_
 ```
 
+### sys.cfengine_role
+
+The variable gives the role of the host running the policy, as a string
+
+```cf3 {skip TODO}
+reports:
+  "Role: $(sys.cfengine_role)";
+```
+
+**History:** Was introduced in 3.29.0.
+
 ### sys.cf_promises
 
 A variable containing the path to the CFEngine syntax analyzer
