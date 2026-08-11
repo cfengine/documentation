@@ -213,14 +213,28 @@ HTTP 200 OK
     "name": "Production",
     "authentication_type": "password",
     "username": "admin",
-    "is_empty": false,
+    "is_local": false,
+    "is_deployed_locally": false,
     "created_at": "2022-03-17 14:01:56.23852+00",
     "pushed_at": null,
     "ssh_key_id": null,
+    "action": null,
+    "classic_policy_set": false,
     "password": "set",
     "ssh_private_key": "not set"
 }
 ```
+
+**Response fields:**
+
+- **is_local** _(boolean)_
+  Whether the project exists only on the hub, without a git repository.
+- **is_deployed_locally** _(boolean)_
+  Whether the project is deployed locally on the hub.
+- **action** _(string)_
+  The last action performed on the project, such as `push`, `pushAndDeploy` or `localDeploy`. `null` if no action has been performed yet.
+- **classic_policy_set** _(boolean)_
+  Whether the project is a classic policy set instead of a cfbs project.
 
 **Note:** The API does not return password or ssh private key, but returns `set` or `not set`.
 
@@ -241,16 +255,25 @@ HTTP 200 OK
 **Parameters:**
 
 - **skip** _(integer)_
-  Number of results to skip for the processed query. The Mission Portal uses this for pagination. Optional parameter.
+  Number of results to skip for the processed query. The Mission Portal uses this for pagination. Optional parameter,
+  defaults to `0`.
 - **limit** _(integer)_
-  Limit the number of results in the query. Optional parameter.
+  Limit the number of results in the query. Optional parameter, defaults to `10`.
+- **name** _(string)_
+  Return only projects with this exact name. Optional parameter.
+- **is_local** _(string)_
+  Return only local or only remote projects. Allowed values: `true`, `false`. Optional parameter.
+- **is_deployed_locally** _(string)_
+  Return only projects that are or are not deployed locally. Allowed values: `true`, `false`. Optional parameter.
+
+**History:** The `name`, `is_local` and `is_deployed_locally` parameters were introduced in 3.29.0.
 
 **Example request (curl):**
 
 ```console
 curl --user <username>:<password> \
   -X GET \
-  https://hub.cfengine.com/api/build/projects
+  'https://hub.cfengine.com/api/build/projects?is_local=true&limit=2'
 ```
 
 **Successful response example:**
@@ -260,27 +283,37 @@ HTTP 200 OK
 {
     "data": [
         {
-            "id": 3,
-            "repository_url": "https://github.com/build/modules.git",
-            "branch": "master",
-            "name": null,
-            "authentication_type": "password",
-            "username": "admin",
-            "is_empty": false,
-            "created_at": "2022-03-17 13:13:21.107899+00",
-            "password": "set",
+            "id": 1,
+            "repository_url": null,
+            "branch": null,
+            "name": "Local project",
+            "authentication_type": null,
+            "username": null,
+            "is_local": true,
+            "is_deployed_locally": true,
+            "created_at": "2026-08-06 13:41:58.256377+00",
+            "pushed_at": null,
+            "ssh_key_id": null,
+            "action": null,
+            "classic_policy_set": false,
+            "password": "not set",
             "ssh_private_key": "not set"
         },
         {
-            "id": 4,
-            "repository_url": "https://github.com/build/modules.git",
-            "branch": "production",
-            "name": null,
-            "authentication_type": "password",
-            "username": "admin",
-            "is_empty": false,
-            "created_at": "2022-03-17 13:13:23.333539+00",
-            "password": "set",
+            "id": 2,
+            "repository_url": null,
+            "branch": null,
+            "name": "Local project 1",
+            "authentication_type": null,
+            "username": null,
+            "is_local": true,
+            "is_deployed_locally": false,
+            "created_at": "2026-08-06 13:42:15.843314+00",
+            "pushed_at": null,
+            "ssh_key_id": null,
+            "action": null,
+            "classic_policy_set": false,
+            "password": "not set",
             "ssh_private_key": "not set"
         }
     ],
@@ -293,15 +326,17 @@ HTTP 200 OK
 }
 ```
 
+See [Get project][Build API#Get project] for a description of the response fields.
+
 **Note:** The API does not return password or ssh private key, but returns `set` or `not set`.
 
 **Responses:**
 
-| HTTP response code        | Description           |
-| ------------------------- | --------------------- |
-| 200 Ok                    | Successful response   |
-| 404 Not found             | Project not found     |
-| 500 Internal server error | Internal server error |
+| HTTP response code        | Description               |
+| ------------------------- | ------------------------- |
+| 200 Ok                    | Successful response       |
+| 422 Unprocessable entity  | Validation error occurred |
+| 500 Internal server error | Internal server error     |
 
 ### Delete project
 
