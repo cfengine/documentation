@@ -160,8 +160,8 @@ Output:
 **Description:** The path and filename to which output should be appended
 
 Append the output of the report to the named file instead of standard output.
-If the file cannot be opened for writing then the report defaults to the
-standard output.
+If the report cannot be written, an error is logged and the promise is not
+kept.
 
 **Type:** `string`
 
