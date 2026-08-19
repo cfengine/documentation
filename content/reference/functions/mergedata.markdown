@@ -32,7 +32,7 @@ traditional list and array data types in CFEngine.
 - true and false are reserved bare values
 - In the event of key collision the _last_ key merged wins
 
-{{< CFEngine_function_attributes() >}}
+{{< CFEngine_function_attributes(arg1, arg2, ...) >}}
 
 **Example:**
 
