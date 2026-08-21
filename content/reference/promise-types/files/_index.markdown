@@ -761,6 +761,55 @@ body changes example
 }
 ```
 
+#### silence
+
+**Description:** The `silence` attribute lists the categories of file change
+whose alert output is suppressed.
+
+Change detection normally loudly logs an alert for every change it finds. Listing a
+category in `silence` prevents those messages. Policy can therefore keep
+reacting to a change that the operator is not alerted about.
+
+An individual change is silenced only when _every_ category it belongs to is
+listed. The summary logged after a set of stat changes is still reported if any
+one of those categories was left unsilenced.
+
+**Type:** `slist`
+
+**Allowed input range:**
+
+```
+content
+add
+remove
+owner
+group
+perms
+device
+mtime
+inode
+stats
+all
+```
+
+`stats` is shorthand for `owner`, `group`, `perms`, `device`, `mtime` and
+`inode`. `all` is shorthand for `stats` together with `content`, `add` and
+`remove`.
+
+**Example:**
+
+```cf3
+body changes example
+{
+  silence => { "mtime", "inode" };
+}
+```
+
+**Notes:** `silence` only affects what is logged. To stop a category from being
+tracked at all, use [`report_changes`][files#report_changes] instead.
+
+**History:** Introduced in CFEngine 3.29.0
+
 ### copy_from
 
 **Type:** `body copy_from`
