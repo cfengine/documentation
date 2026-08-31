@@ -201,7 +201,7 @@ bundle agent child
 }
 ```
 
-**See also:** [methods useresult attribute][methods#useresult]
+**See also:** [methods useresult attribute][methods#useresult], [Bundles][bundles]
 
 **History:** Introduced in 3.4.0.
 
