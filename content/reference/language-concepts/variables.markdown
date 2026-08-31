@@ -75,6 +75,22 @@ of the bundle in which it is defined:
 
     $(bundle_name.qualified)
 
+### Indirection
+
+The same expansion applies to the promiser when a variable is being
+defined, so a variable's name can be the value of another variable expanded:
+
+```cf3
+bundle agent __main__
+{
+  vars:
+    "key" string => "my_var";
+    "$(key)" string => "value";
+}
+```
+
+This defines a variable named `my_var`, so `$(my_var)` expands to `value`.
+
 ### Quoting
 
 When quoting strings CFEngine allows the use of `'`, `"`, and or `` ` ``. This

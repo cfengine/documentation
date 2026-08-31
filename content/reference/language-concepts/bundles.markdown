@@ -6,26 +6,31 @@ aliases:
   - "/reference-language-concepts-bundles.html"
 ---
 
-A bundle is a collection of promises. They allow to group related promises
-together into named building blocks that can be thought of as "subroutines" in
-the CFEngine promise language. A bundle that groups a number of promises
+A bundle is a collection of promises. They group related promises together
+into named, optionally parameterized building blocks that can be run from
+elsewhere in the policy. A bundle that groups a number of promises
 related to configuring a web server or a file system would be named
 "webserver" or "filesystem," respectively.
 
-**NOTE**: Bundles **are not functions**. They maintain state across actuations
-within the same agent run.
+**NOTE**: Bundles **are not functions**. A bundle run does not start with a
+clean slate, and state from each execution compounds within the same agent
+run.
 
-- Classic arrays are cleared at the beginning of a bundle actuation.
-- Lists, strings, ints, reals, and data-containers are preserved but can be
-  re-defined if not guarded with `if => isvariable()`.
+- Classic arrays are cleared at the beginning of each bundle run.
+- Lists, strings, ints, reals, and data-containers are preserved, but a
+  `vars` promise that runs again can still redefine them unless something
+  prevents it, such as guarding with `unless => isvariable()`.
 - `bundle` scoped classes are cleared at the end of the bundles execution
 - `namespace` scoped classes are not cleared automatically, though they can be
   explicitly undefined.
 
-Most promise types are specific to a particular kind of interpretation that
-requires a typed interpreter - the bundle _type_. Bundles belong to the agent
-that is used to keep the promises in the bundle. So `cf-agent` has bundles
-declared as:
+A bundle run can return a scalar value to its caller, using the `methods`
+attribute [`useresult`][methods#useresult] together with the `reports`
+attribute [`bundle_return_value_index`][reports#bundle_return_value_index].
+
+Most promise types are only understood by one particular component, such as
+`cf-agent` or `cf-serverd`. The bundle _type_ declares which component's
+promises a bundle contains. So `cf-agent` has bundles declared as:
 
 ```cf3
 bundle agent my_name

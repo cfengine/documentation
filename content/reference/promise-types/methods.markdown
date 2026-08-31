@@ -193,6 +193,6 @@ bundle agent child
 }
 ```
 
-**See also:** [reports bundle_return_value_index attribute][reports#bundle_return_value_index]
+**See also:** [reports bundle_return_value_index attribute][reports#bundle_return_value_index], [Bundles][bundles]
 
 **History:** Was introduced in 3.4.0 (2012)
