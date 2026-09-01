@@ -360,7 +360,7 @@ insert_if_not_contains_from_list => { "find_me_1", "find_me_2" };
 
 **Type:** `body location`
 
-**See also:** [Common body attributes][Promise types#Common body attributes], [`location` bodies in the standard library](reference-masterfiles-policy-framework-lib-files.html#location-bodies), [`start` location body in the standard library](reference-masterfiles-policy-framework-lib-files.html#location-bodies), [`before(srt)` location body in the standard library](reference-masterfiles-policy-framework-lib-files.html#before), [`after(srt)` location body in the standard library](reference-masterfiles-policy-framework-lib-files.html#after)
+**See also:** [Common body attributes][Promise types#Common body attributes], [`location` bodies in the standard library](/reference/masterfiles-policy-framework/lib-files#location-bodies), [`start` location body in the standard library](/reference/masterfiles-policy-framework/lib-files#location-bodies), [`before(srt)` location body in the standard library](/reference/masterfiles-policy-framework/lib-files#before), [`after(srt)` location body in the standard library](/reference/masterfiles-policy-framework/lib-files#after)
 
 #### before_after
 
