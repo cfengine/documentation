@@ -745,6 +745,13 @@ system files, you should keep a single repository for them and use CFEngine to
 synchronize changes from the repository source. Repositories should not be
 used to attempt to capture random changes of the system.
 
+To produce a diff, the agent keeps its own copy of each monitored file to
+compare the next run against. These copies are kept in a tree under
+`$(sys.statedir)/change_details` that mirrors the path of the monitored file,
+so the copy of `/etc/ssh/sshd_config` is
+`/var/cfengine/state/change_details/etc/ssh/sshd_config`. The location is not
+configurable, and `repository` does not change it.
+
 **Limitations:**
 Diffs will not be reported for files that are larger than 80MB in size.
 Diffs will not be reported if the number of lines between the first and last change exceed 4500.
@@ -760,6 +767,12 @@ body changes example
   report_diffs => "true";
 }
 ```
+
+**History:** Before 3.29.0 the copies were kept next to the monitored file as
+`<file>_cfchanges`, or under `repository` if one was configured. On the first
+run after an upgrade the copy is moved from either location to
+`$(sys.statedir)/change_details`, so no baseline is lost and nothing is left
+behind.
 
 #### silence
 
