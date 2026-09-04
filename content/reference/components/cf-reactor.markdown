@@ -12,7 +12,9 @@ refreshes the CMDB data file (`host_specific.json`) for the particular host.
 
 **Notes:**
 
-- `cf-reactor` is a CFEngine Enterprise hub specific component.
+- `cf-reactor` is part of CFEngine and is no longer an Enterprise-only
+  component. Work is in progress to turn it into a daemon for event-driven
+  CFEngine policy.
 
 - Unlike other components there is no control body for `cf-reactor`, all
   promises are hard coded within the component.
