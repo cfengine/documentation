@@ -6,16 +6,14 @@ aliases:
   - "/reference-components-cf-reactor.html"
 ---
 
-`cf-reactor` is the CFEngine event reaction daemon, it lists to `NOTIFY` events
-on the `cmdb_refresh`a PostgreSQL channel and upon a message received, it
-refreshes the CMDB data file (`host_specific.json`) for the particular host.
+`cf-reactor` is the CFEngine event reaction daemon.
+We are currently working on making `cf-reactor` respond to events specified in policy language, using `when` bodies and `reactor` bundles.
+This feature is coming in 3.29.0 and will be further documented here in the future.
 
 **Notes:**
 
-- `cf-reactor` is a CFEngine Enterprise hub specific component.
-
-- Unlike other components there is no control body for `cf-reactor`, all
-  promises are hard coded within the component.
+- In CFEngine Enterprise `cf-reactor` has some extra responsibilities, where it listens to `NOTIFY` events in the PostgreSQL database and performs actions when those events occur.
+  One example of such events is refreshing the `host_specific.json` files whenever there is an event in the `cmdb_refresh` channel.
 
 - In the future, the daemon should also take care of inventory refresh for hosts
   (now part of `cf-hub`) and many DB maintenance tasks that are now promises in
@@ -23,7 +21,8 @@ refreshes the CMDB data file (`host_specific.json`) for the particular host.
 
 **History:**
 
-- 3.18.2, 3.20.0 Introduced new component (`cf-reactor`).
+- In 3.18.2 / 3.20.0 `cf-reactor` was introduced as an Enterprise-only hub component.
+- In 3.29.0 `cf-reactor` was moved to CFEngine community to be used as the daemon for event driven CFEngine policy.
 
 ## Command reference
 
