@@ -4,7 +4,7 @@ title: Using CFEngine Build command line tools - cfbs
 ---
 
 In this tutorial, we'll take a look at how to work with CFEngine Build projects from the command line.
-We assume you have already set up a hub, and installed [`cf-remote`](https://pypi.org/project/cf-remote/) and [`cfbs`](https://pypi.org/project/cfbs/) as we do in [step 1 of the getting started guide](/getting-started/01-installation/).
+We assume you have already set up a hub, and installed [`cf-remote`](https://pypi.org/project/cf-remote/) and [`cfbs`](https://pypi.org/project/cfbs/) as we do in [step 1 of the getting started guide](/getting-started/01-installing-cfengine/).
 
 When working on a CFEngine Build project, the workflow looks like this:
 
