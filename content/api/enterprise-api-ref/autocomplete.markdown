@@ -18,7 +18,7 @@ Searches for CFEngine classes by name using case-insensitive pattern matching.
 **Parameters:**
 
 - **query** _(string)_
-  Search pattern for class names. Required. Must be 1-100 characters and containonly letters,
+  Search pattern for class names. Required. Must be 1-256 characters and contain only letters,
   numbers, dots, colons, or underscores.
 
 **Example request (curl):**
@@ -84,7 +84,7 @@ Searches for CFEngine variables by name using case-insensitive pattern matching.
 **Parameters:**
 
 - **query** _(string)_
-  Search pattern for variable names. Required. Must be 1-100 characters and contain only letters, numbers, dots, colons, or underscores.
+  Search pattern for variable names. Required. Must be 1-256 characters and contain only letters, numbers, dots, colons, or underscores.
 
 **Example request (curl):**
 
@@ -147,7 +147,7 @@ Searches for inventory attribute names using case-insensitive pattern matching.
 **Parameters:**
 
 - **query** _(string)_
-  Search pattern for inventory attribute names. Required. Must be 1-100 characters and contain only letters, numbers, dots, colons, or underscores.
+  Search pattern for inventory attribute names. Required. Must be 1-256 characters and contain only letters, numbers, dots, colons, or underscores.
 
 **Example request (curl):**
 
