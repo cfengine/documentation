@@ -244,7 +244,7 @@ files:
 body classes if_ok(x)
 {
 promise_repaired => { "$(x)" };
-  promise_kept => { "$(x)" };
+promise_kept => { "$(x)" };
 }
 
 </pre>
@@ -270,7 +270,7 @@ file_result => "leaf_name";
 body classes if_ok(x)
 {
 promise_repaired => { "$(x)" };
-  promise_kept => { "$(x)" };
+promise_kept => { "$(x)" };
 }
 
 </pre>
