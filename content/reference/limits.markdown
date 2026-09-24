@@ -42,13 +42,16 @@ The last 16 bytes are used for a timestamp and the separators.
 
 **URLs:** The URLs used in settings for LLMs and CFEngine Build projects are limited to 2048 characters.
 
-**Group names:** Maximum 100 characters.
+**Names:** Maximum 256 characters. This applies to usernames, role names, group names, report names,
+compliance report names, dashboard names, compliance report check names, condition names, and alert
+names.
 
-**Passwords:** Maximum 20 characters.
+**Passwords:** Maximum 256 characters.
 
 ### CMDB / group data / host specific data
 
-**Names:** Maximum 255 characters.
+**Names:** Maximum 256 characters. This applies to class names, variable names, and inventory
+attribute names.
 
 **Values:** Maximum 16 000 characters (16k).
 
