@@ -80,7 +80,7 @@ The following steps are only necessary for one of the two virtual machines, the 
 * In the `Firewall Configuration` screen use the `Tab` key to go to Customize.
 * Hit the `Enter` key. Below is the `Firewall Configuration` window that comes up:
 
-![The firewall Configuration window](Installing-CFE-on-AWS-8.png)
+![The firewall Configuration window](../../img/Installing-CFE-on-AWS-8.png)
 
 #### Open port 80 (HTTPD)
 
@@ -95,7 +95,7 @@ The following steps are only necessary for one of the two virtual machines, the 
 * Hit the `Tab` key and enter `tcp` in the `Protocol` section.
 * Hit the `Tab` key until OK is highlighted, and hit `Enter`.
 
-![Configuring a forward](Installing-CFE-on-AWS-9.png)
+![Configuring a forward](../../img/Installing-CFE-on-AWS-9.png)
 
 The `Port and Protocol` are entered in the blue boxes, with entries of `5308` and `tcp` respectively.
 Then the `Tab` key is used to highlight the `OK` button, and the user presses `Enter`.
@@ -142,7 +142,7 @@ This script installs the latest CFEngine Enterprise Policy Server on your server
 
   Example: `$ sudo /var/cfengine/bin/cf-agent --bootstrap 172.31.3.25`
 
-![Bootstrap the policy server](Installing-CFE-on-AWS-10.png)
+![Bootstrap the policy server](../../img/Installing-CFE-on-AWS-10.png)
 
 Upon successful completion, a confirmation message appears: "Bootstrap to '172.31.3.25' completed successfully!"
 
@@ -163,7 +163,7 @@ wget https://s3.amazonaws.com/cfengine.packages/quick-install-cfengine-enterpris
 
 Note: The installation will work on 64-bit and 32-bit client machines (the host requires a 64-bit machine).
 
-![Bootstrap the policy server](Installing-CFE-on-AWS-11.png)
+![Bootstrap the policy server](../../img/Installing-CFE-on-AWS-11.png)
 
 The client software (host), has been installed on the second virtual machine.
 

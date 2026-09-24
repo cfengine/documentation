@@ -41,7 +41,7 @@
 [lib/packages.cf]: /reference/masterfiles-policy-framework/lib-packages
 [stdlib-mog]: /reference/masterfiles-policy-framework/lib-files#mog
 [jq-project]: https://stedolan.github.io/jq/ "jq is a lightweight and flexible command-line JSON processor. Try online at jqplay.org!"
-[Using Vagrant]: /getting-started/01-installing-cfengine/general-installation/installation-enterprise-vagrant "The CFEngine Vagrant environment provides an easy way to test and explore CFEngine Enterprise."
+[Using Vagrant]: /getting-started/installation/general-installation/installation-enterprise-vagrant "The CFEngine Vagrant environment provides an easy way to test and explore CFEngine Enterprise."
 [type]: /reference/functions/type
 [promise-type-measurements]: /reference/promise-types/measurements
 [promise-type-custom]: /reference/promise-types/custom

@@ -198,7 +198,7 @@ empty before performing an Enterprise Hub binary upgrade.
 3. Verify that the selected hosts are upgrading successfully.
 
    - Mission Portal [Inventory reporting interface][Reporting UI#Inventory management]
-     ![Inventory management](Reports-Inventory-1.png)
+     ![Inventory management](../../../web-ui/enterprise-reporting/Reports-Inventory-1.png)
 
    - [Inventory API][Inventory API]
 

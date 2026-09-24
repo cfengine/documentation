@@ -138,7 +138,7 @@ status (on or off).
 
 ## Version control repository
 
-<img src="settings-vcs.png" alt="Version control repository" width="700px">
+<img src="hub_administration/settings-vcs.png" alt="Version control repository" width="700px">
 
 The repository holding the organization's masterfiles can be adjusted
 on the Version control repository screen.
