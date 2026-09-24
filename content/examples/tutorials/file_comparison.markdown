@@ -6,7 +6,7 @@ aliases:
   - "/examples-tutorials-file_comparison.html"
 ---
 
-1. Add the [policy contents][File comparison#Full policy] (also can be downloaded from <a href="file_compare_test.cf">file_compare_test.cf</a>) to a new file, such as /var/cfengine/masterfiles/file_test.cf.
+1. Add the [policy contents][File comparison#Full policy] (also can be downloaded from <a href="../file_compare_test.cf">file_compare_test.cf</a>) to a new file, such as /var/cfengine/masterfiles/file_test.cf.
 2. Run the following commands as root on the command line:
    ```console
    export AOUT_BIN="a.out"

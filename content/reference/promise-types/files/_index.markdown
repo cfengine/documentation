@@ -101,7 +101,7 @@ The diagram below shows the ordering. Notice that the same ordering
 applies regardless of file type (plain-file or directory). Note also
 that file editing is done "atomically".
 
-![The normal ordering of file operators in CFEngine 3](filelogic.png)
+![The normal ordering of file operators in CFEngine 3](../filelogic.png)
 
 The pseudo-code for this logic is shown in the diagram and below:
 

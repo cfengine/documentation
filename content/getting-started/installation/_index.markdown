@@ -40,7 +40,7 @@ This is also possible, for example using Vagrant and VirtualBox, and we will pro
 
 With the Linux VM there are 2 machines we will be talking about:
 
-![](machines.png)
+![](../machines.png)
 
 The **CFEngine hub** is the aforementioned Ubuntu 20.04 VM.
 We will access this via SSH, and install CFEngine there.
@@ -153,7 +153,7 @@ Spawn an Ubuntu 20.04 Linux Virtual Machine using the web GUI (in Digital Ocean,
 Find the IP address of your virtual machine, and the username so you can log in with SSH.
 For example, in Digital Ocean, the username is `root`, and the IP might be `128.199.44.119` (found in top left of droplet screen as "ipv4"):
 
-![](digital-ocean.png)
+![](../digital-ocean.png)
 
 **Note:** In the rest of this tutorial, replace the IP address we use in the examples, `192.168.56.2` with that IP.
 
@@ -229,7 +229,7 @@ In the future you might want to set up a DNS entry for your hub and give it a pr
 After this, you should see the CFEngine Enterprise login screen.
 Log in with username admin, password admin, and you will be asked to change the password.
 
-![](mp-login.png)
+![](../mp-login.png)
 
 After changing the password to something more secure, you should be able to log in and see the dashboard.
 
