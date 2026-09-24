@@ -59,11 +59,11 @@ https://www.youtube.com/watch?v=Zd9-wdGzedU -->
 
 ## Graphical illustration of CFEngine process
 
-![Define -> Ensure -> Verify](../../resources/faq/how-does-cfengine-work-process.png)
+![Define -> Ensure -> Verify](how-does-cfengine-work-process.png)
 
 End-user and CFEngine agents workflow
 
-![Define -> Ensure -> Verify workflow](../../resources/faq/how-does-cfengine-work-agent-workflow.png)
+![Define -> Ensure -> Verify workflow](how-does-cfengine-work-agent-workflow.png)
 
 Thanks to the autonomous nature of CFEngine, systems will be continuously
 maintained even if the Server is down. CFEngine agents on the hosts will
@@ -96,7 +96,7 @@ is recommended, and as much planning as you can manage in advance. Once a
 mission is underway, you should expect to work by making small corrections to
 the mission plan, rather than large risky changes.
 
-![Mission Plan](../../resources/additional-topics/adopting-cfengine-mission-plan.png)
+![Mission Plan](./adopting-cfengine-mission-plan.png)
 
 Planning does not mean sitting around a table, or in front of a whiteboard.
 Successful planning is a dialogue between theory and practice. It should include
