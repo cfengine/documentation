@@ -24,6 +24,7 @@
 
 import cfdoc_environment as environment
 import cfdoc_sourcelinks as sourcelinks
+import cfdoc_link_checker as link_checker
 
 import sys
 
@@ -34,5 +35,10 @@ except:
     sys.stdout.write("      Exception: ")
     print(sys.exc_info())
     exit(1)
+
+# Runs outside the try/except above: it exits directly (like
+# cfdoc_references_resolver.run) with a clean broken-link report, rather than
+# letting the generic exception handler above swallow that message.
+link_checker.run(config)
 
 exit(0)
