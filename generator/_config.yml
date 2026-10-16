@@ -28,12 +28,6 @@ Template:
   parse:
     line_numbers: true
 
-vagrant:
-  version: "2.2.19"
-
-virtualbox:
-  version: "6.1.38"
-
 paginate: 500
 
 pygments: true
