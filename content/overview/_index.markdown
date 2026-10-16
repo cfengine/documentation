@@ -58,6 +58,9 @@ All machines, whether they are policy servers or hosts, will have these three im
 - [/var/cfengine/bin/cf-serverd][Overview#cf-serverd]
 - [/var/cfengine/bin/cf-monitord][Overview#cf-monitord]
 
+On hosts using systemd, [`cf-reactor`][Overview#cf-reactor] runs as well, to
+react to events described in policy.
+
 #### cf-execd
 
 `cf-execd` is the scheduling daemon for `cf-agent`, similar to cron. It executes and collects the output of `cf-agent` and
@@ -94,6 +97,14 @@ See also: [cf-serverd][cf-serverd] reference documentation.
 `cf-monitord` keeps the promises made in `common` and `monitor` bundles, and is affected by `common` and `monitor` control bodies.
 
 See also: [cf-monitord][cf-monitord] reference documentation.
+
+#### cf-reactor
+
+`cf-reactor` is the event reaction daemon for CFEngine. It watches for events described in policy using `events` type promises, such as the deletion of a file, and runs bundles of promises as soon as they happen, without waiting for the next `cf-agent` run.
+
+`cf-reactor` keeps the promises made in `common` and `reactor` bundles, and is affected by the `common` control body.
+
+See also: [cf-reactor][cf-reactor] reference documentation.
 
 ### Other component applications
 

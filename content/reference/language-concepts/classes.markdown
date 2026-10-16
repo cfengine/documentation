@@ -140,6 +140,7 @@ reserved hard class 'cfengine' in post-condition classes`.
     - `cf-runagent` :: `runagent`
     - `cf-key` :: `keygenerator`
     - `cf-hub` :: `hub`
+    - `cf-reactor` :: `reactor`
     - `cf-promises` :: `common`
 - Operating System Classes (note that the presence of these classes doesn't imply platform support)
   - Operating System Architecture - `arista`, `big_ip`, `debian`, `eos`, `fedora`, `Mandrake`, `Mandriva`, `oracle`, `redhat`, `slackware`, `smartmachine`, `smartos`, `solarisx86`, `sun4`, `SuSE`, `ubuntu`, `ultrix`, the always-favorite `unknown_ostype`, etc.
