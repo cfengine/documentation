@@ -1,7 +1,11 @@
 #!/bin/bash
 
-wget -nv https://github.com/gohugoio/hugo/releases/download/v0.168.0/hugo_0.168.0_Linux-64bit.tar.gz -O hugo.tar.gz
- echo "fada83ad56bb27ed4cb7dd81590303bdac16140f944ac4e66fc248117e2d5594  hugo.tar.gz" | sha256sum -c
+# go and git are needed by Hugo to download modules (llms-txt)
+sudo apt-get install -y -qq golang-1.26-go git
+sudo ln -sf /usr/lib/go-1.26/bin/go /usr/local/bin/go
+
+wget -nv https://github.com/gohugoio/hugo/releases/download/v0.167.0/hugo_0.167.0_Linux-64bit.tar.gz -O hugo.tar.gz
+ echo "4d84519b9f619e6d4c3fb45a50157abeabeb724f859c60605f44c23def6e1169  hugo.tar.gz" | sha256sum -c
 if [ $? -eq 1 ]; then
   exit 2
 fi
