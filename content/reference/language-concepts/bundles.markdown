@@ -53,6 +53,7 @@ Currently, these are the possible _bundle types_:
 - `agent`: Bundle of promises specific to the `cf-agent` binary.
 - `server`: Bundle of promises specific to the `cf-serverd` binary.
 - `monitor`: Bundle of promises specific to the `cf-monitord` binary.
+- `reactor`: Bundle of promises specific to the `cf-reactor` binary.
 - `common`: Bundle of promises shared among the different binaries / components.
 - `edit_line`: Bunde of promises used in a `files` promise with the `edit_line` attribute.
 
