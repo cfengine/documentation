@@ -52,11 +52,12 @@ All CFEngine software components exist in `/var/cfengine/bin`.
 
 ### Daemons
 
-All machines, whether they are policy servers or hosts, will have these three important daemons running at all times:
+All machines, whether they are policy servers or hosts, will have these four important daemons running at all times:
 
 - [/var/cfengine/bin/cf-execd][Overview#cf-execd]
 - [/var/cfengine/bin/cf-serverd][Overview#cf-serverd]
 - [/var/cfengine/bin/cf-monitord][Overview#cf-monitord]
+- [/var/cfengine/bin/cf-reactor][Overview#cf-reactor]
 
 #### cf-execd
 
@@ -94,6 +95,17 @@ See also: [cf-serverd][cf-serverd] reference documentation.
 `cf-monitord` keeps the promises made in `common` and `monitor` bundles, and is affected by `common` and `monitor` control bodies.
 
 See also: [cf-monitord][cf-monitord] reference documentation.
+
+#### cf-reactor
+
+`cf-reactor` is the event reaction daemon for CFEngine. Instead of running policy on a fixed
+schedule like `cf-agent`, it watches for specific events on the host and runs policy
+as soon as one happens.
+
+`cf-reactor` keeps the promises made in `reactor` bundles and is affected by the
+`common` control body. On event, it runs `agent` bundles.
+
+See also: [cf-reactor][cf-reactor] reference documentation.
 
 ### Other component applications
 

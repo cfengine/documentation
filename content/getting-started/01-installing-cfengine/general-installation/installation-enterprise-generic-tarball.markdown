@@ -44,6 +44,7 @@ Next enable the necessary service units:
 ```sh
 systemctl enable cf-execd
 systemctl enable cf-monitord
+systemctl enable cf-reactor
 systemctl enable cf-serverd
 systemctl enable cfengine3
 ```

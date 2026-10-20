@@ -133,7 +133,7 @@ This often happens when a release is made, because one wants to freeze the devel
 #### Components
 
 The programs (binaries) installed with CFEngine are referred to as components of CFEngine.
-These include: `cf-agent`, `cf-promises`, `cf-runagent`, `cf-hub`, `cf-execd`, `cf-monitord`, and `cf-serverd`.
+These include: `cf-agent`, `cf-promises`, `cf-runagent`, `cf-hub`, `cf-reactor`, `cf-execd`, `cf-monitord`, and `cf-serverd`.
 The "d" in the last 3, is a common acronym for daemon - long-running backgrounded programs.
 
 #### COSL license

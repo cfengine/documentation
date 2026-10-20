@@ -21,6 +21,7 @@ The CFEngine application is fully contained within the /var/cfengine directory t
 
 - `cf-execd`: Starts the cf-agent process at a specified time interval.
 - `cf-monitord`: Collects system statistics
+- `cf-reactor`: Reacts to events described in policy
 - `cf-serverd`: Provides network services; used to distribute policy and data files
 - `runalerts.sh`: Updates Mission Portal status and activates alert actions (Enterprise only)
 - `cf-hub`: Responsible for collecting reports from remote agents. (CFEngine Enterprise only)
@@ -181,6 +182,7 @@ _pid files_ in the work directory.
 - `cf-execd.pid`
 - `cf-hub.pid`
 - `cf-monitord.pid`
+- `cf-reactor.pid`
 - `cf-serverd.pid`
 
 ## Sockets in /var/cfengine

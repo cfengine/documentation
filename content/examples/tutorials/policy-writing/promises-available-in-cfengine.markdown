@@ -147,6 +147,11 @@ Promises of type measurement are written just like all other promises within a b
 
 See `measurements`.
 
+### events - react to an event
+
+Events promises describe events for the event reaction daemon `cf-reactor` to react to, and the bundles to run when they happen. They are only available in bundles of type reactor.
+See [`events`][events].
+
 ### reports - report a message
 
 Reports promises simply print messages. Outputting a message without qualification can be a dangerous operation. In a large installation it could unleash an avalanche of messaging.
