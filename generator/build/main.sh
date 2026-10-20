@@ -141,8 +141,6 @@ fi
 # Preprocess Documentation with custom macros
 ./_scripts/cfdoc_preprocess.py "$BRANCH" "$LTS_VERSION" || exit 5
 
-# rvm commands are insane scripts which pollut output
-# so instead of set -x we just echo each command ourselves
 set +x
 
 export LC_ALL=C.UTF-8
