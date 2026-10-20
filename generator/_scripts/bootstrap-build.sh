@@ -38,8 +38,6 @@ NO_CONFIGURE=1 ./autogen.sh
 
 cd $WRKDIR
 
-$WRKDIR/documentation/generator/_scripts/cfdoc_bootstrap.py $BRANCH 
-
 # Prepare core for syntax docs
 cd $WRKDIR/core
 NO_CONFIGURE=1 ./autogen.sh

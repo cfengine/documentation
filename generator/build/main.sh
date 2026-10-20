@@ -118,9 +118,6 @@ rm cfengine-nova-hub.deb
 sudo cp -a /var/cfengine/share/NovaBase/masterfiles "$WRKDIR"
 sudo chmod -R a+rX "$WRKDIR"/masterfiles
 
-# write current branch into the config.yml
-echo "branch: $BRANCH" >> "$WRKDIR"/documentation/generator/_config.yml
-
 # replace %branch% placeholder with actual branch name
 CONFIG_TOML="$WRKDIR/documentation/hugo/config.toml"
 if [ "$BRANCH" = "lts" ]; then

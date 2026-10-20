@@ -125,7 +125,6 @@ After all repositories are updated and available the following is executed.
 
 #+BEGIN_SRC sh
 export WRKDIR=`pwd`
-$WRKDIR/documentation/generator/_scripts/cfdoc_bootstrap.py master
 cd $WRKDIR/core
 NO_CONFIGURE=1 ./autogen.sh
 #+END_SRC
