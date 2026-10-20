@@ -9,8 +9,6 @@ NO_CONFIGURE=1 ./autogen.sh
 
 cd $WRKDIR
 
-$WRKDIR/documentation/generator/_scripts/cfdoc_bootstrap.py master
-
 if dpkg --get-selections | grep -q "^cfengine-nova-hub[[:space:]]*install$" >/dev/null; then
     echo Found cfengine-nova-hub package installed, skipping build
 else

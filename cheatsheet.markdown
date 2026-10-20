@@ -582,11 +582,11 @@ updated with each new version.
 
 Variables that are defined in the front matter (thats the content between the
 three dashes at the top) or in
-[\_config.yaml](https://github.com/cfengine/documentation/blob/master/generator/_config.yml)
+[hugo/config.toml](https://github.com/cfengine/documentation/blob/master/hugo/config.toml)
 can be used directly within markdown.
 
 For example this is the '{{< params "CFE_manuals_version" >}}' version of the
-documentation. That variable comes from \_config.yaml.
+documentation. That variable comes from hugo/config.toml.
 
 Since liquid variables look a lot like mustache variables any time you want to
 show the actual variables will need to be inside of raw tags.
