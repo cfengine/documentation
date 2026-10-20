@@ -118,9 +118,6 @@ rm cfengine-nova-hub.deb
 sudo cp -a /var/cfengine/share/NovaBase/masterfiles "$WRKDIR"
 sudo chmod -R a+rX "$WRKDIR"/masterfiles
 
-# write current branch into the config.yml
-echo "branch: $BRANCH" >> "$WRKDIR"/documentation/generator/_config.yml
-
 # replace %branch% placeholder with actual branch name
 CONFIG_TOML="$WRKDIR/documentation/hugo/config.toml"
 if [ "$BRANCH" = "lts" ]; then
@@ -144,8 +141,6 @@ fi
 # Preprocess Documentation with custom macros
 ./_scripts/cfdoc_preprocess.py "$BRANCH" "$LTS_VERSION" || exit 5
 
-# rvm commands are insane scripts which pollut output
-# so instead of set -x we just echo each command ourselves
 set +x
 
 export LC_ALL=C.UTF-8

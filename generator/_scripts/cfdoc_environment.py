@@ -63,23 +63,7 @@ def validate(branch):
     config["include_directories"].append(config["WORKDIR"] + "/core/tests")
 
     config["reference_path"] = config["project_directory"] + "/_references.md"
-    config["config_path"] = config["project_directory"] + "/_config.yml"
-
-    with open(config["config_path"], "r") as config_file:
-        lines = config_file.readlines()
-        for line in lines:
-            comment = line.find("#")
-            if comment != -1:
-                line = line[:comment]
-            assign = line.split(":")
-            if assign.__len__() != 2:
-                continue
-            if assign[1] == "" or assign[1] == "\n":
-                continue
-            key = assign[0].lstrip().rstrip()
-            value = assign[1].lstrip().rstrip()
-
-            config[key] = value
+    config["CFE_DIR"] = "_site"
 
     print("cfdoc_environment: cwd              = " + os.getcwd())
     print("                   config           = ")
