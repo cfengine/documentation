@@ -4,10 +4,8 @@ title: events
 keywords: [reactor, events]
 ---
 
-`events` promises describe events for [`cf-reactor`][cf-reactor] to react to:
-the event to watch for, with the [`when`](#when) body, and the bundles to run
-when it happens, with the [`then`](#then) attribute. `events` promises can only
-be made in `reactor` bundles.
+`events` promises describe events for [`cf-reactor`][cf-reactor] to react to: the event to watch for, with the [`when`](#when) body, and the bundles to run when it happens, with the [`then`](#then) attribute.
+`events` promises can only be made in `reactor` bundles.
 
 ```cf3
 bundle agent create_file(file)
@@ -38,20 +36,46 @@ bundle reactor main
 
 ### then
 
-**Description:** The bundle, or the list of bundles, to run in order when the
-event happens.
+**Description:** The bundle, or the list of bundles, to run in order when the event happens.
 
-```cf3 {skip TODO}
-events:
-  "file deleted"
-    then => { bundle1, bundle2, bundle3 };
+```cf3
+bundle agent report_deletion(file)
+{
+  reports:
+    "$(file) was deleted, restoring it";
+}
+
+bundle agent create_file(file)
+{
+  files:
+    "$(file)" create => "true";
+}
+
+bundle agent report_restored(file)
+{
+  reports:
+    "$(file) was restored";
+}
+
+bundle reactor main
+{
+  events:
+    "Keep /tmp/a"
+      when => deleted("/tmp/a"),
+      then => {
+        report_deletion("/tmp/a"),
+        create_file("/tmp/a"),
+        report_restored("/tmp/a"),
+      };
+}
 ```
 
 All promise types within `agent` bundles behave like in `cf-agent` when executed in response to events.
 
 **Notes:**
 
-- variables and classes created in a bundle run on reaction to an event are destroyed right after the execution. The only exception are persistent classes
+- variables and classes created in a bundle run on reaction to an event are destroyed right after the execution.
+  The only exception are persistent classes.
 
 **Type:** `bundle agent` or `bundle common`, or a list of them
 
@@ -63,7 +87,7 @@ All promise types within `agent` bundles behave like in `cf-agent` when executed
 
 **See also:** [Common body attributes][Promise types#Common body attributes]
 
-All event types are mutually exclusive in a `when` attribute.
+All event types are mutually exclusive in a `when` body.
 
 ```cf3
 body when deleted(file)
@@ -71,25 +95,30 @@ body when deleted(file)
   file_deleted => "$(file)";
   interval => 1;
 }
-```
 
-```cf3 {skip TODO}
-events:
-  "file deleted"
-    when => deleted("/path/to/file");
+bundle reactor main
+{
+  events:
+    "Report deletion of /tmp/a"
+      when => deleted("/tmp/a"),
+      then => report_deletion("/tmp/a");
+}
 ```
 
 #### interval
 
-**Description:** How often, in seconds, `cf-reactor` checks whether this event has
-happened.
+**Description:** How often, in seconds, `cf-reactor` checks whether this event has happened.
 
-Each event has its own interval. A lower value means the event is noticed sooner
-but checked more often. For how polling works, see
-[Under the hood][cf-reactor#Under the hood].
+Each event has its own interval.
+A lower value means the event is noticed sooner but checked more often.
+For how polling works, see [Under the hood][cf-reactor#Under the hood].
 
-```cf3 {skip TODO}
-interval => 1;
+```cf3
+body when deleted_slow(file)
+{
+  file_deleted => "$(file)";
+  interval => 60;
+}
 ```
 
 **Type:** `int`
@@ -105,11 +134,13 @@ interval => 1;
 **Description:** Creates an event when the file at the given path is deleted.
 
 The event fires when the path existed at one check and is gone at the next one.
-It fires once per deletion: the file has to be created again before another
-deletion is detected.
+It fires once per deletion: the file has to be created again before another deletion is detected.
 
-```cf3 {skip TODO}
-file_deleted => "/path/to/file";
+```cf3
+body when deleted(file)
+{
+  file_deleted => "$(file)";
+}
 ```
 
 **Type:** `string`
