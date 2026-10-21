@@ -29,13 +29,36 @@ affected by `common` and `agent` control bodies.
 
 Like the `--dry-run` option, the `--simulate` option tries to identify changes
 to your system without making changes to the system, however it goes further
-than `--dry-run` by making changes in a `chroot` and making a distinction
-between *safe* and *unsafe* functions, e.g. `execresult()`.
+than `--dry-run` by making changes in a chroot and making a distinction
+between _safe_ and _unsafe_ functions.
 
-The agent will execute promises with unsafe functions when the `--simulate`
-options is given only if the promise using the function is tagged `simulate_safe`.
+#### Safe and unsafe functions
 
-For example:
+Functions that execute external commands or modules are considered _unsafe_
+because they may have side effects. In simulate mode, unsafe functions are
+**skipped** and the agent logs a warning for each skipped call:
+
+```
+warning: Not calling unsafe function 'execresult' in simulate mode
+```
+
+The complete list of unsafe functions:
+
+| Function                                     | Description                                                           |
+| -------------------------------------------- | --------------------------------------------------------------------- |
+| [`execresult()`][execresult]                 | Execute a command and return its output                               |
+| [`execresult_as_data()`][execresult_as_data] | Execute a command and return exit code and output as a data container |
+| [`returnszero()`][returnszero]               | True if a command exits with status zero                              |
+| [`usemodule()`][usemodule]                   | Execute a CFEngine module script                                      |
+
+All other built-in functions are safe and are evaluated normally in simulate mode.
+
+#### Allowing unsafe functions with `simulate_safe`
+
+If a promise uses an unsafe function but you know the command is read-only (no
+side effects), you can add `simulate_safe` to the promise's
+[`meta`][Promise types#meta] attribute to allow it to execute in simulate mode.
+For example, this promise runs `execresult()` even in simulate mode:
 
 ```cf3
 bundle agent __main__
@@ -47,25 +70,20 @@ bundle agent __main__
 }
 ```
 
-The simulate option takes a parameter, `diff`, `manifest`, or `manifest-full`
-which is used to determine the summary output shown at the end of the run.
+#### Simulate output modes
 
-* `diff` - Show only things that changed during the simulated run.
-* `manifest` - Show files and packages changed by the simulated run.
-* `manifest-full` - Show all files evaluated by the simulated run (including unchanged ones)
+The simulate option takes a parameter which is used to determine the summary
+output shown at the end of the run.
 
-    - cf-agent can now simulate the changes done to files in a chroot, printing
-      diff or manifest information about what it would do in a normal evaluation.
-      Use the new command line option: `--simulate=diff` or `--simulate=manifest`.
-      Please note that only files and packages promises are simulated currently.
-
-    - Added a new --simulate=manifest-full mode
-      New simulation mode that manifests all changed files as well as
-      all other files evaluated by the agent run which were not skipped
-      (by file selection rules) (CFE-3506)
+- `--simulate=diff` - Show only things that changed during the simulated run.
+- `--simulate=manifest` - Show files and packages changed by the simulated run.
+- `--simulate=manifest-full` - Show all files evaluated by the simulated run (including unchanged ones).
 
 #### Notes
-* Supported on Linux for `files` and `packages` type promises
+
+- Supported on Linux for `files` and `packages` type promises.
+- Variables that depend on unsafe functions will be unresolved unless the
+  promise has `simulate_safe` in its [`meta`][Promise types#meta] attribute.
 
 #### History
 * Introduced in version 3.17.0
