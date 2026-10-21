@@ -35,4 +35,8 @@ highly undesirable if the command is expensive. Consider using
 `commands` promises instead, which have locking and are not evaluated
 by `cf-promises`.
 
+**Simulate mode:** This function is [_unsafe_][cf-agent#Safe and unsafe functions]
+and is skipped in `--simulate` mode unless the promise has `simulate_safe` in
+its [`meta`][Promise types#meta] attribute.
+
 **See also:** `execresult()`.
