@@ -1,10 +1,10 @@
 # Documentation tools cheatsheet for beginners
 
-CFEngine technical documentation is written using a Markdown formatting (see [Markdown Cheatsheet][Markdown Cheatsheet]) and published using a combination of Jekyll and various plugins (see [CFEngine Documentation][CFEngine Documentation]).
+CFEngine technical documentation is written using a Markdown formatting (see [Markdown Cheatsheet][Markdown Cheatsheet]) and published using Hugo and our own pre- and post-processing scripts (see [CFEngine Documentation][CFEngine Documentation]).
 
 The various Markdown and other files (e.g. images) that make up the volume of CFEngine documentation are held in a master source code repository. Contributors to the documentation make their own changes in local copies of the documentation Markdown on their own machines and then push those changes to a remote branch.
 
-From there a request is made to merge the modifications back into the mainline, from which the Jekyll tooling will be triggered to import and then render the final documentation in HTML.
+From there a request is made to merge the modifications back into the mainline, from which the Hugo tooling will be triggered to import and then render the final documentation in HTML.
 
 ## Git and GitHub
 

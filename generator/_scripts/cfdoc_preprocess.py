@@ -26,7 +26,6 @@ import cfdoc_environment as environment
 import cfdoc_metadata as metadata
 import cfdoc_linkresolver as linkresolver
 import cfdoc_macros as macros
-import cfdoc_git as git
 import cfdoc_qa as qa
 import cfdoc_patch_header_nav as patch_header_nav
 import cfdoc_references_resolver as references_resolver

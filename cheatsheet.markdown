@@ -376,7 +376,7 @@ SELECT
         +* always run it through Pygments plus the appropriate lexer
         +
         +Most important are the `cf3` lexer, as well as `bash`, `console`,
-        +`diff`, `shell-session` and `postgresql`. But Jekyll supports
+        +`diff`, `shell-session` and `postgresql`. But Hugo supports
         +[many more lexers](http://pygments.org/docs/lexers/)
         +
          * avoid custom color schemes and hand-coded HTML
@@ -397,7 +397,7 @@ index 92555a2..b49c0bb 100644
 +* always run it through Pygments plus the appropriate lexer
 +
 +Most important are the `cf3` lexer, as well as `bash`, `console`,
-+`diff`, `shell-session` and `postgresql`. But Jekyll supports
++`diff`, `shell-session` and `postgresql`. But Hugo supports
 +[many more lexers](http://pygments.org/docs/lexers/)
 +
  * avoid custom color schemes and hand-coded HTML
@@ -582,18 +582,11 @@ updated with each new version.
 
 Variables that are defined in the front matter (thats the content between the
 three dashes at the top) or in
-[\_config.yaml](https://github.com/cfengine/documentation/blob/master/generator/_config.yml)
+[hugo/config.toml](https://github.com/cfengine/documentation/blob/master/hugo/config.toml)
 can be used directly within markdown.
 
 For example this is the '{{< params "CFE_manuals_version" >}}' version of the
-documentation. That variable comes from \_config.yaml.
-
-Since liquid variables look a lot like mustache variables any time you want to
-show the actual variables will need to be inside of raw tags.
-
-{% raw %}
-site.CFE_manuals_version {{ site.CFE_manuals_version }}
-{% endraw %}
+documentation. That variable comes from hugo/config.toml.
 
 ## Testing
 
