@@ -22,7 +22,7 @@ Spacemacs has a [CFEngine layer](https://github.com/syl20bnr/spacemacs/blob/deve
 
 ## Vi/Vim
 
-Vi/Vim users can edit CFEngine policies with Neil Watson's CFEngine 3 scripts, available as GPL-software [on GitHub](https://github.com/neilhwatson/vim_cf3). Neil's vi mode is also described in Appendix B of Diego Zamboni's "Learning CFEngine" book.
+Vi/Vim users can edit CFEngine policies with Neil Watson's CFEngine 3 scripts, available as GPL-software [on Codeberg](https://codeberg.org/controlc/vim_cf3). Neil's vi mode is also described in Appendix B of Diego Zamboni's "Learning CFEngine" book.
 
 ![Vim](guide-writing-and-serving-policy-editors-vim.png)
 
