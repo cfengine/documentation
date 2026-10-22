@@ -13,6 +13,7 @@ RUN chown -R jenkins:jenkins /home/jenkins
 # Run rest of setup as jenkins user
 COPY install.sh /
 COPY install_hugo.sh /
+COPY install_go.sh /
 USER jenkins
 WORKDIR /home/jenkins
 RUN sudo apt-get update -qy && bash -x /install.sh

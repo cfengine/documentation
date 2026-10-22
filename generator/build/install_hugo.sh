@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # go and git are needed by Hugo to download modules (llms-txt)
-sudo apt-get install -y -qq golang-1.26-go git
-sudo ln -sf /usr/lib/go-1.26/bin/go /usr/local/bin/go
+bash "$(dirname "$0")/install_go.sh" || exit 3
 
 wget -nv https://github.com/gohugoio/hugo/releases/download/v0.167.0/hugo_0.167.0_Linux-64bit.tar.gz -O hugo.tar.gz
  echo "4d84519b9f619e6d4c3fb45a50157abeabeb724f859c60605f44c23def6e1169  hugo.tar.gz" | sha256sum -c
