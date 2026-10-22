@@ -29,4 +29,8 @@ bundle agent test
 }
 ```
 
+**Simulate mode:** This function is [_unsafe_][cf-agent#Safe and unsafe functions]
+and is skipped in `--simulate` mode unless the promise has `simulate_safe` in
+its [`meta`][Promise types#meta] attribute.
+
 **See also:** [read_module_protocol()][read_module_protocol], [Module Protocol][commands#module]
