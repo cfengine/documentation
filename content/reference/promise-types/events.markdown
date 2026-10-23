@@ -244,3 +244,33 @@ body when owner_changed(file)
 **Type:** `string`
 
 **Allowed input range:** (arbitrary string)
+
+##### File size exceeds
+
+**Description:** Creates an event when the size of the file at the given path grows above [`size_threshold`](#size_threshold) bytes.
+
+The event fires when the file is above the threshold at one check, and was below it or didn't exist at the previous one.
+It fires once per crossing of the threshold: the file has to be below it at a check, for example after being truncated, before it can fire again.
+A file created with a size above the threshold fires the event.
+
+```cf3
+body when size_exceeds(file)
+{
+  file_size_exceeds => "$(file)";
+  size_threshold => "1048576";
+}
+```
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+##### size_threshold
+
+**Description:** The size, in bytes, above which [`file_size_exceeds`](#file-size-exceeds) fires.
+
+Required with `file_size_exceeds`, and can't be used with other event types.
+
+**Type:** `int`
+
+**Allowed input range:** `0,99999999999`
