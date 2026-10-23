@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # go and git are needed by Hugo to download modules (llms-txt)
+sudo apt-get update -qq
 sudo apt-get install -y -qq golang-1.26-go git
 sudo ln -sf /usr/lib/go-1.26/bin/go /usr/local/bin/go
 
