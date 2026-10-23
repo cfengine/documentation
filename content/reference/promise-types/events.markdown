@@ -208,3 +208,21 @@ body when content_modified(file)
 **Type:** `string`
 
 **Allowed input range:** (arbitrary string)
+
+##### File permissions changed
+
+**Description:** Creates an event when the permissions of the file at the given path change.
+
+The event fires when the file exists at two consecutive checks with different permission bits, including the setuid, setgid and sticky bits.
+Symlinks are not followed: changing the permissions of the target of a symlink does not fire the event for the symlink.
+
+```cf3
+body when permissions_changed(file)
+{
+  file_permissions_changed => "$(file)";
+}
+```
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
