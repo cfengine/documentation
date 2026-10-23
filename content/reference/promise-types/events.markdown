@@ -188,3 +188,23 @@ body when modified(file)
 **Allowed input range:** (arbitrary string)
 
 **See also:** [`file_content_modified`](#file-content-modified)
+
+##### File content modified
+
+**Description:** Creates an event when the content of the regular file at the given path changes.
+
+The event fires when the path is a regular file at two consecutive checks and the SHA-256 hash of its content differs.
+Unlike [`file_modified`](#file-modified), touching the file or replacing it with a file of the same content is not a modification.
+The file is read on every check, so it is more expensive than `file_modified` for large files.
+Directories and symlinks have no content to hash, so they never fire this event.
+
+```cf3
+body when content_modified(file)
+{
+  file_content_modified => "$(file)";
+}
+```
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
