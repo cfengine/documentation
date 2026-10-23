@@ -165,3 +165,26 @@ body when created(file)
 **Type:** `string`
 
 **Allowed input range:** (arbitrary string)
+
+##### File modified
+
+**Description:** Creates an event when the modification time of the file at the given path changes.
+
+The event fires when the file exists at two consecutive checks with different modification times.
+Writing to the file changes its modification time, but so does touching it without changing its content.
+For a directory, creating, renaming or deleting a file in it changes its modification time.
+Changing the permissions or the owner of the file doesn't change its modification time.
+Symlinks are not followed: the modification time is the one of the symlink itself, not of its target.
+
+```cf3
+body when modified(file)
+{
+  file_modified => "$(file)";
+}
+```
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+**See also:** [`file_content_modified`](#file-content-modified)
