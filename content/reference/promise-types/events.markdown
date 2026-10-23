@@ -146,3 +146,131 @@ body when deleted(file)
 **Type:** `string`
 
 **Allowed input range:** (arbitrary string)
+
+##### File created
+
+**Description:** Creates an event when a file is created at the given path.
+
+The event fires when the path was missing at one check and exists at the next one.
+It fires once per creation: the file has to be deleted again before another creation is detected.
+Any type of file counts, for example a directory or a symlink, even one whose target does not exist.
+
+```cf3
+body when created(file)
+{
+  file_created => "$(file)";
+}
+```
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+##### File modified
+
+**Description:** Creates an event when the modification time of the file at the given path changes.
+
+The event fires when the file exists at two consecutive checks with different modification times.
+Writing to the file changes its modification time, but so does touching it without changing its content.
+For a directory, creating, renaming or deleting a file in it changes its modification time.
+Changing the permissions or the owner of the file doesn't change its modification time.
+Symlinks are not followed: the modification time is the one of the symlink itself, not of its target.
+
+```cf3
+body when modified(file)
+{
+  file_modified => "$(file)";
+}
+```
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+**See also:** [`file_content_modified`](#file-content-modified)
+
+##### File content modified
+
+**Description:** Creates an event when the content of the regular file at the given path changes.
+
+The event fires when the path is a regular file at two consecutive checks and the SHA-256 hash of its content differs.
+Unlike [`file_modified`](#file-modified), touching the file or replacing it with a file of the same content is not a modification.
+The file is read on every check, so it is more expensive than `file_modified` for large files.
+Directories and symlinks have no content to hash, so they never fire this event.
+
+```cf3
+body when content_modified(file)
+{
+  file_content_modified => "$(file)";
+}
+```
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+##### File permissions changed
+
+**Description:** Creates an event when the permissions of the file at the given path change.
+
+The event fires when the file exists at two consecutive checks with different permission bits, including the setuid, setgid and sticky bits.
+Symlinks are not followed: changing the permissions of the target of a symlink does not fire the event for the symlink.
+
+```cf3
+body when permissions_changed(file)
+{
+  file_permissions_changed => "$(file)";
+}
+```
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+##### File owner changed
+
+**Description:** Creates an event when the owning user or group of the file at the given path changes.
+
+The event fires when the file exists at two consecutive checks with a different owning user or group.
+Symlinks are not followed: changing the owner of the target of a symlink does not fire the event for the symlink.
+
+```cf3
+body when owner_changed(file)
+{
+  file_owner_changed => "$(file)";
+}
+```
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+##### File size exceeds
+
+**Description:** Creates an event when the size of the file at the given path grows above [`size_threshold`](#size_threshold) bytes.
+
+The event fires when the file is above the threshold at one check, and was below it or didn't exist at the previous one.
+It fires once per crossing of the threshold: the file has to be below it at a check, for example after being truncated, before it can fire again.
+A file created with a size above the threshold fires the event.
+
+```cf3
+body when size_exceeds(file)
+{
+  file_size_exceeds => "$(file)";
+  size_threshold => "1048576";
+}
+```
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+##### size_threshold
+
+**Description:** The size, in bytes, above which [`file_size_exceeds`](#file-size-exceeds) fires.
+
+Required with `file_size_exceeds`, and can't be used with other event types.
+
+**Type:** `int`
+
+**Allowed input range:** `0,99999999999`
