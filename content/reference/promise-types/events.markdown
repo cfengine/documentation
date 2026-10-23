@@ -226,3 +226,21 @@ body when permissions_changed(file)
 **Type:** `string`
 
 **Allowed input range:** (arbitrary string)
+
+##### File owner changed
+
+**Description:** Creates an event when the owning user or group of the file at the given path changes.
+
+The event fires when the file exists at two consecutive checks with a different owning user or group.
+Symlinks are not followed: changing the owner of the target of a symlink does not fire the event for the symlink.
+
+```cf3
+body when owner_changed(file)
+{
+  file_owner_changed => "$(file)";
+}
+```
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
