@@ -146,3 +146,22 @@ body when deleted(file)
 **Type:** `string`
 
 **Allowed input range:** (arbitrary string)
+
+##### File created
+
+**Description:** Creates an event when a file is created at the given path.
+
+The event fires when the path was missing at one check and exists at the next one.
+It fires once per creation: the file has to be deleted again before another creation is detected.
+Any type of file counts, for example a directory or a symlink, even one whose target does not exist.
+
+```cf3
+body when created(file)
+{
+  file_created => "$(file)";
+}
+```
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
