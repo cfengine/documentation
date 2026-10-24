@@ -15,6 +15,8 @@ true result.
 
 {{< CFEngine_function_attributes(regex, filename) >}}
 
+`regline()` will return as soon as a line matches.
+
 **Examples:**
 
 This example shows a way to determine if IPV4 forwarding is enabled or not.
@@ -53,4 +55,4 @@ bundle edit_line upgrade_cfexecd
 }
 ```
 
-**See also:** `regcmp()`, `strcmp()`
+**See also:** `regcmp()`, `strcmp()`, [short-circuit evaluation][Functions#short-circuit evaluation]

@@ -7,8 +7,8 @@ aliases:
 
 {{< CFEngine_function_prototype(expression) >}}
 
-**Description:** Returns `any` if all arguments evaluate to false and `!any` if
-any argument evaluates to true.
+**Description:** Returns `any` if the argument evaluates to false and `!any` if
+it evaluates to true.
 
 {{< CFEngine_function_attributes(expression) >}}
 
