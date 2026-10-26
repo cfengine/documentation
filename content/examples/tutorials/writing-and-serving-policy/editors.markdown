@@ -6,7 +6,7 @@ aliases:
   - "/examples-tutorials-writing-and-serving-policy-editors.html"
 ---
 
-Using an editor that provides syntax highlighting and other features can significantly enhance prodcutivity and quality of life.
+Using an editor that provides syntax highlighting and other features can significantly enhance productivity and quality of life.
 
 ## Emacs
 
