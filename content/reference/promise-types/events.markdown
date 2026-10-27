@@ -274,3 +274,52 @@ Required with `file_size_exceeds`, and can't be used with other event types.
 **Type:** `int`
 
 **Allowed input range:** `0,99999999999`
+
+#### User event type
+
+##### User added
+
+**Description:** Creates an event when the user with the given name is added.
+
+The event fires when the user was missing at one check and exists at the next one.
+It fires once per addition: the user has to be removed again before another addition is detected.
+On Windows, only user accounts count, not groups or built-in accounts such as `SYSTEM`.
+
+```cf3
+body when added(user)
+{
+  user_added => "$(user)";
+}
+```
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+**Notes:**
+
+- On Unix, users from network sources such as LDAP or sssd are not detected.
+
+##### User removed
+
+**Description:** Creates an event when the user with the given name is removed.
+
+The event fires when the user existed at one check and is missing at the next one.
+It fires once per removal: the user has to be added again before another removal is detected.
+A failing lookup of the user is logged as an error, and is not taken as a removal.
+On Windows, only user accounts count (`SidTypeUser`), not groups or built-in accounts such as `SYSTEM`.
+
+```cf3
+body when removed(user)
+{
+  user_removed => "$(user)";
+}
+```
+
+**Type:** `string`
+
+**Allowed input range:** (arbitrary string)
+
+**Notes:**
+
+- On Unix, users from network sources such as LDAP or sssd may not be detected.
