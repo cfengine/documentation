@@ -5,10 +5,11 @@ keywords: [reactor, events]
 ---
 
 `events` promises describe events for [`cf-reactor`][cf-reactor] to react to: the event to watch for, with the [`when`](#when) body, and the bundles to run when it happens, with the [`then`](#then) attribute.
-`events` promises can only be made in `reactor` bundles.
+`events` promises can only be made in `reactor` bundles, alongside [`meta`][meta], [`vars`][vars] and [`classes`][classes] promises only.
+See [Reactor bundles][cf-reactor#Reactor bundles].
 
 ```cf3
-bundle agent create_file(file)
+bundle reactor create_file(file)
 {
   files:
     "$(file)" create => "true";
@@ -39,19 +40,19 @@ bundle reactor main
 **Description:** The bundle, or the list of bundles, to run in order when the event happens.
 
 ```cf3
-bundle agent report_deletion(file)
+bundle reactor report_deletion(file)
 {
   reports:
     "$(file) was deleted, restoring it";
 }
 
-bundle agent create_file(file)
+bundle reactor create_file(file)
 {
   files:
     "$(file)" create => "true";
 }
 
-bundle agent report_restored(file)
+bundle reactor report_restored(file)
 {
   reports:
     "$(file) was restored";
@@ -70,14 +71,17 @@ bundle reactor main
 }
 ```
 
-All promise types within `agent` bundles behave like in `cf-agent` when executed in response to events.
+The bundles can be `reactor` bundles without `events` promises, `agent` bundles or `common` bundles.
+A bundle name is looked up among the `agent` bundles first, then the `common` bundles, then the `reactor` bundles.
+All promise types within `reactor` bundles without `events` promises and `agent` bundles behave like in `cf-agent` when executed in response to events.
 
 **Notes:**
 
 - variables and classes created in a bundle run on reaction to an event are destroyed right after the execution.
   The only exception are persistent classes.
+- a `reactor` bundle with `events` promises cannot be run on event, it is an error to refer to one in `then`.
 
-**Type:** `bundle agent` or `bundle common`, or a list of them
+**Type:** `bundle reactor` without `events` promises, `bundle agent` or `bundle common`, or a list of them
 
 ### when
 

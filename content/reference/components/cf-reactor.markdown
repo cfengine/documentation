@@ -10,7 +10,8 @@ aliases:
 Instead of running policy on a fixed schedule like `cf-agent`, it watches for specific events on the host and runs policy as soon as one happens.
 
 `cf-reactor` keeps the promises made in `reactor` bundles and is affected by the `common` control body.
-On event, it runs `agent` bundles.
+On event, it runs the bundles of the [`then`][events#then] attribute of the [`events`][events] promise: `reactor` bundles without `events` promises, which behave like `agent` bundles, or `agent` and `common` bundles.
+See [Reactor bundles][cf-reactor#Reactor bundles].
 
 **Notes:**
 
@@ -31,12 +32,59 @@ On event, it runs `agent` bundles.
 
 See also: [Reactor normal ordering][Policy evaluation#Reactor normal ordering]
 
+## Reactor bundles
+
+There are two kinds of `reactor` bundles, depending on whether they have [`events`][events] promises:
+
+- `reactor` bundles **with** `events` promises set up the events to react to.
+  Besides `events` promises, they can only have [`meta`][meta], [`vars`][vars] and [`classes`][classes] promises.
+  `cf-reactor` evaluates them every time it reads the policy, see [Reactor normal ordering][Policy evaluation#Reactor normal ordering].
+- `reactor` bundles **without** `events` promises are run on event, from the [`then`][events#then] attribute of `events` promises.
+  They can have all the promise types of `agent` bundles, including [custom promise types][custom], and `cf-reactor` runs them like `cf-agent` runs `agent` bundles.
+  They are not evaluated when `cf-reactor` reads the policy.
+
+Having other promise types than `meta`, `vars` and `classes` alongside `events` promises is an error, and so is referring to a `reactor` bundle with `events` promises in a `then` attribute.
+
+With `reactor` bundles without `events` promises, a policy for `cf-reactor` does not need `agent` bundles:
+
+```cf3
+body when deleted(file)
+{
+  file_deleted => "$(file)";
+}
+
+bundle reactor watch
+{
+  vars:
+    "file" string => "/tmp/a";
+
+  events:
+    "Keep $(file)"
+      when => deleted("$(file)"),
+      then => { create_file("$(file)"), report_restored("$(file)") };
+}
+
+bundle reactor create_file(file)
+{
+  files:
+    "$(file)" create => "true";
+}
+
+bundle reactor report_restored(file)
+{
+  reports:
+    "$(file) was restored";
+}
+```
+
+**Note:** [`methods`][methods] promises can call `agent` and `common` bundles, but not `reactor` bundles.
+
 ## Under the hood
 
 `cf-reactor` reads the policy and sets up event watchers based on the event promises declared in `reactor` bundles.
 It then starts a thread that polls for each registered event.
 When an event is detected, it is added to an event queue along with the corresponding event promise.
-The daemon is then signaled to handle the event and execute the appropriate `agent` bundles, following the same execution model as `cf-agent`.
+The daemon is then signaled to handle the event and run the bundles of the `then` attribute of the event promise, following the same execution model as `cf-agent`.
 
 **Notes:**
 

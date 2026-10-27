@@ -12,21 +12,21 @@ depends on the [bundle][bundles] type:
 
 | Promise type                                                          | common | agent | server | monitor | reactor |
 | --------------------------------------------------------------------- | :----: | :---: | :----: | :-----: | :------ |
-| [defaults][defaults] - a default value for bundle parameters          |   x    |   x   |   x    |    x    |         |
+| [defaults][defaults] - a default value for bundle parameters          |   x    |   x   |   x    |    x    | x       |
 | [classes][classes] - a class, representing a state of the system      |   x    |   x   |   x    |    x    | x       |
 | [meta][meta] - information about promise bundles                      |   x    |   x   |   x    |    x    | x       |
-| [reports][reports] - report a message                                 |   x    |   x   |   x    |    x    |         |
+| [reports][reports] - report a message                                 |   x    |   x   |   x    |    x    | x       |
 | [vars][vars] - a variable, representing a value                       |   x    |   x   |   x    |    x    | x       |
-| [commands][commands] - execute a command                              |        |   x   |        |         |         |
-| [databases][databases] - configure a database                         |        |   x   |        |         |         |
-| [files][files] - configure a file                                     |        |   x   |        |         |         |
-| [packages][packages] - install a package                              |        |   x   |        |         |         |
-| [guest_environments][guest_environments]                              |        |   x   |        |         |         |
-| [methods][methods] - take on a whole bundle of other promises         |        |   x   |        |         |         |
-| [processes][processes] - start or terminate processes                 |        |   x   |        |         |         |
-| [services][services] - manage services or define new abstractions     |        |   x   |        |         |         |
-| [storage][storage] - verify attached storage                          |        |   x   |        |         |         |
-| [users][users] - add or remove users                                  |        |   x   |        |         |         |
+| [commands][commands] - execute a command                              |        |   x   |        |         | x       |
+| [databases][databases] - configure a database                         |        |   x   |        |         | x       |
+| [files][files] - configure a file                                     |        |   x   |        |         | x       |
+| [packages][packages] - install a package                              |        |   x   |        |         | x       |
+| [guest_environments][guest_environments]                              |        |   x   |        |         | x       |
+| [methods][methods] - take on a whole bundle of other promises         |        |   x   |        |         | x       |
+| [processes][processes] - start or terminate processes                 |        |   x   |        |         | x       |
+| [services][services] - manage services or define new abstractions     |        |   x   |        |         | x       |
+| [storage][storage] - verify attached storage                          |        |   x   |        |         | x       |
+| [users][users] - add or remove users                                  |        |   x   |        |         | x       |
 | [access][access] - grant or deny access to file objects               |        |       |   x    |         |         |
 | [roles][roles] - allow certain users to activate certain classes      |        |       |   x    |         |         |
 | [measurements][measurements] - measure or sample data from the system |        |       |        |    x    |         |
@@ -35,8 +35,11 @@ depends on the [bundle][bundles] type:
 See each promise type's reference documentation for detailed lists of available
 attributes.
 
-**Note:** `defaults` and `reports` promises are allowed in `reactor` bundles,
-but `cf-reactor` ignores them.
+**Note:** In a `reactor` bundle, `events` promises can only be combined with
+`meta`, `vars` and `classes` promises. The other promise types are for
+`reactor` bundles without `events` promises, which `cf-reactor` runs on event
+like `cf-agent` runs `agent` bundles, see
+[Reactor bundles][cf-reactor#Reactor bundles].
 
 ## Common promise attributes
 
