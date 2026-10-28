@@ -25,7 +25,10 @@ If you are interested in shorter tutorials, there are a few different ones avail
 
 A new top level `promise` block (similar to `body`) is used to add new promise types.
 After adding a promise type, it is used in the same way as built-in promise types, there is no special syntax.
-Custom promise types are only for `cf-agent`, so the `promise` block should always specify the `agent` component, and the promise types should only be used in `agent` bundles.
+Custom promise types are only for `cf-agent` and `cf-reactor`, so the `promise` block should specify either the `agent` or the `reactor` component:
+
+- `promise agent` makes the promise type available to both `cf-agent` and `cf-reactor`, so it can be used in `agent` bundles and in `reactor` bundles.
+- `promise reactor` is only evaluated by `cf-reactor`, so the promise type can only be used in `reactor` bundles.
 
 ### Example of using a promise module
 

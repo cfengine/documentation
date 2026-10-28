@@ -5,10 +5,11 @@ keywords: [reactor, events]
 ---
 
 `events` promises describe events for [`cf-reactor`][cf-reactor] to react to: the event to watch for, with the [`when`](#when) body, and the bundles to run when it happens, with the [`then`](#then) attribute.
-`events` promises can only be made in `reactor` bundles.
+`events` promises can only be made in `reactor` bundles, alongside [`meta`][meta], [`vars`][vars] and [`classes`][classes] promises only.
+See [Reactor bundles][cf-reactor#Reactor bundles].
 
 ```cf3
-bundle agent create_file(file)
+bundle reactor create_file(file)
 {
   files:
     "$(file)" create => "true";
@@ -39,19 +40,19 @@ bundle reactor main
 **Description:** The bundle, or the list of bundles, to run in order when the event happens.
 
 ```cf3
-bundle agent report_deletion(file)
+bundle reactor report_deletion(file)
 {
   reports:
     "$(file) was deleted, restoring it";
 }
 
-bundle agent create_file(file)
+bundle reactor create_file(file)
 {
   files:
     "$(file)" create => "true";
 }
 
-bundle agent report_restored(file)
+bundle reactor report_restored(file)
 {
   reports:
     "$(file) was restored";
@@ -70,14 +71,17 @@ bundle reactor main
 }
 ```
 
-All promise types within `agent` bundles behave like in `cf-agent` when executed in response to events.
+The bundles can be `reactor` bundles without `events` promises, `agent` bundles or `common` bundles.
+A bundle name is looked up among the `agent` bundles first, then the `common` bundles, then the `reactor` bundles.
+All promise types within `reactor` bundles without `events` promises and `agent` bundles behave like in `cf-agent` when executed in response to events.
 
 **Notes:**
 
 - variables and classes created in a bundle run on reaction to an event are destroyed right after the execution.
   The only exception are persistent classes.
+- a `reactor` bundle with `events` promises cannot be run on event, it is an error to refer to one in `then`.
 
-**Type:** `bundle agent` or `bundle common`, or a list of them
+**Type:** `bundle reactor` without `events` promises, `bundle agent` or `bundle common`, or a list of them
 
 ### when
 
@@ -88,6 +92,10 @@ All promise types within `agent` bundles behave like in `cf-agent` when executed
 **See also:** [Common body attributes][Promise types#Common body attributes]
 
 All event types are mutually exclusive in a `when` body.
+
+Event types:
+
+- File events: [`file_deleted`](#file_deleted), [`file_created`](#file_created), [`file_modified`](#file_modified), [`file_content_modified`](#file_content_modified), [`file_permissions_changed`](#file_permissions_changed), [`file_owner_changed`](#file_owner_changed), [`file_size_exceeds`](#file_size_exceeds)
 
 ```cf3
 body when deleted(file)
@@ -127,9 +135,7 @@ body when deleted_slow(file)
 
 **Default value:** `1`
 
-#### File event type
-
-##### File deleted
+#### file_deleted
 
 **Description:** Creates an event when the file at the given path is deleted.
 
@@ -147,7 +153,7 @@ body when deleted(file)
 
 **Allowed input range:** (arbitrary string)
 
-##### File created
+#### file_created
 
 **Description:** Creates an event when a file is created at the given path.
 
@@ -166,7 +172,7 @@ body when created(file)
 
 **Allowed input range:** (arbitrary string)
 
-##### File modified
+#### file_modified
 
 **Description:** Creates an event when the modification time of the file at the given path changes.
 
@@ -187,14 +193,14 @@ body when modified(file)
 
 **Allowed input range:** (arbitrary string)
 
-**See also:** [`file_content_modified`](#file-content-modified)
+**See also:** [`file_content_modified`](#file_content_modified)
 
-##### File content modified
+#### file_content_modified
 
 **Description:** Creates an event when the content of the regular file at the given path changes.
 
 The event fires when the path is a regular file at two consecutive checks and the SHA-256 hash of its content differs.
-Unlike [`file_modified`](#file-modified), touching the file or replacing it with a file of the same content is not a modification.
+Unlike [`file_modified`](#file_modified), touching the file or replacing it with a file of the same content is not a modification.
 The file is read on every check, so it is more expensive than `file_modified` for large files.
 Directories and symlinks have no content to hash, so they never fire this event.
 
@@ -209,7 +215,7 @@ body when content_modified(file)
 
 **Allowed input range:** (arbitrary string)
 
-##### File permissions changed
+#### file_permissions_changed
 
 **Description:** Creates an event when the permissions of the file at the given path change.
 
@@ -227,7 +233,7 @@ body when permissions_changed(file)
 
 **Allowed input range:** (arbitrary string)
 
-##### File owner changed
+#### file_owner_changed
 
 **Description:** Creates an event when the owning user or group of the file at the given path changes.
 
@@ -245,7 +251,7 @@ body when owner_changed(file)
 
 **Allowed input range:** (arbitrary string)
 
-##### File size exceeds
+#### file_size_exceeds
 
 **Description:** Creates an event when the size of the file at the given path grows above [`size_threshold`](#size_threshold) bytes.
 
@@ -265,9 +271,9 @@ body when size_exceeds(file)
 
 **Allowed input range:** (arbitrary string)
 
-##### size_threshold
+#### size_threshold
 
-**Description:** The size, in bytes, above which [`file_size_exceeds`](#file-size-exceeds) fires.
+**Description:** The size, in bytes, above which [`file_size_exceeds`](#file_size_exceeds) fires.
 
 Required with `file_size_exceeds`, and can't be used with other event types.
 

@@ -191,17 +191,17 @@ Within a monitor bundle, the normal ordering is:
 
 ## Reactor normal ordering
 
-As with the agent, common bundles are executed before any reactor bundles;
-following this all reactor bundles are executed (the `bundlesequence` is only
-used for cf-agent). Reactor bundles taking parameters are not executed.
-Variables and classes are resolved in the same way as the agent.
-
 Within a reactor bundle, the normal ordering is:
 
 1. [meta][meta]
 2. [vars][vars]
 3. [classes][classes]
 4. [events][events]
+
+Reactor bundles without [events][events] promises follow the
+[agent normal ordering][Policy evaluation#Agent normal ordering].
+
+See [Reactor bundles][cf-reactor#Reactor bundles] for details.
 
 <!---
 ### Knowledge normal ordering
