@@ -119,6 +119,7 @@ bundle reactor main
 
 Each event has its own interval.
 A lower value means the event is noticed sooner but checked more often.
+A [watch method](#watch_methods) can wake the check up earlier, so with one the interval mostly bounds how late a missed change is noticed.
 For how polling works, see [Under the hood][cf-reactor#Under the hood].
 
 ```cf3
@@ -134,6 +135,49 @@ body when deleted_slow(file)
 **Allowed input range:** `1,99999999999`
 
 **Default value:** `1`
+
+#### watch_methods
+
+**Description:** The watch methods that may wake this event's watcher up before its next interval, in order of preference.
+
+A watch method is a notification from the operating system that the watched file, or its directory, changed.
+It makes `cf-reactor` check the event right away instead of at the next interval.
+It never decides whether the event happened: the check does, so the same events fire whatever the method.
+Polling at the [`interval`](#interval) continues underneath every method, and catches what a method misses.
+
+`cf-reactor` uses the first method in the list that is available on the host and can watch the event's target.
+Without `watch_methods`, it tries `ebpf`, `fanotify`, `inotify`, `usn`, `rdcw` and `poll`, in that order.
+CFEngine Community only has `poll`.
+If none of the listed methods is available, the event is not watched and `cf-reactor` logs an error; list `poll` last to fall back to polling instead.
+
+| Method     | Platform | Edition    |
+| ---------- | -------- | ---------- |
+| `ebpf`     | Linux    | Enterprise |
+| `fanotify` | Linux    | Enterprise |
+| `inotify`  | Linux    | Enterprise |
+| `usn`      | Windows  | Enterprise |
+| `rdcw`     | Windows  | Enterprise |
+| `poll`     | All      | All        |
+
+For how the methods differ, see [Watch methods][cf-reactor#Watch methods].
+
+```cf3
+body when passwd_modified
+{
+  file_content_modified => "/etc/passwd";
+  interval => 300;
+  watch_methods => { "inotify", "poll" };
+}
+```
+
+**Type:** `slist`
+
+**Allowed input range:** `poll`, `inotify`, `fanotify`, `ebpf`, `usn`, `rdcw`
+
+**Notes:**
+
+- changing `watch_methods` does not reset the event: on policy reload, a watcher keeps its state when only its watch methods change.
+- with `watch_methods => { "poll" }` the event is only checked every `interval` seconds.
 
 #### file_deleted
 
