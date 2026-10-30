@@ -16,6 +16,8 @@ expression `regex`.
 
 The regular expression is [unanchored][unanchored].
 
+`none()` will return as soon as any element matches.
+
 **Example:**
 
 {{< CFEngine_include_snippet(none.cf, #\+begin_src cfengine3, .*end_src) >}}
@@ -24,6 +26,9 @@ Output:
 
 {{< CFEngine_include_snippet(none.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
 
-**History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
+**History:**
 
-**See also:** [About collecting functions][Functions#collecting functions], `filter()`, `every()`, and `some()`.
+- The [collecting function][Functions#collecting functions] behavior was added in 3.9.
+- Returns as soon as an element matches in 3.29.0 (CFE-4272).
+
+**See also:** [About collecting functions][Functions#collecting functions], [short-circuit evaluation][Functions#short-circuit evaluation], `filter()`, `every()`, and `some()`.

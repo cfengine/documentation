@@ -197,6 +197,45 @@ Before 3.10, the same call would have resulted in running the `format()`
 function **before** the list is traversed, which is almost never what the user
 wants.
 
+### Short-circuit evaluation
+
+Some functions that return `boolean` stop evaluating as soon as the result is
+known, without looking at the rest of their arguments or list elements. This is
+called short-circuit evaluation.
+
+`and()` and `or()` evaluate their arguments strictly from left to right and
+stop at the first argument that decides the result: the first false argument
+for `and()`, the first true argument for `or()`. Function calls in the remaining
+arguments are not called. This works like `&&` and `||` in C or shell, so you
+can put cheap checks first, or use an earlier argument to guard a later one:
+
+```cf3
+bundle agent main
+{
+  classes:
+    # filestat() is only called if the file exists.
+    "big_config"
+      if => and(
+        fileexists("/etc/myapp.conf"),
+        isgreaterthan(filestat("/etc/myapp.conf", "size"), "1024")
+      );
+}
+```
+
+As described in [Function skipping][Functions#function skipping], `and()` and
+`or()` are still skipped while any argument contains an unresolved variable,
+even an argument after the one that decides the result. That check expands
+variables, it does not call functions.
+
+Functions that go through a list, or the lines of a file, stop at the first
+element that decides the result:
+
+- `some()`, `none()`, `reglist()`, and `regarray()` stop at the first matching
+  element.
+- `every()` stops at the first element that doesn't match.
+- `filesexist()` stops at the first file that can't be accessed.
+- `regline()` stops at the first matching line.
+
 ## List of all functions
 
 There are a large number of functions built into CFEngine. The following

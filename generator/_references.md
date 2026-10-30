@@ -56,6 +56,8 @@
 [mpf-services-autorun]: /reference/masterfiles-policy-framework/services-autorun
 [package-modules-the-api]: /reference/language-concepts/modules/package-module-api#the-api
 [Functions#collecting functions]: /reference/functions#collecting-functions
+[Functions#short-circuit evaluation]: /reference/functions#short-circuit-evaluation
+[Functions#function skipping]: /reference/functions#function-skipping
 [guest_environments]: /reference/promise-types/guest_environments
 [defaults]: /reference/promise-types/defaults
 [getgrgid()]: https://linux.die.net/man/3/getgrgid
