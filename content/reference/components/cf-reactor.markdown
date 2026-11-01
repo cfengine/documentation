@@ -113,7 +113,14 @@ Changing the wakeup source never changes which events fire, only how soon.
   `inotify` is limited by `fs.inotify.max_user_watches` and `fs.inotify.max_user_instances`, and `fanotify` by `fs.fanotify.max_user_marks`.
   When out of watches or marks, they watch files through their directories only, and `cf-reactor` logs a warning; a write through a file descriptor opened before the file was renamed into place is then only seen at the next interval.
   Raise the limit to watch more than about half as many files as it allows.
-- `usn` (Windows, Enterprise) reads the NTFS change journal, and `rdcw` (Windows, Enterprise) uses `ReadDirectoryChangesW`.
+- `usn` (Windows, Enterprise) reads the change journal of NTFS and ReFS volumes, waiting for new records as they are written.
+  It sees changes made while `cf-reactor` was stopped, and doesn't lose changes during bursts, so it comes before `rdcw`.
+  It needs administrator rights and a change journal on the volume; `cf-reactor` never creates one.
+  If the journal is deleted, recreated or overwritten past the last record read, every event on that volume is checked.
+- `rdcw` (Windows, Enterprise) uses `ReadDirectoryChangesW` on the watched files' directories, and works on every local file system, including FAT32 and exFAT.
+  When its buffer overflows during a burst, the events of that directory are checked.
+  It isn't told when a watched directory, or one above it, is renamed or moved; `cf-reactor` notices within 5 seconds and watches the new location.
+  Changes made while `cf-reactor` was stopped are found by the first check after it starts.
 - `poll` only checks at the interval. It is the only wakeup source in CFEngine Community.
 
 **Cost:** away from watched files, no wakeup source adds measurable CPU time to the rest of the system.
@@ -126,11 +133,13 @@ Where the wakeup sources differ:
 | `ebpf`     | under 2 ms                       | up to 65,536 files, about 0.7 MB of locked memory for 1,000              |
 | `fanotify` | about 20 ms                      | one mark per file and one per directory (`fs.fanotify.max_user_marks`)   |
 | `inotify`  | about 20 ms                      | one watch per file and one per directory (`fs.inotify.max_user_watches`) |
+| `usn`      | under 2 ms                       | one reader per volume, none per file                                     |
+| `rdcw`     | under 3 ms                       | one directory handle per watched directory                               |
 | `poll`     | at the next interval             | none                                                                     |
 
 `cf-reactor` then waits 200 milliseconds before checking, so in practice the native wakeup sources react equally fast.
 `fanotify` and `inotify` gather the changes of 20 milliseconds into one wakeup.
-Measured on Ubuntu 24.04 (kernel 6.8) in a virtual machine.
+Measured on Ubuntu 24.04 (kernel 6.8) and Windows Server 2019, in virtual machines.
 
 `file_content_modified` hashes the whole file when its size or modification time changed.
 For a large file that is written to all the time, such as a log, this costs about as much with every wakeup source, since the event is limited to 10 runs a minute (see above) and checked once per run: hashing a 200 MB file appended to 20 times a second took about 20% of a CPU core.
