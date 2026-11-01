@@ -119,6 +119,7 @@ bundle reactor main
 
 Each event has its own interval.
 A lower value means the event is noticed sooner but checked more often.
+A [wakeup source](#wakeup_sources) can wake the check up earlier, so with one the interval mostly bounds how late a missed change is noticed.
 For how polling works, see [Under the hood][cf-reactor#Under the hood].
 
 ```cf3
@@ -134,6 +135,49 @@ body when deleted_slow(file)
 **Allowed input range:** `1,99999999999`
 
 **Default value:** `1`
+
+#### wakeup_sources
+
+**Description:** The wakeup sources that may wake this event's watcher up before its next interval, in order of preference.
+
+A wakeup source is a way for the operating system to tell `cf-reactor` that the watched file, or its directory, changed; `poll` means none, only the interval.
+It makes `cf-reactor` check the event right away instead of at the next interval.
+It never decides whether the event happened: the check does, so the same events fire whatever the wakeup source.
+Polling at the [`interval`](#interval) continues underneath every wakeup source, and catches what a wakeup source misses.
+
+`cf-reactor` uses the first wakeup source in the list that is available on the host and can watch the event's target.
+Without `wakeup_sources`, it tries `ebpf`, `fanotify`, `inotify`, `usn`, `rdcw` and `poll`, in that order.
+CFEngine Community only has `poll`.
+If none of the listed wakeup sources is available, the event is not watched and `cf-reactor` logs an error; list `poll` last to fall back to polling instead.
+
+| Source     | Platform | Edition    |
+| ---------- | -------- | ---------- |
+| `ebpf`     | Linux    | Enterprise |
+| `fanotify` | Linux    | Enterprise |
+| `inotify`  | Linux    | Enterprise |
+| `usn`      | Windows  | Enterprise |
+| `rdcw`     | Windows  | Enterprise |
+| `poll`     | All      | All        |
+
+For how the wakeup sources differ, see [Wakeup sources][cf-reactor#Wakeup sources].
+
+```cf3
+body when passwd_modified
+{
+  file_content_modified => "/etc/passwd";
+  interval => 300;
+  wakeup_sources => { "inotify", "poll" };
+}
+```
+
+**Type:** `slist`
+
+**Allowed input range:** `poll`, `inotify`, `fanotify`, `ebpf`, `usn`, `rdcw`
+
+**Notes:**
+
+- changing `wakeup_sources` does not reset the event: on policy reload, a watcher keeps its state when only its wakeup sources change.
+- with `wakeup_sources => { "poll" }` the event is only checked every `interval` seconds.
 
 #### file_deleted
 
