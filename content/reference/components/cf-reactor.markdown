@@ -94,6 +94,49 @@ The daemon is then signaled to handle the event and run the bundles of the `then
   The delay depends on factors such as the polling interval, policy reloads, and slow code execution.
   However, `cf-reactor` guarantees that changes will be detected as fast as possible and the corresponding code executed, provided that execution does not fail.
 
+## Performance
+
+`cf-reactor` uses these threads:
+
+- A watcher thread checks for events, and queues the events it detects.
+- The main thread takes the events from the queue and runs their [`then`][events#then] bundles, one event at a time.
+- For `package_installed` and `package_uninstalled` events, a listing thread lists the installed packages every 10 seconds.
+  There is one listing thread per [package module][Package modules] (e.g. `apt_get`), shared by all the `events` promises using it, whatever the number of packages they watch.
+  The watcher thread compares these lists to detect the events.
+
+How many events per second it can handle depends on the event type and on how long the `then` bundles take to run.
+
+Each `events` promise fires at most once per check, so at most once per [`interval`][events#interval].
+With `N` `events` promises and an interval of `I` seconds, `cf-reactor` has at most `N / I` events per second to handle.
+Changes happening between two checks are seen as one event.
+
+The figures below were measured on an Amazon EC2 `t2.micro` instance (1 vCPU, Intel Xeon E5-2686 v4 at 2.30 GHz, 1 GB of memory) running Ubuntu 24.04.
+Each `events` promise watched its own file, user or package, with the default `interval` of 1 second, and its `then` bundle had a single `reports` promise.
+
+The watched files, users and packages were changed for 30 seconds, at a fixed number of events per second.
+The test was repeated with more and more events per second, until `cf-reactor` could no longer handle the events as fast as they happened.
+The limit is the most events per second `cf-reactor` can handle for each event type:
+
+| Event type                 | Limit (events/s) |
+| -------------------------- | ---------------: |
+| `file_deleted`             |              138 |
+| `file_created`             |              133 |
+| `file_modified`            |              145 |
+| `file_content_modified`    |               21 |
+| `file_permissions_changed` |               15 |
+| `file_owner_changed`       |               14 |
+| `file_size_exceeds`        |               25 |
+| `user_added`               |     at least 3.8 |
+| `user_removed`             |     at least 4.2 |
+| `package_installed`        |     at least 1.2 |
+| `package_uninstalled`      |     at least 1.2 |
+
+**Notes:**
+
+- Users and packages could not be added or removed fast enough to reach the limit of `cf-reactor`: these figures are lower bounds.
+- Above the limit, `cf-reactor` doesn't lose events: they pile up in the queue and are handled late.
+- Slower `then` bundles lower these limits.
+
 ## Enterprise hub tasks
 
 On CFEngine Enterprise hubs, `cf-reactor` also listens to `NOTIFY` events in the PostgreSQL database and performs actions when those events occur, and runs periodic hub tasks:
