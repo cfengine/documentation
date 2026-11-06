@@ -19,6 +19,8 @@ this function to return true.
 - list : The name of the list variable or data container to check, in the range
   `[a-zA-Z0-9_$(){}\[\].:]+`
 
+`filesexist()` will return as soon as a file can't be accessed.
+
 **Example:**
 
 {{< CFEngine_include_snippet(filesexist.cf, #\+begin_src cfengine3, .*end_src) >}}
@@ -29,4 +31,4 @@ Output:
 
 **History:** The [collecting function][Functions#collecting functions] behavior was added in 3.12.
 
-**See also:** [About collecting functions][Functions#collecting functions], `grep()`, `every()`, `some()`, and `none()`.
+**See also:** [About collecting functions][Functions#collecting functions], [short-circuit evaluation][Functions#short-circuit evaluation], `grep()`, `every()`, `some()`, and `none()`.

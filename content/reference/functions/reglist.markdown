@@ -14,6 +14,8 @@ aliases:
 
 {{< CFEngine_function_attributes(list, regex) >}}
 
+`reglist()` will return as soon as any item matches.
+
 **Example:**
 
 {{< CFEngine_include_snippet(reglist.cf, #\+begin_src cfengine3, .*end_src) >}}
@@ -26,6 +28,9 @@ In the example above, the IP address in `$(sys.ipv4[eth0])` must be `escape`d,
 so that the (.) characters in the IP address are not interpreted as the
 regular expression "match any" characters.
 
-**History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
+**History:**
 
-**See also:** `getindices()`, `getvalues()`, [about collecting functions][Functions#collecting functions], and `data` documentation.
+- The [collecting function][Functions#collecting functions] behavior was added in 3.9.
+- Returns as soon as an item matches in 3.29.0 (CFE-4272).
+
+**See also:** [short-circuit evaluation][Functions#short-circuit evaluation], `getindices()`, `getvalues()`, [about collecting functions][Functions#collecting functions], and `data` documentation.

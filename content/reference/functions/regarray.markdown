@@ -12,6 +12,8 @@ aliases:
 
 {{< CFEngine_function_attributes(array, regex) >}}
 
+`regarray()` will return as soon as any element matches.
+
 **Example:**
 
 {{< CFEngine_include_snippet(regarray.cf, #\+begin_src cfengine3, .*end_src) >}}
@@ -19,3 +21,5 @@ aliases:
 Output:
 
 {{< CFEngine_include_snippet(regarray.cf, #\+begin_src\s+example_output\s*, .*end_src) >}}
+
+**See also:** [short-circuit evaluation][Functions#short-circuit evaluation]
