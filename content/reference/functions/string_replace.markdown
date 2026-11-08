@@ -8,6 +8,7 @@ aliases:
 {{< CFEngine_function_prototype(string, match, replacement, option) >}}
 
 **Description:** Replaces a substring, or a list of substrings, within a given string with a specified replacement string or list of replacement strings.
+
 {{< CFEngine_function_attributes(string, match, replacement, option) >}}
 
 Reads a string from left to right, replacing the occurences of the second
