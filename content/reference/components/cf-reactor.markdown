@@ -104,14 +104,27 @@ The daemon is then signaled to handle the event and run the bundles of the `then
   There is one listing thread per [package module][Package modules] (e.g. `apt_get`), shared by all the `events` promises using it, whatever the number of packages they watch.
   The watcher thread compares these lists to detect the events.
 
-How many events per second it can handle depends on the event type and on how long the `then` bundles take to run.
+How many events per second it can handle depends on two things:
+
+- The cost of `cf-reactor` itself: checking for the event, which depends on the event type, and setting up and running the `then` bundles.
+- The work done by the `then` bundles, and anything outside of `cf-reactor`, such as how fast the package manager lists the installed packages.
 
 Each `events` promise fires at most once per check, so at most once per [`interval`][events#interval].
 With `N` `events` promises and an interval of `I` seconds, `cf-reactor` has at most `N / I` events per second to handle.
 Changes happening between two checks are seen as one event.
 
 The figures below were measured on an Amazon EC2 `t2.micro` instance (1 vCPU, Intel Xeon E5-2686 v4 at 2.30 GHz, 1 GB of memory) running Ubuntu 24.04.
-Each `events` promise watched its own file, user or package, with the default `interval` of 1 second, and its `then` bundle had a single `reports` promise.
+Each `events` promise watched its own file, user or package, with the default `interval` of 1 second, and ran this `then` bundle:
+
+```cf3
+bundle reactor record_event(file)
+{
+  reports:
+    "handled '$(file)'";
+}
+```
+
+Users were added and removed with `useradd` and `userdel`, and packages were installed and uninstalled with `dpkg` and watched with the `apt_get` package module.
 
 The watched files, users and packages were changed for 30 seconds, at a fixed number of events per second.
 The test was repeated with more and more events per second, until `cf-reactor` could no longer handle the events as fast as they happened.
@@ -133,8 +146,10 @@ The limit is the most events per second `cf-reactor` can handle for each event t
 
 **Notes:**
 
-- Users and packages could not be added or removed fast enough to reach the limit of `cf-reactor`: these figures are lower bounds.
+- `useradd`, `userdel` and `dpkg` could not add, remove, install or uninstall users and packages fast enough to reach the limit of `cf-reactor`: these figures are lower bounds.
+  On a real system, users and packages rarely change faster than this.
 - Above the limit, `cf-reactor` doesn't lose events: they pile up in the queue and are handled late.
+  The queue has no size limit: if events keep coming faster than `cf-reactor` handles them, the delay keeps growing, and so does the memory used by the queue, until `cf-reactor` runs out of memory.
 - Slower `then` bundles lower these limits.
 
 ## Enterprise hub tasks
