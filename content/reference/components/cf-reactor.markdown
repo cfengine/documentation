@@ -123,6 +123,8 @@ Changing the wakeup source never changes which events fire, only how soon.
   Changes made while `cf-reactor` was stopped are found by the first check after it starts.
 - `poll` only checks at the interval. It is the only wakeup source in CFEngine Community.
 
+`package_installed` and `package_uninstalled` events always use `poll`: the installed packages are listed every 10 seconds whatever the wakeup source, so no wakeup source can make them faster.
+
 **Cost:** away from watched files, no wakeup source adds measurable CPU time to the rest of the system.
 In a directory that holds a watched file, each file operation costs about 1 µs more with `ebpf`, `fanotify` or `inotify` (about 10%), counting the process making the change and `cf-reactor`.
 At 1,000 file operations per second in one watched directory this is about 0.1% of a CPU core, so the choice of wakeup source makes no practical difference to CPU time.
@@ -161,6 +163,7 @@ Use `file_modified` for such files, which only compares the modification time.
 `cf-reactor` uses these threads:
 
 - A watcher thread checks for events, and queues the events it detects.
+  Events about files on network file systems are checked by a second watcher thread, so that a server that stops responding doesn't hold up the other events.
 - The main thread takes the events from the queue and runs their [`then`][events#then] bundles, one event at a time.
 - For `package_installed` and `package_uninstalled` events, a listing thread lists the installed packages every 10 seconds.
   There is one listing thread per [package module][Package modules] (e.g. `apt_get`), shared by all the `events` promises using it, whatever the number of packages they watch.
@@ -171,9 +174,10 @@ How many events per second it can handle depends on two things:
 - The cost of `cf-reactor` itself: checking for the event, which depends on the event type, and setting up and running the `then` bundles.
 - The work done by the `then` bundles, and anything outside of `cf-reactor`, such as how fast the package manager lists the installed packages.
 
-Each `events` promise fires at most once per check, so at most once per [`interval`][events#interval].
-With `N` `events` promises and an interval of `I` seconds, `cf-reactor` has at most `N / I` events per second to handle.
+Each `events` promise fires at most once per check.
+Without a [wakeup source](#wakeup-sources), it is checked once per [`interval`][events#interval]; a wakeup source can check it sooner.
 Changes happening between two checks are seen as one event.
+Either way, an `events` promise that fires more than 10 times in 60 seconds is delayed (see [Under the hood](#under-the-hood)), so with `N` `events` promises that keep firing, `cf-reactor` has at most about `N / 6` events per second to handle.
 
 The figures below were measured on an Amazon EC2 `t2.micro` instance (1 vCPU, Intel Xeon E5-2686 v4 at 2.30 GHz, 1 GB of memory) running Ubuntu 24.04.
 Each `events` promise watched its own file, user or package, with the default `interval` of 1 second, and ran this `then` bundle:
@@ -213,6 +217,8 @@ The limit is the most events per second `cf-reactor` can handle for each event t
 - Above the limit, `cf-reactor` doesn't lose events: they pile up in the queue and are handled late.
   The queue has no size limit: if events keep coming faster than `cf-reactor` handles them, the delay keeps growing, and so does the memory used by the queue, until `cf-reactor` runs out of memory.
 - Slower `then` bundles lower these limits.
+- These figures were measured with polling only, before an `events` promise was limited to 10 runs in 60 seconds.
+  They are totals across many `events` promises, each watching its own file, user or package: no single `events` promise reaches these rates, since one that fires more than 10 times a minute is delayed.
 
 ## Enterprise hub tasks
 

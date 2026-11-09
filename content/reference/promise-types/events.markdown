@@ -178,6 +178,7 @@ body when passwd_modified
 
 - changing `wakeup_sources` does not reset the event: on policy reload, a watcher keeps its state when only its wakeup sources change.
 - with `wakeup_sources => { "poll" }` the event is only checked every `interval` seconds.
+- no wakeup source can watch `package_installed` and `package_uninstalled` events: they use `poll`, so a list without `poll` leaves them unwatched.
 
 #### file_deleted
 
