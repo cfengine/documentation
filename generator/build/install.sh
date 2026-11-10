@@ -4,7 +4,7 @@ set -ex
 
 # All of these commands are executed by the jenkins user.
 
-sudo apt-get install -y -qq curl gnupg2 wget git
+sudo apt-get install -y -qq wget ca-certificates
 
 # some of packages below depend on tzdata. Installing it without DEBIAN_FRONTEND=noninteractive causes it to ask where in the world are you, interrupting the build process
 DEBIAN_FRONTEND=noninteractive sudo --preserve-env=DEBIAN_FRONTEND apt-get install -y -qq tzdata
