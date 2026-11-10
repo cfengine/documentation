@@ -144,6 +144,5 @@ fi
 set +x
 
 export LC_ALL=C.UTF-8
-bash ./build/install_hugo.sh
 echo "+ bash -x ./_scripts/_run.sh $BRANCH || exit 6"
 bash -x ./_scripts/_run.sh "$BRANCH" || exit 6

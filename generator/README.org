@@ -25,7 +25,7 @@ example ={{< params "CFE_manuals_version" >}}=.
 :END:
 
 The documentation is rendered using [[https://gohugo.io/][Hugo]]. The Hugo site lives in [[../hugo][=hugo/=]]
-and the version used by the build is installed by [[./build/install_hugo.sh][=build/install_hugo.sh=]].
+and it is built in the official Hugo image, pinned as the =hugo= stage of [[./build/Dockerfile][=build/Dockerfile=]].
 
 ** Building Locally
 :PROPERTIES:
@@ -102,6 +102,10 @@ For example:
   ./_scripts/cfdoc_preprocess.py master || exit 4
 
   bash -x ./_scripts/_run.sh master || exit 5
+
+  (cd ../hugo && npm ci && npm run build:all) || exit 6
+
+  bash -x ./_scripts/_postprocess.sh master || exit 7
 #+END_SRC
 
 
@@ -117,8 +121,9 @@ Once the syntax map has been regenerated [[https://github.com/cfengine/documenta
 (whatever that means), resolving links, expanding our custom macros and creating
 printable (dead trees) versions of the documentation.
 
-After pre-processing is complete [[https://github.com/cfengine/documentation/blob/master/generator/_scripts/_run.sh][_run.sh]] performs the Hugo build and
-post processes the build with [[https://github.com/cfengine/documentation/blob/master/generator/_scripts/cfdoc_postprocess.py][cfdoc_postprocess.py]]
+After pre-processing is complete [[https://github.com/cfengine/documentation/blob/master/generator/_scripts/_run.sh][_run.sh]] prepares the Hugo site, Hugo builds it and
+[[https://github.com/cfengine/documentation/blob/master/generator/_scripts/_postprocess.sh][_postprocess.sh]] post processes the build with [[https://github.com/cfengine/documentation/blob/master/generator/_scripts/cfdoc_postprocess.py][cfdoc_postprocess.py]]. In CI these
+steps run as the stages of [[./build/Dockerfile][=build/Dockerfile=]].
 
 *** Publishing
 :PROPERTIES:

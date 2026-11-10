@@ -12,9 +12,3 @@ DEBIAN_FRONTEND=noninteractive sudo --preserve-env=DEBIAN_FRONTEND apt-get insta
 # Python is needed for our pre and post processing scripts.
 
 sudo apt-get install -y -qq python3
-
-curl -sL https://deb.nodesource.com/setup_21.x -o nodesource_setup.sh
-sudo bash nodesource_setup.sh
-sudo apt-get install -y -qq nodejs
-node --version
-npm --version

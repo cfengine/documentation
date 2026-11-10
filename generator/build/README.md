@@ -11,6 +11,7 @@ You will need to have the following repos checked out:
 - nova (used for changelog)
 - enterprise (used for changelog)
 - masterfiles (used to document masterfies)
+- nt-docs (Hugo theme and build scripts)
 - documentation
 
 ## Usage
@@ -33,26 +34,45 @@ If you have buildah installed:
 
    - `$PACKAGE_BUILD` - RELEASE of the build to be downloaded, usually 1
 
+   - `$LTS_VERSION` - LTS version, only used when `$BRANCH` is `lts`
+
 3. `cd` to directory with all repos and run `run.sh` from this dir
 
 ## Details
 
-To make a container, cd to this directory and run:
+The whole build runs in the stages of the [Dockerfile](Dockerfile), with the
+directory holding all the repos as build context:
 
-    buildah build-using-dockerfile -t docs .
+1. `tools` - Ubuntu build environment, runs `main.sh` (hub package, syntax
+   JSON, pre-processing, `_scripts/_run.sh` to prepare the Hugo site)
+2. `hugo` - official Hugo image, runs `npm ci && npm run build:all`
+3. `postprocess` - runs `_scripts/_postprocess.sh` and `_scripts/_publish.sh`
+4. `output` - just the tarballs from `/nt/output`
 
-or
+`run.sh` runs the build with buildah. To run it by hand, from the directory with
+all repos:
 
-    docker build --tag docs .
+    buildah build-using-dockerfile \
+      --file documentation/generator/build/Dockerfile \
+      --ignorefile documentation/generator/build/Dockerfile.dockerignore \
+      --build-arg BRANCH=$BRANCH \
+      --build-arg PACKAGE_JOB=$PACKAGE_JOB \
+      --build-arg PACKAGE_UPLOAD_DIRECTORY=$PACKAGE_UPLOAD_DIRECTORY \
+      --build-arg PACKAGE_BUILD=$PACKAGE_BUILD \
+      --output type=local,dest=output .
 
-To run docs job in a container, run:
+or with docker, which picks up `Dockerfile.dockerignore` by itself:
 
-    c=$(buildah from -v $PWD:/nt docs)
-    buildah run $c bash -x documentation/generator/build/main.sh $BRANCH $PACKAGE_JOB $PACKAGE_UPLOAD_DIRECTORY $PACKAGE_BUILD
-    buildah run $c bash -x documentation/generator/_scripts/_publish.sh $BRANCH
-    buildah rm $c
+    docker build \
+      --file documentation/generator/build/Dockerfile \
+      --build-arg BRANCH=$BRANCH \
+      --build-arg PACKAGE_JOB=$PACKAGE_JOB \
+      --build-arg PACKAGE_UPLOAD_DIRECTORY=$PACKAGE_UPLOAD_DIRECTORY \
+      --build-arg PACKAGE_BUILD=$PACKAGE_BUILD \
+      --output type=local,dest=output .
 
-or
+The tarballs (`packed-for-shipping.tar.gz` and
+`cfengine-documentation-$BRANCH.tar.gz`) end up in `./output`.
 
-    docker run --rm -it -v $PWD:/nt docs bash -x documentation/generator/build/main.sh $BRANCH $PACKAGE_JOB $PACKAGE_UPLOAD_DIRECTORY $PACKAGE_BUILD
-    docker run --rm -it -v $PWD:/nt docs bash -x documentation/generator/_scripts/_publish.sh $BRANCH
+To build and serve the docs locally with docker, including cloning the repos,
+use `build-locally.sh` in the root of the documentation repo.

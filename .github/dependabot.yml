@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: "docker"
+    directory: "/generator/build"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+    ignore:
+      # The build image stays on the Ubuntu release the hub package is built for
+      - dependency-name: "ubuntu"
