@@ -53,8 +53,6 @@ This API provides access to health diagnostic information.
 
 **Method:** POST
 
-Execute user SQL query. Accepts SQL compatible with PostgreSQL database. Query is a subject to Role Base Access Control and will include data for hosts that issuing user have permissions to access. Read-only SQL is allowed.
-
 API performance depend on the query result size, to achieve fastest results consider narrowing result set at much as possible.
 
 **Parameters:**
