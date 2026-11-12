@@ -4,6 +4,9 @@
 # Apache does in production. The search server itself is the server.js
 # from NorthernTechHQ/infra.
 #
+# Expected build context (see serve_site in build-locally.sh):
+#   search-deps         nt-docs scripts/search/server (package.json + lock)
+#
 # Expected mounts (see serve_site in build-locally.sh):
 #   /site               built _site (nginx root)
 #   /docs/<branch>      the same _site, where server.js looks for
@@ -11,13 +14,11 @@
 #   /search/server.js   search server from the infra repo
 FROM nginx:alpine
 
-# flexsearch must match the version the search index was built with
-# (nt-docs scripts/search/index)
-ARG FLEXSEARCH_VERSION=0.7.31
-RUN apk add --no-cache nodejs npm \
-    && npm install --global "flexsearch@${FLEXSEARCH_VERSION}"
+RUN apk add --no-cache nodejs npm
+
+COPY --from=search-deps package.json package-lock.json /search/
+RUN npm ci --prefix /search --omit=dev
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# server.js resolves flexsearch from the global node_modules via NODE_PATH
-CMD ["sh", "-c", "NODE_PATH=$(npm root -g) node /search/server.js & exec nginx -g 'daemon off;'"]
+CMD ["sh", "-c", "node /search/server.js & exec nginx -g 'daemon off;'"]

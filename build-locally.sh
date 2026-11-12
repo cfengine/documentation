@@ -59,17 +59,19 @@ REPOS=(
 serve_site() {
     local site_dir="$DOC_WORK/generator/_site"
     local server_js="$WORK_DIR/infra/services/docs-cfengine-com/search-server/server.js"
-    local flex_pkg="$WORK_DIR/nt-docs/scripts/search/index/package.json"
+    local search_deps="$WORK_DIR/nt-docs/scripts/search/server"
     local label="$BRANCH"
     [ -n "$LTS_VERSION" ] && label="lts"
 
-    if [ ! -f "$server_js" ] || [ ! -d "$site_dir/assets/searchIndex" ]; then
-        echo "error: no built site (or no infra checkout) under tmp/; run a full build first" >&2
+    if [ ! -f "$server_js" ] || [ ! -f "$search_deps/package-lock.json" ] || [ ! -d "$site_dir/assets/searchIndex" ]; then
+        echo "error: no built site (or no infra/nt-docs checkout) under tmp/; run a full build first" >&2
         return 1
     fi
 
     echo "==> Building serve image $SERVE_IMAGE"
-    "$DOCKER" build --tag "$SERVE_IMAGE" "$SCRIPT_DIR/generator/serve"
+    "$DOCKER" build --tag "$SERVE_IMAGE" \
+        --build-context search-deps="$search_deps" \
+        "$SCRIPT_DIR/generator/serve"
 
     echo "==> Starting serve container $SERVE_CONTAINER on port $SITE_PORT"
     "$DOCKER" rm -f "$SERVE_CONTAINER" >/dev/null 2>&1 || true
