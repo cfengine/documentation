@@ -1,0 +1,3 @@
+# Build context is the directory with all the repos (see Dockerfile), none of their git history is needed
+**/.git
+output

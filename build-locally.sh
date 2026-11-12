@@ -14,8 +14,6 @@
 #   PACKAGE_BUILD             (default: n/a — unused with cf-remote)
 #   LTS_VERSION               (default: empty)
 #   DOCKER                  docker binary to use (default: docker)
-#   IMAGE_NAME              tag for the build image (default: cfengine-docs-hugo)
-#   SKIP_PUBLISH=1          skip the _publish.sh step (just build)
 #   SKIP_SERVE=1            don't start the serve container (site + search)
 #   SERVE_ONLY=1            skip the build; just (re)start the serve container
 #                           against the previously built site
@@ -40,7 +38,6 @@ PACKAGE_UPLOAD_DIRECTORY="${PACKAGE_UPLOAD_DIRECTORY:-n/a}"
 PACKAGE_BUILD="${PACKAGE_BUILD:-n/a}"
 LTS_VERSION="${LTS_VERSION:-}"
 DOCKER="${DOCKER:-docker}"
-IMAGE_NAME="${IMAGE_NAME:-cfengine-docs-hugo}"
 SITE_PORT="${SITE_PORT:-8000}"
 SERVE_IMAGE="${SERVE_IMAGE:-cfengine-docs-serve}"
 SERVE_CONTAINER="cfengine-docs-serve"
@@ -113,10 +110,8 @@ if [ -n "${SERVE_ONLY:-}" ]; then
 fi
 
 # 1. Clone (or update) the sibling repos under tmp/cache/, then export a
-#    clean working copy (no .git) to tmp/work/. We mount the .git-free
-#    copy because the container does `chmod -R` over each repo, and on
-#    macOS Docker bind mounts can't chmod git pack files written by the
-#    host user.
+#    clean working copy (no .git) to tmp/work/, which is the docker build
+#    context.
 echo "==> Preparing sibling repos under $TMP_DIR"
 for entry in "${REPOS[@]}"; do
     # shellcheck disable=SC2086
@@ -169,51 +164,28 @@ rsync -a --delete \
     "$SCRIPT_DIR/" "$DOC_WORK/"
 rm -f "$DOC_WORK/content/cfdoc_log.markdown"
 
-# 2. Build the docker image (only if it's not already built).
-if ! "$DOCKER" image inspect "$IMAGE_NAME" >/dev/null 2>&1; then
-    echo "==> Building docker image $IMAGE_NAME"
-    "$DOCKER" build --tag "$IMAGE_NAME" "$SCRIPT_DIR/generator/build"
-else
-    echo "==> Reusing docker image $IMAGE_NAME (delete it to rebuild)"
-fi
+# 2. Run the build (the generator/build/Dockerfile stages), the tarballs are exported to output/.
+echo "==> Building documentation"
+"$DOCKER" build \
+    --file "$DOC_WORK/generator/build/Dockerfile" \
+    --build-arg BRANCH="$BRANCH" \
+    --build-arg PACKAGE_JOB="$PACKAGE_JOB" \
+    --build-arg PACKAGE_UPLOAD_DIRECTORY="$PACKAGE_UPLOAD_DIRECTORY" \
+    --build-arg PACKAGE_BUILD="$PACKAGE_BUILD" \
+    --build-arg LTS_VERSION="$LTS_VERSION" \
+    --output "type=local,dest=$DOC_WORK/output" \
+    "$WORK_DIR"
 
-# 3. Run the build inside the container.
-# main.sh expects /nt/{documentation,core,nova,enterprise,masterfiles,nt-docs}.
-# We bind-mount this checkout as /nt/documentation and each tmp/<repo> as
-# its sibling, so nothing outside this directory is touched.
-echo "==> Running documentation build in container"
-RUN_FLAGS=(
-    --rm
-    -v "$DOC_WORK:/nt/documentation"
-)
-for entry in "${REPOS[@]}"; do
-    # shellcheck disable=SC2086
-    set -- $entry
-    RUN_FLAGS+=(-v "$WORK_DIR/$1:/nt/$1")
-done
+# 3. Unpack the site from packed-for-shipping.tar.gz (what production deploys).
+tar -xzf "$DOC_WORK/output/packed-for-shipping.tar.gz" -C "$DOC_WORK/generator"
 
-"$DOCKER" run "${RUN_FLAGS[@]}" "$IMAGE_NAME" \
-    bash -x documentation/generator/build/main.sh \
-        "$BRANCH" "$PACKAGE_JOB" "$PACKAGE_UPLOAD_DIRECTORY" \
-        "$PACKAGE_BUILD" "$LTS_VERSION"
-
-# 4. Optionally package the result (mirrors the Jenkins pipeline).
-# _publish.sh mutates _site in place for the offline archive, so restore it from packed-for-shipping.tar.gz (what production deploys) afterwards.
-if [ -z "${SKIP_PUBLISH:-}" ]; then
-    echo "==> Packaging output"
-    mkdir -p "$DOC_WORK/output"
-    "$DOCKER" run "${RUN_FLAGS[@]}" -v "$DOC_WORK/output:/nt/output" "$IMAGE_NAME" \
-        bash -x documentation/generator/_scripts/_publish.sh "$BRANCH"
-    tar -xzf "$DOC_WORK/output/packed-for-shipping.tar.gz" -C "$DOC_WORK/generator"
-fi
-
-# 5. Serve the site with a working search (see serve_site above).
+# 4. Serve the site with a working search (see serve_site above).
 if [ -z "${SKIP_SERVE:-}" ]; then
     serve_site
 fi
 
 echo "==> Done. Generated site is in: $DOC_WORK/generator/_site"
-echo "    Tarballs (if packaged) are in: $DOC_WORK/output/"
+echo "    Tarballs are in: $DOC_WORK/output/"
 if [ -z "${SKIP_SERVE:-}" ]; then
     echo "    Documentation is served at:"
     echo "    http://127.0.0.1:$SITE_PORT/"

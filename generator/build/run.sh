@@ -3,11 +3,6 @@
 set -ex
 trap "echo FAILURE" ERR
 
-image_name=docs-hugo
-if ! buildah inspect ${image_name} >/dev/null 2>&1; then
-  buildah build-using-dockerfile -t ${image_name} documentation/generator/build
-fi
-
 # Current path must have the following repos cloned:
 # * core (used for changelog, examples)
 # * nova (used for changelog)
@@ -31,7 +26,16 @@ elif [ -n "$BRANCH_NAME" ]; then
   BRANCH="$BRANCH_NAME"
 fi
 
-c=$(buildah from -v "$PWD":/nt ${image_name})
-trap 'buildah run "$c" bash -c "sudo chown -R root:root /nt; sudo chmod -R a+rwX /nt"; buildah rm "$c" >/dev/null' EXIT
-buildah run "$c" bash -x documentation/generator/build/main.sh "$BRANCH" "$PACKAGE_JOB" "$PACKAGE_UPLOAD_DIRECTORY" "$PACKAGE_BUILD" "$LTS_VERSION"
-buildah run "$c" bash -x documentation/generator/_scripts/_publish.sh "$BRANCH"
+# The whole build runs in the Dockerfile stages (pre-process, Hugo, post-process) with the
+# current path as build context. The tarballs end up in ./output for the Jenkins publish step.
+# No --layers: each build starts fresh, so results are never stale and no cached copies of the workspace pile up on the host.
+buildah build-using-dockerfile \
+  --file documentation/generator/build/Dockerfile \
+  --ignorefile documentation/generator/build/Dockerfile.dockerignore \
+  --build-arg BRANCH="$BRANCH" \
+  --build-arg PACKAGE_JOB="$PACKAGE_JOB" \
+  --build-arg PACKAGE_UPLOAD_DIRECTORY="$PACKAGE_UPLOAD_DIRECTORY" \
+  --build-arg PACKAGE_BUILD="$PACKAGE_BUILD" \
+  --build-arg LTS_VERSION="$LTS_VERSION" \
+  --output type=local,dest=output \
+  .
