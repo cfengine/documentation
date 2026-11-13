@@ -20,6 +20,8 @@ the [unanchored][unanchored] `regex`.
   `[a-zA-Z0-9_$(){}\[\].:]+`. It can be a data container or a regular
   list.
 
+`every()` will return as soon as an element doesn't match.
+
 **Example:**
 
 {{< CFEngine_include_snippet(every.cf, #\+begin_src cfengine3, .*end_src) >}}
@@ -30,4 +32,4 @@ Output:
 
 **History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 
-**See also:** [About collecting functions][Functions#collecting functions], `filter()`, `some()`, and `none()`.
+**See also:** [About collecting functions][Functions#collecting functions], [short-circuit evaluation][Functions#short-circuit evaluation], `filter()`, `some()`, and `none()`.

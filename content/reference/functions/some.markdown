@@ -18,8 +18,8 @@ aliases:
 
 It's convenient to set a class to `not => some(".*", mylist)` in order
 to check if `mylist` is empty. Since `some()` returns as soon as
-possible, that is better than using `length()` or `every()` or
-`none()` which must traverse the entire list.
+possible, that is better than using `length()`, which must traverse the
+entire list.
 
 **Example:**
 
@@ -31,4 +31,4 @@ Output:
 
 **History:** The [collecting function][Functions#collecting functions] behavior was added in 3.9.
 
-**See also:** [About collecting functions][Functions#collecting functions], `filter()`, `every()`, and `none()`.
+**See also:** [About collecting functions][Functions#collecting functions], [short-circuit evaluation][Functions#short-circuit evaluation], `filter()`, `every()`, and `none()`.
