@@ -34,7 +34,7 @@ is untested and unsupported.
 
 ### Software requirements
 
-If your hub will have SELinux enabled, the `semanage` command must be installed.
+If your hub will have SELinux in enforcing mode, the `semanage` command must be installed.
 This allows Federated reporting policy to manage the trust between the superhub and
 feeder hubs.
 
@@ -48,6 +48,12 @@ federation policy to ensure that `semanage` is installed.
 ```
 
 See `cfengine_enterprise_federation:semanage_installed` in [cfe_internal/enterprise/federation/federation.cf][cfe_internal/enterprise/federation/federation.cf] for details on which packages are used for various distributions.
+
+Federated reporting policy checks this requirement before performing any other
+operation. Until it is satisfied, policy reports an error naming the missing
+software and skips all other Federated reporting operations, e.g. the database
+schema of the superhub is not migrated. This prevents a hub from being left
+partially configured.
 
 ### Hardware requirements
 
