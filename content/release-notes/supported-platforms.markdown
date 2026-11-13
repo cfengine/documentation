@@ -30,7 +30,7 @@ Any supported host can be a policy server in Community installations of CFEngine
 | :---------: | :-----------------: | :-----------: |
 |     AIX     |      7.1, 7.2       |    PowerPC    |
 | CentOS/RHEL |  6, 7, 8.1+, 9, 10  |    x86-64     |
-| CentOS/RHEL |         10          |    arm64      |
+| CentOS/RHEL |     8.1+, 9, 10     |    arm64      |
 |   Debian    |     11, 12, 13      |    x86-64     |
 |   Debian    |     11, 12, 13      |    arm64      |
 |    HP-UX    |       11.31+        |    Itanium    |
