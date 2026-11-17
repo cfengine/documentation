@@ -30,7 +30,7 @@ ARG LTS_VERSION
 RUN bash -x documentation/generator/build/main.sh "$BRANCH" "$PACKAGE_JOB" "$PACKAGE_UPLOAD_DIRECTORY" "$PACKAGE_BUILD" "$LTS_VERSION"
 
 # Hugo build
-FROM ghcr.io/gohugoio/hugo:v0.169.0@sha256:a146e0639230bbc73358e6563240f0a6103466f0390b80a457c775068ec802a9 AS hugo
+FROM ghcr.io/gohugoio/hugo:v0.170.0@sha256:90663d477d1fe08c85643d5752bbf1f4e6391e83f95f85e9942b702649d16cb2 AS hugo
 COPY --from=tools --chown=hugo:hugo /nt/documentation /nt/documentation
 WORKDIR /nt/documentation/hugo
 RUN npm ci && npm run build:all
