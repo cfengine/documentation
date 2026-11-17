@@ -7,6 +7,10 @@ aliases:
 
 The configuration management database (CMDB) API v2 enables you to manage configuration entries for specific hosts.
 
+This API is not available on a [federated reporting][Federated reporting] superhub or on a
+hub whose database has been migrated to the superhub schema. In both cases it responds with
+`403 Forbidden`.
+
 ## Get CMDB for specific host
 
 Get all configuration entries for a specific host.
