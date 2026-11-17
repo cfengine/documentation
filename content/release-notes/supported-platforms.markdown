@@ -29,7 +29,7 @@ Any supported host can be a policy server in Community installations of CFEngine
 |  Platform   |      Versions       | Architectures |
 | :---------: | :-----------------: | :-----------: |
 | CentOS/RHEL |   7, 8.1+, 9, 10    |    x86-64     |
-| CentOS/RHEL |         10          |     arm64     |
+| CentOS/RHEL |     8.1+, 9, 10     |     arm64     |
 |   Debian    |       12, 13        |    x86-64     |
 |   Debian    |       12, 13        |     arm64     |
 |   Ubuntu    | 20.04, 22.04, 24.04 |    x86-64     |
